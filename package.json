@@ -7,7 +7,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "start-storybook -p 8666 -c .storybook",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -23,7 +25,21 @@
   },
   "homepage": "https://github.com/influxdata/clockface#readme",
   "devDependencies": {
-    "chai": "^4.1.2",
-    "mocha": "^5.2.0"
+    "@storybook/addon-actions": "^3.4.10",
+    "@storybook/addon-links": "^3.4.10",
+    "@storybook/addons": "^3.4.10",
+    "@storybook/react": "^3.4.10",
+    "babel-core": "^6.26.3",
+    "babel-preset-react": "^6.24.1",
+    "babel-runtime": "^6.26.0",
+    "enzyme": "^3.4.1",
+    "jest": "^23.5.0",
+    "typescript": "^3.0.1"
+  },
+  "dependencies": {
+    "@types/react": "^16.4.10",
+    "node-sass": "^4.9.3",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
   }
 }
