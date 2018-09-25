@@ -1,45 +1,47 @@
 {
-  "name": "@thealexpaxton/clockface",
+  "name": "clockface",
   "version": "0.0.1",
+  "license": "AGPL-3.0",
+  "main": "build/lib/index.js",
   "description": "UI Kit for building Chronograf and other Time Series visualization applications",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
-  "scripts": {
-    "start": "start-storybook -p 8666 -c .storybook",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build-storybook": "build-storybook"
-  },
+  "types": "build/lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/influxdata/clockface.git"
+    "url": "github:influxdata/clockface"
   },
-  "keywords": [
-    "ui"
+  "files": [
+    "build/lib"
   ],
-  "author": "InfluxData Design Team",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/influxdata/clockface/issues"
-  },
-  "homepage": "https://github.com/influxdata/clockface#readme",
   "devDependencies": {
-    "@storybook/addon-actions": "^3.4.10",
-    "@storybook/addon-links": "^3.4.10",
-    "@storybook/addons": "^3.4.10",
-    "@storybook/react": "^3.4.10",
+    "@storybook/addon-info": "^3.4.11",
+    "@storybook/addon-knobs": "^3.4.11",
+    "@storybook/react": "4.0.0-alpha.3",
+    "@types/jest": "^23.3.2",
+    "@types/react": "^16.4.14",
+    "awesome-typescript-loader": "^5.2.1",
     "babel-core": "^6.26.3",
-    "babel-preset-react": "^6.24.1",
-    "babel-runtime": "^6.26.0",
-    "enzyme": "^3.4.1",
-    "jest": "^23.5.0",
-    "typescript": "^3.0.1"
+    "cpx": "^1.5.0",
+    "css-loader": "^1.0.0",
+    "jest": "^23.6.0",
+    "react-docgen-typescript-webpack-plugin": "^1.1.0",
+    "storybook-addon-jsx": "^5.4.0",
+    "style-loader": "^0.23.0",
+    "ts-jest": "^23.10.1",
+    "typescript": "^3.0.3"
   },
   "dependencies": {
-    "@types/react": "^16.4.10",
+    "@css-blocks/core": "^0.19.0",
+    "@css-blocks/jsx": "^0.20.0-beta.1",
     "node-sass": "^4.9.3",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2"
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "sass-loader": "^7.1.0"
+  },
+  "scripts": {
+    "storybook": "start-storybook -p 6006 -c .storybook",
+    "build": "npm run build-lib && build-storybook",
+    "build-lib": "tsc && npm run copy-css-to-lib",
+    "build-storybook": "build-storybook",
+    "copy-css-to-lib": "cpx \"./src/**/*.css\" ./build/lib"
   }
 }
