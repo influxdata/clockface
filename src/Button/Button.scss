@@ -1,0 +1,27 @@
+@import '../modules/modules';
+
+.Button span {
+  margin: auto;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  color: $g20-white;
+  text-transform: uppercase;
+}
+
+.Button {
+  padding: 0px 20px;
+  height: 49px;
+  border-radius: 2px;
+  border: 2px solid $c-pool;
+  display: inline-flex;
+  background-color: $c-pool;
+}
+
+.Button:hover:not(.Button_disabled) {
+  cursor: pointer;
+}
+
+.Button_disabled {
+  background-color: $c-pool-disabled
+}
