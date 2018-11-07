@@ -23,7 +23,7 @@ storiesOf('Components/Button', module).addWithJSX(
   ~~~`
 )(() => (
     <Button
-      label={text('label', 'Enroll')}
+      label={text('label', 'Do the thing')}
       disabled={boolean('disabled', false)}
       onClick={() => alert('hello there')}
     />

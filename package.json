@@ -1,8 +1,8 @@
 {
-  "name": "clockface",
+  "name": "@influxdata/clockface",
   "version": "0.0.1",
   "license": "AGPL-3.0",
-  "main": "build/lib/index.js",
+  "main": "dist/index.js",
   "description": "UI Kit for building Chronograf and other Time Series visualization applications",
   "types": "build/lib/index.d.ts",
   "repository": {
@@ -29,17 +29,22 @@
     "ts-jest": "^23.10.1",
     "typescript": "^3.0.3"
   },
+  "peerDependencies": {
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  },
   "dependencies": {
     "@css-blocks/core": "^0.19.0",
     "@css-blocks/jsx": "^0.20.0-beta.1",
+    "microbundle": "^0.7.0",
     "node-sass": "^4.9.3",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
     "sass-loader": "^7.1.0"
   },
   "scripts": {
     "storybook": "start-storybook -p 6006 -c .storybook",
     "build": "npm run build-lib && build-storybook",
+    "build-package": "microbundle",
+    "dev": "microbundle watch",
     "build-lib": "tsc && npm run copy-css-to-lib",
     "build-storybook": "build-storybook",
     "copy-css-to-lib": "cpx \"./src/**/*.css\" ./build/lib"
