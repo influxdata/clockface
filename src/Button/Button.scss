@@ -4,17 +4,16 @@
   margin: auto;
   font-size: 16px;
   font-weight: bold;
-  text-align: center;
   color: $g20-white;
-  text-transform: uppercase;
+  text-align: center;
 }
 
 .Button {
-  padding: 0px 20px;
   height: 49px;
+  padding: 0px 20px;
   border-radius: 2px;
-  border: 2px solid $c-pool;
   display: inline-flex;
+  border: 2px solid $c-pool;
   background-color: $c-pool;
 }
 
