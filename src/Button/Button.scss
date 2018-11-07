@@ -1,6 +1,6 @@
 @import '../modules/modules';
 
-.Button span {
+.button span {
   margin: auto;
   font-size: 16px;
   font-weight: bold;
@@ -8,19 +8,19 @@
   text-align: center;
 }
 
-.Button {
+.button {
   height: 49px;
   padding: 0px 20px;
-  border-radius: 2px;
+  border-radius: $radius;
   display: inline-flex;
   border: 2px solid $c-pool;
   background-color: $c-pool;
 }
 
-.Button:hover:not(.Button_disabled) {
+.button:hover:not(.Button_disabled) {
   cursor: pointer;
 }
 
-.Button_disabled {
+.button-disabled {
   background-color: $c-pool-disabled
 }
