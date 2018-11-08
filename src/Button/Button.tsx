@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react'
+import {ThemeContext} from '../ThemeContext/ThemeContext'
 import './Button.scss'
 
 interface Props {
@@ -8,6 +9,7 @@ interface Props {
 }
 
 export class Button extends PureComponent<Props> {
+
   public static defaultProps: Partial<Props> = {
     disabled: false
   }
@@ -17,12 +19,18 @@ export class Button extends PureComponent<Props> {
     const disabledclass = disabled ? 'button_disabled' : ''
     
     return (
-      <div
-        className={`button ${disabledclass}`}
-        onClick={this.handleClick}
-      >
-        <span>{label}</span>
-      </div>
+      <ThemeContext.Consumer>
+        {(theme: string) => (
+          <span className={`clockface-button ${theme}`}>
+            <div
+              className={`button ${disabledclass}`}
+              onClick={this.handleClick}
+            >
+              <span>{label}</span>
+            </div>
+          </span>
+        )}
+      </ThemeContext.Consumer>
     )
   }
 
