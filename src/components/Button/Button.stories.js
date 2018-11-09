@@ -13,7 +13,7 @@ storiesOf('Components/Button', module)
     'basic Button',
     wInfo(`
 
-    ### Notes
+    ### Description
 
     This is a button
 
