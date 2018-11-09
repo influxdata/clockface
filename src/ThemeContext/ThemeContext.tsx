@@ -1,14 +1,15 @@
 import React, {PureComponent} from 'react'
+import { clockfaceTheme } from '../types/themes'
 
 interface Props {
-  theme: string
+  theme: clockfaceTheme
 }
 
 export const ThemeContext = React.createContext({})
 
 export class ThemeContextProvider extends PureComponent<Props> {
   public static defaultProps: Partial<Props> = {
-    theme: 'clockface-theme-light'
+    theme: clockfaceTheme.light
   }
   render() {
     const { theme, children } = this.props

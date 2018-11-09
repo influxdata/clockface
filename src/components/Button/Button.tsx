@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react'
-import {ThemeContext} from '../ThemeContext/ThemeContext'
+import { ThemeContext } from '../../ThemeContext/ThemeContext'
 import './Button.scss'
 
 interface Props {
@@ -9,14 +9,13 @@ interface Props {
 }
 
 export class Button extends PureComponent<Props> {
-
   public static defaultProps: Partial<Props> = {
     disabled: false
   }
 
   render() {
     const { label, disabled } = this.props
-    const disabledclass = disabled ? 'button_disabled' : ''
+    const disabledclass = disabled ? 'button-disabled' : ''
     
     return (
       <ThemeContext.Consumer>

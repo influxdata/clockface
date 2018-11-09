@@ -1,4 +1,4 @@
-@import '../modules/modules';
+@import '../../style/modules/modules.scss';
 
 .clockface-button {
   .button span {
@@ -23,28 +23,28 @@
   }
   
   .button-disabled {
-    background-color: $c-curacao-disabled
+    background-color: $c-curacao-disabled;
   }
 }
 
-.clockface-button.light {
+.clockface-button.clockface-theme--light {
   .button {
     border: 2px solid $c-pool;
     background-color: $c-pool;
   }
 
   .button-disabled {
-    background-color: $c-pool-disabled
+    background-color: $c-pool-disabled;
   }
 }
 
-.clockface-button.dark {
+.clockface-button.clockface-theme--dark {
   .button {
     border: 2px solid $c-star;
     background-color: $c-star;
   }
 
   .button-disabled {
-    background-color: $c-star-disabled
+    background-color: $c-star-disabled;
   }
 }

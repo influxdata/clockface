@@ -1,2 +1,2 @@
-export {Button} from './Button/Button'
+export {Button} from './components/Button/Button'
 export {ThemeContextProvider} from './ThemeContext/ThemeContext'

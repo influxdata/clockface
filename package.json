@@ -23,13 +23,13 @@
     "cpx": "^1.5.0",
     "css-loader": "^1.0.0",
     "jest": "^23.6.0",
+    "react": "^16.5.2",
     "react-docgen-typescript-webpack-plugin": "^1.1.0",
+    "react-dom": "^16.5.2",
     "storybook-addon-jsx": "^5.4.0",
     "style-loader": "^0.23.0",
     "ts-jest": "^23.10.1",
-    "typescript": "^3.0.3",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "typescript": "^3.0.3"
   },
   "peerDependencies": {
     "react": "^16.5.2",
