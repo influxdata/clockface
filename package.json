@@ -27,7 +27,9 @@
     "storybook-addon-jsx": "^5.4.0",
     "style-loader": "^0.23.0",
     "ts-jest": "^23.10.1",
-    "typescript": "^3.0.3"
+    "typescript": "^3.0.3",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
   },
   "peerDependencies": {
     "react": "^16.5.2",
@@ -42,11 +44,12 @@
   },
   "scripts": {
     "storybook": "start-storybook -p 6006 -c .storybook",
-    "build": "npm run build-lib && build-storybook",
+    "build": "yarn run build-lib && build-storybook",
     "build-package": "microbundle",
     "dev": "microbundle watch",
-    "build-lib": "tsc && npm run copy-css-to-lib",
+    "build-lib": "yarn run tsc && yarn run copy-css-to-lib",
     "build-storybook": "build-storybook",
-    "copy-css-to-lib": "cpx \"./src/**/*.css\" ./build/lib"
+    "copy-css-to-lib": "cpx \"./src/**/*.css\" ./build/lib",
+    "clean": "rm -rf ./build && rm -rf ./.cache && rm -rf node_modules"
   }
 }
