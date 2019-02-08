@@ -1,55 +1,33 @@
 {
   "name": "@influxdata/clockface",
   "version": "0.0.1",
-  "license": "AGPL-3.0",
+  "license": "MIT",
   "main": "dist/index.js",
+  "source": "src/index.tsx",
   "description": "UI Kit for building Chronograf and other Time Series visualization applications",
-  "types": "build/lib/index.d.ts",
+  "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "github:influxdata/clockface"
   },
-  "files": [
-    "build/lib"
-  ],
   "devDependencies": {
-    "@storybook/addon-info": "^3.4.11",
-    "@storybook/addon-knobs": "^3.4.11",
-    "@storybook/react": "4.0.0-alpha.3",
-    "@types/jest": "^23.3.2",
+    "@css-blocks/core": "^0.19.0",
+    "@css-blocks/jsx": "^0.20.0-beta.1",
     "@types/react": "^16.4.14",
-    "awesome-typescript-loader": "^5.2.1",
-    "babel-core": "^6.26.3",
-    "cpx": "^1.5.0",
-    "css-loader": "^1.0.0",
-    "jest": "^23.6.0",
-    "react-docgen-typescript-webpack-plugin": "^1.1.0",
-    "storybook-addon-jsx": "^5.4.0",
-    "style-loader": "^0.23.0",
-    "ts-jest": "^23.10.1",
-    "typescript": "^3.0.3",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "microbundle": "^0.9.0",
+    "node-sass": "^4.11.0",
+    "tslint": "^5.12.1",
+    "typescript": "^3.0.3"
   },
   "peerDependencies": {
     "react": "^16.5.2",
     "react-dom": "^16.5.2"
   },
-  "dependencies": {
-    "@css-blocks/core": "^0.19.0",
-    "@css-blocks/jsx": "^0.20.0-beta.1",
-    "microbundle": "^0.7.0",
-    "node-sass": "^4.9.3",
-    "sass-loader": "^7.1.0"
-  },
+  "dependencies": {},
   "scripts": {
-    "storybook": "start-storybook -p 6006 -c .storybook",
-    "build": "yarn run build-lib && build-storybook",
-    "build-package": "microbundle",
+    "prepublishOnly": "npm run build",
+    "build": "microbundle && rm -rf .rts2_cache_*",
     "dev": "microbundle watch",
-    "build-lib": "yarn run tsc && yarn run copy-css-to-lib",
-    "build-storybook": "build-storybook",
-    "copy-css-to-lib": "cpx \"./src/**/*.css\" ./build/lib",
-    "clean": "rm -rf ./build && rm -rf ./.cache && rm -rf node_modules"
+    "clean": "rm -rf ./dist && rm -rf ./.cache && rm -rf node_modules"
   }
 }
