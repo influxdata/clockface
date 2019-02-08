@@ -1,7 +1,7 @@
 import * as React from 'react'
 import './Button.scss'
 
-export interface Props {
+interface Props {
   label: string
   onClick: () => void
   disabled?: boolean
