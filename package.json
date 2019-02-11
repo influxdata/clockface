@@ -23,10 +23,14 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@types/classnames": "^2.2.7",
+    "classnames": "^2.2.6"
+  },
   "scripts": {
+    "move-fonts": "cp -r src/Styles/Fonts dist/",
     "prepublishOnly": "npm run build",
-    "build": "microbundle && rm -rf .rts2_cache_*",
+    "build": "rm -rf dist && microbundle && npm run move-fonts && rm -rf .rts2_cache_*",
     "dev": "microbundle watch",
     "clean": "rm -rf ./dist && rm -rf ./.cache && rm -rf node_modules"
   }
