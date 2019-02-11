@@ -1,10 +1,10 @@
-# clockface
+# Clockface
 
 [![Travis][build-badge]][build]
 [![npm package][npm-badge]][npm]
 [![Coveralls][coveralls-badge]][coveralls]
 
-UI Kit for building Chronograf and other Time Series visualization applications.
+A React + Typescript UI Kit for building Chronograf and other Time Series visualization applications.
 
 [build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
 [build]: https://travis-ci.org/user/repo
