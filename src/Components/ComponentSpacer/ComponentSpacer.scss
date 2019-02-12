@@ -30,7 +30,7 @@
   align-items: center;
 
   &.component-spacer--left > * {
-    margin-right: $ix-marg-a;
+    margin-right: $cf-marg-a;
   
     &:last-child {
       margin-right: 0;
@@ -38,12 +38,12 @@
   }
 
   &.component-spacer--center > * {
-    margin-left: ($ix-marg-a / 2);
-    margin-right: ($ix-marg-a / 2);
+    margin-left: ($cf-marg-a / 2);
+    margin-right: ($cf-marg-a / 2);
   }
 
   &.component-spacer--right > * {
-    margin-left: $ix-marg-a;
+    margin-left: $cf-marg-a;
   
     &:first-child {
       margin-left: 0;
@@ -59,7 +59,7 @@
   }
 
   &.component-spacer--left > * {
-    margin-bottom: $ix-marg-a;
+    margin-bottom: $cf-marg-a;
   
     &:last-child {
       margin-bottom: 0;
@@ -67,8 +67,8 @@
   }
 
   &.component-spacer--center > * {
-    margin-top: ($ix-marg-a / 2);
-    margin-top: ($ix-marg-a / 2);
+    margin-top: ($cf-marg-a / 2);
+    margin-top: ($cf-marg-a / 2);
   }
 
   &.component-spacer--right {
@@ -76,7 +76,7 @@
   }
 
   &.component-spacer--right > * {
-    margin-top: $ix-marg-a;
+    margin-top: $cf-marg-a;
   
     &:last-child {
       margin-top: 0;

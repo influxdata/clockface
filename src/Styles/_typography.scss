@@ -4,8 +4,8 @@
 */
 
 body {
-  font-family: $ix-text-font;
-  color: $ix-text-default;
+  font-family: $cf-text-font;
+  color: $cf-text-default;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -15,40 +15,40 @@ body {
 .page {
   a:link,
   a:visited {
-    color: $ix-link-default;
+    color: $cf-link-default;
     transition: color 0.2s ease;
     text-decoration: none;
     font-weight: 700;
 
     &.link-danger {
-      color: $ix-link-danger;
+      color: $cf-link-danger;
     }
     &.link-success {
-      color: $ix-link-success;
+      color: $cf-link-success;
     }
     &.link-warning {
-      color: $ix-link-warning;
+      color: $cf-link-warning;
     }
-    &.link-info {
-      color: $ix-link-info;
+    &.link-secondary {
+      color: $cf-text-secondary;
     }
   }
   a:hover,
   a:active {
-    color: $ix-link-default-hover;
+    color: $cf-link-default-hover;
     text-decoration: none;
 
     &.link-danger {
-      color: $ix-link-danger-hover;
+      color: $cf-link-danger-hover;
     }
     &.link-success {
-      color: $ix-link-success-hover;
+      color: $cf-link-success-hover;
     }
     &.link-warning {
-      color: $ix-link-warning-hover;
+      color: $cf-link-warning-hover;
     }
-    &.link-info {
-      color: $ix-link-info-hover;
+    &.link-secondar {
+      color: $cf-text-secondary-hover;
     }
   }
 }
@@ -56,25 +56,25 @@ body {
 // Selection Styles
 // -----------------------------------------------------------------------------
 ::selection {
-  background-color: $ix-text-selection-bg;
-  color: $ix-text-selection-color; /* WebKit/Blink Browsers */
+  background-color: $cf-text-selection-bg;
+  color: $cf-text-selection-color; /* WebKit/Blink Browsers */
 }
 ::-moz-selection {
-  background-color: $ix-text-selection-bg;
-  color: $ix-text-selection-color; /* Gecko Browsers */
+  background-color: $cf-text-selection-bg;
+  color: $cf-text-selection-color; /* Gecko Browsers */
 }
 
 // Typography Base Styles
 // -----------------------------------------------------------------------------
 
 %type-base-styles {
-  margin: $ix-marg-b 0 0.55em 0;
+  margin: $cf-marg-b 0 0.55em 0;
 }
 %type-small-styles {
   small {
     font-size: 0.8em;
     font-weight: inherit;
-    color: $ix-text-lighter;
+    color: $cf-text-default;
   }
 }
 
@@ -82,7 +82,7 @@ body {
 // -----------------------------------------------------------------------------
 p {
   @extend %type-base-styles;
-  font-size: $ix-text-base;
+  font-size: $cf-text-base;
   line-height: 1.55em;
   font-weight: 400;
 
@@ -91,8 +91,8 @@ p {
   }
 
   small {
-    color: $ix-text-light;
-    font-size: $ix-text-tiny;
+    color: $cf-text-default;
+    font-size: $cf-text-tiny;
     font-weight: 500;
   }
 }
@@ -101,7 +101,7 @@ h1 {
   @extend %type-base-styles;
   @extend %type-small-styles;
   line-height: 1.25em;
-  font-size: $ix-text-base-5;
+  font-size: $cf-text-base-5;
   font-weight: 300;
   letter-spacing: -1px;
 }
@@ -109,7 +109,7 @@ h2 {
   @extend %type-base-styles;
   @extend %type-small-styles;
   line-height: 1.25em;
-  font-size: $ix-text-base-4;
+  font-size: $cf-text-base-4;
   font-weight: 300;
   letter-spacing: -1px;
 }
@@ -117,7 +117,7 @@ h3 {
   @extend %type-base-styles;
   @extend %type-small-styles;
   line-height: 1.25em;
-  font-size: $ix-text-base-3;
+  font-size: $cf-text-base-3;
   font-weight: 400;
   small {
     font-weight: 400;
@@ -127,7 +127,7 @@ h4 {
   @extend %type-base-styles;
   @extend %type-small-styles;
   line-height: 1.25em;
-  font-size: $ix-text-base-2;
+  font-size: $cf-text-base-2;
   font-weight: 400;
   small {
     font-weight: 400;
@@ -137,7 +137,7 @@ h5 {
   @extend %type-base-styles;
   @extend %type-small-styles;
   line-height: 1.25em;
-  font-size: $ix-text-base-1;
+  font-size: $cf-text-base-1;
   font-weight: 600;
   small {
     font-weight: 500;
@@ -147,7 +147,7 @@ h6 {
   @extend %type-base-styles;
   @extend %type-small-styles;
   line-height: 1.25em;
-  font-size: $ix-text-base;
+  font-size: $cf-text-base;
   font-weight: 900;
   small {
     font-weight: 500;
@@ -155,26 +155,26 @@ h6 {
 }
 ol,ul {
   @extend %type-base-styles;
-  padding-left: $ix-marg-c;
-  font-size: $ix-text-base;
+  padding-left: $cf-marg-c;
+  font-size: $cf-text-base;
   line-height: 1.55em;
   font-weight: 500;
 }
 li {
-  margin: 0 0 $ix-marg-b 0;
-  padding-left: $ix-marg-b;
+  margin: 0 0 $cf-marg-b 0;
+  padding-left: $cf-marg-b;
   &:last-child {
     margin-bottom: 0;
   }
 }
 blockquote {
   @extend %type-base-styles;
-  font-size: $ix-text-base;
+  font-size: $cf-text-base;
   line-height: 1.55em;
   font-weight: 400;
   border: 0;
-  padding: $ix-marg-b $ix-marg-c;
-  color: $ix-text-light;
+  padding: $cf-marg-b $cf-marg-c;
+  color: $cf-text-default;
   font-style: italic;
   position: relative;
 
@@ -182,20 +182,20 @@ blockquote {
   &:after {
     content: '';
     position: absolute;
-    width: $ix-marg-e;
-    height: $ix-marg-d;
+    width: $cf-marg-e;
+    height: $cf-marg-d;
     border-style: solid;
     border-color: $g5-pepper;
   }
   &:before {
     top: 0;
     left: 0;
-    border-width: $ix-border 0 0 $ix-border;
+    border-width: $cf-border 0 0 $cf-border;
   }
   &:after {
     bottom: 0;
     right: 0;
-    border-width: 0 $ix-border $ix-border 0;
+    border-width: 0 $cf-border $cf-border 0;
   }
 
   b,strong {
@@ -205,7 +205,7 @@ blockquote {
 hr {
   border:0;
   height: 2px;
-  margin: $ix-marg-c 0 $ix-marg-d 0;
+  margin: $cf-marg-c 0 $cf-marg-d 0;
   background-color: $g5-pepper;
   border-radius: 1px;
   &.dark {
@@ -220,8 +220,8 @@ b,strong {
 mark {
   background-color: $c-emerald;
   color: $c-honeydew;
-  padding: $ix-border $ix-marg-a;
-  border-radius: $ix-radius-sm;
+  padding: $cf-border $cf-marg-a;
+  border-radius: $cf-radius-sm;
 }
 
 // Text Selection Styling
@@ -252,7 +252,7 @@ span.text-color {
   &-danger {
     color: $c-curacao;
   }
-  &-info {
+  &-secondary {
     color: $c-star;
   }
 }

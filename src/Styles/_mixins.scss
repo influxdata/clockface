@@ -69,10 +69,10 @@ $scrollbar-offset: 3px;
 @mixin custom-scrollbar-round($trackColor, $handleColor) {
   &::-webkit-scrollbar {
     width: $scrollbar-width;
-    border-top-right-radius: $radius;
-    border-top-left-radius: $radius;
-    border-bottom-left-radius: $radius;
-    border-bottom-right-radius: $radius;
+    border-top-right-radius: $cf-radius;
+    border-top-left-radius: $cf-radius;
+    border-bottom-left-radius: $cf-radius;
+    border-bottom-right-radius: $cf-radius;
 
     &-button {
       background-color: $trackColor;
