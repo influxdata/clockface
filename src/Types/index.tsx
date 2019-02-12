@@ -5,7 +5,6 @@ export enum ComponentColor {
   Success = 'success',
   Warning = 'warning',
   Danger = 'danger',
-  Alert = 'alert',
 }
 
 export enum ComponentSize {
