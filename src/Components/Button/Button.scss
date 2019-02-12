@@ -7,16 +7,16 @@
 
 .button {
   font-weight: 700;
-  font-family: $ix-text-font;
+  font-family: $cf-text-font;
   border-style: solid;
-  border-width: $ix-border;
+  border-width: $cf-border;
   transition:
     background-color 0.25s ease,
     border-color 0.25s ease,
     box-shadow 0.25s ease,
     color 0.25s ease;
   outline: none;
-  border-radius: $radius;
+  border-radius: $cf-radius;
   white-space: nowrap;
   @extend %no-user-select;
 
@@ -46,7 +46,7 @@
   font-size: $fontSize;
   padding: 0 $padding;
   height: $height;
-  line-height: $height - ($ix-border * 2);
+  line-height: $height - ($cf-border * 2);
 
   .button-spinner {
     width: $height * 0.5;
@@ -206,5 +206,5 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  border-width: $ix-border;
+  border-width: $cf-border;
 }

@@ -1,90 +1,71 @@
 /*
-   Variables
+   Z Variables
    -----------------------------------------------------------------------------
+   Might not actually need any of these yet
 */
-
-/* Page Layout */
-
-$nav-size: 50px;
-$nav-breakpoint: 800px;
-$page-header-size: 66px;
-$page-max-width: 1608px;
-$page-gutter: 54px;
-$page-title-size: 21px;
-$page-title-weight: 400;
-$sidebar--width: 50px; //delete this later
-
-/* Z Variables */
 
 $z--notifications: 9999;
 $z--right-click-layer: 9995;
 $z--overlays: 9990;
 $z--drag-n-drop: 5000;
-$z--dygraph-legend: 9993;
 
-$z--cell-default: 1;
-$z--cell-dragging: 3;
-$z--cell-resizing: 3;
-$z--cell-gradient-border: 1000;
-$z--cell-view: 1;
-$z--cell-header: 2;
-$z--cell-context: 3;
-$z--cell-context-hover: 100;
-$z--cell-resizer: 5;
-$z--draggable-resizer-mask: 9999;
+/*
+   Motifs
+   -----------------------------------------------------------------------------
+   Goal is to re-use these variables as much as possible to ensure powerful
+   control over the UI kit proportions
+*/
 
-/* Motifs */
+$cf-marg-a: 4px;
+$cf-marg-b: 8px;
+$cf-marg-c: 16px;
+$cf-marg-d: 32px;
+$cf-marg-e: 64px;
+$cf-marg-f: 128px;
 
-$radius: 4px;
-$radius-small: 3px;
-$page-wrapper-padding: 60px;
-$page-wrapper-max-width: 1300px;
-$chronograf-page-header-height: 60px;
+$cf-border: 2px;
+$cf-radius: 4px;
+$cf-radius-sm: $cf-radius - 1px;
 
-$ix-marg-a: 4px;
-$ix-marg-b: 8px;
-$ix-marg-c: 16px;
-$ix-marg-d: 32px;
-$ix-marg-e: 64px;
-$ix-marg-f: 128px;
+/*
+   Typography
+   -----------------------------------------------------------------------------
+*/
 
-$ix-border: 2px;
-$ix-radius: 4px;
-$ix-radius-sm: 3px;
+$cf-text-font: 'Roboto', Helvetica, Arial, Tahoma, Verdana, sans-serif;
+$cf-code-font: 'RobotoMono', monospace;
+$cf-icon-font: 'icomoon';
 
-/* Typography */
+$cf-text-tiny: 11px;
+$cf-text-base: 12px;
+$cf-text-scale: 1.19; 
+$cf-text-base-1: (ceil($cf-text-base * $cf-text-scale));
+$cf-text-base-2: (ceil($cf-text-base * $cf-text-scale * $cf-text-scale));
+$cf-text-base-3: (ceil($cf-text-base * $cf-text-scale * $cf-text-scale * $cf-text-scale));
+$cf-text-base-4: (ceil($cf-text-base * $cf-text-scale * $cf-text-scale * $cf-text-scale * $cf-text-scale));
+$cf-text-base-5: (ceil($cf-text-base * $cf-text-scale * $cf-text-scale * $cf-text-scale * $cf-text-scale * $cf-text-scale));
 
-$ix-link-default: $c-pool;
-$ix-link-default-hover: $c-laser;
-$ix-link-success: $c-rainforest;
-$ix-link-success-hover: $c-honeydew;
-$ix-link-warning: $c-pineapple;
-$ix-link-warning-hover: $c-thunder;
-$ix-link-info: $c-star;
-$ix-link-info-hover: $c-comet;
-$ix-link-danger: $c-curacao;
-$ix-link-danger-hover:  $c-dreamsicle;
+$cf-text-default: $g13-mist;
+$cf-link-default: $c-pool;
+$cf-link-default-hover: $c-laser;
+$cf-link-success: $c-rainforest;
+$cf-link-success-hover: $c-honeydew;
+$cf-link-warning: $c-pineapple;
+$cf-link-warning-hover: $c-thunder;
+$cf-text-secondary: $c-star;
+$cf-text-secondary-hover: $c-comet;
+$cf-link-danger: $c-curacao;
+$cf-link-danger-hover:  $c-dreamsicle;
 
-$ix-text-default: $g13-mist;
-$ix-text-light: $g13-mist;
-$ix-text-lighter: $g13-mist;
-$ix-text-lightest: $g15-platinum;
+$cf-text-selection-bg: $c-pool;
+$cf-text-selection-color: $g20-white;
 
-$ix-text-font: 'Roboto', Helvetica, Arial, Tahoma, Verdana, sans-serif;
-$ix-text-selection-bg: $c-pool;
-$ix-text-selection-color: $g20-white;
-$ix-text-scale: 1.19;
-$ix-icon-font: 'icomoon';
-
-$ix-text-tiny: 11px;
-$ix-text-base: 12px;
-$ix-text-base-1: (ceil($ix-text-base * $ix-text-scale));
-$ix-text-base-2: (ceil($ix-text-base * $ix-text-scale * $ix-text-scale));
-$ix-text-base-3: (ceil($ix-text-base * $ix-text-scale * $ix-text-scale * $ix-text-scale));
-$ix-text-base-4: (ceil($ix-text-base * $ix-text-scale * $ix-text-scale * $ix-text-scale * $ix-text-scale));
-$ix-text-base-5: (ceil($ix-text-base * $ix-text-scale * $ix-text-scale * $ix-text-scale * $ix-text-scale * $ix-text-scale));
-
-/* Form Element Sizing */
+/*
+   Form Element Sizing
+   -----------------------------------------------------------------------------
+   These ensure consistent sizing across ]elements such as Buttons, Radio,
+   Dropdown, Input, etc.
+*/
 
 $form-xs-height: 22px;
 $form-xs-padding: 6px;
@@ -102,9 +83,11 @@ $form-lg-height: 46px;
 $form-lg-padding: 15px;
 $form-lg-font: 17px;
 
-/* Empty State */
+/*
+   Empty State
+   -----------------------------------------------------------------------------
+*/
+
 $empty-state-text: $g9-mountain;
 $empty-state-highlight: $g13-mist;
 
-$default-font: 'Roboto', Helvetica, sans-serif;
-$code-font: 'RobotoMono', monospace;

@@ -1,25 +1,25 @@
 @import "../../Styles/modules.scss";
 
-$radio-buttons--padding: 4px;
+$radio-buttons--padding: $cf-marg-a;
 
 .radio-buttons {
   display: inline-flex;
   align-items: stretch;
   padding: $radio-buttons--padding;
-  border-radius: $radius;
+  border-radius: $cf-radius;
   background-color: $g5-pepper;
 }
 
 .radio-button {
   @include no-user-select();
   border: 0;
-  font-family: $ix-text-font;
+  font-family: $cf-text-font;
   font-weight: 600;
   background-color: transparent;
   transition: background-color 0.25s ease, color 0.25s ease;
   color: $g11-sidewalk;
   text-transform: capitalize;
-  border-radius: $radius - 1px;
+  border-radius: $cf-radius-sm;
   outline: none;
   text-align: center;
   white-space: nowrap;
