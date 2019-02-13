@@ -47,3 +47,7 @@ You can tell these are all related because of the `Garden` family namespace
   flex: 1 0 50%;
 }
 ```
+
+#### Common Prop Types
+
+Clockface offers a variety of Types to make customizing the UI kit simple. For example, any component that can be rendered in different colors takes the `ComponentColor` type. Use of these common prop types throughout the UI kit ensures consistency.
