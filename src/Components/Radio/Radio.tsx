@@ -18,6 +18,7 @@ interface Props {
   color?: ComponentColor
   size?: ComponentSize
   shape?: ButtonShape
+  testID?: string
 }
 
 export class Radio extends Component<Props> {
@@ -25,16 +26,17 @@ export class Radio extends Component<Props> {
     color: ComponentColor.Primary,
     size: ComponentSize.Small,
     shape: ButtonShape.Default,
+    testID: "radio-button",
   }
 
   public static Button = RadioButton
 
   public render() {
-    const {children} = this.props
+    const {children, testID} = this.props
 
     this.validateChildCount()
 
-    return <div className={this.containerClassName}>{children}</div>
+    return <div className={this.containerClassName} data-testid={testID}>{children}</div>
   }
 
   private get containerClassName(): string {
