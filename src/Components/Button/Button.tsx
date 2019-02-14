@@ -22,6 +22,7 @@ interface PassedProps {
   titleText?: string
   tabIndex?: number
   customClass?: string
+  testID: string
 }
 
 interface DefaultProps {
@@ -31,6 +32,7 @@ interface DefaultProps {
   status?: ComponentStatus
   active?: boolean
   type?: ButtonType
+  testID?: string
 }
 
 type Props = PassedProps & DefaultProps
@@ -43,12 +45,13 @@ export class Button extends Component<Props> {
     status: ComponentStatus.Default,
     active: false,
     type: ButtonType.Button,
+    testID: ButtonType.Button,
   }
 
   public ref: RefObject<HTMLButtonElement> = React.createRef()
 
   public render() {
-    const {onClick, text, titleText, tabIndex, type, icon} = this.props
+    const {onClick, text, titleText, tabIndex, type, icon, testID} = this.props
 
     if (!icon && !text) {
       throw new Error(
@@ -65,6 +68,7 @@ export class Button extends Component<Props> {
         tabIndex={!!tabIndex ? tabIndex : 0}
         type={type}
         ref={this.ref}
+        data-testid={testID}
       >
         {this.icon}
         {this.text}
