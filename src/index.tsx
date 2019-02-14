@@ -1,4 +1,5 @@
 export * from './Components/Button/Button'
-export * from './Components/Radio/Radio'
 export * from './Components/ComponentSpacer/ComponentSpacer'
+export * from './Components/Radio/Radio'
+export * from './Components/SlideToggle/SlideToggle'
 export * from './Types/index'

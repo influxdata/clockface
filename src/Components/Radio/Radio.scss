@@ -1,5 +1,10 @@
 @import "../../Styles/modules.scss";
 
+/*
+  Radio Component
+  ------------------------------------------------------------------------------
+*/
+
 $radio-buttons--padding: $cf-marg-a;
 
 .radio-buttons {
@@ -41,7 +46,10 @@ $radio-buttons--padding: $cf-marg-a;
   }
 }
 
-/*  Size Modifiers */
+/*
+  Size Modifiers 
+  ------------------------------------------------------------------------------
+*/
 @mixin radioButtonSizeModifier($fontSize, $padding, $height) {
   height: $height;
 
@@ -67,7 +75,10 @@ $radio-buttons--padding: $cf-marg-a;
 }
 
 
-/* Color Modifiers */
+/*
+  Color Modifiers
+  ------------------------------------------------------------------------------
+*/
 .radio-buttons--default {
   .radio-button.active {
     background-color: $g7-graphite;
@@ -99,7 +110,10 @@ $radio-buttons--padding: $cf-marg-a;
   }
 }
 
-/* Shape Modifiers */
+/*
+  Shape Modifiers
+  ------------------------------------------------------------------------------
+*/
 .radio-buttons.radio-buttons--square {
   &.radio-buttons--xs .radio-button {
     width: $form-xs-height;
