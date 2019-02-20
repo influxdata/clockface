@@ -14,6 +14,7 @@ interface Props {
   stackChildren?: Stack
   stretchToFitWidth?: boolean
   stretchToFitHeight?: boolean
+  testID?: string
 }
 
 export const ComponentSpacer: SFC<Props> = ({
@@ -22,6 +23,7 @@ export const ComponentSpacer: SFC<Props> = ({
   stackChildren = Stack.Columns,
   stretchToFitWidth = false,
   stretchToFitHeight = false,
+  testID = "component-spacer",
 }) => (
     <div
       className={classnames('component-spacer', {
@@ -33,6 +35,7 @@ export const ComponentSpacer: SFC<Props> = ({
         'component-spacer--stretch-w': stretchToFitWidth,
         'component-spacer--stretch-h': stretchToFitHeight,
       })}
+      data-testid={testID}
     >
       {children}
     </div>

@@ -183,3 +183,10 @@ export enum Stack {
   Rows = 'rows',
   Columns = 'columns',
 }
+
+export enum RemoteDataState {
+  NotStarted = 'NotStarted',
+  Loading = 'Loading',
+  Done = 'Done',
+  Error = 'Error',
+}

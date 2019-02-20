@@ -22,7 +22,7 @@ interface PassedProps {
   titleText?: string
   tabIndex?: number
   customClass?: string
-  testID: string
+  testID?: string
 }
 
 interface DefaultProps {
