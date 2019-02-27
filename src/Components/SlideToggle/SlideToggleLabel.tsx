@@ -1,10 +1,13 @@
 // Libraries
-import React, {SFC} from 'react'
+import React, {Component} from 'react'
 
-export interface Props {
+interface Props {
   text: string
 }
 
-export const SlideToggleLabel: SFC<Props> = ({text}) => (
-  <label className="slide-toggle--label">{text}</label>
-)
+export class SlideToggleLabel extends Component<Props> {
+  public render() {
+    const {text} = this.props
+    return <label className="slide-toggle--label">{text}</label>
+  }
+}
