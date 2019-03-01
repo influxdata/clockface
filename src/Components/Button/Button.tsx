@@ -54,9 +54,7 @@ export class Button extends Component<Props> {
     const {onClick, text, titleText, tabIndex, type, icon, testID} = this.props
 
     if (!icon && !text) {
-      throw new Error(
-        'Button requires either "text" or "icon" props'
-      )
+      throw new Error('Button requires either "text" or "icon" props')
     }
 
     return (

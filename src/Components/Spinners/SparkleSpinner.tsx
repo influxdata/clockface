@@ -16,7 +16,7 @@ interface Props {
 export class SparkleSpinner extends PureComponent<Props> {
   public static defaultProps: Partial<Props> = {
     loading: RemoteDataState.NotStarted,
-    testID: "sparkle-spinner"
+    testID: 'sparkle-spinner',
   }
 
   public render() {

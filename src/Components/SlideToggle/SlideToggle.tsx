@@ -29,7 +29,7 @@ export class SlideToggle extends Component<Props> {
     color: ComponentColor.Primary,
     tooltipText: '',
     disabled: false,
-    testID: "slide-toggle",
+    testID: 'slide-toggle',
   }
 
   public render() {

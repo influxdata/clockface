@@ -18,7 +18,7 @@ interface Props {
 
 export class SpinnerContainer extends Component<Props> {
   public static defaultProps: Partial<Props> = {
-    testID: "spinner-container"
+    testID: 'spinner-container',
   }
 
   public render() {
@@ -28,7 +28,11 @@ export class SpinnerContainer extends Component<Props> {
       loading === RemoteDataState.Loading ||
       loading === RemoteDataState.NotStarted
     ) {
-      return <div className={this.className} data-testid={testID}>{spinnerComponent}</div>
+      return (
+        <div className={this.className} data-testid={testID}>
+          {spinnerComponent}
+        </div>
+      )
     }
 
     return children
