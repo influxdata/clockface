@@ -23,20 +23,20 @@ export const ComponentSpacer: SFC<Props> = ({
   stackChildren = Stack.Columns,
   stretchToFitWidth = false,
   stretchToFitHeight = false,
-  testID = "component-spacer",
+  testID = 'component-spacer',
 }) => (
-    <div
-      className={classnames('component-spacer', {
-        'component-spacer--left': align === Alignment.Left,
-        'component-spacer--center': align === Alignment.Center,
-        'component-spacer--right': align === Alignment.Right,
-        'component-spacer--horizontal': stackChildren === Stack.Columns,
-        'component-spacer--vertical': stackChildren === Stack.Rows,
-        'component-spacer--stretch-w': stretchToFitWidth,
-        'component-spacer--stretch-h': stretchToFitHeight,
-      })}
-      data-testid={testID}
-    >
-      {children}
-    </div>
-  )
+  <div
+    className={classnames('component-spacer', {
+      'component-spacer--left': align === Alignment.Left,
+      'component-spacer--center': align === Alignment.Center,
+      'component-spacer--right': align === Alignment.Right,
+      'component-spacer--horizontal': stackChildren === Stack.Columns,
+      'component-spacer--vertical': stackChildren === Stack.Rows,
+      'component-spacer--stretch-w': stretchToFitWidth,
+      'component-spacer--stretch-h': stretchToFitHeight,
+    })}
+    data-testid={testID}
+  >
+    {children}
+  </div>
+)

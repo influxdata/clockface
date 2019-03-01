@@ -17,13 +17,15 @@ export class TechnoSpinner extends Component<Props> {
   public static defaultProps: Props = {
     diameterPixels: 100,
     strokeWidth: ComponentSize.Small,
-    testID: "techno-spinner"
+    testID: 'techno-spinner',
   }
 
   public render() {
     const {testID} = this.props
 
-    return <div className="techno-spinner" style={this.style} data-testid={testID} />
+    return (
+      <div className="techno-spinner" style={this.style} data-testid={testID} />
+    )
   }
 
   private get style(): CSSProperties {

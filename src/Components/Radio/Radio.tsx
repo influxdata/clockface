@@ -8,7 +8,6 @@ import {RadioButton} from './RadioButton'
 // Types
 import {ComponentColor, ComponentSize, ButtonShape} from '../../Types'
 
-
 // Styles
 import './Radio.scss'
 
@@ -26,7 +25,7 @@ export class Radio extends Component<Props> {
     color: ComponentColor.Primary,
     size: ComponentSize.Small,
     shape: ButtonShape.Default,
-    testID: "radio-button",
+    testID: 'radio-button',
   }
 
   public static Button = RadioButton
@@ -36,7 +35,11 @@ export class Radio extends Component<Props> {
 
     this.validateChildCount()
 
-    return <div className={this.containerClassName} data-testid={testID}>{children}</div>
+    return (
+      <div className={this.containerClassName} data-testid={testID}>
+        {children}
+      </div>
+    )
   }
 
   private get containerClassName(): string {
