@@ -2,7 +2,7 @@ import {addDecorator, configure} from '@storybook/react'
 import {withInfo} from '@storybook/addon-info'
 
 /*
-  Themes
+  Styles
   ------------------------------------------------------------------------------
 */
 
@@ -16,8 +16,6 @@ const darkTheme = {
       border: 'none'
     },
     body: {
-      paddingTop: 0,
-      paddingBottom: 0,
       border: 'none'
     },
     h2: {
@@ -27,14 +25,16 @@ const darkTheme = {
   },
   infoBody: {
     backgroundColor: '#292933',
-    padding: '0 4px',
-    margin: '16px 0',
+    borderRadius: '4px',
+    padding: '4px 16px',
+    margin: '16px',
     lineHeight: '2',
     border: 'none'
   },
   source: {
     h1: {
-      color: 'red'
+      color: '#f6f6f8',
+      borderBottom: '1px solid #545667'
     }
   }
 }
