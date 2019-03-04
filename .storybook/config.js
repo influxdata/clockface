@@ -28,7 +28,6 @@ const darkTheme = {
     backgroundColor: '#292933',
     borderRadius: '4px',
     padding: '4px 16px',
-    margin: '16px',
     lineHeight: '2',
     border: 'none'
   },
