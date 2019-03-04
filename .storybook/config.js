@@ -1,3 +1,4 @@
+import * as React from 'react'
 import {addDecorator, configure} from '@storybook/react'
 import {withInfo} from '@storybook/addon-info'
 
@@ -34,9 +35,53 @@ const darkTheme = {
   source: {
     h1: {
       color: '#f6f6f8',
-      borderBottom: '1px solid #545667'
+      border: 'none'
     }
   }
+}
+
+const tableStyles = {
+  table: {color: '#999dab', textAlign: 'left'},
+  prop: {fontWeight: '700'},
+  tr: {backgroundColor: '#202028'},
+  td: {borderRadius: '2px', padding: '0 8px'}
+}
+
+/*
+  Table Component
+  ------------------------------------------------------------------------------
+*/
+
+const TableComponent = ({propDefinitions}) => {
+  const props = propDefinitions.map(
+    ({property, propType, required, description, defaultValue}) => {
+      return (
+        <tr style={tableStyles.tr} key={property}>
+          <td style={{...tableStyles.td, ...tableStyles.prop}}>
+            {property}
+            {required ? null : '?'}
+          </td>
+          <td style={tableStyles.td}>{propType.name}</td>
+          <td style={tableStyles.td}>{defaultValue}</td>
+          <td style={tableStyles.td}>{description}</td>
+        </tr>
+      )
+    }
+  )
+
+  return (
+    <table style={tableStyles.table}>
+      <thead>
+        <tr>
+          <th>NAME</th>
+          <th>TYPE</th>
+          <th>DEFAULT</th>
+          <th>DESCRIPTION</th>
+        </tr>
+      </thead>
+      <tbody>{props}</tbody>
+    </table>
+  )
 }
 
 /*
@@ -44,7 +89,14 @@ const darkTheme = {
   ------------------------------------------------------------------------------
 */
 
-addDecorator(withInfo({inline: true, source: true, styles: darkTheme}))
+addDecorator(
+  withInfo({
+    inline: true,
+    source: true,
+    styles: darkTheme,
+    TableComponent
+  })
+)
 
 const req = require.context('../src/', true, /.stories.tsx$/)
 
