@@ -8,7 +8,7 @@ import {
   IconFont,
   ButtonShape,
   ComponentStatus,
-  ButtonType
+  ButtonType,
 } from '../../Types'
 import {mapEnumKeys} from '../../../.storybook/utils'
 
@@ -19,7 +19,7 @@ const buttonStories = storiesOf('Button Component', module).addDecorator(
 buttonStories.add('Button', () => (
   <Button
     text={text('text', 'Button Text')}
-    onClick={() => console.log('clicked')}
+    onClick={() => alert('clicked')}
     icon={IconFont[radios('icon', mapEnumKeys(IconFont, 5))]}
     titleText={text('titleText', 'Title Text')}
     color={ComponentColor[radios('color', mapEnumKeys(ComponentColor))]}
