@@ -1,0 +1,26 @@
+@import '../src/Styles/modules';
+
+.props-table {
+  color: $g11-sidewalk;
+  text-align: left;
+
+  tr:nth-of-type(odd) {
+    background-color: $g2-kevlar;
+  }
+
+  tr.props-table--headers {
+    background-color: transparent;
+  }
+
+  .props-table--prop {
+    font-weight: 700;
+  }
+
+  th {
+    padding: 0 $cf-marg-b;
+  }
+
+  td {
+    padding: 0 $cf-marg-b;
+  }
+}

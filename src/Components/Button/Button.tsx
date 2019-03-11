@@ -16,22 +16,36 @@ import {
 } from '../../Types'
 
 interface PassedProps {
+  /** Text to be displayed on button */
   text?: string
+  /** Function to be called on button click */
   onClick?: (e?: MouseEvent<HTMLButtonElement>) => void
+  /** Icon to be displayed in to the left of text or in place of text */
   icon?: IconFont
+  /** Text to be displayed on hover tooltip */
   titleText?: string
+  /** Keyboard control tab order  */
   tabIndex?: number
+  /** Class name for custom styles */
   customClass?: string
+  /** Test ID for Integration Tests */
   testID?: string
 }
 
 interface DefaultProps {
+  /** Button color */
   color?: ComponentColor
+  /** Button size */
   size?: ComponentSize
+  /** Square or rectangle */
   shape?: ButtonShape
+  /** Button status state */
   status?: ComponentStatus
+  /** Button active or disabled */
   active?: boolean
+  /** Button type of 'button' or 'submit' */
   type?: ButtonType
+  /** Test ID for Integration Tests */
   testID?: string
 }
 
