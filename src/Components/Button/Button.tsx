@@ -28,8 +28,6 @@ interface PassedProps {
   tabIndex?: number
   /** Class name for custom styles */
   customClass?: string
-  /** Test ID for Integration Tests */
-  testID?: string
 }
 
 interface DefaultProps {
@@ -39,9 +37,9 @@ interface DefaultProps {
   size?: ComponentSize
   /** Square or rectangle */
   shape?: ButtonShape
-  /** Button status state */
+  /** Button status state default, loading, or disabled */
   status?: ComponentStatus
-  /** Button active or disabled */
+  /** Toggles button highlighted active state */
   active?: boolean
   /** Button type of 'button' or 'submit' */
   type?: ButtonType
