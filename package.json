@@ -60,6 +60,7 @@
     "eslint": "eslint 'src/**/*.{ts,tsx}'",
     "eslint:fix": "eslint --fix 'src/**/*.{ts,tsx}'",
     "storybook": "start-storybook -p 9001 -c .storybook",
+    "build-storybook": "build-storybook -c .storybook -o docs",
     "tsc": "tsc -p ./tsconfig.json --noEmit --pretty --skipLibCheck"
   }
 }
