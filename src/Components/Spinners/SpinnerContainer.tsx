@@ -9,10 +9,15 @@ import {RemoteDataState} from '../../Types'
 import './SpinnerContainer.scss'
 
 interface Props {
+  /** child component to be displayed when loading state is complete */
   children: JSX.Element[] | JSX.Element
+  /** custom classname for spinner container */
   className?: string
+  /** loading state */
   loading: RemoteDataState
+  /** spinner component */
   spinnerComponent: JSX.Element
+  /** Test ID for Integration Tests */
   testID?: string
 }
 

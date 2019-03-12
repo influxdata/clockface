@@ -3,16 +3,24 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 interface PassedProps {
+  /** id for individual radio button */
   id: string
+  /** Toggles radio button active state */
   active: boolean
+  /** Input value of the selected radio button */
   value: any
+  /** Text or label element for radio button */
   children: JSX.Element | string | number
+  /** Function to be called on radio button click */
   onClick: (value: any) => void
+  /** Text to be displayed on hover tooltip */
   titleText: string
 }
 
 interface DefaultProps {
+  /** Toggles disabled state */
   disabled?: boolean
+  /** Text to be displayed on hover tooltip when radio button is disabled */
   disabledTitleText?: string
 }
 
