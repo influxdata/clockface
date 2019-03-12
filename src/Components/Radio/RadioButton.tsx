@@ -9,8 +9,6 @@ interface PassedProps {
   active: boolean
   /** Input value of the selected radio button */
   value: any
-  /** Text or label element for radio button */
-  children: JSX.Element | string | number
   /** Function to be called on radio button click */
   onClick: (value: any) => void
   /** Text to be displayed on hover tooltip */
