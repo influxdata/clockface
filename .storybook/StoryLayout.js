@@ -65,7 +65,7 @@ export const TableComponent = ({propDefinitions}) => {
           <th>NAME</th>
           <th>TYPE</th>
           <th>REQUIRED</th>
-          <th>DEFAULT VALUE</th>
+          <th>DEFAULT</th>
           <th>DESCRIPTION</th>
         </tr>
       </thead>

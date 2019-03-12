@@ -6,11 +6,11 @@ import {ComponentColor, ComponentSize} from '../../Types'
 import {mapEnumKeys} from '../../../.storybook/utils'
 
 const slideToggleStories = storiesOf(
-  'Slide Toggle Component',
+  'SlideToggle Component',
   module
 ).addDecorator(withKnobs)
 
-slideToggleStories.add('SlideToggle', () => (
+slideToggleStories.add('Slide Toggle', () => (
   <SlideToggle
     onChange={() => alert('clicked')}
     active={boolean('active', false)}
@@ -21,7 +21,7 @@ slideToggleStories.add('SlideToggle', () => (
   />
 ))
 
-slideToggleStories.add('SlideToggle With Label', () => (
+slideToggleStories.add('Slide Toggle with Label', () => (
   <div>
     <SlideToggle.Label text={text('text', 'Label Text')} />
     <SlideToggle

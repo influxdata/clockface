@@ -22,5 +22,13 @@
 
   td {
     padding: 0 $cf-marg-b;
+    max-width: 50vw;
   }
+}
+
+.mockComponent {
+  background-color: $c-pool;
+  width: 100px;
+  height: 100px;
+  border-radius: $cf-radius;
 }
