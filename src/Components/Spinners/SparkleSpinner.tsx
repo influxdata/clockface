@@ -9,7 +9,9 @@ import {RemoteDataState} from '../../Types'
 import './SparkleSpinner.scss'
 
 interface Props {
+  /** loading state */
   loading: RemoteDataState
+  /** Test ID for Integration Tests */
   testID?: string
 }
 
