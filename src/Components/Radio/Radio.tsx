@@ -12,8 +12,6 @@ import {ComponentColor, ComponentSize, ButtonShape} from '../../Types'
 import './Radio.scss'
 
 interface Props {
-  /** child components for radio group */
-  children: JSX.Element[]
   /** Class name for custom styles */
   customClass?: string
   /** Radio color */

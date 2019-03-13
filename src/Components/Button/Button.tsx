@@ -20,7 +20,7 @@ interface PassedProps {
   text?: string
   /** Function to be called on button click */
   onClick?: (e?: MouseEvent<HTMLButtonElement>) => void
-  /** Icon to be displayed in to the left of text or in place of text */
+  /** Icon to be displayed to the left of text or in place of text */
   icon?: IconFont
   /** Text to be displayed on hover tooltip */
   titleText?: string

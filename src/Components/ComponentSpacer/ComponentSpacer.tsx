@@ -9,8 +9,6 @@ import {Alignment, Stack} from '../../Types'
 import './ComponentSpacer.scss'
 
 interface Props {
-  /** Child components to be aligned  */
-  children: JSX.Element | JSX.Element[]
   /** alignment left, center, or right */
   align: Alignment
   /** vertical or horizontal stacking */

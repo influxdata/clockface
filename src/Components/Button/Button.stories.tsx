@@ -20,7 +20,7 @@ buttonStories.add('Button', () => (
   <Button
     text={text('text', 'Button Text')}
     onClick={() => alert('clicked')}
-    icon={IconFont[radios('icon', mapEnumKeys(IconFont, 5))]}
+    icon={IconFont[radios('icon', mapEnumKeys(IconFont, 10))]}
     titleText={text('titleText', 'Title Text')}
     color={ComponentColor[radios('color', mapEnumKeys(ComponentColor))]}
     size={ComponentSize[radios('size', mapEnumKeys(ComponentSize))]}
