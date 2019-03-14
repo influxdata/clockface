@@ -190,3 +190,8 @@ export enum RemoteDataState {
   Done = 'Done',
   Error = 'Error',
 }
+
+export enum AutoComplete {
+  On = 'on',
+  Off = 'off',
+}
