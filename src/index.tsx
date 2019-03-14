@@ -1,5 +1,7 @@
 export * from './Components/Alerts/Alert'
 export * from './Components/Button/Button'
+export * from './Components/Inputs/Input'
+export * from './Components/Inputs/TextArea'
 export * from './Components/ComponentSpacer/ComponentSpacer'
 export * from './Components/Radio/Radio'
 export * from './Components/SlideToggle/SlideToggle'
