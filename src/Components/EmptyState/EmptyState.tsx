@@ -24,7 +24,7 @@ interface DefaultProps {
   testID?: string
 }
 
-type Props = PassedProps & DefaultProps
+type Props = DefaultProps & PassedProps
 
 export class EmptyState extends Component<Props> {
   public static defaultProps: DefaultProps = {
