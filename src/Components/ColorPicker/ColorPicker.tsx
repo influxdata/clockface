@@ -3,7 +3,8 @@ import React, {Component, ChangeEvent} from 'react'
 import _ from 'lodash'
 
 // Components
-import {Input, Button} from '../../index'
+import {Input} from '../Inputs/Input'
+import {Button} from '../Button/Button'
 import {ColorPickerSwatch} from './ColorPickerSwatch'
 import {FormElementError} from '../FormLayout/FormElementError'
 
