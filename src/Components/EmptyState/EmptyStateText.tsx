@@ -18,7 +18,7 @@ const highlighter = (
 
   return splitString.map(word => {
     if (_.includes(highlightWords, word)) {
-      return <em key={uuid.v4()}>{`${word} `}</em>
+      return <em key={uuid.v4()}>{`${word}`}</em>
     }
 
     if (word === 'LINEBREAK') {
