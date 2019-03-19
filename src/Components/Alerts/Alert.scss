@@ -5,6 +5,8 @@
   ------------------------------------------------------------------------------
 */
 
+$alert--icon-padding: $cf-marg-d + $cf-marg-a;
+
 .alert {
   width: 100%;
   border-radius: $cf-radius;
@@ -49,15 +51,15 @@
 }
 
 .alert--has-icon {
-  padding-left: $cf-marg-d + $cf-marg-b;
+  padding-left: $alert--icon-padding;
   position: relative;
 }
 
 .alert--icon {
   position: absolute;
   top: 50%;
-  left: $cf-marg-b + $cf-marg-a;
-  transform: translateY(-50%);
+  left: $alert--icon-padding / 2;
+  transform: translate(-50%, -50%);
   font-size: 1.5em;
   color: rgba($g3-castle, 0.85);
 }
