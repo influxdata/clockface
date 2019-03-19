@@ -3,7 +3,7 @@ module.exports = ({config}) => {
   config.module.rules.push(
     {
       test: /\.(ts|tsx)$/,
-      loaders: ['awesome-typescript-loader', 'react-docgen-typescript-loader'],
+      loaders: ['ts-loader', 'react-docgen-typescript-loader'],
     },
     {
       test: /\.woff(2)?(\?[a-z0-9#=&.]+)$/,

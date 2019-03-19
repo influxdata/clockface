@@ -25,7 +25,6 @@
     "@types/storybook__react": "^4.0.1",
     "@typescript-eslint/eslint-plugin": "^1.4.2",
     "@typescript-eslint/parser": "^1.4.2",
-    "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.5",
     "css-loader": "^2.1.0",
     "eslint": "^5.14.1",
@@ -41,6 +40,7 @@
     "resolve-url-loader": "^3.0.1",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
+    "ts-loader": "^5.3.3",
     "typescript": "^3.3.3333"
   },
   "peerDependencies": {
@@ -63,6 +63,6 @@
     "eslint:fix": "eslint --fix 'src/**/*.{ts,tsx}'",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "build-storybook": "build-storybook -c .storybook -o docs",
-    "tsc": "tsc -p ./tsconfig.json --noEmit --pretty --skipLibCheck"
+    "tsc": "npx tsc -p ./tsconfig.json --noEmit --pretty --skipLibCheck"
   }
 }
