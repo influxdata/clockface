@@ -3,13 +3,12 @@ import React, {Component, ChangeEvent} from 'react'
 import _ from 'lodash'
 
 // Components
-
 import {Input, Button} from '../../index'
 import {ColorPickerSwatch} from './ColorPickerSwatch'
 import {FormElementError} from '../FormLayout/FormElementError'
 
 // Constants
-import {influxColors} from '../../Constants/colors'
+import {influxColors, HEX_CODE_CHAR_LENGTH} from '../../Constants/colors'
 
 // Types
 import {IconFont, ButtonShape, ComponentStatus, Color} from '../../Types'
@@ -18,16 +17,21 @@ import {IconFont, ButtonShape, ComponentStatus, Color} from '../../Types'
 import {validateHexCode} from '../../Utils/colors'
 
 // Styles
-import 'src/clockface/components/color_picker/ColorPicker.scss'
+import './ColorPicker.scss'
 
 interface PassedProps {
+  /** currently selected color */
   color: string
+  /** Function to be called on color select */
   onChange: (color: string, status?: ComponentStatus) => void
 }
 
 interface DefaultProps {
-  colors: Color[]
+  /** Array of colors to be displayed in color picker */
+  colors?: Color[]
+  /** Prevent focus from leaving the input */
   maintainInputFocus?: boolean
+  /** Test ID for Integration Tests */
   testID?: string
 }
 
@@ -37,7 +41,7 @@ interface State {
   errorMessage: string | null
 }
 
-export default class ColorPicker extends Component<Props, State> {
+export class ColorPicker extends Component<Props, State> {
   public static defaultProps: DefaultProps = {
     colors: influxColors,
     maintainInputFocus: false,
@@ -58,15 +62,16 @@ export default class ColorPicker extends Component<Props, State> {
     return (
       <div className="color-picker" data-testid={testID}>
         <div className="color-picker--swatches">
-          {colors.map(color => (
-            <ColorPickerSwatch
-              key={color.name}
-              hex={color.hex}
-              name={color.name}
-              onClick={this.handleSwatchClick}
-              testID={testID}
-            />
-          ))}
+          {colors &&
+            colors.map(color => (
+              <ColorPickerSwatch
+                key={color.name}
+                hex={color.hex}
+                name={color.name}
+                onClick={this.handleSwatchClick}
+                testID={testID}
+              />
+            ))}
         </div>
         <div className="color-picker--form">
           <Input
@@ -74,7 +79,7 @@ export default class ColorPicker extends Component<Props, State> {
             placeholder="#000000"
             value={color}
             onChange={this.handleInputChange}
-            maxLength={7}
+            maxLength={HEX_CODE_CHAR_LENGTH}
             onBlur={this.handleInputBlur}
             autoFocus={maintainInputFocus}
             status={this.inputStatus}

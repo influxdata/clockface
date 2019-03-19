@@ -2,12 +2,16 @@
 import React, {Component} from 'react'
 
 interface PassedProps {
+  /** Color name */
   name: string
+  /** Color hex value */
   hex: string
+  /** Function to be called on color click */
   onClick: (hex: string) => void
 }
 
 interface DefaultProps {
+  /** Test ID for Integration Tests */
   testID?: string
 }
 
