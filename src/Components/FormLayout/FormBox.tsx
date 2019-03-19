@@ -2,6 +2,7 @@
 import React, {Component} from 'react'
 
 interface Props {
+  /** Class name for custom styles */
   className?: string
 }
 

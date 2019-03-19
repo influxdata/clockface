@@ -2,7 +2,9 @@
 import React, {Component} from 'react'
 
 interface Props {
+  /** Label Text */
   label: string
+  /** Whether this field is required to submit form, adds red required asterisk */
   required?: boolean
 }
 

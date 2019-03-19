@@ -6,20 +6,28 @@ import classnames from 'classnames'
 import {Columns} from '../../Types'
 
 interface PassedProps {
+  /** Number of columns spanned when viewport width is greater than 750px */
   colsSM?: Columns
+  /** Number of columns spanned when viewport width is greater than 1080px */
   colsMD?: Columns
+  /** Number of columns spanned when viewport width is greater than 1500px */
   colsLG?: Columns
+  /** Number of columns shifted when viewport width is less than 750px */
   offsetXS?: Columns
+  /** Number of columns shifted when viewport width is greater than 750px */
   offsetSM?: Columns
+  /** Number of columns shifted when viewport width is greater than 1080px */
   offsetMD?: Columns
+  /** Number of columns shifted when viewport width is greater than 1500px */
   offsetLG?: Columns
 }
 
 interface DefaultProps {
+  /** Number of columns spanned when viewport width is less than 750px */
   colsXS?: Columns
 }
 
-type Props = PassedProps & DefaultProps
+type Props = DefaultProps & PassedProps
 
 export class FormFooter extends Component<Props> {
   public static defaultProps: DefaultProps = {

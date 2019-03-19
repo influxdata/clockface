@@ -10,9 +10,15 @@ import {FormDivider} from './FormDivider'
 import {FormFooter} from './FormFooter'
 import {FormBox} from './FormBox'
 
+// Styles
+import './Form.scss'
+
 interface Props {
+  /** Inline CSS styles */
   style?: React.CSSProperties
+  /** Class name for custom styles */
   className?: string
+  /** Function to be called on form submit */
   onSubmit?: (e: React.FormEvent) => void
 }
 

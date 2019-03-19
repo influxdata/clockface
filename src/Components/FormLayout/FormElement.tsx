@@ -7,10 +7,15 @@ import {FormElementError} from './FormElementError'
 import {FormHelpText} from './FormHelpText'
 
 interface Props {
+  /** Label Text */
   label: string
+  /** Input instruction text */
   helpText?: string
+  /** Text to be displayed on error */
   errorMessage?: string
+  /** Element to be displayed along with label */
   labelAddOn?: () => JSX.Element
+  /** Whether this field is required to submit form, adds red required asterisk */
   required?: boolean
 }
 

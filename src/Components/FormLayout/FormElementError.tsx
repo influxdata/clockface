@@ -2,6 +2,7 @@
 import React, {Component} from 'react'
 
 interface Props {
+  /** Text to be displayed on error */
   message: string
 }
 

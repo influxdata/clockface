@@ -10,13 +10,21 @@ import {FormHelpText} from './FormHelpText'
 import {ComponentStatus} from '../../Types'
 
 interface Props {
+  /** Child components */
   children: (status: ComponentStatus) => JSX.Element
+  /** Function used for validation check */
   validationFunc: (value: any) => string | null
+  /** Function called when validation status */
   onStatusChange?: (newStatus: ComponentStatus) => void
+  /** Element to be displayed along with label */
   labelAddOn?: () => JSX.Element
+  /** Label Text */
   label: string
+  /** Field value */
   value: any
+  /** Input instruction text */
   helpText?: string
+  /** Whether this field is required to submit form, adds red required asterisk */
   required?: boolean
 }
 
