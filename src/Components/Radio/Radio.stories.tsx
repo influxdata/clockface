@@ -5,9 +5,7 @@ import {withKnobs, text, radios, boolean} from '@storybook/addon-knobs'
 import {ComponentColor, ComponentSize, ButtonShape} from '../../Types'
 import {mapEnumKeys} from '../../../.storybook/utils'
 
-const radioStories = storiesOf('Radio Component', module).addDecorator(
-  withKnobs
-)
+const radioStories = storiesOf('Radio', module).addDecorator(withKnobs)
 
 enum RadioOption {
   First = 'First',
@@ -15,7 +13,7 @@ enum RadioOption {
   Third = 'Third',
 }
 
-radioStories.add('Radio', () => (
+radioStories.add('Radio Component', () => (
   <Radio
     size={ComponentSize[radios('size', mapEnumKeys(ComponentSize))]}
     color={ComponentColor[radios('color', mapEnumKeys(ComponentColor))]}

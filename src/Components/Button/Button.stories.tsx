@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {storiesOf} from '@storybook/react'
 import {Button} from './Button'
-import {withKnobs, text, radios, boolean} from '@storybook/addon-knobs'
+import {withKnobs, text, select, boolean} from '@storybook/addon-knobs'
 import {
   ComponentColor,
   ComponentSize,
@@ -12,21 +12,25 @@ import {
 } from '../../Types'
 import {mapEnumKeys} from '../../../.storybook/utils'
 
-const buttonStories = storiesOf('Button Component', module).addDecorator(
-  withKnobs
-)
+const buttonStories = storiesOf('Button', module).addDecorator(withKnobs)
 
-buttonStories.add('Button', () => (
+buttonStories.add('Button Component', () => (
   <Button
     text={text('text', 'Button Text')}
     onClick={() => alert('clicked')}
-    icon={IconFont[radios('icon', mapEnumKeys(IconFont, 10))]}
+    icon={
+      IconFont[select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')]
+    }
     titleText={text('titleText', 'Title Text')}
-    color={ComponentColor[radios('color', mapEnumKeys(ComponentColor))]}
-    size={ComponentSize[radios('size', mapEnumKeys(ComponentSize))]}
-    shape={ButtonShape[radios('shape', mapEnumKeys(ButtonShape))]}
-    status={ComponentStatus[radios('status', mapEnumKeys(ComponentStatus))]}
+    color={
+      ComponentColor[select('color', mapEnumKeys(ComponentColor), 'Default')]
+    }
+    size={ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]}
+    shape={ButtonShape[select('shape', mapEnumKeys(ButtonShape), 'Default')]}
+    status={
+      ComponentStatus[select('status', mapEnumKeys(ComponentStatus), 'Default')]
+    }
     active={boolean('active', false)}
-    type={ButtonType[radios('type', mapEnumKeys(ButtonType))]}
+    type={ButtonType[select('type', mapEnumKeys(ButtonType), 'Button')]}
   />
 ))

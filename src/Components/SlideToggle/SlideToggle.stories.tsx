@@ -5,12 +5,11 @@ import {withKnobs, text, radios, boolean} from '@storybook/addon-knobs'
 import {ComponentColor, ComponentSize} from '../../Types'
 import {mapEnumKeys} from '../../../.storybook/utils'
 
-const slideToggleStories = storiesOf(
-  'SlideToggle Component',
-  module
-).addDecorator(withKnobs)
+const slideToggleStories = storiesOf('Slide Toggle', module).addDecorator(
+  withKnobs
+)
 
-slideToggleStories.add('Slide Toggle', () => (
+slideToggleStories.add('SlideToggle Component', () => (
   <SlideToggle
     onChange={() => alert('clicked')}
     active={boolean('active', false)}
@@ -21,7 +20,7 @@ slideToggleStories.add('Slide Toggle', () => (
   />
 ))
 
-slideToggleStories.add('Slide Toggle with Label', () => (
+slideToggleStories.add('SlideToggle Component with Label', () => (
   <div>
     <SlideToggle.Label text={text('text', 'Label Text')} />
     <SlideToggle

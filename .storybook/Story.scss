@@ -27,13 +27,38 @@
 }
 
 .mockComponent {
-  background-color: $c-pool;
-  width: 100px;
-  height: 100px;
+  background-color: $c-comet;
   border-radius: $cf-radius;
+
+  &.box {
+    width: 100px;
+    height: 100px;
+  }
+
+  &.stretch {
+    width: 100%;
+    height: 100%;
+  }
+
+  &.input {
+    height: 30px;
+    width: 200px;
+  }
 }
 
 .story--container {
+  position: relative;
   max-width: 200px;
   max-height: 200px;
+  height: 100%;
+  width: 100%;
+
+  &.story-large {
+    max-width: 400px;
+    max-height: 400px;
+  }
+
+  &.clearfix {
+    overflow: auto;
+  }
 }

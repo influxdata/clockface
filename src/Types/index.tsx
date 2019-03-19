@@ -21,6 +21,10 @@ export enum ComponentStatus {
   Valid = 'valid',
   Disabled = 'disabled',
 }
+export interface Color {
+  hex: string
+  name: string
+}
 
 export enum DropdownMenuColors {
   Amethyst = 'amethyst',
