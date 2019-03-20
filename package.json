@@ -3,7 +3,7 @@
   "version": "0.0.8",
   "license": "MIT",
   "main": "dist/index.js",
-  "source": "src/index.tsx",
+  "source": "src/index.ts",
   "description": "UI Kit for building Chronograf and other Time Series visualization applications",
   "types": "dist/index.d.ts",
   "repository": {
