@@ -29,6 +29,10 @@
 .mockComponent {
   background-color: $c-comet;
   border-radius: $cf-radius;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: $g20-white;
 
   &.box {
     width: 100px;

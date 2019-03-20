@@ -1,9 +1,9 @@
 {
   "name": "@influxdata/clockface",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "license": "MIT",
   "main": "dist/index.js",
-  "source": "src/index.tsx",
+  "source": "src/index.ts",
   "description": "UI Kit for building Chronograf and other Time Series visualization applications",
   "types": "dist/index.d.ts",
   "repository": {
@@ -23,6 +23,7 @@
     "@types/storybook__addon-info": "^4.1.0",
     "@types/storybook__addon-knobs": "^4.0.1",
     "@types/storybook__react": "^4.0.1",
+    "@types/uuid": "^3.4.4",
     "@typescript-eslint/eslint-plugin": "^1.4.2",
     "@typescript-eslint/parser": "^1.4.2",
     "babel-loader": "^8.0.5",
@@ -46,7 +47,8 @@
   "peerDependencies": {
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "lodash": "^4.3.0"
+    "lodash": "^4.3.0",
+    "uuid": "^3.2.1"
   },
   "dependencies": {
     "@types/classnames": "^2.2.7",
