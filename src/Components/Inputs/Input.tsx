@@ -7,6 +7,9 @@ import React, {
 } from 'react'
 import classnames from 'classnames'
 
+// Components
+import {Icon} from '../Icon/Icon'
+
 // Styles
 import './Input.scss'
 
@@ -170,7 +173,7 @@ export class Input extends Component<Props> {
     const {icon} = this.props
 
     if (icon) {
-      return <span className={`input-icon icon ${icon}`} />
+      return <Icon glyph={icon} className="input-icon" />
     }
 
     return null
@@ -203,10 +206,10 @@ export class Input extends Component<Props> {
     if (status === ComponentStatus.Error) {
       return (
         <>
-          <span
-            className={`input-status icon ${
-              IconFont.AlertTriangle
-            } data-testid="input-error"`}
+          <Icon
+            glyph={IconFont.AlertTriangle}
+            className="input-status"
+            testID="input-error"
           />
           <div className="input-shadow" />
         </>
@@ -216,10 +219,10 @@ export class Input extends Component<Props> {
     if (status === ComponentStatus.Valid) {
       return (
         <>
-          <span
-            className={`input-status icon ${
-              IconFont.Checkmark
-            } data-testid="input-valid"`}
+          <Icon
+            glyph={IconFont.Checkmark}
+            className="input-status"
+            testID="input-valud"
           />
           <div className="input-shadow" />
         </>
