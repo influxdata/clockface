@@ -2,6 +2,9 @@
 import React, {Component} from 'react'
 import classnames from 'classnames'
 
+// Components
+import {Icon} from '../Icon/Icon'
+
 // Styles
 import './Alert.scss'
 
@@ -21,7 +24,7 @@ export class Alert extends Component<Props> {
 
     return (
       <div className={this.className}>
-        {icon && <span className={`alert--icon icon ${icon}`} />}
+        {icon && <Icon glyph={icon} className="alert--icon" />}
         <div className="alert--contents">{children}</div>
       </div>
     )

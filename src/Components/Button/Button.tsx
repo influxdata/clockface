@@ -2,6 +2,9 @@
 import React, {Component, MouseEvent, RefObject} from 'react'
 import classnames from 'classnames'
 
+// Components
+import {Icon} from '../Icon/Icon'
+
 // Styles
 import './Button.scss'
 
@@ -91,7 +94,7 @@ export class Button extends Component<Props> {
     const {icon} = this.props
 
     if (icon) {
-      return <span className={`button-icon icon ${icon}`} />
+      return <Icon glyph={icon} className="button-icon" />
     }
 
     return null
