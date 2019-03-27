@@ -1,15 +1,30 @@
 // Libraries
 import React, {Component} from 'react'
 
-interface Props {
+interface DefaultProps {
+  /** Test ID for Integration Tests */
+  testID?: string
+}
+
+interface PassedProps {
   /** Input discription  or instruction text */
   text: string
 }
 
-export class FormHelpText extends Component<Props> {
-  public render() {
-    const {text} = this.props
+type Props = DefaultProps & PassedProps
 
-    return <span className="form--help-text">{text}</span>
+export class FormHelpText extends Component<Props> {
+  public static defaultProps: DefaultProps = {
+    testID: 'form--help-text',
+  }
+
+  public render() {
+    const {text, testID} = this.props
+
+    return (
+      <span className="form--help-text" data-testid={testID}>
+        {text}
+      </span>
+    )
   }
 }
