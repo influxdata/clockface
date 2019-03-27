@@ -23,6 +23,8 @@ interface PassedProps {
 }
 
 interface DefaultProps {
+  /** Test ID for Integration Tests */
+  testID?: string
   /** Number of columns spanned when viewport width is less than 750px */
   colsXS?: Columns
 }
@@ -31,12 +33,17 @@ type Props = DefaultProps & PassedProps
 
 export class FormFooter extends Component<Props> {
   public static defaultProps: DefaultProps = {
+    testID: 'form--footer',
     colsXS: Columns.Twelve,
   }
 
   public render() {
-    const {children} = this.props
-    return <div className={this.className}>{children}</div>
+    const {children, testID} = this.props
+    return (
+      <div className={this.className} data-testid={testID}>
+        {children}
+      </div>
+    )
   }
 
   private get className(): string {

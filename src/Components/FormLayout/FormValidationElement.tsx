@@ -9,9 +9,14 @@ import {FormHelpText} from './FormHelpText'
 // Types
 import {ComponentStatus} from '../../Types'
 
-interface Props {
+interface DefaultProps {
+  /** Test ID for Integration Tests */
+  testID?: string
+}
+
+interface PassedProps {
   /** Child components */
-  children: (status: ComponentStatus) => JSX.Element
+  children: (status: ComponentStatus) => React.ReactNode
   /** Function used for validation check */
   validationFunc: (value: any) => string | null
   /** Function called when validation status */
@@ -28,12 +33,18 @@ interface Props {
   required?: boolean
 }
 
+type Props = DefaultProps & PassedProps
+
 interface State {
   errorMessage: string | null
   status: ComponentStatus
 }
 
 export class FormValidationElement extends Component<Props, State> {
+  public static defaultProps: DefaultProps = {
+    testID: 'form--validation-element',
+  }
+
   constructor(props: Props) {
     super(props)
 
@@ -62,8 +73,10 @@ export class FormValidationElement extends Component<Props, State> {
   }
 
   public render() {
+    const {testID} = this.props
+
     return (
-      <div className="form--element">
+      <div className="form--element" data-testid={testID}>
         {this.label}
         {this.children}
         {this.errorMessage}
@@ -106,7 +119,7 @@ export class FormValidationElement extends Component<Props, State> {
     return <FormHelpText text={helpText} />
   }
 
-  private get children(): JSX.Element {
+  private get children(): React.ReactNode {
     const {children} = this.props
     const {status} = this.state
 

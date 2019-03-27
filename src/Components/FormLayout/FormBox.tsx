@@ -4,16 +4,23 @@ import React, {Component} from 'react'
 interface Props {
   /** Class name for custom styles */
   className?: string
+  /** Test ID for Integration Tests */
+  testID?: string
 }
 
 export class FormBox extends Component<Props> {
   public static defaultProps: Props = {
     className: '',
+    testID: 'form--box',
   }
 
   public render() {
-    const {children, className} = this.props
+    const {children, className, testID} = this.props
 
-    return <div className={`form--box ${className}`}>{children}</div>
+    return (
+      <div className={`form--box ${className}`} data-testid={testID}>
+        {children}
+      </div>
+    )
   }
 }

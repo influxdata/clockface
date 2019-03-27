@@ -94,7 +94,10 @@ formStories.add('FormHelpText Component', () => (
 ))
 
 formStories.add('FormLabel Component', () => (
-  <FormLabel label={text('label', 'Element Label')} required={true}>
+  <FormLabel
+    label={text('label', 'Element Label')}
+    required={boolean('required', true)}
+  >
     <div className="mockComponent input" />
   </FormLabel>
 ))

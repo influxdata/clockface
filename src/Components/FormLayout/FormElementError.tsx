@@ -1,14 +1,30 @@
 // Libraries
 import React, {Component} from 'react'
 
-interface Props {
+interface DefaultProps {
+  /** Test ID for Integration Tests */
+  testID?: string
+}
+
+interface PassedProps {
   /** Text to be displayed on error */
   message: string
 }
 
+type Props = DefaultProps & PassedProps
+
 export class FormElementError extends Component<Props> {
+  public static defaultProps: DefaultProps = {
+    testID: 'form--element-error',
+  }
+
   public render() {
-    return <span className="form--element-error">{this.message}</span>
+    const {testID} = this.props
+    return (
+      <span className="form--element-error" data-testid={testID}>
+        {this.message}
+      </span>
+    )
   }
 
   private get message() {

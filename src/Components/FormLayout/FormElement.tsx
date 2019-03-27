@@ -6,7 +6,12 @@ import {FormLabel} from './FormLabel'
 import {FormElementError} from './FormElementError'
 import {FormHelpText} from './FormHelpText'
 
-interface Props {
+interface DefaultProps {
+  /** Test ID for Integration Tests */
+  testID?: string
+}
+
+interface PassedProps {
   /** Label Text */
   label: string
   /** Input instruction text */
@@ -19,12 +24,18 @@ interface Props {
   required?: boolean
 }
 
+type Props = DefaultProps & PassedProps
+
 export class FormElement extends Component<Props> {
+  public static defaultProps: DefaultProps = {
+    testID: 'form--element',
+  }
+
   public render() {
-    const {children} = this.props
+    const {children, testID} = this.props
 
     return (
-      <div className="form--element">
+      <div className="form--element" data-testid={testID}>
         {this.label}
         {children}
         {this.errorMessage}

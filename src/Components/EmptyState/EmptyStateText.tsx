@@ -3,12 +3,18 @@ import React, {Component, Fragment} from 'react'
 import _ from 'lodash'
 import uuid from 'uuid'
 
-interface Props {
+interface DefaultProps {
+  /** Test ID for Integration Tests */
+  testID?: string
+}
+interface PassedProps {
   /** Primary text to be displayed when no elements are loaded */
   text: string
   /** Highlighted words in the primary text */
   highlightWords?: string | string[]
 }
+
+type Props = DefaultProps & PassedProps
 
 const highlighter = (
   text: string,
@@ -34,11 +40,17 @@ const highlighter = (
 }
 
 export class EmptyStateText extends Component<Props> {
+  public static defaultProps: DefaultProps = {
+    testID: 'empty-state--text',
+  }
+
   render() {
-    const {text, highlightWords} = this.props
+    const {text, highlightWords, testID} = this.props
 
     return (
-      <h4 className="empty-state--text">{highlighter(text, highlightWords)}</h4>
+      <h4 className="empty-state--text" data-testid={testID}>
+        {highlighter(text, highlightWords)}
+      </h4>
     )
   }
 }

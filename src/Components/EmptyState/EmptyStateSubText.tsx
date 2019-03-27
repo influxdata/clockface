@@ -1,15 +1,29 @@
 // Libraries
 import React, {Component} from 'react'
 
-interface Props {
+interface DefaultProps {
+  /** Test ID for Integration Tests */
+  testID?: string
+}
+interface PassedProps {
   /** Secondary text to be displayed when no elements are loaded */
   text: string
 }
 
-export class EmptyStateSubText extends Component<Props> {
-  render() {
-    const {text} = this.props
+type Props = DefaultProps & PassedProps
 
-    return <p className="empty-state--sub-text">{text}</p>
+export class EmptyStateSubText extends Component<Props> {
+  public static defaultProps: DefaultProps = {
+    testID: 'empty-state--sub-text',
+  }
+
+  render() {
+    const {text, testID} = this.props
+
+    return (
+      <p className="empty-state--sub-text" data-testid={testID}>
+        {text}
+      </p>
+    )
   }
 }

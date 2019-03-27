@@ -1,19 +1,30 @@
 // Libraries
 import React, {Component} from 'react'
 
-interface Props {
+interface DefaultProps {
+  /** Test ID for Integration Tests */
+  testID?: string
+}
+
+interface PassedProps {
   /** Label Text */
   label: string
   /** Whether this field is required to submit form, adds red required asterisk */
   required?: boolean
 }
 
+type Props = DefaultProps & PassedProps
+
 export class FormLabel extends Component<Props> {
+  public static defaultProps: DefaultProps = {
+    testID: 'form--label',
+  }
+
   public render() {
-    const {label, children} = this.props
+    const {label, children, testID} = this.props
 
     return (
-      <label className="form--label">
+      <label className="form--label" data-testid={testID}>
         <span>
           {label}
           {this.requiredIndicator}

@@ -19,7 +19,7 @@ type Props = PassedProps & DefaultProps
 
 export class ColorPickerSwatch extends Component<Props> {
   public static defaultProps: DefaultProps = {
-    testID: 'color-picker-swatch',
+    testID: 'color-picker',
   }
 
   render() {

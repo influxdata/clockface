@@ -11,20 +11,31 @@ import './Alert.scss'
 // Types
 import {ComponentColor, IconFont} from '../../Types'
 
-interface Props {
+interface DefaultProps {
+  /** Test ID for Integration Tests */
+  testID?: string
+}
+
+interface PassedProps {
   /** Alert color */
   color: ComponentColor
   /** Icon to be displayed to the left of text */
   icon?: IconFont
 }
 
+type Props = DefaultProps & PassedProps
+
 export class Alert extends Component<Props> {
+  public static defaultProps: DefaultProps = {
+    testID: 'alert',
+  }
+
   public render() {
-    const {children, icon} = this.props
+    const {testID, children, icon} = this.props
 
     return (
-      <div className={this.className}>
-        {icon && <Icon glyph={icon} className="alert--icon" />}
+      <div className={this.className} data-testid={testID}>
+        {!!icon && <Icon glyph={icon} className="alert--icon" />}
         <div className="alert--contents">{children}</div>
       </div>
     )
