@@ -5,13 +5,20 @@ import classnames from 'classnames'
 // Types
 import {Columns} from '../../Types'
 
+interface DefaultProps {
+  /** Test ID for Integration Tests */
+  testID?: string
+  /** Number of columns spanned when viewport width is less than 750px */
+  widthXS?: Columns
+}
+
 interface PassedProps {
   /** Number of columns spanned when viewport width is greater than 750px */
-  colsSM?: Columns
+  widthSM?: Columns
   /** Number of columns spanned when viewport width is greater than 1080px */
-  colsMD?: Columns
+  widthMD?: Columns
   /** Number of columns spanned when viewport width is greater than 1500px */
-  colsLG?: Columns
+  widthLG?: Columns
   /** Number of columns shifted when viewport width is less than 750px */
   offsetXS?: Columns
   /** Number of columns shifted when viewport width is greater than 750px */
@@ -22,23 +29,17 @@ interface PassedProps {
   offsetLG?: Columns
 }
 
-interface DefaultProps {
-  /** Test ID for Integration Tests */
-  testID?: string
-  /** Number of columns spanned when viewport width is less than 750px */
-  colsXS?: Columns
-}
-
 type Props = DefaultProps & PassedProps
 
 export class FormFooter extends Component<Props> {
   public static defaultProps: DefaultProps = {
     testID: 'form--footer',
-    colsXS: Columns.Twelve,
+    widthXS: Columns.Twelve,
   }
 
   public render() {
     const {children, testID} = this.props
+
     return (
       <div className={this.className} data-testid={testID}>
         {children}
@@ -48,10 +49,10 @@ export class FormFooter extends Component<Props> {
 
   private get className(): string {
     const {
-      colsXS,
-      colsSM,
-      colsMD,
-      colsLG,
+      widthXS,
+      widthSM,
+      widthMD,
+      widthLG,
       offsetXS,
       offsetSM,
       offsetMD,
@@ -59,10 +60,10 @@ export class FormFooter extends Component<Props> {
     } = this.props
 
     return classnames('form--element form--submit', {
-      [`col-xs-${colsXS}`]: colsXS,
-      [`col-sm-${colsSM}`]: colsSM,
-      [`col-md-${colsMD}`]: colsMD,
-      [`col-lg-${colsLG}`]: colsLG,
+      [`col-xs-${widthXS}`]: widthXS,
+      [`col-sm-${widthSM}`]: widthSM,
+      [`col-md-${widthMD}`]: widthMD,
+      [`col-lg-${widthLG}`]: widthLG,
       [`col-xs-offset-${offsetXS}`]: offsetXS,
       [`col-sm-offset-${offsetSM}`]: offsetSM,
       [`col-md-offset-${offsetMD}`]: offsetMD,
