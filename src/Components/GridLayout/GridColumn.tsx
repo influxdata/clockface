@@ -29,11 +29,11 @@ interface PassedProps {
   offsetLG?: Columns
 }
 
-type Props = DefaultProps & PassedProps
+type Props = PassedProps & DefaultProps
 
-export class FormFooter extends Component<Props> {
+export class GridColumn extends Component<Props> {
   public static defaultProps: DefaultProps = {
-    testID: 'form--footer',
+    testID: 'grid--column',
     widthXS: Columns.Twelve,
   }
 
@@ -59,7 +59,7 @@ export class FormFooter extends Component<Props> {
       offsetLG,
     } = this.props
 
-    return classnames('form--element form--submit', {
+    return classnames('grid--column', {
       [`col-xs-${widthXS}`]: widthXS,
       [`col-sm-${widthSM}`]: widthSM,
       [`col-md-${widthMD}`]: widthMD,

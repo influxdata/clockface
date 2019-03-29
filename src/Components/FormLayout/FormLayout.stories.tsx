@@ -76,10 +76,10 @@ formStories.add('FormElementError Component', () => (
 
 formStories.add('FormFooter Component', () => (
   <FormFooter
-    colsXS={Columns[select('colsXS', mapEnumKeys(Columns), 'Ten')]}
-    colsSM={Columns[select('colsSM', mapEnumKeys(Columns), 'Ten')]}
-    colsMD={Columns[select('colsMD', mapEnumKeys(Columns), 'Ten')]}
-    colsLG={Columns[select('colsLG', mapEnumKeys(Columns), 'Ten')]}
+    widthXS={Columns[select('widthXS', mapEnumKeys(Columns), 'Ten')]}
+    widthSM={Columns[select('widthSM', mapEnumKeys(Columns), 'Ten')]}
+    widthMD={Columns[select('widthMD', mapEnumKeys(Columns), 'Ten')]}
+    widthLG={Columns[select('widthLG', mapEnumKeys(Columns), 'Ten')]}
     offsetXS={Columns[select('offsetXS', mapEnumKeys(Columns), 'One')]}
     offsetSM={Columns[select('offsetSM', mapEnumKeys(Columns), 'One')]}
     offsetMD={Columns[select('offsetMD', mapEnumKeys(Columns), 'One')]}
