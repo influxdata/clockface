@@ -1,9 +1,7 @@
-import React, {PureComponent, ReactElement} from 'react'
+import React, {PureComponent} from 'react'
 import ReactDOM from 'react-dom'
 
 interface Props {
-  /** Single child to detect clicks outside of */
-  children: ReactElement<any>
   /** Function to call when click outside is detected */
   onClickOutside: (e: any) => void
 }

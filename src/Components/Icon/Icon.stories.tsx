@@ -8,7 +8,7 @@ import {mapEnumKeys} from '../../../.storybook/utils'
 const iconStories = storiesOf('Icon', module).addDecorator(withKnobs)
 
 iconStories.add('Icon Component', () => (
-  <div className="story--container story-large">
+  <div className="story--container story-large embiggen">
     <Icon glyph={IconFont[select('icon', mapEnumKeys(IconFont), 'Bell')]} />
   </div>
 ))

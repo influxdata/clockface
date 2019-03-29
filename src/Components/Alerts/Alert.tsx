@@ -11,22 +11,17 @@ import './Alert.scss'
 // Types
 import {ComponentColor, IconFont} from '../../Types'
 
-interface DefaultProps {
-  /** Test ID for Integration Tests */
-  testID?: string
-}
-
-interface PassedProps {
+interface Props {
   /** Alert color */
   color: ComponentColor
   /** Icon to be displayed to the left of text */
   icon?: IconFont
+  /** Test ID for Integration Tests */
+  testID: string
 }
 
-type Props = DefaultProps & PassedProps
-
 export class Alert extends Component<Props> {
-  public static defaultProps: DefaultProps = {
+  public static defaultProps = {
     testID: 'alert',
   }
 

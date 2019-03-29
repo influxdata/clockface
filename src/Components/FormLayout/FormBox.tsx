@@ -3,13 +3,13 @@ import React, {Component} from 'react'
 
 interface Props {
   /** Class name for custom styles */
-  className?: string
+  className: string
   /** Test ID for Integration Tests */
-  testID?: string
+  testID: string
 }
 
 export class FormBox extends Component<Props> {
-  public static defaultProps: Props = {
+  public static defaultProps = {
     className: '',
     testID: 'form--box',
   }

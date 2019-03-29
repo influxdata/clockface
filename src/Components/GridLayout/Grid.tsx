@@ -10,11 +10,11 @@ import './Grid.scss'
 
 interface Props {
   /** Test ID for Integration Tests */
-  testID?: string
+  testID: string
 }
 
 export class Grid extends Component<Props> {
-  public static defaultProps: Props = {
+  public static defaultProps = {
     testID: 'grid',
   }
 

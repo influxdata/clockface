@@ -9,11 +9,11 @@ import './TechnoSpinner.scss'
 
 interface Props {
   /** diameter of spinner circle */
-  diameterPixels?: number
+  diameterPixels: number
   /** width of spinner stroke */
-  strokeWidth?: ComponentSize
+  strokeWidth: ComponentSize
   /** Test ID for Integration Tests */
-  testID?: string
+  testID: string
 }
 
 export class TechnoSpinner extends Component<Props> {

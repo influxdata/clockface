@@ -16,11 +16,11 @@ interface Props {
   /** spinner component */
   spinnerComponent: JSX.Element
   /** Test ID for Integration Tests */
-  testID?: string
+  testID: string
 }
 
 export class SpinnerContainer extends Component<Props> {
-  public static defaultProps: Partial<Props> = {
+  public static defaultProps = {
     testID: 'spinner-container',
   }
 

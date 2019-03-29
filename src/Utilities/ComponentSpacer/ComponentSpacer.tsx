@@ -13,7 +13,7 @@ import {
 // Styles
 import './ComponentSpacer.scss'
 
-interface PassedProps {
+interface Props {
   /** Vertical or horizontal flex alignment */
   direction: FlexDirection
   /** Class name for custom styles */
@@ -22,9 +22,6 @@ interface PassedProps {
   style?: CSSProperties
   /** Inserted margin between children */
   margin?: ComponentSize
-}
-
-interface DefaultProps {
   /** Can be FlexStart, FlexEnd, Center, SpaceBetween, or SpaceAround */
   justifyContent: JustifyContent
   /** Can be FlexStart, FlexEnd, Center, or Stretch */
@@ -37,10 +34,8 @@ interface DefaultProps {
   testID: string
 }
 
-type Props = PassedProps & Partial<DefaultProps>
-
 export class ComponentSpacer extends Component<Props> {
-  public static defaultProps: DefaultProps = {
+  public static defaultProps = {
     justifyContent: JustifyContent.FlexStart,
     alignItems: AlignItems.Center,
     stretchToFitWidth: false,

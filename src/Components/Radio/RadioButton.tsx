@@ -2,7 +2,7 @@
 import React, {Component} from 'react'
 import classnames from 'classnames'
 
-interface PassedProps {
+interface Props {
   /** id for individual radio button */
   id: string
   /** Toggles radio button active state */
@@ -13,19 +13,14 @@ interface PassedProps {
   onClick: (value: any) => void
   /** Text to be displayed on hover tooltip */
   titleText: string
-}
-
-interface DefaultProps {
   /** Toggles disabled state */
-  disabled?: boolean
+  disabled: boolean
   /** Text to be displayed on hover tooltip when radio button is disabled */
-  disabledTitleText?: string
+  disabledTitleText: string
 }
-
-type Props = PassedProps & DefaultProps
 
 export class RadioButton extends Component<Props> {
-  public static defaultProps: DefaultProps = {
+  public static defaultProps = {
     disabled: false,
     disabledTitleText: 'This option is disabled',
   }
