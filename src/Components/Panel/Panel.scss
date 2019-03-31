@@ -52,6 +52,8 @@ $panel-nested-background: $g4-onyx;
   }
   .panel--body {
     padding: ($padding / 2) $padding;
+  }
+  .panel--header + .panel--body {
     padding-top: 0;
   }
   .panel--title {
