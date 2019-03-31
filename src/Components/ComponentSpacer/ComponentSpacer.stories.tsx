@@ -2,25 +2,41 @@ import * as React from 'react'
 import {storiesOf} from '@storybook/react'
 import {ComponentSpacer} from './ComponentSpacer'
 import {withKnobs, select, boolean} from '@storybook/addon-knobs'
-import {Alignment, Stack} from '../../Types'
+import {
+  AlignItems,
+  FlexDirection,
+  JustifyContent,
+  ComponentSize,
+} from '../../Types'
 import {mapEnumKeys} from '../../../.storybook/utils'
 
-const componentSpacerStories = storiesOf(
-  'Component Spacer',
-  module
-).addDecorator(withKnobs)
+const utilitiesStories = storiesOf('Utilities', module).addDecorator(withKnobs)
 
-componentSpacerStories.add('ComponentSpacer Component', () => (
+utilitiesStories.add('ComponentSpacer', () => (
   <ComponentSpacer
-    align={Alignment[select('align', mapEnumKeys(Alignment), 'Left')]}
-    stackChildren={
-      Stack[select('stackChildren', mapEnumKeys(Stack), 'Columns')]
+    direction={
+      FlexDirection[select('direction', mapEnumKeys(FlexDirection), 'Row')]
+    }
+    alignItems={
+      AlignItems[select('alignItems', mapEnumKeys(AlignItems), 'Center')]
+    }
+    justifyContent={
+      JustifyContent[
+        select('justifyContent ', mapEnumKeys(JustifyContent), 'FlexStart')
+      ]
+    }
+    margin={
+      ComponentSize[
+        select('margin', {None: '', ...mapEnumKeys(ComponentSize)}, 'None')
+      ]
     }
     stretchToFitWidth={boolean('stretchToFitWidth', false)}
     stretchToFitHeight={boolean('stretchToFitHeight', false)}
   >
-    <div className="mockComponent box" />
-    <div className="mockComponent box" />
-    <div className="mockComponent box" />
+    <div className="mockComponent box" style={{height: '40px'}} />
+    <div className="mockComponent box" style={{height: '60px'}} />
+    <div className="mockComponent box" style={{height: '80px'}} />
+    <div className="mockComponent box" style={{height: '100px'}} />
+    <div className="mockComponent box" style={{height: '120px'}} />
   </ComponentSpacer>
 ))

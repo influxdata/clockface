@@ -1,7 +1,7 @@
 @import '../../Styles/modules';
 
 /*
-  Component Spacer Component
+  Component Spacer Utility
   ------------------------------------------------------------------------------
 */
 
@@ -9,82 +9,237 @@
   display: flex;
   flex-wrap: nowrap;
 
-  &.component-spacer--stretch-w {
+  &.component-spacer__stretch-w {
     width: 100%;
   }
 
-  &.component-spacer--stretch-h {
+  &.component-spacer__stretch-h {
     height: 100%;
   }
 }
 
-.component-spacer--left {
+/*
+  Flex Direction
+  ------------------------------------------------------------------------------
+*/
+
+.component-spacer__row {
+  flex-direction: row;
+}
+.component-spacer__row-reverse {
+  flex-direction: row-reverse;
+}
+.component-spacer__column {
+  flex-direction: column;
+}
+.component-spacer__column-reverse {
+  flex-direction: column-reverse;
+}
+
+/*
+  Align Items
+  ------------------------------------------------------------------------------
+*/
+
+.component-spacer__align-flex-start {
+  align-items: flex-start;
+}
+.component-spacer__align-flex-end {
+  align-items: flex-end;
+}
+.component-spacer__align-center {
+  align-items: center;
+}
+.component-spacer__align-stretch {
+  align-items: stretch;
+}
+
+/*
+  Justify Content
+  ------------------------------------------------------------------------------
+*/
+
+.component-spacer__justify-flex-start {
   justify-content: flex-start;
 }
-
-.component-spacer--center {
-  justify-content: center;
-}
-
-.component-spacer--right {
+.component-spacer__justify-flex-end {
   justify-content: flex-end;
 }
+.component-spacer__justify-center {
+  justify-content: center;
+}
+.component-spacer__justify-space-between {
+  justify-content: space-between;
+}
+.component-spacer__justify-space-around {
+  justify-content: space-around;
+}
 
-.component-spacer--horizontal {
-  flex-direction: row;
-  align-items: center;
+/*
+  Margins
+  ------------------------------------------------------------------------------
+*/
 
-  &.component-spacer--left > * {
-    margin-right: $cf-marg-a;
+@mixin componentSpacerMargins($margin) {
+  // ROW
+  &.component-spacer__row {
+    &.component-spacer__justify-flex-start {
+      > * {
+        margin-right: $margin;
   
-    &:last-child {
-      margin-right: 0;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+    &.component-spacer__justify-flex-end {
+      > * {
+        margin-left: $margin;
+  
+        &:last-child {
+          margin-left: 0;
+        }
+      }
+    }
+    &.component-spacer__justify-center,
+    &.component-spacer__justify-space-between,
+    &.component-spacer__justify-space-around {
+      > * {
+        margin-left: $margin / 2;
+        margin-right: $margin / 2;
+  
+        &:first-child {
+          margin-left: 0;
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
     }
   }
-
-  &.component-spacer--center > * {
-    margin-left: ($cf-marg-a / 2);
-    margin-right: ($cf-marg-a / 2);
-  }
-
-  &.component-spacer--right > * {
-    margin-left: $cf-marg-a;
+  // ROW REVERSE
+  &.component-spacer__row-reverse {
+    &.component-spacer__justify-flex-start {
+      > * {
+        margin-left: $margin;
   
-    &:first-child {
-      margin-left: 0;
+        &:last-child {
+          margin-left: 0;
+        }
+      }
+    }
+    &.component-spacer__justify-flex-end {
+      > * {
+        margin-right: $margin;
+  
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+    &.component-spacer__justify-center,
+    &.component-spacer__justify-space-between,
+    &.component-spacer__justify-space-around {
+      > * {
+        margin-right: $margin / 2;
+        margin-left: $margin / 2;
+  
+        &:first-child {
+          margin-right: 0;
+        }
+
+        &:last-child {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+  // COLUMN
+  &.component-spacer__column {
+    &.component-spacer__justify-flex-start {
+      > * {
+        margin-bottom: $margin;
+  
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+    &.component-spacer__justify-flex-end {
+      > * {
+        margin-top: $margin;
+  
+        &:last-child {
+          margin-top: 0;
+        }
+      }
+    }
+    &.component-spacer__justify-center,
+    &.component-spacer__justify-space-between,
+    &.component-spacer__justify-space-around {
+      > * {
+        margin-top: $margin / 2;
+        margin-bottom: $margin / 2;
+  
+        &:first-child {
+          margin-top: 0;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+  // COLUMN REVERSE
+  &.component-spacer__column-reverse {
+    &.component-spacer__justify-flex-start {
+      > * {
+        margin-top: $margin;
+  
+        &:last-child {
+          margin-top: 0;
+        }
+      }
+    }
+    &.component-spacer__justify-flex-end {
+      > * {
+        margin-bottom: $margin;
+  
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+    &.component-spacer__justify-center,
+    &.component-spacer__justify-space-between,
+    &.component-spacer__justify-space-around {
+      > * {
+        margin-bottom: $margin / 2;
+        margin-top: $margin / 2;
+  
+        &:first-child {
+          margin-bottom: 0;
+        }
+
+        &:last-child {
+          margin-top: 0;
+        }
+      }
     }
   }
 }
 
-.component-spacer--vertical {
-  flex-direction: column;
-
-  &.component-spacer--left {
-    align-items: flex-start;
-  }
-
-  &.component-spacer--left > * {
-    margin-bottom: $cf-marg-a;
-  
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  &.component-spacer--center > * {
-    margin-top: ($cf-marg-a / 2);
-    margin-top: ($cf-marg-a / 2);
-  }
-
-  &.component-spacer--right {
-    align-items: flex-end;
-  }
-
-  &.component-spacer--right > * {
-    margin-top: $cf-marg-a;
-  
-    &:last-child {
-      margin-top: 0;
-    }
-  }
+.component-spacer__margin-xs {
+  @include componentSpacerMargins($cf-border);
+}
+.component-spacer__margin-sm {
+  @include componentSpacerMargins($cf-marg-a);
+}
+.component-spacer__margin-md {
+  @include componentSpacerMargins($cf-marg-b);
+}
+.component-spacer__margin-lg {
+  @include componentSpacerMargins($cf-marg-c);
 }
