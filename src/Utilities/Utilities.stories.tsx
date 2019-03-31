@@ -1,14 +1,14 @@
 import * as React from 'react'
 import {storiesOf} from '@storybook/react'
-import {ComponentSpacer} from './ComponentSpacer'
+import {ComponentSpacer} from './ComponentSpacer/ComponentSpacer'
 import {withKnobs, select, boolean} from '@storybook/addon-knobs'
 import {
   AlignItems,
   FlexDirection,
   JustifyContent,
   ComponentSize,
-} from '../../Types'
-import {mapEnumKeys} from '../../../.storybook/utils'
+} from '../Types'
+import {mapEnumKeys} from '../../.storybook/utils'
 
 const utilitiesStories = storiesOf('Utilities', module).addDecorator(withKnobs)
 
