@@ -2,8 +2,8 @@
 import React, {Component} from 'react'
 
 // Components
-import {Alignment} from '../../Types'
-import {ComponentSpacer} from '../ComponentSpacer/ComponentSpacer'
+import {FlexDirection, JustifyContent, AlignItems} from '../../Types'
+import {ComponentSpacer} from '../../Utilities/ComponentSpacer/ComponentSpacer'
 
 interface PassedProps {
   /** Elements to render to the right of the title */
@@ -31,7 +31,13 @@ export class PanelHeader extends Component<Props> {
       <div className="panel--header">
         <div className="panel--title">{title}</div>
         <div className="panel--controls">
-          <ComponentSpacer align={Alignment.Right}>{children}</ComponentSpacer>
+          <ComponentSpacer
+            direction={FlexDirection.Row}
+            justifyContent={JustifyContent.FlexEnd}
+            alignItems={AlignItems.Center}
+          >
+            {children}
+          </ComponentSpacer>
         </div>
       </div>
     )

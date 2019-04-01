@@ -249,21 +249,32 @@ export enum Columns {
   Twelve = 12,
 }
 
-export enum Alignment {
-  Left = 'left',
-  Center = 'center',
-  Right = 'right',
-}
-
 export enum Sort {
   Descending = 'desc',
   Ascending = 'asc',
   None = 'none',
 }
 
-export enum Stack {
-  Rows = 'rows',
-  Columns = 'columns',
+export enum JustifyContent {
+  FlexStart = 'flex-start',
+  Center = 'center',
+  FlexEnd = 'flex-end',
+  SpaceBetween = 'space-between',
+  SpaceAround = 'space-around',
+}
+
+export enum AlignItems {
+  FlexStart = 'flex-start',
+  Center = 'center',
+  FlexEnd = 'flex-end',
+  Stretch = 'stretch',
+}
+
+export enum FlexDirection {
+  Row = 'row',
+  RowReverse = 'row-reverse',
+  Column = 'column',
+  ColumnReverse = 'column-reverse',
 }
 
 export enum RemoteDataState {
