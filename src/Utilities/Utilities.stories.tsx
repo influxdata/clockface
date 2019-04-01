@@ -1,6 +1,7 @@
 import * as React from 'react'
 import {storiesOf} from '@storybook/react'
 import {ComponentSpacer} from './ComponentSpacer/ComponentSpacer'
+import {ClickOutside} from './ClickOutside/ClickOutside'
 import {withKnobs, select, boolean} from '@storybook/addon-knobs'
 import {
   AlignItems,
@@ -40,3 +41,11 @@ utilitiesStories.add('ComponentSpacer', () => (
     <div className="mockComponent box" style={{height: '120px'}} />
   </ComponentSpacer>
 ))
+
+utilitiesStories.add('ClickOutside', () => {
+  return (
+    <ClickOutside onClickOutside={() => alert('Clicked outside')}>
+      <div className="mockComponent box" />
+    </ClickOutside>
+  )
+})
