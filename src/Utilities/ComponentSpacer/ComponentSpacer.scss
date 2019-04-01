@@ -96,7 +96,7 @@
       > * {
         margin-left: $margin;
   
-        &:last-child {
+        &:first-child {
           margin-left: 0;
         }
       }
@@ -170,7 +170,7 @@
       > * {
         margin-top: $margin;
   
-        &:last-child {
+        &:first-child {
           margin-top: 0;
         }
       }
