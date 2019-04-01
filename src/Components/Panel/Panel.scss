@@ -1,0 +1,121 @@
+@import '../../Styles/modules';
+
+/*
+   Panels
+   -----------------------------------------------------------------------------
+*/
+
+$panel-background: $g3-castle;
+$panel-nested-background: $g4-onyx;
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background-color: $panel-background;
+  border-radius: $cf-radius;
+}
+
+.panel--header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel--title {
+  color: $g12-forge;
+  letter-spacing: 0.015em;
+  margin: 0;
+  line-height: 1em;
+  @extend %no-user-select;
+}
+
+.panel--controls {
+  display: flex;
+  align-items: center;
+}
+
+.panel--footer {
+  border-radius: 0 0 $cf-radius $cf-radius;
+  background-color: rgba($g0-obsidian, 0.1);
+  color: $g9-mountain;
+}
+
+/*
+  Size Modifiers
+  ------------------------------------------------------------------------------
+*/
+@mixin panelSizeModifier($fontSize, $fontWeight, $padding) {
+  .panel--header {
+    padding: $padding;
+  }
+  .panel--body {
+    padding: ($padding / 2) $padding;
+  }
+  .panel--header + .panel--body {
+    padding-top: 0;
+  }
+  .panel--title {
+    font-weight: $fontWeight;
+    font-size: $fontSize;
+  }
+  .panel--footer {
+    padding: ($padding / 2) $padding;
+  }
+}
+
+.panel--xs {
+  @include panelSizeModifier(13px, 600, $cf-marg-b + $cf-marg-a);
+}
+.panel--sm {
+  @include panelSizeModifier(17px, 500, $cf-marg-c);
+}
+.panel--md {
+  @include panelSizeModifier(19px, 500, $cf-marg-d);
+}
+.panel--lg {
+  @include panelSizeModifier(26px, 400, $cf-marg-d);
+}
+
+/*
+  Contrast Text Modifiers
+  ------------------------------------------------------------------------------
+*/
+
+.panel__dark-text {
+  .panel--title {
+    color: $g3-castle;
+  }
+  .panel--body,
+  .panel--footer {
+    color: rgba($g3-castle, 0.75);
+  }
+}
+
+.panel__light-text {
+  .panel--title {
+    color: $g18-cloud;
+  }
+  .panel--body,
+  .panel--footer {
+    color: rgba($g18-cloud, 0.75);
+  }
+}
+
+//  Horizontal Rules directly inside Panels
+//  ----------------------------------------------------------------------------
+.panel--body hr {
+  margin: $cf-marg-c 0;
+}
+
+//  Panels Nested inside Tabbed Pages
+//  ----------------------------------------------------------------------------
+.tabs--contents .panel,
+// TODO: Remove this .tabbed-page rule when the component is phased out
+.tabbed-page .panel {
+  background-color: $panel-nested-background;
+
+  .panel--footer {
+    background-color: mix($panel-nested-background, $g3-castle, 50%);
+  }
+}

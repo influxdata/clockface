@@ -1,4 +1,4 @@
-import {Color} from '../Types'
+import {Color, InfluxColors, Gradients, Gradient} from '../Types'
 
 export const HEX_CODE_CHAR_LENGTH = 7
 
@@ -209,3 +209,106 @@ export const influxColors: Color[] = [
     name: 'Obsidian',
   },
 ]
+
+export const influxGradients = {
+  BeijingEclipse: {
+    start: InfluxColors.Basalt,
+    stop: InfluxColors.Shadow,
+  },
+  DistantNebula: {
+    start: InfluxColors.Shadow,
+    stop: InfluxColors.Abyss,
+  },
+  SpirulinaSmoothie: {
+    start: InfluxColors.Abyss,
+    stop: InfluxColors.Gypsy,
+  },
+  LASunset: {
+    start: InfluxColors.Ruby,
+    stop: InfluxColors.Void,
+  },
+  PolarExpress: {
+    start: InfluxColors.Void,
+    stop: InfluxColors.Sapphire,
+  },
+  RebelAlliance: {
+    start: InfluxColors.Sapphire,
+    stop: InfluxColors.Emerald,
+  },
+  DocScott: {
+    start: InfluxColors.Fire,
+    stop: InfluxColors.Amethyst,
+  },
+  GundamPilot: {
+    start: InfluxColors.Amethyst,
+    stop: InfluxColors.Ocean,
+  },
+  TropicalTourist: {
+    start: InfluxColors.Ocean,
+    stop: InfluxColors.Viridian,
+  },
+  DesertFestival: {
+    start: InfluxColors.Curacao,
+    stop: InfluxColors.Star,
+  },
+  MiyazakiSky: {
+    start: InfluxColors.Star,
+    stop: InfluxColors.Pool,
+  },
+  GarageBand: {
+    start: InfluxColors.Pool,
+    stop: InfluxColors.Rainforest,
+  },
+  BrooklynCowboy: {
+    start: InfluxColors.Dreamsicle,
+    stop: InfluxColors.Comet,
+  },
+  PastelGothic: {
+    start: InfluxColors.Comet,
+    stop: InfluxColors.Laser,
+  },
+  LowDifficulty: {
+    start: InfluxColors.Laser,
+    stop: InfluxColors.Honeydew,
+  },
+  SynthPop: {
+    start: InfluxColors.Tungsten,
+    stop: InfluxColors.Potassium,
+  },
+  CottonCandy: {
+    start: InfluxColors.Potassium,
+    stop: InfluxColors.Hydrogen,
+  },
+  HotelBreakfast: {
+    start: InfluxColors.Hydrogen,
+    stop: InfluxColors.Krypton,
+  },
+  MagicCarpet: {
+    start: InfluxColors.Marmelade,
+    stop: InfluxColors.Moonstone,
+  },
+  CruisingAltitude: {
+    start: InfluxColors.Moonstone,
+    stop: InfluxColors.Neutrino,
+  },
+  CoconutLime: {
+    start: InfluxColors.Neutrino,
+    stop: InfluxColors.Wasabi,
+  },
+  PastryCafe: {
+    start: InfluxColors.Flan,
+    stop: InfluxColors.Twilight,
+  },
+  KawaiiDesu: {
+    start: InfluxColors.Twilight,
+    stop: InfluxColors.Yeti,
+  },
+  RobotLogic: {
+    start: InfluxColors.Yeti,
+    stop: InfluxColors.Mint,
+  },
+}
+
+export const getColorsFromGradient = (gradient: Gradients): Gradient => {
+  return influxGradients[gradient]
+}

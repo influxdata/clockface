@@ -26,6 +26,38 @@ export interface Color {
   name: string
 }
 
+export interface Gradient {
+  start: InfluxColors
+  stop: InfluxColors
+}
+
+export enum Gradients {
+  BeijingEclipse = 'BeijingEclipse',
+  DistantNebula = 'DistantNebula',
+  SpirulinaSmoothie = 'SpirulinaSmoothie',
+  LASunset = 'LASunset',
+  PolarExpress = 'PolarExpress',
+  RebelAlliance = 'RebelAlliance',
+  DocScott = 'DocScott',
+  GundamPilot = 'GundamPilot',
+  TropicalTourist = 'TropicalTourist',
+  DesertFestival = 'DesertFestival',
+  MiyazakiSky = 'MiyazakiSky',
+  GarageBand = 'GarageBand',
+  BrooklynCowboy = 'BrooklynCowboy',
+  PastelGothic = 'PastelGothic',
+  LowDifficulty = 'LowDifficulty',
+  SynthPop = 'SynthPop',
+  CottonCandy = 'CottonCandy',
+  HotelBreakfast = 'HotelBreakfast',
+  MagicCarpet = 'MagicCarpet',
+  CruisingAltitude = 'CruisingAltitude',
+  CoconutLime = 'CoconutLime',
+  PastryCafe = 'PastryCafe',
+  KawaiiDesu = 'KawaiiDesu',
+  RobotLogic = 'RobotLogic',
+}
+
 export enum DropdownMenuColors {
   Amethyst = 'amethyst',
   Malachite = 'malachite',
@@ -50,7 +82,8 @@ export enum ButtonType {
   Submit = 'submit',
 }
 
-export enum Greys {
+export enum InfluxColors {
+  // Greys
   Obsidian = '#0f0e15',
   Raven = '#1c1c21',
   Kevlar = '#202028',
@@ -72,6 +105,51 @@ export enum Greys {
   Cloud = '#f6f6f8',
   Ghost = '#fafafc',
   White = '#ffffff',
+  // Blues
+  Abyss = '#182838',
+  Sapphire = '#326BBA',
+  Ocean = '#4591ED',
+  Pool = '#22ADF6',
+  Laser = '#00C9FF',
+  Hydrogen = '#6BDFFF',
+  Neutrino = '#BEF0FF',
+  Yeti = '#F0FCFF',
+  // Purples
+  Shadow = '#1F2039',
+  Void = '#311F94',
+  Amethyst = '#513CC6',
+  Star = '#7A65F2',
+  Comet = '#9394FF',
+  Potassium = '#B1B6FF',
+  Moonstone = '#C9D0FF',
+  Twilight = '#F2F4FF',
+  // Greens
+  Gypsy = '#152B2D',
+  Emerald = '#108174',
+  Viridian = '#32B08C',
+  Rainforest = '#4ED8A0',
+  Honeydew = '#7CE490',
+  Krypton = '#A5F3B4',
+  Wasabi = '#C6FFD0',
+  Mint = '#F2FFF4',
+  // Yellows
+  Oak = '#3F241F',
+  Topaz = '#E85B1C',
+  Tiger = '#F48D38',
+  Pineapple = '#FFB94A',
+  Thunder = '#FFD255',
+  Sulfur = '#FFE480',
+  Daisy = '#FFF6B8',
+  Banana = '#FFFDDE',
+  // Reds
+  Basalt = '#2F1F29',
+  Ruby = '#BF3D5E',
+  Fire = '#DC4E58',
+  Curacao = '#F95F53',
+  Dreamsicle = '#FF8564',
+  Tungsten = '#FFB6A0',
+  Marmelade = '#FFDCCF',
+  Flan = '#FFF7F4',
 }
 
 export enum IconFont {

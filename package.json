@@ -54,6 +54,8 @@
     "uuid": "^3.2.1"
   },
   "dependencies": {
+    "@types/chroma-js": "^1.4.1",
+    "chroma-js": "^2.0.3",
     "@types/react-dom": "^16.8.3",
     "classnames": "^2.2.6"
   },
