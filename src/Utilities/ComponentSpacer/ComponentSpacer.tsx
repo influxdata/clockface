@@ -20,24 +20,24 @@ interface PassedProps {
   className?: string
   /** Pass through styles object */
   style?: CSSProperties
-}
-
-interface DefaultProps {
-  /** Can be FlexStart, FlexEnd, Center, SpaceBetween, or SpaceAround */
-  justifyContent?: JustifyContent
-  /** Can be FlexStart, FlexEnd, Center, or Stretch */
-  alignItems?: AlignItems
-  /** stretches component spacer to fit parent width */
-  stretchToFitWidth?: boolean
-  /** stretches component spacer to fit parent height */
-  stretchToFitHeight?: boolean
-  /** Test ID for Integration Tests */
-  testID?: string
   /** Inserted margin between children */
   margin?: ComponentSize
 }
 
-type Props = DefaultProps & PassedProps
+interface DefaultProps {
+  /** Can be FlexStart, FlexEnd, Center, SpaceBetween, or SpaceAround */
+  justifyContent: JustifyContent
+  /** Can be FlexStart, FlexEnd, Center, or Stretch */
+  alignItems: AlignItems
+  /** stretches component spacer to fit parent width */
+  stretchToFitWidth: boolean
+  /** stretches component spacer to fit parent height */
+  stretchToFitHeight: boolean
+  /** Test ID for Integration Tests */
+  testID: string
+}
+
+type Props = PassedProps & Partial<DefaultProps>
 
 export class ComponentSpacer extends Component<Props> {
   public static defaultProps: DefaultProps = {
