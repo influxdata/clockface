@@ -1,4 +1,4 @@
-import {addDecorator, configure} from '@storybook/react'
+import {addDecorator, configure, addParameters} from '@storybook/react'
 import {withInfo} from '@storybook/addon-info'
 import {darkTheme, TableComponent} from './StoryLayout'
 
@@ -10,6 +10,12 @@ addDecorator(
     TableComponent,
   })
 )
+
+addParameters({
+  options: {
+    panelPosition: 'right',
+  },
+})
 
 const req = require.context('../src/', true, /.stories.tsx$/)
 
