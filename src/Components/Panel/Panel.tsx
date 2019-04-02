@@ -18,26 +18,19 @@ import {PanelFooter} from './PanelFooter'
 // Styles
 import './Panel.scss'
 
-interface PassedProps {
-  /** Contents of the panel */
-  children: JSX.Element[] | JSX.Element
+interface Props {
   /** Class name for custom styles */
   className?: string
   /** Optional color theme of panel */
   gradient?: Gradients
-}
-
-interface DefaultProps {
   /** Controls header font size and padding of Panel */
-  size?: ComponentSize
+  size: ComponentSize
   /** Test ID for Integration Tests */
-  testID?: string
+  testID: string
 }
-
-type Props = PassedProps & DefaultProps
 
 export class Panel extends Component<Props> {
-  public static defaultProps: DefaultProps = {
+  public static defaultProps = {
     size: ComponentSize.Small,
     testID: 'panel',
   }
