@@ -17,21 +17,21 @@ interface Props {
   /** Toggles slide toggle active state */
   active: boolean
   /** Button size */
-  size?: ComponentSize
+  size: ComponentSize
   /** Slide toggle color */
-  color?: ComponentColor
+  color: ComponentColor
   /** Toggles disabled state */
-  disabled?: boolean
+  disabled: boolean
   /** Text to be displayed on hover tooltip */
-  tooltipText?: string
+  tooltipText: string
   /** Test ID for Integration Tests */
-  testID?: string
+  testID: string
 }
 
 export class SlideToggle extends Component<Props> {
   public static Label = SlideToggleLabel
 
-  public static defaultProps: Partial<Props> = {
+  public static defaultProps = {
     size: ComponentSize.Small,
     color: ComponentColor.Primary,
     tooltipText: '',

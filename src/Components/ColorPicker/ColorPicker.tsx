@@ -20,30 +20,25 @@ import {validateHexCode} from '../../Utils/colors'
 // Styles
 import './ColorPicker.scss'
 
-interface PassedProps {
+interface Props {
   /** currently selected color */
   color: string
   /** Function to be called on color select */
   onChange: (color: string, status?: ComponentStatus) => void
-}
-
-interface DefaultProps {
   /** Array of colors to be displayed in color picker */
-  colors?: Color[]
+  colors: Color[]
   /** Prevent focus from leaving the input */
-  maintainInputFocus?: boolean
+  maintainInputFocus: boolean
   /** Test ID for Integration Tests */
-  testID?: string
+  testID: string
 }
-
-type Props = PassedProps & DefaultProps
 
 interface State {
   errorMessage: string | null
 }
 
 export class ColorPicker extends Component<Props, State> {
-  public static defaultProps: DefaultProps = {
+  public static defaultProps = {
     colors: influxColors,
     maintainInputFocus: false,
     testID: 'color-picker',

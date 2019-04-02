@@ -7,22 +7,17 @@ import './Icon.scss'
 // Types
 import {IconFont} from '../../Types'
 
-interface PassedProps {
+interface Props {
   /** Icon to display */
   glyph: IconFont
   /** Class name for custom styles */
   className?: string
-}
-
-interface DefaultProps {
   /** Used for unit and e2e tests */
-  testID?: string
+  testID: string
 }
-
-type Props = PassedProps & DefaultProps
 
 export class Icon extends Component<Props> {
-  public static defaultProps: DefaultProps = {
+  public static defaultProps = {
     testID: 'icon',
   }
 

@@ -12,11 +12,11 @@ interface Props {
   /** loading state */
   loading: RemoteDataState
   /** Test ID for Integration Tests */
-  testID?: string
+  testID: string
 }
 
 export class SparkleSpinner extends PureComponent<Props> {
-  public static defaultProps: Partial<Props> = {
+  public static defaultProps = {
     loading: RemoteDataState.NotStarted,
     testID: 'sparkle-spinner',
   }

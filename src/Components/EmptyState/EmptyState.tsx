@@ -12,22 +12,17 @@ import {ComponentSize} from '../../Types'
 // Styles
 import './EmptyState.scss'
 
-interface PassedProps {
+interface Props {
   /** Class name for custom styles */
   customClass?: string
-}
-
-interface DefaultProps {
   /** Empty State component size */
-  size?: ComponentSize
+  size: ComponentSize
   /** Test ID for Integration Tests */
-  testID?: string
+  testID: string
 }
-
-type Props = DefaultProps & PassedProps
 
 export class EmptyState extends Component<Props> {
-  public static defaultProps: DefaultProps = {
+  public static defaultProps = {
     size: ComponentSize.Small,
     testID: 'empty-state',
   }

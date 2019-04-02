@@ -1,20 +1,15 @@
 // Libraries
 import React, {Component} from 'react'
 
-interface DefaultProps {
-  /** Test ID for Integration Tests */
-  testID?: string
-}
-
-interface PassedProps {
+interface Props {
   /** Input discription  or instruction text */
   text: string
+  /** Test ID for Integration Tests */
+  testID: string
 }
 
-type Props = DefaultProps & PassedProps
-
 export class FormHelpText extends Component<Props> {
-  public static defaultProps: DefaultProps = {
+  public static defaultProps = {
     testID: 'form--help-text',
   }
 

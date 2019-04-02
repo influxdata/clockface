@@ -1,20 +1,13 @@
 // Libraries
 import React, {Component} from 'react'
 
-interface PassedProps {
-  /** Contents */
-  children: JSX.Element[] | JSX.Element
-}
-
-interface DefaultProps {
+interface Props {
   /** Test ID for Integration Tests */
-  testID?: string
+  testID: string
 }
-
-type Props = PassedProps & DefaultProps
 
 export class PanelBody extends Component<Props> {
-  public static defaultProps: DefaultProps = {
+  public static defaultProps = {
     testID: 'panel--body',
   }
 

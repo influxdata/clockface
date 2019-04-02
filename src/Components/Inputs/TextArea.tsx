@@ -19,7 +19,7 @@ export enum Wrap {
   Off = 'off',
 }
 
-interface PassedProps {
+interface Props {
   /** Width of the text field in pixels */
   widthPixels?: number
   /** Input Component size */
@@ -40,43 +40,38 @@ interface PassedProps {
   onKeyUp?: (e: KeyboardEvent<HTMLTextAreaElement>) => void
   /** Function to be called on key down */
   onKeyDown?: (e: KeyboardEvent<HTMLTextAreaElement>) => void
-}
-
-interface DefaultProps {
   /** Allows or disallows browser autocomplete functionality */
-  autocomplete?: AutoComplete
+  autocomplete: AutoComplete
   /** Whether or not the input recieves autofocus when mounted */
-  autoFocus?: boolean
+  autoFocus: boolean
   /** Associates the text area with a form even if outside the form */
-  form?: string
+  form: string
   /** Maximum string length for input value */
-  maxLength?: number | undefined
+  maxLength: number | undefined
   /** Minimum string length for input value */
-  minLength?: number | undefined
+  minLength: number | undefined
   /** Input field name attribute */
-  name?: string
+  name: string
   /** Placeholder text when no value is present */
-  placeholder?: string
+  placeholder: string
   /** Toggles read-only state of text area */
-  readOnly?: boolean
+  readOnly: boolean
   /** Specified text area as a required field */
-  required?: boolean
+  required: boolean
   /** Sets width in columns */
-  cols?: number
+  cols: number
   /** sets height in rows */
-  rows?: number
+  rows: number
   /** Allows or disallows browser spellcheck functionality */
-  spellCheck?: boolean
+  spellCheck: boolean
   /** Sets text wrap */
-  wrap?: Wrap
+  wrap: Wrap
   /** Input field value to be updated with 'on X' functions */
-  value?: string
+  value: string
 }
-
-type Props = PassedProps & DefaultProps
 
 export class TextArea extends Component<Props> {
-  public static defaultProps: DefaultProps = {
+  public static defaultProps = {
     autocomplete: AutoComplete.Off,
     autoFocus: false,
     cols: 20,

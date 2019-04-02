@@ -15,17 +15,17 @@ interface Props {
   /** Class name for custom styles */
   customClass?: string
   /** Radio color */
-  color?: ComponentColor
+  color: ComponentColor
   /** Radio size */
-  size?: ComponentSize
+  size: ComponentSize
   /** Shape... */
-  shape?: ButtonShape
+  shape: ButtonShape
   /** Test ID for Integration Tests */
-  testID?: string
+  testID: string
 }
 
 export class Radio extends Component<Props> {
-  public static defaultProps: Partial<Props> = {
+  public static defaultProps = {
     color: ComponentColor.Primary,
     size: ComponentSize.Small,
     shape: ButtonShape.Default,

@@ -5,22 +5,15 @@ import React, {Component} from 'react'
 import {FlexDirection, JustifyContent, AlignItems} from '../../Types'
 import {ComponentSpacer} from '../../Utilities/ComponentSpacer/ComponentSpacer'
 
-interface PassedProps {
-  /** Elements to render to the right of the title */
-  children?: JSX.Element[] | JSX.Element
+interface Props {
   /** Title of Panel */
   title: string
-}
-
-interface DefaultProps {
   /** Test ID for Integration Tests */
-  testID?: string
+  testID: string
 }
-
-type Props = PassedProps & DefaultProps
 
 export class PanelHeader extends Component<Props> {
-  public static defaultProps: DefaultProps = {
+  public static defaultProps = {
     testID: 'panel--header',
   }
 

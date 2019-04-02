@@ -5,14 +5,9 @@ import classnames from 'classnames'
 // Types
 import {Columns} from '../../Types'
 
-interface DefaultProps {
-  /** Test ID for Integration Tests */
-  testID?: string
+interface Props {
   /** Number of columns spanned when viewport width is less than 750px */
-  widthXS?: Columns
-}
-
-interface PassedProps {
+  widthXS: Columns
   /** Number of columns spanned when viewport width is greater than 750px */
   widthSM?: Columns
   /** Number of columns spanned when viewport width is greater than 1080px */
@@ -27,12 +22,12 @@ interface PassedProps {
   offsetMD?: Columns
   /** Number of columns shifted when viewport width is greater than 1500px */
   offsetLG?: Columns
+  /** Test ID for Integration Tests */
+  testID: string
 }
 
-type Props = DefaultProps & PassedProps
-
 export class FormFooter extends Component<Props> {
-  public static defaultProps: DefaultProps = {
+  public static defaultProps = {
     testID: 'form--footer',
     widthXS: Columns.Twelve,
   }

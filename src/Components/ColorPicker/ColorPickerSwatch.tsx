@@ -1,24 +1,19 @@
 // Libraries
 import React, {Component} from 'react'
 
-interface PassedProps {
+interface Props {
   /** Color name */
   name: string
   /** Color hex value */
   hex: string
   /** Function to be called on color click */
   onClick: (hex: string) => void
-}
-
-interface DefaultProps {
   /** Test ID for Integration Tests */
-  testID?: string
+  testID: string
 }
-
-type Props = PassedProps & DefaultProps
 
 export class ColorPickerSwatch extends Component<Props> {
-  public static defaultProps: DefaultProps = {
+  public static defaultProps = {
     testID: 'color-picker',
   }
 

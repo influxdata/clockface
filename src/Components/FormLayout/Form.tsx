@@ -13,24 +13,19 @@ import {FormBox} from './FormBox'
 // Styles
 import './Form.scss'
 
-interface DefaultProps {
-  /** Test ID for Integration Tests */
-  testID?: string
-}
-
-interface PassedProps {
+interface Props {
   /** Inline CSS styles */
   style?: React.CSSProperties
   /** Class name for custom styles */
   className?: string
   /** Function to be called on form submit */
   onSubmit?: (e: React.FormEvent) => void
+  /** Test ID for Integration Tests */
+  testID: string
 }
 
-type Props = DefaultProps & PassedProps
-
 export class Form extends Component<Props> {
-  public static defaultProps: DefaultProps = {
+  public static defaultProps = {
     testID: 'form-container',
   }
 

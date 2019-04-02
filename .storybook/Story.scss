@@ -48,6 +48,11 @@
     height: 30px;
     width: 200px;
   }
+
+  &.wide {
+    min-width: 2000px;
+    white-space: nowrap;
+  }
 }
 
 .story--container {
@@ -58,12 +63,24 @@
   width: 100%;
 
   &.story-large {
-    font-size: 40px;
     max-width: 400px;
     max-height: 400px;
+  }
+
+  &.embiggen {
+    font-size: 40px;
   }
 
   &.clearfix {
     overflow: auto;
   }
+}
+
+.scroll--container {
+  position: relative;
+  width: 600px;
+  height: 300px;
+  background-color: $g4-onyx;
+  border-radius: $cf-radius;
+  padding: $cf-marg-b;
 }

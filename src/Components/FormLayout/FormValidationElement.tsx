@@ -9,12 +9,7 @@ import {FormHelpText} from './FormHelpText'
 // Types
 import {ComponentStatus} from '../../Types'
 
-interface DefaultProps {
-  /** Test ID for Integration Tests */
-  testID?: string
-}
-
-interface PassedProps {
+interface Props {
   /** Child components */
   children: (status: ComponentStatus) => React.ReactNode
   /** Function used for validation check */
@@ -31,9 +26,9 @@ interface PassedProps {
   helpText?: string
   /** Whether this field is required to submit form, adds red required asterisk */
   required?: boolean
+  /** Test ID for Integration Tests */
+  testID: string
 }
-
-type Props = DefaultProps & PassedProps
 
 interface State {
   errorMessage: string | null
@@ -41,7 +36,7 @@ interface State {
 }
 
 export class FormValidationElement extends Component<Props, State> {
-  public static defaultProps: DefaultProps = {
+  public static defaultProps = {
     testID: 'form--validation-element',
   }
 

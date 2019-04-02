@@ -3,11 +3,11 @@ import React, {Component} from 'react'
 
 interface Props {
   /** Test ID for Integration Tests */
-  testID?: string
+  testID: string
 }
 
 export class FormDivider extends Component<Props> {
-  public static defaultProps: Props = {
+  public static defaultProps = {
     testID: 'form--divider',
   }
 

@@ -18,7 +18,7 @@ import {
   ButtonType,
 } from '../../Types'
 
-interface PassedProps {
+interface Props {
   /** Text to be displayed on button */
   text?: string
   /** Function to be called on button click */
@@ -31,29 +31,24 @@ interface PassedProps {
   tabIndex?: number
   /** Class name for custom styles */
   customClass?: string
-}
-
-interface DefaultProps {
   /** Button color */
-  color?: ComponentColor
+  color: ComponentColor
   /** Button size */
-  size?: ComponentSize
+  size: ComponentSize
   /** Square or rectangle */
-  shape?: ButtonShape
+  shape: ButtonShape
   /** Button status state default, loading, or disabled */
-  status?: ComponentStatus
+  status: ComponentStatus
   /** Toggles button highlighted active state */
-  active?: boolean
+  active: boolean
   /** Button type of 'button' or 'submit' */
-  type?: ButtonType
+  type: ButtonType
   /** Test ID for Integration Tests */
-  testID?: string
+  testID: string
 }
-
-type Props = PassedProps & DefaultProps
 
 export class Button extends Component<Props> {
-  public static defaultProps: DefaultProps = {
+  public static defaultProps = {
     color: ComponentColor.Default,
     size: ComponentSize.Small,
     shape: ButtonShape.Default,

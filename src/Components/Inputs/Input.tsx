@@ -28,7 +28,7 @@ export enum InputType {
   Email = 'email',
 }
 
-interface PassedProps {
+interface Props {
   /** Unique text field ID */
   id?: string
   /** Minimum value for number type */
@@ -57,39 +57,34 @@ interface PassedProps {
   maxLength?: number
   /** Keyboard control tab order  */
   tabIndex?: number
-}
-
-interface DefaultProps {
   /** Input type (text, number, password, email)  */
-  type?: InputType
+  type: InputType
   /** Input field name attribute */
-  name?: string
+  name: string
   /** Input field value to be updated with 'on X' functions */
   value: string | number
   /** Placeholder text when no value is present */
-  placeholder?: string
+  placeholder: string
   /** Allows or disallows browser autocomplete functionality */
-  autocomplete?: AutoComplete
+  autocomplete: AutoComplete
   /** Text to be displayed on hover tooltip */
-  titleText?: string
+  titleText: string
   /** Text to be displayed on hover tooltip when radio button is disabled */
-  disabledTitleText?: string
+  disabledTitleText: string
   /** Input Component size */
-  size?: ComponentSize
+  size: ComponentSize
   /** Input status state */
-  status?: ComponentStatus
+  status: ComponentStatus
   /** Whether or not the input recieves autofocus when mounted */
-  autoFocus?: boolean
+  autoFocus: boolean
   /** Allows or disallows browser spellcheck functionality */
-  spellCheck?: boolean
+  spellCheck: boolean
   /** Test ID for Integration Tests */
-  testID?: string
+  testID: string
 }
 
-type Props = PassedProps & DefaultProps
-
 export class Input extends Component<Props> {
-  public static defaultProps: DefaultProps = {
+  public static defaultProps = {
     type: InputType.Text,
     name: '',
     value: '',
