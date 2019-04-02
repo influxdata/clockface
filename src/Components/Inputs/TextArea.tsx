@@ -47,9 +47,9 @@ interface Props {
   /** Associates the text area with a form even if outside the form */
   form: string
   /** Maximum string length for input value */
-  maxLength: number | undefined
+  maxLength?: number
   /** Minimum string length for input value */
-  minLength: number | undefined
+  minLength?: number
   /** Input field name attribute */
   name: string
   /** Placeholder text when no value is present */
@@ -76,8 +76,6 @@ export class TextArea extends Component<Props> {
     autoFocus: false,
     cols: 20,
     form: '',
-    maxLength: undefined,
-    minLength: undefined,
     name: '',
     placeholder: '',
     readOnly: false,
