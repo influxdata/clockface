@@ -13,8 +13,8 @@ import './NavMenu.scss'
 interface Props {
   /** Class name for custom styles */
   className?: string
-  /** NavMenu is hidden in presentation mode */
-  presentationMode?: boolean
+  /** Prevents NavMenu from rendering (used in presentation mode) */
+  hide?: boolean
   /** Test ID for Integration Tests */
   testID: string
 }
@@ -32,15 +32,14 @@ export class NavMenu extends PureComponent<Props> {
   }
 
   public render() {
-    const {children, testID, presentationMode} = this.props
+    const {children, testID, hide} = this.props
 
-    if (presentationMode) {
+    if (hide) {
       return null
     }
 
     const className = classnames('nav', {
       [`${this.props.className}`]: this.props.className,
-      'presentation-mode': presentationMode,
     })
 
     return (

@@ -98,8 +98,8 @@
 }
 
 /*
-Full Width Page
------------------------------------------------------------------------------
+  Full Width Page
+  ------------------------------------------------------------------------------
 */
 
 .page-contents.full-width .page-contents--padding {
@@ -115,8 +115,8 @@ Full Width Page
 }
 
 /*
-   Scrollable Page
-   -----------------------------------------------------------------------------
+  Scrollable Page
+  ------------------------------------------------------------------------------
 */
 
 .page-contents.dapper-scrollbars .page-contents--padding {
@@ -124,18 +124,18 @@ Full Width Page
 }
 
 /*
-   Presentation Mode
-   -----------------------------------------------------------------------------
+  Full Height Mode
+  ------------------------------------------------------------------------------
 */
 
-.page-contents.presentation-mode {
+.page-contents.full-height {
   height: 100% !important;
 }
 
-.page-contents.presentation-mode .page-contents--padding {
+.page-contents.full-height .page-contents--padding {
   padding: $cf-marg-b;
 }
 
-.page-contents.presentation-mode.dapper-scrollbars .page-contents--padding {
+.page-contents.full-height.dapper-scrollbars .page-contents--padding {
   padding-right: $cf-marg-c;
 }

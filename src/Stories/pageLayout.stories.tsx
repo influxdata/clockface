@@ -14,7 +14,7 @@ const pageLayout = storiesOf('Page Layout', module).addDecorator(withKnobs)
 pageLayout.add('Example Page', () => (
   <div className="mockPage">
     <AppWrapper>
-      <NavMenu presentationMode={boolean('presentationMode', false)}>
+      <NavMenu hide={boolean('presentationMode', false)}>
         <NavMenu.Item
           titleLink={className => (
             <a className={className} href="#">
@@ -89,7 +89,7 @@ pageLayout.add('Example Page', () => (
       <Page titleTag="bloop">
         <Page.Header
           fullWidth={boolean('fullWidth', true)}
-          presentationMode={boolean('presentationMode', false)}
+          hide={boolean('presentationMode', false)}
         >
           <Page.Header.Left>
             <Page.Title title={text('PageTitle title', 'Page Title')} />
@@ -100,8 +100,8 @@ pageLayout.add('Example Page', () => (
         </Page.Header>
         <Page.Contents
           fullWidth={boolean('fullWidth', true)}
+          fullHeight={boolean('presentationMode', false)}
           scrollable={boolean('scrollable', true)}
-          presentationMode={boolean('presentationMode', false)}
         >
           <div className="mockComponent pageContents">
             <h4>

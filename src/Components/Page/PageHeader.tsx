@@ -10,13 +10,13 @@ import {PageHeaderRight} from './PageHeaderRight'
 interface Props {
   /** Allows the page header to fill the width of the screen */
   fullWidth: boolean
-  /** PageHeader is hidden when in presentation mode */
-  presentationMode: boolean
+  /** Prevents NavMenu from rendering (used in presentation mode) */
+  hide: boolean
 }
 
 export class PageHeader extends Component<Props> {
   public static defaultProps = {
-    presentationMode: false,
+    hide: false,
   }
 
   public static Left = PageHeaderLeft
@@ -24,9 +24,9 @@ export class PageHeader extends Component<Props> {
   public static Right = PageHeaderRight
 
   public render() {
-    const {presentationMode} = this.props
+    const {hide} = this.props
 
-    if (presentationMode) {
+    if (hide) {
       return null
     }
 
