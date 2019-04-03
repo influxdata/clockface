@@ -10,6 +10,26 @@ $z--overlays: 9990;
 $z--drag-n-drop: 5000;
 
 /*
+   Page Layout
+   -----------------------------------------------------------------------------
+   NavMenu + Page components
+*/
+
+$nav-menu--size: 50px;
+$nav-menu--gutter: 16px;
+$nav-menu--bg: $c-pool;
+$nav-menu--bg-accent: $c-comet;
+$nav-menu--breakpoint: 800px;
+
+$page--header-size: 66px;
+$page--gutter: 54px;
+$page--max-width: 1608px;
+$page--title-size: 21px;
+$page--title-weight: 400;
+$page--gradient-start: $g2-kevlar;
+$page--gradient-stop: $g0-obsidian;
+
+/*
    Motifs
    -----------------------------------------------------------------------------
    Goal is to re-use these variables as much as possible to ensure powerful
