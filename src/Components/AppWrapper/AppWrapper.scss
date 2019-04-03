@@ -1,0 +1,25 @@
+@import '../../Styles/modules';
+
+/*
+   Clockface Application Wrapper
+   -----------------------------------------------------------------------------
+*/
+
+.clockface--app-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  color: $cf-text-default;
+  @include gradient-v($page--gradient-start, $page--gradient-stop);
+}
+
+@media screen and (min-width: $nav-menu--breakpoint) {
+  .clockface--app-wrapper {
+    flex-direction: row;
+  }
+}
