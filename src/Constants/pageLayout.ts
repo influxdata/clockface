@@ -1,0 +1,2 @@
+export const DEFAULT_PAGE_HEADER_CENTER_WIDTH = 200
+export const DEFAULT_OFFSET = 0

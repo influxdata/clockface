@@ -81,6 +81,7 @@ export class DapperScrollbars extends Component<Props> {
         noScrollY={noScrollY}
         noScroll={noScroll}
         wrapperProps={{className: 'dapper-scrollbars--wrapper'}}
+        contentProps={{className: 'dapper-scrollbars--content'}}
         trackXProps={{className: 'dapper-scrollbars--track-x'}}
         thumbXProps={{
           style: this.thumbXStyle,

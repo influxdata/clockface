@@ -1,0 +1,141 @@
+@import '../../Styles/modules';
+
+/*
+   Page Layout
+   -----------------------------------------------------------------------------
+*/
+
+.page {
+  width: 100%;
+  flex: 1 0 calc(100% - #{$nav-menu--size});
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+@media screen and (min-width: $nav-menu--breakpoint) {
+  .page {
+    width: auto;
+    height: 100%;
+  }
+}
+
+.page-header {
+  height: $page--header-size;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-header--center {
+  display: flex;
+  padding: 0 $page--gutter;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  width: 100%;
+  max-width: $page--max-width;
+}
+
+.page-header--left,
+.page-header--right {
+  display: flex;
+  align-items: center;
+}
+
+.page-header--left {
+  justify-content: flex-start;
+  > * {
+    margin: 0 $cf-marg-a 0 0;
+  }
+}
+
+.page-header--right {
+  justify-content: flex-end;
+  > * {
+    margin: 0 0 0 $cf-marg-a !important;
+
+    &:only-child {
+      margin-right: 0 !important;
+    }
+  }
+}
+
+.page--title {
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: $page--title-size;
+  font-weight: $page--title-weight;
+  margin: 0;
+  display: inline-block;
+  @include no-user-select();
+  cursor: default;
+}
+
+.page-contents {
+  width: 100%;
+  position: relative;
+  height: calc(100% - #{$page--header-size}) !important;
+  overflow: hidden;
+
+  & > .dapper-scrollbars--track-y {
+    background: linear-gradient(
+      to bottom,
+      $g6-smoke 0%,
+      $g3-castle 100%
+    ) !important;
+  }
+}
+
+.page-contents--padding {
+  padding: $page--gutter;
+  padding-top: 0;
+}
+
+.page-contents--center {
+  margin: 0 auto;
+  max-width: $page--max-width;
+}
+
+/*
+  Full Width Page
+  ------------------------------------------------------------------------------
+*/
+
+.page-contents.full-width .page-contents--padding {
+  padding: 0 $page--gutter;
+}
+
+.page-contents--center.full-width {
+  max-width: 100%;
+}
+
+.page-header.full-width .page-header--center {
+  max-width: 100%;
+}
+
+/*
+  Scrollable Page
+  ------------------------------------------------------------------------------
+*/
+
+.page-contents.dapper-scrollbars .page-contents--padding {
+  padding-bottom: $page--gutter;
+}
+
+/*
+  Full Height Mode
+  ------------------------------------------------------------------------------
+*/
+
+.page-contents.full-height {
+  height: 100% !important;
+}
+
+.page-contents.full-height .page-contents--padding {
+  padding: $cf-marg-b;
+}
+
+.page-contents.full-height.dapper-scrollbars .page-contents--padding {
+  padding-right: $cf-marg-c;
+}
