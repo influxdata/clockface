@@ -45,7 +45,7 @@ export class PageHeader extends Component<Props> {
     })
   }
 
-  private get children(): ReactNode[] | ReactNode {
+  private get children(): ReactNode[] | ReactNode | undefined {
     const {children} = this.props
 
     let centerWidthPixels = 0
