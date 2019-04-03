@@ -18,9 +18,11 @@
     "@storybook/addon-knobs": "^5.0.0",
     "@storybook/addons": "^5.0.0",
     "@storybook/react": "^5.0.0",
+    "@types/chroma-js": "^1.4.1",
     "@types/classnames": "^2.2.7",
     "@types/lodash": "^4.14.123",
     "@types/react": "^16.4.14",
+    "@types/react-dom": "^16.8.3",
     "@types/storybook__addon-info": "^4.1.0",
     "@types/storybook__addon-knobs": "^4.0.1",
     "@types/storybook__react": "^4.0.1",
@@ -40,7 +42,6 @@
     "prettier": "^1.16.4",
     "react-docgen-typescript-loader": "^3.0.1",
     "react-docgen-typescript-webpack-plugin": "^1.1.0",
-    "react-scrollbars-custom": "^4.0.0-alpha.10",
     "release-it": "^10.3.1",
     "resolve-url-loader": "^3.0.1",
     "sass-loader": "^7.1.0",
@@ -55,9 +56,8 @@
     "uuid": "^3.2.1"
   },
   "dependencies": {
-    "@types/chroma-js": "^1.4.1",
+    "react-scrollbars-custom": "^4.0.0-alpha.10",
     "chroma-js": "^2.0.3",
-    "@types/react-dom": "^16.8.3",
     "classnames": "^2.2.6"
   },
   "scripts": {
