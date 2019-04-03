@@ -9,6 +9,6 @@ const iconStories = storiesOf('Icon', module).addDecorator(withKnobs)
 
 iconStories.add('Icon Component', () => (
   <div className="story--container story-large embiggen">
-    <Icon glyph={IconFont[select('icon', mapEnumKeys(IconFont), 'Bell')]} />
+    <Icon glyph={IconFont[select('glyph', mapEnumKeys(IconFont), 'Bell')]} />
   </div>
 ))
