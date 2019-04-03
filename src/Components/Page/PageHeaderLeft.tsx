@@ -1,0 +1,50 @@
+// Libraries
+import React, {Component, CSSProperties} from 'react'
+
+// Constants
+import {LEFT_MIN_CHILD_COUNT, DEFAULT_OFFSET} from '../../Constants/pageLayout'
+
+interface Props {
+  children: JSX.Element[] | JSX.Element | string | number
+  offsetPixels: number
+}
+
+export class PageHeaderLeft extends Component<Props> {
+  public static defaultProps = {
+    offsetPixels: DEFAULT_OFFSET,
+  }
+
+  public render() {
+    const {children} = this.props
+
+    this.validateChildCount()
+
+    return (
+      <div className="page-header--left" style={this.styles}>
+        {children}
+      </div>
+    )
+  }
+
+  private validateChildCount = (): void => {
+    const {children} = this.props
+
+    if (React.Children.count(children) < LEFT_MIN_CHILD_COUNT) {
+      throw new Error(
+        'Page.Header.Left require at least 1 child element. We recommend using <Page.Title />'
+      )
+    }
+  }
+
+  private get styles(): CSSProperties | undefined {
+    const {offsetPixels} = this.props
+
+    if (offsetPixels === DEFAULT_OFFSET) {
+      return
+    }
+
+    return {
+      flex: `1 0 calc(50% - ${offsetPixels}px)`,
+    }
+  }
+}
