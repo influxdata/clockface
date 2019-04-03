@@ -27,7 +27,7 @@
   align-items: center;
 }
 
-.page-header--container {
+.page-header--center {
   display: flex;
   padding: 0 $page--gutter;
   align-items: center;
@@ -35,10 +35,6 @@
   flex-wrap: nowrap;
   width: 100%;
   max-width: $page--max-width;
-}
-
-.page-header.full-width .page-header--container {
-  max-width: 100%;
 }
 
 .page-header--left,
@@ -96,7 +92,7 @@
   padding-top: 0;
 }
 
-.container-fluid {
+.page-contents--center {
   margin: 0 auto;
   max-width: $page--max-width;
 }
@@ -110,7 +106,11 @@ Full Width Page
   padding: 0 $page--gutter;
 }
 
-.container-fluid.full-width {
+.page-contents--center.full-width {
+  max-width: 100%;
+}
+
+.page-header.full-width .page-header--center {
   max-width: 100%;
 }
 

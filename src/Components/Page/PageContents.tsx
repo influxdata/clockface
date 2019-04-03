@@ -21,7 +21,7 @@ export class PageContents extends Component<Props> {
     if (scrollable) {
       return (
         <DapperScrollbars
-          className={this.containerClass}
+          className={this.className}
           autoHide={false}
           autoSize={false}
         >
@@ -31,13 +31,13 @@ export class PageContents extends Component<Props> {
     }
 
     return (
-      <div className={this.containerClass}>
+      <div className={this.className}>
         <div className="page-contents--padding">{this.children}</div>
       </div>
     )
   }
 
-  private get containerClass(): string {
+  private get className(): string {
     const {fullWidth, presentationMode} = this.props
 
     return classnames('page-contents', {
@@ -54,7 +54,7 @@ export class PageContents extends Component<Props> {
     }
 
     return (
-      <div className="container-fluid">
+      <div className="page-contents--center">
         <div className="row">{children}</div>
       </div>
     )
