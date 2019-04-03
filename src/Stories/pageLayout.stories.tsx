@@ -57,7 +57,7 @@ pageLayout.add('Example Page', () => (
           presentationMode={boolean('presentationMode', false)}
         >
           <Page.Header.Left>
-            <Page.Title title="Page Title" />
+            <Page.Title title={text('PageTitle title', 'Page Title')} />
           </Page.Header.Left>
           <Page.Header.Right>
             <Button text="Header Button" color={ComponentColor.Primary} />
