@@ -7,12 +7,12 @@
 
 @font-face {
   font-family: 'icomoon';
-  src: url('../../Styles/Fonts/icomoon.eot') format('embedded-opentype');
-  src: url('../../Styles/Fonts/icomoon.eot') format('embedded-opentype'),
-    url('../../Styles/Fonts/icomoon.woff2') format('woff2'),
-    url('../../Styles/Fonts/icomoon.ttf') format('truetype'),
-    url('../../Styles/Fonts/icomoon.woff') format('woff'),
-    url('../../Styles/Fonts/icomoon.svg') format('svg');
+  src: url('./Fonts/icomoon.eot') format('embedded-opentype');
+  src: url('./Fonts/icomoon.eot') format('embedded-opentype'),
+    url('./Fonts/icomoon.woff2') format('woff2'),
+    url('./Fonts/icomoon.ttf') format('truetype'),
+    url('./Fonts/icomoon.woff') format('woff'),
+    url('./Fonts/icomoon.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }

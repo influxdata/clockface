@@ -1,9 +1,6 @@
 // Libraries
 import React, {Component} from 'react'
 
-// Styles
-import './Icon.scss'
-
 // Types
 import {IconFont} from '../../Types'
 
