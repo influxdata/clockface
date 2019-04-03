@@ -25,12 +25,16 @@ export class PageContents extends Component<Props> {
           autoHide={false}
           autoSize={false}
         >
-          {this.children}
+          <div className="page-contents--padding">{this.children}</div>
         </DapperScrollbars>
       )
     }
 
-    return <div className={this.containerClass}>{this.children}</div>
+    return (
+      <div className={this.containerClass}>
+        <div className="page-contents--padding">{this.children}</div>
+      </div>
+    )
   }
 
   private get containerClass(): string {

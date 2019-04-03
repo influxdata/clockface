@@ -79,7 +79,8 @@
 .page-contents {
   width: 100%;
   position: relative;
-  height: calc(100% - #{$page--header-size});
+  height: calc(100% - #{$page--header-size}) !important;
+  overflow: hidden;
 
   & > .dapper-scrollbars--track-y {
     background: linear-gradient(
@@ -90,32 +91,36 @@
   }
 }
 
-.container-fluid {
-  margin: 0 auto;
+.page-contents--padding {
   padding: $page--gutter;
   padding-top: 0;
+}
+
+.container-fluid {
+  margin: 0 auto;
   max-width: $page--max-width;
 }
 
 /*
-   Full With Page
-   -----------------------------------------------------------------------------
+Full Width Page
+-----------------------------------------------------------------------------
 */
+
+.page-contents.full-width .page-contents--padding {
+  padding: 0 $page--gutter;
+}
 
 .container-fluid.full-width {
   max-width: 100%;
 }
 
-.page-contents.full-width {
-  padding: 0 $page--gutter;
-}
+/*
+   Scrollable Page
+   -----------------------------------------------------------------------------
+*/
 
-.page-contents.dapper-scrollbars.full-width {
-  padding: 0;
-
-  & > .dapper-scrollbars--wrapper > .dapper-scrollbars--content {
-    padding: 0 $page--gutter;
-  }
+.page-contents.dapper-scrollbars .page-contents--padding {
+  padding-bottom: $page--gutter;
 }
 
 /*
@@ -124,17 +129,13 @@
 */
 
 .page-contents.presentation-mode {
-  height: 100%;
-
-  .container-fluid {
-    padding: $cf-marg-b;
-  }
+  height: 100% !important;
 }
 
-.page-contents.dapper-scrollbars.presentation-mode {
-  padding: 0;
+.page-contents.presentation-mode .page-contents--padding {
+  padding: $cf-marg-b;
+}
 
-  & > .dapper-scrollbars--wrapper > .dapper-scrollbars--content {
-    padding: $cf-marg-b;
-  }
+.page-contents.presentation-mode.dapper-scrollbars .page-contents--padding {
+  padding-right: $cf-marg-c;
 }
