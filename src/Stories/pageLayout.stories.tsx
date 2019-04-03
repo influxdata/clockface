@@ -4,6 +4,7 @@ import {AppWrapper} from '../Components/AppWrapper/AppWrapper'
 import {NavMenu} from '../Components/NavMenu/NavMenu'
 import {Page} from '../Components/Page/Page'
 import {Button} from '../Components/Button/Button'
+import {Icon} from '../Components/Icon/Icon'
 import {withKnobs, boolean, text, select} from '@storybook/addon-knobs'
 import {IconFont, ComponentColor} from '../Types'
 import {mapEnumKeys} from '../../.storybook/utils'
@@ -15,39 +16,73 @@ pageLayout.add('Example Page', () => (
     <AppWrapper>
       <NavMenu presentationMode={boolean('presentationMode', false)}>
         <NavMenu.Item
-          title="Data"
-          icon={IconFont.Disks}
-          linkElement={<a href="#" />}
+          titleLink={className => (
+            <a className={className} href="#">
+              Data
+            </a>
+          )}
+          iconLink={className => (
+            <a className={className} href="#">
+              <Icon glyph={IconFont.Disks} />
+            </a>
+          )}
           active={false}
         />
         <NavMenu.Item
-          title="Thunder"
-          icon={IconFont.Zap}
-          linkElement={<a href="#" />}
+          titleLink={className => (
+            <a className={className} href="#">
+              Thunder
+            </a>
+          )}
+          iconLink={className => (
+            <a className={className} href="#">
+              <Icon glyph={IconFont.Zap} />
+            </a>
+          )}
           active={true}
         >
           <NavMenu.SubItem
-            title="Lightning"
-            linkElement={<a href="#" />}
+            titleLink={className => (
+              <a className={className} href="#">
+                Lightning
+              </a>
+            )}
             active={false}
           />
           <NavMenu.SubItem
-            title="Storm Clouds"
-            linkElement={<a href="#" />}
+            titleLink={className => (
+              <a className={className} href="#">
+                Storm Clouds
+              </a>
+            )}
             active={false}
           />
           <NavMenu.SubItem
-            title="Rain"
-            linkElement={<a href="#" />}
+            titleLink={className => (
+              <a className={className} href="#">
+                Rain
+              </a>
+            )}
             active={false}
           />
         </NavMenu.Item>
         <NavMenu.Item
-          title={text('NavMenuItem text', 'woogoelel')}
-          icon={
-            IconFont[select('NavMenuItem icon', mapEnumKeys(IconFont), 'Bell')]
-          }
-          linkElement={<a href="#" />}
+          titleLink={className => (
+            <a className={className} href="#">
+              {text('NavMenuItem text', 'Bananas')}
+            </a>
+          )}
+          iconLink={className => (
+            <a className={className} href="#">
+              <Icon
+                glyph={
+                  IconFont[
+                    select('NavMenuItem icon', mapEnumKeys(IconFont), 'Bell')
+                  ]
+                }
+              />
+            </a>
+          )}
           active={boolean('NavMenuItem active', false)}
         />
       </NavMenu>

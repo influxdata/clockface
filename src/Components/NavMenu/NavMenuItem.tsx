@@ -2,19 +2,11 @@
 import React, {PureComponent} from 'react'
 import classnames from 'classnames'
 
-// Types
-import {IconFont} from '../../Types'
-
-// Components
-import {Icon} from '../Icon/Icon'
-
 interface Props {
-  /** Title of tab, visible on hover */
-  title: string
-  /** Icon to display on tab */
-  icon: IconFont
-  /** Pass in an <a /> or <Link /> element */
-  linkElement: JSX.Element
+  /** Render prop for linked title text (suggested <a /> or <Link /> ) */
+  titleLink: (className: string) => JSX.Element
+  /** Render prop for linked title text (suggested <a /> or <Link /> ) */
+  iconLink: (className: string) => JSX.Element
   /** Controls highlighting of the menu item */
   active: boolean
   /** Class name for custom styles */
@@ -30,23 +22,13 @@ export class NavMenuItem extends PureComponent<Props> {
 
   public render() {
     const {
-      title,
-      icon,
       children,
       active,
       testID,
       className,
-      linkElement,
+      titleLink,
+      iconLink,
     } = this.props
-
-    const iconLink = React.cloneElement(linkElement, {
-      className: 'nav--item-icon',
-      children: <Icon glyph={icon} className="sidebar--icon" />,
-    })
-    const headerLink = React.cloneElement(linkElement, {
-      className: 'nav--item-header',
-      children: title,
-    })
 
     return (
       <div
@@ -56,9 +38,9 @@ export class NavMenuItem extends PureComponent<Props> {
         })}
         data-testid={testID}
       >
-        {iconLink}
+        {iconLink('nav--item-icon')}
         <div className="nav--item-menu">
-          {headerLink}
+          {titleLink('nav--item-header')}
           {children}
         </div>
       </div>
