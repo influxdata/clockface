@@ -13,8 +13,10 @@ import './Page.scss'
 interface Props {
   /** Class name for custom styles */
   className?: string
-  /** Controls the browser page title */
-  titleTag: string
+  /** Initial value for browser page title */
+  loadingTitleTag?: string
+  /** Value for browser page title after component updates */
+  titleTag?: string
 }
 
 export class Page extends Component<Props> {
@@ -23,12 +25,16 @@ export class Page extends Component<Props> {
   public static Contents = PageContents
 
   public componentDidMount() {
-    document.title = `${this.props.titleTag || 'Loading...'} | InfluxDB 2.0`
+    const {loadingTitleTag} = this.props
+
+    if (loadingTitleTag) {
+      document.title = `${loadingTitleTag}`
+    }
   }
 
   public componentDidUpdate(prevProps: Props) {
-    if (prevProps.titleTag !== this.props.titleTag) {
-      document.title = `${this.props.titleTag} | InfluxDB 2.0`
+    if (prevProps.titleTag !== this.props.titleTag && this.props.titleTag) {
+      document.title = `${this.props.titleTag}`
     }
   }
 
