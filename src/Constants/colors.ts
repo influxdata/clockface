@@ -1,4 +1,10 @@
-import {Color, InfluxColors, Gradients, Gradient} from '../Types'
+import {
+  Color,
+  InfluxColors,
+  Gradients,
+  Gradient,
+  DropdownMenuColors,
+} from '../Types'
 
 export const HEX_CODE_CHAR_LENGTH = 7
 
@@ -309,6 +315,23 @@ export const influxGradients = {
   },
 }
 
-export const getColorsFromGradient = (gradient: Gradients): Gradient => {
-  return influxGradients[gradient]
+export const dropdownScrollColors = {
+  Amethyst: {
+    start: InfluxColors.Neutrino,
+    stop: InfluxColors.Hydrogen,
+  },
+  Sapphire: {
+    start: InfluxColors.Neutrino,
+    stop: InfluxColors.Hydrogen,
+  },
+  Malachite: {
+    start: InfluxColors.Neutrino,
+    stop: InfluxColors.Krypton,
+  },
+}
+
+export const getColorsFromGradient = (
+  gradient: Gradients | DropdownMenuColors
+): Gradient => {
+  return dropdownScrollColors[gradient] || influxGradients[gradient]
 }
