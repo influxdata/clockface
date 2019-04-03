@@ -11,7 +11,9 @@ import {PageContents} from './PageContents'
 import './Page.scss'
 
 interface Props {
+  /** Class name for custom styles */
   className?: string
+  /** Controls the browser page title */
   titleTag: string
 }
 

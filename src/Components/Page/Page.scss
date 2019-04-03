@@ -50,14 +50,14 @@
 .page-header--left {
   justify-content: flex-start;
   > * {
-    margin: 0 4px 0 0;
+    margin: 0 $cf-marg-a 0 0;
   }
 }
 
 .page-header--right {
   justify-content: flex-end;
   > * {
-    margin: 0 0 0 4px !important;
+    margin: 0 0 0 $cf-marg-a !important;
 
     &:only-child {
       margin-right: 0 !important;
@@ -79,11 +79,7 @@
 .page-contents {
   width: 100%;
   position: relative;
-  height: calc(100% - #{$page--header-size}) !important;
-
-  &.full-width {
-    padding: 0 $page--gutter;
-  }
+  height: calc(100% - #{$page--header-size});
 
   & > .dapper-scrollbars--track-y {
     background: linear-gradient(
@@ -99,17 +95,46 @@
   padding: $page--gutter;
   padding-top: 0;
   max-width: $page--max-width;
+}
 
-  &.full-width {
-    max-width: 100%;
+/*
+   Full With Page
+   -----------------------------------------------------------------------------
+*/
+
+.container-fluid.full-width {
+  max-width: 100%;
+}
+
+.page-contents.full-width {
+  padding: 0 $page--gutter;
+}
+
+.page-contents.dapper-scrollbars.full-width {
+  padding: 0;
+
+  & > .dapper-scrollbars--wrapper > .dapper-scrollbars--content {
+    padding: 0 $page--gutter;
   }
 }
 
-/* Presentation Mode */
+/*
+   Presentation Mode
+   -----------------------------------------------------------------------------
+*/
+
 .page-contents.presentation-mode {
-  height: 100% !important;
+  height: 100%;
 
   .container-fluid {
-    padding: 8px;
+    padding: $cf-marg-b;
+  }
+}
+
+.page-contents.dapper-scrollbars.presentation-mode {
+  padding: 0;
+
+  & > .dapper-scrollbars--wrapper > .dapper-scrollbars--content {
+    padding: $cf-marg-b;
   }
 }

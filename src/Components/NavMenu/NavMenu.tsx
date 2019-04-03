@@ -1,5 +1,6 @@
 // Libraries
 import React, {PureComponent} from 'react'
+import classnames from 'classnames'
 import _ from 'lodash'
 
 // Components
@@ -11,6 +12,7 @@ import './NavMenu.scss'
 
 interface PassedProps {
   className?: string
+  presentationMode?: boolean
 }
 
 interface DefaultProps {
@@ -32,11 +34,16 @@ export class NavMenu extends PureComponent<Props> {
   }
 
   public render() {
-    const {children, testID} = this.props
+    const {children, testID, presentationMode} = this.props
 
-    const className = this.props.className
-      ? `nav ${this.props.className}`
-      : 'nav'
+    if (presentationMode) {
+      return null
+    }
+
+    const className = classnames('nav', {
+      [`${this.props.className}`]: this.props.className,
+      'presentation-mode': presentationMode,
+    })
 
     return (
       <nav className={className} data-testid={testID}>

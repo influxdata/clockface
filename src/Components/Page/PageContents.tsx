@@ -6,9 +6,12 @@ import classnames from 'classnames'
 import {DapperScrollbars} from '../DapperScrollbars/DapperScrollbars'
 
 interface Props {
-  children: JSX.Element[] | JSX.Element | ReactNode
+  /** Allows the page contents to fill the width of the screen */
   fullWidth: boolean
+  /** Allows contents to scroll on overflow */
   scrollable: boolean
+  /** PageContents fill the height of the screen in presentation mode */
+  presentationMode?: boolean
 }
 
 export class PageContents extends Component<Props> {
@@ -31,9 +34,12 @@ export class PageContents extends Component<Props> {
   }
 
   private get containerClass(): string {
-    const {fullWidth} = this.props
+    const {fullWidth, presentationMode} = this.props
 
-    return classnames('page-contents', {'full-width': fullWidth})
+    return classnames('page-contents', {
+      'full-width': fullWidth,
+      'presentation-mode': presentationMode,
+    })
   }
 
   private get children(): JSX.Element | JSX.Element[] | ReactNode {

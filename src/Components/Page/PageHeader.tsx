@@ -1,5 +1,5 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {Component, ReactNode} from 'react'
 import classnames from 'classnames'
 
 // Components
@@ -8,14 +8,15 @@ import {PageHeaderCenter} from './PageHeaderCenter'
 import {PageHeaderRight} from './PageHeaderRight'
 
 interface Props {
-  children: JSX.Element[]
+  /** Allows the page header to fill the width of the screen */
   fullWidth: boolean
-  inPresentationMode: boolean
+  /** PageHeader is hidden when in presentation mode */
+  presentationMode: boolean
 }
 
 export class PageHeader extends Component<Props> {
   public static defaultProps = {
-    inPresentationMode: false,
+    presentationMode: false,
   }
 
   public static Left = PageHeaderLeft
@@ -23,9 +24,9 @@ export class PageHeader extends Component<Props> {
   public static Right = PageHeaderRight
 
   public render() {
-    const {inPresentationMode} = this.props
+    const {presentationMode} = this.props
 
-    if (inPresentationMode) {
+    if (presentationMode) {
       return null
     }
 
@@ -44,62 +45,21 @@ export class PageHeader extends Component<Props> {
     })
   }
 
-  private childTypeIsValid = (child: JSX.Element): boolean =>
-    child.type === PageHeaderLeft ||
-    child.type === PageHeaderCenter ||
-    child.type === PageHeaderRight
-
-  private get children(): JSX.Element[] {
+  private get children(): ReactNode[] | ReactNode {
     const {children} = this.props
 
-    if (React.Children.count(children) === 0) {
-      throw new Error(
-        '<Page.Header> requires 1 child of each type: <Page.Header.Left> and <Page.Header.Right>'
-      )
-    }
-
-    React.Children.forEach(children, (child: JSX.Element) => {
-      if (!this.childTypeIsValid(child)) {
-        throw new Error(
-          '<Page.Header> expected children of type <Page.Header.Left>, <Page.Header.Center>, or <Page.Header.Right>'
-        )
-      }
-    })
-
-    let leftChildCount = 0
-    let centerChildCount = 0
-    let rightChildCount = 0
     let centerWidthPixels = 0
 
     React.Children.forEach(children, (child: JSX.Element) => {
-      if (child.type === PageHeaderLeft) {
-        leftChildCount += 1
-      }
-
       if (child.type === PageHeaderCenter) {
-        centerChildCount += 1
         centerWidthPixels = child.props.widthPixels
-      }
-
-      if (child.type === PageHeaderRight) {
-        rightChildCount += 1
       }
     })
 
-    if (leftChildCount > 1 || centerChildCount > 1 || rightChildCount > 1) {
-      throw new Error(
-        '<Page.Header> expects at most 1 of each child type: <Page.Header.Left>, <Page.Header.Center>, or <Page.Header.Right>'
-      )
-    }
-
-    if (leftChildCount === 0 || rightChildCount === 0) {
-      throw new Error(
-        '<Page.Header> requires 1 child of each type: <Page.Header.Left> and <Page.Header.Right>'
-      )
-    }
+    let childArray = children
 
     if (centerWidthPixels) {
-      return React.Children.map(children, (child: JSX.Element) => {
+      childArray = React.Children.map(children, (child: JSX.Element) => {
         if (child.type === PageHeaderLeft) {
           return (
             <PageHeaderLeft
@@ -118,10 +78,10 @@ export class PageHeader extends Component<Props> {
           )
         }
 
-        return <PageHeaderCenter {...child.props} />
+        return child
       })
     }
 
-    return children
+    return childArray
   }
 }

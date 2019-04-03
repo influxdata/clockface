@@ -2,7 +2,9 @@
 import React, {PureComponent} from 'react'
 
 interface Props {
+  /** Text to display in PageTitle */
   title: string
+  /** Alternate text for screen readers */
   altText?: string
 }
 

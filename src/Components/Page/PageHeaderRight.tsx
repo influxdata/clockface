@@ -5,7 +5,7 @@ import React, {Component, CSSProperties} from 'react'
 import {DEFAULT_OFFSET} from '../../Constants/pageLayout'
 
 interface Props {
-  children?: JSX.Element[] | JSX.Element | string | number
+  /** If a PageHeaderCenter is present PageHeaderRight will automatically get assigned this value */
   offsetPixels: number
 }
 

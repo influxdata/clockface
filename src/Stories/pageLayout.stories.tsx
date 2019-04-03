@@ -3,8 +3,9 @@ import {storiesOf} from '@storybook/react'
 import {AppWrapper} from '../Components/AppWrapper/AppWrapper'
 import {NavMenu} from '../Components/NavMenu/NavMenu'
 import {Page} from '../Components/Page/Page'
+import {Button} from '../Components/Button/Button'
 import {withKnobs, boolean, text, select} from '@storybook/addon-knobs'
-import {IconFont} from '../Types'
+import {IconFont, ComponentColor} from '../Types'
 import {mapEnumKeys} from '../../.storybook/utils'
 
 const pageLayout = storiesOf('Page Layout', module).addDecorator(withKnobs)
@@ -12,7 +13,7 @@ const pageLayout = storiesOf('Page Layout', module).addDecorator(withKnobs)
 pageLayout.add('Example Page', () => (
   <div className="mockPage">
     <AppWrapper>
-      <NavMenu>
+      <NavMenu presentationMode={boolean('presentationMode', false)}>
         <NavMenu.Item
           title="Data"
           icon={IconFont.Disks}
@@ -51,17 +52,21 @@ pageLayout.add('Example Page', () => (
         />
       </NavMenu>
       <Page titleTag="bloop">
-        <Page.Header fullWidth={boolean('fullWidth', true)}>
+        <Page.Header
+          fullWidth={boolean('fullWidth', true)}
+          presentationMode={boolean('presentationMode', false)}
+        >
           <Page.Header.Left>
             <Page.Title title="Page Title" />
           </Page.Header.Left>
           <Page.Header.Right>
-            <p>sdfsdf</p>
+            <Button text="Header Button" color={ComponentColor.Primary} />
           </Page.Header.Right>
         </Page.Header>
         <Page.Contents
           fullWidth={boolean('fullWidth', true)}
           scrollable={boolean('scrollable', true)}
+          presentationMode={boolean('presentationMode', false)}
         >
           <p>sdfsdfsdf</p>
         </Page.Contents>

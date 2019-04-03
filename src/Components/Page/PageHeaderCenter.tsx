@@ -2,13 +2,10 @@
 import React, {Component, CSSProperties} from 'react'
 
 // Constants
-import {
-  DEFAULT_PAGE_HEADER_CENTER_WIDTH,
-  CENTER_MIN_CHILD_COUNT,
-} from '../../Constants/pageLayout'
+import {DEFAULT_PAGE_HEADER_CENTER_WIDTH} from '../../Constants/pageLayout'
 
 interface Props {
-  children: JSX.Element[] | JSX.Element | string | number
+  /** Must have a fixed width in pixels */
   widthPixels: number
 }
 
@@ -20,23 +17,11 @@ export class PageHeaderCenter extends Component<Props> {
   public render() {
     const {children} = this.props
 
-    this.validateChildCount()
-
     return (
       <div className="page-header--center" style={this.styles}>
         {children}
       </div>
     )
-  }
-
-  private validateChildCount = (): void => {
-    const {children} = this.props
-
-    if (React.Children.count(children) < CENTER_MIN_CHILD_COUNT) {
-      throw new Error(
-        'Page.Header.Left require at least 1 child element. We recommend using <Page.Title />'
-      )
-    }
   }
 
   private get styles(): CSSProperties {
