@@ -10,19 +10,14 @@ import {NavMenuSubItem} from './NavMenuSubItem'
 // Styles
 import './NavMenu.scss'
 
-interface PassedProps {
+interface Props {
   /** Class name for custom styles */
   className?: string
   /** NavMenu is hidden in presentation mode */
   presentationMode?: boolean
-}
-
-interface DefaultProps {
   /** Test ID for Integration Tests */
   testID: string
 }
-
-type Props = PassedProps & Partial<DefaultProps>
 
 export class NavMenu extends PureComponent<Props> {
   public static defaultProps = {

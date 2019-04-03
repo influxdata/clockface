@@ -8,7 +8,7 @@ import {IconFont} from '../../Types'
 // Components
 import {Icon} from '../Icon/Icon'
 
-interface PassedProps {
+interface Props {
   /** Title of tab, visible on hover */
   title: string
   /** Icon to display on tab */
@@ -19,17 +19,12 @@ interface PassedProps {
   active: boolean
   /** Class name for custom styles */
   className?: string
-}
-
-interface DefaultProps {
   /** Test ID for Integration Tests */
   testID: string
 }
 
-type Props = PassedProps & Partial<DefaultProps>
-
 export class NavMenuItem extends PureComponent<Props> {
-  public static defaultProps: DefaultProps = {
+  public static defaultProps = {
     testID: 'nav-menu--item',
   }
 
