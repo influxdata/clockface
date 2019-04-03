@@ -5,7 +5,7 @@ import classnames from 'classnames'
 interface Props {
   /** Render prop for linked title text (suggested <a /> or <Link /> ) */
   titleLink: (className: string) => JSX.Element
-  /** Render prop for linked title text (suggested <a /> or <Link /> ) */
+  /** Render prop for linked icon component (suggested <a /> or <Link /> ) */
   iconLink: (className: string) => JSX.Element
   /** Controls highlighting of the menu item */
   active: boolean
