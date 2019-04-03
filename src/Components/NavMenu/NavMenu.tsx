@@ -11,11 +11,14 @@ import {NavMenuSubItem} from './NavMenuSubItem'
 import './NavMenu.scss'
 
 interface PassedProps {
+  /** Class name for custom styles */
   className?: string
+  /** NavMenu is hidden in presentation mode */
   presentationMode?: boolean
 }
 
 interface DefaultProps {
+  /** Test ID for Integration Tests */
   testID: string
 }
 

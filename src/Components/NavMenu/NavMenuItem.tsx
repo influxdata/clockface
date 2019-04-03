@@ -9,14 +9,20 @@ import {IconFont} from '../../Types'
 import {Icon} from '../Icon/Icon'
 
 interface PassedProps {
+  /** Title of tab, visible on hover */
   title: string
+  /** Icon to display on tab */
   icon: IconFont
+  /** Pass in an <a /> or <Link /> element */
   linkElement: JSX.Element
+  /** Controls highlighting of the menu item */
   active: boolean
+  /** Class name for custom styles */
   className?: string
 }
 
 interface DefaultProps {
+  /** Test ID for Integration Tests */
   testID: string
 }
 
