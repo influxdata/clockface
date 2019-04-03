@@ -68,7 +68,12 @@ pageLayout.add('Example Page', () => (
           scrollable={boolean('scrollable', true)}
           presentationMode={boolean('presentationMode', false)}
         >
-          <p>sdfsdfsdf</p>
+          <div className="mockComponent pageContents">
+            <h4>
+              Here's some dummy text to help show where page contents are and
+              for scrolling
+            </h4>
+          </div>
         </Page.Contents>
       </Page>
     </AppWrapper>
