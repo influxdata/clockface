@@ -14,7 +14,15 @@ alertStories.add('Alert Component', () => (
     color={
       ComponentColor[select('color', mapEnumKeys(ComponentColor), 'Primary')]
     }
-    icon={IconFont[select('icon', mapEnumKeys(IconFont), 'AlertTriangle')]}
+    icon={
+      IconFont[
+        select(
+          'icon',
+          {None: 'none', ...mapEnumKeys(IconFont)},
+          'AlertTriangle'
+        )
+      ]
+    }
   >
     {text('text', 'Alert Text')}
   </Alert>
