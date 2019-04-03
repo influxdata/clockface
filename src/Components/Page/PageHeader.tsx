@@ -32,7 +32,9 @@ export class PageHeader extends Component<Props> {
 
     return (
       <div className={this.className} data-testid="page-header">
-        <div className="page-header--container">{this.children}</div>
+        <div className="page-header--container">
+          {this.childrenWithCorrectWidths}
+        </div>
       </div>
     )
   }
@@ -45,7 +47,7 @@ export class PageHeader extends Component<Props> {
     })
   }
 
-  private get children(): ReactNode[] | ReactNode | undefined {
+  private get childrenWithCorrectWidths(): ReactNode[] | ReactNode | undefined {
     const {children} = this.props
 
     let centerWidthPixels = 0
