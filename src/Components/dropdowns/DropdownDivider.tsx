@@ -2,25 +2,27 @@
 import React, {Component} from 'react'
 import classnames from 'classnames'
 
-// Types
-import {DropdownChild} from '../../Types'
-
 interface Props {
+  /** id used as list key */
   id: string
-  text: string
-  children?: DropdownChild
+  /** Text to be displayed on divider, a line will be displayed if no text is provided */
+  text?: string
+  /** Test ID for Integration Tests */
+  testID: string
 }
 
 export class DropdownDivider extends Component<Props> {
   public static defaultProps = {
-    text: '',
+    testID: 'dropdown--divider',
   }
-
   public render() {
-    const {text} = this.props
+    const {text, testID} = this.props
 
     return (
-      <div className={classnames('dropdown--divider', {line: !text})}>
+      <div
+        className={classnames('dropdown--divider', {line: !text})}
+        data-testid={testID}
+      >
         {text}
       </div>
     )

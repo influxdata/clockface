@@ -19,22 +19,40 @@ import {
   IconFont,
 } from '../../Types'
 
+// Constants
+import {getColorsFromGradient} from '../../Constants/colors'
+
 interface Props {
-  children: JSX.Element[]
+  /** Function to be called on select or deselect of list item */
   onChange: (selectedIDs: string[], value: any) => void
+  /** Tracks the currently selected items */
   selectedIDs: string[]
-  buttonColor: ComponentColor
-  buttonSize: ComponentSize
-  menuColor: DropdownMenuColors
-  wrapText: boolean
-  maxMenuHeight: number
-  emptyText: string
-  separatorText: string
-  customClass?: string
-  onCollapse?: () => void
-  status?: ComponentStatus
+  /** Width of the dropdown in pixels */
   widthPixels?: number
+  /** Render an icon on the left side of the toggle button */
   icon?: IconFont
+  /** Changes the coloration of the dropdown toggle button */
+  buttonColor: ComponentColor
+  /** Changes the size of the dropdown toggle button */
+  buttonSize: ComponentSize
+  /** Changes the coloration of the dropdown menu independent of the toggle button */
+  menuColor: DropdownMenuColors
+  /** If `true` the contents of each dropdown item will not exceed the width of the dropdown toggle button (aka `widthPixels`) */
+  wrapText: boolean
+  /** Pixel height after which the dropdown menu will scroll */
+  maxMenuHeight: number
+  /** Text to display when no items are selected */
+  emptyText: string
+  /** Delineator for list of selected items */
+  separatorText: string
+  /** Useful when you want to apply custom positioning to the dropdown or override the appearance */
+  customClass?: string
+  /** Function to be called on collapse of dropdown list */
+  onCollapse?: () => void
+  /** Used to change the state of the component. Currently only accepts `Default` and `Disabled` */
+  status: ComponentStatus
+  /** Test ID for Integration Tests */
+  testID: string
 }
 
 interface State {
@@ -51,6 +69,7 @@ export class MultiSelectDropdown extends Component<Props, State> {
     menuColor: DropdownMenuColors.Sapphire,
     emptyText: 'Choose an item',
     separatorText: ', ',
+    testID: 'multi-select-dropdown',
   }
 
   public static Button = DropdownButton
@@ -66,9 +85,15 @@ export class MultiSelectDropdown extends Component<Props, State> {
   }
 
   public render() {
+    const {testID} = this.props
+
     return (
       <ClickOutside onClickOutside={this.collapseMenu}>
-        <div className={this.containerClassName} style={this.containerStyle}>
+        <div
+          className={this.containerClassName}
+          style={this.containerStyle}
+          data-testid={testID}
+        >
           {this.button}
           {this.menuItems}
         </div>
@@ -124,10 +149,10 @@ export class MultiSelectDropdown extends Component<Props, State> {
       separatorText,
     } = this.props
     const {expanded} = this.state
-    const children: JSX.Element[] = this.props.children
+    const {children} = this.props
 
-    const selectedChildren = children.filter(child =>
-      _.includes(selectedIDs, child.props.id)
+    const selectedChildren = React.Children.toArray(children).filter(child =>
+      _.includes(selectedIDs, _.get(child, 'props.id', null))
     )
 
     let label: string | Array<string | JSX.Element>
@@ -136,14 +161,14 @@ export class MultiSelectDropdown extends Component<Props, State> {
       label = selectedChildren.map((sc, i) => {
         if (i < selectedChildren.length - 1) {
           return (
-            <Fragment key={sc.props.id}>
-              {sc.props.children}
+            <Fragment key={_.get(sc, 'props.id', null)}>
+              {_.get(sc, 'props.children', null)}
               {separatorText}
             </Fragment>
           )
         }
 
-        return sc.props.children
+        return _.get(sc, 'props.children', null)
       })
     } else {
       label = emptyText
@@ -167,10 +192,12 @@ export class MultiSelectDropdown extends Component<Props, State> {
     const {selectedIDs, maxMenuHeight, menuColor, children} = this.props
     const {expanded} = this.state
 
+    const scrollColors = getColorsFromGradient(menuColor)
+
     if (expanded) {
       return (
         <div
-          className={`dropdown--menu-container dropdown--${menuColor}`}
+          className={`dropdown--menu-container dropdown--${menuColor.toLowerCase()}`}
           style={this.menuStyle}
         >
           <DapperScrollbars
@@ -180,6 +207,8 @@ export class MultiSelectDropdown extends Component<Props, State> {
             }}
             autoHide={false}
             autoSize={true}
+            thumbStartColor={scrollColors && scrollColors.start}
+            thumbStopColor={scrollColors && scrollColors.stop}
           >
             <div className="dropdown--menu" data-testid="dropdown-menu">
               {React.Children.map(children, (child: JSX.Element) => {

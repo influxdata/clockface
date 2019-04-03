@@ -2,16 +2,18 @@
 import React, {Component, MouseEvent} from 'react'
 import classnames from 'classnames'
 
-// Types
-import {DropdownChild} from '../../Types'
-
 interface Props {
+  /** id used as list key */
   id: string
-  children: DropdownChild
+  /** Item value to be used with 'on X' functions */
   value: any
+  /** Whether or not the item should have selected styling */
   selected: boolean
+  /** Renders a checkbox */
   checkbox: boolean
+  /** When a dropdown item is clicked, its `value` prop is returned via `onChange` */
   onClick?: (value: any) => void
+  /** Test ID for Integration Tests */
   testID?: string
 }
 

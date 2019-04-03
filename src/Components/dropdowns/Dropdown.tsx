@@ -1,6 +1,7 @@
 // Libraries
 import React, {Component, MouseEvent} from 'react'
 import classnames from 'classnames'
+import _ from 'lodash'
 
 // Components
 import {DropdownDivider} from './DropdownDivider'
@@ -12,26 +13,21 @@ import {DapperScrollbars} from '../DapperScrollbars/DapperScrollbars'
 
 // Types
 import {
-  DropdownMenuColors,
-  ComponentStatus,
-  ComponentColor,
-  ComponentSize,
   IconFont,
+  DropdownMode,
+  ComponentSize,
+  ComponentColor,
+  ComponentStatus,
+  DropdownMenuColors,
 } from '../../Types'
 
-export enum DropdownMode {
-  ActionList = 'action',
-  Radio = 'radio',
-}
+// Constants
+import {getColorsFromGradient} from '../../Constants/colors'
 
-interface ThumbColors {
-  start: string
-  stop: string
-}
+// Styles
+import './Dropdown.scss'
 
 interface Props {
-  /** Array of dropdown elements */
-  children: JSX.Element[]
   /** When a dropdown item is clicked, its `value` prop is returned via `onChange` */
   onChange: (value: any) => void
   /** If the dropdown's mode is `Radio` then `selectedID` is required to track the currently selected item */
@@ -158,7 +154,9 @@ export class Dropdown extends Component<Props, State> {
     const {expanded} = this.state
     const {children} = this.props
 
-    const selectedChild = children.find(child => child.props.id === selectedID)
+    const selectedChild = React.Children.toArray(children).find(
+      child => _.get(child, 'props.id', null) === selectedID
+    )
     const isLoading = status === ComponentStatus.Loading
 
     let resolvedStatus = status
@@ -167,7 +165,7 @@ export class Dropdown extends Component<Props, State> {
     if (isLoading) {
       dropdownLabel = <WaitingText text="Loading" />
     } else if (selectedChild) {
-      dropdownLabel = selectedChild.props.children
+      dropdownLabel = _.get(selectedChild, 'props.children', null)
     } else if (mode === DropdownMode.ActionList) {
       dropdownLabel = titleText
     } else {
@@ -219,11 +217,11 @@ export class Dropdown extends Component<Props, State> {
       width = `${menuWidthPixels}px`
     }
 
-    const {start, stop} = this.thumbColorsFromTheme
+    const scrollColors = getColorsFromGradient(menuColor)
 
     return (
       <div
-        className={`dropdown--menu-container dropdown--${menuColor}`}
+        className={`dropdown--menu-container dropdown--${menuColor.toLowerCase()}`}
         style={{width}}
       >
         <DapperScrollbars
@@ -233,8 +231,8 @@ export class Dropdown extends Component<Props, State> {
           }}
           autoSize={true}
           autoHide={false}
-          thumbStartColor={start}
-          thumbStopColor={stop}
+          thumbStartColor={scrollColors && scrollColors.start}
+          thumbStopColor={scrollColors && scrollColors.stop}
         >
           <div
             className="dropdown--menu"
@@ -265,30 +263,6 @@ export class Dropdown extends Component<Props, State> {
         </DapperScrollbars>
       </div>
     )
-  }
-
-  private get thumbColorsFromTheme(): ThumbColors {
-    const {menuColor} = this.props
-
-    switch (menuColor) {
-      case DropdownMenuColors.Amethyst:
-      case DropdownMenuColors.Sapphire:
-        return {
-          start: '#BEF0FF',
-          stop: '#6BDFFF',
-        }
-      case DropdownMenuColors.Malachite:
-        return {
-          start: '#BEF0FF',
-          stop: '#A5F3B4',
-        }
-      default:
-      case DropdownMenuColors.Onyx:
-        return {
-          start: '#22ADF6',
-          stop: '#9394FF',
-        }
-    }
   }
 
   private handleItemClick = (value: any): void => {

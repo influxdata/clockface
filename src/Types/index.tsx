@@ -59,17 +59,16 @@ export enum Gradients {
 }
 
 export enum DropdownMenuColors {
-  Amethyst = 'amethyst',
-  Malachite = 'malachite',
-  Sapphire = 'sapphire',
-  Onyx = 'onyx',
+  Amethyst = 'Amethyst',
+  Malachite = 'Malachite',
+  Sapphire = 'Sapphire',
+  Onyx = 'Onyx',
 }
 
-export type DropdownChild =
-  | Array<string | JSX.Element | Element>
-  | string
-  | JSX.Element
-  | Element
+export enum DropdownMode {
+  ActionList = 'action',
+  Radio = 'radio',
+}
 
 export enum ButtonShape {
   Default = 'none',

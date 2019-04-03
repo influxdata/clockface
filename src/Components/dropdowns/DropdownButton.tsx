@@ -2,26 +2,38 @@
 import React, {Component, MouseEvent} from 'react'
 import classnames from 'classnames'
 
+// Components
+import {Icon} from '../Icon/Icon'
+
 // Types
 import {
-  ComponentStatus,
-  ComponentColor,
-  ComponentSize,
   IconFont,
-  DropdownChild,
   ButtonType,
+  ComponentSize,
+  ComponentColor,
+  ComponentStatus,
 } from '../../Types'
 
+// Styles
+import './DropdownButton.scss'
+
 interface Props {
-  children: DropdownChild
+  /** Function to be called on click of dropdown button */
   onClick: (e: MouseEvent<HTMLElement>) => void
+  /** Button status state default, loading, or disabled */
   status: ComponentStatus
+  /** Button color */
   color: ComponentColor
+  /** Button size */
   size: ComponentSize
+  /** Toggles button highlighted active state */
   active: boolean
+  /** Icon to be displayed to the left of text or in place of text */
   icon?: IconFont
+  /** Text to be displayed on hover tooltip */
   title?: string
-  testID?: string
+  /** Test ID for Integration Tests */
+  testID: string
 }
 
 export class DropdownButton extends Component<Props> {
@@ -30,10 +42,11 @@ export class DropdownButton extends Component<Props> {
     size: ComponentSize.Small,
     status: ComponentStatus.Default,
     active: false,
+    testID: 'dropdown--button',
   }
 
   public render() {
-    const {onClick, children, title, testID} = this.props
+    const {onClick, children, title, icon, testID} = this.props
     return (
       <button
         className={this.classname}
@@ -43,7 +56,7 @@ export class DropdownButton extends Component<Props> {
         type={ButtonType.Button}
         data-testid={testID}
       >
-        {this.icon}
+        {!!icon && <Icon glyph={icon} className="dropdown--icon" />}
         <span className="dropdown--selected">{children}</span>
         <span className="dropdown--caret icon caret-down" />
       </button>
@@ -72,15 +85,5 @@ export class DropdownButton extends Component<Props> {
       [`button-${size}`]: size,
       active,
     })
-  }
-
-  private get icon(): JSX.Element | undefined {
-    const {icon} = this.props
-
-    if (icon) {
-      return <span className={`dropdown--icon icon ${icon}`} />
-    }
-
-    return
   }
 }
