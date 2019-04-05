@@ -3,10 +3,9 @@ import {storiesOf} from '@storybook/react'
 import {AppWrapper} from '../Components/AppWrapper/AppWrapper'
 import {NavMenu} from '../Components/NavMenu/NavMenu'
 import {Page} from '../Components/Page/Page'
-import {Button} from '../Components/Button/Button'
 import {Icon} from '../Components/Icon/Icon'
 import {withKnobs, boolean, text, select, number} from '@storybook/addon-knobs'
-import {IconFont, ComponentColor} from '../Types'
+import {IconFont} from '../Types'
 import {mapEnumKeys} from '../../.storybook/utils'
 
 const pageLayout = storiesOf('Page Layout', module).addDecorator(withKnobs)
@@ -94,8 +93,13 @@ pageLayout.add('Example Page', () => (
           <Page.Header.Left>
             <Page.Title title={text('PageTitle title', 'Page Title')} />
           </Page.Header.Left>
+          <Page.Header.Center
+            widthPixels={number('PageHeaderCenter width', 100)}
+          >
+            <div className="mockComponent stretch">Center</div>
+          </Page.Header.Center>
           <Page.Header.Right>
-            <Button text="Header Button" color={ComponentColor.Primary} />
+            <div className="mockComponent stretch">Right</div>
           </Page.Header.Right>
         </Page.Header>
         <Page.Contents
