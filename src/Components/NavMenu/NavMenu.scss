@@ -11,13 +11,6 @@
   background-color: $g3-castle;
   border-radius: 0 0 $cf-radius $cf-radius;
   height: $nav-menu--size;
-
-  a:link,
-  a:active,
-  a:visited,
-  a:hover {
-    text-decoration: none;
-  }
 }
 
 .nav--item {
@@ -201,5 +194,21 @@
 
   &:last-child {
     border-bottom-right-radius: $cf-radius;
+  }
+}
+
+/*
+  Link Styles
+  ------------------------------------------------------------------------------
+*/
+
+.nav--item,
+.nav--item-header,
+.nav--sub-item {
+  &:link,
+  &:active,
+  &:visited,
+  &:hover {
+    text-decoration: none;
   }
 }
