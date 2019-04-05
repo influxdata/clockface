@@ -5,7 +5,7 @@ import {NavMenu} from '../Components/NavMenu/NavMenu'
 import {Page} from '../Components/Page/Page'
 import {Button} from '../Components/Button/Button'
 import {Icon} from '../Components/Icon/Icon'
-import {withKnobs, boolean, text, select} from '@storybook/addon-knobs'
+import {withKnobs, boolean, text, select, number} from '@storybook/addon-knobs'
 import {IconFont, ComponentColor} from '../Types'
 import {mapEnumKeys} from '../../.storybook/utils'
 
@@ -103,7 +103,10 @@ pageLayout.add('Example Page', () => (
           fullHeight={boolean('presentationMode', false)}
           scrollable={boolean('scrollable', true)}
         >
-          <div className="mockComponent pageContents">
+          <div
+            className="mockComponent pageContents"
+            style={{height: `${number('MockContents Height', 1200)}px`}}
+          >
             <h4>
               Here's some dummy text to help show where page contents are and
               for scrolling
