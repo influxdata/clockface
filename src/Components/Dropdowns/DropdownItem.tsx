@@ -5,7 +5,7 @@ import classnames from 'classnames'
 interface Props {
   /** id used as list key */
   id: string
-  /** Item value to be used with 'on X' functions */
+  /** Returned via the onClick function */
   value: any
   /** Whether or not the item should have selected styling */
   selected: boolean
