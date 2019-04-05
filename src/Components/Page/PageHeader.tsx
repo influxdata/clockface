@@ -12,11 +12,14 @@ interface Props {
   fullWidth: boolean
   /** Prevents NavMenu from rendering (used in presentation mode) */
   hide: boolean
+  /** Test ID for Integration Tests */
+  testID: string
 }
 
 export class PageHeader extends Component<Props> {
   public static defaultProps = {
     hide: false,
+    testID: 'page-header',
   }
 
   public static Left = PageHeaderLeft
@@ -24,14 +27,14 @@ export class PageHeader extends Component<Props> {
   public static Right = PageHeaderRight
 
   public render() {
-    const {hide} = this.props
+    const {hide, testID} = this.props
 
     if (hide) {
       return null
     }
 
     return (
-      <div className={this.className} data-testid="page-header">
+      <div className={this.className} data-testid={testID}>
         <div className="page-header--container">
           {this.childrenWithCorrectWidths}
         </div>

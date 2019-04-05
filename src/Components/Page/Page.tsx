@@ -13,22 +13,26 @@ import './Page.scss'
 interface Props {
   /** Class name for custom styles */
   className?: string
-  /** Initial value for browser page title */
-  loadingTitleTag?: string
-  /** Value for browser page title after component updates */
+  /** Use this prop to update document.title when the page first renders &  on subsequent updates */
   titleTag?: string
+  /** Test ID for Integration Tests */
+  testID: string
 }
 
 export class Page extends Component<Props> {
+  public static defaultProps = {
+    testID: 'page',
+  }
+
   public static Header = PageHeader
   public static Title = PageTitle
   public static Contents = PageContents
 
   public componentDidMount() {
-    const {loadingTitleTag} = this.props
+    const {titleTag} = this.props
 
-    if (loadingTitleTag) {
-      document.title = `${loadingTitleTag}`
+    if (titleTag) {
+      document.title = `${titleTag}`
     }
   }
 
@@ -39,9 +43,13 @@ export class Page extends Component<Props> {
   }
 
   public render() {
-    const {children} = this.props
+    const {children, testID} = this.props
 
-    return <div className={this.className}>{children}</div>
+    return (
+      <div className={this.className} data-testid={testID}>
+        {children}
+      </div>
+    )
   }
 
   private get className(): string {
