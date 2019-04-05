@@ -50,7 +50,7 @@ export class Panel extends Component<Props> {
           [`panel__${this.useContrastText}-text`]: this.useContrastText,
         })}
         style={this.style}
-        data-testID={testID}
+        data-testid={testID}
       >
         {children}
       </div>
