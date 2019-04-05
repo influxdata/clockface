@@ -14,13 +14,14 @@ interface Props {
   /** When a dropdown item is clicked, its `value` prop is returned via `onChange` */
   onClick?: (value: any) => void
   /** Test ID for Integration Tests */
-  testID?: string
+  testID: string
 }
 
 export class DropdownItem extends Component<Props> {
   public static defaultProps = {
     checkbox: false,
     selected: false,
+    testID: 'dropdown-item',
   }
 
   public render(): JSX.Element {
