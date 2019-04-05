@@ -53,10 +53,6 @@ export class PageContents extends Component<Props> {
       return children
     }
 
-    return (
-      <div className="page-contents--center">
-        <div className="row">{children}</div>
-      </div>
-    )
+    return <div className="page-contents--center">{children}</div>
   }
 }
