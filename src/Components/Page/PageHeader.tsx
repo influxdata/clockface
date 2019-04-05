@@ -32,7 +32,7 @@ export class PageHeader extends Component<Props> {
 
     return (
       <div className={this.className} data-testid="page-header">
-        <div className="page-header--center">
+        <div className="page-header--container">
           {this.childrenWithCorrectWidths}
         </div>
       </div>
