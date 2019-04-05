@@ -25,7 +25,7 @@ export class DropdownItem extends Component<Props> {
   }
 
   public render(): JSX.Element {
-    const {selected, checkbox, id} = this.props
+    const {selected, checkbox, testID} = this.props
 
     return (
       <div
@@ -34,7 +34,7 @@ export class DropdownItem extends Component<Props> {
           active: selected && !checkbox,
           'multi-select--item': checkbox,
         })}
-        data-testid={`dropdown--item ${id}`}
+        data-testid={testID}
         onClick={this.handleClick}
       >
         {this.checkBox}
