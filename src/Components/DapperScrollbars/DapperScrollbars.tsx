@@ -32,6 +32,8 @@ interface Props {
   autoHide: boolean
   /** Translate content sizes to holder */
   autoSize: boolean
+  /** Test ID for Integration Tests */
+  testID: string
 }
 
 export class DapperScrollbars extends Component<Props> {
@@ -46,6 +48,7 @@ export class DapperScrollbars extends Component<Props> {
     thumbStopColor: '#9394FF',
     autoHide: false,
     autoSize: true,
+    testID: 'dapper-scrollbars',
   }
 
   public render() {
@@ -60,6 +63,7 @@ export class DapperScrollbars extends Component<Props> {
       autoSize,
       noScroll,
       children,
+      testID,
       style,
     } = this.props
 
@@ -70,6 +74,7 @@ export class DapperScrollbars extends Component<Props> {
 
     return (
       <Scrollbar
+        data-testid={testID}
         translateContentSizesToHolder={autoSize}
         className={classname}
         style={style}
