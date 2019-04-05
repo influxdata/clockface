@@ -27,13 +27,16 @@
 }
 
 .mockComponent {
-  background-color: $c-comet;
+  @include gradient-h($c-comet, $c-laser);
   border-radius: $cf-radius;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   align-content: center;
-  color: $g20-white;
+  color: $g2-kevlar;
+  font-weight: 700;
+  font-size: 12px;
+  min-height: $form-sm-height;
 
   &.box {
     width: 100px;
@@ -46,7 +49,7 @@
   }
 
   &.input {
-    height: 30px;
+    height: $form-sm-height;
     width: 200px;
   }
 
@@ -56,6 +59,7 @@
   }
 
   &.pageContents {
+    color: $g20-white;
     width: 100%;
     height: 1200px;
     border-radius: 0;

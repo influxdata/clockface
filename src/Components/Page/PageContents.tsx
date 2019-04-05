@@ -12,11 +12,19 @@ interface Props {
   fullHeight?: boolean
   /** Allows contents to scroll on overflow */
   scrollable: boolean
+  /** Test ID for Integration Tests */
+  testID: string
 }
 
 export class PageContents extends Component<Props> {
+  public static defaultProps = {
+    fullHeight: false,
+    scrollable: false,
+    testID: 'page-contents',
+  }
+
   public render() {
-    const {scrollable} = this.props
+    const {scrollable, testID} = this.props
 
     if (scrollable) {
       return (
@@ -24,6 +32,7 @@ export class PageContents extends Component<Props> {
           className={this.className}
           autoHide={false}
           autoSize={false}
+          testID={testID}
         >
           <div className="page-contents--padding">{this.children}</div>
         </DapperScrollbars>
@@ -31,7 +40,7 @@ export class PageContents extends Component<Props> {
     }
 
     return (
-      <div className={this.className}>
+      <div className={this.className} data-testid={testID}>
         <div className="page-contents--padding">{this.children}</div>
       </div>
     )
@@ -53,10 +62,6 @@ export class PageContents extends Component<Props> {
       return children
     }
 
-    return (
-      <div className="page-contents--center">
-        <div className="row">{children}</div>
-      </div>
-    )
+    return <div className="page-contents--container">{children}</div>
   }
 }

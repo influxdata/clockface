@@ -35,7 +35,7 @@ export class NavMenu extends PureComponent<Props> {
     const {children, testID, hide} = this.props
 
     if (hide) {
-      return null
+      return
     }
 
     const className = classnames('nav', {

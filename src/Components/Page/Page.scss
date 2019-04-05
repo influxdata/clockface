@@ -27,7 +27,7 @@
   align-items: center;
 }
 
-.page-header--center {
+.page-header--container {
   display: flex;
   padding: 0 $page--gutter;
   align-items: center;
@@ -38,7 +38,8 @@
 }
 
 .page-header--left,
-.page-header--right {
+.page-header--right,
+.page-header--center {
   display: flex;
   align-items: center;
 }
@@ -48,6 +49,10 @@
   > * {
     margin: 0 $cf-marg-a 0 0;
   }
+}
+
+.page-header--center {
+  justify-content: center;
 }
 
 .page-header--right {
@@ -88,11 +93,12 @@
 }
 
 .page-contents--padding {
+  min-height: 100%;
   padding: $page--gutter;
   padding-top: 0;
 }
 
-.page-contents--center {
+.page-contents--container {
   margin: 0 auto;
   max-width: $page--max-width;
 }
@@ -106,11 +112,11 @@
   padding: 0 $page--gutter;
 }
 
-.page-contents--center.full-width {
+.page-contents--container.full-width {
   max-width: 100%;
 }
 
-.page-header.full-width .page-header--center {
+.page-header.full-width .page-header--container {
   max-width: 100%;
 }
 
@@ -119,7 +125,7 @@
   ------------------------------------------------------------------------------
 */
 
-.page-contents.dapper-scrollbars .page-contents--padding {
+.page-contents.dapper-scrollbars > .page-contents--padding {
   padding-bottom: $page--gutter;
 }
 

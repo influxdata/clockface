@@ -5,7 +5,7 @@ import classnames from 'classnames'
 interface Props {
   /** id used as list key */
   id: string
-  /** Item value to be used with 'on X' functions */
+  /** Returned via the onClick function */
   value: any
   /** Whether or not the item should have selected styling */
   selected: boolean
@@ -14,17 +14,18 @@ interface Props {
   /** When a dropdown item is clicked, its `value` prop is returned via `onChange` */
   onClick?: (value: any) => void
   /** Test ID for Integration Tests */
-  testID?: string
+  testID: string
 }
 
 export class DropdownItem extends Component<Props> {
   public static defaultProps = {
     checkbox: false,
     selected: false,
+    testID: 'dropdown-item',
   }
 
   public render(): JSX.Element {
-    const {selected, checkbox, id} = this.props
+    const {selected, checkbox, testID} = this.props
 
     return (
       <div
@@ -33,7 +34,7 @@ export class DropdownItem extends Component<Props> {
           active: selected && !checkbox,
           'multi-select--item': checkbox,
         })}
-        data-testid={`dropdown--item ${id}`}
+        data-testid={testID}
         onClick={this.handleClick}
       >
         {this.checkBox}

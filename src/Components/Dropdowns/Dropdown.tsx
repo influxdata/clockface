@@ -29,7 +29,7 @@ import './Dropdown.scss'
 
 interface Props {
   /** When a dropdown item is clicked, its `value` prop is returned via `onChange` */
-  onChange: (value: any) => void
+  onChange?: (value: any) => void
   /** If the dropdown's mode is `Radio` then `selectedID` is required to track the currently selected item */
   selectedID?: string
   /** Width of the dropdown in pixels */
@@ -267,7 +267,9 @@ export class Dropdown extends Component<Props, State> {
 
   private handleItemClick = (value: any): void => {
     const {onChange} = this.props
-    onChange(value)
+    if (onChange) {
+      onChange(value)
+    }
     this.collapseMenu()
   }
 }
