@@ -88,6 +88,7 @@
 }
 
 .page-contents--padding {
+  min-height: 100%;
   padding: $page--gutter;
   padding-top: 0;
 }
@@ -119,7 +120,7 @@
   ------------------------------------------------------------------------------
 */
 
-.page-contents.dapper-scrollbars .page-contents--padding {
+.page-contents.dapper-scrollbars > .page-contents--padding {
   padding-bottom: $page--gutter;
 }
 
