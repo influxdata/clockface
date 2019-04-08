@@ -17,12 +17,17 @@ interface Props {
   disabled: boolean
   /** Text to be displayed on hover tooltip when radio button is disabled */
   disabledTitleText: string
+  /** Test ID for Integration Tests */
+  testID: string
+  /** Class name for custom styles */
+  className?: string
 }
 
 export class RadioButton extends Component<Props> {
   public static defaultProps = {
     disabled: false,
     disabledTitleText: 'This option is disabled',
+    testID: 'radio--button',
   }
 
   public render() {
@@ -42,11 +47,12 @@ export class RadioButton extends Component<Props> {
   }
 
   private get className(): string {
-    const {active, disabled} = this.props
+    const {active, disabled, className} = this.props
 
     return classnames('radio-button', {
       active,
       disabled,
+      [`${className}`]: className,
     })
   }
 
