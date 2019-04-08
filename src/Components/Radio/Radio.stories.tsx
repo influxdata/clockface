@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {storiesOf} from '@storybook/react'
 import {Radio} from './Radio'
-import {withKnobs, text, radios, boolean} from '@storybook/addon-knobs'
+import {withKnobs, text, radios, boolean, select} from '@storybook/addon-knobs'
 import {ComponentColor, ComponentSize, ButtonShape} from '../../Types'
 import {mapEnumKeys} from '../../../.storybook/utils'
 
@@ -15,9 +15,11 @@ enum RadioOption {
 
 radioStories.add('Radio Component', () => (
   <Radio
-    size={ComponentSize[radios('size', mapEnumKeys(ComponentSize))]}
-    color={ComponentColor[radios('color', mapEnumKeys(ComponentColor))]}
-    shape={ButtonShape[radios('shape', mapEnumKeys(ButtonShape))]}
+    size={ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]}
+    color={
+      ComponentColor[select('color', mapEnumKeys(ComponentColor), 'Default')]
+    }
+    shape={ButtonShape[select('shape', mapEnumKeys(ButtonShape), 'Default')]}
   >
     <Radio.Button
       titleText={text('tooltipText', 'Tooltip Text')}

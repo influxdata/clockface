@@ -12,8 +12,6 @@ import {ComponentColor, ComponentSize, ButtonShape} from '../../Types'
 import './Radio.scss'
 
 interface Props {
-  /** Class name for custom styles */
-  customClass?: string
   /** Radio color */
   color: ComponentColor
   /** Radio size */
@@ -22,6 +20,8 @@ interface Props {
   shape: ButtonShape
   /** Test ID for Integration Tests */
   testID: string
+  /** Class name for custom styles */
+  className?: string
 }
 
 export class Radio extends Component<Props> {
@@ -47,14 +47,14 @@ export class Radio extends Component<Props> {
   }
 
   private get containerClassName(): string {
-    const {color, size, shape, customClass} = this.props
+    const {color, size, shape, className} = this.props
 
     return classnames('radio-buttons', {
       [`radio-buttons--${color}`]: color,
       [`radio-buttons--${size}`]: size,
       'radio-buttons--square': shape === ButtonShape.Square,
       'radio-buttons--stretch': shape === ButtonShape.StretchToFit,
-      [`${customClass}`]: customClass,
+      [`${className}`]: className,
     })
   }
 
