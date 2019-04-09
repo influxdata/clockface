@@ -53,11 +53,11 @@
   &.bell:before {
     content: '\e934';
   }
-  &.bell-ringing:before {
-    content: '\e935';
-  }
   &.bell-solid:before {
     content: '\e937';
+  }
+  &.brush:before {
+    content: '\e93d';
   }
   &.capacitor2:before {
     content: '\e923';
@@ -148,9 +148,6 @@
   }
   &.google:before {
     content: '\e92a';
-  }
-  &.graphline-2:before {
-    content: '\e924';
   }
   &.group:before {
     content: '\e908';
@@ -251,14 +248,26 @@
   &.zap:before {
     content: '\e932';
   }
+  &.bell-ringing:before {
+    content: '\e935';
+  }
   &.calendar:before {
     content: '\e938';
+  }
+  &.cloud:before {
+    content: '\e93f';
   }
   &.cubo-nav:before {
     content: '\e91a';
   }
   &.dashboards:before {
     content: '\e93a';
+  }
+  &.graphline-2:before {
+    content: '\e924';
+  }
+  &.nav-chat:before {
+    content: '\e941';
   }
   &.users-duo:before {
     content: '\e93b';
