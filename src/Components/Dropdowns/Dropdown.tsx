@@ -41,7 +41,7 @@ interface Props {
   /** Render an icon on the left side of the toggle button */
   icon?: IconFont
   /** Useful when you want to apply custom positioning to the dropdown or override the appearance */
-  customClass?: string
+  className?: string
   /** Changes the coloration of the dropdown toggle button */
   buttonColor: ComponentColor
   /** Changes the size of the dropdown toggle button */
@@ -122,7 +122,7 @@ export class Dropdown extends Component<Props, State> {
       buttonColor,
       buttonSize,
       status,
-      customClass,
+      className,
       mode,
       wrapMenuText,
     } = this.props
@@ -133,7 +133,7 @@ export class Dropdown extends Component<Props, State> {
         disabled: status === ComponentStatus.Disabled,
         'dropdown-wrap': wrapMenuText,
         'dropdown-truncate': !wrapMenuText,
-        customClass: customClass,
+        className: className,
         [`dropdown--${mode}`]: mode,
       }
     )

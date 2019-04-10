@@ -30,7 +30,7 @@ interface Props {
   /** Keyboard control tab order  */
   tabIndex?: number
   /** Class name for custom styles */
-  customClass?: string
+  className?: string
   /** Button color */
   color: ComponentColor
   /** Button size */
@@ -124,7 +124,7 @@ export class Button extends Component<Props> {
   }
 
   private get className(): string {
-    const {color, size, shape, status, active, customClass} = this.props
+    const {color, size, shape, status, active, className} = this.props
 
     return classnames(`button button-${size} button-${color}`, {
       'button-square': shape === ButtonShape.Square,
@@ -132,7 +132,7 @@ export class Button extends Component<Props> {
       'button--loading': status === ComponentStatus.Loading,
       'button--disabled': status === ComponentStatus.Disabled,
       active,
-      [`${customClass}`]: customClass,
+      [`${className}`]: className,
     })
   }
 }

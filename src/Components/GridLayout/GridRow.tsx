@@ -1,9 +1,12 @@
 // Libraries
 import React, {Component} from 'react'
+import classnames from 'classnames'
 
 interface Props {
   /** Test ID for Integration Tests */
   testID: string
+  /** Class name for custom styles */
+  className?: string
 }
 
 export class GridRow extends Component<Props> {
@@ -15,9 +18,15 @@ export class GridRow extends Component<Props> {
     const {children, testID} = this.props
 
     return (
-      <div className="grid--row" data-testid={testID}>
+      <div className={this.className} data-testid={testID}>
         {children}
       </div>
     )
+  }
+
+  private get className(): string {
+    const {className} = this.props
+
+    return classnames('grid--row', {[`${className}`]: className})
   }
 }

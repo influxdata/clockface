@@ -52,7 +52,7 @@ interface Props {
   /** Width of the text field in pixels */
   widthPixels?: number
   /** Class name for custom styles */
-  customClass?: string
+  className?: string
   /** Maximum string length for input value */
   maxLength?: number
   /** Keyboard control tab order  */
@@ -228,7 +228,7 @@ export class Input extends Component<Props> {
   }
 
   private get className(): string {
-    const {size, status, icon, customClass} = this.props
+    const {size, status, icon, className} = this.props
 
     return classnames('input', {
       [`input-${size}`]: size,
@@ -237,7 +237,7 @@ export class Input extends Component<Props> {
       'input--error': status === ComponentStatus.Error,
       'input--loading': status === ComponentStatus.Loading,
       'input--disabled': status === ComponentStatus.Disabled,
-      [`${customClass}`]: customClass,
+      [`${className}`]: className,
     })
   }
 

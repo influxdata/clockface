@@ -14,7 +14,7 @@ import './EmptyState.scss'
 
 interface Props {
   /** Class name for custom styles */
-  customClass?: string
+  className?: string
   /** Empty State component size */
   size: ComponentSize
   /** Test ID for Integration Tests */
@@ -41,11 +41,11 @@ export class EmptyState extends Component<Props> {
   }
 
   private get className(): string {
-    const {customClass, size} = this.props
+    const {className, size} = this.props
 
     return classnames('empty-state', {
       [`empty-state--${size}`]: size,
-      [`${customClass}`]: customClass,
+      [`${className}`]: className,
     })
   }
 }

@@ -26,6 +26,8 @@ interface Props {
   tooltipText: string
   /** Test ID for Integration Tests */
   testID: string
+  /** Class name for custom styles */
+  className?: string
 }
 
 export class SlideToggle extends Component<Props> {
@@ -65,11 +67,14 @@ export class SlideToggle extends Component<Props> {
   }
 
   private get className(): string {
-    const {size, color, disabled, active} = this.props
+    const {size, color, disabled, active, className} = this.props
 
-    return classnames(
-      `slide-toggle slide-toggle-${size} slide-toggle-${color}`,
-      {active, disabled}
-    )
+    return classnames('slide-toggle', {
+      active,
+      disabled,
+      [`${className}`]: className,
+      [`slide-toggle-${size}`]: size,
+      [`slide-toggle-${color}`]: color,
+    })
   }
 }

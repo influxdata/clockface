@@ -27,7 +27,7 @@ interface Props {
   /** Input status state */
   status?: ComponentStatus
   /** Class name for custom styles */
-  customClass?: string
+  className?: string
   /** Function to be called on field value change */
   onChange?: (s: string) => void
   /** Function to be called on focus loss */
@@ -149,11 +149,11 @@ export class TextArea extends Component<Props> {
   }
 
   private get className(): string {
-    const {size, customClass} = this.props
+    const {size, className} = this.props
 
     return classnames('text-area--container', {
       [`input-${size}`]: size,
-      [`customClass`]: customClass,
+      [`className`]: className,
     })
   }
 
