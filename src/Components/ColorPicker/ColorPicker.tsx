@@ -1,5 +1,6 @@
 // Libraries
 import React, {Component, ChangeEvent} from 'react'
+import classnames from 'classnames'
 import _ from 'lodash'
 
 // Components
@@ -29,6 +30,8 @@ interface Props {
   colors: Color[]
   /** Prevent focus from leaving the input */
   maintainInputFocus: boolean
+  /** Class name for custom styles */
+  className?: string
   /** Test ID for Integration Tests */
   testID: string
 }
@@ -56,7 +59,7 @@ export class ColorPicker extends Component<Props, State> {
     const {maintainInputFocus, testID, color, colors} = this.props
 
     return (
-      <div className="color-picker" data-testid={testID}>
+      <div className={this.className} data-testid={testID}>
         <div className="color-picker--swatches">
           {colors &&
             colors.map(color => (
@@ -71,7 +74,7 @@ export class ColorPicker extends Component<Props, State> {
         </div>
         <div className="color-picker--form">
           <Input
-            customClass="color-picker--input"
+            className="color-picker--input"
             placeholder="#000000"
             value={color}
             onChange={this.handleInputChange}
@@ -93,6 +96,12 @@ export class ColorPicker extends Component<Props, State> {
         {this.errorMessage}
       </div>
     )
+  }
+
+  private get className(): string {
+    const {className} = this.props
+
+    return classnames('color-picker', {[`${className}`]: className})
   }
 
   private get inputStatus(): ComponentStatus {
