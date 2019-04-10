@@ -1,5 +1,6 @@
 // Libraries
 import React, {Component} from 'react'
+import classnames from 'classnames'
 
 interface Props {
   /** Color name */
@@ -10,6 +11,8 @@ interface Props {
   onClick: (hex: string) => void
   /** Test ID for Integration Tests */
   testID: string
+  /** Class name for custom styles */
+  className?: string
 }
 
 export class ColorPickerSwatch extends Component<Props> {
@@ -22,7 +25,7 @@ export class ColorPickerSwatch extends Component<Props> {
 
     return (
       <div
-        className="color-picker--swatch"
+        className={this.className}
         title={name}
         onClick={this.handleClick}
         data-testid={`${testID}--swatch`}
@@ -30,6 +33,12 @@ export class ColorPickerSwatch extends Component<Props> {
         <span style={{backgroundColor: hex}} />
       </div>
     )
+  }
+
+  private get className(): string {
+    const {className} = this.props
+
+    return classnames('color-picker--swatch', {[`${className}`]: className})
   }
 
   private handleClick = (): void => {

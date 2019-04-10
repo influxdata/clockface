@@ -24,6 +24,8 @@ interface Props {
   offsetLG?: Columns
   /** Test ID for Integration Tests */
   testID: string
+  /** Class name for custom styles */
+  className?: string
 }
 
 export class GridColumn extends Component<Props> {
@@ -52,9 +54,11 @@ export class GridColumn extends Component<Props> {
       offsetSM,
       offsetMD,
       offsetLG,
+      className,
     } = this.props
 
     return classnames('grid--column', {
+      [`${className}`]: className,
       [`col-xs-${widthXS}`]: widthXS,
       [`col-sm-${widthSM}`]: widthSM,
       [`col-md-${widthMD}`]: widthMD,

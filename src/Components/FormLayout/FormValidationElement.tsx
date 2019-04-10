@@ -1,5 +1,6 @@
 // Libraries
 import React, {Component} from 'react'
+import classnames from 'classnames'
 
 // Components
 import {FormLabel} from './FormLabel'
@@ -28,6 +29,8 @@ interface Props {
   required?: boolean
   /** Test ID for Integration Tests */
   testID: string
+  /** Class name for custom styles */
+  className?: string
 }
 
 interface State {
@@ -71,13 +74,19 @@ export class FormValidationElement extends Component<Props, State> {
     const {testID} = this.props
 
     return (
-      <div className="form--element" data-testid={testID}>
+      <div className={this.className} data-testid={testID}>
         {this.label}
         {this.children}
         {this.errorMessage}
         {this.helpText}
       </div>
     )
+  }
+
+  private get className(): string {
+    const {className} = this.props
+
+    return classnames('form--element', {[`${className}`]: className})
   }
 
   private get label(): JSX.Element | undefined {
