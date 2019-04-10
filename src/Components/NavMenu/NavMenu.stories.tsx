@@ -6,7 +6,9 @@ import {withKnobs, boolean, text, select, radios} from '@storybook/addon-knobs'
 import {IconFont} from '../../Types'
 import {mapEnumKeys} from '../../../.storybook/utils'
 
-const navMenuStories = storiesOf('NavMenu', module).addDecorator(withKnobs)
+const navMenuStories = storiesOf('Components|Navigation', module).addDecorator(
+  withKnobs
+)
 
 enum NavItems {
   First = 'First',

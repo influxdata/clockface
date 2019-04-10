@@ -7,7 +7,7 @@ import _ from 'lodash'
 import {DropdownDivider} from './DropdownDivider'
 import {DropdownItem} from './DropdownItem'
 import {DropdownButton} from './DropdownButton'
-import {ClickOutside} from '../../Utilities/ClickOutside/ClickOutside'
+import {ClickOutside} from '../ClickOutside/ClickOutside'
 import {DapperScrollbars} from '../DapperScrollbars/DapperScrollbars'
 
 // Types

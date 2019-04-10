@@ -7,7 +7,9 @@ import {withKnobs, text, select} from '@storybook/addon-knobs'
 import {ComponentColor, IconFont} from '../../Types'
 import {mapEnumKeys} from '../../../.storybook/utils'
 
-const alertStories = storiesOf('Alerts', module).addDecorator(withKnobs)
+const alertStories = storiesOf('Components|Alerts', module).addDecorator(
+  withKnobs
+)
 
 alertStories.add('Alert Component', () => (
   <Alert

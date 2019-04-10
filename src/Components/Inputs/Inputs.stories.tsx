@@ -11,7 +11,9 @@ import {
 } from '../../Types'
 import {mapEnumKeys} from '../../../.storybook/utils'
 
-const inputsStories = storiesOf('Inputs', module).addDecorator(withKnobs)
+const inputsStories = storiesOf('Components|Inputs', module).addDecorator(
+  withKnobs
+)
 
 inputsStories.add('Input Component (Text)', () => (
   <Input

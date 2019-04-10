@@ -5,9 +5,10 @@ import {withKnobs, text, radios, boolean} from '@storybook/addon-knobs'
 import {ComponentColor, ComponentSize} from '../../Types'
 import {mapEnumKeys} from '../../../.storybook/utils'
 
-const slideToggleStories = storiesOf('Slide Toggle', module).addDecorator(
-  withKnobs
-)
+const slideToggleStories = storiesOf(
+  'Components|Slide Toggles',
+  module
+).addDecorator(withKnobs)
 
 slideToggleStories.add('SlideToggle Component', () => (
   <SlideToggle

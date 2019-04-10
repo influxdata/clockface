@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 
 // Components
 import {FlexDirection, JustifyContent, AlignItems} from '../../Types'
-import {ComponentSpacer} from '../../Utilities/ComponentSpacer/ComponentSpacer'
+import {ComponentSpacer} from '../ComponentSpacer/ComponentSpacer'
 
 interface Props {
   /** Title of Panel */
