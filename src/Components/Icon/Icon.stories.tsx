@@ -5,7 +5,7 @@ import {withKnobs, select} from '@storybook/addon-knobs'
 import {IconFont} from '../../Types'
 import {mapEnumKeys} from '../../../.storybook/utils'
 
-const iconStories = storiesOf('Icon', module).addDecorator(withKnobs)
+const iconStories = storiesOf('Elements|Icon', module).addDecorator(withKnobs)
 
 iconStories.add('Icon Component', () => (
   <div className="story--container story-large embiggen">

@@ -4,9 +4,10 @@ import {ColorPicker} from './ColorPicker'
 import {ColorPickerSwatch} from './ColorPickerSwatch'
 import {withKnobs, text, color} from '@storybook/addon-knobs'
 
-const colorPickerStories = storiesOf('ColorPicker', module).addDecorator(
-  withKnobs
-)
+const colorPickerStories = storiesOf(
+  'Components|Color Pickers',
+  module
+).addDecorator(withKnobs)
 
 colorPickerStories.add('ColorPicker Component', () => (
   <div className="story--container story-large">

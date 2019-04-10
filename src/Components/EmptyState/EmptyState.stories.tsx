@@ -9,9 +9,10 @@ import {withKnobs, text, select, array} from '@storybook/addon-knobs'
 import {ComponentSize} from '../../Types'
 import {mapEnumKeys} from '../../../.storybook/utils'
 
-const emptyStateStories = storiesOf('EmptyState', module).addDecorator(
-  withKnobs
-)
+const emptyStateStories = storiesOf(
+  'Components|Empty States',
+  module
+).addDecorator(withKnobs)
 
 emptyStateStories.add('EmptyState Component Family', () => (
   <EmptyState

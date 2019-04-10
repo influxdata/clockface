@@ -13,7 +13,9 @@ import {withKnobs, object, text, select, boolean} from '@storybook/addon-knobs'
 import {Columns, ComponentStatus} from '../../Types'
 import {mapEnumKeys} from '../../../.storybook/utils'
 
-const formStories = storiesOf('Form', module).addDecorator(withKnobs)
+const formStories = storiesOf('Components|Forms', module).addDecorator(
+  withKnobs
+)
 
 const handleValidation = () => {
   return null

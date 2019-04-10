@@ -7,7 +7,9 @@ import {withKnobs, radios, number} from '@storybook/addon-knobs'
 import {ComponentSize, RemoteDataState} from '../../Types'
 import {mapEnumKeys} from '../../../.storybook/utils'
 
-const spinnerStories = storiesOf('Spinners', module).addDecorator(withKnobs)
+const spinnerStories = storiesOf('Components|Spinners', module).addDecorator(
+  withKnobs
+)
 
 spinnerStories.add('Spinner Container', () => (
   <SpinnerContainer

@@ -5,9 +5,11 @@ import {DapperScrollbars} from './DapperScrollbars'
 
 import {withKnobs, boolean, color} from '@storybook/addon-knobs'
 
-const scrollbarStories = storiesOf('Scrollbars', module).addDecorator(withKnobs)
+const scrollbarStories = storiesOf('Utilities|Scrollbars', module).addDecorator(
+  withKnobs
+)
 
-scrollbarStories.add('DapperScrollbars Component', () => (
+scrollbarStories.add('Example', () => (
   <div className="scroll--container">
     <DapperScrollbars
       removeTracksWhenNotUsed={boolean('removeTracksWhenNotUsed', false)}

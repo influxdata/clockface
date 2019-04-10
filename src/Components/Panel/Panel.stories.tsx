@@ -5,7 +5,9 @@ import {withKnobs, text, select} from '@storybook/addon-knobs'
 import {Gradients, ComponentSize} from '../../Types'
 import {mapEnumKeys} from '../../../.storybook/utils'
 
-const panelStories = storiesOf('Panel', module).addDecorator(withKnobs)
+const panelStories = storiesOf('Components|Panels', module).addDecorator(
+  withKnobs
+)
 
 panelStories.add('Panel Family', () => (
   <Panel

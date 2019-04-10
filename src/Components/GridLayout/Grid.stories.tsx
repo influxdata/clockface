@@ -9,7 +9,7 @@ import {withKnobs, select} from '@storybook/addon-knobs'
 import {Columns} from '../../Types'
 import {mapEnumKeys} from '../../../.storybook/utils'
 
-const gridStories = storiesOf('Grids', module).addDecorator(withKnobs)
+const gridStories = storiesOf('Layout|Grid', module).addDecorator(withKnobs)
 
 gridStories.add('Grid Component', () => (
   <Grid>

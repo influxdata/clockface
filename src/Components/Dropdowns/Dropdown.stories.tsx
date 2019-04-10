@@ -25,7 +25,9 @@ import {
 } from '../../Types'
 import {mapEnumKeys} from '../../../.storybook/utils'
 
-const dropdownStories = storiesOf('Dropdowns', module).addDecorator(withKnobs)
+const dropdownStories = storiesOf('Components|Dropdowns', module).addDecorator(
+  withKnobs
+)
 
 dropdownStories.add('Dropdown Component', () => {
   const dropdownValues1 = array('Dropdown Values 1', [

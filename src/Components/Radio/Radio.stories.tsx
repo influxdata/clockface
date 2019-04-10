@@ -5,7 +5,9 @@ import {withKnobs, text, radios, boolean, select} from '@storybook/addon-knobs'
 import {ComponentColor, ComponentSize, ButtonShape} from '../../Types'
 import {mapEnumKeys} from '../../../.storybook/utils'
 
-const radioStories = storiesOf('Radio', module).addDecorator(withKnobs)
+const radioStories = storiesOf('Components|Radios', module).addDecorator(
+  withKnobs
+)
 
 enum RadioOption {
   First = 'First',

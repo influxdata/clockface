@@ -12,7 +12,9 @@ import {
 } from '../../Types'
 import {mapEnumKeys} from '../../../.storybook/utils'
 
-const buttonStories = storiesOf('Button', module).addDecorator(withKnobs)
+const buttonStories = storiesOf('Components|Buttons', module).addDecorator(
+  withKnobs
+)
 
 buttonStories.add('Button Component', () => (
   <Button

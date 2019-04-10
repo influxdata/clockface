@@ -1,16 +1,18 @@
 import * as React from 'react'
 import {storiesOf} from '@storybook/react'
-import {AppWrapper} from '../Components/AppWrapper/AppWrapper'
-import {NavMenu} from '../Components/NavMenu/NavMenu'
-import {Page} from '../Components/Page/Page'
-import {Icon} from '../Components/Icon/Icon'
-import {withKnobs, boolean, text, select, number} from '@storybook/addon-knobs'
-import {IconFont} from '../Types'
-import {mapEnumKeys} from '../../.storybook/utils'
+import {AppWrapper} from '../AppWrapper/AppWrapper'
+import {NavMenu} from '../NavMenu/NavMenu'
+import {Page} from './Page'
+import {Icon} from '../Icon/Icon'
+import {withKnobs, boolean, text, number} from '@storybook/addon-knobs'
+import {IconFont} from '../../Types'
 
-const pageLayout = storiesOf('Page Layout', module).addDecorator(withKnobs)
+const layoutStories = storiesOf(
+  'Examples|Application Layout',
+  module
+).addDecorator(withKnobs)
 
-pageLayout.add('Example Page', () => (
+layoutStories.add('AppWrapper + Nav + Page', () => (
   <div className="mockPage">
     <AppWrapper>
       <NavMenu hide={boolean('presentationMode', false)}>
@@ -68,48 +70,35 @@ pageLayout.add('Example Page', () => (
         <NavMenu.Item
           titleLink={className => (
             <a className={className} href="#">
-              {text('NavMenuItem text', 'Bananas')}
+              Bananas
             </a>
           )}
           iconLink={className => (
             <a className={className} href="#">
-              <Icon
-                glyph={
-                  IconFont[
-                    select('NavMenuItem icon', mapEnumKeys(IconFont), 'Bell')
-                  ]
-                }
-              />
+              <Icon glyph={IconFont.Bell} />
             </a>
           )}
-          active={boolean('NavMenuItem active', false)}
+          active={false}
         />
       </NavMenu>
       <Page titleTag="bloop">
         <Page.Header
-          fullWidth={boolean('fullWidth', true)}
+          fullWidth={boolean('fullWidth', false)}
           hide={boolean('presentationMode', false)}
         >
           <Page.Header.Left>
             <Page.Title title={text('PageTitle title', 'Page Title')} />
           </Page.Header.Left>
-          <Page.Header.Center
-            widthPixels={number('PageHeaderCenter width', 100)}
-          >
-            <div className="mockComponent stretch">Center</div>
-          </Page.Header.Center>
-          <Page.Header.Right>
-            <div className="mockComponent stretch">Right</div>
-          </Page.Header.Right>
+          <Page.Header.Right />
         </Page.Header>
         <Page.Contents
-          fullWidth={boolean('fullWidth', true)}
+          fullWidth={boolean('fullWidth', false)}
           fullHeight={boolean('presentationMode', false)}
           scrollable={boolean('scrollable', true)}
         >
           <div
             className="mockComponent pageContents"
-            style={{height: `${number('MockContents Height', 1200)}px`}}
+            style={{height: `${number('mock contents height', 1200)}px`}}
           >
             <h4>
               Here's some dummy text to help show where page contents are and
