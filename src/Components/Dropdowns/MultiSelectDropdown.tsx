@@ -46,7 +46,7 @@ interface Props {
   /** Delineator for list of selected items */
   separatorText: string
   /** Useful when you want to apply custom positioning to the dropdown or override the appearance */
-  customClass?: string
+  className?: string
   /** Function to be called on collapse of dropdown list */
   onCollapse?: () => void
   /** Used to change the state of the component. Currently only accepts `Default` and `Disabled` */
@@ -126,14 +126,14 @@ export class MultiSelectDropdown extends Component<Props, State> {
   }
 
   private get containerClassName(): string {
-    const {buttonColor, buttonSize, status, wrapText, customClass} = this.props
+    const {buttonColor, buttonSize, status, wrapText, className} = this.props
 
     return classnames(
       `dropdown dropdown-${buttonSize} dropdown-${buttonColor}`,
       {
         disabled: status === ComponentStatus.Disabled,
         'dropdown-wrap': wrapText,
-        customClass: customClass,
+        className: className,
       }
     )
   }
