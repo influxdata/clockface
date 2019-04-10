@@ -18,6 +18,8 @@ interface Props {
   icon?: IconFont
   /** Test ID for Integration Tests */
   testID: string
+  /** Class name for custom styles */
+  className?: string
 }
 
 export class Alert extends Component<Props> {
@@ -37,11 +39,12 @@ export class Alert extends Component<Props> {
   }
 
   private get className(): string {
-    const {color, icon} = this.props
+    const {color, icon, className} = this.props
 
     return classnames('alert', {
       [`alert--${color}`]: color,
       'alert--has-icon': icon,
+      [`${className}`]: className,
     })
   }
 }
