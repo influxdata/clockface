@@ -5,7 +5,7 @@ import classnames from 'classnames'
 import chroma from 'chroma-js'
 
 // Types
-import {Gradients, ComponentSize} from '../../Types'
+import {Gradients, ComponentSize, InfluxColors} from '../../Types'
 
 // Constants
 import {getColorsFromGradient} from '../../Constants/colors'
@@ -21,8 +21,10 @@ import './Panel.scss'
 interface Props {
   /** Class name for custom styles */
   className?: string
-  /** Optional color theme of panel */
+  /** Optional gradient theme of panel, supercedes backgroundColor prop */
   gradient?: Gradients
+  /** Optional background color of panel */
+  backgroundColor: InfluxColors | string
   /** Controls header font size and padding of Panel */
   size: ComponentSize
   /** Test ID for Integration Tests */
@@ -33,6 +35,7 @@ export class Panel extends Component<Props> {
   public static defaultProps = {
     size: ComponentSize.Small,
     testID: 'panel',
+    backgroundColor: InfluxColors.Castle,
   }
 
   public static Header = PanelHeader
@@ -57,32 +60,32 @@ export class Panel extends Component<Props> {
     )
   }
 
-  private get useContrastText(): string | boolean {
-    const {gradient} = this.props
-
-    if (!gradient) {
-      return false
-    }
-
-    const {start} = getColorsFromGradient(gradient)
+  private get useContrastText(): string {
+    const {gradient, backgroundColor} = this.props
 
     const mediumGrey = 0.34
-    return chroma(start).luminance() >= mediumGrey ? 'dark' : 'light'
+
+    if (gradient) {
+      const {start} = getColorsFromGradient(gradient)
+      return chroma(start).luminance() >= mediumGrey ? 'dark' : 'light'
+    }
+
+    return chroma(backgroundColor).luminance() >= mediumGrey ? 'dark' : 'light'
   }
 
   private get style(): CSSProperties | undefined {
-    const {gradient} = this.props
+    const {gradient, backgroundColor} = this.props
 
-    if (!gradient) {
-      return
+    if (gradient) {
+      const colors = getColorsFromGradient(gradient)
+
+      return {
+        background: `linear-gradient(45deg,  ${colors.start} 0%,${
+          colors.stop
+        } 100%)`,
+      }
     }
 
-    const colors = getColorsFromGradient(gradient)
-
-    return {
-      background: `linear-gradient(45deg,  ${colors.start} 0%,${
-        colors.stop
-      } 100%)`,
-    }
+    return {backgroundColor}
   }
 }
