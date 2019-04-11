@@ -1,8 +1,8 @@
 import * as React from 'react'
 import {storiesOf} from '@storybook/react'
 import {Panel} from './Panel'
-import {withKnobs, text, select} from '@storybook/addon-knobs'
-import {Gradients, ComponentSize} from '../../Types'
+import {withKnobs, text, select, color} from '@storybook/addon-knobs'
+import {Gradients, ComponentSize, InfluxColors} from '../../Types'
 import {mapEnumKeys} from '../../../.storybook/utils'
 
 const panelStories = storiesOf('Components|Panels', module).addDecorator(
@@ -16,6 +16,7 @@ panelStories.add('Panel Family', () => (
         select('gradient', {None: 'none', ...mapEnumKeys(Gradients)}, 'None')
       ]
     }
+    backgroundColor={color('backgroundColor', `${InfluxColors.Castle}`)}
     size={ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]}
   >
     <Panel.Header title={text('title', 'Steel Panel')} />
