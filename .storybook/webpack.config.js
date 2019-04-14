@@ -31,6 +31,14 @@ module.exports = ({config}) => {
         'sass-loader?sourceMap',
       ],
       include: path.resolve(__dirname, '../'),
+    },
+    {
+      test: /\.md$/,
+      use: [
+        {
+          loader: 'file-loader',
+        },
+      ],
     }
   )
 
@@ -45,7 +53,8 @@ module.exports = ({config}) => {
     '.woff2',
     '.eot',
     '.ttf',
-    '.svg'
+    '.svg',
+    '.md',
   )
 
   return config

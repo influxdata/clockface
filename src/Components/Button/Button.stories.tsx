@@ -12,9 +12,27 @@ import {
 } from '../../Types'
 import {mapEnumKeys} from '../../../.storybook/utils'
 
-const buttonStories = storiesOf('Components|Buttons', module).addDecorator(
-  withKnobs
-)
+import README from './README.md'
+
+// const readme = `# Button Component
+
+// SWOGGLES
+// sdfsdf
+// sdfsdf
+
+// import {Button} from '@influxdata/clockface'
+
+// > sdfdsfsdfsdf
+
+// <!-- PROPS -->`
+
+const buttonStories = storiesOf('Components|Buttons', module)
+  .addDecorator(withKnobs)
+  .addParameters({
+    readme: {
+      sidebar: README,
+    },
+  })
 
 buttonStories.add('Button Component', () => (
   <Button
