@@ -1,4 +1,5 @@
 import {addDecorator, configure, addParameters} from '@storybook/react'
+import clockfaceTheme from './clockfaceTheme'
 import {withInfo} from '@storybook/addon-info'
 import {darkTheme, TableComponent} from './StoryLayout'
 
@@ -13,6 +14,7 @@ addDecorator(
 
 addParameters({
   options: {
+    theme: clockfaceTheme,
     panelPosition: 'right',
   },
 })
