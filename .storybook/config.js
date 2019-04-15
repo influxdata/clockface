@@ -5,7 +5,7 @@ import {darkTheme, TableComponent} from './StoryLayout'
 addDecorator(
   withInfo({
     inline: true,
-    source: true,
+    source: false,
     styles: darkTheme,
     TableComponent,
   })
