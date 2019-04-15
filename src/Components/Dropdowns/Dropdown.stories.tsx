@@ -1,12 +1,8 @@
+// Libraries
 import * as React from 'react'
+
+// Storybook
 import {storiesOf} from '@storybook/react'
-
-import {Dropdown} from './Dropdown'
-import {DropdownButton} from './DropdownButton'
-import {DropdownDivider} from './DropdownDivider'
-import {DropdownItem} from './DropdownItem'
-import {MultiSelectDropdown} from './MultiSelectDropdown'
-
 import {
   withKnobs,
   text,
@@ -15,6 +11,17 @@ import {
   select,
   boolean,
 } from '@storybook/addon-knobs'
+import {mapEnumKeys} from '../../../.storybook/utils'
+import {jsxDecorator} from 'storybook-addon-jsx'
+
+// Components
+import {Dropdown} from './Dropdown'
+import {DropdownButton} from './DropdownButton'
+import {DropdownDivider} from './DropdownDivider'
+import {DropdownItem} from './DropdownItem'
+import {MultiSelectDropdown} from './MultiSelectDropdown'
+
+// Types
 import {
   ComponentColor,
   DropdownMenuColors,
@@ -23,11 +30,10 @@ import {
   IconFont,
   DropdownMode,
 } from '../../Types'
-import {mapEnumKeys} from '../../../.storybook/utils'
 
-const dropdownStories = storiesOf('Components|Dropdowns', module).addDecorator(
-  withKnobs
-)
+const dropdownStories = storiesOf('Components|Dropdowns', module)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
 
 dropdownStories.add('Dropdown Component', () => {
   const dropdownValues1 = array('Dropdown Values 1', [

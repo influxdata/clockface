@@ -1,18 +1,23 @@
+// Libraries
 import * as React from 'react'
-import {storiesOf} from '@storybook/react'
 
+// Storybook
+import {storiesOf} from '@storybook/react'
+import {withKnobs, text, select, array} from '@storybook/addon-knobs'
+import {mapEnumKeys} from '../../../.storybook/utils'
+import {jsxDecorator} from 'storybook-addon-jsx'
+
+// Components
 import {EmptyState} from './EmptyState'
 import {EmptyStateText} from './EmptyStateText'
 import {EmptyStateSubText} from './EmptyStateSubText'
 
-import {withKnobs, text, select, array} from '@storybook/addon-knobs'
+// Types
 import {ComponentSize} from '../../Types'
-import {mapEnumKeys} from '../../../.storybook/utils'
 
-const emptyStateStories = storiesOf(
-  'Components|Empty States',
-  module
-).addDecorator(withKnobs)
+const emptyStateStories = storiesOf('Components|Empty States', module)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
 
 emptyStateStories.add('EmptyState Component Family', () => (
   <EmptyState

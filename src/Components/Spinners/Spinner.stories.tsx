@@ -1,15 +1,23 @@
+// Libraries
 import * as React from 'react'
+
+// Storybook
 import {storiesOf} from '@storybook/react'
+import {withKnobs, radios, number} from '@storybook/addon-knobs'
+import {mapEnumKeys} from '../../../.storybook/utils'
+import {jsxDecorator} from 'storybook-addon-jsx'
+
+// Components
 import {SpinnerContainer} from './SpinnerContainer'
 import {SparkleSpinner} from './SparkleSpinner'
 import {TechnoSpinner} from './TechnoSpinner'
-import {withKnobs, radios, number} from '@storybook/addon-knobs'
-import {ComponentSize, RemoteDataState} from '../../Types'
-import {mapEnumKeys} from '../../../.storybook/utils'
 
-const spinnerStories = storiesOf('Components|Spinners', module).addDecorator(
-  withKnobs
-)
+// Types
+import {ComponentSize, RemoteDataState} from '../../Types'
+
+const spinnerStories = storiesOf('Components|Spinners', module)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
 
 spinnerStories.add('Spinner Container', () => (
   <SpinnerContainer

@@ -1,19 +1,26 @@
+// Libraries
 import * as React from 'react'
+
+// Storybook
 import {storiesOf} from '@storybook/react'
-import {ComponentSpacer} from './ComponentSpacer'
 import {withKnobs, select, boolean} from '@storybook/addon-knobs'
+import {mapEnumKeys} from '../../../.storybook/utils'
+import {jsxDecorator} from 'storybook-addon-jsx'
+
+// Components
+import {ComponentSpacer} from './ComponentSpacer'
+
+// Types
 import {
   AlignItems,
   FlexDirection,
   JustifyContent,
   ComponentSize,
 } from '../../Types'
-import {mapEnumKeys} from '../../../.storybook/utils'
 
-const componentSpacerStories = storiesOf(
-  'Layout|ComponentSpacer',
-  module
-).addDecorator(withKnobs)
+const componentSpacerStories = storiesOf('Layout|ComponentSpacer', module)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
 
 componentSpacerStories.add('ComponentSpacer', () => (
   <ComponentSpacer

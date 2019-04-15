@@ -1,15 +1,23 @@
+// Libraries
 import * as React from 'react'
-import {storiesOf} from '@storybook/react'
 
+// Storybook
+import {storiesOf} from '@storybook/react'
+import {withKnobs, select} from '@storybook/addon-knobs'
+import {mapEnumKeys} from '../../../.storybook/utils'
+import {jsxDecorator} from 'storybook-addon-jsx'
+
+// Components
 import {Grid} from './Grid'
 import {GridRow} from './GridRow'
 import {GridColumn} from './GridColumn'
 
-import {withKnobs, select} from '@storybook/addon-knobs'
+// Types
 import {Columns} from '../../Types'
-import {mapEnumKeys} from '../../../.storybook/utils'
 
-const gridStories = storiesOf('Layout|Grid', module).addDecorator(withKnobs)
+const gridStories = storiesOf('Layout|Grid', module)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
 
 gridStories.add('Grid Component', () => (
   <Grid>

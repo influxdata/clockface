@@ -1,13 +1,17 @@
+// Libraries
 import * as React from 'react'
-import {storiesOf} from '@storybook/react'
 
+// Storybook
+import {storiesOf} from '@storybook/react'
+import {withKnobs, boolean, color} from '@storybook/addon-knobs'
+import {jsxDecorator} from 'storybook-addon-jsx'
+
+// Components
 import {DapperScrollbars} from './DapperScrollbars'
 
-import {withKnobs, boolean, color} from '@storybook/addon-knobs'
-
-const scrollbarStories = storiesOf('Utilities|Scrollbars', module).addDecorator(
-  withKnobs
-)
+const scrollbarStories = storiesOf('Utilities|Scrollbars', module)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
 
 scrollbarStories.add('Example', () => (
   <div className="scroll--container">

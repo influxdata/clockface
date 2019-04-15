@@ -1,16 +1,23 @@
+// Libraries
 import * as React from 'react'
+
+// Storybook
 import {storiesOf} from '@storybook/react'
+import {withKnobs, boolean, text, number} from '@storybook/addon-knobs'
+import {jsxDecorator} from 'storybook-addon-jsx'
+
+// Components
 import {AppWrapper} from '../AppWrapper/AppWrapper'
 import {NavMenu} from '../NavMenu/NavMenu'
 import {Page} from './Page'
 import {Icon} from '../Icon/Icon'
-import {withKnobs, boolean, text, number} from '@storybook/addon-knobs'
+
+// Types
 import {IconFont} from '../../Types'
 
-const layoutStories = storiesOf(
-  'Examples|Application Layout',
-  module
-).addDecorator(withKnobs)
+const layoutStories = storiesOf('Examples|Application Layout', module)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
 
 layoutStories.add('AppWrapper + Nav + Page', () => (
   <div className="mockPage">

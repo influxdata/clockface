@@ -1,19 +1,27 @@
+// Libraries
 import * as React from 'react'
+
+// Storybook
 import {storiesOf} from '@storybook/react'
+import {withKnobs, radios, number, text} from '@storybook/addon-knobs'
+import {mapEnumKeys} from '../../../.storybook/utils'
+import {jsxDecorator} from 'storybook-addon-jsx'
+
+// Components
 import {Input, InputType} from './Input'
 import {TextArea} from './TextArea'
-import {withKnobs, radios, number, text} from '@storybook/addon-knobs'
+
+// Types
 import {
   ComponentStatus,
   ComponentSize,
   IconFont,
   AutoComplete,
 } from '../../Types'
-import {mapEnumKeys} from '../../../.storybook/utils'
 
-const inputsStories = storiesOf('Components|Inputs', module).addDecorator(
-  withKnobs
-)
+const inputsStories = storiesOf('Components|Inputs', module)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
 
 inputsStories.add('Input Component (Text)', () => (
   <Input

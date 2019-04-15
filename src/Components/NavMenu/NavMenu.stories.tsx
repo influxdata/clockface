@@ -1,14 +1,22 @@
+// Libraries
 import * as React from 'react'
+
+// Storybook
 import {storiesOf} from '@storybook/react'
+import {mapEnumKeys} from '../../../.storybook/utils'
+import {withKnobs, boolean, text, select, radios} from '@storybook/addon-knobs'
+import {jsxDecorator} from 'storybook-addon-jsx'
+
+// Components
 import {NavMenu} from '../../Components/NavMenu/NavMenu'
 import {Icon} from '../../Components/Icon/Icon'
-import {withKnobs, boolean, text, select, radios} from '@storybook/addon-knobs'
-import {IconFont} from '../../Types'
-import {mapEnumKeys} from '../../../.storybook/utils'
 
-const navMenuStories = storiesOf('Components|Navigation', module).addDecorator(
-  withKnobs
-)
+// Types
+import {IconFont} from '../../Types'
+
+const navMenuStories = storiesOf('Components|Navigation', module)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
 
 enum NavItems {
   First = 'First',

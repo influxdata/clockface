@@ -1,15 +1,21 @@
+// Libraries
 import * as React from 'react'
+
+// Storybook
 import {storiesOf} from '@storybook/react'
-
-import {Alert} from './Alert'
-
+import {jsxDecorator} from 'storybook-addon-jsx'
 import {withKnobs, text, select} from '@storybook/addon-knobs'
-import {ComponentColor, IconFont} from '../../Types'
 import {mapEnumKeys} from '../../../.storybook/utils'
 
-const alertStories = storiesOf('Components|Alerts', module).addDecorator(
-  withKnobs
-)
+// Components
+import {Alert} from './Alert'
+
+// Types
+import {ComponentColor, IconFont} from '../../Types'
+
+const alertStories = storiesOf('Components|Alerts', module)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
 
 alertStories.add('Alert Component', () => (
   <Alert
