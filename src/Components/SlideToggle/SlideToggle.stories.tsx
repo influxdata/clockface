@@ -1,14 +1,21 @@
+// Libraries
 import * as React from 'react'
-import {storiesOf} from '@storybook/react'
-import {SlideToggle} from './SlideToggle'
-import {withKnobs, text, radios, boolean} from '@storybook/addon-knobs'
-import {ComponentColor, ComponentSize} from '../../Types'
-import {mapEnumKeys} from '../../../.storybook/utils'
 
-const slideToggleStories = storiesOf(
-  'Components|Slide Toggles',
-  module
-).addDecorator(withKnobs)
+// Storybook
+import {storiesOf} from '@storybook/react'
+import {withKnobs, text, radios, boolean} from '@storybook/addon-knobs'
+import {mapEnumKeys} from '../../../.storybook/utils'
+import {jsxDecorator} from 'storybook-addon-jsx'
+
+// Components
+import {SlideToggle} from './SlideToggle'
+
+// Types
+import {ComponentColor, ComponentSize} from '../../Types'
+
+const slideToggleStories = storiesOf('Components|Slide Toggles', module)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
 
 slideToggleStories.add('SlideToggle Component', () => (
   <SlideToggle

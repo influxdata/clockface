@@ -1,13 +1,21 @@
+// Libraries
 import * as React from 'react'
-import {storiesOf} from '@storybook/react'
-import {Panel} from './Panel'
-import {withKnobs, text, select, color} from '@storybook/addon-knobs'
-import {Gradients, ComponentSize, InfluxColors} from '../../Types'
-import {mapEnumKeys} from '../../../.storybook/utils'
 
-const panelStories = storiesOf('Components|Panels', module).addDecorator(
-  withKnobs
-)
+// Storybook
+import {storiesOf} from '@storybook/react'
+import {withKnobs, text, select, color} from '@storybook/addon-knobs'
+import {mapEnumKeys} from '../../../.storybook/utils'
+import {jsxDecorator} from 'storybook-addon-jsx'
+
+// Components
+import {Panel} from './Panel'
+
+// Types
+import {Gradients, ComponentSize, InfluxColors} from '../../Types'
+
+const panelStories = storiesOf('Components|Panels', module)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
 
 panelStories.add('Panel Family', () => (
   <Panel

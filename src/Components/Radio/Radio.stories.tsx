@@ -1,13 +1,21 @@
+// Libraries
 import * as React from 'react'
-import {storiesOf} from '@storybook/react'
-import {Radio} from './Radio'
-import {withKnobs, text, radios, boolean, select} from '@storybook/addon-knobs'
-import {ComponentColor, ComponentSize, ButtonShape} from '../../Types'
-import {mapEnumKeys} from '../../../.storybook/utils'
 
-const radioStories = storiesOf('Components|Radios', module).addDecorator(
-  withKnobs
-)
+// Storybook
+import {storiesOf} from '@storybook/react'
+import {withKnobs, text, radios, boolean, select} from '@storybook/addon-knobs'
+import {mapEnumKeys} from '../../../.storybook/utils'
+import {jsxDecorator} from 'storybook-addon-jsx'
+
+// Components
+import {Radio} from './Radio'
+
+// Types
+import {ComponentColor, ComponentSize, ButtonShape} from '../../Types'
+
+const radioStories = storiesOf('Components|Radios', module)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
 
 enum RadioOption {
   First = 'First',

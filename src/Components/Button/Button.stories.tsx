@@ -1,7 +1,16 @@
+// Libraries
 import * as React from 'react'
+
+// Storybook
 import {storiesOf} from '@storybook/react'
-import {Button} from './Button'
+import {jsxDecorator} from 'storybook-addon-jsx'
 import {withKnobs, text, select, boolean} from '@storybook/addon-knobs'
+import {mapEnumKeys} from '../../../.storybook/utils'
+
+// Components
+import {Button} from './Button'
+
+// Types
 import {
   ComponentColor,
   ComponentSize,
@@ -10,11 +19,10 @@ import {
   ComponentStatus,
   ButtonType,
 } from '../../Types'
-import {mapEnumKeys} from '../../../.storybook/utils'
 
-const buttonStories = storiesOf('Components|Buttons', module).addDecorator(
-  withKnobs
-)
+const buttonStories = storiesOf('Components|Buttons', module)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
 
 buttonStories.add('Button Component', () => (
   <Button

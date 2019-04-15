@@ -1,5 +1,13 @@
+// Libraries
 import * as React from 'react'
+
+// Storybook
 import {storiesOf} from '@storybook/react'
+import {withKnobs, object, text, select, boolean} from '@storybook/addon-knobs'
+import {mapEnumKeys} from '../../../.storybook/utils'
+import {jsxDecorator} from 'storybook-addon-jsx'
+
+// Components
 import {Form} from './Form'
 import {FormBox} from './FormBox'
 import {FormLabel} from './FormLabel'
@@ -9,13 +17,13 @@ import {FormElement} from './FormElement'
 import {FormHelpText} from './FormHelpText'
 import {FormElementError} from './FormElementError'
 import {FormValidationElement} from './FormValidationElement'
-import {withKnobs, object, text, select, boolean} from '@storybook/addon-knobs'
-import {Columns, ComponentStatus} from '../../Types'
-import {mapEnumKeys} from '../../../.storybook/utils'
 
-const formStories = storiesOf('Components|Forms', module).addDecorator(
-  withKnobs
-)
+// Types
+import {Columns, ComponentStatus} from '../../Types'
+
+const formStories = storiesOf('Components|Forms', module)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
 
 const handleValidation = () => {
   return null
