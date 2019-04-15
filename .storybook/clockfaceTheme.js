@@ -1,5 +1,7 @@
 import { create } from '@storybook/theming';
 
+import logo from './clockface-logo.png'
+
 export default create({
   base: 'light',
 
@@ -33,5 +35,5 @@ export default create({
 
   brandTitle: 'Clockface',
   brandUrl: 'https://influxdata.github.io/clockface',
-  brandImage: 'https://placehold.it/350x350',
+  brandImage: logo,
 });
