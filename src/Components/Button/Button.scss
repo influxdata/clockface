@@ -36,6 +36,11 @@
   vertical-align: middle;
   transform: translateY(-5%);
   pointer-events: none;
+
+  .button--label + & {
+    margin-right: -0.1em;
+    margin-left: 0.4em;
+  }
 }
 
 /*

@@ -1,12 +1,12 @@
 // Libraries
 import React, {Component, MouseEvent, RefObject} from 'react'
-import classnames from 'classnames'
 
 // Components
-import {Icon} from '../Icon/Icon'
+import {ButtonBase} from '../Base/ButtonBase'
+import {Icon} from '../../Icon/Icon'
 
 // Styles
-import './Button.scss'
+import '../Button.scss'
 
 // Types
 import {
@@ -16,7 +16,7 @@ import {
   ButtonShape,
   IconFont,
   ButtonType,
-} from '../../Types'
+} from '../../../Types'
 
 interface Props {
   /** Text to be displayed on button */
@@ -45,6 +45,8 @@ interface Props {
   type: ButtonType
   /** Test ID for Integration Tests */
   testID: string
+  /** Reverse ordering of text and icon */
+  placeIconAfterText: boolean
 }
 
 export class Button extends Component<Props> {
@@ -56,83 +58,91 @@ export class Button extends Component<Props> {
     active: false,
     type: ButtonType.Button,
     testID: ButtonType.Button,
+    placeIconAfterText: false,
   }
 
   public ref: RefObject<HTMLButtonElement> = React.createRef()
 
   public render() {
-    const {onClick, text, titleText, tabIndex, type, icon, testID} = this.props
+    const {
+      onClick,
+      text,
+      titleText,
+      tabIndex,
+      type,
+      icon,
+      testID,
+      status,
+      className,
+    } = this.props
 
     if (!icon && !text) {
       throw new Error('Button requires either "text" or "icon" props')
     }
 
     return (
-      <button
-        className={this.className}
-        disabled={this.disabled}
+      <ButtonBase
+        className={className}
+        status={status}
         onClick={onClick}
-        title={titleText || text}
+        titleText={titleText || text}
         tabIndex={!!tabIndex ? tabIndex : 0}
         type={type}
-        ref={this.ref}
-        data-testid={testID}
+        testID={testID}
       >
-        {this.icon}
-        {this.text}
+        {this.iconAndText}
         {this.statusIndicator}
-      </button>
+      </ButtonBase>
     )
   }
 
-  private get icon(): JSX.Element | null {
+  private get iconAndText(): JSX.Element {
+    const {placeIconAfterText} = this.props
+
+    if (placeIconAfterText) {
+      return (
+        <>
+          {this.text}
+          {this.icon}
+        </>
+      )
+    }
+
+    return (
+      <>
+        {this.icon}
+        {this.text}
+      </>
+    )
+  }
+
+  private get icon(): JSX.Element | undefined {
     const {icon} = this.props
 
     if (icon) {
       return <Icon glyph={icon} className="button-icon" />
     }
 
-    return null
+    return
   }
 
-  private get text(): string | undefined | null {
+  private get text(): JSX.Element | undefined {
     const {text, shape} = this.props
 
     if (shape === ButtonShape.Square) {
-      return null
+      return
     }
 
-    return text
+    return <span className="button--label">{text}</span>
   }
 
-  private get disabled(): boolean {
-    const {status} = this.props
-
-    return (
-      status === ComponentStatus.Disabled || status === ComponentStatus.Loading
-    )
-  }
-
-  private get statusIndicator(): JSX.Element | null {
+  private get statusIndicator(): JSX.Element | undefined {
     const {status, size} = this.props
 
     if (status === ComponentStatus.Loading) {
       return <div className={`button-spinner button-spinner--${size}`} />
     }
 
-    return null
-  }
-
-  private get className(): string {
-    const {color, size, shape, status, active, className} = this.props
-
-    return classnames(`button button-${size} button-${color}`, {
-      'button-square': shape === ButtonShape.Square,
-      'button-stretch': shape === ButtonShape.StretchToFit,
-      'button--loading': status === ComponentStatus.Loading,
-      'button--disabled': status === ComponentStatus.Disabled,
-      active,
-      [`${className}`]: className,
-    })
+    return
   }
 }
