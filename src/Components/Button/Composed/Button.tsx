@@ -74,6 +74,9 @@ export class Button extends Component<Props> {
       testID,
       status,
       className,
+      size,
+      color,
+      active,
     } = this.props
 
     if (!icon && !text) {
@@ -89,6 +92,9 @@ export class Button extends Component<Props> {
         tabIndex={!!tabIndex ? tabIndex : 0}
         type={type}
         testID={testID}
+        size={size}
+        color={color}
+        active={active}
       >
         {this.iconAndText}
         {this.statusIndicator}
