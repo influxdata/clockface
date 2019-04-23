@@ -220,6 +220,7 @@ export enum IconFont {
   Server = 'server2',
   Shuffle = 'shuffle',
   Square = 'square',
+  SquareCheck = 'square-check',
   TextBlock = 'text-block',
   Trash = 'trash',
   Triangle = 'triangle',
