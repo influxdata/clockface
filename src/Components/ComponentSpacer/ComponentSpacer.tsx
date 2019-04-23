@@ -49,6 +49,7 @@ export class ComponentSpacer extends Component<Props> {
       stretchToFitWidth,
       justifyContent,
       alignItems,
+      className,
       direction,
       children,
       margin,
@@ -65,6 +66,7 @@ export class ComponentSpacer extends Component<Props> {
           [`component-spacer__align-${alignItems}`]: alignItems,
           'component-spacer__stretch-w': stretchToFitWidth,
           'component-spacer__stretch-h': stretchToFitHeight,
+          [`${className}`]: className,
         })}
         data-testid={testID}
         style={style}
