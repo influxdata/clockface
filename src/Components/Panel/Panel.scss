@@ -40,20 +40,20 @@
   ------------------------------------------------------------------------------
 */
 @mixin panelSizeModifier($fontSize, $fontWeight, $padding) {
-  .panel--header {
+  > .panel--header {
     padding: $padding;
   }
-  .panel--body {
+  > .panel--body {
     padding: ($padding / 2) $padding;
   }
-  .panel--header + .panel--body {
+  > .panel--header + .panel--body {
     padding-top: 0;
   }
-  .panel--title {
+  > .panel--title {
     font-weight: $fontWeight;
     font-size: $fontSize;
   }
-  .panel--footer {
+  > .panel--footer {
     padding: ($padding / 2) $padding;
   }
 }
@@ -77,21 +77,21 @@
 */
 
 .panel__dark-text {
-  .panel--title {
+  > .panel--header > .panel--title {
     color: $g3-castle;
   }
-  .panel--body,
-  .panel--footer {
+  > .panel--body,
+  > .panel--footer {
     color: rgba($g3-castle, 0.75);
   }
 }
 
 .panel__light-text {
-  .panel--title {
+  > .panel--header > .panel--title {
     color: $g18-cloud;
   }
-  .panel--body,
-  .panel--footer {
+  > .panel--body,
+  > .panel--footer {
     color: rgba($g18-cloud, 0.75);
   }
 }
