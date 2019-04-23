@@ -80,7 +80,7 @@ export class DropdownButton extends Component<Props> {
 
     return classnames('dropdown--button button', {
       'button-stretch': true,
-      'button-disabled': this.isDisabled,
+      'button--disabled': this.isDisabled,
       [`button-${color}`]: color,
       [`button-${size}`]: size,
       active,
