@@ -5,7 +5,7 @@ import _ from 'lodash'
 
 // Components
 import {Input} from '../Inputs/Input'
-import {Button} from '../Button/Button'
+import {Button} from '../Button/Composed/Button'
 import {ColorPickerSwatch} from './ColorPickerSwatch'
 import {FormElementError} from '../FormLayout/FormElementError'
 
