@@ -3,7 +3,7 @@ import * as React from 'react'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, select} from '@storybook/addon-knobs'
+import {withKnobs, select, color} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../.storybook/utils'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
@@ -19,6 +19,9 @@ const iconStories = storiesOf('Elements|Icon', module)
 
 iconStories.add('Icon Component', () => (
   <div className="story--container story-large embiggen">
-    <Icon glyph={IconFont[select('glyph', mapEnumKeys(IconFont), 'Bell')]} />
+    <Icon
+      glyph={IconFont[select('glyph', mapEnumKeys(IconFont), 'Bell')]}
+      color={color('color', '')}
+    />
   </div>
 ))
