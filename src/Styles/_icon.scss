@@ -209,6 +209,9 @@
   &.square:before {
     content: '\e93e';
   }
+  &.square-check:before {
+    content: "\e943";
+  }
   &.star:before {
     content: '\e930';
   }
