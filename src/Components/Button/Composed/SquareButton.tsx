@@ -1,12 +1,12 @@
 // Libraries
 import React, {Component, MouseEvent, RefObject} from 'react'
-import classnames from 'classnames'
 
 // Components
-import {Icon} from '../Icon/Icon'
+import {ButtonBase} from '../Base/ButtonBase'
+import {Icon} from '../../Icon/Icon'
 
 // Styles
-import './Button.scss'
+import '../Button.scss'
 
 // Types
 import {
@@ -16,15 +16,13 @@ import {
   ButtonShape,
   IconFont,
   ButtonType,
-} from '../../Types'
+} from '../../../Types'
 
 interface Props {
-  /** Text to be displayed on button */
-  text?: string
   /** Function to be called on button click */
   onClick?: (e?: MouseEvent<HTMLButtonElement>) => void
   /** Icon to be displayed to the left of text or in place of text */
-  icon?: IconFont
+  icon: IconFont
   /** Text to be displayed on hover tooltip */
   titleText?: string
   /** Keyboard control tab order  */
@@ -35,8 +33,6 @@ interface Props {
   color: ComponentColor
   /** Button size */
   size: ComponentSize
-  /** Square or rectangle */
-  shape: ButtonShape
   /** Button status state default, loading, or disabled */
   status: ComponentStatus
   /** Toggles button highlighted active state */
@@ -47,11 +43,10 @@ interface Props {
   testID: string
 }
 
-export class Button extends Component<Props> {
+export class SquareButton extends Component<Props> {
   public static defaultProps = {
     color: ComponentColor.Default,
     size: ComponentSize.Small,
-    shape: ButtonShape.Default,
     status: ComponentStatus.Default,
     active: false,
     type: ButtonType.Button,
@@ -61,27 +56,30 @@ export class Button extends Component<Props> {
   public ref: RefObject<HTMLButtonElement> = React.createRef()
 
   public render() {
-    const {onClick, text, titleText, tabIndex, type, icon, testID} = this.props
-
-    if (!icon && !text) {
-      throw new Error('Button requires either "text" or "icon" props')
-    }
+    const {
+      onClick,
+      titleText,
+      tabIndex,
+      type,
+      testID,
+      status,
+      className,
+    } = this.props
 
     return (
-      <button
-        className={this.className}
-        disabled={this.disabled}
+      <ButtonBase
+        shape={ButtonShape.Square}
+        className={className}
+        status={status}
         onClick={onClick}
-        title={titleText || text}
+        titleText={titleText}
         tabIndex={!!tabIndex ? tabIndex : 0}
         type={type}
-        ref={this.ref}
-        data-testid={testID}
+        testID={testID}
       >
         {this.icon}
-        {this.text}
         {this.statusIndicator}
-      </button>
+      </ButtonBase>
     )
   }
 
@@ -95,24 +93,6 @@ export class Button extends Component<Props> {
     return null
   }
 
-  private get text(): string | undefined | null {
-    const {text, shape} = this.props
-
-    if (shape === ButtonShape.Square) {
-      return null
-    }
-
-    return text
-  }
-
-  private get disabled(): boolean {
-    const {status} = this.props
-
-    return (
-      status === ComponentStatus.Disabled || status === ComponentStatus.Loading
-    )
-  }
-
   private get statusIndicator(): JSX.Element | null {
     const {status, size} = this.props
 
@@ -121,18 +101,5 @@ export class Button extends Component<Props> {
     }
 
     return null
-  }
-
-  private get className(): string {
-    const {color, size, shape, status, active, className} = this.props
-
-    return classnames(`button button-${size} button-${color}`, {
-      'button-square': shape === ButtonShape.Square,
-      'button-stretch': shape === ButtonShape.StretchToFit,
-      'button--loading': status === ComponentStatus.Loading,
-      'button--disabled': status === ComponentStatus.Disabled,
-      active,
-      [`${className}`]: className,
-    })
   }
 }

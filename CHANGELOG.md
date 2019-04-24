@@ -3,6 +3,7 @@
 #### 0.0.11
 
 - [97](https://github.com/influxdata/clockface/pull/97) Allow `Icon` to receive an optional colorization via `string` or `InfluxColors` enum
+- [94](https://github.com/influxdata/clockface/pull/94) Refactor `Button` component into "Base" and "Composed" variations for greater extensibility
 - [93](https://github.com/influxdata/clockface/pull/93) Use `className` prop in `ComponentSpacer`
 - [92](https://github.com/influxdata/clockface/pull/92) Ensure dropdown buttons disabled styles appear correctly
 - [91](https://github.com/influxdata/clockface/pull/91) Ensure that panel sizing styles do not affect nested panels

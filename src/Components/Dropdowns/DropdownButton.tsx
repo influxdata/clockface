@@ -1,9 +1,9 @@
 // Libraries
 import React, {Component, MouseEvent} from 'react'
-import classnames from 'classnames'
 
 // Components
 import {Icon} from '../Icon/Icon'
+import {ButtonBase} from '../Button/Base/ButtonBase'
 
 // Types
 import {
@@ -12,6 +12,7 @@ import {
   ComponentSize,
   ComponentColor,
   ComponentStatus,
+  ButtonShape,
 } from '../../Types'
 
 // Styles
@@ -19,7 +20,7 @@ import './DropdownButton.scss'
 
 interface Props {
   /** Function to be called on click of dropdown button */
-  onClick: (e: MouseEvent<HTMLElement>) => void
+  onClick: (e: MouseEvent<HTMLButtonElement>) => void
   /** Button status state default, loading, or disabled */
   status: ComponentStatus
   /** Button color */
@@ -46,44 +47,44 @@ export class DropdownButton extends Component<Props> {
   }
 
   public render() {
-    const {onClick, children, title, icon, testID} = this.props
+    const {
+      onClick,
+      children,
+      title,
+      icon,
+      testID,
+      active,
+      size,
+      color,
+    } = this.props
     return (
-      <button
-        className={this.classname}
+      <ButtonBase
+        shape={ButtonShape.StretchToFit}
+        className="dropdown--button"
         onClick={onClick}
-        disabled={this.isDisabled}
-        title={title}
+        status={this.status}
+        titleText={title}
         type={ButtonType.Button}
-        data-testid={testID}
+        testID={testID}
+        active={active}
+        color={color}
+        size={size}
       >
         {!!icon && <Icon glyph={icon} className="dropdown--icon" />}
         <span className="dropdown--selected">{children}</span>
-        <span className="dropdown--caret icon caret-down" />
-      </button>
+        <Icon glyph={IconFont.CaretDown} className="dropdown--caret" />
+      </ButtonBase>
     )
   }
 
-  private get isDisabled(): boolean {
+  private get status(): ComponentStatus {
     const {status} = this.props
 
     const isDisabled = [
       ComponentStatus.Disabled,
-      ComponentStatus.Loading,
       ComponentStatus.Error,
     ].includes(status)
 
-    return isDisabled
-  }
-
-  private get classname(): string {
-    const {active, color, size} = this.props
-
-    return classnames('dropdown--button button', {
-      'button-stretch': true,
-      'button--disabled': this.isDisabled,
-      [`button-${color}`]: color,
-      [`button-${size}`]: size,
-      active,
-    })
+    return isDisabled ? ComponentStatus.Disabled : ComponentStatus.Default
   }
 }
