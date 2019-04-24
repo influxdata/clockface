@@ -31,7 +31,7 @@ interface State {
   showChildren: boolean
 }
 
-class Overlay extends Component<Props, State> {
+export class Overlay extends Component<Props, State> {
   public static Container = OverlayContainer
   public static Mask = OverlayMask
   public static Header = OverlayHeader
@@ -122,5 +122,3 @@ class Overlay extends Component<Props, State> {
     this.setState({showChildren: false})
   }
 }
-
-export default Overlay
