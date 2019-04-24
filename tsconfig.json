@@ -19,7 +19,8 @@
     "noUnusedLocals": true,
     "declaration": true,
     "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "typeRoots": ["node_modules/@types", "./types.d.ts"]
   },
   "include": ["src/**/*"],
   "exclude": [
