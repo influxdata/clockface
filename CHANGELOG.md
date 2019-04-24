@@ -2,6 +2,7 @@
 
 #### 0.0.11
 
+- [101](https://github.com/influxdata/clockface/pull/101) Port `Overlay` component family from InfluxDB and refactor to conform to Clockface patterns
 - [97](https://github.com/influxdata/clockface/pull/97) Allow `Icon` to receive an optional colorization via `string` or `InfluxColors` enum
 - [94](https://github.com/influxdata/clockface/pull/94) Refactor `Button` component into "Base" and "Composed" variations for greater extensibility
 - [93](https://github.com/influxdata/clockface/pull/93) Use `className` prop in `ComponentSpacer`
