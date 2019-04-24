@@ -11,7 +11,7 @@ import {getColorsFromGradient} from '../../Constants/colors'
 interface Props {
   /** Optional gradient theme of panel*/
   gradient: Gradients
-  /** Optional background color of panel, supercedes backgroundColor prop  */
+  /** Optional background color of panel, supercedes gradient prop  */
   backgroundColor?: InfluxColors | string
   /** Class name for custom styles */
   className?: string
