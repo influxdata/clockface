@@ -21,7 +21,7 @@ interface Props {
 
 export class OverlayMask extends PureComponent<Props> {
   public static defaultProps = {
-    gradient: Gradients.PastelGothic,
+    gradient: Gradients.GundamPilot,
     testID: 'overlay--mask',
   }
 
