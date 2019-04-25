@@ -65,18 +65,19 @@ export class Button extends Component<Props> {
 
   public render() {
     const {
-      onClick,
-      text,
+      className,
       titleText,
       tabIndex,
-      type,
-      icon,
+      onClick,
       testID,
       status,
-      className,
-      size,
-      color,
       active,
+      color,
+      shape,
+      text,
+      type,
+      icon,
+      size,
     } = this.props
 
     if (!icon && !text) {
@@ -86,15 +87,16 @@ export class Button extends Component<Props> {
     return (
       <ButtonBase
         className={className}
-        status={status}
-        onClick={onClick}
         titleText={titleText || text}
         tabIndex={!!tabIndex ? tabIndex : 0}
-        type={type}
+        onClick={onClick}
         testID={testID}
-        size={size}
-        color={color}
+        status={status}
         active={active}
+        color={color}
+        shape={shape}
+        type={type}
+        size={size}
       >
         {this.iconAndText}
         {this.statusIndicator}
@@ -135,7 +137,7 @@ export class Button extends Component<Props> {
   private get text(): JSX.Element | undefined {
     const {text, shape} = this.props
 
-    if (shape === ButtonShape.Square) {
+    if (shape === ButtonShape.Square || !text) {
       return
     }
 
