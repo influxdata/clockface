@@ -41,6 +41,10 @@
     margin-right: -0.1em;
     margin-left: 0.4em;
   }
+
+  &:only-child {
+    margin: 0;
+  }
 }
 
 /*
@@ -95,10 +99,6 @@
   }
   &.button-lg {
     width: $form-lg-height;
-  }
-
-  .button-icon {
-    margin: 0;
   }
 }
 
