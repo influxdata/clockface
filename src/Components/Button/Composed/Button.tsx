@@ -137,7 +137,7 @@ export class Button extends Component<Props> {
   private get text(): JSX.Element | undefined {
     const {text, shape} = this.props
 
-    if (shape === ButtonShape.Square) {
+    if (shape === ButtonShape.Square || !text) {
       return
     }
 
