@@ -10,12 +10,18 @@ import {jsxDecorator} from 'storybook-addon-jsx'
 import {AppWrapper} from '../AppWrapper/AppWrapper'
 import {NavMenu} from '../NavMenu/NavMenu'
 import {Page} from './Page'
+import {Radio} from '../Radio/Radio'
+import {SquareButton} from '../Button/Composed/SquareButton'
 import {Icon} from '../Icon/Icon'
 
 // Types
-import {IconFont} from '../../Types'
+import {IconFont, ComponentColor, ButtonShape} from '../../Types'
 
 const pageStories = storiesOf('Components|Page/Family', module)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
+
+const pageExampleStories = storiesOf('Components|Page/Examples', module)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
@@ -63,6 +69,50 @@ pageStories.add('PageContents', () => (
 
 pageStories.add('PageTitle', () => (
   <Page.Title title={text('title', 'I am a page title!')} />
+))
+
+pageExampleStories.add('Full Width Page', () => (
+  <div className="mockPage">
+    <Page>
+      <Page.Header fullWidth={true}>
+        <Page.Header.Left>
+          <Page.Title title="Markdown Editor" />
+        </Page.Header.Left>
+        <Page.Header.Center widthPixels={300}>
+          <Radio shape={ButtonShape.StretchToFit}>
+            <Radio.Button
+              id="mode--write"
+              titleText="Write Mode"
+              active={true}
+              value="write"
+              onClick={() => {}}
+            >
+              Write
+            </Radio.Button>
+            <Radio.Button
+              id="mode--preview"
+              titleText="Preview Mode"
+              active={false}
+              value="preview"
+              onClick={() => {}}
+            >
+              Preview
+            </Radio.Button>
+          </Radio>
+        </Page.Header.Center>
+        <Page.Header.Right>
+          <SquareButton icon={IconFont.Remove} />
+          <SquareButton
+            icon={IconFont.Checkmark}
+            color={ComponentColor.Success}
+          />
+        </Page.Header.Right>
+      </Page.Header>
+      <Page.Contents fullWidth={true} scrollable={false}>
+        <div className="mockComponent stretch" style={{height: '514px'}} />
+      </Page.Contents>
+    </Page>
+  </div>
 ))
 
 const layoutStories = storiesOf('Examples|Application Layout', module)
