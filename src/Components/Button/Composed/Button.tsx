@@ -47,6 +47,8 @@ interface Props {
   testID: string
   /** Reverse ordering of text and icon */
   placeIconAfterText: boolean
+  /** React Ref object */
+  refObject?: RefObject<HTMLButtonElement>
 }
 
 export class Button extends Component<Props> {
@@ -61,12 +63,11 @@ export class Button extends Component<Props> {
     placeIconAfterText: false,
   }
 
-  public ref: RefObject<HTMLButtonElement> = React.createRef()
-
   public render() {
     const {
       className,
       titleText,
+      refObject,
       tabIndex,
       onClick,
       testID,
@@ -88,6 +89,7 @@ export class Button extends Component<Props> {
       <ButtonBase
         className={className}
         titleText={titleText || text}
+        refObject={refObject}
         tabIndex={!!tabIndex ? tabIndex : 0}
         onClick={onClick}
         testID={testID}

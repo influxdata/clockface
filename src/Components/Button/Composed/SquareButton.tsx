@@ -41,6 +41,8 @@ interface Props {
   type: ButtonType
   /** Test ID for Integration Tests */
   testID: string
+  /** React Ref object */
+  refObject?: RefObject<HTMLButtonElement>
 }
 
 export class SquareButton extends Component<Props> {
@@ -59,6 +61,7 @@ export class SquareButton extends Component<Props> {
     const {
       className,
       titleText,
+      refObject,
       tabIndex,
       onClick,
       testID,
@@ -73,6 +76,7 @@ export class SquareButton extends Component<Props> {
       <ButtonBase
         className={className}
         titleText={titleText}
+        refObject={refObject}
         tabIndex={!!tabIndex ? tabIndex : 0}
         onClick={onClick}
         testID={testID}

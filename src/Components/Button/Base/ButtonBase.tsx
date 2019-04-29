@@ -37,6 +37,8 @@ interface Props {
   type: ButtonType
   /** Test ID for Integration Tests */
   testID: string
+  /** React Ref object */
+  refObject?: RefObject<HTMLButtonElement>
 }
 
 export class ButtonBase extends Component<Props> {
@@ -50,10 +52,16 @@ export class ButtonBase extends Component<Props> {
     testID: ButtonType.Button,
   }
 
-  public ref: RefObject<HTMLButtonElement> = React.createRef()
-
   public render() {
-    const {onClick, titleText, tabIndex, type, testID, children} = this.props
+    const {
+      onClick,
+      titleText,
+      tabIndex,
+      type,
+      testID,
+      children,
+      refObject,
+    } = this.props
 
     return (
       <button
@@ -63,8 +71,8 @@ export class ButtonBase extends Component<Props> {
         title={titleText}
         tabIndex={!!tabIndex ? tabIndex : 0}
         type={type}
-        ref={this.ref}
         data-testid={testID}
+        ref={refObject}
       >
         {children}
       </button>
