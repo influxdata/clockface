@@ -2,6 +2,11 @@
 
 #### 0.0.12
 
+- [114](https://github.com/influxdata/clockface/pull/114): Port `Label` component family from InfluxDB and refactor to conform to Clockface patterns
+- [112](https://github.com/influxdata/clockface/pull/112): Allow refs to be passed through in all `Button` components
+
+#### 0.0.12
+
 - [108](https://github.com/influxdata/clockface/pull/108) Fix a handful of bugs relating to Buttons
 
 #### 0.0.11
