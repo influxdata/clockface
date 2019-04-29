@@ -17,7 +17,7 @@ interface Props {
   /** Description of Label, appears on hover */
   description: string
   /** Used to colorize the label, can be hexcode or rgba */
-  color: string
+  color: InfluxColors | string
   /** Optional click handler */
   onClick?: (id: string) => void
   /** Optional delete handler, if passed in the delete button is rendered */
