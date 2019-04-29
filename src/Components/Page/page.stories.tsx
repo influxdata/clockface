@@ -15,6 +15,56 @@ import {Icon} from '../Icon/Icon'
 // Types
 import {IconFont} from '../../Types'
 
+const pageStories = storiesOf('Components|Page/Family', module)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
+
+pageStories.add('Page', () => (
+  <div className="mockPage">
+    <Page />
+  </div>
+))
+
+pageStories.add('PageHeader', () => (
+  <div className="mockPage">
+    <Page.Header fullWidth={boolean('fullWidth', false)}>
+      <Page.Header.Left>
+        <div className="mockComponent" style={{width: '100%'}}>
+          Left
+        </div>
+      </Page.Header.Left>
+      <Page.Header.Center widthPixels={number('widthPixels (center)', 200)}>
+        <div className="mockComponent" style={{width: '100%'}}>
+          Center
+        </div>
+      </Page.Header.Center>
+      <Page.Header.Right>
+        <div className="mockComponent" style={{width: '100%'}}>
+          Right
+        </div>
+      </Page.Header.Right>
+    </Page.Header>
+  </div>
+))
+
+pageStories.add('PageContents', () => (
+  <div className="mockPage">
+    <Page.Contents
+      fullWidth={boolean('fullWidth', false)}
+      scrollable={boolean('scrollable', false)}
+    >
+      <div
+        className="mockComponent pageContents"
+        style={{height: `${number('mock contents height', 1200)}px`}}
+      />
+    </Page.Contents>
+  </div>
+))
+
+pageStories.add('PageTitle', () => (
+  <Page.Title title={text('title', 'I am a page title!')} />
+))
+
 const layoutStories = storiesOf('Examples|Application Layout', module)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
