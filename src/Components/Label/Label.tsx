@@ -51,8 +51,6 @@ export class Label extends Component<Props, State> {
   public render() {
     const {name, testID} = this.props
 
-    this.validateColorHex()
-
     return (
       <div
         className={this.className}
@@ -181,20 +179,6 @@ export class Label extends Component<Props, State> {
       return InfluxColors.Kevlar
     } else {
       return InfluxColors.White
-    }
-  }
-
-  private validateColorHex = (): void => {
-    const {color} = this.props
-
-    const isValidLength = color.length === 7
-    const containsValidCharacters =
-      color.replace(/[ABCDEF0abcdef123456789]+/g, '') === '#'
-
-    if (!isValidLength || !containsValidCharacters) {
-      throw new Error(
-        '<Label /> component has been passed a invalid color prop'
-      )
     }
   }
 }
