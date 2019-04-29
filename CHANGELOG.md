@@ -1,19 +1,24 @@
 # Changelog
 
+#### 0.0.13
+
+- [#114](https://github.com/influxdata/clockface/pull/114): Port `Label` component family from InfluxDB and refactor to conform to Clockface patterns
+- [#112](https://github.com/influxdata/clockface/pull/112): Allow refs to be passed through in all `Button` components
+
 #### 0.0.12
 
-- [108](https://github.com/influxdata/clockface/pull/108) Fix a handful of bugs relating to Buttons
+- [#108](https://github.com/influxdata/clockface/pull/108): Fix a handful of bugs relating to Buttons
 
 #### 0.0.11
 
-- [101](https://github.com/influxdata/clockface/pull/101) Port `Overlay` component family from InfluxDB and refactor to conform to Clockface patterns
-- [97](https://github.com/influxdata/clockface/pull/97) Allow `Icon` to receive an optional colorization via `string` or `InfluxColors` enum
-- [94](https://github.com/influxdata/clockface/pull/94) Refactor `Button` component into "Base" and "Composed" variations for greater extensibility
-- [93](https://github.com/influxdata/clockface/pull/93) Use `className` prop in `ComponentSpacer`
-- [92](https://github.com/influxdata/clockface/pull/92) Ensure dropdown buttons disabled styles appear correctly
-- [91](https://github.com/influxdata/clockface/pull/91) Ensure that panel sizing styles do not affect nested panels
-- [88](https://github.com/influxdata/clockface/pull/88) Use JSX Preview add-on instead of exposing Story Source
-- [87](https://github.com/influxdata/clockface/pull/87) Add theming to Storybook that uses InfluxData brand colors
+- [#101](https://github.com/influxdata/clockface/pull/101): Port `Overlay` component family from InfluxDB and refactor to conform to Clockface patterns
+- [#97](https://github.com/influxdata/clockface/pull/97): Allow `Icon` to receive an optional colorization via `string` or `InfluxColors` enum
+- [#94](https://github.com/influxdata/clockface/pull/94): Refactor `Button` component into "Base" and "Composed" variations for greater extensibility
+- [#93](https://github.com/influxdata/clockface/pull/93): Use `className` prop in `ComponentSpacer`
+- [#92](https://github.com/influxdata/clockface/pull/92): Ensure dropdown buttons disabled styles appear correctly
+- [#91](https://github.com/influxdata/clockface/pull/91): Ensure that panel sizing styles do not affect nested panels
+- [#88](https://github.com/influxdata/clockface/pull/88): Use JSX Preview add-on instead of exposing Story Source
+- [#87](https://github.com/influxdata/clockface/pull/87): Add theming to Storybook that uses InfluxData brand colors
 
 #### < 0.0.10
 
