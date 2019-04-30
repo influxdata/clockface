@@ -13,7 +13,7 @@ import {Label} from './Label'
 // Types
 import {ComponentSize, InfluxColors} from '../../Types'
 
-const labelStories = storiesOf('Elements|Label', module)
+const labelStories = storiesOf('Components|Label/Examples', module)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
