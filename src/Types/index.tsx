@@ -291,3 +291,8 @@ export enum AutoComplete {
   On = 'on',
   Off = 'off',
 }
+
+export enum Orientation {
+  Vertical = 'vertical',
+  Horizontal = 'horizontal',
+}
