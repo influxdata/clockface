@@ -13,10 +13,10 @@ import {ComponentSize} from '../../Types'
 import './EmptyState.scss'
 
 interface Props {
+  /** Controls vertical padding in container and font size of children */
+  size: ComponentSize
   /** Class name for custom styles */
   className?: string
-  /** Empty State component size */
-  size: ComponentSize
   /** Test ID for Integration Tests */
   testID: string
 }
