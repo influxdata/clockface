@@ -23,6 +23,10 @@ interface Props {
   gradient: Gradients
   /** Orientation of handle */
   orientation: Orientation
+  /** Test ID for Integration Tests */
+  testID: string
+  /** Class name for custom styles */
+  className?: string
 }
 
 export class DraggableResizerHandle extends PureComponent<Props> {
@@ -31,12 +35,16 @@ export class DraggableResizerHandle extends PureComponent<Props> {
     dragging: false,
     onStartDrag: () => {},
   }
+
   public render() {
+    const {testID} = this.props
+
     return (
       <div
         className={this.className}
         onMouseDown={this.handleMouseDown}
         title="Drag to resize"
+        data-testid={testID}
       >
         <div
           className="draggable-resizer--gradient"
@@ -53,10 +61,11 @@ export class DraggableResizerHandle extends PureComponent<Props> {
   }
 
   private get className(): string {
-    const {dragging} = this.props
+    const {dragging, className} = this.props
 
     return classnames('draggable-resizer--handle', {
       'draggable-resizer--handle-dragging': dragging,
+      [`${className}`]: className,
     })
   }
 

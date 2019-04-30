@@ -22,6 +22,10 @@ interface Props {
   onChangePositions: (positions: number[]) => void
   /** Gradient theme for handle */
   handleGradient: Gradients
+  /** Test ID for Integration Tests */
+  testID: string
+  /** Class name for custom styles */
+  className?: string
 }
 
 interface State {
@@ -34,6 +38,7 @@ export class DraggableResizer extends Component<Props, State> {
 
   public static defaultProps = {
     handleGradient: Gradients.PastelGothic,
+    testID: 'draggable-resizer',
   }
 
   private containerRef: RefObject<HTMLDivElement>
@@ -56,15 +61,21 @@ export class DraggableResizer extends Component<Props, State> {
   }
 
   public render() {
+    const {testID} = this.props
+
     return (
-      <div className={this.className} ref={this.containerRef}>
+      <div
+        className={this.className}
+        ref={this.containerRef}
+        data-testid={testID}
+      >
         {this.children}
       </div>
     )
   }
 
   private get className(): string {
-    const {handleOrientation} = this.props
+    const {handleOrientation, className} = this.props
     const {dragIndex} = this.state
 
     const isDragging = dragIndex !== NULL_DRAG
@@ -74,11 +85,12 @@ export class DraggableResizer extends Component<Props, State> {
       'draggable-resizer--horizontal':
         handleOrientation === Orientation.Horizontal,
       'draggable-resizer--dragging': isDragging,
+      [`${className}`]: className,
     })
   }
 
   private get children(): JSX.Element[] | undefined {
-    const {children, handleGradient, handleOrientation} = this.props
+    const {children, handleGradient, handleOrientation, testID} = this.props
     const {dragIndex, initialized} = this.state
 
     if (!initialized || !React.Children.count(children)) {
@@ -109,6 +121,7 @@ export class DraggableResizer extends Component<Props, State> {
               dragging={dragging}
               gradient={handleGradient}
               orientation={handleOrientation}
+              testID={`${testID}--handle`}
             />
           )}
         </>
