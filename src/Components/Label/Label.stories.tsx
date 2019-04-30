@@ -18,37 +18,43 @@ const labelStories = storiesOf('Elements|Label', module)
   .addDecorator(jsxDecorator)
 
 labelStories.add('Read Only Label', () => (
-  <Label
-    id="example-label"
-    name={text('name', 'Fresh Label')}
-    description={text('description', 'I am okay with being labeled')}
-    color={color('backgroundColor', `${InfluxColors.Star}`)}
-    size={ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]}
-  />
+  <div className="story--example">
+    <Label
+      id="example-label"
+      name={text('name', 'Fresh Label')}
+      description={text('description', 'I am okay with being labeled')}
+      color={color('backgroundColor', `${InfluxColors.Star}`)}
+      size={ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]}
+    />
+  </div>
 ))
 
 labelStories.add('Clickable Label', () => (
-  <Label
-    id="example-label"
-    name={text('name', 'Fresh Label')}
-    description={text('description', 'I am okay with being labeled')}
-    color={color('backgroundColor', `${InfluxColors.Star}`)}
-    size={ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]}
-    onClick={id => {
-      alert(`Label with id: ${id} has been clicked`)
-    }}
-  />
+  <div className="story--example">
+    <Label
+      id="example-label"
+      name={text('name', 'Fresh Label')}
+      description={text('description', 'I am okay with being labeled')}
+      color={color('backgroundColor', `${InfluxColors.Star}`)}
+      size={ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]}
+      onClick={id => {
+        alert(`Label with id: ${id} has been clicked`)
+      }}
+    />
+  </div>
 ))
 
 labelStories.add('Removable Label', () => (
-  <Label
-    id="example-label"
-    name={text('name', 'Fresh Label')}
-    description={text('description', 'I am okay with being labeled')}
-    color={color('backgroundColor', `${InfluxColors.Star}`)}
-    size={ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]}
-    onDelete={id => {
-      alert(`Label with id: ${id} has been deleted`)
-    }}
-  />
+  <div className="story--example">
+    <Label
+      id="example-label"
+      name={text('name', 'Fresh Label')}
+      description={text('description', 'I am okay with being labeled')}
+      color={color('backgroundColor', `${InfluxColors.Star}`)}
+      size={ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]}
+      onDelete={id => {
+        alert(`Label with id: ${id} has been deleted`)
+      }}
+    />
+  </div>
 ))
