@@ -15,11 +15,11 @@ import {GridColumn} from './GridColumn'
 // Types
 import {Columns} from '../../Types'
 
-const gridStories = storiesOf('Layout|Grid', module)
+const gridStories = storiesOf('Layout|12 Column Grid', module)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
-gridStories.add('Grid Component', () => (
+gridStories.add('Grid', () => (
   <Grid>
     <GridRow>
       <GridColumn
