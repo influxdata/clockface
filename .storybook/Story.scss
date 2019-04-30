@@ -132,3 +132,14 @@
     transform: translate(-50%, -50%);
   }
 }
+
+.story--example {
+  width: 100%;
+  height: 300px;
+  border: $cf-border solid $g4-onyx;
+  border-radius: $cf-radius;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
