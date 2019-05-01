@@ -53,6 +53,8 @@
   line-height: 16px;
   color: $c-dreamsicle;
   margin: $cf-marg-a 0 0 0;
+  word-break: break-all;
+  word-wrap: break-word;
 }
 
 .form--label-required {
@@ -66,20 +68,27 @@
 .form--divider {
   width: 100%;
   height: $form-sm-height - $cf-marg-b;
+
+  &-line {
+    height: $cf-border;
+    background-color: $g5-pepper;
+    margin: (($form-sm-height - $cf-marg-b) / 2) 0;
+    border-radius: $cf-border / 2;
+  }
 }
 
 /*
-  Form Submit
+  Form Footer
   ------------------------------------------------------------------------------
 */
-.form--submit {
+.form--footer {
   flex-direction: row;
   justify-content: center;
   align-items: center;
   margin-top: $form-sm-height - $cf-marg-b;
   margin-bottom: 0;
 
-  > .button {
+  > * {
     margin: 0 $cf-marg-a;
   }
 }
