@@ -48,9 +48,13 @@
     height: 100%;
   }
 
-  &.input {
+  &.mockInput {
     height: $form-sm-height;
-    width: 200px;
+    width: 100%;
+  }
+
+  &.mockButton {
+    padding: 0 13px;
   }
 
   &.wide {
@@ -142,4 +146,8 @@
   justify-content: center;
   align-items: center;
   align-content: center;
+}
+
+.story--form-example {
+  width: 500px;
 }
