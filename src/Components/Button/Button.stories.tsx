@@ -31,59 +31,73 @@ const buttonComposedStories = storiesOf('Components|Buttons/Composed', module)
   .addDecorator(jsxDecorator)
 
 buttonComposedStories.add('Standard Button', () => (
-  <Button
-    text={text('text', 'Button Text')}
-    onClick={() => alert('clicked')}
-    icon={
-      IconFont[select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')]
-    }
-    titleText={text('titleText', 'Title Text')}
-    color={
-      ComponentColor[select('color', mapEnumKeys(ComponentColor), 'Default')]
-    }
-    size={ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]}
-    shape={ButtonShape[select('shape', mapEnumKeys(ButtonShape), 'Default')]}
-    status={
-      ComponentStatus[select('status', mapEnumKeys(ComponentStatus), 'Default')]
-    }
-    active={boolean('active', false)}
-    type={ButtonType[select('type', mapEnumKeys(ButtonType), 'Button')]}
-    placeIconAfterText={boolean('placeIconAfterText', false)}
-  />
+  <div className="story--example">
+    <Button
+      text={text('text', 'Button Text')}
+      onClick={() => alert('clicked')}
+      icon={
+        IconFont[
+          select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
+        ]
+      }
+      titleText={text('titleText', 'Title Text')}
+      color={
+        ComponentColor[select('color', mapEnumKeys(ComponentColor), 'Default')]
+      }
+      size={ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]}
+      shape={ButtonShape[select('shape', mapEnumKeys(ButtonShape), 'Default')]}
+      status={
+        ComponentStatus[
+          select('status', mapEnumKeys(ComponentStatus), 'Default')
+        ]
+      }
+      active={boolean('active', false)}
+      type={ButtonType[select('type', mapEnumKeys(ButtonType), 'Button')]}
+      placeIconAfterText={boolean('placeIconAfterText', false)}
+    />
+  </div>
 ))
 
 buttonComposedStories.add('Square Button (Icon Only)', () => (
-  <SquareButton
-    onClick={() => alert('clicked')}
-    icon={IconFont[select('icon', mapEnumKeys(IconFont), 'Zap')]}
-    titleText={text('titleText', 'Title Text')}
-    color={
-      ComponentColor[select('color', mapEnumKeys(ComponentColor), 'Default')]
-    }
-    size={ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]}
-    status={
-      ComponentStatus[select('status', mapEnumKeys(ComponentStatus), 'Default')]
-    }
-    active={boolean('active', false)}
-    type={ButtonType[select('type', mapEnumKeys(ButtonType), 'Button')]}
-  />
+  <div className="story--example">
+    <SquareButton
+      onClick={() => alert('clicked')}
+      icon={IconFont[select('icon', mapEnumKeys(IconFont), 'Zap')]}
+      titleText={text('titleText', 'Title Text')}
+      color={
+        ComponentColor[select('color', mapEnumKeys(ComponentColor), 'Default')]
+      }
+      size={ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]}
+      status={
+        ComponentStatus[
+          select('status', mapEnumKeys(ComponentStatus), 'Default')
+        ]
+      }
+      active={boolean('active', false)}
+      type={ButtonType[select('type', mapEnumKeys(ButtonType), 'Button')]}
+    />
+  </div>
 ))
 
 buttonBaseStories.add('Base Button', () => (
-  <ButtonBase
-    onClick={() => alert('clicked')}
-    titleText={text('titleText', 'Title Text')}
-    color={
-      ComponentColor[select('color', mapEnumKeys(ComponentColor), 'Default')]
-    }
-    size={ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]}
-    shape={ButtonShape[select('shape', mapEnumKeys(ButtonShape), 'Default')]}
-    status={
-      ComponentStatus[select('status', mapEnumKeys(ComponentStatus), 'Default')]
-    }
-    active={boolean('active', false)}
-    type={ButtonType[select('type', mapEnumKeys(ButtonType), 'Button')]}
-  >
-    {text('text', 'Button Text')}
-  </ButtonBase>
+  <div className="story--example">
+    <ButtonBase
+      onClick={() => alert('clicked')}
+      titleText={text('titleText', 'Title Text')}
+      color={
+        ComponentColor[select('color', mapEnumKeys(ComponentColor), 'Default')]
+      }
+      size={ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]}
+      shape={ButtonShape[select('shape', mapEnumKeys(ButtonShape), 'Default')]}
+      status={
+        ComponentStatus[
+          select('status', mapEnumKeys(ComponentStatus), 'Default')
+        ]
+      }
+      active={boolean('active', false)}
+      type={ButtonType[select('type', mapEnumKeys(ButtonType), 'Button')]}
+    >
+      {text('text', 'Button Text')}
+    </ButtonBase>
+  </div>
 ))

@@ -37,8 +37,6 @@ export class Radio extends Component<Props> {
   public render() {
     const {children, testID} = this.props
 
-    this.validateChildCount()
-
     return (
       <div className={this.containerClassName} data-testid={testID}>
         {children}
@@ -56,16 +54,5 @@ export class Radio extends Component<Props> {
       'radio-buttons--stretch': shape === ButtonShape.StretchToFit,
       [`${className}`]: className,
     })
-  }
-
-  private validateChildCount = (): void => {
-    const {children} = this.props
-    const MINIMUM_CHILD_COUNT = 2
-
-    if (React.Children.count(children) < MINIMUM_CHILD_COUNT) {
-      throw new Error(
-        '<Radio> requires at least 2 child elements. We recommend using <Radio.Button />'
-      )
-    }
   }
 }

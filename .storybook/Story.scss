@@ -48,9 +48,13 @@
     height: 100%;
   }
 
-  &.input {
+  &.mockInput {
     height: $form-sm-height;
-    width: 200px;
+    width: 100%;
+  }
+
+  &.mockButton {
+    padding: 0 13px;
   }
 
   &.wide {
@@ -131,4 +135,19 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
+}
+
+.story--example {
+  width: 100%;
+  height: 300px;
+  border: $cf-border solid $g4-onyx;
+  border-radius: $cf-radius;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.story--form-example {
+  width: 500px;
 }

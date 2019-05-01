@@ -54,7 +54,7 @@ export class FormFooter extends Component<Props> {
       offsetLG,
     } = this.props
 
-    return classnames('form--element form--submit', {
+    return classnames('form--element form--footer', {
       [`col-xs-${widthXS}`]: widthXS,
       [`col-sm-${widthSM}`]: widthSM,
       [`col-md-${widthMD}`]: widthMD,
