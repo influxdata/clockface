@@ -26,6 +26,7 @@ export enum InputType {
   Number = 'number',
   Password = 'password',
   Email = 'email',
+  Checkbox = 'checkbox',
 }
 
 interface Props {
@@ -35,6 +36,8 @@ interface Props {
   min?: number
   /** Maximum value for number type */
   max?: number
+  /** Determines whether checkbox is checked */
+  checked?: boolean
   /** Function to be called on field value change */
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void
   /** Function to be called on focus loss */
@@ -57,7 +60,7 @@ interface Props {
   maxLength?: number
   /** Keyboard control tab order  */
   tabIndex?: number
-  /** Input type (text, number, password, email)  */
+  /** Input type (text, number, password, email, checkbox)  */
   type: InputType
   /** Input field name attribute */
   name: string
@@ -104,6 +107,7 @@ export class Input extends Component<Props> {
       id,
       min,
       max,
+      checked,
       name,
       type,
       status,
@@ -128,6 +132,7 @@ export class Input extends Component<Props> {
           id={id}
           min={min}
           max={max}
+          checked={checked}
           title={this.title}
           autoComplete={autocomplete}
           name={name}

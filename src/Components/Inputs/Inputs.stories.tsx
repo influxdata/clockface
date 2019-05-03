@@ -3,13 +3,14 @@ import * as React from 'react'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, radios, number, text} from '@storybook/addon-knobs'
+import {withKnobs, radios, number, text, select} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../.storybook/utils'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {Input, InputType} from './Input'
 import {TextArea} from './TextArea'
+import {SlideToggle} from '../SlideToggle/SlideToggle'
 
 // Types
 import {
@@ -17,7 +18,10 @@ import {
   ComponentSize,
   IconFont,
   AutoComplete,
+  FlexDirection,
+  AlignItems,
 } from '../../Types'
+import {ComponentSpacer} from '../ComponentSpacer/ComponentSpacer'
 
 const inputsStories = storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
@@ -117,4 +121,27 @@ inputsStories.add('TextArea Component', () => (
     rows={number('rows', 20)}
     status={ComponentStatus[radios('status', mapEnumKeys(ComponentStatus))]}
   />
+))
+
+inputsStories.add('Input Component (Checkbox)', () => (
+  <ComponentSpacer
+    direction={FlexDirection.Row}
+    alignItems={AlignItems.Center}
+    margin={ComponentSize.Medium}
+  >
+    <Input
+      name={text('name', 'Name')}
+      value={text('value', 'Value Text')}
+      onChange={() => {}}
+      titleText={text('titleText', 'Title Text')}
+      disabledTitleText={text('disabledTitleText', 'Disabled Title Text')}
+      widthPixels={number('widthPixels', 15)}
+      size={ComponentSize[radios('size', mapEnumKeys(ComponentSize), 'Small')]}
+      type={InputType.Checkbox}
+    />
+    <SlideToggle.Label
+      text="I Agree to Terms and Conditions"
+      size={ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]}
+    />
+  </ComponentSpacer>
 ))
