@@ -3,7 +3,7 @@ import * as React from 'react'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, radios, number, text, select} from '@storybook/addon-knobs'
+import {withKnobs, radios, number, text, select, boolean} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../.storybook/utils'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
@@ -133,11 +133,9 @@ inputsStories.add('Input Component (Checkbox)', () => (
       name={text('name', 'Name')}
       value={text('value', 'Value Text')}
       onChange={() => {}}
-      titleText={text('titleText', 'Title Text')}
-      disabledTitleText={text('disabledTitleText', 'Disabled Title Text')}
-      widthPixels={number('widthPixels', 15)}
       size={ComponentSize[radios('size', mapEnumKeys(ComponentSize), 'Small')]}
       type={InputType.Checkbox}
+      checked={boolean('checked', true)}
     />
     <SlideToggle.Label
       text="I Agree to Terms and Conditions"

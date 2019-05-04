@@ -153,6 +153,7 @@ export class Input extends Component<Props> {
           tabIndex={tabIndex}
           data-testid={testID}
         />
+        {this.pseudo}
         {this.icon}
         {this.statusIndicator}
       </div>
@@ -167,6 +168,16 @@ export class Input extends Component<Props> {
     }
 
     return `${value}`
+  }
+
+  private get pseudo(): JSX.Element | null {
+    const {type} = this.props
+
+    if (type === InputType.Checkbox) {
+      return <div className="input-pseudo"></div>
+    }
+
+    return null
   }
 
   private get icon(): JSX.Element | null {
@@ -222,7 +233,7 @@ export class Input extends Component<Props> {
           <Icon
             glyph={IconFont.Checkmark}
             className="input-status"
-            testID="input-valud"
+            testID="input-valid"
           />
           <div className="input-shadow" />
         </>
@@ -233,10 +244,11 @@ export class Input extends Component<Props> {
   }
 
   private get className(): string {
-    const {size, status, icon, className} = this.props
+    const {type, size, status, icon, className} = this.props
 
     return classnames('input', {
       [`input-${size}`]: size,
+      'input--checkbox': type === InputType.Checkbox,
       'input--has-icon': icon,
       'input--valid': status === ComponentStatus.Valid,
       'input--error': status === ComponentStatus.Error,
@@ -247,10 +259,14 @@ export class Input extends Component<Props> {
   }
 
   private get containerStyle(): CSSProperties {
-    const {widthPixels} = this.props
+    const {widthPixels, type} = this.props
 
     if (widthPixels) {
       return {width: `${widthPixels}px`}
+    }
+
+    if (type === InputType.Checkbox) {
+      return {}
     }
 
     return {width: '100%'}
