@@ -1,5 +1,9 @@
 # Changelog
 
+#### 0.0.14
+
+- [#121](https://github.com/influxdata/clockface/pull/121): Introduce `Checkbox` type inputs
+
 #### 0.0.13
 
 - [#118](https://github.com/influxdata/clockface/pull/118): Organize documentation by dividing each component's stories into "Family" and "Examples"
