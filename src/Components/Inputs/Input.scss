@@ -211,8 +211,8 @@ $input-status-z: $input-field-z + 2;
     margin: 2px 0;
 
     &:after {
-      width: ceil(($height - ($cf-marg-a + $cf-border)) * 0.5);
-      height: ceil(($height - ($cf-marg-a + $cf-border)) * 0.5);
+      width: ceil(($height - ($cf-marg-a + $cf-border)) * 0.4);
+      height: ceil(($height - ($cf-marg-a + $cf-border)) * 0.4);
     }
   }
 }
