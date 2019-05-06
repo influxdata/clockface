@@ -153,7 +153,7 @@ export class Input extends Component<Props> {
           tabIndex={tabIndex}
           data-testid={testID}
         />
-        {this.pseudo}
+        {this.checkbox}
         {this.icon}
         {this.statusIndicator}
       </div>
@@ -170,11 +170,13 @@ export class Input extends Component<Props> {
     return `${value}`
   }
 
-  private get pseudo(): JSX.Element | null {
-    const {type} = this.props
+  private get checkbox(): JSX.Element | null {
+    const {type, checked} = this.props
+
+    const className = classnames('input--checkbox', {checked})
 
     if (type === InputType.Checkbox) {
-      return <div className="input-pseudo"></div>
+      return <div className={className} />
     }
 
     return null
@@ -200,8 +202,12 @@ export class Input extends Component<Props> {
     return titleText
   }
 
-  private get statusIndicator(): JSX.Element {
-    const {status} = this.props
+  private get statusIndicator(): JSX.Element | undefined {
+    const {status, type} = this.props
+
+    if (type === InputType.Checkbox) {
+      return
+    }
 
     if (status === ComponentStatus.Loading) {
       return (
@@ -248,12 +254,12 @@ export class Input extends Component<Props> {
 
     return classnames('input', {
       [`input-${size}`]: size,
-      'input--checkbox': type === InputType.Checkbox,
-      'input--has-icon': icon,
-      'input--valid': status === ComponentStatus.Valid,
-      'input--error': status === ComponentStatus.Error,
-      'input--loading': status === ComponentStatus.Loading,
-      'input--disabled': status === ComponentStatus.Disabled,
+      'input__has-checkbox': type === InputType.Checkbox,
+      'input__has-icon': icon,
+      input__valid: status === ComponentStatus.Valid,
+      input__error: status === ComponentStatus.Error,
+      input__loading: status === ComponentStatus.Loading,
+      input__disabled: status === ComponentStatus.Disabled,
       [`${className}`]: className,
     })
   }
