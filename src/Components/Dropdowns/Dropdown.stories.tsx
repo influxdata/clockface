@@ -19,19 +19,20 @@ import {Dropdown} from './Dropdown'
 import {DropdownButton} from './DropdownButton'
 import {DropdownDivider} from './DropdownDivider'
 import {DropdownItem} from './DropdownItem'
+import {DropdownMenu} from './Elements/DropdownMenu'
 import {MultiSelectDropdown} from './MultiSelectDropdown'
 
 // Types
 import {
   ComponentColor,
-  DropdownMenuColors,
+  DropdownMenuTheme,
   ComponentSize,
   ComponentStatus,
   IconFont,
   DropdownMode,
 } from '../../Types'
 
-const dropdownStories = storiesOf('Components|Dropdowns', module)
+const dropdownStories = storiesOf('Components|Dropdowns/Family', module)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
@@ -84,8 +85,8 @@ dropdownStories.add('Dropdown Component', () => {
       }
       maxMenuHeight={number('maxMenuHeight', 250)}
       menuColor={
-        DropdownMenuColors[
-          select('menuColor', mapEnumKeys(DropdownMenuColors), 'Amethyst')
+        DropdownMenuTheme[
+          select('menuColor', mapEnumKeys(DropdownMenuTheme), 'Amethyst')
         ]
       }
       mode={
@@ -153,8 +154,8 @@ dropdownStories.add('MultiSelectDropdown Component', () => {
         ComponentSize[select('buttonSize', mapEnumKeys(ComponentSize), 'Small')]
       }
       menuColor={
-        DropdownMenuColors[
-          select('menuColor', mapEnumKeys(DropdownMenuColors), 'Amethyst')
+        DropdownMenuTheme[
+          select('menuColor', mapEnumKeys(DropdownMenuTheme), 'Amethyst')
         ]
       }
       wrapText={boolean('wrapText', false)}
@@ -224,4 +225,102 @@ dropdownStories.add('DropdownItem Component', () => (
   >
     {text('Item Value', 'Value')}
   </DropdownItem>
+))
+
+dropdownStories.add('DropdownMenu', () => (
+  <div className="story--example">
+    <div style={{width: '200px'}}>
+      <DropdownMenu
+        theme={
+          DropdownMenuTheme[
+            select('theme', mapEnumKeys(DropdownMenuTheme), 'Sapphire')
+          ]
+        }
+        maxHeight={number('maxHeight', 250)}
+      >
+        <DropdownDivider text="Domestic Fruits" id="divider" />
+        <DropdownItem
+          id="item_id"
+          value="Banana"
+          selected={true}
+          checkbox={boolean('checkbox', false)}
+        >
+          Banana
+        </DropdownItem>
+        <DropdownItem
+          id="item_id"
+          value="Kiwi"
+          selected={false}
+          checkbox={boolean('checkbox', false)}
+        >
+          Kiwi
+        </DropdownItem>
+        <DropdownItem
+          id="item_id"
+          value="Apple"
+          selected={false}
+          checkbox={boolean('checkbox', false)}
+        >
+          Apple
+        </DropdownItem>
+        <DropdownItem
+          id="item_id"
+          value="Orange"
+          selected={false}
+          checkbox={boolean('checkbox', false)}
+        >
+          Orange
+        </DropdownItem>
+        <DropdownItem
+          id="item_id"
+          value="Grapefruit"
+          selected={false}
+          checkbox={boolean('checkbox', false)}
+        >
+          Grapefruit
+        </DropdownItem>
+        <DropdownItem
+          id="item_id"
+          value="Pear"
+          selected={false}
+          checkbox={boolean('checkbox', false)}
+        >
+          Pear
+        </DropdownItem>
+        <DropdownDivider text="Imported Fruits" id="divider" />
+        <DropdownItem
+          id="item_id"
+          value="Dragonfruit"
+          selected={false}
+          checkbox={boolean('checkbox', false)}
+        >
+          Dragonfruit
+        </DropdownItem>
+        <DropdownItem
+          id="item_id"
+          value="Yuzu"
+          selected={false}
+          checkbox={boolean('checkbox', false)}
+        >
+          Yuzu
+        </DropdownItem>
+        <DropdownItem
+          id="item_id"
+          value="Passionfruit"
+          selected={false}
+          checkbox={boolean('checkbox', false)}
+        >
+          Passionfruit
+        </DropdownItem>
+        <DropdownItem
+          id="item_id"
+          value="Guava"
+          selected={false}
+          checkbox={boolean('checkbox', false)}
+        >
+          Guava
+        </DropdownItem>
+      </DropdownMenu>
+    </div>
+  </div>
 ))

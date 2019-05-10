@@ -25,12 +25,15 @@
 /* Dropdown Menu */
 .dropdown--menu-container {
   overflow: hidden;
+  border-radius: $cf-radius;
+  box-shadow: 0 2px 5px 0.6px fade-out($g0-obsidian, 0.7);
+}
+
+.dropdown .dropdown--menu-container {
   position: absolute;
   top: 100%;
   left: 0;
   z-index: 500;
-  border-radius: $cf-radius;
-  box-shadow: 0 2px 5px 0.6px fade-out($g0-obsidian, 0.7);
 }
 
 .dropdown--menu {
@@ -47,7 +50,7 @@
   font-size: 12px;
   line-height: 12px;
   font-weight: 600;
-  color: fade-out($g20-white, 0.18);
+  color: rgba($g20-white, 0.75);
   position: relative;
   text-align: left;
 
@@ -159,7 +162,7 @@
   $dividerA,
   $dividerB,
   $dividerText,
-  $checkbox
+  $checkbox,
 ) {
   @include gradient-h($backgroundA, $backgroundB);
 
@@ -200,18 +203,18 @@
     $c-laser,
     $c-sapphire,
     $c-ocean,
-    $c-laser,
+    $c-hydrogen,
     $c-neutrino
   );
 }
 
 .dropdown--malachite {
   @include dropdownMenuColor(
-    $c-pool,
-    $c-rainforest,
-    $c-laser,
-    $c-honeydew,
     $c-ocean,
+    $c-rainforest,
+    $c-pool,
+    $c-honeydew,
+    $c-sapphire,
     $c-viridian,
     $c-krypton,
     $c-neutrino
