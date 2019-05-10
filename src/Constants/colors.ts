@@ -3,7 +3,7 @@ import {
   InfluxColors,
   Gradients,
   Gradient,
-  DropdownMenuColors,
+  DropdownMenuTheme,
 } from '../Types'
 
 export const HEX_CODE_CHAR_LENGTH = 7
@@ -331,7 +331,7 @@ export const dropdownScrollColors = {
 }
 
 export const getColorsFromGradient = (
-  gradient: Gradients | DropdownMenuColors
+  gradient: Gradients | DropdownMenuTheme
 ): Gradient => {
   return dropdownScrollColors[gradient] || influxGradients[gradient]
 }

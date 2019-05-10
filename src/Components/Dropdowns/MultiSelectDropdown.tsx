@@ -12,7 +12,7 @@ import {DapperScrollbars} from '../DapperScrollbars/DapperScrollbars'
 
 // Types
 import {
-  DropdownMenuColors,
+  DropdownMenuTheme,
   ComponentStatus,
   ComponentColor,
   ComponentSize,
@@ -36,7 +36,7 @@ interface Props {
   /** Changes the size of the dropdown toggle button */
   buttonSize: ComponentSize
   /** Changes the coloration of the dropdown menu independent of the toggle button */
-  menuColor: DropdownMenuColors
+  menuColor: DropdownMenuTheme
   /** If `true` the contents of each dropdown item will not exceed the width of the dropdown toggle button (aka `widthPixels`) */
   wrapText: boolean
   /** Pixel height after which the dropdown menu will scroll */
@@ -66,7 +66,7 @@ export class MultiSelectDropdown extends Component<Props, State> {
     status: ComponentStatus.Default,
     wrapText: false,
     maxMenuHeight: 250,
-    menuColor: DropdownMenuColors.Sapphire,
+    menuColor: DropdownMenuTheme.Sapphire,
     emptyText: 'Choose an item',
     separatorText: ', ',
     testID: 'multi-select-dropdown',

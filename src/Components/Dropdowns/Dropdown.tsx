@@ -18,7 +18,7 @@ import {
   ComponentSize,
   ComponentColor,
   ComponentStatus,
-  DropdownMenuColors,
+  DropdownMenuTheme,
 } from '../../Types'
 
 // Constants
@@ -51,7 +51,7 @@ interface Props {
   /** Pixel height after which the dropdown menu will scroll */
   maxMenuHeight: number
   /** Changes the coloration of the dropdown menu independent of the toggle button */
-  menuColor: DropdownMenuColors
+  menuColor: DropdownMenuTheme
   /** Changes the modality of the dropdown. `Radio` requires a `selectedID` also be specified */
   mode: DropdownMode
   /** If the dropdown's mode is `ActionList` then `titleText` is used as the label in the dropdown toggle */
@@ -74,7 +74,7 @@ export class Dropdown extends Component<Props, State> {
     buttonSize: ComponentSize.Small,
     status: ComponentStatus.Default,
     maxMenuHeight: 250,
-    menuColor: DropdownMenuColors.Sapphire,
+    menuColor: DropdownMenuTheme.Sapphire,
     mode: DropdownMode.Radio,
     titleText: '',
     wrapMenuText: false,
