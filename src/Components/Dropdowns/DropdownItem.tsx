@@ -2,46 +2,61 @@
 import React, {Component, MouseEvent} from 'react'
 import classnames from 'classnames'
 
+// Types
+import {DropdownItemType} from '../../Types'
+
 interface Props {
-  /** id used as list key */
-  id: string
-  /** Returned via the onClick function */
+  /** Value to be returned via the onClick function */
   value: any
   /** Whether or not the item should have selected styling */
   selected: boolean
-  /** Renders a checkbox */
-  checkbox: boolean
+  /** Controls which style of dropdown item is rendered */
+  type: DropdownItemType
   /** When a dropdown item is clicked, its `value` prop is returned via `onChange` */
-  onClick?: (value: any) => void
+  onClick?: (value?: any) => void
+  /** Controls whether the text contents of this item wrap or not */
+  wrapText: boolean
   /** Test ID for Integration Tests */
   testID: string
+  /** Class name for custom styles */
+  className?: string
 }
 
 export class DropdownItem extends Component<Props> {
   public static defaultProps = {
     checkbox: false,
     selected: false,
+    type: DropdownItemType.None,
+    wrapText: false,
     testID: 'dropdown-item',
   }
 
   public render(): JSX.Element {
-    const {selected, checkbox, testID} = this.props
+    const {testID} = this.props
 
     return (
       <div
-        className={classnames('dropdown--item', {
-          checked: selected && checkbox,
-          active: selected && !checkbox,
-          'multi-select--item': checkbox,
-        })}
+        className={this.className}
         data-testid={testID}
         onClick={this.handleClick}
       >
-        {this.checkBox}
+        {this.selectionIndicator}
         {this.childElements}
-        {this.dot}
       </div>
     )
+  }
+
+  private get className(): string {
+    const {selected, wrapText, className, type} = this.props
+
+    return classnames('dropdown-item', {
+      [`dropdown-item__${type}`]:
+        type === DropdownItemType.Checkbox || type === DropdownItemType.Dot,
+      active: selected,
+      [`${className}`]: className,
+      'dropdown-item__wrap': wrapText,
+      'dropdown-item__no-wrap': !wrapText,
+    })
   }
 
   private handleClick = (e: MouseEvent<HTMLElement>): void => {
@@ -53,20 +68,14 @@ export class DropdownItem extends Component<Props> {
     }
   }
 
-  private get checkBox(): JSX.Element | undefined {
-    const {checkbox} = this.props
+  private get selectionIndicator(): JSX.Element | undefined {
+    const {type} = this.props
 
-    if (checkbox) {
+    if (type === DropdownItemType.Checkbox) {
       return <div className="dropdown-item--checkbox" />
     }
 
-    return
-  }
-
-  private get dot(): JSX.Element | undefined {
-    const {checkbox, selected} = this.props
-
-    if (selected && !checkbox) {
+    if (type === DropdownItemType.Dot) {
       return <div className="dropdown-item--dot" />
     }
 

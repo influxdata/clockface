@@ -65,6 +65,12 @@ export enum DropdownMenuTheme {
   Onyx = 'onyx',
 }
 
+export enum DropdownItemType {
+  Dot = 'dot',
+  Checkbox = 'checkbox',
+  None = 'none',
+}
+
 export enum DropdownMode {
   ActionList = 'action',
   Radio = 'radio',

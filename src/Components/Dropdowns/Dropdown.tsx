@@ -40,7 +40,7 @@ interface Props {
   menuHeader?: JSX.Element
   /** Render an icon on the left side of the toggle button */
   icon?: IconFont
-  /** Useful when you want to apply custom positioning to the dropdown or override the appearance */
+  /** Class name for custom styles */
   className?: string
   /** Changes the coloration of the dropdown toggle button */
   buttonColor: ComponentColor

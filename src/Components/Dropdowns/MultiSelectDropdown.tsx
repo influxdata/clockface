@@ -45,7 +45,7 @@ interface Props {
   emptyText: string
   /** Delineator for list of selected items */
   separatorText: string
-  /** Useful when you want to apply custom positioning to the dropdown or override the appearance */
+  /** Class name for custom styles */
   className?: string
   /** Function to be called on collapse of dropdown list */
   onCollapse?: () => void

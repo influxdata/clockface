@@ -15,7 +15,7 @@ interface Props {
   maxHeight: number
   /** Test ID for Integration Tests */
   testID: string
-  /** Useful when you want to apply custom positioning to the dropdown or override the appearance */
+  /** Class name for custom styles */
   className?: string
   /** Controls coloration of the dropdown menu and all subcomponents */
   theme: DropdownMenuTheme

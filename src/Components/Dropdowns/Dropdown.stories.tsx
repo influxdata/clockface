@@ -30,13 +30,14 @@ import {
   ComponentStatus,
   IconFont,
   DropdownMode,
+  DropdownItemType,
 } from '../../Types'
 
 const dropdownStories = storiesOf('Components|Dropdowns/Family', module)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
-dropdownStories.add('Dropdown Component', () => {
+dropdownStories.add('Dropdown', () => {
   const dropdownValues1 = array('Dropdown Values 1', [
     'LongMenuItem LongMenuItem LongMenuItem LongMenuItem',
     'zero',
@@ -95,21 +96,15 @@ dropdownStories.add('Dropdown Component', () => {
       titleText={text('titleText', 'Title Text')}
       wrapMenuText={boolean('wrapMenuText', false)}
     >
-      <Dropdown.Divider
-        id="first_divider"
-        text={text('First Divider', 'First Divider')}
-      />
+      <Dropdown.Divider text={text('First Divider', 'First Divider')} />
       {dropdownValues1.map(v => (
-        <Dropdown.Item key={v} id={v} value={v}>
+        <Dropdown.Item key={v} value={v}>
           {v}
         </Dropdown.Item>
       ))}
-      <Dropdown.Divider
-        id="second_divider"
-        text={text('Second Divider', 'Second Divider')}
-      />
+      <Dropdown.Divider text={text('Second Divider', 'Second Divider')} />
       {dropdownValues2.map(v => (
-        <Dropdown.Item key={v} id={v} value={v}>
+        <Dropdown.Item key={v} value={v}>
           {v}
         </Dropdown.Item>
       ))}
@@ -117,7 +112,7 @@ dropdownStories.add('Dropdown Component', () => {
   )
 })
 
-dropdownStories.add('MultiSelectDropdown Component', () => {
+dropdownStories.add('MultiSelectDropdown', () => {
   const dropdownValues1 = array('Dropdown Values 1', [
     'LongMenuItem LongMenuItem LongMenuItem LongMenuItem',
     'zero',
@@ -168,21 +163,15 @@ dropdownStories.add('MultiSelectDropdown Component', () => {
         ]
       }
     >
-      <Dropdown.Divider
-        id="first_divider"
-        text={text('First Divider', 'First Divider')}
-      />
+      <Dropdown.Divider text={text('First Divider', 'First Divider')} />
       {dropdownValues1.map(v => (
-        <Dropdown.Item key={v} id={v} value={v}>
+        <Dropdown.Item key={v} value={v}>
           {v}
         </Dropdown.Item>
       ))}
-      <Dropdown.Divider
-        id="second_divider"
-        text={text('Second Divider', 'Second Divider')}
-      />
+      <Dropdown.Divider text={text('Second Divider', 'Second Divider')} />
       {dropdownValues2.map(v => (
-        <Dropdown.Item key={v} id={v} value={v}>
+        <Dropdown.Item key={v} value={v}>
           {v}
         </Dropdown.Item>
       ))}
@@ -190,7 +179,7 @@ dropdownStories.add('MultiSelectDropdown Component', () => {
   )
 })
 
-dropdownStories.add('DropdownButton Component', () => (
+dropdownStories.add('DropdownButton', () => (
   <DropdownButton
     onClick={() => {}}
     status={
@@ -212,19 +201,26 @@ dropdownStories.add('DropdownButton Component', () => (
   </DropdownButton>
 ))
 
-dropdownStories.add('DropdownDivider Component', () => (
-  <DropdownDivider id="divider" text={text('Divider Text', 'Divider Text')} />
+dropdownStories.add('DropdownDivider', () => (
+  <DropdownDivider text={text('Divider Text', 'Divider Text')} />
 ))
 
-dropdownStories.add('DropdownItem Component', () => (
-  <DropdownItem
-    id="item_id"
-    value={text('Item Value', 'Value')}
-    selected={boolean('selected', false)}
-    checkbox={boolean('checkbox', false)}
-  >
-    {text('Item Value', 'Value')}
-  </DropdownItem>
+dropdownStories.add('DropdownItem', () => (
+  <div className="story--example">
+    <DropdownItem
+      value={text('value', 'value')}
+      selected={boolean('selected', false)}
+      wrapText={boolean('wrapText', false)}
+      onClick={value => {
+        alert(`onClick returned: ${value}`)
+      }}
+      type={
+        DropdownItemType[select('type', mapEnumKeys(DropdownItemType), 'None')]
+      }
+    >
+      {text('children (text)', 'I am a dropdown item!')}
+    </DropdownItem>
+  </div>
 ))
 
 dropdownStories.add('DropdownMenu', () => (
@@ -238,85 +234,140 @@ dropdownStories.add('DropdownMenu', () => (
         }
         maxHeight={number('maxHeight', 250)}
       >
-        <DropdownDivider text="Domestic Fruits" id="divider" />
+        <DropdownDivider text="Domestic Fruits" />
         <DropdownItem
-          id="item_id"
+          wrapText={boolean('wrapText', false)}
           value="Banana"
-          selected={true}
-          checkbox={boolean('checkbox', false)}
+          selected={false}
+          type={
+            DropdownItemType[
+              select('type', mapEnumKeys(DropdownItemType), 'None')
+            ]
+          }
         >
           Banana
         </DropdownItem>
         <DropdownItem
-          id="item_id"
+          wrapText={boolean('wrapText', false)}
           value="Kiwi"
-          selected={false}
-          checkbox={boolean('checkbox', false)}
+          selected={boolean('selected', false)}
+          type={
+            DropdownItemType[
+              select('type', mapEnumKeys(DropdownItemType), 'None')
+            ]
+          }
         >
           Kiwi
         </DropdownItem>
         <DropdownItem
-          id="item_id"
+          wrapText={boolean('wrapText', false)}
+          value="custom"
+          selected={false}
+          type={
+            DropdownItemType[
+              select('type', mapEnumKeys(DropdownItemType), 'None')
+            ]
+          }
+        >
+          {text(
+            'item text',
+            'This dropdown item text is much longer to test text wrapping'
+          )}
+        </DropdownItem>
+        <DropdownItem
+          wrapText={boolean('wrapText', false)}
           value="Apple"
           selected={false}
-          checkbox={boolean('checkbox', false)}
+          type={
+            DropdownItemType[
+              select('type', mapEnumKeys(DropdownItemType), 'None')
+            ]
+          }
         >
           Apple
         </DropdownItem>
         <DropdownItem
-          id="item_id"
+          wrapText={boolean('wrapText', false)}
           value="Orange"
           selected={false}
-          checkbox={boolean('checkbox', false)}
+          type={
+            DropdownItemType[
+              select('type', mapEnumKeys(DropdownItemType), 'None')
+            ]
+          }
         >
           Orange
         </DropdownItem>
         <DropdownItem
-          id="item_id"
+          wrapText={boolean('wrapText', false)}
           value="Grapefruit"
           selected={false}
-          checkbox={boolean('checkbox', false)}
+          type={
+            DropdownItemType[
+              select('type', mapEnumKeys(DropdownItemType), 'None')
+            ]
+          }
         >
           Grapefruit
         </DropdownItem>
         <DropdownItem
-          id="item_id"
+          wrapText={boolean('wrapText', false)}
           value="Pear"
           selected={false}
-          checkbox={boolean('checkbox', false)}
+          type={
+            DropdownItemType[
+              select('type', mapEnumKeys(DropdownItemType), 'None')
+            ]
+          }
         >
           Pear
         </DropdownItem>
-        <DropdownDivider text="Imported Fruits" id="divider" />
+        <DropdownDivider text="Imported Fruits" />
         <DropdownItem
-          id="item_id"
+          wrapText={boolean('wrapText', false)}
           value="Dragonfruit"
           selected={false}
-          checkbox={boolean('checkbox', false)}
+          type={
+            DropdownItemType[
+              select('type', mapEnumKeys(DropdownItemType), 'None')
+            ]
+          }
         >
           Dragonfruit
         </DropdownItem>
         <DropdownItem
-          id="item_id"
+          wrapText={boolean('wrapText', false)}
           value="Yuzu"
           selected={false}
-          checkbox={boolean('checkbox', false)}
+          type={
+            DropdownItemType[
+              select('type', mapEnumKeys(DropdownItemType), 'None')
+            ]
+          }
         >
           Yuzu
         </DropdownItem>
         <DropdownItem
-          id="item_id"
+          wrapText={boolean('wrapText', false)}
           value="Passionfruit"
           selected={false}
-          checkbox={boolean('checkbox', false)}
+          type={
+            DropdownItemType[
+              select('type', mapEnumKeys(DropdownItemType), 'None')
+            ]
+          }
         >
           Passionfruit
         </DropdownItem>
         <DropdownItem
-          id="item_id"
+          wrapText={boolean('wrapText', false)}
           value="Guava"
           selected={false}
-          checkbox={boolean('checkbox', false)}
+          type={
+            DropdownItemType[
+              select('type', mapEnumKeys(DropdownItemType), 'None')
+            ]
+          }
         >
           Guava
         </DropdownItem>
