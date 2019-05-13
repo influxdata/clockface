@@ -4,11 +4,11 @@ import classnames from 'classnames'
 import _ from 'lodash'
 
 // Components
-import {DropdownDivider} from './DropdownDivider'
-import {DropdownItem} from './DropdownItem'
-import {DropdownButton} from './DropdownButton'
-import {ClickOutside} from '../ClickOutside/ClickOutside'
-import {DapperScrollbars} from '../DapperScrollbars/DapperScrollbars'
+import {DropdownDivider} from '../Family/DropdownDivider'
+import {DropdownItem} from '../Family/DropdownItem'
+import {DropdownButton} from '../Family/DropdownButton'
+import {ClickOutside} from '../../ClickOutside/ClickOutside'
+import {DapperScrollbars} from '../../DapperScrollbars/DapperScrollbars'
 
 // Types
 import {
@@ -17,10 +17,10 @@ import {
   ComponentColor,
   ComponentSize,
   IconFont,
-} from '../../Types'
+} from '../../../Types'
 
 // Constants
-import {getColorsFromGradient} from '../../Constants/colors'
+import {getColorsFromGradient} from '../../../Constants/colors'
 
 interface Props {
   /** Function to be called on select or deselect of list item */

@@ -28,7 +28,7 @@ interface Props {
 export class DropdownMenu extends Component<Props> {
   public static defaultProps = {
     theme: DropdownMenuTheme.Sapphire,
-    testID: 'dropdown--menu',
+    testID: 'dropdown-menu',
     noScrollX: true,
     noScrollY: false,
     maxHeight: 250,
@@ -53,7 +53,7 @@ export class DropdownMenu extends Component<Props> {
           noScrollX={noScrollX}
           noScrollY={noScrollY}
         >
-          <div className="dropdown--menu" data-testid={testID}>
+          <div className="dropdown-menu--contents" data-testid={testID}>
             {children}
           </div>
         </DapperScrollbars>
@@ -64,9 +64,9 @@ export class DropdownMenu extends Component<Props> {
   private get containerClass(): string {
     const {className, theme} = this.props
 
-    return classnames('dropdown--menu-container', {
+    return classnames('dropdown-menu', {
       [`${className}`]: className,
-      [`dropdown--${theme}`]: theme,
+      [`dropdown__${theme}`]: theme,
     })
   }
 

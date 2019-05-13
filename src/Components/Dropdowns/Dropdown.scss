@@ -31,19 +31,20 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   ------------------------------------------------------------------------------
 */
 .dropdown--menu-container {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  z-index: 500;
+}
+
+.dropdown-menu {
   overflow: hidden;
   border-radius: $cf-radius;
   box-shadow: 0 2px 5px 0.6px rgba($g0-obsidian, 0.2);
 }
 
-.dropdown .dropdown--menu-container {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 500;
-}
 
-.dropdown--menu {
+.dropdown-menu--contents {
   user-select: none;
   display: flex;
   flex-direction: column;
@@ -192,7 +193,7 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   }
 }
 
-.dropdown--amethyst {
+.dropdown__amethyst {
   @include dropdownMenuColor(
     $c-star,
     $c-pool,
@@ -205,7 +206,7 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   );
 }
 
-.dropdown--sapphire {
+.dropdown__sapphire {
   @include dropdownMenuColor(
     $c-ocean,
     $c-pool,
@@ -218,7 +219,7 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   );
 }
 
-.dropdown--malachite {
+.dropdown__malachite {
   @include dropdownMenuColor(
     $c-ocean,
     $c-rainforest,
@@ -231,7 +232,7 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   );
 }
 
-.dropdown--onyx {
+.dropdown__onyx {
   @include dropdownMenuColor(
     $g2-kevlar,
     $g4-onyx,

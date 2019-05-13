@@ -71,11 +71,6 @@ export enum DropdownItemType {
   None = 'none',
 }
 
-export enum DropdownMode {
-  ActionList = 'action',
-  Radio = 'radio',
-}
-
 export enum ButtonShape {
   Default = 'none',
   Square = 'square',
