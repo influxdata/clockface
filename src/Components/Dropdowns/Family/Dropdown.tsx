@@ -6,6 +6,7 @@ import _ from 'lodash'
 // Components
 import {DropdownButton} from './../Family/DropdownButton'
 import {DropdownItem} from './../Family/DropdownItem'
+import {DropdownLinkItem} from './../Family/DropdownLinkItem'
 import {DropdownDivider} from './../Family/DropdownDivider'
 import {DropdownMenu} from './../Family/DropdownMenu'
 import {ClickOutside} from '../../ClickOutside/ClickOutside'
@@ -40,6 +41,7 @@ export class Dropdown extends Component<Props, State> {
 
   public static Button = DropdownButton
   public static Item = DropdownItem
+  public static LinkItem = DropdownLinkItem
   public static Divider = DropdownDivider
   public static Menu = DropdownMenu
 

@@ -19,6 +19,7 @@ import {Dropdown} from './Family/Dropdown'
 import {DropdownButton} from './Family/DropdownButton'
 import {DropdownDivider} from './Family/DropdownDivider'
 import {DropdownItem} from './Family/DropdownItem'
+import {DropdownLinkItem} from './Family/DropdownLinkItem'
 import {DropdownMenu} from './Family/DropdownMenu'
 import {SelectDropdown} from './Composed/SelectDropdown'
 import {MultiSelectDropdown} from './Composed/MultiSelectDropdown'
@@ -117,6 +118,25 @@ dropdownFamilyStories.add('DropdownItem', () => (
     >
       {text('children (text)', 'I am a dropdown item!')}
     </DropdownItem>
+  </div>
+))
+
+dropdownFamilyStories.add('DropdownLinkItem', () => (
+  <div className="story--example">
+    <DropdownLinkItem
+      selected={boolean('selected', false)}
+      wrapText={boolean('wrapText', false)}
+      type={
+        DropdownItemType[select('type', mapEnumKeys(DropdownItemType), 'None')]
+      }
+    >
+      <a
+        href={text('link target', 'http://www.influxdata.com')}
+        target="_blank"
+      >
+        {text('link text', 'Example Link')}
+      </a>
+    </DropdownLinkItem>
   </div>
 ))
 

@@ -83,11 +83,17 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   color: rgba($g20-white, 0.75);
   position: relative;
 
-  &.dropdown-item__dot {
+  &.dropdown-link-item {
+    padding: 0;
+  }
+
+  &.dropdown-item__dot,
+  &.dropdown-item__dot.dropdown-link-item > a {
     padding-left: $dropdown-item--padding-h + ($dropdown-item--dot-radius * 2);
   }
 
-  &.dropdown-item__checkbox {
+  &.dropdown-item__checkbox,
+  &.dropdown-item__checkbox.dropdown-link-item > a  {
     padding-left: $dropdown-item--padding-h + $dropdown-item--checkbox-size + $dropdown-item--padding-v;
   }
 
@@ -98,12 +104,14 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   }
 }
 
-.dropdown-item__wrap .dropdown-item--children {
+.dropdown-item__wrap .dropdown-item--children,
+.dropdown-item__wrap.dropdown-link-item a {
   word-break: break-all;
   white-space: pre-wrap;
 }
 
-.dropdown-item__no-wrap .dropdown-item--children {
+.dropdown-item__no-wrap .dropdown-item--children,
+.dropdown-item__no-wrap.dropdown-link-item a {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -163,7 +171,46 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   }
 }
 
-/* Themes */
+/*
+  Dropdown Link Item
+  ------------------------------------------------------------------------------
+*/
+
+.dropdown-item.dropdown-link-item {
+  padding: 0;
+
+  &.dropdown-item__dot,
+  &.dropdown-item__checkbox {
+    padding-left: 0;
+  }
+
+  a {
+    padding: $dropdown-item--padding-v $dropdown-item--padding-h;
+    display: inline-block;
+  }
+
+  a,
+  a:link,
+  a:active,
+  a:visited {
+    font-weight: 600;
+    color: rgba($g20-white, 0.75);
+  }
+
+  a:hover,
+  &.active a,
+  &.active a:link,
+  &.active a:visited,
+  &.active a:active,
+  &.active a:hover {
+    color: $g20-white;
+  }
+}
+
+/*
+  Menu Themes
+  ------------------------------------------------------------------------------
+*/
 
 @mixin dropdownMenuColor(
   $backgroundA,
