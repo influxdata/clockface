@@ -54,14 +54,14 @@ export class DropdownLinkItem extends Component<Props> {
   private get selectionIndicator(): JSX.Element | undefined {
     const {type} = this.props
 
-    if (type === DropdownItemType.Checkbox) {
-      return <div className="dropdown-item--checkbox" />
+    switch (type) {
+      case DropdownItemType.Checkbox:
+        return <div className="dropdown-item--checkbox" />
+      case DropdownItemType.Dot:
+        return <div className="dropdown-item--dot" />
+      case DropdownItemType.None:
+      default:
+        return
     }
-
-    if (type === DropdownItemType.Dot) {
-      return <div className="dropdown-item--dot" />
-    }
-
-    return
   }
 }
