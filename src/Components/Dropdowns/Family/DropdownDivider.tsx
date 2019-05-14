@@ -15,6 +15,7 @@ export class DropdownDivider extends Component<Props> {
   public static defaultProps = {
     testID: 'dropdown-divider',
   }
+
   public render() {
     const {text, testID, className} = this.props
 
