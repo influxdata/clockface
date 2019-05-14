@@ -377,6 +377,7 @@ dropdownComposedStories.add('MultiSelectdropdown', () => (
           )
         ]
       }
+      emptyText={text('emptyText', 'None selected')}
       selectedOptions={array(
         'selectedOptions',
         defaultMultiSelectSelectedOptions

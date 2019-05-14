@@ -28,6 +28,8 @@ interface Props {
   options: string[]
   /** Fires when an option is clicked, used to update state */
   onSelect: (option: string) => void
+  /** Text to display when no options are selected */
+  emptyText: string
   /** Pixel width of Dropdown */
   widthPixels?: number
   /** Optional status of button */
@@ -46,6 +48,7 @@ interface Props {
 
 export class MultiSelectDropdown extends Component<Props> {
   public static defaultProps = {
+    emptyText: 'None selected',
     buttonStatus: ComponentStatus.Default,
     buttonColor: ComponentColor.Default,
     buttonSize: ComponentSize.Small,
@@ -55,7 +58,6 @@ export class MultiSelectDropdown extends Component<Props> {
   public render() {
     const {
       widthPixels,
-      selectedOptions,
       buttonStatus,
       buttonColor,
       buttonSize,
@@ -76,7 +78,7 @@ export class MultiSelectDropdown extends Component<Props> {
             size={buttonSize}
             icon={buttonIcon}
           >
-            {selectedOptions.join(', ')}
+            {this.buttonText}
           </DropdownButton>
         )}
         menu={
@@ -86,6 +88,16 @@ export class MultiSelectDropdown extends Component<Props> {
         }
       />
     )
+  }
+
+  private get buttonText(): string {
+    const {selectedOptions, emptyText} = this.props
+
+    if (selectedOptions.length) {
+      return selectedOptions.join(', ')
+    }
+
+    return emptyText
   }
 
   private get menuOptions(): JSX.Element[] {
