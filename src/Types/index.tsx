@@ -58,16 +58,17 @@ export enum Gradients {
   RobotLogic = 'RobotLogic',
 }
 
-export enum DropdownMenuColors {
-  Amethyst = 'Amethyst',
-  Malachite = 'Malachite',
-  Sapphire = 'Sapphire',
-  Onyx = 'Onyx',
+export enum DropdownMenuTheme {
+  Amethyst = 'amethyst',
+  Malachite = 'malachite',
+  Sapphire = 'sapphire',
+  Onyx = 'onyx',
 }
 
-export enum DropdownMode {
-  ActionList = 'action',
-  Radio = 'radio',
+export enum DropdownItemType {
+  Dot = 'dot',
+  Checkbox = 'checkbox',
+  None = 'none',
 }
 
 export enum ButtonShape {

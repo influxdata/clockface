@@ -6,222 +6,402 @@ import {storiesOf} from '@storybook/react'
 import {
   withKnobs,
   text,
-  array,
   number,
   select,
   boolean,
+  array,
 } from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../.storybook/utils'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {Dropdown} from './Dropdown'
-import {DropdownButton} from './DropdownButton'
-import {DropdownDivider} from './DropdownDivider'
-import {DropdownItem} from './DropdownItem'
-import {MultiSelectDropdown} from './MultiSelectDropdown'
+import {Dropdown} from './Family/Dropdown'
+import {DropdownButton} from './Family/DropdownButton'
+import {DropdownDivider} from './Family/DropdownDivider'
+import {DropdownItem} from './Family/DropdownItem'
+import {DropdownLinkItem} from './Family/DropdownLinkItem'
+import {DropdownMenu} from './Family/DropdownMenu'
+import {SelectDropdown} from './Composed/SelectDropdown'
+import {MultiSelectDropdown} from './Composed/MultiSelectDropdown'
 
 // Types
 import {
   ComponentColor,
-  DropdownMenuColors,
+  DropdownMenuTheme,
   ComponentSize,
   ComponentStatus,
   IconFont,
-  DropdownMode,
+  DropdownItemType,
 } from '../../Types'
 
-const dropdownStories = storiesOf('Components|Dropdowns', module)
+const dropdownFamilyStories = storiesOf('Components|Dropdowns/Family', module)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
-dropdownStories.add('Dropdown Component', () => {
-  const dropdownValues1 = array('Dropdown Values 1', [
-    'LongMenuItem LongMenuItem LongMenuItem LongMenuItem',
-    'zero',
-    'one',
-    'two',
-    'three',
-    'four',
-  ])
+const dropdownComposedStories = storiesOf(
+  'Components|Dropdowns/Composed',
+  module
+)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
 
-  const dropdownValues2 = array('Dropdown Values 2', [
-    'five',
-    'six',
-    'seven',
-    'eight',
-    'nine',
-  ])
-
-  return (
+dropdownFamilyStories.add('Dropdown', () => (
+  <div className="story--example">
     <Dropdown
-      onChange={() => {}}
-      selectedID={select(
-        'selectedID',
-        [...dropdownValues1, ...dropdownValues2],
-        'zero'
+      widthPixels={number('widthPixels', 200)}
+      button={(active, onClick) => (
+        <DropdownButton active={active} onClick={onClick}>
+          {text('Button Text', 'I am a Dropdown!')}
+        </DropdownButton>
       )}
-      widthPixels={number('widthPixels', 200)}
-      menuWidthPixels={number('menuWidthPixels', 200)}
-      menuHeader={<div>menuHeader</div>}
-      icon={
-        IconFont[
-          select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'BarChart')
-        ]
-      }
-      buttonColor={
-        ComponentColor[
-          select('buttonColor', mapEnumKeys(ComponentColor), 'Primary')
-        ]
-      }
-      buttonSize={
-        ComponentSize[select('buttonSize', mapEnumKeys(ComponentSize), 'Small')]
-      }
-      status={
-        ComponentStatus[
-          select('status', mapEnumKeys(ComponentStatus), 'Default')
-        ]
-      }
-      maxMenuHeight={number('maxMenuHeight', 250)}
-      menuColor={
-        DropdownMenuColors[
-          select('menuColor', mapEnumKeys(DropdownMenuColors), 'Amethyst')
-        ]
-      }
-      mode={
-        DropdownMode[select('mode', mapEnumKeys(DropdownMode), 'ActionList')]
-      }
-      titleText={text('titleText', 'Title Text')}
-      wrapMenuText={boolean('wrapMenuText', false)}
-    >
-      <Dropdown.Divider
-        id="first_divider"
-        text={text('First Divider', 'First Divider')}
-      />
-      {dropdownValues1.map(v => (
-        <Dropdown.Item key={v} id={v} value={v}>
-          {v}
-        </Dropdown.Item>
-      ))}
-      <Dropdown.Divider
-        id="second_divider"
-        text={text('Second Divider', 'Second Divider')}
-      />
-      {dropdownValues2.map(v => (
-        <Dropdown.Item key={v} id={v} value={v}>
-          {v}
-        </Dropdown.Item>
-      ))}
-    </Dropdown>
-  )
-})
+      menu={onCollapse => (
+        <DropdownMenu onCollapse={onCollapse}>
+          <div className="mockComponent dropdownContents">
+            <span>Menu Contents</span>
+          </div>
+        </DropdownMenu>
+      )}
+    />
+  </div>
+))
 
-dropdownStories.add('MultiSelectDropdown Component', () => {
-  const dropdownValues1 = array('Dropdown Values 1', [
-    'LongMenuItem LongMenuItem LongMenuItem LongMenuItem',
-    'zero',
-    'one',
-    'two',
-    'three',
-    'four',
-  ])
+dropdownFamilyStories.add('DropdownButton', () => (
+  <div className="story--example">
+    <div style={{width: '200px'}}>
+      <DropdownButton
+        onClick={() => {}}
+        status={
+          ComponentStatus[
+            select('status', mapEnumKeys(ComponentStatus), 'Default')
+          ]
+        }
+        color={
+          ComponentColor[
+            select('color', mapEnumKeys(ComponentColor), 'Primary')
+          ]
+        }
+        size={
+          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+        }
+        active={boolean('active', false)}
+        icon={
+          IconFont[
+            select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'BarChart')
+          ]
+        }
+        title={text('title', 'Hover Title Text')}
+      >
+        {text('children (text)', 'I am a button!')}
+      </DropdownButton>
+    </div>
+  </div>
+))
 
-  const dropdownValues2 = array('Dropdown Values 2', [
-    'five',
-    'six',
-    'seven',
-    'eight',
-    'nine',
-  ])
+dropdownFamilyStories.add('DropdownDivider', () => (
+  <div className="story--example">
+    <DropdownDivider text={text('Divider Text', 'Divider Text')} />
+  </div>
+))
 
-  return (
-    <MultiSelectDropdown
-      onChange={() => {}}
-      selectedIDs={array('selectedIds', dropdownValues1)}
-      widthPixels={number('widthPixels', 200)}
-      icon={
-        IconFont[
-          select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'BarChart')
-        ]
-      }
-      buttonColor={
-        ComponentColor[
-          select('buttonColor', mapEnumKeys(ComponentColor), 'Primary')
-        ]
-      }
-      buttonSize={
-        ComponentSize[select('buttonSize', mapEnumKeys(ComponentSize), 'Small')]
-      }
-      menuColor={
-        DropdownMenuColors[
-          select('menuColor', mapEnumKeys(DropdownMenuColors), 'Amethyst')
-        ]
-      }
+dropdownFamilyStories.add('DropdownItem', () => (
+  <div className="story--example">
+    <DropdownItem
+      value={text('value', 'value')}
+      selected={boolean('selected', false)}
       wrapText={boolean('wrapText', false)}
-      maxMenuHeight={number('maxMenuHeight', 250)}
-      emptyText={text('emptyText', 'Empty Text')}
-      separatorText={text('separatorText', ', ')}
-      status={
-        ComponentStatus[
-          select('status', mapEnumKeys(ComponentStatus), 'Default')
-        ]
+      onClick={value => {
+        alert(`onClick returned: ${value}`)
+      }}
+      type={
+        DropdownItemType[select('type', mapEnumKeys(DropdownItemType), 'None')]
       }
     >
-      <Dropdown.Divider
-        id="first_divider"
-        text={text('First Divider', 'First Divider')}
-      />
-      {dropdownValues1.map(v => (
-        <Dropdown.Item key={v} id={v} value={v}>
-          {v}
-        </Dropdown.Item>
-      ))}
-      <Dropdown.Divider
-        id="second_divider"
-        text={text('Second Divider', 'Second Divider')}
-      />
-      {dropdownValues2.map(v => (
-        <Dropdown.Item key={v} id={v} value={v}>
-          {v}
-        </Dropdown.Item>
-      ))}
-    </MultiSelectDropdown>
-  )
-})
-
-dropdownStories.add('DropdownButton Component', () => (
-  <DropdownButton
-    onClick={() => {}}
-    status={
-      ComponentStatus[select('status', mapEnumKeys(ComponentStatus), 'Default')]
-    }
-    color={
-      ComponentColor[select('color', mapEnumKeys(ComponentColor), 'Primary')]
-    }
-    size={ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]}
-    active={boolean('active', false)}
-    icon={
-      IconFont[
-        select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'BarChart')
-      ]
-    }
-    title={text('title', 'Hover Title Text')}
-  >
-    Child
-  </DropdownButton>
+      {text('children (text)', 'I am a dropdown item!')}
+    </DropdownItem>
+  </div>
 ))
 
-dropdownStories.add('DropdownDivider Component', () => (
-  <DropdownDivider id="divider" text={text('Divider Text', 'Divider Text')} />
+dropdownFamilyStories.add('DropdownLinkItem', () => (
+  <div className="story--example">
+    <DropdownLinkItem
+      selected={boolean('selected', false)}
+      wrapText={boolean('wrapText', false)}
+      type={
+        DropdownItemType[select('type', mapEnumKeys(DropdownItemType), 'None')]
+      }
+    >
+      <a
+        href={text('link target', 'http://www.influxdata.com')}
+        target="_blank"
+      >
+        {text('link text', 'Example Link')}
+      </a>
+    </DropdownLinkItem>
+  </div>
 ))
 
-dropdownStories.add('DropdownItem Component', () => (
-  <DropdownItem
-    id="item_id"
-    value={text('Item Value', 'Value')}
-    selected={boolean('selected', false)}
-    checkbox={boolean('checkbox', false)}
-  >
-    {text('Item Value', 'Value')}
-  </DropdownItem>
+dropdownFamilyStories.add('DropdownMenu', () => (
+  <div className="story--example">
+    <div style={{width: '200px'}}>
+      <DropdownMenu
+        theme={
+          DropdownMenuTheme[
+            select('theme', mapEnumKeys(DropdownMenuTheme), 'Sapphire')
+          ]
+        }
+        maxHeight={number('maxHeight', 250)}
+        noScrollX={boolean('noScrollX', true)}
+        noScrollY={boolean('noScrollY', false)}
+      >
+        <DropdownDivider text="Domestic Fruits" />
+        <DropdownItem
+          wrapText={boolean('item wrapText', false)}
+          value="Banana"
+          selected={false}
+          type={
+            DropdownItemType[
+              select('item type', mapEnumKeys(DropdownItemType), 'None')
+            ]
+          }
+        >
+          Banana
+        </DropdownItem>
+        <DropdownItem
+          wrapText={boolean('item wrapText', false)}
+          value="Kiwi"
+          selected={true}
+          type={
+            DropdownItemType[
+              select('item type', mapEnumKeys(DropdownItemType), 'None')
+            ]
+          }
+        >
+          Kiwi
+        </DropdownItem>
+        <DropdownItem
+          wrapText={boolean('item wrapText', false)}
+          value="custom"
+          selected={false}
+          type={
+            DropdownItemType[
+              select('item type', mapEnumKeys(DropdownItemType), 'None')
+            ]
+          }
+        >
+          This dropdown item text is much longer to test text wrapping
+        </DropdownItem>
+        <DropdownItem
+          wrapText={boolean('item wrapText', false)}
+          value="Apple"
+          selected={false}
+          type={
+            DropdownItemType[
+              select('item type', mapEnumKeys(DropdownItemType), 'None')
+            ]
+          }
+        >
+          Apple
+        </DropdownItem>
+        <DropdownItem
+          wrapText={boolean('item wrapText', false)}
+          value="Orange"
+          selected={false}
+          type={
+            DropdownItemType[
+              select('item type', mapEnumKeys(DropdownItemType), 'None')
+            ]
+          }
+        >
+          Orange
+        </DropdownItem>
+        <DropdownItem
+          wrapText={boolean('item wrapText', false)}
+          value="Grapefruit"
+          selected={false}
+          type={
+            DropdownItemType[
+              select('item type', mapEnumKeys(DropdownItemType), 'None')
+            ]
+          }
+        >
+          Grapefruit
+        </DropdownItem>
+        <DropdownItem
+          wrapText={boolean('item wrapText', false)}
+          value="Pear"
+          selected={false}
+          type={
+            DropdownItemType[
+              select('item type', mapEnumKeys(DropdownItemType), 'None')
+            ]
+          }
+        >
+          Pear
+        </DropdownItem>
+        <DropdownDivider text="Imported Fruits" />
+        <DropdownItem
+          wrapText={boolean('item wrapText', false)}
+          value="Dragonfruit"
+          selected={false}
+          type={
+            DropdownItemType[
+              select('item type', mapEnumKeys(DropdownItemType), 'None')
+            ]
+          }
+        >
+          Dragonfruit
+        </DropdownItem>
+        <DropdownItem
+          wrapText={boolean('item wrapText', false)}
+          value="Yuzu"
+          selected={false}
+          type={
+            DropdownItemType[
+              select('item type', mapEnumKeys(DropdownItemType), 'None')
+            ]
+          }
+        >
+          Yuzu
+        </DropdownItem>
+        <DropdownItem
+          wrapText={boolean('item wrapText', false)}
+          value="Passionfruit"
+          selected={false}
+          type={
+            DropdownItemType[
+              select('item type', mapEnumKeys(DropdownItemType), 'None')
+            ]
+          }
+        >
+          Passionfruit
+        </DropdownItem>
+        <DropdownItem
+          wrapText={boolean('item wrapText', false)}
+          value="Guava"
+          selected={false}
+          type={
+            DropdownItemType[
+              select('item type', mapEnumKeys(DropdownItemType), 'None')
+            ]
+          }
+        >
+          Guava
+        </DropdownItem>
+      </DropdownMenu>
+    </div>
+  </div>
+))
+
+const selectDropdownOptions = [
+  '---Vegetables',
+  'Celery',
+  'Carrot',
+  'Potato',
+  'Onion',
+  'Tomato',
+  'Spinach',
+  '---Fruits',
+  'Apple',
+  'Peach',
+  'Grape',
+  'Orange',
+]
+
+const selectDropdownSelectedOption = 'Celery'
+
+dropdownComposedStories.add('SelectDropdown', () => (
+  <div className="story--example">
+    <SelectDropdown
+      widthPixels={number('widthPixels', 200)}
+      menuMaxHeight={number('menuMaxHeight', 250)}
+      menuTheme={
+        DropdownMenuTheme[
+          select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Sapphire')
+        ]
+      }
+      onSelect={option => {
+        alert(option)
+      }}
+      buttonStatus={
+        ComponentStatus[
+          select('buttonStatus', mapEnumKeys(ComponentStatus), 'Default')
+        ]
+      }
+      buttonColor={
+        ComponentColor[
+          select('buttonColor', mapEnumKeys(ComponentColor), 'Primary')
+        ]
+      }
+      buttonSize={
+        ComponentSize[select('buttonSize', mapEnumKeys(ComponentSize), 'Small')]
+      }
+      buttonIcon={
+        IconFont[
+          select(
+            'buttonIcon',
+            {None: 'none', ...mapEnumKeys(IconFont)},
+            'BarChart'
+          )
+        ]
+      }
+      selectedOption={text('selectedOption', selectDropdownSelectedOption)}
+      options={array('options', selectDropdownOptions)}
+    />
+  </div>
+))
+
+const defaultMultiSelectOptions = [
+  'Celery',
+  'Carrot',
+  'Potato',
+  '---',
+  'Onion',
+  'Tomato',
+  'Spinach',
+]
+const defaultMultiSelectSelectedOptions = ['Celery', 'Onion']
+
+dropdownComposedStories.add('MultiSelectdropdown', () => (
+  <div className="story--example">
+    <MultiSelectDropdown
+      widthPixels={number('widthPixels', 200)}
+      menuMaxHeight={number('menuMaxHeight', 250)}
+      menuTheme={
+        DropdownMenuTheme[
+          select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Sapphire')
+        ]
+      }
+      onSelect={option => {
+        alert(option)
+      }}
+      buttonStatus={
+        ComponentStatus[
+          select('buttonStatus', mapEnumKeys(ComponentStatus), 'Default')
+        ]
+      }
+      buttonColor={
+        ComponentColor[
+          select('buttonColor', mapEnumKeys(ComponentColor), 'Primary')
+        ]
+      }
+      buttonSize={
+        ComponentSize[select('buttonSize', mapEnumKeys(ComponentSize), 'Small')]
+      }
+      buttonIcon={
+        IconFont[
+          select(
+            'buttonIcon',
+            {None: 'none', ...mapEnumKeys(IconFont)},
+            'BarChart'
+          )
+        ]
+      }
+      emptyText={text('emptyText', 'None selected')}
+      selectedOptions={array(
+        'selectedOptions',
+        defaultMultiSelectSelectedOptions
+      )}
+      options={array('options', defaultMultiSelectOptions)}
+    />
+  </div>
 ))
