@@ -44,6 +44,10 @@ interface Props {
   menuTheme: DropdownMenuTheme
   /** Optional maximum pixel height menu */
   menuMaxHeight?: number
+  /** Class name for custom styles */
+  className?: string
+  /** Test ID for Integration Tests */
+  testID: string
 }
 
 export class MultiSelectDropdown extends Component<Props> {
@@ -53,21 +57,26 @@ export class MultiSelectDropdown extends Component<Props> {
     buttonColor: ComponentColor.Default,
     buttonSize: ComponentSize.Small,
     menuTheme: DropdownMenuTheme.Sapphire,
+    testID: 'multiselect-dropdown',
   }
 
   public render() {
     const {
-      widthPixels,
-      buttonStatus,
-      buttonColor,
+      testID,
+      menuTheme,
+      className,
       buttonSize,
       buttonIcon,
-      menuTheme,
+      buttonColor,
+      widthPixels,
+      buttonStatus,
       menuMaxHeight,
     } = this.props
 
     return (
       <Dropdown
+        testID={testID}
+        className={className}
         widthPixels={widthPixels}
         button={(active, onClick) => (
           <DropdownButton
