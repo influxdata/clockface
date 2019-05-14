@@ -1,5 +1,9 @@
 # Changelog
 
+#### 0.0.15
+
+- [#125](https://github.com/influxdata/clockface/pull/125): [Breaking] Refactor `Dropdown` component family
+
 #### 0.0.14
 
 - [#121](https://github.com/influxdata/clockface/pull/121): Introduce `Checkbox` type inputs
