@@ -23,6 +23,8 @@ interface Props {
   noScrollX: boolean
   /** Disable scrolling vertically */
   noScrollY: boolean
+  /** Function to handle closing the menu when a child item is clicked */
+  onCollapse?: () => void
 }
 
 export class DropdownMenu extends Component<Props> {
@@ -35,12 +37,23 @@ export class DropdownMenu extends Component<Props> {
   }
 
   public render() {
-    const {children, maxHeight, testID, noScrollX, noScrollY} = this.props
+    const {
+      children,
+      maxHeight,
+      testID,
+      noScrollX,
+      noScrollY,
+      onCollapse,
+    } = this.props
 
     const {thumbStartColor, thumbStopColor} = this.thumbColorsFromTheme
 
     return (
-      <div className={this.containerClass} style={this.containerStyle}>
+      <div
+        className={this.containerClass}
+        style={this.containerStyle}
+        onClick={onCollapse}
+      >
         <DapperScrollbars
           style={{
             maxWidth: '100%',

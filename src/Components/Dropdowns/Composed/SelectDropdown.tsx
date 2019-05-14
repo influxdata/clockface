@@ -79,11 +79,15 @@ export class SelectDropdown extends Component<Props> {
             {selectedOption}
           </DropdownButton>
         )}
-        menu={
-          <DropdownMenu theme={menuTheme} maxHeight={menuMaxHeight}>
+        menu={onCollapse => (
+          <DropdownMenu
+            theme={menuTheme}
+            maxHeight={menuMaxHeight}
+            onCollapse={onCollapse}
+          >
             {this.menuOptions}
           </DropdownMenu>
-        }
+        )}
       />
     )
   }

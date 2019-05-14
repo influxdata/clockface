@@ -81,11 +81,11 @@ export class MultiSelectDropdown extends Component<Props> {
             {this.buttonText}
           </DropdownButton>
         )}
-        menu={
+        menu={() => (
           <DropdownMenu theme={menuTheme} maxHeight={menuMaxHeight}>
             {this.menuOptions}
           </DropdownMenu>
-        }
+        )}
       />
     )
   }

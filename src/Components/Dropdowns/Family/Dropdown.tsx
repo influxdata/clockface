@@ -20,7 +20,7 @@ interface Props {
     onClick: (e: MouseEvent<HTMLElement>) => void
   ) => JSX.Element
   /** Component to render as the menu (use Dropdown.Menu) */
-  menu: JSX.Element
+  menu: (onCollapse?: () => void) => JSX.Element
   /** Width of the dropdown in pixels */
   widthPixels?: number
   /** Class name for custom styles */
@@ -52,13 +52,13 @@ export class Dropdown extends Component<Props, State> {
   }
 
   public render() {
-    const {widthPixels, button} = this.props
+    const {widthPixels, button, testID} = this.props
     const {expanded} = this.state
     const width = widthPixels ? `${widthPixels}px` : '100%'
 
     return (
       <ClickOutside onClickOutside={this.collapseMenu}>
-        <div className={this.className} style={{width}}>
+        <div className={this.className} style={{width}} data-testid={testID}>
           {button(expanded, this.toggleMenu)}
           <div className="dropdown--menu-container">{this.menu}</div>
         </div>
@@ -71,7 +71,7 @@ export class Dropdown extends Component<Props, State> {
     const {expanded} = this.state
 
     if (expanded) {
-      return menu
+      return menu(this.collapseMenu)
     }
 
     return
