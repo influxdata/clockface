@@ -92,7 +92,7 @@ export class Dropdown extends Component<Props, State> {
     const {className} = this.props
 
     return classnames('dropdown', {
-      className: className,
+      [`${className}`]: className,
     })
   }
 }
