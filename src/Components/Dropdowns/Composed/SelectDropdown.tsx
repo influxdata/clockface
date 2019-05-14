@@ -23,7 +23,7 @@ import {
 
 interface Props {
   /** Text to render in button as currently selected option */
-  selectedOptions: string[]
+  selectedOption: string
   /** List of options to render in menu */
   options: string[]
   /** Fires when an option is clicked, used to update state */
@@ -44,7 +44,7 @@ interface Props {
   menuMaxHeight?: number
 }
 
-export class MultiSelectDropdown extends Component<Props> {
+export class SelectDropdown extends Component<Props> {
   public static defaultProps = {
     buttonStatus: ComponentStatus.Default,
     buttonColor: ComponentColor.Default,
@@ -55,7 +55,7 @@ export class MultiSelectDropdown extends Component<Props> {
   public render() {
     const {
       widthPixels,
-      selectedOptions,
+      selectedOption,
       buttonStatus,
       buttonColor,
       buttonSize,
@@ -76,7 +76,7 @@ export class MultiSelectDropdown extends Component<Props> {
             size={buttonSize}
             icon={buttonIcon}
           >
-            {selectedOptions.join(', ')}
+            {selectedOption}
           </DropdownButton>
         )}
         menu={
@@ -89,7 +89,7 @@ export class MultiSelectDropdown extends Component<Props> {
   }
 
   private get menuOptions(): JSX.Element[] {
-    const {options, selectedOptions, onSelect} = this.props
+    const {options, selectedOption, onSelect} = this.props
 
     return options.map(o => {
       if (o === DROPDOWN_DIVIDER_SHORTCODE) {
@@ -104,9 +104,9 @@ export class MultiSelectDropdown extends Component<Props> {
       return (
         <DropdownItem
           key={o}
-          type={DropdownItemType.Checkbox}
+          type={DropdownItemType.Dot}
           value={o}
-          selected={selectedOptions.includes(o)}
+          selected={o === selectedOption}
           onClick={onSelect}
         >
           {o}

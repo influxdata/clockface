@@ -3,7 +3,14 @@ import * as React from 'react'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, text, number, select, boolean} from '@storybook/addon-knobs'
+import {
+  withKnobs,
+  text,
+  number,
+  select,
+  boolean,
+  array,
+} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../.storybook/utils'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
@@ -13,6 +20,8 @@ import {DropdownButton} from './Family/DropdownButton'
 import {DropdownDivider} from './Family/DropdownDivider'
 import {DropdownItem} from './Family/DropdownItem'
 import {DropdownMenu} from './Family/DropdownMenu'
+import {SelectDropdown} from './Composed/SelectDropdown'
+import {MultiSelectDropdown} from './Composed/MultiSelectDropdown'
 
 // Types
 import {
@@ -24,11 +33,18 @@ import {
   DropdownItemType,
 } from '../../Types'
 
-const dropdownStories = storiesOf('Components|Dropdowns/Family', module)
+const dropdownFamilyStories = storiesOf('Components|Dropdowns/Family', module)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
-dropdownStories.add('Dropdown', () => (
+const dropdownComposedStories = storiesOf(
+  'Components|Dropdowns/Composed',
+  module
+)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
+
+dropdownFamilyStories.add('Dropdown', () => (
   <div className="story--example">
     <Dropdown
       widthPixels={number('widthPixels', 200)}
@@ -48,7 +64,7 @@ dropdownStories.add('Dropdown', () => (
   </div>
 ))
 
-dropdownStories.add('DropdownButton', () => (
+dropdownFamilyStories.add('DropdownButton', () => (
   <div className="story--example">
     <div style={{width: '200px'}}>
       <DropdownButton
@@ -80,13 +96,13 @@ dropdownStories.add('DropdownButton', () => (
   </div>
 ))
 
-dropdownStories.add('DropdownDivider', () => (
+dropdownFamilyStories.add('DropdownDivider', () => (
   <div className="story--example">
     <DropdownDivider text={text('Divider Text', 'Divider Text')} />
   </div>
 ))
 
-dropdownStories.add('DropdownItem', () => (
+dropdownFamilyStories.add('DropdownItem', () => (
   <div className="story--example">
     <DropdownItem
       value={text('value', 'value')}
@@ -104,7 +120,7 @@ dropdownStories.add('DropdownItem', () => (
   </div>
 ))
 
-dropdownStories.add('DropdownMenu', () => (
+dropdownFamilyStories.add('DropdownMenu', () => (
   <div className="story--example">
     <div style={{width: '200px'}}>
       <DropdownMenu
@@ -254,5 +270,118 @@ dropdownStories.add('DropdownMenu', () => (
         </DropdownItem>
       </DropdownMenu>
     </div>
+  </div>
+))
+
+const selectDropdownOptions = [
+  '---Vegetables',
+  'Celery',
+  'Carrot',
+  'Potato',
+  'Onion',
+  'Tomato',
+  'Spinach',
+  '---Fruits',
+  'Apple',
+  'Peach',
+  'Grape',
+  'Orange',
+]
+
+const selectDropdownSelectedOption = 'Celery'
+
+dropdownComposedStories.add('SelectDropdown', () => (
+  <div className="story--example">
+    <SelectDropdown
+      widthPixels={number('widthPixels', 200)}
+      menuMaxHeight={number('menuMaxHeight', 250)}
+      menuTheme={
+        DropdownMenuTheme[
+          select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Sapphire')
+        ]
+      }
+      onSelect={option => {
+        alert(option)
+      }}
+      buttonStatus={
+        ComponentStatus[
+          select('buttonStatus', mapEnumKeys(ComponentStatus), 'Default')
+        ]
+      }
+      buttonColor={
+        ComponentColor[
+          select('buttonColor', mapEnumKeys(ComponentColor), 'Primary')
+        ]
+      }
+      buttonSize={
+        ComponentSize[select('buttonSize', mapEnumKeys(ComponentSize), 'Small')]
+      }
+      buttonIcon={
+        IconFont[
+          select(
+            'buttonIcon',
+            {None: 'none', ...mapEnumKeys(IconFont)},
+            'BarChart'
+          )
+        ]
+      }
+      selectedOption={text('selectedOption', selectDropdownSelectedOption)}
+      options={array('options', selectDropdownOptions)}
+    />
+  </div>
+))
+
+const defaultMultiSelectOptions = [
+  'Celery',
+  'Carrot',
+  'Potato',
+  '---',
+  'Onion',
+  'Tomato',
+  'Spinach',
+]
+const defaultMultiSelectSelectedOptions = ['Celery', 'Onion']
+
+dropdownComposedStories.add('MultiSelectdropdown', () => (
+  <div className="story--example">
+    <MultiSelectDropdown
+      widthPixels={number('widthPixels', 200)}
+      menuMaxHeight={number('menuMaxHeight', 250)}
+      menuTheme={
+        DropdownMenuTheme[
+          select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Sapphire')
+        ]
+      }
+      onSelect={option => {
+        alert(option)
+      }}
+      buttonStatus={
+        ComponentStatus[
+          select('buttonStatus', mapEnumKeys(ComponentStatus), 'Default')
+        ]
+      }
+      buttonColor={
+        ComponentColor[
+          select('buttonColor', mapEnumKeys(ComponentColor), 'Primary')
+        ]
+      }
+      buttonSize={
+        ComponentSize[select('buttonSize', mapEnumKeys(ComponentSize), 'Small')]
+      }
+      buttonIcon={
+        IconFont[
+          select(
+            'buttonIcon',
+            {None: 'none', ...mapEnumKeys(IconFont)},
+            'BarChart'
+          )
+        ]
+      }
+      selectedOptions={array(
+        'selectedOptions',
+        defaultMultiSelectSelectedOptions
+      )}
+      options={array('options', defaultMultiSelectOptions)}
+    />
   </div>
 ))
