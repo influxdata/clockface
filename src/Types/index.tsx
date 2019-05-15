@@ -259,6 +259,12 @@ export enum Sort {
   None = 'none',
 }
 
+export enum Alignment {
+  Left = 'left',
+  Center = 'center',
+  Right = 'right',
+}
+
 export enum JustifyContent {
   FlexStart = 'flex-start',
   Center = 'center',
