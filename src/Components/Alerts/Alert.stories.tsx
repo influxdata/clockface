@@ -1,5 +1,5 @@
 // Libraries
-import * as React from 'react'
+import React from 'react'
 import marked from 'marked'
 
 // Storybook
@@ -15,7 +15,7 @@ import {Alert} from './Alert'
 import {ComponentColor, IconFont} from '../../Types/index'
 
 // Notes
-const README = require('./README.md')
+const AlertReadme = marked(require('./README.md'))
 
 const alertStories = storiesOf('Components|Alerts', module)
   .addDecorator(withKnobs)
@@ -41,5 +41,9 @@ alertStories.add(
       {text('text', 'Alert Text')}
     </Alert>
   ),
-  {notes: marked(README)}
+  {
+    readme: {
+      content: AlertReadme,
+    },
+  }
 )

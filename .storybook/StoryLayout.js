@@ -49,7 +49,7 @@ export const TableComponent = ({propDefinitions}) => {
       return (
         <tr key={property}>
           <td className="props-table--prop">{property}</td>
-          <td>{propType.name}</td>
+          <td>{propType && propType.name}</td>
           <td>{!required || !!defaultValue ? 'no' : 'yes'}</td>
           <td>{defaultValue}</td>
           <td>{description}</td>

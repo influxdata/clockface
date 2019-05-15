@@ -7,8 +7,7 @@ module.exports = ({config}) => {
     },
     {
       test: /\.md$/,
-      loaders: ['html-loader', 'markdown-loader'],
-      include: path.resolve(__dirname, '../'),
+      use: 'markdown-loader',
     },
     {
       test: /\.woff(2)?(\?[a-z0-9#=&.]+)$/,
