@@ -15,6 +15,7 @@ $input-hover-border: $g7-graphite;
 $input-focus-text: $g20-white;
 $input-focus-border: $c-pool;
 $input-disabled-text: $g9-mountain;
+$input-disabled-border: $g4-onyx;
 
 $input-field-z: 1;
 $input-shadow-z: $input-field-z + 1;
@@ -48,15 +49,6 @@ $input-status-z: $input-field-z + 2;
     color: $input-focus-text;
     border-color: $input-focus-border;
     box-shadow: 0 0 6px 0 $input-focus-border;
-  }
-
-  &[disabled],
-  &[disabled]:hover {
-    cursor: default;
-    border-color: $input-border;
-    background-color: $input-disabled-bg;
-    color: $input-disabled-text;
-    font-style: italic;
   }
 
   &::-webkit-input-placeholder {
@@ -112,11 +104,6 @@ $input-status-z: $input-field-z + 2;
   color: $input-focus-text;
 }
 
-.input--disabled .input-icon,
-.input--disabled .input-field:hover + .input-icon {
-  color: $input-disabled-text;
-}
-
 .input-shadow {
   pointer-events: none;
   position: absolute;
@@ -134,6 +121,46 @@ $input-status-z: $input-field-z + 2;
 
 .input-status + .input-shadow {
   opacity: 1;
+}
+
+/*
+  Checkbox Type Input
+  ------------------------------------------------------------------------------
+*/
+.input__has-checkbox .input-field {
+  position: absolute;
+  left: -9999px;
+}
+
+.input--checkbox {
+  position: relative;
+  background-color: $g2-kevlar;
+  border-radius: $cf-radius;
+  border: $cf-border solid $g5-pepper;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.5,1.5);
+    border-radius: 50%;
+    background: $c-pool;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  &.checked:after {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1,1);
+  }
+
+  &:hover {
+    border-color: $g7-graphite;
+    cursor: pointer;
+  }
 }
 
 /*
@@ -162,6 +189,11 @@ $input-status-z: $input-field-z + 2;
     right: $height / 2;
   }
 
+  .input-pseudo {
+    height: $height;
+    width: $height;
+  }
+
   .input-shadow {
     width: $height;
     right: $padding;
@@ -171,6 +203,17 @@ $input-status-z: $input-field-z + 2;
   .input-spinner {
     width: $height / 2;
     height: $height / 2;
+  }
+
+  .input--checkbox {
+    width: $height - ($cf-marg-a + $cf-border);
+    height: $height - ($cf-marg-a + $cf-border);
+    margin: 2px 0;
+
+    &:after {
+      width: ceil(($height - ($cf-marg-a + $cf-border)) * 0.4);
+      height: ceil(($height - ($cf-marg-a + $cf-border)) * 0.4);
+    }
   }
 }
 
@@ -191,7 +234,7 @@ $input-status-z: $input-field-z + 2;
   Valid State
   ------------------------------------------------------------------------------
 */
-.input--valid {
+.input__valid {
   .input-status {
     color: $c-rainforest;
   }
@@ -201,7 +244,7 @@ $input-status-z: $input-field-z + 2;
   Error State
   ------------------------------------------------------------------------------
 */
-.input--error {
+.input__error {
   .input-status {
     color: $c-dreamsicle;
   }
@@ -221,7 +264,7 @@ $input-status-z: $input-field-z + 2;
   Loading State
   ------------------------------------------------------------------------------
 */
-.input--loading {
+.input__loading {
   .input-status {
     color: $c-pool;
   }
@@ -245,4 +288,36 @@ $input-status-z: $input-field-z + 2;
   animation-iteration-count: infinite;
   border: $cf-border solid $g5-pepper;
   border-top-color: $c-pool;
+}
+
+/*
+  Disabled State
+  ------------------------------------------------------------------------------
+*/
+.input__disabled {
+  .input-icon,
+  .input-field:hover + .input-icon {
+    color: $input-disabled-text;
+  }
+  .input--checkbox {
+    &,
+    &:hover {
+      cursor: default;
+      border-color: $input-disabled-border;
+      background-color: $input-disabled-bg;
+
+      &:after {
+        background-color: $input-disabled-text;
+      }
+    }
+  }
+}
+
+.input-field[disabled],
+.input-field[disabled]:hover {
+  cursor: default;
+  border-color: $input-disabled-border;
+  background-color: $input-disabled-bg;
+  color: $input-disabled-text;
+  font-style: italic;
 }

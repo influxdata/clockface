@@ -24,16 +24,21 @@
   width: 100%;
   height: 100%;
   position: relative;
-  color: $g11-sidewalk;
-  transition:
-    text-shadow 0.4s ease;
-
+  
   > .icon {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
     font-size: ceil($nav-menu--size * 0.4222);
+  }
+  
+  &,
+  &:link,
+  &:active,
+  &:visited {
+    transition: text-shadow 0.4s ease;
+    color: $g11-sidewalk;
   }
 }
 
@@ -69,13 +74,21 @@
 
 .nav--item-header {
   display: block;
-  color: $g20-white;
   height: $nav-menu--size;
   line-height: $nav-menu--size;
   font-size: $form-lg-font;
-  font-weight: 500;
   padding: 0px $nav-menu--gutter;
   white-space: nowrap;
+  
+  &,
+  &:link,
+  &:visited,
+  &:active,
+  &:hover {
+    font-weight: 500;
+    transition: none;
+    color: $g20-white;
+  }
 }
 
 // Hover State
@@ -95,12 +108,6 @@
 
 // Active State
 .nav--item.active {
-  .nav--avatar {
-    box-shadow:
-      0 0 9px $c-laser,
-      0 0 15px $c-ocean,
-      0 0 20px $c-amethyst;
-  }
   .nav--item-icon {
     color: $g20-white;
     background-color: $g6-smoke;
@@ -113,13 +120,8 @@
 
 // Active Hover State
 .nav--item.active:hover {
-  .nav--avatar {
-    box-shadow:
-      0 0 9px $c-yeti,
-      0 0 15px $c-hydrogen,
-      0 0 20px $c-laser;
-  }
   .nav--item-icon {
+    color: $g20-white;
     background-color: $nav-menu--bg;
     text-shadow:
       0 0 9px $c-yeti,
@@ -164,11 +166,17 @@
   padding: 6px $nav-menu--gutter;
   user-select: none;
   font-size: 13px;
-  font-weight: 600;
-  color: $c-yeti;
   white-space: nowrap;
   position: relative;
   z-index: 2;
+  
+  &,
+  &:link,
+  &:visited,
+  &:active {
+    font-weight: 600;
+    color: $c-neutrino;
+  }
 
   &:after {
     position: absolute;
@@ -185,6 +193,7 @@
 
   &:hover,
   &.active {
+    color: $g20-white;
     cursor: pointer;
 
     &:after {

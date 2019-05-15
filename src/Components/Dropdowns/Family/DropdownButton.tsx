@@ -2,8 +2,8 @@
 import React, {Component, MouseEvent} from 'react'
 
 // Components
-import {Icon} from '../Icon/Icon'
-import {ButtonBase} from '../Button/Base/ButtonBase'
+import {Icon} from '../../Icon/Icon'
+import {ButtonBase} from '../../Button/Base/ButtonBase'
 
 // Types
 import {
@@ -13,10 +13,10 @@ import {
   ComponentColor,
   ComponentStatus,
   ButtonShape,
-} from '../../Types'
+} from '../../../Types'
 
 // Styles
-import './DropdownButton.scss'
+import '../DropdownButton.scss'
 
 interface Props {
   /** Function to be called on click of dropdown button */

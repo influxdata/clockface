@@ -13,11 +13,15 @@ import {Panel} from './Panel'
 // Types
 import {Gradients, ComponentSize, InfluxColors} from '../../Types'
 
-const panelStories = storiesOf('Components|Panels', module)
+const panelStories = storiesOf('Components|Panels/Family', module)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
-panelStories.add('Panel Family', () => (
+const panelExampleStories = storiesOf('Components|Panels/Examples', module)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
+
+panelStories.add('Panel', () => (
   <Panel
     gradient={
       Gradients[
@@ -26,8 +30,28 @@ panelStories.add('Panel Family', () => (
     }
     backgroundColor={color('backgroundColor', `${InfluxColors.Castle}`)}
     size={ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]}
-  >
-    <Panel.Header title={text('title', 'Steel Panel')} />
+  />
+))
+
+panelStories.add('PanelHeader', () => (
+  <Panel.Header title={text('title', 'I am a cool Panel')} />
+))
+
+panelStories.add('PanelBody', () => (
+  <Panel.Body>
+    <span>{text('children', 'Example paragraph text')}</span>
+  </Panel.Body>
+))
+
+panelStories.add('PanelFooter', () => (
+  <Panel.Footer>
+    <span>{text('children', 'Example footer text')}</span>
+  </Panel.Footer>
+))
+
+panelExampleStories.add('Getting Started Panel', () => (
+  <Panel size={ComponentSize.Small}>
+    <Panel.Header title="Getting started with InfluxDB 2.0" />
     <Panel.Body>
       <p>
         Lorem ipsum dolor amet tofu quinoa poke pitchfork adaptogen sustainable
@@ -38,7 +62,18 @@ panelStories.add('Panel Family', () => (
       </p>
     </Panel.Body>
     <Panel.Footer>
-      <p>I am a footer!</p>
+      <p>
+        Check our <a href="#">Documentation Site</a> for more tutorials
+      </p>
     </Panel.Footer>
+  </Panel>
+))
+
+panelExampleStories.add('Dangerous Action Panel', () => (
+  <Panel size={ComponentSize.Small} gradient={Gradients.DocScott}>
+    <Panel.Header title="Danger Zone!" />
+    <Panel.Body>
+      <p>These actions can have unintended wide-reaching consequences</p>
+    </Panel.Body>
   </Panel>
 ))

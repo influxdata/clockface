@@ -41,6 +41,8 @@ interface Props {
   type: ButtonType
   /** Test ID for Integration Tests */
   testID: string
+  /** React Ref object */
+  refObject?: RefObject<HTMLButtonElement>
 }
 
 export class SquareButton extends Component<Props> {
@@ -57,25 +59,33 @@ export class SquareButton extends Component<Props> {
 
   public render() {
     const {
-      onClick,
+      className,
       titleText,
+      refObject,
       tabIndex,
-      type,
+      onClick,
       testID,
       status,
-      className,
+      active,
+      color,
+      type,
+      size,
     } = this.props
 
     return (
       <ButtonBase
-        shape={ButtonShape.Square}
         className={className}
-        status={status}
-        onClick={onClick}
         titleText={titleText}
+        refObject={refObject}
         tabIndex={!!tabIndex ? tabIndex : 0}
-        type={type}
+        onClick={onClick}
         testID={testID}
+        status={status}
+        active={active}
+        color={color}
+        shape={ButtonShape.Square}
+        type={type}
+        size={size}
       >
         {this.icon}
         {this.statusIndicator}

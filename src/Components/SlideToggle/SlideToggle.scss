@@ -171,9 +171,28 @@
 */
 .slide-toggle--label {
   white-space: nowrap;
-  font-size: 13px;
   font-weight: 600;
-  color: $g11-sidewalk;
-  margin: 0 $cf-marg-a;
   @include no-user-select();
+  color: $g13-mist;
+  opacity: 0.66;
+  transition: opacity 0.25s ease;
+  font-style: italic;
+  
+  &.slide-toggle--label__active {
+    font-style: normal;
+    opacity: 1;
+  }
+}
+
+.slide-toggle--label-xs {
+  font-size: $form-xs-font;
+}
+.slide-toggle--label-sm {
+  font-size: $form-sm-font;
+}
+.slide-toggle--label-md {
+  font-size: $form-md-font;
+}
+.slide-toggle--label-lg {
+  font-size: $form-lg-font;
 }

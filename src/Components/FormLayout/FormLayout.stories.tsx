@@ -3,7 +3,7 @@ import * as React from 'react'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, object, text, select, boolean} from '@storybook/addon-knobs'
+import {withKnobs, text, select, boolean, color} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../.storybook/utils'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
@@ -17,115 +17,260 @@ import {FormElement} from './FormElement'
 import {FormHelpText} from './FormHelpText'
 import {FormElementError} from './FormElementError'
 import {FormValidationElement} from './FormValidationElement'
+import {Grid} from '../GridLayout/Grid'
+import {Button} from '../Button/Composed/Button'
+import {Input} from '../Inputs/Input'
+import {ComponentSpacer} from '../ComponentSpacer/ComponentSpacer'
+import {SlideToggle} from '../SlideToggle/SlideToggle'
 
 // Types
-import {Columns, ComponentStatus} from '../../Types'
+import {
+  Columns,
+  ComponentColor,
+  ComponentSize,
+  ComponentStatus,
+  FlexDirection,
+  AlignItems,
+} from '../../Types'
 
-const formStories = storiesOf('Components|Forms', module)
+const formStories = storiesOf('Components|Forms/Family', module)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
-const handleValidation = () => {
+const formExampleStories = storiesOf('Components|Forms/Examples', module)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
+
+const mockValidationFunc = (value: string): string | null => {
+  if (!value) {
+    return 'Field cannot be empty'
+  }
+
   return null
 }
 
-formStories.add('Form Component Family', () => {
-  const theStatus =
-    ComponentStatus[select('status', mapEnumKeys(ComponentStatus), 'Error')]
+formStories.add('Form', () => (
+  <div className="story--example">
+    <div className="story--form-example">
+      <Form />
+    </div>
+  </div>
+))
+
+formStories.add('FormBox', () => (
+  <div className="story--example">
+    <div className="story--form-example">
+      <FormBox />
+    </div>
+  </div>
+))
+
+formStories.add('FormDivider', () => (
+  <div className="story--example">
+    <div className="story--form-example">
+      <FormDivider lineColor={color('color', '')} />
+    </div>
+  </div>
+))
+
+formStories.add('FormElement', () => (
+  <div className="story--example">
+    <div className="story--form-example">
+      <FormElement
+        label={text('label', 'Element Label')}
+        helpText={text('helpText', 'Help Text')}
+        errorMessage={text('errorMessage', 'Error Message')}
+        required={boolean('required', true)}
+      >
+        <div className="mockComponent mockInput">Input Goes Here</div>
+      </FormElement>
+    </div>
+  </div>
+))
+
+formStories.add('FormElementError', () => (
+  <div className="story--example">
+    <FormElementError message={text('errorMessage', 'Error Message')} />
+  </div>
+))
+
+formStories.add('FormFooter', () => (
+  <div className="story--example">
+    <div className="story--form-example">
+      <FormFooter
+        widthXS={Columns[select('widthXS', mapEnumKeys(Columns), 'Ten')]}
+        widthSM={Columns[select('widthSM', mapEnumKeys(Columns), 'Ten')]}
+        widthMD={Columns[select('widthMD', mapEnumKeys(Columns), 'Ten')]}
+        widthLG={Columns[select('widthLG', mapEnumKeys(Columns), 'Ten')]}
+        offsetXS={Columns[select('offsetXS', mapEnumKeys(Columns), 'One')]}
+        offsetSM={Columns[select('offsetSM', mapEnumKeys(Columns), 'One')]}
+        offsetMD={Columns[select('offsetMD', mapEnumKeys(Columns), 'One')]}
+        offsetLG={Columns[select('offsetLG', mapEnumKeys(Columns), 'One')]}
+      >
+        <div className="mockComponent mockButton">Button</div>
+        <div className="mockComponent mockButton">Button</div>
+      </FormFooter>
+    </div>
+  </div>
+))
+
+formStories.add('FormHelpText', () => (
+  <div className="story--example">
+    <div className="story--form-example">
+      <FormHelpText text={text('helpText', 'Help Text')} />
+    </div>
+  </div>
+))
+
+formStories.add('FormLabel', () => (
+  <div className="story--example">
+    <div className="story--form-example">
+      <FormLabel
+        label={text('label', 'Element Label')}
+        required={boolean('required', true)}
+      />
+    </div>
+  </div>
+))
+
+formStories.add('FormValidationElement', () => (
+  <div className="story--example">
+    <div className="story--form-example">
+      <FormValidationElement
+        label={text('label', 'Element Label')}
+        value={text('value', 'Input Value (delete this to cause error)')}
+        helpText={text('helpText', 'Help Text')}
+        required={boolean('required', true)}
+        validationFunc={mockValidationFunc}
+      >
+        {status => (
+          <div className="mockComponent input">{`(status) => <child>${status}</child>`}</div>
+        )}
+      </FormValidationElement>
+    </div>
+  </div>
+))
+
+formExampleStories.add('Create User Form', () => {
+  const usernameValidator = (value: string): string | null => {
+    if (!value) {
+      return 'Username cannot be blank'
+    }
+
+    return null
+  }
+
+  const emailValidator = (value: string): string | null => {
+    if (!value) {
+      return 'Email cannot be blank'
+    }
+
+    const regexBlurb = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+    if (!regexBlurb.test(value)) {
+      return 'Please enter a valid email address'
+    }
+
+    return null
+  }
+
+  const submitStatus = (): ComponentStatus => {
+    const usernameIsValid = usernameValidator(text('Username', ''))
+    const emailIsValid = emailValidator(text('Email', ''))
+
+    if (usernameIsValid === null && emailIsValid === null) {
+      return ComponentStatus.Default
+    }
+
+    return ComponentStatus.Disabled
+  }
 
   return (
-    <Form style={object('style', {})}>
-      <Form.Box>
-        <Form.Element
-          label={text('label', 'Element Label')}
-          helpText={text('helpText', 'Help Text')}
-          errorMessage={text('errorMessage', 'Error Message')}
-          required={boolean('required', true)}
-        >
-          <div className="mockComponent input" />
-        </Form.Element>
-        <Form.Divider />
-      </Form.Box>
-      <Form.Box>
-        <Form.ValidationElement
-          label={text('label', 'Element Label')}
-          value={text('value', 'Element Label')}
-          required={boolean('required', true)}
-          validationFunc={handleValidation}
-        >
-          {(status = theStatus) => (
-            <div className="mockComponent input">{status}</div>
-          )}
-        </Form.ValidationElement>
-      </Form.Box>
-      <Form.Footer>
-        <div className="mockComponent stretch">Form Footer</div>
-      </Form.Footer>
-    </Form>
-  )
-})
-
-formStories.add('FormBox Component', () => <FormBox />)
-
-formStories.add('FormDivider Component', () => <FormDivider />)
-
-formStories.add('FormElement Component', () => (
-  <FormElement
-    label={text('label', 'Element Label')}
-    helpText={text('helpText', 'Help Text')}
-    errorMessage={text('errorMessage', 'Error Message')}
-    required={boolean('required', true)}
-  >
-    <div className="mockComponent input" />
-  </FormElement>
-))
-
-formStories.add('FormElementError Component', () => (
-  <FormElementError message={text('errorMessage', 'Error Message')} />
-))
-
-formStories.add('FormFooter Component', () => (
-  <FormFooter
-    widthXS={Columns[select('widthXS', mapEnumKeys(Columns), 'Ten')]}
-    widthSM={Columns[select('widthSM', mapEnumKeys(Columns), 'Ten')]}
-    widthMD={Columns[select('widthMD', mapEnumKeys(Columns), 'Ten')]}
-    widthLG={Columns[select('widthLG', mapEnumKeys(Columns), 'Ten')]}
-    offsetXS={Columns[select('offsetXS', mapEnumKeys(Columns), 'One')]}
-    offsetSM={Columns[select('offsetSM', mapEnumKeys(Columns), 'One')]}
-    offsetMD={Columns[select('offsetMD', mapEnumKeys(Columns), 'One')]}
-    offsetLG={Columns[select('offsetLG', mapEnumKeys(Columns), 'One')]}
-  >
-    <div className="mockComponent stretch">Form Footer</div>
-  </FormFooter>
-))
-
-formStories.add('FormHelpText Component', () => (
-  <FormHelpText text={text('helpText', 'Help Text')} />
-))
-
-formStories.add('FormLabel Component', () => (
-  <FormLabel
-    label={text('label', 'Element Label')}
-    required={boolean('required', true)}
-  >
-    <div className="mockComponent input" />
-  </FormLabel>
-))
-
-formStories.add('FormValidationElement Component', () => {
-  const theStatus =
-    ComponentStatus[select('status', mapEnumKeys(ComponentStatus), 'Error')]
-
-  return (
-    <FormValidationElement
-      label={text('label', 'Element Label')}
-      value={text('value', 'Element Label')}
-      required={boolean('required', true)}
-      validationFunc={handleValidation}
-    >
-      {(status = theStatus) => (
-        <div className="mockComponent input">{status}</div>
-      )}
-    </FormValidationElement>
+    <div className="story--example">
+      <div className="story--form-example">
+        <Form>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column widthXS={Columns.Six}>
+                <Form.ValidationElement
+                  label="Username"
+                  required={true}
+                  value={text('Username', '')}
+                  validationFunc={usernameValidator}
+                >
+                  {status => (
+                    <Input
+                      size={ComponentSize.Medium}
+                      placeholder="A user needs a name..."
+                      value={text('Username', '')}
+                      status={status}
+                    />
+                  )}
+                </Form.ValidationElement>
+              </Grid.Column>
+              <Grid.Column widthXS={Columns.Six}>
+                <Form.ValidationElement
+                  label="Email"
+                  required={true}
+                  value={text('Email', '')}
+                  validationFunc={emailValidator}
+                >
+                  {status => (
+                    <Input
+                      size={ComponentSize.Medium}
+                      placeholder="example@example.com"
+                      value={text('Email', '')}
+                      status={status}
+                    />
+                  )}
+                </Form.ValidationElement>
+              </Grid.Column>
+              <Grid.Column widthXS={Columns.Twelve}>
+                <Form.Element label="Title or Description" required={false}>
+                  <Input
+                    size={ComponentSize.Medium}
+                    placeholder="What role does this user play?"
+                    value={text('Description', '')}
+                  />
+                </Form.Element>
+              </Grid.Column>
+              <Grid.Column widthXS={Columns.Twelve}>
+                <Form.Element label="Team" required={false}>
+                  <Form.Box>
+                    <ComponentSpacer
+                      stretchToFitWidth={true}
+                      direction={FlexDirection.Row}
+                      alignItems={AlignItems.Center}
+                      margin={ComponentSize.Medium}
+                    >
+                      <SlideToggle
+                        active={boolean('Team Toggle', true)}
+                        onChange={() => {}}
+                        size={ComponentSize.ExtraSmall}
+                        color={ComponentColor.Primary}
+                      />
+                      <SlideToggle.Label
+                        text="Add this user to all teams?"
+                        active={boolean('Team Toggle', true)}
+                      />
+                    </ComponentSpacer>
+                  </Form.Box>
+                </Form.Element>
+              </Grid.Column>
+              <Grid.Column widthXS={Columns.Twelve}>
+                <Form.Footer>
+                  <Button
+                    text="Create User"
+                    color={ComponentColor.Primary}
+                    size={ComponentSize.Medium}
+                    status={submitStatus()}
+                  />
+                </Form.Footer>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Form>
+      </div>
+    </div>
   )
 })

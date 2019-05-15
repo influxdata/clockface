@@ -26,6 +26,7 @@ export enum InputType {
   Number = 'number',
   Password = 'password',
   Email = 'email',
+  Checkbox = 'checkbox',
 }
 
 interface Props {
@@ -35,6 +36,8 @@ interface Props {
   min?: number
   /** Maximum value for number type */
   max?: number
+  /** Determines whether checkbox is checked */
+  checked?: boolean
   /** Function to be called on field value change */
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void
   /** Function to be called on focus loss */
@@ -57,7 +60,7 @@ interface Props {
   maxLength?: number
   /** Keyboard control tab order  */
   tabIndex?: number
-  /** Input type (text, number, password, email)  */
+  /** Input type (text, number, password, email, checkbox)  */
   type: InputType
   /** Input field name attribute */
   name: string
@@ -104,6 +107,7 @@ export class Input extends Component<Props> {
       id,
       min,
       max,
+      checked,
       name,
       type,
       status,
@@ -128,6 +132,7 @@ export class Input extends Component<Props> {
           id={id}
           min={min}
           max={max}
+          checked={checked}
           title={this.title}
           autoComplete={autocomplete}
           name={name}
@@ -148,6 +153,7 @@ export class Input extends Component<Props> {
           tabIndex={tabIndex}
           data-testid={testID}
         />
+        {this.checkbox}
         {this.icon}
         {this.statusIndicator}
       </div>
@@ -162,6 +168,18 @@ export class Input extends Component<Props> {
     }
 
     return `${value}`
+  }
+
+  private get checkbox(): JSX.Element | null {
+    const {type, checked} = this.props
+
+    const className = classnames('input--checkbox', {checked})
+
+    if (type === InputType.Checkbox) {
+      return <div className={className} />
+    }
+
+    return null
   }
 
   private get icon(): JSX.Element | null {
@@ -184,8 +202,12 @@ export class Input extends Component<Props> {
     return titleText
   }
 
-  private get statusIndicator(): JSX.Element {
-    const {status} = this.props
+  private get statusIndicator(): JSX.Element | undefined {
+    const {status, type} = this.props
+
+    if (type === InputType.Checkbox) {
+      return
+    }
 
     if (status === ComponentStatus.Loading) {
       return (
@@ -217,7 +239,7 @@ export class Input extends Component<Props> {
           <Icon
             glyph={IconFont.Checkmark}
             className="input-status"
-            testID="input-valud"
+            testID="input-valid"
           />
           <div className="input-shadow" />
         </>
@@ -228,24 +250,29 @@ export class Input extends Component<Props> {
   }
 
   private get className(): string {
-    const {size, status, icon, className} = this.props
+    const {type, size, status, icon, className} = this.props
 
     return classnames('input', {
       [`input-${size}`]: size,
-      'input--has-icon': icon,
-      'input--valid': status === ComponentStatus.Valid,
-      'input--error': status === ComponentStatus.Error,
-      'input--loading': status === ComponentStatus.Loading,
-      'input--disabled': status === ComponentStatus.Disabled,
+      'input__has-checkbox': type === InputType.Checkbox,
+      'input__has-icon': icon,
+      input__valid: status === ComponentStatus.Valid,
+      input__error: status === ComponentStatus.Error,
+      input__loading: status === ComponentStatus.Loading,
+      input__disabled: status === ComponentStatus.Disabled,
       [`${className}`]: className,
     })
   }
 
   private get containerStyle(): CSSProperties {
-    const {widthPixels} = this.props
+    const {widthPixels, type} = this.props
 
     if (widthPixels) {
       return {width: `${widthPixels}px`}
+    }
+
+    if (type === InputType.Checkbox) {
+      return {}
     }
 
     return {width: '100%'}

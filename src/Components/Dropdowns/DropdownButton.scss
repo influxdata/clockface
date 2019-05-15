@@ -40,7 +40,7 @@
 }
 
 /* Button Size Modifiers */
-@mixin buttonSizing($padding, $font) {
+@mixin buttonSizing($padding, $font, $height) {
   .dropdown--icon,
   .dropdown--selected {
     left: $padding;
@@ -55,6 +55,9 @@
   .dropdown--caret {
     right: $padding;
   }
+  & + .dropdown--menu-container {
+    top: $height;
+  }
 }
 
 .dropdown--button.button-disabled {
@@ -62,17 +65,17 @@
 }
 
 .dropdown--button.button-xs {
-  @include buttonSizing($form-xs-padding, $form-xs-font);
+  @include buttonSizing($form-xs-padding, $form-xs-font, $form-xs-height);
 }
 
 .dropdown--button.button-sm {
-  @include buttonSizing($form-sm-padding, $form-sm-font);
+  @include buttonSizing($form-sm-padding, $form-sm-font, $form-sm-height);
 }
 
 .dropdown--button.button-md {
-  @include buttonSizing($form-md-padding, $form-md-font);
+  @include buttonSizing($form-md-padding, $form-md-font, $form-md-height);
 }
 
 .dropdown--button.button-lg {
-  @include buttonSizing($form-lg-padding, $form-lg-font);
+  @include buttonSizing($form-lg-padding, $form-lg-font, $form-lg-height);
 }

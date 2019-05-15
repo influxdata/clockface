@@ -1,10 +1,14 @@
 @import '../../Styles/modules';
 
+$dropdown-item--dot-radius: 6px;
+$dropdown-item--checkbox-size: 12px;
+$dropdown-item--padding-h: $cf-marg-b + $cf-marg-a;
+$dropdown-item--padding-v: $cf-marg-a + $cf-border;
+
 /*
-  Dropdowns
+  Dropdown
   ------------------------------------------------------------------------------
 */
-
 .dropdown {
   position: relative;
 
@@ -22,18 +26,25 @@
   }
 }
 
-/* Dropdown Menu */
+/*
+  Dropdown Menu
+  ------------------------------------------------------------------------------
+*/
 .dropdown--menu-container {
-  overflow: hidden;
   position: absolute;
-  top: 100%;
+  width: 100%;
   left: 0;
   z-index: 500;
-  border-radius: $cf-radius;
-  box-shadow: 0 2px 5px 0.6px fade-out($g0-obsidian, 0.7);
 }
 
-.dropdown--menu {
+.dropdown-menu {
+  overflow: hidden;
+  border-radius: $cf-radius;
+  box-shadow: 0 2px 5px 0.6px rgba($g0-obsidian, 0.2);
+}
+
+
+.dropdown-menu--contents {
   user-select: none;
   display: flex;
   flex-direction: column;
@@ -41,72 +52,25 @@
   cursor: pointer;
 }
 
-.dropdown--item {
-  padding: 6px 11px;
-  padding-left: 21px;
-  font-size: 12px;
-  line-height: 12px;
+/*
+  Dropdown Item
+  ------------------------------------------------------------------------------
+*/
+
+@mixin dropdownItemStyles() {
+  padding: $dropdown-item--padding-v $dropdown-item--padding-h;
+  font-size: $form-sm-font;
+  line-height: $form-sm-font;
   font-weight: 600;
-  color: fade-out($g20-white, 0.18);
-  position: relative;
   text-align: left;
-
-  &.active,
-  &.checked {
-    color: $g20-white;
-  }
-
-  &.checked {
-    padding-left: 24px;
-  }
-
-  &:hover {
-    color: $g20-white;
-    cursor: pointer;
-  }
-
-  .dropdown--action & {
-    padding-left: 11px;
-  }
 }
 
-.dropdown-item--children {
-  .dropdown-wrap & {
-    word-break: break-all;
-    white-space: pre-wrap;
-  }
-
-  .dropdown-truncate & {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}
-
-.dropdown-item--dot {
-  display: none;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 8px;
-  transform: translateY(-50%);
-  background-color: $g20-white;
-
-  .active & {
-    display: inline-block;
-  }
-}
-
-.dropdown--divider {
-  padding: 6px 11px;
-  font-size: 12px;
-  font-weight: 600;
+.dropdown-divider {
+  @include dropdownItemStyles();
 
   &.line {
     padding: 0;
-    height: 2px;
+    height: $cf-border;
   }
 
   &:hover {
@@ -114,18 +78,68 @@
   }
 }
 
-.dropdown--item.multi-select--item {
-  padding-left: 28px;
+.dropdown-item {
+  @include dropdownItemStyles();
+  color: rgba($g20-white, 0.75);
+  position: relative;
+
+  &.dropdown-link-item {
+    padding: 0;
+  }
+
+  &.dropdown-item__dot,
+  &.dropdown-item__dot.dropdown-link-item > a {
+    padding-left: $dropdown-item--padding-h + ($dropdown-item--dot-radius * 2);
+  }
+
+  &.dropdown-item__checkbox,
+  &.dropdown-item__checkbox.dropdown-link-item > a  {
+    padding-left: $dropdown-item--padding-h + $dropdown-item--checkbox-size + $dropdown-item--padding-v;
+  }
+
+  &:hover,
+  &.active {
+    color: $g20-white;
+    cursor: pointer;
+  }
+}
+
+.dropdown-item__wrap .dropdown-item--children,
+.dropdown-item__wrap.dropdown-link-item a {
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+
+.dropdown-item__no-wrap .dropdown-item--children,
+.dropdown-item__no-wrap.dropdown-link-item a {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown-item--dot,
+.dropdown-item--checkbox {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dropdown-item--dot {
+  left: $dropdown-item--padding-h + ($dropdown-item--dot-radius / 2);
+  width: $dropdown-item--dot-radius;
+  height: $dropdown-item--dot-radius;
+  border-radius: 50%;
+  background-color: $g20-white;
+  opacity: 0;
+  transition: opacity 0.25s ease;
 }
 
 .dropdown-item--checkbox {
-  position: absolute;
-  left: 11px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 12px;
-  height: 12px;
-  border-radius: 3px;
+  background-color: $g4-onyx;
+  left: $dropdown-item--padding-h + ($dropdown-item--checkbox-size / 2);
+  width: $dropdown-item--checkbox-size;
+  height: $dropdown-item--checkbox-size;
+  border-radius: $cf-radius-sm;
 
   &:after {
     content: '';
@@ -133,23 +147,70 @@
     top: 50%;
     left: 50%;
     border-radius: 50%;
-    width: 6px;
-    height: 6px;
+    width: $dropdown-item--dot-radius;
+    height: $dropdown-item--dot-radius;
     opacity: 0;
-    transform: translate(-50%, -50%) scale(1.5, 1.5);
+    transform: translate(-50%, -50%) scale(2, 2);
+    transition: opacity 0.25s, transform 0.25s ease;
+    background-color: $g20-white;
   }
 
   .active &:after {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1, 1);
   }
+}
 
-  .checked &:after {
+.dropdown-item.active {
+  .dropdown-item--checkbox:after {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1, 1);
+  }
+  .dropdown-item--dot {
     opacity: 1;
   }
 }
 
-/* Themes */
+/*
+  Dropdown Link Item
+  ------------------------------------------------------------------------------
+*/
+
+.dropdown-item.dropdown-link-item {
+  padding: 0;
+
+  &.dropdown-item__dot,
+  &.dropdown-item__checkbox {
+    padding-left: 0;
+  }
+
+  a {
+    padding: $dropdown-item--padding-v $dropdown-item--padding-h;
+    display: inline-block;
+  }
+
+  a,
+  a:link,
+  a:active,
+  a:visited {
+    font-weight: 600;
+    color: rgba($g20-white, 0.75);
+  }
+
+  a:hover,
+  &.active a,
+  &.active a:link,
+  &.active a:visited,
+  &.active a:active,
+  &.active a:hover {
+    color: $g20-white;
+  }
+}
+
+/*
+  Menu Themes
+  ------------------------------------------------------------------------------
+*/
 
 @mixin dropdownMenuColor(
   $backgroundA,
@@ -159,15 +220,15 @@
   $dividerA,
   $dividerB,
   $dividerText,
-  $checkbox
+  $checkbox,
 ) {
   @include gradient-h($backgroundA, $backgroundB);
 
-  .dropdown--item:hover,
-  .dropdown--item.active {
+  .dropdown-item:hover,
+  .dropdown-item.active {
     @include gradient-h($hoverA, $hoverB);
   }
-  .dropdown--divider {
+  .dropdown-divider {
     color: $dividerText;
     @include gradient-h($dividerA, $dividerB);
   }
@@ -179,7 +240,7 @@
   }
 }
 
-.dropdown--amethyst {
+.dropdown__amethyst {
   @include dropdownMenuColor(
     $c-star,
     $c-pool,
@@ -192,7 +253,7 @@
   );
 }
 
-.dropdown--sapphire {
+.dropdown__sapphire {
   @include dropdownMenuColor(
     $c-ocean,
     $c-pool,
@@ -200,25 +261,25 @@
     $c-laser,
     $c-sapphire,
     $c-ocean,
-    $c-laser,
+    $c-hydrogen,
     $c-neutrino
   );
 }
 
-.dropdown--malachite {
+.dropdown__malachite {
   @include dropdownMenuColor(
-    $c-pool,
-    $c-rainforest,
-    $c-laser,
-    $c-honeydew,
     $c-ocean,
+    $c-rainforest,
+    $c-pool,
+    $c-honeydew,
+    $c-sapphire,
     $c-viridian,
     $c-krypton,
     $c-neutrino
   );
 }
 
-.dropdown--onyx {
+.dropdown__onyx {
   @include dropdownMenuColor(
     $g2-kevlar,
     $g4-onyx,
