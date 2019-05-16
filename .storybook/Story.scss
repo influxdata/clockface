@@ -187,7 +187,9 @@ body.sb-show-main {
   h4,
   h5,
   h6,
-  p {
+  p,
+  ol,
+  ul {
     color: $g13-mist;
     margin: 0.25em 0 0.75em 0;
   }
@@ -253,6 +255,23 @@ body.sb-show-main {
     small {
       font-weight: 500;
     }
+  }
+
+  ol,
+  ul {
+    font-size: $docs-text-base;
+  }
+
+  li {
+    line-height: 1.55em;
+    font-weight: 500;
+  }
+
+  hr {
+    margin: $cf-marg-d 0;
+    height: $cf-border;
+    border-radius: $cf-border / 2;
+    background-color: $g2-kevlar;
   }
 
   code {
