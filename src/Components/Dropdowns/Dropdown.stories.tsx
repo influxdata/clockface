@@ -37,6 +37,9 @@ import {
 
 // Notes
 const SelectDropdownReadme = marked(require('./Composed/SelectDropdown.md'))
+const MultiSelectDropdownReadme = marked(
+  require('./Composed/MultiSelectDropdown.md')
+)
 
 const dropdownFamilyStories = storiesOf('Components|Dropdowns/Family', module)
   .addDecorator(withKnobs)
@@ -375,47 +378,57 @@ const defaultMultiSelectOptions = [
 ]
 const defaultMultiSelectSelectedOptions = ['Celery', 'Onion']
 
-dropdownComposedStories.add('MultiSelectdropdown', () => (
-  <div className="story--example">
-    <MultiSelectDropdown
-      widthPixels={number('widthPixels', 200)}
-      menuMaxHeight={number('menuMaxHeight', 250)}
-      menuTheme={
-        DropdownMenuTheme[
-          select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Sapphire')
-        ]
-      }
-      onSelect={option => {
-        alert(option)
-      }}
-      buttonStatus={
-        ComponentStatus[
-          select('buttonStatus', mapEnumKeys(ComponentStatus), 'Default')
-        ]
-      }
-      buttonColor={
-        ComponentColor[
-          select('buttonColor', mapEnumKeys(ComponentColor), 'Primary')
-        ]
-      }
-      buttonSize={
-        ComponentSize[select('buttonSize', mapEnumKeys(ComponentSize), 'Small')]
-      }
-      buttonIcon={
-        IconFont[
-          select(
-            'buttonIcon',
-            {None: 'none', ...mapEnumKeys(IconFont)},
-            'BarChart'
-          )
-        ]
-      }
-      emptyText={text('emptyText', 'None selected')}
-      selectedOptions={array(
-        'selectedOptions',
-        defaultMultiSelectSelectedOptions
-      )}
-      options={array('options', defaultMultiSelectOptions)}
-    />
-  </div>
-))
+dropdownComposedStories.add(
+  'MultiSelectdropdown',
+  () => (
+    <div className="story--example">
+      <MultiSelectDropdown
+        widthPixels={number('widthPixels', 200)}
+        menuMaxHeight={number('menuMaxHeight', 250)}
+        menuTheme={
+          DropdownMenuTheme[
+            select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Sapphire')
+          ]
+        }
+        onSelect={option => {
+          alert(option)
+        }}
+        buttonStatus={
+          ComponentStatus[
+            select('buttonStatus', mapEnumKeys(ComponentStatus), 'Default')
+          ]
+        }
+        buttonColor={
+          ComponentColor[
+            select('buttonColor', mapEnumKeys(ComponentColor), 'Primary')
+          ]
+        }
+        buttonSize={
+          ComponentSize[
+            select('buttonSize', mapEnumKeys(ComponentSize), 'Small')
+          ]
+        }
+        buttonIcon={
+          IconFont[
+            select(
+              'buttonIcon',
+              {None: 'none', ...mapEnumKeys(IconFont)},
+              'BarChart'
+            )
+          ]
+        }
+        emptyText={text('emptyText', 'None selected')}
+        selectedOptions={array(
+          'selectedOptions',
+          defaultMultiSelectSelectedOptions
+        )}
+        options={array('options', defaultMultiSelectOptions)}
+      />
+    </div>
+  ),
+  {
+    readme: {
+      content: MultiSelectDropdownReadme,
+    },
+  }
+)
