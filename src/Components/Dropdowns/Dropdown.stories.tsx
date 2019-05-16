@@ -1,5 +1,6 @@
 // Libraries
 import * as React from 'react'
+import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
@@ -33,6 +34,9 @@ import {
   IconFont,
   DropdownItemType,
 } from '../../Types'
+
+// Notes
+const SelectDropdownReadme = marked(require('./Composed/SelectDropdown.md'))
 
 const dropdownFamilyStories = storiesOf('Components|Dropdowns/Family', module)
   .addDecorator(withKnobs)
@@ -309,46 +313,56 @@ const selectDropdownOptions = [
 
 const selectDropdownSelectedOption = 'Celery'
 
-dropdownComposedStories.add('SelectDropdown', () => (
-  <div className="story--example">
-    <SelectDropdown
-      widthPixels={number('widthPixels', 200)}
-      menuMaxHeight={number('menuMaxHeight', 250)}
-      menuTheme={
-        DropdownMenuTheme[
-          select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Sapphire')
-        ]
-      }
-      onSelect={option => {
-        alert(option)
-      }}
-      buttonStatus={
-        ComponentStatus[
-          select('buttonStatus', mapEnumKeys(ComponentStatus), 'Default')
-        ]
-      }
-      buttonColor={
-        ComponentColor[
-          select('buttonColor', mapEnumKeys(ComponentColor), 'Primary')
-        ]
-      }
-      buttonSize={
-        ComponentSize[select('buttonSize', mapEnumKeys(ComponentSize), 'Small')]
-      }
-      buttonIcon={
-        IconFont[
-          select(
-            'buttonIcon',
-            {None: 'none', ...mapEnumKeys(IconFont)},
-            'BarChart'
-          )
-        ]
-      }
-      selectedOption={text('selectedOption', selectDropdownSelectedOption)}
-      options={array('options', selectDropdownOptions)}
-    />
-  </div>
-))
+dropdownComposedStories.add(
+  'SelectDropdown',
+  () => (
+    <div className="story--example">
+      <SelectDropdown
+        widthPixels={number('widthPixels', 200)}
+        menuMaxHeight={number('menuMaxHeight', 250)}
+        menuTheme={
+          DropdownMenuTheme[
+            select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Sapphire')
+          ]
+        }
+        onSelect={option => {
+          alert(option)
+        }}
+        buttonStatus={
+          ComponentStatus[
+            select('buttonStatus', mapEnumKeys(ComponentStatus), 'Default')
+          ]
+        }
+        buttonColor={
+          ComponentColor[
+            select('buttonColor', mapEnumKeys(ComponentColor), 'Primary')
+          ]
+        }
+        buttonSize={
+          ComponentSize[
+            select('buttonSize', mapEnumKeys(ComponentSize), 'Small')
+          ]
+        }
+        buttonIcon={
+          IconFont[
+            select(
+              'buttonIcon',
+              {None: 'none', ...mapEnumKeys(IconFont)},
+              'BarChart'
+            )
+          ]
+        }
+        selectedOption={text('selectedOption', selectDropdownSelectedOption)}
+        options={array('options', selectDropdownOptions)}
+      />
+    </div>
+  ),
+  {
+    readme: {
+      content: SelectDropdownReadme,
+    },
+  }
+)
 
 const defaultMultiSelectOptions = [
   'Celery',
