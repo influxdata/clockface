@@ -22,24 +22,28 @@ const alertStories = storiesOf('Components|Alerts', module)
   .addDecorator(jsxDecorator)
 
 alertStories.add(
-  'Alert Component',
+  'Alert',
   () => (
-    <Alert
-      color={
-        ComponentColor[select('color', mapEnumKeys(ComponentColor), 'Primary')]
-      }
-      icon={
-        IconFont[
-          select(
-            'icon',
-            {None: 'none', ...mapEnumKeys(IconFont)},
-            'AlertTriangle'
-          )
-        ]
-      }
-    >
-      {text('text', 'Alert Text')}
-    </Alert>
+    <div className="story--example">
+      <Alert
+        color={
+          ComponentColor[
+            select('color', mapEnumKeys(ComponentColor), 'Primary')
+          ]
+        }
+        icon={
+          IconFont[
+            select(
+              'icon',
+              {None: 'none', ...mapEnumKeys(IconFont)},
+              'AlertTriangle'
+            )
+          ]
+        }
+      >
+        {text('text', 'Alert Text')}
+      </Alert>
+    </div>
   ),
   {
     readme: {
