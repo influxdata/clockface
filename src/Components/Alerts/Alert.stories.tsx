@@ -15,7 +15,7 @@ import {Alert} from './Alert'
 import {ComponentColor, IconFont} from '../../Types/index'
 
 // Notes
-const AlertReadme = marked(require('./README.md'))
+const AlertReadme = marked(require('./Alert.md'))
 
 const alertStories = storiesOf('Components|Alerts', module)
   .addDecorator(withKnobs)

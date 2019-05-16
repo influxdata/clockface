@@ -4,7 +4,7 @@ Alerts are a great way to draw the user's attention to important information. Th
 
 ### Usage
 ```js
-import {Alert, ComponentColor, IconFont} from '@influxdata/clockface'
+import {Alert} from '@influxdata/clockface'
 ```
 
 ### Example
