@@ -4,7 +4,7 @@ Panel is the parent component of the Panel Family; every member of the component
 
 ### Usage
 ```js
-import {Panel} from '@influxdata/clockface';
+import {Panel} from '@influxdata/clockface'
 
 <Panel>
 

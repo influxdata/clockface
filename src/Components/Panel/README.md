@@ -4,7 +4,7 @@ Panels are a great way to contain and organize information on a page. They can b
 
 ### Usage
 ```js
-import {Panel} from '@influxdata/clockface';
+import {Panel} from '@influxdata/clockface'
 ```
 The entire Panel Family can be accessed by importing the parent `Panel` component:
 ```js

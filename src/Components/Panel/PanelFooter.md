@@ -4,7 +4,7 @@ Panel Footer is for displaying less important content at the bottom of a panel. 
 
 ### Usage
 ```js
-import {Panel} from '@influxdata/clockface';
+import {Panel} from '@influxdata/clockface'
 
 <Panel.Footer>
 
