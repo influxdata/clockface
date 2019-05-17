@@ -2,6 +2,7 @@
 
 #### 0.0.15
 
+- [#129](https://github.com/influxdata/clockface/pull/129): Introduce `IndexList` component family
 - [#125](https://github.com/influxdata/clockface/pull/125): [Breaking] Refactor `Dropdown` component family
 
 #### 0.0.14
