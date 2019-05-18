@@ -317,6 +317,37 @@ body.sb-show-main {
   }
 }
 
+.storybook-readme-story div.markdown-body table {
+  border: 0;
+
+  thead th,
+  tbody td {
+    border: 0;
+    padding: $cf-marg-b;
+    font-size: 13px;
+  }
+
+  thead tr {
+    border: 0;
+    border-bottom: $cf-border solid $g4-onyx;
+    background-color: transparent;
+  }
+
+  thead th {
+    color: $g17-whisper;
+  }
+
+  tbody tr {
+    border: 0;
+    border-top: $cf-border solid $g2-kevlar;
+    background-color: transparent;
+  }
+
+  tbody td {
+    color: $g13-mist;
+  }
+}
+
 .storybook-readme-story div.markdown-body.markdown-props-table {
   h3 {
     margin-top: 0.75em !important;
@@ -327,36 +358,17 @@ body.sb-show-main {
     display: table;
     width: 100%;
 
-
     thead th,
     tbody td {
       text-align: left;
-      border: 0px;
-      padding: 6px;
+      border: 0;
+      padding: $cf-marg-b;
       font-size: 13px;
-    }
-
-    thead tr {
-      border: 0px;
-      background-color: transparent;
-    }
-
-    thead th {
-      color: $g17-whisper;
-      border-bottom: 2px solid $g3-castle;
-
-      &:first-child {
-        border-top-left-radius: $cf-radius;
-      }
-
-      &:last-child {
-        border-top-right-radius: $cf-radius;
-      }
     }
 
     tbody tr {
       background-color: $g0-obsidian;
-      border: 2px solid $g3-castle;
+      border: $cf-border solid $g3-castle;
 
       &:nth-child(even) {
         background-color: $g1-raven;
@@ -365,35 +377,32 @@ body.sb-show-main {
       &:nth-child(odd) {
         background-color: $g2-kevlar;
       }
-
-      &:first-child {
-        border-radius: $cf-radius $cf-radius 0 0;
-
-        td:first-child {
-          border-top-left-radius: $cf-radius;
-        }
-
-        td:last-child {
-          border-top-right-radius: $cf-radius;
-        }
-      }
-
-      &:last-child {
-        border-radius: 0 0 $cf-radius $cf-radius;
-
-        td:first-child {
-          border-bottom-left-radius: $cf-radius;
-        }
-
-        td:last-child {
-          border-bottom-right-radius: $cf-radius;
-        }
-      }
-    }
-
-    tbody td {
-      color: $g13-mist;
     }
   }
 }
 
+table.two-axis-table {
+  thead tr,
+  tbody tr {
+    border: 0;
+  }
+
+  tbody tr td {
+    border: $cf-border solid $g2-kevlar;
+    border-left: 0;
+    text-align: center;
+    vertical-align: center;
+
+    &:first-child {
+      text-align: left;
+    }
+
+    &:last-child {
+      border-right: 0;
+    }
+  }
+
+  tbody tr:first-child td {
+    border-top: 0;
+  }
+}
