@@ -406,3 +406,52 @@ table.two-axis-table {
     border-top: 0;
   }
 }
+
+/*
+  Color Swatch Styles
+  ------------------------------------------------------------------------------
+*/
+
+.colors-grid,
+.gradients-grid {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.colors-grid--card,
+.gradients-grid--card {
+  margin-right: 4px;
+  margin-bottom: 4px;
+  height: 180px;
+  border-radius: $cf-radius;
+  position: relative;
+  padding: 8px;
+  
+  p {
+    opacity: 0.6;
+    margin: 0;
+    font-size: 13px;
+    font-weight: 700;
+    
+    &.colors-grid--hex {
+      text-transform: uppercase;
+    }
+  }
+  
+  &.dark-text > p {
+    color: $g0-obsidian !important;
+  }
+  
+  &.light-text > p {
+    color: $g20-white !important;
+  }
+}
+
+.colors-grid--card {
+  flex: 0 0 calc(12.5% - 4px);
+}
+
+.gradients-grid--card {
+  flex: 0 0 calc(33.3333% - 4px);
+}

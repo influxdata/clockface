@@ -1,6 +1,7 @@
 // Libraries
-import * as React from 'react'
+import React, {CSSProperties} from 'react'
 import marked from 'marked'
+import chroma from 'chroma-js'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
@@ -10,7 +11,16 @@ import {Button} from '../Components/Button/Composed/Button'
 import {Input} from '../Components/Inputs/Input'
 
 // Types
-import {ComponentColor, ComponentSize, ComponentStatus} from './'
+import {
+  ComponentColor,
+  ComponentSize,
+  ComponentStatus,
+  InfluxColors,
+  Gradients,
+} from './'
+
+// Constants
+import {getColorsFromGradient} from '../Constants/colors'
 
 // Notes
 const TypesReadme = marked(require('./Types.md'))
@@ -323,11 +333,89 @@ dataTypeStories.add(
   }
 )
 
-dataTypeStories.add('Colors & Gradients', () => <div>Blurp</div>, {
-  readme: {
-    content: ColorsGradientsReadme,
+dataTypeStories.add(
+  'Colors & Gradients',
+  () => {
+    const convertEnumToObjArray = (enumerator: object) => {
+      const enumKeys = Object.keys(enumerator)
+
+      return enumKeys.map(ek => ({
+        key: ek,
+        value: enumerator[ek],
+      }))
+    }
+
+    const colorsArray = convertEnumToObjArray(InfluxColors)
+
+    const colorCardClassName = (hexcode: string): string => {
+      const cardTextColor =
+        chroma(hexcode).luminance() >= 0.4 ? 'dark-text' : 'light-text'
+
+      return `colors-grid--card ${cardTextColor}`
+    }
+
+    const gradientCardClassName = (gradient: string): string => {
+      const {start} = getColorsFromGradient(gradient)
+
+      const cardTextColor =
+        chroma(start).luminance() >= 0.4 ? 'dark-text' : 'light-text'
+
+      return `gradients-grid--card ${cardTextColor}`
+    }
+
+    const generateGradientStyle = (gradient: string): CSSProperties => {
+      const {start, stop} = getColorsFromGradient(gradient)
+
+      return {
+        background: `linear-gradient(45deg,  ${start} 0%,${stop} 100%)`,
+      }
+    }
+
+    return (
+      <div className="markdown-body">
+        <h3>Clockface Color Palette</h3>
+        <pre className="language-js">
+          <code>
+            import &#123;InfluxColors&#125; from '@influxdata/clockface'
+          </code>
+        </pre>
+        <div className="colors-grid">
+          {colorsArray.map(color => (
+            <div
+              className={colorCardClassName(color.value)}
+              key={color.key}
+              style={{backgroundColor: color.value}}
+            >
+              <p>{color.key}</p>
+              <p className="colors-grid--hex">{color.value}</p>
+            </div>
+          ))}
+        </div>
+        <hr />
+        <h3>Clockface Gradients</h3>
+        <pre className="language-js">
+          <code>import &#123;Gradients&#125; from '@influxdata/clockface'</code>
+        </pre>
+        <div className="gradients-grid">
+          {Object.keys(Gradients).map(g => (
+            <div
+              className={gradientCardClassName(g)}
+              key={g}
+              style={generateGradientStyle(g)}
+            >
+              <p>{g}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    )
   },
-})
+  {
+    readme: {
+      content: ColorsGradientsReadme,
+    },
+  }
+)
 
 dataTypeStories.add('Icon Font', () => <div>Blurp</div>, {
   readme: {
