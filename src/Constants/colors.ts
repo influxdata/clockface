@@ -331,7 +331,7 @@ export const dropdownScrollColors = {
 }
 
 export const getColorsFromGradient = (
-  gradient: Gradients | DropdownMenuTheme
+  gradient: Gradients | DropdownMenuTheme | string
 ): Gradient => {
   return dropdownScrollColors[gradient] || influxGradients[gradient]
 }

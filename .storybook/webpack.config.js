@@ -6,6 +6,10 @@ module.exports = ({config}) => {
       loaders: ['ts-loader', 'react-docgen-typescript-loader'],
     },
     {
+      test: /\.md$/,
+      use: 'markdown-loader',
+    },
+    {
       test: /\.woff(2)?(\?[a-z0-9#=&.]+)$/,
       loader: 'url-loader?limit=10000&mimetype=application/font-woff',
     },

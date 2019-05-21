@@ -1,22 +1,18 @@
 import {addDecorator, configure, addParameters} from '@storybook/react'
 import clockfaceTheme from './clockfaceTheme'
-import {withInfo} from '@storybook/addon-info'
-import {darkTheme, TableComponent} from './StoryLayout'
+import {addReadme} from 'storybook-readme'
+import './Story.scss'
 
-addDecorator(
-  withInfo({
-    inline: true,
-    source: false,
-    styles: darkTheme,
-    TableComponent,
-  })
-)
+addDecorator(addReadme)
 
 addParameters({
   options: {
     theme: clockfaceTheme,
     panelPosition: 'right',
   },
+  readme: {
+    codeTheme: 'Dracula',
+  }
 })
 
 const req = require.context('../src/', true, /.stories.tsx$/)

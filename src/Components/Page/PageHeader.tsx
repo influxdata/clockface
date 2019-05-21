@@ -1,6 +1,7 @@
 // Libraries
 import React, {Component, ReactNode} from 'react'
 import classnames from 'classnames'
+import uuid from 'uuid'
 
 // Components
 import {PageHeaderLeft} from './PageHeaderLeft'
@@ -69,6 +70,7 @@ export class PageHeader extends Component<Props> {
           return (
             <PageHeaderLeft
               {...child.props}
+              key={uuid.v4()}
               offsetPixels={centerWidthPixels / 2}
             />
           )
@@ -78,6 +80,7 @@ export class PageHeader extends Component<Props> {
           return (
             <PageHeaderRight
               {...child.props}
+              key={uuid.v4()}
               offsetPixels={centerWidthPixels / 2}
             />
           )
