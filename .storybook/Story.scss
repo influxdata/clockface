@@ -455,3 +455,29 @@ table.two-axis-table {
 .gradients-grid--card {
   flex: 0 0 calc(33.3333% - 4px);
 }
+
+
+.icon-grid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  .icon {
+    color: $g17-whisper;
+    font-size: 4.25em;
+    margin-bottom: $cf-marg-c;
+  }
+}
+
+.icon-grid--cell {
+  flex: 0 0 calc(20% - 2px);
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $cf-marg-b;
+  background-color: $g1-raven;
+  border-radius: $cf-radius;
+  margin: 1px;
+}

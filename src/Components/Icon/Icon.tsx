@@ -6,7 +6,7 @@ import {IconFont, InfluxColors} from '../../Types'
 
 interface Props {
   /** Icon to display */
-  glyph: IconFont
+  glyph: IconFont | string
   /** Class name for custom styles */
   className?: string
   /** Optional color string, can use InfluxColors enum or pass in your own value */

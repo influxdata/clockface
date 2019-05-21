@@ -9,6 +9,7 @@ import {storiesOf} from '@storybook/react'
 // Components
 import {Button} from '../Components/Button/Composed/Button'
 import {Input} from '../Components/Inputs/Input'
+import {Icon} from '../Components/Icon/Icon'
 
 // Types
 import {
@@ -17,6 +18,7 @@ import {
   ComponentStatus,
   InfluxColors,
   Gradients,
+  IconFont,
 } from './'
 
 // Constants
@@ -417,8 +419,27 @@ dataTypeStories.add(
   }
 )
 
-dataTypeStories.add('Icon Font', () => <div>Blurp</div>, {
-  readme: {
-    content: IconFontReadme,
+dataTypeStories.add(
+  'Icon Font',
+  () => {
+    const getIconValue = (icon: string): string => IconFont[icon]
+
+    return (
+      <div className="markdown-body">
+        <div className="icon-grid">
+          {Object.keys(IconFont).map(icon => (
+            <div key={icon} className="icon-grid--cell">
+              <Icon glyph={getIconValue(icon)} />
+              <code>{icon}</code>
+            </div>
+          ))}
+        </div>
+      </div>
+    )
   },
-})
+  {
+    readme: {
+      content: IconFontReadme,
+    },
+  }
+)
