@@ -1,13 +1,5 @@
 # Clockface
 
-[![Travis][build-badge]][build]
-[![npm package][npm-badge]][npm]
-[![Coveralls][coveralls-badge]][coveralls]
-
-A React + Typescript UI Kit for building Chronograf and other Time Series visualization applications.
-
-Documentation: https://influxdata.github.io/clockface
-
 [build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
 [build]: https://travis-ci.org/user/repo
 [npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
@@ -15,41 +7,28 @@ Documentation: https://influxdata.github.io/clockface
 [coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.png?style=flat-square
 [coveralls]: https://github.com/influxdata/clockface
 
-### Patterns
+[![Travis][build-badge]][build]
+[![npm package][npm-badge]][npm]
+[![Coveralls][coveralls-badge]][coveralls]
 
-#### Component Families
+A React + Typescript UI Kit for building Chronograf and other Time Series visualization applications.
 
-Components with sub-components are sub-classed to improve readablity of code and ease of use.
-Family parent is the only component in the family to import a stylesheet and all styles are namespaced accordingly.
-Style namespacing is largely based on BEM.
+[Documentation](https://influxdata.github.io/clockface)
 
-Example:
-
-```
-import {Garden} from '@influxdata/clockface'
-
-<Garden> // Family Parent
-  <Garden.Fence />
-  <Garden.PlanterBox />
-</Garden>
-```
-
-You can tell these are all related because of the `Garden` family namespace
+### Usage
 
 ```
-.garden {
-  display: flex;
-}
-
-.garden--fence {
-  color: white;
-}
-
-.garden--planter-box {
-  flex: 1 0 50%;
-}
+npm install @influxdata/clockface
+```
+Import the Clockface stylesheet to your React app's `index.jsx` file
+```
+import '@influxdata/clockface/dist/index.css'
 ```
 
-#### Common Prop Types
+### Milestones
 
-Clockface offers a variety of Types to make customizing the UI kit simple. For example, any component that can be rendered in different colors takes the `ComponentColor` type. Use of these common prop types throughout the UI kit ensures consistency.
+- Version 1.0
+  - All components defined in InfluxDB's local Clockface folder have been ported to this repo
+  - InfluxDB no longer uses locally defined Clockface components
+  - InfluxDB's local Clockface folder is deleted
+
