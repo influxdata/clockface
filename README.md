@@ -1,19 +1,14 @@
 # Clockface
 
-[build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
-[build]: https://travis-ci.org/user/repo
-[npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
-[npm]: https://www.npmjs.com/package/@influxdata/clockface
-[coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.png?style=flat-square
-[coveralls]: https://github.com/influxdata/clockface
-
-[![Travis][build-badge]][build]
-[![npm package][npm-badge]][npm]
-[![Coveralls][coveralls-badge]][coveralls]
+[![npm version](https://badge.fury.io/js/%40influxdata%2Fclockface.svg)](https://badge.fury.io/js/%40influxdata%2Fclockface)
 
 A React + Typescript UI Kit for building Chronograf and other Time Series visualization applications.
 
-[Documentation](https://influxdata.github.io/clockface)
+### [Documentation](https://influxdata.github.io/clockface)
+
+### [Changelog](https://github.com/influxdata/clockface/blob/master/CHANGELOG.md)
+
+### [Publishing Guide](https://github.com/influxdata/clockface/blob/master/PUBLISHING.md)
 
 ### Usage
 
