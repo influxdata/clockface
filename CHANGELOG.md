@@ -1,5 +1,9 @@
 # Changelog
 
+#### 0.0.16
+
+- [#131](https://github.com/influxdata/clockface/pull/131): Add markdown loading and readme addon to storybook
+
 #### 0.0.15
 
 - [#129](https://github.com/influxdata/clockface/pull/129): Introduce `IndexList` component family
