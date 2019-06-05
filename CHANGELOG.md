@@ -2,6 +2,7 @@
 
 #### 0.0.16
 
+- [#136](https://github.com/influxdata/clockface/pull/136): Fix appearance of inputs with icons
 - [#131](https://github.com/influxdata/clockface/pull/131): Add markdown loading and readme addon to storybook
 
 #### 0.0.15
