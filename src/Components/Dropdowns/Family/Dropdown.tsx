@@ -22,7 +22,7 @@ interface Props {
   ) => JSX.Element
   /** Component to render as the menu (use Dropdown.Menu) */
   menu: (onCollapse?: () => void) => JSX.Element
-  /** Width of the dropdown in pixels */
+  /** Width of the dropdown in pixels, if blank the dropdown will expand to fill its parent's width */
   widthPixels?: number
   /** Class name for custom styles */
   className?: string
