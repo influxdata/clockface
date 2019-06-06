@@ -56,11 +56,13 @@ export class DropdownMenu extends Component<Props> {
       >
         <DapperScrollbars
           style={{
+            width: '100%',
+            minWidth: '100%',
             maxWidth: '100%',
             maxHeight: `${maxHeight}px`,
           }}
-          autoSize={true}
           autoHide={false}
+          autoSizeHeight={true}
           thumbStartColor={thumbStartColor}
           thumbStopColor={thumbStopColor}
           noScrollX={noScrollX}
