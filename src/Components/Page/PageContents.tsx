@@ -31,7 +31,6 @@ export class PageContents extends Component<Props> {
         <DapperScrollbars
           className={this.className}
           autoHide={false}
-          autoSize={false}
           testID={testID}
         >
           <div className="page-contents--padding">{this.children}</div>

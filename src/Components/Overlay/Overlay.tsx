@@ -77,7 +77,6 @@ export class Overlay extends Component<Props, State> {
         thumbStartColor={InfluxColors.White}
         thumbStopColor={InfluxColors.Moonstone}
         autoHide={false}
-        autoSize={false}
         testID={testID}
       >
         {this.childContainer}
