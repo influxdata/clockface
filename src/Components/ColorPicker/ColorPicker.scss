@@ -64,6 +64,22 @@ $color-picker--margin: 0;
       transform: translate(-50%, -50%) scale(1, 1);
     }
   }
+
+  &__top-left > span {
+    border-top-left-radius: $cf-radius;
+  }
+
+  &__top-right > span {
+    border-top-right-radius: $cf-radius;
+  }
+
+  &__bottom-left > span {
+    border-bottom-left-radius: $cf-radius;
+  }
+
+  &__bottom-right > span {
+    border-bottom-right-radius: $cf-radius;
+  }
 }
 
 .color-picker--form {

@@ -1,5 +1,5 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {Component, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 interface Props {
@@ -13,6 +13,12 @@ interface Props {
   testID: string
   /** Class name for custom styles */
   className?: string
+  /** Used to determine percentage width of parent to take up */
+  swatchesPerRow: number
+  /** Index - used to determine if corners are rounded or not */
+  index: number
+  /** Number of colors used in Color Picker, used to determine rounded corners */
+  swatchesCount: number
 }
 
 export class ColorPickerSwatch extends Component<Props> {
@@ -29,16 +35,34 @@ export class ColorPickerSwatch extends Component<Props> {
         title={name}
         onClick={this.handleClick}
         data-testid={`${testID}--swatch`}
+        style={this.style}
       >
         <span style={{backgroundColor: hex}} />
       </div>
     )
   }
 
-  private get className(): string {
-    const {className} = this.props
+  private get style(): CSSProperties {
+    const {swatchesPerRow} = this.props
+    const size = `${100 / swatchesPerRow}%`
 
-    return classnames('color-picker--swatch', {[`${className}`]: className})
+    return {
+      width: size,
+      paddingBottom: size,
+    }
+  }
+
+  private get className(): string {
+    const {className, index, swatchesCount, swatchesPerRow} = this.props
+
+    return classnames('color-picker--swatch', {
+      [`${className}`]: className,
+      'color-picker--swatch__top-left': index === 0,
+      'color-picker--swatch__top-right': index === swatchesPerRow - 1,
+      'color-picker--swatch__bottom-left':
+        index === swatchesCount - swatchesPerRow,
+      'color-picker--swatch__bottom-right': index === swatchesCount - 1,
+    })
   }
 
   private handleClick = (): void => {

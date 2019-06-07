@@ -30,6 +30,8 @@ interface Props {
   colors: Color[]
   /** Prevent focus from leaving the input */
   maintainInputFocus: boolean
+  /** How many color swatches to render in each row */
+  swatchesPerRow: number
   /** Class name for custom styles */
   className?: string
   /** Test ID for Integration Tests */
@@ -44,6 +46,7 @@ export class ColorPicker extends Component<Props, State> {
   public static defaultProps = {
     colors: influxColors,
     maintainInputFocus: false,
+    swatchesPerRow: 10,
     testID: 'color-picker',
   }
 
@@ -56,19 +59,28 @@ export class ColorPicker extends Component<Props, State> {
   }
 
   render() {
-    const {maintainInputFocus, testID, color, colors} = this.props
+    const {
+      maintainInputFocus,
+      testID,
+      color,
+      colors,
+      swatchesPerRow,
+    } = this.props
 
     return (
       <div className={this.className} data-testid={testID}>
         <div className="color-picker--swatches">
           {colors &&
-            colors.map(color => (
+            colors.map((color, i) => (
               <ColorPickerSwatch
+                index={i}
                 key={color.name}
                 hex={color.hex}
                 name={color.name}
                 onClick={this.handleSwatchClick}
                 testID={testID}
+                swatchesPerRow={swatchesPerRow}
+                swatchesCount={colors.length}
               />
             ))}
         </div>
