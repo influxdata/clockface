@@ -30,8 +30,12 @@ interface Props {
   thumbStopColor: string
   /** Hide scrollbar when not actively scrolling */
   autoHide: boolean
-  /** Translate content sizes to holder */
+  /** Scroll container will grow to fit the content width and height */
   autoSize: boolean
+  /** Scroll container will grow to fit the content width */
+  autoSizeWidth: boolean
+  /** Scroll container will grow to fit the content height */
+  autoSizeHeight: boolean
   /** Test ID for Integration Tests */
   testID: string
 }
@@ -47,7 +51,9 @@ export class DapperScrollbars extends Component<Props> {
     thumbStartColor: '#00C9FF',
     thumbStopColor: '#9394FF',
     autoHide: false,
-    autoSize: true,
+    autoSize: false,
+    autoSizeWidth: false,
+    autoSizeHeight: false,
     testID: 'dapper-scrollbars',
   }
 
@@ -61,6 +67,8 @@ export class DapperScrollbars extends Component<Props> {
       className,
       autoHide,
       autoSize,
+      autoSizeHeight,
+      autoSizeWidth,
       noScroll,
       children,
       testID,
@@ -76,6 +84,8 @@ export class DapperScrollbars extends Component<Props> {
       <Scrollbar
         data-testid={testID}
         translateContentSizesToHolder={autoSize}
+        translateContentSizeYToHolder={autoSizeHeight}
+        translateContentSizeXToHolder={autoSizeWidth}
         className={classname}
         style={style}
         noDefaultStyles={false}

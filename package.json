@@ -68,7 +68,7 @@
   "dependencies": {
     "chroma-js": "^2.0.3",
     "classnames": "^2.2.6",
-    "react-scrollbars-custom": "^4.0.0-alpha.10"
+    "react-scrollbars-custom": "^4.0.4"
   },
   "scripts": {
     "move-fonts": "cp -r src/Styles/Fonts dist/",
