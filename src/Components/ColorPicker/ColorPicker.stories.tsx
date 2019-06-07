@@ -4,7 +4,7 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, color, number, boolean} from '@storybook/addon-knobs'
+import {withKnobs, color, number, boolean, object} from '@storybook/addon-knobs'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
@@ -124,12 +124,12 @@ colorPickerExampleStories.add(
       <div style={{width: `${number('Parent Width (px)', 300)}`}}>
         <ColorPicker
           swatchesPerRow={number('swatchesPerRow', 4)}
-          colors={customColors}
           color={color('color', `${customColors[3].hex}`)}
           onChange={color => {
             alert(`Swatch selected: ${color}`)
           }}
           maintainInputFocus={boolean('maintainInputFocus', false)}
+          colors={object('colors', customColors)}
         />
       </div>
     </div>
