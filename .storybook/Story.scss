@@ -37,6 +37,13 @@
   font-weight: 700;
   font-size: 12px;
   min-height: $form-sm-height;
+  padding: $cf-marg-a;
+  line-height: 16px;
+  text-align: center;
+
+  &.alt-color {
+    @include gradient-h($c-honeydew, $c-laser);
+  }
 
   &.box {
     width: 100px;
@@ -75,6 +82,10 @@
     width: 100%;
     height: 400px;
     background: none;
+  }
+
+  &.grid-example {
+    margin: $cf-marg-a 0;
   }
 }
 
