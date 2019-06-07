@@ -1,31 +1,142 @@
 // Libraries
 import * as React from 'react'
+import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, text, color} from '@storybook/addon-knobs'
+import {withKnobs, color, number, boolean, object} from '@storybook/addon-knobs'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {ColorPicker} from './ColorPicker'
-import {ColorPickerSwatch} from './ColorPickerSwatch'
 
-const colorPickerStories = storiesOf('Components|Color Pickers', module)
+// Types
+import {InfluxColors} from '../../Types'
+
+// Notes
+const ColorPickerReadme = marked(require('./ColorPicker.md'))
+const ColorPickerCustomReadme = marked(require('./ColorPickerCustom.md'))
+
+const colorPickerStories = storiesOf('Components|Color Picker/Family', module)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
-colorPickerStories.add('ColorPicker Component', () => (
-  <div className="story--container story-large">
-    <ColorPicker color={color('color', '#311F94')} onChange={() => {}} />
-  </div>
-))
+const colorPickerExampleStories = storiesOf(
+  'Components|Color Picker/Examples',
+  module
+)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
 
-colorPickerStories.add('ColorPickerSwatch Component', () => (
-  <div className="story--container story-large clearfix">
-    <ColorPickerSwatch
-      hex={color('hex', '#311F94')}
-      name={text('name', 'Void')}
-      onClick={() => {}}
-    />
-  </div>
-))
+colorPickerStories.add(
+  'ColorPicker',
+  () => (
+    <div className="story--example">
+      <div style={{width: `${number('Parent Width (px)', 300)}`}}>
+        <ColorPicker
+          color={color('color', `${InfluxColors.Honeydew}`)}
+          onChange={color => {
+            alert(`Swatch selected: ${color}`)
+          }}
+          maintainInputFocus={boolean('maintainInputFocus', false)}
+        />
+      </div>
+    </div>
+  ),
+  {
+    readme: {
+      content: ColorPickerReadme,
+    },
+  }
+)
+
+const customColors = [
+  {
+    hex: '#7e0037',
+    name: '',
+  },
+  {
+    hex: '#98003b',
+    name: '',
+  },
+  {
+    hex: '#b20040',
+    name: '',
+  },
+  {
+    hex: '#cb0045',
+    name: '',
+  },
+  {
+    hex: '#e5004a',
+    name: '',
+  },
+  {
+    hex: '#ff004f',
+    name: '',
+  },
+  {
+    hex: '#ff313b',
+    name: '',
+  },
+  {
+    hex: '#ff6128',
+    name: '',
+  },
+  {
+    hex: '#ff9214',
+    name: '',
+  },
+  {
+    hex: '#ffc200',
+    name: '',
+  },
+  {
+    hex: '#ffcc27',
+    name: '',
+  },
+  {
+    hex: '#ffd64e',
+    name: '',
+  },
+  {
+    hex: '#ffe075',
+    name: '',
+  },
+  {
+    hex: '#ffe99b',
+    name: '',
+  },
+  {
+    hex: '#fff3c2',
+    name: '',
+  },
+  {
+    hex: '#fffde9',
+    name: '',
+  },
+]
+
+colorPickerExampleStories.add(
+  'Custom Color Palette',
+  () => (
+    <div className="story--example">
+      <div style={{width: `${number('Parent Width (px)', 300)}`}}>
+        <ColorPicker
+          swatchesPerRow={number('swatchesPerRow', 4)}
+          color={color('color', `${customColors[3].hex}`)}
+          onChange={color => {
+            alert(`Swatch selected: ${color}`)
+          }}
+          maintainInputFocus={boolean('maintainInputFocus', false)}
+          colors={object('colors', customColors)}
+        />
+      </div>
+    </div>
+  ),
+  {
+    readme: {
+      content: ColorPickerCustomReadme,
+    },
+  }
+)
