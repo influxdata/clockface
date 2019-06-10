@@ -17,12 +17,12 @@ import {ComponentColor, IconFont} from '../../Types/index'
 // Notes
 const AlertReadme = marked(require('./Alert.md'))
 
-const alertStories = storiesOf('Components|Alerts', module)
+const alertStories = storiesOf('Atomic|Alert', module)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
 alertStories.add(
-  'Alert',
+  'Example',
   () => (
     <div className="story--example">
       <Alert

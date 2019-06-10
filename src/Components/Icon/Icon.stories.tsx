@@ -17,12 +17,12 @@ import {IconFont} from '../../Types'
 // Notes
 const IconReadme = marked(require('./Icon.md'))
 
-const iconStories = storiesOf('Elements|Icon', module)
+const iconStories = storiesOf('Atomic|Icon', module)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
 iconStories.add(
-  'Icon Component',
+  'Example',
   () => (
     <div
       className="story--example"
