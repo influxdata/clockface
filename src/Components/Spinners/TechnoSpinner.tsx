@@ -8,9 +8,9 @@ import {ComponentSize} from '../../Types'
 import './TechnoSpinner.scss'
 
 interface Props {
-  /** diameter of spinner circle */
+  /** Diameter of spinner circle */
   diameterPixels: number
-  /** width of spinner stroke */
+  /** Width of spinner stroke */
   strokeWidth: ComponentSize
   /** Test ID for Integration Tests */
   testID: string

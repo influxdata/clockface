@@ -9,7 +9,9 @@ import {RemoteDataState} from '../../Types'
 import './SparkleSpinner.scss'
 
 interface Props {
-  /** loading state */
+  /** Size of spinner (square) */
+  sizePixels: number
+  /** State */
   loading: RemoteDataState
   /** Test ID for Integration Tests */
   testID: string
@@ -19,13 +21,19 @@ export class SparkleSpinner extends PureComponent<Props> {
   public static defaultProps = {
     loading: RemoteDataState.NotStarted,
     testID: 'sparkle-spinner',
+    sizePixels: 100,
   }
 
   public render() {
-    const {testID} = this.props
+    const {testID, sizePixels} = this.props
+
+    const style = {
+      width: `${sizePixels}px`,
+      height: `${sizePixels}px`,
+    }
 
     return (
-      <div className="sparkle-spinner" data-testid={testID}>
+      <div className="sparkle-spinner" data-testid={testID} style={style}>
         <svg
           version="1.1"
           id="sparkle_spinner"
