@@ -171,6 +171,27 @@
   width: 500px;
 }
 
+.story--example-table {
+  width: 340px;
+
+  tbody tr td {
+    padding: $cf-marg-b;
+  }
+
+  tbody tr td:nth-child(1) {
+    width: 28%;
+  }
+
+  tbody tr td:nth-child(2) {
+    width: 72%;
+  }
+
+  p {
+    font-weight: 600;
+    margin: 0;
+  }
+}
+
 /*
   Markdown Styles
   ------------------------------------------------------------------------------
