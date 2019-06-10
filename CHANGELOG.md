@@ -2,6 +2,7 @@
 
 #### 0.0.16
 
+- [#139](https://github.com/influxdata/clockface/pull/139): Add markdown documentation for `Label`
 - [#138](https://github.com/influxdata/clockface/pull/138): Add markdown documentation for `ComponentSpacer`, `EmptyState`, `Grid`, and `ColorPicker`
 - [#137](https://github.com/influxdata/clockface/pull/137): Improve documentation for dropdown family components
 - [#137](https://github.com/influxdata/clockface/pull/137): Fix dropdown menu scrolling bug by updating `react-scrollbars-custom` dependency
