@@ -9,11 +9,11 @@ import {RemoteDataState} from '../../Types'
 import './SpinnerContainer.scss'
 
 interface Props {
-  /** custom classname for spinner container */
+  /** Custom classname for spinner container */
   className?: string
-  /** loading state */
+  /** Loading state */
   loading: RemoteDataState
-  /** spinner component */
+  /** Spinner component */
   spinnerComponent: JSX.Element
   /** Test ID for Integration Tests */
   testID: string
