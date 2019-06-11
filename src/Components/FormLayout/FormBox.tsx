@@ -1,12 +1,12 @@
 // Libraries
 import React, {Component} from 'react'
 
-interface Props {
-  /** Class name for custom styles */
-  className: string
-  /** Test ID for Integration Tests */
-  testID: string
-}
+// Types
+import {StandardProps} from '../../Types'
+
+interface ComponentProps {}
+
+type Props = ComponentProps & StandardProps
 
 export class FormBox extends Component<Props> {
   public static defaultProps = {

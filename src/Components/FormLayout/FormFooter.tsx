@@ -3,9 +3,9 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {Columns} from '../../Types'
+import {Columns, StandardProps} from '../../Types'
 
-interface Props {
+interface ComponentProps {
   /** Number of columns spanned when viewport width is less than 750px */
   widthXS: Columns
   /** Number of columns spanned when viewport width is greater than 750px */
@@ -22,9 +22,9 @@ interface Props {
   offsetMD?: Columns
   /** Number of columns shifted when viewport width is greater than 1500px */
   offsetLG?: Columns
-  /** Test ID for Integration Tests */
-  testID: string
 }
+
+type Props = ComponentProps & StandardProps
 
 export class FormFooter extends Component<Props> {
   public static defaultProps = {
@@ -52,6 +52,7 @@ export class FormFooter extends Component<Props> {
       offsetSM,
       offsetMD,
       offsetLG,
+      className,
     } = this.props
 
     return classnames('form--element form--footer', {
@@ -63,6 +64,7 @@ export class FormFooter extends Component<Props> {
       [`col-sm-offset-${offsetSM}`]: offsetSM,
       [`col-md-offset-${offsetMD}`]: offsetMD,
       [`col-lg-offset-${offsetLG}`]: offsetLG,
+      [`${className}`]: className,
     })
   }
 }

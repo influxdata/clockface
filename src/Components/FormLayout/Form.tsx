@@ -10,19 +10,20 @@ import {FormDivider} from './FormDivider'
 import {FormFooter} from './FormFooter'
 import {FormBox} from './FormBox'
 
+// Types
+import {StandardProps} from '../../Types'
+
 // Styles
 import './Form.scss'
 
-interface Props {
+interface ComponentProps {
   /** Inline CSS styles */
   style?: React.CSSProperties
-  /** Class name for custom styles */
-  className?: string
   /** Function to be called on form submit */
   onSubmit?: (e: React.FormEvent) => void
-  /** Test ID for Integration Tests */
-  testID: string
 }
+
+type Props = ComponentProps & StandardProps
 
 export class Form extends Component<Props> {
   public static defaultProps = {
