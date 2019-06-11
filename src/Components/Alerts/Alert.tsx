@@ -9,18 +9,16 @@ import {Icon} from '../Icon/Icon'
 import './Alert.scss'
 
 // Types
-import {ComponentColor, IconFont} from '../../Types'
+import {ComponentColor, IconFont, StandardProps} from '../../Types'
 
-interface Props {
+interface ComponentProps {
   /** Alert color */
   color: ComponentColor
   /** Icon to be displayed to the left of text */
   icon?: IconFont
-  /** Test ID for Integration Tests */
-  testID: string
-  /** Class name for custom styles */
-  className?: string
 }
+
+type Props = ComponentProps & StandardProps
 
 export class Alert extends Component<Props> {
   public static defaultProps = {
