@@ -1,3 +1,10 @@
+export interface StandardProps {
+  /** Useful for overriding styles of the component */
+  className?: string
+  /** ID for Integration Tests */
+  testID: string
+}
+
 export enum ComponentColor {
   Default = 'default',
   Primary = 'primary',
