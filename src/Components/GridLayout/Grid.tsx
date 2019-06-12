@@ -6,15 +6,15 @@ import classnames from 'classnames'
 import {GridRow} from './GridRow'
 import {GridColumn} from './GridColumn'
 
+// Types
+import {StandardProps} from '../../Types'
+
 // Styles
 import './Grid.scss'
 
-interface Props {
-  /** Test ID for Integration Tests */
-  testID: string
-  /** Class name for custom styles */
-  className?: string
-}
+interface ComponentProps {}
+
+type Props = ComponentProps & StandardProps
 
 export class Grid extends Component<Props> {
   public static defaultProps = {

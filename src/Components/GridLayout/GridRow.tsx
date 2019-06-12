@@ -2,12 +2,12 @@
 import React, {Component} from 'react'
 import classnames from 'classnames'
 
-interface Props {
-  /** Test ID for Integration Tests */
-  testID: string
-  /** Class name for custom styles */
-  className?: string
-}
+// Types
+import {StandardProps} from '../../Types'
+
+interface ComponentProps {}
+
+type Props = ComponentProps & StandardProps
 
 export class GridRow extends Component<Props> {
   public static defaultProps = {

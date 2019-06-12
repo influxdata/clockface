@@ -3,9 +3,9 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {Columns} from '../../Types'
+import {Columns, StandardProps} from '../../Types'
 
-interface Props {
+interface ComponentProps {
   /** Number of columns spanned when viewport width is less than 750px */
   widthXS: Columns
   /** Number of columns spanned when viewport width is greater than 750px */
@@ -22,11 +22,9 @@ interface Props {
   offsetMD?: Columns
   /** Number of columns shifted when viewport width is greater than 1500px */
   offsetLG?: Columns
-  /** Test ID for Integration Tests */
-  testID: string
-  /** Class name for custom styles */
-  className?: string
 }
+
+type Props = ComponentProps & StandardProps
 
 export class GridColumn extends Component<Props> {
   public static defaultProps = {
