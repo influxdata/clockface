@@ -3,20 +3,18 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {ComponentSize} from '../../Types'
+import {ComponentSize, StandardProps} from '../../Types'
 
-interface Props {
+interface ComponentProps {
   /** Text to be displayed as label */
   text: string
   /** Used to match the state of the associated SlideToggle */
   active: boolean
   /** Button size */
   size: ComponentSize
-  /** Class name for custom styles */
-  className?: string
-  /** Test ID for Integration Tests */
-  testID: string
 }
+
+type Props = ComponentProps & StandardProps
 
 export class SlideToggleLabel extends Component<Props> {
   public static defaultProps = {

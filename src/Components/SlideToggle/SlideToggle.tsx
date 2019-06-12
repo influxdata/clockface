@@ -9,9 +9,9 @@ import {SlideToggleLabel} from './SlideToggleLabel'
 import './SlideToggle.scss'
 
 // Types
-import {ComponentColor, ComponentSize} from '../../Types'
+import {ComponentColor, ComponentSize, StandardProps} from '../../Types'
 
-interface Props {
+interface ComponentProps {
   /** Function to be called on slide toggle state change */
   onChange: () => void
   /** Toggles slide toggle active state */
@@ -24,11 +24,9 @@ interface Props {
   disabled: boolean
   /** Text to be displayed on hover tooltip */
   tooltipText: string
-  /** Test ID for Integration Tests */
-  testID: string
-  /** Class name for custom styles */
-  className?: string
 }
+
+type Props = ComponentProps & StandardProps
 
 export class SlideToggle extends Component<Props> {
   public static Label = SlideToggleLabel
