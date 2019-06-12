@@ -8,13 +8,14 @@ import {PageHeaderLeft} from './PageHeaderLeft'
 import {PageHeaderCenter} from './PageHeaderCenter'
 import {PageHeaderRight} from './PageHeaderRight'
 
-interface Props {
+// Types
+import {StandardProps} from '../../Types'
+
+interface Props extends StandardProps {
   /** Allows the page header to fill the width of the screen */
   fullWidth: boolean
   /** Prevents NavMenu from rendering (used in presentation mode) */
   hide: boolean
-  /** Test ID for Integration Tests */
-  testID: string
 }
 
 export class PageHeader extends Component<Props> {
@@ -44,10 +45,11 @@ export class PageHeader extends Component<Props> {
   }
 
   private get className(): string {
-    const {fullWidth} = this.props
+    const {fullWidth, className} = this.props
 
     return classnames('page-header', {
       'full-width': fullWidth,
+      [`${className}`]: className,
     })
   }
 

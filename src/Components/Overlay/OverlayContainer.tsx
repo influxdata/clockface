@@ -2,13 +2,12 @@
 import React, {PureComponent, CSSProperties} from 'react'
 import classnames from 'classnames'
 
-interface Props {
+// Types
+import {StandardProps} from '../../Types'
+
+interface Props extends StandardProps {
   /** Pixel width maximum for overlay */
   maxWidth: number
-  /** Class name for custom styles */
-  className?: string
-  /** Test ID for Integration Tests */
-  testID: string
 }
 
 export class OverlayContainer extends PureComponent<Props> {

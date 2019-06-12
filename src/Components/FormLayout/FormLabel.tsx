@@ -1,13 +1,14 @@
 // Libraries
 import React, {Component} from 'react'
 
-interface Props {
+// Types
+import {StandardProps} from '../../Types'
+
+interface Props extends StandardProps {
   /** Label Text */
   label: string
   /** Whether this field is required to submit form, adds red required asterisk */
   required?: boolean
-  /** Test ID for Integration Tests */
-  testID: string
 }
 
 export class FormLabel extends Component<Props> {
@@ -19,7 +20,7 @@ export class FormLabel extends Component<Props> {
     const {label, children, testID} = this.props
 
     return (
-      <label className="form--label" data-testid={testID}>
+      <label className={this.className} data-testid={testID}>
         <span>
           {label}
           {this.requiredIndicator}
@@ -37,5 +38,11 @@ export class FormLabel extends Component<Props> {
     }
 
     return <span className="form--label-required">*</span>
+  }
+
+  private get className(): string {
+    const {className} = this.props
+
+    return className ? `form--label ${className}` : 'form--label'
   }
 }

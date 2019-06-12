@@ -7,7 +7,10 @@ import {FormLabel} from './FormLabel'
 import {FormElementError} from './FormElementError'
 import {FormHelpText} from './FormHelpText'
 
-interface Props {
+// Types
+import {StandardProps} from '../../Types'
+
+interface Props extends StandardProps {
   /** Label Text */
   label: string
   /** Input instruction text */
@@ -18,10 +21,6 @@ interface Props {
   labelAddOn?: () => JSX.Element
   /** Whether this field is required to submit form, adds red required asterisk */
   required?: boolean
-  /** Test ID for Integration Tests */
-  testID: string
-  /** Class name for custom styles */
-  className?: string
 }
 
 export class FormElement extends Component<Props> {

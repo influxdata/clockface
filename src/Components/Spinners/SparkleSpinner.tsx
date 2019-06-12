@@ -3,18 +3,16 @@ import React, {PureComponent} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {RemoteDataState} from '../../Types'
+import {RemoteDataState, StandardProps} from '../../Types'
 
 // Style
 import './SparkleSpinner.scss'
 
-interface Props {
+interface Props extends StandardProps {
   /** Size of spinner (square) */
   sizePixels: number
   /** State */
   loading: RemoteDataState
-  /** Test ID for Integration Tests */
-  testID: string
 }
 
 export class SparkleSpinner extends PureComponent<Props> {
@@ -33,7 +31,7 @@ export class SparkleSpinner extends PureComponent<Props> {
     }
 
     return (
-      <div className="sparkle-spinner" data-testid={testID} style={style}>
+      <div className={this.className} data-testid={testID} style={style}>
         <svg
           version="1.1"
           id="sparkle_spinner"
@@ -221,6 +219,12 @@ export class SparkleSpinner extends PureComponent<Props> {
         </svg>
       </div>
     )
+  }
+
+  private get className(): string {
+    const {className} = this.props
+
+    return classnames('sparkle-spinner', {[`${className}`]: className})
   }
 
   private get loadingStatus(): string {

@@ -7,16 +7,15 @@ import _ from 'lodash'
 import {NavMenuItem} from './NavMenuItem'
 import {NavMenuSubItem} from './NavMenuSubItem'
 
+// Types
+import {StandardProps} from '../../Types'
+
 // Styles
 import './NavMenu.scss'
 
-interface Props {
-  /** Class name for custom styles */
-  className?: string
+interface Props extends StandardProps {
   /** Prevents NavMenu from rendering (used in presentation mode) */
   hide?: boolean
-  /** Test ID for Integration Tests */
-  testID: string
 }
 
 export class NavMenu extends PureComponent<Props> {

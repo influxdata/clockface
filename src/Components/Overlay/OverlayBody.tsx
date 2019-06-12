@@ -2,12 +2,10 @@
 import React, {PureComponent} from 'react'
 import classnames from 'classnames'
 
-interface Props {
-  /** Class name for custom styles */
-  className?: string
-  /** Test ID for Integration Tests */
-  testID: string
-}
+// Types
+import {StandardProps} from '../../Types'
+
+interface Props extends StandardProps {}
 
 export class OverlayBody extends PureComponent<Props> {
   public static defaultProps = {

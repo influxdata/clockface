@@ -12,17 +12,16 @@ import {
   ComponentSize,
   ButtonShape,
   ButtonType,
+  StandardProps,
 } from '../../../Types'
 
-interface Props {
+interface Props extends StandardProps {
   /** Function to be called on button click */
   onClick?: (e?: MouseEvent<HTMLButtonElement>) => void
   /** Text to be displayed on hover tooltip */
   titleText?: string
   /** Keyboard control tab order  */
   tabIndex?: number
-  /** Class name for custom styles */
-  className?: string
   /** Button color */
   color: ComponentColor
   /** Button size */
@@ -35,8 +34,6 @@ interface Props {
   active: boolean
   /** Button type of 'button' or 'submit' */
   type: ButtonType
-  /** Test ID for Integration Tests */
-  testID: string
   /** React Ref object */
   refObject?: RefObject<HTMLButtonElement>
 }

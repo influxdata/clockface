@@ -16,9 +16,10 @@ import {
   ButtonShape,
   IconFont,
   ButtonType,
+  StandardProps,
 } from '../../../Types'
 
-interface Props {
+interface Props extends StandardProps {
   /** Text to be displayed on button */
   text?: string
   /** Function to be called on button click */
@@ -29,8 +30,6 @@ interface Props {
   titleText?: string
   /** Keyboard control tab order  */
   tabIndex?: number
-  /** Class name for custom styles */
-  className?: string
   /** Button color */
   color: ComponentColor
   /** Button size */
@@ -43,8 +42,6 @@ interface Props {
   active: boolean
   /** Button type of 'button' or 'submit' */
   type: ButtonType
-  /** Test ID for Integration Tests */
-  testID: string
   /** Reverse ordering of text and icon */
   placeIconAfterText: boolean
   /** React Ref object */

@@ -7,9 +7,10 @@ import Scrollbar from 'react-scrollbars-custom'
 // Styles
 import './DapperScrollbars.scss'
 
-interface Props {
-  /** Class name for custom styles */
-  className?: string
+// Types
+import {StandardProps} from '../../Types'
+
+interface Props extends StandardProps {
   /** Inline CSS styles */
   style?: CSSProperties
   /** Toggle display of tracks when no scrolling in necessary */
@@ -36,8 +37,6 @@ interface Props {
   autoSizeWidth: boolean
   /** Scroll container will grow to fit the content height */
   autoSizeHeight: boolean
-  /** Test ID for Integration Tests */
-  testID: string
 }
 
 export class DapperScrollbars extends Component<Props> {

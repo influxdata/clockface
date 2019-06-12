@@ -3,20 +3,16 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {RemoteDataState} from '../../Types'
+import {RemoteDataState, StandardProps} from '../../Types'
 
 // Styles
 import './SpinnerContainer.scss'
 
-interface Props {
-  /** Custom classname for spinner container */
-  className?: string
+interface Props extends StandardProps {
   /** Loading state */
   loading: RemoteDataState
   /** Spinner component */
   spinnerComponent: JSX.Element
-  /** Test ID for Integration Tests */
-  testID: string
 }
 
 export class SpinnerContainer extends Component<Props> {

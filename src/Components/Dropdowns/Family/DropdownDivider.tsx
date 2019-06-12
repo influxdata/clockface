@@ -2,13 +2,12 @@
 import React, {Component} from 'react'
 import classnames from 'classnames'
 
-interface Props {
+// Types
+import {StandardProps} from '../../../Types'
+
+interface Props extends StandardProps {
   /** Text to be displayed on divider, a line will be displayed if no text is provided */
   text?: string
-  /** Test ID for Integration Tests */
-  testID: string
-  /** Useful when you want to apply custom positioning to the dropdown or override the appearance */
-  className?: string
 }
 
 export class DropdownDivider extends Component<Props> {

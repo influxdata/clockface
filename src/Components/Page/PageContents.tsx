@@ -5,15 +5,16 @@ import classnames from 'classnames'
 // Components
 import {DapperScrollbars} from '../DapperScrollbars/DapperScrollbars'
 
-interface Props {
+// Types
+import {StandardProps} from '../../Types'
+
+interface Props extends StandardProps {
   /** Allows the page contents to fill the width of the screen */
   fullWidth: boolean
   /** Allows contents to fill the full height of the screen (used in presentation mode) */
   fullHeight?: boolean
   /** Allows contents to scroll on overflow */
   scrollable: boolean
-  /** Test ID for Integration Tests */
-  testID: string
 }
 
 export class PageContents extends Component<Props> {
@@ -46,11 +47,12 @@ export class PageContents extends Component<Props> {
   }
 
   private get className(): string {
-    const {fullWidth, fullHeight} = this.props
+    const {fullWidth, fullHeight, className} = this.props
 
     return classnames('page-contents', {
       'full-width': fullWidth,
       'full-height': fullHeight,
+      [`${className}`]: className,
     })
   }
 

@@ -2,17 +2,16 @@
 import React, {Component, CSSProperties} from 'react'
 import classnames from 'classnames'
 
-interface Props {
+// Types
+import {StandardProps} from '../../Types'
+
+interface Props extends StandardProps {
   /** Color name */
   name: string
   /** Color hex value */
   hex: string
   /** Function to be called on color click */
   onClick: (hex: string) => void
-  /** Test ID for Integration Tests */
-  testID: string
-  /** Class name for custom styles */
-  className?: string
   /** Used to determine percentage width of parent to take up */
   swatchesPerRow: number
   /** Index - used to determine if corners are rounded or not */

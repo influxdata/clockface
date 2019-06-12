@@ -7,18 +7,14 @@ import {EmptyStateText} from './EmptyStateText'
 import {EmptyStateSubText} from './EmptyStateSubText'
 
 // Types
-import {ComponentSize} from '../../Types'
+import {ComponentSize, StandardProps} from '../../Types'
 
 // Styles
 import './EmptyState.scss'
 
-interface Props {
+interface Props extends StandardProps {
   /** Controls vertical padding in container and font size of children */
   size: ComponentSize
-  /** Class name for custom styles */
-  className?: string
-  /** Test ID for Integration Tests */
-  testID: string
 }
 
 export class EmptyState extends Component<Props> {

@@ -13,12 +13,13 @@ import {
   ComponentColor,
   ComponentStatus,
   ButtonShape,
+  StandardProps,
 } from '../../../Types'
 
 // Styles
 import '../DropdownButton.scss'
 
-interface Props {
+interface Props extends StandardProps {
   /** Function to be called on click of dropdown button */
   onClick: (e: MouseEvent<HTMLButtonElement>) => void
   /** Button status state default, loading, or disabled */
@@ -33,8 +34,6 @@ interface Props {
   icon?: IconFont
   /** Text to be displayed on hover tooltip */
   title?: string
-  /** Test ID for Integration Tests */
-  testID: string
 }
 
 export class DropdownButton extends Component<Props> {
@@ -60,7 +59,7 @@ export class DropdownButton extends Component<Props> {
     return (
       <ButtonBase
         shape={ButtonShape.StretchToFit}
-        className="dropdown--button"
+        className={this.className}
         onClick={onClick}
         status={this.status}
         titleText={title}
@@ -75,6 +74,12 @@ export class DropdownButton extends Component<Props> {
         <Icon glyph={IconFont.CaretDown} className="dropdown--caret" />
       </ButtonBase>
     )
+  }
+
+  private get className(): string {
+    const {className} = this.props
+
+    return className ? `dropdown--button ${className}` : 'dropdown--button'
   }
 
   private get status(): ComponentStatus {

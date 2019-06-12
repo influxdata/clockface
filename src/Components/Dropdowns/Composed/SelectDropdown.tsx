@@ -19,9 +19,10 @@ import {
   DropdownMenuTheme,
   DropdownItemType,
   ComponentStatus,
+  StandardProps,
 } from '../../../Types'
 
-interface Props {
+interface Props extends StandardProps {
   /** Text to render in button as currently selected option */
   selectedOption: string
   /** List of options to render in menu */
@@ -42,10 +43,6 @@ interface Props {
   menuTheme: DropdownMenuTheme
   /** Optional maximum pixel height menu */
   menuMaxHeight?: number
-  /** Class name for custom styles */
-  className?: string
-  /** Test ID for Integration Tests */
-  testID: string
 }
 
 export class SelectDropdown extends Component<Props> {

@@ -1,11 +1,12 @@
 // Libraries
 import React, {Component} from 'react'
 
-interface Props {
+// Types
+import {StandardProps} from '../../Types'
+
+interface Props extends StandardProps {
   /** Input discription  or instruction text */
   text: string
-  /** Test ID for Integration Tests */
-  testID: string
 }
 
 export class FormHelpText extends Component<Props> {
@@ -17,9 +18,15 @@ export class FormHelpText extends Component<Props> {
     const {text, testID} = this.props
 
     return (
-      <span className="form--help-text" data-testid={testID}>
+      <span className={this.className} data-testid={testID}>
         {text}
       </span>
     )
+  }
+
+  private get className(): string {
+    const {className} = this.props
+
+    return className ? `form--help-text ${className}` : 'form--help-text'
   }
 }

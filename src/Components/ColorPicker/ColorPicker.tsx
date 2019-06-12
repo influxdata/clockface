@@ -13,7 +13,13 @@ import {FormElementError} from '../FormLayout/FormElementError'
 import {influxColors, HEX_CODE_CHAR_LENGTH} from '../../Constants/colors'
 
 // Types
-import {IconFont, ButtonShape, ComponentStatus, Color} from '../../Types'
+import {
+  IconFont,
+  ButtonShape,
+  ComponentStatus,
+  Color,
+  StandardProps,
+} from '../../Types'
 
 // Utils
 import {validateHexCode} from '../../Utils/colors'
@@ -21,7 +27,7 @@ import {validateHexCode} from '../../Utils/colors'
 // Styles
 import './ColorPicker.scss'
 
-interface Props {
+interface Props extends StandardProps {
   /** currently selected color */
   color: string
   /** Function to be called on color select */
@@ -32,10 +38,6 @@ interface Props {
   maintainInputFocus: boolean
   /** How many color swatches to render in each row */
   swatchesPerRow: number
-  /** Class name for custom styles */
-  className?: string
-  /** Test ID for Integration Tests */
-  testID: string
 }
 
 interface State {

@@ -2,12 +2,10 @@
 import React, {Component} from 'react'
 import classnames from 'classnames'
 
-interface Props {
-  /** Test ID for Integration Tests */
-  testID: string
-  /** Class name for custom styles */
-  className?: string
-}
+// Types
+import {StandardProps} from '../../Types'
+
+interface Props extends StandardProps {}
 
 export class PanelBody extends Component<Props> {
   public static defaultProps = {
@@ -15,9 +13,13 @@ export class PanelBody extends Component<Props> {
   }
 
   public render() {
-    const {children} = this.props
+    const {children, testID} = this.props
 
-    return <div className={this.className}>{children}</div>
+    return (
+      <div className={this.className} data-testid={testID}>
+        {children}
+      </div>
+    )
   }
 
   private get className(): string {

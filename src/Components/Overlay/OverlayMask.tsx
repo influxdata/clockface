@@ -3,20 +3,16 @@ import React, {PureComponent, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {InfluxColors, Gradients} from '../../Types'
+import {InfluxColors, Gradients, StandardProps} from '../../Types'
 
 // Constants
 import {getColorsFromGradient} from '../../Constants/colors'
 
-interface Props {
+interface Props extends StandardProps {
   /** Optional gradient theme of panel*/
   gradient: Gradients
   /** Optional background color of panel, supercedes gradient prop  */
   backgroundColor?: InfluxColors | string
-  /** Class name for custom styles */
-  className?: string
-  /** Test ID for Integration Tests */
-  testID: string
 }
 
 export class OverlayMask extends PureComponent<Props> {

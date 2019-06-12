@@ -1,11 +1,12 @@
 // Libraries
 import React, {Component} from 'react'
 
-interface Props {
+// Types
+import {StandardProps} from '../../Types'
+
+interface Props extends StandardProps {
   /** Text to be displayed on error */
   message: string
-  /** Test ID for Integration Tests */
-  testID: string
 }
 
 export class FormElementError extends Component<Props> {
@@ -16,7 +17,7 @@ export class FormElementError extends Component<Props> {
   public render() {
     const {testID} = this.props
     return (
-      <span className="form--element-error" data-testid={testID}>
+      <span className={this.className} data-testid={testID}>
         {this.message}
       </span>
     )
@@ -31,5 +32,13 @@ export class FormElementError extends Component<Props> {
     }
 
     return message
+  }
+
+  private get className(): string {
+    const {className} = this.props
+
+    return className
+      ? `form--element-error ${className}`
+      : 'form--element-error'
   }
 }

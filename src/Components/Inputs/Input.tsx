@@ -19,6 +19,7 @@ import {
   ComponentSize,
   IconFont,
   AutoComplete,
+  StandardProps,
 } from '../../Types'
 
 export enum InputType {
@@ -29,7 +30,7 @@ export enum InputType {
   Checkbox = 'checkbox',
 }
 
-interface Props {
+interface Props extends StandardProps {
   /** Unique text field ID */
   id?: string
   /** Minimum value for number type */
@@ -54,8 +55,6 @@ interface Props {
   icon?: IconFont
   /** Width of the text field in pixels */
   widthPixels?: number
-  /** Class name for custom styles */
-  className?: string
   /** Maximum string length for input value */
   maxLength?: number
   /** Keyboard control tab order  */
@@ -82,8 +81,6 @@ interface Props {
   autoFocus: boolean
   /** Allows or disallows browser spellcheck functionality */
   spellCheck: boolean
-  /** Test ID for Integration Tests */
-  testID: string
 }
 
 export class Input extends Component<Props> {

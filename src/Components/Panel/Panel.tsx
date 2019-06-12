@@ -5,7 +5,12 @@ import classnames from 'classnames'
 import chroma from 'chroma-js'
 
 // Types
-import {Gradients, ComponentSize, InfluxColors} from '../../Types'
+import {
+  Gradients,
+  ComponentSize,
+  InfluxColors,
+  StandardProps,
+} from '../../Types'
 
 // Constants
 import {getColorsFromGradient} from '../../Constants/colors'
@@ -18,17 +23,13 @@ import {PanelFooter} from './PanelFooter'
 // Styles
 import './Panel.scss'
 
-interface Props {
-  /** Class name for custom styles */
-  className?: string
+interface Props extends StandardProps {
   /** Optional gradient theme of panel, supercedes backgroundColor prop */
   gradient?: Gradients
   /** Optional background color of panel */
   backgroundColor: InfluxColors | string
   /** Controls header font size and padding of Panel */
   size: ComponentSize
-  /** Test ID for Integration Tests */
-  testID: string
 }
 
 export class Panel extends Component<Props> {

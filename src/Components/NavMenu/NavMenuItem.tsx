@@ -2,17 +2,16 @@
 import React, {PureComponent} from 'react'
 import classnames from 'classnames'
 
-interface Props {
+// Types
+import {StandardProps} from '../../Types'
+
+interface Props extends StandardProps {
   /** Render prop for linked title text (suggested <a /> or <Link /> ) */
   titleLink: (className: string) => JSX.Element
   /** Render prop for linked icon component (suggested <a /> or <Link /> ) */
   iconLink: (className: string) => JSX.Element
   /** Controls highlighting of the menu item */
   active: boolean
-  /** Class name for custom styles */
-  className?: string
-  /** Test ID for Integration Tests */
-  testID: string
 }
 
 export class NavMenuItem extends PureComponent<Props> {

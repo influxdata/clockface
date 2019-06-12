@@ -3,12 +3,13 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {Alignment} from '../../Types'
+import {Alignment, StandardProps} from '../../Types'
 
-interface Props {
+interface Props extends StandardProps {
+  /** Text alignment of contents */
   alignment: Alignment
+  /** If true the contents of this cell will be hidden until the containing row is hovered */
   revealOnHover: boolean
-  testID: string
 }
 
 export class IndexListRowCell extends Component<Props> {
@@ -31,13 +32,14 @@ export class IndexListRowCell extends Component<Props> {
   }
 
   private get className(): string {
-    const {alignment, revealOnHover} = this.props
+    const {alignment, revealOnHover, className} = this.props
 
     return classnames('index-list--row-cell', {
       'index-list--show-hover': revealOnHover,
       'index-list--align-left': alignment === Alignment.Left,
       'index-list--align-center': alignment === Alignment.Center,
       'index-list--align-right': alignment === Alignment.Right,
+      [`${className}`]: className,
     })
   }
 }

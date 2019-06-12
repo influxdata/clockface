@@ -4,13 +4,12 @@ import React, {Component} from 'react'
 // Styles
 import './WaitingText.scss'
 
-interface Props {
+// Types
+import {StandardProps} from '../../Types'
+
+interface Props extends StandardProps {
   /** Text to be displayed */
   text: string
-  /** Class name for custom styles */
-  className?: string
-  /** Used for unit and e2e tests */
-  testID: string
 }
 
 export class WaitingText extends Component<Props> {

@@ -3,15 +3,11 @@ import React, {Component, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {InfluxColors} from '../../Types'
+import {InfluxColors, StandardProps} from '../../Types'
 
-interface Props {
+interface Props extends StandardProps {
   /** Optional coloration for horizontal rule in divider */
   lineColor?: InfluxColors | string
-  /** Class name for custom styles */
-  className?: string
-  /** Test ID for Integration Tests */
-  testID: string
 }
 
 export class FormDivider extends Component<Props> {

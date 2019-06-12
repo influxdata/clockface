@@ -11,14 +11,10 @@ import {
   JustifyContent,
   AlignItems,
   ComponentSize,
+  StandardProps,
 } from '../../Types'
 
-interface Props {
-  /** Class name for custom styles */
-  className?: string
-  /** Test ID for Integration Tests */
-  testID: string
-}
+interface Props extends StandardProps {}
 
 export class OverlayFooter extends PureComponent<Props> {
   public static defaultProps = {
