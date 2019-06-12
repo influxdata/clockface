@@ -2,19 +2,19 @@
 import React, {Component, CSSProperties} from 'react'
 
 // Types
-import {ComponentSize} from '../../Types'
+import {ComponentSize, StandardProps} from '../../Types'
 
 // Styles
 import './TechnoSpinner.scss'
 
-interface Props {
+interface ComponentProps {
   /** Diameter of spinner circle */
   diameterPixels: number
   /** Width of spinner stroke */
   strokeWidth: ComponentSize
-  /** Test ID for Integration Tests */
-  testID: string
 }
+
+type Props = ComponentProps & StandardProps
 
 export class TechnoSpinner extends Component<Props> {
   public static defaultProps: Props = {
@@ -27,8 +27,14 @@ export class TechnoSpinner extends Component<Props> {
     const {testID} = this.props
 
     return (
-      <div className="techno-spinner" style={this.style} data-testid={testID} />
+      <div className={this.className} style={this.style} data-testid={testID} />
     )
+  }
+
+  private get className(): string {
+    const {className} = this.props
+
+    return className ? `techno-spinner ${className}` : 'techno-spinner'
   }
 
   private get style(): CSSProperties {
