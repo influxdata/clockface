@@ -4,14 +4,12 @@ import React, {PureComponent} from 'react'
 // Types
 import {StandardProps} from '../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Text to display in PageTitle */
   title: string
   /** Alternate text for screen readers */
   altText?: string
 }
-
-type Props = ComponentProps & StandardProps
 
 export class PageTitle extends PureComponent<Props> {
   public static defaultProps = {

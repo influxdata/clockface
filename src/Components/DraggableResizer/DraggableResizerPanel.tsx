@@ -5,15 +5,13 @@ import classnames from 'classnames'
 // Types
 import {StandardProps} from '../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Panel will not shrink past this size (experimental, not guaranteed to work) */
   minSizePixels: number
   /** Does not have a value initially, gets passed a value by being a child of DraggableResizer */
   sizePercent?: number
   /** Test ID for Integration Tests */
 }
-
-type Props = ComponentProps & StandardProps
 
 export class DraggableResizerPanel extends Component<Props> {
   public static defaultProps = {

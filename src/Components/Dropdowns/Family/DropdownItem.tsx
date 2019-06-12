@@ -5,7 +5,7 @@ import classnames from 'classnames'
 // Types
 import {DropdownItemType, StandardProps} from '../../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Value to be returned via the onClick function */
   value: any
   /** Whether or not the item should have selected styling */
@@ -17,8 +17,6 @@ interface ComponentProps {
   /** Controls whether the text contents of this item wrap or not */
   wrapText: boolean
 }
-
-type Props = ComponentProps & StandardProps
 
 export class DropdownItem extends Component<Props> {
   public static defaultProps = {

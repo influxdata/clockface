@@ -30,7 +30,7 @@ export enum InputType {
   Checkbox = 'checkbox',
 }
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Unique text field ID */
   id?: string
   /** Minimum value for number type */
@@ -82,8 +82,6 @@ interface ComponentProps {
   /** Allows or disallows browser spellcheck functionality */
   spellCheck: boolean
 }
-
-type Props = ComponentProps & StandardProps
 
 export class Input extends Component<Props> {
   public static defaultProps = {

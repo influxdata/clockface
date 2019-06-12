@@ -14,9 +14,7 @@ import {StandardProps} from '../../Types'
 // Styles
 import './IndexList.scss'
 
-interface ComponentProps {}
-
-type Props = ComponentProps & StandardProps
+interface Props extends StandardProps {}
 
 export class IndexList extends Component<Props> {
   public static Body = IndexListBody

@@ -8,14 +8,12 @@ import {RemoteDataState, StandardProps} from '../../Types'
 // Styles
 import './SpinnerContainer.scss'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Loading state */
   loading: RemoteDataState
   /** Spinner component */
   spinnerComponent: JSX.Element
 }
-
-type Props = ComponentProps & StandardProps
 
 export class SpinnerContainer extends Component<Props> {
   public static defaultProps = {

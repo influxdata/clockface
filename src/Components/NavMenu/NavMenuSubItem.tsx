@@ -5,14 +5,12 @@ import classnames from 'classnames'
 // Types
 import {StandardProps} from '../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Controls highlighting of the menu item */
   active: boolean
   /** Render prop for linked title text (suggested <a /> or <Link /> ) */
   titleLink: (className: string, testID?: string) => JSX.Element
 }
-
-type Props = ComponentProps & StandardProps
 
 export class NavMenuSubItem extends PureComponent<Props> {
   public static defaultProps = {

@@ -5,12 +5,10 @@ import classnames from 'classnames'
 // Types
 import {StandardProps} from '../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Pixel width maximum for overlay */
   maxWidth: number
 }
-
-type Props = ComponentProps & StandardProps
 
 export class OverlayContainer extends PureComponent<Props> {
   public static defaultProps = {

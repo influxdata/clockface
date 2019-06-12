@@ -4,12 +4,10 @@ import React, {Component} from 'react'
 // Types
 import {StandardProps} from '../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Text to be displayed on error */
   message: string
 }
-
-type Props = ComponentProps & StandardProps
 
 export class FormElementError extends Component<Props> {
   public static defaultProps = {

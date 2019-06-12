@@ -11,14 +11,12 @@ import './Alert.scss'
 // Types
 import {ComponentColor, IconFont, StandardProps} from '../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Alert color */
   color: ComponentColor
   /** Icon to be displayed to the left of text */
   icon?: IconFont
 }
-
-type Props = ComponentProps & StandardProps
 
 export class Alert extends Component<Props> {
   public static defaultProps = {

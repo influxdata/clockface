@@ -4,14 +4,12 @@ import React, {Component} from 'react'
 // Types
 import {StandardProps} from '../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Rendered when no children are passed in */
   emptyState: JSX.Element
   /** Used to ensure the empty state takes up the full width of the table */
   columnCount: number
 }
-
-type Props = ComponentProps & StandardProps
 
 export class IndexListBody extends Component<Props> {
   public static defaultProps = {

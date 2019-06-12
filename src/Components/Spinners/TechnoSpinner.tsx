@@ -7,14 +7,12 @@ import {ComponentSize, StandardProps} from '../../Types'
 // Styles
 import './TechnoSpinner.scss'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Diameter of spinner circle */
   diameterPixels: number
   /** Width of spinner stroke */
   strokeWidth: ComponentSize
 }
-
-type Props = ComponentProps & StandardProps
 
 export class TechnoSpinner extends Component<Props> {
   public static defaultProps: Props = {

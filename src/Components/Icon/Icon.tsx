@@ -4,14 +4,12 @@ import React, {Component, CSSProperties} from 'react'
 // Types
 import {IconFont, InfluxColors, StandardProps} from '../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Icon to display */
   glyph: IconFont | string
   /** Optional color string, can use InfluxColors enum or pass in your own value */
   color?: InfluxColors | string
 }
-
-type Props = ComponentProps & StandardProps
 
 export class Icon extends Component<Props> {
   public static defaultProps = {

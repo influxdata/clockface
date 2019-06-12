@@ -19,7 +19,7 @@ import {
 // Styles
 import '../DropdownButton.scss'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Function to be called on click of dropdown button */
   onClick: (e: MouseEvent<HTMLButtonElement>) => void
   /** Button status state default, loading, or disabled */
@@ -35,8 +35,6 @@ interface ComponentProps {
   /** Text to be displayed on hover tooltip */
   title?: string
 }
-
-type Props = ComponentProps & StandardProps
 
 export class DropdownButton extends Component<Props> {
   public static defaultProps = {

@@ -13,12 +13,10 @@ import {
   StandardProps,
 } from '../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Title of Panel */
   title: string
 }
-
-type Props = ComponentProps & StandardProps
 
 export class PanelHeader extends Component<Props> {
   public static defaultProps = {

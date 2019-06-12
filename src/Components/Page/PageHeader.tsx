@@ -11,14 +11,12 @@ import {PageHeaderRight} from './PageHeaderRight'
 // Types
 import {StandardProps} from '../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Allows the page header to fill the width of the screen */
   fullWidth: boolean
   /** Prevents NavMenu from rendering (used in presentation mode) */
   hide: boolean
 }
-
-type Props = ComponentProps & StandardProps
 
 export class PageHeader extends Component<Props> {
   public static defaultProps = {

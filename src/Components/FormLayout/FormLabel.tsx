@@ -4,14 +4,12 @@ import React, {Component} from 'react'
 // Types
 import {StandardProps} from '../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Label Text */
   label: string
   /** Whether this field is required to submit form, adds red required asterisk */
   required?: boolean
 }
-
-type Props = ComponentProps & StandardProps
 
 export class FormLabel extends Component<Props> {
   public static defaultProps = {

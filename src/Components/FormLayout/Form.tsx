@@ -16,14 +16,12 @@ import {StandardProps} from '../../Types'
 // Styles
 import './Form.scss'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Inline CSS styles */
   style?: React.CSSProperties
   /** Function to be called on form submit */
   onSubmit?: (e: React.FormEvent) => void
 }
-
-type Props = ComponentProps & StandardProps
 
 export class Form extends Component<Props> {
   public static defaultProps = {

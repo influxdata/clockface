@@ -6,14 +6,12 @@ import uuid from 'uuid'
 // Types
 import {StandardProps} from '../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Primary text to be displayed when no elements are loaded */
   text: string
   /** Highlighted words in the primary text */
   highlightWords?: string | string[]
 }
-
-type Props = ComponentProps & StandardProps
 
 const highlighter = (
   text: string,

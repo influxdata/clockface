@@ -5,14 +5,12 @@ import classnames from 'classnames'
 // Types
 import {Alignment, StandardProps} from '../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Text alignment of contents */
   alignment: Alignment
   /** If true the contents of this cell will be hidden until the containing row is hovered */
   revealOnHover: boolean
 }
-
-type Props = ComponentProps & StandardProps
 
 export class IndexListRowCell extends Component<Props> {
   public static defaultProps = {

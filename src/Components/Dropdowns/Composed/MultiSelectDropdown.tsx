@@ -22,7 +22,7 @@ import {
   StandardProps,
 } from '../../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Text to render in button as currently selected option */
   selectedOptions: string[]
   /** List of options to render in menu */
@@ -46,8 +46,6 @@ interface ComponentProps {
   /** Optional maximum pixel height menu */
   menuMaxHeight?: number
 }
-
-type Props = ComponentProps & StandardProps
 
 export class MultiSelectDropdown extends Component<Props> {
   public static defaultProps = {

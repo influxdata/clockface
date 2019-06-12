@@ -8,7 +8,7 @@ import {DapperScrollbars} from '../DapperScrollbars/DapperScrollbars'
 // Types
 import {StandardProps} from '../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Allows the page contents to fill the width of the screen */
   fullWidth: boolean
   /** Allows contents to fill the full height of the screen (used in presentation mode) */
@@ -16,8 +16,6 @@ interface ComponentProps {
   /** Allows contents to scroll on overflow */
   scrollable: boolean
 }
-
-type Props = ComponentProps & StandardProps
 
 export class PageContents extends Component<Props> {
   public static defaultProps = {

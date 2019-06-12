@@ -4,12 +4,10 @@ import React, {Component} from 'react'
 // Types
 import {StandardProps} from '../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Input discription  or instruction text */
   text: string
 }
-
-type Props = ComponentProps & StandardProps
 
 export class FormHelpText extends Component<Props> {
   public static defaultProps = {

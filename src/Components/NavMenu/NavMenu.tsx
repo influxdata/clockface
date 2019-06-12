@@ -13,12 +13,10 @@ import {StandardProps} from '../../Types'
 // Styles
 import './NavMenu.scss'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Prevents NavMenu from rendering (used in presentation mode) */
   hide?: boolean
 }
-
-type Props = ComponentProps & StandardProps
 
 export class NavMenu extends PureComponent<Props> {
   public static defaultProps = {

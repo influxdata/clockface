@@ -7,12 +7,10 @@ import {StandardProps} from '../../Types'
 // Constants
 import {DEFAULT_OFFSET} from '../../Constants/pageLayout'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** If a PageHeaderCenter is present PageHeaderRight will automatically get assigned this value */
   offsetPixels: number
 }
-
-type Props = ComponentProps & StandardProps
 
 export class PageHeaderRight extends Component<Props> {
   public static defaultProps = {

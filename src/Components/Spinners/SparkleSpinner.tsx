@@ -8,14 +8,12 @@ import {RemoteDataState, StandardProps} from '../../Types'
 // Style
 import './SparkleSpinner.scss'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Size of spinner (square) */
   sizePixels: number
   /** State */
   loading: RemoteDataState
 }
-
-type Props = ComponentProps & StandardProps
 
 export class SparkleSpinner extends PureComponent<Props> {
   public static defaultProps = {

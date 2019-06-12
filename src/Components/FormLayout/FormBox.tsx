@@ -4,9 +4,7 @@ import React, {Component} from 'react'
 // Types
 import {StandardProps} from '../../Types'
 
-interface ComponentProps {}
-
-type Props = ComponentProps & StandardProps
+interface Props extends StandardProps {}
 
 export class FormBox extends Component<Props> {
   public static defaultProps = {

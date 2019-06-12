@@ -5,12 +5,10 @@ import classnames from 'classnames'
 // Types
 import {StandardProps} from '../../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Text to be displayed on divider, a line will be displayed if no text is provided */
   text?: string
 }
-
-type Props = ComponentProps & StandardProps
 
 export class DropdownDivider extends Component<Props> {
   public static defaultProps = {

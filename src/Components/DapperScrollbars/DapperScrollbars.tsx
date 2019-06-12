@@ -10,7 +10,7 @@ import './DapperScrollbars.scss'
 // Types
 import {StandardProps} from '../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Inline CSS styles */
   style?: CSSProperties
   /** Toggle display of tracks when no scrolling in necessary */
@@ -38,8 +38,6 @@ interface ComponentProps {
   /** Scroll container will grow to fit the content height */
   autoSizeHeight: boolean
 }
-
-type Props = ComponentProps & StandardProps
 
 export class DapperScrollbars extends Component<Props> {
   public static defaultProps = {

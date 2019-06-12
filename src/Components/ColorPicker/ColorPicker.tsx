@@ -27,7 +27,7 @@ import {validateHexCode} from '../../Utils/colors'
 // Styles
 import './ColorPicker.scss'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** currently selected color */
   color: string
   /** Function to be called on color select */
@@ -39,8 +39,6 @@ interface ComponentProps {
   /** How many color swatches to render in each row */
   swatchesPerRow: number
 }
-
-type Props = ComponentProps & StandardProps
 
 interface State {
   errorMessage: string | null

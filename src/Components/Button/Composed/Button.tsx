@@ -19,7 +19,7 @@ import {
   StandardProps,
 } from '../../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Text to be displayed on button */
   text?: string
   /** Function to be called on button click */
@@ -47,8 +47,6 @@ interface ComponentProps {
   /** React Ref object */
   refObject?: RefObject<HTMLButtonElement>
 }
-
-type Props = ComponentProps & StandardProps
 
 export class Button extends Component<Props> {
   public static defaultProps = {

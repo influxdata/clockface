@@ -14,7 +14,7 @@ import {
 // Styles
 import './ComponentSpacer.scss'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Vertical or horizontal flex alignment */
   direction: FlexDirection
   /** Pass through styles object */
@@ -30,8 +30,6 @@ interface ComponentProps {
   /** stretches component spacer to fit parent height */
   stretchToFitHeight: boolean
 }
-
-type Props = ComponentProps & StandardProps
 
 export class ComponentSpacer extends Component<Props> {
   public static defaultProps = {

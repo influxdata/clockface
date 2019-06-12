@@ -5,7 +5,7 @@ import classnames from 'classnames'
 // Types
 import {StandardProps} from '../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Color name */
   name: string
   /** Color hex value */
@@ -19,8 +19,6 @@ interface ComponentProps {
   /** Number of colors used in Color Picker, used to determine rounded corners */
   swatchesCount: number
 }
-
-type Props = ComponentProps & StandardProps
 
 export class ColorPickerSwatch extends Component<Props> {
   public static defaultProps = {

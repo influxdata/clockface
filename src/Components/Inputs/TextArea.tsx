@@ -24,7 +24,7 @@ export enum Wrap {
   Off = 'off',
 }
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Width of the text field in pixels */
   widthPixels?: number
   /** Input Component size */
@@ -72,8 +72,6 @@ interface ComponentProps {
   /** Input field value to be updated with 'on X' functions */
   value: string
 }
-
-type Props = ComponentProps & StandardProps
 
 export class TextArea extends Component<Props> {
   public static defaultProps = {

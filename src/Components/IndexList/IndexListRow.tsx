@@ -5,12 +5,10 @@ import classnames from 'classnames'
 // Types
 import {StandardProps} from '../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Renders the row with disabled styles */
   disabled: boolean
 }
-
-type Props = ComponentProps & StandardProps
 
 export class IndexListRow extends Component<Props> {
   public static defaultProps = {

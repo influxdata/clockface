@@ -5,9 +5,7 @@ import classnames from 'classnames'
 // Types
 import {StandardProps} from '../../Types'
 
-interface ComponentProps {}
-
-type Props = ComponentProps & StandardProps
+interface Props extends StandardProps {}
 
 export class PanelBody extends Component<Props> {
   public static defaultProps = {

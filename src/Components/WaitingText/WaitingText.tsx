@@ -7,12 +7,10 @@ import './WaitingText.scss'
 // Types
 import {StandardProps} from '../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Text to be displayed */
   text: string
 }
-
-type Props = ComponentProps & StandardProps
 
 export class WaitingText extends Component<Props> {
   public static defaultProps = {

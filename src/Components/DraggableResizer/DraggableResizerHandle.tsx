@@ -8,7 +8,7 @@ import {Gradients, Orientation, StandardProps} from '../../Types'
 // Constants
 import {getColorsFromGradient} from '../../Constants/colors'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Unique identifier used to update the size of this handle */
   id: string
   /** Expects a number between 0 - 1 */
@@ -24,8 +24,6 @@ interface ComponentProps {
   /** Orientation of handle */
   orientation: Orientation
 }
-
-type Props = ComponentProps & StandardProps
 
 export class DraggableResizerHandle extends PureComponent<Props> {
   public static defaultProps = {

@@ -4,12 +4,10 @@ import React, {Component} from 'react'
 // Types
 import {StandardProps} from '../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Secondary text to be displayed when no elements are loaded */
   text: string
 }
-
-type Props = ComponentProps & StandardProps
 
 export class EmptyStateSubText extends Component<Props> {
   public static defaultProps = {

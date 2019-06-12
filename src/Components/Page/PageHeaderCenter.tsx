@@ -7,12 +7,10 @@ import {StandardProps} from '../../Types'
 // Constants
 import {DEFAULT_PAGE_HEADER_CENTER_WIDTH} from '../../Constants/pageLayout'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Must have a fixed width in pixels */
   widthPixels: number
 }
-
-type Props = ComponentProps & StandardProps
 
 export class PageHeaderCenter extends Component<Props> {
   public static defaultProps = {

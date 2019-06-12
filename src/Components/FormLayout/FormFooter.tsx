@@ -5,7 +5,7 @@ import classnames from 'classnames'
 // Types
 import {Columns, StandardProps} from '../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Number of columns spanned when viewport width is less than 750px */
   widthXS: Columns
   /** Number of columns spanned when viewport width is greater than 750px */
@@ -23,8 +23,6 @@ interface ComponentProps {
   /** Number of columns shifted when viewport width is greater than 1500px */
   offsetLG?: Columns
 }
-
-type Props = ComponentProps & StandardProps
 
 export class FormFooter extends Component<Props> {
   public static defaultProps = {

@@ -12,9 +12,7 @@ import {StandardProps} from '../../Types'
 // Styles
 import './Grid.scss'
 
-interface ComponentProps {}
-
-type Props = ComponentProps & StandardProps
+interface Props extends StandardProps {}
 
 export class Grid extends Component<Props> {
   public static defaultProps = {

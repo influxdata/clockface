@@ -16,7 +16,7 @@ import {
 // Styles
 import './Radio.scss'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Radio color */
   color: ComponentColor
   /** Radio size */
@@ -24,8 +24,6 @@ interface ComponentProps {
   /** Shape... */
   shape: ButtonShape
 }
-
-type Props = ComponentProps & StandardProps
 
 export class Radio extends Component<Props> {
   public static defaultProps = {

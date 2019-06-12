@@ -23,7 +23,7 @@ import {PanelFooter} from './PanelFooter'
 // Styles
 import './Panel.scss'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Optional gradient theme of panel, supercedes backgroundColor prop */
   gradient?: Gradients
   /** Optional background color of panel */
@@ -31,8 +31,6 @@ interface ComponentProps {
   /** Controls header font size and padding of Panel */
   size: ComponentSize
 }
-
-type Props = ComponentProps & StandardProps
 
 export class Panel extends Component<Props> {
   public static defaultProps = {

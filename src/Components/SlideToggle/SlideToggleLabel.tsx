@@ -5,7 +5,7 @@ import classnames from 'classnames'
 // Types
 import {ComponentSize, StandardProps} from '../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Text to be displayed as label */
   text: string
   /** Used to match the state of the associated SlideToggle */
@@ -13,8 +13,6 @@ interface ComponentProps {
   /** Button size */
   size: ComponentSize
 }
-
-type Props = ComponentProps & StandardProps
 
 export class SlideToggleLabel extends Component<Props> {
   public static defaultProps = {

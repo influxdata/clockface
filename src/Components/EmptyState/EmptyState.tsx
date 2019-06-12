@@ -12,12 +12,10 @@ import {ComponentSize, StandardProps} from '../../Types'
 // Styles
 import './EmptyState.scss'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Controls vertical padding in container and font size of children */
   size: ComponentSize
 }
-
-type Props = ComponentProps & StandardProps
 
 export class EmptyState extends Component<Props> {
   public static defaultProps = {

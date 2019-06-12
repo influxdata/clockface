@@ -13,12 +13,10 @@ import {StandardProps} from '../../Types'
 // Styles
 import './Page.scss'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Use this prop to update document.title when the page first renders &  on subsequent updates */
   titleTag?: string
 }
-
-type Props = ComponentProps & StandardProps
 
 export class Page extends Component<Props> {
   public static defaultProps = {

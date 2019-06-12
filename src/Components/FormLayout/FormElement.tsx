@@ -10,7 +10,7 @@ import {FormHelpText} from './FormHelpText'
 // Types
 import {StandardProps} from '../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Label Text */
   label: string
   /** Input instruction text */
@@ -22,8 +22,6 @@ interface ComponentProps {
   /** Whether this field is required to submit form, adds red required asterisk */
   required?: boolean
 }
-
-type Props = ComponentProps & StandardProps
 
 export class FormElement extends Component<Props> {
   public static defaultProps = {

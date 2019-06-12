@@ -19,7 +19,7 @@ import {
   StandardProps,
 } from '../../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Function to be called on button click */
   onClick?: (e?: MouseEvent<HTMLButtonElement>) => void
   /** Icon to be displayed to the left of text or in place of text */
@@ -41,8 +41,6 @@ interface ComponentProps {
   /** React Ref object */
   refObject?: RefObject<HTMLButtonElement>
 }
-
-type Props = ComponentProps & StandardProps
 
 export class SquareButton extends Component<Props> {
   public static defaultProps = {

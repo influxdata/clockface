@@ -14,9 +14,7 @@ import {
   StandardProps,
 } from '../../Types'
 
-interface ComponentProps {}
-
-type Props = ComponentProps & StandardProps
+interface Props extends StandardProps {}
 
 export class OverlayFooter extends PureComponent<Props> {
   public static defaultProps = {

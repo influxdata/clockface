@@ -8,14 +8,12 @@ import {InfluxColors, Gradients, StandardProps} from '../../Types'
 // Constants
 import {getColorsFromGradient} from '../../Constants/colors'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Optional gradient theme of panel*/
   gradient: Gradients
   /** Optional background color of panel, supercedes gradient prop  */
   backgroundColor?: InfluxColors | string
 }
-
-type Props = ComponentProps & StandardProps
 
 export class OverlayMask extends PureComponent<Props> {
   public static defaultProps = {

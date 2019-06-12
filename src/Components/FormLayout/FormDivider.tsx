@@ -5,12 +5,10 @@ import classnames from 'classnames'
 // Types
 import {InfluxColors, StandardProps} from '../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Optional coloration for horizontal rule in divider */
   lineColor?: InfluxColors | string
 }
-
-type Props = ComponentProps & StandardProps
 
 export class FormDivider extends Component<Props> {
   public static defaultProps = {

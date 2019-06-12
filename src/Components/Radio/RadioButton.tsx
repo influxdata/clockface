@@ -5,7 +5,7 @@ import classnames from 'classnames'
 // Types
 import {StandardProps} from '../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** id for individual radio button */
   id: string
   /** Toggles radio button active state */
@@ -21,8 +21,6 @@ interface ComponentProps {
   /** Text to be displayed on hover tooltip when radio button is disabled */
   disabledTitleText: string
 }
-
-type Props = ComponentProps & StandardProps
 
 export class RadioButton extends Component<Props> {
   public static defaultProps = {

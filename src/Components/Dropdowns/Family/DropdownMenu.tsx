@@ -8,7 +8,7 @@ import {DapperScrollbars} from '../../DapperScrollbars/DapperScrollbars'
 // Types
 import {DropdownMenuTheme, InfluxColors, StandardProps} from '../../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Pixel width of menu, if empty the menu will match the width of its parent  */
   overrideWidth?: number
   /** Pixel height after which the dropdown menu will scroll */
@@ -22,8 +22,6 @@ interface ComponentProps {
   /** Function to handle closing the menu when a child item is clicked */
   onCollapse?: () => void
 }
-
-type Props = ComponentProps & StandardProps
 
 export class DropdownMenu extends Component<Props> {
   public static defaultProps = {

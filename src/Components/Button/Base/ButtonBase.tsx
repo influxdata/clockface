@@ -15,7 +15,7 @@ import {
   StandardProps,
 } from '../../../Types'
 
-interface ComponentProps {
+interface Props extends StandardProps {
   /** Function to be called on button click */
   onClick?: (e?: MouseEvent<HTMLButtonElement>) => void
   /** Text to be displayed on hover tooltip */
@@ -37,8 +37,6 @@ interface ComponentProps {
   /** React Ref object */
   refObject?: RefObject<HTMLButtonElement>
 }
-
-type Props = ComponentProps & StandardProps
 
 export class ButtonBase extends Component<Props> {
   public static defaultProps = {
