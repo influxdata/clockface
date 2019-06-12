@@ -6,23 +6,26 @@ import classnames from 'classnames'
 import {RadioButton} from './RadioButton'
 
 // Types
-import {ComponentColor, ComponentSize, ButtonShape} from '../../Types'
+import {
+  ComponentColor,
+  ComponentSize,
+  ButtonShape,
+  StandardProps,
+} from '../../Types'
 
 // Styles
 import './Radio.scss'
 
-interface Props {
+interface ComponentProps {
   /** Radio color */
   color: ComponentColor
   /** Radio size */
   size: ComponentSize
   /** Shape... */
   shape: ButtonShape
-  /** Test ID for Integration Tests */
-  testID: string
-  /** Class name for custom styles */
-  className?: string
 }
+
+type Props = ComponentProps & StandardProps
 
 export class Radio extends Component<Props> {
   public static defaultProps = {

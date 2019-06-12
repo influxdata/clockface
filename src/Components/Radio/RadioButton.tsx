@@ -2,7 +2,10 @@
 import React, {Component} from 'react'
 import classnames from 'classnames'
 
-interface Props {
+// Types
+import {StandardProps} from '../../Types'
+
+interface ComponentProps {
   /** id for individual radio button */
   id: string
   /** Toggles radio button active state */
@@ -17,11 +20,9 @@ interface Props {
   disabled: boolean
   /** Text to be displayed on hover tooltip when radio button is disabled */
   disabledTitleText: string
-  /** Test ID for Integration Tests */
-  testID: string
-  /** Class name for custom styles */
-  className?: string
 }
+
+type Props = ComponentProps & StandardProps
 
 export class RadioButton extends Component<Props> {
   public static defaultProps = {
