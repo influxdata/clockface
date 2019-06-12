@@ -21,7 +21,11 @@ indexListStories.add('IndexList Component', () => {
     <IndexList>
       <IndexList.Header>
         {headerArr.map((col, i) => (
-          <IndexList.HeaderCell key={`${col}${i}`} columnName={col} />
+          <IndexList.HeaderCell
+            key={`${col}${i}`}
+            columnName={col}
+            width="50%"
+          />
         ))}
       </IndexList.Header>
       <IndexList.Body emptyState={<div>Empty</div>} columnCount={2}>

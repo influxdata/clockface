@@ -2,11 +2,15 @@
 import React, {Component} from 'react'
 import classnames from 'classnames'
 
-interface Props {
+// Types
+import {StandardProps} from '../../Types'
+
+interface ComponentProps {
+  /** Renders the row with disabled styles */
   disabled: boolean
-  customClass?: string
-  testID: string
 }
+
+type Props = ComponentProps & StandardProps
 
 export class IndexListRow extends Component<Props> {
   public static defaultProps = {
@@ -25,11 +29,11 @@ export class IndexListRow extends Component<Props> {
   }
 
   private get className(): string {
-    const {disabled, customClass} = this.props
+    const {disabled, className} = this.props
 
     return classnames('index-list--row', {
       'index-list--row-disabled': disabled,
-      [`${customClass}`]: !!customClass,
+      [`${className}`]: !!className,
     })
   }
 }

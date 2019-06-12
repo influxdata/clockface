@@ -8,19 +8,40 @@ import {IndexListHeaderCell} from './IndexListHeaderCell'
 import {IndexListRow} from './IndexListRow'
 import {IndexListRowCell} from './IndexListRowCell'
 
+// Types
+import {StandardProps} from '../../Types'
+
 // Styles
 import './IndexList.scss'
 
-export class IndexList extends Component {
+interface ComponentProps {}
+
+type Props = ComponentProps & StandardProps
+
+export class IndexList extends Component<Props> {
   public static Body = IndexListBody
   public static Header = IndexListHeader
   public static HeaderCell = IndexListHeaderCell
   public static Row = IndexListRow
   public static Cell = IndexListRowCell
 
-  public render() {
-    const {children} = this.props
+  public static defaultProps = {
+    testID: 'index-list',
+  }
 
-    return <table className="index-list">{children}</table>
+  public render() {
+    const {children, testID} = this.props
+
+    return (
+      <table className={this.className} data-testid={testID}>
+        {children}
+      </table>
+    )
+  }
+
+  private get className(): string {
+    const {className} = this.props
+
+    return className ? `index-list ${className}` : 'index-list'
   }
 }

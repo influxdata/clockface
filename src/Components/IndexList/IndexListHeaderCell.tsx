@@ -3,28 +3,42 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {Alignment, Sort} from '../../Types'
+import {Alignment, Sort, StandardProps} from '../../Types'
 
 export interface IndexHeaderCellProps {
+  /** Can be a % or px */
   width: string
-  columnName?: string
-  alignment?: Alignment
+  /** Text to display as column header */
+  columnName: string
+  /** Text alignment of column header */
+  alignment: Alignment
+  /** Controls appearance of sort indicator (arrow) */
   sort?: Sort
+  /** Unique identifier for use in managing sort state */
   sortKey?: string
+  /** Useful for triggering a change in sort state */
   onClick?: (nextSort: Sort, sortKey: string | undefined) => void
 }
 
-export class IndexListHeaderCell extends Component<IndexHeaderCellProps> {
-  public static defaultProps: Partial<IndexHeaderCellProps> = {
+type Props = IndexHeaderCellProps & StandardProps
+
+export class IndexListHeaderCell extends Component<Props> {
+  public static defaultProps = {
     columnName: '',
     alignment: Alignment.Left,
+    testID: 'index-list--header-cell',
   }
 
   public render() {
-    const {columnName, width} = this.props
+    const {columnName, width, testID} = this.props
 
     return (
-      <th className={this.className} style={{width}} onClick={this.handleClick}>
+      <th
+        className={this.className}
+        style={{width}}
+        onClick={this.handleClick}
+        data-testid={testID}
+      >
         {columnName}
         {this.sortIndicator}
       </th>
@@ -34,7 +48,7 @@ export class IndexListHeaderCell extends Component<IndexHeaderCellProps> {
   private handleClick = (): void => {
     const {onClick, sort, sortKey} = this.props
 
-    if (!onClick || !sort) {
+    if (!onClick || !sort || !sortKey) {
       return
     }
 
