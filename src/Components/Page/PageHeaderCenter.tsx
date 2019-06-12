@@ -1,15 +1,18 @@
 // Libraries
 import React, {Component, CSSProperties} from 'react'
 
+// Types
+import {StandardProps} from '../../Types'
+
 // Constants
 import {DEFAULT_PAGE_HEADER_CENTER_WIDTH} from '../../Constants/pageLayout'
 
-interface Props {
+interface ComponentProps {
   /** Must have a fixed width in pixels */
   widthPixels: number
-  /** Test ID for Integration Tests */
-  testID: string
 }
+
+type Props = ComponentProps & StandardProps
 
 export class PageHeaderCenter extends Component<Props> {
   public static defaultProps = {
@@ -21,17 +24,21 @@ export class PageHeaderCenter extends Component<Props> {
     const {children, testID} = this.props
 
     return (
-      <div
-        className="page-header--center"
-        style={this.styles}
-        data-testid={testID}
-      >
+      <div className={this.className} style={this.style} data-testid={testID}>
         {children}
       </div>
     )
   }
 
-  private get styles(): CSSProperties {
+  private get className(): string {
+    const {className} = this.props
+
+    return className
+      ? `page-header--center ${className}`
+      : 'page-header--center'
+  }
+
+  private get style(): CSSProperties {
     const {widthPixels} = this.props
 
     return {

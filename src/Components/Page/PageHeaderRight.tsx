@@ -1,15 +1,18 @@
 // Libraries
 import React, {Component, CSSProperties} from 'react'
 
+// Types
+import {StandardProps} from '../../Types'
+
 // Constants
 import {DEFAULT_OFFSET} from '../../Constants/pageLayout'
 
-interface Props {
+interface ComponentProps {
   /** If a PageHeaderCenter is present PageHeaderRight will automatically get assigned this value */
   offsetPixels: number
-  /** Test ID for Integration Tests */
-  testID: string
 }
+
+type Props = ComponentProps & StandardProps
 
 export class PageHeaderRight extends Component<Props> {
   public static defaultProps = {
@@ -21,17 +24,19 @@ export class PageHeaderRight extends Component<Props> {
     const {children, testID} = this.props
 
     return (
-      <div
-        className="page-header--right"
-        style={this.styles}
-        data-testid={testID}
-      >
+      <div className={this.className} style={this.style} data-testid={testID}>
         {children}
       </div>
     )
   }
 
-  private get styles(): CSSProperties | undefined {
+  private get className(): string {
+    const {className} = this.props
+
+    return className ? `page-header--right ${className}` : 'page-header--right'
+  }
+
+  private get style(): CSSProperties | undefined {
     const {offsetPixels} = this.props
 
     if (offsetPixels === DEFAULT_OFFSET) {

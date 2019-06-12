@@ -7,17 +7,18 @@ import {PageHeader} from './PageHeader'
 import {PageTitle} from './PageTitle'
 import {PageContents} from './PageContents'
 
+// Types
+import {StandardProps} from '../../Types'
+
 // Styles
 import './Page.scss'
 
-interface Props {
-  /** Class name for custom styles */
-  className?: string
+interface ComponentProps {
   /** Use this prop to update document.title when the page first renders &  on subsequent updates */
   titleTag?: string
-  /** Test ID for Integration Tests */
-  testID: string
 }
+
+type Props = ComponentProps & StandardProps
 
 export class Page extends Component<Props> {
   public static defaultProps = {

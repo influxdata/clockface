@@ -1,14 +1,17 @@
 // Libraries
 import React, {PureComponent} from 'react'
 
-interface Props {
+// Types
+import {StandardProps} from '../../Types'
+
+interface ComponentProps {
   /** Text to display in PageTitle */
   title: string
   /** Alternate text for screen readers */
   altText?: string
-  /** Test ID for Integration Tests */
-  testID: string
 }
+
+type Props = ComponentProps & StandardProps
 
 export class PageTitle extends PureComponent<Props> {
   public static defaultProps = {
@@ -19,9 +22,15 @@ export class PageTitle extends PureComponent<Props> {
     const {title, altText, testID} = this.props
 
     return (
-      <h1 className="page--title" title={altText} data-testid={testID}>
+      <h1 className={this.className} title={altText} data-testid={testID}>
         {title}
       </h1>
     )
+  }
+
+  private get className(): string {
+    const {className} = this.props
+
+    return className ? `page--title ${className}` : 'page--title'
   }
 }
