@@ -11,7 +11,12 @@ import classnames from 'classnames'
 import './TextArea.scss'
 
 // Types
-import {ComponentStatus, ComponentSize, AutoComplete} from '../../Types'
+import {
+  ComponentStatus,
+  ComponentSize,
+  AutoComplete,
+  StandardProps,
+} from '../../Types'
 
 export enum Wrap {
   Hard = 'hard',
@@ -19,15 +24,13 @@ export enum Wrap {
   Off = 'off',
 }
 
-interface Props {
+interface ComponentProps {
   /** Width of the text field in pixels */
   widthPixels?: number
   /** Input Component size */
   size?: ComponentSize
   /** Input status state */
   status?: ComponentStatus
-  /** Class name for custom styles */
-  className?: string
   /** Function to be called on field value change */
   onChange?: (s: string) => void
   /** Function to be called on focus loss */
@@ -70,6 +73,8 @@ interface Props {
   value: string
 }
 
+type Props = ComponentProps & StandardProps
+
 export class TextArea extends Component<Props> {
   public static defaultProps = {
     autocomplete: AutoComplete.Off,
@@ -84,6 +89,7 @@ export class TextArea extends Component<Props> {
     spellCheck: false,
     wrap: Wrap.Hard,
     value: '',
+    testID: 'textarea',
   }
 
   public render() {
@@ -108,6 +114,7 @@ export class TextArea extends Component<Props> {
       onKeyPress,
       onKeyUp,
       onKeyDown,
+      testID,
     } = this.props
 
     return (
@@ -135,6 +142,7 @@ export class TextArea extends Component<Props> {
           onKeyUp={onKeyUp}
           onKeyDown={onKeyDown}
           onChange={this.handleChange}
+          data-testid={testID}
         />
       </div>
     )
