@@ -3,17 +3,22 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {FlexDirection, JustifyContent, AlignItems} from '../../Types'
 import {ComponentSpacer} from '../ComponentSpacer/ComponentSpacer'
 
-interface Props {
+// Types
+import {
+  FlexDirection,
+  JustifyContent,
+  AlignItems,
+  StandardProps,
+} from '../../Types'
+
+interface ComponentProps {
   /** Title of Panel */
   title: string
-  /** Test ID for Integration Tests */
-  testID: string
-  /** Class name for custom styles */
-  className?: string
 }
+
+type Props = ComponentProps & StandardProps
 
 export class PanelHeader extends Component<Props> {
   public static defaultProps = {
@@ -21,10 +26,10 @@ export class PanelHeader extends Component<Props> {
   }
 
   public render() {
-    const {children, title} = this.props
+    const {children, title, testID} = this.props
 
     return (
-      <div className={this.className}>
+      <div className={this.className} data-testid={testID}>
         <div className="panel--title">{title}</div>
         <div className="panel--controls">
           <ComponentSpacer
