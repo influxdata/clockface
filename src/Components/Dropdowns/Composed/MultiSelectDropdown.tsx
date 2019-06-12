@@ -19,9 +19,10 @@ import {
   DropdownMenuTheme,
   DropdownItemType,
   ComponentStatus,
+  StandardProps,
 } from '../../../Types'
 
-interface Props {
+interface ComponentProps {
   /** Text to render in button as currently selected option */
   selectedOptions: string[]
   /** List of options to render in menu */
@@ -44,11 +45,9 @@ interface Props {
   menuTheme: DropdownMenuTheme
   /** Optional maximum pixel height menu */
   menuMaxHeight?: number
-  /** Class name for custom styles */
-  className?: string
-  /** Test ID for Integration Tests */
-  testID: string
 }
+
+type Props = ComponentProps & StandardProps
 
 export class MultiSelectDropdown extends Component<Props> {
   public static defaultProps = {

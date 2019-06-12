@@ -3,9 +3,9 @@ import React, {Component, MouseEvent} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {DropdownItemType} from '../../../Types'
+import {DropdownItemType, StandardProps} from '../../../Types'
 
-interface Props {
+interface ComponentProps {
   /** Value to be returned via the onClick function */
   value: any
   /** Whether or not the item should have selected styling */
@@ -16,11 +16,9 @@ interface Props {
   onClick?: (value?: any) => void
   /** Controls whether the text contents of this item wrap or not */
   wrapText: boolean
-  /** Test ID for Integration Tests */
-  testID: string
-  /** Class name for custom styles */
-  className?: string
 }
+
+type Props = ComponentProps & StandardProps
 
 export class DropdownItem extends Component<Props> {
   public static defaultProps = {
