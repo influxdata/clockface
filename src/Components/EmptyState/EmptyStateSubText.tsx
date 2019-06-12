@@ -1,12 +1,15 @@
 // Libraries
 import React, {Component} from 'react'
 
-interface Props {
+// Types
+import {StandardProps} from '../../Types'
+
+interface ComponentProps {
   /** Secondary text to be displayed when no elements are loaded */
   text: string
-  /** Test ID for Integration Tests */
-  testID: string
 }
+
+type Props = ComponentProps & StandardProps
 
 export class EmptyStateSubText extends Component<Props> {
   public static defaultProps = {
@@ -17,9 +20,17 @@ export class EmptyStateSubText extends Component<Props> {
     const {text, testID} = this.props
 
     return (
-      <p className="empty-state--sub-text" data-testid={testID}>
+      <p className={this.className} data-testid={testID}>
         {text}
       </p>
     )
+  }
+
+  private get className(): string {
+    const {className} = this.props
+
+    return className
+      ? `empty-state--sub-text ${className}`
+      : 'empty-state--sub-text'
   }
 }
