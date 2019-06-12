@@ -2,6 +2,7 @@
 
 #### 0.0.16
 
+- [#153](https://github.com/influxdata/clockface/pull/154): Add markdown documentation for `IndexList` components
 - [#142](https://github.com/influxdata/clockface/pull/142): Create a single definition for "Standard Types" across all components
 - [#140](https://github.com/influxdata/clockface/pull/140): Add markdown documentation for Spinner components
 - [#139](https://github.com/influxdata/clockface/pull/139): Add markdown documentation for `Label`
