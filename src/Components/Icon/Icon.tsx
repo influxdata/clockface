@@ -2,18 +2,16 @@
 import React, {Component, CSSProperties} from 'react'
 
 // Types
-import {IconFont, InfluxColors} from '../../Types'
+import {IconFont, InfluxColors, StandardProps} from '../../Types'
 
-interface Props {
+interface ComponentProps {
   /** Icon to display */
   glyph: IconFont | string
-  /** Class name for custom styles */
-  className?: string
   /** Optional color string, can use InfluxColors enum or pass in your own value */
   color?: InfluxColors | string
-  /** Used for unit and e2e tests */
-  testID: string
 }
+
+type Props = ComponentProps & StandardProps
 
 export class Icon extends Component<Props> {
   public static defaultProps = {
