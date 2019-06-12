@@ -2,16 +2,18 @@
 import React, {Component, CSSProperties} from 'react'
 import classnames from 'classnames'
 
-interface Props {
+// Types
+import {StandardProps} from '../../Types'
+
+interface ComponentProps {
   /** Panel will not shrink past this size (experimental, not guaranteed to work) */
   minSizePixels: number
   /** Does not have a value initially, gets passed a value by being a child of DraggableResizer */
   sizePercent?: number
   /** Test ID for Integration Tests */
-  testID: string
-  /** Class name for custom styles */
-  className?: string
 }
+
+type Props = ComponentProps & StandardProps
 
 export class DraggableResizerPanel extends Component<Props> {
   public static defaultProps = {

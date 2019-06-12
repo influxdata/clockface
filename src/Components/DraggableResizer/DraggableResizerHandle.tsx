@@ -3,12 +3,12 @@ import React, {PureComponent, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {Gradients, Orientation} from '../../Types'
+import {Gradients, Orientation, StandardProps} from '../../Types'
 
 // Constants
 import {getColorsFromGradient} from '../../Constants/colors'
 
-interface Props {
+interface ComponentProps {
   /** Unique identifier used to update the size of this handle */
   id: string
   /** Expects a number between 0 - 1 */
@@ -23,11 +23,9 @@ interface Props {
   gradient: Gradients
   /** Orientation of handle */
   orientation: Orientation
-  /** Test ID for Integration Tests */
-  testID: string
-  /** Class name for custom styles */
-  className?: string
 }
+
+type Props = ComponentProps & StandardProps
 
 export class DraggableResizerHandle extends PureComponent<Props> {
   public static defaultProps = {
