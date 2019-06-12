@@ -2,16 +2,17 @@
 import React, {PureComponent} from 'react'
 import classnames from 'classnames'
 
-interface Props {
+// Types
+import {StandardProps} from '../../Types'
+
+interface ComponentProps {
   /** Title of the Overlay */
   title: string
   /** Passing a function into this prop will cause the Dismiss "X" to render in the header */
   onDismiss?: () => void
-  /** Class name for custom styles */
-  className?: string
-  /** Test ID for Integration Tests */
-  testID: string
 }
+
+type Props = ComponentProps & StandardProps
 
 export class OverlayHeader extends PureComponent<Props> {
   public static defaultProps = {
