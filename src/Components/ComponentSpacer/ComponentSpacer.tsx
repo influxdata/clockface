@@ -8,16 +8,15 @@ import {
   JustifyContent,
   AlignItems,
   ComponentSize,
+  StandardProps,
 } from '../../Types'
 
 // Styles
 import './ComponentSpacer.scss'
 
-interface Props {
+interface ComponentProps {
   /** Vertical or horizontal flex alignment */
   direction: FlexDirection
-  /** Class name for custom styles */
-  className?: string
   /** Pass through styles object */
   style?: CSSProperties
   /** Inserted margin between children */
@@ -30,9 +29,9 @@ interface Props {
   stretchToFitWidth: boolean
   /** stretches component spacer to fit parent height */
   stretchToFitHeight: boolean
-  /** Test ID for Integration Tests */
-  testID: string
 }
+
+type Props = ComponentProps & StandardProps
 
 export class ComponentSpacer extends Component<Props> {
   public static defaultProps = {
