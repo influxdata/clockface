@@ -10,6 +10,8 @@ interface Props extends StandardProps {
 }
 
 export class EmptyStateSubText extends Component<Props> {
+  public static readonly displayName = 'EmptyState.SubText'
+
   public static defaultProps = {
     testID: 'empty-state--sub-text',
   }

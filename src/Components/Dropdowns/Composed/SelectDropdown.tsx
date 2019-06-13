@@ -46,6 +46,8 @@ interface Props extends StandardProps {
 }
 
 export class SelectDropdown extends Component<Props> {
+  public static readonly displayName = 'SelectDropdown'
+
   public static defaultProps = {
     buttonStatus: ComponentStatus.Default,
     buttonColor: ComponentColor.Default,

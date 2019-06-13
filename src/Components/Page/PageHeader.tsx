@@ -19,6 +19,8 @@ interface Props extends StandardProps {
 }
 
 export class PageHeader extends Component<Props> {
+  public static readonly displayName = 'Page.Header'
+
   public static defaultProps = {
     hide: false,
     testID: 'page-header',

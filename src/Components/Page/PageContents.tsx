@@ -18,6 +18,8 @@ interface Props extends StandardProps {
 }
 
 export class PageContents extends Component<Props> {
+  public static readonly displayName = 'Page.Contents'
+
   public static defaultProps = {
     fullHeight: false,
     scrollable: false,

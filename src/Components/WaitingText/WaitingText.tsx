@@ -13,6 +13,8 @@ interface Props extends StandardProps {
 }
 
 export class WaitingText extends Component<Props> {
+  public static readonly displayName = 'WaitingText'
+
   public static defaultProps = {
     testID: 'waiting-text',
   }

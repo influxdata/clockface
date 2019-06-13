@@ -16,6 +16,8 @@ interface Props extends StandardProps {
 }
 
 export class SparkleSpinner extends PureComponent<Props> {
+  public static readonly displayName = 'SparkleSpinner'
+
   public static defaultProps = {
     loading: RemoteDataState.NotStarted,
     testID: 'sparkle-spinner',

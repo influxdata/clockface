@@ -12,6 +12,8 @@ interface Props extends StandardProps {
 }
 
 export class IndexListBody extends Component<Props> {
+  public static readonly displayName = 'IndexList.Body'
+
   public static defaultProps = {
     testID: 'index-list--body',
   }

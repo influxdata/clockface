@@ -37,6 +37,8 @@ interface Props extends StandardProps {
 }
 
 export class DropdownButton extends Component<Props> {
+  public static readonly displayName = 'Dropdown.Button'
+
   public static defaultProps = {
     color: ComponentColor.Default,
     size: ComponentSize.Small,

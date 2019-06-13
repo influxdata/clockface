@@ -12,6 +12,8 @@ interface Props extends StandardProps {
 }
 
 export class FormLabel extends Component<Props> {
+  public static readonly displayName = 'Form.Label'
+
   public static defaultProps = {
     testID: 'form--label',
   }

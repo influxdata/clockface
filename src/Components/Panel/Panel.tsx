@@ -33,6 +33,8 @@ interface Props extends StandardProps {
 }
 
 export class Panel extends Component<Props> {
+  public static readonly displayName = 'Panel'
+
   public static defaultProps = {
     size: ComponentSize.Small,
     testID: 'panel',

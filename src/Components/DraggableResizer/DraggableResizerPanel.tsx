@@ -14,6 +14,8 @@ interface Props extends StandardProps {
 }
 
 export class DraggableResizerPanel extends Component<Props> {
+  public static readonly displayName = 'DraggableResizer.Panel'
+
   public static defaultProps = {
     minSizePixels: 0,
     testID: 'draggable-resizer--panel',

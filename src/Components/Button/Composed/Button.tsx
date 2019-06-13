@@ -49,6 +49,8 @@ interface Props extends StandardProps {
 }
 
 export class Button extends Component<Props> {
+  public static readonly displayName = 'Button'
+
   public static defaultProps = {
     color: ComponentColor.Default,
     size: ComponentSize.Small,

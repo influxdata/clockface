@@ -13,6 +13,8 @@ interface Props extends StandardProps {
 }
 
 export class PageHeaderCenter extends Component<Props> {
+  public static readonly displayName = 'Page.Header.Center'
+
   public static defaultProps = {
     widthPixels: DEFAULT_PAGE_HEADER_CENTER_WIDTH,
     testID: 'page-header--center',

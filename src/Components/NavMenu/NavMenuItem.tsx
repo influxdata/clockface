@@ -15,6 +15,8 @@ interface Props extends StandardProps {
 }
 
 export class NavMenuItem extends PureComponent<Props> {
+  public static readonly displayName = 'NavMenu.Item'
+
   public static defaultProps = {
     testID: 'nav-menu--item',
   }

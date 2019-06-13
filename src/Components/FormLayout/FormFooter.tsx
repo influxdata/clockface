@@ -25,6 +25,8 @@ interface Props extends StandardProps {
 }
 
 export class FormFooter extends Component<Props> {
+  public static readonly displayName = 'Form.Footer'
+
   public static defaultProps = {
     testID: 'form--footer',
     widthXS: Columns.Twelve,

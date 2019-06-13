@@ -11,6 +11,8 @@ interface Props extends StandardProps {
 }
 
 export class FormDivider extends Component<Props> {
+  public static readonly displayName = 'Form.Divider'
+
   public static defaultProps = {
     testID: 'form--divider',
   }

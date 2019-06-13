@@ -12,6 +12,8 @@ interface Props extends StandardProps {
 }
 
 export class Icon extends Component<Props> {
+  public static readonly displayName = 'Icon'
+
   public static defaultProps = {
     testID: 'icon',
   }

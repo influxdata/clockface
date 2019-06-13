@@ -19,6 +19,8 @@ interface Props extends StandardProps {
 }
 
 export class Alert extends Component<Props> {
+  public static readonly displayName = 'Alert'
+
   public static defaultProps = {
     testID: 'alert',
   }

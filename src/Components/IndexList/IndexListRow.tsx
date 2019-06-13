@@ -11,6 +11,8 @@ interface Props extends StandardProps {
 }
 
 export class IndexListRow extends Component<Props> {
+  public static readonly displayName = 'IndexList.Row'
+
   public static defaultProps = {
     disabled: false,
     testID: 'table-row',

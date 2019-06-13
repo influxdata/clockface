@@ -25,6 +25,8 @@ interface Props extends StandardProps {
 }
 
 export class GridColumn extends Component<Props> {
+  public static readonly displayName = 'Grid.Column'
+
   public static defaultProps = {
     testID: 'grid--column',
     widthXS: Columns.Twelve,

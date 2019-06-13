@@ -8,6 +8,8 @@ import {StandardProps} from '../../Types'
 interface Props extends StandardProps {}
 
 export class PanelFooter extends Component<Props> {
+  public static readonly displayName = 'Panel.Footer'
+
   public static defaultProps = {
     testID: 'panel--footer',
   }

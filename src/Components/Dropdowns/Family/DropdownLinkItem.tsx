@@ -15,6 +15,8 @@ interface Props extends StandardProps {
 }
 
 export class DropdownLinkItem extends Component<Props> {
+  public static readonly displayName = 'Dropdown.LinkItem'
+
   public static defaultProps = {
     checkbox: false,
     selected: false,

@@ -24,6 +24,8 @@ interface Props extends StandardProps {
 }
 
 export class DropdownMenu extends Component<Props> {
+  public static readonly displayName = 'Dropdown.Menu'
+
   public static defaultProps = {
     theme: DropdownMenuTheme.Sapphire,
     testID: 'dropdown-menu',

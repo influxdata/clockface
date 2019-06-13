@@ -84,6 +84,8 @@ interface Props extends StandardProps {
 }
 
 export class Input extends Component<Props> {
+  public static readonly displayName = 'Input'
+
   public static defaultProps = {
     type: InputType.Text,
     name: '',

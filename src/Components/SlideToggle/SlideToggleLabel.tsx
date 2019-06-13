@@ -15,6 +15,8 @@ interface Props extends StandardProps {
 }
 
 export class SlideToggleLabel extends Component<Props> {
+  public static readonly displayName = 'SlideToggle.Label'
+
   public static defaultProps = {
     active: true,
     size: ComponentSize.Small,

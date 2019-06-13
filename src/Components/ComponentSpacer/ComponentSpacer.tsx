@@ -32,6 +32,8 @@ interface Props extends StandardProps {
 }
 
 export class ComponentSpacer extends Component<Props> {
+  public static readonly displayName = 'ComponentSpacer'
+
   public static defaultProps = {
     justifyContent: JustifyContent.FlexStart,
     alignItems: AlignItems.Center,

@@ -74,6 +74,8 @@ interface Props extends StandardProps {
 }
 
 export class TextArea extends Component<Props> {
+  public static readonly displayName = 'TextArea'
+
   public static defaultProps = {
     autocomplete: AutoComplete.Off,
     autoFocus: false,

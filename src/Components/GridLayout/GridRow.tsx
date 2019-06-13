@@ -8,6 +8,8 @@ import {StandardProps} from '../../Types'
 interface Props extends StandardProps {}
 
 export class GridRow extends Component<Props> {
+  public static readonly displayName = 'Grid.Row'
+
   public static defaultProps = {
     testID: 'grid--row',
   }

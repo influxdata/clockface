@@ -35,6 +35,8 @@ interface State {
 }
 
 export class Dropdown extends Component<Props, State> {
+  public static readonly displayName = 'Dropdown'
+
   public static defaultProps = {
     testID: 'dropdown',
   }

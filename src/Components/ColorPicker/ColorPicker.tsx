@@ -45,6 +45,8 @@ interface State {
 }
 
 export class ColorPicker extends Component<Props, State> {
+  public static readonly displayName = 'ColorPicker'
+
   public static defaultProps = {
     colors: influxColors,
     maintainInputFocus: false,
