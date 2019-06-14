@@ -17,6 +17,8 @@ import {
 interface Props extends StandardProps {}
 
 export class OverlayFooter extends PureComponent<Props> {
+  public static readonly displayName = 'Overlay.Footer'
+
   public static defaultProps = {
     testID: 'overlay--footer',
   }

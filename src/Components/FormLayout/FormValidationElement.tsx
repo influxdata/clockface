@@ -39,6 +39,8 @@ interface State {
 }
 
 export class FormValidationElement extends Component<Props, State> {
+  public static readonly displayName = 'Form.ValidationElement'
+
   public static defaultProps = {
     testID: 'form--validation-element',
   }

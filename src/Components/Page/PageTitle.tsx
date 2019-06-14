@@ -12,6 +12,8 @@ interface Props extends StandardProps {
 }
 
 export class PageTitle extends PureComponent<Props> {
+  public static readonly displayName = 'Page.Title'
+
   public static defaultProps = {
     testID: 'page-title',
   }

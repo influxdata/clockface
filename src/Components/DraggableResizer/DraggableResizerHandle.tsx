@@ -26,6 +26,8 @@ interface Props extends StandardProps {
 }
 
 export class DraggableResizerHandle extends PureComponent<Props> {
+  public static readonly displayName = 'DraggableResizer.Handle'
+
   public static defaultProps = {
     dragIndex: 9999,
     dragging: false,

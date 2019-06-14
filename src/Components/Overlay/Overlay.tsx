@@ -32,6 +32,8 @@ interface State {
 }
 
 export class Overlay extends Component<Props, State> {
+  public static readonly displayName = 'Overlay'
+
   public static Container = OverlayContainer
   public static Mask = OverlayMask
   public static Header = OverlayHeader

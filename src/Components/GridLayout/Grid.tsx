@@ -15,6 +15,8 @@ import './Grid.scss'
 interface Props extends StandardProps {}
 
 export class Grid extends Component<Props> {
+  public static readonly displayName = 'Grid'
+
   public static defaultProps = {
     testID: 'grid',
   }

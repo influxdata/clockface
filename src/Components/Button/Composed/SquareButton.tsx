@@ -43,6 +43,8 @@ interface Props extends StandardProps {
 }
 
 export class SquareButton extends Component<Props> {
+  public static readonly displayName = 'SquareButton'
+
   public static defaultProps = {
     color: ComponentColor.Default,
     size: ComponentSize.Small,

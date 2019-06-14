@@ -15,6 +15,8 @@ interface Props extends StandardProps {
 }
 
 export class TechnoSpinner extends Component<Props> {
+  public static readonly displayName = 'TechnoSpinner'
+
   public static defaultProps: Props = {
     diameterPixels: 100,
     strokeWidth: ComponentSize.Small,

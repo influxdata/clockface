@@ -13,6 +13,8 @@ interface Props extends StandardProps {
 }
 
 export class OverlayHeader extends PureComponent<Props> {
+  public static readonly displayName = 'Overlay.Header'
+
   public static defaultProps = {
     testID: 'overlay--header',
   }

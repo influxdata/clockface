@@ -17,6 +17,8 @@ import './IndexList.scss'
 interface Props extends StandardProps {}
 
 export class IndexList extends Component<Props> {
+  public static readonly displayName = 'IndexList'
+
   public static Body = IndexListBody
   public static Header = IndexListHeader
   public static HeaderCell = IndexListHeaderCell

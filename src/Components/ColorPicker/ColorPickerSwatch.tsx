@@ -21,6 +21,8 @@ interface Props extends StandardProps {
 }
 
 export class ColorPickerSwatch extends Component<Props> {
+  public static readonly displayName = 'ColorPicker.Swatch'
+
   public static defaultProps = {
     testID: 'color-picker',
   }

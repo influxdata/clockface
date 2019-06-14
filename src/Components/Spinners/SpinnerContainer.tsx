@@ -16,6 +16,8 @@ interface Props extends StandardProps {
 }
 
 export class SpinnerContainer extends Component<Props> {
+  public static readonly displayName = 'SpinnerContainer'
+
   public static defaultProps = {
     testID: 'spinner-container',
   }

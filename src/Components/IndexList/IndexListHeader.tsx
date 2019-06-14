@@ -7,6 +7,8 @@ import {StandardProps} from '../../Types'
 interface Props extends StandardProps {}
 
 export class IndexListHeader extends Component<Props> {
+  public static readonly displayName = 'IndexList.Header'
+
   public static defaultProps = {
     testID: 'index-list--header',
   }

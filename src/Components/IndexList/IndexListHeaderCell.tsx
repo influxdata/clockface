@@ -23,6 +23,8 @@ export interface IndexHeaderCellProps {
 type Props = IndexHeaderCellProps & StandardProps
 
 export class IndexListHeaderCell extends Component<Props> {
+  public static readonly displayName = 'IndexList.HeaderCell'
+
   public static defaultProps = {
     columnName: '',
     alignment: Alignment.Left,

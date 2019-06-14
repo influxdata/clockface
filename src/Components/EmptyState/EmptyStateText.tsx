@@ -37,6 +37,8 @@ const highlighter = (
 }
 
 export class EmptyStateText extends Component<Props & StandardProps> {
+  public static readonly displayName = 'EmptyState.Text'
+
   public static defaultProps = {
     testID: 'empty-state--text',
   }

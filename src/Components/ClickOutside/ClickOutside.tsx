@@ -7,6 +7,8 @@ interface Props {
 }
 
 export class ClickOutside extends PureComponent<Props> {
+  public static readonly displayName = 'ClickOutside'
+
   public componentDidMount() {
     document.addEventListener('mousedown', this.handleClickOutside, true)
   }

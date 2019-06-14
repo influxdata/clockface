@@ -11,6 +11,8 @@ interface Props extends StandardProps {
 }
 
 export class DropdownDivider extends Component<Props> {
+  public static readonly displayName = 'Dropdown.Divider'
+
   public static defaultProps = {
     testID: 'dropdown-divider',
   }

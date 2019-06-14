@@ -7,6 +7,8 @@ import {StandardProps} from '../../Types'
 interface Props extends StandardProps {}
 
 export class FormBox extends Component<Props> {
+  public static readonly displayName = 'Form.Box'
+
   public static defaultProps = {
     className: '',
     testID: 'form--box',

@@ -19,6 +19,8 @@ interface Props extends StandardProps {
 }
 
 export class PanelHeader extends Component<Props> {
+  public static readonly displayName = 'Panel.Header'
+
   public static defaultProps = {
     testID: 'panel--header',
   }

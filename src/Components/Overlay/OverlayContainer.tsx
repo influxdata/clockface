@@ -11,6 +11,8 @@ interface Props extends StandardProps {
 }
 
 export class OverlayContainer extends PureComponent<Props> {
+  public static readonly displayName = 'Overlay.Container'
+
   public static defaultProps = {
     maxWidth: 800,
     testID: 'overlay--container',

@@ -10,6 +10,8 @@ interface Props extends StandardProps {
 }
 
 export class FormHelpText extends Component<Props> {
+  public static readonly displayName = 'FormHelpText'
+
   public static defaultProps = {
     testID: 'form--help-text',
   }

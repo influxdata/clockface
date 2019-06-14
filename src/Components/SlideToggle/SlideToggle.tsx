@@ -27,6 +27,8 @@ interface Props extends StandardProps {
 }
 
 export class SlideToggle extends Component<Props> {
+  public static readonly displayName = 'SlideToggle'
+
   public static Label = SlideToggleLabel
 
   public static defaultProps = {

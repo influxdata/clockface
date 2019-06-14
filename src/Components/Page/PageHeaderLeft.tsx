@@ -13,6 +13,8 @@ interface Props extends StandardProps {
 }
 
 export class PageHeaderLeft extends Component<Props> {
+  public static readonly displayName = 'Page.Header.Left'
+
   public static defaultProps = {
     offsetPixels: DEFAULT_OFFSET,
     testID: 'page-header--left',

@@ -18,6 +18,8 @@ interface Props extends StandardProps {
 }
 
 export class EmptyState extends Component<Props> {
+  public static readonly displayName = 'EmptyState'
+
   public static defaultProps = {
     size: ComponentSize.Small,
     testID: 'empty-state',

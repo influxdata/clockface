@@ -34,6 +34,8 @@ interface State {
 }
 
 export class DraggableResizer extends Component<Props, State> {
+  public static readonly displayName = 'DraggableResizer'
+
   public static Panel = DraggableResizerPanel
 
   public static defaultProps = {

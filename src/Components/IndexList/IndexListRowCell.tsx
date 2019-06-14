@@ -13,6 +13,8 @@ interface Props extends StandardProps {
 }
 
 export class IndexListRowCell extends Component<Props> {
+  public static readonly displayName = 'IndexList.Cell'
+
   public static defaultProps = {
     alignment: Alignment.Left,
     revealOnHover: false,

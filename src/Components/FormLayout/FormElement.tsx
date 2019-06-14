@@ -24,6 +24,8 @@ interface Props extends StandardProps {
 }
 
 export class FormElement extends Component<Props> {
+  public static readonly displayName = 'Form.Element'
+
   public static defaultProps = {
     testID: 'form--element',
   }

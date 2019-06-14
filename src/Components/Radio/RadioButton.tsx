@@ -23,6 +23,8 @@ interface Props extends StandardProps {
 }
 
 export class RadioButton extends Component<Props> {
+  public static readonly displayName = 'Radio.Button'
+
   public static defaultProps = {
     disabled: false,
     disabledTitleText: 'This option is disabled',

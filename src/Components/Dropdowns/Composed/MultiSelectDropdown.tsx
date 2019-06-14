@@ -48,6 +48,8 @@ interface Props extends StandardProps {
 }
 
 export class MultiSelectDropdown extends Component<Props> {
+  public static readonly displayName = 'MultiSelectDropdown'
+
   public static defaultProps = {
     emptyText: 'None selected',
     buttonStatus: ComponentStatus.Default,

@@ -10,6 +10,8 @@ interface Props extends StandardProps {
 }
 
 export class FormElementError extends Component<Props> {
+  public static readonly displayName = 'FormElementError'
+
   public static defaultProps = {
     testID: 'form--element-error',
   }

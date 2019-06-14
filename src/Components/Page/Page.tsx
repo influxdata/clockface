@@ -19,6 +19,8 @@ interface Props extends StandardProps {
 }
 
 export class Page extends Component<Props> {
+  public static readonly displayName = 'Page'
+
   public static defaultProps = {
     testID: 'page',
   }

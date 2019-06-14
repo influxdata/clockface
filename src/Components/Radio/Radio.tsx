@@ -26,6 +26,8 @@ interface Props extends StandardProps {
 }
 
 export class Radio extends Component<Props> {
+  public static readonly displayName = 'Radio'
+
   public static defaultProps = {
     color: ComponentColor.Primary,
     size: ComponentSize.Small,

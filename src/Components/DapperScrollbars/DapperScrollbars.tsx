@@ -40,6 +40,8 @@ interface Props extends StandardProps {
 }
 
 export class DapperScrollbars extends Component<Props> {
+  public static readonly displayName = 'DapperScrollbars'
+
   public static defaultProps = {
     removeTracksWhenNotUsed: true,
     removeTrackYWhenNotUsed: true,

@@ -35,6 +35,8 @@ interface State {
 }
 
 export class Label extends Component<Props, State> {
+  public static readonly displayName = 'Label'
+
   public static defaultProps = {
     size: ComponentSize.ExtraSmall,
     testID: 'label--pill',
