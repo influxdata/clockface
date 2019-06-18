@@ -2,6 +2,7 @@
 
 #### 0.0.16
 
+- [#157](https://github.com/influxdata/clockface/pull/157): Add display names to all components so they are legible despite minification in the React inspector
 - [#155](https://github.com/influxdata/clockface/pull/155): Add markdown documentation for `Radio` component family
 - [#153](https://github.com/influxdata/clockface/pull/154): Add markdown documentation for `IndexList` components
 - [#142](https://github.com/influxdata/clockface/pull/142): Create a single definition for "Standard Types" across all components
