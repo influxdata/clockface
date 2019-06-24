@@ -1,0 +1,150 @@
+@import "../../../Styles/modules";
+
+/*
+  Resource Card
+  ------------------------------------------------------------------------------
+*/
+
+.resource-card {
+  width: 100%;
+}
+
+.resource-card,
+.resource-card--contents {
+  display: flex;
+  flex-direction: column;
+
+  > * {
+    margin-bottom: $cf-border;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.resource-card {
+  position: relative;
+  color: $g13-mist;
+  background-color: $g3-castle;
+  border-radius: $cf-radius;
+  padding: $cf-marg-b $cf-marg-c;
+  margin-bottom: $cf-border;
+  transition: background-color 0.25s ease, color 0.25s ease;
+
+  &:hover {
+    color: $g16-pearl;
+    background-color: $g4-onyx;
+  }
+
+  &.resource-card__toggleable {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
+
+.resource-card--contents {
+  flex: 1 0 0;
+}
+
+.resource-list--toggle {
+  padding-right: $cf-marg-c;
+}
+
+.resource-list--meta {
+  display: inline-flex;
+  font-size: $form-xs-font;
+  font-weight: 600;
+  color: $g11-sidewalk;
+}
+
+.resource-list--meta-item {
+  transition: border-color 0.25s ease, color 0.25s ease;
+  border-right: $cf-border solid $g5-pepper;
+  padding-right: $cf-marg-b;
+  margin-left: $cf-marg-b;
+  margin-right: $cf-marg-b;
+
+  &:last-child {
+    border-right: 0;
+    padding-right: 0;
+    margin-right: 0;
+  }
+
+  .resource-card:hover & {
+    color: $g15-platinum;
+    border-color: $g7-graphite;
+  }
+}
+
+.resource-list--context-menu {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  position: absolute;
+  top: $cf-marg-b;
+  right: $cf-marg-b;
+
+  .resource-card:hover & {
+    opacity: 1;
+  }
+}
+
+.resource-list--name-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+
+  > *:first-child {
+    margin-bottom: $cf-marg-a;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .resource-list--name-meta {
+    flex-direction: row;
+    align-items: center;
+
+    > *:first-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/*
+  Disabled Card
+  ------------------------------------------------------------------------------
+*/
+
+.resource-card.resource-card__disabled {
+  background-color: rgba($g3-castle, 0.5);
+  color: $g9-mountain;
+  font-style: italic;
+
+  .resource-list--meta {
+    color: $g9-mountain;
+  }
+
+  &:hover .resource-list--meta {
+    color: $g12-forge;
+  }
+}
+
+/*
+  Depth Styling
+  ------------------------------------------------------------------------------
+*/
+
+.panel .resource-card,
+.tabs .resource-card {
+  background-color: $g4-onyx;
+
+  &:hover {
+    background-color: $g5-pepper;
+  }
+}
+
+.panel .resource-card.resource-card__disabled,
+.tabs .resource-card.resource-card__disabled {
+  background-color: rgba($g4-onyx, 0.5);
+}

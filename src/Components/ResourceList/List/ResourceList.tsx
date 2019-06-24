@@ -6,17 +6,14 @@ import classnames from 'classnames'
 import {ResourceListHeader} from './ResourceListHeader'
 import {ResourceListSorter} from './ResourceListSorter'
 import {ResourceListBody} from './ResourceListBody'
-import {ResourceCard} from './ResourceCard'
-import {ResourceEditableName} from './ResourceEditableName'
-import {ResourceDescription} from './ResourceDescription'
-import {ResourceName} from './ResourceName'
 
 // Types
-import {StandardProps} from '../../Types'
+import {StandardProps} from '../../../Types'
 
-interface Props extends StandardProps {
-  children: JSX.Element[] | JSX.Element
-}
+// Styles
+import './ResourceList.scss'
+
+interface Props extends StandardProps {}
 
 export class ResourceList extends PureComponent<Props> {
   public static readonly displayName = 'ResourceList'
@@ -28,10 +25,6 @@ export class ResourceList extends PureComponent<Props> {
   public static Header = ResourceListHeader
   public static Sorter = ResourceListSorter
   public static Body = ResourceListBody
-  public static Card = ResourceCard
-  public static Name = ResourceName
-  public static EditableName = ResourceEditableName
-  public static Description = ResourceDescription
 
   public render() {
     const {children, testID} = this.props

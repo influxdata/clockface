@@ -3,13 +3,13 @@ import React, {Component, KeyboardEvent, ChangeEvent, MouseEvent} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {Input} from '../Inputs/Input'
-import {SpinnerContainer} from '../Spinners/SpinnerContainer'
-import {TechnoSpinner} from '../Spinners/TechnoSpinner'
-import {ClickOutside} from '../ClickOutside/ClickOutside'
+import {Input} from '../../Inputs/Input'
+import {SpinnerContainer} from '../../Spinners/SpinnerContainer'
+import {TechnoSpinner} from '../../Spinners/TechnoSpinner'
+import {ClickOutside} from '../../ClickOutside/ClickOutside'
 
 // Types
-import {StandardProps, ComponentSize, RemoteDataState} from '../../Types'
+import {StandardProps, ComponentSize, RemoteDataState} from '../../../Types'
 
 interface Props extends StandardProps {
   /** Called when editing is finished, new name is passed  */
@@ -36,8 +36,8 @@ interface State {
   loading: RemoteDataState
 }
 
-export class ResourceEditableName extends Component<Props, State> {
-  public static readonly displayName = 'ResourceList.EditableName'
+export class ResourceCardEditableName extends Component<Props, State> {
+  public static readonly displayName = 'ResourceCard.EditableName'
 
   public static defaultProps = {
     testID: 'resource-editable-name',

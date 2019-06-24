@@ -3,7 +3,7 @@ import React, {PureComponent} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {Sort, StandardProps} from '../../Types'
+import {Sort, StandardProps} from '../../../Types'
 
 interface Props extends StandardProps {
   /** Controls appearance of sort indicator (arrow) */

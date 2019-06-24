@@ -3,12 +3,15 @@ import React, {Component, KeyboardEvent, ChangeEvent} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {Input} from '../Inputs/Input'
-import {Icon} from '../Icon/Icon'
-import {ClickOutside} from '../ClickOutside/ClickOutside'
+import {Input} from '../../Inputs/Input'
+import {Icon} from '../../Icon/Icon'
+import {ClickOutside} from '../../ClickOutside/ClickOutside'
 
 // Types
-import {StandardProps, ComponentSize, IconFont} from '../../Types'
+import {StandardProps, ComponentSize, IconFont} from '../../../Types'
+
+// Styles
+import './ResourceCardDescription.scss'
 
 interface Props extends StandardProps {
   /** Called when editing is finished, new description is passed  */
@@ -24,8 +27,8 @@ interface State {
   workingDescription: string
 }
 
-export class ResourceDescription extends Component<Props, State> {
-  public static readonly displayName = 'ResourceList.Description'
+export class ResourceCardDescription extends Component<Props, State> {
+  public static readonly displayName = 'ResourceCard.Description'
 
   public static defaultProps = {
     testID: 'resource-list--description',

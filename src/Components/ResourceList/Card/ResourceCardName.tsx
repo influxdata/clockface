@@ -2,17 +2,16 @@
 import React, {Component, MouseEvent} from 'react'
 
 // Components
-import {SpinnerContainer} from '../Spinners/SpinnerContainer'
-import {TechnoSpinner} from '../Spinners/TechnoSpinner'
+import {SpinnerContainer} from '../../Spinners/SpinnerContainer'
+import {TechnoSpinner} from '../../Spinners/TechnoSpinner'
 
 // Types
-import {StandardProps, RemoteDataState} from '../../Types'
+import {StandardProps, RemoteDataState} from '../../../Types'
 
 interface Props extends StandardProps {
   name: string
   onClick?: (e: MouseEvent<HTMLAnchorElement>) => void
   placeholder?: string
-  parentTestID: string
   buttonTestID: string
   inputTestID: string
   hrefValue: string
@@ -22,11 +21,11 @@ interface State {
   loading: RemoteDataState
 }
 
-export class ResourceName extends Component<Props, State> {
-  public static readonly displayName = 'ResourceList.Name'
+export class ResourceCardName extends Component<Props, State> {
+  public static readonly displayName = 'ResourceCard.Name'
 
   public static defaultProps = {
-    parentTestID: 'resource-name',
+    testID: 'resource-name',
     buttonTestID: 'resource-name--button',
     inputTestID: 'resource-name--input',
     hrefValue: '#',
@@ -41,10 +40,10 @@ export class ResourceName extends Component<Props, State> {
   }
 
   public render() {
-    const {name, hrefValue, parentTestID} = this.props
+    const {name, hrefValue, testID} = this.props
 
     return (
-      <div className="resource-name" data-testid={parentTestID}>
+      <div className="resource-name" data-testid={testID}>
         <SpinnerContainer
           loading={this.state.loading}
           spinnerComponent={<TechnoSpinner diameterPixels={20} />}

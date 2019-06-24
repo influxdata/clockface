@@ -2,8 +2,16 @@
 import React, {PureComponent} from 'react'
 import classnames from 'classnames'
 
+// Components
+import {ResourceCardName} from './ResourceCardName'
+import {ResourceCardEditableName} from './ResourceCardEditableName'
+import {ResourceCardDescription} from './ResourceCardDescription'
+
 // Types
-import {StandardProps} from '../../Types'
+import {StandardProps} from '../../../Types'
+
+// Styles
+import './ResourceCard.scss'
 
 interface Props extends StandardProps {
   /** Renders the name component in its designated place */
@@ -23,11 +31,15 @@ interface Props extends StandardProps {
 }
 
 export class ResourceCard extends PureComponent<Props> {
-  public static readonly displayName = 'ResourceList.Card'
+  public static readonly displayName = 'ResourceCard'
 
   public static defaultProps = {
-    testID: 'resource-list--card',
+    testID: 'resource-card',
   }
+
+  public static Name = ResourceCardName
+  public static EditableName = ResourceCardEditableName
+  public static Description = ResourceCardDescription
 
   public render() {
     const {description, labels, children, testID, toggle} = this.props
@@ -36,7 +48,7 @@ export class ResourceCard extends PureComponent<Props> {
       return (
         <div className={this.className} data-testid={testID}>
           {this.toggle}
-          <div className="resource-list--card-contents">
+          <div className="resource-card--contents">
             {this.nameAndMeta}
             {description}
             {labels}
@@ -62,9 +74,9 @@ export class ResourceCard extends PureComponent<Props> {
   private get className(): string {
     const {disabled, toggle, className} = this.props
 
-    return classnames('resource-list--card', {
-      'resource-list--card__disabled': disabled,
-      'resource-list--card__toggleable': toggle,
+    return classnames('resource-card', {
+      'resource-card__disabled': disabled,
+      'resource-card__toggleable': toggle,
       [`${className}`]: className,
     })
   }

@@ -1,4 +1,4 @@
-@import "../../Styles/modules.scss";
+@import "../../../Styles/modules.scss";
 
 /*
   Resource Editable Description
@@ -63,15 +63,15 @@
 /* Ensure placeholder text matches font weight of title */
 .input.resource-description--input > input {
   &::-webkit-input-placeholder {
-    font-weight: $page-title-weight !important;
+    font-weight: 500 !important;
   }
   &::-moz-placeholder {
-    font-weight: $page-title-weight !important;
+    font-weight: 500 !important;
   }
   &:-ms-input-placeholder {
-    font-weight: $page-title-weight !important;
+    font-weight: 500 !important;
   }
   &:-moz-placeholder {
-    font-weight: $page-title-weight !important;
+    font-weight: 500 !important;
   }
 }

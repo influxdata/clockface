@@ -3,7 +3,7 @@ import React, {PureComponent} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardProps} from '../../Types'
+import {StandardProps} from '../../../Types'
 
 interface Props extends StandardProps {
   /** Used for rendering a filter input above the list, opposite the sort headers */
