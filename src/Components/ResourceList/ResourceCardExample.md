@@ -4,7 +4,7 @@ This example shows what a `ResourceCard` looks like when a component is passed i
 
 ### Usage
 ```js
-import {ResourceCard, SquareButton, SlideToggle} from '@influxdata/clockface'
+import {ResourceCard, SquareButton, SlideToggle, Label} from '@influxdata/clockface'
 ```
 
 ### Example

@@ -28,9 +28,17 @@ import {Input} from '../Inputs/Input'
 import {EmptyState} from '../EmptyState/EmptyState'
 import {SlideToggle} from '../SlideToggle/SlideToggle'
 import {SquareButton} from '../Button/Composed/SquareButton'
+import {Label} from '../Label/Label'
+import {ComponentSpacer} from '../ComponentSpacer/ComponentSpacer'
 
 // Types
-import {Sort, IconFont, ComponentSize, ComponentColor} from '../../Types'
+import {
+  Sort,
+  IconFont,
+  ComponentSize,
+  ComponentColor,
+  FlexDirection,
+} from '../../Types'
 
 // Notes
 const ResourceListReadme = marked(require('./List/ResourceList.md'))
@@ -423,6 +431,34 @@ indexListExampleStories.add(
             icon={IconFont.Trash}
             color={ComponentColor.Danger}
           />
+        }
+        labels={
+          <ComponentSpacer
+            direction={FlexDirection.Row}
+            margin={ComponentSize.Small}
+          >
+            <Label
+              id="CRIT"
+              description="I'm a cool label"
+              name="CRIT"
+              color="#da3434"
+              size={ComponentSize.ExtraSmall}
+            />
+            <Label
+              id="WARN"
+              description="I'm a cool label"
+              name="WARN"
+              color="#f2b218"
+              size={ComponentSize.ExtraSmall}
+            />
+            <Label
+              id="OK"
+              description="I'm a cool label"
+              name="OK"
+              color="#6ac255"
+              size={ComponentSize.ExtraSmall}
+            />
+          </ComponentSpacer>
         }
       />
     </div>
