@@ -4,12 +4,12 @@ import chroma from 'chroma-js'
 import classnames from 'classnames'
 
 // Types
-import {ComponentSize, InfluxColors} from '../../Types'
+import {StandardProps, ComponentSize, InfluxColors} from '../../Types'
 
 // Styles
 import './Label.scss'
 
-interface Props {
+interface Props extends StandardProps {
   /** Unique value to be returned when Label is clicked */
   id: string
   /** Name of the Label, appears inside the label */
@@ -24,10 +24,6 @@ interface Props {
   onDelete?: (id: string) => void
   /** Size of Label */
   size: ComponentSize
-  /** Test ID for Integration Tests */
-  testID: string
-  /** Class name for custom styles */
-  className?: string
 }
 
 interface State {
