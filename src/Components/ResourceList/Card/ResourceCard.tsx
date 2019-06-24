@@ -42,15 +42,16 @@ export class ResourceCard extends PureComponent<Props> {
   public static Description = ResourceCardDescription
 
   public render() {
-    const {description, labels, children, testID, toggle} = this.props
+    const {description, labels, children, testID, toggle, name} = this.props
 
     if (toggle) {
       return (
         <div className={this.className} data-testid={testID}>
           {this.toggle}
           <div className="resource-card--contents">
-            {this.nameAndMeta}
+            {name}
             {description}
+            {this.formattedMetaData}
             {labels}
             {children}
           </div>
@@ -62,8 +63,9 @@ export class ResourceCard extends PureComponent<Props> {
     return (
       <div className={this.className} data-testid={testID}>
         {this.toggle}
-        {this.nameAndMeta}
+        {name}
         {description}
+        {this.formattedMetaData}
         {labels}
         {children}
         {this.contextMenu}
@@ -89,17 +91,6 @@ export class ResourceCard extends PureComponent<Props> {
     }
 
     return
-  }
-
-  private get nameAndMeta(): JSX.Element {
-    const {name} = this.props
-
-    return (
-      <div className="resource-list--name-meta">
-        {name}
-        {this.formattedMetaData}
-      </div>
-    )
   }
 
   private get formattedMetaData(): JSX.Element | undefined {

@@ -13,14 +13,6 @@
 .resource-card--contents {
   display: flex;
   flex-direction: column;
-
-  > * {
-    margin-bottom: $cf-border;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
 }
 
 .resource-card {
@@ -52,7 +44,8 @@
 }
 
 .resource-list--meta {
-  display: inline-flex;
+  display: flex;
+  align-items: center;
   font-size: $form-xs-font;
   font-weight: 600;
   color: $g11-sidewalk;
@@ -61,9 +54,8 @@
 .resource-list--meta-item {
   transition: border-color 0.25s ease, color 0.25s ease;
   border-right: $cf-border solid $g5-pepper;
-  padding-right: $cf-marg-b;
-  margin-left: $cf-marg-b;
-  margin-right: $cf-marg-b;
+  padding-right: $cf-marg-b + $cf-marg-a;
+  margin-right: $cf-marg-b + $cf-marg-a;
 
   &:last-child {
     border-right: 0;
@@ -86,28 +78,6 @@
 
   .resource-card:hover & {
     opacity: 1;
-  }
-}
-
-.resource-list--name-meta {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  flex-wrap: nowrap;
-
-  > *:first-child {
-    margin-bottom: $cf-marg-a;
-  }
-}
-
-@media screen and (min-width: 767px) {
-  .resource-list--name-meta {
-    flex-direction: row;
-    align-items: center;
-
-    > *:first-child {
-      margin-bottom: 0;
-    }
   }
 }
 
