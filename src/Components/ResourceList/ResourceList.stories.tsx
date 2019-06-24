@@ -5,7 +5,14 @@ import marked from 'marked'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {jsxDecorator} from 'storybook-addon-jsx'
-import {withKnobs, text, boolean, array, select} from '@storybook/addon-knobs'
+import {
+  withKnobs,
+  text,
+  boolean,
+  array,
+  select,
+  object,
+} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../.storybook/utils'
 
 // Components
@@ -17,9 +24,13 @@ import {ResourceCard} from './Card/ResourceCard'
 import {ResourceCardName} from './Card/ResourceCardName'
 import {ResourceCardEditableName} from './Card/ResourceCardEditableName'
 import {ResourceCardDescription} from './Card/ResourceCardDescription'
+import {Input} from '../Inputs/Input'
+import {EmptyState} from '../EmptyState/EmptyState'
+import {SlideToggle} from '../SlideToggle/SlideToggle'
+import {SquareButton} from '../Button/Composed/SquareButton'
 
 // Types
-import {Sort} from '../../Types'
+import {Sort, IconFont, ComponentSize, ComponentColor} from '../../Types'
 
 // Notes
 const ResourceListReadme = marked(require('./List/ResourceList.md'))
@@ -34,6 +45,8 @@ const ResourceCardNameReadme = marked(require('./Card/ResourceCardName.md'))
 const ResourceCardEditableNameReadme = marked(
   require('./Card/ResourceCardEditableName.md')
 )
+const ResourceListExampleReadme = marked(require('./ResourceListExample.md'))
+const ResourceCardExampleReadme = marked(require('./ResourceCardExample.md'))
 
 const indexListStories = storiesOf(
   'Components|ResourceList/List Family',
@@ -44,6 +57,13 @@ const indexListStories = storiesOf(
 
 const indexListCardStories = storiesOf(
   'Components|ResourceList/Card Family',
+  module
+)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
+
+const indexListExampleStories = storiesOf(
+  'Components|ResourceList/Examples',
   module
 )
   .addDecorator(withKnobs)
@@ -242,6 +262,174 @@ indexListCardStories.add(
   {
     readme: {
       content: ResourceCardEditableNameReadme,
+    },
+  }
+)
+
+const exampleDashboards = [
+  {
+    id: '23wfsdff',
+    name: 'Server Stats',
+    description: 'Monitoring dashboard for our 17 servers',
+    updatedAt: '24m ago',
+    createdBy: 'Bob',
+  },
+  {
+    id: '9sdifsdw',
+    name: 'West Garden',
+    description: 'Soil and water monitoring for west side garden',
+    updatedAt: '8d ago',
+    createdBy: 'Bob',
+  },
+  {
+    id: '0sdf09ds',
+    name: 'East Garden',
+    description: 'Soil and water monitoring for east side garden',
+    updatedAt: '2s ago',
+    createdBy: 'Fred',
+  },
+]
+
+indexListExampleStories.add(
+  'Dashboards List',
+  () => (
+    <div className="story--example">
+      <ResourceList>
+        <ResourceList.Header
+          filterComponent={
+            <Input
+              icon={IconFont.Search}
+              placeholder="Filter dashboards..."
+              widthPixels={280}
+              value={text('Search term', '')}
+            />
+          }
+        >
+          <ResourceList.Sorter
+            name="Name"
+            sortKey="name"
+            onClick={(nextSort, sortKey) =>
+              alert(
+                `Sorter clicked! nextSort: ${nextSort}, sortKey: ${sortKey}`
+              )
+            }
+            sort={Sort.None}
+          />
+          <ResourceList.Sorter
+            name="Description"
+            sortKey="desc"
+            onClick={(nextSort, sortKey) =>
+              alert(
+                `Sorter clicked! nextSort: ${nextSort}, sortKey: ${sortKey}`
+              )
+            }
+            sort={Sort.None}
+          />
+          <ResourceList.Sorter
+            name="Last Updated"
+            sortKey="updated"
+            onClick={(nextSort, sortKey) =>
+              alert(
+                `Sorter clicked! nextSort: ${nextSort}, sortKey: ${sortKey}`
+              )
+            }
+            sort={Sort.None}
+          />
+        </ResourceList.Header>
+        <ResourceList.Body
+          emptyState={
+            <EmptyState>
+              <EmptyState.Text
+                text={
+                  text('Search term', '') === ''
+                    ? 'No dashboards exist'
+                    : 'No dashboards match your search term'
+                }
+              />
+            </EmptyState>
+          }
+        >
+          {object('Dashboards', exampleDashboards)
+            .filter(d =>
+              d.name.toLocaleLowerCase().includes(text('Search term', ''))
+            )
+            .map(dash => (
+              <ResourceCard
+                key={dash.id}
+                name={<ResourceCard.Name name={dash.name} />}
+                description={
+                  <ResourceCard.Description
+                    description={dash.description}
+                    onUpdate={desc =>
+                      alert(`onUpate description fired: ${desc}`)
+                    }
+                  />
+                }
+                metaData={[
+                  <>Last updated {dash.updatedAt}</>,
+                  <>
+                    Created by <b>{dash.createdBy}</b>
+                  </>,
+                ]}
+              />
+            ))}
+        </ResourceList.Body>
+      </ResourceList>
+    </div>
+  ),
+  {
+    readme: {
+      content: ResourceListExampleReadme,
+    },
+  }
+)
+
+indexListExampleStories.add(
+  'Toggleable Card',
+  () => (
+    <div className="story--example">
+      <ResourceCard
+        name={
+          <ResourceCard.Name
+            name={text('name', 'Just another brick in the wall')}
+          />
+        }
+        description={
+          <ResourceCard.Description
+            description={text(
+              'description',
+              'Hey! Teacher! Leave us kids alone'
+            )}
+            onUpdate={desc => alert(`onUpate description fired: ${desc}`)}
+          />
+        }
+        metaData={[
+          <>Last updated 2h ago</>,
+          <>
+            Created by <b>Pink Floyd</b>
+          </>,
+        ]}
+        disabled={boolean('disabled', false)}
+        toggle={
+          <SlideToggle
+            size={ComponentSize.ExtraSmall}
+            active={!boolean('disabled', false)}
+            onChange={() => {}}
+          />
+        }
+        contextMenu={
+          <SquareButton
+            size={ComponentSize.ExtraSmall}
+            icon={IconFont.Trash}
+            color={ComponentColor.Danger}
+          />
+        }
+      />
+    </div>
+  ),
+  {
+    readme: {
+      content: ResourceCardExampleReadme,
     },
   }
 )
