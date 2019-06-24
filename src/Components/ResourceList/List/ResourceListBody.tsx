@@ -11,7 +11,7 @@ interface Props extends StandardProps {
 }
 
 export class ResourceListBody extends PureComponent<Props> {
-  public static readonly displayName = 'ResourceList.Body'
+  public static readonly displayName = 'ResourceListBody'
 
   public static defaultProps = {
     testID: 'resource-list--body',

@@ -12,6 +12,11 @@
   align-items: stretch;
 }
 
+.resource-list--header,
+.resource-list--body {
+  width: 100%;
+}
+
 /*
   Header & Sorting
   ------------------------------------------------------------------------------
@@ -22,6 +27,7 @@
   align-items: center;
   padding-bottom: $cf-marg-c;
   justify-content: space-between;
+  width: 100%;
 }
 
 .resource-list--sorting {
