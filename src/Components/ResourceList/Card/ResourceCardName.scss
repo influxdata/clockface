@@ -1,4 +1,4 @@
-@import "../../Styles/modules.scss";
+@import "../../../Styles/modules.scss";
 
 /*
   Editable Name for Resource Cards
@@ -8,19 +8,27 @@
 $resource-name-font-size: 17px;
 $resource-name-font-weight: 600;
 
-.resource-editable-name > a {
-  font-size: $resource-name-font-size;
-  font-weight: $resource-name-font-weight;
-  font-family: $cf-text-font;
-  display: inline-block;
-  white-space: nowrap;
-  line-height: $form-xs-height;
-}
-
 .resource-name {
   height: $form-xs-height;
   position: relative;
   display: inline-flex;
   flex-wrap: nowrap;
   margin-right: $cf-marg-b;
+}
+
+.resource-name--link {
+  font-size: $resource-name-font-size;
+  font-weight: $resource-name-font-weight;
+  font-family: $cf-text-font;
+  display: inline-block;
+  white-space: nowrap;
+  line-height: $form-xs-height;
+  color: $cf-link-default;
+  transition: color 0.25s ease;
+  font-weight: $cf-link-weight;
+
+  &:hover {
+    cursor: pointer;
+    color: $cf-link-default-hover;
+  }
 }

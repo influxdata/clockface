@@ -11,6 +11,9 @@ import {ClickOutside} from '../../ClickOutside/ClickOutside'
 // Types
 import {StandardProps, ComponentSize, RemoteDataState} from '../../../Types'
 
+// Styles
+import './ResourceCardEditableName.scss'
+
 interface Props extends StandardProps {
   /** Called when editing is finished, new name is passed  */
   onUpdate: (name: string) => void
@@ -26,8 +29,6 @@ interface Props extends StandardProps {
   buttonTestID: string
   /** TestID for input sub-component */
   inputTestID: string
-  /** Alternative to using OnClick */
-  hrefValue: string
 }
 
 interface State {
@@ -37,13 +38,12 @@ interface State {
 }
 
 export class ResourceCardEditableName extends Component<Props, State> {
-  public static readonly displayName = 'ResourceCard.EditableName'
+  public static readonly displayName = 'ResourceCardEditableName'
 
   public static defaultProps = {
     testID: 'resource-editable-name',
     buttonTestID: 'resource-editable-name--button',
     inputTestID: 'resource-editable-name--input',
-    hrefValue: '#',
   }
 
   constructor(props: Props) {
@@ -57,7 +57,7 @@ export class ResourceCardEditableName extends Component<Props, State> {
   }
 
   public render() {
-    const {name, hrefValue, noNameString, testID, buttonTestID} = this.props
+    const {name, noNameString, testID, buttonTestID} = this.props
 
     return (
       <div className={this.className} data-testid={testID}>
@@ -65,9 +65,9 @@ export class ResourceCardEditableName extends Component<Props, State> {
           loading={this.state.loading}
           spinnerComponent={<TechnoSpinner diameterPixels={20} />}
         >
-          <a href={hrefValue} onClick={this.handleClick}>
+          <span className="resource-name--link" onClick={this.handleClick}>
             <span>{name || noNameString}</span>
-          </a>
+          </span>
         </SpinnerContainer>
         <div
           className="resource-editable-name--toggle"

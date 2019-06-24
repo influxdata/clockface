@@ -14,12 +14,12 @@ import {StandardProps, ComponentSize, IconFont} from '../../../Types'
 import './ResourceCardDescription.scss'
 
 interface Props extends StandardProps {
-  /** Called when editing is finished, new description is passed  */
-  onUpdate: (description: string) => void
   /** Text to display in description */
   description: string
   /** Placeholder text to display in input during editing */
-  placeholder?: string
+  placeholder: string
+  /** Called when user hits enter or blurs the input  */
+  onUpdate: (description: string) => void
 }
 
 interface State {
@@ -28,10 +28,11 @@ interface State {
 }
 
 export class ResourceCardDescription extends Component<Props, State> {
-  public static readonly displayName = 'ResourceCard.Description'
+  public static readonly displayName = 'ResourceCardDescription'
 
   public static defaultProps = {
     testID: 'resource-list--description',
+    placeholder: '',
   }
 
   constructor(props: Props) {
@@ -58,7 +59,7 @@ export class ResourceCardDescription extends Component<Props, State> {
     }
 
     return (
-      <div className={this.className}>
+      <div className={this.className} data-testid={testID}>
         <div
           className={this.previewClassName}
           onClick={this.handleStartEditing}
