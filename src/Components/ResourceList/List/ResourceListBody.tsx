@@ -30,7 +30,11 @@ export class ResourceListBody extends PureComponent<Props> {
   private get children(): JSX.Element | ReactNode {
     const {children, emptyState} = this.props
 
-    if (React.Children.count(children) === 0 || children === undefined) {
+    if (
+      React.Children.count(children) === 0 ||
+      children === undefined ||
+      children === null
+    ) {
       return emptyState
     }
 
