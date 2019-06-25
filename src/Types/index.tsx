@@ -3,6 +3,8 @@ export interface StandardProps {
   className?: string
   /** ID for Integration Tests */
   testID: string
+  /** Unique identifier for getting an element */
+  id?: string
 }
 
 export enum ComponentColor {

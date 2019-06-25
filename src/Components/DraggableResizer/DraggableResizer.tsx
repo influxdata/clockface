@@ -5,7 +5,9 @@ import classnames from 'classnames'
 // Components
 import {DraggableResizerPanel} from './DraggableResizerPanel'
 import {DraggableResizerHandle} from './DraggableResizerHandle'
-import {Orientation, Gradients} from '../../Types'
+
+// Types
+import {StandardProps, Orientation, Gradients} from '../../Types'
 
 // Styles
 import './DraggableResizer.scss'
@@ -13,7 +15,7 @@ import './DraggableResizer.scss'
 // Constants
 const NULL_DRAG = -1
 
-interface Props {
+interface Props extends StandardProps {
   /** Orientation the draggable panels stack in */
   handleOrientation: Orientation
   /** Expects and array of numbers between 0 - 1 */
@@ -22,10 +24,6 @@ interface Props {
   onChangePositions: (positions: number[]) => void
   /** Gradient theme for handle */
   handleGradient: Gradients
-  /** Test ID for Integration Tests */
-  testID: string
-  /** Class name for custom styles */
-  className?: string
 }
 
 interface State {
@@ -63,13 +61,14 @@ export class DraggableResizer extends Component<Props, State> {
   }
 
   public render() {
-    const {testID} = this.props
+    const {testID, id} = this.props
 
     return (
       <div
         className={this.className}
         ref={this.containerRef}
         data-testid={testID}
+        id={id}
       >
         {this.children}
       </div>

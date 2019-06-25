@@ -30,10 +30,10 @@ export class IndexList extends Component<Props> {
   }
 
   public render() {
-    const {children, testID} = this.props
+    const {children, testID, id} = this.props
 
     return (
-      <table className={this.className} data-testid={testID}>
+      <table className={this.className} data-testid={testID} id={id}>
         {children}
       </table>
     )

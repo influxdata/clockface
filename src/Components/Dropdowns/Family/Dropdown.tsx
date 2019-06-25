@@ -11,10 +11,13 @@ import {DropdownDivider} from './../Family/DropdownDivider'
 import {DropdownMenu} from './../Family/DropdownMenu'
 import {ClickOutside} from '../../ClickOutside/ClickOutside'
 
+// Types
+import {StandardProps} from '../../../Types'
+
 // Styles
 import '../Dropdown.scss'
 
-interface Props {
+interface Props extends StandardProps {
   /** Component to render as the button (use Dropdown.Button) */
   button: (
     active: boolean,
@@ -24,10 +27,6 @@ interface Props {
   menu: (onCollapse?: () => void) => JSX.Element
   /** Width of the dropdown in pixels, if blank the dropdown will expand to fill its parent's width */
   widthPixels?: number
-  /** Class name for custom styles */
-  className?: string
-  /** Test ID for Integration Tests */
-  testID: string
 }
 
 interface State {
@@ -56,13 +55,18 @@ export class Dropdown extends Component<Props, State> {
   }
 
   public render() {
-    const {widthPixels, button, testID} = this.props
+    const {widthPixels, button, testID, id} = this.props
     const {expanded} = this.state
     const width = widthPixels ? `${widthPixels}px` : '100%'
 
     return (
       <ClickOutside onClickOutside={this.collapseMenu}>
-        <div className={this.className} style={{width}} data-testid={testID}>
+        <div
+          className={this.className}
+          style={{width}}
+          data-testid={testID}
+          id={id}
+        >
           {button(expanded, this.toggleMenu)}
           <div className="dropdown--menu-container">{this.menu}</div>
         </div>

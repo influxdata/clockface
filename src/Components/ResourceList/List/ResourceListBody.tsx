@@ -18,10 +18,10 @@ export class ResourceListBody extends PureComponent<Props> {
   }
 
   public render() {
-    const {testID} = this.props
+    const {testID, id} = this.props
 
     return (
-      <div className={this.className} data-testid={testID}>
+      <div className={this.className} data-testid={testID} id={id}>
         {this.children}
       </div>
     )

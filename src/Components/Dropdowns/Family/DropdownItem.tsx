@@ -19,7 +19,7 @@ interface Props extends StandardProps {
 }
 
 export class DropdownItem extends Component<Props> {
-  public static readonly displayName = 'Dropdown.Item'
+  public static readonly displayName = 'DropdownItem'
 
   public static defaultProps = {
     checkbox: false,
@@ -30,13 +30,14 @@ export class DropdownItem extends Component<Props> {
   }
 
   public render(): JSX.Element {
-    const {testID} = this.props
+    const {testID, id} = this.props
 
     return (
       <div
         className={this.className}
         data-testid={testID}
         onClick={this.handleClick}
+        id={id}
       >
         {this.selectionIndicator}
         {this.childElements}

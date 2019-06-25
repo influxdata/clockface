@@ -14,7 +14,7 @@ interface Props extends StandardProps {
 }
 
 export class DraggableResizerPanel extends Component<Props> {
-  public static readonly displayName = 'DraggableResizer.Panel'
+  public static readonly displayName = 'DraggableResizerPanel'
 
   public static defaultProps = {
     minSizePixels: 0,
@@ -22,10 +22,15 @@ export class DraggableResizerPanel extends Component<Props> {
   }
 
   public render() {
-    const {children, testID} = this.props
+    const {children, testID, id} = this.props
 
     return (
-      <div className={this.className} style={this.style} data-testid={testID}>
+      <div
+        className={this.className}
+        style={this.style}
+        data-testid={testID}
+        id={id}
+      >
         {children}
       </div>
     )

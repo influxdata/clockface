@@ -27,10 +27,10 @@ export class ResourceList extends PureComponent<Props> {
   public static Body = ResourceListBody
 
   public render() {
-    const {children, testID} = this.props
+    const {children, testID, id} = this.props
 
     return (
-      <div className={this.className} data-testid={testID}>
+      <div className={this.className} data-testid={testID} id={id}>
         {children}
       </div>
     )

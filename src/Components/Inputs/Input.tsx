@@ -31,8 +31,6 @@ export enum InputType {
 }
 
 interface Props extends StandardProps {
-  /** Unique text field ID */
-  id?: string
   /** Minimum value for number type */
   min?: number
   /** Maximum value for number type */

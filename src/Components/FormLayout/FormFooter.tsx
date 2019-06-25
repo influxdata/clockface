@@ -25,7 +25,7 @@ interface Props extends StandardProps {
 }
 
 export class FormFooter extends Component<Props> {
-  public static readonly displayName = 'Form.Footer'
+  public static readonly displayName = 'FormFooter'
 
   public static defaultProps = {
     testID: 'form--footer',
@@ -33,10 +33,10 @@ export class FormFooter extends Component<Props> {
   }
 
   public render() {
-    const {children, testID} = this.props
+    const {children, testID, id} = this.props
 
     return (
-      <div className={this.className} data-testid={testID}>
+      <div className={this.className} data-testid={testID} id={id}>
         {children}
       </div>
     )

@@ -38,7 +38,7 @@ export class Form extends Component<Props> {
   public static Box = FormBox
 
   public render() {
-    const {children, style, testID} = this.props
+    const {children, style, testID, id} = this.props
 
     return (
       <form
@@ -46,6 +46,7 @@ export class Form extends Component<Props> {
         className={this.formWrapperClass}
         onSubmit={this.handleSubmit}
         data-testid={testID}
+        id={id}
       >
         {children}
       </form>

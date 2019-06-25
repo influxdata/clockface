@@ -47,7 +47,7 @@ export class Label extends Component<Props, State> {
   }
 
   public render() {
-    const {name, testID} = this.props
+    const {name, testID, id} = this.props
 
     return (
       <div
@@ -56,6 +56,7 @@ export class Label extends Component<Props, State> {
         onMouseLeave={this.handleMouseLeave}
         style={this.style}
         title={this.title}
+        id={id}
       >
         <span
           className="label--name"

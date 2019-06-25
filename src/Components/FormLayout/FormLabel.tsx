@@ -12,17 +12,17 @@ interface Props extends StandardProps {
 }
 
 export class FormLabel extends Component<Props> {
-  public static readonly displayName = 'Form.Label'
+  public static readonly displayName = 'FormLabel'
 
   public static defaultProps = {
     testID: 'form--label',
   }
 
   public render() {
-    const {label, children, testID} = this.props
+    const {label, children, testID, id} = this.props
 
     return (
-      <label className={this.className} data-testid={testID}>
+      <label className={this.className} data-testid={testID} id={id}>
         <span>
           {label}
           {this.requiredIndicator}

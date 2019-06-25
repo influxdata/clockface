@@ -7,17 +7,17 @@ import {StandardProps} from '../../Types'
 interface Props extends StandardProps {}
 
 export class IndexListHeader extends Component<Props> {
-  public static readonly displayName = 'IndexList.Header'
+  public static readonly displayName = 'IndexListHeader'
 
   public static defaultProps = {
     testID: 'index-list--header',
   }
 
   public render() {
-    const {children, testID} = this.props
+    const {children, testID, id} = this.props
 
     return (
-      <thead className={this.className} data-testid={testID}>
+      <thead className={this.className} data-testid={testID} id={id}>
         <tr>{children}</tr>
       </thead>
     )

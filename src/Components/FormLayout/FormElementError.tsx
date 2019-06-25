@@ -17,9 +17,10 @@ export class FormElementError extends Component<Props> {
   }
 
   public render() {
-    const {testID} = this.props
+    const {testID, id} = this.props
+
     return (
-      <span className={this.className} data-testid={testID}>
+      <span className={this.className} data-testid={testID} id={id}>
         {this.message}
       </span>
     )

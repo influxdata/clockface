@@ -57,10 +57,10 @@ export class ResourceCardEditableName extends Component<Props, State> {
   }
 
   public render() {
-    const {name, noNameString, testID, buttonTestID} = this.props
+    const {name, noNameString, testID, buttonTestID, id} = this.props
 
     return (
-      <div className={this.className} data-testid={testID}>
+      <div className={this.className} data-testid={testID} id={id}>
         <SpinnerContainer
           loading={this.state.loading}
           spinnerComponent={<TechnoSpinner diameterPixels={20} />}

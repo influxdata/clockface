@@ -60,6 +60,7 @@ export class ButtonBase extends Component<Props> {
       testID,
       children,
       refObject,
+      id,
     } = this.props
 
     return (
@@ -71,6 +72,7 @@ export class ButtonBase extends Component<Props> {
         tabIndex={!!tabIndex ? tabIndex : 0}
         type={type}
         data-testid={testID}
+        id={id}
         ref={refObject}
       >
         {children}

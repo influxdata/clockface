@@ -19,17 +19,17 @@ interface Props extends StandardProps {
 }
 
 export class PanelHeader extends Component<Props> {
-  public static readonly displayName = 'Panel.Header'
+  public static readonly displayName = 'PanelHeader'
 
   public static defaultProps = {
     testID: 'panel--header',
   }
 
   public render() {
-    const {children, title, testID} = this.props
+    const {children, title, testID, id} = this.props
 
     return (
-      <div className={this.className} data-testid={testID}>
+      <div className={this.className} data-testid={testID} id={id}>
         <div className="panel--title">{title}</div>
         <div className="panel--controls">
           <ComponentSpacer

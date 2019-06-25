@@ -11,7 +11,7 @@ interface Props extends StandardProps {
 }
 
 export class IndexListRow extends Component<Props> {
-  public static readonly displayName = 'IndexList.Row'
+  public static readonly displayName = 'IndexListRow'
 
   public static defaultProps = {
     disabled: false,
@@ -19,10 +19,10 @@ export class IndexListRow extends Component<Props> {
   }
 
   public render() {
-    const {children, testID} = this.props
+    const {children, testID, id} = this.props
 
     return (
-      <tr data-testid={testID} className={this.className}>
+      <tr data-testid={testID} className={this.className} id={id}>
         {children}
       </tr>
     )

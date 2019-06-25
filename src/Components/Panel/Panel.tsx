@@ -46,7 +46,7 @@ export class Panel extends Component<Props> {
   public static Footer = PanelFooter
 
   public render() {
-    const {children, className, gradient, size, testID} = this.props
+    const {children, className, gradient, size, testID, id} = this.props
 
     return (
       <div
@@ -57,6 +57,7 @@ export class Panel extends Component<Props> {
         })}
         style={this.style}
         data-testid={testID}
+        id={id}
       >
         {children}
       </div>

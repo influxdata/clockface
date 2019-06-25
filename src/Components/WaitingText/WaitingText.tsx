@@ -20,10 +20,14 @@ export class WaitingText extends Component<Props> {
   }
 
   public render() {
-    const {text, className, testID} = this.props
+    const {text, className, testID, id} = this.props
 
     return (
-      <div className={`waiting-text ${className || ''}`} data-testid={testID}>
+      <div
+        className={`waiting-text ${className || ''}`}
+        data-testid={testID}
+        id={id}
+      >
         {text}
       </div>
     )

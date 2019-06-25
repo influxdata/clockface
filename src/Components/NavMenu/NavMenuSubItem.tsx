@@ -13,7 +13,7 @@ interface Props extends StandardProps {
 }
 
 export class NavMenuSubItem extends PureComponent<Props> {
-  public static readonly displayName = 'NavMenu.SubItem'
+  public static readonly displayName = 'NavMenuSubItem'
 
   public static defaultProps = {
     testID: 'nav-menu--link-item',

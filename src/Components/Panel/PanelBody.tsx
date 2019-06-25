@@ -8,17 +8,17 @@ import {StandardProps} from '../../Types'
 interface Props extends StandardProps {}
 
 export class PanelBody extends Component<Props> {
-  public static readonly displayName = 'Panel.Body'
+  public static readonly displayName = 'PanelBody'
 
   public static defaultProps = {
     testID: 'panel--body',
   }
 
   public render() {
-    const {children, testID} = this.props
+    const {children, testID, id} = this.props
 
     return (
-      <div className={this.className} data-testid={testID}>
+      <div className={this.className} data-testid={testID} id={id}>
         {children}
       </div>
     )

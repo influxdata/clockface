@@ -9,8 +9,6 @@ import {Gradients, Orientation, StandardProps} from '../../Types'
 import {getColorsFromGradient} from '../../Constants/colors'
 
 interface Props extends StandardProps {
-  /** Unique identifier used to update the size of this handle */
-  id: string
   /** Expects a number between 0 - 1 */
   position: number
   /** Gets passed a function by being a child of DraggableResizer */
@@ -26,7 +24,7 @@ interface Props extends StandardProps {
 }
 
 export class DraggableResizerHandle extends PureComponent<Props> {
-  public static readonly displayName = 'DraggableResizer.Handle'
+  public static readonly displayName = 'DraggableResizerHandle'
 
   public static defaultProps = {
     dragIndex: 9999,
@@ -35,7 +33,7 @@ export class DraggableResizerHandle extends PureComponent<Props> {
   }
 
   public render() {
-    const {testID} = this.props
+    const {testID, id} = this.props
 
     return (
       <div
@@ -43,6 +41,7 @@ export class DraggableResizerHandle extends PureComponent<Props> {
         onMouseDown={this.handleMouseDown}
         title="Drag to resize"
         data-testid={testID}
+        id={id}
       >
         <div
           className="draggable-resizer--gradient"

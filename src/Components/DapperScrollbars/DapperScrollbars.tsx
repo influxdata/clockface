@@ -74,6 +74,7 @@ export class DapperScrollbars extends Component<Props> {
       children,
       testID,
       style,
+      id,
     } = this.props
 
     const classname = classnames('dapper-scrollbars', {
@@ -108,6 +109,7 @@ export class DapperScrollbars extends Component<Props> {
           style: this.thumbYStyle,
           className: 'dapper-scrollbars--thumb-y',
         }}
+        id={id}
       >
         {children}
       </Scrollbar>

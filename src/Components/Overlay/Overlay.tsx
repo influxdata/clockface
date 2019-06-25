@@ -11,18 +11,14 @@ import {OverlayFooter} from './OverlayFooter'
 import {DapperScrollbars} from '../DapperScrollbars/DapperScrollbars'
 
 // Types
-import {InfluxColors} from '../../Types'
+import {StandardProps, InfluxColors} from '../../Types'
 
 // Styles
 import './Overlay.scss'
 
-interface Props {
+interface Props extends StandardProps {
   /** Controls showing/hiding the overlay */
   visible: boolean
-  /** Class name for custom styles */
-  className?: string
-  /** Test ID for Integration Tests */
-  testID: string
   /** Will replace the mask element with a custom element, useful for customizing the mask appearance */
   renderMaskElement: JSX.Element
 }
@@ -71,7 +67,7 @@ export class Overlay extends Component<Props, State> {
   }
 
   public render() {
-    const {testID, renderMaskElement} = this.props
+    const {testID, renderMaskElement, id} = this.props
 
     return (
       <DapperScrollbars
@@ -80,6 +76,7 @@ export class Overlay extends Component<Props, State> {
         thumbStopColor={InfluxColors.Moonstone}
         autoHide={false}
         testID={testID}
+        id={id}
       >
         {this.childContainer}
         {renderMaskElement}

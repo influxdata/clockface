@@ -12,17 +12,22 @@ interface Props extends StandardProps {
 }
 
 export class PageTitle extends PureComponent<Props> {
-  public static readonly displayName = 'Page.Title'
+  public static readonly displayName = 'PageTitle'
 
   public static defaultProps = {
     testID: 'page-title',
   }
 
   public render() {
-    const {title, altText, testID} = this.props
+    const {title, altText, testID, id} = this.props
 
     return (
-      <h1 className={this.className} title={altText} data-testid={testID}>
+      <h1
+        className={this.className}
+        title={altText}
+        data-testid={testID}
+        id={id}
+      >
         {title}
       </h1>
     )

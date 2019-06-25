@@ -16,7 +16,7 @@ interface Props extends StandardProps {
 }
 
 export class OverlayMask extends PureComponent<Props> {
-  public static readonly displayName = 'Overlay.Mask'
+  public static readonly displayName = 'OverlayMask'
 
   public static defaultProps = {
     gradient: Gradients.GundamPilot,
@@ -24,12 +24,17 @@ export class OverlayMask extends PureComponent<Props> {
   }
 
   public render() {
-    const {testID, className} = this.props
+    const {testID, className, id} = this.props
 
     const classname = classnames('overlay--mask', {[`${className}`]: className})
 
     return (
-      <div className={classname} data-testid={testID} style={this.styles} />
+      <div
+        className={classname}
+        data-testid={testID}
+        style={this.styles}
+        id={id}
+      />
     )
   }
 

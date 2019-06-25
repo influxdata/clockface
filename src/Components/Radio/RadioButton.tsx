@@ -6,8 +6,6 @@ import classnames from 'classnames'
 import {StandardProps} from '../../Types'
 
 interface Props extends StandardProps {
-  /** id for individual radio button */
-  id: string
   /** Toggles radio button active state */
   active: boolean
   /** Input value of the selected radio button */
@@ -23,7 +21,7 @@ interface Props extends StandardProps {
 }
 
 export class RadioButton extends Component<Props> {
-  public static readonly displayName = 'Radio.Button'
+  public static readonly displayName = 'RadioButton'
 
   public static defaultProps = {
     disabled: false,
@@ -32,7 +30,7 @@ export class RadioButton extends Component<Props> {
   }
 
   public render() {
-    const {children, disabled, testID} = this.props
+    const {children, disabled, testID, id} = this.props
 
     return (
       <button
@@ -42,6 +40,7 @@ export class RadioButton extends Component<Props> {
         onClick={this.handleClick}
         title={this.title}
         data-testid={testID}
+        id={id}
       >
         {children}
       </button>

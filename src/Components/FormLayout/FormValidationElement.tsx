@@ -8,9 +8,9 @@ import {FormElementError} from './FormElementError'
 import {FormHelpText} from './FormHelpText'
 
 // Types
-import {ComponentStatus} from '../../Types'
+import {StandardProps, ComponentStatus} from '../../Types'
 
-interface Props {
+interface Props extends StandardProps {
   /** Child components */
   children: (status: ComponentStatus) => React.ReactNode
   /** Function used for validation check */
@@ -27,10 +27,6 @@ interface Props {
   helpText?: string
   /** Whether this field is required to submit form, adds red required asterisk */
   required?: boolean
-  /** Test ID for Integration Tests */
-  testID: string
-  /** Class name for custom styles */
-  className?: string
 }
 
 interface State {
@@ -39,7 +35,7 @@ interface State {
 }
 
 export class FormValidationElement extends Component<Props, State> {
-  public static readonly displayName = 'Form.ValidationElement'
+  public static readonly displayName = 'FormValidationElement'
 
   public static defaultProps = {
     testID: 'form--validation-element',
@@ -73,10 +69,10 @@ export class FormValidationElement extends Component<Props, State> {
   }
 
   public render() {
-    const {testID} = this.props
+    const {testID, id} = this.props
 
     return (
-      <div className={this.className} data-testid={testID}>
+      <div className={this.className} data-testid={testID} id={id}>
         {this.label}
         {this.children}
         {this.errorMessage}

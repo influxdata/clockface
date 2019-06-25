@@ -11,14 +11,14 @@ interface Props extends StandardProps {
 }
 
 export class DropdownDivider extends Component<Props> {
-  public static readonly displayName = 'Dropdown.Divider'
+  public static readonly displayName = 'DropdownDivider'
 
   public static defaultProps = {
     testID: 'dropdown-divider',
   }
 
   public render() {
-    const {text, testID, className} = this.props
+    const {text, testID, className, id} = this.props
 
     return (
       <div
@@ -27,6 +27,7 @@ export class DropdownDivider extends Component<Props> {
           [`${className}`]: className,
         })}
         data-testid={testID}
+        id={id}
       >
         {text}
       </div>

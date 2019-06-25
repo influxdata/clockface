@@ -19,7 +19,7 @@ interface Props extends StandardProps {
 }
 
 export class PageHeader extends Component<Props> {
-  public static readonly displayName = 'Page.Header'
+  public static readonly displayName = 'PageHeader'
 
   public static defaultProps = {
     hide: false,
@@ -31,14 +31,14 @@ export class PageHeader extends Component<Props> {
   public static Right = PageHeaderRight
 
   public render() {
-    const {hide, testID} = this.props
+    const {hide, testID, id} = this.props
 
     if (hide) {
       return null
     }
 
     return (
-      <div className={this.className} data-testid={testID}>
+      <div className={this.className} data-testid={testID} id={id}>
         <div className="page-header--container">
           {this.childrenWithCorrectWidths}
         </div>
