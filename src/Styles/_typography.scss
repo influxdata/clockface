@@ -15,9 +15,9 @@ body {
 a:link,
 a:visited {
   color: $cf-link-default;
-  transition: color 0.2s ease;
+  transition: color 0.25s ease;
   text-decoration: none;
-  font-weight: 700;
+  font-weight: $cf-link-weight;
 
   &.link-danger {
     color: $cf-link-danger;

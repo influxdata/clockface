@@ -1,0 +1,125 @@
+@import "../../../Styles/modules";
+
+/*
+  Resource Card
+  ------------------------------------------------------------------------------
+*/
+
+$resource-card--row-gap: $cf-marg-a - ($cf-border / 2);
+
+.resource-card {
+  width: 100%;
+}
+
+.resource-card,
+.resource-card--contents {
+  display: flex;
+}
+
+.resource-card {
+  flex-direction: row;
+  align-items: stretch;
+  position: relative;
+  color: $g13-mist;
+  background-color: $g3-castle;
+  border-radius: $cf-radius;
+  padding: $cf-marg-b $cf-marg-c;
+  padding-bottom: $cf-marg-b - $resource-card--row-gap;
+  margin-bottom: $cf-border;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  
+  &:hover {
+    color: $g16-pearl;
+    background-color: $g4-onyx;
+  }
+}
+
+.resource-card--contents {
+  flex-direction: column;
+  flex: 1 0 0;
+}
+
+.resource-card--row {
+  margin-bottom: $resource-card--row-gap;
+}
+
+.resource-list--toggle {
+  padding-right: $cf-marg-c;
+}
+
+.resource-list--meta {
+  display: flex;
+  align-items: center;
+  font-size: $form-xs-font;
+  font-weight: 600;
+  color: $g11-sidewalk;
+  padding-bottom: $cf-border;
+}
+
+.resource-list--meta-item {
+  transition: border-color 0.25s ease, color 0.25s ease;
+  border-right: $cf-border solid $g5-pepper;
+  padding-right: $cf-marg-b + $cf-marg-a;
+  margin-right: $cf-marg-b + $cf-marg-a;
+
+  &:last-child {
+    border-right: 0;
+    padding-right: 0;
+    margin-right: 0;
+  }
+
+  .resource-card:hover & {
+    color: $g15-platinum;
+    border-color: $g7-graphite;
+  }
+}
+
+.resource-list--context-menu {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  position: absolute;
+  top: $cf-marg-b;
+  right: $cf-marg-b;
+
+  .resource-card:hover & {
+    opacity: 1;
+  }
+}
+
+/*
+  Disabled Card
+  ------------------------------------------------------------------------------
+*/
+
+.resource-card.resource-card__disabled {
+  background-color: rgba($g3-castle, 0.5);
+  color: $g9-mountain;
+  font-style: italic;
+
+  .resource-list--meta {
+    color: $g9-mountain;
+  }
+
+  &:hover .resource-list--meta {
+    color: $g12-forge;
+  }
+}
+
+/*
+  Depth Styling
+  ------------------------------------------------------------------------------
+*/
+
+.panel .resource-card,
+.tabs .resource-card {
+  background-color: $g4-onyx;
+
+  &:hover {
+    background-color: $g5-pepper;
+  }
+}
+
+.panel .resource-card.resource-card__disabled,
+.tabs .resource-card.resource-card__disabled {
+  background-color: rgba($g4-onyx, 0.5);
+}

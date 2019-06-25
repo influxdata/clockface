@@ -67,6 +67,7 @@ $cf-text-base-4: (ceil($cf-text-base * $cf-text-scale * $cf-text-scale * $cf-tex
 $cf-text-base-5: (ceil($cf-text-base * $cf-text-scale * $cf-text-scale * $cf-text-scale * $cf-text-scale * $cf-text-scale));
 
 $cf-text-default: $g13-mist;
+$cf-link-weight: 700;
 $cf-link-default: $c-pool;
 $cf-link-default-hover: $c-laser;
 $cf-link-success: $c-rainforest;
