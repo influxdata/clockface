@@ -1,9 +1,16 @@
+Closes #
+
 ### Changes
 
 // Describe what you changed
 
-### Checklist
+### Screenshots
 
-- [] Change is reflected in documentation
-- [] Added entry to top of `changelog.md` with link to PR
-- [] Signed CLA
+// Add screenshots here if relevant
+
+### Checklist
+Check all that apply
+
+- [ ] Updated documentation to reflect changes
+- [ ] Added entry to top of Changelog with link to PR (not issue)
+- [ ] Signed [CLA](https://influxdata.com/community/cla/) (if not already signed)
