@@ -2,6 +2,7 @@
 
 #### 0.0.16
 
+- [#159](https://github.com/influxdata/clockface/pull/159): Port `ResourceList` and `ResourceCard` component families from InfluxDB
 - [#157](https://github.com/influxdata/clockface/pull/157): Add display names to all components so they are legible despite minification in the React inspector
 - [#155](https://github.com/influxdata/clockface/pull/155): Add markdown documentation for `Radio` component family
 - [#153](https://github.com/influxdata/clockface/pull/154): Add markdown documentation for `IndexList` components
