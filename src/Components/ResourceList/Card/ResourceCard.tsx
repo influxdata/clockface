@@ -42,43 +42,32 @@ export class ResourceCard extends PureComponent<Props> {
   public static Description = ResourceCardDescription
 
   public render() {
-    const {description, labels, children, testID, toggle, name} = this.props
-
-    if (toggle) {
-      return (
-        <div className={this.className} data-testid={testID}>
-          {this.toggle}
-          <div className="resource-card--contents">
-            {name}
-            {description}
-            {this.formattedMetaData}
-            {labels}
-            {children}
-          </div>
-          {this.contextMenu}
-        </div>
-      )
-    }
+    const {description, labels, children, testID, name} = this.props
 
     return (
       <div className={this.className} data-testid={testID}>
         {this.toggle}
-        {name}
-        {description}
-        {this.formattedMetaData}
-        {labels}
-        {children}
+        <div className="resource-card--contents">
+          <div className="resource-card--row">{name}</div>
+          {description ? (
+            <div className="resource-card--row">{description}</div>
+          ) : null}
+          {this.formattedMetaData}
+          {labels ? <div className="resource-card--row">{labels}</div> : null}
+          {children ? (
+            <div className="resource-card--row">{children}</div>
+          ) : null}
+        </div>
         {this.contextMenu}
       </div>
     )
   }
 
   private get className(): string {
-    const {disabled, toggle, className} = this.props
+    const {disabled, className} = this.props
 
     return classnames('resource-card', {
       'resource-card__disabled': disabled,
-      'resource-card__toggleable': toggle,
       [`${className}`]: className,
     })
   }
@@ -98,7 +87,7 @@ export class ResourceCard extends PureComponent<Props> {
 
     if (metaData) {
       return (
-        <div className="resource-list--meta">
+        <div className="resource-card--row resource-list--meta">
           {React.Children.map(metaData, (metaItem: JSX.Element) => (
             <div
               className="resource-list--meta-item"

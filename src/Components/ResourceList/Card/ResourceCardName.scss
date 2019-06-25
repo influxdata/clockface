@@ -13,7 +13,6 @@ $resource-name-font-weight: 600;
   position: relative;
   display: inline-flex;
   flex-wrap: nowrap;
-  margin-bottom: $cf-marg-a;
 }
 
 .resource-name--link {
@@ -26,6 +25,10 @@ $resource-name-font-weight: 600;
   color: $cf-link-default;
   transition: color 0.25s ease;
   font-weight: $cf-link-weight;
+
+  .resource-card__disabled & {
+    color: rgba($cf-link-default, 0.5);
+  }
 
   &:hover {
     cursor: pointer;

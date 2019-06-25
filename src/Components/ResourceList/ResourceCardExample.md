@@ -1,6 +1,6 @@
 # Toggleable Card
 
-This example shows what a `ResourceCard` looks like when a component is passed into the `toggle` and `contextMenu` props.
+This example shows what a `ResourceCard` looks like when a component is passed into the `toggle`, `labels` and `contextMenu` props.
 
 ### Usage
 ```js

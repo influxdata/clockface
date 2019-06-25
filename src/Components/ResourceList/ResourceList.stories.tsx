@@ -12,6 +12,7 @@ import {
   array,
   select,
   object,
+  number,
 } from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../.storybook/utils'
 
@@ -396,71 +397,73 @@ indexListExampleStories.add(
   'Toggleable Card',
   () => (
     <div className="story--example">
-      <ResourceCard
-        name={
-          <ResourceCard.Name
-            name={text('name', 'Just another brick in the wall')}
-          />
-        }
-        description={
-          <ResourceCard.Description
-            description={text(
-              'description',
-              'Hey! Teacher! Leave us kids alone'
-            )}
-            onUpdate={desc => alert(`onUpate description fired: ${desc}`)}
-          />
-        }
-        metaData={[
-          <>Last updated 2h ago</>,
-          <>
-            Created by <b>Pink Floyd</b>
-          </>,
-        ]}
-        disabled={boolean('disabled', false)}
-        toggle={
-          <SlideToggle
-            size={ComponentSize.ExtraSmall}
-            active={!boolean('disabled', false)}
-            onChange={() => {}}
-          />
-        }
-        contextMenu={
-          <SquareButton
-            size={ComponentSize.ExtraSmall}
-            icon={IconFont.Trash}
-            color={ComponentColor.Danger}
-          />
-        }
-        labels={
-          <ComponentSpacer
-            direction={FlexDirection.Row}
-            margin={ComponentSize.Small}
-          >
-            <Label
-              id="CRIT"
-              description="I'm a cool label"
-              name="CRIT"
-              color="#da3434"
-              size={ComponentSize.ExtraSmall}
+      <div style={{width: `${number('Width (px)', 500)}px`}}>
+        <ResourceCard
+          name={
+            <ResourceCard.Name
+              name={text('name', 'Just another brick in the wall')}
             />
-            <Label
-              id="WARN"
-              description="I'm a cool label"
-              name="WARN"
-              color="#f2b218"
-              size={ComponentSize.ExtraSmall}
+          }
+          description={
+            <ResourceCard.Description
+              description={text(
+                'description',
+                'Hey! Teacher! Leave us kids alone'
+              )}
+              onUpdate={desc => alert(`onUpate description fired: ${desc}`)}
             />
-            <Label
-              id="OK"
-              description="I'm a cool label"
-              name="OK"
-              color="#6ac255"
+          }
+          metaData={[
+            <>Last updated 2h ago</>,
+            <>
+              Created by <b>Pink Floyd</b>
+            </>,
+          ]}
+          disabled={boolean('disabled', false)}
+          toggle={
+            <SlideToggle
               size={ComponentSize.ExtraSmall}
+              active={!boolean('disabled', false)}
+              onChange={() => {}}
             />
-          </ComponentSpacer>
-        }
-      />
+          }
+          contextMenu={
+            <SquareButton
+              size={ComponentSize.ExtraSmall}
+              icon={IconFont.Trash}
+              color={ComponentColor.Danger}
+            />
+          }
+          labels={
+            <ComponentSpacer
+              direction={FlexDirection.Row}
+              margin={ComponentSize.Small}
+            >
+              <Label
+                id="CRIT"
+                description="I'm a cool label"
+                name="CRIT"
+                color="#da3434"
+                size={ComponentSize.ExtraSmall}
+              />
+              <Label
+                id="WARN"
+                description="I'm a cool label"
+                name="WARN"
+                color="#f2b218"
+                size={ComponentSize.ExtraSmall}
+              />
+              <Label
+                id="OK"
+                description="I'm a cool label"
+                name="OK"
+                color="#6ac255"
+                size={ComponentSize.ExtraSmall}
+              />
+            </ComponentSpacer>
+          }
+        />
+      </div>
     </div>
   ),
   {
