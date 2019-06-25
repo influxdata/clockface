@@ -7,7 +7,7 @@
 import {ResourceCard} from '@influxdata/clockface'
 ```
 
-Most of ResourceCard's props are render props with help enforce an opinionated structure on the layout. This ensures that if a card has all of its render props passed in the components look nice together. While any component can be passed into the render props we recommend using the components included in the ResourceCard family.
+Most of ResourceCard's props are render props which help enforce an opinionated structure on the layout. This ensures that if a card has all of its render props passed in, the components look nice together. While any component can be passed into the render props, we recommend using the components included in the ResourceCard family.
 
 ### Example
 <!-- STORY -->
