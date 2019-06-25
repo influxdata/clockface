@@ -23,7 +23,7 @@ IndexListHeaderCells have some handy features that making sorting easier. First 
 | `sortDirection` | `Sort` | Keeps track of which direction sorting is happening in |
 | `items` | `[]` | List of items; enables sorting and/or filtering |
 
-Next pass a handler function into each `<IndexList.HeaderCell />` you want to be sortable:
+Next, pass a handler function into each `<IndexList.HeaderCell />` you want to be sortable:
 
 ```js
 private handleSort = (nextSort: Sort, sortKey: string): void => {
