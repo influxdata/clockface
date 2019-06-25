@@ -40,7 +40,7 @@ export class SlideToggle extends Component<Props> {
   }
 
   public render() {
-    const {tooltipText, testID} = this.props
+    const {tooltipText, testID, id} = this.props
 
     return (
       <div
@@ -48,6 +48,7 @@ export class SlideToggle extends Component<Props> {
         onClick={this.handleClick}
         title={tooltipText}
         data-testid={testID}
+        id={id}
       >
         <div className="slide-toggle--knob" />
       </div>

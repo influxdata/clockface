@@ -69,10 +69,11 @@ export class ColorPicker extends Component<Props, State> {
       color,
       colors,
       swatchesPerRow,
+      id,
     } = this.props
 
     return (
-      <div className={this.className} data-testid={testID}>
+      <div className={this.className} data-testid={testID} id={id}>
         <div className="color-picker--swatches">
           {colors &&
             colors.map((color, i) => (

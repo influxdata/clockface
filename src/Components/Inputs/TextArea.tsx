@@ -115,6 +115,7 @@ export class TextArea extends Component<Props> {
       onKeyUp,
       onKeyDown,
       testID,
+      id,
     } = this.props
 
     return (
@@ -143,6 +144,7 @@ export class TextArea extends Component<Props> {
           onKeyDown={onKeyDown}
           onChange={this.handleChange}
           data-testid={testID}
+          id={id}
         />
       </div>
     )

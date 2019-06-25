@@ -24,17 +24,17 @@ interface Props extends StandardProps {
 }
 
 export class FormElement extends Component<Props> {
-  public static readonly displayName = 'Form.Element'
+  public static readonly displayName = 'FormElement'
 
   public static defaultProps = {
     testID: 'form--element',
   }
 
   public render() {
-    const {children, testID} = this.props
+    const {children, testID, id} = this.props
 
     return (
-      <div className={this.className} data-testid={testID}>
+      <div className={this.className} data-testid={testID} id={id}>
         {this.label}
         {children}
         {this.errorMessage}

@@ -23,7 +23,7 @@ export interface IndexHeaderCellProps {
 type Props = IndexHeaderCellProps & StandardProps
 
 export class IndexListHeaderCell extends Component<Props> {
-  public static readonly displayName = 'IndexList.HeaderCell'
+  public static readonly displayName = 'IndexListHeaderCell'
 
   public static defaultProps = {
     columnName: '',
@@ -32,7 +32,7 @@ export class IndexListHeaderCell extends Component<Props> {
   }
 
   public render() {
-    const {columnName, width, testID} = this.props
+    const {columnName, width, testID, id} = this.props
 
     return (
       <th
@@ -40,6 +40,7 @@ export class IndexListHeaderCell extends Component<Props> {
         style={{width}}
         onClick={this.handleClick}
         data-testid={testID}
+        id={id}
       >
         {columnName}
         {this.sortIndicator}

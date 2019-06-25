@@ -24,10 +24,15 @@ export class TechnoSpinner extends Component<Props> {
   }
 
   public render() {
-    const {testID} = this.props
+    const {testID, id} = this.props
 
     return (
-      <div className={this.className} style={this.style} data-testid={testID} />
+      <div
+        className={this.className}
+        style={this.style}
+        data-testid={testID}
+        id={id}
+      />
     )
   }
 

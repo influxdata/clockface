@@ -21,14 +21,14 @@ interface Props extends StandardProps {
 }
 
 export class ColorPickerSwatch extends Component<Props> {
-  public static readonly displayName = 'ColorPicker.Swatch'
+  public static readonly displayName = 'ColorPickerSwatch'
 
   public static defaultProps = {
     testID: 'color-picker',
   }
 
   render() {
-    const {name, hex, testID} = this.props
+    const {name, hex, testID, id} = this.props
 
     return (
       <div
@@ -37,6 +37,7 @@ export class ColorPickerSwatch extends Component<Props> {
         onClick={this.handleClick}
         data-testid={`${testID}--swatch`}
         style={this.style}
+        id={id}
       >
         <span style={{backgroundColor: hex}} />
       </div>

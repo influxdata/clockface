@@ -15,7 +15,7 @@ interface Props extends StandardProps {
 }
 
 export class SlideToggleLabel extends Component<Props> {
-  public static readonly displayName = 'SlideToggle.Label'
+  public static readonly displayName = 'SlideToggleLabel'
 
   public static defaultProps = {
     active: true,
@@ -24,9 +24,10 @@ export class SlideToggleLabel extends Component<Props> {
   }
 
   public render() {
-    const {text, testID} = this.props
+    const {text, testID, id} = this.props
+
     return (
-      <div className={this.className} data-testid={testID}>
+      <div className={this.className} data-testid={testID} id={id}>
         {text}
       </div>
     )

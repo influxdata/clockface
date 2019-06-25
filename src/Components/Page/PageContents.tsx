@@ -18,7 +18,7 @@ interface Props extends StandardProps {
 }
 
 export class PageContents extends Component<Props> {
-  public static readonly displayName = 'Page.Contents'
+  public static readonly displayName = 'PageContents'
 
   public static defaultProps = {
     fullHeight: false,
@@ -27,7 +27,7 @@ export class PageContents extends Component<Props> {
   }
 
   public render() {
-    const {scrollable, testID} = this.props
+    const {scrollable, testID, id} = this.props
 
     if (scrollable) {
       return (
@@ -35,6 +35,7 @@ export class PageContents extends Component<Props> {
           className={this.className}
           autoHide={false}
           testID={testID}
+          id={id}
         >
           <div className="page-contents--padding">{this.children}</div>
         </DapperScrollbars>

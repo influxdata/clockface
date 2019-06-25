@@ -54,6 +54,7 @@ export class ComponentSpacer extends Component<Props> {
       margin,
       testID,
       style,
+      id,
     } = this.props
 
     return (
@@ -69,6 +70,7 @@ export class ComponentSpacer extends Component<Props> {
         })}
         data-testid={testID}
         style={style}
+        id={id}
       >
         {children}
       </div>

@@ -10,17 +10,17 @@ interface Props extends StandardProps {
 }
 
 export class EmptyStateSubText extends Component<Props> {
-  public static readonly displayName = 'EmptyState.SubText'
+  public static readonly displayName = 'EmptyStateSubText'
 
   public static defaultProps = {
     testID: 'empty-state--sub-text',
   }
 
   render() {
-    const {text, testID} = this.props
+    const {text, testID, id} = this.props
 
     return (
-      <p className={this.className} data-testid={testID}>
+      <p className={this.className} data-testid={testID} id={id}>
         {text}
       </p>
     )

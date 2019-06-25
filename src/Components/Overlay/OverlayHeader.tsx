@@ -13,7 +13,7 @@ interface Props extends StandardProps {
 }
 
 export class OverlayHeader extends PureComponent<Props> {
-  public static readonly displayName = 'Overlay.Header'
+  public static readonly displayName = 'OverlayHeader'
 
   public static defaultProps = {
     testID: 'overlay--header',
@@ -24,14 +24,14 @@ export class OverlayHeader extends PureComponent<Props> {
   }
 
   public render() {
-    const {title, onDismiss, children, testID, className} = this.props
+    const {title, onDismiss, children, testID, className, id} = this.props
 
     const classname = classnames('overlay--header', {
       [`${className}`]: className,
     })
 
     return (
-      <div className={classname} data-testid={testID}>
+      <div className={classname} data-testid={testID} id={id}>
         <div className="overlay--title">{title}</div>
         {onDismiss && (
           <button

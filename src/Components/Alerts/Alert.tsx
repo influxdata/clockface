@@ -26,10 +26,10 @@ export class Alert extends Component<Props> {
   }
 
   public render() {
-    const {testID, children, icon} = this.props
+    const {testID, children, icon, id} = this.props
 
     return (
-      <div className={this.className} data-testid={testID}>
+      <div className={this.className} data-testid={testID} id={id}>
         {!!icon && <Icon glyph={icon} className="alert--icon" />}
         <div className="alert--contents">{children}</div>
       </div>

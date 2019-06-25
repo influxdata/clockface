@@ -25,7 +25,7 @@ interface Props extends StandardProps {
 }
 
 export class GridColumn extends Component<Props> {
-  public static readonly displayName = 'Grid.Column'
+  public static readonly displayName = 'GridColumn'
 
   public static defaultProps = {
     testID: 'grid--column',
@@ -33,10 +33,10 @@ export class GridColumn extends Component<Props> {
   }
 
   public render() {
-    const {children, testID} = this.props
+    const {children, testID, id} = this.props
 
     return (
-      <div className={this.className} data-testid={testID}>
+      <div className={this.className} data-testid={testID} id={id}>
         {children}
       </div>
     )

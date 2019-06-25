@@ -78,6 +78,7 @@ export class Button extends Component<Props> {
       type,
       icon,
       size,
+      id,
     } = this.props
 
     if (!icon && !text) {
@@ -98,6 +99,7 @@ export class Button extends Component<Props> {
         shape={shape}
         type={type}
         size={size}
+        id={id}
       >
         {this.iconAndText}
         {this.statusIndicator}

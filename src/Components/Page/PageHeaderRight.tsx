@@ -13,7 +13,7 @@ interface Props extends StandardProps {
 }
 
 export class PageHeaderRight extends Component<Props> {
-  public static readonly displayName = 'Page.Header.Right'
+  public static readonly displayName = 'PageHeaderRight'
 
   public static defaultProps = {
     offsetPixels: DEFAULT_OFFSET,
@@ -21,10 +21,15 @@ export class PageHeaderRight extends Component<Props> {
   }
 
   public render() {
-    const {children, testID} = this.props
+    const {children, testID, id} = this.props
 
     return (
-      <div className={this.className} style={this.style} data-testid={testID}>
+      <div
+        className={this.className}
+        style={this.style}
+        data-testid={testID}
+        id={id}
+      >
         {children}
       </div>
     )

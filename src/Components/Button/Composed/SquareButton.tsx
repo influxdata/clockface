@@ -69,6 +69,7 @@ export class SquareButton extends Component<Props> {
       color,
       type,
       size,
+      id,
     } = this.props
 
     return (
@@ -85,6 +86,7 @@ export class SquareButton extends Component<Props> {
         shape={ButtonShape.Square}
         type={type}
         size={size}
+        id={id}
       >
         {this.icon}
         {this.statusIndicator}

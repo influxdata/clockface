@@ -38,10 +38,10 @@ export class Radio extends Component<Props> {
   public static Button = RadioButton
 
   public render() {
-    const {children, testID} = this.props
+    const {children, testID, id} = this.props
 
     return (
-      <div className={this.containerClassName} data-testid={testID}>
+      <div className={this.containerClassName} data-testid={testID} id={id}>
         {children}
       </div>
     )

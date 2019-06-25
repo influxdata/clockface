@@ -37,17 +37,17 @@ const highlighter = (
 }
 
 export class EmptyStateText extends Component<Props & StandardProps> {
-  public static readonly displayName = 'EmptyState.Text'
+  public static readonly displayName = 'EmptyStateText'
 
   public static defaultProps = {
     testID: 'empty-state--text',
   }
 
   render() {
-    const {text, highlightWords, testID} = this.props
+    const {text, highlightWords, testID, id} = this.props
 
     return (
-      <h4 className={this.className} data-testid={testID}>
+      <h4 className={this.className} data-testid={testID} id={id}>
         {highlighter(text, highlightWords)}
       </h4>
     )

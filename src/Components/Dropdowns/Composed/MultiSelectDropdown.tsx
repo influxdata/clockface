@@ -61,6 +61,7 @@ export class MultiSelectDropdown extends Component<Props> {
 
   public render() {
     const {
+      id,
       testID,
       menuTheme,
       className,
@@ -74,6 +75,7 @@ export class MultiSelectDropdown extends Component<Props> {
 
     return (
       <Dropdown
+        id={id}
         testID={testID}
         className={className}
         widthPixels={widthPixels}

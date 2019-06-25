@@ -7,7 +7,7 @@ import {StandardProps} from '../../Types'
 interface Props extends StandardProps {}
 
 export class FormBox extends Component<Props> {
-  public static readonly displayName = 'Form.Box'
+  public static readonly displayName = 'FormBox'
 
   public static defaultProps = {
     className: '',
@@ -15,10 +15,10 @@ export class FormBox extends Component<Props> {
   }
 
   public render() {
-    const {children, className, testID} = this.props
+    const {children, className, testID, id} = this.props
 
     return (
-      <div className={`form--box ${className}`} data-testid={testID}>
+      <div className={`form--box ${className}`} data-testid={testID} id={id}>
         {children}
       </div>
     )

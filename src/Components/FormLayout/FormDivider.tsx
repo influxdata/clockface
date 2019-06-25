@@ -11,17 +11,22 @@ interface Props extends StandardProps {
 }
 
 export class FormDivider extends Component<Props> {
-  public static readonly displayName = 'Form.Divider'
+  public static readonly displayName = 'FormDivider'
 
   public static defaultProps = {
     testID: 'form--divider',
   }
 
   public render() {
-    const {testID} = this.props
+    const {testID, id} = this.props
 
     return (
-      <div className={this.className} data-testid={testID} style={this.style} />
+      <div
+        className={this.className}
+        data-testid={testID}
+        style={this.style}
+        id={id}
+      />
     )
   }
 

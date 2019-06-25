@@ -15,7 +15,7 @@ interface Props extends StandardProps {
 }
 
 export class NavMenuItem extends PureComponent<Props> {
-  public static readonly displayName = 'NavMenu.Item'
+  public static readonly displayName = 'NavMenuItem'
 
   public static defaultProps = {
     testID: 'nav-menu--item',
@@ -29,6 +29,7 @@ export class NavMenuItem extends PureComponent<Props> {
       className,
       titleLink,
       iconLink,
+      id,
     } = this.props
 
     return (
@@ -38,6 +39,7 @@ export class NavMenuItem extends PureComponent<Props> {
           [`${className}`]: className,
         })}
         data-testid={testID}
+        id={id}
       >
         {iconLink('nav--item-icon')}
         <div className="nav--item-menu">

@@ -13,7 +13,7 @@ interface Props extends StandardProps {
 }
 
 export class IndexListRowCell extends Component<Props> {
-  public static readonly displayName = 'IndexList.Cell'
+  public static readonly displayName = 'IndexListCell'
 
   public static defaultProps = {
     alignment: Alignment.Left,
@@ -22,11 +22,11 @@ export class IndexListRowCell extends Component<Props> {
   }
 
   public render() {
-    const {children, testID} = this.props
+    const {children, testID, id} = this.props
 
     return (
       <td className={this.className}>
-        <div className="index-list--cell" data-testid={testID}>
+        <div className="index-list--cell" data-testid={testID} id={id}>
           {children}
         </div>
       </td>

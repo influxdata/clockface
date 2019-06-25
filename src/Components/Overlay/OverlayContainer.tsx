@@ -11,7 +11,7 @@ interface Props extends StandardProps {
 }
 
 export class OverlayContainer extends PureComponent<Props> {
-  public static readonly displayName = 'Overlay.Container'
+  public static readonly displayName = 'OverlayContainer'
 
   public static defaultProps = {
     maxWidth: 800,
@@ -19,7 +19,7 @@ export class OverlayContainer extends PureComponent<Props> {
   }
 
   public render() {
-    const {children, className, testID} = this.props
+    const {children, className, testID, id} = this.props
 
     return (
       <div
@@ -28,6 +28,7 @@ export class OverlayContainer extends PureComponent<Props> {
         })}
         data-testid={testID}
         style={this.style}
+        id={id}
       >
         {children}
       </div>

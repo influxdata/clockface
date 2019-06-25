@@ -25,7 +25,7 @@ export class SparkleSpinner extends PureComponent<Props> {
   }
 
   public render() {
-    const {testID, sizePixels} = this.props
+    const {testID, sizePixels, id} = this.props
 
     const style = {
       width: `${sizePixels}px`,
@@ -33,7 +33,12 @@ export class SparkleSpinner extends PureComponent<Props> {
     }
 
     return (
-      <div className={this.className} data-testid={testID} style={style}>
+      <div
+        className={this.className}
+        data-testid={testID}
+        style={style}
+        id={id}
+      >
         <svg
           version="1.1"
           id="sparkle_spinner"

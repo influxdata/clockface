@@ -17,21 +17,21 @@ import {
 interface Props extends StandardProps {}
 
 export class OverlayFooter extends PureComponent<Props> {
-  public static readonly displayName = 'Overlay.Footer'
+  public static readonly displayName = 'OverlayFooter'
 
   public static defaultProps = {
     testID: 'overlay--footer',
   }
 
   public render() {
-    const {children, className, testID} = this.props
+    const {children, className, testID, id} = this.props
 
     const classname = classnames('overlay--footer', {
       [`${className}`]: className,
     })
 
     return (
-      <div className={classname} data-testid={testID}>
+      <div className={classname} data-testid={testID} id={id}>
         <ComponentSpacer
           margin={ComponentSize.Small}
           direction={FlexDirection.Row}

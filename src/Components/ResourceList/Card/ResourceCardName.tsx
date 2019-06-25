@@ -22,10 +22,10 @@ export class ResourceCardName extends Component<Props> {
   }
 
   public render() {
-    const {name, testID} = this.props
+    const {name, testID, id} = this.props
 
     return (
-      <div className="resource-name" data-testid={testID}>
+      <div className="resource-name" data-testid={testID} id={id}>
         <span className="resource-name--link" onClick={this.handleClick}>
           <span>{name}</span>
         </span>

@@ -17,10 +17,10 @@ export class FormHelpText extends Component<Props> {
   }
 
   public render() {
-    const {text, testID} = this.props
+    const {text, testID, id} = this.props
 
     return (
-      <span className={this.className} data-testid={testID}>
+      <span className={this.className} data-testid={testID} id={id}>
         {text}
       </span>
     )

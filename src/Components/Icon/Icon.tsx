@@ -19,14 +19,19 @@ export class Icon extends Component<Props> {
   }
 
   render() {
-    const {glyph, testID} = this.props
+    const {glyph, testID, id} = this.props
 
     const className = this.props.className
       ? `icon ${glyph} ${this.props.className}`
       : `icon ${glyph}`
 
     return (
-      <span className={className} data-testid={testID} style={this.style} />
+      <span
+        className={className}
+        data-testid={testID}
+        style={this.style}
+        id={id}
+      />
     )
   }
 

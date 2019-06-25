@@ -37,7 +37,7 @@ interface Props extends StandardProps {
 }
 
 export class DropdownButton extends Component<Props> {
-  public static readonly displayName = 'Dropdown.Button'
+  public static readonly displayName = 'DropdownButton'
 
   public static defaultProps = {
     color: ComponentColor.Default,
@@ -57,6 +57,7 @@ export class DropdownButton extends Component<Props> {
       active,
       size,
       color,
+      id,
     } = this.props
     return (
       <ButtonBase
@@ -70,6 +71,7 @@ export class DropdownButton extends Component<Props> {
         active={active}
         color={color}
         size={size}
+        id={id}
       >
         {!!icon && <Icon glyph={icon} className="dropdown--icon" />}
         <span className="dropdown--selected">{children}</span>

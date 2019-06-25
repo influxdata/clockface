@@ -12,18 +12,18 @@ interface Props extends StandardProps {
 }
 
 export class IndexListBody extends Component<Props> {
-  public static readonly displayName = 'IndexList.Body'
+  public static readonly displayName = 'IndexListBody'
 
   public static defaultProps = {
     testID: 'index-list--body',
   }
 
   public render() {
-    const {children, columnCount, emptyState, testID} = this.props
+    const {children, columnCount, emptyState, testID, id} = this.props
 
     if (React.Children.count(children)) {
       return (
-        <tbody className={this.className} data-testid={testID}>
+        <tbody className={this.className} data-testid={testID} id={id}>
           {children}
         </tbody>
       )

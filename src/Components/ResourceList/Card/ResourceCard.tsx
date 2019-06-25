@@ -42,10 +42,10 @@ export class ResourceCard extends PureComponent<Props> {
   public static Description = ResourceCardDescription
 
   public render() {
-    const {description, labels, children, testID, name} = this.props
+    const {description, labels, children, testID, name, id} = this.props
 
     return (
-      <div className={this.className} data-testid={testID}>
+      <div className={this.className} data-testid={testID} id={id}>
         {this.toggle}
         <div className="resource-card--contents">
           <div className="resource-card--row">{name}</div>

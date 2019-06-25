@@ -23,14 +23,14 @@ export class SpinnerContainer extends Component<Props> {
   }
 
   public render() {
-    const {loading, children, spinnerComponent, testID} = this.props
+    const {loading, children, spinnerComponent, testID, id} = this.props
 
     if (
       loading === RemoteDataState.Loading ||
       loading === RemoteDataState.NotStarted
     ) {
       return (
-        <div className={this.className} data-testid={testID}>
+        <div className={this.className} data-testid={testID} id={id}>
           {spinnerComponent}
         </div>
       )

@@ -24,7 +24,7 @@ interface Props extends StandardProps {
 }
 
 export class DropdownMenu extends Component<Props> {
-  public static readonly displayName = 'Dropdown.Menu'
+  public static readonly displayName = 'DropdownMenu'
 
   public static defaultProps = {
     theme: DropdownMenuTheme.Sapphire,
@@ -42,6 +42,7 @@ export class DropdownMenu extends Component<Props> {
       noScrollX,
       noScrollY,
       onCollapse,
+      id,
     } = this.props
 
     const {thumbStartColor, thumbStopColor} = this.thumbColorsFromTheme
@@ -66,7 +67,7 @@ export class DropdownMenu extends Component<Props> {
           noScrollX={noScrollX}
           noScrollY={noScrollY}
         >
-          <div className="dropdown-menu--contents" data-testid={testID}>
+          <div className="dropdown-menu--contents" data-testid={testID} id={id}>
             {children}
           </div>
         </DapperScrollbars>
