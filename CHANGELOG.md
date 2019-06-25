@@ -2,6 +2,8 @@
 
 #### 0.0.16
 
+- [#161](https://github.com/influxdata/clockface/pull/161): Remove `.` from all `displayName` properties
+- [#161](https://github.com/influxdata/clockface/pull/161): Add `id` to all components via `StandardProps`
 - [#159](https://github.com/influxdata/clockface/pull/159): Port `ResourceList` and `ResourceCard` component families from InfluxDB
 - [#157](https://github.com/influxdata/clockface/pull/157): Add display names to all components so they are legible despite minification in the React inspector
 - [#155](https://github.com/influxdata/clockface/pull/155): Add markdown documentation for `Radio` component family
