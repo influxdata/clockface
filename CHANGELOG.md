@@ -2,6 +2,7 @@
 
 #### 0.0.16
 
+- [#163](https://github.com/influxdata/clockface/pull/163): Make `Panel` component optionally dismissable
 - [#161](https://github.com/influxdata/clockface/pull/161): Remove `.` from all `displayName` properties
 - [#161](https://github.com/influxdata/clockface/pull/161): Add `id` to all components via `StandardProps`
 - [#159](https://github.com/influxdata/clockface/pull/159): Port `ResourceList` and `ResourceCard` component families from InfluxDB
