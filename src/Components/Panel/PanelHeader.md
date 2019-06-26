@@ -5,11 +5,10 @@ Panel Headers are best used to denote the title of a panel. They can be accessed
 ### Usage
 ```js
 import {Panel} from '@influxdata/clockface'
-
+```
+```js
 <Panel.Header>
-
   // Children
-
 </Panel.Header>
 ```
 

@@ -19,6 +19,8 @@
 }
 
 .panel--title {
+  font-style: normal;
+  font-weight: 600;
   letter-spacing: 0.015em;
   margin: 0;
   line-height: 1em;
@@ -30,45 +32,114 @@
   align-items: center;
 }
 
+.panel--body {
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
 .panel--footer {
   border-radius: 0 0 $cf-radius $cf-radius;
   background-color: rgba($g0-obsidian, 0.1);
 }
 
 /*
+  Dismissable Panel
+  ------------------------------------------------------------------------------
+*/
+
+$panel--dismiss-button: 30px;
+
+.panel__dismissable {
+  position: relative;
+
+  > .panel--header {
+    padding-right: 40px;
+  }
+}
+
+.panel--dismiss {
+  position: absolute;
+  background-color: transparent;
+  border: 0;
+  transition: opacity 0.25s ease;
+  opacity: 0.4;
+  outline: none;
+
+  &:before,
+  &:after {
+    content: '';
+    height: $cf-border;
+    border-radius: $cf-border / 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+
+  &:before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &:after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  &:hover {
+    cursor: pointer;
+    opacity: 1;
+  }
+}
+
+/*
   Size Modifiers
   ------------------------------------------------------------------------------
 */
-@mixin panelSizeModifier($fontSize, $fontWeight, $padding) {
+@mixin panelSizeModifier($fontSize, $fontWeight, $padding, $dismissSize) {
   > .panel--header {
-    padding: $padding;
+    padding: $padding * 2;
   }
   > .panel--body {
-    padding: ($padding / 2) $padding;
+    font-size: $fontSize;
+    padding: $padding * 2;
   }
   > .panel--header + .panel--body {
     padding-top: 0;
   }
-  > .panel--title {
+  > .panel--header > .panel--title {
     font-weight: $fontWeight;
-    font-size: $fontSize;
+    font-size: $fontSize * 1.5;
   }
   > .panel--footer {
-    padding: ($padding / 2) $padding;
+    padding: $padding ($padding * 2);
+  }
+  &.panel__dismissable > .panel--header {
+    padding-right: $dismissSize + $padding;
+  }
+
+  .panel--dismiss {
+    width: $dismissSize - $cf-border;
+    height: $dismissSize - $cf-border;
+    top: ($padding / 2);
+    right: ($padding / 2);
+  }
+
+  .panel--dismiss:before,
+  .panel--dismiss:after {
+    width: $dismissSize * 0.55;
   }
 }
 
 .panel--xs {
-  @include panelSizeModifier(13px, 600, $cf-marg-b + $cf-marg-a);
+  @include panelSizeModifier($form-xs-font, 600, $form-xs-padding, $form-xs-height);
 }
 .panel--sm {
-  @include panelSizeModifier(17px, 500, $cf-marg-c);
+  @include panelSizeModifier($form-sm-font, 500, $form-sm-padding, $form-sm-height);
 }
 .panel--md {
-  @include panelSizeModifier(19px, 500, $cf-marg-d);
+  @include panelSizeModifier($form-md-font, 500, $form-md-padding, $form-md-height);
 }
 .panel--lg {
-  @include panelSizeModifier(26px, 400, $cf-marg-d);
+  @include panelSizeModifier($form-lg-font, 400, $form-lg-padding, $form-md-height);
 }
 
 /*
@@ -78,11 +149,15 @@
 
 .panel__dark-text {
   > .panel--header > .panel--title {
-    color: $g3-castle;
+    color: $g4-onyx;
   }
   > .panel--body,
   > .panel--footer {
-    color: rgba($g3-castle, 0.75);
+    color: rgba($g4-onyx, 0.75);
+  }
+  > .panel--dismiss:before,
+  > .panel--dismiss:after {
+    background-color: $g4-onyx;
   }
 }
 
@@ -94,10 +169,17 @@
   > .panel--footer {
     color: rgba($g18-cloud, 0.75);
   }
+  > .panel--dismiss:before,
+  > .panel--dismiss:after {
+    background-color: $g18-cloud;
+  }
 }
 
-//  Horizontal Rules directly inside Panels
-//  ----------------------------------------------------------------------------
+/*
+  Horizontal Rules directly inside Panels
+  ------------------------------------------------------------------------------
+*/
+
 .panel--body hr {
   margin: $cf-marg-c 0;
 }
