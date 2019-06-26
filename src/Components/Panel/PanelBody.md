@@ -5,11 +5,10 @@ Panel Body is for containing the main content of a panel. It can be accessed via
 ### Usage
 ```js
 import {Panel} from '@influxdata/clockface'
-
+```
+```js
 <Panel.Body>
-
   // Children
-
 </Panel.Body>
 ```
 
