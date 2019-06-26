@@ -32,6 +32,12 @@
   align-items: center;
 }
 
+.panel--body {
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
 .panel--footer {
   border-radius: 0 0 $cf-radius $cf-radius;
   background-color: rgba($g0-obsidian, 0.1);
@@ -54,8 +60,6 @@ $panel--dismiss-button: 30px;
 
 .panel--dismiss {
   position: absolute;
-  top: $cf-border;
-  right: $cf-border;
   background-color: transparent;
   border: 0;
   transition: opacity 0.25s ease;
@@ -92,28 +96,31 @@ $panel--dismiss-button: 30px;
 */
 @mixin panelSizeModifier($fontSize, $fontWeight, $padding, $dismissSize) {
   > .panel--header {
-    padding: $padding;
+    padding: $padding * 2;
   }
   > .panel--body {
-    padding: ($padding / 2) $padding;
+    font-size: $fontSize;
+    padding: $padding * 2;
   }
   > .panel--header + .panel--body {
     padding-top: 0;
   }
-  > .panel--title {
+  > .panel--header > .panel--title {
     font-weight: $fontWeight;
-    font-size: $fontSize;
+    font-size: $fontSize * 1.5;
   }
   > .panel--footer {
-    padding: ($padding / 2) $padding;
+    padding: $padding ($padding * 2);
   }
   &.panel__dismissable > .panel--header {
-    padding-right: $dismissSize;
+    padding-right: $dismissSize + $padding;
   }
 
   .panel--dismiss {
     width: $dismissSize - $cf-border;
     height: $dismissSize - $cf-border;
+    top: ($padding / 2);
+    right: ($padding / 2);
   }
 
   .panel--dismiss:before,
@@ -123,16 +130,16 @@ $panel--dismiss-button: 30px;
 }
 
 .panel--xs {
-  @include panelSizeModifier(13px, 600, $cf-marg-b + $cf-marg-a, $form-xs-height);
+  @include panelSizeModifier($form-xs-font, 600, $form-xs-padding, $form-xs-height);
 }
 .panel--sm {
-  @include panelSizeModifier(17px, 500, $cf-marg-c, $form-sm-height);
+  @include panelSizeModifier($form-sm-font, 500, $form-sm-padding, $form-sm-height);
 }
 .panel--md {
-  @include panelSizeModifier(19px, 500, $cf-marg-d, $form-md-height);
+  @include panelSizeModifier($form-md-font, 500, $form-md-padding, $form-md-height);
 }
 .panel--lg {
-  @include panelSizeModifier(26px, 400, $cf-marg-d, $form-lg-height);
+  @include panelSizeModifier($form-lg-font, 400, $form-lg-padding, $form-md-height);
 }
 
 /*
