@@ -10,9 +10,16 @@ import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {Panel} from './Panel'
+import {Button} from '../Button/Composed/Button'
 
 // Types
-import {Gradients, ComponentSize, InfluxColors} from '../../Types'
+import {
+  Gradients,
+  ComponentSize,
+  InfluxColors,
+  ComponentColor,
+  IconFont,
+} from '../../Types'
 
 // Notes
 const ExampleReadme = marked(require('./README.md'))
@@ -142,6 +149,45 @@ panelExampleStories.add(
         <Panel.Header title="Danger Zone!" />
         <Panel.Body>
           <p>These actions can have unintended wide-reaching consequences</p>
+        </Panel.Body>
+      </Panel>
+    </div>
+  ),
+  {
+    readme: {
+      content: ExampleReadme,
+    },
+  }
+)
+
+panelExampleStories.add(
+  'Dismissable Panel',
+  () => (
+    <div className="story--example">
+      <Panel
+        size={
+          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+        }
+        gradient={
+          Gradients[
+            select(
+              'gradient',
+              {None: 'none', ...mapEnumKeys(Gradients)},
+              'GundamPilot'
+            )
+          ]
+        }
+        onDismiss={() => alert('onDismiss clicked!')}
+      >
+        <Panel.Header title="Welcome!" />
+        <Panel.Body>
+          <h5>We've built a lot of cool new things to make your life easier</h5>
+          <Button
+            icon={IconFont.CaretRight}
+            placeIconAfterText={true}
+            text="Take the Tour"
+            color={ComponentColor.Secondary}
+          />
         </Panel.Body>
       </Panel>
     </div>

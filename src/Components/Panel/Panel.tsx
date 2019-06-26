@@ -30,6 +30,8 @@ interface Props extends StandardProps {
   backgroundColor: InfluxColors | string
   /** Controls header font size and padding of Panel */
   size: ComponentSize
+  /** If a function is passed in a dismiss button will appear on the Panel */
+  onDismiss?: () => void
 }
 
 export class Panel extends Component<Props> {
@@ -46,35 +48,30 @@ export class Panel extends Component<Props> {
   public static Footer = PanelFooter
 
   public render() {
-    const {children, className, gradient, size, testID, id} = this.props
+    const {children, testID, id} = this.props
 
     return (
       <div
-        className={classnames(`panel panel--${size}`, {
-          [`${className}`]: className,
-          panel__gradient: gradient,
-          [`panel__${this.useContrastText}-text`]: this.useContrastText,
-        })}
+        className={this.className}
         style={this.style}
         data-testid={testID}
         id={id}
       >
+        {this.dismissButton}
         {children}
       </div>
     )
   }
 
-  private get useContrastText(): string {
-    const {gradient, backgroundColor} = this.props
+  private get className(): string {
+    const {className, gradient, size, onDismiss} = this.props
 
-    const mediumGrey = 0.34
-
-    if (gradient) {
-      const {start} = getColorsFromGradient(gradient)
-      return chroma(start).luminance() >= mediumGrey ? 'dark' : 'light'
-    }
-
-    return chroma(backgroundColor).luminance() >= mediumGrey ? 'dark' : 'light'
+    return classnames(`panel panel--${size}`, {
+      [`${className}`]: className,
+      panel__gradient: gradient,
+      panel__dismissable: onDismiss,
+      [`panel__${this.useContrastText}-text`]: this.useContrastText,
+    })
   }
 
   private get style(): CSSProperties | undefined {
@@ -91,5 +88,30 @@ export class Panel extends Component<Props> {
     }
 
     return {backgroundColor}
+  }
+
+  private get useContrastText(): string {
+    const {gradient, backgroundColor} = this.props
+
+    const mediumGrey = 0.34
+
+    if (gradient) {
+      const {start} = getColorsFromGradient(gradient)
+      return chroma(start).luminance() >= mediumGrey ? 'dark' : 'light'
+    }
+
+    return chroma(backgroundColor).luminance() >= mediumGrey ? 'dark' : 'light'
+  }
+
+  private get dismissButton(): JSX.Element | undefined {
+    const {onDismiss} = this.props
+
+    if (onDismiss) {
+      return (
+        <button className="panel--dismiss" type="button" onClick={onDismiss} />
+      )
+    }
+
+    return
   }
 }
