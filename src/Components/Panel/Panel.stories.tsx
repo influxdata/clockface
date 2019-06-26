@@ -10,16 +10,9 @@ import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {Panel} from './Panel'
-import {Button} from '../Button/Composed/Button'
 
 // Types
-import {
-  Gradients,
-  ComponentSize,
-  InfluxColors,
-  ComponentColor,
-  IconFont,
-} from '../../Types'
+import {Gradients, ComponentSize, InfluxColors} from '../../Types'
 
 // Notes
 const ExampleReadme = marked(require('./README.md'))
@@ -182,12 +175,9 @@ panelExampleStories.add(
         <Panel.Header title="Welcome!" />
         <Panel.Body>
           <h5>We've built a lot of cool new things to make your life easier</h5>
-          <Button
-            icon={IconFont.CaretRight}
-            placeIconAfterText={true}
-            text="Take the Tour"
-            color={ComponentColor.Secondary}
-          />
+          <h5>
+            <a href="#">Click Here</a> to take the tour
+          </h5>
         </Panel.Body>
       </Panel>
     </div>
