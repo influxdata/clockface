@@ -11,12 +11,8 @@ import {jsxDecorator} from 'storybook-addon-jsx'
 import {DapperScrollbars} from './DapperScrollbars'
 
 // Notes
-const DapperScrollbarsExample1Readme = marked(
-  require('./DapperScrollbarsExample1.md')
-)
-const DapperScrollbarsExample2Readme = marked(
-  require('./DapperScrollbarsExample2.md')
-)
+import DapperScrollbarsExample1Readme from './DapperScrollbarsExample1.md'
+import DapperScrollbarsExample2Readme from './DapperScrollbarsExample2.md'
 
 const scrollbarStories = storiesOf('Utilities|Scrollbars', module)
   .addDecorator(withKnobs)
@@ -52,7 +48,7 @@ scrollbarStories.add(
   ),
   {
     readme: {
-      content: DapperScrollbarsExample1Readme,
+      content: marked(DapperScrollbarsExample1Readme),
     },
   }
 )
@@ -82,7 +78,7 @@ scrollbarStories.add(
   ),
   {
     readme: {
-      content: DapperScrollbarsExample2Readme,
+      content: marked(DapperScrollbarsExample2Readme),
     },
   }
 )

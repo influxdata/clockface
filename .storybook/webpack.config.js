@@ -32,7 +32,13 @@ module.exports = ({config}) => {
         'style-loader',
         'css-loader',
         'resolve-url-loader',
-        'sass-loader?sourceMap',
+        {
+          loader: 'sass-loader',
+          options: {
+            implementation: require('sass'),
+            sourceMap: true,
+          },
+        },
       ],
       include: path.resolve(__dirname, '../'),
     }

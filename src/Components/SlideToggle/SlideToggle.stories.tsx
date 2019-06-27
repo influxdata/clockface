@@ -6,7 +6,7 @@ import marked from 'marked'
 import {storiesOf} from '@storybook/react'
 import {withKnobs, text, select, boolean} from '@storybook/addon-knobs'
 import {withState} from '@dump247/storybook-state'
-import {mapEnumKeys} from '../../../.storybook/utils'
+import {mapEnumKeys} from '../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
@@ -22,12 +22,10 @@ import {
 } from '../../Types'
 
 // Notes
-const SlideToggleReadme = marked(require('./SlideToggle.md'))
-const SlideToggleLabelReadme = marked(require('./SlideToggleLabel.md'))
-const ControlsListReadme = marked(require('./ControlsList.md'))
-const SlideToggleWithLabelsReadme = marked(
-  require('./SlideToggleWithLabels.md')
-)
+import SlideToggleReadme from './SlideToggle.md'
+import SlideToggleLabelReadme from './SlideToggleLabel.md'
+import ControlsListReadme from './ControlsList.md'
+import SlideToggleWithLabelsReadme from './SlideToggleWithLabels.md'
 
 // State
 interface StoryState {
@@ -75,7 +73,7 @@ slideToggleStories.add(
   ),
   {
     readme: {
-      content: SlideToggleReadme,
+      content: marked(SlideToggleReadme),
     },
   }
 )
@@ -95,7 +93,7 @@ slideToggleStories.add(
   ),
   {
     readme: {
-      content: SlideToggleLabelReadme,
+      content: marked(SlideToggleLabelReadme),
     },
   }
 )
@@ -140,7 +138,7 @@ slideToggleExampleStories.add(
   ),
   {
     readme: {
-      content: SlideToggleWithLabelsReadme,
+      content: marked(SlideToggleWithLabelsReadme),
     },
   }
 )
@@ -224,7 +222,7 @@ slideToggleExampleStories.add(
   )),
   {
     readme: {
-      content: ControlsListReadme,
+      content: marked(ControlsListReadme),
     },
   }
 )

@@ -5,7 +5,7 @@ import marked from 'marked'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, text, select, array} from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../../.storybook/utils'
+import {mapEnumKeys} from '../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
@@ -18,11 +18,11 @@ import {Button} from '../Button/Composed/Button'
 import {ComponentSize, ComponentColor, IconFont} from '../../Types'
 
 // Notes
-const EmptyStateReadme = marked(require('./EmptyState.md'))
-const EmptyStateTextReadme = marked(require('./EmptyStateText.md'))
-const EmptyStateSubTextReadme = marked(require('./EmptyStateSubText.md'))
-const EmptyStateExampleAReadme = marked(require('./EmptyStateExampleA.md'))
-const EmptyStateExampleBReadme = marked(require('./EmptyStateExampleB.md'))
+import EmptyStateReadme from './EmptyState.md'
+import EmptyStateTextReadme from './EmptyStateText.md'
+import EmptyStateSubTextReadme from './EmptyStateSubText.md'
+import EmptyStateExampleAReadme from './EmptyStateExampleA.md'
+import EmptyStateExampleBReadme from './EmptyStateExampleB.md'
 
 const emptyStateStories = storiesOf('Components|Empty States/Family', module)
   .addDecorator(withKnobs)
@@ -54,7 +54,7 @@ emptyStateExampleStories.add(
   ),
   {
     readme: {
-      content: EmptyStateExampleAReadme,
+      content: marked(EmptyStateExampleAReadme),
     },
   }
 )
@@ -71,7 +71,7 @@ emptyStateExampleStories.add(
   ),
   {
     readme: {
-      content: EmptyStateExampleBReadme,
+      content: marked(EmptyStateExampleBReadme),
     },
   }
 )
@@ -89,7 +89,7 @@ emptyStateStories.add(
   ),
   {
     readme: {
-      content: EmptyStateReadme,
+      content: marked(EmptyStateReadme),
     },
   }
 )
@@ -109,7 +109,7 @@ emptyStateStories.add(
   ),
   {
     readme: {
-      content: EmptyStateTextReadme,
+      content: marked(EmptyStateTextReadme),
     },
   }
 )
@@ -123,7 +123,7 @@ emptyStateStories.add(
   ),
   {
     readme: {
-      content: EmptyStateSubTextReadme,
+      content: marked(EmptyStateSubTextReadme),
     },
   }
 )

@@ -6,7 +6,7 @@ import marked from 'marked'
 import {storiesOf} from '@storybook/react'
 import {jsxDecorator} from 'storybook-addon-jsx'
 import {withKnobs, text, select} from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../../.storybook/utils'
+import {mapEnumKeys} from '../../Utils/storybook'
 
 // Components
 import {Alert} from './Alert'
@@ -14,8 +14,7 @@ import {Alert} from './Alert'
 // Types
 import {ComponentColor, IconFont} from '../../Types/index'
 
-// Notes
-const AlertReadme = marked(require('./Alert.md'))
+import AlertReadme from './Alert.md'
 
 const alertStories = storiesOf('Atomic|Alert', module)
   .addDecorator(withKnobs)
@@ -47,7 +46,7 @@ alertStories.add(
   ),
   {
     readme: {
-      content: AlertReadme,
+      content: marked(AlertReadme),
     },
   }
 )

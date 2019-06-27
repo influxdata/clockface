@@ -5,7 +5,7 @@ import marked from 'marked'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, select, color, number} from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../../.storybook/utils'
+import {mapEnumKeys} from '../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
@@ -15,7 +15,7 @@ import {Icon} from './Icon'
 import {IconFont} from '../../Types'
 
 // Notes
-const IconReadme = marked(require('./Icon.md'))
+import IconReadme from './Icon.md'
 
 const iconStories = storiesOf('Atomic|Icon', module)
   .addDecorator(withKnobs)
@@ -36,7 +36,7 @@ iconStories.add(
   ),
   {
     readme: {
-      content: IconReadme,
+      content: marked(IconReadme),
     },
   }
 )

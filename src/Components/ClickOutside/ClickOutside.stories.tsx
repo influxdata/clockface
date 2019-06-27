@@ -10,7 +10,7 @@ import {jsxDecorator} from 'storybook-addon-jsx'
 import {ClickOutside} from './ClickOutside'
 
 // Notes
-const ClickOutsideReadme = marked(require('./ClickOutside.md'))
+import ClickOutsideReadme from './ClickOutside.md'
 
 const clickOutsideStories = storiesOf(
   'Utilities|ClickOutside',
@@ -28,7 +28,7 @@ clickOutsideStories.add(
   ),
   {
     readme: {
-      content: ClickOutsideReadme,
+      content: marked(ClickOutsideReadme),
     },
   }
 )

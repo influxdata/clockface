@@ -6,7 +6,7 @@ import marked from 'marked'
 import {storiesOf} from '@storybook/react'
 import {jsxDecorator} from 'storybook-addon-jsx'
 import {withKnobs, text, select, boolean} from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../../.storybook/utils'
+import {mapEnumKeys} from '../../Utils/storybook'
 
 // Components
 import {Button} from './Composed/Button'
@@ -24,9 +24,9 @@ import {
 } from '../../Types'
 
 // Notes
-const ButtonBaseReadme = marked(require('./Base/ButtonBase.md'))
-const ButtonReadme = marked(require('./Composed/Button.md'))
-const SquareButtonReadme = marked(require('./Composed/SquareButton.md'))
+import ButtonBaseReadme from './Base/ButtonBase.md'
+import ButtonReadme from './Composed/Button.md'
+import SquareButtonReadme from './Composed/SquareButton.md'
 
 const buttonBaseStories = storiesOf('Components|Buttons/Base', module)
   .addDecorator(withKnobs)
@@ -73,7 +73,7 @@ buttonComposedStories.add(
   ),
   {
     readme: {
-      content: ButtonReadme,
+      content: marked(ButtonReadme),
     },
   }
 )
@@ -106,7 +106,7 @@ buttonComposedStories.add(
   ),
   {
     readme: {
-      content: SquareButtonReadme,
+      content: marked(SquareButtonReadme),
     },
   }
 )
@@ -143,7 +143,7 @@ buttonBaseStories.add(
   ),
   {
     readme: {
-      content: ButtonBaseReadme,
+      content: marked(ButtonBaseReadme),
     },
   }
 )

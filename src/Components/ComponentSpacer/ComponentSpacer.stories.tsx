@@ -5,7 +5,7 @@ import marked from 'marked'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, select, boolean} from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../../.storybook/utils'
+import {mapEnumKeys} from '../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
@@ -20,7 +20,7 @@ import {
 } from '../../Types'
 
 // Notes
-const ComponentSpacerReadme = marked(require('./ComponentSpacer.md'))
+import ComponentSpacerReadme from './ComponentSpacer.md'
 
 const componentSpacerStories = storiesOf('Layout|ComponentSpacer', module)
   .addDecorator(withKnobs)
@@ -75,7 +75,7 @@ componentSpacerStories.add(
   ),
   {
     readme: {
-      content: ComponentSpacerReadme,
+      content: marked(ComponentSpacerReadme),
     },
   }
 )

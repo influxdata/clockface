@@ -1,1 +1,5 @@
-.rts*
+*
+!dist/**/*
+!README.md
+!LICENSE
+!CHANGELOG.md

@@ -14,7 +14,7 @@ import {
   object,
   number,
 } from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../../.storybook/utils'
+import {mapEnumKeys} from '../../Utils/storybook'
 
 // Components
 import {ResourceList} from './List/ResourceList'
@@ -42,20 +42,16 @@ import {
 } from '../../Types'
 
 // Notes
-const ResourceListReadme = marked(require('./List/ResourceList.md'))
-const ResourceListHeaderReadme = marked(require('./List/ResourceListHeader.md'))
-const ResourceListBodyReadme = marked(require('./List/ResourceListBody.md'))
-const ResourceListSorterReadme = marked(require('./List/ResourceListSorter.md'))
-const ResourceCardReadme = marked(require('./Card/ResourceCard.md'))
-const ResourceCardDescriptionReadme = marked(
-  require('./Card/ResourceCardDescription.md')
-)
-const ResourceCardNameReadme = marked(require('./Card/ResourceCardName.md'))
-const ResourceCardEditableNameReadme = marked(
-  require('./Card/ResourceCardEditableName.md')
-)
-const ResourceListExampleReadme = marked(require('./ResourceListExample.md'))
-const ResourceCardExampleReadme = marked(require('./ResourceCardExample.md'))
+import ResourceListReadme from './List/ResourceList.md'
+import ResourceListHeaderReadme from './List/ResourceListHeader.md'
+import ResourceListBodyReadme from './List/ResourceListBody.md'
+import ResourceListSorterReadme from './List/ResourceListSorter.md'
+import ResourceCardReadme from './Card/ResourceCard.md'
+import ResourceCardDescriptionReadme from './Card/ResourceCardDescription.md'
+import ResourceCardNameReadme from './Card/ResourceCardName.md'
+import ResourceCardEditableNameReadme from './Card/ResourceCardEditableName.md'
+import ResourceListExampleReadme from './ResourceListExample.md'
+import ResourceCardExampleReadme from './ResourceCardExample.md'
 
 const indexListStories = storiesOf(
   'Components|ResourceList/List Family',
@@ -87,7 +83,7 @@ indexListStories.add(
   ),
   {
     readme: {
-      content: ResourceListReadme,
+      content: marked(ResourceListReadme),
     },
   }
 )
@@ -132,7 +128,7 @@ indexListStories.add(
   ),
   {
     readme: {
-      content: ResourceListHeaderReadme,
+      content: marked(ResourceListHeaderReadme),
     },
   }
 )
@@ -150,7 +146,7 @@ indexListStories.add(
   ),
   {
     readme: {
-      content: ResourceListBodyReadme,
+      content: marked(ResourceListBodyReadme),
     },
   }
 )
@@ -171,7 +167,7 @@ indexListStories.add(
   ),
   {
     readme: {
-      content: ResourceListSorterReadme,
+      content: marked(ResourceListSorterReadme),
     },
   }
 )
@@ -212,7 +208,7 @@ indexListCardStories.add(
   ),
   {
     readme: {
-      content: ResourceCardReadme,
+      content: marked(ResourceCardReadme),
     },
   }
 )
@@ -233,7 +229,7 @@ indexListCardStories.add(
   ),
   {
     readme: {
-      content: ResourceCardDescriptionReadme,
+      content: marked(ResourceCardDescriptionReadme),
     },
   }
 )
@@ -250,7 +246,7 @@ indexListCardStories.add(
   ),
   {
     readme: {
-      content: ResourceCardNameReadme,
+      content: marked(ResourceCardNameReadme),
     },
   }
 )
@@ -270,7 +266,7 @@ indexListCardStories.add(
   ),
   {
     readme: {
-      content: ResourceCardEditableNameReadme,
+      content: marked(ResourceCardEditableNameReadme),
     },
   }
 )
@@ -388,7 +384,7 @@ indexListExampleStories.add(
   ),
   {
     readme: {
-      content: ResourceListExampleReadme,
+      content: marked(ResourceListExampleReadme),
     },
   }
 )
@@ -468,7 +464,7 @@ indexListExampleStories.add(
   ),
   {
     readme: {
-      content: ResourceCardExampleReadme,
+      content: marked(ResourceCardExampleReadme),
     },
   }
 )

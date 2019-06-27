@@ -5,7 +5,7 @@ import marked from 'marked'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, select, text, boolean} from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../../.storybook/utils'
+import {mapEnumKeys} from '../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
@@ -21,7 +21,7 @@ import {TableHeaderCell} from './TableHeaderCell'
 import {Alignment, ComponentSize, BorderType, ComponentColor} from '../../Types'
 
 // Notes
-const TableReadme = marked(require('./Table.md'))
+import TableReadme from './Table.md'
 
 const tableStories = storiesOf('Components|Table/Family', module)
   .addDecorator(withKnobs)
@@ -325,7 +325,7 @@ tableStories.add(
   ),
   {
     readme: {
-      content: TableReadme,
+      content: marked(TableReadme),
     },
   }
 )

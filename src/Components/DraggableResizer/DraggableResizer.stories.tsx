@@ -7,7 +7,7 @@ import {storiesOf} from '@storybook/react'
 import {jsxDecorator} from 'storybook-addon-jsx'
 import {withKnobs, select, number} from '@storybook/addon-knobs'
 import {withState} from '@dump247/storybook-state'
-import {mapEnumKeys} from '../../../.storybook/utils'
+import {mapEnumKeys} from '../../Utils/storybook'
 
 // Types
 import {Orientation, Gradients} from '../../Types'
@@ -16,16 +16,10 @@ import {Orientation, Gradients} from '../../Types'
 import {DraggableResizer} from './DraggableResizer'
 
 // Notes
-const DraggableResizerReadme = marked(require('./DraggableResizer.md'))
-const DraggableResizerPanelReadme = marked(
-  require('./DraggableResizerPanel.md')
-)
-const DraggableResizerExampleAReadme = marked(
-  require('./DraggableResizerExampleA.md')
-)
-const DraggableResizerExampleBReadme = marked(
-  require('./DraggableResizerExampleB.md')
-)
+import DraggableResizerReadme from './DraggableResizer.md'
+import DraggableResizerPanelReadme from './DraggableResizerPanel.md'
+import DraggableResizerExampleAReadme from './DraggableResizerExampleA.md'
+import DraggableResizerExampleBReadme from './DraggableResizerExampleB.md'
 
 // State
 interface StoryState {
@@ -82,7 +76,8 @@ draggableResizerStories.add(
           number('handlePositions', 0.5, exampleHandlePositionRange),
         ]}
         onChangePositions={
-        handlePositions => console.log(`this.setState({handlePositions: ${handlePositions}})`) // eslint-disable-line
+          handlePositions =>
+            console.log(`this.setState({handlePositions: ${handlePositions}})`) // eslint-disable-line
         }
       >
         <DraggableResizer.Panel>
@@ -96,7 +91,7 @@ draggableResizerStories.add(
   ),
   {
     readme: {
-      content: DraggableResizerReadme,
+      content: marked(DraggableResizerReadme),
     },
   }
 )
@@ -112,7 +107,7 @@ draggableResizerStories.add(
   ),
   {
     readme: {
-      content: DraggableResizerPanelReadme,
+      content: marked(DraggableResizerPanelReadme),
     },
   }
 )
@@ -152,7 +147,7 @@ draggableResizerExamplesStories.add(
   )),
   {
     readme: {
-      content: DraggableResizerExampleAReadme,
+      content: marked(DraggableResizerExampleAReadme),
     },
   }
 )
@@ -202,7 +197,7 @@ draggableResizerExamplesStories.add(
   )),
   {
     readme: {
-      content: DraggableResizerExampleBReadme,
+      content: marked(DraggableResizerExampleBReadme),
     },
   }
 )

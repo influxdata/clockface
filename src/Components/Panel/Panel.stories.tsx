@@ -5,7 +5,7 @@ import marked from 'marked'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, text, select, color} from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../../.storybook/utils'
+import {mapEnumKeys} from '../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
@@ -16,13 +16,13 @@ import {Grid} from '../GridLayout/Grid'
 import {Gradients, ComponentSize, InfluxColors, Columns} from '../../Types'
 
 // Notes
-const PanelReadme = marked(require('./Panel.md'))
-const PanelHeaderReadme = marked(require('./PanelHeader.md'))
-const PanelBodyReadme = marked(require('./PanelBody.md'))
-const PanelFooterReadme = marked(require('./PanelFooter.md'))
-const ExampleAReadme = marked(require('./PanelExampleA.md'))
-const ExampleBReadme = marked(require('./PanelExampleB.md'))
-const ExampleCReadme = marked(require('./PanelExampleC.md'))
+import PanelReadme from './Panel.md'
+import PanelHeaderReadme from './PanelHeader.md'
+import PanelBodyReadme from './PanelBody.md'
+import PanelFooterReadme from './PanelFooter.md'
+import ExampleAReadme from './PanelExampleA.md'
+import ExampleBReadme from './PanelExampleB.md'
+import ExampleCReadme from './PanelExampleC.md'
 
 const panelStories = storiesOf('Components|Panels/Family', module)
   .addDecorator(withKnobs)
@@ -55,7 +55,7 @@ panelStories.add(
   ),
   {
     readme: {
-      content: PanelReadme,
+      content: marked(PanelReadme),
     },
   }
 )
@@ -69,7 +69,7 @@ panelStories.add(
   ),
   {
     readme: {
-      content: PanelHeaderReadme,
+      content: marked(PanelHeaderReadme),
     },
   }
 )
@@ -85,7 +85,7 @@ panelStories.add(
   ),
   {
     readme: {
-      content: PanelBodyReadme,
+      content: marked(PanelBodyReadme),
     },
   }
 )
@@ -101,7 +101,7 @@ panelStories.add(
   ),
   {
     readme: {
-      content: PanelFooterReadme,
+      content: marked(PanelFooterReadme),
     },
   }
 )
@@ -137,7 +137,7 @@ panelExampleStories.add(
   ),
   {
     readme: {
-      content: ExampleAReadme,
+      content: marked(ExampleAReadme),
     },
   }
 )
@@ -194,7 +194,7 @@ panelExampleStories.add(
   ),
   {
     readme: {
-      content: ExampleBReadme,
+      content: marked(ExampleBReadme),
     },
   }
 )
@@ -213,7 +213,7 @@ panelExampleStories.add(
   ),
   {
     readme: {
-      content: ExampleCReadme,
+      content: marked(ExampleCReadme),
     },
   }
 )

@@ -4,7 +4,7 @@ import * as React from 'react'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, text, select, boolean, color} from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../../.storybook/utils'
+import {mapEnumKeys} from '../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components

@@ -110,6 +110,8 @@ export class DapperScrollbars extends Component<Props> {
           className: 'cf-dapper-scrollbars--thumb-y',
         }}
         id={id}
+        download={null}
+        inlist={null}
       >
         {children}
       </Scrollbar>
