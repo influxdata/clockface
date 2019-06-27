@@ -1,9 +1,9 @@
 node_modules/
 yarn-error.log
 .DS_Store
-dist/
-.rts2_cache_cjs/
-.rts2_cache_es/
-.rts2_cache_umd/
-build/
-storybook-static/
+dist
+.rts2*
+build
+storybook-static
+docs
+package-lock.json

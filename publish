@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -e
+
+RELEASE_TYPE=${1:-patch}
+
+echo "Installing dependencies from lockfile"
+yarn -s install --frozen-lockfile
+
+echo "Running tests"
+yarn -s run test
+
+echo "Building production build"
+yarn run build
+
+echo "Tagging and publishing $RELEASE_TYPE release"
+yarn -s publish --$RELEASE_TYPE --access=public
+
+echo "Pushing commit"
+git push --follow-tags
+
+echo "Publish successful!"

@@ -12,7 +12,7 @@ import {
   boolean,
   array,
 } from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../../.storybook/utils'
+import {mapEnumKeys} from '../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
@@ -36,16 +36,14 @@ import {
 } from '../../Types'
 
 // Notes
-const DropdownReadme = marked(require('./Family/Dropdown.md'))
-const DropdownButtonReadme = marked(require('./Family/DropdownButton.md'))
-const DropdownDividerReadme = marked(require('./Family/DropdownDivider.md'))
-const DropdownItemReadme = marked(require('./Family/DropdownItem.md'))
-const DropdownLinkItemReadme = marked(require('./Family/DropdownLinkItem.md'))
-const DropdownMenuReadme = marked(require('./Family/DropdownMenu.md'))
-const SelectDropdownReadme = marked(require('./Composed/SelectDropdown.md'))
-const MultiSelectDropdownReadme = marked(
-  require('./Composed/MultiSelectDropdown.md')
-)
+import DropdownReadme from './Family/Dropdown.md'
+import DropdownButtonReadme from './Family/DropdownButton.md'
+import DropdownDividerReadme from './Family/DropdownDivider.md'
+import DropdownItemReadme from './Family/DropdownItem.md'
+import DropdownLinkItemReadme from './Family/DropdownLinkItem.md'
+import DropdownMenuReadme from './Family/DropdownMenu.md'
+import SelectDropdownReadme from './Composed/SelectDropdown.md'
+import MultiSelectDropdownReadme from './Composed/MultiSelectDropdown.md'
 
 const dropdownFamilyStories = storiesOf('Components|Dropdowns/Family', module)
   .addDecorator(withKnobs)
@@ -81,7 +79,7 @@ dropdownFamilyStories.add(
   ),
   {
     readme: {
-      content: DropdownReadme,
+      content: marked(DropdownReadme),
     },
   }
 )
@@ -125,7 +123,7 @@ dropdownFamilyStories.add(
   ),
   {
     readme: {
-      content: DropdownButtonReadme,
+      content: marked(DropdownButtonReadme),
     },
   }
 )
@@ -139,7 +137,7 @@ dropdownFamilyStories.add(
   ),
   {
     readme: {
-      content: DropdownDividerReadme,
+      content: marked(DropdownDividerReadme),
     },
   }
 )
@@ -167,7 +165,7 @@ dropdownFamilyStories.add(
   ),
   {
     readme: {
-      content: DropdownItemReadme,
+      content: marked(DropdownItemReadme),
     },
   }
 )
@@ -196,7 +194,7 @@ dropdownFamilyStories.add(
   ),
   {
     readme: {
-      content: DropdownLinkItemReadme,
+      content: marked(DropdownLinkItemReadme),
     },
   }
 )
@@ -356,7 +354,7 @@ dropdownFamilyStories.add(
   ),
   {
     readme: {
-      content: DropdownMenuReadme,
+      content: marked(DropdownMenuReadme),
     },
   }
 )
@@ -424,7 +422,7 @@ dropdownComposedStories.add(
   ),
   {
     readme: {
-      content: SelectDropdownReadme,
+      content: marked(SelectDropdownReadme),
     },
   }
 )
@@ -490,7 +488,7 @@ dropdownComposedStories.add(
   ),
   {
     readme: {
-      content: MultiSelectDropdownReadme,
+      content: marked(MultiSelectDropdownReadme),
     },
   }
 )

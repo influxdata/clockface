@@ -3,7 +3,7 @@ import * as React from 'react'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {mapEnumKeys} from '../../../.storybook/utils'
+import {mapEnumKeys} from '../../Utils/storybook'
 import {withKnobs, boolean, text, select, radios} from '@storybook/addon-knobs'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
@@ -40,7 +40,8 @@ navMenuStories.add('NavMenu', () => (
         </a>
       )}
       active={
-        NavItems[radios('active item', mapEnumKeys(NavItems))] == NavItems.First
+        NavItems[radios<NavItems>('active item', mapEnumKeys(NavItems))] ==
+        NavItems.First
       }
     />
     <NavMenu.Item
@@ -57,7 +58,7 @@ navMenuStories.add('NavMenu', () => (
         </a>
       )}
       active={
-        NavItems[radios('active item', mapEnumKeys(NavItems))] ==
+        NavItems[radios<NavItems>('active item', mapEnumKeys(NavItems))] ==
         NavItems.Second
       }
     >
@@ -100,7 +101,8 @@ navMenuStories.add('NavMenu', () => (
         </a>
       )}
       active={
-        NavItems[radios('active item', mapEnumKeys(NavItems))] == NavItems.Third
+        NavItems[radios<NavItems>('active item', mapEnumKeys(NavItems))] ==
+        NavItems.Third
       }
     />
   </NavMenu>

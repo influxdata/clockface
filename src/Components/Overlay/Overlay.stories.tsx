@@ -12,7 +12,7 @@ import {
   color,
   select,
 } from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../../.storybook/utils'
+import {mapEnumKeys} from '../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
@@ -28,13 +28,13 @@ import {Button} from '../Button/Composed/Button'
 import {Gradients, ComponentColor} from '../../Types'
 
 // Notes
-const OverlayReadme = marked(require('./Overlay.md'))
-const OverlayContainerReadme = marked(require('./OverlayContainer.md'))
-const OverlayMaskReadme = marked(require('./OverlayMask.md'))
-const OverlayHeaderReadme = marked(require('./OverlayHeader.md'))
-const OverlayBodyReadme = marked(require('./OverlayBody.md'))
-const OverlayFooterReadme = marked(require('./OverlayFooter.md'))
-const ConfirmationOverlayReadme = marked(require('./ConfirmationOverlay.md'))
+import OverlayReadme from './Overlay.md'
+import OverlayContainerReadme from './OverlayContainer.md'
+import OverlayMaskReadme from './OverlayMask.md'
+import OverlayHeaderReadme from './OverlayHeader.md'
+import OverlayBodyReadme from './OverlayBody.md'
+import OverlayFooterReadme from './OverlayFooter.md'
+import ConfirmationOverlayReadme from './ConfirmationOverlay.md'
 
 const instructionsElement = (
   <p>
@@ -76,7 +76,7 @@ overlayStories.add(
   ),
   {
     readme: {
-      content: OverlayReadme,
+      content: marked(OverlayReadme),
     },
   }
 )
@@ -94,7 +94,7 @@ overlayStories.add(
   ),
   {
     readme: {
-      content: OverlayContainerReadme,
+      content: marked(OverlayContainerReadme),
     },
   }
 )
@@ -120,7 +120,7 @@ overlayStories.add(
   ),
   {
     readme: {
-      content: OverlayMaskReadme,
+      content: marked(OverlayMaskReadme),
     },
   }
 )
@@ -139,7 +139,7 @@ overlayStories.add(
   ),
   {
     readme: {
-      content: OverlayHeaderReadme,
+      content: marked(OverlayHeaderReadme),
     },
   }
 )
@@ -157,7 +157,7 @@ overlayStories.add(
   ),
   {
     readme: {
-      content: OverlayBodyReadme,
+      content: marked(OverlayBodyReadme),
     },
   }
 )
@@ -178,7 +178,7 @@ overlayStories.add(
   ),
   {
     readme: {
-      content: OverlayFooterReadme,
+      content: marked(OverlayFooterReadme),
     },
   }
 )
@@ -230,7 +230,7 @@ overlayExampleStories.add(
   ),
   {
     readme: {
-      content: ConfirmationOverlayReadme,
+      content: marked(ConfirmationOverlayReadme),
     },
   }
 )

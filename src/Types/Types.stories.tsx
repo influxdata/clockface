@@ -25,9 +25,9 @@ import {
 import {getColorsFromGradient} from '../Constants/colors'
 
 // Notes
-const TypesReadme = marked(require('./Types.md'))
-const ColorsGradientsReadme = marked(require('./ColorsGradients.md'))
-const IconFontReadme = marked(require('./IconFont.md'))
+import TypesReadme from './Types.md'
+import ColorsGradientsReadme from './ColorsGradients.md'
+import IconFontReadme from './IconFont.md'
 
 const dataTypeStories = storiesOf('Data Types|Shared', module)
 
@@ -330,7 +330,7 @@ dataTypeStories.add(
   ),
   {
     readme: {
-      content: TypesReadme,
+      content: marked(TypesReadme),
     },
   }
 )
@@ -414,7 +414,7 @@ dataTypeStories.add(
   },
   {
     readme: {
-      content: ColorsGradientsReadme,
+      content: marked(ColorsGradientsReadme),
     },
   }
 )
@@ -439,7 +439,7 @@ dataTypeStories.add(
   },
   {
     readme: {
-      content: IconFontReadme,
+      content: marked(IconFontReadme),
     },
   }
 )

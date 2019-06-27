@@ -14,8 +14,8 @@ import {ColorPicker} from './ColorPicker'
 import {InfluxColors} from '../../Types'
 
 // Notes
-const ColorPickerReadme = marked(require('./ColorPicker.md'))
-const ColorPickerCustomReadme = marked(require('./ColorPickerCustom.md'))
+import ColorPickerReadme from './ColorPicker.md'
+import ColorPickerCustomReadme from './ColorPickerCustom.md'
 
 const colorPickerStories = storiesOf('Components|Color Picker/Family', module)
   .addDecorator(withKnobs)
@@ -45,7 +45,7 @@ colorPickerStories.add(
   ),
   {
     readme: {
-      content: ColorPickerReadme,
+      content: marked(ColorPickerReadme),
     },
   }
 )
@@ -136,7 +136,7 @@ colorPickerExampleStories.add(
   ),
   {
     readme: {
-      content: ColorPickerCustomReadme,
+      content: marked(ColorPickerCustomReadme),
     },
   }
 )

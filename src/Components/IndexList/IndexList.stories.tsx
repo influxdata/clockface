@@ -6,7 +6,7 @@ import marked from 'marked'
 import {storiesOf} from '@storybook/react'
 import {jsxDecorator} from 'storybook-addon-jsx'
 import {withKnobs, array, text, select, boolean} from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../../.storybook/utils'
+import {mapEnumKeys} from '../../Utils/storybook'
 
 // Components
 import {IndexList} from './IndexList'
@@ -17,13 +17,13 @@ import {EmptyState} from '../EmptyState/EmptyState'
 import {IconFont, ComponentColor, Alignment, Sort} from '../../Types'
 
 // Notes
-const IndexListReadme = marked(require('./IndexList.md'))
-const IndexListHeaderReadme = marked(require('./IndexListHeader.md'))
-const IndexListHeaderCellReadme = marked(require('./IndexListHeaderCell.md'))
-const IndexListBodyReadme = marked(require('./IndexListBody.md'))
-const IndexListRowReadme = marked(require('./IndexListRow.md'))
-const IndexListRowCellReadme = marked(require('./IndexListRowCell.md'))
-const IndexListExampleReadme = marked(require('./IndexListExample.md'))
+import IndexListReadme from './IndexList.md'
+import IndexListHeaderReadme from './IndexListHeader.md'
+import IndexListHeaderCellReadme from './IndexListHeaderCell.md'
+import IndexListBodyReadme from './IndexListBody.md'
+import IndexListRowReadme from './IndexListRow.md'
+import IndexListRowCellReadme from './IndexListRowCell.md'
+import IndexListExampleReadme from './IndexListExample.md'
 
 const indexListStories = storiesOf('Components|IndexList/Family', module)
   .addDecorator(withKnobs)
@@ -45,7 +45,7 @@ indexListStories.add(
   ),
   {
     readme: {
-      content: IndexListReadme,
+      content: marked(IndexListReadme),
     },
   }
 )
@@ -59,7 +59,7 @@ indexListStories.add(
   ),
   {
     readme: {
-      content: IndexListHeaderReadme,
+      content: marked(IndexListHeaderReadme),
     },
   }
 )
@@ -81,7 +81,7 @@ indexListStories.add(
   ),
   {
     readme: {
-      content: IndexListHeaderCellReadme,
+      content: marked(IndexListHeaderCellReadme),
     },
   }
 )
@@ -102,7 +102,7 @@ indexListStories.add(
   ),
   {
     readme: {
-      content: IndexListBodyReadme,
+      content: marked(IndexListBodyReadme),
     },
   }
 )
@@ -116,7 +116,7 @@ indexListStories.add(
   ),
   {
     readme: {
-      content: IndexListRowReadme,
+      content: marked(IndexListRowReadme),
     },
   }
 )
@@ -139,7 +139,7 @@ indexListStories.add(
   ),
   {
     readme: {
-      content: IndexListRowCellReadme,
+      content: marked(IndexListRowCellReadme),
     },
   }
 )
@@ -194,7 +194,7 @@ indexListExampleStories.add(
   },
   {
     readme: {
-      content: IndexListExampleReadme,
+      content: marked(IndexListExampleReadme),
     },
   }
 )

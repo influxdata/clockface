@@ -5,7 +5,7 @@ import marked from 'marked'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, select, number, text} from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../../.storybook/utils'
+import {mapEnumKeys} from '../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
@@ -18,10 +18,10 @@ import {WaitingText} from './WaitingText'
 import {ComponentSize, RemoteDataState} from '../../Types'
 
 // Notes
-const SpinnerContainerReadme = marked(require('./SpinnerContainer.md'))
-const TechnoSpinnerReadme = marked(require('./TechnoSpinner.md'))
-const SparkleSpinnerReadme = marked(require('./SparkleSpinner.md'))
-const WaitingTextReadme = marked(require('./WaitingText.md'))
+import SpinnerContainerReadme from './SpinnerContainer.md'
+import TechnoSpinnerReadme from './TechnoSpinner.md'
+import SparkleSpinnerReadme from './SparkleSpinner.md'
+import WaitingTextReadme from './WaitingText.md'
 
 const spinnerContainerStories = storiesOf(
   'Components|Spinners/Container',
@@ -67,7 +67,7 @@ spinnerContainerStories.add(
   ),
   {
     readme: {
-      content: SpinnerContainerReadme,
+      content: marked(SpinnerContainerReadme),
     },
   }
 )
@@ -88,7 +88,7 @@ spinnerVisualStories.add(
   ),
   {
     readme: {
-      content: TechnoSpinnerReadme,
+      content: marked(TechnoSpinnerReadme),
     },
   }
 )
@@ -109,7 +109,7 @@ spinnerVisualStories.add(
   ),
   {
     readme: {
-      content: SparkleSpinnerReadme,
+      content: marked(SparkleSpinnerReadme),
     },
   }
 )
@@ -123,7 +123,7 @@ spinnerTextStories.add(
   ),
   {
     readme: {
-      content: WaitingTextReadme,
+      content: marked(WaitingTextReadme),
     },
   }
 )

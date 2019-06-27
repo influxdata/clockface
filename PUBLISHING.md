@@ -1,13 +1,21 @@
 # Publishing a new version of Clockface
 
-#### Prepublishing
+Ensure that 
 
-- Create a branch titled `bump-version-0.0.0` (insert version number)
-- Increment the package version in `package.json`
-- Add a header for the next version in `CHANGELOG.md`
-- Build the documentation site via `npm run build-storybook`
-- Merge `bump-version-0.0.<your version number>` into master
 
-#### Publishing
-- Be a member of the NPM organization `influxdata`
-- Run `npm publish` from your CLI
+- You have administrator access to this repo on GitHub
+- You have permissions to publish to the [influxdata](https://www.npmjs.com/org/influxdata) organization on npm
+- You are logged into Yarn (`yarn login`)
+- You are on `master` and the working tree is clean
+
+Then run the publish script in the root of the repo:
+
+```
+./publish
+```
+
+Then upload the latest Storybook docs to the GitHub pages site by running:
+
+```
+yarn run publishStorybook
+```

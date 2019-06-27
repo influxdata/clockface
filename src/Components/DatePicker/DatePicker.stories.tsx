@@ -12,8 +12,8 @@ import {DateRangePicker} from './Composed/DateRangePicker'
 import {DatePicker} from './Base/DatePicker'
 
 // Notes
-const DatePickerReadme = marked(require('./Base/DatePicker.md'))
-const DateRangePickerReadme = marked(require('./Composed/DateRangePicker.md'))
+import DatePickerReadme from './Base/DatePicker.md'
+import DateRangePickerReadme from './Composed/DateRangePicker.md'
 
 const datePickerBaseStories = storiesOf('Components|DatePicker/Base', module)
   .addDecorator(withKnobs)
@@ -40,7 +40,7 @@ datePickerComposedStories.add(
   ),
   {
     readme: {
-      content: DateRangePickerReadme,
+      content: marked(DateRangePickerReadme),
     },
   }
 )
@@ -58,7 +58,7 @@ datePickerBaseStories.add(
   ),
   {
     readme: {
-      content: DatePickerReadme,
+      content: marked(DatePickerReadme),
     },
   }
 )

@@ -1,4 +1,4 @@
-export const mapEnumKeys = (elEnum: object, trim?: number) => {
+export const mapEnumKeys = (elEnum: object, trim?: number): any => {
   let arr = Object.keys(elEnum)
 
   if (trim) {

@@ -12,7 +12,7 @@ import {
   select,
   boolean,
 } from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../../.storybook/utils'
+import {mapEnumKeys} from '../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
@@ -32,7 +32,7 @@ import {
 import {ComponentSpacer} from '../ComponentSpacer/ComponentSpacer'
 
 // Notes
-const InputReadme = marked(require('./Input.md'))
+import InputReadme from './Input.md'
 
 const inputsStories = storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
@@ -65,7 +65,9 @@ inputsStories.add(
           ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
         }
         autocomplete={
-          AutoComplete[radios('autocomplete', mapEnumKeys(AutoComplete))]
+          AutoComplete[
+            radios<AutoComplete>('autocomplete', mapEnumKeys(AutoComplete))
+          ]
         }
         type={InputType.Text}
       />
@@ -73,7 +75,7 @@ inputsStories.add(
   ),
   {
     readme: {
-      content: InputReadme,
+      content: marked(InputReadme),
     },
   }
 )
@@ -111,7 +113,7 @@ inputsStories.add(
   ),
   {
     readme: {
-      content: InputReadme,
+      content: marked(InputReadme),
     },
   }
 )
@@ -143,7 +145,9 @@ inputsStories.add(
           ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
         }
         autocomplete={
-          AutoComplete[radios('autocomplete', mapEnumKeys(AutoComplete))]
+          AutoComplete[
+            radios<AutoComplete>('autocomplete', mapEnumKeys(AutoComplete))
+          ]
         }
         type={InputType.Password}
       />
@@ -151,7 +155,7 @@ inputsStories.add(
   ),
   {
     readme: {
-      content: InputReadme,
+      content: marked(InputReadme),
     },
   }
 )
@@ -183,7 +187,9 @@ inputsStories.add(
           ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
         }
         autocomplete={
-          AutoComplete[radios('autocomplete', mapEnumKeys(AutoComplete))]
+          AutoComplete[
+            radios<AutoComplete>('autocomplete', mapEnumKeys(AutoComplete))
+          ]
         }
         type={InputType.Email}
       />
@@ -191,7 +197,7 @@ inputsStories.add(
   ),
   {
     readme: {
-      content: InputReadme,
+      content: marked(InputReadme),
     },
   }
 )
@@ -231,7 +237,7 @@ inputsStories.add(
   ),
   {
     readme: {
-      content: InputReadme,
+      content: marked(InputReadme),
     },
   }
 )
@@ -245,7 +251,9 @@ inputsStories.add('TextArea', () => (
       placeholder={text('placeholder', 'Placeholder Text')}
       onChange={() => {}}
       autocomplete={
-        AutoComplete[radios('autocomplete', mapEnumKeys(AutoComplete))]
+        AutoComplete[
+          radios<AutoComplete>('autocomplete', mapEnumKeys(AutoComplete))
+        ]
       }
       size={ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]}
       widthPixels={number('widthPixels', 400)}

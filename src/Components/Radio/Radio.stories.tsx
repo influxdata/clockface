@@ -13,7 +13,7 @@ import {
   array,
 } from '@storybook/addon-knobs'
 import {withState} from '@dump247/storybook-state'
-import {mapEnumKeys} from '../../../.storybook/utils'
+import {mapEnumKeys} from '../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
@@ -23,9 +23,9 @@ import {Radio} from './Radio'
 import {ComponentColor, ComponentSize, ButtonShape} from '../../Types'
 
 // Notes
-const RadioReadme = marked(require('./Radio.md'))
-const RadioButtonReadme = marked(require('./RadioButton.md'))
-const RadioExampleReadme = marked(require('./RadioExample.md'))
+import RadioReadme from './Radio.md'
+import RadioButtonReadme from './RadioButton.md'
+import RadioExampleReadme from './RadioExample.md'
 
 // State
 interface StoryState {
@@ -84,7 +84,7 @@ radioStories.add(
   ),
   {
     readme: {
-      content: RadioReadme,
+      content: marked(RadioReadme),
     },
   }
 )
@@ -113,7 +113,7 @@ radioStories.add(
   ),
   {
     readme: {
-      content: RadioButtonReadme,
+      content: marked(RadioButtonReadme),
     },
   }
 )
@@ -158,7 +158,7 @@ radioExampleStories.add(
   )),
   {
     readme: {
-      content: RadioExampleReadme,
+      content: marked(RadioExampleReadme),
     },
   }
 )
