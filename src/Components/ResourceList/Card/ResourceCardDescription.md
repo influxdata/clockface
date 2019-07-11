@@ -3,10 +3,10 @@
 `ResourceCardDescription` is intended to be passed into the `description` prop in `ResourceCard`. It can be accessed via the single `ResourceCard` import as a subclass.
 
 ### Usage
-```js
+```jsx
 import {ResourceCard} from '@influxdata/clockface'
 ```
-```js
+```jsx
 <ResourceCard.Description />
 ```
 

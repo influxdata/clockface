@@ -3,7 +3,7 @@
 This component is for displaying Labels from the InfluxDB API but can be used in many ways.
 
 ### Usage
-```js
+```jsx
 import {Label} from '@influxdata/clockface'
 ```
 

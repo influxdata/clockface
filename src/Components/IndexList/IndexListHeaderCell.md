@@ -3,10 +3,10 @@
 IndexListHeaderCells are intended to be the children of `<IndexList.Header />`. They can be accessed via the single `IndexList` import as a subclass.
 
 ### Usage
-```js
+```jsx
 import {IndexList} from '@influxdata/clockface'
 ```
-```js
+```jsx
 <IndexList.HeaderCell />
 ```
 
@@ -25,7 +25,7 @@ IndexListHeaderCells have some handy features that making sorting easier. First 
 
 Next, pass a handler function into each `<IndexList.HeaderCell />` you want to be sortable:
 
-```js
+```jsx
 private handleSort = (nextSort: Sort, sortKey: string): void => {
   this.setState({
     sortDirection: nextSort,
@@ -33,7 +33,7 @@ private handleSort = (nextSort: Sort, sortKey: string): void => {
   })
 }
 ```
-```js
+```jsx
 <IndexList.HeaderCell onClick={this.handleSort} />
 ```
 
@@ -41,10 +41,10 @@ When a header cell is clicked it cycles to the next available sort state and pas
 
 Make sure each each `<IndexList.HeaderCell />` receives state:
 
-```js
+```jsx
 const {sortKey, sortDirection, items} = this.state
 ```
-```js
+```jsx
 items.map(item => (
   <IndexList.HeaderCell
     sortKey={item.sortKey}

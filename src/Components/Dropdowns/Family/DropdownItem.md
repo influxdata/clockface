@@ -3,7 +3,7 @@
 DropdownItem is part of the Dropdown component family and can be accessed from the single import. This element receives most of its styles from being a child of `<Dropdown.Menu />`.
 
 ### Usage
-```js
+```jsx
 import {Dropdown} from '@influxdata/clockface'
 
 <Dropdown.Item />

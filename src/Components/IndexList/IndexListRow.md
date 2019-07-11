@@ -3,10 +3,10 @@
 IndexListRows are intended to be the children of `<IndexList.Body />` and contain children of type `<IndexList.Cell />`. They can be accessed via the single `IndexList` import as a subclass.
 
 ### Usage
-```js
+```jsx
 import {IndexList} from '@influxdata/clockface'
 ```
-```js
+```jsx
 <IndexList.Row />
 ```
 

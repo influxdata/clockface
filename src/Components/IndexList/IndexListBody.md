@@ -3,10 +3,10 @@
 IndexListBody is intended to be the first child of `IndexList`, similar to `<tbody />` in a plain HTML table. It can be accessed via the single `IndexList` import as a subclass.
 
 ### Usage
-```js
+```jsx
 import {IndexList} from '@influxdata/clockface'
 ```
-```js
+```jsx
 <IndexList.Body>
   // List rows go here
 </IndexList.Body>

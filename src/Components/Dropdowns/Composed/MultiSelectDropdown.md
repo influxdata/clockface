@@ -3,7 +3,7 @@
 This is composed variation of a Dropdown intended for a common use case to save time. The Multi-Select Dropdown mimics the functionality of the HTML `<select>` element, except allowing multiple options to be selected. Its appearance can be customized to an extent and its state must be managed by a wrapper component. If you are looking to create a dropdown with more custom behavior try building one using the Dropdown Family of components instead.
 
 ### Usage
-```js
+```jsx
 import {MultiSelectDropdown} from '@influxdata/clockface'
 ```
 
@@ -20,19 +20,19 @@ This composed dropdown has two key props: `selectedOptions` and `options` which 
 
 Here's an example of how to manage Multi-Select Dropdown state:
 
-```js
+```jsx
 const options = [
   'A',
   'B',
   'C',
 ]
 ```
-```js
+```jsx
 this.state = {
   selectedOptions: ['A'],
 }
 ```
-```js
+```jsx
 private handleSelect = (selectedOption: string): void => {
   const {selectedOptions} = this.state
   if (selectedOptions.includes(selectedOption)) {
@@ -48,7 +48,7 @@ private handleSelect = (selectedOption: string): void => {
 ```
 
 And here's rendering the component:
-```js
+```jsx
 const {selectedOptions} = this.state
 
 <MultiSelectDropdown
@@ -64,7 +64,7 @@ const {selectedOptions} = this.state
 
 Dropdowns can feature dividers with or without titles mixed into the options list. This component provides a few shortcuts to achieve this:
 
-```js
+```jsx
 options = [
   'Apple',
   // This produces the standard Dropdown Iten

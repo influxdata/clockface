@@ -3,7 +3,7 @@
 Here's a simple example of an IndexList in action
 
 ### Usage
-```js
+```jsx
 import {IndexList} from '@influxdata/clockface'
 ```
 

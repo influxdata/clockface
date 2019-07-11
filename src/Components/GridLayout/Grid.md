@@ -3,7 +3,7 @@
 This is an implementation of a traditional page layout grid. The reason there are 12 columns is because 12 is divisible many different and visually pleasing ways. If you are familiar with grids and graphic design this will be an easy component family to use. It supports responsive layouts at a few breakpoints (which are listed below). This component family began as the Bootstrap grid but evolved into its own.
 
 ### Usage
-```js
+```jsx
 import {Grid} from '@influxdata/clockface'
 // Sub-components
 <Grid />

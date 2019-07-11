@@ -3,10 +3,10 @@
 In some cases there are actions you really want to warn a user about. This is an example of a Panel that makes use of the `gradient` prop to communicate the danger.
 
 ### Usage
-```js
+```jsx
 import {Panel} from '@influxdata/clockface'
 ```
-```js
+```jsx
 <Panel>
   <Panel.Header />
   <Panel.Body gradient={Gradients.DocScott}>

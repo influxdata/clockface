@@ -3,7 +3,7 @@
 DropdownButton is part of the Dropdown component family and can be accessed from the single import.
 
 ### Usage
-```js
+```jsx
 import {Dropdown} from '@influxdata/clockface'
 
 <Dropdown.Button />

@@ -3,7 +3,7 @@
 This example shows what a `ResourceCard` looks like when a component is passed into the `toggle`, `labels` and `contextMenu` props.
 
 ### Usage
-```js
+```jsx
 import {ResourceCard, SquareButton, SlideToggle, Label} from '@influxdata/clockface'
 ```
 
