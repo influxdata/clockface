@@ -1,0 +1,106 @@
+# Controls List
+
+Here's an example that uses the entire SlideToggle family to construct a control panel like you might see in an options view. This example uses a stateful wrapper so the JSX example is obscured, unfortunately. 
+
+### Usage
+```jsx
+import {SlideToggle} from '@influxdata/clockface'
+```
+```jsx
+<SlideToggle />
+```
+
+### Example
+<!-- STORY -->
+
+### Implementation
+
+This example uses a `ComponentSpacer` to align the components. Each `SlideToggleLabel`'s `active` prop is passed the same value as its associated `SlideToggle` so their states match visually.
+
+Here's how to structure this example's state:
+
+```jsx
+interface State {
+  optionA: boolean
+  optionB: boolean
+  optionC: boolean
+}
+```
+
+Here's a handler function:
+
+```jsx
+private handleSlideToggleChange = (): void => {
+  this.setState({optionA: !this.state.optionA})
+}
+```
+
+Here's the JSX:
+
+```jsx
+const {optionA, optionB, optionC} = this.state
+```
+
+```jsx
+<ComponentSpacer
+  direction={FlexDirection.Column}
+  alignItems={AlignItems.Stretch}
+  margin={ComponentSize.Large}
+>
+  <ComponentSpacer
+    direction={FlexDirection.Row}
+    alignItems={AlignItems.Center}
+    margin={ComponentSize.Medium}
+    stretchToFitWidth={true}
+  >
+    <SlideToggle
+      onChange={this.handleSlideToggleChange}
+      active={optionA}
+      size={ComponentSize.ExtraSmall}
+    />
+    <SlideToggle.Label
+      text="Send email notifications"
+      active={optionA}
+    />
+  </ComponentSpacer>
+  <ComponentSpacer
+    direction={FlexDirection.Row}
+    alignItems={AlignItems.Center}
+    margin={ComponentSize.Medium}
+    stretchToFitWidth={true}
+  >
+    <SlideToggle
+      onChange={this.handleSlideToggleChange}
+      active={optionB}
+      size={ComponentSize.ExtraSmall}
+    />
+    <SlideToggle.Label
+      text="Send a raven"
+      active={optionB}
+    />
+  </ComponentSpacer>
+  <ComponentSpacer
+    direction={FlexDirection.Row}
+    alignItems={AlignItems.Center}
+    margin={ComponentSize.Medium}
+    stretchToFitWidth={true}
+  >
+    <SlideToggle
+      onChange={this.handleSlideToggleChange}
+      active={optionC}
+      size={ComponentSize.ExtraSmall}
+    />
+    <SlideToggle.Label
+      text="Send an owl"
+      active={optionC}
+    />
+  </ComponentSpacer>
+</ComponentSpacer>
+```
+
+
+<!-- STORY HIDE START -->
+
+<!-- STORY HIDE END -->
+
+<!-- PROPS -->
