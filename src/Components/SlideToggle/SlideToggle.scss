@@ -5,32 +5,32 @@
   ------------------------------------------------------------------------------
 */
 
+$slide-toggle--gap: $cf-border * 2;
+
 .slide-toggle {
-  background-color: $g1-raven;
   position: relative;
-  padding: 0 ($cf-border * 2);
   display: inline-block;
   transition: background-color 0.25s ease, border-color 0.25s ease;
-  border: $cf-border solid $g5-pepper;
+  background-color: $g5-pepper;
 
   &:hover {
     cursor: pointer;
-    border-color: $g6-smoke;
-    background-color: $g2-kevlar;
+    background-color: $g7-graphite;
   }
 }
 
 .slide-toggle--knob {
   position: absolute;
   top: 50%;
-  transition: background-color 0.25s ease,
-    transform 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
-  background-color: $g6-smoke;
-  transform: translate(0, -50%);
+  transition: background-color 0.35s ease,
+    transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translate(0, -50%);
   border-radius: 50%;
-
+  box-shadow: 0 0 $slide-toggle--gap ($slide-toggle--gap / 2) rgba($g0-obsidian, 0.25);
+  background-color: $g13-mist;
+    
   .slide-toggle:hover & {
-    background-color: $g8-storm;
+    background-color: $g20-white;
   }
 }
 
@@ -39,56 +39,55 @@
   ------------------------------------------------------------------------------
 */
 .slide-toggle.active .slide-toggle--knob {
-  background-color: $c-rainforest;
-  transform: translate(100%, -50%);
+  transform: translate(calc(100% + #{$slide-toggle--gap}), -50%);
+  background-color: $g20-white;
 }
-.slide-toggle.active:hover .slide-toggle--knob {
-  background-color: $c-honeydew;
+
+/*
+  Disabled State
+  ------------------------------------------------------------------------------
+*/
+.slide-toggle.disabled,
+.slide-toggle.disabled:hover {
+  cursor: default;
+  background-color: $g5-pepper;
+
+  .slide-toggle--knob {
+    background-color: $g2-kevlar;
+  }
 }
 
 /*
   Size Modifiers
   ------------------------------------------------------------------------------
 */
+@mixin slideToggleSizeModifier($size) {
+  height: floor($size * 0.75);
+  border-radius: $size / 2;
+  padding: 0 $slide-toggle--gap;
+  width: (floor($size * 0.75) * 2) - $slide-toggle--gap;
+
+
+  .slide-toggle--knob,
+  .slide-toggle--knob:before,
+  .slide-toggle--knob:after {
+    width: floor($size * 0.75) - ($slide-toggle--gap * 2);
+    height: floor($size * 0.75) - ($slide-toggle--gap * 2);
+  }
+}
+
 .slide-toggle {
   &.slide-toggle-xs {
-    .slide-toggle--knob {
-      width: $form-xs-height - 10px;
-      height: $form-xs-height - 10px;
-    }
-    height: $form-xs-height;
-    border-radius: $form-xs-height / 2;
-    width: ($form-xs-height * 2) - 8px;
+    @include slideToggleSizeModifier($form-xs-height);
   }
-
   &.slide-toggle-sm {
-    .slide-toggle--knob {
-      width: $form-sm-height - 10px;
-      height: $form-sm-height - 10px;
-    }
-    height: $form-sm-height;
-    border-radius: $form-sm-height / 2;
-    width: ($form-sm-height * 2) - 8px;
+    @include slideToggleSizeModifier($form-sm-height);
   }
-
   &.slide-toggle-md {
-    .slide-toggle--knob {
-      width: $form-md-height - 10px;
-      height: $form-md-height - 10px;
-    }
-    height: $form-md-height;
-    border-radius: $form-md-height / 2;
-    width: ($form-md-height * 2) - 8px;
+    @include slideToggleSizeModifier($form-md-height);
   }
-
   &.slide-toggle-lg {
-    .slide-toggle--knob {
-      width: $form-lg-height - 10px;
-      height: $form-lg-height - 10px;
-    }
-    height: $form-lg-height;
-    border-radius: $form-lg-height / 2;
-    width: ($form-lg-height * 2) - 8px;
+    @include slideToggleSizeModifier($form-lg-height);
   }
 }
 
@@ -96,72 +95,37 @@
   Color Modifiers
   ------------------------------------------------------------------------------
 */
-.slide-toggle {
-  &.slide-toggle-default.active .slide-toggle--knob {
-    background-color: $g13-mist;
+@mixin slideToggleColorModifier($background, $backgroundHover) {
+  &.active {
+    background-color: $background;
   }
-  &.slide-toggle-default.active:hover .slide-toggle--knob {
-    background-color: $g15-platinum;
+  &.active:hover {
+    background-color: $backgroundHover;
   }
-
-  &.slide-toggle-primary.active .slide-toggle--knob {
-    background-color: $c-pool;
-  }
-  &.slide-toggle-primary.active:hover .slide-toggle--knob {
-    background-color: $c-laser;
-  }
-
-  &.slide-toggle-secondary.active .slide-toggle--knob {
-    background-color: $c-star;
-  }
-  &.slide-toggle-secondary.active:hover .slide-toggle--knob {
-    background-color: $c-comet;
-  }
-
-  &.slide-toggle-success.active .slide-toggle--knob {
-    background-color: $c-rainforest;
-  }
-  &.slide-toggle-success.active:hover .slide-toggle--knob {
-    background-color: $c-honeydew;
-  }
-
-  &.slide-toggle-danger.active .slide-toggle--knob {
-    background-color: $c-curacao;
-  }
-  &.slide-toggle-danger.active:hover .slide-toggle--knob {
-    background-color: $c-dreamsicle;
-  }
-
-  &.slide-toggle-warning.active .slide-toggle--knob {
-    background-color: $c-pineapple;
-  }
-  &.slide-toggle-warning.active:hover .slide-toggle--knob {
-    background-color: $c-thunder;
+  &.active.disabled,
+  &.active.disabled:hover {
+    background-color: mix($background, $g6-smoke, 30%);
   }
 }
 
-/*
-  Disabled State
-  ------------------------------------------------------------------------------
-*/
-.slide-toggle.disabled {
-  &,
-  &:hover,
-  &.active,
-  &.active:hover {
-    border-color: $g4-onyx;
-    background-color: $g2-kevlar;
-    cursor: not-allowed;
+.slide-toggle {
+  &.slide-toggle-default {
+    @include slideToggleColorModifier($g10-wolf, $g12-forge);
   }
-  .slide-toggle--knob,
-  &:hover .slide-toggle--knob,
-  &.active .slide-toggle--knob,
-  &.active:hover .slide-toggle--knob {
-    opacity: 0.25;
+  &.slide-toggle-primary.active {
+    @include slideToggleColorModifier($c-pool, $c-laser);
   }
-  &:not(.active) .slide-toggle--knob,
-  &:not(.active):hover .slide-toggle--knob {
-    background-color: $g6-smoke;
+  &.slide-toggle-secondary.active {
+    @include slideToggleColorModifier($c-star, $c-comet);
+  }
+  &.slide-toggle-success.active {
+    @include slideToggleColorModifier($c-rainforest, $c-honeydew);
+  }
+  &.slide-toggle-danger.active {
+    @include slideToggleColorModifier($c-curacao, $c-dreamsicle);
+  }
+  &.slide-toggle-warning.active {
+    @include slideToggleColorModifier($c-pineapple, $c-thunder);
   }
 }
 
