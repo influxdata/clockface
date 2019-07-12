@@ -3,10 +3,10 @@
 Panel Footer is for displaying less important content at the bottom of a panel. It can be accessed via the single `Panel` import as a subclass.
 
 ### Usage
-```js
+```tsx
 import {Panel} from '@influxdata/clockface'
 ```
-```js
+```tsx
 <Panel.Footer>
   // Children
 </Panel.Footer>

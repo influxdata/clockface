@@ -3,11 +3,11 @@
 Dropdown is the parent component of the Dropdown Family; every member of the component family can be accessed from this single import. The dropdown family offers a set of components that can be composed to form a variety of specialized (or not) dropdowns. This parent component manages the opening and closing of the menu from a button.
 
 ### Usage
-```js
+```tsx
 import {Dropdown} from '@influxdata/clockface'
 ```
 Dropdown uses render props to connect the button and menu interactions together:
-```js
+```tsx
 <Dropdown
   menu={onCollapse => <Dropdown.Menu onCollapse={onCollapse} />}
   button={(active, onClick) => <Dropdown.Button active={active} onClick={onClick} />}

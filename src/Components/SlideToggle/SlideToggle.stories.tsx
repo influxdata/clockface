@@ -1,5 +1,6 @@
 // Libraries
 import * as React from 'react'
+import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
@@ -19,6 +20,14 @@ import {
   FlexDirection,
   AlignItems,
 } from '../../Types'
+
+// Notes
+const SlideToggleReadme = marked(require('./SlideToggle.md'))
+const SlideToggleLabelReadme = marked(require('./SlideToggleLabel.md'))
+const ControlsListReadme = marked(require('./ControlsList.md'))
+const SlideToggleWithLabelsReadme = marked(
+  require('./SlideToggleWithLabels.md')
+)
 
 // State
 interface StoryState {
@@ -44,67 +53,97 @@ const slideToggleExampleStories = storiesOf(
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
-slideToggleStories.add('SlideToggle', () => (
-  <div className="story--example">
-    <SlideToggle
-      onChange={() => alert('clicked')}
-      active={boolean('active', false)}
-      disabled={boolean('disabled', false)}
-      size={ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]}
-      color={
-        ComponentColor[select('color', mapEnumKeys(ComponentColor), 'Default')]
-      }
-      tooltipText={text('tooltipText', 'Tooltip Text')}
-    />
-  </div>
-))
-
-slideToggleStories.add('SlideToggleLabel', () => (
-  <div className="story--example">
-    <SlideToggle.Label
-      text={text('text', 'Label Text')}
-      size={ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]}
-      active={boolean('active', true)}
-    />
-  </div>
-))
-
-slideToggleExampleStories.add('SlideToggle with labels', () => (
-  <div className="story--example">
-    <ComponentSpacer
-      direction={FlexDirection.Row}
-      alignItems={AlignItems.Center}
-      margin={ComponentSize.Medium}
-    >
-      <SlideToggle.Label
-        text="Apples"
-        active={!boolean('active', false)}
-        size={
-          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-        }
-      />
+slideToggleStories.add(
+  'SlideToggle',
+  () => (
+    <div className="story--example">
       <SlideToggle
         onChange={() => alert('clicked')}
         active={boolean('active', false)}
+        disabled={boolean('disabled', false)}
         size={
           ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
         }
         color={
           ComponentColor[
-            select('color', mapEnumKeys(ComponentColor), 'Primary')
+            select('color', mapEnumKeys(ComponentColor), 'Default')
           ]
         }
+        tooltipText={text('tooltipText', 'Tooltip Text')}
       />
+    </div>
+  ),
+  {
+    readme: {
+      content: SlideToggleReadme,
+    },
+  }
+)
+
+slideToggleStories.add(
+  'SlideToggleLabel',
+  () => (
+    <div className="story--example">
       <SlideToggle.Label
-        text="Oranges"
-        active={boolean('active', false)}
+        text={text('text', 'Label Text')}
         size={
           ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
         }
+        active={boolean('active', true)}
       />
-    </ComponentSpacer>
-  </div>
-))
+    </div>
+  ),
+  {
+    readme: {
+      content: SlideToggleLabelReadme,
+    },
+  }
+)
+
+slideToggleExampleStories.add(
+  'SlideToggle with labels',
+  () => (
+    <div className="story--example">
+      <ComponentSpacer
+        direction={FlexDirection.Row}
+        alignItems={AlignItems.Center}
+        margin={ComponentSize.Medium}
+      >
+        <SlideToggle.Label
+          text="Apples"
+          active={!boolean('active', false)}
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+        />
+        <SlideToggle
+          onChange={() => alert('clicked')}
+          active={boolean('active', false)}
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          color={
+            ComponentColor[
+              select('color', mapEnumKeys(ComponentColor), 'Primary')
+            ]
+          }
+        />
+        <SlideToggle.Label
+          text="Oranges"
+          active={boolean('active', false)}
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+        />
+      </ComponentSpacer>
+    </div>
+  ),
+  {
+    readme: {
+      content: SlideToggleWithLabelsReadme,
+    },
+  }
+)
 
 slideToggleExampleStories.add(
   'Controls List',
@@ -182,5 +221,10 @@ slideToggleExampleStories.add(
         </ComponentSpacer>
       </div>
     </div>
-  ))
+  )),
+  {
+    readme: {
+      content: ControlsListReadme,
+    },
+  }
 )

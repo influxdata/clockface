@@ -337,6 +337,51 @@ body.sb-show-main {
     }
   }
 
+  code.language-jsx span.token,
+  code.language-tsx span.token {
+    &.punctuation {
+      color: $g10-wolf;
+    }
+    &.attr-value,
+    &.string {
+      color: $g15-platinum;
+    }
+    &.keyword {
+      color: $c-krypton;
+
+      & + .string {
+        color: #f294ff;
+      }
+    }
+    &.function {
+      color: $c-pool;
+    }
+    &.operator {
+      color: $c-tungsten;
+    }
+    &.plain-text {
+      color: $g8-storm;
+      font-style: italic;
+    }
+    &.class-name,
+    &.tag > .punctuation {
+      color: $c-laser;
+    }
+    &.attr-name {
+      color: $c-comet;
+    }
+    &.script {
+      color: #0ae093;
+    }
+    &.boolean {
+      color: $c-thunder;
+      font-style: italic;
+    }
+    &.builtin {
+      color: #f294ff;
+    }
+  }
+
   pre {
     font-size: $docs-text-base;
     background-color: $g2-kevlar;

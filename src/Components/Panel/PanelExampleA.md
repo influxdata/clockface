@@ -3,10 +3,10 @@
 Here is an example of a panel that utilizes the `onDismiss` prop. Dismissable panels are a great way to announce new features or changes in the experience to the user.
 
 ### Usage
-```js
+```tsx
 import {Panel} from '@influxdata/clockface'
 ```
-```js
+```tsx
 <Panel>
   <Panel.Header onDismiss={() => {}}>
   <Panel.Body>

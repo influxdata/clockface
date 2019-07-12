@@ -3,7 +3,7 @@
 `ResourceCard` is the parent component of the `ResourceCard` Family; every member of the component family can be accessed from this single import. `ResourceCard` is best used in tandem with `ResourceList`.
 
 ### Usage
-```js
+```tsx
 import {ResourceCard} from '@influxdata/clockface'
 ```
 

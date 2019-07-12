@@ -3,13 +3,13 @@
 IndexList is the parent component of the IndexList Family; every member of the component family can be accessed from this single import. It is a container and requires children to be visible. We recommend using the members of the IndexList Family to construct your panel. This component family is essentially a pre-styled table with some added fanciness.
 
 ### Usage
-```js
+```tsx
 import {IndexList} from '@influxdata/clockface'
 ```
 
 IndexList is structured just like a table is:
 
-```js
+```tsx
 <IndexList>
   <IndexList.Header>
     <IndexList.HeaderCell />

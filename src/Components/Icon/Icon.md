@@ -3,7 +3,7 @@
 This component is the simplest way to render an icon from the `IconFont` enum
 
 ### Usage
-```js
+```tsx
 import {Icon, IconFont} from '@influxdata/clockface'
 ```
 

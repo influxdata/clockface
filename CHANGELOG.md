@@ -2,6 +2,8 @@
 
 #### 0.0.17 [Unreleassed]
 
+- [#165](https://github.com/influxdata/clockface/pull/165): Add markdown documentation for and polish appearance of `SlideToggle` components
+
 #### 0.0.16
 
 - [#163](https://github.com/influxdata/clockface/pull/163): Make `Panel` component optionally dismissable

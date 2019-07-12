@@ -3,7 +3,7 @@
 Panel is the parent component of the Panel Family; every member of the component family can be accessed from this single import. It is a container and requires children to be visible. We recommend using the members of the Panel Family to construct your panel.
 
 ### Usage
-```js
+```tsx
 import {Panel} from '@influxdata/clockface'
 
 <Panel>
