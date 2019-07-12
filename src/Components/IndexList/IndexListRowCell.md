@@ -3,10 +3,10 @@
 IndexListCells are intended to be the children of `<IndexList.Row />`. They can be accessed via the single `IndexList` import as a subclass.
 
 ### Usage
-```jsx
+```tsx
 import {IndexList} from '@influxdata/clockface'
 ```
-```jsx
+```tsx
 <IndexList.Cell />
 ```
 

@@ -3,7 +3,7 @@
 While this component can be used independently, we recommend using it in conjunction with `SpinnerContainer` for best results.
 
 ### Usage
-```jsx
+```tsx
 import {SparkleSpinner} from '@influxdata/clockface'
 ```
 

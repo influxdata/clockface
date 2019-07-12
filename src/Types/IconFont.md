@@ -2,7 +2,7 @@
 
 This Icon Font is included in Clockface. You can use the `IconFont` enum to tell Clockface components to render an icon.
 
-```jsx
+```tsx
 import {IconFont} from '@influxdata/clockface'
 ```
 

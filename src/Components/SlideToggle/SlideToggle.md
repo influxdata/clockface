@@ -3,10 +3,10 @@
 SlideToggle is a useful alternative to a checkbox to denote binary states. For example, `active`/`inactive` or `enabled`/`disabled`. SlideToggles are best understood with a label or two alongside the component.
 
 ### Usage
-```jsx
+```tsx
 import {SlideToggle} from '@influxdata/clockface'
 ```
-```jsx
+```tsx
 <SlideToggle />
 ```
 

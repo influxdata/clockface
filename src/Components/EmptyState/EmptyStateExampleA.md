@@ -3,7 +3,7 @@
 In InfluxDB we like to give users a way to create something when there is nothing without having to look around for a specific button or action.
 
 ### Usage
-```jsx
+```tsx
 import {EmptyState} from '@influxdata/clockface'
 ```
 

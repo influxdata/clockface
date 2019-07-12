@@ -3,10 +3,10 @@
 Panel Headers are best used to denote the title of a panel. They can be accessed via the single `Panel` import as a subclass.
 
 ### Usage
-```jsx
+```tsx
 import {Panel} from '@influxdata/clockface'
 ```
-```jsx
+```tsx
 <Panel.Header>
   // Children
 </Panel.Header>

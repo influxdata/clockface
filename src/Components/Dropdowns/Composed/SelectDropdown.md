@@ -3,7 +3,7 @@
 This is composed variation of a Dropdown intended for a common use case to save time. The Select Dropdown mimics the functionality of the HTML `<select>` element, which is that only one option can be selected at a time. Its appearance can be customized to an extent and its state must be managed by a wrapper component. If you are looking to create a dropdown with more custom behavior try building one using the Dropdown Family of components instead.
 
 ### Usage
-```jsx
+```tsx
 import {SelectDropdown} from '@influxdata/clockface'
 ```
 
@@ -20,7 +20,7 @@ This composed dropdown has two key props: `selectedOption` and `options` which d
 
 Here's an example of how to manage Select Dropdown state:
 
-```jsx
+```tsx
 const options = [
   'A',
   'B',
@@ -37,7 +37,7 @@ private handleSelect = (selectedOption: string): void => {
 ```
 
 And here's rendering the component:
-```jsx
+```tsx
 const {selectedOption} = this.state
 
 <SelectDropdown
@@ -53,7 +53,7 @@ const {selectedOption} = this.state
 
 Dropdowns can feature dividers with or without titles mixed into the options list. This component provides a few shortcuts to achieve this:
 
-```jsx
+```tsx
 options = [
   'Apple',
   // This produces the standard Dropdown Iten

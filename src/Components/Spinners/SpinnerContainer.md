@@ -3,7 +3,7 @@
 This component is intended to wrap a spinner and show it conditionally based on `RemoteDataState`. Using a spinner outside of this component may produce unexpected results.
 
 ### Usage
-```jsx
+```tsx
 import {SpinnerContainer} from '@influxdata/clockface'
 ```
 

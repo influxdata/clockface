@@ -3,7 +3,7 @@
 The Base Button is intended for custom use cases. It renders children inside itself to facilitate many use cases.
 
 ### Usage
-```jsx
+```tsx
 import {ButtonBase} from '@influxdata/clockface'
 ```
 

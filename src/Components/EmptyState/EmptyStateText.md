@@ -3,7 +3,7 @@
 This is a sub-component of Empty State.
 
 ### Usage
-```jsx
+```tsx
 import {EmptyState} from '@influxdata/clockface'
 
 <EmptyState.Text />

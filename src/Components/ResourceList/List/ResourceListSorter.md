@@ -3,10 +3,10 @@
 `ResourceListSorter` is a sortable header intended for use as a child of `ResourceListHeader`. It can be accessed via the single `ResourceList` import as a subclass.
 
 ### Usage
-```jsx
+```tsx
 import {ResourceList} from '@influxdata/clockface'
 ```
-```jsx
+```tsx
 <ResourceList.Sorter />
 ```
 
@@ -25,7 +25,7 @@ import {ResourceList} from '@influxdata/clockface'
 
 Next, pass a handler function into each `<ResourceList.Sorter />` you want to be sortable:
 
-```jsx
+```tsx
 private handleSort = (nextSort: Sort, sortKey: string): void => {
   this.setState({
     sortDirection: nextSort,
@@ -33,7 +33,7 @@ private handleSort = (nextSort: Sort, sortKey: string): void => {
   })
 }
 ```
-```jsx
+```tsx
 <ResourceList.Sorter onClick={this.handleSort} />
 ```
 
@@ -41,10 +41,10 @@ When a sorter is clicked it cycles to the next available sort state and passes t
 
 Make sure each each `<ResourceList.Sorter />` receives state:
 
-```jsx
+```tsx
 const {sortKey, sortDirection, items} = this.state
 ```
-```jsx
+```tsx
 items.map(item => (
   <ResourceList.Sorter
     sortKey={item.sortKey}

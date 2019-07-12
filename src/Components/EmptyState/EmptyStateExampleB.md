@@ -3,7 +3,7 @@
 When no data can be loaded it is helpful to suggest a course of action to remedy the situation.
 
 ### Usage
-```jsx
+```tsx
 import {EmptyState} from '@influxdata/clockface'
 ```
 

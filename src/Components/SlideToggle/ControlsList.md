@@ -3,10 +3,10 @@
 Here's an example that uses the entire SlideToggle family to construct a control panel like you might see in an options view. This example uses a stateful wrapper so the JSX example is obscured, unfortunately. 
 
 ### Usage
-```jsx
+```tsx
 import {SlideToggle} from '@influxdata/clockface'
 ```
-```jsx
+```tsx
 <SlideToggle />
 ```
 
@@ -19,7 +19,7 @@ This example uses a `ComponentSpacer` to align the components. Each `SlideToggle
 
 Here's how to structure this example's state:
 
-```jsx
+```tsx
 interface State {
   optionA: boolean
   optionB: boolean
@@ -29,7 +29,7 @@ interface State {
 
 Here's a handler function:
 
-```jsx
+```tsx
 private handleSlideToggleChange = (): void => {
   this.setState({optionA: !this.state.optionA})
 }
@@ -37,11 +37,11 @@ private handleSlideToggleChange = (): void => {
 
 Here's the JSX:
 
-```jsx
+```tsx
 const {optionA, optionB, optionC} = this.state
 ```
 
-```jsx
+```tsx
 <ComponentSpacer
   direction={FlexDirection.Column}
   alignItems={AlignItems.Stretch}

@@ -3,10 +3,10 @@
 `ResourceListBody` is intended to be the second child of `ResourceList`, similar to `<tbody />` in a plain HTML table. It can be accessed via the single `ResourceList` import as a subclass.
 
 ### Usage
-```jsx
+```tsx
 import {ResourceList} from '@influxdata/clockface'
 ```
-```jsx
+```tsx
 <ResourceList.Body>
   // Children
 </ResourceList.Body>
