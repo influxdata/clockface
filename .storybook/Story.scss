@@ -364,6 +364,9 @@ body.sb-show-main {
 
   code.language-jsx span.token,
   code.language-tsx span.token {
+    &.number {
+      color: $c-dreamsicle;
+    }
     &.punctuation {
       color: $g10-wolf;
     }
@@ -404,6 +407,9 @@ body.sb-show-main {
     }
     &.builtin {
       color: #f294ff;
+    }
+    &.tag {
+      color: $c-ocean;
     }
   }
 

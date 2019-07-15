@@ -1,10 +1,11 @@
 // Libraries
 import * as React from 'react'
+import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {jsxDecorator} from 'storybook-addon-jsx'
-import {withKnobs, select} from '@storybook/addon-knobs'
+import {withKnobs, select, number} from '@storybook/addon-knobs'
 import {withState} from '@dump247/storybook-state'
 import {mapEnumKeys} from '../../../.storybook/utils'
 
@@ -13,6 +14,18 @@ import {Orientation, Gradients} from '../../Types'
 
 // Components
 import {DraggableResizer} from './DraggableResizer'
+
+// Notes
+const DraggableResizerReadme = marked(require('./DraggableResizer.md'))
+const DraggableResizerPanelReadme = marked(
+  require('./DraggableResizerPanel.md')
+)
+const DraggableResizerExampleAReadme = marked(
+  require('./DraggableResizerExampleA.md')
+)
+const DraggableResizerExampleBReadme = marked(
+  require('./DraggableResizerExampleB.md')
+)
 
 // State
 interface StoryState {
@@ -41,41 +54,68 @@ const draggableResizerStories = storiesOf(
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
-draggableResizerStories.add('DraggableResizer', () => (
-  <div className="mockPage padded">
-    <DraggableResizer
-      handleOrientation={
-        Orientation[
-          select('handleOrientation', mapEnumKeys(Orientation), 'Vertical')
-        ]
-      }
-      handleGradient={
-        Gradients[
-          Gradients[
-            select('handleGradient', mapEnumKeys(Gradients), 'PastelGothic')
-          ]
-        ]
-      }
-      handlePositions={[0.5]}
-      onChangePositions={
-        handlePositions => console.log(`this.setState({handlePositions: ${handlePositions}})`) // eslint-disable-line
-      }
-    >
-      <DraggableResizer.Panel>
-        <div className="mockCard" />
-      </DraggableResizer.Panel>
-      <DraggableResizer.Panel>
-        <div className="mockCard" />
-      </DraggableResizer.Panel>
-    </DraggableResizer>
-  </div>
-))
+const exampleHandlePositionRange = {
+  range: true,
+  min: 0,
+  max: 1,
+  step: 0.01,
+}
 
-draggableResizerStories.add('DraggableResizerPanel', () => (
-  <DraggableResizer.Panel minSizePixels={50} sizePercent={0.5}>
-    <div className="mockCard" />
-  </DraggableResizer.Panel>
-))
+draggableResizerStories.add(
+  'DraggableResizer',
+  () => (
+    <div className="mockPage padded">
+      <DraggableResizer
+        handleOrientation={
+          Orientation[
+            select('handleOrientation', mapEnumKeys(Orientation), 'Vertical')
+          ]
+        }
+        handleGradient={
+          Gradients[
+            Gradients[
+              select('handleGradient', mapEnumKeys(Gradients), 'PastelGothic')
+            ]
+          ]
+        }
+        handlePositions={[
+          number('handlePositions', 0.5, exampleHandlePositionRange),
+        ]}
+        onChangePositions={
+        handlePositions => console.log(`this.setState({handlePositions: ${handlePositions}})`) // eslint-disable-line
+        }
+      >
+        <DraggableResizer.Panel>
+          <div className="mockCard" />
+        </DraggableResizer.Panel>
+        <DraggableResizer.Panel>
+          <div className="mockCard" />
+        </DraggableResizer.Panel>
+      </DraggableResizer>
+    </div>
+  ),
+  {
+    readme: {
+      content: DraggableResizerReadme,
+    },
+  }
+)
+
+draggableResizerStories.add(
+  'DraggableResizerPanel',
+  () => (
+    <div className="story--example">
+      <DraggableResizer.Panel minSizePixels={50} sizePercent={0.5}>
+        <div className="mockCard" />
+      </DraggableResizer.Panel>
+    </div>
+  ),
+  {
+    readme: {
+      content: DraggableResizerPanelReadme,
+    },
+  }
+)
 
 draggableResizerExamplesStories.add(
   '2 Panels',
@@ -109,7 +149,12 @@ draggableResizerExamplesStories.add(
         </DraggableResizer.Panel>
       </DraggableResizer>
     </div>
-  ))
+  )),
+  {
+    readme: {
+      content: DraggableResizerExampleAReadme,
+    },
+  }
 )
 
 draggableResizerExamplesStories.add(
@@ -154,5 +199,10 @@ draggableResizerExamplesStories.add(
         </DraggableResizer.Panel>
       </DraggableResizer>
     </div>
-  ))
+  )),
+  {
+    readme: {
+      content: DraggableResizerExampleBReadme,
+    },
+  }
 )
