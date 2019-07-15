@@ -1,4 +1,4 @@
-# Techno Spinner
+# TechnoSpinner
 
 While this component can be used independently, we recommend using it in conjunction with `SpinnerContainer` for best results.
 
