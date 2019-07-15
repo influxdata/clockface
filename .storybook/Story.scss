@@ -557,7 +557,37 @@ table.two-axis-table {
 }
 
 .colors-grid--card {
-  flex: 0 0 calc(12.5% - 4px);
+  flex: 0 0 calc(33.3333% - 4px);
+}
+
+@media screen and (min-width: 700px) {
+  .colors-grid--card {
+    flex: 0 0 calc(25% - 4px);
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .colors-grid--card {
+    flex: 0 0 calc(20% - 4px);
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .colors-grid--card {
+    flex: 0 0 calc(16.6666667% - 4px);
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .colors-grid--card {
+    flex: 0 0 calc(12.5% - 4px);
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .colors-grid--card {
+    flex: 0 0 calc(10% - 4px);
+  }
 }
 
 .gradients-grid--card {
