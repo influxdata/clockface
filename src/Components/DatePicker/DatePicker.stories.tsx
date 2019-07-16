@@ -36,7 +36,6 @@ datePickerComposedStories.add(
           lower: '',
         }}
         onSetTimeRange={() => {}}
-        onClose={() => {}}
       />
     </div>
   ),

@@ -1,10 +1,10 @@
 // Libraries
-import React, {PureComponent, createRef, CSSProperties} from 'react'
+import React, {PureComponent} from 'react'
 
 // Components
 import {DatePicker} from '../Base/DatePicker'
-import {ClickOutside} from '../../ClickOutside/ClickOutside'
 import {Button} from '../../Button/Composed/Button'
+import {ComponentSpacer} from '../../ComponentSpacer/ComponentSpacer'
 
 // Types
 import {
@@ -12,32 +12,20 @@ import {
   ComponentColor,
   ComponentSize,
   StandardProps,
+  FlexDirection,
 } from '../../../Types/index'
-
-// Styles
-import '../DateRangePicker.scss'
 
 interface Props extends StandardProps {
   timeRange: TimeRange
   onSetTimeRange: (timeRange: TimeRange) => void
-  position?: {top: number; right: number}
-  onClose: () => void
 }
 
 interface State {
   lower: string
   upper?: string | null
-  bottomPosition?: number | null
-  topPosition?: number
 }
 
-const PICKER_HEIGHT = 416
-const HORIZONTAL_PADDING = 2
-const VERTICAL_PADDING = 15
-
 export class DateRangePicker extends PureComponent<Props, State> {
-  private rangePickerRef = createRef<HTMLDivElement>()
-
   public static defaultProps = {
     testID: 'date-range-picker',
   }
@@ -48,86 +36,36 @@ export class DateRangePicker extends PureComponent<Props, State> {
       timeRange: {lower, upper},
     } = props
 
-    this.state = {lower, upper, bottomPosition: null}
-  }
-
-  public componentDidMount() {
-    if (this.rangePickerRef.current) {
-      const {
-        bottom,
-        top,
-        height,
-      } = this.rangePickerRef.current.getBoundingClientRect()
-
-      if (bottom > window.innerHeight) {
-        this.setState({bottomPosition: height / 2})
-      } else if (top < 0) {
-        this.setState({topPosition: height / 2})
-      }
-    }
+    this.state = {lower, upper}
   }
 
   public render() {
-    const {onClose, testID, className} = this.props
+    const {testID} = this.props
     const {upper, lower} = this.state
 
     return (
-      <ClickOutside onClickOutside={onClose}>
-        <div
-          className={`range-picker react-datepicker-ignore-onclickoutside ${className}`}
-          ref={this.rangePickerRef}
-          style={this.stylePosition}
-          data-test-id={testID}
-        >
-          <button className="range-picker--dismiss" onClick={onClose} />
-          <div className="range-picker--date-pickers">
-            <DatePicker
-              dateTime={lower}
-              onSelectDate={this.handleSelectLower}
-              label="Start"
-            />
-            <DatePicker
-              dateTime={upper}
-              onSelectDate={this.handleSelectUpper}
-              label="Stop"
-            />
-          </div>
-          <Button
-            className="range-picker--submit"
-            color={ComponentColor.Primary}
-            size={ComponentSize.Small}
-            onClick={this.handleSetTimeRange}
-            text="Apply Time Range"
+      <ComponentSpacer direction={FlexDirection.Column}>
+        <ComponentSpacer direction={FlexDirection.Row} data-testid={testID}>
+          <DatePicker
+            dateTime={lower}
+            onSelectDate={this.handleSelectLower}
+            label="Start"
           />
-        </div>
-      </ClickOutside>
+          <DatePicker
+            dateTime={upper}
+            onSelectDate={this.handleSelectUpper}
+            label="Stop"
+          />
+        </ComponentSpacer>
+        <Button
+          className="range-picker--submit"
+          color={ComponentColor.Primary}
+          size={ComponentSize.Small}
+          onClick={this.handleSetTimeRange}
+          text="Apply Time Range"
+        />
+      </ComponentSpacer>
     )
-  }
-
-  private get stylePosition(): CSSProperties | undefined {
-    const {position} = this.props
-    const {bottomPosition, topPosition} = this.state
-
-    if (!position) {
-      return
-    }
-
-    const {top, right} = position
-
-    if (topPosition) {
-      return {
-        top: '14px',
-        right: `${right + HORIZONTAL_PADDING}px`,
-      }
-    }
-
-    const bottomPx =
-      (bottomPosition || window.innerHeight - top - VERTICAL_PADDING) -
-      PICKER_HEIGHT / 2
-    return {
-      bottom: `${bottomPx}px`,
-      right: `${right + HORIZONTAL_PADDING}px`,
-    }
   }
 
   private handleSetTimeRange = (): void => {
