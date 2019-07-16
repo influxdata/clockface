@@ -12,6 +12,7 @@ import {jsxDecorator} from 'storybook-addon-jsx'
 import {SpinnerContainer} from './SpinnerContainer'
 import {SparkleSpinner} from './SparkleSpinner'
 import {TechnoSpinner} from './TechnoSpinner'
+import {WaitingText} from './WaitingText'
 
 // Types
 import {ComponentSize, RemoteDataState} from '../../Types'
@@ -20,12 +21,30 @@ import {ComponentSize, RemoteDataState} from '../../Types'
 const SpinnerContainerReadme = marked(require('./SpinnerContainer.md'))
 const TechnoSpinnerReadme = marked(require('./TechnoSpinner.md'))
 const SparkleSpinnerReadme = marked(require('./SparkleSpinner.md'))
+const WaitingTextReadme = marked(require('./WaitingText.md'))
 
-const spinnerStories = storiesOf('Components|Spinners/Family', module)
+const spinnerContainerStories = storiesOf(
+  'Components|Spinners/Container',
+  module
+)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
-spinnerStories.add(
+const spinnerVisualStories = storiesOf(
+  'Components|Spinners/Visual Spinners',
+  module
+)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
+
+const spinnerTextStories = storiesOf(
+  'Components|Spinners/Text Spinners',
+  module
+)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
+
+spinnerContainerStories.add(
   'SpinnerContainer',
   () => (
     <div className="story--example">
@@ -53,7 +72,7 @@ spinnerStories.add(
   }
 )
 
-spinnerStories.add(
+spinnerVisualStories.add(
   'TechnoSpinner',
   () => (
     <div className="story--example">
@@ -74,7 +93,7 @@ spinnerStories.add(
   }
 )
 
-spinnerStories.add(
+spinnerVisualStories.add(
   'SparkleSpinner',
   () => (
     <div className="story--example">
@@ -91,6 +110,20 @@ spinnerStories.add(
   {
     readme: {
       content: SparkleSpinnerReadme,
+    },
+  }
+)
+
+spinnerTextStories.add(
+  'WaitingText',
+  () => (
+    <div className="story--example">
+      <WaitingText text={text('text', 'Loading')} />
+    </div>
+  ),
+  {
+    readme: {
+      content: WaitingTextReadme,
     },
   }
 )

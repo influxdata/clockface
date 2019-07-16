@@ -1,5 +1,6 @@
 // Libraries
 import React, {Component} from 'react'
+import classnames from 'classnames'
 
 // Styles
 import './WaitingText.scss'
@@ -20,16 +21,18 @@ export class WaitingText extends Component<Props> {
   }
 
   public render() {
-    const {text, className, testID, id} = this.props
+    const {text, testID, id} = this.props
 
     return (
-      <div
-        className={`waiting-text ${className || ''}`}
-        data-testid={testID}
-        id={id}
-      >
+      <div className={this.className} data-testid={testID} id={id}>
         {text}
       </div>
     )
+  }
+
+  private get className(): string {
+    const {className} = this.props
+
+    return classnames('waiting-text', {[`${className}`]: className})
   }
 }

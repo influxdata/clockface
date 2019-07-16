@@ -112,11 +112,13 @@
 
 .scroll--container {
   position: relative;
-  width: 600px;
-  height: 300px;
   background-color: $g4-onyx;
   border-radius: $cf-radius;
   padding: $cf-marg-b;
+
+  p {
+    margin: 0;
+  }
 }
 
 .mockPage {
@@ -212,6 +214,28 @@ body.sb-show-main {
 .storybook-readme-story div.markdown-body {
   font-size: $docs-text-base;
   font-family: 'Roboto', Helvetica, Arial, Tahoma, Verdana, sans-serif;
+
+  a:link,
+  a:visited,
+  a:active {
+    font-weight: 900;
+    text-decoration: underline;
+    transition: color 0.25s ease, text-shadow 0.25s ease;
+  }
+
+  a:link,
+  a:visited {
+    color: $c-pool;
+  }
+
+  a:hover {
+    color: $c-laser;
+  }
+
+  a:active {
+    color: $c-hydrogen;
+    text-shadow: 0 0 3px $c-ocean, 0 0 7px $c-amethyst;
+  }
   
   h1,
   h2,
@@ -313,6 +337,7 @@ body.sb-show-main {
     color: $c-potassium;
     background-color: $g2-kevlar;
     font-size: inherit;
+    text-shadow: 0 0 3px $g0-obsidian;
   }
 
   code.language-js span.token {
@@ -339,6 +364,9 @@ body.sb-show-main {
 
   code.language-jsx span.token,
   code.language-tsx span.token {
+    &.number {
+      color: $c-dreamsicle;
+    }
     &.punctuation {
       color: $g10-wolf;
     }
@@ -379,6 +407,9 @@ body.sb-show-main {
     }
     &.builtin {
       color: #f294ff;
+    }
+    &.tag {
+      color: $c-ocean;
     }
   }
 
@@ -526,7 +557,37 @@ table.two-axis-table {
 }
 
 .colors-grid--card {
-  flex: 0 0 calc(12.5% - 4px);
+  flex: 0 0 calc(33.3333% - 4px);
+}
+
+@media screen and (min-width: 700px) {
+  .colors-grid--card {
+    flex: 0 0 calc(25% - 4px);
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .colors-grid--card {
+    flex: 0 0 calc(20% - 4px);
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .colors-grid--card {
+    flex: 0 0 calc(16.6666667% - 4px);
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .colors-grid--card {
+    flex: 0 0 calc(12.5% - 4px);
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .colors-grid--card {
+    flex: 0 0 calc(10% - 4px);
+  }
 }
 
 .gradients-grid--card {
