@@ -20,8 +20,11 @@ import {
 } from '../../../Types'
 
 interface Props extends StandardProps {
+  /** Label for input field */
   label: string
+  /** Date value */
   dateTime?: string | null
+  /** Function called once a date is selected */
   onSelectDate: (date: string) => void
 }
 

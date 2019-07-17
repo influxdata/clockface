@@ -31,7 +31,6 @@ datePickerComposedStories.add(
   () => (
     <div className="story--example">
       <DateRangePicker
-        className="story--force-relative"
         timeRange={{
           lower: '',
         }}

@@ -16,7 +16,9 @@ import {
 } from '../../../Types/index'
 
 interface Props extends StandardProps {
+  /** Object of {upper: string, lower: string | null, seconds: number, format: string, label: string, duration: string} */
   timeRange: TimeRange
+  /** Function called when time range is set */
   onSetTimeRange: (timeRange: TimeRange) => void
 }
 

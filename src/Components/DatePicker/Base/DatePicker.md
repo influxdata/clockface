@@ -4,8 +4,16 @@ This is a date picker that allows a user to select a date from a calendar.
 
 ### Usage
 
-```js
+```jsx
 import {DatePicker} from '@influxdata/clockface'
+```
+
+```jsx
+<DatePicker
+  dateTime={'1234567890'}
+  onSelectDate={() => {}}
+  label={'my label'}
+/>
 ```
 
 ### Example
