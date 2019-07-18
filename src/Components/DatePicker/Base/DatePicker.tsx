@@ -5,19 +5,13 @@ import moment from 'moment'
 
 // Components
 import {Input} from '../../Inputs/Input'
-import {Grid} from '../../GridLayout/Grid'
 import {Form} from '../../FormLayout/Form'
 
 // Styles
 import '../DatePicker.scss'
 
 // Types
-import {
-  Columns,
-  ComponentSize,
-  ComponentStatus,
-  StandardProps,
-} from '../../../Types'
+import {ComponentSize, ComponentStatus, StandardProps} from '../../../Types'
 
 interface Props extends StandardProps {
   /** Label for input field */
@@ -77,35 +71,31 @@ export class DatePicker extends PureComponent<Props, State> {
 
     return (
       <div className="date-picker" data-testid={testID}>
-        <Grid.Row>
-          <Grid.Column widthXS={Columns.Twelve}>
-            <Form.Element label={label} errorMessage={this.inputErrorMessage}>
-              <Input
-                size={ComponentSize.Medium}
-                className="react-datepicker-ignore-onclickoutside"
-                titleText={label}
-                value={this.inputValue}
-                onChange={this.handleChangeInput}
-                status={this.inputStatus}
-              />
-            </Form.Element>
-            <ReactDatePicker
-              inline
-              selected={date}
-              onChange={this.handleSelectDate}
-              startOpen={true}
-              dateFormat="yyyy-MM-dd HH:mm"
-              showTimeSelect={true}
-              timeFormat="HH:mm"
-              shouldCloseOnSelect={false}
-              disabledKeyboardNavigation={true}
-              calendarClassName="date-picker--calendar"
-              dayClassName={this.dayClassName}
-              timeIntervals={60}
-              fixedHeight={true}
-            />
-          </Grid.Column>
-        </Grid.Row>
+        <Form.Element label={label} errorMessage={this.inputErrorMessage}>
+          <Input
+            size={ComponentSize.Medium}
+            className="react-datepicker-ignore-onclickoutside"
+            titleText={label}
+            value={this.inputValue}
+            onChange={this.handleChangeInput}
+            status={this.inputStatus}
+          />
+        </Form.Element>
+        <ReactDatePicker
+          inline
+          selected={date}
+          onChange={this.handleSelectDate}
+          startOpen={true}
+          dateFormat="yyyy-MM-dd HH:mm"
+          showTimeSelect={true}
+          timeFormat="HH:mm"
+          shouldCloseOnSelect={false}
+          disabledKeyboardNavigation={true}
+          calendarClassName="date-picker--calendar"
+          dayClassName={this.dayClassName}
+          timeIntervals={60}
+          fixedHeight={true}
+        />
       </div>
     )
   }

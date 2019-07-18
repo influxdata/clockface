@@ -1,6 +1,6 @@
 # Date Range Picker
 
-This is a composed date picker that allows users to select a date range with a start and stop tim.
+This is a composed date picker that allows users to select a date range with a start and stop time.
 
 ### Usage
 
