@@ -274,6 +274,12 @@ export enum Alignment {
   Right = 'right',
 }
 
+export enum VerticalAlignment {
+  Top = 'top',
+  Middle = 'middle',
+  Bottom = 'bottom',
+}
+
 export enum JustifyContent {
   FlexStart = 'flex-start',
   Center = 'center',
@@ -311,4 +317,12 @@ export enum AutoComplete {
 export enum Orientation {
   Vertical = 'vertical',
   Horizontal = 'horizontal',
+}
+
+export enum BorderType {
+  None = 'none',
+  Horizontal = 'horizontal',
+  Vertical = 'vertical',
+  Both = 'both',
+  All = 'all',
 }
