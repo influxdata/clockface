@@ -1,11 +1,12 @@
 # Table
 
-Alerts are a great way to draw the user's attention to important information. They are best positioned across the top of the page or above other content to ensure they are seen first. Different colors of Alert can be used to denote severity of the information.
+Table is a simple extension of an HTML5 table. Composing a table should feel exactly the same, except there are some cool additional features such as easy control of padding, highlighting rows in different colors, and hover interactions. 
 
 ### Usage
 ```tsx
 import {Table} from '@influxdata/clockface'
 ```
+All `Table` family components can be accessed from the same class import:
 ```tsx
 <Table>
   <Table.Header>
@@ -26,6 +27,18 @@ import {Table} from '@influxdata/clockface'
 
 ### Example
 <!-- STORY -->
+
+### Coloring Rows
+
+In some cases, such as highlighting an erroneous row of data, you may want to mark a row as having a certain state. You can pass in the `ComponentColor` data type into the `color` prop of each row:
+
+```tsx
+<Table.Row color={ComponentColor.Danger}>
+  <Table.Cell />
+  <Table.Cell />
+  <Table.Cell />
+</Table.Row>
+```
 
 <!-- STORY HIDE START -->
 

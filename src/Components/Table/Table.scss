@@ -240,7 +240,7 @@ $table-row-background: $g3-castle;
   @include tableColorModifier($c-emerald, mix($c-viridian, $c-emerald, 50%), $c-viridian, $c-rainforest, $g20-white);
 }
 .table--row__warning {
-  @include tableColorModifier($c-tiger, mix($c-pineapple, $c-tiger, 50%), $c-pineapple, $c-thunder, $g4-onyx);
+  @include tableColorModifier($c-tiger, mix($c-pineapple, $c-tiger, 50%), $c-pineapple, $c-thunder, $g3-castle);
 }
 .table--row__danger {
   @include tableColorModifier($c-ruby, mix($c-fire, $c-ruby, 50%), $c-fire, $c-dreamsicle, $g20-white);
