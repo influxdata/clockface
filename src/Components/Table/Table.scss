@@ -1,0 +1,247 @@
+@import '../../Styles/modules';
+
+$table-border--primary: $g6-smoke;
+$table-border--secondary: $g4-onyx;
+$table-row-background: $g3-castle;
+
+/*
+  Table
+  ------------------------------------------------------------------------------
+*/
+
+.table {
+  border-collapse: collapse;
+}
+
+.table--cell {
+  color: $g11-sidewalk;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  font-weight: 500;  
+}
+
+.table--header-cell {
+  color: $g15-platinum;
+  font-weight: 900;  
+}
+
+.table--row {
+  transition: background-color 0.25s ease;
+}
+
+/*
+  Borders Styling
+  ------------------------------------------------------------------------------
+*/
+
+.table__borders-none {
+  .table--cell,
+  .table--header-cell {
+    border: 0;
+  }
+}
+
+.table__borders-all {
+  .table--cell,
+  .table--header-cell {
+    border: $cf-border solid $table-border--primary;
+  }
+}
+
+.table__borders-horizontal {
+  .table--cell,
+  .table--header-cell {
+    border-top: $cf-border solid $table-border--secondary;
+    border-bottom: $cf-border solid $table-border--secondary;
+  }
+
+  .table--header:first-child .table--row:first-child .table--header-cell {
+    border-top: 0;
+  }
+
+  .table--footer:last-child .table--row:last-child .table--cell,
+  .table--body:last-child .table--row:last-child .table--cell {
+    border-bottom: 0;
+  }
+}
+
+.table__borders-vertical {
+  .table--cell,
+  .table--header-cell {
+    border-left: $cf-border solid $table-border--secondary;
+    border-right: $cf-border solid $table-border--secondary;
+  }
+
+  .table--header .table--row .table--header-cell:first-child,
+  .table--header .table--row .table--cell:first-child,
+  .table--body .table--row .table--header-cell:first-child,
+  .table--body .table--row .table--cell:first-child,
+  .table--footer .table--row .table--header-cell:first-child,
+  .table--footer .table--row .table--cell:first-child {
+    border-left: 0;
+  }
+
+  .table--header .table--row .table--header-cell:last-child,
+  .table--header .table--row .table--cell:last-child,
+  .table--body .table--row .table--header-cell:last-child,
+  .table--body .table--row .table--cell:last-child,
+  .table--footer .table--row .table--header-cell:last-child,
+  .table--footer .table--row .table--cell:last-child {
+    border-right: 0;
+  }
+}
+
+.table__borders-both {
+  .table--cell,
+  .table--header-cell {
+    border: $cf-border solid $table-border--secondary;
+  }
+
+  .table--header:first-child .table--row:first-child .table--header-cell {
+    border-top: 0;
+  }
+
+  .table--footer:last-child .table--row:last-child .table--cell,
+  .table--body:last-child .table--row:last-child .table--cell {
+    border-bottom: 0;
+  }
+
+  .table--header .table--row .table--header-cell:first-child,
+  .table--header .table--row .table--cell:first-child,
+  .table--body .table--row .table--header-cell:first-child,
+  .table--body .table--row .table--cell:first-child,
+  .table--footer .table--row .table--header-cell:first-child,
+  .table--footer .table--row .table--cell:first-child {
+    border-left: 0;
+  }
+
+  .table--header .table--row .table--header-cell:last-child,
+  .table--header .table--row .table--cell:last-child,
+  .table--body .table--row .table--header-cell:last-child,
+  .table--body .table--row .table--cell:last-child,
+  .table--footer .table--row .table--header-cell:last-child,
+  .table--footer .table--row .table--cell:last-child {
+    border-right: 0;
+  }
+}
+
+.table .table__borders-none th.table--header-cell,
+.table th.table--header-cell {
+  border-bottom: $cf-border solid $table-border--primary;
+}
+
+/*
+  Padding Modifiers
+  ------------------------------------------------------------------------------
+*/
+
+@mixin tablePaddingModifier($padding) {
+  .table--cell,
+  .table--header-cell {
+    padding: $padding;
+  }
+}
+
+.table__padding-xs {
+  @include tablePaddingModifier($form-xs-padding);
+}
+.table__padding-sm {
+  @include tablePaddingModifier($form-sm-padding);
+}
+.table__padding-md {
+  @include tablePaddingModifier($form-md-padding);
+}
+.table__padding-lg {
+  @include tablePaddingModifier($form-lg-padding);
+}
+
+/*
+  Font Size Modifiers
+  ------------------------------------------------------------------------------
+*/
+
+@mixin tableFontModifier($fontSize) {
+  .table--cell,
+  .table--header-cell {
+    font-size: $fontSize;
+  }
+}
+
+.table__font-xs {
+  @include tableFontModifier($form-xs-font);
+}
+.table__font-sm {
+  @include tableFontModifier($form-sm-font);
+}
+.table__font-md {
+  @include tableFontModifier($form-md-font);
+}
+.table__font-lg {
+  @include tableFontModifier($form-lg-font);
+}
+
+/*
+  Striped Styling
+  ------------------------------------------------------------------------------
+*/
+
+.table__striped .table--body .table--row:nth-child(odd) {
+  background-color: rgba($table-row-background, 0.7);
+}
+
+/*
+  Highlight Styling
+  ------------------------------------------------------------------------------
+*/
+
+.table__highlight .table--body .table--row:hover {
+  background-color: $table-row-background;
+}
+
+.table__highlight .table--body .table--row:hover .table--cell {
+  color: $g17-whisper;
+}
+
+/*
+  Row Color Modifiers
+  ------------------------------------------------------------------------------
+*/
+
+@mixin tableColorModifier($background, $backgroundAlt, $backgroundHover, $border, $text) {
+  .table .table--body & .table--cell,
+  .table .table--body & .table--header-cell,
+  .table .table--header & .table--cell,
+  .table .table--header & .table--header-cell,
+  .table .table--footer & .table--cell,
+  .table .table--footer & .table--header-cell {
+    background-color: $background;
+    border-color: $border;
+    color: rgba($text, 0.8);
+  }
+
+  .table__striped .table--body &:nth-child(odd) .table--cell,
+  .table__striped .table--body &:nth-child(odd) .table--header-cell {
+    background-color: $backgroundAlt;
+  }
+
+  .table__highlight .table--body &:hover .table--cell,
+  .table__highlight .table--body &:hover .table--header-cell {
+    background-color: $backgroundHover;
+    color: $text;
+  }
+}
+
+.table--row__primary {
+  @include tableColorModifier($c-sapphire, mix($c-ocean, $c-sapphire, 50%), $c-ocean, $c-pool, $g20-white);
+}
+.table--row__secondary {
+  @include tableColorModifier($c-void, mix($c-amethyst, $c-void, 50%), $c-amethyst, $c-star, $g20-white);
+}
+.table--row__success {
+  @include tableColorModifier($c-emerald, mix($c-viridian, $c-emerald, 50%), $c-viridian, $c-rainforest, $g20-white);
+}
+.table--row__warning {
+  @include tableColorModifier($c-tiger, mix($c-pineapple, $c-tiger, 50%), $c-pineapple, $c-thunder, $g3-castle);
+}
+.table--row__danger {
+  @include tableColorModifier($c-ruby, mix($c-fire, $c-ruby, 50%), $c-fire, $c-dreamsicle, $g20-white);
+}

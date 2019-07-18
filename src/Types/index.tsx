@@ -30,6 +30,7 @@ export enum ComponentStatus {
   Valid = 'valid',
   Disabled = 'disabled',
 }
+
 export interface Color {
   hex: string
   name: string
@@ -274,6 +275,12 @@ export enum Alignment {
   Right = 'right',
 }
 
+export enum VerticalAlignment {
+  Top = 'top',
+  Middle = 'middle',
+  Bottom = 'bottom',
+}
+
 export enum JustifyContent {
   FlexStart = 'flex-start',
   Center = 'center',
@@ -311,4 +318,21 @@ export enum AutoComplete {
 export enum Orientation {
   Vertical = 'vertical',
   Horizontal = 'horizontal',
+}
+
+export enum BorderType {
+  None = 'none',
+  Horizontal = 'horizontal',
+  Vertical = 'vertical',
+  Both = 'both',
+  All = 'all',
+}
+    
+export interface TimeRange {
+  lower: string
+  upper?: string | null
+  seconds?: number
+  format?: string
+  label?: string
+  duration?: string
 }
