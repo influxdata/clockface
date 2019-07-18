@@ -34,6 +34,13 @@ const OverlayMaskReadme = marked(require('./OverlayMask.md'))
 const OverlayHeaderReadme = marked(require('./OverlayHeader.md'))
 const OverlayBodyReadme = marked(require('./OverlayBody.md'))
 const OverlayFooterReadme = marked(require('./OverlayFooter.md'))
+const ConfirmationOverlayReadme = marked(require('./ConfirmationOverlay.md'))
+
+const instructionsElement = (
+  <p>
+    Look in the <strong>Knobs</strong> panel to toggle the overlay
+  </p>
+)
 
 const overlayStories = storiesOf('Components|Overlays/Family', module)
   .addDecorator(withKnobs)
@@ -43,9 +50,7 @@ overlayStories.add(
   'Overlay',
   () => (
     <div className="story--example">
-      <p>
-        Look in the <strong>Knobs</strong> panel to toggle the overlay
-      </p>
+      {instructionsElement}
       <Overlay visible={boolean('visible', false)}>
         <OverlayContainer maxWidth={400}>
           <OverlayHeader
@@ -102,9 +107,7 @@ overlayStories.add(
         boolean('visible', false) ? 'show-overlay' : ''
       }`}
     >
-      <p>
-        Look in the <strong>Knobs</strong> panel to toggle the overlay
-      </p>
+      {instructionsElement}
       <OverlayMask
         gradient={
           Gradients[
@@ -184,36 +187,50 @@ const overlayExampleStories = storiesOf('Components|Overlays/Examples', module)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
-overlayExampleStories.add('Confirmation Overlay', () => (
-  <Overlay
-    visible={boolean('visible', true)}
-    renderMaskElement={
-      <OverlayMask
-        gradient={
-          Gradients[
-            Gradients[select('gradient', mapEnumKeys(Gradients), 'GundamPilot')]
-          ]
+overlayExampleStories.add(
+  'Confirmation Overlay',
+  () => (
+    <div className="story--example">
+      {instructionsElement}
+      <Overlay
+        visible={boolean('visible', false)}
+        renderMaskElement={
+          <OverlayMask
+            gradient={
+              Gradients[
+                Gradients[
+                  select('gradient', mapEnumKeys(Gradients), 'GundamPilot')
+                ]
+              ]
+            }
+          />
         }
-      />
-    }
-  >
-    <OverlayContainer maxWidth={number('maxWidth', 400)}>
-      <OverlayHeader
-        title="Are you sure?"
-        onDismiss={() => {
-          alert('Dismissed')
-        }}
-      />
-      <OverlayBody>
-        <p>
-          This action could cause a lot of things to break unexpectedly. We're
-          pretty sure you don't want to do this accidentally. What will it be?
-        </p>
-      </OverlayBody>
-      <OverlayFooter>
-        <Button text="Cancel" />
-        <Button text="Pull the Lever!" color={ComponentColor.Danger} />
-      </OverlayFooter>
-    </OverlayContainer>
-  </Overlay>
-))
+      >
+        <OverlayContainer maxWidth={number('maxWidth', 400)}>
+          <OverlayHeader
+            title="Are you sure?"
+            onDismiss={() => {
+              alert('Dismissed')
+            }}
+          />
+          <OverlayBody>
+            <p>
+              This action could cause a lot of things to break unexpectedly.
+              We're pretty sure you don't want to do this accidentally. What
+              will it be?
+            </p>
+          </OverlayBody>
+          <OverlayFooter>
+            <Button text="Cancel" />
+            <Button text="Pull the Lever!" color={ComponentColor.Danger} />
+          </OverlayFooter>
+        </OverlayContainer>
+      </Overlay>
+    </div>
+  ),
+  {
+    readme: {
+      content: ConfirmationOverlayReadme,
+    },
+  }
+)
