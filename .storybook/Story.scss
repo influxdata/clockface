@@ -148,7 +148,7 @@
   background-color: $g4-onyx;
   color: $g9-mountain;
   overflow: hidden;
-  
+
   > span {
     position: absolute;
     top: 50%;
@@ -200,12 +200,26 @@
 */
 
 $docs-text-base: 14px;
-$docs-text-scale: 1.19; 
+$docs-text-scale: 1.19;
 $docs-text-base-1: (ceil($docs-text-base * $docs-text-scale));
-$docs-text-base-2: (ceil($docs-text-base * $docs-text-scale * $docs-text-scale));
-$docs-text-base-3: (ceil($docs-text-base * $docs-text-scale * $docs-text-scale * $docs-text-scale));
-$docs-text-base-4: (ceil($docs-text-base * $docs-text-scale * $docs-text-scale * $docs-text-scale * $docs-text-scale));
-$docs-text-base-5: (ceil($docs-text-base * $docs-text-scale * $docs-text-scale * $docs-text-scale * $docs-text-scale * $docs-text-scale));
+$docs-text-base-2: (
+  ceil($docs-text-base * $docs-text-scale * $docs-text-scale)
+);
+$docs-text-base-3: (
+  ceil($docs-text-base * $docs-text-scale * $docs-text-scale * $docs-text-scale)
+);
+$docs-text-base-4: (
+  ceil(
+    $docs-text-base * $docs-text-scale * $docs-text-scale * $docs-text-scale *
+      $docs-text-scale
+  )
+);
+$docs-text-base-5: (
+  ceil(
+    $docs-text-base * $docs-text-scale * $docs-text-scale * $docs-text-scale *
+      $docs-text-scale * $docs-text-scale
+  )
+);
 
 body.sb-show-main {
   padding: 52px;
@@ -236,7 +250,7 @@ body.sb-show-main {
     color: $c-hydrogen;
     text-shadow: 0 0 3px $c-ocean, 0 0 7px $c-amethyst;
   }
-  
+
   h1,
   h2,
   h3,
@@ -304,7 +318,8 @@ body.sb-show-main {
     line-height: 1.55em;
     font-weight: 500;
 
-    b,strong {
+    b,
+    strong {
       font-weight: 900;
     }
 
@@ -535,22 +550,22 @@ table.two-axis-table {
   border-radius: $cf-radius;
   position: relative;
   padding: 8px;
-  
+
   p {
     opacity: 0.6;
     margin: 0;
     font-size: 13px;
     font-weight: 700;
-    
+
     &.colors-grid--hex {
       text-transform: uppercase;
     }
   }
-  
+
   &.dark-text > p {
     color: $g0-obsidian !important;
   }
-  
+
   &.light-text > p {
     color: $g20-white !important;
   }
@@ -593,7 +608,6 @@ table.two-axis-table {
 .gradients-grid--card {
   flex: 0 0 calc(33.3333% - 4px);
 }
-
 
 .icon-grid {
   display: flex;
