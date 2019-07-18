@@ -275,6 +275,12 @@ export enum Alignment {
   Right = 'right',
 }
 
+export enum VerticalAlignment {
+  Top = 'top',
+  Middle = 'middle',
+  Bottom = 'bottom',
+}
+
 export enum JustifyContent {
   FlexStart = 'flex-start',
   Center = 'center',
@@ -314,6 +320,14 @@ export enum Orientation {
   Horizontal = 'horizontal',
 }
 
+export enum BorderType {
+  None = 'none',
+  Horizontal = 'horizontal',
+  Vertical = 'vertical',
+  Both = 'both',
+  All = 'all',
+}
+    
 export interface TimeRange {
   lower: string
   upper?: string | null

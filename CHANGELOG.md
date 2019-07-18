@@ -2,6 +2,7 @@
 
 #### 0.0.17 [Unreleassed]
 
+- [#170](https://github.com/influxdata/clockface/pull/170): Introduce and document `Table` component family
 - [#169](https://github.com/influxdata/clockface/pull/169): Introduce `DatePicker` and `DateRangePicker` components
 - [#166](https://github.com/influxdata/clockface/pull/166): Add markdown documentation for `ClickOutside`, `DapperScrollbars`, `DraggableResizer`, and `WaitingText`
 - [#165](https://github.com/influxdata/clockface/pull/165): Add markdown documentation for and polish appearance of `SlideToggle` components
