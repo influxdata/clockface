@@ -30,6 +30,7 @@ export enum ComponentStatus {
   Valid = 'valid',
   Disabled = 'disabled',
 }
+
 export interface Color {
   hex: string
   name: string
@@ -325,4 +326,13 @@ export enum BorderType {
   Vertical = 'vertical',
   Both = 'both',
   All = 'all',
+}
+    
+export interface TimeRange {
+  lower: string
+  upper?: string | null
+  seconds?: number
+  format?: string
+  label?: string
+  duration?: string
 }
