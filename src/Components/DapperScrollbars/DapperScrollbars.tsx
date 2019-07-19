@@ -77,8 +77,8 @@ export class DapperScrollbars extends Component<Props> {
       id,
     } = this.props
 
-    const classname = classnames('dapper-scrollbars', {
-      'dapper-scrollbars--autohide': autoHide,
+    const classname = classnames('cf-dapper-scrollbars', {
+      'cf-dapper-scrollbars--autohide': autoHide,
       [`${className}`]: className,
     })
 
@@ -97,17 +97,17 @@ export class DapperScrollbars extends Component<Props> {
         noScrollX={noScrollX}
         noScrollY={noScrollY}
         noScroll={noScroll}
-        wrapperProps={{className: 'dapper-scrollbars--wrapper'}}
-        contentProps={{className: 'dapper-scrollbars--content'}}
-        trackXProps={{className: 'dapper-scrollbars--track-x'}}
+        wrapperProps={{className: 'cf-dapper-scrollbars--wrapper'}}
+        contentProps={{className: 'cf-dapper-scrollbars--content'}}
+        trackXProps={{className: 'cf-dapper-scrollbars--track-x'}}
         thumbXProps={{
           style: this.thumbXStyle,
-          className: 'dapper-scrollbars--thumb-x',
+          className: 'cf-dapper-scrollbars--thumb-x',
         }}
-        trackYProps={{className: 'dapper-scrollbars--track-y'}}
+        trackYProps={{className: 'cf-dapper-scrollbars--track-y'}}
         thumbYProps={{
           style: this.thumbYStyle,
-          className: 'dapper-scrollbars--thumb-y',
+          className: 'cf-dapper-scrollbars--thumb-y',
         }}
         id={id}
       >

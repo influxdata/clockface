@@ -5,7 +5,7 @@
   ------------------------------------------------------------------------------
 */
 
-.button {
+.cf-button {
   font-weight: 700;
   font-family: $cf-text-font;
   border-style: solid;
@@ -29,7 +29,7 @@
   }
 }
 
-.button-icon {
+.cf-button-icon {
   margin-right: 0.4em;
   margin-left: -0.1em;
   display: inline-block;
@@ -37,7 +37,7 @@
   transform: translateY(-5%);
   pointer-events: none;
 
-  .button--label + & {
+  .cf-button--label + & {
     margin-right: -0.1em;
     margin-left: 0.4em;
   }
@@ -57,26 +57,26 @@
   height: $height;
   line-height: $height - ($cf-border * 2);
 
-  .button-spinner {
+  .cf-button-spinner {
     width: $height * 0.5;
     height: $height * 0.5;
   }
 
-  .button-icon {
+  .cf-button-icon {
     font-size: floor($fontSize * 1.25);
   }
 }
 
-.button-xs {
+.cf-button-xs {
   @include buttonSizeModifier($form-xs-font, $form-xs-padding, $form-xs-height);
 }
-.button-sm {
+.cf-button-sm {
   @include buttonSizeModifier($form-sm-font, $form-sm-padding, $form-sm-height);
 }
-.button-md {
+.cf-button-md {
   @include buttonSizeModifier($form-md-font, $form-md-padding, $form-md-height);
 }
-.button-lg {
+.cf-button-lg {
   @include buttonSizeModifier($form-lg-font, $form-lg-padding, $form-lg-height);
 }
 
@@ -84,25 +84,25 @@
   Shape Modifiers
   ------------------------------------------------------------------------------
 */
-.button-square {
+.cf-button-square {
   padding: 0;
   text-align: center;
 
-  &.button-xs {
+  &.cf-button-xs {
     width: $form-xs-height;
   }
-  &.button-sm {
+  &.cf-button-sm {
     width: $form-sm-height;
   }
-  &.button-md {
+  &.cf-button-md {
     width: $form-md-height;
   }
-  &.button-lg {
+  &.cf-button-lg {
     width: $form-lg-height;
   }
 }
 
-.button-stretch {
+.cf-button-stretch {
   width: 100%;
 }
 
@@ -132,16 +132,16 @@
     box-shadow: 0 0 4px 1px $bg;
   }
 
-  &.button--loading,
-  &.button--loading:hover {
+  &.cf-button--loading,
+  &.cf-button--loading:hover {
     background-color: $bgHover;
     border-color: $bgHover;
     box-shadow: 0 0 0 0;
   }
 
-  &.button--disabled,
-  &.button--disabled:hover,
-  &.button--disabled:focus {
+  &.cf-button--disabled,
+  &.cf-button--disabled:hover,
+  &.cf-button--disabled:focus {
     color: rgba($text, 0.3);
     font-style: italic;
     background-color: mix($bg, $g4-onyx, 25%);
@@ -149,28 +149,28 @@
     box-shadow: none;
   }
 
-  .button-spinner {
+  .cf-button-spinner {
     border-color: rgba($text, 0.25);
     border-top-color: $text;
   }
 }
 
-.button-default {
+.cf-button-default {
   @include buttonColorModifier($g5-pepper, $g6-smoke, $g7-graphite, $g14-chromium, $g18-cloud);
 }
-.button-primary {
+.cf-button-primary {
   @include buttonColorModifier($c-pool, $c-laser, $c-hydrogen, $c-yeti, $g20-white);
 }
-.button-secondary {
+.cf-button-secondary {
   @include buttonColorModifier($c-star, $c-comet, $c-potassium, $c-twilight, $g20-white);
 }
-.button-success {
+.cf-button-success {
   @include buttonColorModifier($c-rainforest, $c-honeydew, $c-wasabi, $c-mint, $g20-white);
 }
-.button-warning {
+.cf-button-warning {
   @include buttonColorModifier($c-pineapple, $c-thunder, $c-daisy, $g20-white, $g20-white);
 }
-.button-danger {
+.cf-button-danger {
   @include buttonColorModifier($c-curacao, $c-dreamsicle, $c-tungsten, $g20-white, $g20-white);
 }
 
@@ -178,12 +178,12 @@
   Loading State
   ------------------------------------------------------------------------------
 */
-.button--loading,
-.button--loading:hover,
-.button--loading:active,
-.button--loading:active:hover,
-.button--loading[disabled],
-.button--loading[disabled]:hover {
+.cf-button--loading,
+.cf-button--loading:hover,
+.cf-button--loading:active,
+.cf-button--loading:active:hover,
+.cf-button--loading[disabled],
+.cf-button--loading[disabled]:hover {
   color: transparent;
   position: relative;
 }
@@ -202,7 +202,7 @@
   }
 }
 
-.button-spinner {
+.cf-button-spinner {
   pointer-events: none;
   border-style: solid;
   border-radius: 50%; 

@@ -81,11 +81,12 @@ export class DraggableResizer extends Component<Props, State> {
 
     const isDragging = dragIndex !== NULL_DRAG
 
-    return classnames('draggable-resizer', {
-      'draggable-resizer--vertical': handleOrientation === Orientation.Vertical,
-      'draggable-resizer--horizontal':
+    return classnames('cf-draggable-resizer', {
+      'cf-draggable-resizer--vertical':
+        handleOrientation === Orientation.Vertical,
+      'cf-draggable-resizer--horizontal':
         handleOrientation === Orientation.Horizontal,
-      'draggable-resizer--dragging': isDragging,
+      'cf-draggable-resizer--dragging': isDragging,
       [`${className}`]: className,
     })
   }

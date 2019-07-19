@@ -23,7 +23,7 @@ export class OverlayContainer extends PureComponent<Props> {
 
     return (
       <div
-        className={classnames('overlay--container', {
+        className={classnames('cf-overlay--container', {
           [`${className}`]: className,
         })}
         data-testid={testID}

@@ -37,6 +37,6 @@ export class Grid extends Component<Props> {
   private get className(): string {
     const {className} = this.props
 
-    return classnames('grid--container', {[`${className}`]: className})
+    return classnames('cf-grid--container', {[`${className}`]: className})
   }
 }

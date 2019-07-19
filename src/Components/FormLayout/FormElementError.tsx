@@ -41,7 +41,7 @@ export class FormElementError extends Component<Props> {
     const {className} = this.props
 
     return className
-      ? `form--element-error ${className}`
-      : 'form--element-error'
+      ? `cf-form--element-error ${className}`
+      : 'cf-form--element-error'
   }
 }

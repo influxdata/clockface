@@ -50,11 +50,11 @@ export class Radio extends Component<Props> {
   private get containerClassName(): string {
     const {color, size, shape, className} = this.props
 
-    return classnames('radio-buttons', {
-      [`radio-buttons--${color}`]: color,
-      [`radio-buttons--${size}`]: size,
-      'radio-buttons--square': shape === ButtonShape.Square,
-      'radio-buttons--stretch': shape === ButtonShape.StretchToFit,
+    return classnames('cf-radio-buttons', {
+      [`cf-radio-buttons--${color}`]: color,
+      [`cf-radio-buttons--${size}`]: size,
+      'cf-radio-buttons--square': shape === ButtonShape.Square,
+      'cf-radio-buttons--stretch': shape === ButtonShape.StretchToFit,
       [`${className}`]: className,
     })
   }

@@ -66,11 +66,11 @@ export class Panel extends Component<Props> {
   private get className(): string {
     const {className, gradient, size, onDismiss} = this.props
 
-    return classnames(`panel panel--${size}`, {
+    return classnames(`cf-panel cf-panel--${size}`, {
       [`${className}`]: className,
-      panel__gradient: gradient,
-      panel__dismissable: onDismiss,
-      [`panel__${this.useContrastText}-text`]: this.useContrastText,
+      'cf-panel__gradient': gradient,
+      'cf-panel__dismissable': onDismiss,
+      [`cf-panel__${this.useContrastText}-text`]: this.useContrastText,
     })
   }
 
@@ -108,7 +108,11 @@ export class Panel extends Component<Props> {
 
     if (onDismiss) {
       return (
-        <button className="panel--dismiss" type="button" onClick={onDismiss} />
+        <button
+          className="cf-panel--dismiss"
+          type="button"
+          onClick={onDismiss}
+        />
       )
     }
 

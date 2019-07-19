@@ -27,6 +27,6 @@ export class PanelFooter extends Component<Props> {
   private get className(): string {
     const {className} = this.props
 
-    return classnames('panel--footer', {[`${className}`]: className})
+    return classnames('cf-panel--footer', {[`${className}`]: className})
   }
 }

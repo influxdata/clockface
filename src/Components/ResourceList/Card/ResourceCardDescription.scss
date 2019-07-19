@@ -36,7 +36,7 @@
     border-color 0.25s ease;
   line-height: $form-xs-font + $cf-border;
 
-  .icon {
+  .cf-icon {
     position: relative;
     top: -2px;
     display: inline-block;
@@ -46,7 +46,7 @@
     color: $g11-sidewalk;
   }
 
-  &:hover .icon {
+  &:hover .cf-icon {
     opacity: 1;
   }
 

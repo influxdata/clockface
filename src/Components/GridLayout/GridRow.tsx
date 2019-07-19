@@ -27,6 +27,6 @@ export class GridRow extends Component<Props> {
   private get className(): string {
     const {className} = this.props
 
-    return classnames('grid--row', {[`${className}`]: className})
+    return classnames('cf-grid--row', {[`${className}`]: className})
   }
 }

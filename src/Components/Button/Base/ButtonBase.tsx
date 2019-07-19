@@ -91,11 +91,11 @@ export class ButtonBase extends Component<Props> {
   private get className(): string {
     const {color, size, shape, status, active, className} = this.props
 
-    return classnames(`button button-${size} button-${color}`, {
-      'button-square': shape === ButtonShape.Square,
-      'button-stretch': shape === ButtonShape.StretchToFit,
-      'button--loading': status === ComponentStatus.Loading,
-      'button--disabled': status === ComponentStatus.Disabled,
+    return classnames(`cf-button cf-button-${size} cf-button-${color}`, {
+      'cf-button-square': shape === ButtonShape.Square,
+      'cf-button-stretch': shape === ButtonShape.StretchToFit,
+      'cf-button--loading': status === ComponentStatus.Loading,
+      'cf-button--disabled': status === ComponentStatus.Disabled,
       active,
       [`${className}`]: className,
     })

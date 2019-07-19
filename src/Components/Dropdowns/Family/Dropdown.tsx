@@ -68,7 +68,7 @@ export class Dropdown extends Component<Props, State> {
           id={id}
         >
           {button(expanded, this.toggleMenu)}
-          <div className="dropdown--menu-container">{this.menu}</div>
+          <div className="cf-dropdown--menu-container">{this.menu}</div>
         </div>
       </ClickOutside>
     )
@@ -97,7 +97,7 @@ export class Dropdown extends Component<Props, State> {
   private get className(): string {
     const {className} = this.props
 
-    return classnames('dropdown', {
+    return classnames('cf-dropdown', {
       [`${className}`]: className,
     })
   }

@@ -135,7 +135,7 @@ export class TextArea extends Component<Props> {
           rows={rows}
           spellCheck={spellCheck}
           wrap={wrap}
-          className="text-area"
+          className="cf-text-area"
           value={value}
           onBlur={onBlur}
           onFocus={onFocus}
@@ -161,8 +161,8 @@ export class TextArea extends Component<Props> {
   private get className(): string {
     const {size, className} = this.props
 
-    return classnames('text-area--container', {
-      [`input-${size}`]: size,
+    return classnames('cf-text-area--container', {
+      [`cf-input-${size}`]: size,
       [`className`]: className,
     })
   }

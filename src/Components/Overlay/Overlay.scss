@@ -25,14 +25,14 @@ $overlay--transition-distance: 72px;
   width: 100%;
 }
 
-.overlay--mask {
+.cf-overlay--mask {
   z-index: 0;
   @extend %overlay-styles;
   opacity: 0;
   transition: opacity 0.25s ease;
 }
 
-.overlay--transition {
+.cf-overlay--transition {
   position: relative;
   z-index: 2;
   transform: translateY($overlay--transition-distance);
@@ -41,7 +41,7 @@ $overlay--transition-distance: 72px;
     opacity 0.25s ease;
 }
 
-.overlay {
+.cf-overlay {
   z-index: $z--overlays;
   @extend %overlay-styles;
   transition: all 0.25s ease;
@@ -55,24 +55,24 @@ $overlay--transition-distance: 72px;
 }
 
 // Open State
-.overlay.show {
-  .overlay--mask {
+.cf-overlay.show {
+  .cf-overlay--mask {
     opacity: 0.7;
   }
-  .overlay--transition {
+  .cf-overlay--transition {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-.overlay--container {
+.cf-overlay--container {
   @extend %overlay-children;
   margin: $overlay--container-padding auto;
   @include gradient-v($g3-castle, $g2-kevlar);
   border-radius: $cf-radius;
 }
 
-.overlay--header {
+.cf-overlay--header {
   @extend %overlay-children;
   height: $overlay--header-height;
   display: flex;
@@ -82,14 +82,14 @@ $overlay--transition-distance: 72px;
   @include no-user-select();
 }
 
-.overlay--title {
+.cf-overlay--title {
   font-size: $overlay--title-size;
   font-weight: $overlay--title-weight;
   color: $g17-whisper;
   white-space: nowrap;
 }
 
-.overlay--dismiss {
+.cf-overlay--dismiss {
   width: ($overlay--header-height - 20px);
   height: ($overlay--header-height - 20px);
   position: relative;
@@ -126,7 +126,7 @@ $overlay--transition-distance: 72px;
   }
 }
 
-.overlay--body {
+.cf-overlay--body {
   @extend %overlay-children;
   padding: $overlay--gutter;
   padding-top: 0;
@@ -137,7 +137,7 @@ $overlay--transition-distance: 72px;
   }
 }
 
-.overlay--footer {
+.cf-overlay--footer {
   @extend %overlay-children;
   padding: $overlay--gutter;
   padding-top: 0;

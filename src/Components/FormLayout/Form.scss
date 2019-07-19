@@ -5,7 +5,7 @@
   ------------------------------------------------------------------------------
 */
 
-.form--wrapper {
+.cf-form--wrapper {
   width: 100%;
 }
 
@@ -13,7 +13,7 @@
   Form Elements
   ------------------------------------------------------------------------------
 */
-.form--element {
+.cf-form--element {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -25,9 +25,9 @@
   Form Group Addons
   ------------------------------------------------------------------------------
 */
-.form--label,
-.form--help-text,
-.form--element-error {
+.cf-form--label,
+.cf-form--help-text,
+.cf-form--element-error {
   text-align: left;
   display: inline-block;
   font-size: 12px;
@@ -36,20 +36,20 @@
   @extend %no-user-select;
 }
 
-.form--label {
+.cf-form--label {
   width: 100%;
   color: $g11-sidewalk;
   margin: 0 0 $cf-marg-a 0;
 }
 
-.form--help-text {
+.cf-form--help-text {
   font-style: italic;
   line-height: 16px;
   color: $g11-sidewalk;
   margin: $cf-marg-a 0 0 0;
 }
 
-.form--element-error {
+.cf-form--element-error {
   line-height: 16px;
   color: $c-dreamsicle;
   margin: $cf-marg-a 0 0 0;
@@ -57,7 +57,7 @@
   word-wrap: break-word;
 }
 
-.form--label-required {
+.cf-form--label-required {
   color: $c-curacao;
 }
 
@@ -65,7 +65,7 @@
   Form Divider
   ------------------------------------------------------------------------------
 */
-.form--divider {
+.cf-form--divider {
   width: 100%;
   height: $form-sm-height - $cf-marg-b;
 
@@ -81,7 +81,7 @@
   Form Footer
   ------------------------------------------------------------------------------
 */
-.form--footer {
+.cf-form--footer {
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -97,7 +97,7 @@
   Form Box
   ------------------------------------------------------------------------------
 */
-.form--box {
+.cf-form--box {
   width: 100%;
   border-radius: $cf-radius;
   background-color: $g4-onyx;

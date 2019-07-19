@@ -22,7 +22,7 @@ export class DropdownDivider extends Component<Props> {
 
     return (
       <div
-        className={classnames('dropdown-divider', {
+        className={classnames('cf-dropdown-divider', {
           line: !text,
           [`${className}`]: className,
         })}

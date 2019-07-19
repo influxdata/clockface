@@ -65,7 +65,7 @@ export class Form extends Component<Props> {
   private get formWrapperClass(): string {
     const {className} = this.props
 
-    return classnames('form--wrapper', {
+    return classnames('cf-form--wrapper', {
       [`${className}`]: className,
     })
   }

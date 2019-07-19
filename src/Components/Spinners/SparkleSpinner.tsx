@@ -49,7 +49,7 @@ export class SparkleSpinner extends PureComponent<Props> {
           viewBox="0 0 250 250"
         >
           <path
-            className={`sparkle-spinner--fill-medium sparkle-spinner--delay-3 ${
+            className={`cf-sparkle-spinner--fill-medium cf-sparkle-spinner--delay-3 ${
               this.animationState
             }`}
             d="M250,9.1C250,9.1,250,9.1,250,9.1l-1.6-7c0,0,0,0,0,0c0,0,0,0,0,0c0,0,0,0,0,0l0,0l0,0c0,0,0,0,0,0L241.5,0
@@ -58,7 +58,7 @@ export class SparkleSpinner extends PureComponent<Props> {
 	C250,9.2,250,9.2,250,9.1L250,9.1L250,9.1C250,9.2,250,9.1,250,9.1C250,9.1,250,9.1,250,9.1z"
           />
           <path
-            className={`sparkle-spinner--fill-dark sparkle-spinner--delay-1 ${
+            className={`cf-sparkle-spinner--fill-dark cf-sparkle-spinner--delay-1 ${
               this.animationState
             }`}
             d="M168.5,187.9C168.5,187.9,168.5,187.9,168.5,187.9l-0.8-3.5c0,0,0,0,0,0c0,0,0,0,0,0c0,0,0,0,0,0l0,0l0,0
@@ -68,7 +68,7 @@ export class SparkleSpinner extends PureComponent<Props> {
 	C168.5,187.9,168.5,187.9,168.5,187.9z"
           />
           <circle
-            className={`sparkle-spinner--fill-light sparkle-spinner--delay-2 ${
+            className={`cf-sparkle-spinner--fill-light cf-sparkle-spinner--delay-2 ${
               this.animationState
             }`}
             cx="231.5"
@@ -91,7 +91,7 @@ export class SparkleSpinner extends PureComponent<Props> {
           />
           <g>
             <line
-              className={`sparkle-spinner--stroke sparkle-spinner--stroke-medium sparkle-spinner--delay-2 ${
+              className={`cf-sparkle-spinner--stroke cf-sparkle-spinner--stroke-medium cf-sparkle-spinner--delay-2 ${
                 this.animationState
               }`}
               x1="30"
@@ -100,7 +100,7 @@ export class SparkleSpinner extends PureComponent<Props> {
               y2="104.4"
             />
             <line
-              className={`sparkle-spinner--stroke sparkle-spinner--stroke-medium sparkle-spinner--delay-2 ${
+              className={`cf-sparkle-spinner--stroke cf-sparkle-spinner--stroke-medium cf-sparkle-spinner--delay-2 ${
                 this.animationState
               }`}
               x1="37"
@@ -111,7 +111,7 @@ export class SparkleSpinner extends PureComponent<Props> {
           </g>
           <g>
             <line
-              className={`sparkle-spinner--stroke sparkle-spinner--stroke-light sparkle-spinner--delay-2 ${
+              className={`cf-sparkle-spinner--stroke cf-sparkle-spinner--stroke-light cf-sparkle-spinner--delay-2 ${
                 this.animationState
               }`}
               x1="165.7"
@@ -120,7 +120,7 @@ export class SparkleSpinner extends PureComponent<Props> {
               y2="19.9"
             />
             <line
-              className={`sparkle-spinner--stroke sparkle-spinner--stroke-light sparkle-spinner--delay-2 ${
+              className={`cf-sparkle-spinner--stroke cf-sparkle-spinner--stroke-light cf-sparkle-spinner--delay-2 ${
                 this.animationState
               }`}
               x1="169.2"
@@ -131,7 +131,7 @@ export class SparkleSpinner extends PureComponent<Props> {
           </g>
           <g>
             <line
-              className={`sparkle-spinner--stroke sparkle-spinner--stroke-dark sparkle-spinner--delay-3 ${
+              className={`cf-sparkle-spinner--stroke cf-sparkle-spinner--stroke-dark cf-sparkle-spinner--delay-3 ${
                 this.animationState
               }`}
               x1="5.1"
@@ -140,7 +140,7 @@ export class SparkleSpinner extends PureComponent<Props> {
               y2="248.4"
             />
             <line
-              className={`sparkle-spinner--stroke sparkle-spinner--stroke-dark sparkle-spinner--delay-3 ${
+              className={`cf-sparkle-spinner--stroke cf-sparkle-spinner--stroke-dark cf-sparkle-spinner--delay-3 ${
                 this.animationState
               }`}
               x1="8.6"
@@ -151,7 +151,7 @@ export class SparkleSpinner extends PureComponent<Props> {
           </g>
           <g>
             <line
-              className={`sparkle-spinner--stroke sparkle-spinner--stroke-light sparkle-spinner--delay-3 ${
+              className={`cf-sparkle-spinner--stroke cf-sparkle-spinner--stroke-light cf-sparkle-spinner--delay-3 ${
                 this.animationState
               }`}
               x1="176.5"
@@ -160,7 +160,7 @@ export class SparkleSpinner extends PureComponent<Props> {
               y2="229.2"
             />
             <line
-              className={`sparkle-spinner--stroke sparkle-spinner--stroke-light sparkle-spinner--delay-3 ${
+              className={`cf-sparkle-spinner--stroke cf-sparkle-spinner--stroke-light cf-sparkle-spinner--delay-3 ${
                 this.animationState
               }`}
               x1="176.5"
@@ -171,7 +171,7 @@ export class SparkleSpinner extends PureComponent<Props> {
           </g>
           <g>
             <line
-              className={`sparkle-spinner--stroke sparkle-spinner--stroke-light sparkle-spinner--delay-3 ${
+              className={`cf-sparkle-spinner--stroke cf-sparkle-spinner--stroke-light cf-sparkle-spinner--delay-3 ${
                 this.animationState
               }`}
               x1="63.4"
@@ -180,7 +180,7 @@ export class SparkleSpinner extends PureComponent<Props> {
               y2="33.3"
             />
             <line
-              className={`sparkle-spinner--stroke sparkle-spinner--stroke-light sparkle-spinner--delay-3 ${
+              className={`cf-sparkle-spinner--stroke cf-sparkle-spinner--stroke-light cf-sparkle-spinner--delay-3 ${
                 this.animationState
               }`}
               x1="63.4"
@@ -190,21 +190,21 @@ export class SparkleSpinner extends PureComponent<Props> {
             />
           </g>
           <path
-            className={`sparkle-spinner--fill-dark sparkle-spinner--delay-1 ${
+            className={`cf-sparkle-spinner--fill-dark cf-sparkle-spinner--delay-1 ${
               this.animationState
             }`}
             d="M101.6,51.6c1.2,0,2.1,1,2.1,2.1s-1,2.1-2.1,2.1s-2.1-1-2.1-2.1S100.5,51.6,101.6,51.6 M101.6,50.2
 		c-1.9,0-3.5,1.6-3.5,3.5c0,1.9,1.6,3.5,3.5,3.5c1.9,0,3.5-1.6,3.5-3.5C105.1,51.8,103.6,50.2,101.6,50.2L101.6,50.2z"
           />
           <path
-            className={`sparkle-spinner--fill-dark sparkle-spinner--delay-2 ${
+            className={`cf-sparkle-spinner--fill-dark cf-sparkle-spinner--delay-2 ${
               this.animationState
             }`}
             d="M64.2,215.2c3.1,0,5.6,2.5,5.6,5.6s-2.5,5.6-5.6,5.6c-3.1,0-5.6-2.5-5.6-5.6S61.1,215.2,64.2,215.2
 		 M64.2,213.9c-3.9,0-7,3.1-7,7s3.1,7,7,7c3.9,0,7-3.1,7-7S68.1,213.9,64.2,213.9L64.2,213.9z"
           />
           <path
-            className={`sparkle-spinner--fill-dark sparkle-spinner--delay-1 ${
+            className={`cf-sparkle-spinner--fill-dark cf-sparkle-spinner--delay-1 ${
               this.animationState
             }`}
             d="M38.8,153.1l8.8,2.7l2.1,9l-6.8,6.3l-8.8-2.7l-2.1-9L38.8,153.1 M38.5,151.6C38.5,151.6,38.5,151.6,38.5,151.6
@@ -214,7 +214,7 @@ export class SparkleSpinner extends PureComponent<Props> {
 		C51.2,165.3,51.2,165.3,51.2,165.3C51.2,165.3,51.2,165.3,51.2,165.3L51.2,165.3z"
           />
           <path
-            className={`sparkle-spinner--fill-medium sparkle-spinner--delay-1 ${
+            className={`cf-sparkle-spinner--fill-medium cf-sparkle-spinner--delay-1 ${
               this.animationState
             }`}
             d="M207.5,72.5l7.2,2.2l1.7,7.3l-5.5,5.1l-7.2-2.2l-1.7-7.3L207.5,72.5 M207.3,71C207.2,71,207.2,71,207.3,71
@@ -231,25 +231,27 @@ export class SparkleSpinner extends PureComponent<Props> {
   private get className(): string {
     const {className} = this.props
 
-    return classnames('sparkle-spinner', {[`${className}`]: className})
+    return classnames('cf-sparkle-spinner', {[`${className}`]: className})
   }
 
   private get loadingStatus(): string {
     const {loading} = this.props
-    return classnames('sparkle-spinner--logo', {
-      'sparkle-spinner--fill-medium':
+    return classnames('cf-sparkle-spinner--logo', {
+      'cf-sparkle-spinner--fill-medium':
         loading === RemoteDataState.NotStarted ||
         loading === RemoteDataState.Loading,
-      'sparkle-spinner--animate-sparkle': loading === RemoteDataState.Loading,
-      'sparkle-spinner--fill-error': loading === RemoteDataState.Error,
-      'sparkle-spinner--fill-done': loading === RemoteDataState.Done,
+      'cf-sparkle-spinner--animate-sparkle':
+        loading === RemoteDataState.Loading,
+      'cf-sparkle-spinner--fill-error': loading === RemoteDataState.Error,
+      'cf-sparkle-spinner--fill-done': loading === RemoteDataState.Done,
     })
   }
 
   private get animationState(): string {
     const {loading} = this.props
     return classnames({
-      'sparkle-spinner--animate-sparkle': loading === RemoteDataState.Loading,
+      'cf-sparkle-spinner--animate-sparkle':
+        loading === RemoteDataState.Loading,
     })
   }
 }

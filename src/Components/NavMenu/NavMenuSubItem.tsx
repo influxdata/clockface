@@ -22,7 +22,7 @@ export class NavMenuSubItem extends PureComponent<Props> {
   public render() {
     const {active, className, titleLink, testID} = this.props
 
-    const titleClass = classnames('nav--sub-item', {
+    const titleClass = classnames('cf-nav--sub-item', {
       active,
       [`${className}`]: className,
     })

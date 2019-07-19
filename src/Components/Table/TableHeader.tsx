@@ -27,7 +27,7 @@ export class TableHeader extends Component<Props> {
   private get className(): string {
     const {className} = this.props
 
-    return classnames('table--header', {
+    return classnames('cf-table--header', {
       [`${className}`]: className,
     })
   }

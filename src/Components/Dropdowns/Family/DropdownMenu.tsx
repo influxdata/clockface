@@ -67,7 +67,11 @@ export class DropdownMenu extends Component<Props> {
           noScrollX={noScrollX}
           noScrollY={noScrollY}
         >
-          <div className="dropdown-menu--contents" data-testid={testID} id={id}>
+          <div
+            className="cf-dropdown-menu--contents"
+            data-testid={testID}
+            id={id}
+          >
             {children}
           </div>
         </DapperScrollbars>
@@ -78,9 +82,9 @@ export class DropdownMenu extends Component<Props> {
   private get containerClass(): string {
     const {className, theme} = this.props
 
-    return classnames('dropdown-menu', {
+    return classnames('cf-dropdown-menu', {
       [`${className}`]: className,
-      [`dropdown__${theme}`]: theme,
+      [`cf-dropdown__${theme}`]: theme,
     })
   }
 

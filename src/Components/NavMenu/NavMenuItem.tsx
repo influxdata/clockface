@@ -34,16 +34,16 @@ export class NavMenuItem extends PureComponent<Props> {
 
     return (
       <div
-        className={classnames('nav--item', {
+        className={classnames('cf-nav--item', {
           active,
           [`${className}`]: className,
         })}
         data-testid={testID}
         id={id}
       >
-        {iconLink('nav--item-icon')}
-        <div className="nav--item-menu">
-          {titleLink('nav--item-header')}
+        {iconLink('cf-nav--item-icon')}
+        <div className="cf-nav--item-menu">
+          {titleLink('cf-nav--item-header')}
           {children}
         </div>
       </div>

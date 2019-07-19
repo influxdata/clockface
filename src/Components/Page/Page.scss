@@ -5,7 +5,7 @@
    -----------------------------------------------------------------------------
 */
 
-.page {
+.cf-page {
   width: 100%;
   flex: 1 0 calc(100% - #{$nav-menu--size});
   display: flex;
@@ -14,20 +14,20 @@
 }
 
 @media screen and (min-width: $nav-menu--breakpoint) {
-  .page {
+  .cf-page {
     width: auto;
     height: 100%;
   }
 }
 
-.page-header {
+.cf-page-header {
   height: $page--header-size;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.page-header--container {
+.cf-page-header--container {
   display: flex;
   padding: 0 $page--gutter;
   align-items: center;
@@ -37,25 +37,25 @@
   max-width: $page--max-width;
 }
 
-.page-header--left,
-.page-header--right,
-.page-header--center {
+.cf-page-header--left,
+.cf-page-header--right,
+.cf-page-header--center {
   display: flex;
   align-items: center;
 }
 
-.page-header--left {
+.cf-page-header--left {
   justify-content: flex-start;
   > * {
     margin: 0 $cf-marg-a 0 0;
   }
 }
 
-.page-header--center {
+.cf-page-header--center {
   justify-content: center;
 }
 
-.page-header--right {
+.cf-page-header--right {
   justify-content: flex-end;
   > * {
     margin: 0 0 0 $cf-marg-a !important;
@@ -66,7 +66,7 @@
   }
 }
 
-.page--title {
+.cf-page--title {
   letter-spacing: 0;
   text-transform: none;
   font-size: $page--title-size;
@@ -77,13 +77,13 @@
   cursor: default;
 }
 
-.page-contents {
+.cf-page-contents {
   width: 100%;
   position: relative;
   height: calc(100% - #{$page--header-size}) !important;
   overflow: hidden;
 
-  & > .dapper-scrollbars--track-y {
+  & > .cf-dapper-scrollbars--track-y {
     background: linear-gradient(
       to bottom,
       $g6-smoke 0%,
@@ -108,15 +108,15 @@
   ------------------------------------------------------------------------------
 */
 
-.page-contents.full-width .page-contents--padding {
+.cf-page-contents.full-width .cf-page-contents--padding {
   padding: 0 $page--gutter;
 }
 
-.page-contents--container.full-width {
+.cf-page-contents--container.full-width {
   max-width: 100%;
 }
 
-.page-header.full-width .page-header--container {
+.cf-page-header.full-width .cf-page-header--container {
   max-width: 100%;
 }
 
@@ -125,7 +125,7 @@
   ------------------------------------------------------------------------------
 */
 
-.page-contents.dapper-scrollbars > .page-contents--padding {
+.cf-page-contents.cf-dapper-scrollbars > .cf-page-contents--padding {
   padding-bottom: $page--gutter;
 }
 
@@ -134,14 +134,14 @@
   ------------------------------------------------------------------------------
 */
 
-.page-contents.full-height {
+.cf-page-contents.full-height {
   height: 100% !important;
 }
 
-.page-contents.full-height .page-contents--padding {
+.cf-page-contents.full-height .cf-page-contents--padding {
   padding: $cf-marg-b;
 }
 
-.page-contents.full-height.dapper-scrollbars .page-contents--padding {
+.cf-page-contents.full-height.cf-dapper-scrollbars .cf-page-contents--padding {
   padding-right: $cf-marg-c;
 }

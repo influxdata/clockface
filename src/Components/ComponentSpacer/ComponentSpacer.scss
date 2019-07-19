@@ -5,15 +5,15 @@
   ------------------------------------------------------------------------------
 */
 
-.component-spacer {
+.cf-component-spacer {
   display: flex;
   flex-wrap: nowrap;
 
-  &.component-spacer__stretch-w {
+  &.cf-component-spacer__stretch-w {
     width: 100%;
   }
 
-  &.component-spacer__stretch-h {
+  &.cf-component-spacer__stretch-h {
     height: 100%;
   }
 }
@@ -23,16 +23,16 @@
   ------------------------------------------------------------------------------
 */
 
-.component-spacer__row {
+.cf-component-spacer__row {
   flex-direction: row;
 }
-.component-spacer__row-reverse {
+.cf-component-spacer__row-reverse {
   flex-direction: row-reverse;
 }
-.component-spacer__column {
+.cf-component-spacer__column {
   flex-direction: column;
 }
-.component-spacer__column-reverse {
+.cf-component-spacer__column-reverse {
   flex-direction: column-reverse;
 }
 
@@ -41,16 +41,16 @@
   ------------------------------------------------------------------------------
 */
 
-.component-spacer__align-flex-start {
+.cf-component-spacer__align-flex-start {
   align-items: flex-start;
 }
-.component-spacer__align-flex-end {
+.cf-component-spacer__align-flex-end {
   align-items: flex-end;
 }
-.component-spacer__align-center {
+.cf-component-spacer__align-center {
   align-items: center;
 }
-.component-spacer__align-stretch {
+.cf-component-spacer__align-stretch {
   align-items: stretch;
 }
 
@@ -59,19 +59,19 @@
   ------------------------------------------------------------------------------
 */
 
-.component-spacer__justify-flex-start {
+.cf-component-spacer__justify-flex-start {
   justify-content: flex-start;
 }
-.component-spacer__justify-flex-end {
+.cf-component-spacer__justify-flex-end {
   justify-content: flex-end;
 }
-.component-spacer__justify-center {
+.cf-component-spacer__justify-center {
   justify-content: center;
 }
-.component-spacer__justify-space-between {
+.cf-component-spacer__justify-space-between {
   justify-content: space-between;
 }
-.component-spacer__justify-space-around {
+.cf-component-spacer__justify-space-around {
   justify-content: space-around;
 }
 
@@ -82,8 +82,8 @@
 
 @mixin componentSpacerMargins($margin) {
   // ROW
-  &.component-spacer__row {
-    &.component-spacer__justify-flex-start {
+  &.cf-component-spacer__row {
+    &.cf-component-spacer__justify-flex-start {
       > * {
         margin-right: $margin;
   
@@ -92,7 +92,7 @@
         }
       }
     }
-    &.component-spacer__justify-flex-end {
+    &.cf-component-spacer__justify-flex-end {
       > * {
         margin-left: $margin;
   
@@ -101,9 +101,9 @@
         }
       }
     }
-    &.component-spacer__justify-center,
-    &.component-spacer__justify-space-between,
-    &.component-spacer__justify-space-around {
+    &.cf-component-spacer__justify-center,
+    &.cf-component-spacer__justify-space-between,
+    &.cf-component-spacer__justify-space-around {
       > * {
         margin-left: $margin / 2;
         margin-right: $margin / 2;
@@ -119,8 +119,8 @@
     }
   }
   // ROW REVERSE
-  &.component-spacer__row-reverse {
-    &.component-spacer__justify-flex-start {
+  &.cf-component-spacer__row-reverse {
+    &.cf-component-spacer__justify-flex-start {
       > * {
         margin-left: $margin;
   
@@ -129,7 +129,7 @@
         }
       }
     }
-    &.component-spacer__justify-flex-end {
+    &.cf-component-spacer__justify-flex-end {
       > * {
         margin-right: $margin;
   
@@ -138,9 +138,9 @@
         }
       }
     }
-    &.component-spacer__justify-center,
-    &.component-spacer__justify-space-between,
-    &.component-spacer__justify-space-around {
+    &.cf-component-spacer__justify-center,
+    &.cf-component-spacer__justify-space-between,
+    &.cf-component-spacer__justify-space-around {
       > * {
         margin-right: $margin / 2;
         margin-left: $margin / 2;
@@ -156,8 +156,8 @@
     }
   }
   // COLUMN
-  &.component-spacer__column {
-    &.component-spacer__justify-flex-start {
+  &.cf-component-spacer__column {
+    &.cf-component-spacer__justify-flex-start {
       > * {
         margin-bottom: $margin;
   
@@ -166,7 +166,7 @@
         }
       }
     }
-    &.component-spacer__justify-flex-end {
+    &.cf-component-spacer__justify-flex-end {
       > * {
         margin-top: $margin;
   
@@ -175,9 +175,9 @@
         }
       }
     }
-    &.component-spacer__justify-center,
-    &.component-spacer__justify-space-between,
-    &.component-spacer__justify-space-around {
+    &.cf-component-spacer__justify-center,
+    &.cf-component-spacer__justify-space-between,
+    &.cf-component-spacer__justify-space-around {
       > * {
         margin-top: $margin / 2;
         margin-bottom: $margin / 2;
@@ -193,8 +193,8 @@
     }
   }
   // COLUMN REVERSE
-  &.component-spacer__column-reverse {
-    &.component-spacer__justify-flex-start {
+  &.cf-component-spacer__column-reverse {
+    &.cf-component-spacer__justify-flex-start {
       > * {
         margin-top: $margin;
   
@@ -203,7 +203,7 @@
         }
       }
     }
-    &.component-spacer__justify-flex-end {
+    &.cf-component-spacer__justify-flex-end {
       > * {
         margin-bottom: $margin;
   
@@ -212,9 +212,9 @@
         }
       }
     }
-    &.component-spacer__justify-center,
-    &.component-spacer__justify-space-between,
-    &.component-spacer__justify-space-around {
+    &.cf-component-spacer__justify-center,
+    &.cf-component-spacer__justify-space-between,
+    &.cf-component-spacer__justify-space-around {
       > * {
         margin-bottom: $margin / 2;
         margin-top: $margin / 2;
@@ -231,15 +231,15 @@
   }
 }
 
-.component-spacer__margin-xs {
+.cf-component-spacer__margin-xs {
   @include componentSpacerMargins($cf-border);
 }
-.component-spacer__margin-sm {
+.cf-component-spacer__margin-sm {
   @include componentSpacerMargins($cf-marg-a);
 }
-.component-spacer__margin-md {
+.cf-component-spacer__margin-md {
   @include componentSpacerMargins($cf-marg-b);
 }
-.component-spacer__margin-lg {
+.cf-component-spacer__margin-lg {
   @include componentSpacerMargins($cf-marg-c);
 }

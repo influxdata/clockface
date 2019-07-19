@@ -18,7 +18,7 @@ export class FormBox extends Component<Props> {
     const {children, className, testID, id} = this.props
 
     return (
-      <div className={`form--box ${className}`} data-testid={testID} id={id}>
+      <div className={`cf-form--box ${className}`} data-testid={testID} id={id}>
         {children}
       </div>
     )

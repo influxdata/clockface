@@ -30,8 +30,8 @@ export class Alert extends Component<Props> {
 
     return (
       <div className={this.className} data-testid={testID} id={id}>
-        {!!icon && <Icon glyph={icon} className="alert--icon" />}
-        <div className="alert--contents">{children}</div>
+        {!!icon && <Icon glyph={icon} className="cf-alert--icon" />}
+        <div className="cf-alert--contents">{children}</div>
       </div>
     )
   }
@@ -39,9 +39,9 @@ export class Alert extends Component<Props> {
   private get className(): string {
     const {color, icon, className} = this.props
 
-    return classnames('alert', {
-      [`alert--${color}`]: color,
-      'alert--has-icon': icon,
+    return classnames('cf-alert', {
+      [`cf-alert--${color}`]: color,
+      'cf-alert--has-icon': icon,
       [`${className}`]: className,
     })
   }

@@ -36,6 +36,6 @@ export class PageTitle extends PureComponent<Props> {
   private get className(): string {
     const {className} = this.props
 
-    return className ? `page--title ${className}` : 'page--title'
+    return className ? `cf-page--title ${className}` : 'cf-page--title'
   }
 }

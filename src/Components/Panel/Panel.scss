@@ -5,20 +5,20 @@
    -----------------------------------------------------------------------------
 */
 
-.panel {
+.cf-panel {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   border-radius: $cf-radius;
 }
 
-.panel--header {
+.cf-panel--header {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.panel--title {
+.cf-panel--title {
   font-style: normal;
   font-weight: 600;
   letter-spacing: 0.015em;
@@ -27,18 +27,18 @@
   @extend %no-user-select;
 }
 
-.panel--controls {
+.cf-panel--controls {
   display: flex;
   align-items: center;
 }
 
-.panel--body {
+.cf-panel--body {
   > *:last-child {
     margin-bottom: 0;
   }
 }
 
-.panel--footer {
+.cf-panel--footer {
   border-radius: 0 0 $cf-radius $cf-radius;
   background-color: rgba($g0-obsidian, 0.1);
 }
@@ -50,15 +50,15 @@
 
 $panel--dismiss-button: 30px;
 
-.panel__dismissable {
+.cf-panel__dismissable {
   position: relative;
 
-  > .panel--header {
+  > .cf-panel--header {
     padding-right: 40px;
   }
 }
 
-.panel--dismiss {
+.cf-panel--dismiss {
   position: absolute;
   background-color: transparent;
   border: 0;
@@ -95,50 +95,50 @@ $panel--dismiss-button: 30px;
   ------------------------------------------------------------------------------
 */
 @mixin panelSizeModifier($fontSize, $fontWeight, $padding, $dismissSize) {
-  > .panel--header {
+  > .cf-panel--header {
     padding: $padding * 2;
   }
-  > .panel--body {
+  > .cf-panel--body {
     font-size: $fontSize;
     padding: $padding * 2;
   }
-  > .panel--header + .panel--body {
+  > .cf-panel--header + .cf-panel--body {
     padding-top: 0;
   }
-  > .panel--header > .panel--title {
+  > .cf-panel--header > .cf-panel--title {
     font-weight: $fontWeight;
     font-size: $fontSize * 1.5;
   }
-  > .panel--footer {
+  > .cf-panel--footer {
     padding: $padding ($padding * 2);
   }
-  &.panel__dismissable > .panel--header {
+  &.cf-panel__dismissable > .cf-panel--header {
     padding-right: $dismissSize + $padding;
   }
 
-  .panel--dismiss {
+  .cf-panel--dismiss {
     width: $dismissSize - $cf-border;
     height: $dismissSize - $cf-border;
     top: ($padding / 2);
     right: ($padding / 2);
   }
 
-  .panel--dismiss:before,
-  .panel--dismiss:after {
+  .cf-panel--dismiss:before,
+  .cf-panel--dismiss:after {
     width: $dismissSize * 0.55;
   }
 }
 
-.panel--xs {
+.cf-panel--xs {
   @include panelSizeModifier($form-xs-font, 600, $form-xs-padding, $form-xs-height);
 }
-.panel--sm {
+.cf-panel--sm {
   @include panelSizeModifier($form-sm-font, 500, $form-sm-padding, $form-sm-height);
 }
-.panel--md {
+.cf-panel--md {
   @include panelSizeModifier($form-md-font, 500, $form-md-padding, $form-md-height);
 }
-.panel--lg {
+.cf-panel--lg {
   @include panelSizeModifier($form-lg-font, 400, $form-lg-padding, $form-md-height);
 }
 
@@ -147,30 +147,30 @@ $panel--dismiss-button: 30px;
   ------------------------------------------------------------------------------
 */
 
-.panel__dark-text {
-  > .panel--header > .panel--title {
+.cf-panel__dark-text {
+  > .cf-panel--header > .cf-panel--title {
     color: $g4-onyx;
   }
-  > .panel--body,
-  > .panel--footer {
+  > .cf-panel--body,
+  > .cf-panel--footer {
     color: rgba($g4-onyx, 0.75);
   }
-  > .panel--dismiss:before,
-  > .panel--dismiss:after {
+  > .cf-panel--dismiss:before,
+  > .cf-panel--dismiss:after {
     background-color: $g4-onyx;
   }
 }
 
-.panel__light-text {
-  > .panel--header > .panel--title {
+.cf-panel__light-text {
+  > .cf-panel--header > .cf-panel--title {
     color: $g18-cloud;
   }
-  > .panel--body,
-  > .panel--footer {
+  > .cf-panel--body,
+  > .cf-panel--footer {
     color: rgba($g18-cloud, 0.75);
   }
-  > .panel--dismiss:before,
-  > .panel--dismiss:after {
+  > .cf-panel--dismiss:before,
+  > .cf-panel--dismiss:after {
     background-color: $g18-cloud;
   }
 }
@@ -180,7 +180,7 @@ $panel--dismiss-button: 30px;
   ------------------------------------------------------------------------------
 */
 
-.panel--body hr {
+.cf-panel--body hr {
   margin: $cf-marg-c 0;
 }
 

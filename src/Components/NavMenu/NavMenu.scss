@@ -5,7 +5,7 @@
     ----------------------------------------------------------------------------
 */
 
-.nav {
+.cf-nav {
   display: flex;
   flex-direction: row;
   background-color: $g3-castle;
@@ -13,19 +13,19 @@
   height: $nav-menu--size;
 }
 
-.nav--item {
+.cf-nav--item {
   width: $nav-menu--size;
   height: $nav-menu--size;
   position: relative;
 }
 
-.nav--item-icon {
+.cf-nav--item-icon {
   display: block;
   width: 100%;
   height: 100%;
   position: relative;
   
-  > .icon {
+  > .cf-icon {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -42,7 +42,7 @@
   }
 }
 
-.nav--avatar {
+.cf-nav--avatar {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -51,15 +51,15 @@
     box-shadow 0.4s ease;
 }
 
-.nav--item:first-child .nav--item-icon {
+.cf-nav--item:first-child .cf-nav--item-icon {
   border-bottom-left-radius: $cf-radius;
 }
 
-.nav--item:last-child .nav--item-icon {
+.cf-nav--item:last-child .cf-nav--item-icon {
   border-bottom-right-radius: $cf-radius;
 }
 
-.nav--item-menu {
+.cf-nav--item-menu {
   position: absolute;
   top: $nav-menu--size;
   left: 50%;
@@ -72,7 +72,7 @@
   overflow: hidden;
 }
 
-.nav--item-header {
+.cf-nav--item-header {
   display: block;
   height: $nav-menu--size;
   line-height: $nav-menu--size;
@@ -92,23 +92,23 @@
 }
 
 // Hover State
-.nav--item:hover {
+.cf-nav--item:hover {
   z-index: 9000;
 
-  .nav--item-icon {
+  .cf-nav--item-icon {
     color: $g20-white;
     background-color: $nav-menu--bg;
     border-radius: 0;
   }
 
-  .nav--item-menu {
+  .cf-nav--item-menu {
     display: flex;
   }
 }
 
 // Active State
-.nav--item.active {
-  .nav--item-icon {
+.cf-nav--item.active {
+  .cf-nav--item-icon {
     color: $g20-white;
     background-color: $g6-smoke;
     text-shadow:
@@ -119,8 +119,8 @@
 }
 
 // Active Hover State
-.nav--item.active:hover {
-  .nav--item-icon {
+.cf-nav--item.active:hover {
+  .cf-nav--item-icon {
     color: $g20-white;
     background-color: $nav-menu--bg;
     text-shadow:
@@ -132,14 +132,14 @@
 
 // Vertical Menu
 @media screen and (min-width: $nav-menu--breakpoint) {
-  .nav {
+  .cf-nav {
     flex-direction: column;
     height: auto;
     width: $nav-menu--size;
     border-radius: 0 $cf-radius $cf-radius 0;
   }
 
-  .nav--item-menu {
+  .cf-nav--item-menu {
     top: 0;
     left: $nav-menu--size;
     border-radius: 0 $cf-radius $cf-radius 0;
@@ -147,22 +147,22 @@
     @include gradient-h($nav-menu--bg,$nav-menu--bg-accent);
   }
 
-  .nav--item:first-child .nav--item-icon {
+  .cf-nav--item:first-child .cf-nav--item-icon {
     border-bottom-left-radius: 0;
     border-top-right-radius: $cf-radius;
   }
 
-  .nav--item:last-child .nav--item-icon {
+  .cf-nav--item:last-child .cf-nav--item-icon {
     border-bottom-right-radius: $cf-radius;
   }
 
-  .nav--item:hover .nav--item-icon {
+  .cf-nav--item:hover .cf-nav--item-icon {
     border-radius: 0;
   }
 }
 
 // Sub Menu Items
-.nav--sub-item {
+.cf-nav--sub-item {
   padding: 6px $nav-menu--gutter;
   user-select: none;
   font-size: 13px;
@@ -211,9 +211,9 @@
   ------------------------------------------------------------------------------
 */
 
-.nav--item,
-.nav--item-header,
-.nav--sub-item {
+.cf-nav--item,
+.cf-nav--item-header,
+.cf-nav--sub-item {
   &:link,
   &:active,
   &:visited,

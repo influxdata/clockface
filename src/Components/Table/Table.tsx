@@ -81,12 +81,12 @@ export class Table extends Component<Props> {
       highlight,
     } = this.props
 
-    return classnames('table', {
-      [`table__padding-${cellPadding}`]: cellPadding,
-      [`table__borders-${borders}`]: borders,
-      [`table__font-${fontSize}`]: fontSize,
-      table__striped: striped,
-      table__highlight: highlight,
+    return classnames('cf-table', {
+      [`cf-table__padding-${cellPadding}`]: cellPadding,
+      [`cf-table__borders-${borders}`]: borders,
+      [`cf-table__font-${fontSize}`]: fontSize,
+      'cf-table__striped': striped,
+      'cf-table__highlight': highlight,
       [`${className}`]: className,
     })
   }

@@ -30,8 +30,8 @@ export class PanelHeader extends Component<Props> {
 
     return (
       <div className={this.className} data-testid={testID} id={id}>
-        <div className="panel--title">{title}</div>
-        <div className="panel--controls">
+        <div className="cf-panel--title">{title}</div>
+        <div className="cf-panel--controls">
           <ComponentSpacer
             direction={FlexDirection.Row}
             justifyContent={JustifyContent.FlexEnd}
@@ -47,6 +47,6 @@ export class PanelHeader extends Component<Props> {
   private get className(): string {
     const {className} = this.props
 
-    return classnames('panel--header', {[`${className}`]: className})
+    return classnames('cf-panel--header', {[`${className}`]: className})
   }
 }

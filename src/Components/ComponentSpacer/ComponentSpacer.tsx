@@ -59,13 +59,13 @@ export class ComponentSpacer extends Component<Props> {
 
     return (
       <div
-        className={classnames('component-spacer', {
-          [`component-spacer__margin-${margin}`]: margin,
-          [`component-spacer__${direction}`]: direction,
-          [`component-spacer__justify-${justifyContent}`]: justifyContent,
-          [`component-spacer__align-${alignItems}`]: alignItems,
-          'component-spacer__stretch-w': stretchToFitWidth,
-          'component-spacer__stretch-h': stretchToFitHeight,
+        className={classnames('cf-component-spacer', {
+          [`cf-component-spacer__margin-${margin}`]: margin,
+          [`cf-component-spacer__${direction}`]: direction,
+          [`cf-component-spacer__justify-${justifyContent}`]: justifyContent,
+          [`cf-component-spacer__align-${alignItems}`]: alignItems,
+          'cf-component-spacer__stretch-w': stretchToFitWidth,
+          'cf-component-spacer__stretch-h': stretchToFitHeight,
           [`${className}`]: className,
         })}
         data-testid={testID}
