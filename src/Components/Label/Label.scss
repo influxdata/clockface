@@ -5,7 +5,7 @@
   ------------------------------------------------------------------------------
 */
 
-.label {
+.cf-label {
   display: inline-flex;
   align-items: center;
   align-content: center;
@@ -14,7 +14,7 @@
   flex-wrap: nowrap;
 }
 
-.label--name {
+.cf-label--name {
   display: block;
   cursor: inherit;
   font-weight: 700;
@@ -23,14 +23,14 @@
   font-style: normal;
 }
 
-.label--clickable {
+.cf-label--clickable {
   &,
   &:hover {
     cursor: pointer;
   }
 }
 
-.label--delete {
+.cf-label--delete {
   display: block;
   background-color: transparent;
   position: relative;
@@ -45,7 +45,7 @@
   }
 }
 
-.label--delete-x {
+.cf-label--delete-x {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -66,54 +66,54 @@
 
 @mixin labelSizeModifier($fontSize, $padding, $height) {
   &,
-  & + .additional-labels {
+  & + .cf-additional-labels {
     border-radius: $height / 2;
     font-size: $fontSize;
     height: $height - $cf-marg-a;
   }
 
-  .label--name {
+  .cf-label--name {
     padding: 0 ($padding + $cf-border);
     height: $height - $cf-marg-a;
     line-height: $height - $cf-marg-a;
   }
 
-  &.label--deletable {
+  &.cf-label--deletable {
     padding-right: $padding + $cf-border;
   }
 
-  &.label--deletable .label--name {
+  &.cf-label--deletable .cf-label--name {
     padding-right: 0;
   }
 
-  .label--delete {
+  .cf-label--delete {
     height: $height - $cf-marg-a;
     transform: translateX($padding - $cf-border);
     width: 0;
   }
 
-  &:hover .label--delete {
+  &:hover .cf-label--delete {
     width: $height - $cf-marg-a - $cf-border;
   }
 }
 
-.label--xs {
+.cf-label--xs {
   @include labelSizeModifier($form-xs-font, $form-xs-padding, $form-xs-height);
 }
 
-.label--sm {
+.cf-label--sm {
   @include labelSizeModifier($form-sm-font, $form-sm-padding, $form-sm-height);
 }
 
-.label--md {
+.cf-label--md {
   @include labelSizeModifier($form-md-font, $form-md-padding, $form-md-height);
 }
 
-.label--lg {
+.cf-label--lg {
   @include labelSizeModifier($form-lg-font, $form-lg-padding, $form-lg-height);
 }
 
-.label--colorless {
+.cf-label--colorless {
   font-weight: 600;
   font-style: italic;
 

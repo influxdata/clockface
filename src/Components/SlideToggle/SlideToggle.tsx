@@ -50,7 +50,7 @@ export class SlideToggle extends Component<Props> {
         data-testid={testID}
         id={id}
       >
-        <div className="slide-toggle--knob" />
+        <div className="cf-slide-toggle--knob" />
       </div>
     )
   }
@@ -68,12 +68,12 @@ export class SlideToggle extends Component<Props> {
   private get className(): string {
     const {size, color, disabled, active, className} = this.props
 
-    return classnames('slide-toggle', {
+    return classnames('cf-slide-toggle', {
       active,
       disabled,
       [`${className}`]: className,
-      [`slide-toggle-${size}`]: size,
-      [`slide-toggle-${color}`]: color,
+      [`cf-slide-toggle-${size}`]: size,
+      [`cf-slide-toggle-${color}`]: color,
     })
   }
 }

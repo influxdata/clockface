@@ -26,7 +26,9 @@ export class OverlayMask extends PureComponent<Props> {
   public render() {
     const {testID, className, id} = this.props
 
-    const classname = classnames('overlay--mask', {[`${className}`]: className})
+    const classname = classnames('cf-overlay--mask', {
+      [`${className}`]: className,
+    })
 
     return (
       <div

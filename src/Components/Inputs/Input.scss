@@ -21,11 +21,11 @@ $input-field-z: 1;
 $input-shadow-z: $input-field-z + 1;
 $input-status-z: $input-field-z + 2;
 
-.input {
+.cf-input {
   position: relative;
 }
 
-.input-field {
+.cf-input-field {
   position: relative;
   z-index: $input-field-z;
   width: 100%;
@@ -77,8 +77,8 @@ $input-status-z: $input-field-z + 2;
   Input Icons (Including Status)
   ------------------------------------------------------------------------------
 */
-.input-icon,
-.input-status {
+.cf-input-icon,
+.cf-input-status {
   pointer-events: none;
   top: 50%;
   position: absolute;
@@ -87,24 +87,24 @@ $input-status-z: $input-field-z + 2;
   font-size: 1.1em;
 }
 
-.input-status {
+.cf-input-status {
   transform: translate(50%, -50%);
 }
 
-.input-icon {
+.cf-input-icon {
   transform: translate(-50%, -50%);
   color: $input-text;
 }
 
-.input-field:hover + .input-icon {
+.cf-input-field:hover + .cf-input-icon {
   color: $input-hover-text;
 }
 
-.input-field:focus + .input-icon {
+.cf-input-field:focus + .cf-input-icon {
   color: $input-focus-text;
 }
 
-.input-shadow {
+.cf-input-shadow {
   pointer-events: none;
   position: absolute;
   z-index: $input-shadow-z;
@@ -119,7 +119,7 @@ $input-status-z: $input-field-z + 2;
   opacity: 0;
 }
 
-.input-status + .input-shadow {
+.cf-input-status + .cf-input-shadow {
   opacity: 1;
 }
 
@@ -127,12 +127,12 @@ $input-status-z: $input-field-z + 2;
   Checkbox Type Input
   ------------------------------------------------------------------------------
 */
-.input__has-checkbox .input-field {
+.cf-input__has-checkbox .cf-input-field {
   position: absolute;
   left: -9999px;
 }
 
-.input--checkbox {
+.cf-input--checkbox {
   position: relative;
   background-color: $g2-kevlar;
   border-radius: $cf-radius;
@@ -171,41 +171,41 @@ $input-status-z: $input-field-z + 2;
   height: $height;
   font-size: $fontSize;
 
-  .input-field {
+  .cf-input-field {
     font-size: $fontSize;
     padding: 0 $padding;
     height: $height;
   }
 
-  &.input__has-icon .input-field {
+  &.cf-input__has-icon .cf-input-field {
     padding-left: $height;
   }
 
-  .input-icon {
+  .cf-input-icon {
     left: ($height / 2) + $cf-border;
   }
 
-  .input-status {
+  .cf-input-status {
     right: $height / 2;
   }
 
-  .input-pseudo {
+  .cf-input-pseudo {
     height: $height;
     width: $height;
   }
 
-  .input-shadow {
+  .cf-input-shadow {
     width: $height;
     right: $padding;
     border-right-width: $padding;
   }
 
-  .input-spinner {
+  .cf-input-spinner {
     width: $height / 2;
     height: $height / 2;
   }
 
-  .input--checkbox {
+  .cf-input--checkbox {
     width: $height - ($cf-marg-a + $cf-border);
     height: $height - ($cf-marg-a + $cf-border);
     margin: 2px 0;
@@ -217,16 +217,16 @@ $input-status-z: $input-field-z + 2;
   }
 }
 
-.input-xs {
+.cf-input-xs {
   @include inputSizeModifier($form-xs-font, $form-xs-padding, $form-xs-height);
 }
-.input-sm {
+.cf-input-sm {
   @include inputSizeModifier($form-sm-font, $form-sm-padding, $form-sm-height);
 }
-.input-md {
+.cf-input-md {
   @include inputSizeModifier($form-md-font, $form-md-padding, $form-md-height);
 }
-.input-lg {
+.cf-input-lg {
   @include inputSizeModifier($form-lg-font, $form-lg-padding, $form-lg-height);
 }
 
@@ -244,17 +244,17 @@ $input-status-z: $input-field-z + 2;
   Error State
   ------------------------------------------------------------------------------
 */
-.input__error {
-  .input-status {
+.cf-input__error {
+  .cf-input-status {
     color: $c-dreamsicle;
   }
-  .input-field {
+  .cf-input-field {
     border-color: $c-curacao;
   }
-  .input-field:hover {
+  .cf-input-field:hover {
     border-color: $c-dreamsicle;
   }
-  .input-field:focus {
+  .cf-input-field:focus {
     border-color: $c-dreamsicle;
     box-shadow: 0 0 6px 0 $c-fire;
   }
@@ -264,8 +264,8 @@ $input-status-z: $input-field-z + 2;
   Loading State
   ------------------------------------------------------------------------------
 */
-.input__loading {
-  .input-status {
+.cf-input__loading {
+  .cf-input-status {
     color: $c-pool;
   }
 }
@@ -279,7 +279,7 @@ $input-status-z: $input-field-z + 2;
   }
 }
 
-.input-spinner {
+.cf-input-spinner {
   border-style: solid;
   border-radius: 50%;
   animation-duration: 0.85s;
@@ -294,12 +294,12 @@ $input-status-z: $input-field-z + 2;
   Disabled State
   ------------------------------------------------------------------------------
 */
-.input__disabled {
-  .input-icon,
-  .input-field:hover + .input-icon {
+.cf-input__disabled {
+  .cf-input-icon,
+  .cf-input-field:hover + .cf-input-icon {
     color: $input-disabled-text;
   }
-  .input--checkbox {
+  .cf-input--checkbox {
     &,
     &:hover {
       cursor: default;
@@ -313,8 +313,8 @@ $input-status-z: $input-field-z + 2;
   }
 }
 
-.input-field[disabled],
-.input-field[disabled]:hover {
+.cf-input-field[disabled],
+.cf-input-field[disabled]:hover {
   cursor: default;
   border-color: $input-disabled-border;
   background-color: $input-disabled-bg;

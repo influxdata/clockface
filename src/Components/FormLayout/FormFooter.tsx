@@ -55,15 +55,15 @@ export class FormFooter extends Component<Props> {
       className,
     } = this.props
 
-    return classnames('form--element form--footer', {
-      [`col-xs-${widthXS}`]: widthXS,
-      [`col-sm-${widthSM}`]: widthSM,
-      [`col-md-${widthMD}`]: widthMD,
-      [`col-lg-${widthLG}`]: widthLG,
-      [`col-xs-offset-${offsetXS}`]: offsetXS,
-      [`col-sm-offset-${offsetSM}`]: offsetSM,
-      [`col-md-offset-${offsetMD}`]: offsetMD,
-      [`col-lg-offset-${offsetLG}`]: offsetLG,
+    return classnames('cf-form--element form--footer', {
+      [`cf-col-xs-${widthXS}`]: widthXS,
+      [`cf-col-sm-${widthSM}`]: widthSM,
+      [`cf-col-md-${widthMD}`]: widthMD,
+      [`cf-col-lg-${widthLG}`]: widthLG,
+      [`cf-col-xs-offset-${offsetXS}`]: offsetXS,
+      [`cf-col-sm-offset-${offsetSM}`]: offsetSM,
+      [`cf-col-md-offset-${offsetMD}`]: offsetMD,
+      [`cf-col-lg-offset-${offsetLG}`]: offsetLG,
       [`${className}`]: className,
     })
   }

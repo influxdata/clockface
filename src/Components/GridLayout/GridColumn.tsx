@@ -55,16 +55,16 @@ export class GridColumn extends Component<Props> {
       className,
     } = this.props
 
-    return classnames('grid--column', {
+    return classnames('cf-grid--column', {
       [`${className}`]: className,
-      [`col-xs-${widthXS}`]: widthXS,
-      [`col-sm-${widthSM}`]: widthSM,
-      [`col-md-${widthMD}`]: widthMD,
-      [`col-lg-${widthLG}`]: widthLG,
-      [`col-xs-offset-${offsetXS}`]: offsetXS,
-      [`col-sm-offset-${offsetSM}`]: offsetSM,
-      [`col-md-offset-${offsetMD}`]: offsetMD,
-      [`col-lg-offset-${offsetLG}`]: offsetLG,
+      [`cf-col-xs-${widthXS}`]: widthXS,
+      [`cf-col-sm-${widthSM}`]: widthSM,
+      [`cf-col-md-${widthMD}`]: widthMD,
+      [`cf-col-lg-${widthLG}`]: widthLG,
+      [`cf-col-xs-offset-${offsetXS}`]: offsetXS,
+      [`cf-col-sm-offset-${offsetSM}`]: offsetSM,
+      [`cf-col-md-offset-${offsetMD}`]: offsetMD,
+      [`cf-col-lg-offset-${offsetLG}`]: offsetLG,
     })
   }
 }

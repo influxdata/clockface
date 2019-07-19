@@ -131,7 +131,7 @@ export class Button extends Component<Props> {
     const {icon} = this.props
 
     if (icon) {
-      return <Icon glyph={icon} className="button-icon" />
+      return <Icon glyph={icon} className="cf-button-icon" />
     }
 
     return
@@ -144,14 +144,14 @@ export class Button extends Component<Props> {
       return
     }
 
-    return <span className="button--label">{text}</span>
+    return <span className="cf-button--label">{text}</span>
   }
 
   private get statusIndicator(): JSX.Element | undefined {
     const {status, size} = this.props
 
     if (status === ComponentStatus.Loading) {
-      return <div className={`button-spinner button-spinner--${size}`} />
+      return <div className={`cf-button-spinner cf-button-spinner--${size}`} />
     }
 
     return

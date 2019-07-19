@@ -31,9 +31,9 @@ export class TableRow extends Component<Props> {
   private get className(): string {
     const {className, color} = this.props
 
-    return classnames('table--row', {
+    return classnames('cf-table--row', {
       [`${className}`]: className,
-      [`table--row__${color}`]: color,
+      [`cf-table--row__${color}`]: color,
     })
   }
 }

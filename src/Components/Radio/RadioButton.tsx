@@ -50,7 +50,7 @@ export class RadioButton extends Component<Props> {
   private get className(): string {
     const {active, disabled, className} = this.props
 
-    return classnames('radio-button', {
+    return classnames('cf-radio-button', {
       active,
       disabled,
       [`${className}`]: className,

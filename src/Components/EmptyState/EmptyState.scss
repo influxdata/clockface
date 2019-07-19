@@ -5,15 +5,15 @@
 
 @import '../../Styles/modules';
 
-.empty-state {
+.cf-empty-state {
   display: flex;
   width: 100%;
   flex-direction: column;
   align-items: center;
 }
 
-.empty-state--text,
-.empty-state--sub-text {
+.cf-empty-state--text,
+.cf-empty-state--sub-text {
   margin-bottom: 0;
   text-align: center;
   color: $empty-state-text;
@@ -33,18 +33,18 @@
 @mixin emptyStateSizeModifier($fontSize, $padding) {
   padding: ceil($padding * 2.75) 0;
 
-  .empty-state--text,
-  .empty-state--sub-text {
+  .cf-empty-state--text,
+  .cf-empty-state--sub-text {
     margin-top: ceil($fontSize * 0.75);
   }
 
-  .empty-state--text + .button,
-  .empty-state--text + .dropdown {
+  .cf-empty-state--text + .cf-button,
+  .cf-empty-state--text + .cf-dropdown {
     margin-top: $padding;
   }
 
-  .empty-state--sub-text + .button,
-  .empty-state--sub-text + .dropdown {
+  .cf-empty-state--sub-text + .cf-button,
+  .cf-empty-state--sub-text + .cf-dropdown {
     margin-top: $padding;
   }
 
@@ -52,27 +52,27 @@
     margin-bottom: ceil($fontSize * 0.75);
   }
 
-  .empty-state--text {
+  .cf-empty-state--text {
     font-size: ceil($fontSize * 1.25);
   }
 
-  .empty-state--sub-text {
+  .cf-empty-state--sub-text {
     font-size: $fontSize;
   }
 }
 
-.empty-state--xs {
+.cf-empty-state--xs {
   @include emptyStateSizeModifier($form-xs-font, $cf-marg-a);
 }
 
-.empty-state--sm {
+.cf-empty-state--sm {
   @include emptyStateSizeModifier($form-sm-font, $cf-marg-b);
 }
 
-.empty-state--md {
+.cf-empty-state--md {
   @include emptyStateSizeModifier($form-md-font, $cf-marg-c);
 }
 
-.empty-state--lg {
+.cf-empty-state--lg {
   @include emptyStateSizeModifier($form-lg-font, $cf-marg-d);
 }

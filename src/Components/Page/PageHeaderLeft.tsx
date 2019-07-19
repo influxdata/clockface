@@ -38,7 +38,9 @@ export class PageHeaderLeft extends Component<Props> {
   private get className(): string {
     const {className} = this.props
 
-    return className ? `page-header--left ${className}` : 'page-header--left'
+    return className
+      ? `cf-page-header--left ${className}`
+      : 'cf-page-header--left'
   }
 
   private get style(): CSSProperties | undefined {

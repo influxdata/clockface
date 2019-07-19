@@ -7,7 +7,7 @@
 
 $radio-buttons--padding: $cf-marg-a;
 
-.radio-buttons {
+.cf-radio-buttons {
   display: inline-flex;
   align-items: stretch;
   padding: $radio-buttons--padding;
@@ -15,7 +15,7 @@ $radio-buttons--padding: $cf-marg-a;
   background-color: $g5-pepper;
 }
 
-.radio-button {
+.cf-radio-button {
   @include no-user-select();
   border: 0;
   font-family: $cf-text-font;
@@ -53,7 +53,7 @@ $radio-buttons--padding: $cf-marg-a;
 @mixin radioButtonSizeModifier($fontSize, $padding, $height) {
   height: $height;
 
-  .radio-button {
+  .cf-radio-button {
     height: $height - ($radio-buttons--padding * 2);
     line-height: $height - ($radio-buttons--padding * 2);
     padding: 0 $padding;
@@ -61,16 +61,16 @@ $radio-buttons--padding: $cf-marg-a;
   }
 }
 
-.radio-buttons--xs {
+.cf-radio-buttons--xs {
   @include radioButtonSizeModifier($form-xs-font, $form-xs-padding, $form-xs-height);
 }
-.radio-buttons--sm {
+.cf-radio-buttons--sm {
   @include radioButtonSizeModifier($form-sm-font, $form-sm-padding, $form-sm-height);
 }
-.radio-buttons--md {
+.cf-radio-buttons--md {
   @include radioButtonSizeModifier($form-md-font, $form-md-padding, $form-md-height);
 }
-.radio-buttons--lg {
+.cf-radio-buttons--lg {
   @include radioButtonSizeModifier($form-lg-font, $form-lg-padding, $form-lg-height);
 }
 
@@ -79,33 +79,33 @@ $radio-buttons--padding: $cf-marg-a;
   Color Modifiers
   ------------------------------------------------------------------------------
 */
-.radio-buttons--default {
-  .radio-button.active {
+.cf-radio-buttons--default {
+  .cf-radio-button.active {
     background-color: $g7-graphite;
   }
 }
-.radio-buttons--primary {
-  .radio-button.active {
+.cf-radio-buttons--primary {
+  .cf-radio-button.active {
     background-color: $c-pool;
   }
 }
-.radio-buttons--secondary {
-  .radio-button.active {
+.cf-radio-buttons--secondary {
+  .cf-radio-button.active {
     background-color: $c-star;
   }
 }
-.radio-buttons--success {
-  .radio-button.active {
+.cf-radio-buttons--success {
+  .cf-radio-button.active {
     background-color: $c-rainforest;
   }
 }
-.radio-buttons--danger {
-  .radio-button.active {
+.cf-radio-buttons--danger {
+  .cf-radio-button.active {
     background-color: $c-curacao;
   }
 }
-.radio-buttons--warning {
-  .radio-button.active {
+.cf-radio-buttons--warning {
+  .cf-radio-button.active {
     background-color: $c-pineapple;
   }
 }
@@ -114,32 +114,32 @@ $radio-buttons--padding: $cf-marg-a;
   Shape Modifiers
   ------------------------------------------------------------------------------
 */
-.radio-buttons.radio-buttons--square {
-  &.radio-buttons--xs .radio-button {
+.cf-radio-buttons.cf-radio-buttons--square {
+  &.cf-radio-buttons--xs .cf-radio-button {
     width: $form-xs-height;
   }
   
-  &.radio-buttons--sm .radio-button {
+  &.cf-radio-buttons--sm .cf-radio-button {
     width: $form-sm-height;
   }
   
-  &.radio-buttons--md .radio-button {
+  &.cf-radio-buttons--md .cf-radio-button {
     width: $form-md-height;
   }
 
-  &.radio-buttons--lg .radio-button {
+  &.cf-radio-buttons--lg .cf-radio-button {
     width: $form-lg-height;
   }
 
-  .radio-button {
+  .cf-radio-button {
     padding: 0;
   }
 }
 
-.radio-buttons.radio-buttons--stretch {
+.cf-radio-buttons.cf-radio-buttons--stretch {
   width: 100%;
 
-  .radio-button {
+  .cf-radio-button {
     flex: 1 0 0;
   }
 }

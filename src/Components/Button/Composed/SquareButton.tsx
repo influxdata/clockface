@@ -98,7 +98,7 @@ export class SquareButton extends Component<Props> {
     const {icon} = this.props
 
     if (icon) {
-      return <Icon glyph={icon} className="button-icon" />
+      return <Icon glyph={icon} className="cf-button-icon" />
     }
 
     return null
@@ -108,7 +108,7 @@ export class SquareButton extends Component<Props> {
     const {status, size} = this.props
 
     if (status === ComponentStatus.Loading) {
-      return <div className={`button-spinner button-spinner--${size}`} />
+      return <div className={`cf-button-spinner cf-button-spinner--${size}`} />
     }
 
     return null

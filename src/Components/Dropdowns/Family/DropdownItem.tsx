@@ -48,13 +48,13 @@ export class DropdownItem extends Component<Props> {
   private get className(): string {
     const {selected, wrapText, className, type} = this.props
 
-    return classnames('dropdown-item', {
-      [`dropdown-item__${type}`]:
+    return classnames('cf-dropdown-item', {
+      [`cf-dropdown-item__${type}`]:
         type === DropdownItemType.Checkbox || type === DropdownItemType.Dot,
       active: selected,
       [`${className}`]: className,
-      'dropdown-item__wrap': wrapText,
-      'dropdown-item__no-wrap': !wrapText,
+      'cf-dropdown-item__wrap': wrapText,
+      'cf-dropdown-item__no-wrap': !wrapText,
     })
   }
 
@@ -72,9 +72,9 @@ export class DropdownItem extends Component<Props> {
 
     switch (type) {
       case DropdownItemType.Checkbox:
-        return <div className="dropdown-item--checkbox" />
+        return <div className="cf-dropdown-item--checkbox" />
       case DropdownItemType.Dot:
-        return <div className="dropdown-item--dot" />
+        return <div className="cf-dropdown-item--dot" />
       case DropdownItemType.None:
       default:
         return
@@ -84,6 +84,6 @@ export class DropdownItem extends Component<Props> {
   private get childElements(): JSX.Element {
     const {children} = this.props
 
-    return <div className="dropdown-item--children">{children}</div>
+    return <div className="cf-dropdown-item--children">{children}</div>
   }
 }

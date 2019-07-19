@@ -7,7 +7,7 @@
 
 $alert--icon-padding: $cf-marg-d + $cf-marg-a;
 
-.alert {
+.cf-alert {
   width: 100%;
   border-radius: $cf-radius;
   padding: $cf-border;
@@ -43,19 +43,19 @@ $alert--icon-padding: $cf-marg-d + $cf-marg-a;
   }
 }
 
-.alert--contents {
+.cf-alert--contents {
   width: 100%;
   border-radius: $cf-radius - 1px;
   padding: $cf-marg-b;
   background-color: rgba($g3-castle, 0.85);
 }
 
-.alert--has-icon {
+.cf-alert--has-icon {
   padding-left: $alert--icon-padding;
   position: relative;
 }
 
-.alert--icon {
+.cf-alert--icon {
   position: absolute;
   top: 50%;
   left: $alert--icon-padding / 2;
@@ -75,19 +75,19 @@ $alert--icon-padding: $cf-marg-d + $cf-marg-a;
   @include gradient-h($mainColor, $accentColor);
 }
 
-.alert--default {
+.cf-alert--default {
   @include alertColorModifier($g7-graphite, $g5-pepper, $g13-mist, $g20-white);
 }
 
-.alert--primary {
+.cf-alert--primary {
   @include alertColorModifier($c-ocean, $c-star, $c-hydrogen, $g20-white);
 }
 
-.alert--secondary {
+.cf-alert--secondary {
   @include alertColorModifier($c-comet, $c-star, $c-moonstone, $g20-white);
 }
 
-.alert--success {
+.cf-alert--success {
   @include alertColorModifier(
     $c-rainforest,
     $c-viridian,
@@ -96,11 +96,11 @@ $alert--icon-padding: $cf-marg-d + $cf-marg-a;
   );
 }
 
-.alert--warning {
+.cf-alert--warning {
   @include alertColorModifier($c-pineapple, $c-thunder, $c-sulfur, $g20-white);
 }
 
-.alert--danger {
+.cf-alert--danger {
   @include alertColorModifier(
     $c-dreamsicle,
     $c-curacao,

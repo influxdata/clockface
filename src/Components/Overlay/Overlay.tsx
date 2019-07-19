@@ -91,7 +91,7 @@ export class Overlay extends Component<Props, State> {
     if (showChildren) {
       return (
         <div
-          className="overlay--transition"
+          className="cf-overlay--transition"
           data-testid={`${testID}--children`}
         >
           {children}
@@ -101,7 +101,7 @@ export class Overlay extends Component<Props, State> {
 
     return (
       <div
-        className="overlay--transition"
+        className="cf-overlay--transition"
         data-testid={`${testID}--children`}
       />
     )
@@ -110,7 +110,7 @@ export class Overlay extends Component<Props, State> {
   private get overlayClass(): string {
     const {visible, className} = this.props
 
-    return classnames('overlay', {
+    return classnames('cf-overlay', {
       show: visible,
       [`${className}`]: className,
     })

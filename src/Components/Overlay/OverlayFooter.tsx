@@ -26,7 +26,7 @@ export class OverlayFooter extends PureComponent<Props> {
   public render() {
     const {children, className, testID, id} = this.props
 
-    const classname = classnames('overlay--footer', {
+    const classname = classnames('cf-overlay--footer', {
       [`${className}`]: className,
     })
 

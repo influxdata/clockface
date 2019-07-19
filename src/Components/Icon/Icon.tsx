@@ -22,8 +22,8 @@ export class Icon extends Component<Props> {
     const {glyph, testID, id} = this.props
 
     const className = this.props.className
-      ? `icon ${glyph} ${this.props.className}`
-      : `icon ${glyph}`
+      ? `cf-icon ${glyph} ${this.props.className}`
+      : `cf-icon ${glyph}`
 
     return (
       <span

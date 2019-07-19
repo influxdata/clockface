@@ -27,7 +27,7 @@ export class TableBody extends Component<Props> {
   private get className(): string {
     const {className} = this.props
 
-    return classnames('table--body', {
+    return classnames('cf-table--body', {
       [`${className}`]: className,
     })
   }

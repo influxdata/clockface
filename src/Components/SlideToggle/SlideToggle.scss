@@ -7,7 +7,7 @@
 
 $slide-toggle--gap: $cf-border * 2;
 
-.slide-toggle {
+.cf-slide-toggle {
   position: relative;
   display: inline-block;
   transition: background-color 0.25s ease, border-color 0.25s ease;
@@ -19,7 +19,7 @@ $slide-toggle--gap: $cf-border * 2;
   }
 }
 
-.slide-toggle--knob {
+.cf-slide-toggle--knob {
   position: absolute;
   top: 50%;
   transition: background-color 0.35s ease,
@@ -29,7 +29,7 @@ $slide-toggle--gap: $cf-border * 2;
   box-shadow: 0 0 $slide-toggle--gap ($slide-toggle--gap / 2) rgba($g0-obsidian, 0.25);
   background-color: $g13-mist;
     
-  .slide-toggle:hover & {
+  .cf-slide-toggle:hover & {
     background-color: $g20-white;
   }
 }
@@ -38,7 +38,7 @@ $slide-toggle--gap: $cf-border * 2;
   Active State
   ------------------------------------------------------------------------------
 */
-.slide-toggle.active .slide-toggle--knob {
+.cf-slide-toggle.active .cf-slide-toggle--knob {
   transform: translate(calc(100% + #{$slide-toggle--gap}), -50%);
   background-color: $g20-white;
 }
@@ -47,12 +47,12 @@ $slide-toggle--gap: $cf-border * 2;
   Disabled State
   ------------------------------------------------------------------------------
 */
-.slide-toggle.disabled,
-.slide-toggle.disabled:hover {
+.cf-slide-toggle.disabled,
+.cf-slide-toggle.disabled:hover {
   cursor: default;
   background-color: $g5-pepper;
 
-  .slide-toggle--knob {
+  .cf-slide-toggle--knob {
     background-color: $g2-kevlar;
   }
 }
@@ -68,25 +68,25 @@ $slide-toggle--gap: $cf-border * 2;
   width: (floor($size * 0.75) * 2) - $slide-toggle--gap;
 
 
-  .slide-toggle--knob,
-  .slide-toggle--knob:before,
-  .slide-toggle--knob:after {
+  .cf-slide-toggle--knob,
+  .cf-slide-toggle--knob:before,
+  .cf-slide-toggle--knob:after {
     width: floor($size * 0.75) - ($slide-toggle--gap * 2);
     height: floor($size * 0.75) - ($slide-toggle--gap * 2);
   }
 }
 
-.slide-toggle {
-  &.slide-toggle-xs {
+.cf-slide-toggle {
+  &.cf-slide-toggle-xs {
     @include slideToggleSizeModifier($form-xs-height);
   }
-  &.slide-toggle-sm {
+  &.cf-slide-toggle-sm {
     @include slideToggleSizeModifier($form-sm-height);
   }
-  &.slide-toggle-md {
+  &.cf-slide-toggle-md {
     @include slideToggleSizeModifier($form-md-height);
   }
-  &.slide-toggle-lg {
+  &.cf-slide-toggle-lg {
     @include slideToggleSizeModifier($form-lg-height);
   }
 }
@@ -108,23 +108,23 @@ $slide-toggle--gap: $cf-border * 2;
   }
 }
 
-.slide-toggle {
-  &.slide-toggle-default {
+.cf-slide-toggle {
+  &.cf-slide-toggle-default {
     @include slideToggleColorModifier($g10-wolf, $g12-forge);
   }
-  &.slide-toggle-primary.active {
+  &.cf-slide-toggle-primary.active {
     @include slideToggleColorModifier($c-pool, $c-laser);
   }
-  &.slide-toggle-secondary.active {
+  &.cf-slide-toggle-secondary.active {
     @include slideToggleColorModifier($c-star, $c-comet);
   }
-  &.slide-toggle-success.active {
+  &.cf-slide-toggle-success.active {
     @include slideToggleColorModifier($c-rainforest, $c-honeydew);
   }
-  &.slide-toggle-danger.active {
+  &.cf-slide-toggle-danger.active {
     @include slideToggleColorModifier($c-curacao, $c-dreamsicle);
   }
-  &.slide-toggle-warning.active {
+  &.cf-slide-toggle-warning.active {
     @include slideToggleColorModifier($c-pineapple, $c-thunder);
   }
 }
@@ -133,7 +133,7 @@ $slide-toggle--gap: $cf-border * 2;
   Optional Label
   ------------------------------------------------------------------------------
 */
-.slide-toggle--label {
+.cf-slide-toggle--label {
   white-space: nowrap;
   font-weight: 600;
   @include no-user-select();
@@ -142,21 +142,21 @@ $slide-toggle--gap: $cf-border * 2;
   transition: opacity 0.25s ease;
   font-style: italic;
   
-  &.slide-toggle--label__active {
+  &.cf-slide-toggle--label__active {
     font-style: normal;
     opacity: 1;
   }
 }
 
-.slide-toggle--label-xs {
+.cf-slide-toggle--label-xs {
   font-size: $form-xs-font;
 }
-.slide-toggle--label-sm {
+.cf-slide-toggle--label-sm {
   font-size: $form-sm-font;
 }
-.slide-toggle--label-md {
+.cf-slide-toggle--label-md {
   font-size: $form-md-font;
 }
-.slide-toggle--label-lg {
+.cf-slide-toggle--label-lg {
   font-size: $form-lg-font;
 }

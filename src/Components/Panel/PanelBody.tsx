@@ -27,6 +27,6 @@ export class PanelBody extends Component<Props> {
   private get className(): string {
     const {className} = this.props
 
-    return classnames('panel--body', {[`${className}`]: className})
+    return classnames('cf-panel--body', {[`${className}`]: className})
   }
 }

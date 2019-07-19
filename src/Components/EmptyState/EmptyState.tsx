@@ -41,8 +41,8 @@ export class EmptyState extends Component<Props> {
   private get className(): string {
     const {className, size} = this.props
 
-    return classnames('empty-state', {
-      [`empty-state--${size}`]: size,
+    return classnames('cf-empty-state', {
+      [`cf-empty-state--${size}`]: size,
       [`${className}`]: className,
     })
   }

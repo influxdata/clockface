@@ -33,9 +33,9 @@ export class FormDivider extends Component<Props> {
   private get className(): string {
     const {className, lineColor} = this.props
 
-    return classnames('form--divider', {
+    return classnames('cf-form--divider', {
       [`${className}`]: className,
-      'form--divider-line': lineColor,
+      'cf-form--divider-line': lineColor,
     })
   }
 

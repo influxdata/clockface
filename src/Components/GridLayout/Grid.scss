@@ -25,11 +25,11 @@ $grid--col-10: 83.33333333%;
 $grid--col-11: 91.66666667%;
 $grid--col-12: 100%;
 
-.grid--container {
+.cf-grid--container {
   width: 100%;
 }
 
-.grid--row {
+.cf-grid--row {
   display: inline-block;
   width: calc(100% + #{$grid--gutter * 2});
   margin-left: -$grid--gutter;
@@ -42,7 +42,7 @@ $grid--col-12: 100%;
   }
 }
 
-.grid--column {
+.cf-grid--column {
   position: relative;
   float: left;
   min-height: 1px;
@@ -52,9 +52,9 @@ $grid--col-12: 100%;
 
 //  Extra Small Screen Grid
 //  ----------------------------------------------------------------------------
-.col-sm,
-.col-md,
-.col-lg {
+.cf-col-sm,
+.cf-col-md,
+.cf-col-lg {
   &-12,
   &-11,
   &-10,
@@ -70,7 +70,7 @@ $grid--col-12: 100%;
     width: $grid--col-12;
   }
 }
-.col-xs {
+.cf-col-xs {
   &-1 {
     width: $grid--col-1;
   }
@@ -108,7 +108,7 @@ $grid--col-12: 100%;
     width: $grid--col-12;
   }
 }
-.col-xs-offset {
+.cf-col-xs-offset {
   &-1 {
     margin-left: $grid--col-1;
   }
@@ -147,7 +147,7 @@ $grid--col-12: 100%;
 //  Small Screen Grid
 //  ----------------------------------------------------------------------------
 @media screen and (min-width: $grid--breakpoint-sm) {
-  .col-sm {
+  .cf-col-sm {
     &-1 {
       width: $grid--col-1;
     }
@@ -185,7 +185,7 @@ $grid--col-12: 100%;
       width: $grid--col-12;
     }
   }
-  .col-sm-offset {
+  .cf-col-sm-offset {
     &-1 {
       margin-left: $grid--col-1;
     }
@@ -225,7 +225,7 @@ $grid--col-12: 100%;
 //  Medium Screen Grid
 //  ----------------------------------------------------------------------------
 @media screen and (min-width: $grid--breakpoint-md) {
-  .col-md {
+  .cf-col-md {
     &-1 {
       width: $grid--col-1;
     }
@@ -263,7 +263,7 @@ $grid--col-12: 100%;
       width: $grid--col-12;
     }
   }
-  .col-md-offset {
+  .cf-col-md-offset {
     &-1 {
       margin-left: $grid--col-1;
     }
@@ -303,7 +303,7 @@ $grid--col-12: 100%;
 //  Large Screen Grid
 //  ----------------------------------------------------------------------------
 @media screen and (min-width: $grid--breakpoint-lg) {
-  .col-lg {
+  .cf-col-lg {
     &-1 {
       width: $grid--col-1;
     }
@@ -341,7 +341,7 @@ $grid--col-12: 100%;
       width: $grid--col-12;
     }
   }
-  .col-lg-offset {
+  .cf-col-lg-offset {
     &-1 {
       margin-left: $grid--col-1;
     }

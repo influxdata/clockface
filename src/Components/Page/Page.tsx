@@ -56,7 +56,7 @@ export class Page extends Component<Props> {
   private get className(): string {
     const {className} = this.props
 
-    return classnames('page', {
+    return classnames('cf-page', {
       [`${className}`]: className,
     })
   }

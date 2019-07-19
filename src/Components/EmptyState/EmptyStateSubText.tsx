@@ -30,7 +30,7 @@ export class EmptyStateSubText extends Component<Props> {
     const {className} = this.props
 
     return className
-      ? `empty-state--sub-text ${className}`
-      : 'empty-state--sub-text'
+      ? `cf-empty-state--sub-text ${className}`
+      : 'cf-empty-state--sub-text'
   }
 }

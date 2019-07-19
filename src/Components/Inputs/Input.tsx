@@ -144,7 +144,7 @@ export class Input extends Component<Props> {
           onKeyPress={onKeyPress}
           onKeyUp={onKeyUp}
           onKeyDown={onKeyDown}
-          className="input-field"
+          className="cf-input-field"
           disabled={status === ComponentStatus.Disabled}
           maxLength={maxLength}
           tabIndex={tabIndex}
@@ -170,7 +170,7 @@ export class Input extends Component<Props> {
   private get checkbox(): JSX.Element | null {
     const {type, checked} = this.props
 
-    const className = classnames('input--checkbox', {checked})
+    const className = classnames('cf-input--checkbox', {checked})
 
     if (type === InputType.Checkbox) {
       return <div className={className} />
@@ -183,7 +183,7 @@ export class Input extends Component<Props> {
     const {icon} = this.props
 
     if (icon) {
-      return <Icon glyph={icon} className="input-icon" />
+      return <Icon glyph={icon} className="cf-input-icon" />
     }
 
     return null
@@ -209,10 +209,10 @@ export class Input extends Component<Props> {
     if (status === ComponentStatus.Loading) {
       return (
         <>
-          <div className="input-status">
-            <div className="input-spinner" />
+          <div className="cf-input-status">
+            <div className="cf-input-spinner" />
           </div>
-          <div className="input-shadow" />
+          <div className="cf-input-shadow" />
         </>
       )
     }
@@ -222,10 +222,10 @@ export class Input extends Component<Props> {
         <>
           <Icon
             glyph={IconFont.AlertTriangle}
-            className="input-status"
+            className="cf-input-status"
             testID="input-error"
           />
-          <div className="input-shadow" />
+          <div className="cf-input-shadow" />
         </>
       )
     }
@@ -235,28 +235,28 @@ export class Input extends Component<Props> {
         <>
           <Icon
             glyph={IconFont.Checkmark}
-            className="input-status"
+            className="cf-input-status"
             testID="input-valid"
           />
-          <div className="input-shadow" />
+          <div className="cf-input-shadow" />
         </>
       )
     }
 
-    return <div className="input-shadow" />
+    return <div className="cf-input-shadow" />
   }
 
   private get className(): string {
     const {type, size, status, icon, className} = this.props
 
-    return classnames('input', {
-      [`input-${size}`]: size,
-      'input__has-checkbox': type === InputType.Checkbox,
-      'input__has-icon': icon,
-      input__valid: status === ComponentStatus.Valid,
-      input__error: status === ComponentStatus.Error,
-      input__loading: status === ComponentStatus.Loading,
-      input__disabled: status === ComponentStatus.Disabled,
+    return classnames('cf-input', {
+      [`cf-input-${size}`]: size,
+      'cf-input__has-checkbox': type === InputType.Checkbox,
+      'cf-input__has-icon': icon,
+      'cf-input__valid': status === ComponentStatus.Valid,
+      'cf-input__error': status === ComponentStatus.Error,
+      'cf-input__loading': status === ComponentStatus.Loading,
+      'cf-input__disabled': status === ComponentStatus.Disabled,
       [`${className}`]: className,
     })
   }

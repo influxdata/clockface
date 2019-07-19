@@ -57,13 +57,13 @@ export class ColorPickerSwatch extends Component<Props> {
   private get className(): string {
     const {className, index, swatchesCount, swatchesPerRow} = this.props
 
-    return classnames('color-picker--swatch', {
+    return classnames('cf-color-picker--swatch', {
       [`${className}`]: className,
-      'color-picker--swatch__top-left': index === 0,
-      'color-picker--swatch__top-right': index === swatchesPerRow - 1,
-      'color-picker--swatch__bottom-left':
+      'cf-color-picker--swatch__top-left': index === 0,
+      'cf-color-picker--swatch__top-right': index === swatchesPerRow - 1,
+      'cf-color-picker--swatch__bottom-left':
         index === swatchesCount - swatchesPerRow,
-      'color-picker--swatch__bottom-right': index === swatchesCount - 1,
+      'cf-color-picker--swatch__bottom-right': index === swatchesCount - 1,
     })
   }
 

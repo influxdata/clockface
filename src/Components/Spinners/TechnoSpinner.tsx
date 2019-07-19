@@ -39,7 +39,7 @@ export class TechnoSpinner extends Component<Props> {
   private get className(): string {
     const {className} = this.props
 
-    return className ? `techno-spinner ${className}` : 'techno-spinner'
+    return className ? `cf-techno-spinner ${className}` : 'cf-techno-spinner'
   }
 
   private get style(): CSSProperties {

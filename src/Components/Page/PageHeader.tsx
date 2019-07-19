@@ -39,7 +39,7 @@ export class PageHeader extends Component<Props> {
 
     return (
       <div className={this.className} data-testid={testID} id={id}>
-        <div className="page-header--container">
+        <div className="cf-page-header--container">
           {this.childrenWithCorrectWidths}
         </div>
       </div>
@@ -49,7 +49,7 @@ export class PageHeader extends Component<Props> {
   private get className(): string {
     const {fullWidth, className} = this.props
 
-    return classnames('page-header', {
+    return classnames('cf-page-header', {
       'full-width': fullWidth,
       [`${className}`]: className,
     })

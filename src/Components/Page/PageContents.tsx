@@ -37,14 +37,14 @@ export class PageContents extends Component<Props> {
           testID={testID}
           id={id}
         >
-          <div className="page-contents--padding">{this.children}</div>
+          <div className="cf-page-contents--padding">{this.children}</div>
         </DapperScrollbars>
       )
     }
 
     return (
       <div className={this.className} data-testid={testID}>
-        <div className="page-contents--padding">{this.children}</div>
+        <div className="cf-page-contents--padding">{this.children}</div>
       </div>
     )
   }
@@ -52,7 +52,7 @@ export class PageContents extends Component<Props> {
   private get className(): string {
     const {fullWidth, fullHeight, className} = this.props
 
-    return classnames('page-contents', {
+    return classnames('cf-page-contents', {
       'full-width': fullWidth,
       'full-height': fullHeight,
       [`${className}`]: className,
@@ -66,6 +66,6 @@ export class PageContents extends Component<Props> {
       return children
     }
 
-    return <div className="page-contents--container">{children}</div>
+    return <div className="cf-page-contents--container">{children}</div>
   }
 }

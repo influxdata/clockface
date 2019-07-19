@@ -44,7 +44,7 @@ export class DraggableResizerHandle extends PureComponent<Props> {
         id={id}
       >
         <div
-          className="draggable-resizer--gradient"
+          className="cf-draggable-resizer--gradient"
           style={this.gradientStyle}
         />
       </div>
@@ -60,8 +60,8 @@ export class DraggableResizerHandle extends PureComponent<Props> {
   private get className(): string {
     const {dragging, className} = this.props
 
-    return classnames('draggable-resizer--handle', {
-      'draggable-resizer--handle-dragging': dragging,
+    return classnames('cf-draggable-resizer--handle', {
+      'cf-draggable-resizer--handle-dragging': dragging,
       [`${className}`]: className,
     })
   }

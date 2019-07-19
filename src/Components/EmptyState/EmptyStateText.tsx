@@ -56,6 +56,8 @@ export class EmptyStateText extends Component<Props & StandardProps> {
   private get className(): string {
     const {className} = this.props
 
-    return className ? `empty-state--text ${className}` : 'empty-state--text'
+    return className
+      ? `cf-empty-state--text ${className}`
+      : 'cf-empty-state--text'
   }
 }

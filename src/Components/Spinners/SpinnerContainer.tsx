@@ -42,6 +42,6 @@ export class SpinnerContainer extends Component<Props> {
   private get className(): string {
     const {className} = this.props
 
-    return classnames('spinner-container', {[`${className}`]: className})
+    return classnames('cf-spinner-container', {[`${className}`]: className})
   }
 }

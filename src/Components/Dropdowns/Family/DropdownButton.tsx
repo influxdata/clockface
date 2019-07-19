@@ -73,9 +73,9 @@ export class DropdownButton extends Component<Props> {
         size={size}
         id={id}
       >
-        {!!icon && <Icon glyph={icon} className="dropdown--icon" />}
-        <span className="dropdown--selected">{children}</span>
-        <Icon glyph={IconFont.CaretDown} className="dropdown--caret" />
+        {!!icon && <Icon glyph={icon} className="cf-dropdown--icon" />}
+        <span className="cf-dropdown--selected">{children}</span>
+        <Icon glyph={IconFont.CaretDown} className="cf-dropdown--caret" />
       </ButtonBase>
     )
   }
@@ -83,7 +83,9 @@ export class DropdownButton extends Component<Props> {
   private get className(): string {
     const {className} = this.props
 
-    return className ? `dropdown--button ${className}` : 'dropdown--button'
+    return className
+      ? `cf-dropdown--button ${className}`
+      : 'cf-dropdown--button'
   }
 
   private get status(): ComponentStatus {

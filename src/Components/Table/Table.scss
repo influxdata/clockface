@@ -9,22 +9,22 @@ $table-row-background: $g3-castle;
   ------------------------------------------------------------------------------
 */
 
-.table {
+.cf-table {
   border-collapse: collapse;
 }
 
-.table--cell {
+.cf-table--cell {
   color: $g11-sidewalk;
   transition: background-color 0.25s ease, color 0.25s ease;
   font-weight: 500;  
 }
 
-.table--header-cell {
+.cf-table--header-cell {
   color: $g15-platinum;
   font-weight: 900;  
 }
 
-.table--row {
+.cf-table--row {
   transition: background-color 0.25s ease;
 }
 
@@ -33,99 +33,99 @@ $table-row-background: $g3-castle;
   ------------------------------------------------------------------------------
 */
 
-.table__borders-none {
-  .table--cell,
-  .table--header-cell {
+.cf-table__borders-none {
+  .cf-table--cell,
+  .cf-table--header-cell {
     border: 0;
   }
 }
 
-.table__borders-all {
-  .table--cell,
-  .table--header-cell {
+.cf-table__borders-all {
+  .cf-table--cell,
+  .cf-table--header-cell {
     border: $cf-border solid $table-border--primary;
   }
 }
 
-.table__borders-horizontal {
-  .table--cell,
-  .table--header-cell {
+.cf-table__borders-horizontal {
+  .cf-table--cell,
+  .cf-table--header-cell {
     border-top: $cf-border solid $table-border--secondary;
     border-bottom: $cf-border solid $table-border--secondary;
   }
 
-  .table--header:first-child .table--row:first-child .table--header-cell {
+  .cf-table--header:first-child .cf-table--row:first-child .cf-table--header-cell {
     border-top: 0;
   }
 
-  .table--footer:last-child .table--row:last-child .table--cell,
-  .table--body:last-child .table--row:last-child .table--cell {
+  .cf-table--footer:last-child .cf-table--row:last-child .cf-table--cell,
+  .cf-table--body:last-child .cf-table--row:last-child .cf-table--cell {
     border-bottom: 0;
   }
 }
 
-.table__borders-vertical {
-  .table--cell,
-  .table--header-cell {
+.cf-table__borders-vertical {
+  .cf-table--cell,
+  .cf-table--header-cell {
     border-left: $cf-border solid $table-border--secondary;
     border-right: $cf-border solid $table-border--secondary;
   }
 
-  .table--header .table--row .table--header-cell:first-child,
-  .table--header .table--row .table--cell:first-child,
-  .table--body .table--row .table--header-cell:first-child,
-  .table--body .table--row .table--cell:first-child,
-  .table--footer .table--row .table--header-cell:first-child,
-  .table--footer .table--row .table--cell:first-child {
+  .cf-table--header .cf-table--row .cf-table--header-cell:first-child,
+  .cf-table--header .cf-table--row .cf-table--cell:first-child,
+  .cf-table--body .cf-table--row .cf-table--header-cell:first-child,
+  .cf-table--body .cf-table--row .cf-table--cell:first-child,
+  .cf-table--footer .cf-table--row .cf-table--header-cell:first-child,
+  .cf-table--footer .cf-table--row .cf-table--cell:first-child {
     border-left: 0;
   }
 
-  .table--header .table--row .table--header-cell:last-child,
-  .table--header .table--row .table--cell:last-child,
-  .table--body .table--row .table--header-cell:last-child,
-  .table--body .table--row .table--cell:last-child,
-  .table--footer .table--row .table--header-cell:last-child,
-  .table--footer .table--row .table--cell:last-child {
+  .cf-table--header .cf-table--row .cf-table--header-cell:last-child,
+  .cf-table--header .cf-table--row .cf-table--cell:last-child,
+  .cf-table--body .cf-table--row .cf-table--header-cell:last-child,
+  .cf-table--body .cf-table--row .cf-table--cell:last-child,
+  .cf-table--footer .cf-table--row .cf-table--header-cell:last-child,
+  .cf-table--footer .cf-table--row .cf-table--cell:last-child {
     border-right: 0;
   }
 }
 
-.table__borders-both {
-  .table--cell,
-  .table--header-cell {
+.cf-table__borders-both {
+  .cf-table--cell,
+  .cf-table--header-cell {
     border: $cf-border solid $table-border--secondary;
   }
 
-  .table--header:first-child .table--row:first-child .table--header-cell {
+  .cf-table--header:first-child .cf-table--row:first-child .cf-table--header-cell {
     border-top: 0;
   }
 
-  .table--footer:last-child .table--row:last-child .table--cell,
-  .table--body:last-child .table--row:last-child .table--cell {
+  .cf-table--footer:last-child .cf-table--row:last-child .cf-table--cell,
+  .cf-table--body:last-child .cf-table--row:last-child .cf-table--cell {
     border-bottom: 0;
   }
 
-  .table--header .table--row .table--header-cell:first-child,
-  .table--header .table--row .table--cell:first-child,
-  .table--body .table--row .table--header-cell:first-child,
-  .table--body .table--row .table--cell:first-child,
-  .table--footer .table--row .table--header-cell:first-child,
-  .table--footer .table--row .table--cell:first-child {
+  .cf-table--header .cf-table--row .cf-table--header-cell:first-child,
+  .cf-table--header .cf-table--row .cf-table--cell:first-child,
+  .cf-table--body .cf-table--row .cf-table--header-cell:first-child,
+  .cf-table--body .cf-table--row .cf-table--cell:first-child,
+  .cf-table--footer .cf-table--row .cf-table--header-cell:first-child,
+  .cf-table--footer .cf-table--row .cf-table--cell:first-child {
     border-left: 0;
   }
 
-  .table--header .table--row .table--header-cell:last-child,
-  .table--header .table--row .table--cell:last-child,
-  .table--body .table--row .table--header-cell:last-child,
-  .table--body .table--row .table--cell:last-child,
-  .table--footer .table--row .table--header-cell:last-child,
-  .table--footer .table--row .table--cell:last-child {
+  .cf-table--header .cf-table--row .cf-table--header-cell:last-child,
+  .cf-table--header .cf-table--row .cf-table--cell:last-child,
+  .cf-table--body .cf-table--row .cf-table--header-cell:last-child,
+  .cf-table--body .cf-table--row .cf-table--cell:last-child,
+  .cf-table--footer .cf-table--row .cf-table--header-cell:last-child,
+  .cf-table--footer .cf-table--row .cf-table--cell:last-child {
     border-right: 0;
   }
 }
 
-.table .table__borders-none th.table--header-cell,
-.table th.table--header-cell {
+.cf-table .cf-table__borders-none th.cf-table--header-cell,
+.cf-table th.cf-table--header-cell {
   border-bottom: $cf-border solid $table-border--primary;
 }
 
@@ -135,22 +135,22 @@ $table-row-background: $g3-castle;
 */
 
 @mixin tablePaddingModifier($padding) {
-  .table--cell,
-  .table--header-cell {
+  .cf-table--cell,
+  .cf-table--header-cell {
     padding: $padding;
   }
 }
 
-.table__padding-xs {
+.cf-table__padding-xs {
   @include tablePaddingModifier($form-xs-padding);
 }
-.table__padding-sm {
+.cf-table__padding-sm {
   @include tablePaddingModifier($form-sm-padding);
 }
-.table__padding-md {
+.cf-table__padding-md {
   @include tablePaddingModifier($form-md-padding);
 }
-.table__padding-lg {
+.cf-table__padding-lg {
   @include tablePaddingModifier($form-lg-padding);
 }
 
@@ -160,22 +160,22 @@ $table-row-background: $g3-castle;
 */
 
 @mixin tableFontModifier($fontSize) {
-  .table--cell,
-  .table--header-cell {
+  .cf-table--cell,
+  .cf-table--header-cell {
     font-size: $fontSize;
   }
 }
 
-.table__font-xs {
+.cf-table__font-xs {
   @include tableFontModifier($form-xs-font);
 }
-.table__font-sm {
+.cf-table__font-sm {
   @include tableFontModifier($form-sm-font);
 }
-.table__font-md {
+.cf-table__font-md {
   @include tableFontModifier($form-md-font);
 }
-.table__font-lg {
+.cf-table__font-lg {
   @include tableFontModifier($form-lg-font);
 }
 
@@ -184,7 +184,7 @@ $table-row-background: $g3-castle;
   ------------------------------------------------------------------------------
 */
 
-.table__striped .table--body .table--row:nth-child(odd) {
+.cf-table__striped .cf-table--body .cf-table--row:nth-child(odd) {
   background-color: rgba($table-row-background, 0.7);
 }
 
@@ -193,11 +193,11 @@ $table-row-background: $g3-castle;
   ------------------------------------------------------------------------------
 */
 
-.table__highlight .table--body .table--row:hover {
+.cf-table__highlight .cf-table--body .cf-table--row:hover {
   background-color: $table-row-background;
 }
 
-.table__highlight .table--body .table--row:hover .table--cell {
+.cf-table__highlight .cf-table--body .cf-table--row:hover .cf-table--cell {
   color: $g17-whisper;
 }
 
@@ -207,41 +207,41 @@ $table-row-background: $g3-castle;
 */
 
 @mixin tableColorModifier($background, $backgroundAlt, $backgroundHover, $border, $text) {
-  .table .table--body & .table--cell,
-  .table .table--body & .table--header-cell,
-  .table .table--header & .table--cell,
-  .table .table--header & .table--header-cell,
-  .table .table--footer & .table--cell,
-  .table .table--footer & .table--header-cell {
+  .cf-table .cf-table--body & .cf-table--cell,
+  .cf-table .cf-table--body & .cf-table--header-cell,
+  .cf-table .cf-table--header & .cf-table--cell,
+  .cf-table .cf-table--header & .cf-table--header-cell,
+  .cf-table .cf-table--footer & .cf-table--cell,
+  .cf-table .cf-table--footer & .cf-table--header-cell {
     background-color: $background;
     border-color: $border;
     color: rgba($text, 0.8);
   }
 
-  .table__striped .table--body &:nth-child(odd) .table--cell,
-  .table__striped .table--body &:nth-child(odd) .table--header-cell {
+  .cf-table__striped .cf-table--body &:nth-child(odd) .cf-table--cell,
+  .cf-table__striped .cf-table--body &:nth-child(odd) .cf-table--header-cell {
     background-color: $backgroundAlt;
   }
 
-  .table__highlight .table--body &:hover .table--cell,
-  .table__highlight .table--body &:hover .table--header-cell {
+  .cf-table__highlight .cf-table--body &:hover .cf-table--cell,
+  .cf-table__highlight .cf-table--body &:hover .cf-table--header-cell {
     background-color: $backgroundHover;
     color: $text;
   }
 }
 
-.table--row__primary {
+.cf-table--row__primary {
   @include tableColorModifier($c-sapphire, mix($c-ocean, $c-sapphire, 50%), $c-ocean, $c-pool, $g20-white);
 }
-.table--row__secondary {
+.cf-table--row__secondary {
   @include tableColorModifier($c-void, mix($c-amethyst, $c-void, 50%), $c-amethyst, $c-star, $g20-white);
 }
-.table--row__success {
+.cf-table--row__success {
   @include tableColorModifier($c-emerald, mix($c-viridian, $c-emerald, 50%), $c-viridian, $c-rainforest, $g20-white);
 }
-.table--row__warning {
+.cf-table--row__warning {
   @include tableColorModifier($c-tiger, mix($c-pineapple, $c-tiger, 50%), $c-pineapple, $c-thunder, $g3-castle);
 }
-.table--row__danger {
+.cf-table--row__danger {
   @include tableColorModifier($c-ruby, mix($c-fire, $c-ruby, 50%), $c-fire, $c-dreamsicle, $g20-white);
 }

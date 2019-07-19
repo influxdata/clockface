@@ -20,11 +20,11 @@ $text-area-field-z: 1;
 $text-area-shadow-z: $text-area-field-z + 1;
 $text-area-status-z: $text-area-field-z + 2;
 
-.text-area--container {
+.cf-text-area--container {
   width: 100%;
   height: 100%;
 }
-.text-area {
+.cf-text-area {
   position: relative;
   padding: 15px;
   z-index: $text-area-field-z;

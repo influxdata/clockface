@@ -39,12 +39,12 @@ export class FormLabel extends Component<Props> {
       return
     }
 
-    return <span className="form--label-required">*</span>
+    return <span className="cf-form--label-required">*</span>
   }
 
   private get className(): string {
     const {className} = this.props
 
-    return className ? `form--label ${className}` : 'form--label'
+    return className ? `cf-form--label ${className}` : 'cf-form--label'
   }
 }

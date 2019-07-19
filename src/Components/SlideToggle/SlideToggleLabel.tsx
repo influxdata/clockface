@@ -36,10 +36,10 @@ export class SlideToggleLabel extends Component<Props> {
   private get className(): string {
     const {className, size, active} = this.props
 
-    return classnames('slide-toggle--label', {
+    return classnames('cf-slide-toggle--label', {
       [`${className}`]: className,
-      [`slide-toggle--label-${size}`]: size,
-      'slide-toggle--label__active': active,
+      [`cf-slide-toggle--label-${size}`]: size,
+      'cf-slide-toggle--label__active': active,
     })
   }
 }

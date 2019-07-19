@@ -39,8 +39,8 @@ export class PageHeaderCenter extends Component<Props> {
     const {className} = this.props
 
     return className
-      ? `page-header--center ${className}`
-      : 'page-header--center'
+      ? `cf-page-header--center ${className}`
+      : 'cf-page-header--center'
   }
 
   private get style(): CSSProperties {

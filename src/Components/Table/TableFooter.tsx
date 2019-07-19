@@ -27,7 +27,7 @@ export class TableFooter extends Component<Props> {
   private get className(): string {
     const {className} = this.props
 
-    return classnames('table--footer', {
+    return classnames('cf-table--footer', {
       [`${className}`]: className,
     })
   }

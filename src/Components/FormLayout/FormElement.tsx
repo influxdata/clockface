@@ -46,7 +46,7 @@ export class FormElement extends Component<Props> {
   private get className(): string {
     const {className} = this.props
 
-    return classnames('form--element', {[`${className}`]: className})
+    return classnames('cf-form--element', {[`${className}`]: className})
   }
 
   private get label(): JSX.Element | undefined {

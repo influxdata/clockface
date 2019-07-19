@@ -20,7 +20,7 @@
   }
 }
 
-.waiting-text::after {
+.cf-waiting-text::after {
   animation: 2s linear loading-dots infinite;
   content: "..."
 }

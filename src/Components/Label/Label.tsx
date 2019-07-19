@@ -59,7 +59,7 @@ export class Label extends Component<Props, State> {
         id={id}
       >
         <span
-          className="label--name"
+          className="cf-label--name"
           onClick={this.handleClick}
           data-testid={`${testID} ${name}`}
         >
@@ -107,11 +107,11 @@ export class Label extends Component<Props, State> {
   private get className(): string {
     const {size, onClick, onDelete, className} = this.props
 
-    return classnames('label', {
+    return classnames('cf-label', {
       [`${className}`]: className,
-      [`label--${size}`]: size,
-      'label--deletable': onDelete,
-      'label--clickable': onClick,
+      [`cf-label--${size}`]: size,
+      'cf-label--deletable': onDelete,
+      'cf-label--clickable': onClick,
     })
   }
 
@@ -131,18 +131,18 @@ export class Label extends Component<Props, State> {
     if (onDelete) {
       return (
         <button
-          className="label--delete"
+          className="cf-label--delete"
           onClick={this.handleDelete}
           type="button"
           title={`Remove label "${name}"`}
           data-testid={`${testID}--delete ${name}`}
         >
           <div
-            className="label--delete-x"
+            className="cf-label--delete-x"
             style={{backgroundColor: this.textColor}}
           />
           <div
-            className="label--delete-x"
+            className="cf-label--delete-x"
             style={{backgroundColor: this.textColor}}
           />
         </button>

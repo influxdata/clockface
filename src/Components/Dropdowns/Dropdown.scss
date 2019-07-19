@@ -9,19 +9,19 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   Dropdown
   ------------------------------------------------------------------------------
 */
-.dropdown {
+.cf-dropdown {
   position: relative;
 
-  &.dropdown-xs {
+  &.cf-dropdown-xs {
     height: $form-xs-height;
   }
-  &.dropdown-sm {
+  &.cf-dropdown-sm {
     height: $form-sm-height;
   }
-  &.dropdown-md {
+  &.cf-dropdown-md {
     height: $form-md-height;
   }
-  &.dropdown-lg {
+  &.cf-dropdown-lg {
     height: $form-lg-height;
   }
 }
@@ -30,21 +30,21 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   Dropdown Menu
   ------------------------------------------------------------------------------
 */
-.dropdown--menu-container {
+.cf-dropdown--menu-container {
   position: absolute;
   width: 100%;
   left: 0;
   z-index: 500;
 }
 
-.dropdown-menu {
+.cf-dropdown-menu {
   overflow: hidden;
   border-radius: $cf-radius;
   box-shadow: 0 2px 5px 0.6px rgba($g0-obsidian, 0.2);
 }
 
 
-.dropdown-menu--contents {
+.cf-dropdown-menu--contents {
   user-select: none;
   display: flex;
   flex-direction: column;
@@ -65,7 +65,7 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   text-align: left;
 }
 
-.dropdown-divider {
+.cf-dropdown-divider {
   @include dropdownItemStyles();
 
   &.line {
@@ -78,22 +78,22 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   }
 }
 
-.dropdown-item {
+.cf-dropdown-item {
   @include dropdownItemStyles();
   color: rgba($g20-white, 0.75);
   position: relative;
 
-  &.dropdown-link-item {
+  &.cf-dropdown-link-item {
     padding: 0;
   }
 
-  &.dropdown-item__dot,
-  &.dropdown-item__dot.dropdown-link-item > a {
+  &.cf-dropdown-item__dot,
+  &.cf-dropdown-item__dot.cf-dropdown-link-item > a {
     padding-left: $dropdown-item--padding-h + ($dropdown-item--dot-radius * 2);
   }
 
-  &.dropdown-item__checkbox,
-  &.dropdown-item__checkbox.dropdown-link-item > a  {
+  &.cf-dropdown-item__checkbox,
+  &.cf-dropdown-item__checkbox.cf-dropdown-link-item > a  {
     padding-left: $dropdown-item--padding-h + $dropdown-item--checkbox-size + $dropdown-item--padding-v;
   }
 
@@ -104,27 +104,27 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   }
 }
 
-.dropdown-item__wrap .dropdown-item--children,
-.dropdown-item__wrap.dropdown-link-item a {
+.cf-dropdown-item__wrap .cf-dropdown-item--children,
+.cf-dropdown-item__wrap.cf-dropdown-link-item a {
   word-break: break-all;
   white-space: pre-wrap;
 }
 
-.dropdown-item__no-wrap .dropdown-item--children,
-.dropdown-item__no-wrap.dropdown-link-item a {
+.cf-dropdown-item__no-wrap .cf-dropdown-item--children,
+.cf-dropdown-item__no-wrap.cf-dropdown-link-item a {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.dropdown-item--dot,
-.dropdown-item--checkbox {
+.cf-dropdown-item--dot,
+.cf-dropdown-item--checkbox {
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
 }
 
-.dropdown-item--dot {
+.cf-dropdown-item--dot {
   left: $dropdown-item--padding-h + ($dropdown-item--dot-radius / 2);
   width: $dropdown-item--dot-radius;
   height: $dropdown-item--dot-radius;
@@ -134,7 +134,7 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   transition: opacity 0.25s ease;
 }
 
-.dropdown-item--checkbox {
+.cf-dropdown-item--checkbox {
   background-color: $g4-onyx;
   left: $dropdown-item--padding-h + ($dropdown-item--checkbox-size / 2);
   width: $dropdown-item--checkbox-size;
@@ -161,12 +161,12 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   }
 }
 
-.dropdown-item.active {
-  .dropdown-item--checkbox:after {
+.cf-dropdown-item.active {
+  .cf-dropdown-item--checkbox:after {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1, 1);
   }
-  .dropdown-item--dot {
+  .cf-dropdown-item--dot {
     opacity: 1;
   }
 }
@@ -176,11 +176,11 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   ------------------------------------------------------------------------------
 */
 
-.dropdown-item.dropdown-link-item {
+.cf-dropdown-item.cf-dropdown-link-item {
   padding: 0;
 
-  &.dropdown-item__dot,
-  &.dropdown-item__checkbox {
+  &.cf-dropdown-item__dot,
+  &.cf-dropdown-item__checkbox {
     padding-left: 0;
   }
 
@@ -224,23 +224,23 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
 ) {
   @include gradient-h($backgroundA, $backgroundB);
 
-  .dropdown-item:hover,
-  .dropdown-item.active {
+  .cf-dropdown-item:hover,
+  .cf-dropdown-item.active {
     @include gradient-h($hoverA, $hoverB);
   }
-  .dropdown-divider {
+  .cf-dropdown-divider {
     color: $dividerText;
     @include gradient-h($dividerA, $dividerB);
   }
-  .dropdown-item--checkbox {
+  .cf-dropdown-item--checkbox {
     background-color: $dividerA;
   }
-  .dropdown-item--checkbox:after {
+  .cf-dropdown-item--checkbox:after {
     background-color: $checkbox;
   }
 }
 
-.dropdown__amethyst {
+.cf-dropdown__amethyst {
   @include dropdownMenuColor(
     $c-star,
     $c-pool,
@@ -253,7 +253,7 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   );
 }
 
-.dropdown__sapphire {
+.cf-dropdown__sapphire {
   @include dropdownMenuColor(
     $c-ocean,
     $c-pool,
@@ -266,7 +266,7 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   );
 }
 
-.dropdown__malachite {
+.cf-dropdown__malachite {
   @include dropdownMenuColor(
     $c-ocean,
     $c-rainforest,
@@ -279,7 +279,7 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   );
 }
 
-.dropdown__onyx {
+.cf-dropdown__onyx {
   @include dropdownMenuColor(
     $g2-kevlar,
     $g4-onyx,

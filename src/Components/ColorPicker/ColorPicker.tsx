@@ -74,7 +74,7 @@ export class ColorPicker extends Component<Props, State> {
 
     return (
       <div className={this.className} data-testid={testID} id={id}>
-        <div className="color-picker--swatches">
+        <div className="cf-color-picker--swatches">
           {colors &&
             colors.map((color, i) => (
               <ColorPickerSwatch
@@ -89,9 +89,9 @@ export class ColorPicker extends Component<Props, State> {
               />
             ))}
         </div>
-        <div className="color-picker--form">
+        <div className="cf-color-picker--form">
           <Input
-            className="color-picker--input"
+            className="cf-color-picker--input"
             placeholder="#000000"
             value={color}
             onChange={this.handleInputChange}
@@ -118,7 +118,7 @@ export class ColorPicker extends Component<Props, State> {
   private get className(): string {
     const {className} = this.props
 
-    return classnames('color-picker', {[`${className}`]: className})
+    return classnames('cf-color-picker', {[`${className}`]: className})
   }
 
   private get inputStatus(): ComponentStatus {
@@ -192,7 +192,10 @@ export class ColorPicker extends Component<Props, State> {
 
     if (errorMessage) {
       return (
-        <div className="color-picker--error" data-testid={`${testID}--error`}>
+        <div
+          className="cf-color-picker--error"
+          data-testid={`${testID}--error`}
+        >
           <FormElementError message={errorMessage} />
         </div>
       )
@@ -206,7 +209,7 @@ export class ColorPicker extends Component<Props, State> {
 
     return (
       <div
-        className="color-picker--selected"
+        className="cf-color-picker--selected"
         style={{backgroundColor: color}}
       />
     )

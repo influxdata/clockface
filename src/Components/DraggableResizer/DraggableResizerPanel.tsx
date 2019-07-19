@@ -39,7 +39,9 @@ export class DraggableResizerPanel extends Component<Props> {
   private get className(): string {
     const {className} = this.props
 
-    return classnames('draggable-resizer--panel', {[`${className}`]: className})
+    return classnames('cf-draggable-resizer--panel', {
+      [`${className}`]: className,
+    })
   }
 
   private get style(): CSSProperties | undefined {

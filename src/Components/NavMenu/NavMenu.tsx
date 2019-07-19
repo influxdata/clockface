@@ -39,7 +39,7 @@ export class NavMenu extends PureComponent<Props> {
       return
     }
 
-    const className = classnames('nav', {
+    const className = classnames('cf-nav', {
       [`${this.props.className}`]: this.props.className,
     })
 

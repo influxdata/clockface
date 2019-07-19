@@ -29,6 +29,6 @@ export class FormHelpText extends Component<Props> {
   private get className(): string {
     const {className} = this.props
 
-    return className ? `form--help-text ${className}` : 'form--help-text'
+    return className ? `cf-form--help-text ${className}` : 'cf-form--help-text'
   }
 }

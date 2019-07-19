@@ -33,6 +33,6 @@ export class WaitingText extends Component<Props> {
   private get className(): string {
     const {className} = this.props
 
-    return classnames('waiting-text', {[`${className}`]: className})
+    return classnames('cf-waiting-text', {[`${className}`]: className})
   }
 }
