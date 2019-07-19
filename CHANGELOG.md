@@ -2,6 +2,7 @@
 
 #### 0.0.17 [Unreleassed]
 
+- [#180](https://github.com/influxdata/clockface/pull/180): Prefix all CSS classnames with `cf-` to avoid conflicts with older version in InfluxDB
 - [#178](https://github.com/influxdata/clockface/pull/178): Add markdown documentation for `Overlay` component family
 - [#170](https://github.com/influxdata/clockface/pull/170): Introduce and document `Table` component family
 - [#169](https://github.com/influxdata/clockface/pull/169): Introduce `DatePicker` and `DateRangePicker` components
