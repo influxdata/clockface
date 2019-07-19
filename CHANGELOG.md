@@ -1,6 +1,8 @@
 # Changelog
 
-#### 0.0.17 [Unreleassed]
+#### 0.0.18 [Unreleassed]
+
+#### 0.0.17
 
 - [#180](https://github.com/influxdata/clockface/pull/180): Prefix all CSS classnames with `cf-` to avoid conflicts with older version in InfluxDB
 - [#178](https://github.com/influxdata/clockface/pull/178): Add markdown documentation for `Overlay` component family
