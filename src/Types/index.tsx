@@ -327,7 +327,7 @@ export enum BorderType {
   Both = 'both',
   All = 'all',
 }
-    
+
 export interface TimeRange {
   lower: string
   upper?: string | null

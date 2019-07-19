@@ -1,5 +1,6 @@
 // Libraries
 import * as React from 'react'
+import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
@@ -26,101 +27,210 @@ import {Button} from '../Button/Composed/Button'
 // Types
 import {Gradients, ComponentColor} from '../../Types'
 
+// Notes
+const OverlayReadme = marked(require('./Overlay.md'))
+const OverlayContainerReadme = marked(require('./OverlayContainer.md'))
+const OverlayMaskReadme = marked(require('./OverlayMask.md'))
+const OverlayHeaderReadme = marked(require('./OverlayHeader.md'))
+const OverlayBodyReadme = marked(require('./OverlayBody.md'))
+const OverlayFooterReadme = marked(require('./OverlayFooter.md'))
+const ConfirmationOverlayReadme = marked(require('./ConfirmationOverlay.md'))
+
+const instructionsElement = (
+  <p>
+    Look in the <strong>Knobs</strong> panel to toggle the overlay
+  </p>
+)
+
 const overlayStories = storiesOf('Components|Overlays/Family', module)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
-overlayStories.add('Overlay', () => (
-  <Overlay visible={boolean('visible', true)} />
-))
+overlayStories.add(
+  'Overlay',
+  () => (
+    <div className="story--example">
+      {instructionsElement}
+      <Overlay visible={boolean('visible', false)}>
+        <OverlayContainer maxWidth={400}>
+          <OverlayHeader
+            title="Howdy partner!"
+            onDismiss={() => {
+              alert('Overlay dismiss clicked')
+            }}
+          />
+          <OverlayBody>
+            <p>
+              Before you go riding off into the sunset make sure you really want
+              to do this. Deleting all your data cannot be undone and can have
+              dangerous and permanent side effects.
+            </p>
+          </OverlayBody>
+          <OverlayFooter>
+            <Button text="Cancel" />
+            <Button text="Yes, burn it all!" color={ComponentColor.Danger} />
+          </OverlayFooter>
+        </OverlayContainer>
+      </Overlay>
+    </div>
+  ),
+  {
+    readme: {
+      content: OverlayReadme,
+    },
+  }
+)
 
-overlayStories.add('OverlayContainer', () => (
-  <OverlayContainer maxWidth={number('maxWidth', 800)}>
+overlayStories.add(
+  'OverlayContainer',
+  () => (
+    <div className="story--example">
+      <OverlayContainer maxWidth={number('maxWidth', 800)}>
+        <div className="mockComponent" style={{width: '100%', height: '400px'}}>
+          Header, Body, or Footer go here
+        </div>
+      </OverlayContainer>
+    </div>
+  ),
+  {
+    readme: {
+      content: OverlayContainerReadme,
+    },
+  }
+)
+
+overlayStories.add(
+  'OverlayMask',
+  () => (
     <div
-      className="mockComponent"
-      style={{width: '100%', height: '66px', marginBottom: '2px'}}
+      className={`story--example overlay--example ${
+        boolean('visible', false) ? 'show-overlay' : ''
+      }`}
     >
-      OverlayHeader
-    </div>
-    <div className="mockComponent" style={{width: '100%', height: '200px'}}>
-      OverlayBody
-    </div>
-  </OverlayContainer>
-))
-
-overlayStories.add('OverlayMask', () => (
-  <div className="mockOverlay">
-    <OverlayMask
-      gradient={
-        Gradients[
-          Gradients[select('gradient', mapEnumKeys(Gradients), 'GundamPilot')]
-        ]
-      }
-      backgroundColor={color('backgroundColor', '')}
-    />
-  </div>
-))
-
-overlayStories.add('OverlayHeader', () => (
-  <OverlayHeader
-    title={text('title', 'Are you sure?')}
-    onDismiss={() => {
-      alert('Dismissed')
-    }}
-  />
-))
-
-overlayStories.add('OverlayBody', () => (
-  <OverlayBody>
-    <div className="mockComponent" style={{width: '100%', height: '300px'}} />
-  </OverlayBody>
-))
-
-overlayStories.add('OverlayFooter', () => (
-  <OverlayFooter>
-    <div className="mockComponent" style={{width: '100px'}}>
-      Button
-    </div>
-    <div className="mockComponent" style={{width: '100px'}}>
-      Button
-    </div>
-  </OverlayFooter>
-))
-
-const overlayExampleStories = storiesOf('Components|Overlays/Examples', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
-
-overlayExampleStories.add('Confirmation Overlay', () => (
-  <Overlay
-    visible={boolean('visible', true)}
-    renderMaskElement={
+      {instructionsElement}
       <OverlayMask
         gradient={
           Gradients[
             Gradients[select('gradient', mapEnumKeys(Gradients), 'GundamPilot')]
           ]
         }
+        backgroundColor={color('backgroundColor', '')}
       />
-    }
-  >
-    <OverlayContainer maxWidth={number('maxWidth', 400)}>
+    </div>
+  ),
+  {
+    readme: {
+      content: OverlayMaskReadme,
+    },
+  }
+)
+
+overlayStories.add(
+  'OverlayHeader',
+  () => (
+    <div className="story--example">
       <OverlayHeader
-        title="Are you sure?"
+        title={text('title', 'Are you sure?')}
         onDismiss={() => {
           alert('Dismissed')
         }}
       />
+    </div>
+  ),
+  {
+    readme: {
+      content: OverlayHeaderReadme,
+    },
+  }
+)
+
+overlayStories.add(
+  'OverlayBody',
+  () => (
+    <div className="story--example">
       <OverlayBody>
-        <p>
-          This action could cause a lot of things to break unexpectedly. We're
-          pretty sure you don't want to do this accidentally. What will it be?
-        </p>
+        <div className="mockComponent" style={{width: '100%', height: '300px'}}>
+          This is a great place to stick a form or important text
+        </div>
       </OverlayBody>
+    </div>
+  ),
+  {
+    readme: {
+      content: OverlayBodyReadme,
+    },
+  }
+)
+
+overlayStories.add(
+  'OverlayFooter',
+  () => (
+    <div className="story--example">
       <OverlayFooter>
-        <Button text="Cancel" />
-        <Button text="Pull the Lever!" color={ComponentColor.Danger} />
+        <div className="mockComponent" style={{width: '120px'}}>
+          Action Button
+        </div>
+        <div className="mockComponent" style={{width: '120px'}}>
+          Action Button
+        </div>
       </OverlayFooter>
-    </OverlayContainer>
-  </Overlay>
-))
+    </div>
+  ),
+  {
+    readme: {
+      content: OverlayFooterReadme,
+    },
+  }
+)
+
+const overlayExampleStories = storiesOf('Components|Overlays/Examples', module)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
+
+overlayExampleStories.add(
+  'Confirmation Overlay',
+  () => (
+    <div className="story--example">
+      {instructionsElement}
+      <Overlay
+        visible={boolean('visible', false)}
+        renderMaskElement={
+          <OverlayMask
+            gradient={
+              Gradients[
+                Gradients[
+                  select('gradient', mapEnumKeys(Gradients), 'GundamPilot')
+                ]
+              ]
+            }
+          />
+        }
+      >
+        <OverlayContainer maxWidth={number('maxWidth', 400)}>
+          <OverlayHeader
+            title="Are you sure?"
+            onDismiss={() => {
+              alert('Dismissed')
+            }}
+          />
+          <OverlayBody>
+            <p>
+              This action could cause a lot of things to break unexpectedly.
+              We're pretty sure you don't want to do this accidentally. What
+              will it be?
+            </p>
+          </OverlayBody>
+          <OverlayFooter>
+            <Button text="Cancel" />
+            <Button text="Pull the Lever!" color={ComponentColor.Danger} />
+          </OverlayFooter>
+        </OverlayContainer>
+      </Overlay>
+    </div>
+  ),
+  {
+    readme: {
+      content: ConfirmationOverlayReadme,
+    },
+  }
+)

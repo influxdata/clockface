@@ -2,6 +2,7 @@
 
 #### 0.0.17 [Unreleassed]
 
+- [#178](https://github.com/influxdata/clockface/pull/178): Add markdown documentation for `Overlay` component family
 - [#170](https://github.com/influxdata/clockface/pull/170): Introduce and document `Table` component family
 - [#169](https://github.com/influxdata/clockface/pull/169): Introduce `DatePicker` and `DateRangePicker` components
 - [#166](https://github.com/influxdata/clockface/pull/166): Add markdown documentation for `ClickOutside`, `DapperScrollbars`, `DraggableResizer`, and `WaitingText`

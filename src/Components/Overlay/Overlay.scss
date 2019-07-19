@@ -21,6 +21,10 @@ $overlay--transition-distance: 72px;
   left: 0;
 }
 
+%overlay-children {
+  width: 100%;
+}
+
 .overlay--mask {
   z-index: 0;
   @extend %overlay-styles;
@@ -62,12 +66,14 @@ $overlay--transition-distance: 72px;
 }
 
 .overlay--container {
+  @extend %overlay-children;
   margin: $overlay--container-padding auto;
   @include gradient-v($g3-castle, $g2-kevlar);
   border-radius: $cf-radius;
 }
 
 .overlay--header {
+  @extend %overlay-children;
   height: $overlay--header-height;
   display: flex;
   padding: 0 $overlay--gutter;
@@ -121,6 +127,7 @@ $overlay--transition-distance: 72px;
 }
 
 .overlay--body {
+  @extend %overlay-children;
   padding: $overlay--gutter;
   padding-top: 0;
   color: $g13-mist;
@@ -131,6 +138,7 @@ $overlay--transition-distance: 72px;
 }
 
 .overlay--footer {
+  @extend %overlay-children;
   padding: $overlay--gutter;
   padding-top: 0;
 }
