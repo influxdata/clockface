@@ -1,6 +1,8 @@
 # Changelog
 
-#### 0.0.18 [Unreleassed]
+#### 0.0.18
+
+- [#181](https://github.com/influxdata/clockface/pull/181): Fix build warnings from moment locale.
 
 #### 0.0.17
 
