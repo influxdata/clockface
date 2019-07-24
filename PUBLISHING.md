@@ -6,6 +6,7 @@
 - Increment the package version in `package.json`
 - Add a header for the next version in `CHANGELOG.md`
 - Build the documentation site via `npm run build-storybook`
+- Merge `bump-version-0.0.<your version number>` into master
 
 #### Publishing
 - Be a member of the NPM organization `influxdata`
