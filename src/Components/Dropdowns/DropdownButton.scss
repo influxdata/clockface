@@ -8,6 +8,10 @@
 /* Button */
 .cf-dropdown--button {
   position: relative;
+
+  &.active {
+    z-index: 510;
+  }
 }
 
 .cf-dropdown--selected,
@@ -34,7 +38,19 @@
   font-size: 0.9em;
   transition: transform 0.25s ease;
 
-  .active & {
+  .cf-dropdown__up & {
+    transform: translateY(-50%) rotate(-180deg);
+  }
+
+  .cf-dropdown__up .active & {
+    transform: translateY(-50%) rotate(0deg);
+  }
+
+  .cf-dropdown__down & {
+    transform: translateY(-50%) rotate(0deg);
+  }
+
+  .cf-dropdown__down .active & {
     transform: translateY(-50%) rotate(-180deg);
   }
 }
@@ -55,8 +71,11 @@
   .cf-dropdown--caret {
     right: $padding;
   }
-  & + .cf-dropdown--menu-container {
+  .cf-dropdown__down & + .cf-dropdown--menu-container {
     top: $height;
+  }
+  .cf-dropdown__up & + .cf-dropdown--menu-container {
+    bottom: $height;
   }
 }
 

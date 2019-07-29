@@ -6,6 +6,7 @@ import _ from 'lodash'
 // Components
 import {DropdownButton} from './../Family/DropdownButton'
 import {DropdownItem} from './../Family/DropdownItem'
+import {DropdownItemEmpty} from './../Family/DropdownItemEmpty'
 import {DropdownLinkItem} from './../Family/DropdownLinkItem'
 import {DropdownDivider} from './../Family/DropdownDivider'
 import {DropdownMenu} from './../Family/DropdownMenu'
@@ -27,6 +28,8 @@ interface Props extends StandardProps {
   menu: (onCollapse?: () => void) => JSX.Element
   /** Width of the dropdown in pixels, if blank the dropdown will expand to fill its parent's width */
   widthPixels?: number
+  /** Renders the menu element above the button instead of below */
+  dropUp?: boolean
 }
 
 interface State {
@@ -38,10 +41,12 @@ export class Dropdown extends Component<Props, State> {
 
   public static defaultProps = {
     testID: 'dropdown',
+    dropUp: false,
   }
 
   public static Button = DropdownButton
   public static Item = DropdownItem
+  public static ItemEmpty = DropdownItemEmpty
   public static LinkItem = DropdownLinkItem
   public static Divider = DropdownDivider
   public static Menu = DropdownMenu
@@ -95,10 +100,12 @@ export class Dropdown extends Component<Props, State> {
   }
 
   private get className(): string {
-    const {className} = this.props
+    const {className, dropUp} = this.props
 
     return classnames('cf-dropdown', {
       [`${className}`]: className,
+      'cf-dropdown__up': dropUp,
+      'cf-dropdown__down': !dropUp,
     })
   }
 }

@@ -20,6 +20,7 @@ import {Dropdown} from './Family/Dropdown'
 import {DropdownButton} from './Family/DropdownButton'
 import {DropdownDivider} from './Family/DropdownDivider'
 import {DropdownItem} from './Family/DropdownItem'
+import {DropdownItemEmpty} from './Family/DropdownItemEmpty'
 import {DropdownLinkItem} from './Family/DropdownLinkItem'
 import {DropdownMenu} from './Family/DropdownMenu'
 import {SelectDropdown} from './Composed/SelectDropdown'
@@ -40,6 +41,7 @@ import DropdownReadme from './Family/Dropdown.md'
 import DropdownButtonReadme from './Family/DropdownButton.md'
 import DropdownDividerReadme from './Family/DropdownDivider.md'
 import DropdownItemReadme from './Family/DropdownItem.md'
+import DropdownItemEmptyReadme from './Family/DropdownItemEmpty.md'
 import DropdownLinkItemReadme from './Family/DropdownLinkItem.md'
 import DropdownMenuReadme from './Family/DropdownMenu.md'
 import SelectDropdownReadme from './Composed/SelectDropdown.md'
@@ -74,6 +76,7 @@ dropdownFamilyStories.add(
             </div>
           </DropdownMenu>
         )}
+        dropUp={boolean('dropUp', false)}
       />
     </div>
   ),
@@ -166,6 +169,22 @@ dropdownFamilyStories.add(
   {
     readme: {
       content: marked(DropdownItemReadme),
+    },
+  }
+)
+
+dropdownFamilyStories.add(
+  'DropdownItemEmpty',
+  () => (
+    <div className="story--example">
+      <DropdownItemEmpty wrapText={boolean('wrapText', false)}>
+        {text('children (text)', 'No items to display')}
+      </DropdownItemEmpty>
+    </div>
+  ),
+  {
+    readme: {
+      content: marked(DropdownItemEmptyReadme),
     },
   }
 )
@@ -383,6 +402,7 @@ dropdownComposedStories.add(
       <SelectDropdown
         widthPixels={number('widthPixels', 200)}
         menuMaxHeight={number('menuMaxHeight', 250)}
+        dropUp={boolean('dropUp', false)}
         menuTheme={
           DropdownMenuTheme[
             select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Sapphire')
@@ -445,6 +465,7 @@ dropdownComposedStories.add(
       <MultiSelectDropdown
         widthPixels={number('widthPixels', 200)}
         menuMaxHeight={number('menuMaxHeight', 250)}
+        dropUp={boolean('dropUp', false)}
         menuTheme={
           DropdownMenuTheme[
             select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Sapphire')
