@@ -74,6 +74,7 @@ dropdownFamilyStories.add(
             </div>
           </DropdownMenu>
         )}
+        dropUp={boolean('dropUp', false)}
       />
     </div>
   ),
@@ -383,6 +384,7 @@ dropdownComposedStories.add(
       <SelectDropdown
         widthPixels={number('widthPixels', 200)}
         menuMaxHeight={number('menuMaxHeight', 250)}
+        dropUp={boolean('dropUp', false)}
         menuTheme={
           DropdownMenuTheme[
             select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Sapphire')
@@ -445,6 +447,7 @@ dropdownComposedStories.add(
       <MultiSelectDropdown
         widthPixels={number('widthPixels', 200)}
         menuMaxHeight={number('menuMaxHeight', 250)}
+        dropUp={boolean('dropUp', false)}
         menuTheme={
           DropdownMenuTheme[
             select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Sapphire')

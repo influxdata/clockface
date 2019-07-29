@@ -45,6 +45,8 @@ interface Props extends StandardProps {
   menuTheme: DropdownMenuTheme
   /** Optional maximum pixel height menu */
   menuMaxHeight?: number
+  /** Renders the menu element above the button instead of below */
+  dropUp?: boolean
 }
 
 export class MultiSelectDropdown extends Component<Props> {
@@ -57,11 +59,13 @@ export class MultiSelectDropdown extends Component<Props> {
     buttonSize: ComponentSize.Small,
     menuTheme: DropdownMenuTheme.Sapphire,
     testID: 'multiselect-dropdown',
+    dropUp: false,
   }
 
   public render() {
     const {
       id,
+      dropUp,
       testID,
       menuTheme,
       className,
@@ -79,6 +83,7 @@ export class MultiSelectDropdown extends Component<Props> {
         testID={testID}
         className={className}
         widthPixels={widthPixels}
+        dropUp={dropUp}
         button={(active, onClick) => (
           <DropdownButton
             active={active}

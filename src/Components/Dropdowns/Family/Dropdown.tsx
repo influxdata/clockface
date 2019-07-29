@@ -27,6 +27,8 @@ interface Props extends StandardProps {
   menu: (onCollapse?: () => void) => JSX.Element
   /** Width of the dropdown in pixels, if blank the dropdown will expand to fill its parent's width */
   widthPixels?: number
+  /** Renders the menu element above the button instead of below */
+  dropUp?: boolean
 }
 
 interface State {
@@ -38,6 +40,7 @@ export class Dropdown extends Component<Props, State> {
 
   public static defaultProps = {
     testID: 'dropdown',
+    dropUp: false,
   }
 
   public static Button = DropdownButton
@@ -95,10 +98,12 @@ export class Dropdown extends Component<Props, State> {
   }
 
   private get className(): string {
-    const {className} = this.props
+    const {className, dropUp} = this.props
 
     return classnames('cf-dropdown', {
       [`${className}`]: className,
+      'cf-dropdown__up': dropUp,
+      'cf-dropdown__down': !dropUp,
     })
   }
 }
