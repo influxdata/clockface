@@ -3,6 +3,7 @@
 ### 0.0.20 (Unreleased)
 
 - [#193](https://github.com/influxdata/clockface/pull/193): Extend `Dropdowns` to optionally drop up, fix liminal gap in dropdown parent element, and introduce `DropdownItemEmpty` component
+- [#192](https://github.com/influxdata/clockface/pull/192): Add missing prefix to restore padding around page content
 
 #### 0.0.19
 
