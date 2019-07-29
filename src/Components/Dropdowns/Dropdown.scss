@@ -10,6 +10,7 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   ------------------------------------------------------------------------------
 */
 .cf-dropdown {
+  font-size: 0;
   position: relative;
 
   &.cf-dropdown-xs {
@@ -45,6 +46,7 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
 
 
 .cf-dropdown-menu--contents {
+  font-size: 0;
   user-select: none;
   display: flex;
   flex-direction: column;
