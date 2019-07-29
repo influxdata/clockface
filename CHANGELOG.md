@@ -1,5 +1,9 @@
 # Changelog
 
+#### 0.0.19
+
+- [#190](https://github.com/influxdata/clockface/pull/190): Update build configuration, add CircleCI integration, deduplicate built CSS
+
 #### 0.0.18
 
 - [#181](https://github.com/influxdata/clockface/pull/181): Fix build warnings from moment locale.
