@@ -107,13 +107,15 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
 }
 
 .cf-dropdown-item__wrap .cf-dropdown-item--children,
-.cf-dropdown-item__wrap.cf-dropdown-link-item a {
+.cf-dropdown-item__wrap.cf-dropdown-link-item a,
+.cf-dropdown-item__wrap.cf-dropdown-item-empty {
   word-break: break-all;
   white-space: pre-wrap;
 }
 
 .cf-dropdown-item__no-wrap .cf-dropdown-item--children,
-.cf-dropdown-item__no-wrap.cf-dropdown-link-item a {
+.cf-dropdown-item__no-wrap.cf-dropdown-link-item a,
+.cf-dropdown-item__wrap.cf-dropdown-item-empty {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -207,6 +209,20 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   &.active a:hover {
     color: $g20-white;
   }
+}
+
+/*
+  Dropdown Empty Item
+  ------------------------------------------------------------------------------
+*/
+
+.cf-dropdown-item-empty {
+  @include dropdownItemStyles();
+  text-align: center;
+  font-style: italic;
+  padding: $dropdown-item--padding-h;
+  opacity: 0.666;
+  user-select: none;
 }
 
 /*
