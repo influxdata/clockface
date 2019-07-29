@@ -20,15 +20,8 @@ import {
   IconFont,
   AutoComplete,
   StandardProps,
+  InputType,
 } from '../../Types'
-
-export enum InputType {
-  Text = 'text',
-  Number = 'number',
-  Password = 'password',
-  Email = 'email',
-  Checkbox = 'checkbox',
-}
 
 interface Props extends StandardProps {
   /** Minimum value for number type */

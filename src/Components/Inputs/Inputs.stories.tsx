@@ -16,7 +16,7 @@ import {mapEnumKeys} from '../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {Input, InputType} from './Input'
+import {Input} from './Input'
 import {TextArea} from './TextArea'
 import {SlideToggle} from '../SlideToggle/SlideToggle'
 
@@ -28,6 +28,7 @@ import {
   AutoComplete,
   FlexDirection,
   AlignItems,
+  InputType,
 } from '../../Types'
 import {ComponentSpacer} from '../ComponentSpacer/ComponentSpacer'
 

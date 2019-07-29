@@ -336,3 +336,11 @@ export interface TimeRange {
   label?: string
   duration?: string
 }
+
+export enum InputType {
+  Text = 'text',
+  Number = 'number',
+  Password = 'password',
+  Email = 'email',
+  Checkbox = 'checkbox',
+}
