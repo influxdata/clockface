@@ -2,6 +2,7 @@
 
 ### 0.0.22 (Unreleased)
 
+- [#199](https://github.com/influxdata/clockface/pull/199): Fix spacing in `FormFooter`, remove columns props from `FormFooter`, split `ResourceCardDescription` into editable and read-only variants, and allow `SlideToggleLabel` to optionally wrap text
 - [#197](https://github.com/influxdata/clockface/pull/197): Port `AutoInput` component from InfluxDB and add to `Input` family
 
 ### 0.0.21
