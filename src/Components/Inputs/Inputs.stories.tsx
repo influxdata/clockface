@@ -17,6 +17,7 @@ import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {Input} from './Input'
+import {AutoInput} from './AutoInput'
 import {TextArea} from './TextArea'
 import {SlideToggle} from '../SlideToggle/SlideToggle'
 
@@ -24,6 +25,7 @@ import {SlideToggle} from '../SlideToggle/SlideToggle'
 import {
   ComponentStatus,
   ComponentSize,
+  ComponentColor,
   IconFont,
   AutoComplete,
   FlexDirection,
@@ -34,12 +36,17 @@ import {ComponentSpacer} from '../ComponentSpacer/ComponentSpacer'
 
 // Notes
 import InputReadme from './Input.md'
+import AutoInputReadme from './AutoInput.md'
 
-const inputsStories = storiesOf('Components|Inputs', module)
+const inputsBaseStories = storiesOf('Components|Inputs/Base', module)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
-inputsStories.add(
+const inputsComposedStories = storiesOf('Components|Inputs/Composed', module)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
+
+inputsBaseStories.add(
   'Input (Text)',
   () => (
     <div className="story--example">
@@ -81,7 +88,7 @@ inputsStories.add(
   }
 )
 
-inputsStories.add(
+inputsBaseStories.add(
   'Input (Number)',
   () => (
     <div className="story--example">
@@ -119,7 +126,7 @@ inputsStories.add(
   }
 )
 
-inputsStories.add(
+inputsBaseStories.add(
   'Input (Password)',
   () => (
     <div className="story--example">
@@ -161,7 +168,7 @@ inputsStories.add(
   }
 )
 
-inputsStories.add(
+inputsBaseStories.add(
   'Input (Email)',
   () => (
     <div className="story--example">
@@ -203,7 +210,7 @@ inputsStories.add(
   }
 )
 
-inputsStories.add(
+inputsBaseStories.add(
   'Input (Checkbox)',
   () => (
     <div className="story--example">
@@ -243,7 +250,7 @@ inputsStories.add(
   }
 )
 
-inputsStories.add('TextArea', () => (
+inputsBaseStories.add('TextArea', () => (
   <div className="story--example">
     <TextArea
       value={text('value', 'Value Text')}
@@ -268,3 +275,37 @@ inputsStories.add('TextArea', () => (
     />
   </div>
 ))
+
+inputsComposedStories.add(
+  'AutoInput',
+  () => (
+    <div className="story--example">
+      <div style={{width: `${number('Parent Width (px)', 300)}px`}}>
+        <AutoInput
+          value={text('value', 'Kabocha Pumpkin')}
+          inputPlaceholder={text('inputPlaceholder', 'Enter a custom value...')}
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          inputType={
+            InputType[select('inputType', mapEnumKeys(InputType), 'Text')]
+          }
+          radioColor={
+            ComponentColor[
+              select('color', mapEnumKeys(ComponentColor), 'Primary')
+            ]
+          }
+          inputMaxLength={number('inputMaxLength', 100)}
+          inputMin={number('inputMin', 0)}
+          inputMax={number('inputMax', 100)}
+          onChange={value => alert(value)}
+        />
+      </div>
+    </div>
+  ),
+  {
+    readme: {
+      content: marked(AutoInputReadme),
+    },
+  }
+)
