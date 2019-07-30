@@ -344,3 +344,8 @@ export enum InputType {
   Email = 'email',
   Checkbox = 'checkbox',
 }
+
+export enum AutoInputMode {
+  Auto = 'auto',
+  Custom = 'custom',
+}

@@ -31,6 +31,7 @@ import {
   FlexDirection,
   AlignItems,
   InputType,
+  AutoInputMode,
 } from '../../Types'
 import {ComponentSpacer} from '../ComponentSpacer/ComponentSpacer'
 
@@ -282,23 +283,38 @@ inputsComposedStories.add(
     <div className="story--example">
       <div style={{width: `${number('Parent Width (px)', 300)}px`}}>
         <AutoInput
-          value={text('value', 'Kabocha Pumpkin')}
-          inputPlaceholder={text('inputPlaceholder', 'Enter a custom value...')}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
-          inputType={
-            InputType[select('inputType', mapEnumKeys(InputType), 'Text')]
+          mode={
+            AutoInputMode[select('mode', mapEnumKeys(AutoInputMode), 'Auto')]
           }
-          radioColor={
+          color={
             ComponentColor[
               select('color', mapEnumKeys(ComponentColor), 'Primary')
             ]
           }
-          inputMaxLength={number('inputMaxLength', 100)}
-          inputMin={number('inputMin', 0)}
-          inputMax={number('inputMax', 100)}
-          onChange={value => alert(value)}
+          onModeChange={mode => alert(`${mode}`)}
+          inputComponent={
+            <Input
+              value={text('Input: value', 'Swoggles')}
+              placeholder={text(
+                'Input: placeholder',
+                'Enter a custom value...'
+              )}
+              size={
+                ComponentSize[
+                  select('size', mapEnumKeys(ComponentSize), 'Small')
+                ]
+              }
+              type={
+                InputType[select('Input: type', mapEnumKeys(InputType), 'Text')]
+              }
+              maxLength={number('Input: maxLength', 100)}
+              min={number('Input: min', 0)}
+              max={number('Input: max', 100)}
+            />
+          }
         />
       </div>
     </div>
