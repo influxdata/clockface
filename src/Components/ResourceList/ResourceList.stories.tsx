@@ -25,6 +25,7 @@ import {ResourceCard} from './Card/ResourceCard'
 import {ResourceCardName} from './Card/ResourceCardName'
 import {ResourceCardEditableName} from './Card/ResourceCardEditableName'
 import {ResourceCardDescription} from './Card/ResourceCardDescription'
+import {ResourceCardEditableDescription} from './Card/ResourceCardEditableDescription'
 import {Input} from '../Inputs/Input'
 import {EmptyState} from '../EmptyState/EmptyState'
 import {SlideToggle} from '../SlideToggle/SlideToggle'
@@ -48,6 +49,7 @@ import ResourceListBodyReadme from './List/ResourceListBody.md'
 import ResourceListSorterReadme from './List/ResourceListSorter.md'
 import ResourceCardReadme from './Card/ResourceCard.md'
 import ResourceCardDescriptionReadme from './Card/ResourceCardDescription.md'
+import ResourceCardEditableDescriptionReadme from './Card/ResourceCardEditableDescription.md'
 import ResourceCardNameReadme from './Card/ResourceCardName.md'
 import ResourceCardEditableNameReadme from './Card/ResourceCardEditableName.md'
 import ResourceListExampleReadme from './ResourceListExample.md'
@@ -186,14 +188,14 @@ indexListCardStories.add(
           />
         }
         description={
-          <ResourceCardDescription
+          <ResourceCardEditableDescription
             description={text(
               'description',
               'Heirloom letterpress shaman, mixtape swag +1 8-bit coloring book ennui fanny pack small batch farm-to-table seitan sriracha austin. 8-bit mustache master cleanse bitters, vinyl shoreditch hot chicken authentic quinoa. '
             )}
             onUpdate={description =>
               alert(
-                `<ResourceCardDescription /> onUpdate fired with "${description}"`
+                `<ResourceCardEditableDescription /> onUpdate fired with "${description}"`
               )
             }
             placeholder={text('description placeholder', 'Enter a description')}
@@ -222,6 +224,25 @@ indexListCardStories.add(
           'description',
           'Heirloom letterpress shaman, mixtape swag +1 8-bit coloring book ennui fanny pack small batch farm-to-table seitan sriracha austin. 8-bit mustache master cleanse bitters, vinyl shoreditch hot chicken authentic quinoa. '
         )}
+      />
+    </div>
+  ),
+  {
+    readme: {
+      content: marked(ResourceCardDescriptionReadme),
+    },
+  }
+)
+
+indexListCardStories.add(
+  'ResourceCardEditableDescription',
+  () => (
+    <div className="story--example">
+      <ResourceCardEditableDescription
+        description={text(
+          'description',
+          'Heirloom letterpress shaman, mixtape swag +1 8-bit coloring book ennui fanny pack small batch farm-to-table seitan sriracha austin. 8-bit mustache master cleanse bitters, vinyl shoreditch hot chicken authentic quinoa. '
+        )}
         onUpdate={description => alert(`onUpdate fired with "${description}"`)}
         placeholder={text('description placeholder', 'Enter a description')}
       />
@@ -229,7 +250,7 @@ indexListCardStories.add(
   ),
   {
     readme: {
-      content: marked(ResourceCardDescriptionReadme),
+      content: marked(ResourceCardEditableDescriptionReadme),
     },
   }
 )
@@ -363,7 +384,7 @@ indexListExampleStories.add(
                 key={dash.id}
                 name={<ResourceCard.Name name={dash.name} />}
                 description={
-                  <ResourceCard.Description
+                  <ResourceCard.EditableDescription
                     description={dash.description}
                     onUpdate={desc =>
                       alert(`onUpate description fired: ${desc}`)
@@ -401,7 +422,7 @@ indexListExampleStories.add(
             />
           }
           description={
-            <ResourceCard.Description
+            <ResourceCard.EditableDescription
               description={text(
                 'description',
                 'Hey! Teacher! Leave us kids alone'

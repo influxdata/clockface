@@ -6,6 +6,7 @@ import classnames from 'classnames'
 import {ResourceCardName} from './ResourceCardName'
 import {ResourceCardEditableName} from './ResourceCardEditableName'
 import {ResourceCardDescription} from './ResourceCardDescription'
+import {ResourceCardEditableDescription} from './ResourceCardEditableDescription'
 
 // Types
 import {StandardProps} from '../../../Types'
@@ -40,6 +41,7 @@ export class ResourceCard extends PureComponent<Props> {
   public static Name = ResourceCardName
   public static EditableName = ResourceCardEditableName
   public static Description = ResourceCardDescription
+  public static EditableDescription = ResourceCardEditableDescription
 
   public render() {
     const {description, labels, children, testID, name, id} = this.props

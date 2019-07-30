@@ -55,7 +55,7 @@
     font-style: italic;
   }
 
-  &:hover {
+  .resource-description__editable &:hover {
     cursor: text;
     color: $g20-white;
   }
