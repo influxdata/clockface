@@ -2,11 +2,11 @@
 
 ### 0.0.22 (Unreleased)
 
-- [#197](https://github.com/influxdata/clockface/pull/197): Update build configuration, add CircleCI integration, deduplicate built CSS
+- [#197](https://github.com/influxdata/clockface/pull/197): Port `AutoInput` component from InfluxDB and add to `Input` family
 
 ### 0.0.21
 
-- 
+- [#198](https://github.com/influxdata/clockface/pull/198): Botched release 😢
 
 ### 0.0.20
 
