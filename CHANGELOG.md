@@ -1,5 +1,13 @@
 # Changelog
 
+### 0.0.22 (Unreleased)
+
+- [#197](https://github.com/influxdata/clockface/pull/197): Update build configuration, add CircleCI integration, deduplicate built CSS
+
+### 0.0.21
+
+- 
+
 ### 0.0.20
 
 - [#193](https://github.com/influxdata/clockface/pull/193): Extend `Dropdowns` to optionally drop up, fix liminal gap in dropdown parent element, and introduce `DropdownItemEmpty` component
