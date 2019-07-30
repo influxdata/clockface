@@ -14,6 +14,7 @@ import {Alert} from './Alert'
 // Types
 import {ComponentColor, IconFont} from '../../Types/index'
 
+// Notes
 import AlertReadme from './Alert.md'
 
 const alertStories = storiesOf('Atomic|Alert', module)

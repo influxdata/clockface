@@ -12,6 +12,8 @@ interface Props extends StandardProps {
   active: boolean
   /** Button size */
   size: ComponentSize
+  /** Controls text wrapping */
+  wrapText: boolean
 }
 
 export class SlideToggleLabel extends Component<Props> {
@@ -21,6 +23,7 @@ export class SlideToggleLabel extends Component<Props> {
     active: true,
     size: ComponentSize.Small,
     testID: 'slide-toggle--label',
+    wrapText: false,
   }
 
   public render() {
@@ -34,10 +37,11 @@ export class SlideToggleLabel extends Component<Props> {
   }
 
   private get className(): string {
-    const {className, size, active} = this.props
+    const {className, size, active, wrapText} = this.props
 
     return classnames('cf-slide-toggle--label', {
       [`${className}`]: className,
+      'cf-slide-toggle--label__wrap': wrapText,
       [`cf-slide-toggle--label-${size}`]: size,
       'cf-slide-toggle--label__active': active,
     })

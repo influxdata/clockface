@@ -10,10 +10,6 @@ import {ResourceCard} from '@influxdata/clockface'
 <ResourceCard.Description />
 ```
 
-### Interactions
-
-This component facilitates changes to saved text via keyboard and mouse. There are 2 modes: view and edit. When in edit mode a text input is visible and always focused. Hitting `enter` or blurring the input will cause it to fire `onUpdate` and return to view mode.
-
 ### Example
 <!-- STORY -->
 

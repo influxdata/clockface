@@ -7,7 +7,7 @@ import _ from 'lodash'
 import {Input} from '../Inputs/Input'
 import {Button} from '../Button/Composed/Button'
 import {ColorPickerSwatch} from './ColorPickerSwatch'
-import {FormElementError} from '../FormLayout/FormElementError'
+import {FormElementError} from '../Form/FormElementError'
 
 // Constants
 import {influxColors, HEX_CODE_CHAR_LENGTH} from '../../Constants/colors'

@@ -88,6 +88,7 @@ slideToggleStories.add(
           ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
         }
         active={boolean('active', true)}
+        wrapText={boolean('wrapText', false)}
       />
     </div>
   ),
@@ -108,7 +109,8 @@ slideToggleExampleStories.add(
         margin={ComponentSize.Medium}
       >
         <SlideToggle.Label
-          text="Apples"
+          text={text('Left Label: text', 'Apples')}
+          wrapText={boolean('Left Label: wrapText', false)}
           active={!boolean('active', false)}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
@@ -127,7 +129,8 @@ slideToggleExampleStories.add(
           }
         />
         <SlideToggle.Label
-          text="Oranges"
+          text={text('Right Label: text', 'Oranges')}
+          wrapText={boolean('Right Label: wrapText', false)}
           active={boolean('active', false)}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]

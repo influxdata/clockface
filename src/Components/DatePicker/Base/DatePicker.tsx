@@ -5,7 +5,7 @@ import moment from 'moment'
 
 // Components
 import {Input} from '../../Inputs/Input'
-import {Form} from '../../FormLayout/Form'
+import {Form} from '../../Form/Form'
 
 // Styles
 import '../DatePicker.scss'

@@ -215,33 +215,37 @@ inputsBaseStories.add(
   'Input (Checkbox)',
   () => (
     <div className="story--example">
-      <ComponentSpacer
-        direction={FlexDirection.Row}
-        alignItems={AlignItems.Center}
-        margin={ComponentSize.Medium}
-      >
-        <Input
-          name={text('name', 'Name')}
-          onChange={() => {}}
-          size={
-            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-          }
-          status={
-            ComponentStatus[
-              select('status', mapEnumKeys(ComponentStatus), 'Default')
-            ]
-          }
-          type={InputType.Checkbox}
-          checked={boolean('checked', true)}
-        />
-        <SlideToggle.Label
-          text="I Agree to Terms and Conditions"
-          size={
-            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-          }
-          active={boolean('checked', true)}
-        />
-      </ComponentSpacer>
+      <div style={{width: `${number('Parent Width (px)', 300)}px`}}>
+        <ComponentSpacer
+          direction={FlexDirection.Row}
+          alignItems={AlignItems.Center}
+          margin={ComponentSize.Medium}
+          stretchToFitWidth={true}
+        >
+          <Input
+            name={text('name', 'Name')}
+            onChange={() => {}}
+            size={
+              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+            }
+            status={
+              ComponentStatus[
+                select('status', mapEnumKeys(ComponentStatus), 'Default')
+              ]
+            }
+            type={InputType.Checkbox}
+            checked={boolean('checked', true)}
+          />
+          <SlideToggle.Label
+            text={text('Label: text', 'I Agree to Terms and Conditions')}
+            size={
+              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+            }
+            active={boolean('checked', true)}
+            wrapText={boolean('Label: wrapText', true)}
+          />
+        </ComponentSpacer>
+      </div>
     </div>
   ),
   {

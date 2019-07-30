@@ -146,6 +146,10 @@ $slide-toggle--gap: $cf-border * 2;
     font-style: normal;
     opacity: 1;
   }
+
+  &.cf-slide-toggle--label__wrap {
+    white-space: normal;
+  }
 }
 
 .cf-slide-toggle--label-xs {
