@@ -3,8 +3,7 @@ import * as React from 'react'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, text, select, boolean, color} from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {withKnobs, text, boolean, color} from '@storybook/addon-knobs'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
@@ -97,16 +96,7 @@ formStories.add('FormElementError', () => (
 formStories.add('FormFooter', () => (
   <div className="story--example">
     <div className="story--form-example">
-      <FormFooter
-        widthXS={Columns[select('widthXS', mapEnumKeys(Columns), 'Ten')]}
-        widthSM={Columns[select('widthSM', mapEnumKeys(Columns), 'Ten')]}
-        widthMD={Columns[select('widthMD', mapEnumKeys(Columns), 'Ten')]}
-        widthLG={Columns[select('widthLG', mapEnumKeys(Columns), 'Ten')]}
-        offsetXS={Columns[select('offsetXS', mapEnumKeys(Columns), 'One')]}
-        offsetSM={Columns[select('offsetSM', mapEnumKeys(Columns), 'One')]}
-        offsetMD={Columns[select('offsetMD', mapEnumKeys(Columns), 'One')]}
-        offsetLG={Columns[select('offsetLG', mapEnumKeys(Columns), 'One')]}
-      >
+      <FormFooter>
         <div className="mockComponent mockButton">Button</div>
         <div className="mockComponent mockButton">Button</div>
       </FormFooter>
