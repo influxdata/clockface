@@ -294,7 +294,7 @@ inputsComposedStories.add(
               select('color', mapEnumKeys(ComponentColor), 'Primary')
             ]
           }
-          onModeChange={mode => alert(`${mode}`)}
+          onChangeMode={mode => alert(`${mode}`)}
           inputComponent={
             <Input
               value={text('Input: value', 'Swoggles')}
