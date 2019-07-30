@@ -27,7 +27,7 @@ export class FormFooter extends Component<Props> {
   private get className(): string {
     const {className} = this.props
 
-    return classnames('cf-form--element form--footer', {
+    return classnames('cf-form--element cf-form--footer', {
       [`${className}`]: className,
     })
   }

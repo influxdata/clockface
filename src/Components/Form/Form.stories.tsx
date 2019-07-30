@@ -95,12 +95,10 @@ formStories.add('FormElementError', () => (
 
 formStories.add('FormFooter', () => (
   <div className="story--example">
-    <div className="story--form-example">
-      <FormFooter>
-        <div className="mockComponent mockButton">Button</div>
-        <div className="mockComponent mockButton">Button</div>
-      </FormFooter>
-    </div>
+    <FormFooter>
+      <Button text="Cancel" />
+      <Button text="Confirm" color={ComponentColor.Success} />
+    </FormFooter>
   </div>
 ))
 
