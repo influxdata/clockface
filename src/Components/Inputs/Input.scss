@@ -234,8 +234,8 @@ $input-status-z: $input-field-z + 2;
   Valid State
   ------------------------------------------------------------------------------
 */
-.input__valid {
-  .input-status {
+.cf-input__valid {
+  .cf-input-status {
     color: $c-rainforest;
   }
 }

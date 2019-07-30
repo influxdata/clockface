@@ -16,7 +16,8 @@ import {mapEnumKeys} from '../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {Input, InputType} from './Input'
+import {Input} from './Input'
+import {AutoInput} from './AutoInput'
 import {TextArea} from './TextArea'
 import {SlideToggle} from '../SlideToggle/SlideToggle'
 
@@ -24,21 +25,29 @@ import {SlideToggle} from '../SlideToggle/SlideToggle'
 import {
   ComponentStatus,
   ComponentSize,
+  ComponentColor,
   IconFont,
   AutoComplete,
   FlexDirection,
   AlignItems,
+  InputType,
+  AutoInputMode,
 } from '../../Types'
 import {ComponentSpacer} from '../ComponentSpacer/ComponentSpacer'
 
 // Notes
 import InputReadme from './Input.md'
+import AutoInputReadme from './AutoInput.md'
 
-const inputsStories = storiesOf('Components|Inputs', module)
+const inputsBaseStories = storiesOf('Components|Inputs/Base', module)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
-inputsStories.add(
+const inputsComposedStories = storiesOf('Components|Inputs/Composed', module)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
+
+inputsBaseStories.add(
   'Input (Text)',
   () => (
     <div className="story--example">
@@ -80,7 +89,7 @@ inputsStories.add(
   }
 )
 
-inputsStories.add(
+inputsBaseStories.add(
   'Input (Number)',
   () => (
     <div className="story--example">
@@ -118,7 +127,7 @@ inputsStories.add(
   }
 )
 
-inputsStories.add(
+inputsBaseStories.add(
   'Input (Password)',
   () => (
     <div className="story--example">
@@ -160,7 +169,7 @@ inputsStories.add(
   }
 )
 
-inputsStories.add(
+inputsBaseStories.add(
   'Input (Email)',
   () => (
     <div className="story--example">
@@ -202,7 +211,7 @@ inputsStories.add(
   }
 )
 
-inputsStories.add(
+inputsBaseStories.add(
   'Input (Checkbox)',
   () => (
     <div className="story--example">
@@ -242,7 +251,7 @@ inputsStories.add(
   }
 )
 
-inputsStories.add('TextArea', () => (
+inputsBaseStories.add('TextArea', () => (
   <div className="story--example">
     <TextArea
       value={text('value', 'Value Text')}
@@ -267,3 +276,52 @@ inputsStories.add('TextArea', () => (
     />
   </div>
 ))
+
+inputsComposedStories.add(
+  'AutoInput',
+  () => (
+    <div className="story--example">
+      <div style={{width: `${number('Parent Width (px)', 300)}px`}}>
+        <AutoInput
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          mode={
+            AutoInputMode[select('mode', mapEnumKeys(AutoInputMode), 'Auto')]
+          }
+          color={
+            ComponentColor[
+              select('color', mapEnumKeys(ComponentColor), 'Primary')
+            ]
+          }
+          onChangeMode={mode => alert(`${mode}`)}
+          inputComponent={
+            <Input
+              value={text('Input: value', 'Swoggles')}
+              placeholder={text(
+                'Input: placeholder',
+                'Enter a custom value...'
+              )}
+              size={
+                ComponentSize[
+                  select('size', mapEnumKeys(ComponentSize), 'Small')
+                ]
+              }
+              type={
+                InputType[select('Input: type', mapEnumKeys(InputType), 'Text')]
+              }
+              maxLength={number('Input: maxLength', 100)}
+              min={number('Input: min', 0)}
+              max={number('Input: max', 100)}
+            />
+          }
+        />
+      </div>
+    </div>
+  ),
+  {
+    readme: {
+      content: marked(AutoInputReadme),
+    },
+  }
+)

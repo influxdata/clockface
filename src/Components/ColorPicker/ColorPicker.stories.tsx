@@ -121,7 +121,7 @@ colorPickerExampleStories.add(
   'Custom Color Palette',
   () => (
     <div className="story--example">
-      <div style={{width: `${number('Parent Width (px)', 300)}`}}>
+      <div style={{width: `${number('Parent Width (px)', 300)}px`}}>
         <ColorPicker
           swatchesPerRow={number('swatchesPerRow', 4)}
           color={color('color', `${customColors[3].hex}`)}
