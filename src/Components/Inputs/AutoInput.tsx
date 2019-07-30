@@ -21,7 +21,7 @@ interface Props extends StandardProps {
   /** Pass in a component of type "Input" */
   inputComponent: JSX.Element
   /** Fires when the radio is toggled and the mode changes */
-  onModeChange: (mode: AutoInputMode) => void
+  onChangeMode: (mode: AutoInputMode) => void
   /** Modality of radio, either "Auto" or "Custom" */
   mode: AutoInputMode
   /** Radio color */
@@ -41,7 +41,7 @@ export class AutoInput extends Component<Props> {
   }
 
   public render() {
-    const {testID, id, size, color, mode, onModeChange} = this.props
+    const {testID, id, size, color, mode, onChangeMode} = this.props
 
     return (
       <div className={this.className} data-testid={testID} id={id}>
@@ -53,7 +53,7 @@ export class AutoInput extends Component<Props> {
               testID={`${testID}--${AutoInputMode.Auto}`}
               titleText="Decide for me"
               value={AutoInputMode.Auto}
-              onClick={onModeChange}
+              onClick={onChangeMode}
             >
               Auto
             </Radio.Button>
@@ -63,7 +63,7 @@ export class AutoInput extends Component<Props> {
               testID={`${testID}--${AutoInputMode.Custom}`}
               titleText="I want to specify my own value"
               value={AutoInputMode.Custom}
-              onClick={onModeChange}
+              onClick={onChangeMode}
             >
               Custom
             </Radio.Button>
