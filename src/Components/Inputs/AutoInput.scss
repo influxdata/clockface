@@ -1,0 +1,17 @@
+@import '../../Styles/modules';
+
+/*
+  Auto Input Styles
+  ------------------------------------------------------------------------------
+*/
+
+.auto-input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.auto-input--input {
+  padding-top: $cf-marg-a;
+}
