@@ -83,6 +83,11 @@ export class Popover extends Component<Props, State> {
     }
   }
 
+  public componentWillUnmount() {
+    window.removeEventListener('resize', this.handleUpdateTriggerRect)
+    window.removeEventListener('scroll', this.handleUpdateTriggerRect)
+  }
+
   public render() {
     const {testID, children, id} = this.props
 
