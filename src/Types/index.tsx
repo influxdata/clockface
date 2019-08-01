@@ -349,3 +349,21 @@ export enum AutoInputMode {
   Auto = 'auto',
   Custom = 'custom',
 }
+
+export enum PopoverInteraction {
+  Hover = 'hover',
+  Click = 'click',
+  None = 'none',
+}
+
+export enum PopoverPosition {
+  Above = 'above',
+  Below = 'below',
+  ToTheLeft = 'to-left',
+  ToTheRight = 'to-right',
+}
+
+export enum PopoverType {
+  Solid = 'solid',
+  Outline = 'outline',
+}
