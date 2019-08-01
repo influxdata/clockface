@@ -2,6 +2,7 @@
 
 ### 0.0.22 (Unreleased)
 
+- [#202](https://github.com/influxdata/clockface/pull/202): Introduce standardized `Popover` component
 - [#197](https://github.com/influxdata/clockface/pull/197): Port `AutoInput` component from InfluxDB and add to `Input` family
 
 ### 0.0.21
