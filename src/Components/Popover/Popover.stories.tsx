@@ -10,6 +10,7 @@ import {mapEnumKeys} from '../../Utils/storybook'
 
 // Components
 import {Popover} from './Popover'
+import {PopoverDismissButton} from './PopoverDismissButton'
 
 // Types
 import {
@@ -31,7 +32,7 @@ tooltipStories.add(
   () => (
     <div className="story--example">
       <Popover
-        contents={() => (
+        contents={onHide => (
           <div
             style={{
               width: `${number('dialog width px', 250)}px`,
@@ -43,6 +44,7 @@ tooltipStories.add(
             }}
           >
             PopoverContents
+            <PopoverDismissButton onClick={onHide} />
           </div>
         )}
         distanceFromTrigger={number('distanceFromTrigger', 4)}

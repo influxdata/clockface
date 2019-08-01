@@ -111,3 +111,49 @@ $cf-popover-caret: $cf-marg-b;
 .cf-popover__danger {
   @include popoverColorModifier($c-curacao, $c-dreamsicle, $c-fire);
 }
+
+
+/*
+  Dismiss Button
+  ------------------------------------------------------------------------------
+*/
+
+button.cf-popover--dismiss-button {
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(40%, -40%);
+
+  & > .cf-icon {
+    display: none;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: $form-xs-height - $cf-marg-b - $cf-border;
+    height: $cf-border * 1.5;
+    background-color: $g20-white;
+    border-radius: $cf-border * 1.5 / 2;
+    top: 50%;
+    left: 50%;
+    transition: opacity 0.25s ease;
+    opacity: 0.8;
+  }
+
+  &:before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &:after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  &:hover:before,
+  &:hover:after {
+    opacity: 1;
+  }
+}

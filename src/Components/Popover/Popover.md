@@ -44,6 +44,28 @@ In most cases `Popover` works great with symmetric hide and show events. However
 </Popover>
 ```
 
+### Included Dismiss Button
+
+if you want to have an explicit dismiss button in the top right of the popover, you can use this component:
+
+```tsx
+import {Popover, PopoverPosition, PopoverInteraction} from '@influxdata/clockface'
+```
+```tsx
+<Popover
+  position={PopoverPosition.Above}
+  showEvent={PopoverInteraction.Hover}
+  hideEvent={PopoverInteraction.Hover}
+  contents={onHide => (
+    <div>
+      <Popover.DismissButton onClick={onHide} />
+    </div>
+  )}
+>
+  <div>Trigger Element</div>
+</Popover>
+```
+
 ### Gotchas
 
 The popover dialog makes use of `position: fixed` and `z-index: 9999` to ensure it is never obscured. In order to keep the dialog positioned next to the trigger the component listens for scroll and resize events while the popover is visible. This causes the dialog to re-render more often, which may be troublesome depending on what kind of component you render as the contents.
