@@ -32,6 +32,7 @@ In most cases `Popover` works great with symmetric hide and show events. However
 <Popover
   showEvent={PopoverInteraction.Click}
   hideEvent={PopoverInteraction.None}
+  initiallyVisible={true}
   contents={onHide => (
     <div>
       // Tutorial text goes here
