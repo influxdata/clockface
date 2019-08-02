@@ -1,3 +1,7 @@
+// Utilities
+export type Omit<K, V> = Pick<K, Exclude<keyof K, V>>
+
+// Shared Data Types
 export interface StandardProps {
   /** Useful for overriding styles of the component */
   className?: string

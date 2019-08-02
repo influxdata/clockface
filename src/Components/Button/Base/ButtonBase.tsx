@@ -48,7 +48,7 @@ export class ButtonBase extends Component<Props> {
     status: ComponentStatus.Default,
     active: false,
     type: ButtonType.Button,
-    testID: ButtonType.Button,
+    testID: 'button-base',
   }
 
   public render() {

@@ -51,7 +51,7 @@ export class SquareButton extends Component<Props> {
     status: ComponentStatus.Default,
     active: false,
     type: ButtonType.Button,
-    testID: ButtonType.Button,
+    testID: 'square-button',
   }
 
   public ref: RefObject<HTMLButtonElement> = React.createRef()

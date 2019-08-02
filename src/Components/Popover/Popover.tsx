@@ -1,5 +1,5 @@
 // Libraries
-import React, {Component, ReactChild, createRef, CSSProperties} from 'react'
+import React, {Component, createRef, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Components
@@ -22,7 +22,7 @@ interface Props extends StandardProps {
   /** Popover dialog color */
   color: ComponentColor
   /** Popover dialog contents */
-  contents: (onHide?: () => void) => ReactChild
+  contents: (onHide: () => void) => JSX.Element | (() => JSX.Element)
   /** Type of interaction to show the popover dialog */
   showEvent: PopoverInteraction
   /** Type of interaction to hide the popover dialog */
@@ -35,6 +35,8 @@ interface Props extends StandardProps {
   type: PopoverType
   /** Renders the popover dialog visible initially */
   initiallyVisible: boolean
+  /** Disables the popover's show interaction */
+  disabled: boolean
 }
 
 interface State {
@@ -59,6 +61,7 @@ export class Popover extends Component<Props, State> {
     position: PopoverPosition.Below,
     type: PopoverType.Solid,
     initiallyVisible: false,
+    disabled: false,
   }
 
   public static DismissButton = PopoverDismissButton
@@ -93,16 +96,16 @@ export class Popover extends Component<Props, State> {
 
     return (
       <ClickOutside onClickOutside={this.handleClickOutside}>
-        <div
-          className={this.className}
-          data-testid={testID}
-          id={id}
-          onClick={this.handleTriggerClick}
-          onMouseOver={this.handleTriggerMouseOver}
-          onMouseOut={this.handleTriggerMouseOut}
-          ref={this.triggerRef}
-        >
-          {children}
+        <div className={this.className} data-testid={testID} id={id}>
+          <div
+            className="cf-popover--trigger"
+            ref={this.triggerRef}
+            onClick={this.handleTriggerClick}
+            onMouseOver={this.handleTriggerMouseOver}
+            onMouseOut={this.handleTriggerMouseOut}
+          >
+            {children}
+          </div>
           {this.dialog}
         </div>
       </ClickOutside>
@@ -422,7 +425,11 @@ export class Popover extends Component<Props, State> {
   }
 
   private handleTriggerClick = (): void => {
-    const {showEvent} = this.props
+    const {showEvent, disabled} = this.props
+
+    if (disabled) {
+      return
+    }
 
     if (showEvent === PopoverInteraction.Click) {
       this.handleShowDialog()
