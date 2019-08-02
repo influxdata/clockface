@@ -35,6 +35,8 @@ interface Props extends StandardProps {
   type: PopoverType
   /** Renders the popover dialog visible initially */
   initiallyVisible: boolean
+  /** Disables the popover's show interaction */
+  disabled: boolean
 }
 
 interface State {
@@ -59,6 +61,7 @@ export class Popover extends Component<Props, State> {
     position: PopoverPosition.Below,
     type: PopoverType.Solid,
     initiallyVisible: false,
+    disabled: false,
   }
 
   public static DismissButton = PopoverDismissButton
@@ -422,7 +425,11 @@ export class Popover extends Component<Props, State> {
   }
 
   private handleTriggerClick = (): void => {
-    const {showEvent} = this.props
+    const {showEvent, disabled} = this.props
+
+    if (disabled) {
+      return
+    }
 
     if (showEvent === PopoverInteraction.Click) {
       this.handleShowDialog()
