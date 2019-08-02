@@ -19,7 +19,7 @@ import {
   StandardProps,
 } from '../../../Types'
 
-interface Props extends StandardProps {
+export interface Props extends StandardProps {
   /** Text to be displayed on button */
   text?: string
   /** Function to be called on button click */
@@ -58,7 +58,7 @@ export class Button extends Component<Props> {
     status: ComponentStatus.Default,
     active: false,
     type: ButtonType.Button,
-    testID: ButtonType.Button,
+    testID: 'button',
     placeIconAfterText: false,
   }
 
