@@ -11,10 +11,12 @@ import {mapEnumKeys} from '../../Utils/storybook'
 // Components
 import {Button} from './Composed/Button'
 import {SquareButton} from './Composed/SquareButton'
+import {ConfirmationButton} from './Composed/ConfirmationButton'
 import {ButtonBase} from './Base/ButtonBase'
 
 // Types
 import {
+  PopoverType,
   ComponentColor,
   ComponentSize,
   IconFont,
@@ -27,6 +29,7 @@ import {
 import ButtonBaseReadme from './Base/ButtonBase.md'
 import ButtonReadme from './Composed/Button.md'
 import SquareButtonReadme from './Composed/SquareButton.md'
+import ConfirmationButtonReadme from './Composed/ConfirmationButton.md'
 
 const buttonBaseStories = storiesOf('Components|Buttons/Base', module)
   .addDecorator(withKnobs)
@@ -37,7 +40,7 @@ const buttonComposedStories = storiesOf('Components|Buttons/Composed', module)
   .addDecorator(jsxDecorator)
 
 buttonComposedStories.add(
-  'Standard Button',
+  'StandardButton',
   () => (
     <div className="story--example">
       <Button
@@ -79,7 +82,7 @@ buttonComposedStories.add(
 )
 
 buttonComposedStories.add(
-  'Square Button (Icon Only)',
+  'SquareButton',
   () => (
     <div className="story--example">
       <SquareButton
@@ -107,6 +110,61 @@ buttonComposedStories.add(
   {
     readme: {
       content: marked(SquareButtonReadme),
+    },
+  }
+)
+
+buttonComposedStories.add(
+  'ConfirmationButton',
+  () => (
+    <div className="story--example">
+      <ConfirmationButton
+        confirmationButtonText={text(
+          'confirmationButtonText',
+          'Yes, Delete it'
+        )}
+        confirmationButtonColor={
+          ComponentColor[
+            select('confirmationColor', mapEnumKeys(ComponentColor), 'Danger')
+          ]
+        }
+        confirmationLabel={text(
+          'confirmationLabel',
+          'Really delete your soul?'
+        )}
+        popoverColor={
+          ComponentColor[
+            select('popoverColor', mapEnumKeys(ComponentColor), 'Default')
+          ]
+        }
+        popoverType={
+          PopoverType[select('popoverType', mapEnumKeys(PopoverType), 'Solid')]
+        }
+        onConfirm={value => alert(`returnValue: ${value}`)}
+        returnValue={text('returnValue', '')}
+        icon={IconFont[select('icon', mapEnumKeys(IconFont), 'Trash')]}
+        titleText={text('titleText', 'Title Text')}
+        color={
+          ComponentColor[select('color', mapEnumKeys(ComponentColor), 'Danger')]
+        }
+        size={
+          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+        }
+        shape={
+          ButtonShape[select('shape', mapEnumKeys(ButtonShape), 'Default')]
+        }
+        text={text('text', 'Delete Soul')}
+        status={
+          ComponentStatus[
+            select('status', mapEnumKeys(ComponentStatus), 'Default')
+          ]
+        }
+      />
+    </div>
+  ),
+  {
+    readme: {
+      content: marked(ConfirmationButtonReadme),
     },
   }
 )
