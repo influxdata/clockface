@@ -54,8 +54,6 @@ export class ConfirmationButton extends Component<Props> {
 
   public render() {
     const {
-      confirmationButtonText,
-      confirmationButtonColor,
       placeIconAfterText,
       confirmationLabel,
       popoverColor,
@@ -78,19 +76,14 @@ export class ConfirmationButton extends Component<Props> {
         color={popoverColor}
         type={popoverType}
         className={this.className}
-        contents={() => (
+        contents={onHide => (
           <div className="cf-confirmation-button--container">
             {confirmationLabel && (
               <span className="cf-confirmation-button--label">
                 {confirmationLabel}
               </span>
             )}
-            <Button
-              onClick={this.handleConfirmClick}
-              text={confirmationButtonText}
-              color={confirmationButtonColor}
-              size={size}
-            />
+            {this.renderConfirm(onHide)}
           </div>
         )}
         testID={`${testID}--popover`}
@@ -136,9 +129,27 @@ export class ConfirmationButton extends Component<Props> {
     })
   }
 
-  private handleConfirmClick = (): void => {
-    const {returnValue, onConfirm} = this.props
+  private renderConfirm = (onHide: (() => void) | undefined): JSX.Element => {
+    const {
+      confirmationButtonText,
+      confirmationButtonColor,
+      returnValue,
+      onConfirm,
+      size,
+    } = this.props
 
-    onConfirm(returnValue)
+    const handleClick = (): void => {
+      onConfirm(returnValue)
+      onHide && onHide()
+    }
+
+    return (
+      <Button
+        onClick={handleClick}
+        text={confirmationButtonText}
+        color={confirmationButtonColor}
+        size={size}
+      />
+    )
   }
 }

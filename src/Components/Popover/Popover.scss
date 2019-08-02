@@ -7,7 +7,8 @@
 
 $cf-popover-caret: $cf-marg-b;
 
-.cf-popover {
+.cf-popover,
+.cf-popover--trigger {
   font-size: 0;
 }
 
