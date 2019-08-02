@@ -53,10 +53,11 @@ $cf-popover-caret: $cf-marg-b;
   Color Modifiers
   ------------------------------------------------------------------------------
 */
-@mixin popoverColorModifier($solidColor, $outlineColor, $glowColor) {
+@mixin popoverColorModifier($solidColor, $outlineColor, $glowColor, $textColor) {
   // Solid Type
   &.cf-popover__solid .cf-popover--dialog-contents {
     background-color: $solidColor;
+    color: $textColor;
   }
   &.cf-popover__solid .cf-popover--caret {
     &__above {
@@ -94,22 +95,22 @@ $cf-popover-caret: $cf-marg-b;
 }
 
 .cf-popover__default {
-  @include popoverColorModifier($g6-smoke, $g11-sidewalk, $g8-storm);
+  @include popoverColorModifier($g6-smoke, $g11-sidewalk, $g8-storm, $g15-platinum);
 }
 .cf-popover__primary {
-  @include popoverColorModifier($c-pool, $c-pool, $c-ocean);
+  @include popoverColorModifier($c-pool, $c-pool, $c-ocean, $g20-white);
 }
 .cf-popover__secondary {
-  @include popoverColorModifier($c-star, $c-comet, $c-star);
+  @include popoverColorModifier($c-star, $c-comet, $c-star, $g20-white);
 }
 .cf-popover__success {
-  @include popoverColorModifier($c-rainforest, $c-honeydew, $c-rainforest);
+  @include popoverColorModifier($c-rainforest, $c-honeydew, $c-rainforest, $g20-white);
 }
 .cf-popover__warning {
-  @include popoverColorModifier($c-pineapple, $c-thunder, $c-tiger);
+  @include popoverColorModifier($c-pineapple, $c-thunder, $c-tiger, $g3-castle);
 }
 .cf-popover__danger {
-  @include popoverColorModifier($c-curacao, $c-dreamsicle, $c-fire);
+  @include popoverColorModifier($c-curacao, $c-dreamsicle, $c-fire, $g20-white);
 }
 
 
