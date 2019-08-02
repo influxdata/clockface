@@ -1,0 +1,24 @@
+@import '../../../Styles/modules';
+
+/*
+  Confirmation Button Styles
+  ------------------------------------------------------------------------------
+*/
+
+.cf-confirmation-button.cf-confirmation-button__stretch {
+  width: 100%;
+}
+
+.cf-confirmation-button--container {
+  display: flex;
+  align-items: center;
+  padding: $cf-marg-b;
+}
+
+.cf-confirmation-button--label {
+  margin: 0 $cf-marg-b;
+  white-space: nowrap;
+  font-weight: 500;
+  user-select: none;
+  font-size: $form-md-font;
+}
