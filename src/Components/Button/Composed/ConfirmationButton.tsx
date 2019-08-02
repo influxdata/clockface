@@ -94,6 +94,7 @@ export class ConfirmationButton extends Component<Props> {
           </div>
         )}
         testID={`${testID}--popover`}
+        disabled={this.isDisabled}
       >
         <Button
           placeIconAfterText={placeIconAfterText}
@@ -111,6 +112,19 @@ export class ConfirmationButton extends Component<Props> {
         />
       </Popover>
     )
+  }
+
+  private get isDisabled(): boolean {
+    const {status} = this.props
+
+    if (
+      status === ComponentStatus.Disabled ||
+      status === ComponentStatus.Loading
+    ) {
+      return true
+    }
+
+    return false
   }
 
   private get className(): string {
