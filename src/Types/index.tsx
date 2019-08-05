@@ -333,12 +333,12 @@ export enum BorderType {
 }
 
 export interface TimeRange {
-  lower: string
-  upper?: string | null
-  seconds?: number
-  format?: string
-  label?: string
-  duration?: string
+  Lower: string
+  Upper?: string | null
+  Seconds?: number
+  Format?: string
+  Label?: string
+  Duration?: string
 }
 
 export enum InputType {

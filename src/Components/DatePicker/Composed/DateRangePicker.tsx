@@ -35,10 +35,10 @@ export class DateRangePicker extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props)
     const {
-      timeRange: {lower, upper},
+      timeRange: {Lower, Upper},
     } = props
 
-    this.state = {lower, upper}
+    this.state = {lower: Lower, upper: Upper}
   }
 
   public render() {
@@ -74,7 +74,7 @@ export class DateRangePicker extends PureComponent<Props, State> {
     const {onSetTimeRange, timeRange} = this.props
     const {upper, lower} = this.state
 
-    onSetTimeRange({...timeRange, lower, upper})
+    onSetTimeRange({...timeRange, Lower: lower, Upper: upper})
   }
 
   private handleSelectLower = (lower: string): void => {

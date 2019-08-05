@@ -11,11 +11,11 @@ import {DateRangePicker} from '@influxdata/clockface'
 ```jsx
 <DateRangePicker
   timeRange={{
-    upper: '1234567890',
-    lower: '1234567890',
-    seconds: 0,
-    format: 'YYYY-MM-DD HH:mm:ss.SSS',
-    label: 'my label',
+    Upper: '1234567890',
+    Lower: '1234567890',
+    Seconds: 0,
+    Format: 'YYYY-MM-DD HH:mm:ss.SSS',
+    Label: 'my label',
   }}
   onSetTimeRange={() => {}}
 />
