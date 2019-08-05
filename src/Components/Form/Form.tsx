@@ -11,16 +11,32 @@ import {FormFooter} from './FormFooter'
 import {FormBox} from './FormBox'
 
 // Types
-import {StandardProps} from '../../Types'
+import {StandardProps, AutoComplete, EncType, Method} from '../../Types'
 
 // Styles
 import './Form.scss'
 
 interface Props extends StandardProps {
+  /** Form submit URI */
+  action?: string
+  /** A space-delimited list of character encodings. */
+  acceptCharset?: string
+  /** Allows or disallows browser autocomplete functionality */
+  autoComplete?: AutoComplete
+  /** Type of content to be submitted to the server */
+  encType?: EncType
+  /** HTTP Method to be used on form submit */
+  method?: Method
+  /** Input field name attribute */
+  name?: string
+  /** Enable or disable form validation */
+  noValidate?: boolean
   /** Inline CSS styles */
   style?: React.CSSProperties
   /** Function to be called on form submit */
   onSubmit?: (e: React.FormEvent) => void
+  /** Context name or keyword */
+  target?: string
 }
 
 export class Form extends Component<Props> {
@@ -38,11 +54,32 @@ export class Form extends Component<Props> {
   public static Box = FormBox
 
   public render() {
-    const {children, style, testID, id} = this.props
+    const {
+      children,
+      style,
+      testID,
+      id,
+      action,
+      acceptCharset,
+      autoComplete,
+      encType,
+      method,
+      name,
+      noValidate,
+      target,
+    } = this.props
 
     return (
       <form
+        acceptCharset={acceptCharset}
+        action={action}
+        autoComplete={autoComplete}
+        encType={encType}
+        method={method}
+        name={name}
+        noValidate={noValidate}
         style={style}
+        target={target}
         className={this.formWrapperClass}
         onSubmit={this.handleSubmit}
         data-testid={testID}
