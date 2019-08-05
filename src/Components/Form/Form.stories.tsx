@@ -4,8 +4,16 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, text, boolean, color} from '@storybook/addon-knobs'
+import {
+  withKnobs,
+  text,
+  boolean,
+  color,
+  select,
+  number,
+} from '@storybook/addon-knobs'
 import {jsxDecorator} from 'storybook-addon-jsx'
+import {mapEnumKeys} from '../../Utils/storybook'
 
 // Components
 import {Form} from './Form'
@@ -22,6 +30,12 @@ import {Button} from '../Button/Composed/Button'
 import {Input} from '../Inputs/Input'
 import {ComponentSpacer} from '../ComponentSpacer/ComponentSpacer'
 import {SlideToggle} from '../SlideToggle/SlideToggle'
+import {Panel} from '../Panel/Panel'
+import {PanelBody} from '../Panel/PanelBody'
+import {TextBlock} from '../TextBlock/TextBlock'
+import {DismissButton} from '../Button/Composed/DismissButton'
+import {ComponentSpacerFlexChild} from '../ComponentSpacer/ComponentSpacerFlexChild'
+import {SelectDropdown} from '../Dropdowns/Composed/SelectDropdown'
 
 // Types
 import {
@@ -31,10 +45,13 @@ import {
   ComponentStatus,
   FlexDirection,
   AlignItems,
+  InputType,
+  InfluxColors,
 } from '../../Types'
 
 // Notes
 import FormReadme from './Form.md'
+import NaturalLanguageFormReadme from './NaturalLanguageForm.md'
 
 const formStories = storiesOf('Components|Forms/Standard', module)
   .addDecorator(withKnobs)
@@ -343,6 +360,180 @@ formExampleStories.add(
   {
     readme: {
       content: marked(FormReadme),
+    },
+  }
+)
+
+formExampleStories.add(
+  'Natural Language Form',
+  () => (
+    <div className="story--example">
+      <div style={{width: `${number('Parent width (px)', 500)}px`}}>
+        <Panel
+          size={
+            ComponentSize[
+              select('Panel: size', mapEnumKeys(ComponentSize), 'Small')
+            ]
+          }
+        >
+          <DismissButton onClick={() => {}} color={ComponentColor.Danger} />
+          <PanelBody>
+            <ComponentSpacer
+              direction={FlexDirection.Column}
+              margin={
+                ComponentSize[
+                  select('margin', mapEnumKeys(ComponentSize), 'Small')
+                ]
+              }
+            >
+              <ComponentSpacer
+                stretchToFitWidth={true}
+                direction={FlexDirection.Row}
+                margin={
+                  ComponentSize[
+                    select('margin', mapEnumKeys(ComponentSize), 'Small')
+                  ]
+                }
+              >
+                <TextBlock
+                  size={
+                    ComponentSize[
+                      select(
+                        'TextBlock, Input, Dropdown: size',
+                        mapEnumKeys(ComponentSize),
+                        'Small'
+                      )
+                    ]
+                  }
+                  text="When"
+                />
+                <ComponentSpacerFlexChild grow={1}>
+                  <SelectDropdown
+                    options={['any value', 'all values']}
+                    selectedOption="any value"
+                    onSelect={() => {}}
+                    buttonSize={
+                      ComponentSize[
+                        select(
+                          'TextBlock, Input, Dropdown: size',
+                          mapEnumKeys(ComponentSize),
+                          'Small'
+                        )
+                      ]
+                    }
+                  />
+                </ComponentSpacerFlexChild>
+                <ComponentSpacerFlexChild grow={2}>
+                  <SelectDropdown
+                    options={[
+                      'is above threshold',
+                      'is below threshold',
+                      'is inside range',
+                      'is outside range',
+                    ]}
+                    selectedOption="is inside range"
+                    onSelect={() => {}}
+                    buttonSize={
+                      ComponentSize[
+                        select(
+                          'TextBlock, Input, Dropdown: size',
+                          mapEnumKeys(ComponentSize),
+                          'Small'
+                        )
+                      ]
+                    }
+                  />
+                </ComponentSpacerFlexChild>
+              </ComponentSpacer>
+              <ComponentSpacer
+                stretchToFitWidth={true}
+                direction={FlexDirection.Row}
+                margin={
+                  ComponentSize[
+                    select('margin', mapEnumKeys(ComponentSize), 'Small')
+                  ]
+                }
+              >
+                <ComponentSpacerFlexChild>
+                  <Input
+                    type={InputType.Number}
+                    value="90"
+                    size={
+                      ComponentSize[
+                        select(
+                          'TextBlock, Input, Dropdown: size',
+                          mapEnumKeys(ComponentSize),
+                          'Small'
+                        )
+                      ]
+                    }
+                  />
+                </ComponentSpacerFlexChild>
+                <TextBlock
+                  size={
+                    ComponentSize[
+                      select(
+                        'TextBlock, Input, Dropdown: size',
+                        mapEnumKeys(ComponentSize),
+                        'Small'
+                      )
+                    ]
+                  }
+                  text="to"
+                />
+                <ComponentSpacerFlexChild>
+                  <Input
+                    type={InputType.Number}
+                    value="100"
+                    size={
+                      ComponentSize[
+                        select(
+                          'TextBlock, Input, Dropdown: size',
+                          mapEnumKeys(ComponentSize),
+                          'Small'
+                        )
+                      ]
+                    }
+                  />
+                </ComponentSpacerFlexChild>
+                <TextBlock
+                  size={
+                    ComponentSize[
+                      select(
+                        'TextBlock, Input, Dropdown: size',
+                        mapEnumKeys(ComponentSize),
+                        'Small'
+                      )
+                    ]
+                  }
+                  text="set status to"
+                />
+                <TextBlock
+                  size={
+                    ComponentSize[
+                      select(
+                        'TextBlock, Input, Dropdown: size',
+                        mapEnumKeys(ComponentSize),
+                        'Small'
+                      )
+                    ]
+                  }
+                  text={text('Status Level: text', 'WARN')}
+                  backgroundColor={color(
+                    'Status Level: backgroundColor',
+                    `${InfluxColors.Pineapple}`
+                  )}
+                />
+              </ComponentSpacer>
+            </ComponentSpacer>
+          </PanelBody>
+        </Panel>
+      </div>
+    </div>
+  ),
+  {
+    readme: {
+      content: marked(NaturalLanguageFormReadme),
     },
   }
 )
