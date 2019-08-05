@@ -2,6 +2,9 @@
 import React, {Component, CSSProperties} from 'react'
 import classnames from 'classnames'
 
+// Components
+import {ComponentSpacerFlexChild} from './ComponentSpacerFlexChild'
+
 // Types
 import {
   FlexDirection,
@@ -33,6 +36,8 @@ interface Props extends StandardProps {
 
 export class ComponentSpacer extends Component<Props> {
   public static readonly displayName = 'ComponentSpacer'
+
+  public static FlexChild = ComponentSpacerFlexChild
 
   public static defaultProps = {
     justifyContent: JustifyContent.FlexStart,
