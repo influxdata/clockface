@@ -1,6 +1,7 @@
 import './Styles/shared.scss'
 
 export * from './Components/Alerts/Alert'
+export * from './Components/TextBlock/TextBlock'
 export * from './Components/Button/Base/ButtonBase'
 export * from './Components/Button/Composed/Button'
 export * from './Components/Button/Composed/SquareButton'
