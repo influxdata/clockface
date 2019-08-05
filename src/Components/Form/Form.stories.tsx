@@ -36,7 +36,7 @@ import {
 // Notes
 import FormReadme from './Form.md'
 
-const formStories = storiesOf('Components|Forms/Family', module)
+const formStories = storiesOf('Components|Forms/Standard', module)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
