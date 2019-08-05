@@ -32,7 +32,7 @@ datePickerComposedStories.add(
     <div className="story--example">
       <DateRangePicker
         timeRange={{
-          Lower: '',
+          lower: '',
         }}
         onSetTimeRange={() => {}}
       />
