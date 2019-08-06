@@ -371,3 +371,15 @@ export enum PopoverType {
   Solid = 'solid',
   Outline = 'outline',
 }
+
+export enum EncType {
+  Application = 'application/x-www-form-urlencoded',
+  Multipart = 'multipart/form-data',
+  Text = 'text/plain',
+}
+
+export enum Method {
+  Post = 'post',
+  Get = 'get',
+  Dialog = 'dialog',
+}
