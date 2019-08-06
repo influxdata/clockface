@@ -10,7 +10,7 @@ import {mapEnumKeys} from '../../Utils/storybook'
 
 // Components
 import {Popover} from './Popover'
-import {PopoverDismissButton} from './PopoverDismissButton'
+import {DismissButton} from '../Button/Composed/DismissButton'
 
 // Types
 import {
@@ -44,7 +44,7 @@ tooltipStories.add(
             }}
           >
             PopoverContents
-            <PopoverDismissButton onClick={onHide} />
+            <DismissButton onClick={onHide} />
           </div>
         )}
         distanceFromTrigger={number('distanceFromTrigger', 4)}

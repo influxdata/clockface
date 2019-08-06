@@ -3,9 +3,6 @@ import React, {Component, CSSProperties} from 'react'
 import chroma from 'chroma-js'
 import classnames from 'classnames'
 
-// Components
-import {NaturalLanguageElement} from '../NaturalLanguage/NaturalLanguageElement'
-
 // Types
 import {StandardProps, InfluxColors, ComponentSize} from '../../Types'
 
@@ -38,7 +35,6 @@ export class TextBlock extends Component<Props> {
     const {testID, text, id} = this.props
 
     return (
-      <NaturalLanguageElement sizeProportion={0}>
         <div
           className={this.className}
           data-testid={testID}
@@ -47,7 +43,6 @@ export class TextBlock extends Component<Props> {
         >
           {text}
         </div>
-      </NaturalLanguageElement>
     )
   }
 
