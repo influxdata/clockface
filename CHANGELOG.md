@@ -2,6 +2,7 @@
 
 ### 0.0.22 (Unreleased)
 
+- [#208](https://github.com/influxdata/clockface/pull/208): Fix `TextArea` onChange not returning event
 - [#207](https://github.com/influxdata/clockface/pull/207): Introduce `TextBlock`, `DismissButton`, and `FlexChild` components
 - [#206](https://github.com/influxdata/clockface/pull/206): Enhance `Form` component with missing attributes
 - [#204](https://github.com/influxdata/clockface/pull/204): Introduce `ConfirmationButton` composed component
