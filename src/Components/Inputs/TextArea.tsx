@@ -45,7 +45,7 @@ interface Props extends StandardProps {
   onKeyDown?: (e: KeyboardEvent<HTMLTextAreaElement>) => void
   /** Allows or disallows browser autocomplete functionality */
   autocomplete: AutoComplete
-  /** Whether or not the input recieves autofocus when mounted */
+  /** Whether or not the input receives autofocus when mounted */
   autoFocus: boolean
   /** Associates the text area with a form even if outside the form */
   form: string

@@ -68,7 +68,7 @@ interface Props extends StandardProps {
   size: ComponentSize
   /** Input status state */
   status: ComponentStatus
-  /** Whether or not the input recieves autofocus when mounted */
+  /** Whether or not the input receives autofocus when mounted */
   autoFocus: boolean
   /** Allows or disallows browser spellcheck functionality */
   spellCheck: boolean
