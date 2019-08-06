@@ -12,6 +12,7 @@ import {mapEnumKeys} from '../../Utils/storybook'
 import {Button} from './Composed/Button'
 import {SquareButton} from './Composed/SquareButton'
 import {ConfirmationButton} from './Composed/ConfirmationButton'
+import {DismissButton} from './Composed/DismissButton'
 import {ButtonBase} from './Base/ButtonBase'
 
 // Types
@@ -30,6 +31,7 @@ import ButtonBaseReadme from './Base/ButtonBase.md'
 import ButtonReadme from './Composed/Button.md'
 import SquareButtonReadme from './Composed/SquareButton.md'
 import ConfirmationButtonReadme from './Composed/ConfirmationButton.md'
+import DismissButtonReadme from './Composed/DismissButton.md'
 
 const buttonBaseStories = storiesOf('Components|Buttons/Base', module)
   .addDecorator(withKnobs)
@@ -165,6 +167,46 @@ buttonComposedStories.add(
   {
     readme: {
       content: marked(ConfirmationButtonReadme),
+    },
+  }
+)
+
+buttonComposedStories.add(
+  'DismissButton',
+  () => (
+    <div className="story--example">
+      <div
+        style={{
+          width: '200px',
+          height: '100px',
+          position: 'relative',
+          backgroundColor: '#292933',
+        }}
+      >
+        <DismissButton
+          onClick={() => alert('Clicked!')}
+          color={
+            ComponentColor[
+              select('color', mapEnumKeys(ComponentColor), 'Danger')
+            ]
+          }
+          size={
+            ComponentSize[
+              select('size', mapEnumKeys(ComponentSize), 'ExtraSmall')
+            ]
+          }
+          status={
+            ComponentStatus[
+              select('status', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
+        />
+      </div>
+    </div>
+  ),
+  {
+    readme: {
+      content: marked(DismissButtonReadme),
     },
   }
 )

@@ -2,6 +2,7 @@
 
 ### 0.0.22 (Unreleased)
 
+- [#207](https://github.com/influxdata/clockface/pull/207): Introduce `TextBlock`, `DismissButton`, and `FlexChild` components
 - [#206](https://github.com/influxdata/clockface/pull/206): Enhance `Form` component with missing attributes
 - [#204](https://github.com/influxdata/clockface/pull/204): Introduce `ConfirmationButton` composed component
 - [#202](https://github.com/influxdata/clockface/pull/202): Introduce standardized `Popover` component
