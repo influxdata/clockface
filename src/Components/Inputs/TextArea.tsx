@@ -32,7 +32,7 @@ interface Props extends StandardProps {
   /** Input status state */
   status?: ComponentStatus
   /** Function to be called on field value change */
-  onChange?: (s: string) => void
+  onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void
   /** Function to be called on focus loss */
   onBlur?: (e?: ChangeEvent<HTMLTextAreaElement>) => void
   /** Function to be called on focus gain */
@@ -94,6 +94,7 @@ export class TextArea extends Component<Props> {
 
   public render() {
     const {
+      onChange,
       autocomplete,
       autoFocus,
       cols,
@@ -142,20 +143,12 @@ export class TextArea extends Component<Props> {
           onKeyPress={onKeyPress}
           onKeyUp={onKeyUp}
           onKeyDown={onKeyDown}
-          onChange={this.handleChange}
+          onChange={onChange}
           data-testid={testID}
           id={id}
         />
       </div>
     )
-  }
-
-  private handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    const {onChange} = this.props
-
-    if (onChange) {
-      onChange(e.target.value)
-    }
   }
 
   private get className(): string {
