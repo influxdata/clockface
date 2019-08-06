@@ -35,14 +35,14 @@ export class TextBlock extends Component<Props> {
     const {testID, text, id} = this.props
 
     return (
-        <div
-          className={this.className}
-          data-testid={testID}
-          id={id}
-          style={this.style}
-        >
-          {text}
-        </div>
+      <div
+        className={this.className}
+        data-testid={testID}
+        id={id}
+        style={this.style}
+      >
+        {text}
+      </div>
     )
   }
 
