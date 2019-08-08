@@ -1,6 +1,10 @@
 # Changelog
 
-### 0.0.24 (Unreleased)
+### 0.0.25(Unreleased)
+
+-
+
+### 0.0.24
 
 - [#211](https://github.com/influxdata/clockface/pull/211): Ensure `ConfirmationButton` is exported
 
