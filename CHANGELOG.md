@@ -1,6 +1,14 @@
 # Changelog
 
-### 0.0.22 (Unreleased)
+### 0.0.24 (Unreleased)
+
+- [#211](https://github.com/influxdata/clockface/pull/211): Ensure `ConfirmationButton` is exported
+
+### 0.0.23
+
+- ¯\_(ツ)_/¯
+
+### 0.0.22
 
 - [#208](https://github.com/influxdata/clockface/pull/208): Fix `TextArea` onChange not returning event
 - [#207](https://github.com/influxdata/clockface/pull/207): Introduce `TextBlock`, `DismissButton`, and `FlexChild` components
