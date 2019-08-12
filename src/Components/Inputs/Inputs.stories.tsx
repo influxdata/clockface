@@ -18,6 +18,7 @@ import {jsxDecorator} from 'storybook-addon-jsx'
 // Components
 import {Input} from './Input'
 import {AutoInput} from './AutoInput'
+import {RangeSlider} from './RangeSlider'
 import {TextArea} from './TextArea'
 import {SlideToggle} from '../SlideToggle/SlideToggle'
 
@@ -38,6 +39,7 @@ import {FlexBox} from '../FlexBox/FlexBox'
 // Notes
 import InputReadme from './Input.md'
 import AutoInputReadme from './AutoInput.md'
+import RangeSliderReadme from './RangeSlider.md'
 
 const inputsBaseStories = storiesOf('Components|Inputs/Base', module)
   .addDecorator(withKnobs)
@@ -326,6 +328,27 @@ inputsComposedStories.add(
   {
     readme: {
       content: marked(AutoInputReadme),
+    },
+  }
+)
+
+inputsComposedStories.add(
+  'Range Slider',
+  () => (
+    <div className="story--example">
+      <RangeSlider
+        size={
+          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+        }
+        onChange={e => {
+          alert(`Value is ${e.target.value}`)
+        }}
+      />
+    </div>
+  ),
+  {
+    readme: {
+      content: marked(RangeSliderReadme),
     },
   }
 )

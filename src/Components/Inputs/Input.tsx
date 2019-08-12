@@ -24,10 +24,12 @@ import {
 } from '../../Types'
 
 interface Props extends StandardProps {
-  /** Minimum value for number type */
+  /** Minimum value for number & range types */
   min?: number
-  /** Maximum value for number type */
+  /** Maximum value for number & range types */
   max?: number
+  /** Stepping interval granularity for range type */
+  step?: number
   /** Determines whether checkbox is checked */
   checked?: boolean
   /** Function to be called on field value change */
@@ -97,6 +99,7 @@ export class Input extends Component<Props> {
       id,
       min,
       max,
+      step,
       checked,
       name,
       type,
@@ -122,6 +125,7 @@ export class Input extends Component<Props> {
           id={id}
           min={min}
           max={max}
+          step={step}
           checked={checked}
           title={this.title}
           autoComplete={autocomplete}

@@ -1,0 +1,142 @@
+@import '../../Styles/modules';
+
+$slider-handle: $c-pool;
+$slider-handle-focus: $c-laser;
+$slider-handle-disabled: $g4-onyx;
+$slider-handle-height: $cf-marg-c;
+
+$slider-track: $g5-pepper;
+$slider-track-disabled: $g3-castle;
+$slider-track-height: $cf-marg-a;
+
+$slider-focus-border: $c-pool;
+$slider-hover: $g17-whisper;
+
+.cf-input input[type='range'] {
+  -webkit-appearance: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-webkit-slider-runnable-track {
+    height: $slider-track-height;
+    background: $slider-track;
+    border: none;
+    border-radius: $cf-radius;
+
+    &:focus {
+      background: $slider-focus-border;
+    }
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: $slider-handle-height;
+    width: $slider-handle-height;
+    border-radius: $cf-radius;
+    background: $slider-handle;
+    margin-top: -(($slider-handle-height/2) - ($slider-track-height/2));
+  }
+
+  &::-moz-range-track {
+    height: $slider-track-height;
+    background: $slider-track;
+    border: none;
+    border-radius: $cf-radius;
+  }
+
+  &::-moz-range-thumb {
+    border: none;
+    height: $slider-handle-height;
+    width: $slider-handle-height;
+    border-radius: $cf-radius;
+    background: $slider-handle;
+  }
+
+  &::-ms-track {
+    height: $slider-track-height;
+    background: transparent;
+    border-color: transparent;
+    border-width: 6px 0;
+    color: transparent;
+  }
+
+  &::-ms-fill-lower {
+    background: $g9-mountain;
+    border-radius: $cf-radius;
+
+    &:focus {
+      background: $g17-whisper;
+    }
+  }
+
+  &::-ms-fill-upper {
+    background: $slider-track;
+    border-radius: $cf-radius;
+
+    &focus {
+      background: $slider-focus-border;
+    }
+  }
+
+  &::-ms-thumb {
+    border: none;
+    height: $slider-handle-height;
+    width: $slider-handle-height;
+    border-radius: $cf-radius;
+    background: $slider-handle;
+  }
+}
+
+/*
+  Size Modifiers
+  ------------------------------------------------------------------------------
+*/
+@mixin sliderSizeModifier($fontSize, $height) {
+  $slider-handle-mod-height: $height + 10px;
+
+  input[type='range'] {
+    &::-webkit-slider-runnable-track {
+      height: $height;
+    }
+
+    &::-webkit-slider-thumb {
+      height: $slider-handle-mod-height;
+      width: $slider-handle-mod-height;
+      margin-top: -(($slider-handle-mod-height/2) - ($height/2));
+    }
+
+    &::-moz-range-track {
+      height: $height;
+    }
+
+    &::-moz-range-thumb {
+      height: $slider-handle-mod-height;
+      width: $slider-handle-mod-height;
+    }
+
+    &::-ms-track {
+      height: $height;
+    }
+
+    &::-ms-thumb {
+      height: $slider-handle-mod-height;
+      width: $slider-handle-mod-height;
+    }
+  }
+}
+
+.cf-input-xs {
+  @include sliderSizeModifier($form-xs-font, $cf-marg-a);
+}
+.cf-input-sm {
+  @include sliderSizeModifier($form-sm-font, ($cf-marg-a + 2));
+}
+.cf-input-md {
+  @include sliderSizeModifier($form-md-font, $cf-marg-b);
+}
+.cf-input-lg {
+  @include sliderSizeModifier($form-lg-font, ($cf-marg-b + 2));
+}
