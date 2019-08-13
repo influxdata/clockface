@@ -77,6 +77,7 @@ export class Button extends Component<Props> {
       text,
       type,
       icon,
+      style,
       size,
       id,
     } = this.props
@@ -99,6 +100,7 @@ export class Button extends Component<Props> {
         shape={shape}
         type={type}
         size={size}
+        style={style}
         id={id}
       >
         {this.iconAndText}
