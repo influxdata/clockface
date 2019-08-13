@@ -85,7 +85,7 @@ export class Overlay extends Component<Props, State> {
   }
 
   private get childContainer(): JSX.Element {
-    const {children, testID} = this.props
+    const {children, testID, style} = this.props
     const {showChildren} = this.state
 
     if (showChildren) {
@@ -93,6 +93,7 @@ export class Overlay extends Component<Props, State> {
         <div
           className="cf-overlay--transition"
           data-testid={`${testID}--children`}
+          style={style}
         >
           {children}
         </div>
@@ -103,6 +104,7 @@ export class Overlay extends Component<Props, State> {
       <div
         className="cf-overlay--transition"
         data-testid={`${testID}--children`}
+        style={style}
       />
     )
   }

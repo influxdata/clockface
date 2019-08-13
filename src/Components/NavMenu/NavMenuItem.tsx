@@ -30,6 +30,7 @@ export class NavMenuItem extends PureComponent<Props> {
       titleLink,
       iconLink,
       id,
+      style,
     } = this.props
 
     return (
@@ -40,6 +41,7 @@ export class NavMenuItem extends PureComponent<Props> {
         })}
         data-testid={testID}
         id={id}
+        style={style}
       >
         {iconLink('cf-nav--item-icon')}
         <div className="cf-nav--item-menu">

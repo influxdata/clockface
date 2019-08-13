@@ -255,16 +255,16 @@ export class Input extends Component<Props> {
   }
 
   private get containerStyle(): CSSProperties {
-    const {widthPixels, type} = this.props
+    const {widthPixels, type, style} = this.props
 
     if (widthPixels) {
-      return {width: `${widthPixels}px`}
+      return {...style, width: `${widthPixels}px`}
     }
 
     if (type === InputType.Checkbox) {
-      return {}
+      return {...style}
     }
 
-    return {width: '100%'}
+    return {...style, width: '100%'}
   }
 }

@@ -61,7 +61,7 @@ export class DraggableResizer extends Component<Props, State> {
   }
 
   public render() {
-    const {testID, id} = this.props
+    const {testID, id, style} = this.props
 
     return (
       <div
@@ -69,6 +69,7 @@ export class DraggableResizer extends Component<Props, State> {
         ref={this.containerRef}
         data-testid={testID}
         id={id}
+        style={style}
       >
         {this.children}
       </div>

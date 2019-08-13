@@ -24,14 +24,22 @@ export class OverlayHeader extends PureComponent<Props> {
   }
 
   public render() {
-    const {title, onDismiss, children, testID, className, id} = this.props
+    const {
+      title,
+      onDismiss,
+      children,
+      testID,
+      className,
+      id,
+      style,
+    } = this.props
 
     const classname = classnames('cf-overlay--header', {
       [`${className}`]: className,
     })
 
     return (
-      <div className={classname} data-testid={testID} id={id}>
+      <div className={classname} data-testid={testID} id={id} style={style}>
         <div className="cf-overlay--title">{title}</div>
         {onDismiss && (
           <button

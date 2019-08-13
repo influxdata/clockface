@@ -26,10 +26,15 @@ export class PanelHeader extends Component<Props> {
   }
 
   public render() {
-    const {children, title, testID, id} = this.props
+    const {children, title, testID, id, style} = this.props
 
     return (
-      <div className={this.className} data-testid={testID} id={id}>
+      <div
+        className={this.className}
+        data-testid={testID}
+        id={id}
+        style={style}
+      >
         <div className="cf-panel--title">{title}</div>
         <div className="cf-panel--controls">
           <ComponentSpacer

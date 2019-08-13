@@ -70,10 +70,16 @@ export class ColorPicker extends Component<Props, State> {
       colors,
       swatchesPerRow,
       id,
+      style,
     } = this.props
 
     return (
-      <div className={this.className} data-testid={testID} id={id}>
+      <div
+        className={this.className}
+        data-testid={testID}
+        id={id}
+        style={style}
+      >
         <div className="cf-color-picker--swatches">
           {colors &&
             colors.map((color, i) => (

@@ -156,17 +156,17 @@ export class TextArea extends Component<Props> {
 
     return classnames('cf-text-area--container', {
       [`cf-input-${size}`]: size,
-      [`className`]: className,
+      [`${className}`]: className,
     })
   }
 
   private get containerStyle(): CSSProperties {
-    const {widthPixels} = this.props
+    const {widthPixels, style} = this.props
 
     if (widthPixels) {
-      return {width: `${widthPixels}px`}
+      return {...style, width: `${widthPixels}px`}
     }
 
-    return {width: '100%'}
+    return {...style, width: '100%'}
   }
 }

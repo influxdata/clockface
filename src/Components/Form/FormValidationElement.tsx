@@ -69,10 +69,15 @@ export class FormValidationElement extends Component<Props, State> {
   }
 
   public render() {
-    const {testID, id} = this.props
+    const {testID, id, style} = this.props
 
     return (
-      <div className={this.className} data-testid={testID} id={id}>
+      <div
+        className={this.className}
+        data-testid={testID}
+        id={id}
+        style={style}
+      >
         {this.label}
         {this.children}
         {this.errorMessage}

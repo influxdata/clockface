@@ -31,8 +31,6 @@ interface Props extends StandardProps {
   name?: string
   /** Enable or disable form validation */
   noValidate?: boolean
-  /** Inline CSS styles */
-  style?: React.CSSProperties
   /** Function to be called on form submit */
   onSubmit?: (e: React.FormEvent) => void
   /** Context name or keyword */

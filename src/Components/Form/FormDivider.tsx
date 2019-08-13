@@ -40,14 +40,15 @@ export class FormDivider extends Component<Props> {
   }
 
   private get style(): CSSProperties | undefined {
-    const {lineColor} = this.props
+    const {lineColor, style} = this.props
 
     if (lineColor) {
       return {
+        ...style,
         backgroundColor: lineColor,
       }
     }
 
-    return
+    return style
   }
 }

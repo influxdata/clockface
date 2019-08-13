@@ -22,10 +22,15 @@ export class DropdownItemEmpty extends Component<Props> {
   }
 
   public render(): JSX.Element {
-    const {testID, id} = this.props
+    const {testID, id, style} = this.props
 
     return (
-      <div className={this.className} data-testid={testID} id={id}>
+      <div
+        className={this.className}
+        data-testid={testID}
+        id={id}
+        style={style}
+      >
         {this.childElements}
       </div>
     )

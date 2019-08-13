@@ -19,10 +19,10 @@ export class IndexListRow extends Component<Props> {
   }
 
   public render() {
-    const {children, testID, id} = this.props
+    const {children, testID, id, style} = this.props
 
     return (
-      <tr data-testid={testID} className={this.className} id={id}>
+      <tr data-testid={testID} className={this.className} id={id} style={style}>
         {children}
       </tr>
     )

@@ -40,7 +40,7 @@ export class SlideToggle extends Component<Props> {
   }
 
   public render() {
-    const {tooltipText, testID, id} = this.props
+    const {tooltipText, testID, id, style} = this.props
 
     return (
       <div
@@ -49,6 +49,7 @@ export class SlideToggle extends Component<Props> {
         title={tooltipText}
         data-testid={testID}
         id={id}
+        style={style}
       >
         <div className="cf-slide-toggle--knob" />
       </div>

@@ -11,8 +11,6 @@ import './DapperScrollbars.scss'
 import {StandardProps} from '../../Types'
 
 interface Props extends StandardProps {
-  /** Inline CSS styles */
-  style?: CSSProperties
   /** Toggle display of tracks when no scrolling is necessary */
   removeTracksWhenNotUsed: boolean
   /** Toggle display of vertical track when no scrolling is necessary */

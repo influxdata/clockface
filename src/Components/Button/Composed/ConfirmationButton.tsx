@@ -65,6 +65,7 @@ export class ConfirmationButton extends Component<Props> {
       status,
       color,
       shape,
+      style,
       text,
       icon,
       size,
@@ -91,6 +92,7 @@ export class ConfirmationButton extends Component<Props> {
         )}
         testID={`${testID}--popover`}
         disabled={this.isDisabled}
+        style={style}
       >
         <Button
           placeIconAfterText={placeIconAfterText}

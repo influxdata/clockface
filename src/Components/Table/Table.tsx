@@ -66,9 +66,9 @@ export class Table extends Component<Props> {
   }
 
   private get style(): CSSProperties {
-    const {width} = this.props
+    const {width, style} = this.props
 
-    return {width}
+    return {...style, width}
   }
 
   private get className(): string {

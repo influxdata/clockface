@@ -65,6 +65,7 @@ export class MultiSelectDropdown extends Component<Props> {
   public render() {
     const {
       id,
+      style,
       dropUp,
       testID,
       menuTheme,
@@ -82,6 +83,7 @@ export class MultiSelectDropdown extends Component<Props> {
         id={id}
         testID={testID}
         className={className}
+        style={style}
         widthPixels={widthPixels}
         dropUp={dropUp}
         button={(active, onClick) => (

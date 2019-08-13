@@ -62,6 +62,7 @@ export class SelectDropdown extends Component<Props> {
   public render() {
     const {
       id,
+      style,
       dropUp,
       testID,
       menuTheme,
@@ -78,6 +79,7 @@ export class SelectDropdown extends Component<Props> {
     return (
       <Dropdown
         id={id}
+        style={style}
         testID={testID}
         widthPixels={widthPixels}
         className={className}

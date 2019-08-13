@@ -45,12 +45,12 @@ export class DraggableResizerPanel extends Component<Props> {
   }
 
   private get style(): CSSProperties | undefined {
-    const {sizePercent, minSizePixels} = this.props
+    const {sizePercent, minSizePixels, style} = this.props
 
     if (sizePercent) {
-      return {flex: `${sizePercent} 0 ${minSizePixels}px`}
+      return {...style, flex: `${sizePercent} 0 ${minSizePixels}px`}
     }
 
-    return
+    return style
   }
 }

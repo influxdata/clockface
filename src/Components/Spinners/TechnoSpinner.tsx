@@ -43,13 +43,13 @@ export class TechnoSpinner extends Component<Props> {
   }
 
   private get style(): CSSProperties {
-    const {diameterPixels} = this.props
+    const {diameterPixels, style} = this.props
 
     const borderWidth = `${this.strokeWidth}px`
     const width = `${diameterPixels}px`
     const height = `${diameterPixels}px`
 
-    return {width, height, borderWidth}
+    return {...style, width, height, borderWidth}
   }
 
   private get strokeWidth(): number {
