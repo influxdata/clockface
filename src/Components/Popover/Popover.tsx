@@ -92,11 +92,16 @@ export class Popover extends Component<Props, State> {
   }
 
   public render() {
-    const {testID, children, id} = this.props
+    const {testID, children, id, style} = this.props
 
     return (
       <ClickOutside onClickOutside={this.handleClickOutside}>
-        <div className={this.className} data-testid={testID} id={id}>
+        <div
+          className={this.className}
+          data-testid={testID}
+          id={id}
+          style={style}
+        >
           <div
             className="cf-popover--trigger"
             ref={this.triggerRef}
