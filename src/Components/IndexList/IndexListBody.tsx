@@ -19,11 +19,16 @@ export class IndexListBody extends Component<Props> {
   }
 
   public render() {
-    const {children, columnCount, emptyState, testID, id} = this.props
+    const {children, columnCount, emptyState, testID, id, style} = this.props
 
     if (React.Children.count(children)) {
       return (
-        <tbody className={this.className} data-testid={testID} id={id}>
+        <tbody
+          className={this.className}
+          data-testid={testID}
+          id={id}
+          style={style}
+        >
           {children}
         </tbody>
       )

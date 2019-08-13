@@ -32,12 +32,12 @@ export class IndexListHeaderCell extends Component<Props> {
   }
 
   public render() {
-    const {columnName, width, testID, id} = this.props
+    const {columnName, width, testID, id, style} = this.props
 
     return (
       <th
         className={this.className}
-        style={{width}}
+        style={{...style, width}}
         onClick={this.handleClick}
         data-testid={testID}
         id={id}

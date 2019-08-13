@@ -14,10 +14,15 @@ export class IndexListHeader extends Component<Props> {
   }
 
   public render() {
-    const {children, testID, id} = this.props
+    const {children, testID, id, style} = this.props
 
     return (
-      <thead className={this.className} data-testid={testID} id={id}>
+      <thead
+        className={this.className}
+        data-testid={testID}
+        id={id}
+        style={style}
+      >
         <tr>{children}</tr>
       </thead>
     )
