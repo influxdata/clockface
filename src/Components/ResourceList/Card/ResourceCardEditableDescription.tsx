@@ -45,12 +45,17 @@ export class ResourceCardEditableDescription extends Component<Props, State> {
   }
 
   public render() {
-    const {description, testID, id} = this.props
+    const {description, testID, id, style} = this.props
     const {isEditing} = this.state
 
     if (isEditing) {
       return (
-        <div className={this.className} data-testid={testID} id={id}>
+        <div
+          className={this.className}
+          data-testid={testID}
+          id={id}
+          style={style}
+        >
           <ClickOutside onClickOutside={this.handleStopEditing}>
             {this.input}
           </ClickOutside>

@@ -18,10 +18,15 @@ export class ResourceListHeader extends PureComponent<Props> {
   }
 
   public render() {
-    const {children, testID, id} = this.props
+    const {children, testID, id, style} = this.props
 
     return (
-      <div className={this.className} data-testid={testID} id={id}>
+      <div
+        className={this.className}
+        data-testid={testID}
+        id={id}
+        style={style}
+      >
         {this.filter}
         <div className="resource-list--sorting">{children}</div>
       </div>

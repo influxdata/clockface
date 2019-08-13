@@ -21,10 +21,15 @@ export class ResourceCardDescription extends Component<Props> {
   }
 
   public render() {
-    const {description, testID, id} = this.props
+    const {description, testID, id, style} = this.props
 
     return (
-      <div className={this.className} data-testid={testID} id={id}>
+      <div
+        className={this.className}
+        data-testid={testID}
+        id={id}
+        style={style}
+      >
         <div className={this.previewClassName}>
           {description || 'No description'}
         </div>
