@@ -1,4 +1,5 @@
 import React, {Component, ChangeEvent} from 'react'
+import classnames from 'classnames'
 
 // Components
 import {Input} from './Input'
@@ -36,9 +37,9 @@ interface Props extends StandardProps {
   /** Size of handle and track  */
   size?: ComponentSize
   /** Color of slider handle */
-  handleColor: ComponentColor
+  color: ComponentColor
   /** Color of slider track */
-  trackColor: InfluxColors
+  trackColor: ComponentColor
   /** Vertical or Horizontal */
   orientation: Orientation
 }
@@ -46,7 +47,7 @@ interface Props extends StandardProps {
 export class RangeSlider extends Component<Props> {
   public static defaultProps = {
     testID: 'range-slider',
-    handleColor: ComponentColor.Primary,
+    color: ComponentColor.Primary,
     trackColor: InfluxColors.Pepper,
     orientation: Orientation.Horizontal,
   }
@@ -61,10 +62,12 @@ export class RangeSlider extends Component<Props> {
       autocomplete,
       status,
       size,
+      style,
       testID,
     } = this.props
     return (
       <Input
+        style={style}
         min={min}
         max={max}
         step={step}
@@ -74,8 +77,18 @@ export class RangeSlider extends Component<Props> {
         status={status}
         size={size}
         testID={testID}
+        className={this.className}
         type={InputType.Range}
       />
     )
+  }
+
+  private get className(): string {
+    const {color, status, className} = this.props
+
+    return classnames(`cf-range-slider--${color}`, {
+      'cf-range-slider--disabled': status === ComponentStatus.Disabled,
+      [`${className}`]: className,
+    })
   }
 }

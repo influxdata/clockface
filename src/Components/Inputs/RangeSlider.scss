@@ -38,6 +38,11 @@ $slider-hover: $g17-whisper;
     border-radius: $cf-radius;
     background: $slider-handle;
     margin-top: -(($slider-handle-height/2) - ($slider-track-height/2));
+
+    &:hover,
+    &:focus {
+      background: $slider-handle-focus;
+    }
   }
 
   &::-moz-range-track {
@@ -53,6 +58,11 @@ $slider-hover: $g17-whisper;
     width: $slider-handle-height;
     border-radius: $cf-radius;
     background: $slider-handle;
+
+    &:hover,
+    &:focus {
+      background: $slider-handle-focus;
+    }
   }
 
   &::-ms-track {
@@ -87,6 +97,11 @@ $slider-hover: $g17-whisper;
     width: $slider-handle-height;
     border-radius: $cf-radius;
     background: $slider-handle;
+
+    &:hover,
+    &:focus {
+      background: $slider-handle-focus;
+    }
   }
 }
 
@@ -139,4 +154,68 @@ $slider-hover: $g17-whisper;
 }
 .cf-input-lg {
   @include sliderSizeModifier($form-lg-font, ($cf-marg-b + 2));
+}
+
+/*
+  Color Modifiers
+  ------------------------------------------------------------------------------
+*/
+@mixin handleColorModifier($bg, $bgHover, $bgActive) {
+  input[type='range'] {
+    &::-webkit-slider-thumb {
+      background: $bg;
+
+      &:hover {
+        background: $bgHover;
+      }
+
+      &:focus,
+      &:active {
+        background: $bgActive;
+      }
+    }
+
+    &::-moz-range-thumb {
+      background: $bg;
+
+      &:hover {
+        background: $bgHover;
+      }
+
+      &:focus,
+      &:active {
+        background: $bgActive;
+      }
+    }
+
+    &::-ms-thumb {
+      &:hover {
+        background: $bgHover;
+      }
+
+      &:focus,
+      &:active {
+        background: $bgActive;
+      }
+    }
+  }
+}
+
+.cf-range-slider--default {
+  @include handleColorModifier($g7-graphite, $g8-storm, $g9-mountain);
+}
+.cf-range-slider--primary {
+  @include handleColorModifier($c-pool, $c-laser, $c-hydrogen);
+}
+.cf-range-slider--secondary {
+  @include handleColorModifier($c-star, $c-comet, $c-potassium);
+}
+.cf-range-slider--success {
+  @include handleColorModifier($c-rainforest, $c-honeydew, $c-wasabi);
+}
+.cf-range-slider--warning {
+  @include handleColorModifier($c-pineapple, $c-thunder, $c-daisy);
+}
+.cf-range-slider--danger {
+  @include handleColorModifier($c-curacao, $c-dreamsicle, $c-tungsten);
 }

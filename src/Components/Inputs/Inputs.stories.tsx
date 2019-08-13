@@ -340,6 +340,11 @@ inputsComposedStories.add(
         size={
           ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
         }
+        color={
+          ComponentColor[
+            select('color', mapEnumKeys(ComponentColor), 'Primary')
+          ]
+        }
         onChange={e => {
           alert(`Value is ${e.target.value}`)
         }}
