@@ -38,6 +38,6 @@ export class OverlayContainer extends PureComponent<Props> {
   private get style(): CSSProperties {
     const {maxWidth, style} = this.props
 
-    return {...style, maxWidth: `${maxWidth}px`}
+    return {maxWidth: `${maxWidth}px`, ...style}
   }
 }

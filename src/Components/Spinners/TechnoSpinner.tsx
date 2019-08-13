@@ -49,7 +49,7 @@ export class TechnoSpinner extends Component<Props> {
     const width = `${diameterPixels}px`
     const height = `${diameterPixels}px`
 
-    return {...style, width, height, borderWidth}
+    return {width, height, borderWidth, ...style}
   }
 
   private get strokeWidth(): number {

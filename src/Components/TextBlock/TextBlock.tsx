@@ -74,7 +74,7 @@ export class TextBlock extends Component<Props> {
       color = `${textColor}`
     }
 
-    return {...style, backgroundColor, color}
+    return {backgroundColor, color, ...style}
   }
 
   private get className(): string {

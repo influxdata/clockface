@@ -51,8 +51,8 @@ export class PageHeaderLeft extends Component<Props> {
     }
 
     return {
-      ...style,
       flex: `1 0 calc(50% - ${offsetPixels}px)`,
+      ...style,
     }
   }
 }
