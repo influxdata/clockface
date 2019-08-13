@@ -3,6 +3,7 @@
 ### 0.0.25 (Unreleased)
 
 - [#219](https://github.com/influxdata/clockface/pull/219): Add `style` prop to all components
+- [#219](https://github.com/influxdata/clockface/pull/219): Ensure `className` prop in `TextArea` is being implemented correctly
 
 ### 0.0.24
 
