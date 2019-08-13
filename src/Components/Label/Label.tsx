@@ -154,7 +154,7 @@ export class Label extends Component<Props, State> {
 
   private get style(): CSSProperties {
     const {isMouseOver} = this.state
-    const {color, onClick} = this.props
+    const {color, onClick, style} = this.props
 
     let backgroundColor = color
 
@@ -163,6 +163,7 @@ export class Label extends Component<Props, State> {
     }
 
     return {
+      ...style,
       backgroundColor: `${backgroundColor}`,
       color: this.textColor,
     }
