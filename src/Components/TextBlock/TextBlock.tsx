@@ -47,10 +47,10 @@ export class TextBlock extends Component<Props> {
   }
 
   private get style(): CSSProperties | undefined {
-    const {backgroundColor, textColor} = this.props
+    const {backgroundColor, textColor, style} = this.props
 
     if (!backgroundColor) {
-      return
+      return style
     }
 
     const darkContrast = chroma.contrast(
@@ -74,7 +74,7 @@ export class TextBlock extends Component<Props> {
       color = `${textColor}`
     }
 
-    return {backgroundColor, color}
+    return {...style, backgroundColor, color}
   }
 
   private get className(): string {
