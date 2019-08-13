@@ -1,5 +1,5 @@
 // Libraries
-import React, {Component, CSSProperties} from 'react'
+import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Components
