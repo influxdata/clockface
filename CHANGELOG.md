@@ -1,8 +1,8 @@
 # Changelog
 
-### 0.0.25(Unreleased)
+### 0.0.25 (Unreleased)
 
--
+- [#220](https://github.com/influxdata/clockface/pull/220): Ensure all `ConfirmationButton` elements receive a `testID` attribute
 
 ### 0.0.24
 
