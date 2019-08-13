@@ -58,6 +58,7 @@ export class DropdownButton extends Component<Props> {
       size,
       color,
       id,
+      style,
     } = this.props
     return (
       <ButtonBase
@@ -72,6 +73,7 @@ export class DropdownButton extends Component<Props> {
         color={color}
         size={size}
         id={id}
+        style={style}
       >
         {!!icon && <Icon glyph={icon} className="cf-dropdown--icon" />}
         <span className="cf-dropdown--selected">{children}</span>

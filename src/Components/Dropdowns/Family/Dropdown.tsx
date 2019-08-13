@@ -60,7 +60,7 @@ export class Dropdown extends Component<Props, State> {
   }
 
   public render() {
-    const {widthPixels, button, testID, id} = this.props
+    const {widthPixels, button, testID, id, style} = this.props
     const {expanded} = this.state
     const width = widthPixels ? `${widthPixels}px` : '100%'
 
@@ -68,7 +68,7 @@ export class Dropdown extends Component<Props, State> {
       <ClickOutside onClickOutside={this.collapseMenu}>
         <div
           className={this.className}
-          style={{width}}
+          style={{...style, width}}
           data-testid={testID}
           id={id}
         >

@@ -89,13 +89,13 @@ export class DropdownMenu extends Component<Props> {
   }
 
   private get containerStyle(): CSSProperties {
-    const {overrideWidth} = this.props
+    const {overrideWidth, style} = this.props
 
     if (overrideWidth) {
-      return {width: `${overrideWidth}px`}
+      return {...style, width: `${overrideWidth}px`}
     }
 
-    return {width: '100%'}
+    return {...style, width: '100%'}
   }
 
   private get thumbColorsFromTheme() {

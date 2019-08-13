@@ -30,7 +30,7 @@ export class DropdownItem extends Component<Props> {
   }
 
   public render(): JSX.Element {
-    const {testID, id} = this.props
+    const {testID, id, style} = this.props
 
     return (
       <div
@@ -38,6 +38,7 @@ export class DropdownItem extends Component<Props> {
         data-testid={testID}
         onClick={this.handleClick}
         id={id}
+        style={style}
       >
         {this.selectionIndicator}
         {this.childElements}

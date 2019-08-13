@@ -26,10 +26,15 @@ export class DropdownLinkItem extends Component<Props> {
   }
 
   public render(): JSX.Element {
-    const {testID, children, id} = this.props
+    const {testID, children, id, style} = this.props
 
     return (
-      <div className={this.className} data-testid={testID} id={id}>
+      <div
+        className={this.className}
+        data-testid={testID}
+        id={id}
+        style={style}
+      >
         {this.selectionIndicator}
         {children}
       </div>
