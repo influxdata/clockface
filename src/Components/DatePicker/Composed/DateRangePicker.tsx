@@ -4,7 +4,7 @@ import React, {PureComponent} from 'react'
 // Components
 import {DatePicker} from '../Base/DatePicker'
 import {Button} from '../../Button/Composed/Button'
-import {ComponentSpacer} from '../../ComponentSpacer/ComponentSpacer'
+import {FlexBox} from '../../FlexBox/FlexBox'
 
 // Types
 import {
@@ -46,8 +46,8 @@ export class DateRangePicker extends PureComponent<Props, State> {
     const {upper, lower} = this.state
 
     return (
-      <ComponentSpacer direction={FlexDirection.Column} style={style}>
-        <ComponentSpacer direction={FlexDirection.Row} data-testid={testID}>
+      <FlexBox direction={FlexDirection.Column} style={style}>
+        <FlexBox direction={FlexDirection.Row} data-testid={testID}>
           <DatePicker
             dateTime={lower}
             onSelectDate={this.handleSelectLower}
@@ -58,7 +58,7 @@ export class DateRangePicker extends PureComponent<Props, State> {
             onSelectDate={this.handleSelectUpper}
             label="Stop"
           />
-        </ComponentSpacer>
+        </FlexBox>
         <Button
           className="range-picker--submit"
           color={ComponentColor.Primary}
@@ -66,7 +66,7 @@ export class DateRangePicker extends PureComponent<Props, State> {
           onClick={this.handleSetTimeRange}
           text="Apply Time Range"
         />
-      </ComponentSpacer>
+      </FlexBox>
     )
   }
 

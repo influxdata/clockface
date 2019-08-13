@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {ComponentSpacerFlexChild} from './ComponentSpacerFlexChild'
+import {FlexBoxChild} from './FlexBoxChild'
 
 // Types
 import {
@@ -15,7 +15,7 @@ import {
 } from '../../Types'
 
 // Styles
-import './ComponentSpacer.scss'
+import './FlexBox.scss'
 
 interface Props extends StandardProps {
   /** Vertical or horizontal flex alignment */
@@ -32,17 +32,17 @@ interface Props extends StandardProps {
   stretchToFitHeight: boolean
 }
 
-export class ComponentSpacer extends Component<Props> {
-  public static readonly displayName = 'ComponentSpacer'
+export class FlexBox extends Component<Props> {
+  public static readonly displayName = 'FlexBox'
 
-  public static FlexChild = ComponentSpacerFlexChild
+  public static FlexChild = FlexBoxChild
 
   public static defaultProps = {
     justifyContent: JustifyContent.FlexStart,
     alignItems: AlignItems.Center,
     stretchToFitWidth: false,
     stretchToFitHeight: false,
-    testID: 'component-spacer',
+    testID: 'flex-box',
   }
 
   render() {
@@ -62,13 +62,13 @@ export class ComponentSpacer extends Component<Props> {
 
     return (
       <div
-        className={classnames('cf-component-spacer', {
-          [`cf-component-spacer__margin-${margin}`]: margin,
-          [`cf-component-spacer__${direction}`]: direction,
-          [`cf-component-spacer__justify-${justifyContent}`]: justifyContent,
-          [`cf-component-spacer__align-${alignItems}`]: alignItems,
-          'cf-component-spacer__stretch-w': stretchToFitWidth,
-          'cf-component-spacer__stretch-h': stretchToFitHeight,
+        className={classnames('cf-flex-box', {
+          [`cf-flex-box__margin-${margin}`]: margin,
+          [`cf-flex-box__${direction}`]: direction,
+          [`cf-flex-box__justify-${justifyContent}`]: justifyContent,
+          [`cf-flex-box__align-${alignItems}`]: alignItems,
+          'cf-flex-box__stretch-w': stretchToFitWidth,
+          'cf-flex-box__stretch-h': stretchToFitHeight,
           [`${className}`]: className,
         })}
         data-testid={testID}

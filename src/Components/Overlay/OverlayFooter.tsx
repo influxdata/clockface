@@ -3,7 +3,7 @@ import React, {PureComponent} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {ComponentSpacer} from '../ComponentSpacer/ComponentSpacer'
+import {FlexBox} from '../FlexBox/FlexBox'
 
 // Types
 import {
@@ -32,7 +32,7 @@ export class OverlayFooter extends PureComponent<Props> {
 
     return (
       <div className={classname} data-testid={testID} id={id} style={style}>
-        <ComponentSpacer
+        <FlexBox
           margin={ComponentSize.Small}
           direction={FlexDirection.Row}
           justifyContent={JustifyContent.Center}
@@ -40,7 +40,7 @@ export class OverlayFooter extends PureComponent<Props> {
           stretchToFitWidth={true}
         >
           {children}
-        </ComponentSpacer>
+        </FlexBox>
       </div>
     )
   }

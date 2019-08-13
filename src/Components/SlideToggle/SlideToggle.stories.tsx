@@ -11,7 +11,7 @@ import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {SlideToggle} from './SlideToggle'
-import {ComponentSpacer} from '../ComponentSpacer/ComponentSpacer'
+import {FlexBox} from '../FlexBox/FlexBox'
 
 // Types
 import {
@@ -103,7 +103,7 @@ slideToggleExampleStories.add(
   'SlideToggle with labels',
   () => (
     <div className="story--example">
-      <ComponentSpacer
+      <FlexBox
         direction={FlexDirection.Row}
         alignItems={AlignItems.Center}
         margin={ComponentSize.Medium}
@@ -136,7 +136,7 @@ slideToggleExampleStories.add(
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
         />
-      </ComponentSpacer>
+      </FlexBox>
     </div>
   ),
   {
@@ -151,12 +151,12 @@ slideToggleExampleStories.add(
   withState(initialState)(({store}) => (
     <div className="story--example">
       <div style={{width: '250px'}}>
-        <ComponentSpacer
+        <FlexBox
           direction={FlexDirection.Column}
           alignItems={AlignItems.Stretch}
           margin={ComponentSize.Large}
         >
-          <ComponentSpacer
+          <FlexBox
             direction={FlexDirection.Row}
             alignItems={AlignItems.Center}
             margin={ComponentSize.Medium}
@@ -176,8 +176,8 @@ slideToggleExampleStories.add(
               text="Send email notifications"
               active={store.state.optionA}
             />
-          </ComponentSpacer>
-          <ComponentSpacer
+          </FlexBox>
+          <FlexBox
             direction={FlexDirection.Row}
             alignItems={AlignItems.Center}
             margin={ComponentSize.Medium}
@@ -197,8 +197,8 @@ slideToggleExampleStories.add(
               text="Send a raven"
               active={store.state.optionB}
             />
-          </ComponentSpacer>
-          <ComponentSpacer
+          </FlexBox>
+          <FlexBox
             direction={FlexDirection.Row}
             alignItems={AlignItems.Center}
             margin={ComponentSize.Medium}
@@ -218,8 +218,8 @@ slideToggleExampleStories.add(
               text="Send an owl"
               active={store.state.optionC}
             />
-          </ComponentSpacer>
-        </ComponentSpacer>
+          </FlexBox>
+        </FlexBox>
       </div>
     </div>
   )),

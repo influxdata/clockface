@@ -44,8 +44,8 @@ export class FormDivider extends Component<Props> {
 
     if (lineColor) {
       return {
-        ...style,
         backgroundColor: lineColor,
+        ...style,
       }
     }
 

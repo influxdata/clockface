@@ -9,8 +9,8 @@ import {mapEnumKeys} from '../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {ComponentSpacer} from './ComponentSpacer'
-import {ComponentSpacerFlexChild} from './ComponentSpacerFlexChild'
+import {FlexBox} from './FlexBox'
+import {FlexBoxChild} from './FlexBoxChild'
 
 // Types
 import {
@@ -21,18 +21,18 @@ import {
 } from '../../Types'
 
 // Notes
-import ComponentSpacerReadme from './ComponentSpacer.md'
-import ComponentSpacerFlexChildReadme from './ComponentSpacerFlexChild.md'
+import FlexBoxReadme from './FlexBox.md'
+import FlexBoxChildReadme from './FlexBoxChild.md'
 
-const componentSpacerStories = storiesOf('Layout|ComponentSpacer', module)
+const componentSpacerStories = storiesOf('Layout|FlexBox', module)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
 componentSpacerStories.add(
-  'ComponentSpacer',
+  'FlexBox',
   () => (
     <div className="story--example">
-      <ComponentSpacer
+      <FlexBox
         direction={
           FlexDirection[select('direction', mapEnumKeys(FlexDirection), 'Row')]
         }
@@ -72,12 +72,12 @@ componentSpacerStories.add(
           className="mockComponent box"
           style={{height: '120px', width: '120px'}}
         />
-      </ComponentSpacer>
+      </FlexBox>
     </div>
   ),
   {
     readme: {
-      content: marked(ComponentSpacerReadme),
+      content: marked(FlexBoxReadme),
     },
   }
 )
@@ -86,7 +86,7 @@ componentSpacerStories.add(
   'FlexChild',
   () => (
     <div className="story--example">
-      <ComponentSpacer
+      <FlexBox
         direction={FlexDirection.Row}
         alignItems={AlignItems.Center}
         justifyContent={JustifyContent.FlexStart}
@@ -97,40 +97,40 @@ componentSpacerStories.add(
         }
         stretchToFitWidth={true}
       >
-        <ComponentSpacerFlexChild
+        <FlexBoxChild
           basis={number('Child A: basis', 40)}
           grow={number('Child A: grow', 0)}
           shrink={number('Child A: shrink', 0)}
         >
           <div className="mockComponent stretch">A</div>
-        </ComponentSpacerFlexChild>
-        <ComponentSpacerFlexChild
+        </FlexBoxChild>
+        <FlexBoxChild
           basis={number('Child B: basis', 0)}
           grow={number('Child B: grow', 1)}
           shrink={number('Child B: shrink', 0)}
         >
           <div className="mockComponent stretch">B</div>
-        </ComponentSpacerFlexChild>
-        <ComponentSpacerFlexChild
+        </FlexBoxChild>
+        <FlexBoxChild
           basis={number('Child C: basis', 0)}
           grow={number('Child C: grow', 2)}
           shrink={number('Child C: shrink', 0)}
         >
           <div className="mockComponent stretch">C</div>
-        </ComponentSpacerFlexChild>
-        <ComponentSpacerFlexChild
+        </FlexBoxChild>
+        <FlexBoxChild
           basis={number('Child D: basis', 80)}
           grow={number('Child D: grow', 0)}
           shrink={number('Child D: shrink', 0)}
         >
           <div className="mockComponent stretch">D</div>
-        </ComponentSpacerFlexChild>
-      </ComponentSpacer>
+        </FlexBoxChild>
+      </FlexBox>
     </div>
   ),
   {
     readme: {
-      content: marked(ComponentSpacerFlexChildReadme),
+      content: marked(FlexBoxChildReadme),
     },
   }
 )

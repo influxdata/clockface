@@ -15,7 +15,7 @@ import {SlideToggle} from '@influxdata/clockface'
 
 ### Implementation
 
-This example uses a `ComponentSpacer` to align the components. Each `SlideToggleLabel`'s `active` prop is passed the same value as its associated `SlideToggle` so their states match visually.
+This example uses a `FlexBox` to align the components. Each `SlideToggleLabel`'s `active` prop is passed the same value as its associated `SlideToggle` so their states match visually.
 
 Here's how to structure this example's state:
 
@@ -42,12 +42,12 @@ const {optionA, optionB, optionC} = this.state
 ```
 
 ```tsx
-<ComponentSpacer
+<FlexBox
   direction={FlexDirection.Column}
   alignItems={AlignItems.Stretch}
   margin={ComponentSize.Large}
 >
-  <ComponentSpacer
+  <FlexBox
     direction={FlexDirection.Row}
     alignItems={AlignItems.Center}
     margin={ComponentSize.Medium}
@@ -62,8 +62,8 @@ const {optionA, optionB, optionC} = this.state
       text="Send email notifications"
       active={optionA}
     />
-  </ComponentSpacer>
-  <ComponentSpacer
+  </FlexBox>
+  <FlexBox
     direction={FlexDirection.Row}
     alignItems={AlignItems.Center}
     margin={ComponentSize.Medium}
@@ -78,8 +78,8 @@ const {optionA, optionB, optionC} = this.state
       text="Send a raven"
       active={optionB}
     />
-  </ComponentSpacer>
-  <ComponentSpacer
+  </FlexBox>
+  <FlexBox
     direction={FlexDirection.Row}
     alignItems={AlignItems.Center}
     margin={ComponentSize.Medium}
@@ -94,8 +94,8 @@ const {optionA, optionB, optionC} = this.state
       text="Send an owl"
       active={optionC}
     />
-  </ComponentSpacer>
-</ComponentSpacer>
+  </FlexBox>
+</FlexBox>
 ```
 
 

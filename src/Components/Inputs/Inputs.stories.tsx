@@ -33,7 +33,7 @@ import {
   InputType,
   AutoInputMode,
 } from '../../Types'
-import {ComponentSpacer} from '../ComponentSpacer/ComponentSpacer'
+import {FlexBox} from '../FlexBox/FlexBox'
 
 // Notes
 import InputReadme from './Input.md'
@@ -216,7 +216,7 @@ inputsBaseStories.add(
   () => (
     <div className="story--example">
       <div style={{width: `${number('Parent Width (px)', 300)}px`}}>
-        <ComponentSpacer
+        <FlexBox
           direction={FlexDirection.Row}
           alignItems={AlignItems.Center}
           margin={ComponentSize.Medium}
@@ -244,7 +244,7 @@ inputsBaseStories.add(
             active={boolean('checked', true)}
             wrapText={boolean('Label: wrapText', true)}
           />
-        </ComponentSpacer>
+        </FlexBox>
       </div>
     </div>
   ),

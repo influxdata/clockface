@@ -14,11 +14,11 @@ interface Props extends StandardProps {
   shrink: number
 }
 
-export class ComponentSpacerFlexChild extends Component<Props> {
-  public static readonly displayName = 'ComponentSpacerFlexChild'
+export class FlexBoxChild extends Component<Props> {
+  public static readonly displayName = 'FlexBoxChild'
 
   public static defaultProps = {
-    testID: 'component-spacer--flex-child',
+    testID: 'flex-box--child',
     grow: 1,
     shrink: 0,
   }
@@ -46,17 +46,17 @@ export class ComponentSpacerFlexChild extends Component<Props> {
     const flexGrow = grow
 
     return {
-      ...style,
       flexGrow,
       flexShrink,
       flexBasis,
+      ...style,
     }
   }
 
   private get className(): string {
     const {className} = this.props
 
-    return classnames('cf-component-spacer--flex-child', {
+    return classnames('cf-flex-box--child', {
       [`${className}`]: className,
     })
   }

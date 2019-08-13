@@ -37,7 +37,7 @@ export class IndexListHeaderCell extends Component<Props> {
     return (
       <th
         className={this.className}
-        style={{...style, width}}
+        style={{width, ...style}}
         onClick={this.handleClick}
         data-testid={testID}
         id={id}

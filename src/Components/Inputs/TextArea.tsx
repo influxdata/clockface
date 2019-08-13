@@ -164,9 +164,9 @@ export class TextArea extends Component<Props> {
     const {widthPixels, style} = this.props
 
     if (widthPixels) {
-      return {...style, width: `${widthPixels}px`}
+      return {width: `${widthPixels}px`, ...style}
     }
 
-    return {...style, width: '100%'}
+    return {width: '100%', ...style}
   }
 }
