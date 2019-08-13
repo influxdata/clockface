@@ -28,13 +28,13 @@ import {FormValidationElement} from './FormValidationElement'
 import {Grid} from '../GridLayout/Grid'
 import {Button} from '../Button/Composed/Button'
 import {Input} from '../Inputs/Input'
-import {ComponentSpacer} from '../ComponentSpacer/ComponentSpacer'
+import {FlexBox} from '../FlexBox/FlexBox'
 import {SlideToggle} from '../SlideToggle/SlideToggle'
 import {Panel} from '../Panel/Panel'
 import {PanelBody} from '../Panel/PanelBody'
 import {TextBlock} from '../TextBlock/TextBlock'
 import {DismissButton} from '../Button/Composed/DismissButton'
-import {ComponentSpacerFlexChild} from '../ComponentSpacer/ComponentSpacerFlexChild'
+import {FlexBoxChild} from '../FlexBox/FlexBoxChild'
 import {SelectDropdown} from '../Dropdowns/Composed/SelectDropdown'
 
 // Types
@@ -320,7 +320,7 @@ formExampleStories.add(
                 <Grid.Column widthXS={Columns.Twelve}>
                   <Form.Element label="Team" required={false}>
                     <Form.Box>
-                      <ComponentSpacer
+                      <FlexBox
                         stretchToFitWidth={true}
                         direction={FlexDirection.Row}
                         alignItems={AlignItems.Center}
@@ -336,7 +336,7 @@ formExampleStories.add(
                           text="Add this user to all teams?"
                           active={boolean('Team Toggle', true)}
                         />
-                      </ComponentSpacer>
+                      </FlexBox>
                     </Form.Box>
                   </Form.Element>
                 </Grid.Column>
@@ -378,7 +378,7 @@ formExampleStories.add(
         >
           <DismissButton onClick={() => {}} color={ComponentColor.Danger} />
           <PanelBody>
-            <ComponentSpacer
+            <FlexBox
               direction={FlexDirection.Column}
               margin={
                 ComponentSize[
@@ -386,7 +386,7 @@ formExampleStories.add(
                 ]
               }
             >
-              <ComponentSpacer
+              <FlexBox
                 stretchToFitWidth={true}
                 direction={FlexDirection.Row}
                 margin={
@@ -407,7 +407,7 @@ formExampleStories.add(
                   }
                   text="When"
                 />
-                <ComponentSpacerFlexChild grow={1}>
+                <FlexBoxChild grow={1}>
                   <SelectDropdown
                     options={['any value', 'all values']}
                     selectedOption="any value"
@@ -422,8 +422,8 @@ formExampleStories.add(
                       ]
                     }
                   />
-                </ComponentSpacerFlexChild>
-                <ComponentSpacerFlexChild grow={2}>
+                </FlexBoxChild>
+                <FlexBoxChild grow={2}>
                   <SelectDropdown
                     options={[
                       'is above threshold',
@@ -443,9 +443,9 @@ formExampleStories.add(
                       ]
                     }
                   />
-                </ComponentSpacerFlexChild>
-              </ComponentSpacer>
-              <ComponentSpacer
+                </FlexBoxChild>
+              </FlexBox>
+              <FlexBox
                 stretchToFitWidth={true}
                 direction={FlexDirection.Row}
                 margin={
@@ -454,7 +454,7 @@ formExampleStories.add(
                   ]
                 }
               >
-                <ComponentSpacerFlexChild>
+                <FlexBoxChild>
                   <Input
                     type={InputType.Number}
                     value="90"
@@ -468,7 +468,7 @@ formExampleStories.add(
                       ]
                     }
                   />
-                </ComponentSpacerFlexChild>
+                </FlexBoxChild>
                 <TextBlock
                   size={
                     ComponentSize[
@@ -481,7 +481,7 @@ formExampleStories.add(
                   }
                   text="to"
                 />
-                <ComponentSpacerFlexChild>
+                <FlexBoxChild>
                   <Input
                     type={InputType.Number}
                     value="100"
@@ -495,7 +495,7 @@ formExampleStories.add(
                       ]
                     }
                   />
-                </ComponentSpacerFlexChild>
+                </FlexBoxChild>
                 <TextBlock
                   size={
                     ComponentSize[
@@ -524,8 +524,8 @@ formExampleStories.add(
                     `${InfluxColors.Pineapple}`
                   )}
                 />
-              </ComponentSpacer>
-            </ComponentSpacer>
+              </FlexBox>
+            </FlexBox>
           </PanelBody>
         </Panel>
       </div>

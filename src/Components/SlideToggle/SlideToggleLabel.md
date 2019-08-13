@@ -1,6 +1,6 @@
 # SlideToggleLabel
 
-SlideToggleLabel is intended to accompany SlideToggle and can be accessed from the single SlideToggle import. We recommend wrapping both SlideToggle and SlideToggleLabel with a ComponentSpacer to manage their alignment.
+SlideToggleLabel is intended to accompany SlideToggle and can be accessed from the single SlideToggle import. We recommend wrapping both SlideToggle and SlideToggleLabel with a FlexBox to manage their alignment.
 
 ### Usage
 ```tsx

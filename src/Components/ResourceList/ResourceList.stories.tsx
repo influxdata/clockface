@@ -31,7 +31,7 @@ import {EmptyState} from '../EmptyState/EmptyState'
 import {SlideToggle} from '../SlideToggle/SlideToggle'
 import {SquareButton} from '../Button/Composed/SquareButton'
 import {Label} from '../Label/Label'
-import {ComponentSpacer} from '../ComponentSpacer/ComponentSpacer'
+import {FlexBox} from '../FlexBox/FlexBox'
 
 // Types
 import {
@@ -452,7 +452,7 @@ indexListExampleStories.add(
             />
           }
           labels={
-            <ComponentSpacer
+            <FlexBox
               direction={FlexDirection.Row}
               margin={ComponentSize.Small}
             >
@@ -477,7 +477,7 @@ indexListExampleStories.add(
                 color="#6ac255"
                 size={ComponentSize.ExtraSmall}
               />
-            </ComponentSpacer>
+            </FlexBox>
           }
         />
       </div>

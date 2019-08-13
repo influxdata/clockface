@@ -17,7 +17,7 @@ import {Grid} from '@influxdata/clockface'
 
 `<Grid.Column />` is a container for content with a built in margin to separate it from neighboring columns.
 
-While this component family may seem like the ultimate layout tool, it is also bulkier. For simply aligning elements we recommend using `<ComponentSpacer />` instead.
+While this component family may seem like the ultimate layout tool, it is also bulkier. For simply aligning elements we recommend using `<FlexBox />` instead.
 
 ### Examples
 
