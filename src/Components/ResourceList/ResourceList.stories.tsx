@@ -452,10 +452,7 @@ indexListExampleStories.add(
             />
           }
           labels={
-            <FlexBox
-              direction={FlexDirection.Row}
-              margin={ComponentSize.Small}
-            >
+            <FlexBox direction={FlexDirection.Row} margin={ComponentSize.Small}>
               <Label
                 id="CRIT"
                 description="I'm a cool label"
