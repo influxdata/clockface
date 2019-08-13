@@ -15,10 +15,15 @@ export class FormBox extends Component<Props> {
   }
 
   public render() {
-    const {children, className, testID, id} = this.props
+    const {children, className, testID, id, style} = this.props
 
     return (
-      <div className={`cf-form--box ${className}`} data-testid={testID} id={id}>
+      <div
+        className={`cf-form--box ${className}`}
+        data-testid={testID}
+        id={id}
+        style={style}
+      >
         {children}
       </div>
     )
