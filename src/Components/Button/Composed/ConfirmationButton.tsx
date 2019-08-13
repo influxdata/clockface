@@ -79,7 +79,10 @@ export class ConfirmationButton extends Component<Props> {
         contents={onHide => (
           <div className="cf-confirmation-button--container">
             {confirmationLabel && (
-              <span className="cf-confirmation-button--label">
+              <span
+                className="cf-confirmation-button--label"
+                data-testid={`${testID}--confirmation-label`}
+              >
                 {confirmationLabel}
               </span>
             )}
@@ -135,6 +138,7 @@ export class ConfirmationButton extends Component<Props> {
       confirmationButtonColor,
       returnValue,
       onConfirm,
+      testID,
       size,
     } = this.props
 
@@ -145,6 +149,7 @@ export class ConfirmationButton extends Component<Props> {
 
     return (
       <Button
+        data-testid={`${testID}--confirm-button`}
         onClick={handleClick}
         text={confirmationButtonText}
         color={confirmationButtonColor}
