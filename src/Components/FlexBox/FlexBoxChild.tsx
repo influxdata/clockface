@@ -46,10 +46,10 @@ export class FlexBoxChild extends Component<Props> {
     const flexGrow = grow
 
     return {
-      ...style,
       flexGrow,
       flexShrink,
       flexBasis,
+      ...style,
     }
   }
 

@@ -258,13 +258,13 @@ export class Input extends Component<Props> {
     const {widthPixels, type, style} = this.props
 
     if (widthPixels) {
-      return {...style, width: `${widthPixels}px`}
+      return {width: `${widthPixels}px`, ...style}
     }
 
     if (type === InputType.Checkbox) {
       return {...style}
     }
 
-    return {...style, width: '100%'}
+    return {width: '100%', ...style}
   }
 }

@@ -49,9 +49,9 @@ export class ColorPickerSwatch extends Component<Props> {
     const size = `${100 / swatchesPerRow}%`
 
     return {
-      ...style,
       width: size,
       paddingBottom: size,
+      ...style,
     }
   }
 

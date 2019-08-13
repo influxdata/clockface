@@ -163,9 +163,9 @@ export class Label extends Component<Props, State> {
     }
 
     return {
-      ...style,
       backgroundColor: `${backgroundColor}`,
       color: this.textColor,
+      ...style,
     }
   }
 

@@ -68,7 +68,7 @@ export class Dropdown extends Component<Props, State> {
       <ClickOutside onClickOutside={this.collapseMenu}>
         <div
           className={this.className}
-          style={{...style, width}}
+          style={{width, ...style}}
           data-testid={testID}
           id={id}
         >

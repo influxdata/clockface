@@ -81,14 +81,14 @@ export class Panel extends Component<Props> {
       const colors = getColorsFromGradient(gradient)
 
       return {
-        ...style,
         background: `linear-gradient(45deg,  ${colors.start} 0%,${
           colors.stop
         } 100%)`,
+        ...style,
       }
     }
 
-    return {...style, backgroundColor}
+    return {backgroundColor, ...style}
   }
 
   private get useContrastText(): string {

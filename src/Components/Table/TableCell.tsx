@@ -46,10 +46,10 @@ export class TableCell extends Component<Props> {
     const {horizontalAlignment, verticalAlignment, width, style} = this.props
 
     return {
-      ...style,
       textAlign: horizontalAlignment,
       verticalAlign: verticalAlignment,
       width,
+      ...style,
     }
   }
 
