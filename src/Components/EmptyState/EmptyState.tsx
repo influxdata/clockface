@@ -29,10 +29,15 @@ export class EmptyState extends Component<Props> {
   public static SubText = EmptyStateSubText
 
   public render() {
-    const {children, testID, id} = this.props
+    const {children, testID, id, style} = this.props
 
     return (
-      <div className={this.className} data-testid={testID} id={id}>
+      <div
+        className={this.className}
+        data-testid={testID}
+        id={id}
+        style={style}
+      >
         {children}
       </div>
     )

@@ -17,10 +17,10 @@ export class EmptyStateSubText extends Component<Props> {
   }
 
   render() {
-    const {text, testID, id} = this.props
+    const {text, testID, id, style} = this.props
 
     return (
-      <p className={this.className} data-testid={testID} id={id}>
+      <p className={this.className} data-testid={testID} id={id} style={style}>
         {text}
       </p>
     )
