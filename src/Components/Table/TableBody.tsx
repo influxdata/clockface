@@ -15,10 +15,15 @@ export class TableBody extends Component<Props> {
   }
 
   public render() {
-    const {testID, children, id} = this.props
+    const {testID, children, id, style} = this.props
 
     return (
-      <tbody className={this.className} data-testid={testID} id={id}>
+      <tbody
+        className={this.className}
+        data-testid={testID}
+        id={id}
+        style={style}
+      >
         {children}
       </tbody>
     )

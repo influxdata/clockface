@@ -15,10 +15,15 @@ export class TableFooter extends Component<Props> {
   }
 
   public render() {
-    const {testID, children, id} = this.props
+    const {testID, children, id, style} = this.props
 
     return (
-      <tfoot className={this.className} data-testid={testID} id={id}>
+      <tfoot
+        className={this.className}
+        data-testid={testID}
+        id={id}
+        style={style}
+      >
         {children}
       </tfoot>
     )
