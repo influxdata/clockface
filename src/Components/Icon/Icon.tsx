@@ -1,14 +1,12 @@
 // Libraries
-import React, {Component, CSSProperties} from 'react'
+import React, {Component} from 'react'
 
 // Types
-import {IconFont, InfluxColors, StandardProps} from '../../Types'
+import {IconFont, StandardProps} from '../../Types'
 
 interface Props extends StandardProps {
   /** Icon to display */
   glyph: IconFont | string
-  /** Optional color string, can use InfluxColors enum or pass in your own value */
-  color?: InfluxColors | string
 }
 
 export class Icon extends Component<Props> {
@@ -19,29 +17,14 @@ export class Icon extends Component<Props> {
   }
 
   render() {
-    const {glyph, testID, id} = this.props
+    const {glyph, testID, id, style} = this.props
 
     const className = this.props.className
       ? `cf-icon ${glyph} ${this.props.className}`
       : `cf-icon ${glyph}`
 
     return (
-      <span
-        className={className}
-        data-testid={testID}
-        style={this.style}
-        id={id}
-      />
+      <span className={className} data-testid={testID} style={style} id={id} />
     )
-  }
-
-  private get style(): CSSProperties | undefined {
-    const {color} = this.props
-
-    if (color) {
-      return {color}
-    }
-
-    return
   }
 }
