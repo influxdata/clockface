@@ -1,19 +1,19 @@
 @import '../../Styles/modules';
 
 /*
-  Component Spacer Utility
+  FlexBox Utility
   ------------------------------------------------------------------------------
 */
 
-.cf-component-spacer {
+.cf-flex-box {
   display: flex;
   flex-wrap: nowrap;
 
-  &.cf-component-spacer__stretch-w {
+  &.cf-flex-box__stretch-w {
     width: 100%;
   }
 
-  &.cf-component-spacer__stretch-h {
+  &.cf-flex-box__stretch-h {
     height: 100%;
   }
 }
@@ -23,16 +23,16 @@
   ------------------------------------------------------------------------------
 */
 
-.cf-component-spacer__row {
+.cf-flex-box__row {
   flex-direction: row;
 }
-.cf-component-spacer__row-reverse {
+.cf-flex-box__row-reverse {
   flex-direction: row-reverse;
 }
-.cf-component-spacer__column {
+.cf-flex-box__column {
   flex-direction: column;
 }
-.cf-component-spacer__column-reverse {
+.cf-flex-box__column-reverse {
   flex-direction: column-reverse;
 }
 
@@ -41,16 +41,16 @@
   ------------------------------------------------------------------------------
 */
 
-.cf-component-spacer__align-flex-start {
+.cf-flex-box__align-flex-start {
   align-items: flex-start;
 }
-.cf-component-spacer__align-flex-end {
+.cf-flex-box__align-flex-end {
   align-items: flex-end;
 }
-.cf-component-spacer__align-center {
+.cf-flex-box__align-center {
   align-items: center;
 }
-.cf-component-spacer__align-stretch {
+.cf-flex-box__align-stretch {
   align-items: stretch;
 }
 
@@ -59,19 +59,19 @@
   ------------------------------------------------------------------------------
 */
 
-.cf-component-spacer__justify-flex-start {
+.cf-flex-box__justify-flex-start {
   justify-content: flex-start;
 }
-.cf-component-spacer__justify-flex-end {
+.cf-flex-box__justify-flex-end {
   justify-content: flex-end;
 }
-.cf-component-spacer__justify-center {
+.cf-flex-box__justify-center {
   justify-content: center;
 }
-.cf-component-spacer__justify-space-between {
+.cf-flex-box__justify-space-between {
   justify-content: space-between;
 }
-.cf-component-spacer__justify-space-around {
+.cf-flex-box__justify-space-around {
   justify-content: space-around;
 }
 
@@ -80,10 +80,10 @@
   ------------------------------------------------------------------------------
 */
 
-@mixin componentSpacerMargins($margin) {
+@mixin flexBoxMargins($margin) {
   // ROW
-  &.cf-component-spacer__row {
-    &.cf-component-spacer__justify-flex-start {
+  &.cf-flex-box__row {
+    &.cf-flex-box__justify-flex-start {
       > * {
         margin-right: $margin;
   
@@ -92,7 +92,7 @@
         }
       }
     }
-    &.cf-component-spacer__justify-flex-end {
+    &.cf-flex-box__justify-flex-end {
       > * {
         margin-left: $margin;
   
@@ -101,9 +101,9 @@
         }
       }
     }
-    &.cf-component-spacer__justify-center,
-    &.cf-component-spacer__justify-space-between,
-    &.cf-component-spacer__justify-space-around {
+    &.cf-flex-box__justify-center,
+    &.cf-flex-box__justify-space-between,
+    &.cf-flex-box__justify-space-around {
       > * {
         margin-left: $margin / 2;
         margin-right: $margin / 2;
@@ -119,8 +119,8 @@
     }
   }
   // ROW REVERSE
-  &.cf-component-spacer__row-reverse {
-    &.cf-component-spacer__justify-flex-start {
+  &.cf-flex-box__row-reverse {
+    &.cf-flex-box__justify-flex-start {
       > * {
         margin-left: $margin;
   
@@ -129,7 +129,7 @@
         }
       }
     }
-    &.cf-component-spacer__justify-flex-end {
+    &.cf-flex-box__justify-flex-end {
       > * {
         margin-right: $margin;
   
@@ -138,9 +138,9 @@
         }
       }
     }
-    &.cf-component-spacer__justify-center,
-    &.cf-component-spacer__justify-space-between,
-    &.cf-component-spacer__justify-space-around {
+    &.cf-flex-box__justify-center,
+    &.cf-flex-box__justify-space-between,
+    &.cf-flex-box__justify-space-around {
       > * {
         margin-right: $margin / 2;
         margin-left: $margin / 2;
@@ -156,8 +156,8 @@
     }
   }
   // COLUMN
-  &.cf-component-spacer__column {
-    &.cf-component-spacer__justify-flex-start {
+  &.cf-flex-box__column {
+    &.cf-flex-box__justify-flex-start {
       > * {
         margin-bottom: $margin;
   
@@ -166,7 +166,7 @@
         }
       }
     }
-    &.cf-component-spacer__justify-flex-end {
+    &.cf-flex-box__justify-flex-end {
       > * {
         margin-top: $margin;
   
@@ -175,9 +175,9 @@
         }
       }
     }
-    &.cf-component-spacer__justify-center,
-    &.cf-component-spacer__justify-space-between,
-    &.cf-component-spacer__justify-space-around {
+    &.cf-flex-box__justify-center,
+    &.cf-flex-box__justify-space-between,
+    &.cf-flex-box__justify-space-around {
       > * {
         margin-top: $margin / 2;
         margin-bottom: $margin / 2;
@@ -193,8 +193,8 @@
     }
   }
   // COLUMN REVERSE
-  &.cf-component-spacer__column-reverse {
-    &.cf-component-spacer__justify-flex-start {
+  &.cf-flex-box__column-reverse {
+    &.cf-flex-box__justify-flex-start {
       > * {
         margin-top: $margin;
   
@@ -203,7 +203,7 @@
         }
       }
     }
-    &.cf-component-spacer__justify-flex-end {
+    &.cf-flex-box__justify-flex-end {
       > * {
         margin-bottom: $margin;
   
@@ -212,9 +212,9 @@
         }
       }
     }
-    &.cf-component-spacer__justify-center,
-    &.cf-component-spacer__justify-space-between,
-    &.cf-component-spacer__justify-space-around {
+    &.cf-flex-box__justify-center,
+    &.cf-flex-box__justify-space-between,
+    &.cf-flex-box__justify-space-around {
       > * {
         margin-bottom: $margin / 2;
         margin-top: $margin / 2;
@@ -231,15 +231,15 @@
   }
 }
 
-.cf-component-spacer__margin-xs {
-  @include componentSpacerMargins($cf-border);
+.cf-flex-box__margin-xs {
+  @include flexBoxMargins($cf-border);
 }
-.cf-component-spacer__margin-sm {
-  @include componentSpacerMargins($cf-marg-a);
+.cf-flex-box__margin-sm {
+  @include flexBoxMargins($cf-marg-a);
 }
-.cf-component-spacer__margin-md {
-  @include componentSpacerMargins($cf-marg-b);
+.cf-flex-box__margin-md {
+  @include flexBoxMargins($cf-marg-b);
 }
-.cf-component-spacer__margin-lg {
-  @include componentSpacerMargins($cf-marg-c);
+.cf-flex-box__margin-lg {
+  @include flexBoxMargins($cf-marg-c);
 }

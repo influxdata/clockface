@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {ComponentSpacer} from '../ComponentSpacer/ComponentSpacer'
+import {FlexBox} from '../FlexBox/FlexBox'
 
 // Types
 import {
@@ -37,13 +37,13 @@ export class PanelHeader extends Component<Props> {
       >
         <div className="cf-panel--title">{title}</div>
         <div className="cf-panel--controls">
-          <ComponentSpacer
+          <FlexBox
             direction={FlexDirection.Row}
             justifyContent={JustifyContent.FlexEnd}
             alignItems={AlignItems.Center}
           >
             {children}
-          </ComponentSpacer>
+          </FlexBox>
         </div>
       </div>
     )

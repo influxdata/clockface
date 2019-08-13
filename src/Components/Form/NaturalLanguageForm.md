@@ -4,7 +4,7 @@ This type of form is intended to read like a sentence, hence the name "Natural L
 
 ### Usage
 ```tsx
-import {ComponentSpacer, Panel, TextBlock, SelectDropdown, Input, DismissButton} from '@influxdata/clockface'
+import {FlexBox, Panel, TextBlock, SelectDropdown, Input, DismissButton} from '@influxdata/clockface'
 ```
 
 ### Example
@@ -13,9 +13,9 @@ import {ComponentSpacer, Panel, TextBlock, SelectDropdown, Input, DismissButton}
 
 ### Controlling the Layout
 
-- Each `<ComponentSpacer>` controls wrapping. If you want to ensure that some children always stay on separate lines use 2 spacers
+- Each `<FlexBox>` controls wrapping. If you want to ensure that some children always stay on separate lines use 2 spacers
 - `<TextBlock />` elements are automatically sized based on their contents
-- `<ComponentSpacer.FlexChild>` can be set to a fixed width and also be set to take up a certain proportion of the width (for those familiar with flex box this will make sense). You can specify either property or both and the layout should work fine.
+- `<FlexBox.FlexChild>` can be set to a fixed width and also be set to take up a certain proportion of the width (for those familiar with flex box this will make sense). You can specify either property or both and the layout should work fine.
 - The form will expand to fill the width of its parent, so we recommend giving the parent a fixed width. While you could place a natural language form inside a fluid width parent, the results would be unpredictable and hard to control.
 
 ---
