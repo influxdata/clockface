@@ -34,22 +34,23 @@ export class OverlayMask extends PureComponent<Props> {
       <div
         className={classname}
         data-testid={testID}
-        style={this.styles}
+        style={this.style}
         id={id}
       />
     )
   }
 
-  private get styles(): CSSProperties {
-    const {backgroundColor, gradient} = this.props
+  private get style(): CSSProperties {
+    const {backgroundColor, gradient, style} = this.props
 
     if (backgroundColor) {
-      return {backgroundColor}
+      return {...style, backgroundColor}
     }
 
     const colors = getColorsFromGradient(gradient)
 
     return {
+      ...style,
       background: `linear-gradient(45deg,  ${colors.start} 0%,${
         colors.stop
       } 100%)`,

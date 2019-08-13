@@ -15,14 +15,14 @@ export class OverlayBody extends PureComponent<Props> {
   }
 
   public render() {
-    const {children, className, testID, id} = this.props
+    const {children, className, testID, id, style} = this.props
 
     const classname = classnames('cf-overlay--body', {
       [`${className}`]: className,
     })
 
     return (
-      <div className={classname} data-testid={testID} id={id}>
+      <div className={classname} data-testid={testID} id={id} style={style}>
         {children}
       </div>
     )
