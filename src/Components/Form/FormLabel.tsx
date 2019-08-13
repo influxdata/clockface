@@ -19,10 +19,15 @@ export class FormLabel extends Component<Props> {
   }
 
   public render() {
-    const {label, children, testID, id} = this.props
+    const {label, children, testID, id, style} = this.props
 
     return (
-      <label className={this.className} data-testid={testID} id={id}>
+      <label
+        className={this.className}
+        data-testid={testID}
+        id={id}
+        style={style}
+      >
         <span>
           {label}
           {this.requiredIndicator}

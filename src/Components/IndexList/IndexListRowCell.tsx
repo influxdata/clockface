@@ -22,11 +22,16 @@ export class IndexListRowCell extends Component<Props> {
   }
 
   public render() {
-    const {children, testID, id} = this.props
+    const {children, testID, id, style} = this.props
 
     return (
       <td className={this.className}>
-        <div className="index-list--cell" data-testid={testID} id={id}>
+        <div
+          className="index-list--cell"
+          data-testid={testID}
+          id={id}
+          style={style}
+        >
           {children}
         </div>
       </td>

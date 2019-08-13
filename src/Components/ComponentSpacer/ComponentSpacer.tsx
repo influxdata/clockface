@@ -1,5 +1,5 @@
 // Libraries
-import React, {Component, CSSProperties} from 'react'
+import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Components
@@ -20,8 +20,6 @@ import './ComponentSpacer.scss'
 interface Props extends StandardProps {
   /** Vertical or horizontal flex alignment */
   direction: FlexDirection
-  /** Pass through styles object */
-  style?: CSSProperties
   /** Inserted margin between children */
   margin?: ComponentSize
   /** Can be FlexStart, FlexEnd, Center, SpaceBetween, or SpaceAround */

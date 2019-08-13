@@ -30,7 +30,7 @@ export class RadioButton extends Component<Props> {
   }
 
   public render() {
-    const {children, disabled, testID, id} = this.props
+    const {children, disabled, testID, id, style} = this.props
 
     return (
       <button
@@ -41,6 +41,7 @@ export class RadioButton extends Component<Props> {
         title={this.title}
         data-testid={testID}
         id={id}
+        style={style}
       >
         {children}
       </button>

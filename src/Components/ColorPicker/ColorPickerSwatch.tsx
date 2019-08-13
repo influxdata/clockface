@@ -45,10 +45,11 @@ export class ColorPickerSwatch extends Component<Props> {
   }
 
   private get style(): CSSProperties {
-    const {swatchesPerRow} = this.props
+    const {swatchesPerRow, style} = this.props
     const size = `${100 / swatchesPerRow}%`
 
     return {
+      ...style,
       width: size,
       paddingBottom: size,
     }

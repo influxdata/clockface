@@ -1,10 +1,10 @@
 // Libraries
-import * as React from 'react'
+import React, {CSSProperties} from 'react'
 import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, select, color, number} from '@storybook/addon-knobs'
+import {withKnobs, select, number, object} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
@@ -21,6 +21,8 @@ const iconStories = storiesOf('Atomic|Icon', module)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
+const iconStyleExample: CSSProperties = {color: '#6BDFFF'}
+
 iconStories.add(
   'Example',
   () => (
@@ -30,7 +32,7 @@ iconStories.add(
     >
       <Icon
         glyph={IconFont[select('glyph', mapEnumKeys(IconFont), 'Bell')]}
-        color={color('color', '')}
+        style={object('style', iconStyleExample)}
       />
     </div>
   ),

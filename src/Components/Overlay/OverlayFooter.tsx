@@ -24,14 +24,14 @@ export class OverlayFooter extends PureComponent<Props> {
   }
 
   public render() {
-    const {children, className, testID, id} = this.props
+    const {children, className, testID, id, style} = this.props
 
     const classname = classnames('cf-overlay--footer', {
       [`${className}`]: className,
     })
 
     return (
-      <div className={classname} data-testid={testID} id={id}>
+      <div className={classname} data-testid={testID} id={id} style={style}>
         <ComponentSpacer
           margin={ComponentSize.Small}
           direction={FlexDirection.Row}

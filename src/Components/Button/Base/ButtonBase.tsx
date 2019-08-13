@@ -61,6 +61,7 @@ export class ButtonBase extends Component<Props> {
       children,
       refObject,
       id,
+      style,
     } = this.props
 
     return (
@@ -73,6 +74,7 @@ export class ButtonBase extends Component<Props> {
         type={type}
         data-testid={testID}
         id={id}
+        style={style}
         ref={refObject}
       >
         {children}

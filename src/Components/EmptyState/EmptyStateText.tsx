@@ -44,10 +44,10 @@ export class EmptyStateText extends Component<Props & StandardProps> {
   }
 
   render() {
-    const {text, highlightWords, testID, id} = this.props
+    const {text, highlightWords, testID, id, style} = this.props
 
     return (
-      <h4 className={this.className} data-testid={testID} id={id}>
+      <h4 className={this.className} data-testid={testID} id={id} style={style}>
         {highlighter(text, highlightWords)}
       </h4>
     )

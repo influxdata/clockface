@@ -24,7 +24,7 @@ export class ResourceListSorter extends PureComponent<Props> {
   }
 
   public render() {
-    const {name, testID, id} = this.props
+    const {name, testID, id, style} = this.props
 
     return (
       <div
@@ -33,6 +33,7 @@ export class ResourceListSorter extends PureComponent<Props> {
         title={this.title}
         data-testid={testID}
         id={id}
+        style={style}
       >
         {name}
         {this.sortIndicator}

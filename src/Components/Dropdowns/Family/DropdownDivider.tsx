@@ -18,7 +18,7 @@ export class DropdownDivider extends Component<Props> {
   }
 
   public render() {
-    const {text, testID, className, id} = this.props
+    const {text, testID, className, id, style} = this.props
 
     return (
       <div
@@ -28,6 +28,7 @@ export class DropdownDivider extends Component<Props> {
         })}
         data-testid={testID}
         id={id}
+        style={style}
       >
         {text}
       </div>

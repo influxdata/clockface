@@ -57,6 +57,7 @@ export class DismissButton extends Component<Props> {
       status,
       active,
       type,
+      style,
       refObject,
     } = this.props
 
@@ -72,6 +73,7 @@ export class DismissButton extends Component<Props> {
         status={status}
         active={active}
         type={type}
+        style={style}
         refObject={refObject}
       />
     )

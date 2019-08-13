@@ -33,7 +33,7 @@ export class DraggableResizerHandle extends PureComponent<Props> {
   }
 
   public render() {
-    const {testID, id} = this.props
+    const {testID, id, style} = this.props
 
     return (
       <div
@@ -41,6 +41,7 @@ export class DraggableResizerHandle extends PureComponent<Props> {
         onMouseDown={this.handleMouseDown}
         title="Drag to resize"
         data-testid={testID}
+        style={style}
         id={id}
       >
         <div

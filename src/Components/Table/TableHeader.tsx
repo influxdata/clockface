@@ -15,10 +15,15 @@ export class TableHeader extends Component<Props> {
   }
 
   public render() {
-    const {testID, children, id} = this.props
+    const {testID, children, id, style} = this.props
 
     return (
-      <thead className={this.className} data-testid={testID} id={id}>
+      <thead
+        className={this.className}
+        data-testid={testID}
+        id={id}
+        style={style}
+      >
         {children}
       </thead>
     )

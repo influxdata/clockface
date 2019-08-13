@@ -41,10 +41,15 @@ export class AutoInput extends Component<Props> {
   }
 
   public render() {
-    const {testID, id, size, color, mode, onChangeMode} = this.props
+    const {testID, id, size, color, mode, onChangeMode, style} = this.props
 
     return (
-      <div className={this.className} data-testid={testID} id={id}>
+      <div
+        className={this.className}
+        data-testid={testID}
+        id={id}
+        style={style}
+      >
         <div className="auto-input--radio">
           <Radio shape={ButtonShape.StretchToFit} size={size} color={color}>
             <Radio.Button

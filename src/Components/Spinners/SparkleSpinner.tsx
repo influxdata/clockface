@@ -28,6 +28,7 @@ export class SparkleSpinner extends PureComponent<Props> {
     const {testID, sizePixels, id} = this.props
 
     const style = {
+      ...this.props.style,
       width: `${sizePixels}px`,
       height: `${sizePixels}px`,
     }

@@ -1,5 +1,5 @@
 // Libraries
-import {PureComponent} from 'react'
+import {PureComponent, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Types
@@ -9,7 +9,11 @@ interface Props extends StandardProps {
   /** Controls highlighting of the menu item */
   active: boolean
   /** Render prop for linked title text (suggested <a /> or <Link /> ) */
-  titleLink: (className: string, testID?: string) => JSX.Element
+  titleLink: (
+    className: string,
+    testID?: string,
+    style?: CSSProperties
+  ) => JSX.Element
 }
 
 export class NavMenuSubItem extends PureComponent<Props> {
@@ -20,13 +24,13 @@ export class NavMenuSubItem extends PureComponent<Props> {
   }
 
   public render() {
-    const {active, className, titleLink, testID} = this.props
+    const {active, className, titleLink, testID, style} = this.props
 
     const titleClass = classnames('cf-nav--sub-item', {
       active,
       [`${className}`]: className,
     })
 
-    return titleLink(titleClass, testID)
+    return titleLink(titleClass, testID, style)
   }
 }

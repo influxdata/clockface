@@ -39,13 +39,14 @@ export class ComponentSpacerFlexChild extends Component<Props> {
   }
 
   private get style(): CSSProperties {
-    const {basis, grow, shrink} = this.props
+    const {basis, grow, shrink, style} = this.props
 
     const flexBasis = basis ? `${basis}px` : '0'
     const flexShrink = shrink
     const flexGrow = grow
 
     return {
+      ...style,
       flexGrow,
       flexShrink,
       flexBasis,

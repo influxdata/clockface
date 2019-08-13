@@ -19,10 +19,10 @@ export class TableRow extends Component<Props> {
   }
 
   public render() {
-    const {testID, children, id} = this.props
+    const {testID, children, id, style} = this.props
 
     return (
-      <tr className={this.className} data-testid={testID} id={id}>
+      <tr className={this.className} data-testid={testID} id={id} style={style}>
         {children}
       </tr>
     )

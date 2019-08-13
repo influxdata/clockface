@@ -44,9 +44,10 @@ export class PageHeaderCenter extends Component<Props> {
   }
 
   private get style(): CSSProperties {
-    const {widthPixels} = this.props
+    const {widthPixels, style} = this.props
 
     return {
+      ...style,
       flex: `1 0 ${widthPixels}px`,
     }
   }

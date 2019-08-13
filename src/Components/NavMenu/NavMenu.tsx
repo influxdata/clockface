@@ -33,7 +33,7 @@ export class NavMenu extends PureComponent<Props> {
   }
 
   public render() {
-    const {children, testID, hide, id} = this.props
+    const {children, testID, hide, id, style} = this.props
 
     if (hide) {
       return
@@ -44,7 +44,7 @@ export class NavMenu extends PureComponent<Props> {
     })
 
     return (
-      <nav className={className} data-testid={testID} id={id}>
+      <nav className={className} data-testid={testID} id={id} style={style}>
         {children}
       </nav>
     )
