@@ -42,11 +42,11 @@ export class DateRangePicker extends PureComponent<Props, State> {
   }
 
   public render() {
-    const {testID} = this.props
+    const {testID, style} = this.props
     const {upper, lower} = this.state
 
     return (
-      <ComponentSpacer direction={FlexDirection.Column}>
+      <ComponentSpacer direction={FlexDirection.Column} style={style}>
         <ComponentSpacer direction={FlexDirection.Row} data-testid={testID}>
           <DatePicker
             dateTime={lower}

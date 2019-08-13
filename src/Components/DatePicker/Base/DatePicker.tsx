@@ -65,12 +65,12 @@ export class DatePicker extends PureComponent<Props, State> {
   }
 
   public render() {
-    const {dateTime, label, testID} = this.props
+    const {dateTime, label, testID, style} = this.props
 
     const date = new Date(dateTime || Date.now())
 
     return (
-      <div className="date-picker" data-testid={testID}>
+      <div className="date-picker" data-testid={testID} style={style}>
         <Form.Element label={label} errorMessage={this.inputErrorMessage}>
           <Input
             size={ComponentSize.Medium}
