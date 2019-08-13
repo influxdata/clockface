@@ -31,14 +31,19 @@ export class PageHeader extends Component<Props> {
   public static Right = PageHeaderRight
 
   public render() {
-    const {hide, testID, id} = this.props
+    const {hide, testID, id, style} = this.props
 
     if (hide) {
       return null
     }
 
     return (
-      <div className={this.className} data-testid={testID} id={id}>
+      <div
+        className={this.className}
+        data-testid={testID}
+        id={id}
+        style={style}
+      >
         <div className="cf-page-header--container">
           {this.childrenWithCorrectWidths}
         </div>

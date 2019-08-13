@@ -27,7 +27,7 @@ export class PageContents extends Component<Props> {
   }
 
   public render() {
-    const {scrollable, testID, id} = this.props
+    const {scrollable, testID, id, style} = this.props
 
     if (scrollable) {
       return (
@@ -36,6 +36,7 @@ export class PageContents extends Component<Props> {
           autoHide={false}
           testID={testID}
           id={id}
+          style={style}
         >
           <div className="cf-page-contents--padding">{this.children}</div>
         </DapperScrollbars>

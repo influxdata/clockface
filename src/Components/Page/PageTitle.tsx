@@ -19,7 +19,7 @@ export class PageTitle extends PureComponent<Props> {
   }
 
   public render() {
-    const {title, altText, testID, id} = this.props
+    const {title, altText, testID, id, style} = this.props
 
     return (
       <h1
@@ -27,6 +27,7 @@ export class PageTitle extends PureComponent<Props> {
         title={altText}
         data-testid={testID}
         id={id}
+        style={style}
       >
         {title}
       </h1>
