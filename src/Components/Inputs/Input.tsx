@@ -114,6 +114,7 @@ export class Input extends Component<Props> {
       autocomplete,
       tabIndex,
       testID,
+      style,
     } = this.props
 
     return (
@@ -142,6 +143,7 @@ export class Input extends Component<Props> {
           maxLength={maxLength}
           tabIndex={tabIndex}
           data-testid={testID}
+          style={style}
         />
         {this.checkbox}
         {this.icon}
