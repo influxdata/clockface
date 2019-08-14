@@ -2,6 +2,7 @@
 
 ### 0.0.25 (Unreleased)
 
+- [#224](https://github.com/influxdata/clockface/pull/224): Introduce `Tabs` family of navigation components
 - [#221](https://github.com/influxdata/clockface/pull/221) [Breaking] Rename `ComponentSpacer` to `FlexBox` and `ComponentSpacerFlexChild` to `FlexBoxChild`
 - [#219](https://github.com/influxdata/clockface/pull/219): Add `style` prop to all components
 - [#219](https://github.com/influxdata/clockface/pull/219): [Breaking] remove `color` prop from `Icon`
