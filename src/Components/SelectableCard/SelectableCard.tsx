@@ -35,6 +35,8 @@ interface Props extends StandardProps {
   id: string
   /** Name of the form containing this card */
   formName?: string
+  /** Customize the icon that appears in selected state */
+  icon: IconFont
 }
 
 export class SelectableCard extends PureComponent<Props> {
@@ -46,10 +48,20 @@ export class SelectableCard extends PureComponent<Props> {
     color: ComponentColor.Success,
     selected: false,
     disabled: false,
+    icon: IconFont.Checkmark,
   }
 
   public render() {
-    const {id, label, selected, formName, disabled, testID, style} = this.props
+    const {
+      id,
+      label,
+      selected,
+      formName,
+      disabled,
+      testID,
+      style,
+      icon,
+    } = this.props
 
     return (
       <div
@@ -62,10 +74,7 @@ export class SelectableCard extends PureComponent<Props> {
           className="cf-selectable-card--container"
           onClick={this.handleClick}
         >
-          <Icon
-            glyph={IconFont.Checkmark}
-            className="cf-selectable-card--icon"
-          />
+          <Icon glyph={icon} className="cf-selectable-card--icon" />
           <input
             className="cf-selectable-card--hidden-input"
             id={id}

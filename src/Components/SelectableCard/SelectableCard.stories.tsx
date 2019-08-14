@@ -12,12 +12,15 @@ import {jsxDecorator} from 'storybook-addon-jsx'
 import {SelectableCard} from './SelectableCard'
 
 // Types
-import {ComponentColor, ComponentSize} from '../../Types'
+import {ComponentColor, ComponentSize, IconFont} from '../../Types'
 
 // Notes
 import SelectableCardReadme from './SelectableCard.md'
 
-const selectableCardStories = storiesOf('Components|SelectableCard', module)
+const selectableCardStories = storiesOf(
+  'Components|Cards/SelectableCard',
+  module
+)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
@@ -34,6 +37,7 @@ selectableCardStories.add(
       >
         <SelectableCard
           id={text('id', 'platform')}
+          icon={IconFont[select('icon', mapEnumKeys(IconFont), 'Checkmark')]}
           label={text('label', 'Platform')}
           selected={true}
           disabled={boolean('disabled', false)}
@@ -59,6 +63,7 @@ selectableCardStories.add(
       >
         <SelectableCard
           id={text('id', 'platform')}
+          icon={IconFont[select('icon', mapEnumKeys(IconFont), 'Checkmark')]}
           label={text('label', 'Platform')}
           selected={true}
           disabled={boolean('disabled', false)}
@@ -84,6 +89,7 @@ selectableCardStories.add(
       >
         <SelectableCard
           id={text('id', 'platform')}
+          icon={IconFont[select('icon', mapEnumKeys(IconFont), 'Checkmark')]}
           label={text('label', 'Platform')}
           selected={false}
           disabled={boolean('disabled', false)}
