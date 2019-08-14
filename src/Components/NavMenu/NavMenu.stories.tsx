@@ -14,7 +14,7 @@ import {Icon} from '../../Components/Icon/Icon'
 // Types
 import {IconFont} from '../../Types'
 
-const navMenuStories = storiesOf('Components|Navigation', module)
+const navMenuStories = storiesOf('Components|Navigation/NavMenu', module)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
