@@ -3,6 +3,7 @@
 ### 0.0.25 (Unreleased)
 
 - [#229](https://github.com/influxdata/clockface/pull/229): Introduce `SelectableCard` as a port of `CardSelect` from the InfluxDB repository
+- [#224](https://github.com/influxdata/clockface/pull/224): Introduce `Tabs` family of navigation components
 - [#221](https://github.com/influxdata/clockface/pull/221): [Breaking] Rename `ComponentSpacer` to `FlexBox` and `ComponentSpacerFlexChild` to `FlexBoxChild`
 - [#220](https://github.com/influxdata/clockface/pull/220): Ensure all `ConfirmationButton` elements receive a `testID` attribute
 - [#219](https://github.com/influxdata/clockface/pull/219): Add `style` prop to all components

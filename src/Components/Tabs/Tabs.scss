@@ -1,0 +1,249 @@
+@import "../../Styles/modules.scss";
+
+/*
+  Tabs Component
+  ------------------------------------------------------------------------------
+*/
+
+.cf-tabs {
+  display: flex;
+  align-items: stretch;
+
+  &__horizontal {
+    width: 100%;
+    flex-direction: row;
+    &,
+    .cf-tabs--tab {
+      border-radius: $cf-radius $cf-radius 0 0;
+    }
+    .cf-tabs--tab {
+      margin-right: $cf-border;
+    }
+  }
+  
+  &__vertical {
+    height: 100%;
+    flex-direction: column;
+    &,
+    .cf-tabs--tab {
+      border-radius: $cf-radius 0 0 $cf-radius;
+    }
+    .cf-tabs--tab {
+      margin-bottom: $cf-border;
+    }
+  }
+
+  &__align-left {
+    justify-content: flex-start;
+  }
+  &__align-center {
+    justify-content: center;
+  }
+  &__align-right {
+    justify-content: flex-end;
+  }
+}
+
+.cf-tabs--tab {
+  flex-direction: row;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  transition: opacity 0.25s ease;
+  opacity: 0.4;
+
+  &__active,
+  &:hover {
+    cursor: pointer;
+    opacity: 1;
+  }
+
+  &:last-child {
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+
+  > .cf-icon {
+    display: inline-block;
+  }
+}
+
+.cf-tabs--tab-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1 0 0;
+  font-weight: 600;
+  white-space: nowrap;
+  user-select: none;
+}
+
+/*
+  Padding Modifiers 
+  ------------------------------------------------------------------------------
+*/
+
+@mixin tabsPaddingModifier($padding) {
+  padding: $padding;
+
+  &.cf-tabs__horizontal {
+    padding-bottom: 0;
+  }
+  &.cf-tabs__vertical {
+    padding-right: 0;
+  }
+}
+
+.cf-tabs__padding-xs,
+.cf-tabs--tab-contents__xs {
+  @include tabsPaddingModifier($cf-marg-a);
+}
+.cf-tabs__padding-sm,
+.cf-tabs--tab-contents__sm {
+  @include tabsPaddingModifier($cf-marg-b);
+}
+.cf-tabs__padding-md,
+.cf-tabs--tab-contents__md {
+  @include tabsPaddingModifier($cf-marg-c);
+}
+.cf-tabs__padding-lg,
+.cf-tabs--tab-contents__lg {
+  @include tabsPaddingModifier($cf-marg-d);
+}
+
+/*
+  Tab Contents
+  ------------------------------------------------------------------------------
+*/
+
+.cf-tabs--tab-contents {
+  position: relative;
+  flex: 1 0 0;
+
+  .cf-tabs__horizontal + & {
+    border-radius: 0 0 $cf-radius $cf-radius;
+  }
+
+  .cf-tabs__vertical + & {
+    border-radius: 0 $cf-radius $cf-radius 0;
+  }
+}
+
+/*
+  Tab Size Modifiers 
+  ------------------------------------------------------------------------------
+*/
+
+@mixin tabSizeModifier($fontSize, $tabPadding, $tabHeight) {
+  height: $tabHeight + $cf-marg-b;
+  padding: 0 $tabPadding + $cf-marg-a;
+
+  > .cf-icon {
+    margin-right: ceil($tabPadding * 0.66);
+    font-size: ceil($fontSize * 1.25);
+  }
+
+  > .cf-tabs--tab-dismiss {
+    margin-left: ceil($tabPadding * 0.66);
+  }
+
+  .cf-tabs--tab-label {
+    font-size: $fontSize + 1;
+  }
+
+  .cf-tabs--tab-dismiss {
+    margin-top: $cf-marg-b;
+    margin-bottom: $cf-marg-b;
+    height: $tabHeight;
+    width: $tabHeight;
+    margin-left: -$cf-border;
+    margin-right: -$tabPadding;
+  }
+}
+
+.cf-tabs--tab__xs {
+  @include tabSizeModifier($form-xs-font, $form-xs-padding, $form-xs-height);
+}
+.cf-tabs--tab__sm {
+  @include tabSizeModifier($form-sm-font, $form-sm-padding, $form-sm-height);
+}
+.cf-tabs--tab__md {
+  @include tabSizeModifier($form-md-font, $form-md-padding, $form-md-height);
+}
+.cf-tabs--tab__lg {
+  @include tabSizeModifier($form-lg-font, $form-lg-padding, $form-lg-height);
+  .cf-tabs--tab-label {
+    font-weight: 500;
+  }
+}
+
+/*
+  Tab Dismiss Button
+  ------------------------------------------------------------------------------
+*/
+
+.cf-tabs--tab-dismiss-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  background-color: $c-curacao;
+  width: calc(35% + #{$cf-marg-b});
+  height: calc(35% + #{$cf-marg-b});
+  transform: translate(-50%,-50%);
+  transition: opacity 0.25s ease;
+  opacity: 0;
+}
+
+.cf-tabs--tab-dismiss {
+  position: relative;
+  background-color: transparent;
+  border: 0;
+  outline: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+
+  &:before,
+  &:after {
+    content: '';
+    width: 30%;
+    min-width: $cf-marg-b;
+    height: $cf-border;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+  }
+
+  &:before {
+    transform: translate(-50%,-50%) rotate(45deg);
+  }
+  &:after {
+    transform: translate(-50%,-50%) rotate(-45deg);
+  }
+
+  .cf-tabs--tab__dark-text &:before,
+  .cf-tabs--tab__dark-text &:after {
+    background-color: $g2-kevlar;
+  }
+
+  .cf-tabs--tab__light-text &:before,
+  .cf-tabs--tab__light-text &:after {
+    background-color: $g20-white;
+  }
+
+  .cf-tabs--tab:hover & {
+    opacity: 0.4;
+  }
+
+  .cf-tabs--tab:hover &:hover {
+    cursor: pointer;
+    opacity: 1;
+  }
+
+  &:active,
+  &:active .cf-tabs--tab-dismiss-circle,
+  &:active:hover,
+  &:active:hover .cf-tabs--tab-dismiss-circle {
+    opacity: 1;
+  }
+}
