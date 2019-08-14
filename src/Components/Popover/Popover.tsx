@@ -108,6 +108,7 @@ export class Popover extends Component<Props, State> {
             onClick={this.handleTriggerClick}
             onMouseOver={this.handleTriggerMouseOver}
             onMouseOut={this.handleTriggerMouseOut}
+            data-testid={`${testID}--trigger`}
           >
             {children}
           </div>
@@ -129,7 +130,7 @@ export class Popover extends Component<Props, State> {
 
   private get dialog(): JSX.Element {
     const {triggerRect, expanded} = this.state
-    const {contents, distanceFromTrigger} = this.props
+    const {contents, distanceFromTrigger, testID} = this.props
     const dialogPosition = this.calculateDialogPosition()
     let dialogStyles: CSSProperties = {
       visibility: expanded ? 'visible' : 'hidden',
@@ -324,7 +325,10 @@ export class Popover extends Component<Props, State> {
         style={dialogStyles}
         ref={this.dialogRef}
       >
-        <div className="cf-popover--dialog-contents">
+        <div
+          className="cf-popover--dialog-contents"
+          data-testid={`${testID}--contents`}
+        >
           <div
             className={`cf-popover--caret cf-popover--caret__${dialogPosition}`}
             style={caretStyles}
