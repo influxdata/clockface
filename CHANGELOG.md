@@ -2,6 +2,7 @@
 
 ### 0.0.25 (Unreleased)
 
+- [#231](https://github.com/influxdata/clockface/pull/231): Introduce `RangeSlider` input component
 - [#224](https://github.com/influxdata/clockface/pull/224): Introduce `Tabs` family of navigation components
 - [#221](https://github.com/influxdata/clockface/pull/221): [Breaking] Rename `ComponentSpacer` to `FlexBox` and `ComponentSpacerFlexChild` to `FlexBoxChild`
 - [#220](https://github.com/influxdata/clockface/pull/220): Ensure all `ConfirmationButton` elements receive a `testID` attribute
@@ -15,7 +16,7 @@
 
 ### 0.0.23
 
-- ¯\_(ツ)_/¯
+- ¯\_(ツ)\_/¯
 
 ### 0.0.22
 

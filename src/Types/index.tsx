@@ -351,6 +351,7 @@ export enum InputType {
   Password = 'password',
   Email = 'email',
   Checkbox = 'checkbox',
+  Range = 'range',
 }
 
 export enum AutoInputMode {
