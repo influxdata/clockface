@@ -27,9 +27,9 @@ interface Props extends StandardProps {
   /** Stepping interval granularity for range type */
   step?: number
   /** Input field value to be updated with 'on X' functions */
-  value: string
+  value: number
   /** Function to be called on field value change */
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void
   /** Allows or disallows browser autocomplete functionality */
   autocomplete?: AutoComplete
   /** Input status state */
@@ -63,7 +63,6 @@ export class RangeSlider extends Component<Props> {
       min,
       max,
       step,
-      value,
       onChange,
       autocomplete,
       status,
@@ -72,13 +71,14 @@ export class RangeSlider extends Component<Props> {
       testID,
       className,
     } = this.props
+
     return (
       <div className={`cf-range-slider--wrapper ${className}`} style={style}>
         <Input
-          min={min}
-          max={max}
+          min={Math.min(min, max)}
+          max={Math.max(min, max)}
           step={step}
-          value={value}
+          value={this.value}
           onChange={onChange}
           autocomplete={autocomplete}
           status={status}
@@ -103,7 +103,7 @@ export class RangeSlider extends Component<Props> {
   }
 
   private get trackFill(): CSSProperties {
-    const {fill, value, color} = this.props
+    const {fill, min, max, value, color} = this.props
 
     const fillColor = {
       default: InfluxColors.Graphite,
@@ -114,7 +114,10 @@ export class RangeSlider extends Component<Props> {
       danger: InfluxColors.Curacao,
     }
 
-    const pos = value
+    const minVal = Math.min(min, max)
+    const maxVal = Math.max(min, max)
+
+    const pos = ((value - minVal) / (maxVal - minVal)) * 100
 
     if (fill) {
       return {
@@ -132,15 +135,35 @@ export class RangeSlider extends Component<Props> {
   private get rangeSliderLabels(): JSX.Element | null {
     const {min, max, hideLabels} = this.props
 
+    const minVal = Math.min(min, max)
+    const maxVal = Math.max(min, max)
+
     if (hideLabels) {
       return null
     }
 
     return (
       <div className="cf-range-slider--labels">
-        <span className="cf-range-slider--bound">{min}</span>
-        <span className="cf-range-slider--bound">{max}</span>
+        <span className="cf-range-slider--bound">{minVal}</span>
+        <span className="cf-range-slider--bound">{maxVal}</span>
       </div>
     )
+  }
+
+  private get value(): number {
+    const {min, max, value} = this.props
+
+    const minVal = Math.min(min, max)
+    const maxVal = Math.max(min, max)
+
+    if (value < minVal) {
+      return minVal
+    }
+
+    if (value > maxVal) {
+      return maxVal
+    }
+
+    return value
   }
 }

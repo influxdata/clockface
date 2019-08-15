@@ -337,6 +337,11 @@ inputsComposedStories.add(
   () => (
     <div className="story--example">
       <RangeSlider
+        min={number('min', 0)}
+        max={number('max', 100)}
+        value={number('value', 50)}
+        step={number('step', 0)}
+        onChange={() => {}}
         size={
           ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
         }
@@ -345,7 +350,6 @@ inputsComposedStories.add(
             select('color', mapEnumKeys(ComponentColor), 'Primary')
           ]
         }
-        value="50"
         fill={boolean('fill', true)}
         hideLabels={boolean('hide labels', false)}
       />

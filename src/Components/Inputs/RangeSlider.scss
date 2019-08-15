@@ -20,6 +20,7 @@ $slider-hover: $g17-whisper;
   border: none;
   height: $slider-track-height;
   background: $slider-track;
+  padding: 0;
 
   &:hover {
     background: $slider-hover-border;
