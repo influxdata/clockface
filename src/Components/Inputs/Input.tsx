@@ -24,10 +24,12 @@ import {
 } from '../../Types'
 
 interface Props extends StandardProps {
-  /** Minimum value for number type */
+  /** Minimum value for number & range types */
   min?: number
-  /** Maximum value for number type */
+  /** Maximum value for number & range types */
   max?: number
+  /** Stepping interval granularity for range type */
+  step?: number
   /** Determines whether checkbox is checked */
   checked?: boolean
   /** Function to be called on field value change */
@@ -72,6 +74,8 @@ interface Props extends StandardProps {
   autoFocus: boolean
   /** Allows or disallows browser spellcheck functionality */
   spellCheck: boolean
+  /** CSS attributes for the input element */
+  inputStyle?: CSSProperties
 }
 
 export class Input extends Component<Props> {
@@ -97,6 +101,7 @@ export class Input extends Component<Props> {
       id,
       min,
       max,
+      step,
       checked,
       name,
       type,
@@ -114,6 +119,7 @@ export class Input extends Component<Props> {
       autocomplete,
       tabIndex,
       testID,
+      inputStyle,
     } = this.props
 
     return (
@@ -122,6 +128,7 @@ export class Input extends Component<Props> {
           id={id}
           min={min}
           max={max}
+          step={step}
           checked={checked}
           title={this.title}
           autoComplete={autocomplete}
@@ -142,6 +149,7 @@ export class Input extends Component<Props> {
           maxLength={maxLength}
           tabIndex={tabIndex}
           data-testid={testID}
+          style={inputStyle}
         />
         {this.checkbox}
         {this.icon}

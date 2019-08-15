@@ -18,6 +18,7 @@ import {jsxDecorator} from 'storybook-addon-jsx'
 // Components
 import {Input} from './Input'
 import {AutoInput} from './AutoInput'
+import {RangeSlider} from './RangeSlider'
 import {TextArea} from './TextArea'
 import {SlideToggle} from '../SlideToggle/SlideToggle'
 
@@ -38,6 +39,7 @@ import {FlexBox} from '../FlexBox/FlexBox'
 // Notes
 import InputReadme from './Input.md'
 import AutoInputReadme from './AutoInput.md'
+import RangeSliderReadme from './RangeSlider.md'
 
 const inputsBaseStories = storiesOf('Components|Inputs/Base', module)
   .addDecorator(withKnobs)
@@ -326,6 +328,41 @@ inputsComposedStories.add(
   {
     readme: {
       content: marked(AutoInputReadme),
+    },
+  }
+)
+
+inputsComposedStories.add(
+  'Range Slider',
+  () => (
+    <div className="story--example">
+      <RangeSlider
+        min={number('min', 0)}
+        max={number('max', 100)}
+        value={number('value', 50)}
+        step={number('step', 0)}
+        onChange={() => {}}
+        size={
+          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+        }
+        color={
+          ComponentColor[
+            select('color', mapEnumKeys(ComponentColor), 'Primary')
+          ]
+        }
+        fill={boolean('fill', true)}
+        hideLabels={boolean('hide labels', false)}
+        status={
+          ComponentStatus[
+            select('status', mapEnumKeys(ComponentStatus), 'Default')
+          ]
+        }
+      />
+    </div>
+  ),
+  {
+    readme: {
+      content: marked(RangeSliderReadme),
     },
   }
 )
