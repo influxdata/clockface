@@ -1,6 +1,8 @@
 # Changelog
 
-### 0.0.25 (Unreleased)
+### 0.0.26 (Unreleased)
+
+### 0.0.25
 
 - [#231](https://github.com/influxdata/clockface/pull/231): Introduce `RangeSlider` input component
 - [#229](https://github.com/influxdata/clockface/pull/229): Introduce `SelectableCard` as a port of `CardSelect` from the InfluxDB repository
