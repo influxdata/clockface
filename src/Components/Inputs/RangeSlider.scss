@@ -1,5 +1,8 @@
 @import '../../Styles/modules';
 
+$slider-bg: $g2-kevlar;
+$slider-hover-border: $g7-graphite;
+
 $slider-handle: $c-pool;
 $slider-handle-focus: $c-laser;
 $slider-handle-disabled: $g4-onyx;
@@ -14,6 +17,13 @@ $slider-hover: $g17-whisper;
 
 .cf-input input[type='range'] {
   -webkit-appearance: none;
+  border: none;
+  height: $slider-track-height;
+  background: $slider-track;
+
+  &:hover {
+    background: $slider-hover-border;
+  }
 
   &:focus {
     outline: none;
@@ -21,7 +31,7 @@ $slider-hover: $g17-whisper;
 
   &::-webkit-slider-runnable-track {
     height: $slider-track-height;
-    background: $slider-track;
+    background: transparent;
     border: none;
     border-radius: $cf-radius;
 
@@ -47,9 +57,9 @@ $slider-hover: $g17-whisper;
 
   &::-moz-range-track {
     height: $slider-track-height;
-    background: $slider-track;
-    border: none;
     border-radius: $cf-radius;
+    background: transparent;
+    border: none;
   }
 
   &::-moz-range-thumb {
@@ -71,24 +81,15 @@ $slider-hover: $g17-whisper;
     border-color: transparent;
     border-width: 6px 0;
     color: transparent;
+    border-radius: $cf-radius;
   }
 
   &::-ms-fill-lower {
-    background: $g9-mountain;
-    border-radius: $cf-radius;
-
-    &:focus {
-      background: $g17-whisper;
-    }
+    background: transparent;
   }
 
   &::-ms-fill-upper {
-    background: $slider-track;
-    border-radius: $cf-radius;
-
-    &focus {
-      background: $slider-focus-border;
-    }
+    background: transparent;
   }
 
   &::-ms-thumb {
@@ -105,14 +106,57 @@ $slider-hover: $g17-whisper;
   }
 }
 
+.cf-range-slider--wrapper {
+  width: 100%;
+}
+
+.cf-range-slider--container {
+  width: 100%;
+  height: 30px;
+  background: $slider-bg;
+  border: 2px solid $slider-track;
+  border-radius: $cf-radius;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 $cf-marg-c;
+  transition: border-color 0.25s ease;
+
+  &:hover {
+    border-color: $slider-hover-border;
+  }
+}
+
+.cf-range-slider--labels {
+  margin-top: $cf-marg-a;
+  padding: 0 $cf-marg-c;
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-between;
+
+  .cf-range-slider--bound {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    @extend %no-user-select;
+  }
+}
+
 /*
   Size Modifiers
   ------------------------------------------------------------------------------
 */
-@mixin sliderSizeModifier($fontSize, $height) {
+@mixin sliderSizeModifier($fontSize, $height, $containerHeight) {
   $slider-handle-mod-height: $height + 10px;
 
+  &.cf-range-slider--container {
+    height: $containerHeight;
+  }
+
   input[type='range'] {
+    height: $height;
+
     &::-webkit-slider-runnable-track {
       height: $height;
     }
@@ -141,19 +185,25 @@ $slider-hover: $g17-whisper;
       width: $slider-handle-mod-height;
     }
   }
+
+  &.cf-range-slider--fill {
+    ::-moz-range-progress {
+      height: $height;
+    }
+  }
 }
 
 .cf-input-xs {
-  @include sliderSizeModifier($form-xs-font, $cf-marg-a);
+  @include sliderSizeModifier($form-xs-font, $cf-marg-a, $form-xs-height);
 }
 .cf-input-sm {
-  @include sliderSizeModifier($form-sm-font, ($cf-marg-a + 2));
+  @include sliderSizeModifier($form-sm-font, ($cf-marg-a + 2), $form-sm-height);
 }
 .cf-input-md {
-  @include sliderSizeModifier($form-md-font, $cf-marg-b);
+  @include sliderSizeModifier($form-md-font, $cf-marg-b, $form-md-height);
 }
 .cf-input-lg {
-  @include sliderSizeModifier($form-lg-font, ($cf-marg-b + 2));
+  @include sliderSizeModifier($form-lg-font, ($cf-marg-b + 2), $form-lg-height);
 }
 
 /*
@@ -162,6 +212,12 @@ $slider-hover: $g17-whisper;
 */
 @mixin handleColorModifier($bg, $bgHover, $bgActive) {
   input[type='range'] {
+    &::-webkit-slider-runnable-track {
+      &:focus {
+        background: $bg;
+      }
+    }
+
     &::-webkit-slider-thumb {
       background: $bg;
 
@@ -178,17 +234,6 @@ $slider-hover: $g17-whisper;
     &::-moz-range-thumb {
       background: $bg;
 
-      &:hover {
-        background: $bgHover;
-      }
-
-      &:focus,
-      &:active {
-        background: $bgActive;
-      }
-    }
-
-    &::-ms-thumb {
       &:hover {
         background: $bgHover;
       }

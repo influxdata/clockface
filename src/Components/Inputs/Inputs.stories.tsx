@@ -345,9 +345,9 @@ inputsComposedStories.add(
             select('color', mapEnumKeys(ComponentColor), 'Primary')
           ]
         }
-        onChange={e => {
-          alert(`Value is ${e.target.value}`)
-        }}
+        value="50"
+        fill={boolean('fill', true)}
+        hideLabels={boolean('hide labels', false)}
       />
     </div>
   ),

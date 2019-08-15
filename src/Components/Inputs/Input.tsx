@@ -74,6 +74,8 @@ interface Props extends StandardProps {
   autoFocus: boolean
   /** Allows or disallows browser spellcheck functionality */
   spellCheck: boolean
+  /** CSS attributes for the input element */
+  inputStyle?: CSSProperties
 }
 
 export class Input extends Component<Props> {
@@ -117,6 +119,7 @@ export class Input extends Component<Props> {
       autocomplete,
       tabIndex,
       testID,
+      inputStyle,
     } = this.props
 
     return (
@@ -146,6 +149,7 @@ export class Input extends Component<Props> {
           maxLength={maxLength}
           tabIndex={tabIndex}
           data-testid={testID}
+          style={inputStyle}
         />
         {this.checkbox}
         {this.icon}
