@@ -352,6 +352,11 @@ inputsComposedStories.add(
         }
         fill={boolean('fill', true)}
         hideLabels={boolean('hide labels', false)}
+        status={
+          ComponentStatus[
+            select('status', mapEnumKeys(ComponentStatus), 'Default')
+          ]
+        }
       />
     </div>
   ),

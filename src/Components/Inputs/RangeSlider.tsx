@@ -94,16 +94,19 @@ export class RangeSlider extends Component<Props> {
   }
 
   private get className(): string {
-    const {color, status, fill} = this.props
+    const {color, fill} = this.props
 
     return classnames(`cf-range-slider--container cf-range-slider--${color}`, {
-      'cf-range-slider--disabled': status === ComponentStatus.Disabled,
       'cf-range-slider--fill': fill,
     })
   }
 
   private get trackFill(): CSSProperties {
-    const {fill, min, max, value, color} = this.props
+    const {fill, min, max, value, color, status} = this.props
+
+    if (status === ComponentStatus.Disabled) {
+      return {background: InfluxColors.Castle}
+    }
 
     const fillColor = {
       default: InfluxColors.Graphite,

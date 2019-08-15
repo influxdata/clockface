@@ -12,6 +12,8 @@ $slider-track: $g5-pepper;
 $slider-track-disabled: $g3-castle;
 $slider-track-height: $cf-marg-a;
 
+$slider-disabled-text: $g9-mountain;
+
 $slider-focus-border: $c-pool;
 $slider-hover: $g17-whisper;
 
@@ -79,8 +81,7 @@ $slider-hover: $g17-whisper;
   &::-ms-track {
     height: $slider-track-height;
     background: transparent;
-    border-color: transparent;
-    border-width: 6px 0;
+    border: none;
     color: transparent;
     border-radius: $cf-radius;
   }
@@ -213,12 +214,6 @@ $slider-hover: $g17-whisper;
 */
 @mixin handleColorModifier($bg, $bgHover, $bgActive) {
   input[type='range'] {
-    &::-webkit-slider-runnable-track {
-      &:focus {
-        background: $bg;
-      }
-    }
-
     &::-webkit-slider-thumb {
       background: $bg;
 
@@ -264,4 +259,54 @@ $slider-hover: $g17-whisper;
 }
 .cf-range-slider--danger {
   @include handleColorModifier($c-curacao, $c-dreamsicle, $c-tungsten);
+}
+
+/*
+  Disabled
+  ------------------------------------------------------------------------------
+*/
+
+.cf-range-slider--container.cf-input__disabled {
+  border-color: $slider-track-disabled;
+
+  &:hover {
+    border-color: $slider-track-disabled;
+  }
+}
+
+.cf-input__disabled + .cf-range-slider--labels {
+  color: $slider-disabled-text;
+  font-style: italic;
+}
+
+.cf-input__disabled {
+  input[type='range'] {
+    background: $slider-track-disabled;
+
+    &::-webkit-slider-thumb {
+      background: $slider-handle-disabled;
+
+      &:hover {
+        background: $slider-handle-disabled;
+      }
+
+      &:focus,
+      &:active {
+        background: $slider-handle-disabled;
+      }
+    }
+
+    &::-moz-range-thumb {
+      background: $slider-handle-disabled;
+
+      &:hover {
+        background: $slider-handle-disabled;
+      }
+
+      &:focus,
+      &:active {
+        background: $slider-handle-disabled;
+      }
+    }
+  }
 }
