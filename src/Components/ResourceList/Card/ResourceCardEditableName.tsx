@@ -4,12 +4,18 @@ import classnames from 'classnames'
 
 // Components
 import {Input} from '../../Inputs/Input'
+import {Icon} from '../../Icon/Icon'
 import {SpinnerContainer} from '../../Spinners/SpinnerContainer'
 import {TechnoSpinner} from '../../Spinners/TechnoSpinner'
 import {ClickOutside} from '../../ClickOutside/ClickOutside'
 
 // Types
-import {StandardProps, ComponentSize, RemoteDataState} from '../../../Types'
+import {
+  StandardProps,
+  ComponentSize,
+  RemoteDataState,
+  IconFont,
+} from '../../../Types'
 
 // Styles
 import './ResourceCardEditableName.scss'
@@ -79,7 +85,7 @@ export class ResourceCardEditableName extends Component<Props, State> {
           onClick={this.handleStartEditing}
           data-testid={buttonTestID}
         >
-          <span className="icon pencil" />
+          <Icon glyph={IconFont.Pencil} />
         </div>
         {this.input}
       </div>
@@ -178,7 +184,7 @@ export class ResourceCardEditableName extends Component<Props, State> {
     const {isEditing} = this.state
 
     return classnames('resource-editable-name', {
-      'resource-editable-name--editing': isEditing,
+      'resource-editable-name__editing': isEditing,
       'untitled-name': name === noNameString,
       [`${className}`]: className,
     })
