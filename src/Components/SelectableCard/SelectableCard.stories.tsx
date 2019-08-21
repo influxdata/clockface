@@ -39,7 +39,7 @@ selectableCardStories.add(
           id={text('id', 'platform')}
           icon={IconFont[select('icon', mapEnumKeys(IconFont), 'Checkmark')]}
           label={text('label', 'Platform')}
-          selected={true}
+          selected={boolean('selected', true)}
           disabled={boolean('disabled', false)}
           fontSize={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]

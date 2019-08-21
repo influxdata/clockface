@@ -8,13 +8,14 @@ import {Panel} from '@influxdata/clockface'
 ```
 ```tsx
 <Panel.Header>
-  // Children
+  <Panel.Title>Title!</Panel.Title>
+  // Additional children such as a button or dropdown
 </Panel.Header>
 ```
 
 ### Customization
 
-If a child is passed in it will appear on the right of the header. This is useful if you need a single action button associated with the panel.
+We recommend using `<Panel.Title />` as the child element, but you can also pass in whatever you want. `PanelHeader` makes use of `FlexBox` so the positioning scheme can be controlled using the same props.
 
 ### Example
 <!-- STORY -->

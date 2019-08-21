@@ -64,7 +64,9 @@ panelStories.add(
   'PanelHeader',
   () => (
     <div className="story--example">
-      <Panel.Header title={text('title', 'I am a cool Panel')} />
+      <Panel.Header>
+        <Panel.Title>{text('title', 'I am a cool Panel')}</Panel.Title>
+      </Panel.Header>
     </div>
   ),
   {
@@ -125,7 +127,9 @@ panelExampleStories.add(
         }
         onDismiss={() => alert('onDismiss clicked!')}
       >
-        <Panel.Header title="Welcome!" />
+        <Panel.Header>
+          <Panel.Title>Welcome!</Panel.Title>
+        </Panel.Header>
         <Panel.Body>
           <h5>We've built a lot of cool new things to make your life easier</h5>
           <h5>
@@ -147,7 +151,9 @@ panelExampleStories.add(
   () => (
     <div className="story--example">
       <Panel size={ComponentSize.Small}>
-        <Panel.Header title="Getting started with InfluxDB 2.0" />
+        <Panel.Header>
+          <Panel.Title>Getting started with InfluxDB 2.0</Panel.Title>
+        </Panel.Header>
         <Panel.Body>
           <Grid>
             <Grid.Row>
@@ -204,7 +210,9 @@ panelExampleStories.add(
   () => (
     <div className="story--example">
       <Panel size={ComponentSize.Small} gradient={Gradients.DocScott}>
-        <Panel.Header title="Danger Zone!" />
+        <Panel.Header>
+          <Panel.Title>Danger Zone!</Panel.Title>
+        </Panel.Header>
         <Panel.Body>
           <p>These actions can have unintended wide-reaching consequences</p>
         </Panel.Body>

@@ -28,24 +28,24 @@ export class ResourceListHeader extends PureComponent<Props> {
         style={style}
       >
         {this.filter}
-        <div className="resource-list--sorting">{children}</div>
+        <div className="cf-resource-list--sorting">{children}</div>
       </div>
     )
   }
 
-  private get filter(): JSX.Element {
+  private get filter(): JSX.Element | undefined {
     const {filterComponent} = this.props
 
     if (filterComponent) {
-      return <div className="resource-list--filter">{filterComponent}</div>
+      return <div className="cf-resource-list--filter">{filterComponent}</div>
     }
 
-    return <div className="resource-list--filter" />
+    return
   }
 
   private get className(): string {
     const {className} = this.props
 
-    return classnames('resource-list--header', {[`${className}`]: className})
+    return classnames('cf-resource-list--header', {[`${className}`]: className})
   }
 }

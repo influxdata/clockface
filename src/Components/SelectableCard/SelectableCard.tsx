@@ -20,7 +20,7 @@ interface Props extends StandardProps {
   /** Text label */
   label: string
   /** Useful for toggling selected state */
-  onClick: () => void
+  onClick: (id?: string) => void
   /** Controls font size of the card's label */
   fontSize: ComponentSize
   /** Controls the color of the selected border */
@@ -82,7 +82,7 @@ export class SelectableCard extends PureComponent<Props> {
             name={formName}
             type="checkbox"
             value={label}
-            checked={selected}
+            defaultChecked={selected}
             disabled={disabled}
           />
           {this.image}
@@ -118,9 +118,10 @@ export class SelectableCard extends PureComponent<Props> {
 
   private handleClick = (e: MouseEvent<HTMLDivElement>): void => {
     e.preventDefault()
-    const {onClick, disabled} = this.props
+
+    const {onClick, disabled, id} = this.props
     if (!disabled) {
-      onClick()
+      onClick(id)
     }
   }
 }

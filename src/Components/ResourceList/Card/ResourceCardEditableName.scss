@@ -8,35 +8,29 @@
 $resource-name-font-size: 17px;
 $resource-name-font-weight: 600;
 
-.resource-name--link,
-.input.resource-editable-name--input > input {
+.cf-resource-name--text,
+.cf-resource-name--text__link,
+.cf-input.cf-resource-editable-name--input > input {
   font-size: $resource-name-font-size;
   font-weight: $resource-name-font-weight;
   font-family: $cf-text-font;
 }
 
-.resource-editable-name > a {
+.cf-resource-editable-name > a {
   display: inline-block;
   white-space: nowrap;
   line-height: $form-xs-height;
 }
 
-.resource-editable-name {
+.cf-resource-editable-name {
   height: $form-xs-height;
   position: relative;
   display: inline-flex;
   flex-wrap: nowrap;
 }
 
-.input.resource-editable-name--input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-
 /* Ensure placeholder text matches font weight of title */
-.input.resource-editable-name--input > input {
+.cf-input.cf-resource-editable-name--input > input {
   &::-webkit-input-placeholder {
     font-weight: $resource-name-font-weight !important;
   }
@@ -51,8 +45,7 @@ $resource-name-font-weight: 600;
   }
 }
 
-/* Edit button hover behavior */
-.resource-editable-name--toggle {
+.cf-resource-editable-name--toggle {
   font-size: $resource-name-font-size * 0.75;
   transform: translateY(-10%);
   padding: $cf-marg-a;
@@ -69,10 +62,23 @@ $resource-name-font-weight: 600;
   }
 }
 
-.resource-editable-name:hover,
-.resource-editable-name--editing {
-  .resource-editable-name--toggle {
+.cf-resource-editable-name:hover,
+.cf-resource-editable-name--editing {
+  .cf-resource-editable-name--toggle {
     opacity: 1;
     width: $cf-marg-b + $cf-marg-c;
+  }
+}
+
+/*
+  Edit Mode
+  ------------------------------------------------------------------------------
+*/
+
+.cf-resource-editable-name__editing {
+  .cf-resource-name--text,
+  .cf-resource-name--text__link,
+  .cf-resource-editable-name--toggle {
+    display: none;
   }
 }

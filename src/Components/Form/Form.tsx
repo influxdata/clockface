@@ -35,6 +35,8 @@ interface Props extends StandardProps {
   onSubmit?: (e: React.FormEvent) => void
   /** Context name or keyword */
   target?: string
+  /** If true prevents default event during onSubmit */
+  preventDefault: boolean
 }
 
 export class Form extends Component<Props> {
@@ -42,6 +44,7 @@ export class Form extends Component<Props> {
 
   public static defaultProps = {
     testID: 'form-container',
+    preventDefault: true,
   }
 
   public static ValidationElement = FormValidationElement
@@ -89,8 +92,11 @@ export class Form extends Component<Props> {
   }
 
   private handleSubmit = (e: React.FormEvent): void => {
-    e.preventDefault()
-    const {onSubmit} = this.props
+    const {onSubmit, preventDefault} = this.props
+
+    if (preventDefault) {
+      e.preventDefault()
+    }
 
     if (onSubmit) {
       onSubmit(e)

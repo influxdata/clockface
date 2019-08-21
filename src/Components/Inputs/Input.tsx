@@ -76,6 +76,10 @@ interface Props extends StandardProps {
   spellCheck: boolean
   /** CSS attributes for the input element */
   inputStyle?: CSSProperties
+  /** For use within a form, marks the input as required */
+  required: boolean
+  /** Pass in a RegEx matcher for best results */
+  pattern?: string
 }
 
 export class Input extends Component<Props> {
@@ -94,6 +98,7 @@ export class Input extends Component<Props> {
     autoFocus: false,
     spellCheck: false,
     testID: 'input-field',
+    required: false,
   }
 
   public render() {
@@ -106,6 +111,7 @@ export class Input extends Component<Props> {
       name,
       type,
       status,
+      required,
       placeholder,
       autoFocus,
       spellCheck,
@@ -120,6 +126,7 @@ export class Input extends Component<Props> {
       tabIndex,
       testID,
       inputStyle,
+      pattern,
     } = this.props
 
     return (
@@ -150,6 +157,8 @@ export class Input extends Component<Props> {
           tabIndex={tabIndex}
           data-testid={testID}
           style={inputStyle}
+          required={required}
+          pattern={pattern}
         />
         {this.checkbox}
         {this.icon}

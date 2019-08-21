@@ -13,13 +13,8 @@
   position: relative;
 }
 
-.cf-panel--header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 .cf-panel--title {
+  width: 100%;
   font-style: normal;
   font-weight: 600;
   letter-spacing: 0.015em;
@@ -34,12 +29,14 @@
 }
 
 .cf-panel--body {
+  width: 100%;
   > *:last-child {
     margin-bottom: 0;
   }
 }
 
 .cf-panel--footer {
+  width: 100%;
   border-radius: 0 0 $cf-radius $cf-radius;
   background-color: rgba($g0-obsidian, 0.1);
 }

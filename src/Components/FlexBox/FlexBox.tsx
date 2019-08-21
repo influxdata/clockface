@@ -35,7 +35,7 @@ interface Props extends StandardProps {
 export class FlexBox extends Component<Props> {
   public static readonly displayName = 'FlexBox'
 
-  public static FlexChild = FlexBoxChild
+  public static Child = FlexBoxChild
 
   public static defaultProps = {
     justifyContent: JustifyContent.FlexStart,

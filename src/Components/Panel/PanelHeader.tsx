@@ -11,11 +11,18 @@ import {
   JustifyContent,
   AlignItems,
   StandardProps,
+  ComponentSize,
 } from '../../Types'
 
 interface Props extends StandardProps {
-  /** Title of Panel */
-  title: string
+  /** Vertical or horizontal flex alignment */
+  flexDirection: FlexDirection
+  /** Inserted margin between children */
+  childMargin?: ComponentSize
+  /** Can be FlexStart, FlexEnd, Center, SpaceBetween, or SpaceAround */
+  justifyContent: JustifyContent
+  /** Can be FlexStart, FlexEnd, Center, or Stretch */
+  alignItems: AlignItems
 }
 
 export class PanelHeader extends Component<Props> {
@@ -23,10 +30,22 @@ export class PanelHeader extends Component<Props> {
 
   public static defaultProps = {
     testID: 'panel--header',
+    flexDirection: FlexDirection.Row,
+    justifyContent: JustifyContent.SpaceBetween,
+    alignItems: AlignItems.Center,
   }
 
   public render() {
-    const {children, title, testID, id, style} = this.props
+    const {
+      children,
+      testID,
+      id,
+      style,
+      flexDirection,
+      childMargin,
+      justifyContent,
+      alignItems,
+    } = this.props
 
     return (
       <div
@@ -35,16 +54,15 @@ export class PanelHeader extends Component<Props> {
         id={id}
         style={style}
       >
-        <div className="cf-panel--title">{title}</div>
-        <div className="cf-panel--controls">
-          <FlexBox
-            direction={FlexDirection.Row}
-            justifyContent={JustifyContent.FlexEnd}
-            alignItems={AlignItems.Center}
-          >
-            {children}
-          </FlexBox>
-        </div>
+        <FlexBox
+          direction={flexDirection}
+          justifyContent={justifyContent}
+          alignItems={alignItems}
+          stretchToFitWidth={true}
+          margin={childMargin}
+        >
+          {children}
+        </FlexBox>
       </div>
     )
   }

@@ -4,12 +4,18 @@ import classnames from 'classnames'
 
 // Components
 import {Input} from '../../Inputs/Input'
+import {Icon} from '../../Icon/Icon'
 import {SpinnerContainer} from '../../Spinners/SpinnerContainer'
 import {TechnoSpinner} from '../../Spinners/TechnoSpinner'
 import {ClickOutside} from '../../ClickOutside/ClickOutside'
 
 // Types
-import {StandardProps, ComponentSize, RemoteDataState} from '../../../Types'
+import {
+  StandardProps,
+  ComponentSize,
+  RemoteDataState,
+  IconFont,
+} from '../../../Types'
 
 // Styles
 import './ResourceCardEditableName.scss'
@@ -70,20 +76,28 @@ export class ResourceCardEditableName extends Component<Props, State> {
           loading={this.state.loading}
           spinnerComponent={<TechnoSpinner diameterPixels={20} />}
         >
-          <span className="resource-name--link" onClick={this.handleClick}>
+          <span className={this.linkClassName} onClick={this.handleClick}>
             <span>{name || noNameString}</span>
           </span>
         </SpinnerContainer>
         <div
-          className="resource-editable-name--toggle"
+          className="cf-resource-editable-name--toggle"
           onClick={this.handleStartEditing}
           data-testid={buttonTestID}
         >
-          <span className="icon pencil" />
+          <Icon glyph={IconFont.Pencil} />
         </div>
         {this.input}
       </div>
     )
+  }
+
+  private get linkClassName(): string {
+    const {onClick} = this.props
+
+    return classnames('cf-resource-name--text', {
+      'cf-resource-name--text__link': onClick,
+    })
   }
 
   private get input(): JSX.Element | undefined {
@@ -102,7 +116,7 @@ export class ResourceCardEditableName extends Component<Props, State> {
             onFocus={this.handleInputFocus}
             onChange={this.handleInputChange}
             onKeyDown={this.handleKeyDown}
-            className="resource-editable-name--input"
+            className="cf-resource-editable-name--input"
             value={workingName}
             testID={inputTestID}
           />
@@ -169,8 +183,8 @@ export class ResourceCardEditableName extends Component<Props, State> {
     const {name, noNameString, className} = this.props
     const {isEditing} = this.state
 
-    return classnames('resource-editable-name', {
-      'resource-editable-name--editing': isEditing,
+    return classnames('cf-resource-editable-name', {
+      'cf-resource-editable-name__editing': isEditing,
       'untitled-name': name === noNameString,
       [`${className}`]: className,
     })
