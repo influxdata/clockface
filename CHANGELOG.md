@@ -2,6 +2,19 @@
 
 ### 0.0.26 (Unreleased)
 
+- [#243](https://github.com/influxdata/clockface/pull/243): [Breaking] Make `PanelHeader` composable, recommended to use `PanelTitle` as a child instead of `title` prop
+- [#243](https://github.com/influxdata/clockface/pull/243): Do not render `ResourceCardName` & `ResourceCardEditableName` as links if no `onClick` prop is passed
+- [#243](https://github.com/influxdata/clockface/pull/243): Fix appearance of `ResourceCardEditableName` when in edit mode
+- [#243](https://github.com/influxdata/clockface/pull/243): Reduce padding of `PageHeader` and `PageContents` when navigation is above the page
+- [#243](https://github.com/influxdata/clockface/pull/243): Ensure that `TextBlock` can have its text and background color controlled independently
+- [#243](https://github.com/influxdata/clockface/pull/243): Position `ResourceListHeader` contents to the left when no filter is passed in
+- [#243](https://github.com/influxdata/clockface/pull/243): [Breaking] Ensure that `FlexBoxChild` is accessible as `<FlexBox.Child />`
+- [#243](https://github.com/influxdata/clockface/pull/243): Expose `pattern` and `required` input attributes as props
+- [#243](https://github.com/influxdata/clockface/pull/243): Make `preventDefault` behavior in `Form` `onSubmit` optional
+- [#243](https://github.com/influxdata/clockface/pull/243): Add `cf-` prefix to classnames in all `ResourceList` and `ResourceCard` components
+- [#243](https://github.com/influxdata/clockface/pull/243): Ensure `Popover` dialog can be moused into when show interaction is `Hover`
+
+
 ### 0.0.25
 
 - [#231](https://github.com/influxdata/clockface/pull/231): Introduce `RangeSlider` input component
