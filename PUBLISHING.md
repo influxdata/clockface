@@ -19,3 +19,17 @@ Then upload the latest Storybook docs to the GitHub pages site by running:
 ```
 yarn run publishStorybook
 ```
+
+Then update the changelog with a header for the newest version:
+
+```
+# Changelog
+
+### 0.0.1 (Unreleaased)
+
+### 0.0.0
+
+ - Change
+ - Change
+ - Change
+```
