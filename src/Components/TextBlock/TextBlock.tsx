@@ -50,7 +50,7 @@ export class TextBlock extends Component<Props> {
     const {backgroundColor, textColor, style} = this.props
 
     if (!backgroundColor) {
-      return style
+      return {color: `${textColor}`, ...style}
     }
 
     const darkContrast = chroma.contrast(

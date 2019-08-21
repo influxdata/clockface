@@ -19,7 +19,7 @@ import {mapEnumKeys} from '../../Utils/storybook'
 import {TextBlock} from './TextBlock'
 
 // Types
-import {ComponentSize, InfluxColors} from '../../Types/index'
+import {ComponentSize} from '../../Types/index'
 
 // Notes
 import TextBlockReadme from './TextBlock.md'
@@ -53,7 +53,7 @@ textBlockStories.add(
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
-          backgroundColor={color('backgroundColor', `${InfluxColors.Amethyst}`)}
+          backgroundColor={color('backgroundColor', '')}
           monospace={boolean('monospace', false)}
         />
       </div>
@@ -63,8 +63,8 @@ textBlockStories.add(
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
-          backgroundColor={color('backgroundColor', `${InfluxColors.Amethyst}`)}
-          textColor={color('textColor', `${InfluxColors.Krypton}`)}
+          backgroundColor={color('backgroundColor', '')}
+          textColor={color('textColor', '')}
           monospace={boolean('monospace', false)}
         />
       </div>
@@ -74,8 +74,8 @@ textBlockStories.add(
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
-          backgroundColor={color('backgroundColor', `${InfluxColors.Amethyst}`)}
-          textColor={color('textColor', `${InfluxColors.Krypton}`)}
+          backgroundColor={color('backgroundColor', '')}
+          textColor={color('textColor', '')}
           monospace={boolean('monospace', false)}
           style={object('style', customTextBlockStyles)}
         />
