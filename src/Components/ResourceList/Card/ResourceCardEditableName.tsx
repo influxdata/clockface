@@ -70,7 +70,7 @@ export class ResourceCardEditableName extends Component<Props, State> {
           loading={this.state.loading}
           spinnerComponent={<TechnoSpinner diameterPixels={20} />}
         >
-          <span className="resource-name--link" onClick={this.handleClick}>
+          <span className={this.linkClassName} onClick={this.handleClick}>
             <span>{name || noNameString}</span>
           </span>
         </SpinnerContainer>
@@ -84,6 +84,14 @@ export class ResourceCardEditableName extends Component<Props, State> {
         {this.input}
       </div>
     )
+  }
+
+  private get linkClassName(): string {
+    const {onClick} = this.props
+
+    return classnames('resource-name--text', {
+      'resource-name--text__link': onClick,
+    })
   }
 
   private get input(): JSX.Element | undefined {

@@ -15,16 +15,21 @@ $resource-name-font-weight: 600;
   flex-wrap: nowrap;
 }
 
-.resource-name--link {
+.resource-name--text {
   font-size: $resource-name-font-size;
   font-weight: $resource-name-font-weight;
   font-family: $cf-text-font;
   display: inline-block;
   white-space: nowrap;
   line-height: $form-xs-height;
+  height: $form-xs-height;
+  color: $g15-platinum;
+  user-select: none;
+}
+
+.resource-name--text__link {
   color: $cf-link-default;
   transition: color 0.25s ease;
-  font-weight: $cf-link-weight;
 
   .resource-card__disabled & {
     color: rgba($cf-link-default, 0.5);

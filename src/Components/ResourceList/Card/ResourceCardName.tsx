@@ -1,5 +1,6 @@
 // Libraries
 import React, {Component, MouseEvent} from 'react'
+import classnames from 'classnames'
 
 // Types
 import {StandardProps} from '../../../Types'
@@ -26,11 +27,19 @@ export class ResourceCardName extends Component<Props> {
 
     return (
       <div className="resource-name" data-testid={testID} id={id} style={style}>
-        <span className="resource-name--link" onClick={this.handleClick}>
+        <span className={this.linkClassName} onClick={this.handleClick}>
           <span>{name}</span>
         </span>
       </div>
     )
+  }
+
+  private get linkClassName(): string {
+    const {onClick} = this.props
+
+    return classnames('resource-name--text', {
+      'resource-name--text__link': onClick,
+    })
   }
 
   private handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
