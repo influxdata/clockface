@@ -26,7 +26,12 @@ export class ResourceCardName extends Component<Props> {
     const {name, testID, id, style} = this.props
 
     return (
-      <div className="resource-name" data-testid={testID} id={id} style={style}>
+      <div
+        className="cf-resource-name"
+        data-testid={testID}
+        id={id}
+        style={style}
+      >
         <span className={this.linkClassName} onClick={this.handleClick}>
           <span>{name}</span>
         </span>
@@ -37,8 +42,8 @@ export class ResourceCardName extends Component<Props> {
   private get linkClassName(): string {
     const {onClick} = this.props
 
-    return classnames('resource-name--text', {
-      'resource-name--text__link': onClick,
+    return classnames('cf-resource-name--text', {
+      'cf-resource-name--text__link': onClick,
     })
   }
 

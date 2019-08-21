@@ -7,16 +7,16 @@
 
 $resource-card--row-gap: $cf-marg-a - ($cf-border / 2);
 
-.resource-card {
+.cf-resource-card {
   width: 100%;
 }
 
-.resource-card,
-.resource-card--contents {
+.cf-resource-card,
+.cf-resource-card--contents {
   display: flex;
 }
 
-.resource-card {
+.cf-resource-card {
   flex-direction: row;
   align-items: stretch;
   position: relative;
@@ -34,20 +34,20 @@ $resource-card--row-gap: $cf-marg-a - ($cf-border / 2);
   }
 }
 
-.resource-card--contents {
+.cf-resource-card--contents {
   flex-direction: column;
   flex: 1 0 0;
 }
 
-.resource-card--row {
+.cf-resource-card--row {
   margin-bottom: $resource-card--row-gap;
 }
 
-.resource-list--toggle {
+.cf-resource-card--toggle {
   padding-right: $cf-marg-c;
 }
 
-.resource-list--meta {
+.cf-resource-card--meta {
   display: flex;
   align-items: center;
   font-size: $form-xs-font;
@@ -56,7 +56,7 @@ $resource-card--row-gap: $cf-marg-a - ($cf-border / 2);
   padding-bottom: $cf-border;
 }
 
-.resource-list--meta-item {
+.cf-resource-card--meta-item {
   transition: border-color 0.25s ease, color 0.25s ease;
   border-right: $cf-border solid $g5-pepper;
   padding-right: $cf-marg-b + $cf-marg-a;
@@ -68,20 +68,20 @@ $resource-card--row-gap: $cf-marg-a - ($cf-border / 2);
     margin-right: 0;
   }
 
-  .resource-card:hover & {
+  .cf-resource-card:hover & {
     color: $g15-platinum;
     border-color: $g7-graphite;
   }
 }
 
-.resource-list--context-menu {
+.cf-resource-card--context-menu {
   opacity: 0;
   transition: opacity 0.25s ease;
   position: absolute;
   top: $cf-marg-b;
   right: $cf-marg-b;
 
-  .resource-card:hover & {
+  .cf-resource-card:hover & {
     opacity: 1;
   }
 }
@@ -91,16 +91,16 @@ $resource-card--row-gap: $cf-marg-a - ($cf-border / 2);
   ------------------------------------------------------------------------------
 */
 
-.resource-card.resource-card__disabled {
+.cf-resource-card.cf-resource-card__disabled {
   background-color: rgba($g3-castle, 0.5);
   color: $g9-mountain;
   font-style: italic;
 
-  .resource-list--meta {
+  .cf-resource-card--meta {
     color: $g9-mountain;
   }
 
-  &:hover .resource-list--meta {
+  &:hover .cf-resource-card--meta {
     color: $g12-forge;
   }
 }
@@ -110,8 +110,8 @@ $resource-card--row-gap: $cf-marg-a - ($cf-border / 2);
   ------------------------------------------------------------------------------
 */
 
-.panel .resource-card,
-.tabs .resource-card {
+.panel .cf-resource-card,
+.tabs .cf-resource-card {
   background-color: $g4-onyx;
 
   &:hover {
@@ -119,7 +119,7 @@ $resource-card--row-gap: $cf-marg-a - ($cf-border / 2);
   }
 }
 
-.panel .resource-card.resource-card__disabled,
-.tabs .resource-card.resource-card__disabled {
+.panel .cf-resource-card.cf-resource-card__disabled,
+.tabs .cf-resource-card.cf-resource-card__disabled {
   background-color: rgba($g4-onyx, 0.5);
 }

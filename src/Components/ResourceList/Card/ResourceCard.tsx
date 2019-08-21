@@ -54,15 +54,17 @@ export class ResourceCard extends PureComponent<Props> {
         style={style}
       >
         {this.toggle}
-        <div className="resource-card--contents">
-          <div className="resource-card--row">{name}</div>
+        <div className="cf-resource-card--contents">
+          <div className="cf-resource-card--row">{name}</div>
           {description ? (
-            <div className="resource-card--row">{description}</div>
+            <div className="cf-resource-card--row">{description}</div>
           ) : null}
           {this.formattedMetaData}
-          {labels ? <div className="resource-card--row">{labels}</div> : null}
+          {labels ? (
+            <div className="cf-resource-card--row">{labels}</div>
+          ) : null}
           {children ? (
-            <div className="resource-card--row">{children}</div>
+            <div className="cf-resource-card--row">{children}</div>
           ) : null}
         </div>
         {this.contextMenu}
@@ -73,8 +75,8 @@ export class ResourceCard extends PureComponent<Props> {
   private get className(): string {
     const {disabled, className} = this.props
 
-    return classnames('resource-card', {
-      'resource-card__disabled': disabled,
+    return classnames('cf-resource-card', {
+      'cf-resource-card__disabled': disabled,
       [`${className}`]: className,
     })
   }
@@ -83,7 +85,7 @@ export class ResourceCard extends PureComponent<Props> {
     const {toggle} = this.props
 
     if (toggle) {
-      return <div className="resource-list--toggle">{toggle}</div>
+      return <div className="cf-resource-card--toggle">{toggle}</div>
     }
 
     return
@@ -94,11 +96,11 @@ export class ResourceCard extends PureComponent<Props> {
 
     if (metaData) {
       return (
-        <div className="resource-card--row resource-list--meta">
+        <div className="cf-resource-card--row cf-resource-card--meta">
           {React.Children.map(metaData, (metaItem: JSX.Element) => (
             <div
-              className="resource-list--meta-item"
-              data-testid="resource-list--meta-item"
+              className="cf-resource-card--meta-item"
+              data-testid="cf-resource-card--meta-item"
             >
               {metaItem}
             </div>
@@ -114,7 +116,7 @@ export class ResourceCard extends PureComponent<Props> {
     const {contextMenu} = this.props
 
     if (contextMenu) {
-      return <div className="resource-list--context-menu">{contextMenu}</div>
+      return <div className="cf-resource-card--context-menu">{contextMenu}</div>
     }
 
     return
