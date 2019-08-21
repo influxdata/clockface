@@ -101,13 +101,13 @@ export class Popover extends Component<Props, State> {
           data-testid={testID}
           id={id}
           style={style}
+          onMouseLeave={this.handleTriggerMouseLeave}
         >
           <div
             className="cf-popover--trigger"
             ref={this.triggerRef}
             onClick={this.handleTriggerClick}
             onMouseOver={this.handleTriggerMouseOver}
-            onMouseOut={this.handleTriggerMouseOut}
             data-testid={`${testID}--trigger`}
           >
             {children}
@@ -453,7 +453,7 @@ export class Popover extends Component<Props, State> {
     }
   }
 
-  private handleTriggerMouseOut = (): void => {
+  private handleTriggerMouseLeave = (): void => {
     const {hideEvent} = this.props
 
     if (hideEvent === PopoverInteraction.Hover) {
