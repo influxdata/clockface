@@ -338,12 +338,16 @@ resourceListExampleStories.add(
       <ResourceList>
         <ResourceList.Header
           filterComponent={
-            <Input
-              icon={IconFont.Search}
-              placeholder="Filter dashboards..."
-              widthPixels={280}
-              value={text('Search term', '')}
-            />
+            boolean('Include Filter', true) ? (
+              <Input
+                icon={IconFont.Search}
+                placeholder="Filter dashboards..."
+                widthPixels={280}
+                value={text('Search term', '')}
+              />
+            ) : (
+              undefined
+            )
           }
         >
           <ResourceList.Sorter

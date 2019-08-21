@@ -30,13 +30,13 @@
   width: 100%;
 }
 
+.cf-resource-list--filter {
+  min-width: 10px;
+}
+
 .cf-resource-list--sorting {
   display: flex;
   align-items: center;
-}
-
-.cf-resource-list--filter {
-  min-width: 10px;
 }
 
 .cf-resource-list--sorter {
@@ -60,6 +60,10 @@
   &.cf-resource-list--sort-ascending {
     color: $c-pool;
   }
+}
+
+.cf-resource-list--sorting:only-child .cf-resource-list--sorter:first-child {
+  margin-left: 0;
 }
 
 .cf-resource-list--sort-arrow {

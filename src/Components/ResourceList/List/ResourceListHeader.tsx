@@ -33,14 +33,14 @@ export class ResourceListHeader extends PureComponent<Props> {
     )
   }
 
-  private get filter(): JSX.Element {
+  private get filter(): JSX.Element | undefined {
     const {filterComponent} = this.props
 
     if (filterComponent) {
       return <div className="cf-resource-list--filter">{filterComponent}</div>
     }
 
-    return <div className="cf-resource-list--filter" />
+    return
   }
 
   private get className(): string {
