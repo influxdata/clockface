@@ -55,28 +55,28 @@ import ResourceCardEditableNameReadme from './Card/ResourceCardEditableName.md'
 import ResourceListExampleReadme from './ResourceListExample.md'
 import ResourceCardExampleReadme from './ResourceCardExample.md'
 
-const indexListStories = storiesOf(
+const resourceListStories = storiesOf(
   'Components|ResourceList/List Family',
   module
 )
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
-const indexListCardStories = storiesOf(
+const resourceListCardStories = storiesOf(
   'Components|ResourceList/Card Family',
   module
 )
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
-const indexListExampleStories = storiesOf(
+const resourceListExampleStories = storiesOf(
   'Components|ResourceList/Examples',
   module
 )
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
-indexListStories.add(
+resourceListStories.add(
   'ResourceList',
   () => (
     <div className="story--example">
@@ -105,7 +105,7 @@ const exampleHeaderSorts = [
   },
 ]
 
-indexListStories.add(
+resourceListStories.add(
   'ResourceListHeader',
   () => (
     <div className="story--example">
@@ -135,7 +135,7 @@ indexListStories.add(
   }
 )
 
-indexListStories.add(
+resourceListStories.add(
   'ResourceListBody',
   () => (
     <div className="story--example">
@@ -153,7 +153,7 @@ indexListStories.add(
   }
 )
 
-indexListStories.add(
+resourceListStories.add(
   'ResourceListSorter',
   () => (
     <div className="story--example">
@@ -176,7 +176,7 @@ indexListStories.add(
 
 const resourceCardMeta = ['Created by Bob', 'Updated 25m ago']
 
-indexListCardStories.add(
+resourceListCardStories.add(
   'ResourceCard',
   () => (
     <div className="story--example">
@@ -215,7 +215,7 @@ indexListCardStories.add(
   }
 )
 
-indexListCardStories.add(
+resourceListCardStories.add(
   'ResourceCardDescription',
   () => (
     <div className="story--example">
@@ -234,7 +234,7 @@ indexListCardStories.add(
   }
 )
 
-indexListCardStories.add(
+resourceListCardStories.add(
   'ResourceCardEditableDescription',
   () => (
     <div className="story--example">
@@ -255,14 +255,19 @@ indexListCardStories.add(
   }
 )
 
-indexListCardStories.add(
+resourceListCardStories.add(
   'ResourceCardName',
   () => (
     <div className="story--example">
-      <ResourceCardName
-        name={text('name', 'Card Name')}
-        onClick={() => alert('onClick fired!')}
-      />
+      <div style={{margin: '30px'}}>
+        <ResourceCardName
+          name={text('name', 'Card Name')}
+          onClick={() => alert('onClick fired!')}
+        />
+      </div>
+      <div style={{margin: '30px'}}>
+        <ResourceCardName name={text('name', 'Card Name')} />
+      </div>
     </div>
   ),
   {
@@ -272,17 +277,27 @@ indexListCardStories.add(
   }
 )
 
-indexListCardStories.add(
+resourceListCardStories.add(
   'ResourceCardEditableName',
   () => (
     <div className="story--example">
-      <ResourceCardEditableName
-        name={text('name', 'Card Name')}
-        onClick={() => alert('onClick fired!')}
-        onUpdate={name => alert(`onUpdate fired with "${name}"`)}
-        noNameString={text('noNameString', 'Untitled Card')}
-        placeholder={text('placeholder', 'Name this card...')}
-      />
+      <div style={{margin: '30px'}}>
+        <ResourceCardEditableName
+          name={text('name', 'Card Name')}
+          onClick={() => alert('onClick fired!')}
+          onUpdate={name => alert(`onUpdate fired with "${name}"`)}
+          noNameString={text('noNameString', 'Untitled Card')}
+          placeholder={text('placeholder', 'Name this card...')}
+        />
+      </div>
+      <div style={{margin: '30px'}}>
+        <ResourceCardEditableName
+          name={text('name', 'Card Name')}
+          onUpdate={name => alert(`onUpdate fired with "${name}"`)}
+          noNameString={text('noNameString', 'Untitled Card')}
+          placeholder={text('placeholder', 'Name this card...')}
+        />
+      </div>
     </div>
   ),
   {
@@ -316,7 +331,7 @@ const exampleDashboards = [
   },
 ]
 
-indexListExampleStories.add(
+resourceListExampleStories.add(
   'Dashboards List',
   () => (
     <div className="story--example">
@@ -410,7 +425,7 @@ indexListExampleStories.add(
   }
 )
 
-indexListExampleStories.add(
+resourceListExampleStories.add(
   'Toggleable Card',
   () => (
     <div className="story--example">
