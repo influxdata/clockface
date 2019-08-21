@@ -28,7 +28,7 @@ export class ResourceListHeader extends PureComponent<Props> {
         style={style}
       >
         {this.filter}
-        <div className="resource-list--sorting">{children}</div>
+        <div className="cf-resource-list--sorting">{children}</div>
       </div>
     )
   }
@@ -37,15 +37,15 @@ export class ResourceListHeader extends PureComponent<Props> {
     const {filterComponent} = this.props
 
     if (filterComponent) {
-      return <div className="resource-list--filter">{filterComponent}</div>
+      return <div className="cf-resource-list--filter">{filterComponent}</div>
     }
 
-    return <div className="resource-list--filter" />
+    return <div className="cf-resource-list--filter" />
   }
 
   private get className(): string {
     const {className} = this.props
 
-    return classnames('resource-list--header', {[`${className}`]: className})
+    return classnames('cf-resource-list--header', {[`${className}`]: className})
   }
 }

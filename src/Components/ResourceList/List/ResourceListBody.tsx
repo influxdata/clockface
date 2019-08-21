@@ -49,6 +49,6 @@ export class ResourceListBody extends PureComponent<Props> {
   private get className(): string {
     const {className} = this.props
 
-    return classnames('resource-list--body', {[`${className}`]: className})
+    return classnames('cf-resource-list--body', {[`${className}`]: className})
   }
 }

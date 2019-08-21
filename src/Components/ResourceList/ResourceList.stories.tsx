@@ -354,7 +354,7 @@ resourceListExampleStories.add(
                 `Sorter clicked! nextSort: ${nextSort}, sortKey: ${sortKey}`
               )
             }
-            sort={Sort.None}
+            sort={Sort.Ascending}
           />
           <ResourceList.Sorter
             name="Description"

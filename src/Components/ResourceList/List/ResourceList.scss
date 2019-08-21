@@ -5,15 +5,15 @@
   ------------------------------------------------------------------------------
 */
 
-.resource-list {
+.cf-resource-list {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: stretch;
 }
 
-.resource-list--header,
-.resource-list--body {
+.cf-resource-list--header,
+.cf-resource-list--body {
   width: 100%;
 }
 
@@ -22,7 +22,7 @@
   ------------------------------------------------------------------------------
 */
 
-.resource-list--header {
+.cf-resource-list--header {
   display: flex;
   align-items: center;
   padding-bottom: $cf-marg-c;
@@ -30,16 +30,16 @@
   width: 100%;
 }
 
-.resource-list--sorting {
+.cf-resource-list--sorting {
   display: flex;
   align-items: center;
 }
 
-.resource-list--filter {
+.cf-resource-list--filter {
   min-width: 10px;
 }
 
-.resource-list--sorter {
+.cf-resource-list--sorter {
   user-select: none;
   font-size: $form-md-font;
   font-weight: 600;
@@ -56,13 +56,13 @@
     cursor: pointer;
   }
 
-  &.resource-list--sort-descending,
-  &.resource-list--sort-ascending {
+  &.cf-resource-list--sort-descending,
+  &.cf-resource-list--sort-ascending {
     color: $c-pool;
   }
 }
 
-.resource-list--sort-arrow {
+.cf-resource-list--sort-arrow {
   width: $cf-marg-c;
   height: $cf-marg-c;
   position: relative;
@@ -70,8 +70,8 @@
   transition: opacity 0.25s ease;
   opacity: 0;
 
-  .resource-list--sort-descending &,
-  .resource-list--sort-ascending & {
+  .cf-resource-list--sort-descending &,
+  .cf-resource-list--sort-ascending & {
     opacity: 1;
   }
 
@@ -83,11 +83,11 @@
     transition: transform 0.25s ease;
   }
 
-  .resource-list--sort-descending & > span.cf-icon {
+  .cf-resource-list--sort-descending & > span.cf-icon {
     transform: translate(-50%, -50%) rotate(0deg);
   }
 
-  .resource-list--sort-ascending & > span.cf-icon {
+  .cf-resource-list--sort-ascending & > span.cf-icon {
     transform: translate(-50%, -50%) rotate(180deg);
   }
 }

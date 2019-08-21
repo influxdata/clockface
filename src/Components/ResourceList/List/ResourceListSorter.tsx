@@ -2,8 +2,11 @@
 import React, {PureComponent} from 'react'
 import classnames from 'classnames'
 
+// Components
+import {Icon} from '../../Icon/Icon'
+
 // Types
-import {Sort, StandardProps} from '../../../Types'
+import {Sort, StandardProps, IconFont} from '../../../Types'
 
 interface Props extends StandardProps {
   /** Controls appearance of sort indicator (arrow) */
@@ -74,8 +77,8 @@ export class ResourceListSorter extends PureComponent<Props> {
 
     if (onClick) {
       return (
-        <span className="resource-list--sort-arrow">
-          <span className="icon caret-down" />
+        <span className="cf-resource-list--sort-arrow">
+          <Icon glyph={IconFont.CaretDown} />
         </span>
       )
     }
@@ -86,9 +89,9 @@ export class ResourceListSorter extends PureComponent<Props> {
   private get className(): string {
     const {sort, className} = this.props
 
-    return classnames('resource-list--sorter', {
-      'resource-list--sort-descending': sort === Sort.Descending,
-      'resource-list--sort-ascending': sort === Sort.Ascending,
+    return classnames('cf-resource-list--sorter', {
+      'cf-resource-list--sort-descending': sort === Sort.Descending,
+      'cf-resource-list--sort-ascending': sort === Sort.Ascending,
       [`${className}`]: className,
     })
   }
