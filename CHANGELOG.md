@@ -2,7 +2,7 @@
 
 ### 0.0.26 (Unreleased)
 
-- [#243](https://github.com/influxdata/clockface/pull/243): [Breaking] Make `PanelHeader` composable, recommended to use `PanelTitle` as a child instead of `title` prop
+- [#243](https://github.com/influxdata/clockface/pull/243): [Breaking] Make `PanelHeader` composable (we recommend using `PanelTitle` as a child instead of `title` prop)
 - [#243](https://github.com/influxdata/clockface/pull/243): Do not render `ResourceCardName` & `ResourceCardEditableName` as links if no `onClick` prop is passed
 - [#243](https://github.com/influxdata/clockface/pull/243): Fix appearance of `ResourceCardEditableName` when in edit mode
 - [#243](https://github.com/influxdata/clockface/pull/243): Reduce padding of `PageHeader` and `PageContents` when navigation is above the page
