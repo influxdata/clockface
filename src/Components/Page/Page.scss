@@ -29,7 +29,7 @@
 
 .cf-page-header--container {
   display: flex;
-  padding: 0 $page--gutter;
+  padding: 0 $page--gutter-small;
   align-items: center;
   justify-content: space-between;
   flex-wrap: nowrap;
@@ -94,7 +94,7 @@
 
 .cf-page-contents--padding {
   min-height: 100%;
-  padding: $page--gutter;
+  padding: $page--gutter-small;
   padding-top: 0;
 }
 
@@ -109,7 +109,7 @@
 */
 
 .cf-page-contents.full-width .cf-page-contents--padding {
-  padding: 0 $page--gutter;
+  padding: 0 $page--gutter-small;
 }
 
 .cf-page-contents--container.full-width {
@@ -126,7 +126,7 @@
 */
 
 .cf-page-contents.cf-dapper-scrollbars > .cf-page-contents--padding {
-  padding-bottom: $page--gutter;
+  padding-bottom: $page--gutter-small;
 }
 
 /*
@@ -144,4 +144,25 @@
 
 .cf-page-contents.full-height.cf-dapper-scrollbars .cf-page-contents--padding {
   padding-right: $cf-marg-c;
+}
+
+/*
+  Full Padding After Breakpoint
+  ------------------------------------------------------------------------------
+*/
+
+@media screen and (min-width: $nav-menu--breakpoint) {
+  .cf-page-header--container {
+    padding: 0 $page--gutter;
+  }
+  .cf-page-contents--padding {
+    padding: $page--gutter;
+    padding-top: 0;
+  }
+  .cf-page-contents.full-width .cf-page-contents--padding {
+    padding: 0 $page--gutter;
+  }
+  .cf-page-contents.cf-dapper-scrollbars > .cf-page-contents--padding {
+    padding-bottom: $page--gutter;
+  }
 }
