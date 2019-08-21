@@ -1,6 +1,6 @@
 # SelectableCard
 
-sdfsdfs
+Selectable cards are a more visual way to offer a series of options to the user. Functionally they are the same as `SelectDropdown` / `MultiSelectDropdown` but use the screen space differently.
 
 ### Usage
 ```tsx
