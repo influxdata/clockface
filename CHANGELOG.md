@@ -2,9 +2,9 @@
 
 ### 0.0.28 (Unreleased)
 
-### 0.0.27
+- [#251](https://github.com/influxdata/clockface/pull/251): Introduce `Wand`, `WrenchNav`, and `DisksNav` icons to icon font
 
-- ¯\_(ツ)\_/¯
+### 0.0.27 - 🆘
 
 ### 0.0.26
 
@@ -36,9 +36,7 @@
 
 - [#211](https://github.com/influxdata/clockface/pull/211): Ensure `ConfirmationButton` is exported
 
-### 0.0.23
-
-- ¯\_(ツ)\_/¯
+### 0.0.23 - 🆘
 
 ### 0.0.22
 
