@@ -337,6 +337,18 @@ export const influxGradients = {
     start: InfluxColors.Pool,
     stop: InfluxColors.BrandChartreuse,
   },
+  BrandGradientG: {
+    start: InfluxColors.BrandDeepPurple,
+    stop: InfluxColors.Void,
+  },
+  BrandGradientH: {
+    start: InfluxColors.BrandDeepPurple,
+    stop: InfluxColors.Amethyst,
+  },
+  BrandGradientI: {
+    start: InfluxColors.BrandDeepPurple,
+    stop: InfluxColors.Star,
+  },
 }
 
 export const dropdownScrollColors = {

@@ -80,6 +80,9 @@ export enum Gradients {
   BrandGradientD = 'BrandGradientD',
   BrandGradientE = 'BrandGradientE',
   BrandGradientF = 'BrandGradientF',
+  BrandGradientG = 'BrandGradientG',
+  BrandGradientH = 'BrandGradientH',
+  BrandGradientI = 'BrandGradientI',
 }
 
 export enum DropdownMenuTheme {
