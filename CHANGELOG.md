@@ -1,6 +1,12 @@
 # Changelog
 
-### 0.0.27 (Unreleased)
+### 0.0.28 (Unreleased)
+
+- [#251](https://github.com/influxdata/clockface/pull/251): Introduce `Wand`, `WrenchNav`, and `DisksNav` icons to icon font
+
+### 0.0.27
+
+- ¯\_(ツ)\_/¯
 
 ### 0.0.26
 
