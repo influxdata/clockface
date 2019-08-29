@@ -210,7 +210,7 @@
     content: '\e93e';
   }
   &.square-check:before {
-    content: "\e943";
+    content: '\e943';
   }
   &.star:before {
     content: '\e930';
@@ -242,6 +242,9 @@
   &.users-trio:before {
     content: '\e939';
   }
+  &.wand:before {
+    content: '\e945';
+  }
   &.wood:before {
     content: '\e91e';
   }
@@ -266,6 +269,9 @@
   &.dashboards:before {
     content: '\e93a';
   }
+  &.disks-nav:before {
+    content: '\e946';
+  }
   &.graphline-2:before {
     content: '\e924';
   }
@@ -274,6 +280,9 @@
   }
   &.users-duo:before {
     content: '\e93b';
+  }
+  &.wrench-nav:before {
+    content: '\e94d';
   }
   &.chat:before {
     content: '\e933';
