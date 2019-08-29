@@ -33,8 +33,8 @@ interface Props extends StandardProps {
   position: PopoverPosition
   /** Means of applying color to popover */
   type: PopoverType
-  /** Renders the popover dialog visible initially */
-  initiallyVisible: boolean
+  /** Overrides internal popover expanded state */
+  visible: boolean
   /** Disables the popover's show interaction */
   disabled: boolean
 }
@@ -60,7 +60,7 @@ export class Popover extends Component<Props, State> {
     distanceFromTrigger: 4,
     position: PopoverPosition.Below,
     type: PopoverType.Solid,
-    initiallyVisible: false,
+    visible: false,
     disabled: false,
   }
 
@@ -73,16 +73,26 @@ export class Popover extends Component<Props, State> {
     super(props)
 
     this.state = {
-      expanded: this.props.initiallyVisible,
+      expanded: this.props.visible,
       triggerRect: null,
     }
   }
 
   public componentDidMount() {
-    if (this.props.initiallyVisible) {
+    if (this.props.visible) {
       this.handleShowDialog()
     } else {
       this.handleUpdateTriggerRect()
+    }
+  }
+
+  public componentDidUpdate(prevProps: Props) {
+    if (prevProps.visible !== this.props.visible) {
+      if (this.props.visible) {
+        this.handleShowDialog()
+      } else if (!this.props.visible) {
+        this.handleHideDialog()
+      }
     }
   }
 

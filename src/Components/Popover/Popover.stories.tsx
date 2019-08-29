@@ -4,7 +4,7 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, select, number} from '@storybook/addon-knobs'
+import {withKnobs, select, number, boolean} from '@storybook/addon-knobs'
 import {jsxDecorator} from 'storybook-addon-jsx'
 import {mapEnumKeys} from '../../Utils/storybook'
 
@@ -32,6 +32,7 @@ tooltipStories.add(
   () => (
     <div className="story--example">
       <Popover
+        visible={boolean('visible', false)}
         contents={onHide => (
           <div
             style={{
