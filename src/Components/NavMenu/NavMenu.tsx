@@ -13,10 +13,7 @@ import {StandardProps} from '../../Types'
 // Styles
 import './NavMenu.scss'
 
-interface Props extends StandardProps {
-  /** Prevents NavMenu from rendering (used in presentation mode) */
-  hide?: boolean
-}
+interface Props extends StandardProps {}
 
 export class NavMenu extends PureComponent<Props> {
   public static readonly displayName = 'NavMenu'
@@ -33,11 +30,7 @@ export class NavMenu extends PureComponent<Props> {
   }
 
   public render() {
-    const {children, testID, hide, id, style} = this.props
-
-    if (hide) {
-      return
-    }
+    const {children, testID, id, style} = this.props
 
     const className = classnames('cf-nav', {
       [`${this.props.className}`]: this.props.className,

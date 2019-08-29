@@ -14,8 +14,6 @@ import {StandardProps} from '../../Types'
 interface Props extends StandardProps {
   /** Allows the page header to fill the width of the screen */
   fullWidth: boolean
-  /** Prevents NavMenu from rendering (used in presentation mode) */
-  hide: boolean
 }
 
 export class PageHeader extends Component<Props> {
@@ -31,11 +29,7 @@ export class PageHeader extends Component<Props> {
   public static Right = PageHeaderRight
 
   public render() {
-    const {hide, testID, id, style} = this.props
-
-    if (hide) {
-      return null
-    }
+    const {testID, id, style} = this.props
 
     return (
       <div

@@ -16,8 +16,6 @@ import './Page.scss'
 interface Props extends StandardProps {
   /** Use this prop to update document.title when the page first renders &  on subsequent updates */
   titleTag?: string
-  /** Hides the page header and nav menu so that the contents can take up the whole screen */
-  presentationMode: boolean
 }
 
 export class Page extends Component<Props> {
@@ -62,10 +60,9 @@ export class Page extends Component<Props> {
   }
 
   private get className(): string {
-    const {className, presentationMode} = this.props
+    const {className} = this.props
 
     return classnames('cf-page', {
-      'cf-page__presentation-mode': presentationMode,
       [`${className}`]: className,
     })
   }

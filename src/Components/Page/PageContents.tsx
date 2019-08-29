@@ -11,8 +11,6 @@ import {StandardProps} from '../../Types'
 interface Props extends StandardProps {
   /** Allows the page contents to fill the width of the screen */
   fullWidth: boolean
-  /** Allows contents to fill the full height of the screen (used in presentation mode) */
-  fullHeight?: boolean
   /** Allows contents to scroll on overflow */
   scrollable: boolean
   /** If scrollable is true, this toggles whether the scrollbar is always visible */
@@ -77,11 +75,10 @@ export class PageContents extends Component<Props> {
   }
 
   private get className(): string {
-    const {fullHeight, className, scrollable} = this.props
+    const {className, scrollable} = this.props
 
     return classnames('cf-page-contents', {
       'cf-page-contents__no-scroll': !scrollable,
-      'full-height': fullHeight,
       [`${className}`]: className,
     })
   }

@@ -25,7 +25,7 @@ enum NavItems {
 }
 
 navMenuStories.add('NavMenu', () => (
-  <NavMenu hide={boolean('hide', false)}>
+  <NavMenu>
     <NavMenu.Item
       titleLink={className => (
         <a className={className} href="#">

@@ -23,3 +23,22 @@
     flex-direction: row;
   }
 }
+
+/*
+   Presentation Mode
+   -----------------------------------------------------------------------------
+*/
+
+.clockface--app-wrapper__presentation-mode {
+  .cf-nav, 
+  .cf-page-header {
+    display: none;
+  }
+
+  .cf-page-contents__fixed,
+  .cf-page-contents__fluid,
+  .cf-page-contents.cf-dapper-scrollbars .cf-page-contents__fluid,
+  .cf-page-contents.cf-dapper-scrollbars .cf-page-contents__fixed {
+    padding: $page--gutter-small;
+  }
+}

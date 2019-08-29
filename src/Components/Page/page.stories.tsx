@@ -178,8 +178,8 @@ const layoutStories = storiesOf('Examples|Application Layout', module)
 
 layoutStories.add('AppWrapper + Nav + Page', () => (
   <div className="mockPage">
-    <AppWrapper>
-      <NavMenu hide={boolean('presentationMode', false)}>
+    <AppWrapper presentationMode={boolean('presentationMode', false)}>
+      <NavMenu>
         <NavMenu.Item
           titleLink={className => (
             <a className={className} href="#">
@@ -246,10 +246,7 @@ layoutStories.add('AppWrapper + Nav + Page', () => (
         />
       </NavMenu>
       <Page titleTag="bloop">
-        <Page.Header
-          fullWidth={boolean('fullWidth', false)}
-          hide={boolean('presentationMode', false)}
-        >
+        <Page.Header fullWidth={boolean('fullWidth', false)}>
           <Page.Header.Left>
             <Page.Title title={text('PageTitle title', 'Page Title')} />
           </Page.Header.Left>
@@ -257,7 +254,6 @@ layoutStories.add('AppWrapper + Nav + Page', () => (
         </Page.Header>
         <Page.Contents
           fullWidth={boolean('fullWidth', false)}
-          fullHeight={boolean('presentationMode', false)}
           scrollable={boolean('scrollable', true)}
         >
           <div

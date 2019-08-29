@@ -8,13 +8,17 @@ import './AppWrapper.scss'
 // Types
 import {StandardProps} from '../../Types'
 
-interface Props extends StandardProps {}
+interface Props extends StandardProps {
+  /** Hides the page header and nav menu so that the contents can take up the whole screen */
+  presentationMode: boolean
+}
 
 export class AppWrapper extends PureComponent<Props> {
   public static readonly displayName = 'AppWrapper'
 
   public static defaultProps = {
     testID: 'app-wrapper',
+    presentationMode: false,
   }
 
   public render() {
@@ -33,8 +37,11 @@ export class AppWrapper extends PureComponent<Props> {
   }
 
   private get className(): string {
-    const {className} = this.props
+    const {className, presentationMode} = this.props
 
-    return classnames('clockface--app-wrapper', {[`${className}`]: className})
+    return classnames('clockface--app-wrapper', {
+      'clockface--app-wrapper__presentation-mode': presentationMode,
+      [`${className}`]: className,
+    })
   }
 }
