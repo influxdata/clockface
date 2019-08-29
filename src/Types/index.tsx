@@ -168,6 +168,10 @@ export enum InfluxColors {
   Tungsten = '#FFB6A0',
   Marmelade = '#FFDCCF',
   Flan = '#FFF7F4',
+  // Brand Colors
+  BrandChartreuse = '#D6F622',
+  BrandDeepPurple = '#13002D',
+  BrandMagenta = '#BF2FE5',
 }
 
 export enum IconFont {
