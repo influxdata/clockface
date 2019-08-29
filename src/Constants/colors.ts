@@ -313,40 +313,40 @@ export const influxGradients = {
     start: InfluxColors.Yeti,
     stop: InfluxColors.Mint,
   },
-  BrandGradientA: {
-    start: InfluxColors.BrandDeepPurple,
-    stop: InfluxColors.BrandMagenta,
+  WarpSpeed: {
+    start: InfluxColors.DeepPurple,
+    stop: InfluxColors.Magenta,
   },
-  BrandGradientB: {
-    start: InfluxColors.BrandDeepPurple,
+  OminousFog: {
+    start: InfluxColors.DeepPurple,
     stop: InfluxColors.Comet,
   },
-  BrandGradientC: {
-    start: InfluxColors.BrandMagenta,
+  MilkyWay: {
+    start: InfluxColors.Magenta,
     stop: InfluxColors.Comet,
   },
-  BrandGradientD: {
+  LazyAfternoon: {
     start: InfluxColors.Pool,
     stop: InfluxColors.Comet,
   },
-  BrandGradientE: {
+  NineteenEightyFour: {
     start: InfluxColors.Pool,
-    stop: InfluxColors.BrandMagenta,
+    stop: InfluxColors.Magenta,
   },
-  BrandGradientF: {
+  Radioactive: {
     start: InfluxColors.Pool,
-    stop: InfluxColors.BrandChartreuse,
+    stop: InfluxColors.Chartreuse,
   },
-  BrandGradientG: {
-    start: InfluxColors.BrandDeepPurple,
+  LostGalaxy: {
+    start: InfluxColors.DeepPurple,
     stop: InfluxColors.Void,
   },
-  BrandGradientH: {
-    start: InfluxColors.BrandDeepPurple,
+  GrapeSoda: {
+    start: InfluxColors.DeepPurple,
     stop: InfluxColors.Amethyst,
   },
-  BrandGradientI: {
-    start: InfluxColors.BrandDeepPurple,
+  LavenderLatte: {
+    start: InfluxColors.DeepPurple,
     stop: InfluxColors.Star,
   },
 }
