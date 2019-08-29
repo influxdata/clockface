@@ -10,6 +10,7 @@ Ensure that
 
 Then run the publish script in the root of the repo:
 
+*NOTE:* Do not manually change the version in `package.lock`, the publish script will increment automatically
 ```
 ./publish
 ```
