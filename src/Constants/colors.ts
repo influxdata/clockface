@@ -313,6 +313,30 @@ export const influxGradients = {
     start: InfluxColors.Yeti,
     stop: InfluxColors.Mint,
   },
+  BrandGradientA: {
+    start: InfluxColors.BrandDeepPurple,
+    stop: InfluxColors.BrandMagenta,
+  },
+  BrandGradientB: {
+    start: InfluxColors.BrandDeepPurple,
+    stop: InfluxColors.Comet,
+  },
+  BrandGradientC: {
+    start: InfluxColors.BrandMagenta,
+    stop: InfluxColors.Comet,
+  },
+  BrandGradientD: {
+    start: InfluxColors.Pool,
+    stop: InfluxColors.Comet,
+  },
+  BrandGradientE: {
+    start: InfluxColors.Pool,
+    stop: InfluxColors.BrandMagenta,
+  },
+  BrandGradientF: {
+    start: InfluxColors.Pool,
+    stop: InfluxColors.BrandMagenta,
+  },
 }
 
 export const dropdownScrollColors = {

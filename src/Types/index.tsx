@@ -74,6 +74,12 @@ export enum Gradients {
   PastryCafe = 'PastryCafe',
   KawaiiDesu = 'KawaiiDesu',
   RobotLogic = 'RobotLogic',
+  BrandGradientA = 'BrandGradientA',
+  BrandGradientB = 'BrandGradientB',
+  BrandGradientC = 'BrandGradientC',
+  BrandGradientD = 'BrandGradientD',
+  BrandGradientE = 'BrandGradientE',
+  BrandGradientF = 'BrandGradientF',
 }
 
 export enum DropdownMenuTheme {
