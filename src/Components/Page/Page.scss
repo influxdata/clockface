@@ -7,34 +7,62 @@
 
 .cf-page {
   width: 100%;
-  flex: 1 0 calc(100% - #{$nav-menu--size});
+  flex: 1 0 100%;
   display: flex;
   flex-direction: column;
   align-items: stretch;
+
+  .cf-nav + & {
+    flex: 1 0 calc(100% - #{$nav-menu--size});
+  }
 }
 
 @media screen and (min-width: $nav-menu--breakpoint) {
   .cf-page {
     width: auto;
     height: 100%;
+    flex: 1 0 100%;
   }
 }
 
+/*
+   Gutters & Max Width
+   -----------------------------------------------------------------------------
+*/
+
+.cf-page-header--fluid,
+.cf-page-header--fixed,
+.cf-page-contents__fluid,
+.cf-page-contents__fixed {
+  width: 100%;
+  padding: 0 $page--gutter-small;
+}
+
+.cf-page-header--fixed,
+.cf-page-contents__fixed {
+  margin: 0 auto;
+  max-width: $page--max-width;
+}
+
+/*
+   Page Header
+   -----------------------------------------------------------------------------
+*/
+
 .cf-page-header {
-  height: $page--header-size;
+  width: 100%;
+  flex: 0 0 $page--header-size;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.cf-page-header--container {
+.cf-page-header--fluid,
+.cf-page-header--fixed {
   display: flex;
-  padding: 0 $page--gutter-small;
   align-items: center;
   justify-content: space-between;
   flex-wrap: nowrap;
-  width: 100%;
-  max-width: $page--max-width;
 }
 
 .cf-page-header--left,
@@ -77,10 +105,15 @@
   cursor: default;
 }
 
+/*
+  Page Contents
+  ------------------------------------------------------------------------------
+*/
+
 .cf-page-contents {
   width: 100%;
   position: relative;
-  height: calc(100% - #{$page--header-size}) !important;
+  flex: 1 0 calc(100% - #{$page--header-size});
   overflow: hidden;
 
   & > .cf-dapper-scrollbars--track-y {
@@ -92,32 +125,12 @@
   }
 }
 
-.cf-page-contents--padding {
+.cf-page-contents__fluid {
   min-height: 100%;
-  padding: $page--gutter-small;
-  padding-top: 0;
 }
 
-.cf-page-contents--container {
+.cf-page-contents__fixed {
   margin: 0 auto;
-  max-width: $page--max-width;
-}
-
-/*
-  Full Width Page
-  ------------------------------------------------------------------------------
-*/
-
-.cf-page-contents.full-width .cf-page-contents--padding {
-  padding: 0 $page--gutter-small;
-}
-
-.cf-page-contents--container.full-width {
-  max-width: 100%;
-}
-
-.cf-page-header.full-width .cf-page-header--container {
-  max-width: 100%;
 }
 
 /*
@@ -125,25 +138,23 @@
   ------------------------------------------------------------------------------
 */
 
-.cf-page-contents.cf-dapper-scrollbars > .cf-page-contents--padding {
+.cf-page-contents.cf-dapper-scrollbars .cf-page-contents__fluid,
+.cf-page-contents.cf-dapper-scrollbars .cf-page-contents__fixed {
   padding-bottom: $page--gutter-small;
 }
 
 /*
-  Full Height Mode
+  Non-Scrollable Page
   ------------------------------------------------------------------------------
 */
 
-.cf-page-contents.full-height {
-  height: 100% !important;
-}
+.cf-page-contents__no-scroll {
+  display: flex;
 
-.cf-page-contents.full-height .cf-page-contents--padding {
-  padding: $cf-marg-b;
-}
-
-.cf-page-contents.full-height.cf-dapper-scrollbars .cf-page-contents--padding {
-  padding-right: $cf-marg-c;
+  .cf-page-contents__fluid,
+  .cf-page-contents__fixed {
+    height: 100%;
+  }
 }
 
 /*
@@ -152,17 +163,21 @@
 */
 
 @media screen and (min-width: $nav-menu--breakpoint) {
-  .cf-page-header--container {
+  .cf-page-header--fluid,
+  .cf-page-header--fixed,
+  .cf-page-contents__fluid,
+  .cf-page-contents__fixed {
     padding: 0 $page--gutter;
   }
-  .cf-page-contents--padding {
-    padding: $page--gutter;
-    padding-top: 0;
-  }
-  .cf-page-contents.full-width .cf-page-contents--padding {
-    padding: 0 $page--gutter;
-  }
-  .cf-page-contents.cf-dapper-scrollbars > .cf-page-contents--padding {
+  
+  .cf-page-contents.cf-dapper-scrollbars .cf-page-contents__fluid,
+  .cf-page-contents.cf-dapper-scrollbars .cf-page-contents__fixed {
     padding-bottom: $page--gutter;
   }
 }
+
+/*
+  PresentationMode
+  ------------------------------------------------------------------------------
+*/
+
