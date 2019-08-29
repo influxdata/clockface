@@ -74,6 +74,15 @@ export enum Gradients {
   PastryCafe = 'PastryCafe',
   KawaiiDesu = 'KawaiiDesu',
   RobotLogic = 'RobotLogic',
+  WarpSpeed = 'WarpSpeed',
+  OminousFog = 'OminousFog',
+  MilkyWay = 'MilkyWay',
+  LazyAfternoon = 'LazyAfternoon',
+  NineteenEightyFour = 'NineteenEightyFour',
+  Radioactive = 'Radioactive',
+  LostGalaxy = 'LostGalaxy',
+  GrapeSoda = 'GrapeSoda',
+  LavenderLatte = 'LavenderLatte',
 }
 
 export enum DropdownMenuTheme {
@@ -168,6 +177,10 @@ export enum InfluxColors {
   Tungsten = '#FFB6A0',
   Marmelade = '#FFDCCF',
   Flan = '#FFF7F4',
+  // Brand Colors
+  Chartreuse = '#D6F622',
+  DeepPurple = '#13002D',
+  Magenta = '#BF2FE5',
 }
 
 export enum IconFont {

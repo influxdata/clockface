@@ -313,6 +313,42 @@ export const influxGradients = {
     start: InfluxColors.Yeti,
     stop: InfluxColors.Mint,
   },
+  WarpSpeed: {
+    start: InfluxColors.DeepPurple,
+    stop: InfluxColors.Magenta,
+  },
+  OminousFog: {
+    start: InfluxColors.DeepPurple,
+    stop: InfluxColors.Comet,
+  },
+  MilkyWay: {
+    start: InfluxColors.Magenta,
+    stop: InfluxColors.Comet,
+  },
+  LazyAfternoon: {
+    start: InfluxColors.Pool,
+    stop: InfluxColors.Comet,
+  },
+  NineteenEightyFour: {
+    start: InfluxColors.Pool,
+    stop: InfluxColors.Magenta,
+  },
+  Radioactive: {
+    start: InfluxColors.Pool,
+    stop: InfluxColors.Chartreuse,
+  },
+  LostGalaxy: {
+    start: InfluxColors.DeepPurple,
+    stop: InfluxColors.Void,
+  },
+  GrapeSoda: {
+    start: InfluxColors.DeepPurple,
+    stop: InfluxColors.Amethyst,
+  },
+  LavenderLatte: {
+    start: InfluxColors.DeepPurple,
+    stop: InfluxColors.Star,
+  },
 }
 
 export const dropdownScrollColors = {

@@ -597,6 +597,11 @@ table.two-axis-table {
   flex: 0 0 calc(33.3333% - 4px);
 }
 
+.gradients-grid--card {
+  margin-right: 0;
+  flex: 0 0 calc(100%);
+}
+
 @media screen and (min-width: 700px) {
   .colors-grid--card {
     flex: 0 0 calc(25% - 4px);
@@ -606,6 +611,10 @@ table.two-axis-table {
 @media screen and (min-width: 900px) {
   .colors-grid--card {
     flex: 0 0 calc(20% - 4px);
+  }
+  .gradients-grid--card {
+    margin-right: 4px;
+    flex: 0 0 calc(33.3333% - 4px);
   }
 }
 
@@ -627,9 +636,6 @@ table.two-axis-table {
   }
 }
 
-.gradients-grid--card {
-  flex: 0 0 calc(33.3333% - 4px);
-}
 
 .icon-grid {
   display: flex;
