@@ -335,7 +335,7 @@ export const influxGradients = {
   },
   BrandGradientF: {
     start: InfluxColors.Pool,
-    stop: InfluxColors.BrandMagenta,
+    stop: InfluxColors.BrandChartreuse,
   },
 }
 
