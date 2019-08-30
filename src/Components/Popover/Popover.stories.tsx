@@ -72,10 +72,10 @@ popoverStories.add(
         }
         color={
           ComponentColor[
-            select('color', mapEnumKeys(ComponentColor), 'Default')
+            select('color', mapEnumKeys(ComponentColor), 'Primary')
           ]
         }
-        type={PopoverType[select('type', mapEnumKeys(PopoverType), 'Solid')]}
+        type={PopoverType[select('type', mapEnumKeys(PopoverType), 'Outline')]}
       >
         <div className="mockComponent mockButton">Popover Trigger Element</div>
       </Popover>
@@ -94,7 +94,7 @@ composedPopoverStories.add(
     <div className="story--example">
       <TextPopover
         visible={boolean('visible', false)}
-        text={text('text', 'Howdy friend!')}
+        text={text('text', 'Yee to the haw!')}
         distanceFromTrigger={number('distanceFromTrigger', 4)}
         showEvent={
           PopoverInteraction[
@@ -113,16 +113,16 @@ composedPopoverStories.add(
         }
         color={
           ComponentColor[
-            select('color', mapEnumKeys(ComponentColor), 'Default')
+            select('color', mapEnumKeys(ComponentColor), 'Primary')
           ]
         }
         dismissButtonColor={
           ComponentColor[
-            select('dismissButtonColor', mapEnumKeys(ComponentColor), 'Default')
+            select('dismissButtonColor', mapEnumKeys(ComponentColor), 'Primary')
           ]
         }
         showDismissButton={boolean('showDismissButton', false)}
-        type={PopoverType[select('type', mapEnumKeys(PopoverType), 'Solid')]}
+        type={PopoverType[select('type', mapEnumKeys(PopoverType), 'Outline')]}
       >
         <div className="mockComponent mockButton">Popover Trigger Element</div>
       </TextPopover>
