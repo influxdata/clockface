@@ -460,6 +460,10 @@ body.sb-show-main {
       background-color: transparent;
     }
   }
+
+  pre + pre {
+    margin-top: -1em;
+  }
 }
 
 .storybook-readme-story div.markdown-body table {
