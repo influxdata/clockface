@@ -18,7 +18,7 @@ import {
   PopoverType,
 } from '../../Types'
 
-interface Props extends StandardProps {
+export interface PopoverProps extends StandardProps {
   /** Popover dialog color */
   color: ComponentColor
   /** Popover dialog contents */
@@ -33,10 +33,22 @@ interface Props extends StandardProps {
   position: PopoverPosition
   /** Means of applying color to popover */
   type: PopoverType
-  /** Renders the popover dialog visible initially */
-  initiallyVisible: boolean
+  /** Overrides internal popover expanded state */
+  visible: boolean
   /** Disables the popover's show interaction */
   disabled: boolean
+}
+
+export const PopoverDefaultProps = {
+  color: ComponentColor.Primary,
+  testID: 'popover',
+  showEvent: PopoverInteraction.Click,
+  hideEvent: PopoverInteraction.Click,
+  distanceFromTrigger: 4,
+  position: PopoverPosition.Below,
+  type: PopoverType.Outline,
+  visible: false,
+  disabled: false,
 }
 
 interface State {
@@ -49,40 +61,40 @@ interface PopoverFlush {
   last: boolean
 }
 
-export class Popover extends Component<Props, State> {
+export class Popover extends Component<PopoverProps, State> {
   public static readonly displayName = 'Popover'
 
-  public static defaultProps = {
-    color: ComponentColor.Primary,
-    testID: 'popover',
-    showEvent: PopoverInteraction.Click,
-    hideEvent: PopoverInteraction.Click,
-    distanceFromTrigger: 4,
-    position: PopoverPosition.Below,
-    type: PopoverType.Solid,
-    initiallyVisible: false,
-    disabled: false,
-  }
+  public static defaultProps = {...PopoverDefaultProps}
 
   public static DismissButton = DismissButton
 
   private triggerRef = createRef<HTMLDivElement>()
   private dialogRef = createRef<HTMLDivElement>()
 
-  constructor(props: Props) {
+  constructor(props: PopoverProps) {
     super(props)
 
     this.state = {
-      expanded: this.props.initiallyVisible,
+      expanded: this.props.visible,
       triggerRect: null,
     }
   }
 
   public componentDidMount() {
-    if (this.props.initiallyVisible) {
+    if (this.props.visible) {
       this.handleShowDialog()
     } else {
       this.handleUpdateTriggerRect()
+    }
+  }
+
+  public componentDidUpdate(prevProps: PopoverProps) {
+    if (prevProps.visible !== this.props.visible) {
+      if (this.props.visible) {
+        this.handleShowDialog()
+      } else if (!this.props.visible) {
+        this.handleHideDialog()
+      }
     }
   }
 

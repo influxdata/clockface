@@ -21,9 +21,6 @@ import {Popover, PopoverPosition, PopoverInteraction} from '@influxdata/clockfac
 
 The popover dialog will initially appear according to the `position` prop, but if for some reason the dialog would go off the viewport it will be intelligently repositioned to appear wholly in the viewport.
 
-### Example
-<!-- STORY -->
-
 ### Customizable Interactions
 
 In most cases `Popover` works great with symmetric hide and show events. However in some cases you make want to have a popover appear with little effort, but demand more attention to dismiss. For example, a tutorial popover may have a "Next" button inside it that dismisses the popover, and queues the next. In order to achieve this you can take advantage of the `Popover`'s `contents` render prop:
@@ -68,7 +65,13 @@ import {Popover, PopoverPosition, PopoverInteraction} from '@influxdata/clockfac
 
 ### Gotchas
 
-The popover dialog makes use of `position: fixed` and `z-index: 9999` to ensure it is never obscured. In order to keep the dialog positioned next to the trigger the component listens for scroll and resize events while the popover is visible. This causes the dialog to re-render more often, which may be troublesome depending on what kind of component you render as the contents.
+- The popover dialog does not add any padding or other styles. This is so you don't have to fight the styles when you are a building your Popover.
+  - This means you need to have some styling on the element you pass in to the `contents` prop in order for the Popover to look decent.
+  - In the example below the `<div />` passed in to `contents` has a bunch of inline styles.
+- The popover dialog makes use of `position: fixed` and `z-index: 9999` to ensure it is never obscured. In order to keep the dialog positioned next to the trigger the component listens for scroll and resize events while the popover is visible. This causes the dialog to re-render more often, which may be troublesome depending on what kind of component you render as the contents.
+
+### Example
+<!-- STORY -->
 
 <!-- STORY HIDE START -->
 

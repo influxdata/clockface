@@ -18,6 +18,7 @@ $cf-popover-caret: $cf-marg-b;
 }
 
 .cf-popover--dialog-contents {
+  font-size: $cf-text-base;
   background-color: $g2-kevlar;
   border-radius: $cf-radius + $cf-border;
   position: relative;
