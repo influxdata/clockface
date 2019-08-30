@@ -2,6 +2,7 @@
 
 ### 0.0.28 (Unreleased)
 
+- [#256](https://github.com/influxdata/clockface/pull/256): Add markdown documentation for `NavMenu` component family
 - [#252](https://github.com/influxdata/clockface/pull/252): Add new colors and gradients from InfluxData Brand guidelines
 - [#251](https://github.com/influxdata/clockface/pull/251): Introduce `Wand`, `WrenchNav`, and `DisksNav` icons to icon font
 
