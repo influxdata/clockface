@@ -6,9 +6,9 @@ import classnames from 'classnames'
 import {StandardProps} from '../../Types'
 
 interface Props extends StandardProps {
-  /** Render prop for linked title text (suggested <a /> or <Link /> ) */
+  /** Render prop for linked title text */
   titleLink: (className: string) => JSX.Element
-  /** Render prop for linked icon component (suggested <a /> or <Link /> ) */
+  /** Render prop for linked icon component */
   iconLink: (className: string) => JSX.Element
   /** Controls highlighting of the menu item */
   active: boolean
