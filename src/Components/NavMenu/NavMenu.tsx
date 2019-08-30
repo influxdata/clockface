@@ -13,7 +13,7 @@ import {StandardProps} from '../../Types'
 // Styles
 import './NavMenu.scss'
 
-interface Props extends StandardProps {}
+type Props = StandardProps
 
 export class NavMenu extends PureComponent<Props> {
   public static readonly displayName = 'NavMenu'
