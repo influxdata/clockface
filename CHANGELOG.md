@@ -3,6 +3,8 @@
 ### 0.0.28 (Unreleased)
 
 - [#256](https://github.com/influxdata/clockface/pull/256): Add markdown documentation for `NavMenu` component family
+- [#255](https://github.com/influxdata/clockface/pull/255): Introduce `TextPopover` as a simplified composed version of `Popover`
+- [#255](https://github.com/influxdata/clockface/pull/255): [Breaking] rename `Popover` prop `initiallyVisible` to `visible` (now allows full external control of popover state)
 - [#254](https://github.com/influxdata/clockface/pull/254): Add markdown documentation for `Page` components
 - [#254](https://github.com/influxdata/clockface/pull/254): [Breaking] Simplify how "Presentation Mode" is handled
 - [#254](https://github.com/influxdata/clockface/pull/254): Fix style bug in `Page` components that prevented `PageHeader` and `PageContents` from aligning properly
