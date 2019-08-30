@@ -34,7 +34,7 @@ navMenuStories.add(
   'NavMenu',
   () => (
     <div className="story--example">
-      <NavMenu hide={boolean('hide', false)}>
+      <NavMenu>
         <NavMenu.Item
           titleLink={className => (
             <a className={className} href="#">

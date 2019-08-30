@@ -133,6 +133,18 @@
   }
 }
 
+.appWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+@media screen and (min-width: $nav-menu--breakpoint) {
+  .appWrapper {
+    flex-direction: row;
+  }
+}
+
 .mockOverlay {
   position: absolute;
   width: 100%;

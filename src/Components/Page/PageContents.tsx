@@ -1,5 +1,5 @@
 // Libraries
-import React, {Component, ReactNode} from 'react'
+import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Components
@@ -11,10 +11,10 @@ import {StandardProps} from '../../Types'
 interface Props extends StandardProps {
   /** Allows the page contents to fill the width of the screen */
   fullWidth: boolean
-  /** Allows contents to fill the full height of the screen (used in presentation mode) */
-  fullHeight?: boolean
   /** Allows contents to scroll on overflow */
   scrollable: boolean
+  /** If scrollable is true, this toggles whether the scrollbar is always visible */
+  autoHideScrollbar: boolean
 }
 
 export class PageContents extends Component<Props> {
@@ -24,49 +24,62 @@ export class PageContents extends Component<Props> {
     fullHeight: false,
     scrollable: false,
     testID: 'page-contents',
+    autoHideScrollbar: false,
   }
 
   public render() {
-    const {scrollable, testID, id, style} = this.props
+    const {
+      scrollable,
+      testID,
+      id,
+      style,
+      children,
+      fullWidth,
+      autoHideScrollbar,
+    } = this.props
+
+    let kids = children
+
+    if (fullWidth) {
+      kids = <div className="cf-page-contents__fluid">{kids}</div>
+    } else {
+      kids = <div className="cf-page-contents__fixed">{kids}</div>
+    }
 
     if (scrollable) {
-      return (
+      kids = (
         <DapperScrollbars
           className={this.className}
-          autoHide={false}
+          autoHide={autoHideScrollbar}
           testID={testID}
           id={id}
           style={style}
         >
-          <div className="cf-page-contents--padding">{this.children}</div>
+          {kids}
         </DapperScrollbars>
+      )
+    } else {
+      kids = (
+        <div
+          className={this.className}
+          data-testid={testID}
+          id={id}
+          style={style}
+        >
+          {kids}
+        </div>
       )
     }
 
-    return (
-      <div className={this.className} data-testid={testID}>
-        <div className="cf-page-contents--padding">{this.children}</div>
-      </div>
-    )
+    return kids
   }
 
   private get className(): string {
-    const {fullWidth, fullHeight, className} = this.props
+    const {className, scrollable} = this.props
 
     return classnames('cf-page-contents', {
-      'full-width': fullWidth,
-      'full-height': fullHeight,
+      'cf-page-contents__no-scroll': !scrollable,
       [`${className}`]: className,
     })
-  }
-
-  private get children(): JSX.Element | JSX.Element[] | ReactNode {
-    const {fullWidth, children} = this.props
-
-    if (fullWidth) {
-      return children
-    }
-
-    return <div className="cf-page-contents--container">{children}</div>
   }
 }

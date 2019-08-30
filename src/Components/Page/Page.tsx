@@ -23,6 +23,7 @@ export class Page extends Component<Props> {
 
   public static defaultProps = {
     testID: 'page',
+    presentationMode: false,
   }
 
   public static Header = PageHeader

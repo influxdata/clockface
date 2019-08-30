@@ -14,8 +14,6 @@ import {StandardProps} from '../../Types'
 interface Props extends StandardProps {
   /** Allows the page header to fill the width of the screen */
   fullWidth: boolean
-  /** Prevents NavMenu from rendering (used in presentation mode) */
-  hide: boolean
 }
 
 export class PageHeader extends Component<Props> {
@@ -31,11 +29,7 @@ export class PageHeader extends Component<Props> {
   public static Right = PageHeaderRight
 
   public render() {
-    const {hide, testID, id, style} = this.props
-
-    if (hide) {
-      return null
-    }
+    const {testID, id, style} = this.props
 
     return (
       <div
@@ -44,7 +38,7 @@ export class PageHeader extends Component<Props> {
         id={id}
         style={style}
       >
-        <div className="cf-page-header--container">
+        <div className={this.containerClassName}>
           {this.childrenWithCorrectWidths}
         </div>
       </div>
@@ -52,12 +46,17 @@ export class PageHeader extends Component<Props> {
   }
 
   private get className(): string {
-    const {fullWidth, className} = this.props
+    const {className} = this.props
 
     return classnames('cf-page-header', {
-      'full-width': fullWidth,
       [`${className}`]: className,
     })
+  }
+
+  private get containerClassName(): string {
+    const {fullWidth} = this.props
+
+    return fullWidth ? 'cf-page-header--fluid' : 'cf-page-header--fixed'
   }
 
   private get childrenWithCorrectWidths(): ReactNode[] | ReactNode | undefined {
