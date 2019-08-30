@@ -472,6 +472,32 @@ body.sb-show-main {
       background-color: transparent;
     }
   }
+
+  pre + pre {
+    margin-top: -1em;
+  }
+
+  pre.language-tsx {
+    position: relative;
+
+    &:after {
+      content: 'JSX';
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: $g8-storm;
+      font-size: 11px;
+      height: 18px;
+      line-height: 18px;
+      padding: 0 6px;
+      white-space: nowrap;
+      font-weight: 600;
+      text-shadow: none;
+      background-color: $g0-obsidian;
+      border-bottom-left-radius: 6px;
+    }
+  }
 }
 
 .storybook-readme-story div.markdown-body table {
