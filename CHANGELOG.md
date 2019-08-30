@@ -1,6 +1,8 @@
 # Changelog
 
-### 0.0.28 (Unreleased)
+### 0.0.29 (Unreleased)
+
+### 0.0.28
 
 - [#256](https://github.com/influxdata/clockface/pull/256): Add markdown documentation for `NavMenu` component family
 - [#255](https://github.com/influxdata/clockface/pull/255): Introduce `TextPopover` as a simplified composed version of `Popover`
