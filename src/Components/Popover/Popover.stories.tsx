@@ -47,7 +47,6 @@ popoverStories.add(
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '13px',
             }}
           >
             PopoverContents
