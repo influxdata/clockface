@@ -18,7 +18,7 @@ import {
   PopoverType,
 } from '../../Types'
 
-interface Props extends StandardProps {
+export interface PopoverProps extends StandardProps {
   /** Popover dialog color */
   color: ComponentColor
   /** Popover dialog contents */
@@ -39,6 +39,18 @@ interface Props extends StandardProps {
   disabled: boolean
 }
 
+export const PopoverDefaultProps = {
+  color: ComponentColor.Primary,
+  testID: 'popover',
+  showEvent: PopoverInteraction.Click,
+  hideEvent: PopoverInteraction.Click,
+  distanceFromTrigger: 4,
+  position: PopoverPosition.Below,
+  type: PopoverType.Solid,
+  visible: false,
+  disabled: false,
+}
+
 interface State {
   expanded: boolean
   triggerRect: ClientRect | DOMRect | null
@@ -49,27 +61,17 @@ interface PopoverFlush {
   last: boolean
 }
 
-export class Popover extends Component<Props, State> {
+export class Popover extends Component<PopoverProps, State> {
   public static readonly displayName = 'Popover'
 
-  public static defaultProps = {
-    color: ComponentColor.Primary,
-    testID: 'popover',
-    showEvent: PopoverInteraction.Click,
-    hideEvent: PopoverInteraction.Click,
-    distanceFromTrigger: 4,
-    position: PopoverPosition.Below,
-    type: PopoverType.Solid,
-    visible: false,
-    disabled: false,
-  }
+  public static defaultProps = {...PopoverDefaultProps}
 
   public static DismissButton = DismissButton
 
   private triggerRef = createRef<HTMLDivElement>()
   private dialogRef = createRef<HTMLDivElement>()
 
-  constructor(props: Props) {
+  constructor(props: PopoverProps) {
     super(props)
 
     this.state = {
@@ -86,7 +88,7 @@ export class Popover extends Component<Props, State> {
     }
   }
 
-  public componentDidUpdate(prevProps: Props) {
+  public componentDidUpdate(prevProps: PopoverProps) {
     if (prevProps.visible !== this.props.visible) {
       if (this.props.visible) {
         this.handleShowDialog()
