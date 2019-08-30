@@ -46,7 +46,7 @@ export const PopoverDefaultProps = {
   hideEvent: PopoverInteraction.Click,
   distanceFromTrigger: 4,
   position: PopoverPosition.Below,
-  type: PopoverType.Solid,
+  type: PopoverType.Outline,
   visible: false,
   disabled: false,
 }
