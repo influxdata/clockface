@@ -1,5 +1,6 @@
 // Libraries
 import React, {PureComponent, ReactChild} from 'react'
+import classnames from 'classnames'
 
 // Components
 import {DismissButton} from '../Button/Composed/DismissButton'
@@ -65,18 +66,26 @@ export class TextPopover extends PureComponent<Props> {
         contents={onHide => {
           if (showDismissButton) {
             return (
-              <div className="cf-text-popover">
+              <div className={this.className}>
                 <DismissButton onClick={onHide} color={dismissButtonColor} />
                 {text}
               </div>
             )
           }
 
-          return <div className="cf-text-popover">{text}</div>
+          return <div className={this.className}>{text}</div>
         }}
       >
         {children}
       </Popover>
     )
+  }
+
+  private get className(): string {
+    const {showDismissButton} = this.props
+
+    return classnames('cf-text-popover', {
+      'cf-text-popover__dismissable': showDismissButton,
+    })
   }
 }
