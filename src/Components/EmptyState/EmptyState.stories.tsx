@@ -23,6 +23,7 @@ import EmptyStateTextReadme from './EmptyStateText.md'
 import EmptyStateSubTextReadme from './EmptyStateSubText.md'
 import EmptyStateExampleAReadme from './EmptyStateExampleA.md'
 import EmptyStateExampleBReadme from './EmptyStateExampleB.md'
+import EmptyStateExampleCReadme from './EmptyStateExampleC.md'
 
 const emptyStateStories = storiesOf('Components|Empty States/Family', module)
   .addDecorator(withKnobs)
@@ -39,7 +40,11 @@ emptyStateExampleStories.add(
   'No Dashboards',
   () => (
     <div className="story--example">
-      <EmptyState size={ComponentSize.Medium}>
+      <EmptyState
+        size={
+          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Medium')]
+        }
+      >
         <EmptyState.Text
           text="Looks like you don't have any Dashboards , why not create one?"
           highlightWords={['Dashboards']}
@@ -48,6 +53,9 @@ emptyStateExampleStories.add(
           text="Create Dashboard"
           icon={IconFont.Plus}
           color={ComponentColor.Primary}
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Medium')]
+          }
         />
       </EmptyState>
     </div>
@@ -63,7 +71,11 @@ emptyStateExampleStories.add(
   'No Tag Keys Found',
   () => (
     <div className="story--example">
-      <EmptyState size={ComponentSize.Small}>
+      <EmptyState
+        size={
+          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+        }
+      >
         <EmptyState.Text text="No Tag Keys found" />
         <EmptyState.SubText text="Try changing the Time Range" />
       </EmptyState>
@@ -72,6 +84,51 @@ emptyStateExampleStories.add(
   {
     readme: {
       content: marked(EmptyStateExampleBReadme),
+    },
+  }
+)
+
+emptyStateExampleStories.add(
+  'Markdown Sample',
+  () => (
+    <div className="story--example">
+      <EmptyState
+        size={
+          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+        }
+      >
+        <h1>
+          H1 Chartreuse tumeric you probably <strong>haven't heard</strong> of
+          them
+        </h1>
+        <h2>
+          H2 Pok pok <strong>subway</strong> tile hammock cray air plant pickled
+        </h2>
+        <h3>
+          H3 Direct trade beard austin yr <strong>chillwave</strong> jean shorts
+        </h3>
+        <h4>
+          H4 Palo santo cardigan lomo <strong>kale chips</strong> deep v art
+          party
+        </h4>
+        <h5>
+          H5 Post-ironic la croix schlitz tbh <strong>thundercats</strong> paleo
+          prism
+        </h5>
+        <h6>
+          H6 Waistcoat intelligentsia selfies <strong>ugh shaman</strong>,
+          listicle iPhone
+        </h6>
+        <p>
+          Flexitarian seitan polaroid, food truck bicycle rights iceland quinoa
+          four dollar toast church-key 90's meditation craft beer
+        </p>
+      </EmptyState>
+    </div>
+  ),
+  {
+    readme: {
+      content: marked(EmptyStateExampleCReadme),
     },
   }
 )

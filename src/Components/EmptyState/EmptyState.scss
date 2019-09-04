@@ -10,20 +10,31 @@
   width: 100%;
   flex-direction: column;
   align-items: center;
+  user-select: none;
+  color: $empty-state-text;
+
+  em,
+  strong {
+    font-weight: 900;
+    font-style: normal;
+    color: $empty-state-highlight;
+  }
+
+  > *:first-child {
+    margin-top: 0;
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .cf-empty-state--text,
 .cf-empty-state--sub-text {
   margin-bottom: 0;
   text-align: center;
-  color: $empty-state-text;
   @extend %no-user-select;
 
-  em {
-    font-weight: 600;
-    font-style: normal;
-    color: $empty-state-highlight;
-  }
 }
 
 /*
@@ -46,10 +57,6 @@
   .cf-empty-state--sub-text + .cf-button,
   .cf-empty-state--sub-text + .cf-dropdown {
     margin-top: $padding;
-  }
-
-  > *:last-child {
-    margin-bottom: ceil($fontSize * 0.75);
   }
 
   .cf-empty-state--text {
