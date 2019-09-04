@@ -78,6 +78,7 @@ popoverStories.add(
       >
         <div className="mockComponent mockButton">Popover Trigger Element</div>
       </Popover>
+      <Popover.Portal />
     </div>
   ),
   {
@@ -125,6 +126,7 @@ composedPopoverStories.add(
       >
         <div className="mockComponent mockButton">Popover Trigger Element</div>
       </TextPopover>
+      <Popover.Portal />
     </div>
   ),
   {
