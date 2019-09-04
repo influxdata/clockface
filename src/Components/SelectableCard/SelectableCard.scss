@@ -1,4 +1,4 @@
-@import "../../Styles/modules.scss";
+@import '../../Styles/modules.scss';
 
 /*
   Selectable Card
@@ -14,27 +14,39 @@
   border: $cf-border solid $g1-raven;
   transition: border-color 0.2s ease, background-color 0.2s ease;
   overflow: hidden;
+  cursor: pointer;
 
   &:hover {
     border-color: $g4-onyx;
     background-color: $g4-onyx;
-    cursor: pointer;
-  }
 
-  &.cf-selectable-card__selected {
-    background-color: $g5-pepper;
+    .cf-selectable-card--body {
+      background-color: $g2-kevlar;
+    }
   }
 }
 
 .cf-selectable-card--container {
-  position: absolute;
+  position: relative;
   width: 100%;
   height: 100%;
   user-select: none;
-  display: flex;
-  justify-content: center;
+  display: inline-flex;
   flex-direction: column;
+  justify-content: stretch;
   align-items: center;
+}
+
+.cf-selectable-card--body {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $g1-raven;
+  border-radius: $cf-radius;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .cf-selectable-card--hidden-input {
@@ -55,6 +67,10 @@
 }
 
 .cf-selectable-card--label {
+  cursor: inherit;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   width: 100%;
   white-space: nowrap;
@@ -63,30 +79,33 @@
   color: $g11-sidewalk;
   transition: color 0.25s ease;
   font-weight: 600;
-  
-  .cf-selectable-card__selected &,
-  .cf-selectable-card:hover & {
-    color: $g15-platinum;
+  position: relative;
+  padding: $cf-marg-e;
+}
+
+.cf-selectable-card:hover {
+  .cf-selectable-card--label {
+    color: $g13-mist;
   }
-  
-  .cf-selectable-card__has-image & {
-    position: absolute;
-    transform: translateY(50%);
+}
+
+.cf-selectable-card__selected,
+.cf-selectable-card__selected.cf-selectable-card:hover {
+  .cf-selectable-card--label {
+    color: $g1-raven;
   }
 }
 
 /*
-  Image
+  Children
   ------------------------------------------------------------------------------
 */
 
-.cf-selectable-card--image {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  display: flex;
+.cf-selectable-card--children {
+  display: inline-flex;
+  flex-direction: column;
   justify-content: center;
-  transform: translate(-50%, -50%);
+  align-items: center;
   filter: grayscale(0.5) opacity(30%);
   transition: filter 0.2s ease;
 
@@ -104,16 +123,22 @@
 .cf-selectable-card__disabled,
 .cf-selectable-card__disabled:hover,
 .cf-selectable-card__disabled.cf-selectable-card__selected {
-  background-color: $g1-raven;
-  border-color: $g1-raven;
   cursor: default;
+  border-color: $g1-raven;
+  font-style: italic;
 
-  .cf-selectable-card--image {
+  .cf-selectable-card--children {
     filter: grayscale(0.75) opacity(15%);
   }
 
   .cf-selectable-card--label {
     color: $g9-mountain;
+  }
+
+  &.cf-selectable-card__selected {
+    .cf-selectable-card--label {
+      color: $g1-raven;
+    }
   }
 }
 
@@ -125,14 +150,16 @@
   &.cf-selectable-card__selected,
   &.cf-selectable-card__selected:hover {
     border-color: $color;
+    background-color: $color;
   }
-  
+
   .cf-selectable-card--icon {
     color: $color;
   }
-  
+
   &.cf-selectable-card__selected.cf-selectable-card__disabled {
     border-color: mix($color, $g1-raven, 30%);
+    background-color: mix($color, $g1-raven, 30%);
 
     .cf-selectable-card--icon {
       color: mix($color, $g1-raven, 30%);
@@ -166,17 +193,15 @@
 @mixin selectableCardSizeModifier($fontSize, $padding) {
   .cf-selectable-card--label {
     font-size: ceil($fontSize * 1.25);
-    padding: 0 $padding;
+    padding: $padding;
   }
-  &.cf-selectable-card__has-image .cf-selectable-card--label {
-    bottom: $padding * 2.5;
-  }
+
   .cf-selectable-card--icon {
     font-size: ceil($fontSize * 1.25);
     top: $padding * 1.5;
     left: $padding * 1.5;
   }
-  .cf-selectable-card--image {
+  .cf-selectable-card--children {
     width: calc(100% - #{$padding * 10});
     height: calc(100% - #{$padding * 10});
   }

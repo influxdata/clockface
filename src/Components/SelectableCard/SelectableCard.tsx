@@ -25,8 +25,6 @@ interface Props extends StandardProps {
   fontSize: ComponentSize
   /** Controls the color of the selected border */
   color: ComponentColor
-  /** Pass in a graphical element to render it in the center of the card */
-  image?: JSX.Element
   /** Renders the card in selected state */
   selected: boolean
   /** Renders the card in disabled state */
@@ -36,7 +34,7 @@ interface Props extends StandardProps {
   /** Name of the form containing this card */
   formName?: string
   /** Customize the icon that appears in selected state */
-  icon: IconFont
+  icon?: IconFont
 }
 
 export class SelectableCard extends PureComponent<Props> {
@@ -48,20 +46,10 @@ export class SelectableCard extends PureComponent<Props> {
     color: ComponentColor.Success,
     selected: false,
     disabled: false,
-    icon: IconFont.Checkmark,
   }
 
   public render() {
-    const {
-      id,
-      label,
-      selected,
-      formName,
-      disabled,
-      testID,
-      style,
-      icon,
-    } = this.props
+    const {id, label, selected, formName, disabled, testID, style} = this.props
 
     return (
       <div
@@ -74,46 +62,57 @@ export class SelectableCard extends PureComponent<Props> {
           className="cf-selectable-card--container"
           onClick={this.handleClick}
         >
-          <Icon glyph={icon} className="cf-selectable-card--icon" />
-          <input
-            className="cf-selectable-card--hidden-input"
-            id={id}
-            data-testid={`${testID}--hidden-input`}
-            name={formName}
-            type="checkbox"
-            value={label}
-            defaultChecked={selected}
-            disabled={disabled}
-          />
-          {this.image}
           <label className="cf-selectable-card--label" htmlFor={id}>
             {label}
           </label>
+          <div className="cf-selectable-card--body">
+            {this.children}
+            {this.icon}
+            <input
+              className="cf-selectable-card--hidden-input"
+              id={id}
+              data-testid={`${testID}--hidden-input`}
+              name={formName}
+              type="checkbox"
+              value={label}
+              defaultChecked={selected}
+              disabled={disabled}
+            />
+          </div>
         </div>
       </div>
     )
   }
 
   private get className(): string {
-    const {selected, disabled, fontSize, color, image} = this.props
+    const {selected, disabled, fontSize, color} = this.props
 
     return classnames('cf-selectable-card', {
       'cf-selectable-card__selected': selected,
       'cf-selectable-card__disabled': disabled,
-      'cf-selectable-card__has-image': image,
       [`cf-selectable-card__${fontSize}`]: fontSize,
       [`cf-selectable-card__${color}`]: color,
     })
   }
 
-  private get image(): JSX.Element | undefined {
-    const {image} = this.props
+  private get children(): JSX.Element | undefined {
+    const {children} = this.props
 
-    if (!image) {
+    if (!children) {
       return
     }
 
-    return <div className="cf-selectable-card--image">{image}</div>
+    return <div className="cf-selectable-card--children">{children}</div>
+  }
+
+  private get icon(): JSX.Element | undefined {
+    const {icon} = this.props
+
+    if (!icon) {
+      return
+    }
+
+    return <Icon glyph={icon} className="cf-selectable-card--icon" />
   }
 
   private handleClick = (e: MouseEvent<HTMLDivElement>): void => {
