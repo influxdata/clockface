@@ -1,6 +1,7 @@
 // Libraries
-import React, {Component, createRef, CSSProperties} from 'react'
+import React, {Component, createRef, CSSProperties, MouseEvent} from 'react'
 import classnames from 'classnames'
+import {createPortal} from 'react-dom'
 
 // Components
 import {ClickOutside} from '../ClickOutside/ClickOutside'
@@ -108,45 +109,49 @@ export class Popover extends Component<PopoverProps, State> {
     const {testID, children, id, style} = this.props
 
     return (
-      <ClickOutside onClickOutside={this.handleClickOutside}>
+      <div
+        id={id}
+        style={style}
+        data-testid={testID}
+        className={this.className}
+        onMouseLeave={this.handleTriggerMouseLeave}
+      >
         <div
-          className={this.className}
-          data-testid={testID}
-          id={id}
-          style={style}
-          onMouseLeave={this.handleTriggerMouseLeave}
+          className="cf-popover--trigger"
+          onMouseOver={this.handleTriggerMouseOver}
+          onClick={this.handleTriggerClick}
+          ref={this.triggerRef}
         >
-          <div
-            className="cf-popover--trigger"
-            ref={this.triggerRef}
-            onClick={this.handleTriggerClick}
-            onMouseOver={this.handleTriggerMouseOver}
-            data-testid={`${testID}--trigger`}
-          >
-            {children}
-          </div>
-          {this.dialog}
+          {children}
         </div>
-      </ClickOutside>
+        {this.dialog}
+      </div>
     )
   }
 
   private get className(): string {
-    const {color, className, type} = this.props
+    const {className} = this.props
 
     return classnames('cf-popover', {
-      [`cf-popover__${color}`]: color,
       [`${className}`]: className,
-      [`cf-popover__${type}`]: type,
     })
   }
 
-  private get dialog(): JSX.Element {
+  private get dialogClassName(): string {
+    const {color, type} = this.props
+
+    return classnames('cf-popover--dialog', {
+      [`cf-popover--dialog__${color}`]: color,
+      [`cf-popover--dialog__${type}`]: type,
+    })
+  }
+
+  private get dialog(): JSX.Element | undefined {
     const {triggerRect, expanded} = this.state
     const {contents, distanceFromTrigger, testID} = this.props
     const dialogPosition = this.calculateDialogPosition()
     let dialogStyles: CSSProperties = {
-      visibility: expanded ? 'visible' : 'hidden',
+      display: expanded ? 'block' : 'none',
     }
     let caretStyles: CSSProperties = {}
 
@@ -332,24 +337,35 @@ export class Popover extends Component<PopoverProps, State> {
       }
     }
 
-    return (
-      <div
-        className="cf-popover--dialog"
-        style={dialogStyles}
-        ref={this.dialogRef}
-      >
+    let dialogElement = (
+      <ClickOutside onClickOutside={this.handleClickOutside}>
         <div
-          className="cf-popover--dialog-contents"
-          data-testid={`${testID}--contents`}
+          className={this.dialogClassName}
+          style={dialogStyles}
+          ref={this.dialogRef}
+          data-testid={`${testID}--dialog`}
         >
           <div
-            className={`cf-popover--caret cf-popover--caret__${dialogPosition}`}
-            style={caretStyles}
-          />
-          {contents(this.handleHideDialog)}
+            className="cf-popover--dialog-contents"
+            data-testid={`${testID}--contents`}
+          >
+            <div
+              className={`cf-popover--caret cf-popover--caret__${dialogPosition}`}
+              style={caretStyles}
+            />
+            {contents(this.handleHideDialog)}
+          </div>
         </div>
-      </div>
+      </ClickOutside>
     )
+
+    const popoverPortal = document.getElementById('cf-popover-portal')
+
+    if (popoverPortal) {
+      return createPortal(dialogElement, popoverPortal)
+    }
+
+    return
   }
 
   private calculateDialogPosition = (): PopoverPosition => {
@@ -454,6 +470,7 @@ export class Popover extends Component<PopoverProps, State> {
     }
 
     if (showEvent === PopoverInteraction.Click) {
+      console.log('click')
       this.handleShowDialog()
     }
   }
@@ -474,10 +491,14 @@ export class Popover extends Component<PopoverProps, State> {
     }
   }
 
-  private handleClickOutside = (): void => {
+  private handleClickOutside = (e: MouseEvent<any>): void => {
+    e.stopPropagation()
     const {hideEvent} = this.props
 
+    console.log(e.target, e.currentTarget, e.relatedTarget)
+
     if (hideEvent === PopoverInteraction.Click) {
+      console.log('click outside')
       this.handleHideDialog()
     }
   }
