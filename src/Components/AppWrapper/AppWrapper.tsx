@@ -2,6 +2,9 @@
 import React, {PureComponent} from 'react'
 import classnames from 'classnames'
 
+// Components
+import {PopoverPortal} from '../Popover/PopoverPortal'
+
 // Styles
 import './AppWrapper.scss'
 
@@ -19,6 +22,7 @@ export class AppWrapper extends PureComponent<Props> {
   public static defaultProps = {
     testID: 'app-wrapper',
     presentationMode: false,
+    id: 'cf-app-wrapper',
   }
 
   public render() {
@@ -31,6 +35,7 @@ export class AppWrapper extends PureComponent<Props> {
         id={id}
         style={style}
       >
+        <PopoverPortal />
         {children}
       </div>
     )

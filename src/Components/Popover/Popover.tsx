@@ -5,7 +5,7 @@ import classnames from 'classnames'
 // Components
 import {ClickOutside} from '../ClickOutside/ClickOutside'
 import {DismissButton} from '../Button/Composed/DismissButton'
-
+import {PopoverPortal} from './PopoverPortal'
 // Styles
 import './Popover.scss'
 
@@ -67,6 +67,7 @@ export class Popover extends Component<PopoverProps, State> {
   public static defaultProps = {...PopoverDefaultProps}
 
   public static DismissButton = DismissButton
+  public static Portal = PopoverPortal
 
   private triggerRef = createRef<HTMLDivElement>()
   private dialogRef = createRef<HTMLDivElement>()
