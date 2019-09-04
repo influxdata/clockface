@@ -2,7 +2,7 @@
 
 ### 0.0.29 (Unreleased)
 
-- [#](https://github.com/influxdata/clockface/pull/): Update `SelectableCard` component with top-label design
+- [#264](https://github.com/influxdata/clockface/pull/264): Update `SelectableCard` component with top-label design
 
 ### 0.0.28
 
