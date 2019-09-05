@@ -4,7 +4,7 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, text, boolean, select, number} from '@storybook/addon-knobs'
+import {withKnobs, text, boolean, select, object} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
@@ -24,16 +24,19 @@ const selectableCardStories = storiesOf(
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
+const exampleStyle = {
+  width: '200px',
+  height: '200px',
+  marginLeft: '8px',
+  marginRight: '8px',
+}
+
 selectableCardStories.add(
   'SelectableCard',
   () => (
-    <div className="story--example">
+    <div className="story--example" style={{height: '400px'}}>
       <SelectableCard
-        style={{
-          width: `${number('width', 200)}px`,
-          height: `${number('height', 200)}px`,
-          marginRight: '15px',
-        }}
+        style={object('style', exampleStyle)}
         id={text('id', 'Titular Title')}
         icon={
           IconFont[
@@ -60,11 +63,7 @@ selectableCardStories.add(
         }}
       />
       <SelectableCard
-        style={{
-          width: `${number('width', 200)}px`,
-          height: `${number('height', 200)}px`,
-          marginRight: '15px',
-        }}
+        style={object('style', exampleStyle)}
         id={text('id', 'Titular Title')}
         icon={
           IconFont[
@@ -93,10 +92,7 @@ selectableCardStories.add(
         <div className="mockComponent stretch">Image</div>
       </SelectableCard>
       <SelectableCard
-        style={{
-          width: `${number('width', 200)}px`,
-          height: `${number('height', 200)}px`,
-        }}
+        style={object('style', exampleStyle)}
         id={text('id', 'Titular Title')}
         icon={
           IconFont[
