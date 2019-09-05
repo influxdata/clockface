@@ -118,7 +118,13 @@
 .cf-selectable-card__disabled.cf-selectable-card__selected {
   cursor: default;
   border-color: $g1-raven;
+  background-color: $g1-raven;
   font-style: italic;
+
+  .cf-selectable-card--body,
+  .cf-selectable-card--body:hover {
+    background-color: $g1-raven;
+  }
 
   .cf-selectable-card--children {
     filter: grayscale(0.75) opacity(15%);
