@@ -57,28 +57,24 @@ export class SelectableCard extends PureComponent<Props> {
         data-testid={testID}
         style={style}
         className={this.className}
+        onClick={this.handleClick}
       >
-        <div
-          className="cf-selectable-card--container"
-          onClick={this.handleClick}
-        >
-          <label className="cf-selectable-card--label" htmlFor={id}>
-            {label}
-          </label>
-          <div className="cf-selectable-card--body">
-            {this.children}
-            {this.icon}
-            <input
-              className="cf-selectable-card--hidden-input"
-              id={id}
-              data-testid={`${testID}--hidden-input`}
-              name={formName}
-              type="checkbox"
-              value={label}
-              defaultChecked={selected}
-              disabled={disabled}
-            />
-          </div>
+        <label className="cf-selectable-card--label" htmlFor={id}>
+          {label}
+        </label>
+        <div className="cf-selectable-card--body">
+          {this.children}
+          {this.icon}
+          <input
+            className="cf-selectable-card--hidden-input"
+            id={id}
+            data-testid={`${testID}--hidden-input`}
+            name={formName}
+            type="checkbox"
+            value={label}
+            defaultChecked={selected}
+            disabled={disabled}
+          />
         </div>
       </div>
     )

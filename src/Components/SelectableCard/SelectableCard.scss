@@ -8,12 +8,16 @@
 .cf-selectable-card {
   width: 100%;
   height: 100%;
-  position: relative;
   background-color: $g1-raven;
   border-radius: $cf-radius;
   border: $cf-border solid $g1-raven;
   transition: border-color 0.2s ease, background-color 0.2s ease;
   overflow: hidden;
+  user-select: none;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: center;
   cursor: pointer;
 
   &:hover {
@@ -24,17 +28,6 @@
       background-color: $g2-kevlar;
     }
   }
-}
-
-.cf-selectable-card--container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  user-select: none;
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: stretch;
-  align-items: center;
 }
 
 .cf-selectable-card--body {
