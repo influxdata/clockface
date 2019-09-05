@@ -202,8 +202,8 @@
     left: $padding * 1.5;
   }
   .cf-selectable-card--children {
-    width: calc(100% - #{$padding * 10});
-    height: calc(100% - #{$padding * 10});
+    width: calc(100% - #{$padding * 8});
+    height: calc(100% - #{$padding * 8});
   }
 }
 
