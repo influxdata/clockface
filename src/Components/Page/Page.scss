@@ -113,7 +113,7 @@
 .cf-page-contents {
   width: 100%;
   position: relative;
-  flex: 1 0 calc(100% - #{$page--header-size});
+  flex: 1 0 0;
   overflow: hidden;
 
   & > .cf-dapper-scrollbars--track-y {
