@@ -2,6 +2,8 @@
 
 ### 0.0.29 (Unreleased)
 
+- [#264](https://github.com/influxdata/clockface/pull/264): Update `SelectableCard` component with top-label design
+
 ### 0.0.28
 
 - [#256](https://github.com/influxdata/clockface/pull/256): Add markdown documentation for `NavMenu` component family
