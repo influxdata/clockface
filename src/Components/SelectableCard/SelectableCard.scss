@@ -5,12 +5,18 @@
   ------------------------------------------------------------------------------
 */
 
+$selectable-card--bg: $g3-castle;
+$selectable-card--body: $g1-raven;
+
+$selectable-card--bg-hover: $g5-pepper;
+$selectable-card--body-hover: $g2-kevlar;
+
 .cf-selectable-card {
   width: 100%;
   height: 100%;
-  background-color: $g1-raven;
+  background-color: $selectable-card--bg;
   border-radius: $cf-radius;
-  border: $cf-border solid $g1-raven;
+  border: $cf-border solid $selectable-card--bg;
   transition: border-color 0.2s ease, background-color 0.2s ease;
   overflow: hidden;
   user-select: none;
@@ -21,11 +27,11 @@
   cursor: pointer;
 
   &:hover {
-    border-color: $g4-onyx;
-    background-color: $g4-onyx;
+    border-color: $selectable-card--bg-hover;
+    background-color: $selectable-card--bg-hover;
 
     .cf-selectable-card--body {
-      background-color: $g2-kevlar;
+      background-color: $selectable-card--body-hover;
     }
   }
 }
@@ -37,7 +43,7 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  background-color: $g1-raven;
+  background-color: $selectable-card--body;
   border-radius: $cf-radius;
   transition: border-color 0.2s ease, background-color 0.2s ease;
 }
