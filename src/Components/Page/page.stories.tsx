@@ -308,7 +308,16 @@ layoutStories.add('AppWrapper + Nav + Page', () => (
           <Page.Header.Left>
             <Page.Title title={text('PageTitle title', 'Page Title')} />
           </Page.Header.Left>
-          <Page.Header.Right />
+          <Page.Header.Center>
+            {boolean('Button in PageHeaderCenter', true) ? (
+              <div className="mockComponent mockButton">Center Button</div>
+            ) : null}
+          </Page.Header.Center>
+          <Page.Header.Right>
+            {boolean('Button in PageHeaderRight', true) ? (
+              <div className="mockComponent mockButton">Right Button</div>
+            ) : null}
+          </Page.Header.Right>
         </Page.Header>
         <Page.Contents
           fullWidth={boolean('fullWidth', false)}

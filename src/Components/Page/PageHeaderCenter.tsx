@@ -1,5 +1,6 @@
 // Libraries
-import React, {Component, CSSProperties} from 'react'
+import React, {Component} from 'react'
+import classnames from 'classnames'
 
 // Types
 import {StandardProps} from '../../Types'
@@ -26,7 +27,7 @@ export class PageHeaderCenter extends Component<Props> {
     return (
       <div
         className={this.className}
-        style={this.style}
+        // style={this.style}
         data-testid={testID}
         id={id}
       >
@@ -36,19 +37,22 @@ export class PageHeaderCenter extends Component<Props> {
   }
 
   private get className(): string {
-    const {className} = this.props
+    const {className, children} = this.props
 
-    return className
-      ? `cf-page-header--center ${className}`
-      : 'cf-page-header--center'
+    const noChildren = React.Children.count(children) === 0
+
+    return classnames('cf-page-header--center', {
+      'cf-page-header--no-children': noChildren,
+      [`${className}`]: className,
+    })
   }
 
-  private get style(): CSSProperties {
-    const {widthPixels, style} = this.props
+  // private get style(): CSSProperties {
+  //   const {widthPixels, style} = this.props
 
-    return {
-      flex: `1 0 ${widthPixels}px`,
-      ...style,
-    }
-  }
+  //   return {
+  //     flex: `1 0 ${widthPixels}px`,
+  //     ...style,
+  //   }
+  // }
 }

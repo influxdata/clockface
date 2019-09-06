@@ -1,5 +1,5 @@
 // Libraries
-import React, {Component, CSSProperties} from 'react'
+import React, {Component} from 'react'
 
 // Types
 import {StandardProps} from '../../Types'
@@ -26,7 +26,7 @@ export class PageHeaderLeft extends Component<Props> {
     return (
       <div
         className={this.className}
-        style={this.style}
+        // style={this.style}
         data-testid={testID}
         id={id}
       >
@@ -43,16 +43,16 @@ export class PageHeaderLeft extends Component<Props> {
       : 'cf-page-header--left'
   }
 
-  private get style(): CSSProperties | undefined {
-    const {offsetPixels, style} = this.props
+  // private get style(): CSSProperties | undefined {
+  //   const {offsetPixels, style} = this.props
 
-    if (offsetPixels === DEFAULT_OFFSET) {
-      return style
-    }
+  //   if (offsetPixels === DEFAULT_OFFSET) {
+  //     return style
+  //   }
 
-    return {
-      flex: `1 0 calc(50% - ${offsetPixels}px)`,
-      ...style,
-    }
-  }
+  //   return {
+  //     flex: `1 0 calc(50% - ${offsetPixels}px)`,
+  //     ...style,
+  //   }
+  // }
 }
