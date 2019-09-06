@@ -6,24 +6,140 @@
 */
 
 .cf-nav {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 9980;
+  transform: translateX(-100%);
+  transition: transform 0.4s ease-in-out;
   display: flex;
-  flex-direction: row;
-  background-color: $g3-castle;
-  border-radius: 0 0 $cf-radius $cf-radius;
+
+  &.cf-nav__expanded {
+    transform: translateX(0);
+  }
+}
+
+.cf-nav--mask {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: $page--background;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9970;
+  transition: opacity 0.25s ease;
+
+  .cf-nav__expanded + & {
+    opacity: 0.66;
+  }
+}
+
+.cf-nav--toggle {
+  z-index: 9999;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $nav-menu--size;
   height: $nav-menu--size;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.cf-nav--hamburger {
+  position: absolute;
+  height: $nav-menu--size;
+  width: $nav-menu--size;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.25s ease;
+}
+
+.cf-nav--hamburger-top,
+.cf-nav--hamburger-middle,
+.cf-nav--hamburger-bottom {
+  width: ceil($nav-menu--size * 0.4);
+  height: $cf-border;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+  background-color: $g11-sidewalk;
+
+  .cf-nav--toggle:hover & {
+    background-color: $c-pool;
+  }
+}
+.cf-nav--hamburger-top {
+  transform: translate(-50%, -325%);
+}
+.cf-nav--hamburger-middle {
+  transform: translate(-50%, -50%);
+}
+.cf-nav--hamburger-bottom {
+  transform: translate(-50%, 225%);
+}
+
+.cf-nav--toggle__expanded {
+  .cf-nav--hamburger {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  .cf-nav--hamburger-top,
+  .cf-nav--hamburger-middle,
+  .cf-nav--hamburger-bottom {
+    background-color: $c-neutrino;
+  }
+
+  .cf-nav--hamburger-top,
+  .cf-nav--hamburger-bottom {
+    transform: translate(-50%, -50%);
+  }
+
+  .cf-nav--hamburger-middle {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  &:hover {
+    .cf-nav--hamburger-top,
+    .cf-nav--hamburger-middle,
+    .cf-nav--hamburger-bottom {
+      background-color: $g20-white;
+    }
+  }
+}
+
+/*
+    Navigation Items
+    ----------------------------------------------------------------------------
+*/
+
+.cf-nav--menu {
+  height: 100%;
+  @include gradient-h($nav-menu--bg,$nav-menu--bg-accent);
+  padding-top: ceil($nav-menu--size * 0.75);
+  padding-left: ceil($nav-menu--size * 0.75);
 }
 
 .cf-nav--item {
-  width: $nav-menu--size;
-  height: $nav-menu--size;
+  display: flex;
+  align-items: flex-start;
   position: relative;
 }
 
 .cf-nav--item-icon {
   display: block;
-  width: 100%;
-  height: 100%;
-  position: relative;
+  width: $nav-menu--size / 2;
+  height: $nav-menu--size;
+  position: absolute;
+  top: 0;
+  left: 0;
   
   > .cf-icon {
     position: absolute;
@@ -42,30 +158,8 @@
   }
 }
 
-.cf-nav--avatar {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  transition:
-    box-shadow 0.4s ease;
-}
-
-.cf-nav--item:first-child .cf-nav--item-icon {
-  border-bottom-left-radius: $cf-radius;
-}
-
-.cf-nav--item:last-child .cf-nav--item-icon {
-  border-bottom-right-radius: $cf-radius;
-}
-
 .cf-nav--item-menu {
-  position: absolute;
-  top: $nav-menu--size;
-  left: 50%;
-  transform: translateX(-50%);
-  @include gradient-v($nav-menu--bg,$nav-menu--bg-accent);
-  display: none;
+  display: flex;
   flex-direction: column;
   align-items: stretch;
   border-radius: $cf-radius;
@@ -130,13 +224,31 @@
   }
 }
 
-// Vertical Menu
+/*
+    Navigation Menu (Large Screens)
+    ----------------------------------------------------------------------------
+*/
 @media screen and (min-width: $nav-menu--breakpoint) {
+  .cf-nav--toggle,
+  .cf-nav--mask {
+    display: none;
+  }
+
   .cf-nav {
+    position: static;
+    top: initial;
+    left: initial;
     flex-direction: column;
-    height: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: $nav-menu--size;
+  }
+  
+  .cf-nav--menu {
     border-radius: 0 $cf-radius $cf-radius 0;
+    display: flex;
   }
 
   .cf-nav--item-menu {
