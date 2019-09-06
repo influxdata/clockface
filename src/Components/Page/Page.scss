@@ -35,7 +35,7 @@
 .cf-page-contents__fluid,
 .cf-page-contents__fixed {
   width: 100%;
-  padding: 0 $page--gutter-small;
+  padding: 0 $page--gutter-xs;
 }
 
 .cf-page-header--fixed,
@@ -150,7 +150,7 @@
 
 .cf-page-contents.cf-dapper-scrollbars .cf-page-contents__fluid,
 .cf-page-contents.cf-dapper-scrollbars .cf-page-contents__fixed {
-  padding-bottom: $page--gutter-small;
+  padding-bottom: $page--gutter-xs;
 }
 
 /*
@@ -171,23 +171,31 @@
   Full Padding After Breakpoint
   ------------------------------------------------------------------------------
 */
-
-@media screen and (min-width: $nav-menu--breakpoint) {
+@mixin pageGutterModifier($gutter) {
   .cf-page-header--fluid,
   .cf-page-header--fixed,
   .cf-page-contents__fluid,
   .cf-page-contents__fixed {
-    padding: 0 $page--gutter;
+    padding: 0 $gutter;
   }
   
-  .cf-page-contents.cf-dapper-scrollbars .cf-page-contents__fluid,
-  .cf-page-contents.cf-dapper-scrollbars .cf-page-contents__fixed {
-    padding-bottom: $page--gutter;
+  &.cf-page-contents.cf-dapper-scrollbars .cf-page-contents__fluid,
+  &.cf-page-contents.cf-dapper-scrollbars .cf-page-contents__fixed {
+    padding-bottom: $gutter;
   }
 }
 
-/*
-  PresentationMode
-  ------------------------------------------------------------------------------
-*/
-
+@media screen and (min-width: $nav-menu--breakpoint) {
+  .cf-page__gutter-xs {
+    @include pageGutterModifier($page--gutter-xs);
+  }
+  .cf-page__gutter-sm {
+    @include pageGutterModifier($page--gutter-sm);
+  }
+  .cf-page__gutter-md {
+    @include pageGutterModifier($page--gutter-md);
+  }
+  .cf-page__gutter-lg {
+    @include pageGutterModifier($page--gutter-lg);
+  }
+}

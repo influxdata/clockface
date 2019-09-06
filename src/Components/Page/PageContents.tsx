@@ -6,7 +6,7 @@ import classnames from 'classnames'
 import {DapperScrollbars} from '../DapperScrollbars/DapperScrollbars'
 
 // Types
-import {StandardProps} from '../../Types'
+import {StandardProps, ComponentSize} from '../../Types'
 
 interface Props extends StandardProps {
   /** Allows the page contents to fill the width of the screen */
@@ -15,6 +15,8 @@ interface Props extends StandardProps {
   scrollable: boolean
   /** If scrollable is true, this toggles whether the scrollbar is always visible */
   autoHideScrollbar: boolean
+  /** Controls the gutters (left and right margins) */
+  gutters: ComponentSize
 }
 
 export class PageContents extends Component<Props> {
@@ -25,6 +27,7 @@ export class PageContents extends Component<Props> {
     scrollable: false,
     testID: 'page-contents',
     autoHideScrollbar: false,
+    gutters: ComponentSize.Medium,
   }
 
   public render() {
@@ -75,10 +78,11 @@ export class PageContents extends Component<Props> {
   }
 
   private get className(): string {
-    const {className, scrollable} = this.props
+    const {className, scrollable, gutters} = this.props
 
     return classnames('cf-page-contents', {
       'cf-page-contents__no-scroll': !scrollable,
+      [`cf-page__gutter-${gutters}`]: gutters,
       [`${className}`]: className,
     })
   }

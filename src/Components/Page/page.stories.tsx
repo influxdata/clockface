@@ -4,8 +4,9 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, boolean, text, number} from '@storybook/addon-knobs'
+import {withKnobs, boolean, text, number, select} from '@storybook/addon-knobs'
 import {jsxDecorator} from 'storybook-addon-jsx'
+import {mapEnumKeys} from '../../Utils/storybook'
 
 // Components
 import {AppWrapper} from '../AppWrapper/AppWrapper'
@@ -20,9 +21,9 @@ import {FlexBox} from '../FlexBox/FlexBox'
 import {
   IconFont,
   ComponentColor,
+  ComponentSize,
   ButtonShape,
   FlexDirection,
-  ComponentSize,
   AlignItems,
 } from '../../Types'
 
@@ -60,7 +61,12 @@ pageStories.add(
   'PageHeader',
   () => (
     <div className="story--example">
-      <Page.Header fullWidth={boolean('fullWidth', false)}>
+      <Page.Header
+        fullWidth={boolean('fullWidth', false)}
+        gutters={
+          ComponentSize[select('gutters', mapEnumKeys(ComponentSize), 'Small')]
+        }
+      >
         <Page.Header.Left>
           <div className="mockComponent" style={{width: '100%'}}>
             Left
@@ -93,6 +99,9 @@ pageStories.add(
       <Page.Contents
         fullWidth={boolean('fullWidth', false)}
         scrollable={boolean('scrollable', false)}
+        gutters={
+          ComponentSize[select('gutters', mapEnumKeys(ComponentSize), 'Small')]
+        }
       >
         <div
           className="mockComponent pageContents"
@@ -141,7 +150,14 @@ pageExampleStories.add(
   () => (
     <div className="mockPage appWrapper">
       <Page>
-        <Page.Header fullWidth={boolean('fullWidth', false)}>
+        <Page.Header
+          fullWidth={boolean('fullWidth', false)}
+          gutters={
+            ComponentSize[
+              select('gutters', mapEnumKeys(ComponentSize), 'Small')
+            ]
+          }
+        >
           <Page.Header.Left>
             <FlexBox
               alignItems={AlignItems.FlexStart}
@@ -186,6 +202,11 @@ pageExampleStories.add(
           fullWidth={boolean('fullWidth', false)}
           scrollable={boolean('scrollable', false)}
           autoHideScrollbar={boolean('autoHideScrollbar', false)}
+          gutters={
+            ComponentSize[
+              select('gutters', mapEnumKeys(ComponentSize), 'Small')
+            ]
+          }
         >
           <div
             className="mockComponent stretch"
@@ -276,7 +297,14 @@ layoutStories.add('AppWrapper + Nav + Page', () => (
         />
       </NavMenu>
       <Page titleTag="bloop">
-        <Page.Header fullWidth={boolean('fullWidth', false)}>
+        <Page.Header
+          fullWidth={boolean('fullWidth', false)}
+          gutters={
+            ComponentSize[
+              select('gutters', mapEnumKeys(ComponentSize), 'Small')
+            ]
+          }
+        >
           <Page.Header.Left>
             <Page.Title title={text('PageTitle title', 'Page Title')} />
           </Page.Header.Left>
@@ -285,6 +313,11 @@ layoutStories.add('AppWrapper + Nav + Page', () => (
         <Page.Contents
           fullWidth={boolean('fullWidth', false)}
           scrollable={boolean('scrollable', true)}
+          gutters={
+            ComponentSize[
+              select('gutters', mapEnumKeys(ComponentSize), 'Small')
+            ]
+          }
         >
           <div
             className="mockComponent pageContents"

@@ -15,7 +15,7 @@
   top: 0;
   left: 0;
   color: $cf-text-default;
-  background-color: $g1-raven;
+  background-color: $page--background;
 }
 
 @media screen and (min-width: $nav-menu--breakpoint) {
@@ -39,6 +39,6 @@
   .cf-page-contents__fluid,
   .cf-page-contents.cf-dapper-scrollbars .cf-page-contents__fluid,
   .cf-page-contents.cf-dapper-scrollbars .cf-page-contents__fixed {
-    padding: $page--gutter-small;
+    padding: $page--gutter-xs;
   }
 }

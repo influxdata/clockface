@@ -9,11 +9,13 @@ import {PageHeaderCenter} from './PageHeaderCenter'
 import {PageHeaderRight} from './PageHeaderRight'
 
 // Types
-import {StandardProps} from '../../Types'
+import {StandardProps, ComponentSize} from '../../Types'
 
 interface Props extends StandardProps {
   /** Allows the page header to fill the width of the screen */
   fullWidth: boolean
+  /** Controls the gutters (left and right margins) */
+  gutters: ComponentSize
 }
 
 export class PageHeader extends Component<Props> {
@@ -22,6 +24,7 @@ export class PageHeader extends Component<Props> {
   public static defaultProps = {
     hide: false,
     testID: 'page-header',
+    gutters: ComponentSize.Medium,
   }
 
   public static Left = PageHeaderLeft
@@ -46,9 +49,10 @@ export class PageHeader extends Component<Props> {
   }
 
   private get className(): string {
-    const {className} = this.props
+    const {className, gutters} = this.props
 
     return classnames('cf-page-header', {
+      [`cf-page__gutter-${gutters}`]: gutters,
       [`${className}`]: className,
     })
   }
