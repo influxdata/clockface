@@ -35,6 +35,10 @@ interface Props extends StandardProps {
   autoSizeWidth: boolean
   /** Scroll container will grow to fit the content height */
   autoSizeHeight: boolean
+  /** Scroll top position in pixels */
+  scrollTop: number
+  /** Scroll left position in pixels */
+  scrollLeft: number;
 }
 
 export class DapperScrollbars extends Component<Props> {
@@ -53,6 +57,8 @@ export class DapperScrollbars extends Component<Props> {
     autoSize: false,
     autoSizeWidth: false,
     autoSizeHeight: false,
+    scrollTop: 0,
+    scrollLeft: 0,
     testID: 'dapper-scrollbars',
   }
 
@@ -69,6 +75,8 @@ export class DapperScrollbars extends Component<Props> {
       autoSizeHeight,
       autoSizeWidth,
       noScroll,
+      scrollTop,
+      scrollLeft,
       children,
       testID,
       style,
@@ -107,6 +115,8 @@ export class DapperScrollbars extends Component<Props> {
           style: this.thumbYStyle,
           className: 'cf-dapper-scrollbars--thumb-y',
         }}
+        scrollTop={scrollTop}
+        scrollLeft={scrollLeft}
         id={id}
         download={null}
         inlist={null}
