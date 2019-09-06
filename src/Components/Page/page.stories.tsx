@@ -14,9 +14,17 @@ import {Page} from './Page'
 import {Radio} from '../Radio/Radio'
 import {SquareButton} from '../Button/Composed/SquareButton'
 import {Icon} from '../Icon/Icon'
+import {FlexBox} from '../FlexBox/FlexBox'
 
 // Types
-import {IconFont, ComponentColor, ButtonShape} from '../../Types'
+import {
+  IconFont,
+  ComponentColor,
+  ButtonShape,
+  FlexDirection,
+  ComponentSize,
+  AlignItems,
+} from '../../Types'
 
 // Notes
 import FullPageReadme from './FullPage.md'
@@ -24,6 +32,7 @@ import PageReadme from './Page.md'
 import PageHeaderReadme from './PageHeader.md'
 import PageContentsReadme from './PageContents.md'
 import PageTitleReadme from './PageTitle.md'
+import PageSubTitleReadme from './PageSubTitle.md'
 
 const pageStories = storiesOf('Layout|Page/Family', module)
   .addDecorator(withKnobs)
@@ -113,6 +122,20 @@ pageStories.add(
   }
 )
 
+pageStories.add(
+  'PageSubTitle',
+  () => (
+    <div className="story--example">
+      <Page.SubTitle title={text('title', 'I am a page title!')} />
+    </div>
+  ),
+  {
+    readme: {
+      content: marked(PageSubTitleReadme),
+    },
+  }
+)
+
 pageExampleStories.add(
   'Full Page',
   () => (
@@ -120,7 +143,14 @@ pageExampleStories.add(
       <Page>
         <Page.Header fullWidth={boolean('fullWidth', false)}>
           <Page.Header.Left>
-            <Page.Title title="Markdown Editor" />
+            <FlexBox
+              alignItems={AlignItems.FlexStart}
+              direction={FlexDirection.Column}
+              margin={ComponentSize.Small}
+            >
+              <Page.Title title="Markdown Editor" />
+              <Page.SubTitle title="A handy tool made by us for you" />
+            </FlexBox>
           </Page.Header.Left>
           <Page.Header.Center widthPixels={300}>
             <Radio shape={ButtonShape.StretchToFit}>

@@ -5,7 +5,7 @@ import React, {PureComponent} from 'react'
 import {StandardProps} from '../../Types'
 
 interface Props extends StandardProps {
-  /** Text to display in PageTitle */
+  /** Text to display in title */
   title: string
   /** Alternate text for screen readers */
   altText?: string

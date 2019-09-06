@@ -94,15 +94,29 @@
   }
 }
 
-.cf-page--title {
+.cf-page--title,
+.cf-page--sub-title {
   letter-spacing: 0;
   text-transform: none;
-  font-size: $page--title-size;
-  font-weight: $page--title-weight;
-  margin: 0;
-  display: inline-block;
-  @include no-user-select();
+  font-style: normal;
   cursor: default;
+  display: inline-block;
+  margin: 0;
+  @include no-user-select();
+}
+
+.cf-page--title {
+  color: $g15-platinum;
+  font-size: $page--title-size;
+  line-height: $page--title-size;
+  font-weight: $page--title-weight;
+}
+
+.cf-page--sub-title {
+  color: $g9-mountain;
+  font-size: $page--sub-title-size;
+  line-height: $page--sub-title-size;
+  font-weight: $page--sub-title-weight;
 }
 
 /*
