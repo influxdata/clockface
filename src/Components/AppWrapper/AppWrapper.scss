@@ -15,7 +15,7 @@
   top: 0;
   left: 0;
   color: $cf-text-default;
-  @include gradient-v($page--gradient-start, $page--gradient-stop);
+  background-color: $g1-raven;
 }
 
 @media screen and (min-width: $nav-menu--breakpoint) {

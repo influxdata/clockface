@@ -117,11 +117,7 @@
   overflow: hidden;
 
   & > .cf-dapper-scrollbars--track-y {
-    background: linear-gradient(
-      to bottom,
-      $g6-smoke 0%,
-      $g3-castle 100%
-    ) !important;
+    background-color: $g3-castle !important;
   }
 }
 
