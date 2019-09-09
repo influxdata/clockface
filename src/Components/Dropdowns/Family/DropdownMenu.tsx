@@ -1,6 +1,7 @@
 // Libraries
 import React, {Component, CSSProperties} from 'react'
 import classnames from 'classnames'
+import _ from 'lodash'
 
 // Components
 import {DapperScrollbars} from '../../DapperScrollbars/DapperScrollbars'
@@ -19,6 +20,8 @@ interface Props extends StandardProps {
   noScrollX: boolean
   /** Disable scrolling vertically */
   noScrollY: boolean
+  /** Automatically scroll to selected item when dropdown is opened */
+  scrollToSelected: boolean
   /** Function to handle closing the menu when a child item is clicked */
   onCollapse?: () => void
 }
@@ -31,6 +34,7 @@ export class DropdownMenu extends Component<Props> {
     testID: 'dropdown-menu',
     noScrollX: true,
     noScrollY: false,
+    scrollToSelected: true,
     maxHeight: 250,
   }
 
@@ -66,6 +70,7 @@ export class DropdownMenu extends Component<Props> {
           thumbStopColor={thumbStopColor}
           noScrollX={noScrollX}
           noScrollY={noScrollY}
+          scrollTop={this.selectedPosition}
         >
           <div
             className="cf-dropdown-menu--contents"
@@ -77,6 +82,21 @@ export class DropdownMenu extends Component<Props> {
         </DapperScrollbars>
       </div>
     )
+  }
+
+  private get selectedPosition(): number {
+    const {scrollToSelected, children} = this.props
+
+    if (!children || !scrollToSelected) {
+      return 0
+    }
+
+    const itemHeight = 24
+    const items = React.Children.map(children, child => _.get(child, 'props.selected', false))
+    const itemIndex = items.findIndex(item => item === true)
+
+    return itemHeight * itemIndex
+    
   }
 
   private get containerClass(): string {

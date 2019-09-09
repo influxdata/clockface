@@ -35,9 +35,9 @@ interface Props extends StandardProps {
   autoSizeWidth: boolean
   /** Scroll container will grow to fit the content height */
   autoSizeHeight: boolean
-  /** Scroll top position in pixels */
+  /** Vertical scroll position in pixels */
   scrollTop: number
-  /** Scroll left position in pixels */
+  /** Horizontal scroll position in pixels */
   scrollLeft: number;
 }
 

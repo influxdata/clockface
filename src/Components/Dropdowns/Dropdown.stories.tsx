@@ -232,6 +232,7 @@ dropdownFamilyStories.add(
           maxHeight={number('maxHeight', 250)}
           noScrollX={boolean('noScrollX', true)}
           noScrollY={boolean('noScrollY', false)}
+          scrollToSelected={boolean('scrollToSelected', true)}
         >
           <DropdownDivider text="Domestic Fruits" />
           <DropdownItem
@@ -257,6 +258,18 @@ dropdownFamilyStories.add(
             }
           >
             Kiwi
+          </DropdownItem>
+          <DropdownItem
+            wrapText={boolean('item wrapText', false)}
+            value="Lemon"
+            selected={false}
+            type={
+              DropdownItemType[
+                select('item type', mapEnumKeys(DropdownItemType), 'None')
+              ]
+            }
+          >
+            Lemon
           </DropdownItem>
           <DropdownItem
             wrapText={boolean('item wrapText', false)}
@@ -345,6 +358,30 @@ dropdownFamilyStories.add(
           </DropdownItem>
           <DropdownItem
             wrapText={boolean('item wrapText', false)}
+            value="Mango"
+            selected={false}
+            type={
+              DropdownItemType[
+                select('item type', mapEnumKeys(DropdownItemType), 'None')
+              ]
+            }
+          >
+            Mango
+          </DropdownItem>
+          <DropdownItem
+            wrapText={boolean('item wrapText', false)}
+            value="Lychee"
+            selected={false}
+            type={
+              DropdownItemType[
+                select('item type', mapEnumKeys(DropdownItemType), 'None')
+              ]
+            }
+          >
+            Lychee
+          </DropdownItem>
+          <DropdownItem
+            wrapText={boolean('item wrapText', false)}
             value="Passionfruit"
             selected={false}
             type={
@@ -383,14 +420,19 @@ const selectDropdownOptions = [
   'Celery',
   'Carrot',
   'Potato',
-  'Onion',
-  'Tomato',
-  'Spinach',
+  'Corn',
+  'Bok Choy',
   '---Fruits',
   'Apple',
   'Peach',
+  'Tomato',
   'Grape',
   'Orange',
+  'Lemon',
+  'Watermelon',
+  'Kiwi',
+  'Banana',
+  'Strawberry',
 ]
 
 const selectDropdownSelectedOption = 'Celery'
