@@ -38,7 +38,7 @@ interface Props extends StandardProps {
   /** Vertical scroll position in pixels */
   scrollTop: number
   /** Horizontal scroll position in pixels */
-  scrollLeft: number;
+  scrollLeft: number
 }
 
 export class DapperScrollbars extends Component<Props> {

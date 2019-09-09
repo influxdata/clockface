@@ -2,6 +2,7 @@
 
 ### 0.0.29 (Unreleased)
 
+- [#267](https://github.com/influxdata/clockface/pull/267): Scroll to selected `DropdownItem` when `DropdownMenu` is opened
 - [#264](https://github.com/influxdata/clockface/pull/264): Update `SelectableCard` component with top-label design
 
 ### 0.0.28

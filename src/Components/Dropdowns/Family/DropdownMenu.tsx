@@ -92,11 +92,12 @@ export class DropdownMenu extends Component<Props> {
     }
 
     const itemHeight = 24
-    const items = React.Children.map(children, child => _.get(child, 'props.selected', false))
+    const items = React.Children.map(children, child =>
+      _.get(child, 'props.selected', false)
+    )
     const itemIndex = items.findIndex(item => item === true)
 
     return itemHeight * itemIndex
-    
   }
 
   private get containerClass(): string {
