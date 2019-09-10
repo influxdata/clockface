@@ -7,9 +7,9 @@ import chroma from 'chroma-js'
 // Types
 import {
   Gradients,
-  ComponentSize,
   InfluxColors,
   StandardProps,
+  ComponentColor,
 } from '../../Types'
 
 // Constants
@@ -20,6 +20,7 @@ import {PanelHeader} from './PanelHeader'
 import {PanelTitle} from './PanelTitle'
 import {PanelBody} from './PanelBody'
 import {PanelFooter} from './PanelFooter'
+import {DismissButton} from '../Button/Composed/DismissButton'
 
 // Styles
 import './Panel.scss'
@@ -29,19 +30,19 @@ interface Props extends StandardProps {
   gradient?: Gradients
   /** Optional background color of panel */
   backgroundColor: InfluxColors | string
-  /** Controls header font size and padding of Panel */
-  size: ComponentSize
   /** If a function is passed in a dismiss button will appear on the Panel */
   onDismiss?: () => void
+  /** Applies to the dismiss button rendered when onDismiss is present */
+  dismissButtonColor: ComponentColor
 }
 
 export class Panel extends Component<Props> {
   public static readonly displayName = 'Panel'
 
   public static defaultProps = {
-    size: ComponentSize.Small,
     testID: 'panel',
     backgroundColor: InfluxColors.Castle,
+    dismissButtonColor: ComponentColor.Primary,
   }
 
   public static Header = PanelHeader
@@ -66,12 +67,11 @@ export class Panel extends Component<Props> {
   }
 
   private get className(): string {
-    const {className, gradient, size, onDismiss} = this.props
+    const {className, gradient} = this.props
 
-    return classnames(`cf-panel cf-panel--${size}`, {
+    return classnames('cf-panel', {
       [`${className}`]: className,
       'cf-panel__gradient': gradient,
-      'cf-panel__dismissable': onDismiss,
       [`cf-panel__${this.useContrastText}-text`]: this.useContrastText,
     })
   }
@@ -107,16 +107,10 @@ export class Panel extends Component<Props> {
   }
 
   private get dismissButton(): JSX.Element | undefined {
-    const {onDismiss} = this.props
+    const {onDismiss, dismissButtonColor} = this.props
 
     if (onDismiss) {
-      return (
-        <button
-          className="cf-panel--dismiss"
-          type="button"
-          onClick={onDismiss}
-        />
-      )
+      return <DismissButton onClick={onDismiss} color={dismissButtonColor} />
     }
 
     return

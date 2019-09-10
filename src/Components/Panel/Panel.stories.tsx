@@ -47,9 +47,6 @@ panelStories.add(
           ]
         }
         backgroundColor={color('backgroundColor', `${InfluxColors.Castle}`)}
-        size={
-          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-        }
       />
     </div>
   ),
@@ -64,8 +61,18 @@ panelStories.add(
   'PanelHeader',
   () => (
     <div className="story--example">
-      <Panel.Header>
-        <Panel.Title>{text('title', 'I am a cool Panel')}</Panel.Title>
+      <Panel.Header
+        size={
+          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+        }
+      >
+        <Panel.Title
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+        >
+          {text('title', 'I am a cool Panel')}
+        </Panel.Title>
       </Panel.Header>
     </div>
   ),
@@ -80,7 +87,11 @@ panelStories.add(
   'PanelBody',
   () => (
     <div className="story--example">
-      <Panel.Body>
+      <Panel.Body
+        size={
+          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+        }
+      >
         <span>{text('children', 'Example paragraph text')}</span>
       </Panel.Body>
     </div>
@@ -96,7 +107,11 @@ panelStories.add(
   'PanelFooter',
   () => (
     <div className="story--example">
-      <Panel.Footer>
+      <Panel.Footer
+        size={
+          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+        }
+      >
         <span>{text('children', 'Example footer text')}</span>
       </Panel.Footer>
     </div>
@@ -113,9 +128,6 @@ panelExampleStories.add(
   () => (
     <div className="story--example">
       <Panel
-        size={
-          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-        }
         gradient={
           Gradients[
             select(
@@ -127,10 +139,24 @@ panelExampleStories.add(
         }
         onDismiss={() => alert('onDismiss clicked!')}
       >
-        <Panel.Header>
-          <Panel.Title>Welcome!</Panel.Title>
+        <Panel.Header
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+        >
+          <Panel.Title
+            size={
+              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+            }
+          >
+            Welcome!
+          </Panel.Title>
         </Panel.Header>
-        <Panel.Body>
+        <Panel.Body
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+        >
           <h5>We've built a lot of cool new things to make your life easier</h5>
           <h5>
             <a href="#">Click Here</a> to take the tour
@@ -150,38 +176,43 @@ panelExampleStories.add(
   'Getting Started Panel',
   () => (
     <div className="story--example">
-      <Panel size={ComponentSize.Small}>
-        <Panel.Header>
-          <Panel.Title>Getting started with InfluxDB 2.0</Panel.Title>
+      <Panel>
+        <Panel.Header
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+        >
+          <Panel.Title
+            size={
+              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+            }
+          >
+            Getting started with InfluxDB 2.0
+          </Panel.Title>
         </Panel.Header>
-        <Panel.Body>
+        <Panel.Body
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+        >
           <Grid>
             <Grid.Row>
               <Grid.Column widthSM={Columns.Four}>
-                <Panel
-                  size={ComponentSize.Small}
-                  backgroundColor={InfluxColors.Onyx}
-                >
+                <Panel backgroundColor={InfluxColors.Onyx}>
                   <Panel.Body>
                     <p>Configure a Data Collector</p>
                   </Panel.Body>
                 </Panel>
               </Grid.Column>
               <Grid.Column widthSM={Columns.Four}>
-                <Panel
-                  size={ComponentSize.Small}
-                  backgroundColor={InfluxColors.Onyx}
-                >
+                <Panel backgroundColor={InfluxColors.Onyx}>
                   <Panel.Body>
                     <p>Build a Monitoring Dashboard</p>
                   </Panel.Body>
                 </Panel>
               </Grid.Column>
               <Grid.Column widthSM={Columns.Four}>
-                <Panel
-                  size={ComponentSize.Small}
-                  backgroundColor={InfluxColors.Onyx}
-                >
+                <Panel backgroundColor={InfluxColors.Onyx}>
                   <Panel.Body>
                     <p>Explore Data with Flux</p>
                   </Panel.Body>
@@ -190,7 +221,11 @@ panelExampleStories.add(
             </Grid.Row>
           </Grid>
         </Panel.Body>
-        <Panel.Footer>
+        <Panel.Footer
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+        >
           <p>
             Check our <a href="#">Documentation Site</a> for more tutorials
           </p>
@@ -209,11 +244,25 @@ panelExampleStories.add(
   'Danger Zone Panel',
   () => (
     <div className="story--example">
-      <Panel size={ComponentSize.Small} gradient={Gradients.DocScott}>
-        <Panel.Header>
-          <Panel.Title>Danger Zone!</Panel.Title>
+      <Panel gradient={Gradients.DocScott}>
+        <Panel.Header
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+        >
+          <Panel.Title
+            size={
+              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+            }
+          >
+            Danger Zone!
+          </Panel.Title>
         </Panel.Header>
-        <Panel.Body>
+        <Panel.Body
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+        >
           <p>These actions can have unintended wide-reaching consequences</p>
         </Panel.Body>
       </Panel>
