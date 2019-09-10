@@ -2,6 +2,7 @@
 
 ### 0.0.29 (Unreleased)
 
+- [#268](https://github.com/influxdata/clockface/pull/268): [Breaking] Remove `size` prop from `Panel` and add `size` prop to `PanelHeader`, `PanelTitle`, `PanelBody`, and `PanelFooter`
 - [#267](https://github.com/influxdata/clockface/pull/267): Scroll to selected `DropdownItem` when `DropdownMenu` is opened
 - [#264](https://github.com/influxdata/clockface/pull/264): Update `SelectableCard` component with top-label design
 
