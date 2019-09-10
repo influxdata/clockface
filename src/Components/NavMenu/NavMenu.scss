@@ -269,17 +269,6 @@
     }
   }
 }
-// // Active Hover State
-// .cf-nav--item.active:hover {
-//   .cf-nav--item-icon {
-//     color: $g20-white;
-//     // background-color: $nav-menu--bg;
-// text-shadow:
-//   0 0 9px $c-yeti,
-//   0 0 15px $c-hydrogen,
-//   0 0 20px $c-laser;
-//   }
-// }
 
 /*
     Navigation Menu (Large Screens)
@@ -321,6 +310,10 @@
   .cf-nav--item {
     width: $nav-menu--size;
     height: $nav-menu--size;
+
+    &:hover {
+      z-index: 9999;
+    }
   }
 
   .cf-nav--item-icon {
