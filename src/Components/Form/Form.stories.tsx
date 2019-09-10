@@ -369,15 +369,15 @@ formExampleStories.add(
   () => (
     <div className="story--example">
       <div style={{width: `${number('Parent width (px)', 500)}px`}}>
-        <Panel
-          size={
-            ComponentSize[
-              select('Panel: size', mapEnumKeys(ComponentSize), 'Small')
-            ]
-          }
-        >
+        <Panel>
           <DismissButton onClick={() => {}} color={ComponentColor.Danger} />
-          <PanelBody>
+          <PanelBody
+            size={
+              ComponentSize[
+                select('Panel: size', mapEnumKeys(ComponentSize), 'Small')
+              ]
+            }
+          >
             <FlexBox
               direction={FlexDirection.Column}
               margin={
