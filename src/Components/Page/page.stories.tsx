@@ -234,33 +234,20 @@ layoutStories.add('AppWrapper + Nav + Page', () => (
         <NavMenu.Item
           titleLink={className => (
             <a className={className} href="#">
-              Data
+              JohnDoe (OrgName)
             </a>
           )}
           iconLink={className => (
             <a className={className} href="#">
-              <Icon glyph={IconFont.Disks} />
+              <Icon glyph={IconFont.CuboNav} />
             </a>
           )}
           active={false}
-        />
-        <NavMenu.Item
-          titleLink={className => (
-            <a className={className} href="#">
-              Thunder
-            </a>
-          )}
-          iconLink={className => (
-            <a className={className} href="#">
-              <Icon glyph={IconFont.Zap} />
-            </a>
-          )}
-          active={true}
         >
           <NavMenu.SubItem
             titleLink={className => (
               <a className={className} href="#">
-                Lightning
+                Switch Organizations
               </a>
             )}
             active={false}
@@ -268,7 +255,7 @@ layoutStories.add('AppWrapper + Nav + Page', () => (
           <NavMenu.SubItem
             titleLink={className => (
               <a className={className} href="#">
-                Storm Clouds
+                Create Organization
               </a>
             )}
             active={false}
@@ -276,7 +263,7 @@ layoutStories.add('AppWrapper + Nav + Page', () => (
           <NavMenu.SubItem
             titleLink={className => (
               <a className={className} href="#">
-                Rain
+                Logout
               </a>
             )}
             active={false}
@@ -285,12 +272,211 @@ layoutStories.add('AppWrapper + Nav + Page', () => (
         <NavMenu.Item
           titleLink={className => (
             <a className={className} href="#">
-              Bananas
+              Data Explorer
+            </a>
+          )}
+          iconLink={className => (
+            <a className={className} href="#">
+              <Icon glyph={IconFont.GraphLine} />
+            </a>
+          )}
+          active={false}
+        />
+        <NavMenu.Item
+          titleLink={className => (
+            <a className={className} href="#">
+              Dashboards
+            </a>
+          )}
+          iconLink={className => (
+            <a className={className} href="#">
+              <Icon glyph={IconFont.Dashboards} />
+            </a>
+          )}
+          active={false}
+        />
+        <NavMenu.Item
+          titleLink={className => (
+            <a className={className} href="#">
+              Tasks
+            </a>
+          )}
+          iconLink={className => (
+            <a className={className} href="#">
+              <Icon glyph={IconFont.Calendar} />
+            </a>
+          )}
+          active={true}
+        />
+        <NavMenu.Item
+          titleLink={className => (
+            <a className={className} href="#">
+              Monitoring & Alerting
             </a>
           )}
           iconLink={className => (
             <a className={className} href="#">
               <Icon glyph={IconFont.Bell} />
+            </a>
+          )}
+          active={false}
+        >
+          <NavMenu.SubItem
+            titleLink={className => (
+              <a className={className} href="#">
+                History
+              </a>
+            )}
+            active={false}
+          />
+        </NavMenu.Item>
+        <NavMenu.Item
+          titleLink={className => (
+            <a className={className} href="#">
+              Load Data
+            </a>
+          )}
+          iconLink={className => (
+            <a className={className} href="#">
+              <Icon glyph={IconFont.DisksNav} />
+            </a>
+          )}
+          active={false}
+        >
+          <NavMenu.SubItem
+            titleLink={className => (
+              <a className={className} href="#">
+                Buckets
+              </a>
+            )}
+            active={false}
+          />
+          <NavMenu.SubItem
+            titleLink={className => (
+              <a className={className} href="#">
+                Telegraf
+              </a>
+            )}
+            active={false}
+          />
+          <NavMenu.SubItem
+            titleLink={className => (
+              <a className={className} href="#">
+                Scrapers
+              </a>
+            )}
+            active={false}
+          />
+          <NavMenu.SubItem
+            titleLink={className => (
+              <a className={className} href="#">
+                Tokens
+              </a>
+            )}
+            active={false}
+          />
+          <NavMenu.SubItem
+            titleLink={className => (
+              <a className={className} href="#">
+                Client Libraries
+              </a>
+            )}
+            active={false}
+          />
+        </NavMenu.Item>
+        <NavMenu.Item
+          titleLink={className => (
+            <a className={className} href="#">
+              Settings
+            </a>
+          )}
+          iconLink={className => (
+            <a className={className} href="#">
+              <Icon glyph={IconFont.WrenchNav} />
+            </a>
+          )}
+          active={false}
+        >
+          <NavMenu.SubItem
+            titleLink={className => (
+              <a className={className} href="#">
+                Members
+              </a>
+            )}
+            active={false}
+          />
+          <NavMenu.SubItem
+            titleLink={className => (
+              <a className={className} href="#">
+                Variables
+              </a>
+            )}
+            active={false}
+          />
+          <NavMenu.SubItem
+            titleLink={className => (
+              <a className={className} href="#">
+                Templates
+              </a>
+            )}
+            active={false}
+          />
+          <NavMenu.SubItem
+            titleLink={className => (
+              <a className={className} href="#">
+                Labels
+              </a>
+            )}
+            active={false}
+          />
+          <NavMenu.SubItem
+            titleLink={className => (
+              <a className={className} href="#">
+                Profile
+              </a>
+            )}
+            active={false}
+          />
+        </NavMenu.Item>
+        <NavMenu.Item
+          titleLink={className => (
+            <a className={className} href="#">
+              Cloud
+            </a>
+          )}
+          iconLink={className => (
+            <a className={className} href="#">
+              <Icon glyph={IconFont.Cloud} />
+            </a>
+          )}
+          active={false}
+        >
+          <NavMenu.SubItem
+            titleLink={className => (
+              <a className={className} href="#">
+                Billing
+              </a>
+            )}
+            active={false}
+          />
+          <NavMenu.SubItem
+            titleLink={className => (
+              <a className={className} href="#">
+                Usage
+              </a>
+            )}
+            active={false}
+          />
+        </NavMenu.Item>
+        <NavMenu.Item
+          titleLink={className => (
+            <a className={className} href="#">
+              Feedback
+            </a>
+          )}
+          iconLink={className => (
+            <a className={className} href="#">
+              <Icon glyph={IconFont.NavChat} />
             </a>
           )}
           active={false}
