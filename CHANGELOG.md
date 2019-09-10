@@ -3,6 +3,12 @@
 ### 0.0.29 (Unreleased)
 
 - [#267](https://github.com/influxdata/clockface/pull/267): Scroll to selected `DropdownItem` when `DropdownMenu` is opened
+- [#265](https://github.com/influxdata/clockface/pull/265): Make `NavMenu` responsive
+- [#265](https://github.com/influxdata/clockface/pull/265): Allow customization of `PageHeader` and `PageContents` gutter sizes
+- [#265](https://github.com/influxdata/clockface/pull/265): Make `PageContents` size less rigid
+- [#265](https://github.com/influxdata/clockface/pull/265): Introduce `PageSubTitle` component
+- [#265](https://github.com/influxdata/clockface/pull/265): Change backgrounds of `OverlayContainer` and `AppWrapper` to be flat colors
+- [#265](https://github.com/influxdata/clockface/pull/265): [Breaking] Make `PageHeader` and sub-components responsive
 - [#264](https://github.com/influxdata/clockface/pull/264): Update `SelectableCard` component with top-label design
 
 ### 0.0.28
