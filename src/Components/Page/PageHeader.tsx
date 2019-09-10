@@ -1,7 +1,6 @@
 // Libraries
-import React, {Component, ReactNode} from 'react'
+import React, {Component} from 'react'
 import classnames from 'classnames'
-import uuid from 'uuid'
 
 // Components
 import {PageHeaderLeft} from './PageHeaderLeft'
@@ -32,7 +31,7 @@ export class PageHeader extends Component<Props> {
   public static Right = PageHeaderRight
 
   public render() {
-    const {testID, id, style} = this.props
+    const {testID, id, style, children} = this.props
 
     return (
       <div
@@ -41,9 +40,7 @@ export class PageHeader extends Component<Props> {
         id={id}
         style={style}
       >
-        <div className={this.containerClassName}>
-          {this.childrenWithCorrectWidths}
-        </div>
+        <div className={this.containerClassName}>{children}</div>
       </div>
     )
   }
@@ -61,47 +58,5 @@ export class PageHeader extends Component<Props> {
     const {fullWidth} = this.props
 
     return fullWidth ? 'cf-page-header--fluid' : 'cf-page-header--fixed'
-  }
-
-  private get childrenWithCorrectWidths(): ReactNode[] | ReactNode | undefined {
-    const {children} = this.props
-
-    let centerWidthPixels = 0
-
-    React.Children.forEach(children, (child: JSX.Element) => {
-      if (child.type === PageHeaderCenter) {
-        centerWidthPixels = child.props.widthPixels
-      }
-    })
-
-    let childArray = children
-
-    if (centerWidthPixels) {
-      childArray = React.Children.map(children, (child: JSX.Element) => {
-        if (child.type === PageHeaderLeft) {
-          return (
-            <PageHeaderLeft
-              {...child.props}
-              key={uuid.v4()}
-              offsetPixels={centerWidthPixels / 2}
-            />
-          )
-        }
-
-        if (child.type === PageHeaderRight) {
-          return (
-            <PageHeaderRight
-              {...child.props}
-              key={uuid.v4()}
-              offsetPixels={centerWidthPixels / 2}
-            />
-          )
-        }
-
-        return child
-      })
-    }
-
-    return childArray
   }
 }

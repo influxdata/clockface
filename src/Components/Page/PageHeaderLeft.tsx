@@ -7,10 +7,7 @@ import {StandardProps} from '../../Types'
 // Constants
 import {DEFAULT_OFFSET} from '../../Constants/pageLayout'
 
-interface Props extends StandardProps {
-  /** If a PageHeaderCenter is present PageHeaderLeft will automatically get assigned this value */
-  offsetPixels: number
-}
+interface Props extends StandardProps {}
 
 export class PageHeaderLeft extends Component<Props> {
   public static readonly displayName = 'PageHeaderLeft'
@@ -21,12 +18,12 @@ export class PageHeaderLeft extends Component<Props> {
   }
 
   public render() {
-    const {children, testID, id} = this.props
+    const {children, testID, id, style} = this.props
 
     return (
       <div
         className={this.className}
-        // style={this.style}
+        style={style}
         data-testid={testID}
         id={id}
       >
@@ -42,17 +39,4 @@ export class PageHeaderLeft extends Component<Props> {
       ? `cf-page-header--left ${className}`
       : 'cf-page-header--left'
   }
-
-  // private get style(): CSSProperties | undefined {
-  //   const {offsetPixels, style} = this.props
-
-  //   if (offsetPixels === DEFAULT_OFFSET) {
-  //     return style
-  //   }
-
-  //   return {
-  //     flex: `1 0 calc(50% - ${offsetPixels}px)`,
-  //     ...style,
-  //   }
-  // }
 }
