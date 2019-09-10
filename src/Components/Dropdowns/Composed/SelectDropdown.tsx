@@ -114,12 +114,12 @@ export class SelectDropdown extends Component<Props> {
 
     return options.map(o => {
       if (o === DROPDOWN_DIVIDER_SHORTCODE) {
-        return <DropdownDivider key="o" />
+        return <DropdownDivider key={o} />
       }
 
       if (o.includes(DROPDOWN_DIVIDER_SHORTCODE)) {
         const dividerText = o.replace(DROPDOWN_DIVIDER_SHORTCODE, '')
-        return <DropdownDivider key="o" text={dividerText} />
+        return <DropdownDivider key={o} text={dividerText} />
       }
 
       return (
