@@ -1,5 +1,6 @@
 // Libraries
-import React, {Component, CSSProperties} from 'react'
+import React, {Component} from 'react'
+import classnames from 'classnames'
 
 // Types
 import {StandardProps} from '../../Types'
@@ -7,10 +8,7 @@ import {StandardProps} from '../../Types'
 // Constants
 import {DEFAULT_PAGE_HEADER_CENTER_WIDTH} from '../../Constants/pageLayout'
 
-interface Props extends StandardProps {
-  /** Must have a fixed width in pixels */
-  widthPixels: number
-}
+interface Props extends StandardProps {}
 
 export class PageHeaderCenter extends Component<Props> {
   public static readonly displayName = 'PageHeaderCenter'
@@ -21,12 +19,12 @@ export class PageHeaderCenter extends Component<Props> {
   }
 
   public render() {
-    const {children, testID, id} = this.props
+    const {children, testID, id, style} = this.props
 
     return (
       <div
         className={this.className}
-        style={this.style}
+        style={style}
         data-testid={testID}
         id={id}
       >
@@ -36,19 +34,13 @@ export class PageHeaderCenter extends Component<Props> {
   }
 
   private get className(): string {
-    const {className} = this.props
+    const {className, children} = this.props
 
-    return className
-      ? `cf-page-header--center ${className}`
-      : 'cf-page-header--center'
-  }
+    const noChildren = React.Children.count(children) === 0
 
-  private get style(): CSSProperties {
-    const {widthPixels, style} = this.props
-
-    return {
-      flex: `1 0 ${widthPixels}px`,
-      ...style,
-    }
+    return classnames('cf-page-header--center', {
+      'cf-page-header--no-children': noChildren,
+      [`${className}`]: className,
+    })
   }
 }

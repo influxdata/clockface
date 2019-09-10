@@ -1,6 +1,11 @@
 @import '../src/Styles/modules';
 @import '../src/Styles/shared';
 
+
+body.sb-show-main {
+  background-color: $g0-obsidian;
+}
+
 .props-table {
   color: $g11-sidewalk;
   text-align: left;
@@ -63,6 +68,7 @@
 
   &.mockButton {
     padding: 0 13px;
+    white-space: nowrap;
   }
 
   &.wide {
@@ -126,7 +132,7 @@
   width: 100%;
   height: 600px;
   position: relative;
-  border: 2px solid $g4-onyx;
+  background-color: $g1-raven;
 
   &.padded {
     padding: $cf-marg-c;
@@ -177,9 +183,9 @@
 }
 
 .story--example {
+  background-color: $g1-raven;
   width: 100%;
   min-height: 300px;
-  border: $cf-border solid $g4-onyx;
   border-radius: $cf-radius;
   display: flex;
   justify-content: center;
@@ -384,9 +390,9 @@ body.sb-show-main {
     text-shadow: none;
     font-weight: 500;
     color: $c-potassium;
-    background-color: $g2-kevlar;
+    background-color: $g1-raven;
     font-size: inherit;
-    text-shadow: 0 0 3px $g0-obsidian;
+    text-shadow: 0 1px 0 #000;
   }
 
   code.language-js span.token {
@@ -464,7 +470,7 @@ body.sb-show-main {
 
   pre {
     font-size: $docs-text-base;
-    background-color: $g2-kevlar;
+    background-color: $g1-raven;
     margin: 0.5em 0 1.25em 0;
 
     p {

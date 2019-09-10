@@ -1,5 +1,6 @@
 // Libraries
-import React, {Component, CSSProperties} from 'react'
+import React, {Component} from 'react'
+import classnames from 'classnames'
 
 // Types
 import {StandardProps} from '../../Types'
@@ -7,10 +8,7 @@ import {StandardProps} from '../../Types'
 // Constants
 import {DEFAULT_OFFSET} from '../../Constants/pageLayout'
 
-interface Props extends StandardProps {
-  /** If a PageHeaderCenter is present PageHeaderRight will automatically get assigned this value */
-  offsetPixels: number
-}
+interface Props extends StandardProps {}
 
 export class PageHeaderRight extends Component<Props> {
   public static readonly displayName = 'PageHeaderRight'
@@ -21,12 +19,12 @@ export class PageHeaderRight extends Component<Props> {
   }
 
   public render() {
-    const {children, testID, id} = this.props
+    const {children, testID, id, style} = this.props
 
     return (
       <div
         className={this.className}
-        style={this.style}
+        style={style}
         data-testid={testID}
         id={id}
       >
@@ -36,23 +34,13 @@ export class PageHeaderRight extends Component<Props> {
   }
 
   private get className(): string {
-    const {className} = this.props
+    const {className, children} = this.props
 
-    return className
-      ? `cf-page-header--right ${className}`
-      : 'cf-page-header--right'
-  }
+    const noChildren = React.Children.count(children) === 0
 
-  private get style(): CSSProperties | undefined {
-    const {offsetPixels, style} = this.props
-
-    if (offsetPixels === DEFAULT_OFFSET) {
-      return style
-    }
-
-    return {
-      flex: `1 0 calc(50% - ${offsetPixels}px)`,
-      ...style,
-    }
+    return classnames('cf-page-header--right', {
+      'cf-page-header--no-children': noChildren,
+      [`${className}`]: className,
+    })
   }
 }

@@ -23,6 +23,8 @@ interface Props extends StandardProps {
   justifyContent: JustifyContent
   /** Can be FlexStart, FlexEnd, Center, or Stretch */
   alignItems: AlignItems
+  /** Controls padding */
+  size: ComponentSize
 }
 
 export class PanelHeader extends Component<Props> {
@@ -33,6 +35,7 @@ export class PanelHeader extends Component<Props> {
     flexDirection: FlexDirection.Row,
     justifyContent: JustifyContent.SpaceBetween,
     alignItems: AlignItems.Center,
+    size: ComponentSize.Small,
   }
 
   public render() {
@@ -68,8 +71,11 @@ export class PanelHeader extends Component<Props> {
   }
 
   private get className(): string {
-    const {className} = this.props
+    const {className, size} = this.props
 
-    return classnames('cf-panel--header', {[`${className}`]: className})
+    return classnames('cf-panel--header', {
+      [`cf-panel--header__${size}`]: size,
+      [`${className}`]: className,
+    })
   }
 }

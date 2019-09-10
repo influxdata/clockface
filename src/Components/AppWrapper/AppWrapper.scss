@@ -15,7 +15,8 @@
   top: 0;
   left: 0;
   color: $cf-text-default;
-  @include gradient-v($page--gradient-start, $page--gradient-stop);
+  background-color: $page--background;
+  overflow: hidden;
 }
 
 @media screen and (min-width: $nav-menu--breakpoint) {
@@ -31,7 +32,9 @@
 
 .clockface--app-wrapper__presentation-mode {
   .cf-nav, 
-  .cf-page-header {
+  .cf-page-header,
+  .cf-nav--mask,
+  .cf-nav--toggle {
     display: none;
   }
 
@@ -39,6 +42,6 @@
   .cf-page-contents__fluid,
   .cf-page-contents.cf-dapper-scrollbars .cf-page-contents__fluid,
   .cf-page-contents.cf-dapper-scrollbars .cf-page-contents__fixed {
-    padding: $page--gutter-small;
+    padding: $page--gutter-xs;
   }
 }

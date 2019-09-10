@@ -7,21 +7,17 @@
 
 .cf-page {
   width: 100%;
-  flex: 1 0 100%;
+  flex: 1 0 0;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-
-  .cf-nav + & {
-    flex: 1 0 calc(100% - #{$nav-menu--size});
-  }
 }
 
 @media screen and (min-width: $nav-menu--breakpoint) {
   .cf-page {
     width: auto;
     height: 100%;
-    flex: 1 0 100%;
+    flex: 1 0 0;
   }
 }
 
@@ -35,7 +31,7 @@
 .cf-page-contents__fluid,
 .cf-page-contents__fixed {
   width: 100%;
-  padding: 0 $page--gutter-small;
+  padding: 0 $page--gutter-xs;
 }
 
 .cf-page-header--fixed,
@@ -54,15 +50,14 @@
   flex: 0 0 $page--header-size;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .cf-page-header--fluid,
 .cf-page-header--fixed {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .cf-page-header--left,
@@ -70,39 +65,98 @@
 .cf-page-header--center {
   display: flex;
   align-items: center;
-}
+  text-align: center;
+  justify-content: center;
+  flex: 0 0 $nav-menu--size;
 
-.cf-page-header--left {
-  justify-content: flex-start;
-  > * {
-    margin: 0 $cf-marg-a 0 0;
+  &.cf-page-header--no-children {
+    display: none;
   }
 }
 
-.cf-page-header--center {
-  justify-content: center;
+.cf-page-header--center:not(.cf-page-header--no-children) + .cf-page-header--right {
+  flex: 0 0 ($nav-menu--size - (($nav-menu--size - $form-sm-height) / 2));
+  align-items: flex-start;
 }
 
-.cf-page-header--right {
-  justify-content: flex-end;
-  > * {
-    margin: 0 0 0 $cf-marg-a !important;
+.cf-page-header--left {
+  padding: 0 ($nav-menu--size - $page--gutter-xs);
+}
 
-    &:only-child {
-      margin-right: 0 !important;
+@media screen and (min-width: $nav-menu--breakpoint) {
+  .cf-page-header {
+    align-items: center;
+  }
+
+  .cf-page-header--fluid,
+  .cf-page-header--fixed {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+
+  .cf-page-header--left {
+    padding: 0;
+    justify-content: flex-start;
+    text-align: left;
+    flex: 1 0 30%;
+    > * {
+      margin: 0 $cf-marg-a 0 0;
+    }
+  }
+
+  .cf-page-header--center {
+    flex: 0 0 0;
+  }
+
+  .cf-page-header--right,
+  .cf-page-header--center:not(.cf-page-header--no-children) + .cf-page-header--right {
+    justify-content: flex-end;
+    text-align: right;
+    flex: 1 0 30%;
+    > * {
+      margin: 0 0 0 $cf-marg-a;
+    }
+  }
+
+  .cf-page-header--left,
+  .cf-page-header--right,
+  .cf-page-header--center {
+    &.cf-page-header--no-children {
+      display: flex;
     }
   }
 }
 
-.cf-page--title {
+/*
+  Page Title & Sub-Title
+  ------------------------------------------------------------------------------
+*/
+
+.cf-page--title,
+.cf-page--sub-title {
   letter-spacing: 0;
   text-transform: none;
-  font-size: $page--title-size;
-  font-weight: $page--title-weight;
-  margin: 0;
-  display: inline-block;
-  @include no-user-select();
+  font-style: normal;
   cursor: default;
+  display: inline-block;
+  margin: 0;
+  @include no-user-select();
+}
+
+.cf-page--title {
+  color: $g15-platinum;
+  font-size: $page--title-size;
+  line-height: $page--title-size;
+  font-weight: $page--title-weight;
+}
+
+.cf-page--sub-title {
+  color: $g9-mountain;
+  font-size: $page--sub-title-size;
+  line-height: $page--sub-title-size;
+  font-weight: $page--sub-title-weight;
 }
 
 /*
@@ -113,15 +167,11 @@
 .cf-page-contents {
   width: 100%;
   position: relative;
-  flex: 1 0 calc(100% - #{$page--header-size});
+  flex: 1 0 0;
   overflow: hidden;
 
   & > .cf-dapper-scrollbars--track-y {
-    background: linear-gradient(
-      to bottom,
-      $g6-smoke 0%,
-      $g3-castle 100%
-    ) !important;
+    background-color: $g3-castle !important;
   }
 }
 
@@ -140,7 +190,7 @@
 
 .cf-page-contents.cf-dapper-scrollbars .cf-page-contents__fluid,
 .cf-page-contents.cf-dapper-scrollbars .cf-page-contents__fixed {
-  padding-bottom: $page--gutter-small;
+  padding-bottom: $page--gutter-xs;
 }
 
 /*
@@ -161,23 +211,31 @@
   Full Padding After Breakpoint
   ------------------------------------------------------------------------------
 */
-
-@media screen and (min-width: $nav-menu--breakpoint) {
+@mixin pageGutterModifier($gutter) {
   .cf-page-header--fluid,
   .cf-page-header--fixed,
   .cf-page-contents__fluid,
   .cf-page-contents__fixed {
-    padding: 0 $page--gutter;
+    padding: 0 $gutter;
   }
   
-  .cf-page-contents.cf-dapper-scrollbars .cf-page-contents__fluid,
-  .cf-page-contents.cf-dapper-scrollbars .cf-page-contents__fixed {
-    padding-bottom: $page--gutter;
+  &.cf-page-contents.cf-dapper-scrollbars .cf-page-contents__fluid,
+  &.cf-page-contents.cf-dapper-scrollbars .cf-page-contents__fixed {
+    padding-bottom: $gutter;
   }
 }
 
-/*
-  PresentationMode
-  ------------------------------------------------------------------------------
-*/
-
+@media screen and (min-width: $nav-menu--breakpoint) {
+  .cf-page__gutter-xs {
+    @include pageGutterModifier($page--gutter-xs);
+  }
+  .cf-page__gutter-sm {
+    @include pageGutterModifier($page--gutter-sm);
+  }
+  .cf-page__gutter-md {
+    @include pageGutterModifier($page--gutter-md);
+  }
+  .cf-page__gutter-lg {
+    @include pageGutterModifier($page--gutter-lg);
+  }
+}

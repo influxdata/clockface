@@ -3,15 +3,19 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardProps} from '../../Types'
+import {StandardProps, ComponentSize} from '../../Types'
 
-interface Props extends StandardProps {}
+interface Props extends StandardProps {
+  /** Controls padding */
+  size: ComponentSize
+}
 
 export class PanelFooter extends Component<Props> {
   public static readonly displayName = 'PanelFooter'
 
   public static defaultProps = {
     testID: 'panel--footer',
+    size: ComponentSize.Small,
   }
 
   public render() {
@@ -30,8 +34,11 @@ export class PanelFooter extends Component<Props> {
   }
 
   private get className(): string {
-    const {className} = this.props
+    const {className, size} = this.props
 
-    return classnames('cf-panel--footer', {[`${className}`]: className})
+    return classnames('cf-panel--footer', {
+      [`cf-panel--footer__${size}`]: size,
+      [`${className}`]: className,
+    })
   }
 }
