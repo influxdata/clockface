@@ -5,6 +5,7 @@ import classnames from 'classnames'
 // Components
 import {PageHeader} from './PageHeader'
 import {PageTitle} from './PageTitle'
+import {PageSubTitle} from './PageSubTitle'
 import {PageContents} from './PageContents'
 
 // Types
@@ -28,6 +29,7 @@ export class Page extends Component<Props> {
 
   public static Header = PageHeader
   public static Title = PageTitle
+  public static SubTitle = PageSubTitle
   public static Contents = PageContents
 
   public componentDidMount() {

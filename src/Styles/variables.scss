@@ -23,13 +23,16 @@ $nav-menu--bg-accent: $c-comet;
 $nav-menu--breakpoint: 800px;
 
 $page--header-size: 66px;
-$page--gutter-small: 12px;
-$page--gutter: 54px;
+$page--gutter-xs: 12px;
+$page--gutter-sm: 20px;
+$page--gutter-md: 32px;
+$page--gutter-lg: 54px;
 $page--max-width: 1608px;
 $page--title-size: 21px;
 $page--title-weight: 400;
-$page--gradient-start: $g2-kevlar;
-$page--gradient-stop: $g0-obsidian;
+$page--sub-title-size: 12px;
+$page--sub-title-weight: 500;
+$page--background: $g1-raven;
 
 /*
    Motifs
