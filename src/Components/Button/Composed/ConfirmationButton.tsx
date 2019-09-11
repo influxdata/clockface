@@ -1,5 +1,5 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {Component, createRef} from 'react'
 import classnames from 'classnames'
 
 // Components
@@ -20,7 +20,7 @@ import {
   PopoverType,
 } from '../../../Types'
 
-interface Props extends Omit<ButtonProps, 'onClick' | 'active' | 'type'> {
+interface Props extends Omit<ButtonProps, 'onClick' | 'active' | 'type' | 'refObject'> {
   /** Text to appear in confirmation popover */
   confirmationLabel: string
   /** Text to appear in confirmation button */
@@ -52,6 +52,8 @@ export class ConfirmationButton extends Component<Props> {
     popoverType: PopoverType.Solid,
   }
 
+  private triggerRef = createRef<HTMLButtonElement>()
+
   public render() {
     const {
       placeIconAfterText,
@@ -59,7 +61,6 @@ export class ConfirmationButton extends Component<Props> {
       popoverColor,
       popoverType,
       titleText,
-      refObject,
       tabIndex,
       testID,
       status,
@@ -73,31 +74,33 @@ export class ConfirmationButton extends Component<Props> {
     } = this.props
 
     return (
-      <Popover
-        color={popoverColor}
-        type={popoverType}
-        className={this.className}
-        contents={onHide => (
-          <div className="cf-confirmation-button--container">
-            {confirmationLabel && (
-              <span
-                className="cf-confirmation-button--label"
-                data-testid={`${testID}--confirmation-label`}
-              >
-                {confirmationLabel}
-              </span>
-            )}
-            {this.renderConfirm(onHide)}
-          </div>
-        )}
-        testID={`${testID}--popover`}
-        disabled={this.isDisabled}
-        style={style}
-      >
+      <>
+        <Popover
+          color={popoverColor}
+          type={popoverType}
+          className={this.className}
+          contents={onHide => (
+            <div className="cf-confirmation-button--container">
+              {confirmationLabel && (
+                <span
+                  className="cf-confirmation-button--label"
+                  data-testid={`${testID}--confirmation-label`}
+                >
+                  {confirmationLabel}
+                </span>
+              )}
+              {this.renderConfirm(onHide)}
+            </div>
+          )}
+          testID={`${testID}--popover`}
+          disabled={this.isDisabled}
+          style={style}
+          triggerRef={this.triggerRef}
+        />
         <Button
           placeIconAfterText={placeIconAfterText}
           titleText={titleText || text}
-          refObject={refObject}
+          refObject={this.triggerRef}
           tabIndex={tabIndex}
           testID={`${testID}--button`}
           status={status}
@@ -108,7 +111,7 @@ export class ConfirmationButton extends Component<Props> {
           icon={icon}
           id={id}
         />
-      </Popover>
+      </>
     )
   }
 
