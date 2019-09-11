@@ -2,6 +2,9 @@
 
 ### 0.0.29 (Unreleased)
 
+- [#270](https://github.com/influxdata/clockface/pull/270): [Breaking] Rebuild `Popover` from the ground up using portals and refs to prevent issues with layout disruption and positioning
+- [#270](https://github.com/influxdata/clockface/pull/270): Introduce `ReflessPopover` as a replacement for the previous `Popover` component functionality
+- [#270](https://github.com/influxdata/clockface/pull/270): Allow optional "default styles" for `Popover` components
 - [#268](https://github.com/influxdata/clockface/pull/268): [Breaking] Remove `size` prop from `Panel` and add `size` prop to `PanelHeader`, `PanelTitle`, `PanelBody`, and `PanelFooter`
 - [#267](https://github.com/influxdata/clockface/pull/267): Scroll to selected `DropdownItem` when `DropdownMenu` is opened
 - [#265](https://github.com/influxdata/clockface/pull/265): Make `NavMenu` responsive
