@@ -23,7 +23,7 @@ export interface PopoverProps extends StandardProps {
   /** Popover dialog color */
   color: ComponentColor
   /** Popover dialog contents */
-  contents: ((onHide: () => void) => JSX.Element) | (() => JSX.Element)
+  contents: (onHide?: () => void) => JSX.Element
   /** Type of interaction to show the popover dialog */
   showEvent: PopoverInteraction
   /** Type of interaction to hide the popover dialog */
