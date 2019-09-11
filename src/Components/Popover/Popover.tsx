@@ -82,6 +82,8 @@ export class Popover extends Component<PopoverProps, State> {
     }
   }
 
+  private triggerReceivedHandlers = false
+
   public componentDidMount() {
     this.handleCreatePortalElement()
     this.handleAddEventListeners()
@@ -94,6 +96,14 @@ export class Popover extends Component<PopoverProps, State> {
   }
 
   public componentDidUpdate(prevProps: PopoverProps) {
+    if (!this.triggerReceivedHandlers) {
+      this.triggerReceivedHandlers = false
+
+      this.props.triggerRef.current.addEventListener('click', this.handleTriggerClick)
+      this.props.triggerRef.current.addEventListener('mouseover', this.handleTriggerMouseOver)
+      this.props.triggerRef.current.addEventListener('mouseleave', this.handleTriggerMouseLeave)
+    }
+
     if (prevProps.visible !== this.props.visible) {
       if (this.props.visible) {
         this.handleShowDialog()
@@ -258,6 +268,8 @@ export class Popover extends Component<PopoverProps, State> {
     if (!triggerRef.current) {
       return
     }
+
+    this.triggerReceivedHandlers = true
 
     triggerRef.current.addEventListener('click', this.handleTriggerClick)
     triggerRef.current.addEventListener('mouseover', this.handleTriggerMouseOver)
