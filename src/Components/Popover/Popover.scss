@@ -110,9 +110,18 @@
 
 .cf-popover--contents__default-styles {
   padding: $cf-marg-c;
-  font-size: $cf-text-base;
+  font-size: $cf-text-base + 2px;
+  line-height: 1.5em;
   font-weight: 600;
   color: $g13-mist;
+
+  > *:first-child {
+    margin-top: 0;
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
 
   strong {
     color: $g18-cloud;
