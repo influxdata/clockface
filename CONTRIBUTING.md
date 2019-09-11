@@ -2,7 +2,7 @@
 
 First things first sign our [CLA](https://influxdata.com/community/cla/)
 
-Clockface is built using `React`, `Typescript`, `SCSS`, and `Storybook` so you will want to get familar with those tools.
+Clockface is built using `React`, `Typescript`, `SCSS`, `Webpack` and `Storybook` so you will want to get familar with those tools.
 We use `yarn` to manage dependencies and build the project.
 
 Get to know our key maintainers:
@@ -98,13 +98,13 @@ We offer larger groups of components that are intended to be used together close
 ##### Here's an example:
 
 ```tsx
-import {Apple} from './Apple'
-import {Orange} from './Orange'
+import {FruitApple} from './FruitApple'
+import {FruitOrange} from './FruitOrange'
 ```
 ```tsx
 export class Fruit {
-  public static Apple = Apple
-  public static Orange = Orange
+  public static Apple = FruitApple
+  public static Orange = FruitOrange
 }
 ```
 This enables usage like so:
