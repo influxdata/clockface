@@ -79,6 +79,7 @@ export class ConfirmationButton extends Component<Props> {
           color={popoverColor}
           type={popoverType}
           className={this.className}
+          enableDefaultStyles={false}
           contents={onHide => (
             <div className="cf-confirmation-button--container">
               {confirmationLabel && (

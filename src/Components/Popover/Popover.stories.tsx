@@ -4,13 +4,13 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, select, number, boolean, text} from '@storybook/addon-knobs'
+import {withKnobs, select, number, boolean, text, object} from '@storybook/addon-knobs'
 import {jsxDecorator} from 'storybook-addon-jsx'
 import {mapEnumKeys} from '../../Utils/storybook'
 
 // Components
 import {Popover} from './Popover'
-import {TextPopover} from './TextPopover'
+import {ReflessPopover} from './ReflessPopover'
 import {DismissButton} from '../Button/Composed/DismissButton'
 
 // Types
@@ -23,7 +23,7 @@ import {
 
 // Notes
 import PopoverReadme from './Popover.md'
-import TextPopoverReadme from './TextPopover.md'
+import ReflessPopoverReadme from './ReflessPopover.md'
 
 const popoverStories = storiesOf('Atomic|Popover/Base', module)
   .addDecorator(withKnobs)
@@ -33,54 +33,61 @@ const composedPopoverStories = storiesOf('Atomic|Popover/Composed', module)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
+const exampleStyle = {
+  width: '250px',
+  height: '200px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}
+
 popoverStories.add(
   'Popover',
-  () => (
-    <div className="story--example">
-      <Popover
-        visible={boolean('visible', false)}
-        contents={onHide => (
-          <div
-            style={{
-              width: `${number('dialog width px', 250)}px`,
-              height: `${number('dialog height px', 200)}px`,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            PopoverContents
-            <DismissButton onClick={onHide} />
-          </div>
-        )}
-        distanceFromTrigger={number('distanceFromTrigger', 4)}
-        showEvent={
-          PopoverInteraction[
-            select('showEvent', mapEnumKeys(PopoverInteraction), 'Click')
-          ]
-        }
-        hideEvent={
-          PopoverInteraction[
-            select('hideEvent', mapEnumKeys(PopoverInteraction), 'Click')
-          ]
-        }
-        position={
-          PopoverPosition[
-            select('position', mapEnumKeys(PopoverPosition), 'Below')
-          ]
-        }
-        color={
-          ComponentColor[
-            select('color', mapEnumKeys(ComponentColor), 'Primary')
-          ]
-        }
-        type={PopoverType[select('type', mapEnumKeys(PopoverType), 'Outline')]}
-      >
-        <div className="mockComponent mockButton">Popover Trigger Element</div>
-      </Popover>
-      <Popover.Portal />
-    </div>
-  ),
+  () => {
+    const triggerRef = React.createRef<HTMLDivElement>()
+
+    return (
+      <div className="story--example">
+        <div className="mockComponent mockButton" ref={triggerRef}>Popover Trigger Element</div>
+        <Popover
+          triggerRef={triggerRef}
+          visible={boolean('visible', false)}
+          enableDefaultStyles={boolean('enableDefaultStyles', false)}
+          contents={onHide => (
+            <>
+              PopoverContents
+              <DismissButton onClick={onHide} />
+            </>
+          )}
+          className={text('className', '')}
+          style={object('style', exampleStyle)}
+          caretSize={number('caretSize', 8)}
+          distanceFromTrigger={number('distanceFromTrigger', 4)}
+          showEvent={
+            PopoverInteraction[
+              select('showEvent', mapEnumKeys(PopoverInteraction), 'Click')
+            ]
+          }
+          hideEvent={
+            PopoverInteraction[
+              select('hideEvent', mapEnumKeys(PopoverInteraction), 'Click')
+            ]
+          }
+          position={
+            PopoverPosition[
+              select('position', mapEnumKeys(PopoverPosition), 'Below')
+            ]
+          }
+          color={
+            ComponentColor[
+              select('color', mapEnumKeys(ComponentColor), 'Primary')
+            ]
+          }
+          type={PopoverType[select('type', mapEnumKeys(PopoverType), 'Outline')]}
+        />
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(PopoverReadme),
@@ -89,49 +96,52 @@ popoverStories.add(
 )
 
 composedPopoverStories.add(
-  'TextPopover',
+  'ReflessPopover',
   () => (
     <div className="story--example">
-      <TextPopover
+      <ReflessPopover
         visible={boolean('visible', false)}
-        text={text('text', 'Yee to the haw!')}
+        enableDefaultStyles={boolean('enableDefaultStyles', false)}
+        contents={onHide => (
+          <>
+            PopoverContents
+            <DismissButton onClick={onHide} />
+          </>
+        )}
+        className={text('className', '')}
+        style={object('style', exampleStyle)}
+        triggerStyle={object('triggerStyle', {display: 'inline-block'})}
+        caretSize={number('caretSize', 8)}
         distanceFromTrigger={number('distanceFromTrigger', 4)}
         showEvent={
           PopoverInteraction[
-            select('showEvent', mapEnumKeys(PopoverInteraction), 'Click')
+          select('showEvent', mapEnumKeys(PopoverInteraction), 'Click')
           ]
         }
         hideEvent={
           PopoverInteraction[
-            select('hideEvent', mapEnumKeys(PopoverInteraction), 'Click')
+          select('hideEvent', mapEnumKeys(PopoverInteraction), 'Click')
           ]
         }
         position={
           PopoverPosition[
-            select('position', mapEnumKeys(PopoverPosition), 'Below')
+          select('position', mapEnumKeys(PopoverPosition), 'Below')
           ]
         }
         color={
           ComponentColor[
-            select('color', mapEnumKeys(ComponentColor), 'Primary')
+          select('color', mapEnumKeys(ComponentColor), 'Primary')
           ]
         }
-        dismissButtonColor={
-          ComponentColor[
-            select('dismissButtonColor', mapEnumKeys(ComponentColor), 'Primary')
-          ]
-        }
-        showDismissButton={boolean('showDismissButton', false)}
         type={PopoverType[select('type', mapEnumKeys(PopoverType), 'Outline')]}
       >
         <div className="mockComponent mockButton">Popover Trigger Element</div>
-      </TextPopover>
-      <Popover.Portal />
+      </ReflessPopover>
     </div>
   ),
   {
     readme: {
-      content: marked(TextPopoverReadme),
+      content: marked(ReflessPopoverReadme),
     },
   }
 )

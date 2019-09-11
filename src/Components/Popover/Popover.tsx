@@ -42,6 +42,8 @@ export interface PopoverProps extends StandardProps {
   disabled: boolean
   /** Reference to trigger element */
   triggerRef: RefObject<any>
+  /** Adds reasonable styles to popover dialog contents so you do not have to */
+  enableDefaultStyles: boolean
 }
 
 export const PopoverDefaultProps = {
@@ -55,6 +57,7 @@ export const PopoverDefaultProps = {
   type: PopoverType.Outline,
   visible: false,
   disabled: false,
+  enableDefaultStyles: true,
 }
 
 interface State {
@@ -120,16 +123,17 @@ export class Popover extends Component<PopoverProps, State> {
 
   public render() {
     const {
+      distanceFromTrigger,
+      enableDefaultStyles,
+      className,
+      caretSize,
+      contents,
+      position,
       testID,
-      id,
       style,
       color,
       type,
-      contents,
-      position,
-      distanceFromTrigger,
-      className,
-      caretSize,
+      id,
     } = this.props
     const {expanded, triggerRect} = this.state
     const portalElement = document.getElementById('cf-popover-portal')
@@ -140,6 +144,7 @@ export class Popover extends Component<PopoverProps, State> {
 
     const popover = (
       <PopoverDialog
+        enableDefaultStyles={enableDefaultStyles}
         distanceFromTrigger={distanceFromTrigger}
         onClickOutside={this.handleClickOutside}
         onMouseLeave={this.handleDialogMouseLeave}
@@ -160,7 +165,8 @@ export class Popover extends Component<PopoverProps, State> {
     return createPortal(popover, portalElement)
   }
 
-  private handleTriggerClick = (): void => {
+  private handleTriggerClick = (e: MouseEvent): void => {
+    e.stopPropagation()
     const {showEvent, disabled} = this.props
 
     if (disabled) {

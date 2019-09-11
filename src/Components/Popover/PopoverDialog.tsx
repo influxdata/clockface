@@ -47,6 +47,8 @@ interface Props extends StandardProps {
   onMouseLeave: (e: MouseEvent) => void
   /** Size of caret (triangle) that points at the trigger */
   caretSize: number
+  /** Adds reasonable styles to popover dialog contents so you do not have to */
+  enableDefaultStyles: boolean
 }
 
 export class PopoverDialog extends Component<Props> {
@@ -96,7 +98,7 @@ export class PopoverDialog extends Component<Props> {
         >
           <div
             style={style}
-            className="cf-popover--contents"
+            className={this.contentsClassName}
             data-testid={`${testID}--contents`}
           >
             {contents}
@@ -114,6 +116,14 @@ export class PopoverDialog extends Component<Props> {
       [`${className}`]: className,
       [`cf-popover__${color}`]: color,
       [`cf-popover__${type}`]: type,
+    })
+  }
+
+  private get contentsClassName(): string {
+    const {enableDefaultStyles} = this.props
+
+    return classnames('cf-popover--contents', {
+      'cf-popover--contents__default-styles': enableDefaultStyles,
     })
   }
 

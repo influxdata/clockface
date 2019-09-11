@@ -48,6 +48,7 @@
   Color Modifiers
   ------------------------------------------------------------------------------
 */
+
 @mixin popoverColorModifier($solidColor, $outlineColor, $glowColor, $textColor) {
   // Solid Type
   &.cf-popover__solid .cf-popover--contents {
@@ -84,4 +85,55 @@
 }
 .cf-popover__danger {
   @include popoverColorModifier($c-curacao, $c-dreamsicle, $c-fire, $g20-white);
+}
+
+/*
+  Refless Variation
+  ------------------------------------------------------------------------------
+*/
+
+.cf-refless-popover--trigger {
+  &,
+  &:hover {
+    cursor: pointer;
+  }
+
+  > * {
+    pointer-events: none;
+  }
+}
+
+/*
+  Optional Default Styling
+  ------------------------------------------------------------------------------
+*/
+
+.cf-popover--contents__default-styles {
+  padding: $cf-marg-c;
+  font-size: $cf-text-base;
+  font-weight: 600;
+  color: $g13-mist;
+
+  strong {
+    color: $g18-cloud;
+    font-weight: 900;
+  }
+
+  .cf-popover__solid.cf-popover__primary &,
+  .cf-popover__solid.cf-popover__secondary &,
+  .cf-popover__solid.cf-popover__success &,
+  .cf-popover__solid.cf-popover__danger & {
+    color: rgba($g20-white, 0.8);
+
+    strong {
+      color: $g20-white;
+    }
+  }
+  .cf-popover__solid.cf-popover__warning & {
+    color: rgba($g3-castle, 0.8);
+
+    strong {
+      color: $g3-castle;
+    }
+  }
 }
