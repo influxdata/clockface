@@ -1,12 +1,12 @@
 // Libraries
-import React, {Component, createRef, CSSProperties, MouseEvent} from 'react'
-import classnames from 'classnames'
+import React, {Component, RefObject, MouseEvent} from 'react'
+// import classnames from 'classnames'
 import {createPortal} from 'react-dom'
 
 // Components
-import {ClickOutside} from '../ClickOutside/ClickOutside'
 import {DismissButton} from '../Button/Composed/DismissButton'
-import {PopoverPortal} from './PopoverPortal'
+import {PopoverDialog} from './PopoverDialog'
+
 // Styles
 import './Popover.scss'
 
@@ -23,13 +23,15 @@ export interface PopoverProps extends StandardProps {
   /** Popover dialog color */
   color: ComponentColor
   /** Popover dialog contents */
-  contents: (onHide: () => void) => JSX.Element | (() => JSX.Element)
+  contents: ((onHide: () => void) => JSX.Element) | (() => JSX.Element)
   /** Type of interaction to show the popover dialog */
   showEvent: PopoverInteraction
   /** Type of interaction to hide the popover dialog */
   hideEvent: PopoverInteraction
   /** Pixel distance between trigger and popover dialog */
   distanceFromTrigger: number
+  /** Size of caret (triangle) that points at the trigger */
+  caretSize: number
   /** Where to position the popover relative to the trigger (assuming it fits there) */
   position: PopoverPosition
   /** Means of applying color to popover */
@@ -38,6 +40,8 @@ export interface PopoverProps extends StandardProps {
   visible: boolean
   /** Disables the popover's show interaction */
   disabled: boolean
+  /** Reference to trigger element */
+  triggerRef: RefObject<any>
 }
 
 export const PopoverDefaultProps = {
@@ -46,6 +50,7 @@ export const PopoverDefaultProps = {
   showEvent: PopoverInteraction.Click,
   hideEvent: PopoverInteraction.Click,
   distanceFromTrigger: 4,
+  caretSize: 8,
   position: PopoverPosition.Below,
   type: PopoverType.Outline,
   visible: false,
@@ -57,9 +62,8 @@ interface State {
   triggerRect: ClientRect | DOMRect | null
 }
 
-interface PopoverFlush {
-  first: boolean
-  last: boolean
+interface CustomMouseEvent extends MouseEvent {
+  relatedTarget: Element
 }
 
 export class Popover extends Component<PopoverProps, State> {
@@ -68,10 +72,6 @@ export class Popover extends Component<PopoverProps, State> {
   public static defaultProps = {...PopoverDefaultProps}
 
   public static DismissButton = DismissButton
-  public static Portal = PopoverPortal
-
-  private triggerRef = createRef<HTMLDivElement>()
-  private dialogRef = createRef<HTMLDivElement>()
 
   constructor(props: PopoverProps) {
     super(props)
@@ -83,6 +83,9 @@ export class Popover extends Component<PopoverProps, State> {
   }
 
   public componentDidMount() {
+    this.handleCreatePortalElement()
+    this.handleAddEventListeners()
+
     if (this.props.visible) {
       this.handleShowDialog()
     } else {
@@ -101,365 +104,50 @@ export class Popover extends Component<PopoverProps, State> {
   }
 
   public componentWillUnmount() {
-    window.removeEventListener('resize', this.handleUpdateTriggerRect)
-    window.removeEventListener('scroll', this.handleUpdateTriggerRect)
+    this.handleDestroyPortalElement()
+    this.handleRemoveEventListeners()
   }
 
   public render() {
-    const {testID, children, id, style} = this.props
+    const {
+      testID,
+      id,
+      style,
+      color,
+      type,
+      contents,
+      position,
+      distanceFromTrigger,
+      className,
+      caretSize,
+    } = this.props
+    const {expanded, triggerRect} = this.state
+    const portalElement = document.getElementById('cf-popover-portal')
 
-    return (
-      <div
-        id={id}
+    if (!portalElement || !triggerRect) {
+      return null
+    }
+
+    const popover = (
+      <PopoverDialog
+        distanceFromTrigger={distanceFromTrigger}
+        onClickOutside={this.handleClickOutside}
+        onMouseLeave={this.handleDialogMouseLeave}
+        triggerRect={triggerRect}
+        className={className}
+        caretSize={caretSize}
+        position={position}
+        contents={contents(this.handleHideDialog)}
+        visible={expanded}
+        testID={testID}
+        color={color}
         style={style}
-        data-testid={testID}
-        className={this.className}
-        onMouseLeave={this.handleTriggerMouseLeave}
-      >
-        <div
-          className="cf-popover--trigger"
-          onMouseOver={this.handleTriggerMouseOver}
-          onClick={this.handleTriggerClick}
-          ref={this.triggerRef}
-        >
-          {children}
-        </div>
-        {this.dialog}
-      </div>
-    )
-  }
-
-  private get className(): string {
-    const {className} = this.props
-
-    return classnames('cf-popover', {
-      [`${className}`]: className,
-    })
-  }
-
-  private get dialogClassName(): string {
-    const {color, type} = this.props
-
-    return classnames('cf-popover--dialog', {
-      [`cf-popover--dialog__${color}`]: color,
-      [`cf-popover--dialog__${type}`]: type,
-    })
-  }
-
-  private get dialog(): JSX.Element | undefined {
-    const {triggerRect, expanded} = this.state
-    const {contents, distanceFromTrigger, testID} = this.props
-    const dialogPosition = this.calculateDialogPosition()
-    let dialogStyles: CSSProperties = {
-      display: expanded ? 'block' : 'none',
-    }
-    let caretStyles: CSSProperties = {}
-
-    if (triggerRect && this.dialogRef.current) {
-      const dialogRect = this.dialogRef.current.getBoundingClientRect()
-      let dialogFlush
-
-      switch (dialogPosition) {
-        case PopoverPosition.Above:
-          dialogFlush = this.isDialogFlush(PopoverPosition.Above)
-
-          // Center the dialog horizontally above the trigger by default
-          dialogStyles = {
-            ...dialogStyles,
-            bottom: `${window.innerHeight - triggerRect.top}px`,
-            left: `${triggerRect.left + triggerRect.width / 2}px`,
-            transform: 'translateX(-50%)',
-            paddingBottom: `${distanceFromTrigger}px`,
-          }
-          caretStyles = {
-            left: `${dialogRect.width / 2}px`,
-            transform: 'translate(-50%, 100%)',
-          }
-
-          // Reposition dialog if it goes off the viewport
-          // If the dialog goes off the viewport on both left and right edges
-          // Then the right edge will take precedent
-          if (dialogFlush.first) {
-            // Align left edge of dialog to left edge of trigger
-            dialogStyles = {
-              ...dialogStyles,
-              left: `${triggerRect.left}px`,
-              transform: 'translateX(0)',
-            }
-            caretStyles = {
-              ...caretStyles,
-              left: `${triggerRect.width / 2}px`,
-            }
-          } else if (dialogFlush.last) {
-            // Align right edge of dialog to right edge of trigger
-            dialogStyles = {
-              ...dialogStyles,
-              left: `${triggerRect.left + triggerRect.width}px`,
-              transform: 'translateX(-100%)',
-            }
-            caretStyles = {
-              right: `${triggerRect.width / 2}px`,
-              transform: 'translate(50%, 100%)',
-            }
-          }
-          break
-        case PopoverPosition.Below:
-          dialogFlush = this.isDialogFlush(PopoverPosition.Below)
-
-          // Center the dialog horizontally below the trigger by default
-          dialogStyles = {
-            ...dialogStyles,
-            top: `${triggerRect.top + triggerRect.height}px`,
-            left: `${triggerRect.left + triggerRect.width / 2}px`,
-            transform: 'translateX(-50%)',
-            paddingTop: `${distanceFromTrigger}px`,
-          }
-          caretStyles = {
-            left: `${dialogRect.width / 2}px`,
-            transform: 'translate(-50%, -100%)',
-          }
-
-          // Reposition dialog if it goes off the viewport
-          // If the dialog goes off the viewport on both left and right edges
-          // Then the right edge will take precedent
-          if (dialogFlush.first) {
-            // Align left edge of dialog to left edge of trigger
-            dialogStyles = {
-              ...dialogStyles,
-              left: `${triggerRect.left}px`,
-              transform: 'translateX(0)',
-            }
-            caretStyles = {
-              ...caretStyles,
-              left: `${triggerRect.width / 2}px`,
-            }
-          } else if (dialogFlush.last) {
-            // Align right edge of dialog to right edge of trigger
-            dialogStyles = {
-              ...dialogStyles,
-              left: `${triggerRect.left + triggerRect.width}px`,
-              transform: 'translateX(-100%)',
-            }
-            caretStyles = {
-              right: `${triggerRect.width / 2}px`,
-              transform: 'translate(50%, -100%)',
-            }
-          }
-          break
-        case PopoverPosition.ToTheLeft:
-          dialogFlush = this.isDialogFlush(PopoverPosition.ToTheLeft)
-
-          // Center the dialog vertically to the left of the trigger by default
-          dialogStyles = {
-            ...dialogStyles,
-            left: `${triggerRect.left}px`,
-            top: `${triggerRect.top + triggerRect.height / 2}px`,
-            transform: 'translate(-100%, -50%)',
-            paddingRight: `${distanceFromTrigger}px`,
-          }
-          caretStyles = {
-            top: `${dialogRect.height / 2}px`,
-            transform: `translate(100%, -50%)`,
-          }
-
-          // Reposition dialog if it goes off the viewport
-          // If the dialog goes off the viewport on both top and bottom edges
-          // Then the bottom edge will take precedent
-          if (dialogFlush.first) {
-            // Align left edge of dialog to top edge of trigger
-            dialogStyles = {
-              ...dialogStyles,
-              top: `${triggerRect.top}px`,
-              transform: 'translate(-100%, 0)',
-            }
-            caretStyles = {
-              ...caretStyles,
-              top: `${triggerRect.height / 2}px`,
-            }
-          } else if (dialogFlush.last) {
-            // Align right edge of dialog to bottom edge of trigger
-            dialogStyles = {
-              ...dialogStyles,
-              top: `${triggerRect.top + triggerRect.height}px`,
-              transform: 'translate(-100%, -100%)',
-            }
-            caretStyles = {
-              bottom: `${triggerRect.height / 2}px`,
-              transform: `translate(100%, 50%)`,
-            }
-          }
-          break
-        case PopoverPosition.ToTheRight:
-          dialogFlush = this.isDialogFlush(PopoverPosition.ToTheRight)
-
-          // Center the dialog vertically to the right of the trigger by default
-          dialogStyles = {
-            ...dialogStyles,
-            left: `${triggerRect.left + triggerRect.width}px`,
-            top: `${triggerRect.top + triggerRect.height / 2}px`,
-            transform: 'translateY(-50%)',
-            paddingLeft: `${distanceFromTrigger}px`,
-          }
-          caretStyles = {
-            top: `${dialogRect.height / 2}px`,
-            transform: `translate(-100%, -50%)`,
-          }
-
-          // Reposition dialog if it goes off the viewport
-          // If the dialog goes off the viewport on both top and bottom edges
-          // Then the bottom edge will take precedent
-          if (dialogFlush.first) {
-            // Align left edge of dialog to top edge of trigger
-            dialogStyles = {
-              ...dialogStyles,
-              top: `${triggerRect.top}px`,
-              transform: 'translate(0, 0)',
-            }
-            caretStyles = {
-              ...caretStyles,
-              top: `${triggerRect.height / 2}px`,
-            }
-          } else if (dialogFlush.last) {
-            // Align right edge of dialog to bottom edge of trigger
-            dialogStyles = {
-              ...dialogStyles,
-              top: `${triggerRect.top + triggerRect.height}px`,
-              transform: 'translate(-100%, -100%)',
-            }
-            caretStyles = {
-              bottom: `${triggerRect.height / 2}px`,
-              transform: `translate(-100%, 50%)`,
-            }
-          }
-          break
-        default:
-          break
-      }
-    }
-
-    let dialogElement = (
-      <ClickOutside onClickOutside={this.handleClickOutside}>
-        <div
-          className={this.dialogClassName}
-          style={dialogStyles}
-          ref={this.dialogRef}
-          data-testid={`${testID}--dialog`}
-        >
-          <div
-            className="cf-popover--dialog-contents"
-            data-testid={`${testID}--contents`}
-          >
-            <div
-              className={`cf-popover--caret cf-popover--caret__${dialogPosition}`}
-              style={caretStyles}
-            />
-            {contents(this.handleHideDialog)}
-          </div>
-        </div>
-      </ClickOutside>
+        type={type}
+        id={id}
+      />
     )
 
-    const popoverPortal = document.getElementById('cf-popover-portal')
-
-    if (popoverPortal) {
-      return createPortal(dialogElement, popoverPortal)
-    }
-
-    return
-  }
-
-  private calculateDialogPosition = (): PopoverPosition => {
-    const {position, distanceFromTrigger} = this.props
-    const {triggerRect} = this.state
-    const acceptablePopoverPositions = []
-
-    if (!triggerRect || !this.dialogRef.current) {
-      return position
-    }
-
-    const popoverRect = this.dialogRef.current.getBoundingClientRect()
-
-    const popoverFitsAbove =
-      triggerRect.top > popoverRect.height + distanceFromTrigger
-    const popoverFitsBelow =
-      window.innerHeight - triggerRect.top - triggerRect.height >
-      popoverRect.height + distanceFromTrigger
-    const popoverFitsToTheLeft =
-      triggerRect.left > popoverRect.width + distanceFromTrigger
-    const popoverFitsToTheRight =
-      window.innerWidth - triggerRect.left - triggerRect.width >
-      popoverRect.width + distanceFromTrigger
-
-    // Check all sides of the trigger element and compile a list of acceptable popover positions
-    if (popoverFitsAbove) {
-      acceptablePopoverPositions.push(PopoverPosition.Above)
-    }
-    if (popoverFitsBelow) {
-      acceptablePopoverPositions.push(PopoverPosition.Below)
-    }
-    if (popoverFitsToTheLeft) {
-      acceptablePopoverPositions.push(PopoverPosition.ToTheLeft)
-    }
-    if (popoverFitsToTheRight) {
-      acceptablePopoverPositions.push(PopoverPosition.ToTheRight)
-    }
-
-    // Check to see if the specified position is within the acceptable positions
-    if (acceptablePopoverPositions.includes(position)) {
-      return position
-    }
-
-    // Otherwise choose the next available position in from the acceptable list
-    return acceptablePopoverPositions[0] || null
-  }
-
-  private isDialogFlush = (position: PopoverPosition): PopoverFlush => {
-    const {triggerRect} = this.state
-
-    if (!triggerRect || !this.dialogRef.current) {
-      return {
-        first: false,
-        last: false,
-      }
-    }
-
-    const dialogRect = this.dialogRef.current.getBoundingClientRect()
-    // When the trigger is in a corner of the screen,
-    // determine whether to offest it
-    let first = false
-    let last = false
-
-    switch (position) {
-      case PopoverPosition.Above:
-      case PopoverPosition.Below:
-        // When the dialog is above or below the trigger
-        // First: left edge
-        // Last: right edge
-        const overflowX = dialogRect.width - triggerRect.width
-        first = triggerRect.left < overflowX / 2
-        last =
-          window.innerWidth - triggerRect.left - triggerRect.width <
-          overflowX / 2
-        break
-      case PopoverPosition.ToTheLeft:
-      case PopoverPosition.ToTheRight:
-        // When the dialog is left or right of the trigger
-        // First: top edge
-        // Last: bottom edge
-        const overflowY = dialogRect.height - triggerRect.height
-        first = triggerRect.top < overflowY / 2
-        last =
-          window.innerHeight - triggerRect.top - triggerRect.height <
-          overflowY / 2
-        break
-      default:
-        break
-    }
-
-    return {
-      first,
-      last,
-    }
+    return createPortal(popover, portalElement)
   }
 
   private handleTriggerClick = (): void => {
@@ -470,7 +158,6 @@ export class Popover extends Component<PopoverProps, State> {
     }
 
     if (showEvent === PopoverInteraction.Click) {
-      console.log('click')
       this.handleShowDialog()
     }
   }
@@ -483,49 +170,112 @@ export class Popover extends Component<PopoverProps, State> {
     }
   }
 
-  private handleTriggerMouseLeave = (): void => {
+  private handleTriggerMouseLeave = (e: CustomMouseEvent): void => {
     const {hideEvent} = this.props
+
+    if (e.relatedTarget.className.includes('cf-popover')) {
+      return
+    }
 
     if (hideEvent === PopoverInteraction.Hover) {
       this.handleHideDialog()
     }
   }
 
-  private handleClickOutside = (e: MouseEvent<any>): void => {
-    e.stopPropagation()
+  private handleDialogMouseLeave = (e: MouseEvent): void => {
     const {hideEvent} = this.props
 
-    console.log(e.target, e.currentTarget, e.relatedTarget)
+    if (e.target === this.props.triggerRef.current) {
+      return
+    }
+
+    if (hideEvent === PopoverInteraction.Hover) {
+      this.handleHideDialog()
+    }
+  }
+
+  private handleClickOutside = (e: MouseEvent): void => {
+    const {hideEvent} = this.props
+
+    if (e.target === this.props.triggerRef.current) {
+      return
+    }
 
     if (hideEvent === PopoverInteraction.Click) {
-      console.log('click outside')
       this.handleHideDialog()
     }
   }
 
   private handleUpdateTriggerRect = (): void => {
-    if (!this.triggerRef.current) {
+    const {triggerRef} = this.props
+    if (!triggerRef.current) {
       return
     }
 
     this.setState({
-      triggerRect: this.triggerRef.current.getBoundingClientRect(),
+      triggerRect: triggerRef.current.getBoundingClientRect(),
     })
   }
 
   private handleShowDialog = (): void => {
     this.handleUpdateTriggerRect()
 
-    window.addEventListener('resize', this.handleUpdateTriggerRect)
-    window.addEventListener('scroll', this.handleUpdateTriggerRect)
-
     this.setState({expanded: true})
   }
 
   private handleHideDialog = (): void => {
     this.setState({expanded: false})
+  }
+
+  private handleCreatePortalElement = (): void => {
+    const portalExists = document.getElementById('cf-popover-portal')
+
+    if (portalExists) {
+      return
+    }
+
+    const portalElement = document.createElement('div')
+    portalElement.setAttribute('class', 'cf-popover-portal')
+    portalElement.setAttribute('id', 'cf-popover-portal')
+
+    document.body.appendChild(portalElement)
+  }
+
+  private handleDestroyPortalElement = (): void => {
+    const portalElement = document.getElementById('cf-popover-portal')
+
+    if (portalElement) {
+      portalElement.remove()
+    }
+  }
+
+  private handleAddEventListeners = (): void => {
+    const {triggerRef} = this.props
+
+    window.addEventListener('resize', this.handleUpdateTriggerRect)
+    window.addEventListener('scroll', this.handleUpdateTriggerRect)
+
+    if (!triggerRef.current) {
+      return
+    }
+
+    triggerRef.current.addEventListener('click', this.handleTriggerClick)
+    triggerRef.current.addEventListener('mouseover', this.handleTriggerMouseOver)
+    triggerRef.current.addEventListener('mouseleave', this.handleTriggerMouseLeave)
+  }
+
+  private handleRemoveEventListeners = (): void => {
+    const {triggerRef} = this.props
 
     window.removeEventListener('resize', this.handleUpdateTriggerRect)
     window.removeEventListener('scroll', this.handleUpdateTriggerRect)
+
+    if (!triggerRef.current) {
+      return
+    }
+
+    triggerRef.current.removeEventListener('click', this.handleTriggerClick)
+    triggerRef.current.removeEventListener('mouseover', this.handleTriggerMouseOver)
+    triggerRef.current.removeEventListener('mouseleave', this.handleTriggerMouseLeave)
   }
 }

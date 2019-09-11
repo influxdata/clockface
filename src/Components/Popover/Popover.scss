@@ -5,8 +5,6 @@
   ------------------------------------------------------------------------------
 */
 
-$cf-popover-caret: $cf-marg-b;
-
 .cf-popover-portal {
   z-index: 9999;
   position: fixed;
@@ -14,48 +12,36 @@ $cf-popover-caret: $cf-marg-b;
   left: 0;
 }
 
-.cf-popover,
-.cf-popover--trigger {
-  font-size: 0;
-}
-
-.cf-popover--dialog {
+.cf-popover {
   position: fixed;
   z-index: 9999;
 }
 
-.cf-popover--dialog-contents {
+.cf-popover--contents {
   font-size: $cf-text-base;
   background-color: $g2-kevlar;
   border-radius: $cf-radius + $cf-border;
   position: relative;
   
-  .cf-popover--dialog__solid & {
+  .cf-popover__solid & {
     box-shadow: 0 2px 5px 0.6px rgba($g0-obsidian, 0.2);
   }
 
-  .cf-popover--dialog__outline & {
+  .cf-popover__outline & {
     border-style: solid;
     border-width: $cf-border;
   }
 }
 
+.cf-popover__outline button.cf-dismiss-button {
+  top: -$cf-border;
+  right: -$cf-border;
+}
+
 .cf-popover--caret {
   position: absolute;
-  border: $cf-popover-caret solid transparent;
-
-  &__above {
-    bottom: 0;
-  }
-  &__to-right {
-    left: 0;
-  }
-  &__below {
-    top: 0;
-  }
-  &__to-left {
-    right: 0;
-  }
+  border-color: transparent;
+  border-style: solid;
 }
 
 /*
@@ -64,106 +50,38 @@ $cf-popover-caret: $cf-marg-b;
 */
 @mixin popoverColorModifier($solidColor, $outlineColor, $glowColor, $textColor) {
   // Solid Type
-  &.cf-popover--dialog__solid .cf-popover--dialog-contents {
+  &.cf-popover__solid .cf-popover--contents {
     background-color: $solidColor;
     color: $textColor;
   }
-  &.cf-popover--dialog__solid .cf-popover--caret {
-    &__above {
-      border-top-color: $solidColor;
-    }
-    &__to-right {
-      border-right-color: $solidColor;
-    }
-    &__below {
-      border-bottom-color: $solidColor;
-    }
-    &__to-left {
-      border-left-color: $solidColor;
-    }
+  &.cf-popover__solid .cf-popover--caret {
+    border-bottom-color: $solidColor;
   }
   // Outline Type
-  &.cf-popover--dialog__outline .cf-popover--dialog-contents {
+  &.cf-popover__outline .cf-popover--contents {
     border-color: $outlineColor;
     box-shadow: 0 0 5px 0 $glowColor;
   }
-  &.cf-popover--dialog__outline .cf-popover--caret {
-    &__above {
-      border-top-color: $outlineColor;
-    }
-    &__to-right {
-      border-right-color: $outlineColor;
-    }
-    &__below {
-      border-bottom-color: $outlineColor;
-    }
-    &__to-left {
-      border-left-color: $outlineColor;
-    }
+  &.cf-popover__outline .cf-popover--caret {
+    border-bottom-color: $outlineColor;
   }
 }
 
-.cf-popover--dialog__default {
+.cf-popover__default {
   @include popoverColorModifier($g6-smoke, $g11-sidewalk, $g8-storm, $g15-platinum);
 }
-.cf-popover--dialog__primary {
+.cf-popover__primary {
   @include popoverColorModifier($c-pool, $c-pool, $c-ocean, $g20-white);
 }
-.cf-popover--dialog__secondary {
+.cf-popover__secondary {
   @include popoverColorModifier($c-star, $c-comet, $c-star, $g20-white);
 }
-.cf-popover--dialog__success {
+.cf-popover__success {
   @include popoverColorModifier($c-rainforest, $c-honeydew, $c-rainforest, $g20-white);
 }
-.cf-popover--dialog__warning {
+.cf-popover__warning {
   @include popoverColorModifier($c-pineapple, $c-thunder, $c-tiger, $g3-castle);
 }
-.cf-popover--dialog__danger {
+.cf-popover__danger {
   @include popoverColorModifier($c-curacao, $c-dreamsicle, $c-fire, $g20-white);
-}
-
-
-/*
-  Dismiss Button
-  ------------------------------------------------------------------------------
-*/
-
-button.cf-popover--dismiss-button {
-  border-radius: 50%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translate(40%, -40%);
-
-  & > .cf-icon {
-    display: none;
-  }
-
-  &:before,
-  &:after {
-    content: '';
-    display: block;
-    position: absolute;
-    width: $form-xs-height - $cf-marg-b - $cf-border;
-    height: $cf-border * 1.5;
-    background-color: $g20-white;
-    border-radius: $cf-border * 1.5 / 2;
-    top: 50%;
-    left: 50%;
-    transition: opacity 0.25s ease;
-    opacity: 0.8;
-  }
-
-  &:before {
-    transform: translate(-50%, -50%) rotate(45deg);
-  }
-
-  &:after {
-    transform: translate(-50%, -50%) rotate(-45deg);
-  }
-
-  &:hover:before,
-  &:hover:after {
-    opacity: 1;
-  }
 }
