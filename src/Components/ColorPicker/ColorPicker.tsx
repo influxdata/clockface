@@ -22,7 +22,7 @@ import {
 } from '../../Types'
 
 // Utils
-import {validateHexCode} from '../../Utils/colors'
+import {validateHexCode} from '../../Utils/index'
 
 // Styles
 import './ColorPicker.scss'
