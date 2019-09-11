@@ -4,7 +4,14 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, select, number, boolean, text, object} from '@storybook/addon-knobs'
+import {
+  withKnobs,
+  select,
+  number,
+  boolean,
+  text,
+  object,
+} from '@storybook/addon-knobs'
 import {jsxDecorator} from 'storybook-addon-jsx'
 import {mapEnumKeys} from '../../Utils/storybook'
 
@@ -48,7 +55,9 @@ popoverStories.add(
 
     return (
       <div className="story--example">
-        <div className="mockComponent mockButton" ref={triggerRef}>Popover Trigger Element</div>
+        <div className="mockComponent mockButton" ref={triggerRef}>
+          Popover Trigger Element
+        </div>
         <Popover
           triggerRef={triggerRef}
           visible={boolean('visible', false)}
@@ -83,7 +92,9 @@ popoverStories.add(
               select('color', mapEnumKeys(ComponentColor), 'Primary')
             ]
           }
-          type={PopoverType[select('type', mapEnumKeys(PopoverType), 'Outline')]}
+          type={
+            PopoverType[select('type', mapEnumKeys(PopoverType), 'Outline')]
+          }
         />
       </div>
     )
@@ -115,22 +126,22 @@ composedPopoverStories.add(
         distanceFromTrigger={number('distanceFromTrigger', 4)}
         showEvent={
           PopoverInteraction[
-          select('showEvent', mapEnumKeys(PopoverInteraction), 'Click')
+            select('showEvent', mapEnumKeys(PopoverInteraction), 'Click')
           ]
         }
         hideEvent={
           PopoverInteraction[
-          select('hideEvent', mapEnumKeys(PopoverInteraction), 'Click')
+            select('hideEvent', mapEnumKeys(PopoverInteraction), 'Click')
           ]
         }
         position={
           PopoverPosition[
-          select('position', mapEnumKeys(PopoverPosition), 'Below')
+            select('position', mapEnumKeys(PopoverPosition), 'Below')
           ]
         }
         color={
           ComponentColor[
-          select('color', mapEnumKeys(ComponentColor), 'Primary')
+            select('color', mapEnumKeys(ComponentColor), 'Primary')
           ]
         }
         type={PopoverType[select('type', mapEnumKeys(PopoverType), 'Outline')]}

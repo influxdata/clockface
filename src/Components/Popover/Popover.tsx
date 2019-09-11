@@ -102,9 +102,18 @@ export class Popover extends Component<PopoverProps, State> {
     if (!this.triggerReceivedHandlers) {
       this.triggerReceivedHandlers = false
 
-      this.props.triggerRef.current.addEventListener('click', this.handleTriggerClick)
-      this.props.triggerRef.current.addEventListener('mouseover', this.handleTriggerMouseOver)
-      this.props.triggerRef.current.addEventListener('mouseleave', this.handleTriggerMouseLeave)
+      this.props.triggerRef.current.addEventListener(
+        'click',
+        this.handleTriggerClick
+      )
+      this.props.triggerRef.current.addEventListener(
+        'mouseover',
+        this.handleTriggerMouseOver
+      )
+      this.props.triggerRef.current.addEventListener(
+        'mouseleave',
+        this.handleTriggerMouseLeave
+      )
     }
 
     if (prevProps.visible !== this.props.visible) {
@@ -278,8 +287,14 @@ export class Popover extends Component<PopoverProps, State> {
     this.triggerReceivedHandlers = true
 
     triggerRef.current.addEventListener('click', this.handleTriggerClick)
-    triggerRef.current.addEventListener('mouseover', this.handleTriggerMouseOver)
-    triggerRef.current.addEventListener('mouseleave', this.handleTriggerMouseLeave)
+    triggerRef.current.addEventListener(
+      'mouseover',
+      this.handleTriggerMouseOver
+    )
+    triggerRef.current.addEventListener(
+      'mouseleave',
+      this.handleTriggerMouseLeave
+    )
   }
 
   private handleRemoveEventListeners = (): void => {
@@ -293,7 +308,13 @@ export class Popover extends Component<PopoverProps, State> {
     }
 
     triggerRef.current.removeEventListener('click', this.handleTriggerClick)
-    triggerRef.current.removeEventListener('mouseover', this.handleTriggerMouseOver)
-    triggerRef.current.removeEventListener('mouseleave', this.handleTriggerMouseLeave)
+    triggerRef.current.removeEventListener(
+      'mouseover',
+      this.handleTriggerMouseOver
+    )
+    triggerRef.current.removeEventListener(
+      'mouseleave',
+      this.handleTriggerMouseLeave
+    )
   }
 }

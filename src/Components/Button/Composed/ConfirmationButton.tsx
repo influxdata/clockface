@@ -20,7 +20,8 @@ import {
   PopoverType,
 } from '../../../Types'
 
-interface Props extends Omit<ButtonProps, 'onClick' | 'active' | 'type' | 'refObject'> {
+interface Props
+  extends Omit<ButtonProps, 'onClick' | 'active' | 'type' | 'refObject'> {
   /** Text to appear in confirmation popover */
   confirmationLabel: string
   /** Text to appear in confirmation button */

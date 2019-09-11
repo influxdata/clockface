@@ -63,7 +63,7 @@ export class PopoverDialog extends Component<Props> {
     const dialogStyleString = convertCSSPropertiesToString(dialogStyles)
     const caretStyleString = convertCSSPropertiesToString(caretStyles)
 
-    if (this.dialogRef.current){
+    if (this.dialogRef.current) {
       this.dialogRef.current.setAttribute('style', dialogStyleString)
     }
 
@@ -87,7 +87,7 @@ export class PopoverDialog extends Component<Props> {
       return null
     }
 
-    return(
+    return (
       <ClickOutside onClickOutside={onClickOutside}>
         <div
           onMouseLeave={onMouseLeave}
@@ -105,7 +105,7 @@ export class PopoverDialog extends Component<Props> {
           </div>
           <div className="cf-popover--caret" ref={this.caretRef} />
         </div>
-        </ClickOutside>
+      </ClickOutside>
     )
   }
 
@@ -244,7 +244,7 @@ export class PopoverDialog extends Component<Props> {
           }
           caretStyles = {
             borderWidth: `${caretSize}px`,
-            bottom: `${distanceFromTrigger - (caretSize * 2)}px`,
+            bottom: `${distanceFromTrigger - caretSize * 2}px`,
             left: `${dialogRect.width / 2}px`,
             transform: 'translateX(-50%) rotate(180deg)',
           }
@@ -272,7 +272,7 @@ export class PopoverDialog extends Component<Props> {
             }
             caretStyles = {
               borderWidth: `${caretSize}px`,
-              bottom: `${distanceFromTrigger - (caretSize * 2)}px`,
+              bottom: `${distanceFromTrigger - caretSize * 2}px`,
               right: `${triggerRect.width / 2}px`,
               transform: 'translateX(50%) rotate(180deg)',
             }
@@ -291,7 +291,7 @@ export class PopoverDialog extends Component<Props> {
           }
           caretStyles = {
             borderWidth: `${caretSize}px`,
-            top: `${distanceFromTrigger - (caretSize * 2)}px`,
+            top: `${distanceFromTrigger - caretSize * 2}px`,
             left: `${dialogRect.width / 2}px`,
             transform: 'translateX(-50%)',
           }
@@ -319,7 +319,7 @@ export class PopoverDialog extends Component<Props> {
             }
             caretStyles = {
               borderWidth: `${caretSize}px`,
-              top: `${distanceFromTrigger - (caretSize * 2)}px`,
+              top: `${distanceFromTrigger - caretSize * 2}px`,
               right: `${triggerRect.width / 2}px`,
               transform: 'translateX(50%)',
             }
@@ -338,7 +338,7 @@ export class PopoverDialog extends Component<Props> {
           }
           caretStyles = {
             borderWidth: `${caretSize}px`,
-            right: `${distanceFromTrigger - (caretSize * 2)}px`,
+            right: `${distanceFromTrigger - caretSize * 2}px`,
             top: `${dialogRect.height / 2}px`,
             transform: `translateY(-50%) rotate(90deg)`,
           }
@@ -366,7 +366,7 @@ export class PopoverDialog extends Component<Props> {
             }
             caretStyles = {
               borderWidth: `${caretSize}px`,
-              right: `${distanceFromTrigger - (caretSize * 2)}px`,
+              right: `${distanceFromTrigger - caretSize * 2}px`,
               bottom: `${triggerRect.height / 2}px`,
               transform: `translateY(50%) rotate(90deg)`,
             }
@@ -385,7 +385,7 @@ export class PopoverDialog extends Component<Props> {
           }
           caretStyles = {
             borderWidth: `${caretSize}px`,
-            left: `${distanceFromTrigger - (caretSize * 2)}px`,
+            left: `${distanceFromTrigger - caretSize * 2}px`,
             top: `${dialogRect.height / 2}px`,
             transform: `translateY(-50%) rotate(-90deg)`,
           }
@@ -413,7 +413,7 @@ export class PopoverDialog extends Component<Props> {
             }
             caretStyles = {
               borderWidth: `${caretSize}px`,
-              left: `${distanceFromTrigger - (caretSize * 2)}px`,
+              left: `${distanceFromTrigger - caretSize * 2}px`,
               bottom: `${triggerRect.height / 2}px`,
               transform: `translateY(50%) rotate(-90deg)`,
             }

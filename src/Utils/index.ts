@@ -26,7 +26,11 @@ export const validateHexCode = (colorHex: string): string | null => {
   return errorMessage.join(', ')
 }
 
-export const convertCSSPropertiesToString = (styles: CSSProperties): string => Object.entries(styles).reduce((styleString, [propName, propValue]) => {
-  const formattedPropName = propName.replace(/([A-Z])/g, matches => `-${matches[0].toLowerCase()}`)
-  return `${styleString}${formattedPropName}:${propValue};`
-}, '')
+export const convertCSSPropertiesToString = (styles: CSSProperties): string =>
+  Object.entries(styles).reduce((styleString, [propName, propValue]) => {
+    const formattedPropName = propName.replace(
+      /([A-Z])/g,
+      matches => `-${matches[0].toLowerCase()}`
+    )
+    return `${styleString}${formattedPropName}:${propValue};`
+  }, '')
