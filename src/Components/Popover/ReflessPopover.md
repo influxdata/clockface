@@ -1,77 +1,38 @@
 # ReflessPopover
 
-Popovers are similar to Overlays in that they are triggered by a (usually) small UI element and then offer more information or actions to the user. Popovers are different becuase they generally are easier to dismiss and the actions they offer to not demand as much focus. Popovers are also smaller and less intrusive.
+This composed version of a `Popover` is for when:
 
-This component can be configured to operate entirely on hover interactions which, makes it essentially a tooltip.
+- You don't want to deal with a `ref` to use the `Popover` component
+- Your layout will not be disrupted by having your trigger element wrapped in a `<div />`
 
 ### Usage
 ```tsx
-import {Popover, PopoverPosition, PopoverInteraction} from '@influxdata/clockface'
+import {ReflessPopover, PopoverPosition, PopoverInteraction} from '@influxdata/clockface'
 ```
 ```tsx
-<Popover
+<ReflessPopover
   position={PopoverPosition.Above}
   showEvent={PopoverInteraction.Hover}
   hideEvent={PopoverInteraction.Hover}
   contents={() => <div />}
 >
-  <div>Trigger Element</div>
-</Popover>
+  // Trigger element goes here
+</ReflessPopover>
 ```
-
-The popover dialog will initially appear according to the `position` prop, but if for some reason the dialog would go off the viewport it will be intelligently repositioned to appear wholly in the viewport.
-
-### Customizable Interactions
-
-In most cases `Popover` works great with symmetric hide and show events. However in some cases you make want to have a popover appear with little effort, but demand more attention to dismiss. For example, a tutorial popover may have a "Next" button inside it that dismisses the popover, and queues the next. In order to achieve this you can take advantage of the `Popover`'s `contents` render prop:
-
-```tsx
-<Popover
-  showEvent={PopoverInteraction.Click}
-  hideEvent={PopoverInteraction.None}
-  initiallyVisible={true}
-  contents={onHide => (
-    <div>
-      // Tutorial text goes here
-      <Button onClick={onHide} text="Next" />
-    </div>
-  )}
->
-  <div>Trigger Element</div>
-</Popover>
-```
-
-### Included Dismiss Button
-
-if you want to have an explicit dismiss button in the top right of the popover, you can use this component:
-
-```tsx
-import {Popover, PopoverPosition, PopoverInteraction} from '@influxdata/clockface'
-```
-```tsx
-<Popover
-  position={PopoverPosition.Above}
-  showEvent={PopoverInteraction.Hover}
-  hideEvent={PopoverInteraction.Hover}
-  contents={onHide => (
-    <div>
-      <Popover.DismissButton onClick={onHide} />
-    </div>
-  )}
->
-  <div>Trigger Element</div>
-</Popover>
-```
-
-### Gotchas
-
-- The popover dialog does not add any padding or other styles. This is so you don't have to fight the styles when you are a building your Popover.
-  - This means you need to have some styling on the element you pass in to the `contents` prop in order for the Popover to look decent.
-  - In the example below the `<div />` passed in to `contents` has a bunch of inline styles.
-- The popover dialog makes use of `position: fixed` and `z-index: 9999` to ensure it is never obscured. In order to keep the dialog positioned next to the trigger the component listens for scroll and resize events while the popover is visible. This causes the dialog to re-render more often, which may be troublesome depending on what kind of component you render as the contents.
 
 ### Example
 <!-- STORY -->
+
+### Is Your Layout Looking Funky?
+
+In most cases you can fix the layout by applying inline styles to the trigger wrapper `<div />` via the `triggerStyle` prop. If that is not working for you we suggest using a regular `Popover` component to avoid layout disruption.
+
+### Trying to Make a Custom Popover?
+
+By default `Popover` will apply reasonable default styles to the dialog to save you time. However you may be building a more specialized design and want more control. Rather than fight the default styles you can simply turn them off:
+```tsx
+<ReflessPopover enableDefaultStyles={false} />
+```
 
 <!-- STORY HIDE START -->
 
