@@ -100,7 +100,7 @@ export class Popover extends Component<PopoverProps, State> {
 
   public componentDidUpdate(prevProps: PopoverProps) {
     if (!this.triggerReceivedHandlers) {
-      this.triggerReceivedHandlers = false
+      this.triggerReceivedHandlers = true
 
       this.props.triggerRef.current.addEventListener(
         'click',
