@@ -62,7 +62,6 @@ export const PopoverDefaultProps = {
 
 interface State {
   expanded: boolean
-  triggerRect: ClientRect | DOMRect | null
 }
 
 interface CustomMouseEvent extends MouseEvent {
@@ -81,7 +80,6 @@ export class Popover extends Component<PopoverProps, State> {
 
     this.state = {
       expanded: this.props.visible,
-      triggerRect: null,
     }
   }
 
@@ -93,8 +91,6 @@ export class Popover extends Component<PopoverProps, State> {
 
     if (this.props.visible) {
       this.handleShowDialog()
-    } else {
-      this.handleUpdateTriggerRect()
     }
   }
 
@@ -134,6 +130,7 @@ export class Popover extends Component<PopoverProps, State> {
     const {
       distanceFromTrigger,
       enableDefaultStyles,
+      triggerRef,
       className,
       caretSize,
       contents,
@@ -144,10 +141,10 @@ export class Popover extends Component<PopoverProps, State> {
       type,
       id,
     } = this.props
-    const {expanded, triggerRect} = this.state
+    const {expanded} = this.state
     const portalElement = document.getElementById('cf-popover-portal')
 
-    if (!portalElement || !triggerRect) {
+    if (!portalElement) {
       return null
     }
 
@@ -157,7 +154,7 @@ export class Popover extends Component<PopoverProps, State> {
         distanceFromTrigger={distanceFromTrigger}
         onClickOutside={this.handleClickOutside}
         onMouseLeave={this.handleDialogMouseLeave}
-        triggerRect={triggerRect}
+        triggerRef={triggerRef}
         className={className}
         caretSize={caretSize}
         position={position}
@@ -231,20 +228,7 @@ export class Popover extends Component<PopoverProps, State> {
     }
   }
 
-  private handleUpdateTriggerRect = (): void => {
-    const {triggerRef} = this.props
-    if (!triggerRef.current) {
-      return
-    }
-
-    this.setState({
-      triggerRect: triggerRef.current.getBoundingClientRect(),
-    })
-  }
-
   private handleShowDialog = (): void => {
-    this.handleUpdateTriggerRect()
-
     this.setState({expanded: true})
   }
 
@@ -277,8 +261,8 @@ export class Popover extends Component<PopoverProps, State> {
   private handleAddEventListeners = (): void => {
     const {triggerRef} = this.props
 
-    window.addEventListener('resize', this.handleUpdateTriggerRect)
-    window.addEventListener('scroll', this.handleUpdateTriggerRect)
+    // window.addEventListener('resize', this.handleUpdateTriggerRect)
+    // window.addEventListener('scroll', this.handleUpdateTriggerRect)
 
     if (!triggerRef.current) {
       return
@@ -300,8 +284,8 @@ export class Popover extends Component<PopoverProps, State> {
   private handleRemoveEventListeners = (): void => {
     const {triggerRef} = this.props
 
-    window.removeEventListener('resize', this.handleUpdateTriggerRect)
-    window.removeEventListener('scroll', this.handleUpdateTriggerRect)
+    // window.removeEventListener('resize', this.handleUpdateTriggerRect)
+    // window.removeEventListener('scroll', this.handleUpdateTriggerRect)
 
     if (!triggerRef.current) {
       return
