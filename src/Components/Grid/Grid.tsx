@@ -3,14 +3,14 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {GridRow} from 'src/Components/GridLayout/GridRow'
-import {GridColumn} from 'src/Components/GridLayout/GridColumn'
+import {GridRow} from 'src/Components/Grid/GridRow'
+import {GridColumn} from 'src/Components/Grid/GridColumn'
 
 // Types
 import {StandardClassProps} from 'src/Types'
 
 // Styles
-import 'src/Components/GridLayout/Grid.scss'
+import 'src/Components/Grid/Grid.scss'
 
 interface Props extends StandardClassProps {}
 
