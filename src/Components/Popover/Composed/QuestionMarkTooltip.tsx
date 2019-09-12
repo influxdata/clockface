@@ -28,12 +28,12 @@ interface Props extends StandardFunctionProps {
 }
 
 export const QuestionMarkTooltip: FunctionComponent<Props> = ({
-  diameter,
+  diameter = 18,
   tooltipContents,
-  color,
+  color = ComponentColor.Primary,
   tooltipStyle,
   style,
-  testID,
+  testID = 'question-mark-tooltip',
   className,
   id,
 }) => {
@@ -88,12 +88,6 @@ export const QuestionMarkTooltip: FunctionComponent<Props> = ({
       />
     </>
   )
-}
-
-QuestionMarkTooltip.defaultProps = {
-  diameter: 18,
-  color: ComponentColor.Primary,
-  testID: 'question-mark-tooltip',
 }
 
 QuestionMarkTooltip.displayName = 'QuestionMarkTooltip'
