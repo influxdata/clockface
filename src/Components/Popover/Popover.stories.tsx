@@ -16,8 +16,9 @@ import {jsxDecorator} from 'storybook-addon-jsx'
 import {mapEnumKeys} from '../../Utils/storybook'
 
 // Components
-import {Popover} from './Popover'
-import {ReflessPopover} from './ReflessPopover'
+import {Popover} from './Base/Popover'
+import {ReflessPopover} from './Composed/ReflessPopover'
+import {QuestionMarkTooltip} from './Composed/QuestionMarkTooltip'
 import {DismissButton} from '../Button/Composed/DismissButton'
 
 // Types
@@ -29,8 +30,9 @@ import {
 } from '../../Types'
 
 // Notes
-import PopoverReadme from './Popover.md'
-import ReflessPopoverReadme from './ReflessPopover.md'
+import PopoverReadme from './Base/Popover.md'
+import ReflessPopoverReadme from './Composed/ReflessPopover.md'
+import QuestionMarkTooltipReadme from './Composed/QuestionMarkTooltip.md'
 
 const popoverStories = storiesOf('Atomic|Popover/Base', module)
   .addDecorator(withKnobs)
@@ -179,6 +181,31 @@ composedPopoverStories.add(
   {
     readme: {
       content: marked(ReflessPopoverReadme),
+    },
+  }
+)
+
+composedPopoverStories.add(
+  'QuestionMarkTooltip',
+  () => (
+    <div className="story--example">
+      <QuestionMarkTooltip
+        diameter={number('diameter', 18)}
+        tooltipContents={text('tooltipContents', 'Hello world!')}
+        className={text('className', '')}
+        style={object('style', {})}
+        tooltipStyle={object('tooltipStyle', {})}
+        color={
+          ComponentColor[
+            select('color', mapEnumKeys(ComponentColor), 'Primary')
+          ]
+        }
+      />
+    </div>
+  ),
+  {
+    readme: {
+      content: marked(QuestionMarkTooltipReadme),
     },
   }
 )

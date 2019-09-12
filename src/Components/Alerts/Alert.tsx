@@ -9,9 +9,9 @@ import {Icon} from '../Icon/Icon'
 import './Alert.scss'
 
 // Types
-import {ComponentColor, IconFont, StandardProps} from '../../Types'
+import {ComponentColor, IconFont, StandardClassProps} from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Alert color */
   color: ComponentColor
   /** Icon to be displayed to the left of text */

@@ -3,9 +3,9 @@ import React, {PureComponent} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardProps} from '../../Types'
+import {StandardClassProps} from '../../Types'
 
-interface Props extends StandardProps {}
+interface Props extends StandardClassProps {}
 
 export class OverlayBody extends PureComponent<Props> {
   public static readonly displayName = 'OverlayBody'

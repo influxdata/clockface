@@ -6,9 +6,9 @@ import classnames from 'classnames'
 import {Icon} from '../../Icon/Icon'
 
 // Types
-import {Sort, StandardProps, IconFont} from '../../../Types'
+import {Sort, StandardClassProps, IconFont} from '../../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Controls appearance of sort indicator (arrow) */
   sort: Sort
   /** Unique identifier for use in managing sort state */

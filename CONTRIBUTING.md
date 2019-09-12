@@ -61,7 +61,7 @@ All Clockface components (with a few exceptions) are stateless and should be imp
 
 ##### Standard Props
 
-We created a Typescript interface called `StandardProps` which ensures consistency across all components in the library. All components `Props` definitions should extend `StandardProps`.
+We created a Typescript interface called `StandardClassProps` which ensures consistency across all components in the library. All components `Props` definitions should extend `StandardClassProps`.
 
 **All classnames must be prefixed with `cf-`**
 

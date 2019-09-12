@@ -8,12 +8,12 @@ import {NavMenuItem} from './NavMenuItem'
 import {NavMenuSubItem} from './NavMenuSubItem'
 
 // Types
-import {StandardProps} from '../../Types'
+import {StandardClassProps} from '../../Types'
 
 // Styles
 import './NavMenu.scss'
 
-type Props = StandardProps
+type Props = StandardClassProps
 
 interface State {
   menuVisible: boolean

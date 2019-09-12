@@ -2,12 +2,12 @@
 import React, {Component, CSSProperties} from 'react'
 
 // Types
-import {ComponentSize, StandardProps} from '../../Types'
+import {ComponentSize, StandardClassProps} from '../../Types'
 
 // Styles
 import './TechnoSpinner.scss'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Diameter of spinner circle */
   diameterPixels: number
   /** Width of spinner stroke */

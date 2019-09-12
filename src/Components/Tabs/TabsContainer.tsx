@@ -6,13 +6,13 @@ import {FlexBox} from '../FlexBox/FlexBox'
 
 // Types
 import {
-  StandardProps,
+  StandardClassProps,
   Orientation,
   FlexDirection,
   AlignItems,
 } from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Should match the orientation prop of Tabs component */
   orientation: Orientation
   /** Stretches TabsContainer to fit parent width */

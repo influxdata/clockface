@@ -2,9 +2,9 @@
 import React, {Component} from 'react'
 
 // Types
-import {StandardProps} from '../../Types'
+import {StandardClassProps} from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Label Text */
   label: string
   /** Whether this field is required to submit form, adds red required asterisk */

@@ -16,10 +16,10 @@ import {
   ButtonShape,
   IconFont,
   ButtonType,
-  StandardProps,
+  StandardClassProps,
 } from '../../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Function to be called on button click */
   onClick?: (e?: MouseEvent<HTMLButtonElement>) => void
   /** Icon to be displayed to the left of text or in place of text */

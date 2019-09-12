@@ -3,21 +3,21 @@ import React, {Component, createRef, MouseEvent, RefObject} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {ClickOutside} from '../ClickOutside/ClickOutside'
+import {ClickOutside} from '../../ClickOutside/ClickOutside'
 
 // Utilities
-import {convertCSSPropertiesToString} from '../../Utils/index'
-import {calculatePopoverStyles} from '../../Utils/popovers'
+import {convertCSSPropertiesToString} from '../../../Utils/index'
+import {calculatePopoverStyles} from '../../../Utils/popovers'
 
 // Types
 import {
   ComponentColor,
-  StandardProps,
+  StandardClassProps,
   PopoverType,
   PopoverPosition,
-} from '../../Types'
+} from '../../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Bounding rectangle of trigger element */
   triggerRef: RefObject<any>
   /** Pixel distance between trigger and popover dialog */

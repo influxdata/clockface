@@ -6,9 +6,9 @@ import classnames from 'classnames'
 import './AppWrapper.scss'
 
 // Types
-import {StandardProps} from '../../Types'
+import {StandardClassProps} from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Hides the page header and nav menu so that the contents can take up the whole screen */
   presentationMode: boolean
 }

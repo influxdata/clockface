@@ -3,12 +3,12 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardProps} from '../../Types'
+import {StandardClassProps} from '../../Types'
 
 // Constants
 import {DEFAULT_OFFSET} from '../../Constants/pageLayout'
 
-interface Props extends StandardProps {}
+interface Props extends StandardClassProps {}
 
 export class PageHeaderRight extends Component<Props> {
   public static readonly displayName = 'PageHeaderRight'

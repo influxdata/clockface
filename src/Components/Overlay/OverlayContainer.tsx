@@ -3,9 +3,9 @@ import React, {PureComponent, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardProps} from '../../Types'
+import {StandardClassProps} from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Pixel width maximum for overlay */
   maxWidth: number
 }

@@ -3,9 +3,9 @@ import React, {Component, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardProps, InfluxColors, ComponentSize} from '../../Types'
+import {StandardClassProps, InfluxColors, ComponentSize} from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Padding of contents */
   padding: ComponentSize
   /** Background color, should match color of Tab */

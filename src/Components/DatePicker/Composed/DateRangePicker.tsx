@@ -11,11 +11,11 @@ import {
   TimeRange,
   ComponentColor,
   ComponentSize,
-  StandardProps,
+  StandardClassProps,
   FlexDirection,
 } from '../../../Types/index'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Object of {upper: string, lower: string | null, seconds: number, format: string, label: string, duration: string} */
   timeRange: TimeRange
   /** Function called when time range is set */

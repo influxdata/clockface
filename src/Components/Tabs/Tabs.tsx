@@ -10,7 +10,7 @@ import {TabsContainer} from './TabsContainer'
 // Types
 import {
   ComponentSize,
-  StandardProps,
+  StandardClassProps,
   Orientation,
   InfluxColors,
   Alignment,
@@ -19,7 +19,7 @@ import {
 // Styles
 import './Tabs.scss'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Layout of tabs */
   orientation: Orientation
   /** Controls whether the container renders with padding or not */

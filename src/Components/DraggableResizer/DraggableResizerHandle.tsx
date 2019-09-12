@@ -3,12 +3,12 @@ import React, {PureComponent, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {Gradients, Orientation, StandardProps} from '../../Types'
+import {Gradients, Orientation, StandardClassProps} from '../../Types'
 
 // Constants
 import {getColorsFromGradient} from '../../Constants/colors'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Expects a number between 0 - 1 */
   position: number
   /** Gets passed a function by being a child of DraggableResizer */

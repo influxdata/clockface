@@ -3,9 +3,9 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {ComponentSize, StandardProps} from '../../Types'
+import {ComponentSize, StandardClassProps} from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Text to be displayed as label */
   text: string
   /** Used to match the state of the associated SlideToggle */

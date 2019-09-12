@@ -2,9 +2,9 @@
 import React, {Component} from 'react'
 
 // Types
-import {StandardProps} from '../../Types'
+import {StandardClassProps} from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Rendered when no children are passed in */
   emptyState: JSX.Element
   /** Used to ensure the empty state takes up the full width of the table */

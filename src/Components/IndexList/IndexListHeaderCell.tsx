@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {Alignment, Sort, StandardProps} from '../../Types'
+import {Alignment, Sort, StandardClassProps} from '../../Types'
 
 export interface IndexHeaderCellProps {
   /** Can be a % or px */
@@ -20,7 +20,7 @@ export interface IndexHeaderCellProps {
   onClick?: (nextSort: Sort, sortKey: string | undefined) => void
 }
 
-type Props = IndexHeaderCellProps & StandardProps
+type Props = IndexHeaderCellProps & StandardClassProps
 
 export class IndexListHeaderCell extends Component<Props> {
   public static readonly displayName = 'IndexListHeaderCell'

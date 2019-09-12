@@ -18,7 +18,7 @@ import {
   ButtonShape,
   ComponentStatus,
   Color,
-  StandardProps,
+  StandardClassProps,
 } from '../../Types'
 
 // Utils
@@ -27,7 +27,7 @@ import {validateHexCode} from '../../Utils/index'
 // Styles
 import './ColorPicker.scss'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** currently selected color */
   color: string
   /** Function to be called on color select */

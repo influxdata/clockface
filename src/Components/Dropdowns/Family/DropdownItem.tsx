@@ -3,9 +3,9 @@ import React, {Component, MouseEvent} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {DropdownItemType, StandardProps} from '../../../Types'
+import {DropdownItemType, StandardClassProps} from '../../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Value to be returned via the onClick function */
   value: any
   /** Whether or not the item should have selected styling */

@@ -13,12 +13,12 @@ import {DropdownMenu} from './../Family/DropdownMenu'
 import {ClickOutside} from '../../ClickOutside/ClickOutside'
 
 // Types
-import {StandardProps} from '../../../Types'
+import {StandardClassProps} from '../../../Types'
 
 // Styles
 import '../Dropdown.scss'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Component to render as the button (use Dropdown.Button) */
   button: (
     active: boolean,

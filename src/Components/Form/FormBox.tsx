@@ -2,9 +2,9 @@
 import React, {Component} from 'react'
 
 // Types
-import {StandardProps} from '../../Types'
+import {StandardClassProps} from '../../Types'
 
-interface Props extends StandardProps {}
+interface Props extends StandardClassProps {}
 
 export class FormBox extends Component<Props> {
   public static readonly displayName = 'FormBox'

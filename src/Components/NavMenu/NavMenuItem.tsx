@@ -3,9 +3,9 @@ import React, {PureComponent} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardProps} from '../../Types'
+import {StandardClassProps} from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Render prop for linked title text */
   titleLink: (className: string) => JSX.Element
   /** Render prop for linked icon component */

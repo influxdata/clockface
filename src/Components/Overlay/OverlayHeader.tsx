@@ -3,9 +3,9 @@ import React, {PureComponent} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardProps} from '../../Types'
+import {StandardClassProps} from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Title of the Overlay */
   title: string
   /** Passing a function into this prop will cause the Dismiss "X" to render in the header */

@@ -8,12 +8,12 @@ import {Icon} from '../../Icon/Icon'
 import {ClickOutside} from '../../ClickOutside/ClickOutside'
 
 // Types
-import {StandardProps, ComponentSize, IconFont} from '../../../Types'
+import {StandardClassProps, ComponentSize, IconFont} from '../../../Types'
 
 // Styles
 import './ResourceCardDescription.scss'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Text to display in description */
   description: string
   /** Placeholder text to display in input during editing */

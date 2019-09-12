@@ -16,10 +16,10 @@ import {
   ButtonShape,
   IconFont,
   ButtonType,
-  StandardProps,
+  StandardClassProps,
 } from '../../../Types'
 
-export interface Props extends StandardProps {
+export interface Props extends StandardClassProps {
   /** Text to be displayed on button */
   text?: string
   /** Function to be called on button click */

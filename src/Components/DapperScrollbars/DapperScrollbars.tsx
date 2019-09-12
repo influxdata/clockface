@@ -8,9 +8,9 @@ import Scrollbar from 'react-scrollbars-custom'
 import './DapperScrollbars.scss'
 
 // Types
-import {StandardProps} from '../../Types'
+import {StandardClassProps} from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Toggle display of tracks when no scrolling is necessary */
   removeTracksWhenNotUsed: boolean
   /** Toggle display of vertical track when no scrolling is necessary */

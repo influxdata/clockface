@@ -11,13 +11,13 @@ import {
   JustifyContent,
   AlignItems,
   ComponentSize,
-  StandardProps,
+  StandardClassProps,
 } from '../../Types'
 
 // Styles
 import './FlexBox.scss'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Vertical or horizontal flex alignment */
   direction: FlexDirection
   /** Inserted margin between children */

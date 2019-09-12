@@ -3,9 +3,9 @@ import {PureComponent, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardProps} from '../../Types'
+import {StandardClassProps} from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Controls highlighting of the menu item */
   active: boolean
   /** Render prop for linked title text (suggested <a /> or <Link /> ) */

@@ -10,7 +10,7 @@ import './DismissButton.scss'
 
 // Types
 import {
-  StandardProps,
+  StandardClassProps,
   ComponentStatus,
   ComponentColor,
   IconFont,
@@ -18,7 +18,7 @@ import {
   ButtonType,
 } from '../../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Function to be called on button click */
   onClick?: (e?: MouseEvent<HTMLButtonElement>) => void
   /** Button color */

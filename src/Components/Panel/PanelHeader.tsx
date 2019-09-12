@@ -10,11 +10,11 @@ import {
   FlexDirection,
   JustifyContent,
   AlignItems,
-  StandardProps,
+  StandardClassProps,
   ComponentSize,
 } from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Vertical or horizontal flex alignment */
   flexDirection: FlexDirection
   /** Inserted margin between children */

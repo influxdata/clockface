@@ -3,9 +3,9 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {DropdownItemType, StandardProps} from '../../../Types'
+import {DropdownItemType, StandardClassProps} from '../../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Whether or not the item should have selected styling */
   selected: boolean
   /** Controls which style of dropdown item is rendered */

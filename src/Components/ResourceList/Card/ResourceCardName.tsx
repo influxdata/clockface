@@ -3,12 +3,12 @@ import React, {Component, MouseEvent} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardProps} from '../../../Types'
+import {StandardClassProps} from '../../../Types'
 
 // Styles
 import './ResourceCardName.scss'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Text to display as name */
   name: string
   /** Fires when the name is clicked */

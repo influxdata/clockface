@@ -3,12 +3,12 @@ import React, {PureComponent} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {RemoteDataState, StandardProps} from '../../Types'
+import {RemoteDataState, StandardClassProps} from '../../Types'
 
 // Style
 import './SparkleSpinner.scss'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Size of spinner (square) */
   sizePixels: number
   /** State */

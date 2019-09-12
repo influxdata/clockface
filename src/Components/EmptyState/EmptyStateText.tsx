@@ -4,9 +4,9 @@ import _ from 'lodash'
 import uuid from 'uuid'
 
 // Types
-import {StandardProps} from '../../Types'
+import {StandardClassProps} from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Primary text to be displayed when no elements are loaded */
   text: string
   /** Highlighted words in the primary text */
@@ -36,7 +36,7 @@ const highlighter = (
   })
 }
 
-export class EmptyStateText extends Component<Props & StandardProps> {
+export class EmptyStateText extends Component<Props & StandardClassProps> {
   public static readonly displayName = 'EmptyStateText'
 
   public static defaultProps = {

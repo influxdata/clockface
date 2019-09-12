@@ -3,18 +3,26 @@ import {CSSProperties} from 'react'
 // Utilities
 export type Omit<K, V> = Pick<K, Exclude<keyof K, V>>
 
-// Shared Data Types
-export interface StandardProps {
+// Standardized prop definitons
+interface StandardProps {
   /** Useful for overriding styles of the component and its constituent elements */
   className?: string
-  /** ID for Integration Tests */
-  testID: string
   /** Unique identifier for getting an element */
   id?: string
   /** Useful for setting common attributes like width or height */
   style?: CSSProperties
 }
 
+export interface StandardClassProps extends StandardProps {
+  /** ID for Integration Tests */
+  testID: string
+}
+export interface StandardFunctionProps extends StandardProps {
+  /** ID for Integration Tests */
+  testID?: string
+}
+
+// Shared Data Types
 export enum ComponentColor {
   Default = 'default',
   Primary = 'primary',

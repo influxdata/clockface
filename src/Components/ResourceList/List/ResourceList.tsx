@@ -8,12 +8,12 @@ import {ResourceListSorter} from './ResourceListSorter'
 import {ResourceListBody} from './ResourceListBody'
 
 // Types
-import {StandardProps} from '../../../Types'
+import {StandardClassProps} from '../../../Types'
 
 // Styles
 import './ResourceList.scss'
 
-interface Props extends StandardProps {}
+interface Props extends StandardClassProps {}
 
 export class ResourceList extends PureComponent<Props> {
   public static readonly displayName = 'ResourceList'

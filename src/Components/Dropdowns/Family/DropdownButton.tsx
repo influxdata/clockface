@@ -13,13 +13,13 @@ import {
   ComponentColor,
   ComponentStatus,
   ButtonShape,
-  StandardProps,
+  StandardClassProps,
 } from '../../../Types'
 
 // Styles
 import '../DropdownButton.scss'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Function to be called on click of dropdown button */
   onClick: (e: MouseEvent<HTMLButtonElement>) => void
   /** Button status state default, loading, or disabled */

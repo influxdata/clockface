@@ -3,9 +3,9 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardProps, ComponentColor} from '../../Types'
+import {StandardClassProps, ComponentColor} from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Controls coloration of the row, useful for showing a certain state */
   color: ComponentColor
 }

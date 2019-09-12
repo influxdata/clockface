@@ -9,12 +9,12 @@ import {ResourceCardDescription} from './ResourceCardDescription'
 import {ResourceCardEditableDescription} from './ResourceCardEditableDescription'
 
 // Types
-import {StandardProps} from '../../../Types'
+import {StandardClassProps} from '../../../Types'
 
 // Styles
 import './ResourceCard.scss'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Renders the name component in its designated place */
   name: JSX.Element
   /** Renders the card with disabled styles */

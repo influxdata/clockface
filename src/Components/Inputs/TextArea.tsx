@@ -15,7 +15,7 @@ import {
   ComponentStatus,
   ComponentSize,
   AutoComplete,
-  StandardProps,
+  StandardClassProps,
 } from '../../Types'
 
 export enum Wrap {
@@ -24,7 +24,7 @@ export enum Wrap {
   Off = 'off',
 }
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Width of the text field in pixels */
   widthPixels?: number
   /** Input Component size */
