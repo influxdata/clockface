@@ -4,7 +4,7 @@ import {createPortal} from 'react-dom'
 import uuid from 'uuid'
 
 // Components
-import {DismissButton} from '../Button/Composed/DismissButton'
+import {DismissButton} from '../../Button/Composed/DismissButton'
 import {PopoverDialog} from './PopoverDialog'
 
 // Styles
@@ -17,7 +17,7 @@ import {
   PopoverInteraction,
   PopoverPosition,
   PopoverType,
-} from '../../Types'
+} from '../../../Types'
 
 export interface PopoverProps extends StandardProps {
   /** Popover dialog color */

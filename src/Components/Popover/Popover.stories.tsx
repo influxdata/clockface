@@ -16,8 +16,8 @@ import {jsxDecorator} from 'storybook-addon-jsx'
 import {mapEnumKeys} from '../../Utils/storybook'
 
 // Components
-import {Popover} from './Popover'
-import {ReflessPopover} from './ReflessPopover'
+import {Popover} from './Base/Popover'
+import {ReflessPopover} from './Composed/ReflessPopover'
 import {DismissButton} from '../Button/Composed/DismissButton'
 
 // Types
@@ -29,8 +29,8 @@ import {
 } from '../../Types'
 
 // Notes
-import PopoverReadme from './Popover.md'
-import ReflessPopoverReadme from './ReflessPopover.md'
+import PopoverReadme from './Base/Popover.md'
+import ReflessPopoverReadme from './Composed/ReflessPopover.md'
 
 const popoverStories = storiesOf('Atomic|Popover/Base', module)
   .addDecorator(withKnobs)
