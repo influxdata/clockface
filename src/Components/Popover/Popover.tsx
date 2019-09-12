@@ -82,7 +82,7 @@ export class Popover extends Component<PopoverProps, State> {
       expanded: this.props.visible,
     }
   }
-  
+
   private uniquePortalID: string = ''
   private triggerReceivedHandlers: boolean = false
 

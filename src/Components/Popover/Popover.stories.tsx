@@ -56,7 +56,11 @@ popoverStories.add(
 
     return (
       <div className="story--example">
-        <div className="mockComponent mockButton" ref={triggerRefA} style={{marginRight: '60px'}}>
+        <div
+          className="mockComponent mockButton"
+          ref={triggerRefA}
+          style={{marginRight: '60px'}}
+        >
           Popover Trigger Element
         </div>
         <div className="mockComponent mockButton" ref={triggerRefB}>
@@ -108,7 +112,7 @@ popoverStories.add(
               I'm just a simple popover looking for my
               <br />
               place in this <strong>vast and beautiful</strong> world.
-              <br/>
+              <br />
               Will you help me?
             </>
           )}
