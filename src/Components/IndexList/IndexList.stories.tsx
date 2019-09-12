@@ -6,24 +6,24 @@ import marked from 'marked'
 import {storiesOf} from '@storybook/react'
 import {jsxDecorator} from 'storybook-addon-jsx'
 import {withKnobs, array, text, select, boolean} from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from 'src/Utils/storybook'
 
 // Components
-import {IndexList} from './IndexList'
-import {SquareButton} from '../Button/Composed/SquareButton'
-import {EmptyState} from '../EmptyState/EmptyState'
+import {IndexList} from 'src/Components/IndexList/IndexList'
+import {SquareButton} from 'src/Components/Button/Composed/SquareButton'
+import {EmptyState} from 'src/Components/EmptyState/EmptyState'
 
 // Types
-import {IconFont, ComponentColor, Alignment, Sort} from '../../Types'
+import {IconFont, ComponentColor, Alignment, Sort} from 'src/Types'
 
 // Notes
-import IndexListReadme from './IndexList.md'
-import IndexListHeaderReadme from './IndexListHeader.md'
-import IndexListHeaderCellReadme from './IndexListHeaderCell.md'
-import IndexListBodyReadme from './IndexListBody.md'
-import IndexListRowReadme from './IndexListRow.md'
-import IndexListRowCellReadme from './IndexListRowCell.md'
-import IndexListExampleReadme from './IndexListExample.md'
+import IndexListReadme from 'src/Components/IndexList/IndexList.md'
+import IndexListHeaderReadme from 'src/Components/IndexList/IndexListHeader.md'
+import IndexListHeaderCellReadme from 'src/Components/IndexList/IndexListHeaderCell.md'
+import IndexListBodyReadme from 'src/Components/IndexList/IndexListBody.md'
+import IndexListRowReadme from 'src/Components/IndexList/IndexListRow.md'
+import IndexListRowCellReadme from 'src/Components/IndexList/IndexListRowCell.md'
+import IndexListExampleReadme from 'src/Components/IndexList/IndexListExample.md'
 
 const indexListStories = storiesOf('Components|IndexList/Family', module)
   .addDecorator(withKnobs)

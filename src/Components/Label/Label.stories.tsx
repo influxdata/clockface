@@ -5,17 +5,17 @@ import marked from 'marked'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, select, text, color} from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from 'src/Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {Label} from './Label'
+import {Label} from 'src/Components/Label/Label'
 
 // Types
-import {ComponentSize, InfluxColors} from '../../Types'
+import {ComponentSize, InfluxColors} from 'src/Types'
 
 // Notes
-import LabelReadme from './Label.md'
+import LabelReadme from 'src/Components/Label/Label.md'
 
 const labelStories = storiesOf('Atomic|Label', module)
   .addDecorator(withKnobs)

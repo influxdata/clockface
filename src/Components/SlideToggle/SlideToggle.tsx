@@ -3,13 +3,13 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {SlideToggleLabel} from './SlideToggleLabel'
+import {SlideToggleLabel} from 'src/Components/SlideToggle/SlideToggleLabel'
 
 // Styles
-import './SlideToggle.scss'
+import 'src/Components/SlideToggle/SlideToggle.scss'
 
 // Types
-import {ComponentColor, ComponentSize, StandardClassProps} from '../../Types'
+import {ComponentColor, ComponentSize, StandardClassProps} from 'src/Types'
 
 interface Props extends StandardClassProps {
   /** Function to be called on slide toggle state change */

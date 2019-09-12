@@ -6,12 +6,12 @@ import marked from 'marked'
 import {storiesOf} from '@storybook/react'
 import {withKnobs, text, select, boolean} from '@storybook/addon-knobs'
 import {withState} from '@dump247/storybook-state'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from 'src/Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {SlideToggle} from './SlideToggle'
-import {FlexBox} from '../FlexBox/FlexBox'
+import {SlideToggle} from 'src/Components/SlideToggle/SlideToggle'
+import {FlexBox} from 'src/Components/FlexBox/FlexBox'
 
 // Types
 import {
@@ -19,13 +19,13 @@ import {
   ComponentSize,
   FlexDirection,
   AlignItems,
-} from '../../Types'
+} from 'src/Types'
 
 // Notes
-import SlideToggleReadme from './SlideToggle.md'
-import SlideToggleLabelReadme from './SlideToggleLabel.md'
-import ControlsListReadme from './ControlsList.md'
-import SlideToggleWithLabelsReadme from './SlideToggleWithLabels.md'
+import SlideToggleReadme from 'src/Components/SlideToggle/SlideToggle.md'
+import SlideToggleLabelReadme from 'src/Components/SlideToggle/SlideToggleLabel.md'
+import ControlsListReadme from 'src/Components/SlideToggle/ControlsList.md'
+import SlideToggleWithLabelsReadme from 'src/Components/SlideToggle/SlideToggleWithLabels.md'
 
 // State
 interface StoryState {

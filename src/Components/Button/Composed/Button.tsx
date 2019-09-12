@@ -2,11 +2,11 @@
 import React, {Component, MouseEvent, RefObject} from 'react'
 
 // Components
-import {ButtonBase} from '../Base/ButtonBase'
-import {Icon} from '../../Icon/Icon'
+import {ButtonBase} from 'src/Components/Button/Base/ButtonBase'
+import {Icon} from 'src/Components/Icon/Icon'
 
 // Styles
-import '../Button.scss'
+import 'src/Components/Button/Button.scss'
 
 // Types
 import {
@@ -17,7 +17,7 @@ import {
   IconFont,
   ButtonType,
   StandardClassProps,
-} from '../../../Types'
+} from 'src/Types'
 
 export interface Props extends StandardClassProps {
   /** Text to be displayed on button */

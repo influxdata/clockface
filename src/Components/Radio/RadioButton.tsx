@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardClassProps} from 'src/Types'
 
 interface Props extends StandardClassProps {
   /** Toggles radio button active state */

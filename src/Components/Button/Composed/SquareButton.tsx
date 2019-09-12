@@ -2,11 +2,8 @@
 import React, {Component, MouseEvent, RefObject} from 'react'
 
 // Components
-import {ButtonBase} from '../Base/ButtonBase'
-import {Icon} from '../../Icon/Icon'
-
-// Styles
-import '../Button.scss'
+import {ButtonBase} from 'src/Components/Button/Base/ButtonBase'
+import {Icon} from 'src/Components/Icon/Icon'
 
 // Types
 import {
@@ -17,7 +14,7 @@ import {
   IconFont,
   ButtonType,
   StandardClassProps,
-} from '../../../Types'
+} from 'src/Types'
 
 interface Props extends StandardClassProps {
   /** Function to be called on button click */

@@ -4,14 +4,14 @@ import classnames from 'classnames'
 import _ from 'lodash'
 
 // Components
-import {NavMenuItem} from './NavMenuItem'
-import {NavMenuSubItem} from './NavMenuSubItem'
+import {NavMenuItem} from 'src/Components/NavMenu/NavMenuItem'
+import {NavMenuSubItem} from 'src/Components/NavMenu/NavMenuSubItem'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardClassProps} from 'src/Types'
 
 // Styles
-import './NavMenu.scss'
+import 'src/Components/NavMenu/NavMenu.scss'
 
 type Props = StandardClassProps
 

@@ -3,7 +3,7 @@ import React, {PureComponent, ReactNode} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from '../../../Types'
+import {StandardClassProps} from 'src/Types'
 
 interface Props extends StandardClassProps {
   /** Element to show when no children are passed in, useful for implementing filtering */

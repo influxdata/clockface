@@ -14,24 +14,24 @@ import {
   object,
   number,
 } from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from 'src/Utils/storybook'
 
 // Components
-import {ResourceList} from './List/ResourceList'
-import {ResourceListHeader} from './List/ResourceListHeader'
-import {ResourceListBody} from './List/ResourceListBody'
-import {ResourceListSorter} from './List/ResourceListSorter'
-import {ResourceCard} from './Card/ResourceCard'
-import {ResourceCardName} from './Card/ResourceCardName'
-import {ResourceCardEditableName} from './Card/ResourceCardEditableName'
-import {ResourceCardDescription} from './Card/ResourceCardDescription'
-import {ResourceCardEditableDescription} from './Card/ResourceCardEditableDescription'
-import {Input} from '../Inputs/Input'
-import {EmptyState} from '../EmptyState/EmptyState'
-import {SlideToggle} from '../SlideToggle/SlideToggle'
-import {SquareButton} from '../Button/Composed/SquareButton'
-import {Label} from '../Label/Label'
-import {FlexBox} from '../FlexBox/FlexBox'
+import {ResourceList} from 'src/Components/ResourceList/List/ResourceList'
+import {ResourceListHeader} from 'src/Components/ResourceList/List/ResourceListHeader'
+import {ResourceListBody} from 'src/Components/ResourceList/List/ResourceListBody'
+import {ResourceListSorter} from 'src/Components/ResourceList/List/ResourceListSorter'
+import {ResourceCard} from 'src/Components/ResourceList/Card/ResourceCard'
+import {ResourceCardName} from 'src/Components/ResourceList/Card/ResourceCardName'
+import {ResourceCardEditableName} from 'src/Components/ResourceList/Card/ResourceCardEditableName'
+import {ResourceCardDescription} from 'src/Components/ResourceList/Card/ResourceCardDescription'
+import {ResourceCardEditableDescription} from 'src/Components/ResourceList/Card/ResourceCardEditableDescription'
+import {Input} from 'src/Components/Inputs/Input'
+import {EmptyState} from 'src/Components/EmptyState/EmptyState'
+import {SlideToggle} from 'src/Components/SlideToggle/SlideToggle'
+import {SquareButton} from 'src/Components/Button/Composed/SquareButton'
+import {Label} from 'src/Components/Label/Label'
+import {FlexBox} from 'src/Components/FlexBox/FlexBox'
 
 // Types
 import {
@@ -40,20 +40,20 @@ import {
   ComponentSize,
   ComponentColor,
   FlexDirection,
-} from '../../Types'
+} from 'src/Types'
 
 // Notes
-import ResourceListReadme from './List/ResourceList.md'
-import ResourceListHeaderReadme from './List/ResourceListHeader.md'
-import ResourceListBodyReadme from './List/ResourceListBody.md'
-import ResourceListSorterReadme from './List/ResourceListSorter.md'
-import ResourceCardReadme from './Card/ResourceCard.md'
-import ResourceCardDescriptionReadme from './Card/ResourceCardDescription.md'
-import ResourceCardEditableDescriptionReadme from './Card/ResourceCardEditableDescription.md'
-import ResourceCardNameReadme from './Card/ResourceCardName.md'
-import ResourceCardEditableNameReadme from './Card/ResourceCardEditableName.md'
-import ResourceListExampleReadme from './ResourceListExample.md'
-import ResourceCardExampleReadme from './ResourceCardExample.md'
+import ResourceListReadme from 'src/Components/ResourceList/List/ResourceList.md'
+import ResourceListHeaderReadme from 'src/Components/ResourceList/List/ResourceListHeader.md'
+import ResourceListBodyReadme from 'src/Components/ResourceList/List/ResourceListBody.md'
+import ResourceListSorterReadme from 'src/Components/ResourceList/List/ResourceListSorter.md'
+import ResourceCardReadme from 'src/Components/ResourceList/Card/ResourceCard.md'
+import ResourceCardDescriptionReadme from 'src/Components/ResourceList/Card/ResourceCardDescription.md'
+import ResourceCardEditableDescriptionReadme from 'src/Components/ResourceList/Card/ResourceCardEditableDescription.md'
+import ResourceCardNameReadme from 'src/Components/ResourceList/Card/ResourceCardName.md'
+import ResourceCardEditableNameReadme from 'src/Components/ResourceList/Card/ResourceCardEditableName.md'
+import ResourceListExampleReadme from 'src/Components/ResourceList/ResourceListExample.md'
+import ResourceCardExampleReadme from 'src/Components/ResourceList/ResourceCardExample.md'
 
 const resourceListStories = storiesOf(
   'Components|ResourceList/List Family',

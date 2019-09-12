@@ -13,13 +13,13 @@ import {
   object,
 } from '@storybook/addon-knobs'
 import {jsxDecorator} from 'storybook-addon-jsx'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from 'src/Utils/storybook'
 
 // Components
-import {Popover} from './Base/Popover'
-import {ReflessPopover} from './Composed/ReflessPopover'
-import {QuestionMarkTooltip} from './Composed/QuestionMarkTooltip'
-import {DismissButton} from '../Button/Composed/DismissButton'
+import {Popover} from 'src/Components/Popover/Base/Popover'
+import {ReflessPopover} from 'src/Components/Popover/Composed/ReflessPopover'
+import {QuestionMarkTooltip} from 'src/Components/Popover/Composed/QuestionMarkTooltip'
+import {DismissButton} from 'src/Components/Button/Composed/DismissButton'
 
 // Types
 import {
@@ -27,12 +27,12 @@ import {
   PopoverInteraction,
   PopoverPosition,
   ComponentColor,
-} from '../../Types'
+} from 'src/Types'
 
 // Notes
-import PopoverReadme from './Base/Popover.md'
-import ReflessPopoverReadme from './Composed/ReflessPopover.md'
-import QuestionMarkTooltipReadme from './Composed/QuestionMarkTooltip.md'
+import PopoverReadme from 'src/Components/Popover/Base/Popover.md'
+import ReflessPopoverReadme from 'src/Components/Popover/Composed/ReflessPopover.md'
+import QuestionMarkTooltipReadme from 'src/Components/Popover/Composed/QuestionMarkTooltip.md'
 
 const popoverStories = storiesOf('Atomic|Popover/Base', module)
   .addDecorator(withKnobs)

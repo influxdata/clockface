@@ -3,12 +3,12 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {PageHeaderLeft} from './PageHeaderLeft'
-import {PageHeaderCenter} from './PageHeaderCenter'
-import {PageHeaderRight} from './PageHeaderRight'
+import {PageHeaderLeft} from 'src/Components/Page/PageHeaderLeft'
+import {PageHeaderCenter} from 'src/Components/Page/PageHeaderCenter'
+import {PageHeaderRight} from 'src/Components/Page/PageHeaderRight'
 
 // Types
-import {StandardClassProps, ComponentSize} from '../../Types'
+import {StandardClassProps, ComponentSize} from 'src/Types'
 
 interface Props extends StandardClassProps {
   /** Allows the page header to fill the width of the screen */

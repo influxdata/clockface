@@ -6,13 +6,13 @@ import marked from 'marked'
 import {storiesOf} from '@storybook/react'
 import {withKnobs, boolean, text, number, select} from '@storybook/addon-knobs'
 import {jsxDecorator} from 'storybook-addon-jsx'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from 'src/Utils/storybook'
 
 // Components
-import {Page} from './Page'
-import {Radio} from '../Radio/Radio'
-import {SquareButton} from '../Button/Composed/SquareButton'
-import {FlexBox} from '../FlexBox/FlexBox'
+import {Page} from 'src/Components/Page/Page'
+import {Radio} from 'src/Components/Radio/Radio'
+import {SquareButton} from 'src/Components/Button/Composed/SquareButton'
+import {FlexBox} from 'src/Components/FlexBox/FlexBox'
 
 // Types
 import {
@@ -22,15 +22,15 @@ import {
   ButtonShape,
   FlexDirection,
   AlignItems,
-} from '../../Types'
+} from 'src/Types'
 
 // Notes
-import FullPageReadme from './FullPage.md'
-import PageReadme from './Page.md'
-import PageHeaderReadme from './PageHeader.md'
-import PageContentsReadme from './PageContents.md'
-import PageTitleReadme from './PageTitle.md'
-import PageSubTitleReadme from './PageSubTitle.md'
+import FullPageReadme from 'src/Components/Page/FullPage.md'
+import PageReadme from 'src/Components/Page/Page.md'
+import PageHeaderReadme from 'src/Components/Page/PageHeader.md'
+import PageContentsReadme from 'src/Components/Page/PageContents.md'
+import PageTitleReadme from 'src/Components/Page/PageTitle.md'
+import PageSubTitleReadme from 'src/Components/Page/PageSubTitle.md'
 
 const pageStories = storiesOf('Layout|Page/Family', module)
   .addDecorator(withKnobs)

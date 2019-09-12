@@ -3,7 +3,7 @@ import React, {Component, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardClassProps} from 'src/Types'
 
 interface Props extends StandardClassProps {
   /** Panel will not shrink past this size (experimental, not guaranteed to work) */

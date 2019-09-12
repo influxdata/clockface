@@ -3,7 +3,7 @@ import React, {PureComponent, MouseEvent} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {Icon} from '../Icon/Icon'
+import {Icon} from 'src/Components/Icon/Icon'
 
 // Types
 import {
@@ -11,10 +11,10 @@ import {
   ComponentSize,
   ComponentColor,
   IconFont,
-} from '../../Types'
+} from 'src/Types'
 
 // Styles
-import './SelectableCard.scss'
+import 'src/Components/SelectableCard/SelectableCard.scss'
 
 interface Props extends StandardClassProps {
   /** Text label */

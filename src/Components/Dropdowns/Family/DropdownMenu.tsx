@@ -4,14 +4,10 @@ import classnames from 'classnames'
 import _ from 'lodash'
 
 // Components
-import {DapperScrollbars} from '../../DapperScrollbars/DapperScrollbars'
+import {DapperScrollbars} from 'src/Components/DapperScrollbars/DapperScrollbars'
 
 // Types
-import {
-  DropdownMenuTheme,
-  InfluxColors,
-  StandardClassProps,
-} from '../../../Types'
+import {DropdownMenuTheme, InfluxColors, StandardClassProps} from 'src/Types'
 
 interface Props extends StandardClassProps {
   /** Pixel width of menu, if empty the menu will match the width of its parent  */

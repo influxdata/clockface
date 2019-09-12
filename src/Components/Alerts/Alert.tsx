@@ -6,10 +6,10 @@ import classnames from 'classnames'
 import {Icon} from 'src/Components/Icon/Icon'
 
 // Styles
-import './Alert.scss'
+import 'src/Components/Alerts/Alert.scss'
 
 // Types
-import {ComponentColor, IconFont, StandardClassProps} from '../../Types'
+import {ComponentColor, IconFont, StandardClassProps} from 'src/Types'
 
 interface Props extends StandardClassProps {
   /** Alert color */

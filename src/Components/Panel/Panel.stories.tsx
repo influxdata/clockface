@@ -5,24 +5,24 @@ import marked from 'marked'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, text, select, color} from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from 'src/Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {Panel} from './Panel'
-import {Grid} from '../GridLayout/Grid'
+import {Panel} from 'src/Components/Panel/Panel'
+import {Grid} from 'src/Components/GridLayout/Grid'
 
 // Types
-import {Gradients, ComponentSize, InfluxColors, Columns} from '../../Types'
+import {Gradients, ComponentSize, InfluxColors, Columns} from 'src/Types'
 
 // Notes
-import PanelReadme from './Panel.md'
-import PanelHeaderReadme from './PanelHeader.md'
-import PanelBodyReadme from './PanelBody.md'
-import PanelFooterReadme from './PanelFooter.md'
-import ExampleAReadme from './PanelExampleA.md'
-import ExampleBReadme from './PanelExampleB.md'
-import ExampleCReadme from './PanelExampleC.md'
+import PanelReadme from 'src/Components/Panel/Panel.md'
+import PanelHeaderReadme from 'src/Components/Panel/PanelHeader.md'
+import PanelBodyReadme from 'src/Components/Panel/PanelBody.md'
+import PanelFooterReadme from 'src/Components/Panel/PanelFooter.md'
+import ExampleAReadme from 'src/Components/Panel/PanelExampleA.md'
+import ExampleBReadme from 'src/Components/Panel/PanelExampleB.md'
+import ExampleCReadme from 'src/Components/Panel/PanelExampleC.md'
 
 const panelStories = storiesOf('Components|Panels/Family', module)
   .addDecorator(withKnobs)

@@ -3,10 +3,10 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Styles
-import './WaitingText.scss'
+import 'src/Components/Spinners/WaitingText.scss'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardClassProps} from 'src/Types'
 
 interface Props extends StandardClassProps {
   /** Text to be displayed */

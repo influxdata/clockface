@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps, ComponentSize} from '../../Types'
+import {StandardClassProps, ComponentSize} from 'src/Types'
 
 interface Props extends StandardClassProps {
   /** Controls padding */

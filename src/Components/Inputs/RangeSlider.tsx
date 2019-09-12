@@ -2,10 +2,10 @@ import React, {Component, ChangeEvent, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {Input} from './Input'
+import {Input} from 'src/Components/Inputs/Input'
 
 // Styles
-import './RangeSlider.scss'
+import 'src/Components/Inputs/RangeSlider.scss'
 
 // Types
 import {
@@ -17,7 +17,7 @@ import {
   AutoComplete,
   ComponentStatus,
   InfluxColors,
-} from '../../Types'
+} from 'src/Types'
 
 interface Props extends StandardClassProps {
   /** Minimum value */

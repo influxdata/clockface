@@ -8,10 +8,10 @@ import React, {
 import classnames from 'classnames'
 
 // Components
-import {Icon} from '../Icon/Icon'
+import {Icon} from 'src/Components/Icon/Icon'
 
 // Styles
-import './Input.scss'
+import 'src/Components/Inputs/Input.scss'
 
 // Types
 import {
@@ -21,7 +21,7 @@ import {
   AutoComplete,
   StandardClassProps,
   InputType,
-} from '../../Types'
+} from 'src/Types'
 
 interface Props extends StandardClassProps {
   /** Minimum value for number & range types */

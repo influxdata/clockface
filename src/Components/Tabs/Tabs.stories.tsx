@@ -6,14 +6,14 @@ import marked from 'marked'
 import {storiesOf} from '@storybook/react'
 import {jsxDecorator} from 'storybook-addon-jsx'
 import {withKnobs, text, select, color, boolean} from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from 'src/Utils/storybook'
 
 // Components
-import {Tabs} from './Tabs'
-import {Tab} from './Tab'
-import {TabContents} from './TabContents'
-import {TabsContainer} from './TabsContainer'
-import {Icon} from '../Icon/Icon'
+import {Tabs} from 'src/Components/Tabs/Tabs'
+import {Tab} from 'src/Components/Tabs/Tab'
+import {TabContents} from 'src/Components/Tabs/TabContents'
+import {TabsContainer} from 'src/Components/Tabs/TabsContainer'
+import {Icon} from 'src/Components/Icon/Icon'
 
 // Types
 import {
@@ -22,13 +22,13 @@ import {
   IconFont,
   InfluxColors,
   Alignment,
-} from '../../Types/index'
+} from 'src/Types'
 
 // Notes
-import TabsReadme from './Tabs.md'
-import TabReadme from './Tab.md'
-import TabContentsReadme from './TabContents.md'
-import TabsContainerReadme from './TabsContainer.md'
+import TabsReadme from 'src/Components/Tabs/Tabs.md'
+import TabReadme from 'src/Components/Tabs/Tab.md'
+import TabContentsReadme from 'src/Components/Tabs/TabContents.md'
+import TabsContainerReadme from 'src/Components/Tabs/TabsContainer.md'
 
 const tabsStories = storiesOf('Components|Navigation/Tabs', module)
   .addDecorator(withKnobs)

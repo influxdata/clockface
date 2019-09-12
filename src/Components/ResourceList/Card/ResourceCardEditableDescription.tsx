@@ -3,15 +3,15 @@ import React, {Component, KeyboardEvent, ChangeEvent} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {Input} from '../../Inputs/Input'
-import {Icon} from '../../Icon/Icon'
-import {ClickOutside} from '../../ClickOutside/ClickOutside'
+import {Input} from 'src/Components/Inputs/Input'
+import {Icon} from 'src/Components/Icon/Icon'
+import {ClickOutside} from 'src/Components/ClickOutside/ClickOutside'
 
 // Types
-import {StandardClassProps, ComponentSize, IconFont} from '../../../Types'
+import {StandardClassProps, ComponentSize, IconFont} from 'src/Types'
 
 // Styles
-import './ResourceCardDescription.scss'
+import 'src/Components/ResourceList/Card/ResourceCardDescription.scss'
 
 interface Props extends StandardClassProps {
   /** Text to display in description */

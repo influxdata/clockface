@@ -12,15 +12,15 @@ import {
   select,
   boolean,
 } from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from 'src/Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {Input} from './Input'
-import {AutoInput} from './AutoInput'
-import {RangeSlider} from './RangeSlider'
-import {TextArea} from './TextArea'
-import {SlideToggle} from '../SlideToggle/SlideToggle'
+import {Input} from 'src/Components/Inputs/Input'
+import {AutoInput} from 'src/Components/Inputs/AutoInput'
+import {RangeSlider} from 'src/Components/Inputs/RangeSlider'
+import {TextArea} from 'src/Components/Inputs/TextArea'
+import {SlideToggle} from 'src/Components/SlideToggle/SlideToggle'
 
 // Types
 import {
@@ -33,13 +33,13 @@ import {
   AlignItems,
   InputType,
   AutoInputMode,
-} from '../../Types'
-import {FlexBox} from '../FlexBox/FlexBox'
+} from 'src/Types'
+import {FlexBox} from 'src/Components/FlexBox/FlexBox'
 
 // Notes
-import InputReadme from './Input.md'
-import AutoInputReadme from './AutoInput.md'
-import RangeSliderReadme from './RangeSlider.md'
+import InputReadme from 'src/Components/Inputs/Input.md'
+import AutoInputReadme from 'src/Components/Inputs/AutoInput.md'
+import RangeSliderReadme from 'src/Components/Inputs/RangeSlider.md'
 
 const inputsBaseStories = storiesOf('Components|Inputs/Base', module)
   .addDecorator(withKnobs)

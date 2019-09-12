@@ -5,17 +5,17 @@ import marked from 'marked'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, text, boolean, select, object} from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from 'src/Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {SelectableCard} from './SelectableCard'
+import {SelectableCard} from 'src/Components/SelectableCard/SelectableCard'
 
 // Types
-import {ComponentColor, ComponentSize, IconFont} from '../../Types'
+import {ComponentColor, ComponentSize, IconFont} from 'src/Types'
 
 // Notes
-import SelectableCardReadme from './SelectableCard.md'
+import SelectableCardReadme from 'src/Components/SelectableCard/SelectableCard.md'
 
 const selectableCardStories = storiesOf(
   'Components|Cards/SelectableCard',

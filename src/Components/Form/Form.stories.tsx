@@ -13,29 +13,29 @@ import {
   number,
 } from '@storybook/addon-knobs'
 import {jsxDecorator} from 'storybook-addon-jsx'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from 'src/Utils/storybook'
 
 // Components
-import {Form} from './Form'
-import {FormBox} from './FormBox'
-import {FormLabel} from './FormLabel'
-import {FormFooter} from './FormFooter'
-import {FormDivider} from './FormDivider'
-import {FormElement} from './FormElement'
-import {FormHelpText} from './FormHelpText'
-import {FormElementError} from './FormElementError'
-import {FormValidationElement} from './FormValidationElement'
-import {Grid} from '../GridLayout/Grid'
-import {Button} from '../Button/Composed/Button'
-import {Input} from '../Inputs/Input'
-import {FlexBox} from '../FlexBox/FlexBox'
-import {SlideToggle} from '../SlideToggle/SlideToggle'
-import {Panel} from '../Panel/Panel'
-import {PanelBody} from '../Panel/PanelBody'
-import {TextBlock} from '../TextBlock/TextBlock'
-import {DismissButton} from '../Button/Composed/DismissButton'
-import {FlexBoxChild} from '../FlexBox/FlexBoxChild'
-import {SelectDropdown} from '../Dropdowns/Composed/SelectDropdown'
+import {Form} from 'src/Components/Form/Form'
+import {FormBox} from 'src/Components/Form/FormBox'
+import {FormLabel} from 'src/Components/Form/FormLabel'
+import {FormFooter} from 'src/Components/Form/FormFooter'
+import {FormDivider} from 'src/Components/Form/FormDivider'
+import {FormElement} from 'src/Components/Form/FormElement'
+import {FormHelpText} from 'src/Components/Form/FormHelpText'
+import {FormElementError} from 'src/Components/Form/FormElementError'
+import {FormValidationElement} from 'src/Components/Form/FormValidationElement'
+import {Grid} from 'src/Components/GridLayout/Grid'
+import {Button} from 'src/Components/Button/Composed/Button'
+import {Input} from 'src/Components/Inputs/Input'
+import {FlexBox} from 'src/Components/FlexBox/FlexBox'
+import {SlideToggle} from 'src/Components/SlideToggle/SlideToggle'
+import {Panel} from 'src/Components/Panel/Panel'
+import {PanelBody} from 'src/Components/Panel/PanelBody'
+import {TextBlock} from 'src/Components/TextBlock/TextBlock'
+import {DismissButton} from 'src/Components/Button/Composed/DismissButton'
+import {FlexBoxChild} from 'src/Components/FlexBox/FlexBoxChild'
+import {SelectDropdown} from 'src/Components/Dropdowns/Composed/SelectDropdown'
 
 // Types
 import {
@@ -47,11 +47,11 @@ import {
   AlignItems,
   InputType,
   InfluxColors,
-} from '../../Types'
+} from 'src/Types'
 
 // Notes
-import FormReadme from './Form.md'
-import NaturalLanguageFormReadme from './NaturalLanguageForm.md'
+import FormReadme from 'src/Components/Form/Form.md'
+import NaturalLanguageFormReadme from 'src/Components/Form/NaturalLanguageForm.md'
 
 const formStories = storiesOf('Components|Forms/Standard', module)
   .addDecorator(withKnobs)

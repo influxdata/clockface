@@ -5,23 +5,23 @@ import marked from 'marked'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, select, text, boolean} from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from 'src/Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {Table} from './Table'
-import {TableHeader} from './TableHeader'
-import {TableBody} from './TableBody'
-import {TableFooter} from './TableFooter'
-import {TableRow} from './TableRow'
-import {TableCell} from './TableCell'
-import {TableHeaderCell} from './TableHeaderCell'
+import {Table} from 'src/Components/Table/Table'
+import {TableHeader} from 'src/Components/Table/TableHeader'
+import {TableBody} from 'src/Components/Table/TableBody'
+import {TableFooter} from 'src/Components/Table/TableFooter'
+import {TableRow} from 'src/Components/Table/TableRow'
+import {TableCell} from 'src/Components/Table/TableCell'
+import {TableHeaderCell} from 'src/Components/Table/TableHeaderCell'
 
 // Types
-import {Alignment, ComponentSize, BorderType, ComponentColor} from '../../Types'
+import {Alignment, ComponentSize, BorderType, ComponentColor} from 'src/Types'
 
 // Notes
-import TableReadme from './Table.md'
+import TableReadme from 'src/Components/Table/Table.md'
 
 const tableStories = storiesOf('Components|Table/Family', module)
   .addDecorator(withKnobs)

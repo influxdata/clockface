@@ -8,7 +8,7 @@ import {ResourceListSorter} from './ResourceListSorter'
 import {ResourceListBody} from './ResourceListBody'
 
 // Types
-import {StandardClassProps} from '../../../Types'
+import {StandardClassProps} from 'src/Types'
 
 // Styles
 import './ResourceList.scss'

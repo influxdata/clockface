@@ -3,14 +3,14 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {EmptyStateText} from './EmptyStateText'
-import {EmptyStateSubText} from './EmptyStateSubText'
+import {EmptyStateText} from 'src/Components/EmptyState/EmptyStateText'
+import {EmptyStateSubText} from 'src/Components/EmptyState/EmptyStateSubText'
 
 // Types
-import {ComponentSize, StandardClassProps} from '../../Types'
+import {ComponentSize, StandardClassProps} from 'src/Types'
 
 // Styles
-import './EmptyState.scss'
+import 'src/Components/EmptyState/EmptyState.scss'
 
 interface Props extends StandardClassProps {
   /** Controls vertical padding in container and font size of children */
