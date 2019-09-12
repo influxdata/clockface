@@ -8,7 +8,7 @@ import React, {
 import classnames from 'classnames'
 
 // Styles
-import './TextArea.scss'
+import 'src/Components/Inputs/TextArea.scss'
 
 // Types
 import {
@@ -16,7 +16,7 @@ import {
   ComponentSize,
   AutoComplete,
   StandardClassProps,
-} from '../../Types'
+} from 'src/Types'
 
 export enum Wrap {
   Hard = 'hard',

@@ -13,19 +13,19 @@ import {
   array,
 } from '@storybook/addon-knobs'
 import {withState} from '@dump247/storybook-state'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from 'src/Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {Radio} from './Radio'
+import {Radio} from 'src/Components/Radio/Radio'
 
 // Types
-import {ComponentColor, ComponentSize, ButtonShape} from '../../Types'
+import {ComponentColor, ComponentSize, ButtonShape} from 'src/Types'
 
 // Notes
-import RadioReadme from './Radio.md'
-import RadioButtonReadme from './RadioButton.md'
-import RadioExampleReadme from './RadioExample.md'
+import RadioReadme from 'src/Components/Radio/Radio.md'
+import RadioButtonReadme from 'src/Components/Radio/RadioButton.md'
+import RadioExampleReadme from 'src/Components/Radio/RadioExample.md'
 
 // State
 interface StoryState {

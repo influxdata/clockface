@@ -12,29 +12,29 @@ import {
   color,
   select,
 } from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from 'src/Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {Overlay} from './Overlay'
-import {OverlayContainer} from './OverlayContainer'
-import {OverlayMask} from './OverlayMask'
-import {OverlayHeader} from './OverlayHeader'
-import {OverlayBody} from './OverlayBody'
-import {OverlayFooter} from './OverlayFooter'
-import {Button} from '../Button/Composed/Button'
+import {Overlay} from 'src/Components/Overlay/Overlay'
+import {OverlayContainer} from 'src/Components/Overlay/OverlayContainer'
+import {OverlayMask} from 'src/Components/Overlay/OverlayMask'
+import {OverlayHeader} from 'src/Components/Overlay/OverlayHeader'
+import {OverlayBody} from 'src/Components/Overlay/OverlayBody'
+import {OverlayFooter} from 'src/Components/Overlay/OverlayFooter'
+import {Button} from 'src/Components/Button/Composed/Button'
 
 // Types
-import {Gradients, ComponentColor} from '../../Types'
+import {Gradients, ComponentColor} from 'src/Types'
 
 // Notes
-import OverlayReadme from './Overlay.md'
-import OverlayContainerReadme from './OverlayContainer.md'
-import OverlayMaskReadme from './OverlayMask.md'
-import OverlayHeaderReadme from './OverlayHeader.md'
-import OverlayBodyReadme from './OverlayBody.md'
-import OverlayFooterReadme from './OverlayFooter.md'
-import ConfirmationOverlayReadme from './ConfirmationOverlay.md'
+import OverlayReadme from 'src/Components/Overlay/Overlay.md'
+import OverlayContainerReadme from 'src/Components/Overlay/OverlayContainer.md'
+import OverlayMaskReadme from 'src/Components/Overlay/OverlayMask.md'
+import OverlayHeaderReadme from 'src/Components/Overlay/OverlayHeader.md'
+import OverlayBodyReadme from 'src/Components/Overlay/OverlayBody.md'
+import OverlayFooterReadme from 'src/Components/Overlay/OverlayFooter.md'
+import ConfirmationOverlayReadme from 'src/Components/Overlay/ConfirmationOverlay.md'
 
 const instructionsElement = (
   <p>

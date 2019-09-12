@@ -3,10 +3,10 @@ import React, {Component, MouseEvent} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from '../../../Types'
+import {StandardClassProps} from 'src/Types'
 
 // Styles
-import './ResourceCardName.scss'
+import 'src/Components/ResourceList/Card/ResourceCardName.scss'
 
 interface Props extends StandardClassProps {
   /** Text to display as name */

@@ -3,18 +3,18 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {FormElement} from './FormElement'
-import {FormValidationElement} from './FormValidationElement'
-import {FormLabel} from './FormLabel'
-import {FormDivider} from './FormDivider'
-import {FormFooter} from './FormFooter'
-import {FormBox} from './FormBox'
+import {FormElement} from 'src/Components/Form/FormElement'
+import {FormValidationElement} from 'src/Components/Form/FormValidationElement'
+import {FormLabel} from 'src/Components/Form/FormLabel'
+import {FormDivider} from 'src/Components/Form/FormDivider'
+import {FormFooter} from 'src/Components/Form/FormFooter'
+import {FormBox} from 'src/Components/Form/FormBox'
 
 // Types
-import {StandardClassProps, AutoComplete, EncType, Method} from '../../Types'
+import {StandardClassProps, AutoComplete, EncType, Method} from 'src/Types'
 
 // Styles
-import './Form.scss'
+import 'src/Components/Form/Form.scss'
 
 interface Props extends StandardClassProps {
   /** Form submit URI */

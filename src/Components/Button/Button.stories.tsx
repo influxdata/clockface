@@ -6,14 +6,14 @@ import marked from 'marked'
 import {storiesOf} from '@storybook/react'
 import {jsxDecorator} from 'storybook-addon-jsx'
 import {withKnobs, text, select, boolean} from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from 'src/Utils/storybook'
 
 // Components
-import {Button} from './Composed/Button'
-import {SquareButton} from './Composed/SquareButton'
-import {ConfirmationButton} from './Composed/ConfirmationButton'
-import {DismissButton} from './Composed/DismissButton'
-import {ButtonBase} from './Base/ButtonBase'
+import {Button} from 'src/Components/Button/Composed/Button'
+import {SquareButton} from 'src/Components/Button/Composed/SquareButton'
+import {ConfirmationButton} from 'src/Components/Button/Composed/ConfirmationButton'
+import {DismissButton} from 'src/Components/Button/Composed/DismissButton'
+import {ButtonBase} from 'src/Components/Button/Base/ButtonBase'
 
 // Types
 import {
@@ -24,14 +24,14 @@ import {
   ButtonShape,
   ComponentStatus,
   ButtonType,
-} from '../../Types'
+} from 'src/Types'
 
 // Notes
-import ButtonBaseReadme from './Base/ButtonBase.md'
-import ButtonReadme from './Composed/Button.md'
-import SquareButtonReadme from './Composed/SquareButton.md'
-import ConfirmationButtonReadme from './Composed/ConfirmationButton.md'
-import DismissButtonReadme from './Composed/DismissButton.md'
+import ButtonBaseReadme from 'src/Components/Button/Base/ButtonBase.md'
+import ButtonReadme from 'src/Components/Button/Composed/Button.md'
+import SquareButtonReadme from 'src/Components/Button/Composed/SquareButton.md'
+import ConfirmationButtonReadme from 'src/Components/Button/Composed/ConfirmationButton.md'
+import DismissButtonReadme from 'src/Components/Button/Composed/DismissButton.md'
 
 const buttonBaseStories = storiesOf('Components|Buttons/Base', module)
   .addDecorator(withKnobs)

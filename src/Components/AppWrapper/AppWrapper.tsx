@@ -3,10 +3,10 @@ import React, {PureComponent} from 'react'
 import classnames from 'classnames'
 
 // Styles
-import './AppWrapper.scss'
+import 'src/Components/AppWrapper/AppWrapper.scss'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardClassProps} from 'src/Types'
 
 interface Props extends StandardClassProps {
   /** Hides the page header and nav menu so that the contents can take up the whole screen */

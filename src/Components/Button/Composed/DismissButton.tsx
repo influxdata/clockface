@@ -16,7 +16,7 @@ import {
   IconFont,
   ComponentSize,
   ButtonType,
-} from '../../../Types'
+} from 'src/Types'
 
 interface Props extends StandardClassProps {
   /** Function to be called on button click */

@@ -3,15 +3,15 @@ import React, {PureComponent} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {ResourceListHeader} from './ResourceListHeader'
-import {ResourceListSorter} from './ResourceListSorter'
-import {ResourceListBody} from './ResourceListBody'
+import {ResourceListHeader} from 'src/Components/ResourceList/List/ResourceListHeader'
+import {ResourceListSorter} from 'src/Components/ResourceList/List/ResourceListSorter'
+import {ResourceListBody} from 'src/Components/ResourceList/List/ResourceListBody'
 
 // Types
-import {StandardClassProps} from '../../../Types'
+import {StandardClassProps} from 'src/Types'
 
 // Styles
-import './ResourceList.scss'
+import 'src/Components/ResourceList/List/ResourceList.scss'
 
 interface Props extends StandardClassProps {}
 

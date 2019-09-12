@@ -5,19 +5,19 @@ import marked from 'marked'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, select} from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from 'src/Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {Grid} from './Grid'
-import {GridRow} from './GridRow'
-import {GridColumn} from './GridColumn'
+import {Grid} from 'src/Components/Grid/Grid'
+import {GridRow} from 'src/Components/Grid/GridRow'
+import {GridColumn} from 'src/Components/Grid/GridColumn'
 
 // Types
-import {Columns} from '../../Types'
+import {Columns} from 'src/Types'
 
 // Notes
-import GridReadme from './Grid.md'
+import GridReadme from 'src/Components/Grid/Grid.md'
 
 const gridStories = storiesOf('Layout|12 Column Grid', module)
   .addDecorator(withKnobs)

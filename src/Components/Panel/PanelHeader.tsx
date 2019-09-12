@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {FlexBox} from '../FlexBox/FlexBox'
+import {FlexBox} from 'src/Components/FlexBox/FlexBox'
 
 // Types
 import {
@@ -12,7 +12,7 @@ import {
   AlignItems,
   StandardClassProps,
   ComponentSize,
-} from '../../Types'
+} from 'src/Types'
 
 interface Props extends StandardClassProps {
   /** Vertical or horizontal flex alignment */

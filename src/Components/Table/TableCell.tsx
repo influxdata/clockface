@@ -3,7 +3,7 @@ import React, {Component, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps, Alignment, VerticalAlignment} from '../../Types'
+import {StandardClassProps, Alignment, VerticalAlignment} from 'src/Types'
 
 interface Props extends StandardClassProps {
   /** How many columns this cell should take up */

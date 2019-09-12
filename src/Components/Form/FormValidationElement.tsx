@@ -3,12 +3,12 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {FormLabel} from './FormLabel'
-import {FormElementError} from './FormElementError'
-import {FormHelpText} from './FormHelpText'
+import {FormLabel} from 'src/Components/Form/FormLabel'
+import {FormElementError} from 'src/Components/Form/FormElementError'
+import {FormHelpText} from 'src/Components/Form/FormHelpText'
 
 // Types
-import {StandardClassProps, ComponentStatus} from '../../Types'
+import {StandardClassProps, ComponentStatus} from 'src/Types'
 
 interface Props extends StandardClassProps {
   /** Child components */

@@ -4,18 +4,14 @@ import ReactDatePicker from 'react-datepicker'
 import moment from 'moment'
 
 // Components
-import {Input} from '../../Inputs/Input'
-import {Form} from '../../Form/Form'
+import {Input} from 'src/Components/Inputs/Input'
+import {Form} from 'src/Components/Form/Form'
 
 // Styles
-import '../DatePicker.scss'
+import 'src/Components/DatePicker/DatePicker.scss'
 
 // Types
-import {
-  ComponentSize,
-  ComponentStatus,
-  StandardClassProps,
-} from '../../../Types'
+import {ComponentSize, ComponentStatus, StandardClassProps} from 'src/Types'
 
 interface Props extends StandardClassProps {
   /** Label for input field */

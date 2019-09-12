@@ -5,23 +5,23 @@ import marked from 'marked'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, select, number, text} from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from 'src/Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {SpinnerContainer} from './SpinnerContainer'
-import {SparkleSpinner} from './SparkleSpinner'
-import {TechnoSpinner} from './TechnoSpinner'
-import {WaitingText} from './WaitingText'
+import {SpinnerContainer} from 'src/Components/Spinners/SpinnerContainer'
+import {SparkleSpinner} from 'src/Components/Spinners/SparkleSpinner'
+import {TechnoSpinner} from 'src/Components/Spinners/TechnoSpinner'
+import {WaitingText} from 'src/Components/Spinners/WaitingText'
 
 // Types
-import {ComponentSize, RemoteDataState} from '../../Types'
+import {ComponentSize, RemoteDataState} from 'src/Types'
 
 // Notes
-import SpinnerContainerReadme from './SpinnerContainer.md'
-import TechnoSpinnerReadme from './TechnoSpinner.md'
-import SparkleSpinnerReadme from './SparkleSpinner.md'
-import WaitingTextReadme from './WaitingText.md'
+import SpinnerContainerReadme from 'src/Components/Spinners/SpinnerContainer.md'
+import TechnoSpinnerReadme from 'src/Components/Spinners/TechnoSpinner.md'
+import SparkleSpinnerReadme from 'src/Components/Spinners/SparkleSpinner.md'
+import WaitingTextReadme from 'src/Components/Spinners/WaitingText.md'
 
 const spinnerContainerStories = storiesOf(
   'Components|Spinners/Container',

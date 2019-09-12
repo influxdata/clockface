@@ -3,7 +3,7 @@ import React, {Component, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {InfluxColors, StandardClassProps} from '../../Types'
+import {InfluxColors, StandardClassProps} from 'src/Types'
 
 interface Props extends StandardClassProps {
   /** Optional coloration for horizontal rule in divider */

@@ -3,10 +3,10 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardClassProps} from 'src/Types'
 
 // Constants
-import {DEFAULT_OFFSET} from '../../Constants/pageLayout'
+import {DEFAULT_OFFSET} from 'src/Constants/pageLayout'
 
 interface Props extends StandardClassProps {}
 

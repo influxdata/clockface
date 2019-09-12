@@ -3,7 +3,7 @@ import React, {FunctionComponent, createRef, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {Popover} from '../Base/Popover'
+import {Popover} from 'src/Components/Popover/Base/Popover'
 
 // Types
 import {
@@ -11,10 +11,10 @@ import {
   ComponentColor,
   PopoverInteraction,
   PopoverType,
-} from '../../../Types'
+} from 'src/Types'
 
 // Styles
-import './QuestionMarkTooltip.scss'
+import 'src/Components/Popover/Composed/QuestionMarkTooltip.scss'
 
 interface Props extends StandardFunctionProps {
   /** Controls the size of the question mark circle */

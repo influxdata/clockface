@@ -2,7 +2,7 @@
 import React, {Component} from 'react'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardClassProps} from 'src/Types'
 
 interface Props extends StandardClassProps {
   /** Text to be displayed on error */

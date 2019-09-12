@@ -3,10 +3,10 @@ import React, {PureComponent, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {Gradients, Orientation, StandardClassProps} from '../../Types'
+import {Gradients, Orientation, StandardClassProps} from 'src/Types'
 
 // Constants
-import {getColorsFromGradient} from '../../Constants/colors'
+import {getColorsFromGradient} from 'src/Constants/colors'
 
 interface Props extends StandardClassProps {
   /** Expects a number between 0 - 1 */

@@ -3,11 +3,11 @@ import React, {Component, createRef, MouseEvent, RefObject} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {ClickOutside} from '../../ClickOutside/ClickOutside'
+import {ClickOutside} from 'src/Components/ClickOutside/ClickOutside'
 
 // Utilities
-import {convertCSSPropertiesToString} from '../../../Utils/index'
-import {calculatePopoverStyles} from '../../../Utils/popovers'
+import {convertCSSPropertiesToString} from 'src/Utils/index'
+import {calculatePopoverStyles} from 'src/Utils/popovers'
 
 // Types
 import {
@@ -15,7 +15,7 @@ import {
   StandardClassProps,
   PopoverType,
   PopoverPosition,
-} from '../../../Types'
+} from 'src/Types'
 
 interface Props extends StandardClassProps {
   /** Bounding rectangle of trigger element */

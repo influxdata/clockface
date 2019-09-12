@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {Alignment, Sort, StandardClassProps} from '../../Types'
+import {Alignment, Sort, StandardClassProps} from 'src/Types'
 
 export interface IndexHeaderCellProps {
   /** Can be a % or px */

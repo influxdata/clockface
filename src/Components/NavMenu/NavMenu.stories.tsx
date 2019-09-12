@@ -4,21 +4,21 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from 'src/Utils/storybook'
 import {withKnobs, boolean, text, select, radios} from '@storybook/addon-knobs'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {NavMenu} from '../../Components/NavMenu/NavMenu'
-import {Icon} from '../../Components/Icon/Icon'
+import {NavMenu} from 'src/Components/NavMenu/NavMenu'
+import {Icon} from 'src/Components/Icon/Icon'
 
 // Types
-import {IconFont} from '../../Types'
+import {IconFont} from 'src/Types'
 
 // Notes
-import NavMenuReadme from './NavMenu.md'
-import NavMenuItemReadme from './NavMenuItem.md'
-import NavMenuSubItemReadme from './NavMenuSubItem.md'
+import NavMenuReadme from 'src/Components/NavMenu/NavMenu.md'
+import NavMenuItemReadme from 'src/Components/NavMenu/NavMenuItem.md'
+import NavMenuSubItemReadme from 'src/Components/NavMenu/NavMenuSubItem.md'
 
 const navMenuStories = storiesOf('Components|Navigation/NavMenu', module)
   .addDecorator(withKnobs)

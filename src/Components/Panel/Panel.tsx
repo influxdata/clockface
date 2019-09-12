@@ -10,20 +10,20 @@ import {
   InfluxColors,
   StandardClassProps,
   ComponentColor,
-} from '../../Types'
+} from 'src/Types'
 
 // Constants
-import {getColorsFromGradient} from '../../Constants/colors'
+import {getColorsFromGradient} from 'src/Constants/colors'
 
 // Components
-import {PanelHeader} from './PanelHeader'
-import {PanelTitle} from './PanelTitle'
-import {PanelBody} from './PanelBody'
-import {PanelFooter} from './PanelFooter'
-import {DismissButton} from '../Button/Composed/DismissButton'
+import {PanelHeader} from 'src/Components/Panel/PanelHeader'
+import {PanelTitle} from 'src/Components/Panel/PanelTitle'
+import {PanelBody} from 'src/Components/Panel/PanelBody'
+import {PanelFooter} from 'src/Components/Panel/PanelFooter'
+import {DismissButton} from 'src/Components/Button/Composed/DismissButton'
 
 // Styles
-import './Panel.scss'
+import 'src/Components/Panel/Panel.scss'
 
 interface Props extends StandardClassProps {
   /** Optional gradient theme of panel, supercedes backgroundColor prop */

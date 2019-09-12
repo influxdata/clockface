@@ -2,7 +2,7 @@
 import React, {PureComponent} from 'react'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardClassProps} from 'src/Types'
 
 interface Props extends StandardClassProps {
   /** Text to display in title */

@@ -2,7 +2,7 @@
 import React, {Component} from 'react'
 
 // Types
-import {IconFont, StandardClassProps} from '../../Types'
+import {IconFont, StandardClassProps} from 'src/Types'
 
 interface Props extends StandardClassProps {
   /** Icon to display */
