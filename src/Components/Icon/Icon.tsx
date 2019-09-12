@@ -2,9 +2,9 @@
 import React, {Component} from 'react'
 
 // Types
-import {IconFont, StandardProps} from '../../Types'
+import {IconFont, StandardClassProps} from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Icon to display */
   glyph: IconFont | string
 }

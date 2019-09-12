@@ -3,9 +3,9 @@ import React, {Component, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardProps, Alignment, VerticalAlignment} from '../../Types'
+import {StandardClassProps, Alignment, VerticalAlignment} from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** How many columns this cell should take up */
   colSpan: number
   /** Horizontal alignment of contents */

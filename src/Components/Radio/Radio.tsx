@@ -10,13 +10,13 @@ import {
   ComponentColor,
   ComponentSize,
   ButtonShape,
-  StandardProps,
+  StandardClassProps,
 } from '../../Types'
 
 // Styles
 import './Radio.scss'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Radio color */
   color: ComponentColor
   /** Radio size */

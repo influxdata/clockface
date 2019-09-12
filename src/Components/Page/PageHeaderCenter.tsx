@@ -3,12 +3,12 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardProps} from '../../Types'
+import {StandardClassProps} from '../../Types'
 
 // Constants
 import {DEFAULT_PAGE_HEADER_CENTER_WIDTH} from '../../Constants/pageLayout'
 
-interface Props extends StandardProps {}
+interface Props extends StandardClassProps {}
 
 export class PageHeaderCenter extends Component<Props> {
   public static readonly displayName = 'PageHeaderCenter'

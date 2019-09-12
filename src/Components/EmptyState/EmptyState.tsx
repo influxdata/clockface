@@ -7,12 +7,12 @@ import {EmptyStateText} from './EmptyStateText'
 import {EmptyStateSubText} from './EmptyStateSubText'
 
 // Types
-import {ComponentSize, StandardProps} from '../../Types'
+import {ComponentSize, StandardClassProps} from '../../Types'
 
 // Styles
 import './EmptyState.scss'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Controls vertical padding in container and font size of children */
   size: ComponentSize
 }

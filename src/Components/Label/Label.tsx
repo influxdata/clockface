@@ -4,12 +4,12 @@ import chroma from 'chroma-js'
 import classnames from 'classnames'
 
 // Types
-import {StandardProps, ComponentSize, InfluxColors} from '../../Types'
+import {StandardClassProps, ComponentSize, InfluxColors} from '../../Types'
 
 // Styles
 import './Label.scss'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Unique value to be returned when Label is clicked */
   id: string
   /** Name of the Label, appears inside the label */

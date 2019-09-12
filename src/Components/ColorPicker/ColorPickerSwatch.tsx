@@ -3,9 +3,9 @@ import React, {Component, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardProps} from '../../Types'
+import {StandardClassProps} from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Color name */
   name: string
   /** Color hex value */

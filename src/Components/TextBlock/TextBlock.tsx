@@ -4,12 +4,12 @@ import chroma from 'chroma-js'
 import classnames from 'classnames'
 
 // Types
-import {StandardProps, InfluxColors, ComponentSize} from '../../Types'
+import {StandardClassProps, InfluxColors, ComponentSize} from '../../Types'
 
 // Styles
 import './TextBlock.scss'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Contents of text block */
   text: string
   /** Sizing of text block, should be the same as the adjacent form elements */

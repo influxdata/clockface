@@ -11,7 +11,7 @@ import {ClickOutside} from '../../ClickOutside/ClickOutside'
 
 // Types
 import {
-  StandardProps,
+  StandardClassProps,
   ComponentSize,
   RemoteDataState,
   IconFont,
@@ -20,7 +20,7 @@ import {
 // Styles
 import './ResourceCardEditableName.scss'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Called when editing is finished, new name is passed  */
   onUpdate: (name: string) => void
   /** Text to display as name */

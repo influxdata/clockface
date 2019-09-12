@@ -19,11 +19,11 @@ import {
   ComponentSize,
   IconFont,
   AutoComplete,
-  StandardProps,
+  StandardClassProps,
   InputType,
 } from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Minimum value for number & range types */
   min?: number
   /** Maximum value for number & range types */

@@ -2,9 +2,9 @@
 import React, {Component} from 'react'
 
 // Types
-import {StandardProps} from '../../Types'
+import {StandardClassProps} from '../../Types'
 
-interface Props extends StandardProps {}
+interface Props extends StandardClassProps {}
 
 export class IndexListHeader extends Component<Props> {
   public static readonly displayName = 'IndexListHeader'

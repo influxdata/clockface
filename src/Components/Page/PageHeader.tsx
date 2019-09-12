@@ -8,9 +8,9 @@ import {PageHeaderCenter} from './PageHeaderCenter'
 import {PageHeaderRight} from './PageHeaderRight'
 
 // Types
-import {StandardProps, ComponentSize} from '../../Types'
+import {StandardClassProps, ComponentSize} from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Allows the page header to fill the width of the screen */
   fullWidth: boolean
   /** Controls the gutters (left and right margins) */

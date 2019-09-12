@@ -7,9 +7,9 @@ import _ from 'lodash'
 import {DapperScrollbars} from '../../DapperScrollbars/DapperScrollbars'
 
 // Types
-import {DropdownMenuTheme, InfluxColors, StandardProps} from '../../../Types'
+import {DropdownMenuTheme, InfluxColors, StandardClassProps} from '../../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Pixel width of menu, if empty the menu will match the width of its parent  */
   overrideWidth?: number
   /** Pixel height after which the dropdown menu will scroll */

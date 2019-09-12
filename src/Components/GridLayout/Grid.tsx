@@ -7,12 +7,12 @@ import {GridRow} from './GridRow'
 import {GridColumn} from './GridColumn'
 
 // Types
-import {StandardProps} from '../../Types'
+import {StandardClassProps} from '../../Types'
 
 // Styles
 import './Grid.scss'
 
-interface Props extends StandardProps {}
+interface Props extends StandardClassProps {}
 
 export class Grid extends Component<Props> {
   public static readonly displayName = 'Grid'

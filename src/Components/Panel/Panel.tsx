@@ -8,7 +8,7 @@ import chroma from 'chroma-js'
 import {
   Gradients,
   InfluxColors,
-  StandardProps,
+  StandardClassProps,
   ComponentColor,
 } from '../../Types'
 
@@ -25,7 +25,7 @@ import {DismissButton} from '../Button/Composed/DismissButton'
 // Styles
 import './Panel.scss'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Optional gradient theme of panel, supercedes backgroundColor prop */
   gradient?: Gradients
   /** Optional background color of panel */

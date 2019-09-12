@@ -12,12 +12,12 @@ import {calculatePopoverStyles} from '../../../Utils/popovers'
 // Types
 import {
   ComponentColor,
-  StandardProps,
+  StandardClassProps,
   PopoverType,
   PopoverPosition,
 } from '../../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Bounding rectangle of trigger element */
   triggerRef: RefObject<any>
   /** Pixel distance between trigger and popover dialog */

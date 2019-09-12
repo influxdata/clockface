@@ -11,9 +11,9 @@ import {Form} from '../../Form/Form'
 import '../DatePicker.scss'
 
 // Types
-import {ComponentSize, ComponentStatus, StandardProps} from '../../../Types'
+import {ComponentSize, ComponentStatus, StandardClassProps} from '../../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Label for input field */
   label: string
   /** Date value */

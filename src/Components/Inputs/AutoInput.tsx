@@ -7,7 +7,7 @@ import {Radio} from '../Radio/Radio'
 
 // Types
 import {
-  StandardProps,
+  StandardClassProps,
   ButtonShape,
   ComponentColor,
   ComponentSize,
@@ -17,7 +17,7 @@ import {
 // Styles
 import './AutoInput.scss'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Pass in a component of type "Input" */
   inputComponent: JSX.Element
   /** Fires when the radio is toggled and the mode changes */

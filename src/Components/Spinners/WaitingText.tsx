@@ -6,9 +6,9 @@ import classnames from 'classnames'
 import './WaitingText.scss'
 
 // Types
-import {StandardProps} from '../../Types'
+import {StandardClassProps} from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Text to be displayed */
   text: string
 }

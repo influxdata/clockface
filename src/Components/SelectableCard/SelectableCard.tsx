@@ -7,7 +7,7 @@ import {Icon} from '../Icon/Icon'
 
 // Types
 import {
-  StandardProps,
+  StandardClassProps,
   ComponentSize,
   ComponentColor,
   IconFont,
@@ -16,7 +16,7 @@ import {
 // Styles
 import './SelectableCard.scss'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Text label */
   label: string
   /** Useful for toggling selected state */

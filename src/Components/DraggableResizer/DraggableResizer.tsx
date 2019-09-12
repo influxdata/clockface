@@ -7,7 +7,7 @@ import {DraggableResizerPanel} from './DraggableResizerPanel'
 import {DraggableResizerHandle} from './DraggableResizerHandle'
 
 // Types
-import {StandardProps, Orientation, Gradients} from '../../Types'
+import {StandardClassProps, Orientation, Gradients} from '../../Types'
 
 // Styles
 import './DraggableResizer.scss'
@@ -15,7 +15,7 @@ import './DraggableResizer.scss'
 // Constants
 const NULL_DRAG = -1
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Orientation the draggable panels stack in */
   handleOrientation: Orientation
   /** Expects and array of numbers between 0 - 1 */

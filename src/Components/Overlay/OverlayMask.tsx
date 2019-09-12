@@ -3,12 +3,12 @@ import React, {PureComponent, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {InfluxColors, Gradients, StandardProps} from '../../Types'
+import {InfluxColors, Gradients, StandardClassProps} from '../../Types'
 
 // Constants
 import {getColorsFromGradient} from '../../Constants/colors'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Optional gradient theme of panel*/
   gradient: Gradients
   /** Optional background color of panel, supercedes gradient prop  */

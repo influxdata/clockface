@@ -3,9 +3,9 @@ import React, {PureComponent} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardProps} from '../../../Types'
+import {StandardClassProps} from '../../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Used for rendering a filter input above the list, opposite the sort headers */
   filterComponent?: JSX.Element
 }

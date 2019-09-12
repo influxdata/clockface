@@ -9,9 +9,9 @@ import {SlideToggleLabel} from './SlideToggleLabel'
 import './SlideToggle.scss'
 
 // Types
-import {ComponentColor, ComponentSize, StandardProps} from '../../Types'
+import {ComponentColor, ComponentSize, StandardClassProps} from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Function to be called on slide toggle state change */
   onChange: () => void
   /** Toggles slide toggle active state */

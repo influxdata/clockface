@@ -3,9 +3,9 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {Columns, StandardProps} from '../../Types'
+import {Columns, StandardClassProps} from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Number of columns spanned when viewport width is less than 750px */
   widthXS: Columns
   /** Number of columns spanned when viewport width is greater than 750px */

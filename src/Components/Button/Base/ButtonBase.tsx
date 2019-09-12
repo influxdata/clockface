@@ -12,10 +12,10 @@ import {
   ComponentSize,
   ButtonShape,
   ButtonType,
-  StandardProps,
+  StandardClassProps,
 } from '../../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Function to be called on button click */
   onClick?: (e?: MouseEvent<HTMLButtonElement>) => void
   /** Text to be displayed on hover tooltip */

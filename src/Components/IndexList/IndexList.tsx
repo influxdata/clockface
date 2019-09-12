@@ -9,12 +9,12 @@ import {IndexListRow} from './IndexListRow'
 import {IndexListRowCell} from './IndexListRowCell'
 
 // Types
-import {StandardProps} from '../../Types'
+import {StandardClassProps} from '../../Types'
 
 // Styles
 import './IndexList.scss'
 
-interface Props extends StandardProps {}
+interface Props extends StandardClassProps {}
 
 export class IndexList extends Component<Props> {
   public static readonly displayName = 'IndexList'

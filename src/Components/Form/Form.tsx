@@ -11,12 +11,12 @@ import {FormFooter} from './FormFooter'
 import {FormBox} from './FormBox'
 
 // Types
-import {StandardProps, AutoComplete, EncType, Method} from '../../Types'
+import {StandardClassProps, AutoComplete, EncType, Method} from '../../Types'
 
 // Styles
 import './Form.scss'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Form submit URI */
   action?: string
   /** A space-delimited list of character encodings. */

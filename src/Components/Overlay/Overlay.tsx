@@ -11,12 +11,12 @@ import {OverlayFooter} from './OverlayFooter'
 import {DapperScrollbars} from '../DapperScrollbars/DapperScrollbars'
 
 // Types
-import {StandardProps, InfluxColors} from '../../Types'
+import {StandardClassProps, InfluxColors} from '../../Types'
 
 // Styles
 import './Overlay.scss'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Controls showing/hiding the overlay */
   visible: boolean
   /** Will replace the mask element with a custom element, useful for customizing the mask appearance */

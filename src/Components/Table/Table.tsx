@@ -14,9 +14,9 @@ import {TableHeaderCell} from './TableHeaderCell'
 import './Table.scss'
 
 // Types
-import {StandardProps, ComponentSize, BorderType} from '../../Types'
+import {StandardClassProps, ComponentSize, BorderType} from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Padding inside every cell in the table */
   cellPadding: ComponentSize
   /** Font size of table elements */

@@ -4,9 +4,9 @@ import chroma from 'chroma-js'
 import classnames from 'classnames'
 
 // Types
-import {StandardProps, InfluxColors, ComponentSize} from '../../Types'
+import {StandardClassProps, InfluxColors, ComponentSize} from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Renders the tab highlighted */
   active: boolean
   /** Size of tab */

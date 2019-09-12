@@ -19,10 +19,10 @@ import {
   DropdownMenuTheme,
   DropdownItemType,
   ComponentStatus,
-  StandardProps,
+  StandardClassProps,
 } from '../../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Text to render in button as currently selected option */
   selectedOptions: string[]
   /** List of options to render in menu */

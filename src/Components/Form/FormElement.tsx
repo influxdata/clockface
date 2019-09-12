@@ -8,9 +8,9 @@ import {FormElementError} from './FormElementError'
 import {FormHelpText} from './FormHelpText'
 
 // Types
-import {StandardProps} from '../../Types'
+import {StandardClassProps} from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Label Text */
   label: string
   /** Input instruction text */

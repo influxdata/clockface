@@ -10,7 +10,7 @@ import './RangeSlider.scss'
 // Types
 import {
   InputType,
-  StandardProps,
+  StandardClassProps,
   ComponentColor,
   Orientation,
   ComponentSize,
@@ -19,7 +19,7 @@ import {
   InfluxColors,
 } from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Minimum value */
   min: number
   /** Maximum value */

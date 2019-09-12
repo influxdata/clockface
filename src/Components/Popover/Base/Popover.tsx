@@ -13,13 +13,13 @@ import './Popover.scss'
 // Types
 import {
   ComponentColor,
-  StandardProps,
+  StandardClassProps,
   PopoverInteraction,
   PopoverPosition,
   PopoverType,
 } from '../../../Types'
 
-export interface PopoverProps extends StandardProps {
+export interface PopoverProps extends StandardClassProps {
   /** Popover dialog color */
   color: ComponentColor
   /** Popover dialog contents */

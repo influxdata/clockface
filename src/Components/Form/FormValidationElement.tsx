@@ -8,9 +8,9 @@ import {FormElementError} from './FormElementError'
 import {FormHelpText} from './FormHelpText'
 
 // Types
-import {StandardProps, ComponentStatus} from '../../Types'
+import {StandardClassProps, ComponentStatus} from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Child components */
   children: (status: ComponentStatus) => React.ReactNode
   /** Function used for validation check */

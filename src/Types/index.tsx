@@ -4,7 +4,7 @@ import {CSSProperties} from 'react'
 export type Omit<K, V> = Pick<K, Exclude<keyof K, V>>
 
 // Shared Data Types
-export interface StandardProps {
+export interface StandardClassProps {
   /** Useful for overriding styles of the component and its constituent elements */
   className?: string
   /** ID for Integration Tests */

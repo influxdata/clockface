@@ -9,12 +9,12 @@ import {PageSubTitle} from './PageSubTitle'
 import {PageContents} from './PageContents'
 
 // Types
-import {StandardProps} from '../../Types'
+import {StandardClassProps} from '../../Types'
 
 // Styles
 import './Page.scss'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Use this prop to update document.title when the page first renders &  on subsequent updates */
   titleTag?: string
 }

@@ -11,10 +11,10 @@ import {
   JustifyContent,
   AlignItems,
   ComponentSize,
-  StandardProps,
+  StandardClassProps,
 } from '../../Types'
 
-interface Props extends StandardProps {}
+interface Props extends StandardClassProps {}
 
 export class OverlayFooter extends PureComponent<Props> {
   public static readonly displayName = 'OverlayFooter'

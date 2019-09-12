@@ -3,9 +3,9 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {Alignment, StandardProps} from '../../Types'
+import {Alignment, StandardClassProps} from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Text alignment of contents */
   alignment: Alignment
   /** If true the contents of this cell will be hidden until the containing row is hovered */

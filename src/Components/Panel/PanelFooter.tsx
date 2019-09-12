@@ -3,9 +3,9 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardProps, ComponentSize} from '../../Types'
+import {StandardClassProps, ComponentSize} from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Controls padding */
   size: ComponentSize
 }

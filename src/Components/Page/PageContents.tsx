@@ -6,9 +6,9 @@ import classnames from 'classnames'
 import {DapperScrollbars} from '../DapperScrollbars/DapperScrollbars'
 
 // Types
-import {StandardProps, ComponentSize} from '../../Types'
+import {StandardClassProps, ComponentSize} from '../../Types'
 
-interface Props extends StandardProps {
+interface Props extends StandardClassProps {
   /** Allows the page contents to fill the width of the screen */
   fullWidth: boolean
   /** Allows contents to scroll on overflow */
