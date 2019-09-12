@@ -1,7 +1,7 @@
 // Libraries
 import React, {Component, RefObject, MouseEvent} from 'react'
-// import classnames from 'classnames'
 import {createPortal} from 'react-dom'
+import uuid from 'uuid'
 
 // Components
 import {DismissButton} from '../Button/Composed/DismissButton'
@@ -82,13 +82,17 @@ export class Popover extends Component<PopoverProps, State> {
       expanded: this.props.visible,
     }
   }
-
-  private triggerReceivedHandlers = false
+  
+  private uniquePortalID: string = ''
+  private triggerReceivedHandlers: boolean = false
 
   public componentDidMount() {
+    this.uniquePortalID = `cf-popover-portal-${uuid.v4()}`
     this.handleCreatePortalElement()
     this.handleAddEventListeners()
 
+    // This extra re-render is required so that
+    // triggerRef.current has rendered and is true when passed in
     if (this.props.visible) {
       this.handleShowDialog()
     } else {
@@ -129,7 +133,7 @@ export class Popover extends Component<PopoverProps, State> {
       id,
     } = this.props
     const {expanded} = this.state
-    const portalElement = document.getElementById('cf-popover-portal')
+    const portalElement = document.getElementById(this.uniquePortalID)
 
     if (!portalElement) {
       return null
@@ -224,7 +228,7 @@ export class Popover extends Component<PopoverProps, State> {
   }
 
   private handleCreatePortalElement = (): void => {
-    const portalExists = document.getElementById('cf-popover-portal')
+    const portalExists = document.getElementById(this.uniquePortalID)
 
     if (portalExists) {
       return
@@ -232,13 +236,13 @@ export class Popover extends Component<PopoverProps, State> {
 
     const portalElement = document.createElement('div')
     portalElement.setAttribute('class', 'cf-popover-portal')
-    portalElement.setAttribute('id', 'cf-popover-portal')
+    portalElement.setAttribute('id', this.uniquePortalID)
 
     document.body.appendChild(portalElement)
   }
 
   private handleDestroyPortalElement = (): void => {
-    const portalElement = document.getElementById('cf-popover-portal')
+    const portalElement = document.getElementById(this.uniquePortalID)
 
     if (portalElement) {
       portalElement.remove()

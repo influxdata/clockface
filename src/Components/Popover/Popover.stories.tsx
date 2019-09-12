@@ -51,17 +51,21 @@ const exampleStyle = {
 popoverStories.add(
   'Popover',
   () => {
-    const triggerRef = React.createRef<HTMLDivElement>()
+    const triggerRefA = React.createRef<HTMLDivElement>()
+    const triggerRefB = React.createRef<HTMLDivElement>()
 
     return (
       <div className="story--example">
-        <div className="mockComponent mockButton" ref={triggerRef}>
+        <div className="mockComponent mockButton" ref={triggerRefA} style={{marginRight: '60px'}}>
           Popover Trigger Element
         </div>
+        <div className="mockComponent mockButton" ref={triggerRefB}>
+          Hover Me
+        </div>
         <Popover
-          triggerRef={triggerRef}
+          triggerRef={triggerRefA}
           visible={boolean('visible', false)}
-          enableDefaultStyles={boolean('enableDefaultStyles', false)}
+          enableDefaultStyles={false}
           contents={onHide => (
             <>
               PopoverContents
@@ -95,6 +99,24 @@ popoverStories.add(
           type={
             PopoverType[select('type', mapEnumKeys(PopoverType), 'Outline')]
           }
+        />
+        <Popover
+          triggerRef={triggerRefB}
+          enableDefaultStyles={boolean('enableDefaultStyles', true)}
+          contents={() => (
+            <>
+              I'm just a simple popover looking for my
+              <br />
+              place in this <strong>vast and beautiful</strong> world.
+              <br/>
+              Will you help me?
+            </>
+          )}
+          showEvent={PopoverInteraction.Hover}
+          hideEvent={PopoverInteraction.Hover}
+          position={PopoverPosition.ToTheRight}
+          color={ComponentColor.Secondary}
+          type={PopoverType.Solid}
         />
       </div>
     )
