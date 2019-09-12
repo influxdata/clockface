@@ -1,3 +1,4 @@
+import {CSSProperties} from 'react'
 import {HEX_CODE_CHAR_LENGTH} from '../Constants/colors'
 
 export const validateHexCode = (colorHex: string): string | null => {
@@ -24,3 +25,12 @@ export const validateHexCode = (colorHex: string): string | null => {
 
   return errorMessage.join(', ')
 }
+
+export const convertCSSPropertiesToString = (styles: CSSProperties): string =>
+  Object.entries(styles).reduce((styleString, [propName, propValue]) => {
+    const formattedPropName = propName.replace(
+      /([A-Z])/g,
+      matches => `-${matches[0].toLowerCase()}`
+    )
+    return `${styleString}${formattedPropName}:${propValue};`
+  }, '')

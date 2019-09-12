@@ -19,6 +19,7 @@ export class AppWrapper extends PureComponent<Props> {
   public static defaultProps = {
     testID: 'app-wrapper',
     presentationMode: false,
+    id: 'cf-app-wrapper',
   }
 
   public render() {

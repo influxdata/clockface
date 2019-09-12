@@ -5,19 +5,19 @@
   ------------------------------------------------------------------------------
 */
 
-$cf-popover-caret: $cf-marg-b;
-
-.cf-popover,
-.cf-popover--trigger {
-  font-size: 0;
+.cf-popover-portal {
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
-.cf-popover--dialog {
+.cf-popover {
   position: fixed;
   z-index: 9999;
 }
 
-.cf-popover--dialog-contents {
+.cf-popover--contents {
   font-size: $cf-text-base;
   background-color: $g2-kevlar;
   border-radius: $cf-radius + $cf-border;
@@ -33,66 +33,38 @@ $cf-popover-caret: $cf-marg-b;
   }
 }
 
+.cf-popover__outline button.cf-dismiss-button {
+  top: -$cf-border;
+  right: -$cf-border;
+}
+
 .cf-popover--caret {
   position: absolute;
-  border: $cf-popover-caret solid transparent;
-
-  &__above {
-    bottom: 0;
-  }
-  &__to-right {
-    left: 0;
-  }
-  &__below {
-    top: 0;
-  }
-  &__to-left {
-    right: 0;
-  }
+  border-color: transparent;
+  border-style: solid;
 }
 
 /*
   Color Modifiers
   ------------------------------------------------------------------------------
 */
+
 @mixin popoverColorModifier($solidColor, $outlineColor, $glowColor, $textColor) {
   // Solid Type
-  &.cf-popover__solid .cf-popover--dialog-contents {
+  &.cf-popover__solid .cf-popover--contents {
     background-color: $solidColor;
     color: $textColor;
   }
   &.cf-popover__solid .cf-popover--caret {
-    &__above {
-      border-top-color: $solidColor;
-    }
-    &__to-right {
-      border-right-color: $solidColor;
-    }
-    &__below {
-      border-bottom-color: $solidColor;
-    }
-    &__to-left {
-      border-left-color: $solidColor;
-    }
+    border-bottom-color: $solidColor;
   }
   // Outline Type
-  &.cf-popover__outline .cf-popover--dialog-contents {
+  &.cf-popover__outline .cf-popover--contents {
     border-color: $outlineColor;
     box-shadow: 0 0 5px 0 $glowColor;
   }
   &.cf-popover__outline .cf-popover--caret {
-    &__above {
-      border-top-color: $outlineColor;
-    }
-    &__to-right {
-      border-right-color: $outlineColor;
-    }
-    &__below {
-      border-bottom-color: $outlineColor;
-    }
-    &__to-left {
-      border-left-color: $outlineColor;
-    }
+    border-bottom-color: $outlineColor;
   }
 }
 
@@ -115,48 +87,62 @@ $cf-popover-caret: $cf-marg-b;
   @include popoverColorModifier($c-curacao, $c-dreamsicle, $c-fire, $g20-white);
 }
 
-
 /*
-  Dismiss Button
+  Refless Variation
   ------------------------------------------------------------------------------
 */
 
-button.cf-popover--dismiss-button {
-  border-radius: 50%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translate(40%, -40%);
-
-  & > .cf-icon {
-    display: none;
+.cf-refless-popover--trigger {
+  &,
+  &:hover {
+    cursor: pointer;
   }
 
-  &:before,
-  &:after {
-    content: '';
-    display: block;
-    position: absolute;
-    width: $form-xs-height - $cf-marg-b - $cf-border;
-    height: $cf-border * 1.5;
-    background-color: $g20-white;
-    border-radius: $cf-border * 1.5 / 2;
-    top: 50%;
-    left: 50%;
-    transition: opacity 0.25s ease;
-    opacity: 0.8;
+  > * {
+    pointer-events: none;
+  }
+}
+
+/*
+  Optional Default Styling
+  ------------------------------------------------------------------------------
+*/
+
+.cf-popover--contents__default-styles {
+  padding: $cf-marg-c;
+  font-size: $cf-text-base + 2px;
+  line-height: 1.5em;
+  font-weight: 500;
+  color: $g13-mist;
+
+  > *:first-child {
+    margin-top: 0;
   }
 
-  &:before {
-    transform: translate(-50%, -50%) rotate(45deg);
+  > *:last-child {
+    margin-bottom: 0;
   }
 
-  &:after {
-    transform: translate(-50%, -50%) rotate(-45deg);
+  strong {
+    color: $g18-cloud;
+    font-weight: 900;
   }
 
-  &:hover:before,
-  &:hover:after {
-    opacity: 1;
+  .cf-popover__solid.cf-popover__primary &,
+  .cf-popover__solid.cf-popover__secondary &,
+  .cf-popover__solid.cf-popover__success &,
+  .cf-popover__solid.cf-popover__danger & {
+    color: rgba($g20-white, 0.8);
+
+    strong {
+      color: $g20-white;
+    }
+  }
+  .cf-popover__solid.cf-popover__warning & {
+    color: rgba($g3-castle, 0.8);
+
+    strong {
+      color: $g3-castle;
+    }
   }
 }
