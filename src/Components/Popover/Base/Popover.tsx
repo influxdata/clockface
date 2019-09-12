@@ -28,6 +28,10 @@ export interface PopoverProps extends StandardProps {
   showEvent: PopoverInteraction
   /** Type of interaction to hide the popover dialog */
   hideEvent: PopoverInteraction
+  /** Callback function fired when state changes to "show" */
+  onShow?: () => void
+  /** Callback function fired when state changes to "hide" */
+  onHide?: () => void
   /** Pixel distance between trigger and popover dialog */
   distanceFromTrigger: number
   /** Size of caret (triangle) that points at the trigger */
@@ -220,10 +224,12 @@ export class Popover extends Component<PopoverProps, State> {
   }
 
   private handleShowDialog = (): void => {
+    this.props.onShow && this.props.onShow()
     this.setState({expanded: true})
   }
 
   private handleHideDialog = (): void => {
+    this.props.onHide && this.props.onHide()
     this.setState({expanded: false})
   }
 
