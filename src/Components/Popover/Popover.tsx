@@ -97,22 +97,7 @@ export class Popover extends Component<PopoverProps, State> {
   }
 
   public componentDidUpdate(prevProps: PopoverProps) {
-    if (!this.triggerReceivedHandlers) {
-      this.triggerReceivedHandlers = true
-
-      this.props.triggerRef.current.addEventListener(
-        'click',
-        this.handleTriggerClick
-      )
-      this.props.triggerRef.current.addEventListener(
-        'mouseover',
-        this.handleTriggerMouseOver
-      )
-      this.props.triggerRef.current.addEventListener(
-        'mouseleave',
-        this.handleTriggerMouseLeave
-      )
-    }
+    this.handleAddEventListeners()
 
     if (prevProps.visible !== this.props.visible) {
       if (this.props.visible) {
@@ -263,14 +248,9 @@ export class Popover extends Component<PopoverProps, State> {
   private handleAddEventListeners = (): void => {
     const {triggerRef} = this.props
 
-    // window.addEventListener('resize', this.handleUpdateTriggerRect)
-    // window.addEventListener('scroll', this.handleUpdateTriggerRect)
-
-    if (!triggerRef.current) {
+    if (!triggerRef.current || this.triggerReceivedHandlers) {
       return
     }
-
-    this.triggerReceivedHandlers = true
 
     triggerRef.current.addEventListener('click', this.handleTriggerClick)
     triggerRef.current.addEventListener(
@@ -281,13 +261,12 @@ export class Popover extends Component<PopoverProps, State> {
       'mouseleave',
       this.handleTriggerMouseLeave
     )
+
+    this.triggerReceivedHandlers = true
   }
 
   private handleRemoveEventListeners = (): void => {
     const {triggerRef} = this.props
-
-    // window.removeEventListener('resize', this.handleUpdateTriggerRect)
-    // window.removeEventListener('scroll', this.handleUpdateTriggerRect)
 
     if (!triggerRef.current) {
       return
