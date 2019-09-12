@@ -13,32 +13,35 @@
   display: inline-flex;
   justify-content: center;
   position: relative;
+  user-select: none;
 
   &:hover {
     cursor: help;
   }
 }
 
-.cf-question-mark-tooltip__default:hover {
-  background-color: $g13-mist;
-}
-
-.cf-question-mark-tooltip__primary:hover {
-  background-color: $c-pool;
-}
-
-.cf-question-mark-tooltip__secondary:hover {
-  background-color: $c-comet;
-}
-
-.cf-question-mark-tooltip__success:hover {
-  background-color: $c-rainforest;
-}
-
-.cf-question-mark-tooltip__warning:hover {
-  background-color: $c-thunder;
-}
-
-.cf-question-mark-tooltip__danger:hover {
-  background-color: $c-dreamsicle;
+.cf-question-mark-tooltip__active {
+  &.cf-question-mark-tooltip__default {
+    background-color: $g13-mist;
+  }
+  
+  &.cf-question-mark-tooltip__primary {
+    background-color: $c-pool;
+  }
+  
+  &.cf-question-mark-tooltip__secondary {
+    background-color: $c-comet;
+  }
+  
+  &.cf-question-mark-tooltip__success {
+    background-color: $c-rainforest;
+  }
+  
+  &.cf-question-mark-tooltip__warning {
+    background-color: $c-thunder;
+  }
+  
+  &.cf-question-mark-tooltip__danger {
+    background-color: $c-dreamsicle;
+  }
 }

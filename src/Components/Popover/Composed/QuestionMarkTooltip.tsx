@@ -55,6 +55,16 @@ export const QuestionMarkTooltip: FunctionComponent<Props> = ({
     ...style,
   }
 
+  const handleActivateCircle = () => {
+    triggerRef.current &&
+      triggerRef.current.classList.add('cf-question-mark-tooltip__active')
+  }
+
+  const handleDeactivateCircle = () => {
+    triggerRef.current &&
+      triggerRef.current.classList.remove('cf-question-mark-tooltip__active')
+  }
+
   return (
     <>
       <div
@@ -70,6 +80,8 @@ export const QuestionMarkTooltip: FunctionComponent<Props> = ({
         triggerRef={triggerRef}
         showEvent={PopoverInteraction.Hover}
         hideEvent={PopoverInteraction.Hover}
+        onShow={handleActivateCircle}
+        onHide={handleDeactivateCircle}
         contents={() => <>{tooltipContents}</>}
         testID={`${testID}-tooltip`}
         style={tooltipStyle}

@@ -32,6 +32,7 @@ import {
 // Notes
 import PopoverReadme from './Base/Popover.md'
 import ReflessPopoverReadme from './Composed/ReflessPopover.md'
+import QuestionMarkTooltipReadme from './Composed/QuestionMarkTooltip.md'
 
 const popoverStories = storiesOf('Atomic|Popover/Base', module)
   .addDecorator(withKnobs)
@@ -204,7 +205,7 @@ composedPopoverStories.add(
   ),
   {
     readme: {
-      content: marked(ReflessPopoverReadme),
+      content: marked(QuestionMarkTooltipReadme),
     },
   }
 )
