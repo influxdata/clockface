@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {Icon} from '../Icon/Icon'
+import {Icon} from 'src/Components/Icon/Icon'
 
 // Styles
 import './Alert.scss'
