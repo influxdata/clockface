@@ -6,6 +6,7 @@ import gzip from 'rollup-plugin-gzip'
 import ts from '@wessberg/rollup-plugin-ts'
 import sass from 'rollup-plugin-sass'
 import copy from 'rollup-plugin-copy'
+import includePaths from 'rollup-plugin-includepaths'
 
 const pkg = require('./package.json')
 const isProductionBuild = process.env.NODE_ENV === 'production'
@@ -28,6 +29,7 @@ let plugins = [
     targets: [{src: 'src/Styles/Fonts', dest: 'dist'}],
   }),
   sourceMaps(),
+  includePaths({paths: ['./']}),
 ]
 
 // Minify and compress output when in production

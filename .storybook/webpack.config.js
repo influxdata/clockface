@@ -44,6 +44,13 @@ module.exports = ({config}) => {
     }
   )
 
+  config.resolve = {
+    alias: {
+      src: path.resolve(__dirname, 'src'),
+    },
+    extensions: ['.tsx', '.ts', '.js', '.scss', '.md'],
+  },
+
   config.resolve.extensions.push(
     '.ts',
     '.tsx',
