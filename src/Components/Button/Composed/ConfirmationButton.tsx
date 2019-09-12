@@ -1,6 +1,5 @@
 // Libraries
 import React, {Component, createRef} from 'react'
-import classnames from 'classnames'
 
 // Components
 import {Button} from './Button'
@@ -62,6 +61,7 @@ export class ConfirmationButton extends Component<Props> {
       popoverColor,
       popoverType,
       titleText,
+      className,
       tabIndex,
       testID,
       status,
@@ -79,7 +79,6 @@ export class ConfirmationButton extends Component<Props> {
         <Popover
           color={popoverColor}
           type={popoverType}
-          className={this.className}
           enableDefaultStyles={false}
           contents={onHide => (
             <div className="cf-confirmation-button--container">
@@ -100,6 +99,7 @@ export class ConfirmationButton extends Component<Props> {
           triggerRef={this.triggerRef}
         />
         <Button
+          className={className}
           placeIconAfterText={placeIconAfterText}
           titleText={titleText || text}
           refObject={this.triggerRef}
@@ -128,15 +128,6 @@ export class ConfirmationButton extends Component<Props> {
     }
 
     return false
-  }
-
-  private get className(): string {
-    const {className, shape} = this.props
-
-    return classnames('cf-confirmation-button', {
-      'cf-confirmation-button__stretch': shape === ButtonShape.StretchToFit,
-      [`${className}`]: className,
-    })
   }
 
   private renderConfirm = (onHide: (() => void) | undefined): JSX.Element => {
