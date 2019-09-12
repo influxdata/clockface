@@ -1,6 +1,8 @@
 # Changelog
 
-### 0.0.30 (Unreleased)
+### 0.0.31 (Unreleased)
+
+### 0.0.30
 
 - [#277](https://github.com/influxdata/clockface/pull/277): Fix export paths to be absolute instead of relative
 
