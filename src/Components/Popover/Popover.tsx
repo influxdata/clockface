@@ -91,6 +91,8 @@ export class Popover extends Component<PopoverProps, State> {
 
     if (this.props.visible) {
       this.handleShowDialog()
+    } else {
+      this.handleHideDialog()
     }
   }
 
