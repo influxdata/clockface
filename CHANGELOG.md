@@ -2,6 +2,8 @@
 
 ### 0.0.29 (Unreleased)
 
+- [#274](https://github.com/influxdata/clockface/pull/274): Introduce `QuestionMarkTooltip` as a composed version of `Popover`
+- [#274](https://github.com/influxdata/clockface/pull/274): Split `StandardProps` into `StandardClassProps` and `StandardFunctionProps`
 - [#270](https://github.com/influxdata/clockface/pull/270): [Breaking] Rebuild `Popover` from the ground up using portals and refs to prevent issues with layout disruption and positioning
 - [#270](https://github.com/influxdata/clockface/pull/270): Introduce `ReflessPopover` as a replacement for the previous `Popover` component functionality
 - [#270](https://github.com/influxdata/clockface/pull/270): Allow optional "default styles" for `Popover` components
