@@ -1,6 +1,6 @@
 import './Styles/shared.scss'
 
-export * from './Components/Alerts/Alert'
+export * from './Components/Alert/Alert'
 export * from './Components/AppWrapper/AppWrapper'
 export * from './Components/Button/Base/ButtonBase'
 export * from './Components/Button/Composed/Button'

@@ -9,13 +9,13 @@ import {withKnobs, text, select} from '@storybook/addon-knobs'
 import {mapEnumKeys} from 'src/Utils/storybook'
 
 // Components
-import {Alert} from 'src/Components/Alerts/Alert'
+import {Alert} from 'src/Components/Alert/Alert'
 
 // Types
 import {ComponentColor, IconFont} from 'src/Types/index'
 
 // Notes
-import AlertReadme from 'src/Components/Alerts/Alert.md'
+import AlertReadme from 'src/Components/Alert/Alert.md'
 
 const alertStories = storiesOf('Atomic|Alert', module)
   .addDecorator(withKnobs)

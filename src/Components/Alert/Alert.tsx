@@ -6,7 +6,7 @@ import classnames from 'classnames'
 import {Icon} from 'src/Components/Icon/Icon'
 
 // Styles
-import 'src/Components/Alerts/Alert.scss'
+import 'src/Components/Alert/Alert.scss'
 
 // Types
 import {ComponentColor, IconFont, StandardClassProps} from 'src/Types'
