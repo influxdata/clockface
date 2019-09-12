@@ -1,6 +1,8 @@
 # Changelog
 
-### 0.0.29 (Unreleased)
+### 0.0.30 (Unreleased)
+
+### 0.0.29
 
 - [#276](https://github.com/influxdata/clockface/pull/276): Replace all relative import paths with absolute paths
 - [#274](https://github.com/influxdata/clockface/pull/274): Introduce `QuestionMarkTooltip` as a composed version of `Popover`
