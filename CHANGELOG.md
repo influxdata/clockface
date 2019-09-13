@@ -4,6 +4,7 @@
 
 ### 0.0.30
 
+- [#278](https://github.com/influxdata/clockface/pull/278): Add rollup-plugin-includepaths to handle unresolved paths
 - [#277](https://github.com/influxdata/clockface/pull/277): Fix export paths to be absolute instead of relative
 
 ### 0.0.29
