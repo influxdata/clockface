@@ -29,7 +29,7 @@
 - [#265](https://github.com/influxdata/clockface/pull/265): Introduce `PageSubTitle` component
 - [#265](https://github.com/influxdata/clockface/pull/265): Change backgrounds of `OverlayContainer` and `AppWrapper` to be flat colors
 - [#265](https://github.com/influxdata/clockface/pull/265): [Breaking] Make `PageHeader` and sub-components responsive
-- [#264](https://github.com/influxdata/clockface/pull/264): Update `SelectableCard` component with top-label design
+- [#264](https://github.com/influxdata/clockface/pull/264): [Breaking] Update `SelectableCard` component with top-label design
 
 ### 0.0.28
 

@@ -15,6 +15,7 @@ export class PanelTitle extends Component<Props> {
 
   public static defaultProps = {
     testID: 'panel--title',
+    size: ComponentSize.Small,
   }
 
   public render() {
