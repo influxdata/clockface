@@ -19,7 +19,7 @@ import {mapEnumKeys} from '../../Utils/storybook'
 import {TextBlock} from './TextBlock'
 
 // Types
-import {ComponentSize} from '../../Types/index'
+import {ComponentSize} from '../../Types'
 
 // Notes
 import TextBlockReadme from './TextBlock.md'

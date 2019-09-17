@@ -12,7 +12,7 @@ import {mapEnumKeys} from '../../Utils/storybook'
 import {Alert} from './Alert'
 
 // Types
-import {ComponentColor, IconFont} from '../../Types/index'
+import {ComponentColor, IconFont} from '../../Types'
 
 // Notes
 import AlertReadme from './Alert.md'

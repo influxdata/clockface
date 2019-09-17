@@ -22,7 +22,7 @@ import {
   IconFont,
   InfluxColors,
   Alignment,
-} from '../../Types/index'
+} from '../../Types'
 
 // Notes
 import TabsReadme from './Tabs.md'

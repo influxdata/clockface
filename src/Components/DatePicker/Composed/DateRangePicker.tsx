@@ -13,7 +13,7 @@ import {
   ComponentSize,
   StandardClassProps,
   FlexDirection,
-} from '../../../Types/index'
+} from '../../../Types'
 
 interface Props extends StandardClassProps {
   /** Object of {upper: string, lower: string | null, seconds: number, format: string, label: string, duration: string} */

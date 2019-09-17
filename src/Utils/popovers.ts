@@ -1,5 +1,5 @@
 import {RefObject, CSSProperties} from 'react'
-import {PopoverPosition} from '../Types/index'
+import {PopoverPosition} from '../Types'
 
 interface PopoverFlush {
   first: boolean

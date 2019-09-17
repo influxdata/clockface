@@ -10,7 +10,7 @@ import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {Panel} from './Panel'
-import {Grid} from '../GridLayout/Grid'
+import {Grid} from '../Grid/Grid'
 
 // Types
 import {Gradients, ComponentSize, InfluxColors, Columns} from '../../Types'
