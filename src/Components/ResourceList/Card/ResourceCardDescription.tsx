@@ -3,10 +3,10 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from 'src/Types'
+import {StandardClassProps} from '../../../Types'
 
 // Styles
-import 'src/Components/ResourceList/Card/ResourceCardDescription.scss'
+import './ResourceCardDescription.scss'
 
 interface Props extends StandardClassProps {
   /** Text to display in description */

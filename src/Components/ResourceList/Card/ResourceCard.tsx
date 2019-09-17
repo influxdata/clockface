@@ -3,16 +3,16 @@ import React, {PureComponent} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {ResourceCardName} from 'src/Components/ResourceList/Card/ResourceCardName'
-import {ResourceCardEditableName} from 'src/Components/ResourceList/Card/ResourceCardEditableName'
-import {ResourceCardDescription} from 'src/Components/ResourceList/Card/ResourceCardDescription'
-import {ResourceCardEditableDescription} from 'src/Components/ResourceList/Card/ResourceCardEditableDescription'
+import {ResourceCardName} from './ResourceCardName'
+import {ResourceCardEditableName} from './ResourceCardEditableName'
+import {ResourceCardDescription} from './ResourceCardDescription'
+import {ResourceCardEditableDescription} from './ResourceCardEditableDescription'
 
 // Types
-import {StandardClassProps} from 'src/Types'
+import {StandardClassProps} from '../../../Types'
 
 // Styles
-import 'src/Components/ResourceList/Card/ResourceCard.scss'
+import './ResourceCard.scss'
 
 interface Props extends StandardClassProps {
   /** Renders the name component in its designated place */

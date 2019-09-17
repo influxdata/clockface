@@ -3,18 +3,18 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {OverlayContainer} from 'src/Components/Overlay/OverlayContainer'
-import {OverlayMask} from 'src/Components/Overlay/OverlayMask'
-import {OverlayHeader} from 'src/Components/Overlay/OverlayHeader'
-import {OverlayBody} from 'src/Components/Overlay/OverlayBody'
-import {OverlayFooter} from 'src/Components/Overlay/OverlayFooter'
-import {DapperScrollbars} from 'src/Components/DapperScrollbars/DapperScrollbars'
+import {OverlayContainer} from './OverlayContainer'
+import {OverlayMask} from './OverlayMask'
+import {OverlayHeader} from './OverlayHeader'
+import {OverlayBody} from './OverlayBody'
+import {OverlayFooter} from './OverlayFooter'
+import {DapperScrollbars} from '../DapperScrollbars/DapperScrollbars'
 
 // Types
-import {StandardClassProps, InfluxColors} from 'src/Types'
+import {StandardClassProps, InfluxColors} from '../../Types'
 
 // Styles
-import 'src/Components/Overlay/Overlay.scss'
+import './Overlay.scss'
 
 interface Props extends StandardClassProps {
   /** Controls showing/hiding the overlay */

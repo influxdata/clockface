@@ -2,10 +2,10 @@
 import React, {Component, CSSProperties} from 'react'
 
 // Types
-import {ComponentSize, StandardClassProps} from 'src/Types'
+import {ComponentSize, StandardClassProps} from '../../Types'
 
 // Styles
-import 'src/Components/Spinners/TechnoSpinner.scss'
+import './TechnoSpinner.scss'
 
 interface Props extends StandardClassProps {
   /** Diameter of spinner circle */

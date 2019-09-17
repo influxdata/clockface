@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {RadioButton} from 'src/Components/Radio/RadioButton'
+import {RadioButton} from './RadioButton'
 
 // Types
 import {
@@ -11,10 +11,10 @@ import {
   ComponentSize,
   ButtonShape,
   StandardClassProps,
-} from 'src/Types'
+} from '../../Types'
 
 // Styles
-import 'src/Components/Radio/Radio.scss'
+import './Radio.scss'
 
 interface Props extends StandardClassProps {
   /** Radio color */

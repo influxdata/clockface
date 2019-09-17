@@ -3,10 +3,10 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {RemoteDataState, StandardClassProps} from 'src/Types'
+import {RemoteDataState, StandardClassProps} from '../../Types'
 
 // Styles
-import 'src/Components/Spinners/SpinnerContainer.scss'
+import './SpinnerContainer.scss'
 
 interface Props extends StandardClassProps {
   /** Loading state */

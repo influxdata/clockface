@@ -3,7 +3,7 @@ import React, {Component, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps, InfluxColors, ComponentSize} from 'src/Types'
+import {StandardClassProps, InfluxColors, ComponentSize} from '../../Types'
 
 interface Props extends StandardClassProps {
   /** Padding of contents */

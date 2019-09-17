@@ -3,10 +3,10 @@ import React, {PureComponent} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {Icon} from 'src/Components/Icon/Icon'
+import {Icon} from '../../Icon/Icon'
 
 // Types
-import {Sort, StandardClassProps, IconFont} from 'src/Types'
+import {Sort, StandardClassProps, IconFont} from '../../../Types'
 
 interface Props extends StandardClassProps {
   /** Controls appearance of sort indicator (arrow) */

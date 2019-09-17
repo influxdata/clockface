@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps, ComponentSize} from 'src/Types'
+import {StandardClassProps, ComponentSize} from '../../Types'
 
 interface Props extends StandardClassProps {
   /** Controls padding */
@@ -15,6 +15,7 @@ export class PanelTitle extends Component<Props> {
 
   public static defaultProps = {
     testID: 'panel--title',
+    size: ComponentSize.Small,
   }
 
   public render() {

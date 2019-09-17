@@ -5,12 +5,12 @@ import marked from 'marked'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, select, boolean, number} from '@storybook/addon-knobs'
-import {mapEnumKeys} from 'src/Utils/storybook'
+import {mapEnumKeys} from '../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {FlexBox} from 'src/Components/FlexBox/FlexBox'
-import {FlexBoxChild} from 'src/Components/FlexBox/FlexBoxChild'
+import {FlexBox} from './FlexBox'
+import {FlexBoxChild} from './FlexBoxChild'
 
 // Types
 import {
@@ -18,11 +18,11 @@ import {
   FlexDirection,
   JustifyContent,
   ComponentSize,
-} from 'src/Types'
+} from '../../Types'
 
 // Notes
-import FlexBoxReadme from 'src/Components/FlexBox/FlexBox.md'
-import FlexBoxChildReadme from 'src/Components/FlexBox/FlexBoxChild.md'
+import FlexBoxReadme from './FlexBox.md'
+import FlexBoxChildReadme from './FlexBoxChild.md'
 
 const componentSpacerStories = storiesOf('Layout|FlexBox', module)
   .addDecorator(withKnobs)

@@ -8,14 +8,14 @@ import {withKnobs, color, number, boolean, object} from '@storybook/addon-knobs'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {ColorPicker} from 'src/Components/ColorPicker/ColorPicker'
+import {ColorPicker} from './ColorPicker'
 
 // Types
-import {InfluxColors} from 'src/Types'
+import {InfluxColors} from '../../Types'
 
 // Notes
-import ColorPickerReadme from 'src/Components/ColorPicker/ColorPicker.md'
-import ColorPickerCustomReadme from 'src/Components/ColorPicker/ColorPickerCustom.md'
+import ColorPickerReadme from './ColorPicker.md'
+import ColorPickerCustomReadme from './ColorPickerCustom.md'
 
 const colorPickerStories = storiesOf('Components|Color Picker/Family', module)
   .addDecorator(withKnobs)

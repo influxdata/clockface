@@ -5,17 +5,17 @@ import marked from 'marked'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, select, number, object} from '@storybook/addon-knobs'
-import {mapEnumKeys} from 'src/Utils/storybook'
+import {mapEnumKeys} from '../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {Icon} from 'src/Components/Icon/Icon'
+import {Icon} from './Icon'
 
 // Types
-import {IconFont} from 'src/Types'
+import {IconFont} from '../../Types'
 
 // Notes
-import IconReadme from 'src/Components/Icon/Icon.md'
+import IconReadme from './Icon.md'
 
 const iconStories = storiesOf('Atomic|Icon', module)
   .addDecorator(withKnobs)

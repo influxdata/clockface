@@ -2,17 +2,17 @@
 import React, {Component} from 'react'
 
 // Components
-import {IndexListBody} from 'src/Components/IndexList/IndexListBody'
-import {IndexListHeader} from 'src/Components/IndexList/IndexListHeader'
-import {IndexListHeaderCell} from 'src/Components/IndexList/IndexListHeaderCell'
-import {IndexListRow} from 'src/Components/IndexList/IndexListRow'
-import {IndexListRowCell} from 'src/Components/IndexList/IndexListRowCell'
+import {IndexListBody} from './IndexListBody'
+import {IndexListHeader} from './IndexListHeader'
+import {IndexListHeaderCell} from './IndexListHeaderCell'
+import {IndexListRow} from './IndexListRow'
+import {IndexListRowCell} from './IndexListRowCell'
 
 // Types
-import {StandardClassProps} from 'src/Types'
+import {StandardClassProps} from '../../Types'
 
 // Styles
-import 'src/Components/IndexList/IndexList.scss'
+import './IndexList.scss'
 
 interface Props extends StandardClassProps {}
 

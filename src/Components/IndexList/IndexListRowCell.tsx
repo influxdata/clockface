@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {Alignment, StandardClassProps} from 'src/Types'
+import {Alignment, StandardClassProps} from '../../Types'
 
 interface Props extends StandardClassProps {
   /** Text alignment of contents */

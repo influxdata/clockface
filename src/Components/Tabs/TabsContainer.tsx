@@ -2,7 +2,7 @@
 import React, {Component} from 'react'
 
 // Components
-import {FlexBox} from 'src/Components/FlexBox/FlexBox'
+import {FlexBox} from '../FlexBox/FlexBox'
 
 // Types
 import {
@@ -10,7 +10,7 @@ import {
   Orientation,
   FlexDirection,
   AlignItems,
-} from 'src/Types'
+} from '../../Types'
 
 interface Props extends StandardClassProps {
   /** Should match the orientation prop of Tabs component */

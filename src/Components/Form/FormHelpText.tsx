@@ -2,7 +2,7 @@
 import React, {Component} from 'react'
 
 // Types
-import {StandardClassProps} from 'src/Types'
+import {StandardClassProps} from '../../Types'
 
 interface Props extends StandardClassProps {
   /** Input discription  or instruction text */

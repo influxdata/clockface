@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {DropdownItemType, StandardClassProps} from 'src/Types'
+import {DropdownItemType, StandardClassProps} from '../../../Types'
 
 interface Props extends StandardClassProps {
   /** Controls whether the text contents of this item wrap or not */
