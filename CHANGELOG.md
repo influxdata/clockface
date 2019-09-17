@@ -6,8 +6,6 @@
 
 ### 0.0.30
 
-- [#277](https://github.com/influxdata/clockface/pull/277): Fix export paths to be absolute instead of relative
-
 ### 0.0.29
 
 - [#276](https://github.com/influxdata/clockface/pull/276): Replace all relative import paths with absolute paths
