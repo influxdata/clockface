@@ -1,5 +1,4 @@
 import resolve from 'rollup-plugin-node-resolve'
-import includePaths from 'rollup-plugin-includepaths'
 import commonjs from 'rollup-plugin-commonjs'
 import sourceMaps from 'rollup-plugin-sourcemaps'
 import {terser} from 'rollup-plugin-terser'
@@ -13,7 +12,6 @@ const isProductionBuild = process.env.NODE_ENV === 'production'
 
 let plugins = [
   resolve(),
-  includePaths({ paths: ["./"] }),
   commonjs({
     namedExports: {
       'react-draggable': ['DraggableCore'],
