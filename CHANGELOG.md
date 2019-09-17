@@ -1,13 +1,21 @@
 # Changelog
 
-### 0.0.31 (Unreleased)
+### 0.0.32 (Unreleased)
+
+- [#281](https://github.com/influxdata/clockface/pull/281): Revert absolute path changes
+
+### 0.0.31
 
 - [#278](https://github.com/influxdata/clockface/pull/278): Add rollup-plugin-includepaths to handle unresolved paths
 
 ### 0.0.30
 
+- [#277](https://github.com/influxdata/clockface/pull/277): Fix export paths to be absolute instead of relative
+
 ### 0.0.29
 
+- [#276](https://github.com/influxdata/clockface/pull/276): Replace all relative import paths with absolute paths
+- [#275](https://github.com/influxdata/clockface/pull/275): Support absolute import paths
 - [#274](https://github.com/influxdata/clockface/pull/274): Introduce `QuestionMarkTooltip` as a composed version of `Popover`
 - [#274](https://github.com/influxdata/clockface/pull/274): Split `StandardProps` into `StandardClassProps` and `StandardFunctionProps`
 - [#270](https://github.com/influxdata/clockface/pull/270): [Breaking] Rebuild `Popover` from the ground up using portals and refs to prevent issues with layout disruption and positioning
