@@ -7,10 +7,10 @@ import {storiesOf} from '@storybook/react'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {ClickOutside} from 'src/Components/ClickOutside/ClickOutside'
+import {ClickOutside} from './ClickOutside'
 
 // Notes
-import ClickOutsideReadme from 'src/Components/ClickOutside/ClickOutside.md'
+import ClickOutsideReadme from './ClickOutside.md'
 
 const clickOutsideStories = storiesOf(
   'Utilities|ClickOutside',

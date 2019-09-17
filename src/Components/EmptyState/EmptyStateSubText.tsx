@@ -2,7 +2,7 @@
 import React, {Component} from 'react'
 
 // Types
-import {StandardClassProps} from 'src/Types'
+import {StandardClassProps} from '../../Types'
 
 interface Props extends StandardClassProps {
   /** Secondary text to be displayed when no elements are loaded */

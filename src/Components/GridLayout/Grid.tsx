@@ -2,17 +2,27 @@
 import React, {Component} from 'react'
 import classnames from 'classnames'
 
+// Components
+import {GridRow} from './GridRow'
+import {GridColumn} from './GridColumn'
+
 // Types
-import {StandardClassProps} from 'src/Types'
+import {StandardClassProps} from '../../Types'
+
+// Styles
+import './Grid.scss'
 
 interface Props extends StandardClassProps {}
 
-export class GridRow extends Component<Props> {
-  public static readonly displayName = 'GridRow'
+export class Grid extends Component<Props> {
+  public static readonly displayName = 'Grid'
 
   public static defaultProps = {
-    testID: 'grid--row',
+    testID: 'grid',
   }
+
+  public static Row = GridRow
+  public static Column = GridColumn
 
   public render() {
     const {children, testID, id, style} = this.props
@@ -32,6 +42,6 @@ export class GridRow extends Component<Props> {
   private get className(): string {
     const {className} = this.props
 
-    return classnames('cf-grid--row', {[`${className}`]: className})
+    return classnames('cf-grid--container', {[`${className}`]: className})
   }
 }

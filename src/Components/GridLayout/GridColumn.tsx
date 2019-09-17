@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {Columns, StandardClassProps} from 'src/Types'
+import {Columns, StandardClassProps} from '../../Types'
 
 interface Props extends StandardClassProps {
   /** Number of columns spanned when viewport width is less than 750px */

@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {ComponentSize, StandardClassProps} from 'src/Types'
+import {ComponentSize, StandardClassProps} from '../../Types'
 
 interface Props extends StandardClassProps {
   /** Text to be displayed as label */

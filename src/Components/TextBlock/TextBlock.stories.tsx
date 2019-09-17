@@ -13,16 +13,16 @@ import {
   boolean,
   object,
 } from '@storybook/addon-knobs'
-import {mapEnumKeys} from 'src/Utils/storybook'
+import {mapEnumKeys} from '../../Utils/storybook'
 
 // Components
-import {TextBlock} from 'src/Components/TextBlock/TextBlock'
+import {TextBlock} from './TextBlock'
 
 // Types
-import {ComponentSize} from 'src/Types'
+import {ComponentSize} from '../../Types/index'
 
 // Notes
-import TextBlockReadme from 'src/Components/TextBlock/TextBlock.md'
+import TextBlockReadme from './TextBlock.md'
 
 const textBlockStories = storiesOf('Atomic|TextBlock', module)
   .addDecorator(withKnobs)

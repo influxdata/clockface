@@ -5,10 +5,10 @@ import classnames from 'classnames'
 import Scrollbar from 'react-scrollbars-custom'
 
 // Styles
-import 'src/Components/DapperScrollbars/DapperScrollbars.scss'
+import './DapperScrollbars.scss'
 
 // Types
-import {StandardClassProps} from 'src/Types'
+import {StandardClassProps} from '../../Types'
 
 interface Props extends StandardClassProps {
   /** Toggle display of tracks when no scrolling is necessary */

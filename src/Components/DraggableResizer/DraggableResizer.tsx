@@ -3,14 +3,14 @@ import React, {Component, RefObject} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {DraggableResizerPanel} from 'src/Components/DraggableResizer/DraggableResizerPanel'
-import {DraggableResizerHandle} from 'src/Components/DraggableResizer/DraggableResizerHandle'
+import {DraggableResizerPanel} from './DraggableResizerPanel'
+import {DraggableResizerHandle} from './DraggableResizerHandle'
 
 // Types
-import {StandardClassProps, Orientation, Gradients} from 'src/Types'
+import {StandardClassProps, Orientation, Gradients} from '../../Types'
 
 // Styles
-import 'src/Components/DraggableResizer/DraggableResizer.scss'
+import './DraggableResizer.scss'
 
 // Constants
 const NULL_DRAG = -1

@@ -3,18 +3,18 @@ import React, {Component, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {TableHeader} from 'src/Components/Table/TableHeader'
-import {TableBody} from 'src/Components/Table/TableBody'
-import {TableFooter} from 'src/Components/Table/TableFooter'
-import {TableRow} from 'src/Components/Table/TableRow'
-import {TableCell} from 'src/Components/Table/TableCell'
-import {TableHeaderCell} from 'src/Components/Table/TableHeaderCell'
+import {TableHeader} from './TableHeader'
+import {TableBody} from './TableBody'
+import {TableFooter} from './TableFooter'
+import {TableRow} from './TableRow'
+import {TableCell} from './TableCell'
+import {TableHeaderCell} from './TableHeaderCell'
 
 // Styles
-import 'src/Components/Table/Table.scss'
+import './Table.scss'
 
 // Types
-import {StandardClassProps, ComponentSize, BorderType} from 'src/Types'
+import {StandardClassProps, ComponentSize, BorderType} from '../../Types'
 
 interface Props extends StandardClassProps {
   /** Padding inside every cell in the table */

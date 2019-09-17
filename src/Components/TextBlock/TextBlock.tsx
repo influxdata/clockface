@@ -4,10 +4,10 @@ import chroma from 'chroma-js'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps, InfluxColors, ComponentSize} from 'src/Types'
+import {StandardClassProps, InfluxColors, ComponentSize} from '../../Types'
 
 // Styles
-import 'src/Components/TextBlock/TextBlock.scss'
+import './TextBlock.scss'
 
 interface Props extends StandardClassProps {
   /** Contents of text block */

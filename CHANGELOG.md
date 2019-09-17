@@ -8,7 +8,6 @@
 
 ### 0.0.29
 
-- [#276](https://github.com/influxdata/clockface/pull/276): Replace all relative import paths with absolute paths
 - [#274](https://github.com/influxdata/clockface/pull/274): Introduce `QuestionMarkTooltip` as a composed version of `Popover`
 - [#274](https://github.com/influxdata/clockface/pull/274): Split `StandardProps` into `StandardClassProps` and `StandardFunctionProps`
 - [#270](https://github.com/influxdata/clockface/pull/270): [Breaking] Rebuild `Popover` from the ground up using portals and refs to prevent issues with layout disruption and positioning

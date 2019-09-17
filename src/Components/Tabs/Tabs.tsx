@@ -3,9 +3,9 @@ import React, {Component, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {Tab} from 'src/Components/Tabs/Tab'
-import {TabContents} from 'src/Components/Tabs/TabContents'
-import {TabsContainer} from 'src/Components/Tabs/TabsContainer'
+import {Tab} from './Tab'
+import {TabContents} from './TabContents'
+import {TabsContainer} from './TabsContainer'
 
 // Types
 import {
@@ -14,10 +14,10 @@ import {
   Orientation,
   InfluxColors,
   Alignment,
-} from 'src/Types'
+} from '../../Types'
 
 // Styles
-import 'src/Components/Tabs/Tabs.scss'
+import './Tabs.scss'
 
 interface Props extends StandardClassProps {
   /** Layout of tabs */

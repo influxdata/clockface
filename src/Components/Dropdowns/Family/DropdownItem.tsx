@@ -3,7 +3,7 @@ import React, {Component, MouseEvent} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {DropdownItemType, StandardClassProps} from 'src/Types'
+import {DropdownItemType, StandardClassProps} from '../../../Types'
 
 interface Props extends StandardClassProps {
   /** Value to be returned via the onClick function */

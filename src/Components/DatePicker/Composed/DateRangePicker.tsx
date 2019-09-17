@@ -2,9 +2,9 @@
 import React, {PureComponent} from 'react'
 
 // Components
-import {DatePicker} from 'src/Components/DatePicker/Base/DatePicker'
-import {Button} from 'src/Components/Button/Composed/Button'
-import {FlexBox} from 'src/Components/FlexBox/FlexBox'
+import {DatePicker} from '../Base/DatePicker'
+import {Button} from '../../Button/Composed/Button'
+import {FlexBox} from '../../FlexBox/FlexBox'
 
 // Types
 import {
@@ -13,7 +13,7 @@ import {
   ComponentSize,
   StandardClassProps,
   FlexDirection,
-} from 'src/Types'
+} from '../../../Types/index'
 
 interface Props extends StandardClassProps {
   /** Object of {upper: string, lower: string | null, seconds: number, format: string, label: string, duration: string} */

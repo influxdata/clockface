@@ -15,11 +15,11 @@ import {
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {DapperScrollbars} from 'src/Components/DapperScrollbars/DapperScrollbars'
+import {DapperScrollbars} from './DapperScrollbars'
 
 // Notes
-import DapperScrollbarsExample1Readme from 'src/Components/DapperScrollbars/DapperScrollbarsExample1.md'
-import DapperScrollbarsExample2Readme from 'src/Components/DapperScrollbars/DapperScrollbarsExample2.md'
+import DapperScrollbarsExample1Readme from './DapperScrollbarsExample1.md'
+import DapperScrollbarsExample2Readme from './DapperScrollbarsExample2.md'
 
 const scrollbarStories = storiesOf('Utilities|Scrollbars', module)
   .addDecorator(withKnobs)

@@ -3,10 +3,10 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from 'src/Types'
+import {StandardClassProps} from '../../Types'
 
 // Constants
-import {DEFAULT_PAGE_HEADER_CENTER_WIDTH} from 'src/Constants/pageLayout'
+import {DEFAULT_PAGE_HEADER_CENTER_WIDTH} from '../../Constants/pageLayout'
 
 interface Props extends StandardClassProps {}
 

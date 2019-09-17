@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {Radio} from 'src/Components/Radio/Radio'
+import {Radio} from '../Radio/Radio'
 
 // Types
 import {
@@ -12,10 +12,10 @@ import {
   ComponentColor,
   ComponentSize,
   AutoInputMode,
-} from 'src/Types'
+} from '../../Types'
 
 // Styles
-import 'src/Components/Inputs/AutoInput.scss'
+import './AutoInput.scss'
 
 interface Props extends StandardClassProps {
   /** Pass in a component of type "Input" */

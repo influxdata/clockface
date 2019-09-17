@@ -4,7 +4,7 @@ import {
   Gradients,
   Gradient,
   DropdownMenuTheme,
-} from 'src/Types'
+} from '../Types'
 
 export const HEX_CODE_CHAR_LENGTH = 7
 

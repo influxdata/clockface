@@ -3,7 +3,7 @@ import React, {Component, MouseEvent, RefObject} from 'react'
 import classnames from 'classnames'
 
 // Styles
-import 'src/Components/Button/Button.scss'
+import '../Button.scss'
 
 // Types
 import {
@@ -13,7 +13,7 @@ import {
   ButtonShape,
   ButtonType,
   StandardClassProps,
-} from 'src/Types'
+} from '../../../Types'
 
 interface Props extends StandardClassProps {
   /** Function to be called on button click */
