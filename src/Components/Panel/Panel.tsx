@@ -1,118 +1,76 @@
 // Libraries
-import React, {Component, CSSProperties} from 'react'
+import React, {FunctionComponent, RefObject} from 'react'
 import _ from 'lodash'
 import classnames from 'classnames'
-import chroma from 'chroma-js'
 
 // Types
 import {
   Gradients,
   InfluxColors,
-  StandardClassProps,
+  StandardFunctionProps,
   ComponentColor,
 } from 'src/Types'
 
-// Constants
-import {getColorsFromGradient} from 'src/Constants/colors'
+// Utils
+import {generatePanelStyle, calculateTextColorFromBackground} from 'src/Utils'
 
 // Components
-import {PanelHeader} from 'src/Components/Panel/PanelHeader'
-import {PanelTitle} from 'src/Components/Panel/PanelTitle'
-import {PanelBody} from 'src/Components/Panel/PanelBody'
-import {PanelFooter} from 'src/Components/Panel/PanelFooter'
 import {DismissButton} from 'src/Components/Button/Composed/DismissButton'
 
 // Styles
 import 'src/Components/Panel/Panel.scss'
 
-interface Props extends StandardClassProps {
+interface Props extends StandardFunctionProps {
   /** Optional gradient theme of panel, supercedes backgroundColor prop */
   gradient?: Gradients
   /** Optional background color of panel */
-  backgroundColor: InfluxColors | string
+  backgroundColor?: InfluxColors | string
   /** If a function is passed in a dismiss button will appear on the Panel */
   onDismiss?: () => void
   /** Applies to the dismiss button rendered when onDismiss is present */
   dismissButtonColor: ComponentColor
+  /** Pass through for ref */
+  ref?: RefObject<HTMLDivElement>
 }
 
-export class Panel extends Component<Props> {
-  public static readonly displayName = 'Panel'
+export const Panel: FunctionComponent<Props> = ({
+  id,
+  ref,
+  style,
+  testID = 'panel',
+  gradient,
+  children,
+  className,
+  onDismiss,
+  backgroundColor = InfluxColors.Castle,
+  dismissButtonColor = ComponentColor.Primary,
+}) => {
+  const textColor = calculateTextColorFromBackground(backgroundColor, gradient)
 
-  public static defaultProps = {
-    testID: 'panel',
-    backgroundColor: InfluxColors.Castle,
-    dismissButtonColor: ComponentColor.Primary,
-  }
+  const panelClass = classnames('cf-panel', {
+    [`${className}`]: className,
+    'cf-panel__gradient': gradient,
+    [`cf-panel__${textColor}-text`]: textColor,
+  })
 
-  public static Header = PanelHeader
-  public static Title = PanelTitle
-  public static Body = PanelBody
-  public static Footer = PanelFooter
+  const dismissButton = onDismiss && (
+    <DismissButton onClick={onDismiss} color={dismissButtonColor} />
+  )
 
-  public render() {
-    const {children, testID, id} = this.props
+  const panelStyle = generatePanelStyle(backgroundColor, gradient, style)
 
-    return (
-      <div
-        className={this.className}
-        style={this.style}
-        data-testid={testID}
-        id={id}
-      >
-        {this.dismissButton}
-        {children}
-      </div>
-    )
-  }
-
-  private get className(): string {
-    const {className, gradient} = this.props
-
-    return classnames('cf-panel', {
-      [`${className}`]: className,
-      'cf-panel__gradient': gradient,
-      [`cf-panel__${this.useContrastText}-text`]: this.useContrastText,
-    })
-  }
-
-  private get style(): CSSProperties | undefined {
-    const {gradient, backgroundColor, style} = this.props
-
-    if (gradient) {
-      const colors = getColorsFromGradient(gradient)
-
-      return {
-        background: `linear-gradient(45deg,  ${colors.start} 0%,${
-          colors.stop
-        } 100%)`,
-        ...style,
-      }
-    }
-
-    return {backgroundColor, ...style}
-  }
-
-  private get useContrastText(): string {
-    const {gradient, backgroundColor} = this.props
-
-    const mediumGrey = 0.34
-
-    if (gradient) {
-      const {start} = getColorsFromGradient(gradient)
-      return chroma(start).luminance() >= mediumGrey ? 'dark' : 'light'
-    }
-
-    return chroma(backgroundColor).luminance() >= mediumGrey ? 'dark' : 'light'
-  }
-
-  private get dismissButton(): JSX.Element | undefined {
-    const {onDismiss, dismissButtonColor} = this.props
-
-    if (onDismiss) {
-      return <DismissButton onClick={onDismiss} color={dismissButtonColor} />
-    }
-
-    return
-  }
+  return (
+    <div
+      className={panelClass}
+      style={panelStyle}
+      data-testid={testID}
+      id={id}
+      ref={ref}
+    >
+      {dismissButton}
+      {children}
+    </div>
+  )
 }
+
+Panel.displayName = 'Panel'

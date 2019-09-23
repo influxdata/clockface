@@ -1,5 +1,13 @@
+//Libraries
 import {CSSProperties} from 'react'
+import chroma from 'chroma-js'
+
+// Constants
 import {HEX_CODE_CHAR_LENGTH} from '../Constants/colors'
+import {getColorsFromGradient} from '../Constants/colors'
+
+// Types
+import {Gradients, InfluxColors} from '../Types'
 
 export const validateHexCode = (colorHex: string): string | null => {
   const isValidLength = colorHex.length === HEX_CODE_CHAR_LENGTH
@@ -34,3 +42,42 @@ export const convertCSSPropertiesToString = (styles: CSSProperties): string =>
     )
     return `${styleString}${formattedPropName}:${propValue};`
   }, '')
+
+export const generatePanelStyle = (
+  backgroundColor: InfluxColors | string,
+  gradient?: Gradients,
+  style?: CSSProperties
+): CSSProperties => {
+  let panelStyle: CSSProperties = {backgroundColor}
+
+  if (gradient) {
+    const colors = getColorsFromGradient(gradient)
+
+    panelStyle = {
+      ...panelStyle,
+      background: `linear-gradient(45deg,  ${colors.start} 0%,${
+        colors.stop
+      } 100%)`,
+    }
+  }
+
+  if (style) {
+    return {...panelStyle, ...style}
+  }
+
+  return panelStyle
+}
+
+export const calculateTextColorFromBackground = (
+  backgroundColor: InfluxColors | string,
+  gradient?: Gradients
+): string => {
+  const mediumGrey = 0.34
+
+  if (gradient) {
+    const {start} = getColorsFromGradient(gradient)
+    return chroma(start).luminance() >= mediumGrey ? 'dark' : 'light'
+  }
+
+  return chroma(backgroundColor).luminance() >= mediumGrey ? 'dark' : 'light'
+}
