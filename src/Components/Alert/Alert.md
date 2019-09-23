@@ -5,7 +5,7 @@ Alerts are a great way to draw the user's attention to important information. Th
 ### Usage
 
 ```tsx
-import {Alert} from '@influxdata/clockface'
+import {Alert, AlertRef} from '@influxdata/clockface'
 ```
 
 ### Example

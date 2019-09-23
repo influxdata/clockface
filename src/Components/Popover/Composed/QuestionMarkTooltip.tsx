@@ -7,7 +7,7 @@ import {Popover} from '../Base/Popover'
 
 // Types
 import {
-  StandardFunctionProps,
+  StandardProps,
   ComponentColor,
   PopoverInteraction,
   PopoverType,
@@ -16,7 +16,7 @@ import {
 // Styles
 import './QuestionMarkTooltip.scss'
 
-interface Props extends StandardFunctionProps {
+interface Props extends StandardProps {
   /** Controls the size of the question mark circle */
   diameter: number
   /** Contents to display in tooltip */
