@@ -2,14 +2,10 @@
 import React, {PureComponent, createRef, CSSProperties} from 'react'
 
 // Components
-import {
-  Popover,
-  PopoverProps,
-  PopoverDefaultProps,
-} from 'src/Components/Popover/Base/Popover'
+import {Popover, PopoverProps, PopoverDefaultProps} from '../Base/Popover'
 
 // Types
-import {Omit} from 'src/Types'
+import {Omit} from '../../../Types'
 
 interface Props extends Omit<PopoverProps, 'triggerRef'> {
   /** Useful for correcting any layout disruptions */

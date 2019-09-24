@@ -9,10 +9,10 @@ import {
   AlignItems,
   ComponentSize,
   StandardFunctionProps,
-} from 'src/Types'
+} from '../../Types'
 
 // Styles
-import 'src/Components/FlexBox/FlexBox.scss'
+import './FlexBox.scss'
 
 interface Props extends StandardFunctionProps {
   /** Vertical or horizontal flex alignment */

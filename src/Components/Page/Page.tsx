@@ -3,16 +3,16 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {PageHeader} from 'src/Components/Page/PageHeader'
-import {PageTitle} from 'src/Components/Page/PageTitle'
-import {PageSubTitle} from 'src/Components/Page/PageSubTitle'
-import {PageContents} from 'src/Components/Page/PageContents'
+import {PageHeader} from './PageHeader'
+import {PageTitle} from './PageTitle'
+import {PageSubTitle} from './PageSubTitle'
+import {PageContents} from './PageContents'
 
 // Types
-import {StandardClassProps} from 'src/Types'
+import {StandardClassProps} from '../../Types'
 
 // Styles
-import 'src/Components/Page/Page.scss'
+import './Page.scss'
 
 interface Props extends StandardClassProps {
   /** Use this prop to update document.title when the page first renders &  on subsequent updates */

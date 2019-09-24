@@ -1,6 +1,6 @@
 {
   "name": "@influxdata/clockface",
-  "version": "0.0.31",
+  "version": "0.0.32",
   "license": "MIT",
   "main": "dist/index.js",
   "style": "dist/index.css",
@@ -92,8 +92,5 @@
     "typecheck": "tsc --noEmit --pretty",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "publishStorybook": "storybook-to-ghpages --out=.out"
-  },
-  "dependencies": {
-    "rollup-plugin-includepaths": "^0.2.3"
   }
 }

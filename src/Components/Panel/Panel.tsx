@@ -9,16 +9,16 @@ import {
   InfluxColors,
   StandardFunctionProps,
   ComponentColor,
-} from 'src/Types'
+} from '../../Types'
 
 // Utils
-import {generatePanelStyle, calculateTextColorFromBackground} from 'src/Utils'
+import {generatePanelStyle, calculateTextColorFromBackground} from '../../Utils'
 
 // Components
-import {DismissButton} from 'src/Components/Button/Composed/DismissButton'
+import {DismissButton} from '../Button/Composed/DismissButton'
 
 // Styles
-import 'src/Components/Panel/Panel.scss'
+import './Panel.scss'
 
 interface Props extends StandardFunctionProps {
   /** Optional gradient theme of panel, supercedes backgroundColor prop */

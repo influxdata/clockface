@@ -58,7 +58,5 @@ module.exports = ({config}) => {
     '.svg'
   )
 
-  config.resolve.alias.src = path.resolve(__dirname, '../src')
-
   return config
 }

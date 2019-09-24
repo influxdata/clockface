@@ -4,19 +4,19 @@ import classnames from 'classnames'
 import _ from 'lodash'
 
 // Components
-import {DropdownButton} from 'src/Components/Dropdowns/Family/DropdownButton'
-import {DropdownItem} from 'src/Components/Dropdowns/Family/DropdownItem'
-import {DropdownItemEmpty} from 'src/Components/Dropdowns/Family/DropdownItemEmpty'
-import {DropdownLinkItem} from 'src/Components/Dropdowns/Family/DropdownLinkItem'
-import {DropdownDivider} from 'src/Components/Dropdowns/Family/DropdownDivider'
-import {DropdownMenu} from 'src/Components/Dropdowns/Family/DropdownMenu'
-import {ClickOutside} from 'src/Components/ClickOutside/ClickOutside'
+import {DropdownButton} from './../Family/DropdownButton'
+import {DropdownItem} from './../Family/DropdownItem'
+import {DropdownItemEmpty} from './../Family/DropdownItemEmpty'
+import {DropdownLinkItem} from './../Family/DropdownLinkItem'
+import {DropdownDivider} from './../Family/DropdownDivider'
+import {DropdownMenu} from './../Family/DropdownMenu'
+import {ClickOutside} from '../../ClickOutside/ClickOutside'
 
 // Types
-import {StandardClassProps} from 'src/Types'
+import {StandardClassProps} from '../../../Types'
 
 // Styles
-import 'src/Components/Dropdowns/Dropdown.scss'
+import '../Dropdown.scss'
 
 interface Props extends StandardClassProps {
   /** Component to render as the button (use Dropdown.Button) */

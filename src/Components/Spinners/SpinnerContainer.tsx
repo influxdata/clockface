@@ -3,10 +3,10 @@ import React, {FunctionComponent, RefObject} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {RemoteDataState, StandardFunctionProps} from 'src/Types'
+import {RemoteDataState, StandardFunctionProps} from '../../Types'
 
 // Styles
-import 'src/Components/Spinners/SpinnerContainer.scss'
+import './SpinnerContainer.scss'
 
 interface Props extends StandardFunctionProps {
   /** Loading state */

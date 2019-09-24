@@ -5,24 +5,24 @@ import marked from 'marked'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, text, select, array} from '@storybook/addon-knobs'
-import {mapEnumKeys} from 'src/Utils/storybook'
+import {mapEnumKeys} from '../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {EmptyState} from 'src/Components/EmptyState/EmptyState'
-import {EmptyStateText} from 'src/Components/EmptyState/EmptyStateText'
-import {EmptyStateSubText} from 'src/Components/EmptyState/EmptyStateSubText'
-import {Button} from 'src/Components/Button/Composed/Button'
+import {EmptyState} from './EmptyState'
+import {EmptyStateText} from './EmptyStateText'
+import {EmptyStateSubText} from './EmptyStateSubText'
+import {Button} from '../Button/Composed/Button'
 
 // Types
-import {ComponentSize, ComponentColor, IconFont} from 'src/Types'
+import {ComponentSize, ComponentColor, IconFont} from '../../Types'
 
 // Notes
-import EmptyStateReadme from 'src/Components/EmptyState/EmptyState.md'
-import EmptyStateTextReadme from 'src/Components/EmptyState/EmptyStateText.md'
-import EmptyStateSubTextReadme from 'src/Components/EmptyState/EmptyStateSubText.md'
-import EmptyStateExampleAReadme from 'src/Components/EmptyState/EmptyStateExampleA.md'
-import EmptyStateExampleBReadme from 'src/Components/EmptyState/EmptyStateExampleB.md'
+import EmptyStateReadme from './EmptyState.md'
+import EmptyStateTextReadme from './EmptyStateText.md'
+import EmptyStateSubTextReadme from './EmptyStateSubText.md'
+import EmptyStateExampleAReadme from './EmptyStateExampleA.md'
+import EmptyStateExampleBReadme from './EmptyStateExampleB.md'
 
 const emptyStateStories = storiesOf('Components|Empty States/Family', module)
   .addDecorator(withKnobs)

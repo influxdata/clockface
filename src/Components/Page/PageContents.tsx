@@ -3,10 +3,10 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {DapperScrollbars} from 'src/Components/DapperScrollbars/DapperScrollbars'
+import {DapperScrollbars} from '../DapperScrollbars/DapperScrollbars'
 
 // Types
-import {StandardClassProps, ComponentSize} from 'src/Types'
+import {StandardClassProps, ComponentSize} from '../../Types'
 
 interface Props extends StandardClassProps {
   /** Allows the page contents to fill the width of the screen */

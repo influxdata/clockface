@@ -3,7 +3,7 @@ import React, {FunctionComponent, RefObject} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardFunctionProps, ComponentSize} from 'src/Types'
+import {StandardFunctionProps, ComponentSize} from '../../Types'
 
 interface Props extends StandardFunctionProps {
   /** Controls padding */

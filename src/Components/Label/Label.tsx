@@ -3,13 +3,13 @@ import React, {FunctionComponent, MouseEvent, RefObject, useState} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardFunctionProps, ComponentSize, InfluxColors} from 'src/Types'
+import {StandardFunctionProps, ComponentSize, InfluxColors} from '../../Types'
 
 // Utils
 import {generateLabelStyle} from '../../Utils'
 
 // Styles
-import 'src/Components/Label/Label.scss'
+import './Label.scss'
 
 interface Props extends StandardFunctionProps {
   /** Unique value to be returned when Label is clicked */

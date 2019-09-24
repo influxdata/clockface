@@ -3,12 +3,12 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {FormLabel} from 'src/Components/Form/FormLabel'
-import {FormElementError} from 'src/Components/Form/FormElementError'
-import {FormHelpText} from 'src/Components/Form/FormHelpText'
+import {FormLabel} from './FormLabel'
+import {FormElementError} from './FormElementError'
+import {FormHelpText} from './FormHelpText'
 
 // Types
-import {StandardClassProps} from 'src/Types'
+import {StandardClassProps} from '../../Types'
 
 interface Props extends StandardClassProps {
   /** Label Text */

@@ -2,11 +2,11 @@
 import React, {Component, createRef} from 'react'
 
 // Components
-import {Button} from 'src/Components/Button/Composed/Button'
-import {Popover} from 'src/Components/Popover/Base/Popover'
+import {Button} from './Button'
+import {Popover} from '../../Popover/Base/Popover'
 
 // Styles
-import 'src/Components/Button/Composed/ConfirmationButton.scss'
+import './ConfirmationButton.scss'
 
 // Types
 import {Props as ButtonProps} from './Button'
@@ -17,7 +17,7 @@ import {
   ComponentStatus,
   ComponentColor,
   PopoverType,
-} from 'src/Types'
+} from '../../../Types'
 
 interface Props
   extends Omit<ButtonProps, 'onClick' | 'active' | 'type' | 'refObject'> {

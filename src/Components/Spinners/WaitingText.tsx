@@ -3,10 +3,10 @@ import React, {FunctionComponent, RefObject} from 'react'
 import classnames from 'classnames'
 
 // Styles
-import 'src/Components/Spinners/WaitingText.scss'
+import './WaitingText.scss'
 
 // Types
-import {StandardFunctionProps} from 'src/Types'
+import {StandardFunctionProps} from '../../Types'
 
 interface Props extends StandardFunctionProps {
   /** Text to be displayed */

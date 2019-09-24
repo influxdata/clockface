@@ -3,11 +3,11 @@ import React, {Component, KeyboardEvent, ChangeEvent, MouseEvent} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {Input} from 'src/Components/Inputs/Input'
-import {Icon} from 'src/Components/Icon/Icon'
-import {SpinnerContainer} from 'src/Components/Spinners/SpinnerContainer'
-import {TechnoSpinner} from 'src/Components/Spinners/TechnoSpinner'
-import {ClickOutside} from 'src/Components/ClickOutside/ClickOutside'
+import {Input} from '../../Inputs/Input'
+import {Icon} from '../../Icon/Icon'
+import {SpinnerContainer} from '../../Spinners/SpinnerContainer'
+import {TechnoSpinner} from '../../Spinners/TechnoSpinner'
+import {ClickOutside} from '../../ClickOutside/ClickOutside'
 
 // Types
 import {
@@ -15,10 +15,10 @@ import {
   ComponentSize,
   RemoteDataState,
   IconFont,
-} from 'src/Types'
+} from '../../../Types'
 
 // Styles
-import 'src/Components/ResourceList/Card/ResourceCardEditableName.scss'
+import './ResourceCardEditableName.scss'
 
 interface Props extends StandardClassProps {
   /** Called when editing is finished, new name is passed  */

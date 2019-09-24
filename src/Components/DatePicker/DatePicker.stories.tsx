@@ -8,12 +8,12 @@ import {jsxDecorator} from 'storybook-addon-jsx'
 import {withKnobs, text} from '@storybook/addon-knobs'
 
 // Components
-import {DateRangePicker} from 'src/Components/DatePicker/Composed/DateRangePicker'
-import {DatePicker} from 'src/Components/DatePicker/Base/DatePicker'
+import {DateRangePicker} from './Composed/DateRangePicker'
+import {DatePicker} from './Base/DatePicker'
 
 // Notes
-import DatePickerReadme from 'src/Components/DatePicker/Base/DatePicker.md'
-import DateRangePickerReadme from 'src/Components/DatePicker/Composed/DateRangePicker.md'
+import DatePickerReadme from './Base/DatePicker.md'
+import DateRangePickerReadme from './Composed/DateRangePicker.md'
 
 const datePickerBaseStories = storiesOf('Components|DatePicker/Base', module)
   .addDecorator(withKnobs)

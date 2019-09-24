@@ -6,16 +6,16 @@ import marked from 'marked'
 import {storiesOf} from '@storybook/react'
 import {jsxDecorator} from 'storybook-addon-jsx'
 import {withKnobs, text, select} from '@storybook/addon-knobs'
-import {mapEnumKeys} from 'src/Utils/storybook'
+import {mapEnumKeys} from '../../Utils/storybook'
 
 // Components
-import {Alert} from 'src/Components/Alert/Alert'
+import {Alert} from './Alert'
 
 // Types
-import {ComponentColor, IconFont} from 'src/Types/index'
+import {ComponentColor, IconFont} from '../../Types'
 
 // Notes
-import AlertReadme from 'src/Components/Alert/Alert.md'
+import AlertReadme from './Alert.md'
 
 const alertStories = storiesOf('Atomic|Alert', module)
   .addDecorator(withKnobs)

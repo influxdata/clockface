@@ -3,7 +3,7 @@ import React, {FunctionComponent, RefObject} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardFunctionProps} from 'src/Types'
+import {StandardFunctionProps} from '../../Types'
 
 interface Props extends StandardFunctionProps {
   /** Optional fixed width of element */

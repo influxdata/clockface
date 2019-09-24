@@ -2,14 +2,14 @@
 import React, {Component} from 'react'
 
 // Components
-import {Dropdown} from 'src/Components/Dropdowns/Family/Dropdown'
-import {DropdownButton} from 'src/Components/Dropdowns/Family/DropdownButton'
-import {DropdownMenu} from 'src/Components/Dropdowns/Family/DropdownMenu'
-import {DropdownItem} from 'src/Components/Dropdowns/Family/DropdownItem'
-import {DropdownDivider} from 'src/Components/Dropdowns/Family/DropdownDivider'
+import {Dropdown} from '../Family/Dropdown'
+import {DropdownButton} from '../Family/DropdownButton'
+import {DropdownMenu} from '../Family/DropdownMenu'
+import {DropdownItem} from '../Family/DropdownItem'
+import {DropdownDivider} from '../Family/DropdownDivider'
 
 // Constants
-import {DROPDOWN_DIVIDER_SHORTCODE} from 'src/Constants'
+import {DROPDOWN_DIVIDER_SHORTCODE} from '../../../Constants'
 
 // Types
 import {
@@ -20,7 +20,7 @@ import {
   DropdownItemType,
   ComponentStatus,
   StandardClassProps,
-} from 'src/Types'
+} from '../../../Types'
 
 interface Props extends StandardClassProps {
   /** Text to render in button as currently selected option */

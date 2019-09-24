@@ -3,10 +3,10 @@ import React, {FunctionComponent, RefObject} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {RemoteDataState, StandardFunctionProps} from 'src/Types'
+import {RemoteDataState, StandardFunctionProps} from '../../Types'
 
 // Style
-import 'src/Components/Spinners/SparkleSpinner.scss'
+import './SparkleSpinner.scss'
 
 interface Props extends StandardFunctionProps {
   /** Size of spinner (square) */

@@ -4,13 +4,13 @@ import classnames from 'classnames'
 import _ from 'lodash'
 
 // Components
-import {Input} from 'src/Components/Inputs/Input'
-import {Button} from 'src/Components/Button/Composed/Button'
-import {ColorPickerSwatch} from 'src/Components/ColorPicker/ColorPickerSwatch'
-import {FormElementError} from 'src/Components/Form/FormElementError'
+import {Input} from '../Inputs/Input'
+import {Button} from '../Button/Composed/Button'
+import {ColorPickerSwatch} from './ColorPickerSwatch'
+import {FormElementError} from '../Form/FormElementError'
 
 // Constants
-import {influxColors, HEX_CODE_CHAR_LENGTH} from 'src/Constants/colors'
+import {influxColors, HEX_CODE_CHAR_LENGTH} from '../../Constants/colors'
 
 // Types
 import {
@@ -19,13 +19,13 @@ import {
   ComponentStatus,
   Color,
   StandardClassProps,
-} from 'src/Types'
+} from '../../Types'
 
 // Utils
-import {validateHexCode} from 'src/Utils/index'
+import {validateHexCode} from '../../Utils/index'
 
 // Styles
-import 'src/Components/ColorPicker/ColorPicker.scss'
+import './ColorPicker.scss'
 
 interface Props extends StandardClassProps {
   /** currently selected color */

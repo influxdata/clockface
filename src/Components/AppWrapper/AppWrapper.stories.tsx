@@ -6,19 +6,19 @@ import marked from 'marked'
 import {storiesOf} from '@storybook/react'
 import {withKnobs, boolean, text, number, select} from '@storybook/addon-knobs'
 import {jsxDecorator} from 'storybook-addon-jsx'
-import {mapEnumKeys} from 'src/Utils/storybook'
+import {mapEnumKeys} from '../../Utils/storybook'
 
 // Components
-import {AppWrapper} from 'src/Components/AppWrapper/AppWrapper'
-import {NavMenu} from 'src/Components/NavMenu/NavMenu'
-import {Page} from 'src/Components/Page/Page'
-import {Icon} from 'src/Components/Icon/Icon'
+import {AppWrapper} from '../AppWrapper/AppWrapper'
+import {NavMenu} from '../NavMenu/NavMenu'
+import {Page} from '../Page/Page'
+import {Icon} from '../Icon/Icon'
 
 // Types
-import {IconFont, ComponentSize} from 'src/Types'
+import {IconFont, ComponentSize} from '../../Types'
 
 // Notes
-import AppWrapperReadme from 'src/Components/AppWrapper/AppWrapper.md'
+import AppWrapperReadme from './AppWrapper.md'
 
 const layoutStories = storiesOf('Layout|AppWrapper', module)
   .addDecorator(withKnobs)

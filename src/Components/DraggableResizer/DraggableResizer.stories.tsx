@@ -7,19 +7,19 @@ import {storiesOf} from '@storybook/react'
 import {jsxDecorator} from 'storybook-addon-jsx'
 import {withKnobs, select, number} from '@storybook/addon-knobs'
 import {withState} from '@dump247/storybook-state'
-import {mapEnumKeys} from 'src/Utils/storybook'
+import {mapEnumKeys} from '../../Utils/storybook'
 
 // Types
-import {Orientation, Gradients} from 'src/Types'
+import {Orientation, Gradients} from '../../Types'
 
 // Components
-import {DraggableResizer} from 'src/Components/DraggableResizer/DraggableResizer'
+import {DraggableResizer} from './DraggableResizer'
 
 // Notes
-import DraggableResizerReadme from 'src/Components/DraggableResizer/DraggableResizer.md'
-import DraggableResizerPanelReadme from 'src/Components/DraggableResizer/DraggableResizerPanel.md'
-import DraggableResizerExampleAReadme from 'src/Components/DraggableResizer/DraggableResizerExampleA.md'
-import DraggableResizerExampleBReadme from 'src/Components/DraggableResizer/DraggableResizerExampleB.md'
+import DraggableResizerReadme from './DraggableResizer.md'
+import DraggableResizerPanelReadme from './DraggableResizerPanel.md'
+import DraggableResizerExampleAReadme from './DraggableResizerExampleA.md'
+import DraggableResizerExampleBReadme from './DraggableResizerExampleB.md'
 
 // State
 interface StoryState {

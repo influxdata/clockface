@@ -3,13 +3,13 @@ import React, {FunctionComponent, RefObject} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {ComponentSize, StandardFunctionProps} from 'src/Types'
+import {ComponentSize, StandardFunctionProps} from '../../Types'
 
 // Utils
 import {generateTechnoSpinnerStyle} from '../../Utils'
 
 // Styles
-import 'src/Components/Spinners/TechnoSpinner.scss'
+import './TechnoSpinner.scss'
 
 interface Props extends StandardFunctionProps {
   /** Diameter of spinner circle */

@@ -4,7 +4,7 @@ import _ from 'lodash'
 import uuid from 'uuid'
 
 // Types
-import {StandardClassProps} from 'src/Types'
+import {StandardClassProps} from '../../Types'
 
 interface Props extends StandardClassProps {
   /** Primary text to be displayed when no elements are loaded */

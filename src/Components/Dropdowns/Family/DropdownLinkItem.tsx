@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {DropdownItemType, StandardClassProps} from 'src/Types'
+import {DropdownItemType, StandardClassProps} from '../../../Types'
 
 interface Props extends StandardClassProps {
   /** Whether or not the item should have selected styling */

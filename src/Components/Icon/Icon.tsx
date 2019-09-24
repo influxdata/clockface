@@ -3,7 +3,7 @@ import React, {FunctionComponent, RefObject} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {IconFont, StandardFunctionProps} from 'src/Types'
+import {IconFont, StandardFunctionProps} from '../../Types'
 
 interface Props extends StandardFunctionProps {
   /** Icon to display */

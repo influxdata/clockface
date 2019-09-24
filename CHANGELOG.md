@@ -1,6 +1,10 @@
 # Changelog
 
-### 0.0.31 (Unreleased)
+### 0.0.32 (Unreleased)
+
+- [#281](https://github.com/influxdata/clockface/pull/281): Revert absolute path changes
+
+### 0.0.31
 
 - [#278](https://github.com/influxdata/clockface/pull/278): Add rollup-plugin-includepaths to handle unresolved paths
 
@@ -11,6 +15,7 @@
 ### 0.0.29
 
 - [#276](https://github.com/influxdata/clockface/pull/276): Replace all relative import paths with absolute paths
+- [#275](https://github.com/influxdata/clockface/pull/275): Support absolute import paths
 - [#274](https://github.com/influxdata/clockface/pull/274): Introduce `QuestionMarkTooltip` as a composed version of `Popover`
 - [#274](https://github.com/influxdata/clockface/pull/274): Split `StandardProps` into `StandardClassProps` and `StandardFunctionProps`
 - [#270](https://github.com/influxdata/clockface/pull/270): [Breaking] Rebuild `Popover` from the ground up using portals and refs to prevent issues with layout disruption and positioning
@@ -24,7 +29,7 @@
 - [#265](https://github.com/influxdata/clockface/pull/265): Introduce `PageSubTitle` component
 - [#265](https://github.com/influxdata/clockface/pull/265): Change backgrounds of `OverlayContainer` and `AppWrapper` to be flat colors
 - [#265](https://github.com/influxdata/clockface/pull/265): [Breaking] Make `PageHeader` and sub-components responsive
-- [#264](https://github.com/influxdata/clockface/pull/264): Update `SelectableCard` component with top-label design
+- [#264](https://github.com/influxdata/clockface/pull/264): [Breaking] Update `SelectableCard` component with top-label design
 
 ### 0.0.28
 

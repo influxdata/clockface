@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps, ComponentColor} from 'src/Types'
+import {StandardClassProps, ComponentColor} from '../../Types'
 
 interface Props extends StandardClassProps {
   /** Controls coloration of the row, useful for showing a certain state */
