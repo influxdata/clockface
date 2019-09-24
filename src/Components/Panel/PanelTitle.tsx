@@ -1,26 +1,25 @@
 // Libraries
-import React, {FunctionComponent, RefObject} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
 import {StandardFunctionProps, ComponentSize} from '../../Types'
 
-interface Props extends StandardFunctionProps {
+export interface PanelTitleProps extends StandardFunctionProps {
   /** Controls padding */
   size?: ComponentSize
-  /** Pass through for ref */
-  ref?: RefObject<HTMLDivElement>
 }
 
-export const PanelTitle: FunctionComponent<Props> = ({
+export type PanelTitleRef = HTMLDivElement
+
+export const PanelTitle = forwardRef<PanelTitleRef, PanelTitleProps>(({
   id,
-  ref,
   style,
   size = ComponentSize.Small,
   testID = 'panel--title',
   children,
   className,
-}) => {
+}, ref) => {
   const panelTitleClass = classnames('cf-panel--title', {
     [`cf-panel--title__${size}`]: size,
     [`${className}`]: className,
@@ -37,6 +36,6 @@ export const PanelTitle: FunctionComponent<Props> = ({
       {children}
     </div>
   )
-}
+})
 
 PanelTitle.displayName = 'PanelTitle'

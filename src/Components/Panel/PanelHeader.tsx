@@ -14,7 +14,7 @@ import {
   ComponentSize,
 } from '../../Types'
 
-interface Props extends StandardFunctionProps {
+export interface PanelHeaderProps extends StandardFunctionProps {
   /** Vertical or horizontal flex alignment */
   flexDirection?: FlexDirection
   /** Inserted margin between children */
@@ -29,7 +29,7 @@ interface Props extends StandardFunctionProps {
   ref?: RefObject<HTMLDivElement>
 }
 
-export const PanelHeader: FunctionComponent<Props> = ({
+export const PanelHeader: FunctionComponent<PanelHeaderProps> = ({
   id,
   ref,
   style,

@@ -1,5 +1,5 @@
 // Libraries
-import React, {FunctionComponent, RefObject} from 'react'
+import React, {forwardRef} from 'react'
 import _ from 'lodash'
 import classnames from 'classnames'
 
@@ -20,7 +20,7 @@ import {DismissButton} from '../Button/Composed/DismissButton'
 // Styles
 import './Panel.scss'
 
-interface Props extends StandardFunctionProps {
+export interface PanelProps extends StandardFunctionProps {
   /** Optional gradient theme of panel, supercedes backgroundColor prop */
   gradient?: Gradients
   /** Optional background color of panel */
@@ -29,13 +29,12 @@ interface Props extends StandardFunctionProps {
   onDismiss?: () => void
   /** Applies to the dismiss button rendered when onDismiss is present */
   dismissButtonColor?: ComponentColor
-  /** Pass through for ref */
-  ref?: RefObject<HTMLDivElement>
 }
 
-export const Panel: FunctionComponent<Props> = ({
+export type PanelRef = HTMLDivElement
+
+export const Panel = forwardRef<PanelRef, PanelProps>(({
   id,
-  ref,
   style,
   testID = 'panel',
   gradient,
@@ -44,7 +43,7 @@ export const Panel: FunctionComponent<Props> = ({
   onDismiss,
   backgroundColor = InfluxColors.Castle,
   dismissButtonColor = ComponentColor.Primary,
-}) => {
+}, ref) => {
   const textColor = calculateTextColorFromBackground(backgroundColor, gradient)
 
   const panelClass = classnames('cf-panel', {
@@ -71,6 +70,6 @@ export const Panel: FunctionComponent<Props> = ({
       {children}
     </div>
   )
-}
+})
 
 Panel.displayName = 'Panel'

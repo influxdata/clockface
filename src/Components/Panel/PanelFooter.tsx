@@ -5,14 +5,14 @@ import classnames from 'classnames'
 // Types
 import {StandardFunctionProps, ComponentSize} from '../../Types'
 
-interface Props extends StandardFunctionProps {
+export interface PanelFooterProps extends StandardFunctionProps {
   /** Controls padding */
   size?: ComponentSize
   /** Pass through for ref */
   ref?: RefObject<HTMLDivElement>
 }
 
-export const PanelFooter: FunctionComponent<Props> = ({
+export const PanelFooter: FunctionComponent<PanelFooterProps> = ({
   id,
   ref,
   style,
