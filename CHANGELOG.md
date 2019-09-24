@@ -1,5 +1,15 @@
 # Changelog
 
+### 0.0.33
+
+- [#313](https://github.com/influxdata/clockface/pull/313): Fix style bug in `PanelTitle`
+- [#313](https://github.com/influxdata/clockface/pull/313): Convert `FlexBox` component family to `FunctionComponent` and add `ref` prop
+- [#313](https://github.com/influxdata/clockface/pull/313): Convert `Icon` component to `FunctionComponent` and add `ref` prop
+- [#313](https://github.com/influxdata/clockface/pull/313): Convert `Label` component to `FunctionComponent` and add `ref` prop
+- [#313](https://github.com/influxdata/clockface/pull/313): Convert `Panel` component family to `FunctionComponent` and add `ref` prop
+- [#313](https://github.com/influxdata/clockface/pull/313): Convert `Input` component family to `FunctionComponent` and add `ref` prop
+- [#313](https://github.com/influxdata/clockface/pull/313): Convert spinner components to `FunctionComponent` and add `ref` prop
+
 ### 0.0.32 (Unreleased)
 
 - [#281](https://github.com/influxdata/clockface/pull/281): Revert absolute path changes
