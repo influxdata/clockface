@@ -11,6 +11,7 @@ import {
   text,
   select,
   boolean,
+  object,
 } from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
@@ -49,6 +50,10 @@ const inputsComposedStories = storiesOf('Components|Inputs/Composed', module)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
+const defaultInputStyle = {
+  width: '200px',
+}
+
 inputsBaseStories.add(
   'Input (Text)',
   () => (
@@ -66,7 +71,7 @@ inputsBaseStories.add(
             select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
           ]
         }
-        widthPixels={number('widthPixels', 200)}
+        style={object('style', defaultInputStyle)}
         status={
           ComponentStatus[
             select('status', mapEnumKeys(ComponentStatus), 'Default')
@@ -109,7 +114,7 @@ inputsBaseStories.add(
             select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
           ]
         }
-        widthPixels={number('widthPixels', 100)}
+        style={object('style', defaultInputStyle)}
         status={
           ComponentStatus[
             select('status', mapEnumKeys(ComponentStatus), 'Default')
@@ -146,7 +151,7 @@ inputsBaseStories.add(
             select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
           ]
         }
-        widthPixels={number('widthPixels', 200)}
+        style={object('style', defaultInputStyle)}
         status={
           ComponentStatus[
             select('status', mapEnumKeys(ComponentStatus), 'Default')
@@ -188,7 +193,7 @@ inputsBaseStories.add(
             select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
           ]
         }
-        widthPixels={number('widthPixels', 200)}
+        style={object('style', defaultInputStyle)}
         status={
           ComponentStatus[
             select('status', mapEnumKeys(ComponentStatus), 'Default')

@@ -342,7 +342,7 @@ resourceListExampleStories.add(
               <Input
                 icon={IconFont.Search}
                 placeholder="Filter dashboards..."
-                widthPixels={280}
+                style={object('input style', {width: '200px'})}
                 value={text('Search term', '')}
               />
             ) : (
