@@ -81,3 +81,27 @@ export const calculateTextColorFromBackground = (
 
   return chroma(backgroundColor).luminance() >= mediumGrey ? 'dark' : 'light'
 }
+
+export const generateLabelStyle = (
+  labelColor: InfluxColors | string,
+  isClickable: boolean,
+  isMouseOver: boolean,
+  style?: CSSProperties
+): CSSProperties => {
+  let backgroundColor = labelColor
+
+  if (isMouseOver && isClickable) {
+    backgroundColor = `${chroma(labelColor).brighten(1)}`
+  }
+
+  const color =
+    calculateTextColorFromBackground(labelColor) === 'dark'
+      ? InfluxColors.Kevlar
+      : InfluxColors.White
+
+  return {
+    backgroundColor: `${backgroundColor}`,
+    color,
+    ...style,
+  }
+}
