@@ -1,5 +1,5 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {FunctionComponent, RefObject} from 'react'
 import classnames from 'classnames'
 
 // Components
@@ -10,72 +10,62 @@ import {
   FlexDirection,
   JustifyContent,
   AlignItems,
-  StandardClassProps,
+  StandardFunctionProps,
   ComponentSize,
 } from 'src/Types'
 
-interface Props extends StandardClassProps {
+interface Props extends StandardFunctionProps {
   /** Vertical or horizontal flex alignment */
-  flexDirection: FlexDirection
+  flexDirection?: FlexDirection
   /** Inserted margin between children */
   childMargin?: ComponentSize
   /** Can be FlexStart, FlexEnd, Center, SpaceBetween, or SpaceAround */
-  justifyContent: JustifyContent
+  justifyContent?: JustifyContent
   /** Can be FlexStart, FlexEnd, Center, or Stretch */
-  alignItems: AlignItems
+  alignItems?: AlignItems
   /** Controls padding */
-  size: ComponentSize
+  size?: ComponentSize
+  /** Pass through for ref */
+  ref?: RefObject<HTMLDivElement>
 }
 
-export class PanelHeader extends Component<Props> {
-  public static readonly displayName = 'PanelHeader'
+export const PanelHeader: FunctionComponent<Props> = ({
+  id,
+  ref,
+  style,
+  size = ComponentSize.Small,
+  testID = 'panel--header',
+  children,
+  className,
+  alignItems = AlignItems.Center,
+  childMargin,
+  flexDirection = FlexDirection.Row,
+  justifyContent = JustifyContent.SpaceBetween,
+}) => {
+  const panelHeaderClass = classnames('cf-panel--header', {
+    [`cf-panel--header__${size}`]: size,
+    [`${className}`]: className,
+  })
 
-  public static defaultProps = {
-    testID: 'panel--header',
-    flexDirection: FlexDirection.Row,
-    justifyContent: JustifyContent.SpaceBetween,
-    alignItems: AlignItems.Center,
-    size: ComponentSize.Small,
-  }
-
-  public render() {
-    const {
-      children,
-      testID,
-      id,
-      style,
-      flexDirection,
-      childMargin,
-      justifyContent,
-      alignItems,
-    } = this.props
-
-    return (
-      <div
-        className={this.className}
-        data-testid={testID}
-        id={id}
-        style={style}
+  return (
+    <div
+      id={id}
+      ref={ref}
+      style={style}
+      data-testid={testID}
+      className={panelHeaderClass}
+    >
+      <FlexBox
+        direction={flexDirection}
+        justifyContent={justifyContent}
+        alignItems={alignItems}
+        stretchToFitWidth={true}
+        margin={childMargin}
       >
-        <FlexBox
-          direction={flexDirection}
-          justifyContent={justifyContent}
-          alignItems={alignItems}
-          stretchToFitWidth={true}
-          margin={childMargin}
-        >
-          {children}
-        </FlexBox>
-      </div>
-    )
-  }
-
-  private get className(): string {
-    const {className, size} = this.props
-
-    return classnames('cf-panel--header', {
-      [`cf-panel--header__${size}`]: size,
-      [`${className}`]: className,
-    })
-  }
+        {children}
+      </FlexBox>
+    </div>
+  )
 }
+
+PanelHeader.displayName = 'PanelHeader'

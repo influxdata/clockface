@@ -10,6 +10,10 @@ import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {Panel} from 'src/Components/Panel/Panel'
+import {PanelHeader} from 'src/Components/Panel/PanelHeader'
+import {PanelTitle} from 'src/Components/Panel/PanelTitle'
+import {PanelBody} from 'src/Components/Panel/PanelBody'
+import {PanelFooter} from 'src/Components/Panel/PanelFooter'
 import {Grid} from 'src/Components/Grid/Grid'
 
 // Types
@@ -61,19 +65,19 @@ panelStories.add(
   'PanelHeader',
   () => (
     <div className="story--example">
-      <Panel.Header
+      <PanelHeader
         size={
           ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
         }
       >
-        <Panel.Title
+        <PanelTitle
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
         >
           {text('title', 'I am a cool Panel')}
-        </Panel.Title>
-      </Panel.Header>
+        </PanelTitle>
+      </PanelHeader>
     </div>
   ),
   {
@@ -87,13 +91,13 @@ panelStories.add(
   'PanelBody',
   () => (
     <div className="story--example">
-      <Panel.Body
+      <PanelBody
         size={
           ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
         }
       >
         <span>{text('children', 'Example paragraph text')}</span>
-      </Panel.Body>
+      </PanelBody>
     </div>
   ),
   {
@@ -107,13 +111,13 @@ panelStories.add(
   'PanelFooter',
   () => (
     <div className="story--example">
-      <Panel.Footer
+      <PanelFooter
         size={
           ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
         }
       >
         <span>{text('children', 'Example footer text')}</span>
-      </Panel.Footer>
+      </PanelFooter>
     </div>
   ),
   {
@@ -139,20 +143,20 @@ panelExampleStories.add(
         }
         onDismiss={() => alert('onDismiss clicked!')}
       >
-        <Panel.Header
+        <PanelHeader
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
         >
-          <Panel.Title
+          <PanelTitle
             size={
               ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
             }
           >
             Welcome!
-          </Panel.Title>
-        </Panel.Header>
-        <Panel.Body
+          </PanelTitle>
+        </PanelHeader>
+        <PanelBody
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
@@ -161,7 +165,7 @@ panelExampleStories.add(
           <h5>
             <a href="#">Click Here</a> to take the tour
           </h5>
-        </Panel.Body>
+        </PanelBody>
       </Panel>
     </div>
   ),
@@ -177,20 +181,20 @@ panelExampleStories.add(
   () => (
     <div className="story--example">
       <Panel>
-        <Panel.Header
+        <PanelHeader
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
         >
-          <Panel.Title
+          <PanelTitle
             size={
               ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
             }
           >
             Getting started with InfluxDB 2.0
-          </Panel.Title>
-        </Panel.Header>
-        <Panel.Body
+          </PanelTitle>
+        </PanelHeader>
+        <PanelBody
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
@@ -199,29 +203,29 @@ panelExampleStories.add(
             <Grid.Row>
               <Grid.Column widthSM={Columns.Four}>
                 <Panel backgroundColor={InfluxColors.Onyx}>
-                  <Panel.Body>
+                  <PanelBody>
                     <p>Configure a Data Collector</p>
-                  </Panel.Body>
+                  </PanelBody>
                 </Panel>
               </Grid.Column>
               <Grid.Column widthSM={Columns.Four}>
                 <Panel backgroundColor={InfluxColors.Onyx}>
-                  <Panel.Body>
+                  <PanelBody>
                     <p>Build a Monitoring Dashboard</p>
-                  </Panel.Body>
+                  </PanelBody>
                 </Panel>
               </Grid.Column>
               <Grid.Column widthSM={Columns.Four}>
                 <Panel backgroundColor={InfluxColors.Onyx}>
-                  <Panel.Body>
+                  <PanelBody>
                     <p>Explore Data with Flux</p>
-                  </Panel.Body>
+                  </PanelBody>
                 </Panel>
               </Grid.Column>
             </Grid.Row>
           </Grid>
-        </Panel.Body>
-        <Panel.Footer
+        </PanelBody>
+        <PanelFooter
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
@@ -229,7 +233,7 @@ panelExampleStories.add(
           <p>
             Check our <a href="#">Documentation Site</a> for more tutorials
           </p>
-        </Panel.Footer>
+        </PanelFooter>
       </Panel>
     </div>
   ),
@@ -245,26 +249,26 @@ panelExampleStories.add(
   () => (
     <div className="story--example">
       <Panel gradient={Gradients.DocScott}>
-        <Panel.Header
+        <PanelHeader
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
         >
-          <Panel.Title
+          <PanelTitle
             size={
               ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
             }
           >
             Danger Zone!
-          </Panel.Title>
-        </Panel.Header>
-        <Panel.Body
+          </PanelTitle>
+        </PanelHeader>
+        <PanelBody
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
         >
           <p>These actions can have unintended wide-reaching consequences</p>
-        </Panel.Body>
+        </PanelBody>
       </Panel>
     </div>
   ),

@@ -28,7 +28,7 @@ interface Props extends StandardFunctionProps {
   /** If a function is passed in a dismiss button will appear on the Panel */
   onDismiss?: () => void
   /** Applies to the dismiss button rendered when onDismiss is present */
-  dismissButtonColor: ComponentColor
+  dismissButtonColor?: ComponentColor
   /** Pass through for ref */
   ref?: RefObject<HTMLDivElement>
 }

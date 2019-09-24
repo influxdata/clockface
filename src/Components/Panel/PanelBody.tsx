@@ -1,44 +1,42 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {FunctionComponent, RefObject} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps, ComponentSize} from 'src/Types'
+import {StandardFunctionProps, ComponentSize} from 'src/Types'
 
-interface Props extends StandardClassProps {
+interface Props extends StandardFunctionProps {
   /** Controls padding */
-  size: ComponentSize
+  size?: ComponentSize
+  /** Pass through for ref */
+  ref?: RefObject<HTMLDivElement>
 }
 
-export class PanelBody extends Component<Props> {
-  public static readonly displayName = 'PanelBody'
+export const PanelBody: FunctionComponent<Props> = ({
+  id,
+  ref,
+  size = ComponentSize.Small,
+  style,
+  testID = 'panel--body',
+  children,
+  className,
+}) => {
+  const panelBodyClass = classnames('cf-panel--body', {
+    [`cf-panel--body__${size}`]: size,
+    [`${className}`]: className,
+  })
 
-  public static defaultProps = {
-    testID: 'panel--body',
-    size: ComponentSize.Small,
-  }
-
-  public render() {
-    const {children, testID, id, style} = this.props
-
-    return (
-      <div
-        className={this.className}
-        data-testid={testID}
-        id={id}
-        style={style}
-      >
-        {children}
-      </div>
-    )
-  }
-
-  private get className(): string {
-    const {className, size} = this.props
-
-    return classnames('cf-panel--body', {
-      [`cf-panel--body__${size}`]: size,
-      [`${className}`]: className,
-    })
-  }
+  return (
+    <div
+      id={id}
+      ref={ref}
+      style={style}
+      data-testid={testID}
+      className={panelBodyClass}
+    >
+      {children}
+    </div>
+  )
 }
+
+PanelBody.displayName = 'PanelBody'
