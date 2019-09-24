@@ -11,6 +11,7 @@ import {mapEnumKeys} from '../../Utils/storybook'
 // Components
 import {Page} from './Page'
 import {Radio} from '../Radio/Radio'
+import {RadioButton} from '../Radio/RadioButton'
 import {SquareButton} from '../Button/Composed/SquareButton'
 import {FlexBox} from '../FlexBox/FlexBox'
 
@@ -167,7 +168,7 @@ pageExampleStories.add(
           </Page.Header.Left>
           <Page.Header.Center widthPixels={300}>
             <Radio shape={ButtonShape.StretchToFit}>
-              <Radio.Button
+              <RadioButton
                 id="mode--write"
                 titleText="Write Mode"
                 active={true}
@@ -175,8 +176,8 @@ pageExampleStories.add(
                 onClick={() => {}}
               >
                 Write
-              </Radio.Button>
-              <Radio.Button
+              </RadioButton>
+              <RadioButton
                 id="mode--preview"
                 titleText="Preview Mode"
                 active={false}
@@ -184,7 +185,7 @@ pageExampleStories.add(
                 onClick={() => {}}
               >
                 Preview
-              </Radio.Button>
+              </RadioButton>
             </Radio>
           </Page.Header.Center>
           <Page.Header.Right>

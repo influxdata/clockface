@@ -1,66 +1,59 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {FunctionComponent, RefObject} from 'react'
 import classnames from 'classnames'
-
-// Components
-import {RadioButton} from './RadioButton'
 
 // Types
 import {
   ComponentColor,
   ComponentSize,
   ButtonShape,
-  StandardClassProps,
+  StandardFunctionProps,
 } from '../../Types'
 
 // Styles
 import './Radio.scss'
 
-interface Props extends StandardClassProps {
+interface Props extends StandardFunctionProps {
   /** Radio color */
-  color: ComponentColor
+  color?: ComponentColor
   /** Radio size */
-  size: ComponentSize
+  size?: ComponentSize
   /** Shape... */
-  shape: ButtonShape
+  shape?: ButtonShape
+  /** Pass through for ref */
+  ref?: RefObject<HTMLDivElement>
 }
 
-export class Radio extends Component<Props> {
-  public static readonly displayName = 'Radio'
+export const Radio: FunctionComponent<Props> = ({
+  id,
+  ref,
+  size = ComponentSize.Small,
+  style,
+  shape = ButtonShape.Default,
+  color = ComponentColor.Primary,
+  testID = 'radio-button',
+  children,
+  className,
+}) =>{
+  const radioClassName = classnames('cf-radio-buttons', {
+    [`cf-radio-buttons--${color}`]: color,
+    [`cf-radio-buttons--${size}`]: size,
+    'cf-radio-buttons--square': shape === ButtonShape.Square,
+    'cf-radio-buttons--stretch': shape === ButtonShape.StretchToFit,
+    [`${className}`]: className,
+  })
 
-  public static defaultProps = {
-    color: ComponentColor.Primary,
-    size: ComponentSize.Small,
-    shape: ButtonShape.Default,
-    testID: 'radio-button',
-  }
-
-  public static Button = RadioButton
-
-  public render() {
-    const {children, testID, id, style} = this.props
-
-    return (
-      <div
-        className={this.containerClassName}
-        data-testid={testID}
-        id={id}
-        style={style}
+  return (
+    <div
+      id={id}
+      ref={ref}
+      style={style}
+      data-testid={testID}
+      className={radioClassName}
       >
-        {children}
-      </div>
-    )
-  }
-
-  private get containerClassName(): string {
-    const {color, size, shape, className} = this.props
-
-    return classnames('cf-radio-buttons', {
-      [`cf-radio-buttons--${color}`]: color,
-      [`cf-radio-buttons--${size}`]: size,
-      'cf-radio-buttons--square': shape === ButtonShape.Square,
-      'cf-radio-buttons--stretch': shape === ButtonShape.StretchToFit,
-      [`${className}`]: className,
-    })
-  }
+      {children}
+    </div>
+  )
 }
+
+Radio.displayName = 'Radio'

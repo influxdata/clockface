@@ -1,11 +1,11 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {FunctionComponent, RefObject} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardClassProps {
+interface Props extends StandardFunctionProps {
   /** Toggles radio button active state */
   active: boolean
   /** Input value of the selected radio button */
@@ -13,64 +13,56 @@ interface Props extends StandardClassProps {
   /** Function to be called on radio button click */
   onClick: (value: any) => void
   /** Text to be displayed on hover tooltip */
-  titleText: string
+  titleText?: string
   /** Toggles disabled state */
-  disabled: boolean
+  disabled?: boolean
   /** Text to be displayed on hover tooltip when radio button is disabled */
-  disabledTitleText: string
+  disabledTitleText?: string
+  /** Pass through for ref */
+  ref?: RefObject<HTMLButtonElement>
 }
 
-export class RadioButton extends Component<Props> {
-  public static readonly displayName = 'RadioButton'
+export const RadioButton: FunctionComponent<Props> = ({
+  id,
+  ref,
+  value,
+  style,
+  testID = 'radio--button',
+  active,
+  onClick,
+  disabled = false,
+  children,
+  className,
+  titleText,
+  disabledTitleText = 'This option is disabled',
+}) => {
+  const radioButtonClass = classnames('cf-radio-button', {
+    active,
+    disabled,
+    [`${className}`]: className,
+  })
 
-  public static defaultProps = {
-    disabled: false,
-    disabledTitleText: 'This option is disabled',
-    testID: 'radio--button',
-  }
+  const title = disabled ? disabledTitleText : titleText
 
-  public render() {
-    const {children, disabled, testID, id, style} = this.props
-
-    return (
-      <button
-        type="button"
-        className={this.className}
-        disabled={disabled}
-        onClick={this.handleClick}
-        title={this.title}
-        data-testid={testID}
-        id={id}
-        style={style}
-      >
-        {children}
-      </button>
-    )
-  }
-
-  private get className(): string {
-    const {active, disabled, className} = this.props
-
-    return classnames('cf-radio-button', {
-      active,
-      disabled,
-      [`${className}`]: className,
-    })
-  }
-
-  private get title(): string | undefined {
-    const {titleText, disabledTitleText, disabled} = this.props
-
-    if (disabled) {
-      return disabledTitleText
-    }
-
-    return titleText
-  }
-
-  private handleClick = () => {
-    const {onClick, value} = this.props
-
+  const handleClick = () => {
     onClick(value)
   }
+
+  return (
+    <button
+      id={id}
+      ref={ref}
+      type="button"
+      style={style}
+      title={title}
+      onClick={handleClick}
+      disabled={disabled}
+      className={radioButtonClass}
+      data-testid={testID}
+    >
+      {children}
+    </button>
+  )
 }
+
+RadioButton.displayName = 'RadioButton'

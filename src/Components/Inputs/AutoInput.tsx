@@ -4,6 +4,7 @@ import classnames from 'classnames'
 
 // Components
 import {Radio} from '../Radio/Radio'
+import {RadioButton} from '../Radio/RadioButton'
 
 // Types
 import {
@@ -52,7 +53,7 @@ export class AutoInput extends Component<Props> {
       >
         <div className="auto-input--radio">
           <Radio shape={ButtonShape.StretchToFit} size={size} color={color}>
-            <Radio.Button
+            <RadioButton
               active={mode === AutoInputMode.Auto}
               id={`${id}--${AutoInputMode.Auto}`}
               testID={`${testID}--${AutoInputMode.Auto}`}
@@ -61,8 +62,8 @@ export class AutoInput extends Component<Props> {
               onClick={onChangeMode}
             >
               Auto
-            </Radio.Button>
-            <Radio.Button
+            </RadioButton>
+            <RadioButton
               active={mode === AutoInputMode.Custom}
               id={`${id}--${AutoInputMode.Custom}`}
               testID={`${testID}--${AutoInputMode.Custom}`}
@@ -71,7 +72,7 @@ export class AutoInput extends Component<Props> {
               onClick={onChangeMode}
             >
               Custom
-            </Radio.Button>
+            </RadioButton>
           </Radio>
         </div>
         {this.input}

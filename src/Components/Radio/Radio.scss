@@ -50,6 +50,7 @@ $radio-buttons--padding: $cf-marg-a;
   Size Modifiers 
   ------------------------------------------------------------------------------
 */
+
 @mixin radioButtonSizeModifier($fontSize, $padding, $height) {
   height: $height;
 
@@ -58,6 +59,14 @@ $radio-buttons--padding: $cf-marg-a;
     line-height: $height - ($radio-buttons--padding * 2);
     padding: 0 $padding;
     font-size: $fontSize;
+  }
+
+  // Square Buttons
+  &.cf-radio-buttons--square .cf-radio-button {
+    padding: 0;
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: $height - ($radio-buttons--padding * 2);
   }
 }
 
@@ -79,6 +88,7 @@ $radio-buttons--padding: $cf-marg-a;
   Color Modifiers
   ------------------------------------------------------------------------------
 */
+
 .cf-radio-buttons--default {
   .cf-radio-button.active {
     background-color: $g7-graphite;
@@ -114,27 +124,6 @@ $radio-buttons--padding: $cf-marg-a;
   Shape Modifiers
   ------------------------------------------------------------------------------
 */
-.cf-radio-buttons.cf-radio-buttons--square {
-  &.cf-radio-buttons--xs .cf-radio-button {
-    width: $form-xs-height;
-  }
-  
-  &.cf-radio-buttons--sm .cf-radio-button {
-    width: $form-sm-height;
-  }
-  
-  &.cf-radio-buttons--md .cf-radio-button {
-    width: $form-md-height;
-  }
-
-  &.cf-radio-buttons--lg .cf-radio-button {
-    width: $form-lg-height;
-  }
-
-  .cf-radio-button {
-    padding: 0;
-  }
-}
 
 .cf-radio-buttons.cf-radio-buttons--stretch {
   width: 100%;

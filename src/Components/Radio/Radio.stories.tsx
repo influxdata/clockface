@@ -11,6 +11,7 @@ import {
   select,
   number,
   array,
+  object,
 } from '@storybook/addon-knobs'
 import {withState} from '@dump247/storybook-state'
 import {mapEnumKeys} from '../../Utils/storybook'
@@ -18,6 +19,7 @@ import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {Radio} from './Radio'
+import {RadioButton} from './RadioButton'
 
 // Types
 import {ComponentColor, ComponentSize, ButtonShape} from '../../Types'
@@ -50,36 +52,35 @@ radioStories.add(
   'Radio',
   () => (
     <div className="story--example">
-      <div style={{width: `${number('Parent width', 240)}px`}}>
-        <Radio
-          size={
-            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-          }
-          color={
-            ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Default')
-            ]
-          }
-          shape={
-            ButtonShape[select('shape', mapEnumKeys(ButtonShape), 'Default')]
-          }
-        >
-          {array('Radio Buttons', mirepoix).map(btn => (
-            <Radio.Button
-              key={btn}
-              id={btn}
-              active={btn === text('Active Button', mirepoix[0])}
-              value={btn}
-              titleText={btn}
-              onClick={value =>
-                alert(`Radio.Button clicked! Value returned: ${value}`)
-              }
-            >
-              {btn}
-            </Radio.Button>
-          ))}
-        </Radio>
-      </div>
+      <Radio
+        style={object('style', {width: '200px'})}
+        size={
+          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+        }
+        color={
+          ComponentColor[
+            select('color', mapEnumKeys(ComponentColor), 'Default')
+          ]
+        }
+        shape={
+          ButtonShape[select('shape', mapEnumKeys(ButtonShape), 'StretchToFit')]
+        }
+      >
+        {array('Radio Buttons', mirepoix).map(btn => (
+          <RadioButton
+            key={btn}
+            id={btn}
+            active={btn === text('Active Button', mirepoix[0])}
+            value={btn}
+            titleText={btn}
+            onClick={value =>
+              alert(`RadioButton clicked! Value returned: ${value}`)
+            }
+          >
+            {btn}
+          </RadioButton>
+        ))}
+      </Radio>
     </div>
   ),
   {
@@ -93,7 +94,7 @@ radioStories.add(
   'RadioButton',
   () => (
     <div className="story--example">
-      <Radio.Button
+      <RadioButton
         id={text('id', 'example-radio-option')}
         active={boolean('active', false)}
         value={text('value', 'example-radio-option')}
@@ -108,7 +109,7 @@ radioStories.add(
         )}
       >
         {text('children', 'Button Label')}
-      </Radio.Button>
+      </RadioButton>
     </div>
   ),
   {
@@ -134,7 +135,7 @@ radioExampleStories.add(
           }
           shape={ButtonShape.StretchToFit}
         >
-          <Radio.Button
+          <RadioButton
             titleText="Compose your Note using Markdown"
             id="mode-compose"
             active={store.state.activeItemID === 'mode-compose'}
@@ -142,8 +143,8 @@ radioExampleStories.add(
             onClick={activeItemID => store.set({activeItemID})}
           >
             Compose
-          </Radio.Button>
-          <Radio.Button
+          </RadioButton>
+          <RadioButton
             titleText="See a preview of your Note"
             id="mode-preview"
             active={store.state.activeItemID === 'mode-preview'}
@@ -151,7 +152,7 @@ radioExampleStories.add(
             onClick={activeItemID => store.set({activeItemID})}
           >
             Preview
-          </Radio.Button>
+          </RadioButton>
         </Radio>
       </div>
     </div>
