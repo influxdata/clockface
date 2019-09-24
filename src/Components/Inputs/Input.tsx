@@ -133,11 +133,13 @@ export const Input: FunctionComponent<Props> = ({
 
   const inputCheckboxClass = classnames('cf-input--checkbox', {checked})
 
-  const correctlyTypedValue: string | number = type === InputType.Number ? Number(value) : `${value}`
+  const correctlyTypedValue: string | number =
+    type === InputType.Number ? Number(value) : `${value}`
 
   const iconElement = icon && <Icon glyph={icon} className="cf-input-icon" />
 
-  const title = status === ComponentStatus.Disabled ? disabledTitleText : titleText
+  const title =
+    status === ComponentStatus.Disabled ? disabledTitleText : titleText
 
   return (
     <div className={inputClass} style={style} ref={containerRef}>
@@ -184,7 +186,9 @@ interface InputStatusIndicatorProps {
   status: ComponentStatus
 }
 
-const InputStatusIndicator: FunctionComponent<InputStatusIndicatorProps> = ({status}) => {
+const InputStatusIndicator: FunctionComponent<InputStatusIndicatorProps> = ({
+  status,
+}) => {
   if (status === ComponentStatus.Loading) {
     return (
       <>
