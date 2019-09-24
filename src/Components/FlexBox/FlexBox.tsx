@@ -1,9 +1,6 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {FunctionComponent, RefObject} from 'react'
 import classnames from 'classnames'
-
-// Components
-import {FlexBoxChild} from 'src/Components/FlexBox/FlexBoxChild'
 
 // Types
 import {
@@ -11,72 +8,64 @@ import {
   JustifyContent,
   AlignItems,
   ComponentSize,
-  StandardClassProps,
+  StandardFunctionProps,
 } from 'src/Types'
 
 // Styles
 import 'src/Components/FlexBox/FlexBox.scss'
 
-interface Props extends StandardClassProps {
+interface Props extends StandardFunctionProps {
   /** Vertical or horizontal flex alignment */
-  direction: FlexDirection
+  direction?: FlexDirection
   /** Inserted margin between children */
   margin?: ComponentSize
   /** Can be FlexStart, FlexEnd, Center, SpaceBetween, or SpaceAround */
-  justifyContent: JustifyContent
+  justifyContent?: JustifyContent
   /** Can be FlexStart, FlexEnd, Center, or Stretch */
-  alignItems: AlignItems
+  alignItems?: AlignItems
   /** stretches component spacer to fit parent width */
-  stretchToFitWidth: boolean
+  stretchToFitWidth?: boolean
   /** stretches component spacer to fit parent height */
-  stretchToFitHeight: boolean
+  stretchToFitHeight?: boolean
+  /** Pass through for ref */
+  ref?: RefObject<HTMLDivElement>
 }
 
-export class FlexBox extends Component<Props> {
-  public static readonly displayName = 'FlexBox'
+export const FlexBox: FunctionComponent<Props> = ({
+  id,
+  ref,
+  style,
+  testID = 'flex-box',
+  margin,
+  children,
+  direction = FlexDirection.Row,
+  className,
+  alignItems = AlignItems.Center,
+  justifyContent = JustifyContent.FlexStart,
+  stretchToFitWidth = false,
+  stretchToFitHeight = false,
+}) => {
+  const flexBoxClass = classnames('cf-flex-box', {
+    [`cf-flex-box__margin-${margin}`]: margin,
+    [`cf-flex-box__${direction}`]: direction,
+    [`cf-flex-box__justify-${justifyContent}`]: justifyContent,
+    [`cf-flex-box__align-${alignItems}`]: alignItems,
+    'cf-flex-box__stretch-w': stretchToFitWidth,
+    'cf-flex-box__stretch-h': stretchToFitHeight,
+    [`${className}`]: className,
+  })
 
-  public static Child = FlexBoxChild
-
-  public static defaultProps = {
-    justifyContent: JustifyContent.FlexStart,
-    alignItems: AlignItems.Center,
-    stretchToFitWidth: false,
-    stretchToFitHeight: false,
-    testID: 'flex-box',
-  }
-
-  render() {
-    const {
-      stretchToFitHeight,
-      stretchToFitWidth,
-      justifyContent,
-      alignItems,
-      className,
-      direction,
-      children,
-      margin,
-      testID,
-      style,
-      id,
-    } = this.props
-
-    return (
-      <div
-        className={classnames('cf-flex-box', {
-          [`cf-flex-box__margin-${margin}`]: margin,
-          [`cf-flex-box__${direction}`]: direction,
-          [`cf-flex-box__justify-${justifyContent}`]: justifyContent,
-          [`cf-flex-box__align-${alignItems}`]: alignItems,
-          'cf-flex-box__stretch-w': stretchToFitWidth,
-          'cf-flex-box__stretch-h': stretchToFitHeight,
-          [`${className}`]: className,
-        })}
-        data-testid={testID}
-        style={style}
-        id={id}
-      >
-        {children}
-      </div>
-    )
-  }
+  return (
+    <div
+      id={id}
+      ref={ref}
+      style={style}
+      data-testid={testID}
+      className={flexBoxClass}
+    >
+      {children}
+    </div>
+  )
 }
+
+FlexBox.displayName = 'FlexBox'
