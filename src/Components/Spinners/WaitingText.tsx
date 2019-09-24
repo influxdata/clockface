@@ -1,43 +1,43 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {FunctionComponent, RefObject} from 'react'
 import classnames from 'classnames'
 
 // Styles
 import 'src/Components/Spinners/WaitingText.scss'
 
 // Types
-import {StandardClassProps} from 'src/Types'
+import {StandardFunctionProps} from 'src/Types'
 
-interface Props extends StandardClassProps {
+interface Props extends StandardFunctionProps {
   /** Text to be displayed */
   text: string
+  /** Pass through for ref */
+  ref?: RefObject<HTMLDivElement>
 }
 
-export class WaitingText extends Component<Props> {
-  public static readonly displayName = 'WaitingText'
+export const WaitingText: FunctionComponent<Props> = ({
+  id,
+  ref,
+  text,
+  style,
+  testID = 'waiting-text',
+  className,
+}) => {
+  const waitingTextClass = classnames('cf-waiting-text', {
+    [`${className}`]: className,
+  })
 
-  public static defaultProps = {
-    testID: 'waiting-text',
-  }
-
-  public render() {
-    const {text, testID, id, style} = this.props
-
-    return (
-      <div
-        className={this.className}
-        data-testid={testID}
-        id={id}
-        style={style}
-      >
-        {text}
-      </div>
-    )
-  }
-
-  private get className(): string {
-    const {className} = this.props
-
-    return classnames('cf-waiting-text', {[`${className}`]: className})
-  }
+  return (
+    <div
+      id={id}
+      ref={ref}
+      style={style}
+      data-testid={testID}
+      className={waitingTextClass}
+    >
+      {text}
+    </div>
+  )
 }
+
+WaitingText.displayName = 'WaitingText'

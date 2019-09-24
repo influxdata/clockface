@@ -7,7 +7,7 @@ import {HEX_CODE_CHAR_LENGTH} from '../Constants/colors'
 import {getColorsFromGradient} from '../Constants/colors'
 
 // Types
-import {Gradients, InfluxColors} from '../Types'
+import {Gradients, InfluxColors, ComponentSize} from '../Types'
 
 export const validateHexCode = (colorHex: string): string | null => {
   const isValidLength = colorHex.length === HEX_CODE_CHAR_LENGTH
@@ -104,4 +104,31 @@ export const generateLabelStyle = (
     color,
     ...style,
   }
+}
+
+export const generateTechnoSpinnerStyle = (
+  diameterPixels: number,
+  strokeWidth: ComponentSize,
+  style?: CSSProperties
+): CSSProperties => {
+  let borderWidth
+  const width = `${diameterPixels}px`
+  const height = `${diameterPixels}px`
+
+  switch (strokeWidth) {
+    case ComponentSize.ExtraSmall:
+      borderWidth = 1
+      break
+    case ComponentSize.Small:
+      borderWidth = 2
+      break
+    case ComponentSize.Medium:
+      borderWidth = 4
+      break
+    case ComponentSize.Large:
+    default:
+      borderWidth = 8
+  }
+
+  return {width, height, borderWidth, ...style}
 }
