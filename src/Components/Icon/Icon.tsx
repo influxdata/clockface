@@ -1,25 +1,24 @@
 // Libraries
-import React, {FunctionComponent, RefObject} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
 import {IconFont, StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardFunctionProps {
+export interface IconProps extends StandardFunctionProps {
   /** Icon to display */
   glyph: IconFont | string
-  /** Pass through for ref */
-  ref?: RefObject<HTMLSpanElement>
 }
 
-export const Icon: FunctionComponent<Props> = ({
+export type IconRef = HTMLSpanElement
+
+export const Icon = forwardRef<IconRef, IconProps>(({
   id,
-  ref,
   glyph,
   style,
   testID = 'icon',
   className,
-}) => {
+}, ref) => {
   const iconClassName = classnames('cf-icon', {
     [`${glyph}`]: glyph,
     [`${className}`]: className,
@@ -34,6 +33,6 @@ export const Icon: FunctionComponent<Props> = ({
       className={iconClassName}
     />
   )
-}
+})
 
 Icon.displayName = 'Icon'

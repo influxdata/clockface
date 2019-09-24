@@ -1,5 +1,5 @@
 // Libraries
-import React, {FunctionComponent, MouseEvent, RefObject, useState} from 'react'
+import React, {FunctionComponent, MouseEvent, useState, forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
@@ -11,7 +11,7 @@ import {generateLabelStyle} from '../../Utils'
 // Styles
 import './Label.scss'
 
-interface Props extends StandardFunctionProps {
+export interface LabelProps extends StandardFunctionProps {
   /** Unique value to be returned when Label is clicked */
   id: string
   /** Name of the Label, appears inside the label */
@@ -26,13 +26,12 @@ interface Props extends StandardFunctionProps {
   onDelete?: (id: string) => void
   /** Size of Label */
   size?: ComponentSize
-  /** Pass through for ref */
-  ref?: RefObject<HTMLDivElement>
 }
 
-export const Label: FunctionComponent<Props> = ({
+export type LabelRef = HTMLDivElement
+
+export const Label = forwardRef<LabelRef, LabelProps>(({
   id,
-  ref,
   name,
   size = ComponentSize.ExtraSmall,
   style,
@@ -42,7 +41,7 @@ export const Label: FunctionComponent<Props> = ({
   onDelete,
   className,
   description,
-}) => {
+}, ref) => {
   const [isMouseOver, setHoverState] = useState(false)
 
   const labelClass = classnames('cf-label', {
@@ -101,7 +100,7 @@ export const Label: FunctionComponent<Props> = ({
       )}
     </div>
   )
-}
+})
 
 interface DeleteButtonProps {
   /** Name of the Label, appears inside the label */
