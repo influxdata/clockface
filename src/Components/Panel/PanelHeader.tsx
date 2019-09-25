@@ -1,5 +1,5 @@
 // Libraries
-import React, {FunctionComponent, RefObject} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Components
@@ -25,47 +25,51 @@ export interface PanelHeaderProps extends StandardFunctionProps {
   alignItems?: AlignItems
   /** Controls padding */
   size?: ComponentSize
-  /** Pass through for ref */
-  ref?: RefObject<HTMLDivElement>
 }
 
-export const PanelHeader: FunctionComponent<PanelHeaderProps> = ({
-  id,
-  ref,
-  style,
-  size = ComponentSize.Small,
-  testID = 'panel--header',
-  children,
-  className,
-  alignItems = AlignItems.Center,
-  childMargin,
-  flexDirection = FlexDirection.Row,
-  justifyContent = JustifyContent.SpaceBetween,
-}) => {
-  const panelHeaderClass = classnames('cf-panel--header', {
-    [`cf-panel--header__${size}`]: size,
-    [`${className}`]: className,
-  })
+export type PanelHeaderRef = HTMLDivElement
 
-  return (
-    <div
-      id={id}
-      ref={ref}
-      style={style}
-      data-testid={testID}
-      className={panelHeaderClass}
-    >
-      <FlexBox
-        direction={flexDirection}
-        justifyContent={justifyContent}
-        alignItems={alignItems}
-        stretchToFitWidth={true}
-        margin={childMargin}
+export const PanelHeader = forwardRef<PanelHeaderRef, PanelHeaderProps>(
+  (
+    {
+      id,
+      style,
+      size = ComponentSize.Small,
+      testID = 'panel--header',
+      children,
+      className,
+      alignItems = AlignItems.Center,
+      childMargin,
+      flexDirection = FlexDirection.Row,
+      justifyContent = JustifyContent.SpaceBetween,
+    },
+    ref
+  ) => {
+    const panelHeaderClass = classnames('cf-panel--header', {
+      [`cf-panel--header__${size}`]: size,
+      [`${className}`]: className,
+    })
+
+    return (
+      <div
+        id={id}
+        ref={ref}
+        style={style}
+        data-testid={testID}
+        className={panelHeaderClass}
       >
-        {children}
-      </FlexBox>
-    </div>
-  )
-}
+        <FlexBox
+          direction={flexDirection}
+          justifyContent={justifyContent}
+          alignItems={alignItems}
+          stretchToFitWidth={true}
+          margin={childMargin}
+        >
+          {children}
+        </FlexBox>
+      </div>
+    )
+  }
+)
 
 PanelHeader.displayName = 'PanelHeader'

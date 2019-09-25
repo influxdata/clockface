@@ -67,11 +67,11 @@ export const Panel = forwardRef<PanelRef, PanelProps>(
 
     return (
       <div
-        className={panelClass}
-        style={panelStyle}
-        data-testid={testID}
         id={id}
         ref={ref}
+        style={panelStyle}
+        data-testid={testID}
+        className={panelClass}
       >
         {dismissButton}
         {children}
