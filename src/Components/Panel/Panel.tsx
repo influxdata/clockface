@@ -33,43 +33,51 @@ export interface PanelProps extends StandardFunctionProps {
 
 export type PanelRef = HTMLDivElement
 
-export const Panel = forwardRef<PanelRef, PanelProps>(({
-  id,
-  style,
-  testID = 'panel',
-  gradient,
-  children,
-  className,
-  onDismiss,
-  backgroundColor = InfluxColors.Castle,
-  dismissButtonColor = ComponentColor.Primary,
-}, ref) => {
-  const textColor = calculateTextColorFromBackground(backgroundColor, gradient)
+export const Panel = forwardRef<PanelRef, PanelProps>(
+  (
+    {
+      id,
+      style,
+      testID = 'panel',
+      gradient,
+      children,
+      className,
+      onDismiss,
+      backgroundColor = InfluxColors.Castle,
+      dismissButtonColor = ComponentColor.Primary,
+    },
+    ref
+  ) => {
+    const textColor = calculateTextColorFromBackground(
+      backgroundColor,
+      gradient
+    )
 
-  const panelClass = classnames('cf-panel', {
-    [`${className}`]: className,
-    'cf-panel__gradient': gradient,
-    [`cf-panel__${textColor}-text`]: textColor,
-  })
+    const panelClass = classnames('cf-panel', {
+      [`${className}`]: className,
+      'cf-panel__gradient': gradient,
+      [`cf-panel__${textColor}-text`]: textColor,
+    })
 
-  const dismissButton = onDismiss && (
-    <DismissButton onClick={onDismiss} color={dismissButtonColor} />
-  )
+    const dismissButton = onDismiss && (
+      <DismissButton onClick={onDismiss} color={dismissButtonColor} />
+    )
 
-  const panelStyle = generatePanelStyle(backgroundColor, gradient, style)
+    const panelStyle = generatePanelStyle(backgroundColor, gradient, style)
 
-  return (
-    <div
-      className={panelClass}
-      style={panelStyle}
-      data-testid={testID}
-      id={id}
-      ref={ref}
-    >
-      {dismissButton}
-      {children}
-    </div>
-  )
-})
+    return (
+      <div
+        className={panelClass}
+        style={panelStyle}
+        data-testid={testID}
+        id={id}
+        ref={ref}
+      >
+        {dismissButton}
+        {children}
+      </div>
+    )
+  }
+)
 
 Panel.displayName = 'Panel'

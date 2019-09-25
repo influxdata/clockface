@@ -12,27 +12,23 @@ export interface IconProps extends StandardFunctionProps {
 
 export type IconRef = HTMLSpanElement
 
-export const Icon = forwardRef<IconRef, IconProps>(({
-  id,
-  glyph,
-  style,
-  testID = 'icon',
-  className,
-}, ref) => {
-  const iconClassName = classnames('cf-icon', {
-    [`${glyph}`]: glyph,
-    [`${className}`]: className,
-  })
+export const Icon = forwardRef<IconRef, IconProps>(
+  ({id, glyph, style, testID = 'icon', className}, ref) => {
+    const iconClassName = classnames('cf-icon', {
+      [`${glyph}`]: glyph,
+      [`${className}`]: className,
+    })
 
-  return (
-    <span
-      id={id}
-      ref={ref}
-      style={style}
-      data-testid={testID}
-      className={iconClassName}
-    />
-  )
-})
+    return (
+      <span
+        id={id}
+        ref={ref}
+        style={style}
+        data-testid={testID}
+        className={iconClassName}
+      />
+    )
+  }
+)
 
 Icon.displayName = 'Icon'
