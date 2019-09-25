@@ -23,83 +23,103 @@ const labelStories = storiesOf('Atomic|Label', module)
 
 labelStories.add(
   'Examples',
-  () => (
-    <div className="story--example">
-      <table className="story--example-table">
-        <tbody>
-          <tr>
-            <td>
-              <p>Read Only</p>
-            </td>
-            <td>
-              <Label
-                id="example-label"
-                name={text('name', 'Fresh Label')}
-                description={text(
-                  'description',
-                  'I am okay with being labeled'
-                )}
-                color={color('backgroundColor', `${InfluxColors.Star}`)}
-                size={
-                  ComponentSize[
-                    select('size', mapEnumKeys(ComponentSize), 'Small')
-                  ]
-                }
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>Clickable</p>
-            </td>
-            <td>
-              <Label
-                id="example-label"
-                name={text('name', 'Fresh Label')}
-                description={text(
-                  'description',
-                  'I am okay with being labeled'
-                )}
-                color={color('backgroundColor', `${InfluxColors.Star}`)}
-                size={
-                  ComponentSize[
-                    select('size', mapEnumKeys(ComponentSize), 'Small')
-                  ]
-                }
-                onClick={id => {
-                  alert(`Label with id: ${id} has been clicked`)
-                }}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>Removable</p>
-            </td>
-            <td>
-              <Label
-                id="example-label"
-                name={text('name', 'Fresh Label')}
-                description={text(
-                  'description',
-                  'I am okay with being labeled'
-                )}
-                color={color('backgroundColor', `${InfluxColors.Star}`)}
-                size={
-                  ComponentSize[
-                    select('size', mapEnumKeys(ComponentSize), 'Small')
-                  ]
-                }
-                onDelete={id => {
-                  alert(`Label with id: ${id} has been deleted`)
-                }}
-              />
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  ),
+  () => {
+    const labelReadOnlyRef: React.RefObject<HTMLDivElement> = React.createRef()
+    const labelClickableRef: React.RefObject<HTMLDivElement> = React.createRef()
+    const labelDeletableRef: React.RefObject<HTMLDivElement> = React.createRef()
+
+    const logLabelRefs = (): void => {
+      /* eslint-disable */
+      console.log('Read-Only Label', labelReadOnlyRef.current)
+      console.log('Clickable Label', labelClickableRef.current)
+      console.log('Deletable Label', labelDeletableRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <table className="story--example-table">
+          <tbody>
+            <tr>
+              <td>
+                <p>Read Only</p>
+              </td>
+              <td>
+                <Label
+                  ref={labelReadOnlyRef}
+                  id="example-label"
+                  name={text('name', 'Fresh Label')}
+                  description={text(
+                    'description',
+                    'I am okay with being labeled'
+                  )}
+                  color={color('backgroundColor', `${InfluxColors.Star}`)}
+                  size={
+                    ComponentSize[
+                      select('size', mapEnumKeys(ComponentSize), 'Small')
+                    ]
+                  }
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Clickable</p>
+              </td>
+              <td>
+                <Label
+                  ref={labelClickableRef}
+                  id="example-label"
+                  name={text('name', 'Fresh Label')}
+                  description={text(
+                    'description',
+                    'I am okay with being labeled'
+                  )}
+                  color={color('backgroundColor', `${InfluxColors.Star}`)}
+                  size={
+                    ComponentSize[
+                      select('size', mapEnumKeys(ComponentSize), 'Small')
+                    ]
+                  }
+                  onClick={id => {
+                    alert(`Label with id: ${id} has been clicked`)
+                  }}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Removable</p>
+              </td>
+              <td>
+                <Label
+                  ref={labelDeletableRef}
+                  id="example-label"
+                  name={text('name', 'Fresh Label')}
+                  description={text(
+                    'description',
+                    'I am okay with being labeled'
+                  )}
+                  color={color('backgroundColor', `${InfluxColors.Star}`)}
+                  size={
+                    ComponentSize[
+                      select('size', mapEnumKeys(ComponentSize), 'Small')
+                    ]
+                  }
+                  onDelete={id => {
+                    alert(`Label with id: ${id} has been deleted`)
+                  }}
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div className="story--test-buttons">
+          <button onClick={logLabelRefs}>Log Refs</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(LabelReadme),

@@ -46,25 +46,46 @@ const spinnerTextStories = storiesOf(
 
 spinnerContainerStories.add(
   'SpinnerContainer',
-  () => (
-    <div className="story--example">
-      <SpinnerContainer
-        loading={
-          RemoteDataState[
-            select('loading', mapEnumKeys(RemoteDataState), 'Loading')
-          ]
-        }
-        spinnerComponent={
-          <TechnoSpinner
-            diameterPixels={100}
-            strokeWidth={ComponentSize.Small}
-          />
-        }
-      >
-        <h3>{text('Child text', 'Loading done, display content or error.')}</h3>
-      </SpinnerContainer>
-    </div>
-  ),
+  () => {
+    const technoSpinnerRef: React.RefObject<HTMLDivElement> = React.createRef()
+    const spinnerContainerRef: React.RefObject<
+      HTMLDivElement
+    > = React.createRef()
+
+    const handleLogRefs = (): void => {
+      /* eslint-disable */
+      console.log('TechnoSpinner', technoSpinnerRef.current)
+      console.log('SpinnerContainer', spinnerContainerRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <SpinnerContainer
+          ref={spinnerContainerRef}
+          loading={
+            RemoteDataState[
+              select('loading', mapEnumKeys(RemoteDataState), 'Loading')
+            ]
+          }
+          spinnerComponent={
+            <TechnoSpinner
+              ref={technoSpinnerRef}
+              diameterPixels={100}
+              strokeWidth={ComponentSize.Small}
+            />
+          }
+        >
+          <h3>
+            {text('Child text', 'Loading done, display content or error.')}
+          </h3>
+        </SpinnerContainer>
+        <div className="story--test-buttons">
+          <button onClick={handleLogRefs}>Log Refs</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(SpinnerContainerReadme),
@@ -74,18 +95,32 @@ spinnerContainerStories.add(
 
 spinnerVisualStories.add(
   'TechnoSpinner',
-  () => (
-    <div className="story--example">
-      <TechnoSpinner
-        diameterPixels={number('diameterPixels', 100)}
-        strokeWidth={
-          ComponentSize[
-            select('strokeWidth', mapEnumKeys(ComponentSize), 'Small')
-          ]
-        }
-      />
-    </div>
-  ),
+  () => {
+    const technoSpinnerRef: React.RefObject<HTMLDivElement> = React.createRef()
+
+    const handleLogRef = (): void => {
+      /* eslint-disable */
+      console.log(technoSpinnerRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <TechnoSpinner
+          ref={technoSpinnerRef}
+          diameterPixels={number('diameterPixels', 100)}
+          strokeWidth={
+            ComponentSize[
+              select('strokeWidth', mapEnumKeys(ComponentSize), 'Small')
+            ]
+          }
+        />
+        <div className="story--test-buttons">
+          <button onClick={handleLogRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(TechnoSpinnerReadme),
@@ -95,18 +130,32 @@ spinnerVisualStories.add(
 
 spinnerVisualStories.add(
   'SparkleSpinner',
-  () => (
-    <div className="story--example">
-      <SparkleSpinner
-        sizePixels={number('sizePixels', 200)}
-        loading={
-          RemoteDataState[
-            select('loading', mapEnumKeys(RemoteDataState), 'Loading')
-          ]
-        }
-      />
-    </div>
-  ),
+  () => {
+    const sparkleSpinnerRef: React.RefObject<HTMLDivElement> = React.createRef()
+
+    const handleLogRef = (): void => {
+      /* eslint-disable */
+      console.log(sparkleSpinnerRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <SparkleSpinner
+          ref={sparkleSpinnerRef}
+          sizePixels={number('sizePixels', 200)}
+          loading={
+            RemoteDataState[
+              select('loading', mapEnumKeys(RemoteDataState), 'Loading')
+            ]
+          }
+        />
+        <div className="story--test-buttons">
+          <button onClick={handleLogRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(SparkleSpinnerReadme),
@@ -116,11 +165,24 @@ spinnerVisualStories.add(
 
 spinnerTextStories.add(
   'WaitingText',
-  () => (
-    <div className="story--example">
-      <WaitingText text={text('text', 'Loading')} />
-    </div>
-  ),
+  () => {
+    const waitingTextRef: React.RefObject<HTMLDivElement> = React.createRef()
+
+    const handleLogRef = (): void => {
+      /* eslint-disable */
+      console.log(waitingTextRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <WaitingText text={text('text', 'Loading')} ref={waitingTextRef} />
+        <div className="story--test-buttons">
+          <button onClick={handleLogRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(WaitingTextReadme),

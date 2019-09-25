@@ -1,4 +1,4 @@
-import {CSSProperties} from 'react'
+import {CSSProperties, ReactNode} from 'react'
 
 // Utilities
 export type Omit<K, V> = Pick<K, Exclude<keyof K, V>>
@@ -20,6 +20,8 @@ export interface StandardClassProps extends StandardProps {
 export interface StandardFunctionProps extends StandardProps {
   /** ID for Integration Tests */
   testID?: string
+  /** Children */
+  children?: ReactNode
 }
 
 // Shared Data Types

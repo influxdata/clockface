@@ -1,5 +1,5 @@
 // Libraries
-import * as React from 'react'
+import React, {RefObject, createRef} from 'react'
 import marked from 'marked'
 
 // Storybook
@@ -11,6 +11,7 @@ import {
   text,
   select,
   boolean,
+  object,
 } from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
@@ -33,6 +34,7 @@ import {
   AlignItems,
   InputType,
   AutoInputMode,
+  Orientation,
 } from '../../Types'
 import {FlexBox} from '../FlexBox/FlexBox'
 
@@ -49,41 +51,62 @@ const inputsComposedStories = storiesOf('Components|Inputs/Composed', module)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
+const defaultInputStyle = {
+  width: '200px',
+}
+
 inputsBaseStories.add(
   'Input (Text)',
-  () => (
-    <div className="story--example">
-      <Input
-        placeholder={text('placeholder', 'Placeholder Text')}
-        value={text('value', 'Value Text')}
-        onChange={() => {}}
-        name={text('name', 'Name')}
-        titleText={text('titleText', 'Title Text')}
-        disabledTitleText={text('disabledTitleText', 'Disabled Title Text')}
-        maxLength={number('maxLength', 24)}
-        icon={
-          IconFont[
-            select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
-          ]
-        }
-        widthPixels={number('widthPixels', 200)}
-        status={
-          ComponentStatus[
-            select('status', mapEnumKeys(ComponentStatus), 'Default')
-          ]
-        }
-        size={
-          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-        }
-        autocomplete={
-          AutoComplete[
-            radios<AutoComplete>('autocomplete', mapEnumKeys(AutoComplete))
-          ]
-        }
-        type={InputType.Text}
-      />
-    </div>
-  ),
+  () => {
+    const inputRef: RefObject<HTMLInputElement> = createRef()
+    const inputContainerRef: RefObject<HTMLDivElement> = createRef()
+
+    const handleLogRefs = (): void => {
+      /* eslint-disable */
+      console.log('InputRef', inputRef.current)
+      console.log('InputContainerRef', inputContainerRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <Input
+          ref={inputRef}
+          containerRef={inputContainerRef}
+          placeholder={text('placeholder', 'Placeholder Text')}
+          value={text('value', 'Value Text')}
+          onChange={() => {}}
+          name={text('name', 'Name')}
+          titleText={text('titleText', 'Title Text')}
+          disabledTitleText={text('disabledTitleText', 'Disabled Title Text')}
+          maxLength={number('maxLength', 24)}
+          icon={
+            IconFont[
+              select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
+            ]
+          }
+          style={object('style', defaultInputStyle)}
+          status={
+            ComponentStatus[
+              select('status', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          autocomplete={
+            AutoComplete[
+              radios<AutoComplete>('autocomplete', mapEnumKeys(AutoComplete))
+            ]
+          }
+          type={InputType.Text}
+        />
+        <div className="story--test-buttons">
+          <button onClick={handleLogRefs}>Log Refs</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(InputReadme),
@@ -109,7 +132,7 @@ inputsBaseStories.add(
             select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
           ]
         }
-        widthPixels={number('widthPixels', 100)}
+        style={object('style', defaultInputStyle)}
         status={
           ComponentStatus[
             select('status', mapEnumKeys(ComponentStatus), 'Default')
@@ -146,7 +169,7 @@ inputsBaseStories.add(
             select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
           ]
         }
-        widthPixels={number('widthPixels', 200)}
+        style={object('style', defaultInputStyle)}
         status={
           ComponentStatus[
             select('status', mapEnumKeys(ComponentStatus), 'Default')
@@ -188,7 +211,7 @@ inputsBaseStories.add(
             select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
           ]
         }
-        widthPixels={number('widthPixels', 200)}
+        style={object('style', defaultInputStyle)}
         status={
           ComponentStatus[
             select('status', mapEnumKeys(ComponentStatus), 'Default')
@@ -257,38 +280,71 @@ inputsBaseStories.add(
   }
 )
 
-inputsBaseStories.add('TextArea', () => (
-  <div className="story--example">
-    <TextArea
-      value={text('value', 'Value Text')}
-      maxLength={number('maxLength', 50)}
-      minLength={number('minLength', 5)}
-      placeholder={text('placeholder', 'Placeholder Text')}
-      onChange={() => {}}
-      autocomplete={
-        AutoComplete[
-          radios<AutoComplete>('autocomplete', mapEnumKeys(AutoComplete))
-        ]
-      }
-      size={ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]}
-      widthPixels={number('widthPixels', 400)}
-      cols={number('cols', 20)}
-      rows={number('rows', 20)}
-      status={
-        ComponentStatus[
-          select('status', mapEnumKeys(ComponentStatus), 'Default')
-        ]
-      }
-    />
-  </div>
-))
+inputsBaseStories.add('TextArea', () => {
+  const textAreaRef: RefObject<HTMLTextAreaElement> = createRef()
+  const textAreaContainerRef: RefObject<HTMLDivElement> = createRef()
+
+  const handleLogRefs = (): void => {
+    /* eslint-disable */
+    console.log('TextAreaRef', textAreaRef.current)
+    console.log('TextAreaContainerRef', textAreaContainerRef.current)
+    /* eslint-enable */
+  }
+
+  const exampleTextAreaStyle = {width: '300px'}
+
+  return (
+    <div className="story--example">
+      <TextArea
+        ref={textAreaRef}
+        containerRef={textAreaContainerRef}
+        value={text('value', 'Value Text')}
+        maxLength={number('maxLength', 50)}
+        minLength={number('minLength', 5)}
+        placeholder={text('placeholder', 'Placeholder Text')}
+        onChange={() => {}}
+        autocomplete={
+          AutoComplete[
+            radios<AutoComplete>('autocomplete', mapEnumKeys(AutoComplete))
+          ]
+        }
+        size={
+          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+        }
+        style={object('style', exampleTextAreaStyle)}
+        cols={number('cols', 20)}
+        rows={number('rows', 20)}
+        status={
+          ComponentStatus[
+            select('status', mapEnumKeys(ComponentStatus), 'Default')
+          ]
+        }
+      />
+      <div className="story--test-buttons">
+        <button onClick={handleLogRefs}>Log Refs</button>
+      </div>
+    </div>
+  )
+})
 
 inputsComposedStories.add(
   'AutoInput',
-  () => (
-    <div className="story--example">
-      <div style={{width: `${number('Parent Width (px)', 300)}px`}}>
+  () => {
+    const autoInputRef: RefObject<HTMLDivElement> = createRef()
+
+    const handleLogRef = (): void => {
+      /* eslint-disable */
+      console.log(autoInputRef.current)
+      /* eslint-enable */
+    }
+
+    const exampleAutoInputStyle = {width: '300px'}
+
+    return (
+      <div className="story--example">
         <AutoInput
+          ref={autoInputRef}
+          style={object('style', exampleAutoInputStyle)}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
@@ -322,9 +378,12 @@ inputsComposedStories.add(
             />
           }
         />
+        <div className="story--test-buttons">
+          <button onClick={handleLogRef}>Log Ref</button>
+        </div>
       </div>
-    </div>
-  ),
+    )
+  },
   {
     readme: {
       content: marked(AutoInputReadme),
@@ -334,32 +393,54 @@ inputsComposedStories.add(
 
 inputsComposedStories.add(
   'Range Slider',
-  () => (
-    <div className="story--example">
-      <RangeSlider
-        min={number('min', 0)}
-        max={number('max', 100)}
-        value={number('value', 50)}
-        step={number('step', 0)}
-        onChange={() => {}}
-        size={
-          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-        }
-        color={
-          ComponentColor[
-            select('color', mapEnumKeys(ComponentColor), 'Primary')
-          ]
-        }
-        fill={boolean('fill', true)}
-        hideLabels={boolean('hide labels', false)}
-        status={
-          ComponentStatus[
-            select('status', mapEnumKeys(ComponentStatus), 'Default')
-          ]
-        }
-      />
-    </div>
-  ),
+  () => {
+    const rangeSliderRef: RefObject<HTMLInputElement> = createRef()
+
+    const handleLogRef = (): void => {
+      /* eslint-disable */
+      console.log(rangeSliderRef.current)
+      /* eslint-enable */
+    }
+
+    const exampleRangeSliderStyle = {width: '100%'}
+
+    return (
+      <div className="story--example">
+        <RangeSlider
+          ref={rangeSliderRef}
+          min={number('min', 0)}
+          max={number('max', 100)}
+          value={number('value', 50)}
+          step={number('step', 0)}
+          onChange={() => {}}
+          orientation={
+            Orientation[
+              select('orientation', mapEnumKeys(Orientation), 'Horizontal')
+            ]
+          }
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          color={
+            ComponentColor[
+              select('color', mapEnumKeys(ComponentColor), 'Primary')
+            ]
+          }
+          fill={boolean('fill', true)}
+          hideLabels={boolean('hide labels', false)}
+          style={object('style', exampleRangeSliderStyle)}
+          status={
+            ComponentStatus[
+              select('status', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
+        />
+        <div className="story--test-buttons">
+          <button onClick={handleLogRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(RangeSliderReadme),

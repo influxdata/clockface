@@ -1,30 +1,34 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
+import classnames from 'classnames'
 
 // Types
-import {IconFont, StandardClassProps} from '../../Types'
+import {IconFont, StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface IconProps extends StandardFunctionProps {
   /** Icon to display */
   glyph: IconFont | string
 }
 
-export class Icon extends Component<Props> {
-  public static readonly displayName = 'Icon'
+export type IconRef = HTMLSpanElement
 
-  public static defaultProps = {
-    testID: 'icon',
-  }
-
-  render() {
-    const {glyph, testID, id, style} = this.props
-
-    const className = this.props.className
-      ? `cf-icon ${glyph} ${this.props.className}`
-      : `cf-icon ${glyph}`
+export const Icon = forwardRef<IconRef, IconProps>(
+  ({id, glyph, style, testID = 'icon', className}, ref) => {
+    const iconClassName = classnames('cf-icon', {
+      [`${glyph}`]: glyph,
+      [`${className}`]: className,
+    })
 
     return (
-      <span className={className} data-testid={testID} style={style} id={id} />
+      <span
+        id={id}
+        ref={ref}
+        style={style}
+        data-testid={testID}
+        className={iconClassName}
+      />
     )
   }
-}
+)
+
+Icon.displayName = 'Icon'

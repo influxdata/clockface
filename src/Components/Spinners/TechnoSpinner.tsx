@@ -1,77 +1,57 @@
 // Libraries
-import React, {Component, CSSProperties} from 'react'
+import React, {forwardRef} from 'react'
+import classnames from 'classnames'
 
 // Types
-import {ComponentSize, StandardClassProps} from '../../Types'
+import {ComponentSize, StandardFunctionProps} from '../../Types'
+
+// Utils
+import {generateTechnoSpinnerStyle} from '../../Utils'
 
 // Styles
 import './TechnoSpinner.scss'
 
-interface Props extends StandardClassProps {
+export interface TechnoSpinnerProps extends StandardFunctionProps {
   /** Diameter of spinner circle */
-  diameterPixels: number
+  diameterPixels?: number
   /** Width of spinner stroke */
-  strokeWidth: ComponentSize
+  strokeWidth?: ComponentSize
 }
 
-export class TechnoSpinner extends Component<Props> {
-  public static readonly displayName = 'TechnoSpinner'
+export type TechnoSpinnerRef = HTMLDivElement
 
-  public static defaultProps: Props = {
-    diameterPixels: 100,
-    strokeWidth: ComponentSize.Small,
-    testID: 'techno-spinner',
-  }
+export const TechnoSpinner = forwardRef<TechnoSpinnerRef, TechnoSpinnerProps>(
+  (
+    {
+      id,
+      style,
+      testID = 'techno-spinner',
+      className,
+      strokeWidth = ComponentSize.Small,
+      diameterPixels = 100,
+    },
+    ref
+  ) => {
+    const technoSpinnerClass = classnames('cf-techno-spinner', {
+      [`${className}`]: className,
+    })
 
-  public render() {
-    const {testID, id} = this.props
+    const technoSpinnerStyle = generateTechnoSpinnerStyle(
+      diameterPixels,
+      strokeWidth,
+      style
+    )
 
     return (
       <div
-        className={this.className}
-        style={this.style}
-        data-testid={testID}
         id={id}
+        ref={ref}
+        data-testid={testID}
+        style={technoSpinnerStyle}
+        className={technoSpinnerClass}
       />
     )
   }
+)
 
-  private get className(): string {
-    const {className} = this.props
-
-    return className ? `cf-techno-spinner ${className}` : 'cf-techno-spinner'
-  }
-
-  private get style(): CSSProperties {
-    const {diameterPixels, style} = this.props
-
-    const borderWidth = `${this.strokeWidth}px`
-    const width = `${diameterPixels}px`
-    const height = `${diameterPixels}px`
-
-    return {width, height, borderWidth, ...style}
-  }
-
-  private get strokeWidth(): number {
-    const {strokeWidth} = this.props
-
-    let width
-
-    switch (strokeWidth) {
-      case ComponentSize.ExtraSmall:
-        width = 1
-        break
-      case ComponentSize.Small:
-        width = 2
-        break
-      case ComponentSize.Medium:
-        width = 4
-        break
-      case ComponentSize.Large:
-      default:
-        width = 8
-    }
-
-    return width
-  }
-}
+TechnoSpinner.displayName = 'TechnoSpinner'

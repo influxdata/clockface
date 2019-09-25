@@ -1,9 +1,11 @@
 // Libraries
 import React, {
-  Component,
   CSSProperties,
   ChangeEvent,
   KeyboardEvent,
+  forwardRef,
+  RefObject,
+  FunctionComponent,
 } from 'react'
 import classnames from 'classnames'
 
@@ -19,11 +21,11 @@ import {
   ComponentSize,
   IconFont,
   AutoComplete,
-  StandardClassProps,
+  StandardFunctionProps,
   InputType,
 } from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface InputProps extends StandardFunctionProps {
   /** Minimum value for number & range types */
   min?: number
   /** Maximum value for number & range types */
@@ -46,102 +48,119 @@ interface Props extends StandardClassProps {
   onKeyDown?: (e: KeyboardEvent<HTMLInputElement>) => void
   /** Icon to be displayed to the left of text */
   icon?: IconFont
-  /** Width of the text field in pixels */
-  widthPixels?: number
   /** Maximum string length for input value */
   maxLength?: number
   /** Keyboard control tab order  */
   tabIndex?: number
   /** Input type (text, number, password, email, checkbox)  */
-  type: InputType
+  type?: InputType
   /** Input field name attribute */
-  name: string
+  name?: string
   /** Input field value to be updated with 'on X' functions */
-  value: string | number
+  value?: string | number
   /** Placeholder text when no value is present */
-  placeholder: string
+  placeholder?: string
   /** Allows or disallows browser autocomplete functionality */
-  autocomplete: AutoComplete
+  autocomplete?: AutoComplete
   /** Text to be displayed on hover tooltip */
-  titleText: string
+  titleText?: string
   /** Text to be displayed on hover tooltip when radio button is disabled */
-  disabledTitleText: string
+  disabledTitleText?: string
   /** Input Component size */
-  size: ComponentSize
+  size?: ComponentSize
   /** Input status state */
-  status: ComponentStatus
+  status?: ComponentStatus
   /** Whether or not the input receives autofocus when mounted */
-  autoFocus: boolean
+  autoFocus?: boolean
   /** Allows or disallows browser spellcheck functionality */
-  spellCheck: boolean
+  spellCheck?: boolean
   /** CSS attributes for the input element */
   inputStyle?: CSSProperties
   /** For use within a form, marks the input as required */
-  required: boolean
+  required?: boolean
   /** Pass in a RegEx matcher for best results */
   pattern?: string
+  /** Pass through for input ref */
+  ref?: RefObject<HTMLInputElement>
+  /** Pass through for container ref */
+  containerRef?: RefObject<HTMLDivElement>
 }
 
-export class Input extends Component<Props> {
-  public static readonly displayName = 'Input'
+export type InputRef = HTMLInputElement
 
-  public static defaultProps = {
-    type: InputType.Text,
-    name: '',
-    value: '',
-    placeholder: '',
-    titleText: '',
-    autocomplete: AutoComplete.Off,
-    disabledTitleText: 'This input is disabled',
-    size: ComponentSize.Small,
-    status: ComponentStatus.Default,
-    autoFocus: false,
-    spellCheck: false,
-    testID: 'input-field',
-    required: false,
-  }
-
-  public render() {
-    const {
+export const Input = forwardRef<InputRef, InputProps>(
+  (
+    {
       id,
       min,
       max,
       step,
-      checked,
-      name,
-      type,
-      status,
-      required,
-      placeholder,
-      autoFocus,
-      spellCheck,
-      onChange,
+      icon,
+      size = ComponentSize.Small,
+      name = '',
+      type = InputType.Text,
+      style = {width: '100%'},
+      value = '',
+      status = ComponentStatus.Default,
       onBlur,
-      onFocus,
-      onKeyPress,
-      onKeyUp,
-      onKeyDown,
-      maxLength,
-      autocomplete,
-      tabIndex,
-      testID,
-      inputStyle,
+      testID = 'input-field',
       pattern,
-    } = this.props
+      onFocus,
+      checked,
+      onKeyUp,
+      required = false,
+      tabIndex,
+      onChange,
+      titleText = '',
+      className,
+      autoFocus = false,
+      maxLength,
+      onKeyDown,
+      spellCheck = false,
+      onKeyPress,
+      inputStyle,
+      placeholder = '',
+      containerRef,
+      autocomplete = AutoComplete.Off,
+      disabledTitleText = 'This input is disabled',
+    },
+    ref
+  ) => {
+    const inputClass = classnames('cf-input', {
+      [`cf-input-${size}`]: size,
+      'cf-input__has-checkbox': type === InputType.Checkbox,
+      'cf-input__has-icon': icon,
+      'cf-input__valid': status === ComponentStatus.Valid,
+      'cf-input__error': status === ComponentStatus.Error,
+      'cf-input__loading': status === ComponentStatus.Loading,
+      'cf-input__disabled': status === ComponentStatus.Disabled,
+      [`${className}`]: className,
+    })
+
+    const inputCheckboxClass = classnames('cf-input--checkbox', {checked})
+
+    const correctlyTypedValue: string | number =
+      type === InputType.Number ? Number(value) : `${value}`
+
+    const iconElement = icon && <Icon glyph={icon} className="cf-input-icon" />
+
+    const title =
+      status === ComponentStatus.Disabled ? disabledTitleText : titleText
 
     return (
-      <div className={this.className} style={this.containerStyle}>
+      <div className={inputClass} style={style} ref={containerRef}>
         <input
           id={id}
+          ref={ref}
           min={min}
           max={max}
           step={step}
           checked={checked}
-          title={this.title}
+          title={title}
           autoComplete={autocomplete}
           name={name}
           type={type}
-          value={this.transformedValue}
+          value={correctlyTypedValue}
           placeholder={placeholder}
           autoFocus={autoFocus}
           spellCheck={spellCheck}
@@ -160,128 +179,61 @@ export class Input extends Component<Props> {
           required={required}
           pattern={pattern}
         />
-        {this.checkbox}
-        {this.icon}
-        {this.statusIndicator}
+        {type === InputType.Checkbox && <div className={inputCheckboxClass} />}
+        {iconElement}
+        {type !== InputType.Checkbox && (
+          <InputStatusIndicator status={status} />
+        )}
       </div>
     )
   }
+)
 
-  private get transformedValue(): string | number {
-    const {value, type} = this.props
+Input.displayName = 'Input'
 
-    if (type === InputType.Number) {
-      return Number(value)
-    }
+interface InputStatusIndicatorProps {
+  status: ComponentStatus
+}
 
-    return `${value}`
+const InputStatusIndicator: FunctionComponent<InputStatusIndicatorProps> = ({
+  status,
+}) => {
+  if (status === ComponentStatus.Loading) {
+    return (
+      <>
+        <div className="cf-input-status">
+          <div className="cf-input-spinner" />
+        </div>
+        <div className="cf-input-shadow" />
+      </>
+    )
   }
 
-  private get checkbox(): JSX.Element | null {
-    const {type, checked} = this.props
-
-    const className = classnames('cf-input--checkbox', {checked})
-
-    if (type === InputType.Checkbox) {
-      return <div className={className} />
-    }
-
-    return null
+  if (status === ComponentStatus.Error) {
+    return (
+      <>
+        <Icon
+          glyph={IconFont.AlertTriangle}
+          className="cf-input-status"
+          testID="input-error"
+        />
+        <div className="cf-input-shadow" />
+      </>
+    )
   }
 
-  private get icon(): JSX.Element | null {
-    const {icon} = this.props
-
-    if (icon) {
-      return <Icon glyph={icon} className="cf-input-icon" />
-    }
-
-    return null
+  if (status === ComponentStatus.Valid) {
+    return (
+      <>
+        <Icon
+          glyph={IconFont.Checkmark}
+          className="cf-input-status"
+          testID="input-valid"
+        />
+        <div className="cf-input-shadow" />
+      </>
+    )
   }
 
-  private get title(): string | undefined {
-    const {titleText, disabledTitleText, status} = this.props
-
-    if (status === ComponentStatus.Disabled) {
-      return disabledTitleText
-    }
-
-    return titleText
-  }
-
-  private get statusIndicator(): JSX.Element | undefined {
-    const {status, type} = this.props
-
-    if (type === InputType.Checkbox) {
-      return
-    }
-
-    if (status === ComponentStatus.Loading) {
-      return (
-        <>
-          <div className="cf-input-status">
-            <div className="cf-input-spinner" />
-          </div>
-          <div className="cf-input-shadow" />
-        </>
-      )
-    }
-
-    if (status === ComponentStatus.Error) {
-      return (
-        <>
-          <Icon
-            glyph={IconFont.AlertTriangle}
-            className="cf-input-status"
-            testID="input-error"
-          />
-          <div className="cf-input-shadow" />
-        </>
-      )
-    }
-
-    if (status === ComponentStatus.Valid) {
-      return (
-        <>
-          <Icon
-            glyph={IconFont.Checkmark}
-            className="cf-input-status"
-            testID="input-valid"
-          />
-          <div className="cf-input-shadow" />
-        </>
-      )
-    }
-
-    return <div className="cf-input-shadow" />
-  }
-
-  private get className(): string {
-    const {type, size, status, icon, className} = this.props
-
-    return classnames('cf-input', {
-      [`cf-input-${size}`]: size,
-      'cf-input__has-checkbox': type === InputType.Checkbox,
-      'cf-input__has-icon': icon,
-      'cf-input__valid': status === ComponentStatus.Valid,
-      'cf-input__error': status === ComponentStatus.Error,
-      'cf-input__loading': status === ComponentStatus.Loading,
-      'cf-input__disabled': status === ComponentStatus.Disabled,
-      [`${className}`]: className,
-    })
-  }
-
-  private get containerStyle(): CSSProperties {
-    const {widthPixels, type, style} = this.props
-
-    if (widthPixels) {
-      return {width: `${widthPixels}px`, ...style}
-    }
-
-    if (type === InputType.Checkbox) {
-      return {...style}
-    }
-
-    return {width: '100%', ...style}
-  }
+  return <div className="cf-input-shadow" />
 }

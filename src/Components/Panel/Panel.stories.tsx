@@ -1,5 +1,5 @@
 // Libraries
-import * as React from 'react'
+import React, {RefObject, createRef} from 'react'
 import marked from 'marked'
 
 // Storybook
@@ -10,6 +10,10 @@ import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {Panel} from './Panel'
+import {PanelHeader} from './PanelHeader'
+import {PanelTitle} from './PanelTitle'
+import {PanelBody} from './PanelBody'
+import {PanelFooter} from './PanelFooter'
 import {Grid} from '../Grid/Grid'
 
 // Types
@@ -34,22 +38,36 @@ const panelExampleStories = storiesOf('Components|Panels/Examples', module)
 
 panelStories.add(
   'Panel',
-  () => (
-    <div className="story--example">
-      <Panel
-        gradient={
-          Gradients[
-            select(
-              'gradient',
-              {None: 'none', ...mapEnumKeys(Gradients)},
-              'None'
-            )
-          ]
-        }
-        backgroundColor={color('backgroundColor', `${InfluxColors.Castle}`)}
-      />
-    </div>
-  ),
+  () => {
+    const panelRef: RefObject<HTMLDivElement> = createRef()
+
+    const logPanelRef = (): void => {
+      /* eslint-disable */
+      console.log(panelRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <Panel
+          ref={panelRef}
+          gradient={
+            Gradients[
+              select(
+                'gradient',
+                {None: 'none', ...mapEnumKeys(Gradients)},
+                'None'
+              )
+            ]
+          }
+          backgroundColor={color('backgroundColor', `${InfluxColors.Castle}`)}
+        />
+        <div className="story--test-buttons">
+          <button onClick={logPanelRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(PanelReadme),
@@ -59,23 +77,40 @@ panelStories.add(
 
 panelStories.add(
   'PanelHeader',
-  () => (
-    <div className="story--example">
-      <Panel.Header
-        size={
-          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-        }
-      >
-        <Panel.Title
+  () => {
+    const panelHeaderRef: RefObject<HTMLDivElement> = createRef()
+    const panelTitleRef: RefObject<HTMLDivElement> = createRef()
+
+    const logPanelRefs = (): void => {
+      /* eslint-disable */
+      console.log('PanelHeader', panelHeaderRef.current)
+      console.log('PanelTitle', panelTitleRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <PanelHeader
+          ref={panelHeaderRef}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
         >
-          {text('title', 'I am a cool Panel')}
-        </Panel.Title>
-      </Panel.Header>
-    </div>
-  ),
+          <PanelTitle
+            ref={panelTitleRef}
+            size={
+              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+            }
+          >
+            {text('title', 'I am a cool Panel')}
+          </PanelTitle>
+        </PanelHeader>
+        <div className="story--test-buttons">
+          <button onClick={logPanelRefs}>Log Refs</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(PanelHeaderReadme),
@@ -85,17 +120,31 @@ panelStories.add(
 
 panelStories.add(
   'PanelBody',
-  () => (
-    <div className="story--example">
-      <Panel.Body
-        size={
-          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-        }
-      >
-        <span>{text('children', 'Example paragraph text')}</span>
-      </Panel.Body>
-    </div>
-  ),
+  () => {
+    const panelBodyRef: RefObject<HTMLDivElement> = createRef()
+
+    const logPanelRef = (): void => {
+      /* eslint-disable */
+      console.log(panelBodyRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <PanelBody
+          ref={panelBodyRef}
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+        >
+          <span>{text('children', 'Example paragraph text')}</span>
+        </PanelBody>
+        <div className="story--test-buttons">
+          <button onClick={logPanelRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(PanelBodyReadme),
@@ -105,17 +154,31 @@ panelStories.add(
 
 panelStories.add(
   'PanelFooter',
-  () => (
-    <div className="story--example">
-      <Panel.Footer
-        size={
-          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-        }
-      >
-        <span>{text('children', 'Example footer text')}</span>
-      </Panel.Footer>
-    </div>
-  ),
+  () => {
+    const panelFooterRef: RefObject<HTMLDivElement> = createRef()
+
+    const logPanelRef = (): void => {
+      /* eslint-disable */
+      console.log(panelFooterRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <PanelFooter
+          ref={panelFooterRef}
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+        >
+          <span>{text('children', 'Example footer text')}</span>
+        </PanelFooter>
+        <div className="story--test-buttons">
+          <button onClick={logPanelRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(PanelFooterReadme),
@@ -139,20 +202,20 @@ panelExampleStories.add(
         }
         onDismiss={() => alert('onDismiss clicked!')}
       >
-        <Panel.Header
+        <PanelHeader
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
         >
-          <Panel.Title
+          <PanelTitle
             size={
               ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
             }
           >
             Welcome!
-          </Panel.Title>
-        </Panel.Header>
-        <Panel.Body
+          </PanelTitle>
+        </PanelHeader>
+        <PanelBody
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
@@ -161,7 +224,7 @@ panelExampleStories.add(
           <h5>
             <a href="#">Click Here</a> to take the tour
           </h5>
-        </Panel.Body>
+        </PanelBody>
       </Panel>
     </div>
   ),
@@ -177,20 +240,20 @@ panelExampleStories.add(
   () => (
     <div className="story--example">
       <Panel>
-        <Panel.Header
+        <PanelHeader
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
         >
-          <Panel.Title
+          <PanelTitle
             size={
               ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
             }
           >
             Getting started with InfluxDB 2.0
-          </Panel.Title>
-        </Panel.Header>
-        <Panel.Body
+          </PanelTitle>
+        </PanelHeader>
+        <PanelBody
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
@@ -199,29 +262,29 @@ panelExampleStories.add(
             <Grid.Row>
               <Grid.Column widthSM={Columns.Four}>
                 <Panel backgroundColor={InfluxColors.Onyx}>
-                  <Panel.Body>
+                  <PanelBody>
                     <p>Configure a Data Collector</p>
-                  </Panel.Body>
+                  </PanelBody>
                 </Panel>
               </Grid.Column>
               <Grid.Column widthSM={Columns.Four}>
                 <Panel backgroundColor={InfluxColors.Onyx}>
-                  <Panel.Body>
+                  <PanelBody>
                     <p>Build a Monitoring Dashboard</p>
-                  </Panel.Body>
+                  </PanelBody>
                 </Panel>
               </Grid.Column>
               <Grid.Column widthSM={Columns.Four}>
                 <Panel backgroundColor={InfluxColors.Onyx}>
-                  <Panel.Body>
+                  <PanelBody>
                     <p>Explore Data with Flux</p>
-                  </Panel.Body>
+                  </PanelBody>
                 </Panel>
               </Grid.Column>
             </Grid.Row>
           </Grid>
-        </Panel.Body>
-        <Panel.Footer
+        </PanelBody>
+        <PanelFooter
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
@@ -229,7 +292,7 @@ panelExampleStories.add(
           <p>
             Check our <a href="#">Documentation Site</a> for more tutorials
           </p>
-        </Panel.Footer>
+        </PanelFooter>
       </Panel>
     </div>
   ),
@@ -245,26 +308,26 @@ panelExampleStories.add(
   () => (
     <div className="story--example">
       <Panel gradient={Gradients.DocScott}>
-        <Panel.Header
+        <PanelHeader
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
         >
-          <Panel.Title
+          <PanelTitle
             size={
               ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
             }
           >
             Danger Zone!
-          </Panel.Title>
-        </Panel.Header>
-        <Panel.Body
+          </PanelTitle>
+        </PanelHeader>
+        <PanelBody
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
         >
           <p>These actions can have unintended wide-reaching consequences</p>
-        </Panel.Body>
+        </PanelBody>
       </Panel>
     </div>
   ),
