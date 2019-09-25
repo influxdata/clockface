@@ -291,6 +291,7 @@ inputsBaseStories.add('TextArea', () => {
   }
 
   const exampleTextAreaStyle = {width: '300px'}
+
   return (
     <div className="story--example">
       <TextArea
@@ -327,10 +328,22 @@ inputsBaseStories.add('TextArea', () => {
 
 inputsComposedStories.add(
   'AutoInput',
-  () => (
-    <div className="story--example">
-      <div style={{width: `${number('Parent Width (px)', 300)}px`}}>
+  () => {
+    const autoInputRef: RefObject<HTMLDivElement> = createRef()
+
+    const handleLogRef = (): void => {
+      /* eslint-disable */
+      console.log(autoInputRef.current)
+      /* eslint-enable */
+    }
+
+    const exampleAutoInputStyle = {width: '300px'}
+
+    return (
+      <div className="story--example">
         <AutoInput
+          ref={autoInputRef}
+          style={object('style', exampleAutoInputStyle)}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
@@ -364,9 +377,12 @@ inputsComposedStories.add(
             />
           }
         />
+        <div className="story--test-buttons">
+          <button onClick={handleLogRef}>Log Ref</button>
+        </div>
       </div>
-    </div>
-  ),
+    )
+  },
   {
     readme: {
       content: marked(AutoInputReadme),
