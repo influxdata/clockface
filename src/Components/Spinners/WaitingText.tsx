@@ -1,5 +1,5 @@
 // Libraries
-import React, {FunctionComponent, RefObject} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Styles
@@ -8,36 +8,31 @@ import './WaitingText.scss'
 // Types
 import {StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardFunctionProps {
+export interface WaitingTextProps extends StandardFunctionProps {
   /** Text to be displayed */
   text: string
-  /** Pass through for ref */
-  ref?: RefObject<HTMLDivElement>
 }
 
-export const WaitingText: FunctionComponent<Props> = ({
-  id,
-  ref,
-  text,
-  style,
-  testID = 'waiting-text',
-  className,
-}) => {
-  const waitingTextClass = classnames('cf-waiting-text', {
-    [`${className}`]: className,
-  })
+export type WaitingTextRef = HTMLDivElement
 
-  return (
-    <div
-      id={id}
-      ref={ref}
-      style={style}
-      data-testid={testID}
-      className={waitingTextClass}
-    >
-      {text}
-    </div>
-  )
-}
+export const WaitingText = forwardRef<WaitingTextRef, WaitingTextProps>(
+  ({id, text, style, testID = 'waiting-text', className}, ref) => {
+    const waitingTextClass = classnames('cf-waiting-text', {
+      [`${className}`]: className,
+    })
+
+    return (
+      <div
+        id={id}
+        ref={ref}
+        style={style}
+        data-testid={testID}
+        className={waitingTextClass}
+      >
+        {text}
+      </div>
+    )
+  }
+)
 
 WaitingText.displayName = 'WaitingText'
