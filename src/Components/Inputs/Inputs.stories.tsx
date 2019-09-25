@@ -279,31 +279,51 @@ inputsBaseStories.add(
   }
 )
 
-inputsBaseStories.add('TextArea', () => (
-  <div className="story--example">
-    <TextArea
-      value={text('value', 'Value Text')}
-      maxLength={number('maxLength', 50)}
-      minLength={number('minLength', 5)}
-      placeholder={text('placeholder', 'Placeholder Text')}
-      onChange={() => {}}
-      autocomplete={
-        AutoComplete[
-          radios<AutoComplete>('autocomplete', mapEnumKeys(AutoComplete))
-        ]
-      }
-      size={ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]}
-      widthPixels={number('widthPixels', 400)}
-      cols={number('cols', 20)}
-      rows={number('rows', 20)}
-      status={
-        ComponentStatus[
-          select('status', mapEnumKeys(ComponentStatus), 'Default')
-        ]
-      }
-    />
-  </div>
-))
+inputsBaseStories.add('TextArea', () => {
+  const textAreaRef: RefObject<HTMLTextAreaElement> = createRef()
+  const textAreaContainerRef: RefObject<HTMLDivElement> = createRef()
+
+  const handleLogRefs = (): void => {
+    /* eslint-disable */
+    console.log('TextAreaRef', textAreaRef.current)
+    console.log('TextAreaContainerRef', textAreaContainerRef.current)
+    /* eslint-enable */
+  }
+
+  const exampleTextAreaStyle = {width: '300px'}
+  return (
+    <div className="story--example">
+      <TextArea
+        ref={textAreaRef}
+        containerRef={textAreaContainerRef}
+        value={text('value', 'Value Text')}
+        maxLength={number('maxLength', 50)}
+        minLength={number('minLength', 5)}
+        placeholder={text('placeholder', 'Placeholder Text')}
+        onChange={() => {}}
+        autocomplete={
+          AutoComplete[
+            radios<AutoComplete>('autocomplete', mapEnumKeys(AutoComplete))
+          ]
+        }
+        size={
+          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+        }
+        style={object('style', exampleTextAreaStyle)}
+        cols={number('cols', 20)}
+        rows={number('rows', 20)}
+        status={
+          ComponentStatus[
+            select('status', mapEnumKeys(ComponentStatus), 'Default')
+          ]
+        }
+      />
+      <div className="story--test-buttons">
+        <button onClick={handleLogRefs}>Log Refs</button>
+      </div>
+    </div>
+  )
+})
 
 inputsComposedStories.add(
   'AutoInput',

@@ -1,10 +1,5 @@
 // Libraries
-import React, {
-  Component,
-  CSSProperties,
-  ChangeEvent,
-  KeyboardEvent,
-} from 'react'
+import React, {ChangeEvent, KeyboardEvent, forwardRef, RefObject} from 'react'
 import classnames from 'classnames'
 
 // Styles
@@ -15,7 +10,7 @@ import {
   ComponentStatus,
   ComponentSize,
   AutoComplete,
-  StandardClassProps,
+  StandardFunctionProps,
 } from '../../Types'
 
 export enum Wrap {
@@ -24,12 +19,10 @@ export enum Wrap {
   Off = 'off',
 }
 
-interface Props extends StandardClassProps {
-  /** Width of the text field in pixels */
-  widthPixels?: number
-  /** Input Component size */
+export interface TextAreaProps extends StandardFunctionProps {
+  /** TextArea Component size */
   size?: ComponentSize
-  /** Input status state */
+  /** TextArea status state */
   status?: ComponentStatus
   /** Function to be called on field value change */
   onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void
@@ -44,129 +37,109 @@ interface Props extends StandardClassProps {
   /** Function to be called on key down */
   onKeyDown?: (e: KeyboardEvent<HTMLTextAreaElement>) => void
   /** Allows or disallows browser autocomplete functionality */
-  autocomplete: AutoComplete
+  autocomplete?: AutoComplete
   /** Whether or not the input receives autofocus when mounted */
-  autoFocus: boolean
+  autoFocus?: boolean
   /** Associates the text area with a form even if outside the form */
-  form: string
+  form?: string
   /** Maximum string length for input value */
   maxLength?: number
   /** Minimum string length for input value */
   minLength?: number
-  /** Input field name attribute */
-  name: string
+  /** TextArea field name attribute */
+  name?: string
   /** Placeholder text when no value is present */
-  placeholder: string
+  placeholder?: string
   /** Toggles read-only state of text area */
-  readOnly: boolean
+  readOnly?: boolean
   /** Specified text area as a required field */
-  required: boolean
+  required?: boolean
   /** Sets width in columns */
-  cols: number
+  cols?: number
   /** sets height in rows */
-  rows: number
+  rows?: number
   /** Allows or disallows browser spellcheck functionality */
-  spellCheck: boolean
+  spellCheck?: boolean
   /** Sets text wrap */
-  wrap: Wrap
-  /** Input field value to be updated with 'on X' functions */
-  value: string
+  wrap?: Wrap
+  /** TextArea field value to be updated with 'on X' functions */
+  value?: string
+  /** Container ref */
+  containerRef?: RefObject<HTMLDivElement>
 }
 
-export class TextArea extends Component<Props> {
-  public static readonly displayName = 'TextArea'
+export type TextAreaRef = HTMLTextAreaElement
 
-  public static defaultProps = {
-    autocomplete: AutoComplete.Off,
-    autoFocus: false,
-    cols: 20,
-    form: '',
-    name: '',
-    placeholder: '',
-    readOnly: false,
-    required: false,
-    rows: 20,
-    spellCheck: false,
-    wrap: Wrap.Hard,
-    value: '',
-    testID: 'textarea',
-  }
-
-  public render() {
-    const {
+export const TextArea = forwardRef<TextAreaRef, TextAreaProps>(
+  (
+    {
+      id,
+      cols = 20,
+      rows = 20,
+      wrap = Wrap.Hard,
+      size = ComponentSize.Small,
+      form = '',
+      name = '',
+      style = {width: '100%'},
+      value = '',
+      status = ComponentStatus.Default,
+      testID = 'textarea',
+      onBlur,
+      onKeyUp,
+      onFocus,
       onChange,
-      autocomplete,
-      autoFocus,
-      cols,
-      status,
-      form,
+      readOnly = false,
+      required = false,
+      className,
       maxLength,
       minLength,
-      name,
-      placeholder,
-      readOnly,
-      required,
-      rows,
-      spellCheck,
-      wrap,
-      value,
-      onBlur,
-      onFocus,
-      onKeyPress,
-      onKeyUp,
       onKeyDown,
-      testID,
-      id,
-    } = this.props
+      autoFocus = false,
+      spellCheck = false,
+      onKeyPress,
+      placeholder = '',
+      autocomplete = AutoComplete.Off,
+      containerRef,
+    },
+    ref
+  ) => {
+    const textAreaClass = classnames('cf-text-area--container', {
+      [`cf-input-${size}`]: size,
+      [`${className}`]: className,
+    })
 
     return (
-      <div className={this.className} style={this.containerStyle}>
+      <div className={textAreaClass} style={style} ref={containerRef}>
         <textarea
-          autoComplete={autocomplete}
-          autoFocus={autoFocus}
-          disabled={status === ComponentStatus.Disabled}
+          id={id}
+          ref={ref}
           form={form}
-          maxLength={maxLength}
-          minLength={minLength}
           name={name}
-          placeholder={placeholder}
-          readOnly={readOnly}
-          required={required}
           cols={cols}
           rows={rows}
-          spellCheck={spellCheck}
           wrap={wrap}
-          className="cf-text-area"
           value={value}
           onBlur={onBlur}
           onFocus={onFocus}
-          onKeyPress={onKeyPress}
           onKeyUp={onKeyUp}
-          onKeyDown={onKeyDown}
           onChange={onChange}
+          disabled={status === ComponentStatus.Disabled}
+          readOnly={readOnly}
+          required={required}
+          className="cf-text-area"
+          autoFocus={autoFocus}
+          maxLength={maxLength}
+          onKeyDown={onKeyDown}
+          minLength={minLength}
+          spellCheck={spellCheck}
+          onKeyPress={onKeyPress}
+          placeholder={placeholder}
           data-testid={testID}
-          id={id}
+          autoComplete={autocomplete}
         />
       </div>
     )
   }
+)
 
-  private get className(): string {
-    const {size, className} = this.props
-
-    return classnames('cf-text-area--container', {
-      [`cf-input-${size}`]: size,
-      [`${className}`]: className,
-    })
-  }
-
-  private get containerStyle(): CSSProperties {
-    const {widthPixels, style} = this.props
-
-    if (widthPixels) {
-      return {width: `${widthPixels}px`, ...style}
-    }
-
-    return {width: '100%', ...style}
-  }
-}
+TextArea.displayName = 'TextArea'
