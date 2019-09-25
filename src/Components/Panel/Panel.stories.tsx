@@ -1,5 +1,5 @@
 // Libraries
-import * as React from 'react'
+import React, {RefObject, createRef} from 'react'
 import marked from 'marked'
 
 // Storybook
@@ -15,8 +15,6 @@ import {PanelTitle} from './PanelTitle'
 import {PanelBody} from './PanelBody'
 import {PanelFooter} from './PanelFooter'
 import {Grid} from '../Grid/Grid'
-import {Button} from '../Button/Composed/Button'
-import {FlexBox} from '../FlexBox/FlexBox'
 
 // Types
 import {Gradients, ComponentSize, InfluxColors, Columns} from '../../Types'
@@ -38,28 +36,38 @@ const panelExampleStories = storiesOf('Components|Panels/Examples', module)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
-const panelTestingStories = storiesOf('Components|Panels/Testing', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
-
 panelStories.add(
   'Panel',
-  () => (
-    <div className="story--example">
-      <Panel
-        gradient={
-          Gradients[
-            select(
-              'gradient',
-              {None: 'none', ...mapEnumKeys(Gradients)},
-              'None'
-            )
-          ]
-        }
-        backgroundColor={color('backgroundColor', `${InfluxColors.Castle}`)}
-      />
-    </div>
-  ),
+  () => {
+    const panelRef: RefObject<HTMLDivElement> = createRef()
+
+    const logPanelRef = (): void => {
+      /* eslint-disable */
+      console.log(panelRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <Panel
+          ref={panelRef}
+          gradient={
+            Gradients[
+              select(
+                'gradient',
+                {None: 'none', ...mapEnumKeys(Gradients)},
+                'None'
+              )
+            ]
+          }
+          backgroundColor={color('backgroundColor', `${InfluxColors.Castle}`)}
+        />
+        <div className="story--test-buttons">
+          <button onClick={logPanelRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(PanelReadme),
@@ -69,23 +77,40 @@ panelStories.add(
 
 panelStories.add(
   'PanelHeader',
-  () => (
-    <div className="story--example">
-      <PanelHeader
-        size={
-          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-        }
-      >
-        <PanelTitle
+  () => {
+    const panelHeaderRef: RefObject<HTMLDivElement> = createRef()
+    const panelTitleRef: RefObject<HTMLDivElement> = createRef()
+
+    const logPanelRefs = (): void => {
+      /* eslint-disable */
+      console.log('PanelHeader', panelHeaderRef.current)
+      console.log('PanelTitle', panelTitleRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <PanelHeader
+          ref={panelHeaderRef}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
         >
-          {text('title', 'I am a cool Panel')}
-        </PanelTitle>
-      </PanelHeader>
-    </div>
-  ),
+          <PanelTitle
+            ref={panelTitleRef}
+            size={
+              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+            }
+          >
+            {text('title', 'I am a cool Panel')}
+          </PanelTitle>
+        </PanelHeader>
+        <div className="story--test-buttons">
+          <button onClick={logPanelRefs}>Log Refs</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(PanelHeaderReadme),
@@ -95,17 +120,31 @@ panelStories.add(
 
 panelStories.add(
   'PanelBody',
-  () => (
-    <div className="story--example">
-      <PanelBody
-        size={
-          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-        }
-      >
-        <span>{text('children', 'Example paragraph text')}</span>
-      </PanelBody>
-    </div>
-  ),
+  () => {
+    const panelBodyRef: RefObject<HTMLDivElement> = createRef()
+
+    const logPanelRef = (): void => {
+      /* eslint-disable */
+      console.log(panelBodyRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <PanelBody
+          ref={panelBodyRef}
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+        >
+          <span>{text('children', 'Example paragraph text')}</span>
+        </PanelBody>
+        <div className="story--test-buttons">
+          <button onClick={logPanelRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(PanelBodyReadme),
@@ -115,17 +154,31 @@ panelStories.add(
 
 panelStories.add(
   'PanelFooter',
-  () => (
-    <div className="story--example">
-      <PanelFooter
-        size={
-          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-        }
-      >
-        <span>{text('children', 'Example footer text')}</span>
-      </PanelFooter>
-    </div>
-  ),
+  () => {
+    const panelFooterRef: RefObject<HTMLDivElement> = createRef()
+
+    const logPanelRef = (): void => {
+      /* eslint-disable */
+      console.log(panelFooterRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <PanelFooter
+          ref={panelFooterRef}
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+        >
+          <span>{text('children', 'Example footer text')}</span>
+        </PanelFooter>
+        <div className="story--test-buttons">
+          <button onClick={logPanelRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(PanelFooterReadme),
@@ -284,44 +337,3 @@ panelExampleStories.add(
     },
   }
 )
-
-panelTestingStories.add('Ref Forwarding', () => {
-  const panelRef: React.RefObject<HTMLDivElement> = React.createRef()
-  const panelHeaderRef: React.RefObject<HTMLDivElement> = React.createRef()
-  const panelTitleRef: React.RefObject<HTMLDivElement> = React.createRef()
-  const panelBodyRef: React.RefObject<HTMLDivElement> = React.createRef()
-  const panelFooterRef: React.RefObject<HTMLDivElement> = React.createRef()
-
-  const handleLogRef = (ref: React.RefObject<any>) => (): void => {
-    /* eslint-disable */
-    console.log(ref.current)
-    /* eslint-enable */
-  }
-
-  return (
-    <div className="story--example">
-      <Panel ref={panelRef}>
-        <PanelHeader ref={panelHeaderRef}>
-          <PanelTitle ref={panelTitleRef}>Ref Testing Widget</PanelTitle>
-        </PanelHeader>
-        <PanelBody ref={panelBodyRef}>
-          <ol>
-            <li>Open the browser console</li>
-            <li>
-              Click on a button below to see its <code>ref.current</code> logged
-            </li>
-          </ol>
-        </PanelBody>
-        <PanelFooter ref={panelFooterRef}>
-          <FlexBox margin={ComponentSize.Small}>
-            <Button text="Panel" onClick={handleLogRef(panelRef)} />
-            <Button text="PanelHeader" onClick={handleLogRef(panelHeaderRef)} />
-            <Button text="PanelTitle" onClick={handleLogRef(panelTitleRef)} />
-            <Button text="PanelBody" onClick={handleLogRef(panelBodyRef)} />
-            <Button text="PanelFooter" onClick={handleLogRef(panelFooterRef)} />
-          </FlexBox>
-        </PanelFooter>
-      </Panel>
-    </div>
-  )
-})
