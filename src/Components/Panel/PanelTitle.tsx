@@ -1,44 +1,46 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps, ComponentSize} from '../../Types'
+import {StandardFunctionProps, ComponentSize} from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface PanelTitleProps extends StandardFunctionProps {
   /** Controls padding */
-  size: ComponentSize
+  size?: ComponentSize
 }
 
-export class PanelTitle extends Component<Props> {
-  public static readonly displayName = 'PanelTitle'
+export type PanelTitleRef = HTMLDivElement
 
-  public static defaultProps = {
-    testID: 'panel--title',
-    size: ComponentSize.Small,
-  }
-
-  public render() {
-    const {children, testID, id, style} = this.props
+export const PanelTitle = forwardRef<PanelTitleRef, PanelTitleProps>(
+  (
+    {
+      id,
+      style,
+      size = ComponentSize.Small,
+      testID = 'panel--title',
+      children,
+      className,
+    },
+    ref
+  ) => {
+    const panelTitleClass = classnames('cf-panel--title', {
+      [`cf-panel--title__${size}`]: size,
+      [`${className}`]: className,
+    })
 
     return (
       <div
-        className={this.className}
-        data-testid={testID}
         id={id}
+        ref={ref}
         style={style}
+        data-testid={testID}
+        className={panelTitleClass}
       >
         {children}
       </div>
     )
   }
+)
 
-  private get className(): string {
-    const {className, size} = this.props
-
-    return classnames('cf-panel--title', {
-      [`cf-panel--title__${size}`]: size,
-      [`${className}`]: className,
-    })
-  }
-}
+PanelTitle.displayName = 'PanelTitle'

@@ -1,63 +1,58 @@
 // Libraries
-import React, {Component, CSSProperties} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface FlexBoxChildProps extends StandardFunctionProps {
   /** Optional fixed width of element */
   basis?: number
   /** Maximumn proportional width to grow until */
-  grow: number
+  grow?: number
   /** Minimum proportional width to shrink until */
-  shrink: number
+  shrink?: number
 }
 
-export class FlexBoxChild extends Component<Props> {
-  public static readonly displayName = 'FlexBoxChild'
+export type FlexBoxChildRef = HTMLDivElement
 
-  public static defaultProps = {
-    testID: 'flex-box--child',
-    grow: 1,
-    shrink: 0,
-  }
+export const FlexBoxChild = forwardRef<FlexBoxChildRef, FlexBoxChildProps>(
+  (
+    {
+      id,
+      grow = 1,
+      style,
+      basis,
+      shrink = 0,
+      testID = 'flex-box--child',
+      children,
+      className,
+    },
+    ref
+  ) => {
+    const flexBoxChildClass = classnames('cf-flex-box--child', {
+      [`${className}`]: className,
+    })
 
-  public render() {
-    const {testID, children, id} = this.props
+    const flexBoxChildStyle = {
+      flexGrow: grow,
+      flexShrink: shrink,
+      flexBasis: basis ? `${basis}px` : '0',
+      ...style,
+    }
 
     return (
       <div
-        className={this.className}
-        data-testid={testID}
         id={id}
-        style={this.style}
+        ref={ref}
+        style={flexBoxChildStyle}
+        data-testid={testID}
+        className={flexBoxChildClass}
       >
         {children}
       </div>
     )
   }
+)
 
-  private get style(): CSSProperties {
-    const {basis, grow, shrink, style} = this.props
-
-    const flexBasis = basis ? `${basis}px` : '0'
-    const flexShrink = shrink
-    const flexGrow = grow
-
-    return {
-      flexGrow,
-      flexShrink,
-      flexBasis,
-      ...style,
-    }
-  }
-
-  private get className(): string {
-    const {className} = this.props
-
-    return classnames('cf-flex-box--child', {
-      [`${className}`]: className,
-    })
-  }
-}
+FlexBoxChild.displayName = 'FlexBoxChild'

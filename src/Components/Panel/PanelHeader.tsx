@@ -1,5 +1,5 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Components
@@ -10,52 +10,53 @@ import {
   FlexDirection,
   JustifyContent,
   AlignItems,
-  StandardClassProps,
+  StandardFunctionProps,
   ComponentSize,
 } from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface PanelHeaderProps extends StandardFunctionProps {
   /** Vertical or horizontal flex alignment */
-  flexDirection: FlexDirection
+  flexDirection?: FlexDirection
   /** Inserted margin between children */
   childMargin?: ComponentSize
   /** Can be FlexStart, FlexEnd, Center, SpaceBetween, or SpaceAround */
-  justifyContent: JustifyContent
+  justifyContent?: JustifyContent
   /** Can be FlexStart, FlexEnd, Center, or Stretch */
-  alignItems: AlignItems
+  alignItems?: AlignItems
   /** Controls padding */
-  size: ComponentSize
+  size?: ComponentSize
 }
 
-export class PanelHeader extends Component<Props> {
-  public static readonly displayName = 'PanelHeader'
+export type PanelHeaderRef = HTMLDivElement
 
-  public static defaultProps = {
-    testID: 'panel--header',
-    flexDirection: FlexDirection.Row,
-    justifyContent: JustifyContent.SpaceBetween,
-    alignItems: AlignItems.Center,
-    size: ComponentSize.Small,
-  }
-
-  public render() {
-    const {
-      children,
-      testID,
+export const PanelHeader = forwardRef<PanelHeaderRef, PanelHeaderProps>(
+  (
+    {
       id,
       style,
-      flexDirection,
+      size = ComponentSize.Small,
+      testID = 'panel--header',
+      children,
+      className,
+      alignItems = AlignItems.Center,
       childMargin,
-      justifyContent,
-      alignItems,
-    } = this.props
+      flexDirection = FlexDirection.Row,
+      justifyContent = JustifyContent.SpaceBetween,
+    },
+    ref
+  ) => {
+    const panelHeaderClass = classnames('cf-panel--header', {
+      [`cf-panel--header__${size}`]: size,
+      [`${className}`]: className,
+    })
 
     return (
       <div
-        className={this.className}
-        data-testid={testID}
         id={id}
+        ref={ref}
         style={style}
+        data-testid={testID}
+        className={panelHeaderClass}
       >
         <FlexBox
           direction={flexDirection}
@@ -69,13 +70,6 @@ export class PanelHeader extends Component<Props> {
       </div>
     )
   }
+)
 
-  private get className(): string {
-    const {className, size} = this.props
-
-    return classnames('cf-panel--header', {
-      [`cf-panel--header__${size}`]: size,
-      [`${className}`]: className,
-    })
-  }
-}
+PanelHeader.displayName = 'PanelHeader'

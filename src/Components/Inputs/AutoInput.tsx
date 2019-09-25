@@ -1,5 +1,5 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Components
@@ -7,7 +7,7 @@ import {Radio} from '../Radio/Radio'
 
 // Types
 import {
-  StandardClassProps,
+  StandardFunctionProps,
   ButtonShape,
   ComponentColor,
   ComponentSize,
@@ -17,7 +17,7 @@ import {
 // Styles
 import './AutoInput.scss'
 
-interface Props extends StandardClassProps {
+export interface AutoInputProps extends StandardFunctionProps {
   /** Pass in a component of type "Input" */
   inputComponent: JSX.Element
   /** Fires when the radio is toggled and the mode changes */
@@ -25,32 +25,41 @@ interface Props extends StandardClassProps {
   /** Modality of radio, either "Auto" or "Custom" */
   mode: AutoInputMode
   /** Radio color */
-  color: ComponentColor
+  color?: ComponentColor
   /** Radio */
-  size: ComponentSize
+  size?: ComponentSize
 }
 
-export class AutoInput extends Component<Props> {
-  public static readonly displayName = 'AutoInput'
+export type AutoInputRef = HTMLDivElement
 
-  public static defaultProps = {
-    color: ComponentColor.Primary,
-    size: ComponentSize.Small,
-    testID: 'auto-input',
-    id: 'auto-input',
-  }
-
-  public render() {
-    const {testID, id, size, color, mode, onChangeMode, style} = this.props
+export const AutoInput = forwardRef<AutoInputRef, AutoInputProps>(
+  (
+    {
+      id = 'auto-input',
+      mode,
+      size = ComponentSize.Small,
+      color = ComponentColor.Primary,
+      style,
+      testID = 'auto-input',
+      className,
+      onChangeMode,
+      inputComponent,
+    },
+    ref
+  ) => {
+    const autoInputClass = classnames('cf-auto-input', {
+      [`${className}`]: className,
+    })
 
     return (
       <div
-        className={this.className}
-        data-testid={testID}
         id={id}
+        ref={ref}
         style={style}
+        data-testid={testID}
+        className={autoInputClass}
       >
-        <div className="auto-input--radio">
+        <div className="cf-auto-input--radio">
           <Radio shape={ButtonShape.StretchToFit} size={size} color={color}>
             <Radio.Button
               active={mode === AutoInputMode.Auto}
@@ -74,34 +83,18 @@ export class AutoInput extends Component<Props> {
             </Radio.Button>
           </Radio>
         </div>
-        {this.input}
+        {mode === AutoInputMode.Custom && (
+          <div
+            className="auto-input--input"
+            data-testid={`${testID}--input`}
+            id={`${id}--input`}
+          >
+            {inputComponent}
+          </div>
+        )}
       </div>
     )
   }
+)
 
-  private get className(): string {
-    const {className} = this.props
-
-    return classnames('auto-input', {
-      [`${className}`]: className,
-    })
-  }
-
-  private get input(): JSX.Element | undefined {
-    const {testID, id, mode, inputComponent} = this.props
-
-    if (mode === AutoInputMode.Custom) {
-      return (
-        <div
-          className="auto-input--input"
-          data-testid={`${testID}--input`}
-          id={`${id}--input`}
-        >
-          {inputComponent}
-        </div>
-      )
-    }
-
-    return
-  }
-}
+AutoInput.displayName = 'AutoInput'

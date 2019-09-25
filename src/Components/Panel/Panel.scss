@@ -109,20 +109,20 @@
 
 @mixin panelTitleSizeModifier($fontWeight, $fontSize) {
   font-weight: $fontWeight;
-  font-size: $fontSize * 1.5;
+  font-size: ceil($fontSize * 1.33);
 }
 
 .cf-panel--title__xs {
-  @include panelTitleSizeModifier($form-xs-padding, $form-xs-font);
+  @include panelTitleSizeModifier(600, $form-xs-font);
 }
 .cf-panel--title__sm {
-  @include panelTitleSizeModifier($form-sm-padding, $form-sm-font);
+  @include panelTitleSizeModifier(600, $form-sm-font);
 }
 .cf-panel--title__md {
-  @include panelTitleSizeModifier($form-md-padding, $form-md-font);
+  @include panelTitleSizeModifier(500, $form-md-font);
 }
 .cf-panel--title__lg {
-  @include panelTitleSizeModifier($form-lg-padding, $form-lg-font);
+  @include panelTitleSizeModifier(400, $form-lg-font);
 }
 
 /*

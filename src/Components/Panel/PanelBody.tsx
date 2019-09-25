@@ -1,44 +1,46 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps, ComponentSize} from '../../Types'
+import {StandardFunctionProps, ComponentSize} from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface PanelBodyProps extends StandardFunctionProps {
   /** Controls padding */
-  size: ComponentSize
+  size?: ComponentSize
 }
 
-export class PanelBody extends Component<Props> {
-  public static readonly displayName = 'PanelBody'
+export type PanelBodyRef = HTMLDivElement
 
-  public static defaultProps = {
-    testID: 'panel--body',
-    size: ComponentSize.Small,
-  }
-
-  public render() {
-    const {children, testID, id, style} = this.props
+export const PanelBody = forwardRef<PanelBodyRef, PanelBodyProps>(
+  (
+    {
+      id,
+      size = ComponentSize.Small,
+      style,
+      testID = 'panel--body',
+      children,
+      className,
+    },
+    ref
+  ) => {
+    const panelBodyClass = classnames('cf-panel--body', {
+      [`cf-panel--body__${size}`]: size,
+      [`${className}`]: className,
+    })
 
     return (
       <div
-        className={this.className}
-        data-testid={testID}
         id={id}
+        ref={ref}
         style={style}
+        data-testid={testID}
+        className={panelBodyClass}
       >
         {children}
       </div>
     )
   }
+)
 
-  private get className(): string {
-    const {className, size} = this.props
-
-    return classnames('cf-panel--body', {
-      [`cf-panel--body__${size}`]: size,
-      [`${className}`]: className,
-    })
-  }
-}
+PanelBody.displayName = 'PanelBody'

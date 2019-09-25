@@ -195,6 +195,10 @@ body.sb-show-main {
   padding: 64px;
   position: relative;
 
+  &__column {
+    @extend .story--example;
+    flex-direction: column;
+  }
 }
 
 .overlay--example {
@@ -705,4 +709,61 @@ table.two-axis-table {
   background-color: $g1-raven;
   border-radius: $cf-radius;
   margin: 1px;
+}
+
+
+/*
+  Testing Table
+  ------------------------------------------------------------------------------
+*/
+
+.story--testing-table {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 300px;
+  border: 1px solid $g3-castle;
+}
+
+.story--testing-cell {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  border: 1px solid $g3-castle;
+}
+
+.story--test-buttons {
+  top: 12px;
+  right: 12px;
+  position: absolute;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  
+  button {
+    margin-bottom: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 8px;
+    border-radius: 4px;
+    background-color: $g5-pepper;
+    color: $g13-mist;
+    border: 0;
+    outline: none;
+    transition: color 0.25s ease, background-color 0.25s ease;
+
+    &:hover {
+      background-color: $g6-smoke;
+      color: $g16-pearl;
+      cursor: pointer;
+    }
+
+    &:active {
+      background-color: $c-pool;
+      color: $g20-white;
+    }
+  }
 }
