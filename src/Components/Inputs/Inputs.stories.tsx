@@ -1,5 +1,5 @@
 // Libraries
-import * as React from 'react'
+import React, {RefObject, createRef} from 'react'
 import marked from 'marked'
 
 // Storybook
@@ -56,39 +56,56 @@ const defaultInputStyle = {
 
 inputsBaseStories.add(
   'Input (Text)',
-  () => (
-    <div className="story--example">
-      <Input
-        placeholder={text('placeholder', 'Placeholder Text')}
-        value={text('value', 'Value Text')}
-        onChange={() => {}}
-        name={text('name', 'Name')}
-        titleText={text('titleText', 'Title Text')}
-        disabledTitleText={text('disabledTitleText', 'Disabled Title Text')}
-        maxLength={number('maxLength', 24)}
-        icon={
-          IconFont[
-            select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
-          ]
-        }
-        style={object('style', defaultInputStyle)}
-        status={
-          ComponentStatus[
-            select('status', mapEnumKeys(ComponentStatus), 'Default')
-          ]
-        }
-        size={
-          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-        }
-        autocomplete={
-          AutoComplete[
-            radios<AutoComplete>('autocomplete', mapEnumKeys(AutoComplete))
-          ]
-        }
-        type={InputType.Text}
-      />
-    </div>
-  ),
+  () => {
+    const inputRef: RefObject<HTMLInputElement> = createRef()
+    const inputContainerRef: RefObject<HTMLDivElement> = createRef()
+
+    const handleLogRefs = (): void => {
+      /* eslint-disable */
+      console.log('InputRef', inputRef.current)
+      console.log('InputContainerRef', inputContainerRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <Input
+          ref={inputRef}
+          containerRef={inputContainerRef}
+          placeholder={text('placeholder', 'Placeholder Text')}
+          value={text('value', 'Value Text')}
+          onChange={() => {}}
+          name={text('name', 'Name')}
+          titleText={text('titleText', 'Title Text')}
+          disabledTitleText={text('disabledTitleText', 'Disabled Title Text')}
+          maxLength={number('maxLength', 24)}
+          icon={
+            IconFont[
+              select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
+            ]
+          }
+          style={object('style', defaultInputStyle)}
+          status={
+            ComponentStatus[
+              select('status', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          autocomplete={
+            AutoComplete[
+              radios<AutoComplete>('autocomplete', mapEnumKeys(AutoComplete))
+            ]
+          }
+          type={InputType.Text}
+        />
+        <div className="story--test-buttons">
+          <button onClick={handleLogRefs}>Log Refs</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(InputReadme),
