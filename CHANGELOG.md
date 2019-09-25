@@ -3,12 +3,15 @@
 ### 0.0.33
 
 - [#313](https://github.com/influxdata/clockface/pull/313): Fix style bug in `PanelTitle`
-- [#313](https://github.com/influxdata/clockface/pull/313): Convert `FlexBox` component family to `FunctionComponent` and add `ref` prop
-- [#313](https://github.com/influxdata/clockface/pull/313): Convert `Icon` component to `FunctionComponent` and add `ref` prop
-- [#313](https://github.com/influxdata/clockface/pull/313): Convert `Label` component to `FunctionComponent` and add `ref` prop
-- [#313](https://github.com/influxdata/clockface/pull/313): Convert `Panel` component family to `FunctionComponent` and add `ref` prop
-- [#313](https://github.com/influxdata/clockface/pull/313): Convert `Input` component family to `FunctionComponent` and add `ref` prop
-- [#313](https://github.com/influxdata/clockface/pull/313): Convert spinner components to `FunctionComponent` and add `ref` prop
+- [#313](https://github.com/influxdata/clockface/pull/313): Convert `FlexBox` component family to `FunctionComponent` and wrap with `forwardRef`
+- [#313](https://github.com/influxdata/clockface/pull/313): Convert `Icon` component to `FunctionComponent` and wrap with `forwardRef`
+- [#313](https://github.com/influxdata/clockface/pull/313): Convert `Label` component to `FunctionComponent` and wrap with `forwardRef`
+- [#313](https://github.com/influxdata/clockface/pull/313): Convert `Panel` component family to `FunctionComponent` and wrap with `forwardRef`
+- [#313](https://github.com/influxdata/clockface/pull/313): Convert `Input` component family to `FunctionComponent` and wrap with `forwardRef`
+- [#313](https://github.com/influxdata/clockface/pull/313): Convert `TextArea` component to `FunctionComponent` and wrap with `forwardRef`
+- [#313](https://github.com/influxdata/clockface/pull/313): Convert spinner components to `FunctionComponent` and wrap with `forwardRef`
+- [#313](https://github.com/influxdata/clockface/pull/313): [Breaking] Remove `widthPixels` prop from `Input` in favor of `style`
+- [#313](https://github.com/influxdata/clockface/pull/313): [Breaking] Remove `widthPixels` prop from `TextArea` in favor of `style`
 
 ### 0.0.32 (Unreleased)
 
