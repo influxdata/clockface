@@ -1,10 +1,11 @@
 // Libraries
 import React, {
-  FunctionComponent,
   CSSProperties,
   ChangeEvent,
   KeyboardEvent,
+  forwardRef,
   RefObject,
+  FunctionComponent,
 } from 'react'
 import classnames from 'classnames'
 
@@ -24,7 +25,7 @@ import {
   InputType,
 } from '../../Types'
 
-interface Props extends StandardFunctionProps {
+export interface InputProps extends StandardFunctionProps {
   /** Minimum value for number & range types */
   min?: number
   /** Maximum value for number & range types */
@@ -85,100 +86,108 @@ interface Props extends StandardFunctionProps {
   containerRef?: RefObject<HTMLDivElement>
 }
 
-export const Input: FunctionComponent<Props> = ({
-  id,
-  ref,
-  min,
-  max,
-  step,
-  icon,
-  size = ComponentSize.Small,
-  name = '',
-  type = InputType.Text,
-  style = {width: '100%'},
-  value = '',
-  status = ComponentStatus.Default,
-  onBlur,
-  testID = 'input-field',
-  pattern,
-  onFocus,
-  checked,
-  onKeyUp,
-  required = false,
-  tabIndex,
-  onChange,
-  titleText = '',
-  className,
-  autoFocus = false,
-  maxLength,
-  onKeyDown,
-  spellCheck = false,
-  onKeyPress,
-  inputStyle,
-  placeholder = '',
-  containerRef,
-  autocomplete = AutoComplete.Off,
-  disabledTitleText = 'This input is disabled',
-}) => {
-  const inputClass = classnames('cf-input', {
-    [`cf-input-${size}`]: size,
-    'cf-input__has-checkbox': type === InputType.Checkbox,
-    'cf-input__has-icon': icon,
-    'cf-input__valid': status === ComponentStatus.Valid,
-    'cf-input__error': status === ComponentStatus.Error,
-    'cf-input__loading': status === ComponentStatus.Loading,
-    'cf-input__disabled': status === ComponentStatus.Disabled,
-    [`${className}`]: className,
-  })
+export type InputRef = HTMLInputElement
 
-  const inputCheckboxClass = classnames('cf-input--checkbox', {checked})
+export const Input = forwardRef<InputRef, InputProps>(
+  (
+    {
+      id,
+      min,
+      max,
+      step,
+      icon,
+      size = ComponentSize.Small,
+      name = '',
+      type = InputType.Text,
+      style = {width: '100%'},
+      value = '',
+      status = ComponentStatus.Default,
+      onBlur,
+      testID = 'input-field',
+      pattern,
+      onFocus,
+      checked,
+      onKeyUp,
+      required = false,
+      tabIndex,
+      onChange,
+      titleText = '',
+      className,
+      autoFocus = false,
+      maxLength,
+      onKeyDown,
+      spellCheck = false,
+      onKeyPress,
+      inputStyle,
+      placeholder = '',
+      containerRef,
+      autocomplete = AutoComplete.Off,
+      disabledTitleText = 'This input is disabled',
+    },
+    ref
+  ) => {
+    const inputClass = classnames('cf-input', {
+      [`cf-input-${size}`]: size,
+      'cf-input__has-checkbox': type === InputType.Checkbox,
+      'cf-input__has-icon': icon,
+      'cf-input__valid': status === ComponentStatus.Valid,
+      'cf-input__error': status === ComponentStatus.Error,
+      'cf-input__loading': status === ComponentStatus.Loading,
+      'cf-input__disabled': status === ComponentStatus.Disabled,
+      [`${className}`]: className,
+    })
 
-  const correctlyTypedValue: string | number =
-    type === InputType.Number ? Number(value) : `${value}`
+    const inputCheckboxClass = classnames('cf-input--checkbox', {checked})
 
-  const iconElement = icon && <Icon glyph={icon} className="cf-input-icon" />
+    const correctlyTypedValue: string | number =
+      type === InputType.Number ? Number(value) : `${value}`
 
-  const title =
-    status === ComponentStatus.Disabled ? disabledTitleText : titleText
+    const iconElement = icon && <Icon glyph={icon} className="cf-input-icon" />
 
-  return (
-    <div className={inputClass} style={style} ref={containerRef}>
-      <input
-        id={id}
-        ref={ref}
-        min={min}
-        max={max}
-        step={step}
-        checked={checked}
-        title={title}
-        autoComplete={autocomplete}
-        name={name}
-        type={type}
-        value={correctlyTypedValue}
-        placeholder={placeholder}
-        autoFocus={autoFocus}
-        spellCheck={spellCheck}
-        onChange={onChange}
-        onBlur={onBlur}
-        onFocus={onFocus}
-        onKeyPress={onKeyPress}
-        onKeyUp={onKeyUp}
-        onKeyDown={onKeyDown}
-        className="cf-input-field"
-        disabled={status === ComponentStatus.Disabled}
-        maxLength={maxLength}
-        tabIndex={tabIndex}
-        data-testid={testID}
-        style={inputStyle}
-        required={required}
-        pattern={pattern}
-      />
-      {type === InputType.Checkbox && <div className={inputCheckboxClass} />}
-      {iconElement}
-      {type !== InputType.Checkbox && <InputStatusIndicator status={status} />}
-    </div>
-  )
-}
+    const title =
+      status === ComponentStatus.Disabled ? disabledTitleText : titleText
+
+    return (
+      <div className={inputClass} style={style} ref={containerRef}>
+        <input
+          id={id}
+          ref={ref}
+          min={min}
+          max={max}
+          step={step}
+          checked={checked}
+          title={title}
+          autoComplete={autocomplete}
+          name={name}
+          type={type}
+          value={correctlyTypedValue}
+          placeholder={placeholder}
+          autoFocus={autoFocus}
+          spellCheck={spellCheck}
+          onChange={onChange}
+          onBlur={onBlur}
+          onFocus={onFocus}
+          onKeyPress={onKeyPress}
+          onKeyUp={onKeyUp}
+          onKeyDown={onKeyDown}
+          className="cf-input-field"
+          disabled={status === ComponentStatus.Disabled}
+          maxLength={maxLength}
+          tabIndex={tabIndex}
+          data-testid={testID}
+          style={inputStyle}
+          required={required}
+          pattern={pattern}
+        />
+        {type === InputType.Checkbox && <div className={inputCheckboxClass} />}
+        {iconElement}
+        {type !== InputType.Checkbox && (
+          <InputStatusIndicator status={status} />
+        )}
+      </div>
+    )
+  }
+)
 
 Input.displayName = 'Input'
 
