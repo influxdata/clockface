@@ -1,4 +1,4 @@
-import React, {Component, ChangeEvent, CSSProperties} from 'react'
+import React, {ChangeEvent, forwardRef, FunctionComponent} from 'react'
 import classnames from 'classnames'
 
 // Components
@@ -7,19 +7,21 @@ import {Input} from './Input'
 // Styles
 import './RangeSlider.scss'
 
+// Utils
+import {generateRangeSliderTrackFillStyle} from '../../Utils'
+
 // Types
 import {
   InputType,
-  StandardClassProps,
+  StandardFunctionProps,
   ComponentColor,
   Orientation,
   ComponentSize,
   AutoComplete,
   ComponentStatus,
-  InfluxColors,
 } from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface RangeSliderProps extends StandardFunctionProps {
   /** Minimum value */
   min: number
   /** Maximum value */
@@ -35,138 +37,119 @@ interface Props extends StandardClassProps {
   /** Input status state */
   status?: ComponentStatus
   /** Size of handle and track  */
-  size: ComponentSize
+  size?: ComponentSize
   /** Color of slider handle */
-  color: ComponentColor
+  color?: ComponentColor
   /** Color of slider track */
-  orientation: Orientation
+  orientation?: Orientation
   /** Fill the track before the handle to indicate percentage */
-  fill: boolean
+  fill?: boolean
   /** Displays the min and max values below the slider */
-  hideLabels: boolean
+  hideLabels?: boolean
 }
 
-export class RangeSlider extends Component<Props> {
-  public static defaultProps = {
-    testID: 'range-slider',
-    min: 0,
-    max: 100,
-    size: ComponentSize.Small,
-    color: ComponentColor.Primary,
-    orientation: Orientation.Horizontal,
-    fill: false,
-    hideLabels: false,
-  }
+export type RangeSliderRef = HTMLInputElement
 
-  render() {
-    const {
+export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
+  (
+    {
+      id,
+      min = 0,
+      max = 100,
+      fill = false,
+      size = ComponentSize.Small,
+      step,
+      style,
+      color = ComponentColor.Primary,
+      value,
+      testID = 'range-slider',
+      status = ComponentStatus.Default,
+      onChange,
+      className,
+      hideLabels = false,
+      orientation = Orientation.Horizontal,
+      autocomplete,
+    },
+    ref
+  ) => {
+    const rangeSliderClass = classnames('cf-range-slider--container', {
+      [`cf-range-slider__${orientation}`]: orientation,
+      [`cf-range-slider--${color}`]: color,
+      'cf-range-slider--fill': fill,
+    })
+
+    const rangeSliderContainerClass = classnames('cf-range-slider--wrapper', {
+      [`${className}`]: className,
+    })
+
+    const inputStyle = generateRangeSliderTrackFillStyle(
+      fill,
       min,
       max,
-      step,
-      onChange,
-      autocomplete,
-      status,
-      size,
-      style,
-      testID,
-      className,
-    } = this.props
+      value,
+      color,
+      status
+    )
+
+    const cleanedValue = valueWithBounds(value, min, max)
 
     return (
-      <div className={`cf-range-slider--wrapper ${className}`} style={style}>
+      <div className={rangeSliderContainerClass} style={style}>
         <Input
+          id={id}
+          ref={ref}
           min={Math.min(min, max)}
           max={Math.max(min, max)}
           step={step}
-          value={this.value}
-          onChange={onChange}
-          autocomplete={autocomplete}
-          status={status}
           size={size}
-          testID={testID}
-          className={this.className}
           type={InputType.Range}
-          inputStyle={this.trackFill}
+          value={cleanedValue}
+          testID={testID}
+          status={status}
+          onChange={onChange}
+          className={rangeSliderClass}
+          inputStyle={inputStyle}
+          autocomplete={autocomplete}
         />
-        {this.rangeSliderLabels}
+        {!hideLabels && <RangeSliderLabels min={min} max={max} />}
       </div>
     )
   }
+)
 
-  private get className(): string {
-    const {color, fill} = this.props
+RangeSlider.displayName = 'RangeSlider'
 
-    return classnames(`cf-range-slider--container cf-range-slider--${color}`, {
-      'cf-range-slider--fill': fill,
-    })
+const valueWithBounds = (value: number, min: number, max: number): number => {
+  const minVal = Math.min(min, max)
+  const maxVal = Math.max(min, max)
+
+  if (value < minVal) {
+    return minVal
   }
 
-  private get trackFill(): CSSProperties {
-    const {fill, min, max, value, color, status} = this.props
-
-    if (status === ComponentStatus.Disabled) {
-      return {background: InfluxColors.Castle}
-    }
-
-    const fillColor = {
-      default: InfluxColors.Graphite,
-      primary: InfluxColors.Pool,
-      secondary: InfluxColors.Star,
-      success: InfluxColors.Rainforest,
-      warning: InfluxColors.Pineapple,
-      danger: InfluxColors.Curacao,
-    }
-
-    const minVal = Math.min(min, max)
-    const maxVal = Math.max(min, max)
-
-    const pos = ((value - minVal) / (maxVal - minVal)) * 100
-
-    if (fill) {
-      return {
-        background: `linear-gradient(to right, ${fillColor[color]} 0%, ${
-          fillColor[color]
-        } ${pos}%, ${InfluxColors.Pepper} ${pos}%, ${
-          InfluxColors.Pepper
-        } 100%)`,
-      }
-    }
-
-    return {}
+  if (value > maxVal) {
+    return maxVal
   }
 
-  private get rangeSliderLabels(): JSX.Element | null {
-    const {min, max, hideLabels} = this.props
+  return value
+}
 
-    const minVal = Math.min(min, max)
-    const maxVal = Math.max(min, max)
+interface RangeSliderlabelsProps {
+  min: number
+  max: number
+}
 
-    if (hideLabels) {
-      return null
-    }
+const RangeSliderLabels: FunctionComponent<RangeSliderlabelsProps> = ({
+  min,
+  max,
+}) => {
+  const minVal = Math.min(min, max)
+  const maxVal = Math.max(min, max)
 
-    return (
-      <div className="cf-range-slider--labels">
-        <span className="cf-range-slider--bound">{minVal}</span>
-        <span className="cf-range-slider--bound">{maxVal}</span>
-      </div>
-    )
-  }
-
-  private get value(): number {
-    const {min, max, value} = this.props
-
-    const minVal = Math.min(min, max)
-    const maxVal = Math.max(min, max)
-
-    if (value < minVal) {
-      return minVal
-    }
-
-    if (value > maxVal) {
-      return maxVal
-    }
-
-    return value
-  }
+  return (
+    <div className="cf-range-slider--labels">
+      <span className="cf-range-slider--bound">{minVal}</span>
+      <span className="cf-range-slider--bound">{maxVal}</span>
+    </div>
+  )
 }

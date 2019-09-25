@@ -7,7 +7,13 @@ import {HEX_CODE_CHAR_LENGTH} from '../Constants/colors'
 import {getColorsFromGradient} from '../Constants/colors'
 
 // Types
-import {Gradients, InfluxColors, ComponentSize} from '../Types'
+import {
+  Gradients,
+  InfluxColors,
+  ComponentSize,
+  ComponentColor,
+  ComponentStatus,
+} from '../Types'
 
 export const validateHexCode = (colorHex: string): string | null => {
   const isValidLength = colorHex.length === HEX_CODE_CHAR_LENGTH
@@ -131,4 +137,41 @@ export const generateTechnoSpinnerStyle = (
   }
 
   return {width, height, borderWidth, ...style}
+}
+
+export const generateRangeSliderTrackFillStyle = (
+  fill: boolean,
+  min: number,
+  max: number,
+  value: number,
+  color: ComponentColor,
+  status: ComponentStatus
+): CSSProperties | undefined => {
+  if (status === ComponentStatus.Disabled) {
+    return {background: InfluxColors.Castle}
+  }
+
+  const fillColor = {
+    default: InfluxColors.Graphite,
+    primary: InfluxColors.Pool,
+    secondary: InfluxColors.Star,
+    success: InfluxColors.Rainforest,
+    warning: InfluxColors.Pineapple,
+    danger: InfluxColors.Curacao,
+  }
+
+  const minVal = Math.min(min, max)
+  const maxVal = Math.max(min, max)
+
+  const pos = ((value - minVal) / (maxVal - minVal)) * 100
+
+  if (fill) {
+    return {
+      background: `linear-gradient(to right, ${fillColor[color]} 0%, ${
+        fillColor[color]
+      } ${pos}%, ${InfluxColors.Pepper} ${pos}%, ${InfluxColors.Pepper} 100%)`,
+    }
+  }
+
+  return
 }

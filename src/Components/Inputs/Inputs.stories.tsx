@@ -34,6 +34,7 @@ import {
   AlignItems,
   InputType,
   AutoInputMode,
+  Orientation,
 } from '../../Types'
 import {FlexBox} from '../FlexBox/FlexBox'
 
@@ -392,32 +393,54 @@ inputsComposedStories.add(
 
 inputsComposedStories.add(
   'Range Slider',
-  () => (
-    <div className="story--example">
-      <RangeSlider
-        min={number('min', 0)}
-        max={number('max', 100)}
-        value={number('value', 50)}
-        step={number('step', 0)}
-        onChange={() => {}}
-        size={
-          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-        }
-        color={
-          ComponentColor[
-            select('color', mapEnumKeys(ComponentColor), 'Primary')
-          ]
-        }
-        fill={boolean('fill', true)}
-        hideLabels={boolean('hide labels', false)}
-        status={
-          ComponentStatus[
-            select('status', mapEnumKeys(ComponentStatus), 'Default')
-          ]
-        }
-      />
-    </div>
-  ),
+  () => {
+    const rangeSliderRef: RefObject<HTMLInputElement> = createRef()
+
+    const handleLogRef = (): void => {
+      /* eslint-disable */
+      console.log(rangeSliderRef.current)
+      /* eslint-enable */
+    }
+
+    const exampleRangeSliderStyle = {width: '100%'}
+
+    return (
+      <div className="story--example">
+        <RangeSlider
+          ref={rangeSliderRef}
+          min={number('min', 0)}
+          max={number('max', 100)}
+          value={number('value', 50)}
+          step={number('step', 0)}
+          onChange={() => {}}
+          orientation={
+            Orientation[
+              select('orientation', mapEnumKeys(Orientation), 'Horizontal')
+            ]
+          }
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          color={
+            ComponentColor[
+              select('color', mapEnumKeys(ComponentColor), 'Primary')
+            ]
+          }
+          fill={boolean('fill', true)}
+          hideLabels={boolean('hide labels', false)}
+          style={object('style', exampleRangeSliderStyle)}
+          status={
+            ComponentStatus[
+              select('status', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
+        />
+        <div className="story--test-buttons">
+          <button onClick={handleLogRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(RangeSliderReadme),
