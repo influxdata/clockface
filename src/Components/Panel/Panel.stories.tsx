@@ -15,6 +15,8 @@ import {PanelTitle} from './PanelTitle'
 import {PanelBody} from './PanelBody'
 import {PanelFooter} from './PanelFooter'
 import {Grid} from '../Grid/Grid'
+import {Button} from '../Button/Composed/Button'
+import {FlexBox} from '../FlexBox/FlexBox'
 
 // Types
 import {Gradients, ComponentSize, InfluxColors, Columns} from '../../Types'
@@ -33,6 +35,10 @@ const panelStories = storiesOf('Components|Panels/Family', module)
   .addDecorator(jsxDecorator)
 
 const panelExampleStories = storiesOf('Components|Panels/Examples', module)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
+
+const panelTestingStories = storiesOf('Components|Panels/Testing', module)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
@@ -278,3 +284,44 @@ panelExampleStories.add(
     },
   }
 )
+
+panelTestingStories.add('Ref Forwarding', () => {
+  const panelRef: React.RefObject<HTMLDivElement> = React.createRef()
+  const panelHeaderRef: React.RefObject<HTMLDivElement> = React.createRef()
+  const panelTitleRef: React.RefObject<HTMLDivElement> = React.createRef()
+  const panelBodyRef: React.RefObject<HTMLDivElement> = React.createRef()
+  const panelFooterRef: React.RefObject<HTMLDivElement> = React.createRef()
+
+  const handleLogRef = (ref: React.RefObject<any>) => (): void => {
+    /* eslint-disable */
+    console.log(ref.current)
+    /* eslint-enable */
+  }
+
+  return (
+    <div className="story--example">
+      <Panel ref={panelRef}>
+        <PanelHeader ref={panelHeaderRef}>
+          <PanelTitle ref={panelTitleRef}>Ref Testing Widget</PanelTitle>
+        </PanelHeader>
+        <PanelBody ref={panelBodyRef}>
+          <ol>
+            <li>Open the browser console</li>
+            <li>
+              Click on a button below to see its <code>ref.current</code> logged
+            </li>
+          </ol>
+        </PanelBody>
+        <PanelFooter ref={panelFooterRef}>
+          <FlexBox margin={ComponentSize.Small}>
+            <Button text="Panel" onClick={handleLogRef(panelRef)} />
+            <Button text="PanelHeader" onClick={handleLogRef(panelHeaderRef)} />
+            <Button text="PanelTitle" onClick={handleLogRef(panelTitleRef)} />
+            <Button text="PanelBody" onClick={handleLogRef(panelBodyRef)} />
+            <Button text="PanelFooter" onClick={handleLogRef(panelFooterRef)} />
+          </FlexBox>
+        </PanelFooter>
+      </Panel>
+    </div>
+  )
+})
