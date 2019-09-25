@@ -44,6 +44,10 @@ const spinnerTextStories = storiesOf(
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
+const spinnerTestingStories = storiesOf('Components|Spinners/Testing', module)
+  .addDecorator(withKnobs)
+  .addDecorator(jsxDecorator)
+
 spinnerContainerStories.add(
   'SpinnerContainer',
   () => (
@@ -127,3 +131,63 @@ spinnerTextStories.add(
     },
   }
 )
+
+spinnerTestingStories.add('Ref Forwarding', () => {
+  const waitingTextRef: React.RefObject<HTMLDivElement> = React.createRef()
+  const technoSpinnerRef: React.RefObject<HTMLDivElement> = React.createRef()
+  const sparkleSpinnerRef: React.RefObject<HTMLDivElement> = React.createRef()
+  const spinnerContainerRef: React.RefObject<HTMLDivElement> = React.createRef()
+
+  const handleLogRef = (ref: React.RefObject<any>) => (): void => {
+    /* eslint-disable */
+    console.log(ref.current)
+    /* eslint-enable */
+  }
+
+  return (
+    <div className="story--example__column">
+      <h5>
+        Open your browser console then click a square to log the ref of its
+        component
+      </h5>
+      <div className="story--testing-table">
+        <div
+          className="story--testing-cell"
+          onClick={handleLogRef(waitingTextRef)}
+        >
+          <WaitingText text="Loading" ref={waitingTextRef} />
+        </div>
+        <div
+          className="story--testing-cell"
+          onClick={handleLogRef(technoSpinnerRef)}
+        >
+          <TechnoSpinner
+            diameterPixels={80}
+            strokeWidth={ComponentSize.Small}
+            ref={technoSpinnerRef}
+          />
+        </div>
+        <div
+          className="story--testing-cell"
+          onClick={handleLogRef(sparkleSpinnerRef)}
+        >
+          <SparkleSpinner
+            sizePixels={120}
+            loading={RemoteDataState.Loading}
+            ref={sparkleSpinnerRef}
+          />
+        </div>
+        <div
+          className="story--testing-cell"
+          onClick={handleLogRef(spinnerContainerRef)}
+        >
+          <SpinnerContainer
+            ref={spinnerContainerRef}
+            loading={RemoteDataState.Loading}
+            spinnerComponent={<p>Container</p>}
+          />
+        </div>
+      </div>
+    </div>
+  )
+})
