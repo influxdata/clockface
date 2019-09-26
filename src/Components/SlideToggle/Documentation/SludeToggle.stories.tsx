@@ -10,7 +10,7 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {SlideToggle} from '../SlideToggle'
+import {SlideToggle} from '../'
 import {FlexBox} from '../../FlexBox'
 
 // Types

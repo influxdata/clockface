@@ -21,7 +21,7 @@ import {Input} from './Input'
 import {AutoInput} from './AutoInput'
 import {RangeSlider} from './RangeSlider'
 import {TextArea} from './TextArea'
-import {SlideToggle} from '../SlideToggle/SlideToggle'
+import {SlideToggle} from '../SlideToggle'
 import {RadioRef, RadioButtonRef} from '../Radio/index'
 import {FlexBox} from '../FlexBox'
 
