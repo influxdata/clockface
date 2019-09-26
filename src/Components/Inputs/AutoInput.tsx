@@ -3,7 +3,7 @@ import React, {forwardRef, RefObject} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {Radio, RadioRef, RadioButtonRef} from '../Radio'
+import {Radio, RadioRef, RadioButtonRef} from '../Radio/index'
 
 // Types
 import {

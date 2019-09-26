@@ -22,7 +22,7 @@ import {AutoInput} from './AutoInput'
 import {RangeSlider} from './RangeSlider'
 import {TextArea} from './TextArea'
 import {SlideToggle} from '../SlideToggle/SlideToggle'
-import {RadioRef, RadioButtonRef} from '../Radio'
+import {RadioRef, RadioButtonRef} from '../Radio/index'
 
 // Types
 import {

@@ -10,7 +10,7 @@ import {mapEnumKeys} from '../../Utils/storybook'
 
 // Components
 import {Page} from './Page'
-import {Radio} from '../Radio'
+import {Radio} from '../Radio/index'
 import {SquareButton} from '../Button/Composed/SquareButton'
 import {FlexBox} from '../FlexBox/FlexBox'
 
