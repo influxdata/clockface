@@ -6,12 +6,12 @@ import marked from 'marked'
 import {storiesOf} from '@storybook/react'
 import {withKnobs, text, select, boolean} from '@storybook/addon-knobs'
 import {withState} from '@dump247/storybook-state'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from '../../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {SlideToggle} from './SlideToggle'
-import {FlexBox} from '../FlexBox'
+import {SlideToggle} from '../SlideToggle'
+import {FlexBox} from '../../FlexBox'
 
 // Types
 import {
@@ -19,7 +19,7 @@ import {
   ComponentSize,
   FlexDirection,
   AlignItems,
-} from '../../Types'
+} from '../../../Types'
 
 // Notes
 import SlideToggleReadme from './SlideToggle.md'
