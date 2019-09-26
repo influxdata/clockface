@@ -1,11 +1,11 @@
 // Libraries
-import React, {FunctionComponent, RefObject} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
 import {StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardFunctionProps {
+export interface RadioButtonProps extends StandardFunctionProps {
   /** Toggles radio button active state */
   active: boolean
   /** Input value of the selected radio button */
@@ -18,51 +18,55 @@ interface Props extends StandardFunctionProps {
   disabled?: boolean
   /** Text to be displayed on hover tooltip when radio button is disabled */
   disabledTitleText?: string
-  /** Pass through for ref */
-  ref?: RefObject<HTMLButtonElement>
 }
 
-export const RadioButton: FunctionComponent<Props> = ({
-  id,
-  ref,
-  value,
-  style,
-  testID = 'radio--button',
-  active,
-  onClick,
-  disabled = false,
-  children,
-  className,
-  titleText,
-  disabledTitleText = 'This option is disabled',
-}) => {
-  const radioButtonClass = classnames('cf-radio-button', {
-    active,
-    disabled,
-    [`${className}`]: className,
-  })
+export type RadioButtonRef = HTMLButtonElement
 
-  const title = disabled ? disabledTitleText : titleText
+export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
+  (
+    {
+      id,
+      value,
+      style,
+      testID = 'radio--button',
+      active,
+      onClick,
+      disabled = false,
+      children,
+      className,
+      titleText,
+      disabledTitleText = 'This option is disabled',
+    },
+    ref
+  ) => {
+    const radioButtonClass = classnames('cf-radio-button', {
+      active,
+      disabled,
+      [`${className}`]: className,
+    })
 
-  const handleClick = () => {
-    onClick(value)
+    const title = disabled ? disabledTitleText : titleText
+
+    const handleClick = () => {
+      onClick(value)
+    }
+
+    return (
+      <button
+        id={id}
+        ref={ref}
+        type="button"
+        style={style}
+        title={title}
+        onClick={handleClick}
+        disabled={disabled}
+        className={radioButtonClass}
+        data-testid={testID}
+      >
+        {children}
+      </button>
+    )
   }
-
-  return (
-    <button
-      id={id}
-      ref={ref}
-      type="button"
-      style={style}
-      title={title}
-      onClick={handleClick}
-      disabled={disabled}
-      className={radioButtonClass}
-      data-testid={testID}
-    >
-      {children}
-    </button>
-  )
-}
+)
 
 RadioButton.displayName = 'RadioButton'
