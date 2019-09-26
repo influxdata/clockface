@@ -13,13 +13,13 @@ import {
   boolean,
   object,
 } from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
-import {TextBlock} from './TextBlock'
+import {TextBlock} from '../TextBlock'
 
 // Types
-import {ComponentSize} from '../../Types'
+import {ComponentSize} from '../../../Types'
 
 // Notes
 import TextBlockReadme from './TextBlock.md'
