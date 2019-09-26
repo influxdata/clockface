@@ -30,8 +30,7 @@ import {Button} from '../Button/Composed/Button'
 import {Input} from '../Inputs/Input'
 import {FlexBox} from '../FlexBox'
 import {SlideToggle} from '../SlideToggle/SlideToggle'
-import {Panel} from '../Panel/Panel'
-import {PanelBody} from '../Panel/PanelBody'
+import {Panel} from '../Panel'
 import {TextBlock} from '../TextBlock/TextBlock'
 import {DismissButton} from '../Button/Composed/DismissButton'
 import {SelectDropdown} from '../Dropdowns/Composed/SelectDropdown'
@@ -370,7 +369,7 @@ formExampleStories.add(
       <div style={{width: `${number('Parent width (px)', 500)}px`}}>
         <Panel>
           <DismissButton onClick={() => {}} color={ComponentColor.Danger} />
-          <PanelBody
+          <Panel.Body
             size={
               ComponentSize[
                 select('Panel: size', mapEnumKeys(ComponentSize), 'Small')
@@ -525,7 +524,7 @@ formExampleStories.add(
                 />
               </FlexBox>
             </FlexBox>
-          </PanelBody>
+          </Panel.Body>
         </Panel>
       </div>
     </div>
