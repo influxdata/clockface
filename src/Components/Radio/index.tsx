@@ -2,7 +2,7 @@
 import React, {Component} from 'react'
 
 // Components
-import {Radio as RadioRoot, RadioProps} from './Radio'
+import {RadioRoot, RadioProps} from './Radio'
 import {RadioButton} from './RadioButton'
 
 export class Radio extends Component<RadioProps> {
@@ -15,3 +15,6 @@ export class Radio extends Component<RadioProps> {
     return <RadioRoot {...this.props} />
   }
 }
+
+export {RadioProps, RadioRef} from './Radio'
+export {RadioButtonProps, RadioButtonRef} from './RadioButton'
