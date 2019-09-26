@@ -13,15 +13,14 @@ import {
   object,
 } from '@storybook/addon-knobs'
 import {withState} from '@dump247/storybook-state'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from '../../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {Radio} from './Radio'
-import {RadioButton} from './RadioButton'
+import {Radio} from '../Index'
 
 // Types
-import {ComponentColor, ComponentSize, ButtonShape} from '../../Types'
+import {ComponentColor, ComponentSize, ButtonShape} from '../../../Types'
 
 // Notes
 import RadioReadme from './Radio.md'
@@ -72,7 +71,7 @@ radioStories.add(
 
     return (
       <div className="story--example">
-        <Radio
+        <Radio.Root
           ref={radioRef}
           style={object('style', {width: '200px'})}
           size={
@@ -90,7 +89,7 @@ radioStories.add(
           }
         >
           {mirepoix.map(btn => (
-            <RadioButton
+            <Radio.Button
               ref={radioButtonRefs[btn]}
               key={btn}
               id={btn}
@@ -102,9 +101,9 @@ radioStories.add(
               }
             >
               {btn}
-            </RadioButton>
+            </Radio.Button>
           ))}
-        </Radio>
+        </Radio.Root>
         <div className="story--test-buttons">
           <button onClick={logRadioRefs}>Log Refs</button>
         </div>
@@ -131,7 +130,7 @@ radioStories.add(
 
     return (
       <div className="story--example">
-        <RadioButton
+        <Radio.Button
           ref={radioButtonRef}
           id={text('id', 'example-radio-option')}
           active={boolean('active', false)}
@@ -147,7 +146,7 @@ radioStories.add(
           )}
         >
           {text('children', 'Button Label')}
-        </RadioButton>
+        </Radio.Button>
         <div className="story--test-buttons">
           <button onClick={logRadioButtonRef}>Log Ref</button>
         </div>
@@ -177,7 +176,7 @@ radioExampleStories.add(
           }
           shape={ButtonShape.StretchToFit}
         >
-          <RadioButton
+          <Radio.Button
             titleText="Compose your Note using Markdown"
             id="mode-compose"
             active={store.state.activeItemID === 'mode-compose'}
@@ -185,8 +184,8 @@ radioExampleStories.add(
             onClick={activeItemID => store.set({activeItemID})}
           >
             Compose
-          </RadioButton>
-          <RadioButton
+          </Radio.Button>
+          <Radio.Button
             titleText="See a preview of your Note"
             id="mode-preview"
             active={store.state.activeItemID === 'mode-preview'}
@@ -194,7 +193,7 @@ radioExampleStories.add(
             onClick={activeItemID => store.set({activeItemID})}
           >
             Preview
-          </RadioButton>
+          </Radio.Button>
         </Radio>
       </div>
     </div>
