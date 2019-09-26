@@ -71,7 +71,7 @@ radioStories.add(
 
     return (
       <div className="story--example">
-        <Radio.Root
+        <Radio.Radio
           ref={radioRef}
           style={object('style', {width: '200px'})}
           size={
@@ -103,7 +103,7 @@ radioStories.add(
               {btn}
             </Radio.Button>
           ))}
-        </Radio.Root>
+        </Radio.Radio>
         <div className="story--test-buttons">
           <button onClick={logRadioRefs}>Log Refs</button>
         </div>

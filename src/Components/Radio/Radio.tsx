@@ -24,7 +24,7 @@ export interface RadioProps extends StandardFunctionProps {
 
 export type RadioRef = HTMLDivElement
 
-export const RadioRoot = forwardRef<RadioRef, RadioProps>(
+export const Radio = forwardRef<RadioRef, RadioProps>(
   (
     {
       id,
@@ -60,4 +60,4 @@ export const RadioRoot = forwardRef<RadioRef, RadioProps>(
   }
 )
 
-RadioRoot.displayName = 'Radio'
+Radio.displayName = 'Radio'
