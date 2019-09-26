@@ -3,7 +3,7 @@ import React, {forwardRef, RefObject} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {Radio, RadioRef, RadioButtonRef} from '../Radio/index'
+import {Radio, RadioRef, RadioButtonRef} from '../../Radio/index'
 
 // Types
 import {
@@ -12,7 +12,7 @@ import {
   ComponentColor,
   ComponentSize,
   AutoInputMode,
-} from '../../Types'
+} from '../../../Types'
 
 // Styles
 import './AutoInput.scss'

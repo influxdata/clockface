@@ -13,17 +13,17 @@ import {
   boolean,
   object,
 } from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from '../../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {Input} from './Input'
-import {AutoInput} from './AutoInput'
-import {RangeSlider} from './RangeSlider'
-import {TextArea} from './TextArea'
-import {SlideToggle} from '../SlideToggle'
-import {RadioRef, RadioButtonRef} from '../Radio/index'
-import {FlexBox} from '../FlexBox'
+import {Input} from '../Input'
+import {AutoInput} from '../Composed/AutoInput'
+import {RangeSlider} from '../Composed/RangeSlider'
+import {TextArea} from '../TextArea'
+import {SlideToggle} from '../../SlideToggle'
+import {RadioRef, RadioButtonRef} from '../../Radio/index'
+import {FlexBox} from '../../FlexBox'
 
 // Types
 import {
@@ -37,7 +37,7 @@ import {
   InputType,
   AutoInputMode,
   Orientation,
-} from '../../Types'
+} from '../../../Types'
 
 // Notes
 import InputReadme from './Input.md'
