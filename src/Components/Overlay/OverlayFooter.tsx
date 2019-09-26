@@ -3,7 +3,7 @@ import React, {PureComponent} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {FlexBox} from '../FlexBox/FlexBox'
+import {FlexBox} from '../FlexBox'
 
 // Types
 import {

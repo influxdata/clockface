@@ -5,12 +5,11 @@ import marked from 'marked'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, select, boolean, number} from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from '../../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {FlexBox} from './FlexBox'
-import {FlexBoxChild} from './FlexBoxChild'
+import {FlexBox} from '../'
 
 // Types
 import {
@@ -18,7 +17,7 @@ import {
   FlexDirection,
   JustifyContent,
   ComponentSize,
-} from '../../Types'
+} from '../../../Types'
 
 // Notes
 import FlexBoxReadme from './FlexBox.md'
@@ -41,7 +40,7 @@ componentSpacerStories.add(
 
     return (
       <div className="story--example">
-        <FlexBox
+        <FlexBox.FlexBox
           ref={flexBoxRef}
           direction={
             FlexDirection[
@@ -92,7 +91,7 @@ componentSpacerStories.add(
             className="mockComponent box"
             style={{height: '120px', width: '120px'}}
           />
-        </FlexBox>
+        </FlexBox.FlexBox>
         <div className="story--test-buttons">
           <button onClick={handleLogRef}>Log Ref</button>
         </div>
@@ -127,7 +126,7 @@ componentSpacerStories.add(
 
     return (
       <div className="story--example">
-        <FlexBox
+        <FlexBox.FlexBox
           ref={flexBoxRef}
           direction={FlexDirection.Row}
           alignItems={AlignItems.Center}
@@ -143,39 +142,39 @@ componentSpacerStories.add(
           }
           stretchToFitWidth={true}
         >
-          <FlexBoxChild
+          <FlexBox.Child
             ref={flexBoxChildARef}
             basis={number('Child A: basis', 40)}
             grow={number('Child A: grow', 0)}
             shrink={number('Child A: shrink', 0)}
           >
             <div className="mockComponent stretch">A</div>
-          </FlexBoxChild>
-          <FlexBoxChild
+          </FlexBox.Child>
+          <FlexBox.Child
             ref={flexBoxChildBRef}
             basis={number('Child B: basis', 0)}
             grow={number('Child B: grow', 1)}
             shrink={number('Child B: shrink', 0)}
           >
             <div className="mockComponent stretch">B</div>
-          </FlexBoxChild>
-          <FlexBoxChild
+          </FlexBox.Child>
+          <FlexBox.Child
             ref={flexBoxChildCRef}
             basis={number('Child C: basis', 0)}
             grow={number('Child C: grow', 2)}
             shrink={number('Child C: shrink', 0)}
           >
             <div className="mockComponent stretch">C</div>
-          </FlexBoxChild>
-          <FlexBoxChild
+          </FlexBox.Child>
+          <FlexBox.Child
             ref={flexBoxChildDRef}
             basis={number('Child D: basis', 80)}
             grow={number('Child D: grow', 0)}
             shrink={number('Child D: shrink', 0)}
           >
             <div className="mockComponent stretch">D</div>
-          </FlexBoxChild>
-        </FlexBox>
+          </FlexBox.Child>
+        </FlexBox.FlexBox>
         <div className="story--test-buttons">
           <button onClick={handleLogRefs}>Log Refs</button>
         </div>

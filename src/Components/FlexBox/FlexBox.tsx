@@ -31,7 +31,7 @@ export interface FlexBoxProps extends StandardFunctionProps {
 
 export type FlexBoxRef = HTMLDivElement
 
-export const FlexBox = forwardRef<FlexBoxRef, FlexBoxProps>(
+export const FlexBoxRoot = forwardRef<FlexBoxRef, FlexBoxProps>(
   (
     {
       id,
@@ -72,4 +72,4 @@ export const FlexBox = forwardRef<FlexBoxRef, FlexBoxProps>(
   }
 )
 
-FlexBox.displayName = 'FlexBox'
+FlexBoxRoot.displayName = 'FlexBox'

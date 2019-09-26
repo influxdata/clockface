@@ -11,7 +11,7 @@ import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {SlideToggle} from './SlideToggle'
-import {FlexBox} from '../FlexBox/FlexBox'
+import {FlexBox} from '../FlexBox'
 
 // Types
 import {

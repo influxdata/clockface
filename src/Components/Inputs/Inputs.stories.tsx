@@ -23,6 +23,7 @@ import {RangeSlider} from './RangeSlider'
 import {TextArea} from './TextArea'
 import {SlideToggle} from '../SlideToggle/SlideToggle'
 import {RadioRef, RadioButtonRef} from '../Radio/index'
+import {FlexBox} from '../FlexBox'
 
 // Types
 import {
@@ -37,7 +38,6 @@ import {
   AutoInputMode,
   Orientation,
 } from '../../Types'
-import {FlexBox} from '../FlexBox/FlexBox'
 
 // Notes
 import InputReadme from './Input.md'

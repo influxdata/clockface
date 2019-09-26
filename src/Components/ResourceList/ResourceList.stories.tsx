@@ -31,7 +31,7 @@ import {EmptyState} from '../EmptyState/EmptyState'
 import {SlideToggle} from '../SlideToggle/SlideToggle'
 import {SquareButton} from '../Button/Composed/SquareButton'
 import {Label} from '../Label/Label'
-import {FlexBox} from '../FlexBox/FlexBox'
+import {FlexBox} from '../FlexBox'
 
 // Types
 import {

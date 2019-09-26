@@ -2,7 +2,7 @@
 import React, {Component} from 'react'
 
 // Components
-import {FlexBox} from '../FlexBox/FlexBox'
+import {FlexBox} from '../FlexBox'
 
 // Types
 import {

@@ -4,7 +4,7 @@ import React, {PureComponent} from 'react'
 // Components
 import {DatePicker} from '../Base/DatePicker'
 import {Button} from '../../Button/Composed/Button'
-import {FlexBox} from '../../FlexBox/FlexBox'
+import {FlexBox} from '../../FlexBox'
 
 // Types
 import {
