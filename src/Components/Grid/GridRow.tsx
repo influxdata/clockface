@@ -1,37 +1,32 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardClassProps {}
+export interface GridRowProps extends StandardFunctionProps {}
 
-export class GridRow extends Component<Props> {
-  public static readonly displayName = 'GridRow'
+export type GridRowRef = HTMLDivElement
 
-  public static defaultProps = {
-    testID: 'grid--row',
-  }
-
-  public render() {
-    const {children, testID, id, style} = this.props
+export const GridRow = forwardRef<GridRowRef, GridRowProps>(
+  ({id, style, testID = 'grid--row', children, className}, ref) => {
+    const gridRowClass = classnames('cf-grid--row', {
+      [`${className}`]: className,
+    })
 
     return (
       <div
-        className={this.className}
-        data-testid={testID}
         id={id}
+        ref={ref}
         style={style}
+        className={gridRowClass}
+        data-testid={testID}
       >
         {children}
       </div>
     )
   }
+)
 
-  private get className(): string {
-    const {className} = this.props
-
-    return classnames('cf-grid--row', {[`${className}`]: className})
-  }
-}
+GridRow.displayName = 'GridRow'
