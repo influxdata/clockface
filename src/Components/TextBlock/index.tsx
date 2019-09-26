@@ -1,1 +1,1 @@
-export {TextBlock} from './TextBlock'
+export {TextBlock, TextBlockProps, TextBlockRef} from './TextBlock'
