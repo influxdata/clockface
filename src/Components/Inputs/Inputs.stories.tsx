@@ -22,6 +22,7 @@ import {AutoInput} from './AutoInput'
 import {RangeSlider} from './RangeSlider'
 import {TextArea} from './TextArea'
 import {SlideToggle} from '../SlideToggle/SlideToggle'
+import {RadioRef, RadioButtonRef} from '../Radio'
 
 // Types
 import {
@@ -331,10 +332,16 @@ inputsComposedStories.add(
   'AutoInput',
   () => {
     const autoInputRef: RefObject<HTMLDivElement> = createRef()
+    const autoInputRadioRef: RefObject<RadioRef> = createRef()
+    const autoInputRadioAutoRef: RefObject<RadioButtonRef> = createRef()
+    const autoInputRadioCustomRef: RefObject<RadioButtonRef> = createRef()
 
     const handleLogRef = (): void => {
       /* eslint-disable */
-      console.log(autoInputRef.current)
+      console.log('AutoInput', autoInputRef.current)
+      console.log('AutoInput Radio', autoInputRadioRef.current)
+      console.log('AutoInput RadioButton', autoInputRadioAutoRef.current)
+      console.log('AutoInput RadioButton', autoInputRadioCustomRef.current)
       /* eslint-enable */
     }
 
@@ -344,6 +351,9 @@ inputsComposedStories.add(
       <div className="story--example">
         <AutoInput
           ref={autoInputRef}
+          radioRef={autoInputRadioRef}
+          radioButtonAutoRef={autoInputRadioAutoRef}
+          radioButtonCustomRef={autoInputRadioCustomRef}
           style={object('style', exampleAutoInputStyle)}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
