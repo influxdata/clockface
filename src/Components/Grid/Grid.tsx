@@ -12,7 +12,7 @@ export interface GridProps extends StandardFunctionProps {}
 
 export type GridRef = HTMLDivElement
 
-export const Grid = forwardRef<GridRef, GridProps>(
+export const GridRoot = forwardRef<GridRef, GridProps>(
   ({id, style, testID = 'grid', children, className}, ref) => {
     const gridClass = classnames('cf-grid--container', {
       [`${className}`]: className,
@@ -32,4 +32,4 @@ export const Grid = forwardRef<GridRef, GridProps>(
   }
 )
 
-Grid.displayName = 'Grid'
+GridRoot.displayName = 'Grid'
