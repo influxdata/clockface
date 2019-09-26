@@ -5,16 +5,16 @@ import marked from 'marked'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, select} from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from '../../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {Grid} from './Grid'
-import {GridRow} from './GridRow'
-import {GridColumn} from './GridColumn'
+import {Grid} from '../Grid'
+import {GridRow} from '../GridRow'
+import {GridColumn} from '../GridColumn'
 
 // Types
-import {Columns} from '../../Types'
+import {Columns} from '../../../Types'
 
 // Notes
 import GridReadme from './Grid.md'
