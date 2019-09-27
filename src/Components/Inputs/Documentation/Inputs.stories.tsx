@@ -17,10 +17,7 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {Input} from '../Input'
-import {AutoInput} from '../Composed/AutoInput'
-import {RangeSlider} from '../Composed/RangeSlider'
-import {TextArea} from '../TextArea'
+import {Input, AutoInput, RangeSlider, TextArea} from '../'
 import {SlideToggle} from '../../SlideToggle'
 import {RadioRef, RadioButtonRef} from '../../Radio/index'
 import {FlexBox} from '../../FlexBox'
