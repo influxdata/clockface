@@ -80,13 +80,12 @@ export interface InputProps extends StandardFunctionProps {
   required?: boolean
   /** Pass in a RegEx matcher for best results */
   pattern?: string
-  /** Pass through for input ref */
-  ref?: RefObject<HTMLInputElement>
   /** Pass through for container ref */
-  containerRef?: RefObject<HTMLDivElement>
+  containerRef?: RefObject<InputContainerRef>
 }
 
 export type InputRef = HTMLInputElement
+export type InputContainerRef = HTMLDivElement
 
 export const Input = forwardRef<InputRef, InputProps>(
   (

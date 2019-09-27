@@ -9,7 +9,7 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {FlexBox} from '../'
+import {FlexBox, FlexBoxRef, FlexBoxChildRef} from '../'
 
 // Types
 import {
@@ -30,7 +30,7 @@ const componentSpacerStories = storiesOf('Layout|FlexBox', module)
 componentSpacerStories.add(
   'FlexBox',
   () => {
-    const flexBoxRef: RefObject<HTMLDivElement> = createRef()
+    const flexBoxRef: RefObject<FlexBoxRef> = createRef()
 
     const handleLogRef = (): void => {
       /* eslint-disable */
@@ -108,11 +108,11 @@ componentSpacerStories.add(
 componentSpacerStories.add(
   'FlexChild',
   () => {
-    const flexBoxRef: RefObject<HTMLDivElement> = createRef()
-    const flexBoxChildARef: RefObject<HTMLDivElement> = createRef()
-    const flexBoxChildBRef: RefObject<HTMLDivElement> = createRef()
-    const flexBoxChildCRef: RefObject<HTMLDivElement> = createRef()
-    const flexBoxChildDRef: RefObject<HTMLDivElement> = createRef()
+    const flexBoxRef: RefObject<FlexBoxRef> = createRef()
+    const flexBoxChildARef: RefObject<FlexBoxChildRef> = createRef()
+    const flexBoxChildBRef: RefObject<FlexBoxChildRef> = createRef()
+    const flexBoxChildCRef: RefObject<FlexBoxChildRef> = createRef()
+    const flexBoxChildDRef: RefObject<FlexBoxChildRef> = createRef()
 
     const handleLogRefs = (): void => {
       /* eslint-disable */

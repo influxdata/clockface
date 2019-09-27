@@ -9,7 +9,14 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {Panel} from '../'
+import {
+  Panel,
+  PanelRef,
+  PanelHeaderRef,
+  PanelTitleRef,
+  PanelBodyRef,
+  PanelFooterRef,
+} from '../'
 import {Grid} from '../../Grid'
 
 // Types
@@ -35,7 +42,7 @@ const panelExampleStories = storiesOf('Components|Panels/Examples', module)
 panelStories.add(
   'Panel',
   () => {
-    const panelRef: RefObject<HTMLDivElement> = createRef()
+    const panelRef: RefObject<PanelRef> = createRef()
 
     const logPanelRef = (): void => {
       /* eslint-disable */
@@ -74,8 +81,8 @@ panelStories.add(
 panelStories.add(
   'PanelHeader',
   () => {
-    const panelHeaderRef: RefObject<HTMLDivElement> = createRef()
-    const panelTitleRef: RefObject<HTMLDivElement> = createRef()
+    const panelHeaderRef: RefObject<PanelHeaderRef> = createRef()
+    const panelTitleRef: RefObject<PanelTitleRef> = createRef()
 
     const logPanelRefs = (): void => {
       /* eslint-disable */
@@ -117,7 +124,7 @@ panelStories.add(
 panelStories.add(
   'PanelBody',
   () => {
-    const panelBodyRef: RefObject<HTMLDivElement> = createRef()
+    const panelBodyRef: RefObject<PanelBodyRef> = createRef()
 
     const logPanelRef = (): void => {
       /* eslint-disable */
@@ -151,7 +158,7 @@ panelStories.add(
 panelStories.add(
   'PanelFooter',
   () => {
-    const panelFooterRef: RefObject<HTMLDivElement> = createRef()
+    const panelFooterRef: RefObject<PanelFooterRef> = createRef()
 
     const logPanelRef = (): void => {
       /* eslint-disable */

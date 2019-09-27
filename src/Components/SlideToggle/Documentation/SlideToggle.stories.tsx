@@ -10,7 +10,7 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {SlideToggle, SlideToggleRef} from '../'
+import {SlideToggle, SlideToggleRef, SlideToggleLabelRef} from '../'
 import {FlexBox} from '../../FlexBox'
 
 // Types
@@ -95,7 +95,7 @@ slideToggleStories.add(
 slideToggleStories.add(
   'SlideToggleLabel',
   () => {
-    const slideToggleLabelRef: RefObject<SlideToggleRef> = createRef()
+    const slideToggleLabelRef: RefObject<SlideToggleLabelRef> = createRef()
 
     const logRef = (): void => {
       /* eslint-disable */

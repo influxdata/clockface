@@ -16,7 +16,7 @@ import {
 import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
-import {TextBlock} from '../TextBlock'
+import {TextBlock, TextBlockRef} from '../'
 
 // Types
 import {ComponentSize} from '../../../Types'
@@ -37,10 +37,10 @@ const customTextBlockStyles: CSSProperties = {
 textBlockStories.add(
   'Example',
   () => {
-    const textBlock1Ref: RefObject<HTMLDivElement> = createRef()
-    const textBlock2Ref: RefObject<HTMLDivElement> = createRef()
-    const textBlock3Ref: RefObject<HTMLDivElement> = createRef()
-    const textBlock4Ref: RefObject<HTMLDivElement> = createRef()
+    const textBlock1Ref: RefObject<TextBlockRef> = createRef()
+    const textBlock2Ref: RefObject<TextBlockRef> = createRef()
+    const textBlock3Ref: RefObject<TextBlockRef> = createRef()
+    const textBlock4Ref: RefObject<TextBlockRef> = createRef()
 
     const logLabelRefs = (): void => {
       /* eslint-disable */

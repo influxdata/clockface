@@ -9,7 +9,7 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {Label} from '../'
+import {Label, LabelRef} from '../'
 
 // Types
 import {ComponentSize, InfluxColors} from '../../../Types'
@@ -24,9 +24,9 @@ const labelStories = storiesOf('Atomic|Label', module)
 labelStories.add(
   'Examples',
   () => {
-    const labelReadOnlyRef: React.RefObject<HTMLDivElement> = React.createRef()
-    const labelClickableRef: React.RefObject<HTMLDivElement> = React.createRef()
-    const labelDeletableRef: React.RefObject<HTMLDivElement> = React.createRef()
+    const labelReadOnlyRef: React.RefObject<LabelRef> = React.createRef()
+    const labelClickableRef: React.RefObject<LabelRef> = React.createRef()
+    const labelDeletableRef: React.RefObject<LabelRef> = React.createRef()
 
     const logLabelRefs = (): void => {
       /* eslint-disable */

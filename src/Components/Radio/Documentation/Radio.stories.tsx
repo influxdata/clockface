@@ -17,7 +17,7 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {Radio} from '../'
+import {Radio, RadioRef, RadioButtonRef} from '../'
 
 // Types
 import {ComponentColor, ComponentSize, ButtonShape} from '../../../Types'
@@ -49,10 +49,10 @@ const mirepoix = ['Celery', 'Carrot', 'Onion']
 radioStories.add(
   'Radio',
   () => {
-    const radioRef: RefObject<HTMLDivElement> = createRef()
-    const radioButtonCeleryRef: RefObject<HTMLButtonElement> = createRef()
-    const radioButtonCarrotRef: RefObject<HTMLButtonElement> = createRef()
-    const radioButtonOnionRef: RefObject<HTMLButtonElement> = createRef()
+    const radioRef: RefObject<RadioRef> = createRef()
+    const radioButtonCeleryRef: RefObject<RadioButtonRef> = createRef()
+    const radioButtonCarrotRef: RefObject<RadioButtonRef> = createRef()
+    const radioButtonOnionRef: RefObject<RadioButtonRef> = createRef()
 
     const radioButtonRefs = {
       Celery: radioButtonCeleryRef,
@@ -120,7 +120,7 @@ radioStories.add(
 radioStories.add(
   'RadioButton',
   () => {
-    const radioButtonRef: RefObject<HTMLButtonElement> = createRef()
+    const radioButtonRef: RefObject<RadioButtonRef> = createRef()
 
     const logRadioButtonRef = (): void => {
       /* eslint-disable */

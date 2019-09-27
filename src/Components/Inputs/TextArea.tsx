@@ -65,10 +65,11 @@ export interface TextAreaProps extends StandardFunctionProps {
   /** TextArea field value to be updated with 'on X' functions */
   value?: string
   /** Container ref */
-  containerRef?: RefObject<HTMLDivElement>
+  containerRef?: RefObject<TextAreaContainerRef>
 }
 
 export type TextAreaRef = HTMLTextAreaElement
+export type TextAreaContainerRef = HTMLDivElement
 
 export const TextArea = forwardRef<TextAreaRef, TextAreaProps>(
   (

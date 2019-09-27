@@ -9,7 +9,7 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {Icon} from '../'
+import {Icon, IconRef} from '../'
 
 // Types
 import {IconFont} from '../../../Types'
@@ -25,7 +25,7 @@ iconStories.add(
   'Example',
   () => {
     const iconStyleExample: CSSProperties = {color: '#6BDFFF', fontSize: '60px'}
-    const iconRef: RefObject<HTMLSpanElement> = createRef()
+    const iconRef: RefObject<IconRef> = createRef()
 
     const logIconRef = (): void => {
       /* eslint-disable */

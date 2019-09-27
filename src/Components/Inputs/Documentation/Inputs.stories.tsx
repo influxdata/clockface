@@ -17,7 +17,18 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {Input, AutoInput, RangeSlider, TextArea} from '../'
+import {
+  Input,
+  InputRef,
+  InputContainerRef,
+  AutoInput,
+  AutoInputRef,
+  RangeSlider,
+  RangeSliderRef,
+  TextArea,
+  TextAreaRef,
+  TextAreaContainerRef,
+} from '../'
 import {SlideToggle} from '../../SlideToggle'
 import {RadioRef, RadioButtonRef} from '../../Radio/index'
 import {FlexBox} from '../../FlexBox'
@@ -56,8 +67,8 @@ const defaultInputStyle = {
 inputsBaseStories.add(
   'Input (Text)',
   () => {
-    const inputRef: RefObject<HTMLInputElement> = createRef()
-    const inputContainerRef: RefObject<HTMLDivElement> = createRef()
+    const inputRef: RefObject<InputRef> = createRef()
+    const inputContainerRef: RefObject<InputContainerRef> = createRef()
 
     const handleLogRefs = (): void => {
       /* eslint-disable */
@@ -279,8 +290,8 @@ inputsBaseStories.add(
 )
 
 inputsBaseStories.add('TextArea', () => {
-  const textAreaRef: RefObject<HTMLTextAreaElement> = createRef()
-  const textAreaContainerRef: RefObject<HTMLDivElement> = createRef()
+  const textAreaRef: RefObject<TextAreaRef> = createRef()
+  const textAreaContainerRef: RefObject<TextAreaContainerRef> = createRef()
 
   const handleLogRefs = (): void => {
     /* eslint-disable */
@@ -328,7 +339,7 @@ inputsBaseStories.add('TextArea', () => {
 inputsComposedStories.add(
   'AutoInput',
   () => {
-    const autoInputRef: RefObject<HTMLDivElement> = createRef()
+    const autoInputRef: RefObject<AutoInputRef> = createRef()
     const autoInputRadioRef: RefObject<RadioRef> = createRef()
     const autoInputRadioAutoRef: RefObject<RadioButtonRef> = createRef()
     const autoInputRadioCustomRef: RefObject<RadioButtonRef> = createRef()
@@ -401,7 +412,7 @@ inputsComposedStories.add(
 inputsComposedStories.add(
   'Range Slider',
   () => {
-    const rangeSliderRef: RefObject<HTMLInputElement> = createRef()
+    const rangeSliderRef: RefObject<RangeSliderRef> = createRef()
 
     const handleLogRef = (): void => {
       /* eslint-disable */
