@@ -2,13 +2,13 @@ import React, {ChangeEvent, forwardRef, FunctionComponent} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {Input} from './Input'
+import {Input} from '../Input'
 
 // Styles
 import './RangeSlider.scss'
 
 // Utils
-import {generateRangeSliderTrackFillStyle} from '../../Utils'
+import {generateRangeSliderTrackFillStyle} from '../../../Utils'
 
 // Types
 import {
@@ -19,7 +19,7 @@ import {
   ComponentSize,
   AutoComplete,
   ComponentStatus,
-} from '../../Types'
+} from '../../../Types'
 
 export interface RangeSliderProps extends StandardFunctionProps {
   /** Minimum value */

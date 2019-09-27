@@ -1,17 +1,17 @@
 // Libraries
-import * as React from 'react'
+import React, {RefObject, createRef} from 'react'
 import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, text, select, boolean} from '@storybook/addon-knobs'
 import {withState} from '@dump247/storybook-state'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from '../../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {SlideToggle} from './SlideToggle'
-import {FlexBox} from '../FlexBox/FlexBox'
+import {SlideToggle, SlideToggleRef, SlideToggleLabelRef} from '../'
+import {FlexBox} from '../../FlexBox'
 
 // Types
 import {
@@ -19,7 +19,7 @@ import {
   ComponentSize,
   FlexDirection,
   AlignItems,
-} from '../../Types'
+} from '../../../Types'
 
 // Notes
 import SlideToggleReadme from './SlideToggle.md'
@@ -53,24 +53,38 @@ const slideToggleExampleStories = storiesOf(
 
 slideToggleStories.add(
   'SlideToggle',
-  () => (
-    <div className="story--example">
-      <SlideToggle
-        onChange={() => alert('clicked')}
-        active={boolean('active', false)}
-        disabled={boolean('disabled', false)}
-        size={
-          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-        }
-        color={
-          ComponentColor[
-            select('color', mapEnumKeys(ComponentColor), 'Default')
-          ]
-        }
-        tooltipText={text('tooltipText', 'Tooltip Text')}
-      />
-    </div>
-  ),
+  () => {
+    const slideToggleRef: RefObject<SlideToggleRef> = createRef()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(slideToggleRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <SlideToggle.SlideToggle
+          ref={slideToggleRef}
+          onChange={() => alert('clicked')}
+          active={boolean('active', false)}
+          disabled={boolean('disabled', false)}
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          color={
+            ComponentColor[
+              select('color', mapEnumKeys(ComponentColor), 'Default')
+            ]
+          }
+          tooltipText={text('tooltipText', 'Tooltip Text')}
+        />
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(SlideToggleReadme),
@@ -80,18 +94,32 @@ slideToggleStories.add(
 
 slideToggleStories.add(
   'SlideToggleLabel',
-  () => (
-    <div className="story--example">
-      <SlideToggle.Label
-        text={text('text', 'Label Text')}
-        size={
-          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-        }
-        active={boolean('active', true)}
-        wrapText={boolean('wrapText', false)}
-      />
-    </div>
-  ),
+  () => {
+    const slideToggleLabelRef: RefObject<SlideToggleLabelRef> = createRef()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(slideToggleLabelRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <SlideToggle.Label
+          ref={slideToggleLabelRef}
+          text={text('text', 'Label Text')}
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          active={boolean('active', true)}
+          wrapText={boolean('wrapText', false)}
+        />
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(SlideToggleLabelReadme),

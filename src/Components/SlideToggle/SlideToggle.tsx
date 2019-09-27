@@ -1,80 +1,76 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
-
-// Components
-import {SlideToggleLabel} from './SlideToggleLabel'
 
 // Styles
 import './SlideToggle.scss'
 
 // Types
-import {ComponentColor, ComponentSize, StandardClassProps} from '../../Types'
+import {ComponentColor, ComponentSize, StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface SlideToggleProps extends StandardFunctionProps {
   /** Function to be called on slide toggle state change */
   onChange: () => void
   /** Toggles slide toggle active state */
   active: boolean
   /** Button size */
-  size: ComponentSize
+  size?: ComponentSize
   /** Slide toggle color */
-  color: ComponentColor
+  color?: ComponentColor
   /** Toggles disabled state */
-  disabled: boolean
+  disabled?: boolean
   /** Text to be displayed on hover tooltip */
-  tooltipText: string
+  tooltipText?: string
 }
 
-export class SlideToggle extends Component<Props> {
-  public static readonly displayName = 'SlideToggle'
+export type SlideToggleRef = HTMLDivElement
 
-  public static Label = SlideToggleLabel
-
-  public static defaultProps = {
-    size: ComponentSize.Small,
-    color: ComponentColor.Primary,
-    tooltipText: '',
-    disabled: false,
-    testID: 'slide-toggle',
-  }
-
-  public render() {
-    const {tooltipText, testID, id, style} = this.props
-
-    return (
-      <div
-        className={this.className}
-        onClick={this.handleClick}
-        title={tooltipText}
-        data-testid={testID}
-        id={id}
-        style={style}
-      >
-        <div className="cf-slide-toggle--knob" />
-      </div>
-    )
-  }
-
-  public handleClick = () => {
-    const {onChange, disabled} = this.props
-
-    if (disabled) {
-      return
-    }
-
-    onChange()
-  }
-
-  private get className(): string {
-    const {size, color, disabled, active, className} = this.props
-
-    return classnames('cf-slide-toggle', {
+export const SlideToggleRoot = forwardRef<SlideToggleRef, SlideToggleProps>(
+  (
+    {
+      id,
+      size = ComponentSize.Small,
+      style,
+      color = ComponentColor.Primary,
+      testID = 'slide-toggle',
+      active,
+      onChange,
+      disabled = false,
+      className,
+      tooltipText = '',
+    },
+    ref
+  ) => {
+    const slideToggleClass = classnames('cf-slide-toggle', {
       active,
       disabled,
       [`${className}`]: className,
       [`cf-slide-toggle-${size}`]: size,
       [`cf-slide-toggle-${color}`]: color,
     })
+
+    const handleClick = (): void => {
+      if (disabled) {
+        return
+      }
+
+      onChange()
+    }
+
+    return (
+      <div
+        id={id}
+        ref={ref}
+        style={style}
+        title={tooltipText}
+        onClick={handleClick}
+        className={slideToggleClass}
+        data-testid={testID}
+      >
+        <div className="cf-slide-toggle--knob" />
+      </div>
+    )
   }
-}
+)
+
+SlideToggleRoot.displayName = 'SlideToggle'

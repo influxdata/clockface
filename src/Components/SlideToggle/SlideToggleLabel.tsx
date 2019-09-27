@@ -1,54 +1,59 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {ComponentSize, StandardClassProps} from '../../Types'
+import {ComponentSize, StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface SlideToggleLabelProps extends StandardFunctionProps {
   /** Text to be displayed as label */
   text: string
   /** Used to match the state of the associated SlideToggle */
-  active: boolean
+  active?: boolean
   /** Button size */
-  size: ComponentSize
+  size?: ComponentSize
   /** Controls text wrapping */
-  wrapText: boolean
+  wrapText?: boolean
 }
 
-export class SlideToggleLabel extends Component<Props> {
-  public static readonly displayName = 'SlideToggleLabel'
+export type SlideToggleLabelRef = HTMLDivElement
 
-  public static defaultProps = {
-    active: true,
-    size: ComponentSize.Small,
-    testID: 'slide-toggle--label',
-    wrapText: false,
-  }
-
-  public render() {
-    const {text, testID, id, style} = this.props
-
-    return (
-      <div
-        className={this.className}
-        data-testid={testID}
-        id={id}
-        style={style}
-      >
-        {text}
-      </div>
-    )
-  }
-
-  private get className(): string {
-    const {className, size, active, wrapText} = this.props
-
-    return classnames('cf-slide-toggle--label', {
+export const SlideToggleLabel = forwardRef<
+  SlideToggleLabelRef,
+  SlideToggleLabelProps
+>(
+  (
+    {
+      id,
+      text,
+      size = ComponentSize.Small,
+      style,
+      active = true,
+      testID = 'slide-toggle--label',
+      wrapText = false,
+      className,
+    },
+    ref
+  ) => {
+    const slideToggleLabelClass = classnames('cf-slide-toggle--label', {
       [`${className}`]: className,
       'cf-slide-toggle--label__wrap': wrapText,
       [`cf-slide-toggle--label-${size}`]: size,
       'cf-slide-toggle--label__active': active,
     })
+
+    return (
+      <div
+        id={id}
+        ref={ref}
+        style={style}
+        className={slideToggleLabelClass}
+        data-testid={testID}
+      >
+        {text}
+      </div>
+    )
   }
-}
+)
+
+SlideToggleLabel.displayName = 'SlideToggleLabel'

@@ -49,6 +49,20 @@ export const convertCSSPropertiesToString = (styles: CSSProperties): string =>
     return `${styleString}${formattedPropName}:${propValue};`
   }, '')
 
+export const calculateTextColorFromBackground = (
+  backgroundColor: InfluxColors | string,
+  gradient?: Gradients
+): string => {
+  const mediumGrey = 0.34
+
+  if (gradient) {
+    const {start} = getColorsFromGradient(gradient)
+    return chroma(start).luminance() >= mediumGrey ? 'dark' : 'light'
+  }
+
+  return chroma(backgroundColor).luminance() >= mediumGrey ? 'dark' : 'light'
+}
+
 export const generatePanelStyle = (
   backgroundColor: InfluxColors | string,
   gradient?: Gradients,
@@ -74,18 +88,27 @@ export const generatePanelStyle = (
   return panelStyle
 }
 
-export const calculateTextColorFromBackground = (
-  backgroundColor: InfluxColors | string,
-  gradient?: Gradients
-): string => {
-  const mediumGrey = 0.34
-
-  if (gradient) {
-    const {start} = getColorsFromGradient(gradient)
-    return chroma(start).luminance() >= mediumGrey ? 'dark' : 'light'
+export const generateTextBlockStyle = (
+  backgroundColor?: InfluxColors | string,
+  textColor?: InfluxColors | string,
+  style?: CSSProperties
+): CSSProperties | undefined => {
+  if (!backgroundColor) {
+    return {color: `${textColor}`, ...style}
   }
 
-  return chroma(backgroundColor).luminance() >= mediumGrey ? 'dark' : 'light'
+  const contrastingTextColor =
+    calculateTextColorFromBackground(backgroundColor) === 'dark'
+      ? InfluxColors.Kevlar
+      : InfluxColors.White
+
+  let color = `${contrastingTextColor}`
+
+  if (textColor) {
+    color = `${textColor}`
+  }
+
+  return {backgroundColor, color, ...style}
 }
 
 export const generateLabelStyle = (

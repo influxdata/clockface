@@ -2,6 +2,11 @@
 
 ### 0.0.33
 
+- [#314](https://github.com/influxdata/clockface/pull/314): Convert `Grid` component family to `FunctionComponent` and wrap with `forwardRef`
+- [#314](https://github.com/influxdata/clockface/pull/314): Convert `Radio` component family to `FunctionComponent` and wrap with `forwardRef`
+- [#314](https://github.com/influxdata/clockface/pull/314): Convert `SelectableCard` component to `FunctionComponent` and wrap with `forwardRef`
+- [#314](https://github.com/influxdata/clockface/pull/314): Convert `TextBlock` component to `FunctionComponent` and wrap with `forwardRef`
+- [#314](https://github.com/influxdata/clockface/pull/314): Convert `SlideToggle` component family to `FunctionComponent` and wrap with `forwardRef`
 - [#313](https://github.com/influxdata/clockface/pull/313): Fix style bug in `PanelTitle`
 - [#313](https://github.com/influxdata/clockface/pull/313): Convert `FlexBox` component family to `FunctionComponent` and wrap with `forwardRef`
 - [#313](https://github.com/influxdata/clockface/pull/313): Convert `Icon` component to `FunctionComponent` and wrap with `forwardRef`

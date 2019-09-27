@@ -1,13 +1,13 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {Columns, StandardClassProps} from '../../Types'
+import {Columns, StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface GridColumnProps extends StandardFunctionProps {
   /** Number of columns spanned when viewport width is less than 750px */
-  widthXS: Columns
+  widthXS?: Columns
   /** Number of columns spanned when viewport width is greater than 750px */
   widthSM?: Columns
   /** Number of columns spanned when viewport width is greater than 1080px */
@@ -24,43 +24,28 @@ interface Props extends StandardClassProps {
   offsetLG?: Columns
 }
 
-export class GridColumn extends Component<Props> {
-  public static readonly displayName = 'GridColumn'
+export type GridColumnRef = HTMLDivElement
 
-  public static defaultProps = {
-    testID: 'grid--column',
-    widthXS: Columns.Twelve,
-  }
-
-  public render() {
-    const {children, testID, id, style} = this.props
-
-    return (
-      <div
-        className={this.className}
-        data-testid={testID}
-        id={id}
-        style={style}
-      >
-        {children}
-      </div>
-    )
-  }
-
-  private get className(): string {
-    const {
-      widthXS,
+export const GridColumn = forwardRef<GridColumnRef, GridColumnProps>(
+  (
+    {
+      id,
+      style,
+      testID = 'grid--column',
+      widthXS = Columns.Twelve,
       widthSM,
       widthMD,
       widthLG,
+      children,
       offsetXS,
       offsetSM,
       offsetMD,
       offsetLG,
       className,
-    } = this.props
-
-    return classnames('cf-grid--column', {
+    },
+    ref
+  ) => {
+    const gridColumnClass = classnames('cf-grid--column', {
       [`${className}`]: className,
       [`cf-col-xs-${widthXS}`]: widthXS,
       [`cf-col-sm-${widthSM}`]: widthSM,
@@ -71,5 +56,19 @@ export class GridColumn extends Component<Props> {
       [`cf-col-md-offset-${offsetMD}`]: offsetMD,
       [`cf-col-lg-offset-${offsetLG}`]: offsetLG,
     })
+
+    return (
+      <div
+        id={id}
+        ref={ref}
+        style={style}
+        className={gridColumnClass}
+        data-testid={testID}
+      >
+        {children}
+      </div>
+    )
   }
-}
+)
+
+GridColumn.displayName = 'GridColumn'

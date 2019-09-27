@@ -25,16 +25,14 @@ import {FormElement} from './FormElement'
 import {FormHelpText} from './FormHelpText'
 import {FormElementError} from './FormElementError'
 import {FormValidationElement} from './FormValidationElement'
-import {Grid} from '../Grid/Grid'
+import {Grid} from '../Grid'
 import {Button} from '../Button/Composed/Button'
 import {Input} from '../Inputs/Input'
-import {FlexBox} from '../FlexBox/FlexBox'
-import {SlideToggle} from '../SlideToggle/SlideToggle'
-import {Panel} from '../Panel/Panel'
-import {PanelBody} from '../Panel/PanelBody'
+import {FlexBox} from '../FlexBox'
+import {SlideToggle} from '../SlideToggle'
+import {Panel} from '../Panel'
 import {TextBlock} from '../TextBlock/TextBlock'
 import {DismissButton} from '../Button/Composed/DismissButton'
-import {FlexBoxChild} from '../FlexBox/FlexBoxChild'
 import {SelectDropdown} from '../Dropdowns/Composed/SelectDropdown'
 
 // Types
@@ -371,7 +369,7 @@ formExampleStories.add(
       <div style={{width: `${number('Parent width (px)', 500)}px`}}>
         <Panel>
           <DismissButton onClick={() => {}} color={ComponentColor.Danger} />
-          <PanelBody
+          <Panel.Body
             size={
               ComponentSize[
                 select('Panel: size', mapEnumKeys(ComponentSize), 'Small')
@@ -407,7 +405,7 @@ formExampleStories.add(
                   }
                   text="When"
                 />
-                <FlexBoxChild grow={1}>
+                <FlexBox.Child grow={1}>
                   <SelectDropdown
                     options={['any value', 'all values']}
                     selectedOption="any value"
@@ -422,8 +420,8 @@ formExampleStories.add(
                       ]
                     }
                   />
-                </FlexBoxChild>
-                <FlexBoxChild grow={2}>
+                </FlexBox.Child>
+                <FlexBox.Child grow={2}>
                   <SelectDropdown
                     options={[
                       'is above threshold',
@@ -443,7 +441,7 @@ formExampleStories.add(
                       ]
                     }
                   />
-                </FlexBoxChild>
+                </FlexBox.Child>
               </FlexBox>
               <FlexBox
                 stretchToFitWidth={true}
@@ -454,7 +452,7 @@ formExampleStories.add(
                   ]
                 }
               >
-                <FlexBoxChild>
+                <FlexBox.Child>
                   <Input
                     type={InputType.Number}
                     value="90"
@@ -468,7 +466,7 @@ formExampleStories.add(
                       ]
                     }
                   />
-                </FlexBoxChild>
+                </FlexBox.Child>
                 <TextBlock
                   size={
                     ComponentSize[
@@ -481,7 +479,7 @@ formExampleStories.add(
                   }
                   text="to"
                 />
-                <FlexBoxChild>
+                <FlexBox.Child>
                   <Input
                     type={InputType.Number}
                     value="100"
@@ -495,7 +493,7 @@ formExampleStories.add(
                       ]
                     }
                   />
-                </FlexBoxChild>
+                </FlexBox.Child>
                 <TextBlock
                   size={
                     ComponentSize[
@@ -526,7 +524,7 @@ formExampleStories.add(
                 />
               </FlexBox>
             </FlexBox>
-          </PanelBody>
+          </Panel.Body>
         </Panel>
       </div>
     </div>

@@ -33,7 +33,7 @@ export interface PanelProps extends StandardFunctionProps {
 
 export type PanelRef = HTMLDivElement
 
-export const Panel = forwardRef<PanelRef, PanelProps>(
+export const PanelRoot = forwardRef<PanelRef, PanelProps>(
   (
     {
       id,
@@ -80,4 +80,4 @@ export const Panel = forwardRef<PanelRef, PanelProps>(
   }
 )
 
-Panel.displayName = 'Panel'
+PanelRoot.displayName = 'Panel'

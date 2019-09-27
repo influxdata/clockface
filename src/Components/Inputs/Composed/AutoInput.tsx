@@ -1,9 +1,9 @@
 // Libraries
-import React, {forwardRef} from 'react'
+import React, {forwardRef, RefObject} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {Radio} from '../Radio/Radio'
+import {Radio, RadioRef, RadioButtonRef} from '../../Radio/index'
 
 // Types
 import {
@@ -12,7 +12,7 @@ import {
   ComponentColor,
   ComponentSize,
   AutoInputMode,
-} from '../../Types'
+} from '../../../Types'
 
 // Styles
 import './AutoInput.scss'
@@ -26,8 +26,14 @@ export interface AutoInputProps extends StandardFunctionProps {
   mode: AutoInputMode
   /** Radio color */
   color?: ComponentColor
-  /** Radio */
+  /** Controls size of Radio & Input sub-components */
   size?: ComponentSize
+  /** Pass through ref for Radio */
+  radioRef?: RefObject<RadioRef>
+  /** Pass through ref for "Auto" RadioButton */
+  radioButtonAutoRef?: RefObject<RadioButtonRef>
+  /** Pass through ref for "Custom" RadioButton */
+  radioButtonCustomRef?: RefObject<RadioButtonRef>
 }
 
 export type AutoInputRef = HTMLDivElement
@@ -41,9 +47,12 @@ export const AutoInput = forwardRef<AutoInputRef, AutoInputProps>(
       color = ComponentColor.Primary,
       style,
       testID = 'auto-input',
+      radioRef,
       className,
       onChangeMode,
       inputComponent,
+      radioButtonAutoRef,
+      radioButtonCustomRef,
     },
     ref
   ) => {
@@ -60,7 +69,12 @@ export const AutoInput = forwardRef<AutoInputRef, AutoInputProps>(
         className={autoInputClass}
       >
         <div className="cf-auto-input--radio">
-          <Radio shape={ButtonShape.StretchToFit} size={size} color={color}>
+          <Radio.Radio
+            ref={radioRef}
+            shape={ButtonShape.StretchToFit}
+            size={size}
+            color={color}
+          >
             <Radio.Button
               active={mode === AutoInputMode.Auto}
               id={`${id}--${AutoInputMode.Auto}`}
@@ -68,6 +82,7 @@ export const AutoInput = forwardRef<AutoInputRef, AutoInputProps>(
               titleText="Decide for me"
               value={AutoInputMode.Auto}
               onClick={onChangeMode}
+              ref={radioButtonAutoRef}
             >
               Auto
             </Radio.Button>
@@ -78,10 +93,11 @@ export const AutoInput = forwardRef<AutoInputRef, AutoInputProps>(
               titleText="I want to specify my own value"
               value={AutoInputMode.Custom}
               onClick={onChangeMode}
+              ref={radioButtonCustomRef}
             >
               Custom
             </Radio.Button>
-          </Radio>
+          </Radio.Radio>
         </div>
         {mode === AutoInputMode.Custom && (
           <div

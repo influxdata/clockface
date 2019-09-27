@@ -13,15 +13,25 @@ import {
   boolean,
   object,
 } from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from '../../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {Input} from './Input'
-import {AutoInput} from './AutoInput'
-import {RangeSlider} from './RangeSlider'
-import {TextArea} from './TextArea'
-import {SlideToggle} from '../SlideToggle/SlideToggle'
+import {
+  Input,
+  InputRef,
+  InputContainerRef,
+  AutoInput,
+  AutoInputRef,
+  RangeSlider,
+  RangeSliderRef,
+  TextArea,
+  TextAreaRef,
+  TextAreaContainerRef,
+} from '../'
+import {SlideToggle} from '../../SlideToggle'
+import {RadioRef, RadioButtonRef} from '../../Radio/index'
+import {FlexBox} from '../../FlexBox'
 
 // Types
 import {
@@ -35,8 +45,7 @@ import {
   InputType,
   AutoInputMode,
   Orientation,
-} from '../../Types'
-import {FlexBox} from '../FlexBox/FlexBox'
+} from '../../../Types'
 
 // Notes
 import InputReadme from './Input.md'
@@ -58,8 +67,8 @@ const defaultInputStyle = {
 inputsBaseStories.add(
   'Input (Text)',
   () => {
-    const inputRef: RefObject<HTMLInputElement> = createRef()
-    const inputContainerRef: RefObject<HTMLDivElement> = createRef()
+    const inputRef: RefObject<InputRef> = createRef()
+    const inputContainerRef: RefObject<InputContainerRef> = createRef()
 
     const handleLogRefs = (): void => {
       /* eslint-disable */
@@ -281,8 +290,8 @@ inputsBaseStories.add(
 )
 
 inputsBaseStories.add('TextArea', () => {
-  const textAreaRef: RefObject<HTMLTextAreaElement> = createRef()
-  const textAreaContainerRef: RefObject<HTMLDivElement> = createRef()
+  const textAreaRef: RefObject<TextAreaRef> = createRef()
+  const textAreaContainerRef: RefObject<TextAreaContainerRef> = createRef()
 
   const handleLogRefs = (): void => {
     /* eslint-disable */
@@ -330,11 +339,17 @@ inputsBaseStories.add('TextArea', () => {
 inputsComposedStories.add(
   'AutoInput',
   () => {
-    const autoInputRef: RefObject<HTMLDivElement> = createRef()
+    const autoInputRef: RefObject<AutoInputRef> = createRef()
+    const autoInputRadioRef: RefObject<RadioRef> = createRef()
+    const autoInputRadioAutoRef: RefObject<RadioButtonRef> = createRef()
+    const autoInputRadioCustomRef: RefObject<RadioButtonRef> = createRef()
 
     const handleLogRef = (): void => {
       /* eslint-disable */
-      console.log(autoInputRef.current)
+      console.log('AutoInput', autoInputRef.current)
+      console.log('AutoInput Radio', autoInputRadioRef.current)
+      console.log('AutoInput RadioButton', autoInputRadioAutoRef.current)
+      console.log('AutoInput RadioButton', autoInputRadioCustomRef.current)
       /* eslint-enable */
     }
 
@@ -344,6 +359,9 @@ inputsComposedStories.add(
       <div className="story--example">
         <AutoInput
           ref={autoInputRef}
+          radioRef={autoInputRadioRef}
+          radioButtonAutoRef={autoInputRadioAutoRef}
+          radioButtonCustomRef={autoInputRadioCustomRef}
           style={object('style', exampleAutoInputStyle)}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
@@ -394,7 +412,7 @@ inputsComposedStories.add(
 inputsComposedStories.add(
   'Range Slider',
   () => {
-    const rangeSliderRef: RefObject<HTMLInputElement> = createRef()
+    const rangeSliderRef: RefObject<RangeSliderRef> = createRef()
 
     const handleLogRef = (): void => {
       /* eslint-disable */

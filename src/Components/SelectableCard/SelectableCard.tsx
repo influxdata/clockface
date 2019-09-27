@@ -1,5 +1,5 @@
 // Libraries
-import React, {PureComponent, MouseEvent} from 'react'
+import React, {forwardRef, MouseEvent} from 'react'
 import classnames from 'classnames'
 
 // Components
@@ -7,7 +7,7 @@ import {Icon} from '../Icon/Icon'
 
 // Types
 import {
-  StandardClassProps,
+  StandardFunctionProps,
   ComponentSize,
   ComponentColor,
   IconFont,
@@ -16,7 +16,7 @@ import {
 // Styles
 import './SelectableCard.scss'
 
-interface Props extends StandardClassProps {
+export interface SelectableCardProps extends StandardFunctionProps {
   /** Text label */
   label: string
   /** Useful for toggling selected state */
@@ -37,34 +37,65 @@ interface Props extends StandardClassProps {
   icon?: IconFont
 }
 
-export class SelectableCard extends PureComponent<Props> {
-  public static readonly displayName = 'SelectableCard'
+export type SelectableCardRef = HTMLDivElement
 
-  public static defaultProps = {
-    testID: 'selectable-card',
-    fontSize: ComponentSize.Small,
-    color: ComponentColor.Success,
-    selected: false,
-    disabled: false,
-  }
+export const SelectableCard = forwardRef<
+  SelectableCardRef,
+  SelectableCardProps
+>(
+  (
+    {
+      id,
+      icon,
+      style,
+      label,
+      color = ComponentColor.Success,
+      testID = 'selectable-card',
+      onClick,
+      fontSize = ComponentSize.Small,
+      selected = false,
+      disabled = false,
+      formName,
+      children,
+      className,
+    },
+    ref
+  ) => {
+    const selectableCardClass = classnames('cf-selectable-card', {
+      'cf-selectable-card__selected': selected,
+      'cf-selectable-card__disabled': disabled,
+      [`cf-selectable-card__${fontSize}`]: fontSize,
+      [`cf-selectable-card__${color}`]: color,
+      [`${className}`]: className,
+    })
 
-  public render() {
-    const {id, label, selected, formName, disabled, testID, style} = this.props
+    const handleClick = (e: MouseEvent<HTMLDivElement>): void => {
+      e.preventDefault()
+
+      if (!disabled) {
+        onClick(id)
+      }
+    }
+
+    const childrenExist = React.Children.count(children) > 0
 
     return (
       <div
         id={id}
-        data-testid={testID}
+        ref={ref}
         style={style}
-        className={this.className}
-        onClick={this.handleClick}
+        onClick={handleClick}
+        className={selectableCardClass}
+        data-testid={testID}
       >
         <label className="cf-selectable-card--label" htmlFor={id}>
           {label}
         </label>
         <div className="cf-selectable-card--body">
-          {this.children}
-          {this.icon}
+          {childrenExist && (
+            <div className="cf-selectable-card--children">{children}</div>
+          )}
+          {icon && <Icon glyph={icon} className="cf-selectable-card--icon" />}
           <input
             className="cf-selectable-card--hidden-input"
             id={id}
@@ -79,44 +110,6 @@ export class SelectableCard extends PureComponent<Props> {
       </div>
     )
   }
+)
 
-  private get className(): string {
-    const {selected, disabled, fontSize, color} = this.props
-
-    return classnames('cf-selectable-card', {
-      'cf-selectable-card__selected': selected,
-      'cf-selectable-card__disabled': disabled,
-      [`cf-selectable-card__${fontSize}`]: fontSize,
-      [`cf-selectable-card__${color}`]: color,
-    })
-  }
-
-  private get children(): JSX.Element | undefined {
-    const {children} = this.props
-
-    if (!children) {
-      return
-    }
-
-    return <div className="cf-selectable-card--children">{children}</div>
-  }
-
-  private get icon(): JSX.Element | undefined {
-    const {icon} = this.props
-
-    if (!icon) {
-      return
-    }
-
-    return <Icon glyph={icon} className="cf-selectable-card--icon" />
-  }
-
-  private handleClick = (e: MouseEvent<HTMLDivElement>): void => {
-    e.preventDefault()
-
-    const {onClick, disabled, id} = this.props
-    if (!disabled) {
-      onClick(id)
-    }
-  }
-}
+SelectableCard.displayName = 'SelectableCard'

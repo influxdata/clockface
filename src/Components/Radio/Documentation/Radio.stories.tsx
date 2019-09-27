@@ -1,5 +1,5 @@
 // Libraries
-import * as React from 'react'
+import React, {createRef, RefObject} from 'react'
 import marked from 'marked'
 
 // Storybook
@@ -10,17 +10,17 @@ import {
   boolean,
   select,
   number,
-  array,
+  object,
 } from '@storybook/addon-knobs'
 import {withState} from '@dump247/storybook-state'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from '../../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {Radio} from './Radio'
+import {Radio, RadioRef, RadioButtonRef} from '../'
 
 // Types
-import {ComponentColor, ComponentSize, ButtonShape} from '../../Types'
+import {ComponentColor, ComponentSize, ButtonShape} from '../../../Types'
 
 // Notes
 import RadioReadme from './Radio.md'
@@ -48,10 +48,32 @@ const mirepoix = ['Celery', 'Carrot', 'Onion']
 
 radioStories.add(
   'Radio',
-  () => (
-    <div className="story--example">
-      <div style={{width: `${number('Parent width', 240)}px`}}>
-        <Radio
+  () => {
+    const radioRef: RefObject<RadioRef> = createRef()
+    const radioButtonCeleryRef: RefObject<RadioButtonRef> = createRef()
+    const radioButtonCarrotRef: RefObject<RadioButtonRef> = createRef()
+    const radioButtonOnionRef: RefObject<RadioButtonRef> = createRef()
+
+    const radioButtonRefs = {
+      Celery: radioButtonCeleryRef,
+      Carrot: radioButtonCarrotRef,
+      Onion: radioButtonOnionRef,
+    }
+
+    const logRadioRefs = (): void => {
+      /* eslint-disable */
+      console.log('Radio', radioRef.current)
+      console.log('RadioButton', radioButtonCeleryRef.current)
+      console.log('RadioButton', radioButtonCarrotRef.current)
+      console.log('RadioButton', radioButtonOnionRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <Radio.Radio
+          ref={radioRef}
+          style={object('style', {width: '200px'})}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
@@ -61,27 +83,33 @@ radioStories.add(
             ]
           }
           shape={
-            ButtonShape[select('shape', mapEnumKeys(ButtonShape), 'Default')]
+            ButtonShape[
+              select('shape', mapEnumKeys(ButtonShape), 'StretchToFit')
+            ]
           }
         >
-          {array('Radio Buttons', mirepoix).map(btn => (
+          {mirepoix.map(btn => (
             <Radio.Button
+              ref={radioButtonRefs[btn]}
               key={btn}
               id={btn}
               active={btn === text('Active Button', mirepoix[0])}
               value={btn}
               titleText={btn}
               onClick={value =>
-                alert(`Radio.Button clicked! Value returned: ${value}`)
+                alert(`RadioButton clicked! Value returned: ${value}`)
               }
             >
               {btn}
             </Radio.Button>
           ))}
-        </Radio>
+        </Radio.Radio>
+        <div className="story--test-buttons">
+          <button onClick={logRadioRefs}>Log Refs</button>
+        </div>
       </div>
-    </div>
-  ),
+    )
+  },
   {
     readme: {
       content: marked(RadioReadme),
@@ -91,26 +119,40 @@ radioStories.add(
 
 radioStories.add(
   'RadioButton',
-  () => (
-    <div className="story--example">
-      <Radio.Button
-        id={text('id', 'example-radio-option')}
-        active={boolean('active', false)}
-        value={text('value', 'example-radio-option')}
-        onClick={value => {
-          alert(value)
-        }}
-        disabled={boolean('disabled', false)}
-        titleText={text('titleText', 'I am helpful text ')}
-        disabledTitleText={text(
-          'titleText',
-          'Explainer for why this item is disabled'
-        )}
-      >
-        {text('children', 'Button Label')}
-      </Radio.Button>
-    </div>
-  ),
+  () => {
+    const radioButtonRef: RefObject<RadioButtonRef> = createRef()
+
+    const logRadioButtonRef = (): void => {
+      /* eslint-disable */
+      console.log(radioButtonRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <Radio.Button
+          ref={radioButtonRef}
+          id={text('id', 'example-radio-option')}
+          active={boolean('active', false)}
+          value={text('value', 'example-radio-option')}
+          onClick={value => {
+            alert(value)
+          }}
+          disabled={boolean('disabled', false)}
+          titleText={text('titleText', 'I am helpful text!')}
+          disabledTitleText={text(
+            'titleText',
+            'Explainer for why this item is disabled'
+          )}
+        >
+          {text('children', 'Button Label')}
+        </Radio.Button>
+        <div className="story--test-buttons">
+          <button onClick={logRadioButtonRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(RadioButtonReadme),

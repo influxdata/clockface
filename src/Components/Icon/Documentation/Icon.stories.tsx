@@ -5,14 +5,14 @@ import marked from 'marked'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, select, object} from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from '../../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {Icon} from './Icon'
+import {Icon, IconRef} from '../'
 
 // Types
-import {IconFont} from '../../Types'
+import {IconFont} from '../../../Types'
 
 // Notes
 import IconReadme from './Icon.md'
@@ -21,12 +21,11 @@ const iconStories = storiesOf('Atomic|Icon', module)
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
-const iconStyleExample: CSSProperties = {color: '#6BDFFF', fontSize: '60px'}
-
 iconStories.add(
   'Example',
   () => {
-    const iconRef: RefObject<HTMLSpanElement> = createRef()
+    const iconStyleExample: CSSProperties = {color: '#6BDFFF', fontSize: '60px'}
+    const iconRef: RefObject<IconRef> = createRef()
 
     const logIconRef = (): void => {
       /* eslint-disable */

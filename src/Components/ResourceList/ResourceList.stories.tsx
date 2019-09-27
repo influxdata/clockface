@@ -28,10 +28,10 @@ import {ResourceCardDescription} from './Card/ResourceCardDescription'
 import {ResourceCardEditableDescription} from './Card/ResourceCardEditableDescription'
 import {Input} from '../Inputs/Input'
 import {EmptyState} from '../EmptyState/EmptyState'
-import {SlideToggle} from '../SlideToggle/SlideToggle'
+import {SlideToggle} from '../SlideToggle'
 import {SquareButton} from '../Button/Composed/SquareButton'
 import {Label} from '../Label/Label'
-import {FlexBox} from '../FlexBox/FlexBox'
+import {FlexBox} from '../FlexBox'
 
 // Types
 import {
