@@ -12,19 +12,19 @@ import {
   boolean,
   array,
 } from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from '../../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {Dropdown} from './Family/Dropdown'
-import {DropdownButton} from './Family/DropdownButton'
-import {DropdownDivider} from './Family/DropdownDivider'
-import {DropdownItem} from './Family/DropdownItem'
-import {DropdownItemEmpty} from './Family/DropdownItemEmpty'
-import {DropdownLinkItem} from './Family/DropdownLinkItem'
-import {DropdownMenu} from './Family/DropdownMenu'
-import {SelectDropdown} from './Composed/SelectDropdown'
-import {MultiSelectDropdown} from './Composed/MultiSelectDropdown'
+import {Dropdown} from '../Dropdown'
+import {DropdownButton} from '../DropdownButton'
+import {DropdownDivider} from '../DropdownDivider'
+import {DropdownItem} from '../DropdownItem'
+import {DropdownItemEmpty} from '../DropdownItemEmpty'
+import {DropdownLinkItem} from '../DropdownLinkItem'
+import {DropdownMenu} from '../DropdownMenu'
+import {SelectDropdown} from '../Composed/SelectDropdown'
+import {MultiSelectDropdown} from '../Composed/MultiSelectDropdown'
 
 // Types
 import {
@@ -34,7 +34,7 @@ import {
   ComponentStatus,
   IconFont,
   DropdownItemType,
-} from '../../Types'
+} from '../../../Types'
 
 // Notes
 import DropdownReadme from './Family/Dropdown.md'
