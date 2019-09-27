@@ -1,9 +1,12 @@
 // Libraries
-import React, {forwardRef, MouseEvent, FunctionComponent} from 'react'
+import React, {forwardRef, MouseEvent} from 'react'
 import classnames from 'classnames'
 
 // Types
 import {DropdownItemType, StandardFunctionProps} from '../../Types'
+
+// Components
+import {DropdownItemSelectionIndicator} from './DropdownItemSelectionIndicator'
 
 export interface DropdownItemProps extends StandardFunctionProps {
   /** Value to be returned via the onClick function */
@@ -68,23 +71,5 @@ export const DropdownItem = forwardRef<DropdownItemRef, DropdownItemProps>(
     )
   }
 )
-
-interface DropdownItemSelectionIndicatorProps {
-  type: DropdownItemType
-}
-
-const DropdownItemSelectionIndicator: FunctionComponent<
-  DropdownItemSelectionIndicatorProps
-> = ({type}) => {
-  switch (type) {
-    case DropdownItemType.Checkbox:
-      return <div className="cf-dropdown-item--checkbox" />
-    case DropdownItemType.Dot:
-      return <div className="cf-dropdown-item--dot" />
-    case DropdownItemType.None:
-    default:
-      return <></>
-  }
-}
 
 DropdownItem.displayName = 'DropdownItem'
