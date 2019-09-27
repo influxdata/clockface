@@ -1,5 +1,5 @@
 // Libraries
-import React, {FunctionComponent, createRef, CSSProperties} from 'react'
+import React, {forwardRef, createRef, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Components
@@ -16,7 +16,7 @@ import {
 // Styles
 import './QuestionMarkTooltip.scss'
 
-interface Props extends StandardProps {
+export interface QuestionMarkTooltipProps extends StandardProps {
   /** Controls the size of the question mark circle */
   diameter: number
   /** Contents to display in tooltip */
@@ -27,16 +27,23 @@ interface Props extends StandardProps {
   tooltipStyle?: CSSProperties
 }
 
-export const QuestionMarkTooltip: FunctionComponent<Props> = ({
-  diameter = 18,
-  tooltipContents,
-  color = ComponentColor.Primary,
-  tooltipStyle,
-  style,
-  testID = 'question-mark-tooltip',
-  className,
-  id,
-}) => {
+export type QuestionMarkTooltipRef = HTMLSpanElement
+
+export const QuestionMarkTooltip = forwardRef<
+  QuestionMarkTooltipRef,
+  QuestionMarkTooltipProps
+>((props, ref) => {
+  const {
+    diameter,
+    tooltipContents,
+    color,
+    tooltipStyle,
+    style,
+    testID,
+    className,
+    id,
+  } = props
+
   const triggerRef = createRef<HTMLDivElement>()
 
   const circleClassName = classnames('cf-question-mark-tooltip', {
@@ -63,7 +70,7 @@ export const QuestionMarkTooltip: FunctionComponent<Props> = ({
   }
 
   return (
-    <>
+    <span ref={ref}>
       <div
         className={circleClassName}
         ref={triggerRef}
@@ -86,8 +93,14 @@ export const QuestionMarkTooltip: FunctionComponent<Props> = ({
         type={PopoverType.Outline}
         id={id}
       />
-    </>
+    </span>
   )
-}
+})
 
 QuestionMarkTooltip.displayName = 'QuestionMarkTooltip'
+
+QuestionMarkTooltip.defaultProps = {
+  diameter: 18,
+  color: ComponentColor.Primary,
+  testID: 'question-mark-tooltip',
+}

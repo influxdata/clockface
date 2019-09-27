@@ -63,7 +63,7 @@ popoverStories.add(
           ref={triggerRefA}
           style={{marginRight: '60px'}}
         >
-          Popover Trigger Element
+          Click Me
         </div>
         <div className="mockComponent mockButton" ref={triggerRefB}>
           Hover Me
@@ -72,7 +72,7 @@ popoverStories.add(
           triggerRef={triggerRefA}
           visible={boolean('visible', false)}
           enableDefaultStyles={false}
-          contents={onHide => (
+          contents={(onHide: any) => (
             <>
               PopoverContents
               <DismissButton onClick={onHide} />
@@ -82,16 +82,8 @@ popoverStories.add(
           style={object('style', exampleStyle)}
           caretSize={number('caretSize', 8)}
           distanceFromTrigger={number('distanceFromTrigger', 4)}
-          showEvent={
-            PopoverInteraction[
-              select('showEvent', mapEnumKeys(PopoverInteraction), 'Click')
-            ]
-          }
-          hideEvent={
-            PopoverInteraction[
-              select('hideEvent', mapEnumKeys(PopoverInteraction), 'Click')
-            ]
-          }
+          showEvent={PopoverInteraction.Click}
+          hideEvent={PopoverInteraction.Click}
           position={
             PopoverPosition[
               select('position', mapEnumKeys(PopoverPosition), 'Below')
@@ -152,16 +144,8 @@ composedPopoverStories.add(
         triggerStyle={object('triggerStyle', {display: 'inline-block'})}
         caretSize={number('caretSize', 8)}
         distanceFromTrigger={number('distanceFromTrigger', 4)}
-        showEvent={
-          PopoverInteraction[
-            select('showEvent', mapEnumKeys(PopoverInteraction), 'Click')
-          ]
-        }
-        hideEvent={
-          PopoverInteraction[
-            select('hideEvent', mapEnumKeys(PopoverInteraction), 'Click')
-          ]
-        }
+        showEvent={PopoverInteraction.Click}
+        hideEvent={PopoverInteraction.Click}
         position={
           PopoverPosition[
             select('position', mapEnumKeys(PopoverPosition), 'Below')

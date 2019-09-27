@@ -1,10 +1,15 @@
 // Libraries
-import React, {Component, RefObject, MouseEvent} from 'react'
+import React, {
+  RefObject,
+  MouseEvent,
+  useState,
+  forwardRef,
+  useEffect,
+} from 'react'
 import {createPortal} from 'react-dom'
 import uuid from 'uuid'
 
 // Components
-import {DismissButton} from '../../Button/Composed/DismissButton'
 import {PopoverDialog} from './PopoverDialog'
 
 // Styles
@@ -13,283 +18,256 @@ import './Popover.scss'
 // Types
 import {
   ComponentColor,
-  StandardClassProps,
+  StandardProps,
   PopoverInteraction,
   PopoverPosition,
   PopoverType,
 } from '../../../Types'
 
-export interface PopoverProps extends StandardClassProps {
+export interface PopoverProps extends StandardProps {
   /** Popover dialog color */
-  color: ComponentColor
+  color?: ComponentColor
   /** Popover dialog contents */
   contents: (onHide?: () => void) => JSX.Element
   /** Type of interaction to show the popover dialog */
-  showEvent: PopoverInteraction
+  showEvent?: PopoverInteraction
   /** Type of interaction to hide the popover dialog */
-  hideEvent: PopoverInteraction
+  hideEvent?: PopoverInteraction
   /** Callback function fired when state changes to "show" */
   onShow?: () => void
   /** Callback function fired when state changes to "hide" */
   onHide?: () => void
   /** Pixel distance between trigger and popover dialog */
-  distanceFromTrigger: number
+  distanceFromTrigger?: number
   /** Size of caret (triangle) that points at the trigger */
-  caretSize: number
+  caretSize?: number
   /** Where to position the popover relative to the trigger (assuming it fits there) */
-  position: PopoverPosition
+  position?: PopoverPosition
   /** Means of applying color to popover */
   type: PopoverType
   /** Overrides internal popover expanded state */
-  visible: boolean
+  visible?: boolean
   /** Disables the popover's show interaction */
-  disabled: boolean
+  disabled?: boolean
   /** Reference to trigger element */
   triggerRef: RefObject<any>
   /** Adds reasonable styles to popover dialog contents so you do not have to */
-  enableDefaultStyles: boolean
+  enableDefaultStyles?: boolean
 }
 
-export const PopoverDefaultProps = {
+export interface PopoverDefProps {
+  color: ComponentColor
+  testID: string
+  distanceFromTrigger: number
+  caretSize: number
+  position: PopoverPosition
+  type: PopoverType
+  enableDefaultStyles: boolean
+  showEvent: PopoverInteraction
+  hideEvent: PopoverInteraction
+  disabled: boolean
+  visible: boolean
+}
+
+export const PopoverDefaultProps: PopoverDefProps = {
   color: ComponentColor.Primary,
   testID: 'popover',
-  showEvent: PopoverInteraction.Click,
-  hideEvent: PopoverInteraction.Click,
   distanceFromTrigger: 4,
   caretSize: 8,
   position: PopoverPosition.Below,
   type: PopoverType.Outline,
-  visible: false,
-  disabled: false,
   enableDefaultStyles: true,
+  showEvent: PopoverInteraction.Click,
+  hideEvent: PopoverInteraction.Click,
+  disabled: false,
+  visible: false,
 }
 
-interface State {
-  expanded: boolean
-}
+export type PopoverRef = HTMLSpanElement
 
 interface CustomMouseEvent extends MouseEvent {
   relatedTarget: Element
 }
 
-export class Popover extends Component<PopoverProps, State> {
-  public static readonly displayName = 'Popover'
+let uniquePortalID: string = ''
 
-  public static defaultProps = {...PopoverDefaultProps}
+export const Popover = forwardRef<PopoverRef, PopoverProps>((props, ref) => {
+  const [expanded, setExpanded] = useState<boolean>(!!props.visible)
 
-  public static DismissButton = DismissButton
+  const {
+    distanceFromTrigger,
+    enableDefaultStyles,
+    triggerRef,
+    className,
+    caretSize,
+    contents,
+    showEvent,
+    hideEvent,
+    disabled,
+    position,
+    visible,
+    testID,
+    style,
+    color,
+    type,
+    id,
+  } = {...PopoverDefaultProps, ...props}
 
-  constructor(props: PopoverProps) {
-    super(props)
-
-    this.state = {
-      expanded: this.props.visible,
-    }
-  }
-
-  private uniquePortalID: string = ''
-  private triggerReceivedHandlers: boolean = false
-
-  public componentDidMount() {
-    this.uniquePortalID = `cf-popover-portal-${uuid.v4()}`
-    this.handleCreatePortalElement()
-    this.handleAddEventListeners()
-
-    // This extra re-render is required so that
-    // triggerRef.current has rendered and is true when passed in
-    if (this.props.visible) {
-      this.handleShowDialog()
-    } else {
-      this.handleHideDialog()
-    }
-  }
-
-  public componentDidUpdate(prevProps: PopoverProps) {
-    this.handleAddEventListeners()
-
-    if (prevProps.visible !== this.props.visible) {
-      if (this.props.visible) {
-        this.handleShowDialog()
-      } else if (!this.props.visible) {
-        this.handleHideDialog()
-      }
-    }
-  }
-
-  public componentWillUnmount() {
-    this.handleDestroyPortalElement()
-    this.handleRemoveEventListeners()
-  }
-
-  public render() {
-    const {
-      distanceFromTrigger,
-      enableDefaultStyles,
-      triggerRef,
-      className,
-      caretSize,
-      contents,
-      position,
-      testID,
-      style,
-      color,
-      type,
-      id,
-    } = this.props
-    const {expanded} = this.state
-    const portalElement = document.getElementById(this.uniquePortalID)
-
-    if (!portalElement) {
-      return null
-    }
-
-    const popover = (
-      <PopoverDialog
-        enableDefaultStyles={enableDefaultStyles}
-        distanceFromTrigger={distanceFromTrigger}
-        onClickOutside={this.handleClickOutside}
-        onMouseLeave={this.handleDialogMouseLeave}
-        triggerRef={triggerRef}
-        className={className}
-        caretSize={caretSize}
-        position={position}
-        contents={contents(this.handleHideDialog)}
-        visible={expanded}
-        testID={testID}
-        color={color}
-        style={style}
-        type={type}
-        id={id}
-      />
-    )
-
-    return createPortal(popover, portalElement)
-  }
-
-  private handleTriggerClick = (e: MouseEvent): void => {
+  const handleTriggerClick = (e: MouseEvent): void => {
     e.stopPropagation()
-    const {showEvent, disabled} = this.props
 
     if (disabled) {
       return
     }
 
     if (showEvent === PopoverInteraction.Click) {
-      this.handleShowDialog()
+      handleShowDialog()
     }
   }
 
-  private handleTriggerMouseOver = (): void => {
-    const {showEvent} = this.props
-
+  const handleTriggerMouseOver = (): void => {
     if (showEvent === PopoverInteraction.Hover) {
-      this.handleShowDialog()
+      handleShowDialog()
     }
   }
 
-  private handleTriggerMouseLeave = (e: CustomMouseEvent): void => {
-    const {hideEvent} = this.props
-
+  const handleTriggerMouseLeave = (e: CustomMouseEvent): void => {
     if (e.relatedTarget.className.includes('cf-popover')) {
       return
     }
 
     if (hideEvent === PopoverInteraction.Hover) {
-      this.handleHideDialog()
+      handleHideDialog()
     }
   }
 
-  private handleDialogMouseLeave = (e: MouseEvent): void => {
-    const {hideEvent} = this.props
-
-    if (e.target === this.props.triggerRef.current) {
+  const handleDialogMouseLeave = (e: MouseEvent): void => {
+    if (e.target === props.triggerRef.current) {
       return
     }
 
     if (hideEvent === PopoverInteraction.Hover) {
-      this.handleHideDialog()
+      handleHideDialog()
     }
   }
 
-  private handleClickOutside = (e: MouseEvent): void => {
-    const {hideEvent} = this.props
-
-    if (e.target === this.props.triggerRef.current) {
+  const handleClickOutside = (e: MouseEvent): void => {
+    if (e.target === props.triggerRef.current) {
       return
     }
 
     if (hideEvent === PopoverInteraction.Click) {
-      this.handleHideDialog()
+      handleHideDialog()
     }
   }
 
-  private handleShowDialog = (): void => {
-    this.props.onShow && this.props.onShow()
-    this.setState({expanded: true})
+  const handleShowDialog = (): void => {
+    props.onShow && props.onShow()
+    setExpanded(true)
   }
 
-  private handleHideDialog = (): void => {
-    this.props.onHide && this.props.onHide()
-    this.setState({expanded: false})
+  const handleHideDialog = (): void => {
+    props.onHide && props.onHide()
+    setExpanded(false)
   }
 
-  private handleCreatePortalElement = (): void => {
-    const portalExists = document.getElementById(this.uniquePortalID)
-
+  const handleCreatePortalElement = (): void => {
+    const portalExists = document.getElementById(uniquePortalID)
     if (portalExists) {
       return
     }
 
     const portalElement = document.createElement('div')
     portalElement.setAttribute('class', 'cf-popover-portal')
-    portalElement.setAttribute('id', this.uniquePortalID)
+    portalElement.setAttribute('id', uniquePortalID)
 
     document.body.appendChild(portalElement)
   }
 
-  private handleDestroyPortalElement = (): void => {
-    const portalElement = document.getElementById(this.uniquePortalID)
+  const handleDestroyPortalElement = (): void => {
+    const portalElement = document.getElementById(uniquePortalID)
 
     if (portalElement) {
       portalElement.remove()
     }
   }
 
-  private handleAddEventListeners = (): void => {
-    const {triggerRef} = this.props
-
-    if (!triggerRef.current || this.triggerReceivedHandlers) {
-      return
-    }
-
-    triggerRef.current.addEventListener('click', this.handleTriggerClick)
-    triggerRef.current.addEventListener(
-      'mouseover',
-      this.handleTriggerMouseOver
-    )
-    triggerRef.current.addEventListener(
-      'mouseleave',
-      this.handleTriggerMouseLeave
-    )
-
-    this.triggerReceivedHandlers = true
-  }
-
-  private handleRemoveEventListeners = (): void => {
-    const {triggerRef} = this.props
-
+  const handleAddEventListeners = (): void => {
     if (!triggerRef.current) {
       return
     }
 
-    triggerRef.current.removeEventListener('click', this.handleTriggerClick)
-    triggerRef.current.removeEventListener(
-      'mouseover',
-      this.handleTriggerMouseOver
-    )
+    if (showEvent === PopoverInteraction.Click) {
+      triggerRef.current.addEventListener('click', handleTriggerClick)
+    } else if (showEvent === PopoverInteraction.Hover) {
+      triggerRef.current.addEventListener('mouseover', handleTriggerMouseOver)
+    }
+
+    if (hideEvent === PopoverInteraction.Hover) {
+      triggerRef.current.addEventListener('mouseleave', handleTriggerMouseLeave)
+    }
+  }
+
+  const handleRemoveEventListeners = (): void => {
+    if (!triggerRef.current) {
+      return
+    }
+
+    triggerRef.current.removeEventListener('click', handleTriggerClick)
+    triggerRef.current.removeEventListener('mouseover', handleTriggerMouseOver)
     triggerRef.current.removeEventListener(
       'mouseleave',
-      this.handleTriggerMouseLeave
+      handleTriggerMouseLeave
     )
   }
-}
+
+  useEffect((): (() => void) => {
+    uniquePortalID = `cf-popover-portal-${uuid.v4()}`
+    handleCreatePortalElement()
+    handleAddEventListeners()
+
+    return (): void => {
+      handleRemoveEventListeners()
+      handleDestroyPortalElement()
+    }
+  }, [])
+
+  useEffect(() => {
+    if (visible) {
+      handleShowDialog()
+    } else if (!visible) {
+      handleHideDialog()
+    }
+  }, [visible])
+
+  const portalElement = document.getElementById(uniquePortalID)
+
+  if (!portalElement || !expanded) {
+    return null
+  }
+
+  const popover = (
+    <span ref={ref}>
+      <PopoverDialog
+        enableDefaultStyles={enableDefaultStyles}
+        distanceFromTrigger={distanceFromTrigger}
+        onClickOutside={handleClickOutside}
+        onMouseLeave={handleDialogMouseLeave}
+        triggerRef={triggerRef}
+        className={className}
+        caretSize={caretSize}
+        position={position}
+        contents={contents(handleHideDialog)}
+        testID={testID}
+        color={color}
+        style={style}
+        type={type}
+        id={id}
+      />
+    </span>
+  )
+
+  return createPortal(popover, portalElement)
+})
+
+Popover.displayName = 'Popover'

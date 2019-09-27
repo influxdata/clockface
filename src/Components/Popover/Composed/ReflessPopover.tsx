@@ -1,5 +1,5 @@
 // Libraries
-import React, {PureComponent, createRef, CSSProperties} from 'react'
+import React, {forwardRef, createRef, CSSProperties} from 'react'
 
 // Components
 import {Popover, PopoverProps, PopoverDefaultProps} from '../Base/Popover'
@@ -12,17 +12,12 @@ interface Props extends Omit<PopoverProps, 'triggerRef'> {
   triggerStyle?: CSSProperties
 }
 
-export class ReflessPopover extends PureComponent<Props> {
-  public static readonly displayName = 'ReflessPopover'
+export type ReflessPopoverRef = HTMLSpanElement
 
-  public static defaultProps = {
-    ...PopoverDefaultProps,
-    testID: 'refless-popover',
-  }
+export const ReflessPopover = forwardRef<ReflessPopoverRef, Props>(
+  (props, ref) => {
+    const triggerRef = createRef<HTMLDivElement>()
 
-  private triggerRef = createRef<HTMLDivElement>()
-
-  public render() {
     const {
       distanceFromTrigger,
       enableDefaultStyles,
@@ -40,13 +35,13 @@ export class ReflessPopover extends PureComponent<Props> {
       color,
       type,
       id,
-    } = this.props
+    } = props
 
     return (
-      <>
+      <span ref={ref}>
         <div
           className="cf-refless-popover--trigger"
-          ref={this.triggerRef}
+          ref={triggerRef}
           style={triggerStyle}
         >
           {children}
@@ -54,7 +49,7 @@ export class ReflessPopover extends PureComponent<Props> {
         <Popover
           distanceFromTrigger={distanceFromTrigger}
           enableDefaultStyles={enableDefaultStyles}
-          triggerRef={this.triggerRef}
+          triggerRef={triggerRef}
           caretSize={caretSize}
           showEvent={showEvent}
           hideEvent={hideEvent}
@@ -68,7 +63,14 @@ export class ReflessPopover extends PureComponent<Props> {
           type={type}
           id={id}
         />
-      </>
+      </span>
     )
   }
+)
+
+ReflessPopover.displayName = 'ReflessPopover'
+
+ReflessPopover.defaultProps = {
+  ...PopoverDefaultProps,
+  testID: 'refless-popover',
 }
