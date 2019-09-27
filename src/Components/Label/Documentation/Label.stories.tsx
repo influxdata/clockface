@@ -5,14 +5,14 @@ import marked from 'marked'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, select, text, color} from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from '../../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {Label} from './Label'
+import {Label} from '../'
 
 // Types
-import {ComponentSize, InfluxColors} from '../../Types'
+import {ComponentSize, InfluxColors} from '../../../Types'
 
 // Notes
 import LabelReadme from './Label.md'

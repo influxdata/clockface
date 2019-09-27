@@ -9,7 +9,7 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {SelectableCard, SelectableCardRef} from '../SelectableCard'
+import {SelectableCard, SelectableCardRef} from '../'
 
 // Types
 import {ComponentColor, ComponentSize, IconFont} from '../../../Types'

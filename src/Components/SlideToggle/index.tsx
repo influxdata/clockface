@@ -17,4 +17,4 @@ export class SlideToggle extends Component<SlideToggleProps> {
 }
 
 export {SlideToggleProps, SlideToggleRef} from './SlideToggle'
-export {SlideToggleLabelProps, SlideToggleLabelRef} from './SlideToggleLabel'
+export * from './SlideToggleLabel'
