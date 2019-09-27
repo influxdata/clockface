@@ -1,9 +1,10 @@
 // Libraries
-import React, {Component, MouseEvent} from 'react'
+import React, {FunctionComponent, MouseEvent} from 'react'
+import classnames from 'classnames'
 
 // Components
-import {Icon} from '../../Icon/Icon'
-import {ButtonBase} from '../../Button/Base/ButtonBase'
+import {Icon} from '../Icon'
+import {ButtonBase} from '../Button/Base/ButtonBase'
 
 // Types
 import {
@@ -13,13 +14,13 @@ import {
   ComponentColor,
   ComponentStatus,
   ButtonShape,
-  StandardClassProps,
-} from '../../../Types'
+  StandardFunctionProps,
+} from '../../Types'
 
 // Styles
-import '../DropdownButton.scss'
+import './DropdownButton.scss'
 
-interface Props extends StandardClassProps {
+export interface DropdownButtonProps extends StandardFunctionProps {
   /** Function to be called on click of dropdown button */
   onClick: (e: MouseEvent<HTMLButtonElement>) => void
   /** Button status state default, loading, or disabled */
@@ -36,63 +37,27 @@ interface Props extends StandardClassProps {
   title?: string
 }
 
-export class DropdownButton extends Component<Props> {
-  public static readonly displayName = 'DropdownButton'
+export type DropdownButtonRef = HTMLButtonElement
 
-  public static defaultProps = {
-    color: ComponentColor.Default,
-    size: ComponentSize.Small,
-    status: ComponentStatus.Default,
-    active: false,
-    testID: 'dropdown--button',
-  }
+export const DropdownButton: FunctionComponent<DropdownButtonProps> = ({
+  id,
+  icon,
+  size = ComponentSize.Small,
+  style,
+  color = ComponentColor.Default,
+  title,
+  active = false,
+  testID = 'dropdown--button',
+  status = ComponentStatus.Default,
+  onClick,
+  children,
+  className,
+}) => {
+  const dropdownButtonClass = classnames('cf-dropdown--button', {
+    [`${className}`]: className,
+  })
 
-  public render() {
-    const {
-      onClick,
-      children,
-      title,
-      icon,
-      testID,
-      active,
-      size,
-      color,
-      id,
-      style,
-    } = this.props
-    return (
-      <ButtonBase
-        shape={ButtonShape.StretchToFit}
-        className={this.className}
-        onClick={onClick}
-        status={this.status}
-        titleText={title}
-        type={ButtonType.Button}
-        testID={testID}
-        active={active}
-        color={color}
-        size={size}
-        id={id}
-        style={style}
-      >
-        {!!icon && <Icon glyph={icon} className="cf-dropdown--icon" />}
-        <span className="cf-dropdown--selected">{children}</span>
-        <Icon glyph={IconFont.CaretDown} className="cf-dropdown--caret" />
-      </ButtonBase>
-    )
-  }
-
-  private get className(): string {
-    const {className} = this.props
-
-    return className
-      ? `cf-dropdown--button ${className}`
-      : 'cf-dropdown--button'
-  }
-
-  private get status(): ComponentStatus {
-    const {status} = this.props
-
+  const dropdownButtonStatus = (): ComponentStatus => {
     const isDisabled = [
       ComponentStatus.Disabled,
       ComponentStatus.Error,
@@ -100,4 +65,27 @@ export class DropdownButton extends Component<Props> {
 
     return isDisabled ? ComponentStatus.Disabled : ComponentStatus.Default
   }
+
+  return (
+    <ButtonBase
+      shape={ButtonShape.StretchToFit}
+      className={dropdownButtonClass}
+      onClick={onClick}
+      status={dropdownButtonStatus()}
+      titleText={title}
+      type={ButtonType.Button}
+      testID={testID}
+      active={active}
+      color={color}
+      size={size}
+      id={id}
+      style={style}
+    >
+      {!!icon && <Icon glyph={icon} className="cf-dropdown--icon" />}
+      <span className="cf-dropdown--selected">{children}</span>
+      <Icon glyph={IconFont.CaretDown} className="cf-dropdown--caret" />
+    </ButtonBase>
+  )
 }
+
+DropdownButton.displayName = 'DropdownButton'
