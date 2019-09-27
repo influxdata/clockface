@@ -5,17 +5,23 @@ import marked from 'marked'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, select, number, text} from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from '../../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {SpinnerContainer} from './SpinnerContainer'
-import {SparkleSpinner} from './SparkleSpinner'
-import {TechnoSpinner} from './TechnoSpinner'
-import {WaitingText} from './WaitingText'
+import {
+  SpinnerContainer,
+  SpinnerContainerRef,
+  SparkleSpinner,
+  SparkleSpinnerRef,
+  TechnoSpinner,
+  TechnoSpinnerRef,
+  WaitingText,
+  WaitingTextRef,
+} from '../'
 
 // Types
-import {ComponentSize, RemoteDataState} from '../../Types'
+import {ComponentSize, RemoteDataState} from '../../../Types'
 
 // Notes
 import SpinnerContainerReadme from './SpinnerContainer.md'
@@ -47,9 +53,11 @@ const spinnerTextStories = storiesOf(
 spinnerContainerStories.add(
   'SpinnerContainer',
   () => {
-    const technoSpinnerRef: React.RefObject<HTMLDivElement> = React.createRef()
+    const technoSpinnerRef: React.RefObject<
+      TechnoSpinnerRef
+    > = React.createRef()
     const spinnerContainerRef: React.RefObject<
-      HTMLDivElement
+      SpinnerContainerRef
     > = React.createRef()
 
     const handleLogRefs = (): void => {
@@ -96,7 +104,9 @@ spinnerContainerStories.add(
 spinnerVisualStories.add(
   'TechnoSpinner',
   () => {
-    const technoSpinnerRef: React.RefObject<HTMLDivElement> = React.createRef()
+    const technoSpinnerRef: React.RefObject<
+      TechnoSpinnerRef
+    > = React.createRef()
 
     const handleLogRef = (): void => {
       /* eslint-disable */
@@ -131,7 +141,9 @@ spinnerVisualStories.add(
 spinnerVisualStories.add(
   'SparkleSpinner',
   () => {
-    const sparkleSpinnerRef: React.RefObject<HTMLDivElement> = React.createRef()
+    const sparkleSpinnerRef: React.RefObject<
+      SparkleSpinnerRef
+    > = React.createRef()
 
     const handleLogRef = (): void => {
       /* eslint-disable */
@@ -166,7 +178,7 @@ spinnerVisualStories.add(
 spinnerTextStories.add(
   'WaitingText',
   () => {
-    const waitingTextRef: React.RefObject<HTMLDivElement> = React.createRef()
+    const waitingTextRef: React.RefObject<WaitingTextRef> = React.createRef()
 
     const handleLogRef = (): void => {
       /* eslint-disable */
