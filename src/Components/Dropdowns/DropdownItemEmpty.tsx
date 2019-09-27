@@ -1,54 +1,50 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {DropdownItemType, StandardClassProps} from '../../../Types'
+import {StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface DropdownItemEmptyProps extends StandardFunctionProps {
   /** Controls whether the text contents of this item wrap or not */
-  wrapText: boolean
+  wrapText?: boolean
 }
 
-export class DropdownItemEmpty extends Component<Props> {
-  public static readonly displayName = 'DropdownItemEmpty'
+export type DropdownItemEmptyRef = HTMLDivElement
 
-  public static defaultProps = {
-    checkbox: false,
-    selected: false,
-    type: DropdownItemType.None,
-    wrapText: false,
-    testID: 'dropdown-item-empty',
-  }
-
-  public render(): JSX.Element {
-    const {testID, id, style} = this.props
-
-    return (
-      <div
-        className={this.className}
-        data-testid={testID}
-        id={id}
-        style={style}
-      >
-        {this.childElements}
-      </div>
-    )
-  }
-
-  private get className(): string {
-    const {wrapText, className} = this.props
-
-    return classnames('cf-dropdown-item-empty', {
+export const DropdownItemEmpty = forwardRef<
+  DropdownItemEmptyRef,
+  DropdownItemEmptyProps
+>(
+  (
+    {
+      id,
+      style,
+      testID = 'dropdown-item-empty',
+      wrapText = false,
+      children,
+      className,
+    },
+    ref
+  ) => {
+    const dropdownItemEmptyClass = classnames('cf-dropdown-item-empty', {
       [`${className}`]: className,
       'cf-dropdown-item__wrap': wrapText,
       'cf-dropdown-item__no-wrap': !wrapText,
     })
-  }
 
-  private get childElements(): JSX.Element {
-    const {children} = this.props
-
-    return <div className="cf-dropdown-item--children">{children}</div>
+    return (
+      <div
+        id={id}
+        ref={ref}
+        style={style}
+        data-testid={testID}
+        className={dropdownItemEmptyClass}
+      >
+        <div className="cf-dropdown-item--children">{children}</div>
+      </div>
+    )
   }
-}
+)
+
+DropdownItemEmpty.displayName = 'DropdownItemEmpty'
