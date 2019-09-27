@@ -1,5 +1,5 @@
 // Libraries
-import React, {forwardRef, RefObject, ReactNode} from 'react'
+import React, {forwardRef, RefObject, CSSProperties, ReactNode} from 'react'
 import classnames from 'classnames'
 import _ from 'lodash'
 
@@ -27,6 +27,8 @@ export interface DropdownMenuProps extends StandardFunctionProps {
   onCollapse?: () => void
   /** Pass through ref for contents element within scrollbars */
   contentsRef?: RefObject<DropdownMenuContentsRef>
+  /** Useful for customizing appearance of the contents element within scrollbars */
+  contentsStyle?: CSSProperties
   /** Controls autoHide behavior of scrollbars within the menu */
   autoHideScrollbars?: boolean
 }
@@ -48,6 +50,7 @@ export const DropdownMenu = forwardRef<DropdownMenuRef, DropdownMenuProps>(
       className,
       onCollapse,
       contentsRef,
+      contentsStyle,
       scrollToSelected = true,
       autoHideScrollbars = false,
     },
@@ -71,6 +74,7 @@ export const DropdownMenu = forwardRef<DropdownMenuRef, DropdownMenuProps>(
 
     return (
       <div
+        id={id}
         ref={ref}
         style={style}
         onClick={onCollapse}
@@ -88,8 +92,8 @@ export const DropdownMenu = forwardRef<DropdownMenuRef, DropdownMenuProps>(
           scrollTop={scrollTop}
         >
           <div
-            id={id}
             ref={contentsRef}
+            style={contentsStyle}
             className="cf-dropdown-menu--contents"
             data-testid={`${testID}--contents`}
           >
