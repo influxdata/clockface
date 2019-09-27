@@ -1,85 +1,97 @@
 // Libraries
-import React, {Component, CSSProperties} from 'react'
+import React, {forwardRef, RefObject, ReactNode} from 'react'
 import classnames from 'classnames'
 import _ from 'lodash'
 
 // Components
-import {DapperScrollbars} from '../../DapperScrollbars/DapperScrollbars'
+import {DapperScrollbars} from '../DapperScrollbars/DapperScrollbars'
+
+// Utils
+import {getScrollbarColorsFromTheme} from '../../Utils'
 
 // Types
-import {
-  DropdownMenuTheme,
-  InfluxColors,
-  StandardClassProps,
-} from '../../../Types'
+import {DropdownMenuTheme, StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardClassProps {
-  /** Pixel width of menu, if empty the menu will match the width of its parent  */
-  overrideWidth?: number
+export interface DropdownMenuProps extends StandardFunctionProps {
   /** Pixel height after which the dropdown menu will scroll */
-  maxHeight: number
+  maxHeight?: number
   /** Controls coloration of the dropdown menu and all subcomponents */
-  theme: DropdownMenuTheme
+  theme?: DropdownMenuTheme
   /** Disable scrolling horizontally */
-  noScrollX: boolean
+  noScrollX?: boolean
   /** Disable scrolling vertically */
-  noScrollY: boolean
+  noScrollY?: boolean
   /** Automatically scroll to selected item when dropdown is opened */
-  scrollToSelected: boolean
+  scrollToSelected?: boolean
   /** Function to handle closing the menu when a child item is clicked */
   onCollapse?: () => void
+  /** Pass through ref for contents element within scrollbars */
+  contentsRef?: RefObject<DropdownMenuContentsRef>
+  /** Controls autoHide behavior of scrollbars within the menu */
+  autoHideScrollbars?: boolean
 }
 
-export class DropdownMenu extends Component<Props> {
-  public static readonly displayName = 'DropdownMenu'
+export type DropdownMenuRef = HTMLDivElement
+export type DropdownMenuContentsRef = HTMLDivElement
 
-  public static defaultProps = {
-    theme: DropdownMenuTheme.Sapphire,
-    testID: 'dropdown-menu',
-    noScrollX: true,
-    noScrollY: false,
-    scrollToSelected: true,
-    maxHeight: 250,
-  }
-
-  public render() {
-    const {
-      children,
-      maxHeight,
-      testID,
-      noScrollX,
-      noScrollY,
-      onCollapse,
+export const DropdownMenu = forwardRef<DropdownMenuRef, DropdownMenuProps>(
+  (
+    {
       id,
-    } = this.props
+      theme = DropdownMenuTheme.Sapphire,
+      style = {width: '100%'},
+      testID = 'dropdown-menu',
+      children,
+      maxHeight = 250,
+      noScrollX = true,
+      noScrollY = false,
+      className,
+      onCollapse,
+      contentsRef,
+      scrollToSelected = true,
+      autoHideScrollbars = false,
+    },
+    ref
+  ) => {
+    const DropdownMenuClass = classnames('cf-dropdown-menu', {
+      [`${className}`]: className,
+      [`cf-dropdown__${theme}`]: theme,
+    })
 
-    const {thumbStartColor, thumbStopColor} = this.thumbColorsFromTheme
+    const {thumbStartColor, thumbStopColor} = getScrollbarColorsFromTheme(theme)
+
+    const scrollTop = calculateSelectedPosition(scrollToSelected, children)
+
+    const scrollbarsStyle = {
+      width: '100%',
+      minWidth: '100%',
+      maxWidth: '100%',
+      maxHeight: `${maxHeight}px`,
+    }
 
     return (
       <div
-        className={this.containerClass}
-        style={this.containerStyle}
+        ref={ref}
+        style={style}
         onClick={onCollapse}
+        className={DropdownMenuClass}
+        data-testid={testID}
       >
         <DapperScrollbars
-          style={{
-            width: '100%',
-            minWidth: '100%',
-            maxWidth: '100%',
-            maxHeight: `${maxHeight}px`,
-          }}
-          autoHide={false}
+          style={scrollbarsStyle}
+          autoHide={autoHideScrollbars}
           autoSizeHeight={true}
           thumbStartColor={thumbStartColor}
           thumbStopColor={thumbStopColor}
           noScrollX={noScrollX}
           noScrollY={noScrollY}
-          scrollTop={this.selectedPosition}
+          scrollTop={scrollTop}
         >
           <div
-            className="cf-dropdown-menu--contents"
-            data-testid={testID}
             id={id}
+            ref={contentsRef}
+            className="cf-dropdown-menu--contents"
+            data-testid={`${testID}--contents`}
           >
             {children}
           </div>
@@ -87,67 +99,23 @@ export class DropdownMenu extends Component<Props> {
       </div>
     )
   }
+)
 
-  private get selectedPosition(): number {
-    const {scrollToSelected, children} = this.props
+DropdownMenu.displayName = 'DropdownMenu'
 
-    if (!children || !scrollToSelected) {
-      return 0
-    }
-
-    const itemHeight = 24
-    const items = React.Children.map(children, child =>
-      _.get(child, 'props.selected', false)
-    )
-    const itemIndex = items.findIndex(item => item === true)
-
-    return itemHeight * itemIndex
+const calculateSelectedPosition = (
+  scrollToSelected: boolean,
+  children: ReactNode
+): number => {
+  if (!children || !scrollToSelected) {
+    return 0
   }
 
-  private get containerClass(): string {
-    const {className, theme} = this.props
+  const itemHeight = 24
+  const items = React.Children.map(children, child =>
+    _.get(child, 'props.selected', false)
+  )
+  const itemIndex = items.findIndex(item => item === true)
 
-    return classnames('cf-dropdown-menu', {
-      [`${className}`]: className,
-      [`cf-dropdown__${theme}`]: theme,
-    })
-  }
-
-  private get containerStyle(): CSSProperties {
-    const {overrideWidth, style} = this.props
-
-    if (overrideWidth) {
-      return {width: `${overrideWidth}px`, ...style}
-    }
-
-    return {width: '100%', ...style}
-  }
-
-  private get thumbColorsFromTheme() {
-    const {theme} = this.props
-
-    switch (theme) {
-      case DropdownMenuTheme.Malachite:
-        return {
-          thumbStartColor: InfluxColors.Wasabi,
-          thumbStopColor: InfluxColors.Neutrino,
-        }
-      case DropdownMenuTheme.Onyx:
-        return {
-          thumbStartColor: InfluxColors.Laser,
-          thumbStopColor: InfluxColors.Comet,
-        }
-      case DropdownMenuTheme.Amethyst:
-        return {
-          thumbStartColor: InfluxColors.Neutrino,
-          thumbStopColor: InfluxColors.Moonstone,
-        }
-      case DropdownMenuTheme.Sapphire:
-      default:
-        return {
-          thumbStartColor: InfluxColors.Neutrino,
-          thumbStopColor: InfluxColors.Hydrogen,
-        }
-    }
-  }
+  return itemHeight * itemIndex
 }
