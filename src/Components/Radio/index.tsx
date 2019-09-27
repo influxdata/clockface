@@ -17,4 +17,4 @@ export class Radio extends Component<RadioProps> {
 }
 
 export {RadioProps, RadioRef} from './Radio'
-export {RadioButtonProps, RadioButtonRef} from './RadioButton'
+export * from './RadioButton'

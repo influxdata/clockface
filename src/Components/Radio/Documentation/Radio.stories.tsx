@@ -17,7 +17,7 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {Radio} from '../index'
+import {Radio} from '../'
 
 // Types
 import {ComponentColor, ComponentSize, ButtonShape} from '../../../Types'
