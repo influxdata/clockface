@@ -1,55 +1,42 @@
 // Libraries
-import React, {Component, MouseEvent} from 'react'
+import React, {forwardRef, MouseEvent, FunctionComponent} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {DropdownItemType, StandardClassProps} from '../../../Types'
+import {DropdownItemType, StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface DropdownItemProps extends StandardFunctionProps {
   /** Value to be returned via the onClick function */
-  value: any
+  value?: any
   /** Whether or not the item should have selected styling */
-  selected: boolean
+  selected?: boolean
   /** Controls which style of dropdown item is rendered */
-  type: DropdownItemType
+  type?: DropdownItemType
   /** When a dropdown item is clicked, its `value` prop is returned via `onChange` */
   onClick?: (value?: any) => void
   /** Controls whether the text contents of this item wrap or not */
-  wrapText: boolean
+  wrapText?: boolean
 }
 
-export class DropdownItem extends Component<Props> {
-  public static readonly displayName = 'DropdownItem'
+export type DropdownItemRef = HTMLDivElement
 
-  public static defaultProps = {
-    checkbox: false,
-    selected: false,
-    type: DropdownItemType.None,
-    wrapText: false,
-    testID: 'dropdown-item',
-  }
-
-  public render(): JSX.Element {
-    const {testID, id, style} = this.props
-
-    return (
-      <div
-        className={this.className}
-        data-testid={testID}
-        onClick={this.handleClick}
-        id={id}
-        style={style}
-      >
-        {this.selectionIndicator}
-        {this.childElements}
-      </div>
-    )
-  }
-
-  private get className(): string {
-    const {selected, wrapText, className, type} = this.props
-
-    return classnames('cf-dropdown-item', {
+export const DropdownItem = forwardRef<DropdownItemRef, DropdownItemProps>(
+  (
+    {
+      id,
+      type = DropdownItemType.None,
+      style,
+      value,
+      testID = 'dropdown-item',
+      onClick,
+      wrapText = false,
+      selected = false,
+      children,
+      className,
+    },
+    ref
+  ) => {
+    const dropdownItemClass = classnames('cf-dropdown-item', {
       [`cf-dropdown-item__${type}`]:
         type === DropdownItemType.Checkbox || type === DropdownItemType.Dot,
       active: selected,
@@ -57,34 +44,47 @@ export class DropdownItem extends Component<Props> {
       'cf-dropdown-item__wrap': wrapText,
       'cf-dropdown-item__no-wrap': !wrapText,
     })
-  }
 
-  private handleClick = (e: MouseEvent<HTMLElement>): void => {
-    e.preventDefault()
-    const {onClick, value} = this.props
+    const handleClick = (e: MouseEvent<HTMLElement>): void => {
+      e.preventDefault()
 
-    if (onClick) {
-      onClick(value)
+      if (onClick) {
+        onClick(value)
+      }
     }
+
+    return (
+      <div
+        id={id}
+        ref={ref}
+        style={style}
+        onClick={handleClick}
+        className={dropdownItemClass}
+        data-testid={testID}
+      >
+        <DropdownItemSelectionIndicator type={type} />
+        <div className="cf-dropdown-item--children">{children}</div>
+      </div>
+    )
   }
+)
 
-  private get selectionIndicator(): JSX.Element | undefined {
-    const {type} = this.props
+interface DropdownItemSelectionIndicatorProps {
+  type: DropdownItemType
+}
 
-    switch (type) {
-      case DropdownItemType.Checkbox:
-        return <div className="cf-dropdown-item--checkbox" />
-      case DropdownItemType.Dot:
-        return <div className="cf-dropdown-item--dot" />
-      case DropdownItemType.None:
-      default:
-        return
-    }
-  }
-
-  private get childElements(): JSX.Element {
-    const {children} = this.props
-
-    return <div className="cf-dropdown-item--children">{children}</div>
+const DropdownItemSelectionIndicator: FunctionComponent<
+  DropdownItemSelectionIndicatorProps
+> = ({type}) => {
+  switch (type) {
+    case DropdownItemType.Checkbox:
+      return <div className="cf-dropdown-item--checkbox" />
+    case DropdownItemType.Dot:
+      return <div className="cf-dropdown-item--dot" />
+    case DropdownItemType.None:
+    default:
+      return <></>
   }
 }
+
+DropdownItem.displayName = 'DropdownItem'
