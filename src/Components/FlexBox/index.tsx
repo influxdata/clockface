@@ -17,4 +17,4 @@ export class FlexBox extends Component<FlexBoxProps> {
 }
 
 export {FlexBoxProps, FlexBoxRef} from './FlexBox'
-export {FlexBoxChildProps, FlexBoxChildRef} from './FlexBoxChild'
+export * from './FlexBoxChild'
