@@ -1,37 +1,37 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from '../../../Types'
+import {StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface DropdownDividerProps extends StandardFunctionProps {
   /** Text to be displayed on divider, a line will be displayed if no text is provided */
   text?: string
 }
 
-export class DropdownDivider extends Component<Props> {
-  public static readonly displayName = 'DropdownDivider'
+export type DropdownDividerRef = HTMLDivElement
 
-  public static defaultProps = {
-    testID: 'dropdown-divider',
-  }
+export const DropdownDivider = forwardRef<
+  DropdownDividerRef,
+  DropdownDividerProps
+>(({id, text, style, testID = 'dropdown-divider', className}, ref) => {
+  const dropdownDividerClass = classnames('cf-dropdown-divider', {
+    line: !text,
+    [`${className}`]: className,
+  })
 
-  public render() {
-    const {text, testID, className, id, style} = this.props
+  return (
+    <div
+      id={id}
+      ref={ref}
+      style={style}
+      className={dropdownDividerClass}
+      data-testid={testID}
+    >
+      {text}
+    </div>
+  )
+})
 
-    return (
-      <div
-        className={classnames('cf-dropdown-divider', {
-          line: !text,
-          [`${className}`]: className,
-        })}
-        data-testid={testID}
-        id={id}
-        style={style}
-      >
-        {text}
-      </div>
-    )
-  }
-}
+DropdownDivider.displayName = 'DropdownDivider'
