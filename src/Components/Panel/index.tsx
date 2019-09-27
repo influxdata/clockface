@@ -23,7 +23,7 @@ export class Panel extends Component<PanelProps> {
 }
 
 export {PanelProps, PanelRef} from './Panel'
-export {PanelHeaderProps, PanelHeaderRef} from './PanelHeader'
-export {PanelTitleProps, PanelTitleRef} from './PanelTitle'
-export {PanelBodyProps, PanelBodyRef} from './PanelBody'
-export {PanelFooterProps, PanelFooterRef} from './PanelFooter'
+export * from './PanelHeader'
+export * from './PanelTitle'
+export * from './PanelBody'
+export * from './PanelFooter'
