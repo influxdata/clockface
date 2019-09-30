@@ -2,14 +2,7 @@
 import React, {forwardRef, MouseEvent} from 'react'
 
 // Components
-import {
-  Dropdown,
-  DropdownRef,
-  DropdownButton,
-  DropdownMenu,
-  DropdownItem,
-  DropdownDivider,
-} from '../'
+import {Dropdown, DropdownRef} from '../'
 
 // Constants
 import {DROPDOWN_DIVIDER_SHORTCODE} from '../../../Constants'
@@ -77,7 +70,7 @@ export const SelectDropdown = forwardRef<
       active: boolean,
       onClick: (e: MouseEvent<HTMLElement>) => void
     ) => (
-      <DropdownButton
+      <Dropdown.Button
         active={active}
         onClick={onClick}
         status={buttonStatus}
@@ -86,27 +79,27 @@ export const SelectDropdown = forwardRef<
         icon={buttonIcon}
       >
         {selectedOption}
-      </DropdownButton>
+      </Dropdown.Button>
     )
 
     const menu = (onCollapse: () => void) => (
-      <DropdownMenu
+      <Dropdown.Menu
         theme={menuTheme}
         maxHeight={menuMaxHeight}
         onCollapse={onCollapse}
       >
         {options.map(o => {
           if (o === DROPDOWN_DIVIDER_SHORTCODE) {
-            return <DropdownDivider key={o} />
+            return <Dropdown.Divider key={o} />
           }
 
           if (o.includes(DROPDOWN_DIVIDER_SHORTCODE)) {
             const dividerText = o.replace(DROPDOWN_DIVIDER_SHORTCODE, '')
-            return <DropdownDivider key={o} text={dividerText} />
+            return <Dropdown.Divider key={o} text={dividerText} />
           }
 
           return (
-            <DropdownItem
+            <Dropdown.Item
               key={o}
               type={DropdownItemType.Dot}
               value={o}
@@ -114,10 +107,10 @@ export const SelectDropdown = forwardRef<
               onClick={onSelect}
             >
               {o}
-            </DropdownItem>
+            </Dropdown.Item>
           )
         })}
-      </DropdownMenu>
+      </Dropdown.Menu>
     )
 
     return (
