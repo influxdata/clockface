@@ -13,12 +13,12 @@ import {
   object,
 } from '@storybook/addon-knobs'
 import {jsxDecorator} from 'storybook-addon-jsx'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
-import {Popover, PopoverRef} from './'
-import {ReflessPopover, ReflessPopoverRef} from './Composed/ReflessPopover'
-import {QuestionMarkTooltip, QuestionMarkTooltipRef} from './Composed/QuestionMarkTooltip'
+import {Popover, PopoverRef} from '..'
+import {ReflessPopover, ReflessPopoverRef} from '../Composed/ReflessPopover'
+import {QuestionMarkTooltip, QuestionMarkTooltipRef} from '../Composed/QuestionMarkTooltip'
 
 // Types
 import {
@@ -26,12 +26,12 @@ import {
   PopoverInteraction,
   PopoverPosition,
   ComponentColor,
-} from '../../Types'
+} from '../../../Types'
 
 // Notes
-import PopoverReadme from './Base/Popover.md'
-import ReflessPopoverReadme from './Composed/ReflessPopover.md'
-import QuestionMarkTooltipReadme from './Composed/QuestionMarkTooltip.md'
+import PopoverReadme from './Popover.md'
+import ReflessPopoverReadme from './ReflessPopover.md'
+import QuestionMarkTooltipReadme from './QuestionMarkTooltip.md'
 
 const popoverStories = storiesOf('Atomic|Popover/Base', module)
   .addDecorator(withKnobs)
@@ -111,10 +111,10 @@ popoverStories.add(
             <>
               <div style={{marginTop: '30px'}}>
                 I'm just a simple popover looking for my
-              <br />
-              place in this <strong>vast and beautiful</strong> world.
-              <br />
-              Will you help me?
+                <br />
+                place in this <strong>vast and beautiful</strong> world.
+                <br />
+                Will you help me?
               </div>
               <div className="story--test-buttons">
                 <button onClick={() => console.log('popover2Ref', popover2Ref.current)}>Log Ref</button>
