@@ -8,6 +8,12 @@ Alerts are a great way to draw the user's attention to important information. Th
 import {Alert} from '@influxdata/clockface'
 ```
 
+##### Ref Type
+
+```tsx
+import {AlertRef} from '@influxdata/clockface'
+```
+
 ### Example
 
 <!-- STORY -->

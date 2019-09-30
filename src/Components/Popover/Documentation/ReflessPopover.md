@@ -6,9 +6,15 @@ This composed version of a `Popover` is for when:
 - Your layout will not be disrupted by having your trigger element wrapped in a `<div />`
 
 ### Usage
+
 ```tsx
-import {ReflessPopover, PopoverPosition, PopoverInteraction} from '@influxdata/clockface'
+import {
+  ReflessPopover,
+  PopoverPosition,
+  PopoverInteraction,
+} from '@influxdata/clockface'
 ```
+
 ```tsx
 <ReflessPopover
   position={PopoverPosition.Above}
@@ -20,7 +26,14 @@ import {ReflessPopover, PopoverPosition, PopoverInteraction} from '@influxdata/c
 </ReflessPopover>
 ```
 
+##### Ref Type
+
+```tsx
+import {ReflessPopoverRef} from '@influxdata/clockface'
+```
+
 ### Example
+
 <!-- STORY -->
 
 ### Is Your Layout Looking Funky?
@@ -30,6 +43,7 @@ In most cases you can fix the layout by applying inline styles to the trigger wr
 ### Trying to Make a Custom Popover?
 
 By default `Popover` will apply reasonable default styles to the dialog to save you time. However you may be building a more specialized design and want more control. Rather than fight the default styles you can simply turn them off:
+
 ```tsx
 <ReflessPopover enableDefaultStyles={false} />
 ```
