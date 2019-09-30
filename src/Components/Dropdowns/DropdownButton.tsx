@@ -1,10 +1,10 @@
 // Libraries
-import React, {FunctionComponent, MouseEvent} from 'react'
+import React, {forwardRef, MouseEvent} from 'react'
 import classnames from 'classnames'
 
 // Components
 import {Icon} from '../Icon'
-import {ButtonBase} from '../Button/Base/ButtonBase'
+import {ButtonBase, ButtonBaseRef} from '../Button/Base/ButtonBase'
 
 // Types
 import {
@@ -37,55 +37,64 @@ export interface DropdownButtonProps extends StandardFunctionProps {
   title?: string
 }
 
-export type DropdownButtonRef = HTMLButtonElement
+export type DropdownButtonRef = ButtonBaseRef
 
-export const DropdownButton: FunctionComponent<DropdownButtonProps> = ({
-  id,
-  icon,
-  size = ComponentSize.Small,
-  style,
-  color = ComponentColor.Default,
-  title,
-  active = false,
-  testID = 'dropdown--button',
-  status = ComponentStatus.Default,
-  onClick,
-  children,
-  className,
-}) => {
-  const dropdownButtonClass = classnames('cf-dropdown--button', {
-    [`${className}`]: className,
-  })
+export const DropdownButton = forwardRef<
+  DropdownButtonRef,
+  DropdownButtonProps
+>(
+  (
+    {
+      id,
+      icon,
+      size = ComponentSize.Small,
+      style,
+      color = ComponentColor.Default,
+      title,
+      active = false,
+      testID = 'dropdown--button',
+      status = ComponentStatus.Default,
+      onClick,
+      children,
+      className,
+    },
+    ref
+  ) => {
+    const dropdownButtonClass = classnames('cf-dropdown--button', {
+      [`${className}`]: className,
+    })
 
-  const dropdownButtonStatus = (): ComponentStatus => {
-    const isDisabled = [
-      ComponentStatus.Disabled,
-      ComponentStatus.Error,
-    ].includes(status)
+    const dropdownButtonStatus = (): ComponentStatus => {
+      const isDisabled = [
+        ComponentStatus.Disabled,
+        ComponentStatus.Error,
+      ].includes(status)
 
-    return isDisabled ? ComponentStatus.Disabled : ComponentStatus.Default
+      return isDisabled ? ComponentStatus.Disabled : ComponentStatus.Default
+    }
+
+    return (
+      <ButtonBase
+        id={id}
+        ref={ref}
+        type={ButtonType.Button}
+        size={size}
+        style={style}
+        color={color}
+        shape={ButtonShape.StretchToFit}
+        testID={testID}
+        active={active}
+        status={dropdownButtonStatus()}
+        onClick={onClick}
+        className={dropdownButtonClass}
+        titleText={title}
+      >
+        {!!icon && <Icon glyph={icon} className="cf-dropdown--icon" />}
+        <span className="cf-dropdown--selected">{children}</span>
+        <Icon glyph={IconFont.CaretDown} className="cf-dropdown--caret" />
+      </ButtonBase>
+    )
   }
-
-  return (
-    <ButtonBase
-      shape={ButtonShape.StretchToFit}
-      className={dropdownButtonClass}
-      onClick={onClick}
-      status={dropdownButtonStatus()}
-      titleText={title}
-      type={ButtonType.Button}
-      testID={testID}
-      active={active}
-      color={color}
-      size={size}
-      id={id}
-      style={style}
-    >
-      {!!icon && <Icon glyph={icon} className="cf-dropdown--icon" />}
-      <span className="cf-dropdown--selected">{children}</span>
-      <Icon glyph={IconFont.CaretDown} className="cf-dropdown--caret" />
-    </ButtonBase>
-  )
-}
+)
 
 DropdownButton.displayName = 'DropdownButton'
