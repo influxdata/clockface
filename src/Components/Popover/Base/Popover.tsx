@@ -1,10 +1,10 @@
 // Libraries
 import React, {
-  RefObject,
-  MouseEvent,
   useState,
-  forwardRef,
   useEffect,
+  RefObject,
+  forwardRef,
+  MouseEvent,
 } from 'react'
 import {createPortal} from 'react-dom'
 import uuid from 'uuid'
@@ -17,14 +17,14 @@ import './Popover.scss'
 
 // Types
 import {
-  ComponentColor,
-  StandardProps,
-  PopoverInteraction,
-  PopoverPosition,
   PopoverType,
+  ComponentColor,
+  PopoverPosition,
+  PopoverInteraction,
+  StandardFunctionProps,
 } from '../../../Types'
 
-export interface PopoverProps extends StandardProps {
+export interface PopoverProps extends StandardFunctionProps {
   /** Popover dialog color */
   color?: ComponentColor
   /** Popover dialog contents */
@@ -55,34 +55,6 @@ export interface PopoverProps extends StandardProps {
   enableDefaultStyles?: boolean
 }
 
-export interface PopoverDefProps {
-  color: ComponentColor
-  testID: string
-  distanceFromTrigger: number
-  caretSize: number
-  position: PopoverPosition
-  type: PopoverType
-  enableDefaultStyles: boolean
-  showEvent: PopoverInteraction
-  hideEvent: PopoverInteraction
-  disabled: boolean
-  visible: boolean
-}
-
-export const PopoverDefaultProps: PopoverDefProps = {
-  color: ComponentColor.Primary,
-  testID: 'popover',
-  distanceFromTrigger: 4,
-  caretSize: 8,
-  position: PopoverPosition.Below,
-  type: PopoverType.Outline,
-  enableDefaultStyles: true,
-  showEvent: PopoverInteraction.Click,
-  hideEvent: PopoverInteraction.Click,
-  disabled: false,
-  visible: false,
-}
-
 export type PopoverRef = HTMLSpanElement
 
 interface CustomMouseEvent extends MouseEvent {
@@ -91,27 +63,27 @@ interface CustomMouseEvent extends MouseEvent {
 
 let uniquePortalID: string = ''
 
-export const Popover = forwardRef<PopoverRef, PopoverProps>((props, ref) => {
-  const [expanded, setExpanded] = useState<boolean>(!!props.visible)
-
-  const {
-    distanceFromTrigger,
-    enableDefaultStyles,
-    triggerRef,
-    className,
-    caretSize,
-    contents,
-    showEvent,
-    hideEvent,
-    disabled,
-    position,
-    visible,
-    testID,
-    style,
-    color,
-    type,
-    id,
-  } = {...PopoverDefaultProps, ...props}
+export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(({
+  id,
+  style,
+  onShow,
+  onHide,
+  contents,
+  className,
+  triggerRef,
+  caretSize = 8,
+  visible = false,
+  disabled = false,
+  testID = 'popover',
+  distanceFromTrigger = 4,
+  type = PopoverType.Outline,
+  enableDefaultStyles = true,
+  color = ComponentColor.Primary,
+  position = PopoverPosition.Below,
+  showEvent = PopoverInteraction.Click,
+  hideEvent = PopoverInteraction.Click,
+}, ref) => {
+  const [expanded, setExpanded] = useState<boolean>(!!visible)
 
   const handleTriggerClick = (e: MouseEvent): void => {
     e.stopPropagation()
@@ -142,7 +114,7 @@ export const Popover = forwardRef<PopoverRef, PopoverProps>((props, ref) => {
   }
 
   const handleDialogMouseLeave = (e: MouseEvent): void => {
-    if (e.target === props.triggerRef.current) {
+    if (e.target === triggerRef.current) {
       return
     }
 
@@ -152,7 +124,7 @@ export const Popover = forwardRef<PopoverRef, PopoverProps>((props, ref) => {
   }
 
   const handleClickOutside = (e: MouseEvent): void => {
-    if (e.target === props.triggerRef.current) {
+    if (e.target === triggerRef.current) {
       return
     }
 
@@ -162,12 +134,12 @@ export const Popover = forwardRef<PopoverRef, PopoverProps>((props, ref) => {
   }
 
   const handleShowDialog = (): void => {
-    props.onShow && props.onShow()
+    onShow && onShow()
     setExpanded(true)
   }
 
   const handleHideDialog = (): void => {
-    props.onHide && props.onHide()
+    onHide && onHide()
     setExpanded(false)
   }
 
@@ -270,4 +242,4 @@ export const Popover = forwardRef<PopoverRef, PopoverProps>((props, ref) => {
   return createPortal(popover, portalElement)
 })
 
-Popover.displayName = 'Popover'
+PopoverRoot.displayName = 'Popover'

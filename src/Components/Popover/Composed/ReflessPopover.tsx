@@ -2,7 +2,8 @@
 import React, {forwardRef, createRef, CSSProperties} from 'react'
 
 // Components
-import {Popover, PopoverProps, PopoverDefaultProps} from '../Base/Popover'
+import {PopoverProps} from '../Base/Popover'
+import {Popover} from '../'
 
 // Types
 import {Omit} from '../../../Types'
@@ -15,27 +16,25 @@ interface Props extends Omit<PopoverProps, 'triggerRef'> {
 export type ReflessPopoverRef = HTMLSpanElement
 
 export const ReflessPopover = forwardRef<ReflessPopoverRef, Props>(
-  (props, ref) => {
+  ({
+    id,
+    type,
+    color,
+    style,
+    visible,
+    contents,
+    disabled,
+    position,
+    children,
+    hideEvent,
+    showEvent,
+    caretSize,
+    triggerStyle,
+    distanceFromTrigger,
+    enableDefaultStyles,
+    testID = 'refless-popover',
+  }, ref) => {
     const triggerRef = createRef<HTMLDivElement>()
-
-    const {
-      distanceFromTrigger,
-      enableDefaultStyles,
-      triggerStyle,
-      caretSize,
-      showEvent,
-      hideEvent,
-      children,
-      position,
-      disabled,
-      contents,
-      visible,
-      testID,
-      style,
-      color,
-      type,
-      id,
-    } = props
 
     return (
       <span ref={ref}>
@@ -68,9 +67,4 @@ export const ReflessPopover = forwardRef<ReflessPopoverRef, Props>(
   }
 )
 
-ReflessPopover.displayName = 'ReflessPopover'
-
-ReflessPopover.defaultProps = {
-  ...PopoverDefaultProps,
-  testID: 'refless-popover',
-}
+ReflessPopover.displayName = 'ReflessPopover';

@@ -1,5 +1,5 @@
 // Libraries
-import React from 'react'
+import React, {createRef} from 'react'
 import marked from 'marked'
 
 // Storybook
@@ -9,7 +9,7 @@ import {withKnobs, text, select} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../Utils/storybook'
 
 // Components
-import {Alert} from './Alert'
+import {Alert, AlertRef} from './Alert'
 
 // Types
 import {ComponentColor, IconFont} from '../../Types'
@@ -23,28 +23,42 @@ const alertStories = storiesOf('Atomic|Alert', module)
 
 alertStories.add(
   'Example',
-  () => (
-    <div className="story--example">
-      <Alert
-        color={
-          ComponentColor[
-            select('color', mapEnumKeys(ComponentColor), 'Primary')
-          ]
-        }
-        icon={
-          IconFont[
-            select(
-              'icon',
-              {None: 'none', ...mapEnumKeys(IconFont)},
-              'AlertTriangle'
-            )
-          ]
-        }
-      >
-        {text('text', 'Alert Text')}
-      </Alert>
-    </div>
-  ),
+  () => {
+    const alertRef = createRef<AlertRef>()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log('alertRef:', alertRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <Alert
+          ref={alertRef}
+          color={
+            ComponentColor[
+              select('color', mapEnumKeys(ComponentColor), 'Primary')
+            ]
+          }
+          icon={
+            IconFont[
+              select(
+                'icon',
+                {None: 'none', ...mapEnumKeys(IconFont)},
+                'AlertTriangle'
+              )
+            ]
+          }
+        >
+          {text('text', 'Alert Text')}
+        </Alert>
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(AlertReadme),

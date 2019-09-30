@@ -1,8 +1,8 @@
 // Libraries
 import React, {
   createRef,
-  MouseEvent,
   RefObject,
+  MouseEvent,
   useLayoutEffect,
   FunctionComponent,
 } from 'react'
@@ -17,13 +17,13 @@ import {calculatePopoverStyles} from '../../../Utils/popovers'
 
 // Types
 import {
-  ComponentColor,
-  StandardProps,
   PopoverType,
+  ComponentColor,
   PopoverPosition,
+  StandardFunctionProps,
 } from '../../../Types'
 
-export interface Props extends StandardProps {
+export interface Props extends StandardFunctionProps {
   /** Bounding rectangle of trigger element */
   triggerRef: RefObject<any>
   /** Pixel distance between trigger and popover dialog */
@@ -46,25 +46,26 @@ export interface Props extends StandardProps {
   enableDefaultStyles: boolean
 }
 
-export const PopoverDialog: FunctionComponent<Props> = props => {
+export const PopoverDialog: FunctionComponent<Props> = ({
+  id,
+  type,
+  style,
+  color,
+  testID,
+  contents,
+  position,
+  className,
+  caretSize,
+  triggerRef,
+  onMouseLeave,
+  onClickOutside,
+  distanceFromTrigger,
+  enableDefaultStyles,
+}) => {
   const dialogRef = createRef<HTMLDivElement>()
   const caretRef = createRef<HTMLDivElement>()
 
-  const {
-    testID,
-    id,
-    style,
-    contents,
-    onClickOutside,
-    onMouseLeave,
-    className,
-    color,
-    type,
-    enableDefaultStyles,
-  } = props
-
   const handleUpdateStyles = (): void => {
-    const {position, triggerRef, caretSize, distanceFromTrigger} = props
     const {dialogStyles, caretStyles} = calculatePopoverStyles(
       position,
       triggerRef,
@@ -115,7 +116,7 @@ export const PopoverDialog: FunctionComponent<Props> = props => {
         onMouseLeave={onMouseLeave}
         className={popoverDialogClassName}
         ref={dialogRef}
-        data-testid={testID}
+        data-testid={`${testID}--dialog`}
         id={id}
       >
         <div

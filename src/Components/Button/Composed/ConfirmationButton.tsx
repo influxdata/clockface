@@ -3,7 +3,7 @@ import React, {Component, createRef} from 'react'
 
 // Components
 import {Button} from './Button'
-import {Popover} from '../../Popover/Base/Popover'
+import {Popover} from '../../Popover'
 
 // Styles
 import './ConfirmationButton.scss'

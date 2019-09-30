@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import {Popover as PopoverRoot, PopoverProps} from './Base/Popover'
+import {PopoverRoot, PopoverProps} from './Base/Popover'
 import {DismissButton} from '../Button/Composed/DismissButton'
 
 export class Popover extends Component<PopoverProps> {
@@ -13,3 +13,5 @@ export class Popover extends Component<PopoverProps> {
     return <PopoverRoot {...this.props} />
   }
 }
+
+export {PopoverRef} from './Base/Popover'
