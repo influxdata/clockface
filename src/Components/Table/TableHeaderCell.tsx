@@ -1,63 +1,65 @@
 // Libraries
-import React, {Component, CSSProperties} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps, Alignment, VerticalAlignment} from '../../Types'
+import {StandardFunctionProps, Alignment, VerticalAlignment} from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface TableHeaderCellProps extends StandardFunctionProps {
   /** How many columns this cell should take up */
-  colSpan: number
+  colSpan?: number
   /** Horizontal alignment of contents */
-  horizontalAlignment: Alignment
+  horizontalAlignment?: Alignment
   /** Vertical alignment of contents */
-  verticalAlignment: VerticalAlignment
+  verticalAlignment?: VerticalAlignment
   /** Width of column, can be % or px */
   width?: string
 }
 
-export class TableHeaderCell extends Component<Props> {
-  public static readonly displayName = 'TableHeaderCell'
+export type TableHeaderCellRef = HTMLTableHeaderCellElement
 
-  public static defaultProps = {
-    testID: 'table-header-cell',
-    colSpan: 1,
-    horizontalAlignment: Alignment.Left,
-    verticalAlignment: VerticalAlignment.Middle,
-  }
+export const TableHeaderCell = forwardRef<
+  TableHeaderCellRef,
+  TableHeaderCellProps
+>(
+  (
+    {
+      id,
+      style,
+      width,
+      testID = 'table-header-cell',
+      colSpan = 1,
+      children,
+      className,
+      verticalAlignment = VerticalAlignment.Middle,
+      horizontalAlignment = Alignment.Left,
+    },
+    ref
+  ) => {
+    const tableHeaderCellClass = classnames('cf-table--header-cell', {
+      [`${className}`]: className,
+    })
 
-  public render() {
-    const {testID, children, id, colSpan} = this.props
-
-    return (
-      <th
-        className={this.className}
-        data-testid={testID}
-        id={id}
-        colSpan={colSpan}
-        style={this.style}
-      >
-        {children}
-      </th>
-    )
-  }
-
-  private get style(): CSSProperties {
-    const {horizontalAlignment, verticalAlignment, width, style} = this.props
-
-    return {
+    const tableHeaderCellStyle = {
       textAlign: horizontalAlignment,
       verticalAlign: verticalAlignment,
       width,
       ...style,
     }
-  }
 
-  private get className(): string {
-    const {className} = this.props
-
-    return classnames('cf-table--header-cell', {
-      [`${className}`]: className,
-    })
+    return (
+      <th
+        id={id}
+        ref={ref}
+        style={tableHeaderCellStyle}
+        colSpan={colSpan}
+        data-testid={testID}
+        className={tableHeaderCellClass}
+      >
+        {children}
+      </th>
+    )
   }
-}
+)
+
+TableHeaderCell.displayName = 'TableHeaderCell'

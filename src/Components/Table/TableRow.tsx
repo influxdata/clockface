@@ -1,39 +1,46 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps, ComponentColor} from '../../Types'
+import {StandardFunctionProps, ComponentColor} from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface TableRowProps extends StandardFunctionProps {
   /** Controls coloration of the row, useful for showing a certain state */
-  color: ComponentColor
+  color?: ComponentColor
 }
 
-export class TableRow extends Component<Props> {
-  public static readonly displayName = 'TableRow'
+export type TableRowRef = HTMLTableRowElement
 
-  public static defaultProps = {
-    testID: 'table-row',
-    color: ComponentColor.Default,
-  }
-
-  public render() {
-    const {testID, children, id, style} = this.props
+export const TableRow = forwardRef<TableRowRef, TableRowProps>(
+  (
+    {
+      id,
+      style,
+      color = ComponentColor.Default,
+      testID = 'table-row',
+      children,
+      className,
+    },
+    ref
+  ) => {
+    const tableRowClass = classnames('cf-table--row', {
+      [`${className}`]: className,
+      [`cf-table--row__${color}`]: color,
+    })
 
     return (
-      <tr className={this.className} data-testid={testID} id={id} style={style}>
+      <tr
+        id={id}
+        ref={ref}
+        style={style}
+        className={tableRowClass}
+        data-testid={testID}
+      >
         {children}
       </tr>
     )
   }
+)
 
-  private get className(): string {
-    const {className, color} = this.props
-
-    return classnames('cf-table--row', {
-      [`${className}`]: className,
-      [`cf-table--row__${color}`]: color,
-    })
-  }
-}
+TableRow.displayName = 'TableRow'
