@@ -1,5 +1,5 @@
 // Libraries
-import React, {Component, MouseEvent, RefObject} from 'react'
+import React, {forwardRef, MouseEvent} from 'react'
 import classnames from 'classnames'
 
 // Styles
@@ -12,10 +12,10 @@ import {
   ComponentSize,
   ButtonShape,
   ButtonType,
-  StandardClassProps,
+  StandardFunctionProps,
 } from '../../../Types'
 
-interface Props extends StandardClassProps {
+interface ButtonBaseProps extends StandardFunctionProps {
   /** Function to be called on button click */
   onClick?: (e?: MouseEvent<HTMLButtonElement>) => void
   /** Text to be displayed on hover tooltip */
@@ -34,40 +34,49 @@ interface Props extends StandardClassProps {
   active: boolean
   /** Button type of 'button' or 'submit' */
   type: ButtonType
-  /** React Ref object */
-  refObject?: RefObject<HTMLButtonElement>
 }
 
-export class ButtonBase extends Component<Props> {
-  public static readonly displayName = 'ButtonBase'
+export type ButtonBaseRef = HTMLButtonElement
 
-  public static defaultProps = {
-    color: ComponentColor.Default,
-    size: ComponentSize.Small,
-    shape: ButtonShape.Default,
-    status: ComponentStatus.Default,
-    active: false,
-    type: ButtonType.Button,
-    testID: 'button-base',
-  }
-
-  public render() {
-    const {
-      onClick,
-      titleText,
-      tabIndex,
-      type,
-      testID,
-      children,
-      refObject,
+export const ButtonBase = forwardRef<ButtonBaseRef, ButtonBaseProps>(
+  (
+    {
       id,
       style,
-    } = this.props
+      onClick,
+      children,
+      tabIndex,
+      titleText,
+      className,
+      active = false,
+      testID = 'button-base',
+      type = ButtonType.Button,
+      size = ComponentSize.Small,
+      shape = ButtonShape.Default,
+      color = ComponentColor.Default,
+      status = ComponentStatus.Default,
+    },
+    ref
+  ) => {
+    const disabled =
+      status === ComponentStatus.Disabled || status === ComponentStatus.Loading
+
+    const buttonBaseClass = classnames(
+      `cf-button cf-button-${size} cf-button-${color}`,
+      {
+        'cf-button-square': shape === ButtonShape.Square,
+        'cf-button-stretch': shape === ButtonShape.StretchToFit,
+        'cf-button--loading': status === ComponentStatus.Loading,
+        'cf-button--disabled': status === ComponentStatus.Disabled,
+        active,
+        [`${className}`]: className,
+      }
+    )
 
     return (
       <button
-        className={this.className}
-        disabled={this.disabled}
+        className={buttonBaseClass}
+        disabled={disabled}
         onClick={onClick}
         title={titleText}
         tabIndex={!!tabIndex ? tabIndex : 0}
@@ -75,31 +84,12 @@ export class ButtonBase extends Component<Props> {
         data-testid={testID}
         id={id}
         style={style}
-        ref={refObject}
+        ref={ref}
       >
         {children}
       </button>
     )
   }
+)
 
-  private get disabled(): boolean {
-    const {status} = this.props
-
-    return (
-      status === ComponentStatus.Disabled || status === ComponentStatus.Loading
-    )
-  }
-
-  private get className(): string {
-    const {color, size, shape, status, active, className} = this.props
-
-    return classnames(`cf-button cf-button-${size} cf-button-${color}`, {
-      'cf-button-square': shape === ButtonShape.Square,
-      'cf-button-stretch': shape === ButtonShape.StretchToFit,
-      'cf-button--loading': status === ComponentStatus.Loading,
-      'cf-button--disabled': status === ComponentStatus.Disabled,
-      active,
-      [`${className}`]: className,
-    })
-  }
-}
+ButtonBase.displayName = 'ButtonBase'

@@ -1,8 +1,8 @@
 // Libraries
-import React, {Component, MouseEvent, RefObject} from 'react'
+import React, {MouseEvent, forwardRef, FunctionComponent} from 'react'
 
 // Components
-import {ButtonBase} from '../Base/ButtonBase'
+import {ButtonBase, ButtonBaseRef} from '../Base/ButtonBase'
 import {Icon} from '../../Icon/Icon'
 
 // Styles
@@ -10,16 +10,16 @@ import '../Button.scss'
 
 // Types
 import {
-  ComponentStatus,
-  ComponentColor,
-  ComponentSize,
-  ButtonShape,
   IconFont,
   ButtonType,
-  StandardClassProps,
+  ButtonShape,
+  ComponentSize,
+  ComponentColor,
+  ComponentStatus,
+  StandardFunctionProps,
 } from '../../../Types'
 
-export interface Props extends StandardClassProps {
+export interface ButtonProps extends StandardFunctionProps {
   /** Text to be displayed on button */
   text?: string
   /** Function to be called on button click */
@@ -31,131 +31,105 @@ export interface Props extends StandardClassProps {
   /** Keyboard control tab order  */
   tabIndex?: number
   /** Button color */
-  color: ComponentColor
+  color?: ComponentColor
   /** Button size */
-  size: ComponentSize
+  size?: ComponentSize
   /** Square or rectangle */
-  shape: ButtonShape
+  shape?: ButtonShape
   /** Button status state default, loading, or disabled */
-  status: ComponentStatus
+  status?: ComponentStatus
   /** Toggles button highlighted active state */
-  active: boolean
+  active?: boolean
   /** Button type of 'button' or 'submit' */
-  type: ButtonType
+  type?: ButtonType
   /** Reverse ordering of text and icon */
-  placeIconAfterText: boolean
-  /** React Ref object */
-  refObject?: RefObject<HTMLButtonElement>
+  placeIconAfterText?: boolean
 }
 
-export class Button extends Component<Props> {
-  public static readonly displayName = 'Button'
+export type ButtonRef = ButtonBaseRef
 
-  public static defaultProps = {
-    color: ComponentColor.Default,
-    size: ComponentSize.Small,
-    shape: ButtonShape.Default,
-    status: ComponentStatus.Default,
-    active: false,
-    type: ButtonType.Button,
-    testID: 'button',
-    placeIconAfterText: false,
-  }
-
-  public render() {
-    const {
-      className,
-      titleText,
-      refObject,
-      tabIndex,
-      onClick,
-      testID,
-      status,
-      active,
-      color,
-      shape,
-      text,
-      type,
-      icon,
-      style,
-      size,
+export const Button = forwardRef<ButtonRef, ButtonProps>(
+  (
+    {
       id,
-    } = this.props
-
+      text,
+      style,
+      onClick,
+      tabIndex,
+      titleText,
+      className,
+      icon = '',
+      active = false,
+      testID = 'button',
+      type = ButtonType.Button,
+      size = ComponentSize.Small,
+      placeIconAfterText = false,
+      shape = ButtonShape.Default,
+      color = ComponentColor.Default,
+      status = ComponentStatus.Default,
+    },
+    ref
+  ) => {
     if (!icon && !text) {
       throw new Error('Button requires either "text" or "icon" props')
     }
 
     return (
       <ButtonBase
-        className={className}
-        titleText={titleText || text}
-        refObject={refObject}
-        tabIndex={!!tabIndex ? tabIndex : 0}
-        onClick={onClick}
-        testID={testID}
-        status={status}
-        active={active}
+        id={id}
+        ref={ref}
+        size={size}
+        type={type}
         color={color}
         shape={shape}
-        type={type}
-        size={size}
         style={style}
-        id={id}
+        active={active}
+        status={status}
+        testID={testID}
+        onClick={onClick}
+        className={className}
+        titleText={titleText || text}
+        tabIndex={!!tabIndex ? tabIndex : 0}
       >
-        {this.iconAndText}
-        {this.statusIndicator}
+        <IconAndText
+          placeIconAfterText={placeIconAfterText}
+          text={text}
+          icon={icon}
+          shape={shape}
+        />
+        {status === ComponentStatus.Loading && (
+          <div className={`cf-button-spinner cf-button-spinner--${size}`} />
+        )}
       </ButtonBase>
     )
   }
+)
 
-  private get iconAndText(): JSX.Element {
-    const {placeIconAfterText} = this.props
+Button.displayName = 'Button'
 
-    if (placeIconAfterText) {
-      return (
-        <>
-          {this.text}
-          {this.icon}
-        </>
-      )
-    }
+const IconAndText: FunctionComponent<{
+  text?: string
+  icon: IconFont | string
+  shape: ButtonShape
+  placeIconAfterText: boolean
+}> = ({text, icon, shape, placeIconAfterText}) => {
+  const showText = shape === ButtonShape.Square || !!text
+  const iconEl = <Icon glyph={icon} className="cf-button-icon" />
+  const textEl = <span className="cf-button--label">{text}</span>
 
+  if (placeIconAfterText) {
     return (
       <>
-        {this.icon}
-        {this.text}
+        {showText && textEl}
+        {!!icon && iconEl}
       </>
     )
   }
 
-  private get icon(): JSX.Element | undefined {
-    const {icon} = this.props
-
-    if (icon) {
-      return <Icon glyph={icon} className="cf-button-icon" />
-    }
-
-    return
-  }
-
-  private get text(): JSX.Element | undefined {
-    const {text, shape} = this.props
-
-    if (shape === ButtonShape.Square || !text) {
-      return
-    }
-
-    return <span className="cf-button--label">{text}</span>
-  }
-
-  private get statusIndicator(): JSX.Element | undefined {
-    const {status, size} = this.props
-
-    if (status === ComponentStatus.Loading) {
-      return <div className={`cf-button-spinner cf-button-spinner--${size}`} />
-    }
-
-    return
-  }
+  return (
+    <>
+      {!!icon && iconEl}
+      {showText && textEl}
+    </>
+  )
 }
