@@ -1,16 +1,16 @@
 // Libraries
-import React, {Component, MouseEvent, RefObject} from 'react'
+import React, {forwardRef, MouseEvent} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {SquareButton} from './SquareButton'
+import {SquareButton, SquareButtonRef} from './SquareButton'
 
 // Styles
 import './DismissButton.scss'
 
 // Types
 import {
-  StandardClassProps,
+  StandardFunctionProps,
   ComponentStatus,
   ComponentColor,
   IconFont,
@@ -18,54 +18,48 @@ import {
   ButtonType,
 } from '../../../Types'
 
-interface Props extends StandardClassProps {
+export interface DismissButtonProps extends StandardFunctionProps {
   /** Function to be called on button click */
   onClick?: (e?: MouseEvent<HTMLButtonElement>) => void
   /** Button color */
-  color: ComponentColor
+  color?: ComponentColor
   /** Button size */
-  size: ComponentSize
+  size?: ComponentSize
   /** Button status state default, loading, or disabled */
-  status: ComponentStatus
+  status?: ComponentStatus
   /** Toggles button highlighted active state */
-  active: boolean
+  active?: boolean
   /** Button type of 'button' or 'submit' */
-  type: ButtonType
-  /** React Ref object */
-  refObject?: RefObject<HTMLButtonElement>
+  type?: ButtonType
 }
 
-export class DismissButton extends Component<Props> {
-  public static readonly displayName = 'DismissButton'
+export type DismissButtonRef = SquareButtonRef
 
-  public static defaultProps = {
-    color: ComponentColor.Primary,
-    testID: 'dismiss-button',
-    size: ComponentSize.ExtraSmall,
-    status: ComponentStatus.Default,
-    active: false,
-    type: ButtonType.Button,
-  }
-
-  public render() {
-    const {
-      testID,
+export const DismissButton = forwardRef<DismissButtonRef, DismissButtonProps>(
+  (
+    {
       id,
-      color,
-      onClick,
-      size,
-      status,
-      active,
-      type,
       style,
-      refObject,
-    } = this.props
+      onClick,
+      className,
+      active = false,
+      type = ButtonType.Button,
+      testID = 'dismiss-button',
+      color = ComponentColor.Primary,
+      size = ComponentSize.ExtraSmall,
+      status = ComponentStatus.Default,
+    },
+    ref
+  ) => {
+    const SquareButtonClass = classnames('cf-dismiss-button', {
+      [`${className}`]: className,
+    })
 
     return (
       <SquareButton
         icon={IconFont.Remove}
         color={color}
-        className={this.className}
+        className={SquareButtonClass}
         testID={testID}
         id={id}
         size={size}
@@ -74,16 +68,10 @@ export class DismissButton extends Component<Props> {
         active={active}
         type={type}
         style={style}
-        refObject={refObject}
+        ref={ref}
       />
     )
   }
+)
 
-  private get className(): string {
-    const {className} = this.props
-
-    return classnames('cf-dismiss-button', {
-      [`${className}`]: className,
-    })
-  }
-}
+DismissButton.displayName = 'DismissButton'
