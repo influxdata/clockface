@@ -17,7 +17,7 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
 import {Popover, PopoverRef} from '..'
-import {ReflessPopover, ReflessPopoverRef} from '../Composed/ReflessPopover'
+import {ReflessPopover} from '../Composed/ReflessPopover'
 import {
   QuestionMarkTooltip,
   QuestionMarkTooltipRef,
@@ -154,58 +154,40 @@ popoverStories.add(
 
 composedPopoverStories.add(
   'ReflessPopover',
-  () => {
-    const popoverRef = createRef<ReflessPopoverRef>()
-
-    const logRef = (): void => {
-      /* eslint-disable */
-      console.log(popoverRef.current)
-      /* eslint-enable */
-    }
-
-    return (
-      <div className="story--example">
-        <ReflessPopover
-          ref={popoverRef}
-          visible={boolean('visible', false)}
-          enableDefaultStyles={boolean('enableDefaultStyles', false)}
-          contents={onHide => (
-            <>
-              PopoverContents
-              <Popover.DismissButton onClick={onHide} />
-            </>
-          )}
-          className={text('className', '')}
-          style={object('style', exampleStyle)}
-          triggerStyle={object('triggerStyle', {display: 'inline-block'})}
-          caretSize={number('caretSize', 8)}
-          distanceFromTrigger={number('distanceFromTrigger', 4)}
-          showEvent={PopoverInteraction.Click}
-          hideEvent={PopoverInteraction.Click}
-          position={
-            PopoverPosition[
-              select('position', mapEnumKeys(PopoverPosition), 'Below')
-            ]
-          }
-          color={
-            ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Primary')
-            ]
-          }
-          type={
-            PopoverType[select('type', mapEnumKeys(PopoverType), 'Outline')]
-          }
-        >
-          <div className="mockComponent mockButton">
-            Popover Trigger Element
-          </div>
-        </ReflessPopover>
-        <div className="story--test-buttons">
-          <button onClick={logRef}>Log Ref</button>
-        </div>
-      </div>
-    )
-  },
+  () => (
+    <div className="story--example">
+      <ReflessPopover
+        visible={boolean('visible', false)}
+        enableDefaultStyles={boolean('enableDefaultStyles', false)}
+        contents={onHide => (
+          <>
+            PopoverContents
+            <Popover.DismissButton onClick={onHide} />
+          </>
+        )}
+        className={text('className', '')}
+        style={object('style', exampleStyle)}
+        triggerStyle={object('triggerStyle', {display: 'inline-block'})}
+        caretSize={number('caretSize', 8)}
+        distanceFromTrigger={number('distanceFromTrigger', 4)}
+        showEvent={PopoverInteraction.Click}
+        hideEvent={PopoverInteraction.Click}
+        position={
+          PopoverPosition[
+            select('position', mapEnumKeys(PopoverPosition), 'Below')
+          ]
+        }
+        color={
+          ComponentColor[
+            select('color', mapEnumKeys(ComponentColor), 'Primary')
+          ]
+        }
+        type={PopoverType[select('type', mapEnumKeys(PopoverType), 'Outline')]}
+      >
+        <div className="mockComponent mockButton">Popover Trigger Element</div>
+      </ReflessPopover>
+    </div>
+  ),
   {
     readme: {
       content: marked(ReflessPopoverReadme),
