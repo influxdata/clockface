@@ -1,5 +1,5 @@
 // Libraries
-import React, {forwardRef, MouseEvent, RefObject} from 'react'
+import React, {forwardRef, MouseEvent} from 'react'
 import classnames from 'classnames'
 
 // Components
@@ -18,7 +18,7 @@ import {
   ButtonType,
 } from '../../../Types'
 
-interface DismissButtonProps extends StandardFunctionProps {
+export interface DismissButtonProps extends StandardFunctionProps {
   /** Function to be called on button click */
   onClick?: (e?: MouseEvent<HTMLButtonElement>) => void
   /** Button color */
@@ -31,8 +31,6 @@ interface DismissButtonProps extends StandardFunctionProps {
   active?: boolean
   /** Button type of 'button' or 'submit' */
   type?: ButtonType
-  /** React Ref object */
-  refObject?: RefObject<HTMLButtonElement>
 }
 
 export type DismissButtonRef = SquareButtonRef
@@ -43,7 +41,6 @@ export const DismissButton = forwardRef<DismissButtonRef, DismissButtonProps>(
       id,
       style,
       onClick,
-      refObject,
       className,
       active = false,
       type = ButtonType.Button,
@@ -71,7 +68,7 @@ export const DismissButton = forwardRef<DismissButtonRef, DismissButtonProps>(
         active={active}
         type={type}
         style={style}
-        ref={refObject}
+        ref={ref}
       />
     )
   }

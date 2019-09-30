@@ -12,7 +12,7 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 import {Button, ButtonRef} from '../Composed/Button'
 import {SquareButton, SquareButtonRef} from '../Composed/SquareButton'
 import {ConfirmationButton} from '../Composed/ConfirmationButton'
-import {DismissButton} from '../Composed/DismissButton'
+import {DismissButton, DismissButtonRef} from '../Composed/DismissButton'
 import {ButtonBase, ButtonBaseRef} from '../Base/ButtonBase'
 
 // Types
@@ -200,37 +200,51 @@ buttonComposedStories.add(
 
 buttonComposedStories.add(
   'DismissButton',
-  () => (
-    <div className="story--example">
-      <div
-        style={{
-          width: '200px',
-          height: '100px',
-          position: 'relative',
-          backgroundColor: '#292933',
-        }}
-      >
-        <DismissButton
-          onClick={() => alert('Clicked!')}
-          color={
-            ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Danger')
-            ]
-          }
-          size={
-            ComponentSize[
-              select('size', mapEnumKeys(ComponentSize), 'ExtraSmall')
-            ]
-          }
-          status={
-            ComponentStatus[
-              select('status', mapEnumKeys(ComponentStatus), 'Default')
-            ]
-          }
-        />
+  () => {
+    const buttonRef = createRef<DismissButtonRef>()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(buttonRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <div
+          style={{
+            width: '200px',
+            height: '100px',
+            position: 'relative',
+            backgroundColor: '#292933',
+          }}
+        >
+          <DismissButton
+            ref={buttonRef}
+            onClick={() => alert('Clicked!')}
+            color={
+              ComponentColor[
+                select('color', mapEnumKeys(ComponentColor), 'Danger')
+              ]
+            }
+            size={
+              ComponentSize[
+                select('size', mapEnumKeys(ComponentSize), 'ExtraSmall')
+              ]
+            }
+            status={
+              ComponentStatus[
+                select('status', mapEnumKeys(ComponentStatus), 'Default')
+              ]
+            }
+          />
+        </div>
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
       </div>
-    </div>
-  ),
+    )
+  },
   {
     readme: {
       content: marked(DismissButtonReadme),
