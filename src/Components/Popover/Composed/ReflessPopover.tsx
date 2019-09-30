@@ -1,74 +1,66 @@
 // Libraries
-import React, {PureComponent, createRef, CSSProperties} from 'react'
+import React, {FunctionComponent, createRef, CSSProperties} from 'react'
 
 // Components
-import {Popover, PopoverProps, PopoverDefaultProps} from '../Base/Popover'
+import {PopoverProps} from '../Base/Popover'
+import {Popover} from '../'
 
 // Types
 import {Omit} from '../../../Types'
 
-interface Props extends Omit<PopoverProps, 'triggerRef'> {
+interface ReflessPopoverProps extends Omit<PopoverProps, 'triggerRef'> {
   /** Useful for correcting any layout disruptions */
   triggerStyle?: CSSProperties
 }
 
-export class ReflessPopover extends PureComponent<Props> {
-  public static readonly displayName = 'ReflessPopover'
+export const ReflessPopover: FunctionComponent<ReflessPopoverProps> = ({
+  id,
+  type,
+  color,
+  style,
+  visible,
+  contents,
+  disabled,
+  position,
+  children,
+  hideEvent,
+  showEvent,
+  caretSize,
+  triggerStyle,
+  distanceFromTrigger,
+  enableDefaultStyles,
+  testID = 'refless-popover',
+}) => {
+  const triggerRef = createRef<HTMLDivElement>()
 
-  public static defaultProps = {
-    ...PopoverDefaultProps,
-    testID: 'refless-popover',
-  }
-
-  private triggerRef = createRef<HTMLDivElement>()
-
-  public render() {
-    const {
-      distanceFromTrigger,
-      enableDefaultStyles,
-      triggerStyle,
-      caretSize,
-      showEvent,
-      hideEvent,
-      children,
-      position,
-      disabled,
-      contents,
-      visible,
-      testID,
-      style,
-      color,
-      type,
-      id,
-    } = this.props
-
-    return (
-      <>
-        <div
-          className="cf-refless-popover--trigger"
-          ref={this.triggerRef}
-          style={triggerStyle}
-        >
-          {children}
-        </div>
-        <Popover
-          distanceFromTrigger={distanceFromTrigger}
-          enableDefaultStyles={enableDefaultStyles}
-          triggerRef={this.triggerRef}
-          caretSize={caretSize}
-          showEvent={showEvent}
-          hideEvent={hideEvent}
-          disabled={disabled}
-          position={position}
-          contents={contents}
-          visible={visible}
-          testID={testID}
-          style={style}
-          color={color}
-          type={type}
-          id={id}
-        />
-      </>
-    )
-  }
+  return (
+    <>
+      <div
+        className="cf-refless-popover--trigger"
+        ref={triggerRef}
+        style={triggerStyle}
+      >
+        {children}
+      </div>
+      <Popover
+        distanceFromTrigger={distanceFromTrigger}
+        enableDefaultStyles={enableDefaultStyles}
+        triggerRef={triggerRef}
+        caretSize={caretSize}
+        showEvent={showEvent}
+        hideEvent={hideEvent}
+        disabled={disabled}
+        position={position}
+        contents={contents}
+        visible={visible}
+        testID={testID}
+        style={style}
+        color={color}
+        type={type}
+        id={id}
+      />
+    </>
+  )
 }
+
+ReflessPopover.displayName = 'ReflessPopover'
