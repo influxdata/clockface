@@ -1,11 +1,11 @@
 // Libraries
-import React, {Component, CSSProperties} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardClassProps {
+interface ColorPickerSwatchProps extends StandardFunctionProps {
   /** Color name */
   name: string
   /** Color hex value */
@@ -20,45 +20,28 @@ interface Props extends StandardClassProps {
   swatchesCount: number
 }
 
-export class ColorPickerSwatch extends Component<Props> {
-  public static readonly displayName = 'ColorPickerSwatch'
+export type ColorPickerSwatchRef = HTMLDivElement
 
-  public static defaultProps = {
-    testID: 'color-picker',
-  }
-
-  render() {
-    const {name, hex, testID, id} = this.props
-
-    return (
-      <div
-        className={this.className}
-        title={name}
-        onClick={this.handleClick}
-        data-testid={`${testID}--swatch`}
-        style={this.style}
-        id={id}
-      >
-        <span style={{backgroundColor: hex}} />
-      </div>
-    )
-  }
-
-  private get style(): CSSProperties {
-    const {swatchesPerRow, style} = this.props
-    const size = `${100 / swatchesPerRow}%`
-
-    return {
-      width: size,
-      paddingBottom: size,
-      ...style,
-    }
-  }
-
-  private get className(): string {
-    const {className, index, swatchesCount, swatchesPerRow} = this.props
-
-    return classnames('cf-color-picker--swatch', {
+export const ColorPickerSwatch = forwardRef<
+  ColorPickerSwatchRef,
+  ColorPickerSwatchProps
+>(
+  (
+    {
+      id,
+      hex,
+      name,
+      index,
+      style,
+      onClick,
+      className,
+      swatchesCount,
+      swatchesPerRow,
+      testID = 'color-picker',
+    },
+    ref
+  ) => {
+    const colorPickerSwatchClass = classnames('cf-color-picker--swatch', {
       [`${className}`]: className,
       'cf-color-picker--swatch__top-left': index === 0,
       'cf-color-picker--swatch__top-right': index === swatchesPerRow - 1,
@@ -66,9 +49,33 @@ export class ColorPickerSwatch extends Component<Props> {
         index === swatchesCount - swatchesPerRow,
       'cf-color-picker--swatch__bottom-right': index === swatchesCount - 1,
     })
-  }
 
-  private handleClick = (): void => {
-    this.props.onClick(this.props.hex)
+    const size = `${100 / swatchesPerRow}%`
+
+    const colorPickerSwatchStyle = {
+      width: size,
+      paddingBottom: size,
+      ...style,
+    }
+
+    const handleClick = (): void => {
+      onClick(hex)
+    }
+
+    return (
+      <div
+        className={colorPickerSwatchClass}
+        title={name}
+        onClick={handleClick}
+        data-testid={`${testID}--swatch`}
+        style={colorPickerSwatchStyle}
+        ref={ref}
+        id={id}
+      >
+        <span style={{backgroundColor: hex}} />
+      </div>
+    )
   }
-}
+)
+
+ColorPickerSwatch.displayName = 'ColorPickerSwatch'
