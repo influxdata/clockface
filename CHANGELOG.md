@@ -1,7 +1,8 @@
 # Changelog
 
-### 0.0.33
+### 0.0.33 (Unreleased)
 
+- [#318](https://github.com/influxdata/clockface/pull/318): Convert `Table` component family to `FunctionComponent` and wrap with `forwardRef`
 - [#314](https://github.com/influxdata/clockface/pull/314): Convert `Grid` component family to `FunctionComponent` and wrap with `forwardRef`
 - [#314](https://github.com/influxdata/clockface/pull/314): Convert `Radio` component family to `FunctionComponent` and wrap with `forwardRef`
 - [#314](https://github.com/influxdata/clockface/pull/314): Convert `SelectableCard` component to `FunctionComponent` and wrap with `forwardRef`
@@ -18,7 +19,7 @@
 - [#313](https://github.com/influxdata/clockface/pull/313): [Breaking] Remove `widthPixels` prop from `Input` in favor of `style`
 - [#313](https://github.com/influxdata/clockface/pull/313): [Breaking] Remove `widthPixels` prop from `TextArea` in favor of `style`
 
-### 0.0.32 (Unreleased)
+### 0.0.32
 
 - [#281](https://github.com/influxdata/clockface/pull/281): Revert absolute path changes
 
