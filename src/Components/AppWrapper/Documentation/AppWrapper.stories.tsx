@@ -31,7 +31,7 @@ layoutStories.add(
 
     const logRef = (): void => {
       /* eslint-disable */
-      console.log('alertRef:', appWrapperRef.current)
+      console.log(appWrapperRef.current)
       /* eslint-enable */
     }
 
