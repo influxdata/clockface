@@ -15,6 +15,7 @@ import {ColorPickerSwatch, ColorPickerSwatchRef} from './ColorPickerSwatch'
 import {FormElementError} from '../Form/FormElementError'
 
 // Constants
+import {HEX_CHARACTERS} from '../../Constants'
 import {influxColors, HEX_CODE_CHAR_LENGTH} from '../../Constants/colors'
 
 // Types
@@ -78,30 +79,10 @@ export const ColorPicker = forwardRef<ColorPickerSwatchRef, ColorPickerProps>(
     }
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
-      const acceptedChars = [
-        '#',
-        'a',
-        'b',
-        'c',
-        'd',
-        'e',
-        'f',
-        '0',
-        '1',
-        '2',
-        '3',
-        '4',
-        '5',
-        '6',
-        '7',
-        '8',
-        '9',
-      ]
-
       const trimmedValue = e.target.value.trim()
       const cleanedValue = trimmedValue
         .split('')
-        .filter(char => acceptedChars.includes(char.toLowerCase()))
+        .filter(char => HEX_CHARACTERS.includes(char.toLowerCase()))
         .join('')
 
       const newErrorMessage = validateHexCode(cleanedValue)
