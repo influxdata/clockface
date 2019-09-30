@@ -20,7 +20,7 @@ import {jsxDecorator} from 'storybook-addon-jsx'
 import {
   Dropdown,
   DropdownRef,
-  DropdownButton,
+  DropdownButtonRef,
   DropdownDividerRef,
   DropdownItemRef,
   DropdownItemEmptyRef,
@@ -112,41 +112,55 @@ dropdownFamilyStories.add(
 
 dropdownFamilyStories.add(
   'DropdownButton',
-  () => (
-    <div className="story--example">
-      <div style={{width: '200px'}}>
-        <DropdownButton
-          onClick={() => {}}
-          status={
-            ComponentStatus[
-              select('status', mapEnumKeys(ComponentStatus), 'Default')
-            ]
-          }
-          color={
-            ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Primary')
-            ]
-          }
-          size={
-            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-          }
-          active={boolean('active', false)}
-          icon={
-            IconFont[
-              select(
-                'icon',
-                {None: 'none', ...mapEnumKeys(IconFont)},
-                'BarChart'
-              )
-            ]
-          }
-          title={text('title', 'Hover Title Text')}
-        >
-          {text('children (text)', 'I am a button!')}
-        </DropdownButton>
+  () => {
+    const dropdownButtonRef: RefObject<DropdownButtonRef> = createRef()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(dropdownButtonRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+        <div style={{width: '200px'}}>
+          <Dropdown.Button
+            ref={dropdownButtonRef}
+            onClick={() => {}}
+            status={
+              ComponentStatus[
+                select('status', mapEnumKeys(ComponentStatus), 'Default')
+              ]
+            }
+            color={
+              ComponentColor[
+                select('color', mapEnumKeys(ComponentColor), 'Primary')
+              ]
+            }
+            size={
+              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+            }
+            active={boolean('active', false)}
+            icon={
+              IconFont[
+                select(
+                  'icon',
+                  {None: 'none', ...mapEnumKeys(IconFont)},
+                  'BarChart'
+                )
+              ]
+            }
+            title={text('title', 'Hover Title Text')}
+          >
+            {text('children (text)', 'I am a button!')}
+          </Dropdown.Button>
+        </div>
       </div>
-    </div>
-  ),
+    )
+  },
   {
     readme: {
       content: marked(DropdownButtonReadme),
