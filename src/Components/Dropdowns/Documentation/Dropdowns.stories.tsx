@@ -28,7 +28,9 @@ import {
   DropdownMenuRef,
   DropdownMenuContentsRef,
   SelectDropdown,
+  SelectDropdownRef,
   MultiSelectDropdown,
+  MultiSelectDropdownRef,
 } from '../'
 
 // Types
@@ -515,73 +517,87 @@ dropdownFamilyStories.add(
   }
 )
 
-const selectDropdownOptions = [
-  '---Vegetables',
-  'Celery',
-  'Carrot',
-  'Potato',
-  'Corn',
-  'Bok Choy',
-  '---Fruits',
-  'Apple',
-  'Peach',
-  'Tomato',
-  'Grape',
-  'Orange',
-  'Lemon',
-  'Watermelon',
-  'Kiwi',
-  'Banana',
-  'Strawberry',
-]
-
-const selectDropdownSelectedOption = 'Celery'
-
 dropdownComposedStories.add(
   'SelectDropdown',
-  () => (
-    <div className="story--example">
-      <SelectDropdown
-        style={object('style', defaultDropdownStyle)}
-        menuMaxHeight={number('menuMaxHeight', 250)}
-        dropUp={boolean('dropUp', false)}
-        menuTheme={
-          DropdownMenuTheme[
-            select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Sapphire')
-          ]
-        }
-        onSelect={option => {
-          alert(option)
-        }}
-        buttonStatus={
-          ComponentStatus[
-            select('buttonStatus', mapEnumKeys(ComponentStatus), 'Default')
-          ]
-        }
-        buttonColor={
-          ComponentColor[
-            select('buttonColor', mapEnumKeys(ComponentColor), 'Primary')
-          ]
-        }
-        buttonSize={
-          ComponentSize[
-            select('buttonSize', mapEnumKeys(ComponentSize), 'Small')
-          ]
-        }
-        buttonIcon={
-          IconFont[
-            select(
-              'buttonIcon',
-              {None: 'none', ...mapEnumKeys(IconFont)},
-              'BarChart'
-            )
-          ]
-        }
-        selectedOption={text('selectedOption', selectDropdownSelectedOption)}
-        options={array('options', selectDropdownOptions)}
-      />
-    </div>
-  ),
+  () => {
+    const selectDropdownOptions = [
+      '---Vegetables',
+      'Celery',
+      'Carrot',
+      'Potato',
+      'Corn',
+      'Bok Choy',
+      '---Fruits',
+      'Apple',
+      'Peach',
+      'Tomato',
+      'Grape',
+      'Orange',
+      'Lemon',
+      'Watermelon',
+      'Kiwi',
+      'Banana',
+      'Strawberry',
+    ]
+
+    const selectDropdownSelectedOption = 'Celery'
+
+    const selectDropdownRef: RefObject<SelectDropdownRef> = createRef()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(selectDropdownRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <SelectDropdown
+          ref={selectDropdownRef}
+          style={object('style', defaultDropdownStyle)}
+          menuMaxHeight={number('menuMaxHeight', 250)}
+          dropUp={boolean('dropUp', false)}
+          menuTheme={
+            DropdownMenuTheme[
+              select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Sapphire')
+            ]
+          }
+          onSelect={option => {
+            alert(option)
+          }}
+          buttonStatus={
+            ComponentStatus[
+              select('buttonStatus', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
+          buttonColor={
+            ComponentColor[
+              select('buttonColor', mapEnumKeys(ComponentColor), 'Primary')
+            ]
+          }
+          buttonSize={
+            ComponentSize[
+              select('buttonSize', mapEnumKeys(ComponentSize), 'Small')
+            ]
+          }
+          buttonIcon={
+            IconFont[
+              select(
+                'buttonIcon',
+                {None: 'none', ...mapEnumKeys(IconFont)},
+                'BarChart'
+              )
+            ]
+          }
+          selectedOption={text('selectedOption', selectDropdownSelectedOption)}
+          options={array('options', selectDropdownOptions)}
+        />
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(SelectDropdownReadme),
@@ -589,66 +605,82 @@ dropdownComposedStories.add(
   }
 )
 
-const defaultMultiSelectOptions = [
-  'Celery',
-  'Carrot',
-  'Potato',
-  '---',
-  'Onion',
-  'Tomato',
-  'Spinach',
-]
-const defaultMultiSelectSelectedOptions = ['Celery', 'Onion']
-
 dropdownComposedStories.add(
   'MultiSelectdropdown',
-  () => (
-    <div className="story--example">
-      <MultiSelectDropdown
-        style={object('style', defaultDropdownStyle)}
-        menuMaxHeight={number('menuMaxHeight', 250)}
-        dropUp={boolean('dropUp', false)}
-        menuTheme={
-          DropdownMenuTheme[
-            select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Sapphire')
-          ]
-        }
-        onSelect={option => {
-          alert(option)
-        }}
-        buttonStatus={
-          ComponentStatus[
-            select('buttonStatus', mapEnumKeys(ComponentStatus), 'Default')
-          ]
-        }
-        buttonColor={
-          ComponentColor[
-            select('buttonColor', mapEnumKeys(ComponentColor), 'Primary')
-          ]
-        }
-        buttonSize={
-          ComponentSize[
-            select('buttonSize', mapEnumKeys(ComponentSize), 'Small')
-          ]
-        }
-        buttonIcon={
-          IconFont[
-            select(
-              'buttonIcon',
-              {None: 'none', ...mapEnumKeys(IconFont)},
-              'BarChart'
-            )
-          ]
-        }
-        emptyText={text('emptyText', 'None selected')}
-        selectedOptions={array(
-          'selectedOptions',
-          defaultMultiSelectSelectedOptions
-        )}
-        options={array('options', defaultMultiSelectOptions)}
-      />
-    </div>
-  ),
+  () => {
+    const defaultMultiSelectOptions = [
+      'Celery',
+      'Carrot',
+      'Potato',
+      '---',
+      'Onion',
+      'Tomato',
+      'Spinach',
+    ]
+    const defaultMultiSelectSelectedOptions = ['Celery', 'Onion']
+
+    const multiSelectDropdownRef: RefObject<
+      MultiSelectDropdownRef
+    > = createRef()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(multiSelectDropdownRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <MultiSelectDropdown
+          ref={multiSelectDropdownRef}
+          style={object('style', defaultDropdownStyle)}
+          menuMaxHeight={number('menuMaxHeight', 250)}
+          dropUp={boolean('dropUp', false)}
+          menuTheme={
+            DropdownMenuTheme[
+              select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Sapphire')
+            ]
+          }
+          onSelect={option => {
+            alert(option)
+          }}
+          buttonStatus={
+            ComponentStatus[
+              select('buttonStatus', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
+          buttonColor={
+            ComponentColor[
+              select('buttonColor', mapEnumKeys(ComponentColor), 'Primary')
+            ]
+          }
+          buttonSize={
+            ComponentSize[
+              select('buttonSize', mapEnumKeys(ComponentSize), 'Small')
+            ]
+          }
+          buttonIcon={
+            IconFont[
+              select(
+                'buttonIcon',
+                {None: 'none', ...mapEnumKeys(IconFont)},
+                'BarChart'
+              )
+            ]
+          }
+          emptyText={text('emptyText', 'None selected')}
+          selectedOptions={array(
+            'selectedOptions',
+            defaultMultiSelectSelectedOptions
+          )}
+          options={array('options', defaultMultiSelectOptions)}
+        />
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(MultiSelectDropdownReadme),
