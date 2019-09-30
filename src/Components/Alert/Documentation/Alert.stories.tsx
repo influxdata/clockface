@@ -28,7 +28,7 @@ alertStories.add(
 
     const logRef = (): void => {
       /* eslint-disable */
-      console.log('alertRef:', alertRef.current)
+      console.log(alertRef.current)
       /* eslint-enable */
     }
 

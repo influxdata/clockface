@@ -16,24 +16,27 @@ interface Props extends Omit<PopoverProps, 'triggerRef'> {
 export type ReflessPopoverRef = HTMLSpanElement
 
 export const ReflessPopover = forwardRef<ReflessPopoverRef, Props>(
-  ({
-    id,
-    type,
-    color,
-    style,
-    visible,
-    contents,
-    disabled,
-    position,
-    children,
-    hideEvent,
-    showEvent,
-    caretSize,
-    triggerStyle,
-    distanceFromTrigger,
-    enableDefaultStyles,
-    testID = 'refless-popover',
-  }, ref) => {
+  (
+    {
+      id,
+      type,
+      color,
+      style,
+      visible,
+      contents,
+      disabled,
+      position,
+      children,
+      hideEvent,
+      showEvent,
+      caretSize,
+      triggerStyle,
+      distanceFromTrigger,
+      enableDefaultStyles,
+      testID = 'refless-popover',
+    },
+    ref
+  ) => {
     const triggerRef = createRef<HTMLDivElement>()
 
     return (
@@ -67,4 +70,4 @@ export const ReflessPopover = forwardRef<ReflessPopoverRef, Props>(
   }
 )
 
-ReflessPopover.displayName = 'ReflessPopover';
+ReflessPopover.displayName = 'ReflessPopover'

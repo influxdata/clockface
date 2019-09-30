@@ -32,67 +32,72 @@ export type QuestionMarkTooltipRef = HTMLSpanElement
 export const QuestionMarkTooltip = forwardRef<
   QuestionMarkTooltipRef,
   QuestionMarkTooltipProps
->(({
-  id,
-  style,
-  className,
-  tooltipStyle,
-  diameter = 18,
-  tooltipContents,
-  color = ComponentColor.Primary,
-  testID = 'question-mark-tooltip',
-}, ref) => {
-  const triggerRef = createRef<HTMLDivElement>()
+>(
+  (
+    {
+      id,
+      style,
+      className,
+      tooltipStyle,
+      diameter = 18,
+      tooltipContents,
+      color = ComponentColor.Primary,
+      testID = 'question-mark-tooltip',
+    },
+    ref
+  ) => {
+    const triggerRef = createRef<HTMLDivElement>()
 
-  const circleClassName = classnames('cf-question-mark-tooltip', {
-    [`${className}`]: className,
-    [`cf-question-mark-tooltip__${color}`]: color,
-  })
+    const circleClassName = classnames('cf-question-mark-tooltip', {
+      [`${className}`]: className,
+      [`cf-question-mark-tooltip__${color}`]: color,
+    })
 
-  const circleStyle = {
-    width: `${diameter}px`,
-    height: `${diameter}px`,
-    lineHeight: `${diameter}px`,
-    fontSize: `${Math.ceil(diameter * 0.75)}px`,
-    ...style,
+    const circleStyle = {
+      width: `${diameter}px`,
+      height: `${diameter}px`,
+      lineHeight: `${diameter}px`,
+      fontSize: `${Math.ceil(diameter * 0.75)}px`,
+      ...style,
+    }
+
+    const handleActivateCircle = () => {
+      triggerRef.current &&
+        triggerRef.current.classList.add('cf-question-mark-tooltip__active')
+    }
+
+    const handleDeactivateCircle = () => {
+      triggerRef.current &&
+        triggerRef.current.classList.remove('cf-question-mark-tooltip__active')
+    }
+
+    return (
+      <span ref={ref}>
+        <div
+          className={circleClassName}
+          ref={triggerRef}
+          style={circleStyle}
+          data-testid={testID}
+        >
+          ?
+        </div>
+        <Popover
+          distanceFromTrigger={8}
+          triggerRef={triggerRef}
+          showEvent={PopoverInteraction.Hover}
+          hideEvent={PopoverInteraction.Hover}
+          onShow={handleActivateCircle}
+          onHide={handleDeactivateCircle}
+          contents={() => <>{tooltipContents}</>}
+          testID={`${testID}-tooltip`}
+          style={tooltipStyle}
+          color={color}
+          type={PopoverType.Outline}
+          id={id}
+        />
+      </span>
+    )
   }
-
-  const handleActivateCircle = () => {
-    triggerRef.current &&
-      triggerRef.current.classList.add('cf-question-mark-tooltip__active')
-  }
-
-  const handleDeactivateCircle = () => {
-    triggerRef.current &&
-      triggerRef.current.classList.remove('cf-question-mark-tooltip__active')
-  }
-
-  return (
-    <span ref={ref}>
-      <div
-        className={circleClassName}
-        ref={triggerRef}
-        style={circleStyle}
-        data-testid={testID}
-      >
-        ?
-      </div>
-      <Popover
-        distanceFromTrigger={8}
-        triggerRef={triggerRef}
-        showEvent={PopoverInteraction.Hover}
-        hideEvent={PopoverInteraction.Hover}
-        onShow={handleActivateCircle}
-        onHide={handleDeactivateCircle}
-        contents={() => <>{tooltipContents}</>}
-        testID={`${testID}-tooltip`}
-        style={tooltipStyle}
-        color={color}
-        type={PopoverType.Outline}
-        id={id}
-      />
-    </span>
-  )
-})
+)
 
 QuestionMarkTooltip.displayName = 'QuestionMarkTooltip'
