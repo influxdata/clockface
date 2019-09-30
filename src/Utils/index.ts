@@ -15,7 +15,7 @@ import {
   ComponentStatus,
 } from '../Types'
 
-export const validateHexCode = (colorHex: string): string | null => {
+export const validateHexCode = (colorHex: string): string => {
   const isValidLength = colorHex.length === HEX_CODE_CHAR_LENGTH
   const beginsWithHash = colorHex.substring(0, 1) === '#'
 
@@ -34,7 +34,7 @@ export const validateHexCode = (colorHex: string): string | null => {
   }
 
   if (!errorMessage.length) {
-    return null
+    return ''
   }
 
   return errorMessage.join(', ')
