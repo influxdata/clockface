@@ -1,21 +1,21 @@
 // Libraries
-import * as React from 'react'
+import React, {createRef} from 'react'
 import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, boolean, text, number, select} from '@storybook/addon-knobs'
 import {jsxDecorator} from 'storybook-addon-jsx'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
-import {AppWrapper} from '../AppWrapper/AppWrapper'
-import {NavMenu} from '../NavMenu/NavMenu'
-import {Page} from '../Page/Page'
-import {Icon} from '../Icon/Icon'
+import {AppWrapper, AppWrapperRef} from '../AppWrapper'
+import {NavMenu} from '../../NavMenu/NavMenu'
+import {Page} from '../../Page/Page'
+import {Icon} from '../../Icon/Icon'
 
 // Types
-import {IconFont, ComponentSize} from '../../Types'
+import {IconFont, ComponentSize} from '../../../Types'
 
 // Notes
 import AppWrapperReadme from './AppWrapper.md'
@@ -26,9 +26,22 @@ const layoutStories = storiesOf('Layout|AppWrapper', module)
 
 layoutStories.add(
   'AppWrapper',
-  () => (
-    <div className="mockPage">
-      <AppWrapper presentationMode={boolean('presentationMode', false)}>
+  () => {
+    const appWrapperRef = createRef<AppWrapperRef>()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log('alertRef:', appWrapperRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+    <div className="mockPageWrapper">
+      <div className="story--test-buttons relative">
+        <button onClick={logRef}>Log Ref</button>
+      </div>
+      <div className="mockPage">
+      <AppWrapper ref={appWrapperRef} presentationMode={boolean('presentationMode', false)}>
         <NavMenu>
           <NavMenu.Item
             titleLink={className => (
@@ -325,8 +338,9 @@ layoutStories.add(
           </Page.Contents>
         </Page>
       </AppWrapper>
+      </div>
     </div>
-  ),
+  )},
   {
     readme: {
       content: marked(AppWrapperReadme),
