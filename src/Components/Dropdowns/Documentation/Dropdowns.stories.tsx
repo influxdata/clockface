@@ -11,20 +11,23 @@ import {
   select,
   boolean,
   array,
+  object,
 } from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {Dropdown} from '../Dropdown'
-import {DropdownButton} from '../DropdownButton'
-import {DropdownDivider} from '../DropdownDivider'
-import {DropdownItem} from '../DropdownItem'
-import {DropdownItemEmpty} from '../DropdownItemEmpty'
-import {DropdownLinkItem} from '../DropdownLinkItem'
-import {DropdownMenu} from '../DropdownMenu'
-import {SelectDropdown} from '../Composed/SelectDropdown'
-import {MultiSelectDropdown} from '../Composed/MultiSelectDropdown'
+import {
+  Dropdown,
+  DropdownButton,
+  DropdownDivider,
+  DropdownItem,
+  DropdownItemEmpty,
+  DropdownLinkItem,
+  DropdownMenu,
+  SelectDropdown,
+  MultiSelectDropdown,
+} from '../'
 
 // Types
 import {
@@ -37,15 +40,15 @@ import {
 } from '../../../Types'
 
 // Notes
-import DropdownReadme from './Family/Dropdown.md'
-import DropdownButtonReadme from './Family/DropdownButton.md'
-import DropdownDividerReadme from './Family/DropdownDivider.md'
-import DropdownItemReadme from './Family/DropdownItem.md'
-import DropdownItemEmptyReadme from './Family/DropdownItemEmpty.md'
-import DropdownLinkItemReadme from './Family/DropdownLinkItem.md'
-import DropdownMenuReadme from './Family/DropdownMenu.md'
-import SelectDropdownReadme from './Composed/SelectDropdown.md'
-import MultiSelectDropdownReadme from './Composed/MultiSelectDropdown.md'
+import DropdownReadme from './Dropdown.md'
+import DropdownButtonReadme from './DropdownButton.md'
+import DropdownDividerReadme from './DropdownDivider.md'
+import DropdownItemReadme from './DropdownItem.md'
+import DropdownItemEmptyReadme from './DropdownItemEmpty.md'
+import DropdownLinkItemReadme from './DropdownLinkItem.md'
+import DropdownMenuReadme from './DropdownMenu.md'
+import SelectDropdownReadme from './SelectDropdown.md'
+import MultiSelectDropdownReadme from './MultiSelectDropdown.md'
 
 const dropdownFamilyStories = storiesOf('Components|Dropdowns/Family', module)
   .addDecorator(withKnobs)
@@ -58,12 +61,14 @@ const dropdownComposedStories = storiesOf(
   .addDecorator(withKnobs)
   .addDecorator(jsxDecorator)
 
+const defaultDropdownStyle = {width: '250px'}
+
 dropdownFamilyStories.add(
   'Dropdown',
   () => (
     <div className="story--example">
       <Dropdown
-        widthPixels={number('widthPixels', 200)}
+        style={object('style', defaultDropdownStyle)}
         button={(active, onClick) => (
           <DropdownButton active={active} onClick={onClick}>
             {text('Button Text', 'I am a Dropdown!')}
@@ -442,7 +447,7 @@ dropdownComposedStories.add(
   () => (
     <div className="story--example">
       <SelectDropdown
-        widthPixels={number('widthPixels', 200)}
+        style={object('style', defaultDropdownStyle)}
         menuMaxHeight={number('menuMaxHeight', 250)}
         dropUp={boolean('dropUp', false)}
         menuTheme={
@@ -505,7 +510,7 @@ dropdownComposedStories.add(
   () => (
     <div className="story--example">
       <MultiSelectDropdown
-        widthPixels={number('widthPixels', 200)}
+        style={object('style', defaultDropdownStyle)}
         menuMaxHeight={number('menuMaxHeight', 250)}
         dropUp={boolean('dropUp', false)}
         menuTheme={

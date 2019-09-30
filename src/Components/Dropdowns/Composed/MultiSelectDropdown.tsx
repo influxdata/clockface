@@ -1,12 +1,15 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {MouseEvent, forwardRef} from 'react'
 
 // Components
-import {Dropdown} from '../Family/Dropdown'
-import {DropdownButton} from '../Family/DropdownButton'
-import {DropdownMenu} from '../Family/DropdownMenu'
-import {DropdownItem} from '../Family/DropdownItem'
-import {DropdownDivider} from '../Family/DropdownDivider'
+import {
+  Dropdown,
+  DropdownRef,
+  DropdownButton,
+  DropdownMenu,
+  DropdownItem,
+  DropdownDivider,
+} from '../'
 
 // Constants
 import {DROPDOWN_DIVIDER_SHORTCODE} from '../../../Constants'
@@ -19,10 +22,10 @@ import {
   DropdownMenuTheme,
   DropdownItemType,
   ComponentStatus,
-  StandardClassProps,
+  StandardFunctionProps,
 } from '../../../Types'
 
-interface Props extends StandardClassProps {
+export interface MultiSelectDropdownProps extends StandardFunctionProps {
   /** Text to render in button as currently selected option */
   selectedOptions: string[]
   /** List of options to render in menu */
@@ -30,117 +33,109 @@ interface Props extends StandardClassProps {
   /** Fires when an option is clicked, used to update state */
   onSelect: (option: string) => void
   /** Text to display when no options are selected */
-  emptyText: string
-  /** Pixel width of Dropdown */
-  widthPixels?: number
+  emptyText?: string
   /** Optional status of button */
-  buttonStatus: ComponentStatus
+  buttonStatus?: ComponentStatus
   /** Optional color of button */
-  buttonColor: ComponentColor
+  buttonColor?: ComponentColor
   /** Optional size of button */
-  buttonSize: ComponentSize
+  buttonSize?: ComponentSize
   /** Optional icon to render in button */
   buttonIcon?: IconFont
   /** Optional theme of menu */
-  menuTheme: DropdownMenuTheme
+  menuTheme?: DropdownMenuTheme
   /** Optional maximum pixel height menu */
   menuMaxHeight?: number
   /** Renders the menu element above the button instead of below */
   dropUp?: boolean
 }
 
-export class MultiSelectDropdown extends Component<Props> {
-  public static readonly displayName = 'MultiSelectDropdown'
+export type MultiSelectDropdownRef = DropdownRef
 
-  public static defaultProps = {
-    emptyText: 'None selected',
-    buttonStatus: ComponentStatus.Default,
-    buttonColor: ComponentColor.Default,
-    buttonSize: ComponentSize.Small,
-    menuTheme: DropdownMenuTheme.Sapphire,
-    testID: 'multiselect-dropdown',
-    dropUp: false,
-  }
-
-  public render() {
-    const {
+export const MultiSelectDropdown = forwardRef<
+  MultiSelectDropdownRef,
+  MultiSelectDropdownProps
+>(
+  (
+    {
       id,
-      style,
-      dropUp,
-      testID,
-      menuTheme,
+      style = {width: '100%'},
+      dropUp = false,
+      testID = 'multiselect-dropdown',
+      options,
+      onSelect,
+      emptyText = 'None selected',
+      menuTheme = DropdownMenuTheme.Sapphire,
       className,
-      buttonSize,
+      buttonSize = ComponentSize.Small,
       buttonIcon,
-      buttonColor,
-      widthPixels,
-      buttonStatus,
+      buttonColor = ComponentColor.Default,
+      buttonStatus = ComponentStatus.Default,
       menuMaxHeight,
-    } = this.props
+      selectedOptions,
+    },
+    ref
+  ) => {
+    const buttonText = selectedOptions.length
+      ? selectedOptions.join(', ')
+      : emptyText
+
+    const button = (
+      active: boolean,
+      onClick: (e: MouseEvent<HTMLElement>) => void
+    ) => (
+      <DropdownButton
+        active={active}
+        onClick={onClick}
+        status={buttonStatus}
+        color={buttonColor}
+        size={buttonSize}
+        icon={buttonIcon}
+      >
+        {buttonText}
+      </DropdownButton>
+    )
+
+    const menu = () => (
+      <DropdownMenu theme={menuTheme} maxHeight={menuMaxHeight}>
+        {options.map(o => {
+          if (o === DROPDOWN_DIVIDER_SHORTCODE) {
+            return <DropdownDivider key={o} />
+          }
+
+          if (o.includes(DROPDOWN_DIVIDER_SHORTCODE)) {
+            const dividerText = o.replace(DROPDOWN_DIVIDER_SHORTCODE, '')
+            return <DropdownDivider key={o} text={dividerText} />
+          }
+
+          return (
+            <DropdownItem
+              key={o}
+              type={DropdownItemType.Checkbox}
+              value={o}
+              selected={selectedOptions.includes(o)}
+              onClick={onSelect}
+            >
+              {o}
+            </DropdownItem>
+          )
+        })}
+      </DropdownMenu>
+    )
 
     return (
-      <Dropdown
+      <Dropdown.Dropdown
         id={id}
-        testID={testID}
-        className={className}
+        ref={ref}
         style={style}
-        widthPixels={widthPixels}
+        testID={testID}
         dropUp={dropUp}
-        button={(active, onClick) => (
-          <DropdownButton
-            active={active}
-            onClick={onClick}
-            status={buttonStatus}
-            color={buttonColor}
-            size={buttonSize}
-            icon={buttonIcon}
-          >
-            {this.buttonText}
-          </DropdownButton>
-        )}
-        menu={() => (
-          <DropdownMenu theme={menuTheme} maxHeight={menuMaxHeight}>
-            {this.menuOptions}
-          </DropdownMenu>
-        )}
+        className={className}
+        button={button}
+        menu={menu}
       />
     )
   }
+)
 
-  private get buttonText(): string {
-    const {selectedOptions, emptyText} = this.props
-
-    if (selectedOptions.length) {
-      return selectedOptions.join(', ')
-    }
-
-    return emptyText
-  }
-
-  private get menuOptions(): JSX.Element[] {
-    const {options, selectedOptions, onSelect} = this.props
-
-    return options.map(o => {
-      if (o === DROPDOWN_DIVIDER_SHORTCODE) {
-        return <DropdownDivider key={o} />
-      }
-
-      if (o.includes(DROPDOWN_DIVIDER_SHORTCODE)) {
-        const dividerText = o.replace(DROPDOWN_DIVIDER_SHORTCODE, '')
-        return <DropdownDivider key={o} text={dividerText} />
-      }
-
-      return (
-        <DropdownItem
-          key={o}
-          type={DropdownItemType.Checkbox}
-          value={o}
-          selected={selectedOptions.includes(o)}
-          onClick={onSelect}
-        >
-          {o}
-        </DropdownItem>
-      )
-    })
-  }
-}
+MultiSelectDropdown.displayName = 'MultiSelectDropdown'
