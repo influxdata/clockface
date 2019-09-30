@@ -1,5 +1,5 @@
 // Libraries
-import * as React from 'react'
+import React, {createRef, RefObject} from 'react'
 import marked from 'marked'
 
 // Storybook
@@ -19,12 +19,14 @@ import {jsxDecorator} from 'storybook-addon-jsx'
 // Components
 import {
   Dropdown,
+  DropdownRef,
   DropdownButton,
-  DropdownDivider,
-  DropdownItem,
-  DropdownItemEmpty,
-  DropdownLinkItem,
-  DropdownMenu,
+  DropdownDividerRef,
+  DropdownItemRef,
+  DropdownItemEmptyRef,
+  DropdownLinkItemRef,
+  DropdownMenuRef,
+  DropdownMenuContentsRef,
   SelectDropdown,
   MultiSelectDropdown,
 } from '../'
@@ -65,26 +67,40 @@ const defaultDropdownStyle = {width: '250px'}
 
 dropdownFamilyStories.add(
   'Dropdown',
-  () => (
-    <div className="story--example">
-      <Dropdown
-        style={object('style', defaultDropdownStyle)}
-        button={(active, onClick) => (
-          <DropdownButton active={active} onClick={onClick}>
-            {text('Button Text', 'I am a Dropdown!')}
-          </DropdownButton>
-        )}
-        menu={onCollapse => (
-          <DropdownMenu onCollapse={onCollapse}>
-            <div className="mockComponent dropdownContents">
-              <span>Menu Contents</span>
-            </div>
-          </DropdownMenu>
-        )}
-        dropUp={boolean('dropUp', false)}
-      />
-    </div>
-  ),
+  () => {
+    const dropdownRef: RefObject<DropdownRef> = createRef()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(dropdownRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <Dropdown.Dropdown
+          ref={dropdownRef}
+          style={object('style', defaultDropdownStyle)}
+          button={(active, onClick) => (
+            <Dropdown.Button active={active} onClick={onClick}>
+              {text('Button Text', 'I am a Dropdown!')}
+            </Dropdown.Button>
+          )}
+          menu={onCollapse => (
+            <Dropdown.Menu onCollapse={onCollapse}>
+              <div className="mockComponent dropdownContents">
+                <span>Menu Contents</span>
+              </div>
+            </Dropdown.Menu>
+          )}
+          dropUp={boolean('dropUp', false)}
+        />
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Refs</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(DropdownReadme),
@@ -138,11 +154,27 @@ dropdownFamilyStories.add(
 
 dropdownFamilyStories.add(
   'DropdownDivider',
-  () => (
-    <div className="story--example">
-      <DropdownDivider text={text('Divider Text', 'Divider Text')} />
-    </div>
-  ),
+  () => {
+    const dropdownDividerRef: RefObject<DropdownDividerRef> = createRef()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(dropdownDividerRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <Dropdown.Divider
+          text={text('Divider Text', 'Divider Text')}
+          ref={dropdownDividerRef}
+        />
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(DropdownDividerReadme),
@@ -152,25 +184,39 @@ dropdownFamilyStories.add(
 
 dropdownFamilyStories.add(
   'DropdownItem',
-  () => (
-    <div className="story--example">
-      <DropdownItem
-        value={text('value', 'value')}
-        selected={boolean('selected', false)}
-        wrapText={boolean('wrapText', false)}
-        onClick={value => {
-          alert(`onClick returned: ${value}`)
-        }}
-        type={
-          DropdownItemType[
-            select('type', mapEnumKeys(DropdownItemType), 'None')
-          ]
-        }
-      >
-        {text('children (text)', 'I am a dropdown item!')}
-      </DropdownItem>
-    </div>
-  ),
+  () => {
+    const dropdownItemRef: RefObject<DropdownItemRef> = createRef()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(dropdownItemRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <Dropdown.Item
+          ref={dropdownItemRef}
+          value={text('value', 'value')}
+          selected={boolean('selected', false)}
+          wrapText={boolean('wrapText', false)}
+          onClick={value => {
+            alert(`onClick returned: ${value}`)
+          }}
+          type={
+            DropdownItemType[
+              select('type', mapEnumKeys(DropdownItemType), 'None')
+            ]
+          }
+        >
+          {text('children (text)', 'I am a dropdown item!')}
+        </Dropdown.Item>
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(DropdownItemReadme),
@@ -180,13 +226,29 @@ dropdownFamilyStories.add(
 
 dropdownFamilyStories.add(
   'DropdownItemEmpty',
-  () => (
-    <div className="story--example">
-      <DropdownItemEmpty wrapText={boolean('wrapText', false)}>
-        {text('children (text)', 'No items to display')}
-      </DropdownItemEmpty>
-    </div>
-  ),
+  () => {
+    const dropdownItemEmptyRef: RefObject<DropdownItemEmptyRef> = createRef()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(dropdownItemEmptyRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <Dropdown.ItemEmpty
+          wrapText={boolean('wrapText', false)}
+          ref={dropdownItemEmptyRef}
+        >
+          {text('children (text)', 'No items to display')}
+        </Dropdown.ItemEmpty>
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(DropdownItemEmptyReadme),
@@ -196,26 +258,40 @@ dropdownFamilyStories.add(
 
 dropdownFamilyStories.add(
   'DropdownLinkItem',
-  () => (
-    <div className="story--example">
-      <DropdownLinkItem
-        selected={boolean('selected', false)}
-        wrapText={boolean('wrapText', false)}
-        type={
-          DropdownItemType[
-            select('type', mapEnumKeys(DropdownItemType), 'None')
-          ]
-        }
-      >
-        <a
-          href={text('link target', 'http://www.influxdata.com')}
-          target="_blank"
+  () => {
+    const dropdownLinkItemRef: RefObject<DropdownLinkItemRef> = createRef()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(dropdownLinkItemRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <Dropdown.LinkItem
+          ref={dropdownLinkItemRef}
+          selected={boolean('selected', false)}
+          wrapText={boolean('wrapText', false)}
+          type={
+            DropdownItemType[
+              select('type', mapEnumKeys(DropdownItemType), 'None')
+            ]
+          }
         >
-          {text('link text', 'Example Link')}
-        </a>
-      </DropdownLinkItem>
-    </div>
-  ),
+          <a
+            href={text('link target', 'http://www.influxdata.com')}
+            target="_blank"
+          >
+            {text('link text', 'Example Link')}
+          </a>
+        </Dropdown.LinkItem>
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(DropdownLinkItemReadme),
@@ -225,194 +301,213 @@ dropdownFamilyStories.add(
 
 dropdownFamilyStories.add(
   'DropdownMenu',
-  () => (
-    <div className="story--example">
-      <div style={{width: '200px'}}>
-        <DropdownMenu
-          theme={
-            DropdownMenuTheme[
-              select('theme', mapEnumKeys(DropdownMenuTheme), 'Sapphire')
-            ]
-          }
-          maxHeight={number('maxHeight', 250)}
-          noScrollX={boolean('noScrollX', true)}
-          noScrollY={boolean('noScrollY', false)}
-          scrollToSelected={boolean('scrollToSelected', true)}
-        >
-          <DropdownDivider text="Domestic Fruits" />
-          <DropdownItem
-            wrapText={boolean('item wrapText', false)}
-            value="Banana"
-            selected={false}
-            type={
-              DropdownItemType[
-                select('item type', mapEnumKeys(DropdownItemType), 'None')
+  () => {
+    const dropdownMenuRef: RefObject<DropdownMenuRef> = createRef()
+    const dropdownMenuContentsRef: RefObject<
+      DropdownMenuContentsRef
+    > = createRef()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log('DropdownMenu', dropdownMenuRef.current)
+      console.log('DropdownMenuContents', dropdownMenuContentsRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <div style={{width: '200px'}}>
+          <Dropdown.Menu
+            ref={dropdownMenuRef}
+            contentsRef={dropdownMenuContentsRef}
+            theme={
+              DropdownMenuTheme[
+                select('theme', mapEnumKeys(DropdownMenuTheme), 'Sapphire')
               ]
             }
+            maxHeight={number('maxHeight', 250)}
+            noScrollX={boolean('noScrollX', true)}
+            noScrollY={boolean('noScrollY', false)}
+            scrollToSelected={boolean('scrollToSelected', true)}
           >
-            Banana
-          </DropdownItem>
-          <DropdownItem
-            wrapText={boolean('item wrapText', false)}
-            value="Kiwi"
-            selected={true}
-            type={
-              DropdownItemType[
-                select('item type', mapEnumKeys(DropdownItemType), 'None')
-              ]
-            }
-          >
-            Kiwi
-          </DropdownItem>
-          <DropdownItem
-            wrapText={boolean('item wrapText', false)}
-            value="Lemon"
-            selected={false}
-            type={
-              DropdownItemType[
-                select('item type', mapEnumKeys(DropdownItemType), 'None')
-              ]
-            }
-          >
-            Lemon
-          </DropdownItem>
-          <DropdownItem
-            wrapText={boolean('item wrapText', false)}
-            value="custom"
-            selected={false}
-            type={
-              DropdownItemType[
-                select('item type', mapEnumKeys(DropdownItemType), 'None')
-              ]
-            }
-          >
-            This dropdown item text is much longer to test text wrapping
-          </DropdownItem>
-          <DropdownItem
-            wrapText={boolean('item wrapText', false)}
-            value="Apple"
-            selected={false}
-            type={
-              DropdownItemType[
-                select('item type', mapEnumKeys(DropdownItemType), 'None')
-              ]
-            }
-          >
-            Apple
-          </DropdownItem>
-          <DropdownItem
-            wrapText={boolean('item wrapText', false)}
-            value="Orange"
-            selected={false}
-            type={
-              DropdownItemType[
-                select('item type', mapEnumKeys(DropdownItemType), 'None')
-              ]
-            }
-          >
-            Orange
-          </DropdownItem>
-          <DropdownItem
-            wrapText={boolean('item wrapText', false)}
-            value="Grapefruit"
-            selected={false}
-            type={
-              DropdownItemType[
-                select('item type', mapEnumKeys(DropdownItemType), 'None')
-              ]
-            }
-          >
-            Grapefruit
-          </DropdownItem>
-          <DropdownItem
-            wrapText={boolean('item wrapText', false)}
-            value="Pear"
-            selected={false}
-            type={
-              DropdownItemType[
-                select('item type', mapEnumKeys(DropdownItemType), 'None')
-              ]
-            }
-          >
-            Pear
-          </DropdownItem>
-          <DropdownDivider text="Imported Fruits" />
-          <DropdownItem
-            wrapText={boolean('item wrapText', false)}
-            value="Dragonfruit"
-            selected={false}
-            type={
-              DropdownItemType[
-                select('item type', mapEnumKeys(DropdownItemType), 'None')
-              ]
-            }
-          >
-            Dragonfruit
-          </DropdownItem>
-          <DropdownItem
-            wrapText={boolean('item wrapText', false)}
-            value="Yuzu"
-            selected={false}
-            type={
-              DropdownItemType[
-                select('item type', mapEnumKeys(DropdownItemType), 'None')
-              ]
-            }
-          >
-            Yuzu
-          </DropdownItem>
-          <DropdownItem
-            wrapText={boolean('item wrapText', false)}
-            value="Mango"
-            selected={false}
-            type={
-              DropdownItemType[
-                select('item type', mapEnumKeys(DropdownItemType), 'None')
-              ]
-            }
-          >
-            Mango
-          </DropdownItem>
-          <DropdownItem
-            wrapText={boolean('item wrapText', false)}
-            value="Lychee"
-            selected={false}
-            type={
-              DropdownItemType[
-                select('item type', mapEnumKeys(DropdownItemType), 'None')
-              ]
-            }
-          >
-            Lychee
-          </DropdownItem>
-          <DropdownItem
-            wrapText={boolean('item wrapText', false)}
-            value="Passionfruit"
-            selected={false}
-            type={
-              DropdownItemType[
-                select('item type', mapEnumKeys(DropdownItemType), 'None')
-              ]
-            }
-          >
-            Passionfruit
-          </DropdownItem>
-          <DropdownItem
-            wrapText={boolean('item wrapText', false)}
-            value="Guava"
-            selected={false}
-            type={
-              DropdownItemType[
-                select('item type', mapEnumKeys(DropdownItemType), 'None')
-              ]
-            }
-          >
-            Guava
-          </DropdownItem>
-        </DropdownMenu>
+            <Dropdown.Divider text="Domestic Fruits" />
+            <Dropdown.Item
+              wrapText={boolean('item wrapText', false)}
+              value="Banana"
+              selected={false}
+              type={
+                DropdownItemType[
+                  select('item type', mapEnumKeys(DropdownItemType), 'None')
+                ]
+              }
+            >
+              Banana
+            </Dropdown.Item>
+            <Dropdown.Item
+              wrapText={boolean('item wrapText', false)}
+              value="Kiwi"
+              selected={true}
+              type={
+                DropdownItemType[
+                  select('item type', mapEnumKeys(DropdownItemType), 'None')
+                ]
+              }
+            >
+              Kiwi
+            </Dropdown.Item>
+            <Dropdown.Item
+              wrapText={boolean('item wrapText', false)}
+              value="Lemon"
+              selected={false}
+              type={
+                DropdownItemType[
+                  select('item type', mapEnumKeys(DropdownItemType), 'None')
+                ]
+              }
+            >
+              Lemon
+            </Dropdown.Item>
+            <Dropdown.Item
+              wrapText={boolean('item wrapText', false)}
+              value="custom"
+              selected={false}
+              type={
+                DropdownItemType[
+                  select('item type', mapEnumKeys(DropdownItemType), 'None')
+                ]
+              }
+            >
+              This dropdown item text is much longer to test text wrapping
+            </Dropdown.Item>
+            <Dropdown.Item
+              wrapText={boolean('item wrapText', false)}
+              value="Apple"
+              selected={false}
+              type={
+                DropdownItemType[
+                  select('item type', mapEnumKeys(DropdownItemType), 'None')
+                ]
+              }
+            >
+              Apple
+            </Dropdown.Item>
+            <Dropdown.Item
+              wrapText={boolean('item wrapText', false)}
+              value="Orange"
+              selected={false}
+              type={
+                DropdownItemType[
+                  select('item type', mapEnumKeys(DropdownItemType), 'None')
+                ]
+              }
+            >
+              Orange
+            </Dropdown.Item>
+            <Dropdown.Item
+              wrapText={boolean('item wrapText', false)}
+              value="Grapefruit"
+              selected={false}
+              type={
+                DropdownItemType[
+                  select('item type', mapEnumKeys(DropdownItemType), 'None')
+                ]
+              }
+            >
+              Grapefruit
+            </Dropdown.Item>
+            <Dropdown.Item
+              wrapText={boolean('item wrapText', false)}
+              value="Pear"
+              selected={false}
+              type={
+                DropdownItemType[
+                  select('item type', mapEnumKeys(DropdownItemType), 'None')
+                ]
+              }
+            >
+              Pear
+            </Dropdown.Item>
+            <Dropdown.Divider text="Imported Fruits" />
+            <Dropdown.Item
+              wrapText={boolean('item wrapText', false)}
+              value="Dragonfruit"
+              selected={false}
+              type={
+                DropdownItemType[
+                  select('item type', mapEnumKeys(DropdownItemType), 'None')
+                ]
+              }
+            >
+              Dragonfruit
+            </Dropdown.Item>
+            <Dropdown.Item
+              wrapText={boolean('item wrapText', false)}
+              value="Yuzu"
+              selected={false}
+              type={
+                DropdownItemType[
+                  select('item type', mapEnumKeys(DropdownItemType), 'None')
+                ]
+              }
+            >
+              Yuzu
+            </Dropdown.Item>
+            <Dropdown.Item
+              wrapText={boolean('item wrapText', false)}
+              value="Mango"
+              selected={false}
+              type={
+                DropdownItemType[
+                  select('item type', mapEnumKeys(DropdownItemType), 'None')
+                ]
+              }
+            >
+              Mango
+            </Dropdown.Item>
+            <Dropdown.Item
+              wrapText={boolean('item wrapText', false)}
+              value="Lychee"
+              selected={false}
+              type={
+                DropdownItemType[
+                  select('item type', mapEnumKeys(DropdownItemType), 'None')
+                ]
+              }
+            >
+              Lychee
+            </Dropdown.Item>
+            <Dropdown.Item
+              wrapText={boolean('item wrapText', false)}
+              value="Passionfruit"
+              selected={false}
+              type={
+                DropdownItemType[
+                  select('item type', mapEnumKeys(DropdownItemType), 'None')
+                ]
+              }
+            >
+              Passionfruit
+            </Dropdown.Item>
+            <Dropdown.Item
+              wrapText={boolean('item wrapText', false)}
+              value="Guava"
+              selected={false}
+              type={
+                DropdownItemType[
+                  select('item type', mapEnumKeys(DropdownItemType), 'None')
+                ]
+              }
+            >
+              Guava
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </div>
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
       </div>
-    </div>
-  ),
+    )
+  },
   {
     readme: {
       content: marked(DropdownMenuReadme),
