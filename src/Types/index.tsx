@@ -107,6 +107,11 @@ export enum DropdownMenuTheme {
   Onyx = 'onyx',
 }
 
+export interface DropdownMenuScrollbarColors {
+  thumbStartColor: InfluxColors
+  thumbStopColor: InfluxColors
+}
+
 export enum DropdownItemType {
   Dot = 'dot',
   Checkbox = 'checkbox',

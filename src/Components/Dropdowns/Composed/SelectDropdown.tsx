@@ -1,12 +1,8 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef, MouseEvent} from 'react'
 
 // Components
-import {Dropdown} from '../Family/Dropdown'
-import {DropdownButton} from '../Family/DropdownButton'
-import {DropdownMenu} from '../Family/DropdownMenu'
-import {DropdownItem} from '../Family/DropdownItem'
-import {DropdownDivider} from '../Family/DropdownDivider'
+import {Dropdown, DropdownRef} from '../'
 
 // Constants
 import {DROPDOWN_DIVIDER_SHORTCODE} from '../../../Constants'
@@ -19,120 +15,117 @@ import {
   DropdownMenuTheme,
   DropdownItemType,
   ComponentStatus,
-  StandardClassProps,
+  StandardFunctionProps,
 } from '../../../Types'
 
-interface Props extends StandardClassProps {
+export interface SelectDropdownProps extends StandardFunctionProps {
   /** Text to render in button as currently selected option */
   selectedOption: string
   /** List of options to render in menu */
   options: string[]
   /** Fires when an option is clicked, used to update state */
   onSelect: (option: string) => void
-  /** Pixel width of Dropdown */
-  widthPixels?: number
   /** Optional status of button */
-  buttonStatus: ComponentStatus
+  buttonStatus?: ComponentStatus
   /** Optional color of button */
-  buttonColor: ComponentColor
+  buttonColor?: ComponentColor
   /** Optional size of button */
-  buttonSize: ComponentSize
+  buttonSize?: ComponentSize
   /** Optional icon to render in button */
   buttonIcon?: IconFont
   /** Optional theme of menu */
-  menuTheme: DropdownMenuTheme
+  menuTheme?: DropdownMenuTheme
   /** Optional maximum pixel height menu */
   menuMaxHeight?: number
   /** Renders the menu element above the button instead of below */
   dropUp?: boolean
 }
 
-export class SelectDropdown extends Component<Props> {
-  public static readonly displayName = 'SelectDropdown'
+export type SelectDropdownRef = DropdownRef
 
-  public static defaultProps = {
-    buttonStatus: ComponentStatus.Default,
-    buttonColor: ComponentColor.Default,
-    buttonSize: ComponentSize.Small,
-    menuTheme: DropdownMenuTheme.Sapphire,
-    testID: 'select-dropdown',
-    dropUp: false,
-  }
-
-  public render() {
-    const {
+export const SelectDropdown = forwardRef<
+  SelectDropdownRef,
+  SelectDropdownProps
+>(
+  (
+    {
       id,
-      style,
-      dropUp,
-      testID,
-      menuTheme,
+      style = {width: '100%'},
+      testID = 'select-dropdown',
+      dropUp = false,
+      options,
+      onSelect,
       className,
-      buttonSize,
+      menuTheme = DropdownMenuTheme.Sapphire,
+      buttonSize = ComponentSize.Small,
       buttonIcon,
-      widthPixels,
-      buttonColor,
-      buttonStatus,
+      buttonColor = ComponentColor.Default,
+      buttonStatus = ComponentStatus.Default,
       menuMaxHeight,
       selectedOption,
-    } = this.props
+    },
+    ref
+  ) => {
+    const button = (
+      active: boolean,
+      onClick: (e: MouseEvent<HTMLElement>) => void
+    ) => (
+      <Dropdown.Button
+        active={active}
+        onClick={onClick}
+        status={buttonStatus}
+        color={buttonColor}
+        size={buttonSize}
+        icon={buttonIcon}
+      >
+        {selectedOption}
+      </Dropdown.Button>
+    )
+
+    const menu = (onCollapse: () => void) => (
+      <Dropdown.Menu
+        theme={menuTheme}
+        maxHeight={menuMaxHeight}
+        onCollapse={onCollapse}
+      >
+        {options.map(o => {
+          if (o === DROPDOWN_DIVIDER_SHORTCODE) {
+            return <Dropdown.Divider key={o} />
+          }
+
+          if (o.includes(DROPDOWN_DIVIDER_SHORTCODE)) {
+            const dividerText = o.replace(DROPDOWN_DIVIDER_SHORTCODE, '')
+            return <Dropdown.Divider key={o} text={dividerText} />
+          }
+
+          return (
+            <Dropdown.Item
+              key={o}
+              type={DropdownItemType.Dot}
+              value={o}
+              selected={o === selectedOption}
+              onClick={onSelect}
+            >
+              {o}
+            </Dropdown.Item>
+          )
+        })}
+      </Dropdown.Menu>
+    )
 
     return (
-      <Dropdown
+      <Dropdown.Dropdown
         id={id}
+        ref={ref}
         style={style}
         testID={testID}
-        widthPixels={widthPixels}
-        className={className}
         dropUp={dropUp}
-        button={(active, onClick) => (
-          <DropdownButton
-            active={active}
-            onClick={onClick}
-            status={buttonStatus}
-            color={buttonColor}
-            size={buttonSize}
-            icon={buttonIcon}
-          >
-            {selectedOption}
-          </DropdownButton>
-        )}
-        menu={onCollapse => (
-          <DropdownMenu
-            theme={menuTheme}
-            maxHeight={menuMaxHeight}
-            onCollapse={onCollapse}
-          >
-            {this.menuOptions}
-          </DropdownMenu>
-        )}
+        className={className}
+        button={button}
+        menu={menu}
       />
     )
   }
+)
 
-  private get menuOptions(): JSX.Element[] {
-    const {options, selectedOption, onSelect} = this.props
-
-    return options.map(o => {
-      if (o === DROPDOWN_DIVIDER_SHORTCODE) {
-        return <DropdownDivider key={o} />
-      }
-
-      if (o.includes(DROPDOWN_DIVIDER_SHORTCODE)) {
-        const dividerText = o.replace(DROPDOWN_DIVIDER_SHORTCODE, '')
-        return <DropdownDivider key={o} text={dividerText} />
-      }
-
-      return (
-        <DropdownItem
-          key={o}
-          type={DropdownItemType.Dot}
-          value={o}
-          selected={o === selectedOption}
-          onClick={onSelect}
-        >
-          {o}
-        </DropdownItem>
-      )
-    })
-  }
-}
+SelectDropdown.displayName = 'SelectDropdown'
