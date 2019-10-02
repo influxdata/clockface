@@ -92,5 +92,8 @@
     "typecheck": "tsc --noEmit --pretty",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "publishStorybook": "storybook-to-ghpages --out=.out"
+  },
+  "dependencies": {
+    "react-spring": "^8.0.27"
   }
 }
