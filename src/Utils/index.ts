@@ -228,3 +228,24 @@ export const getScrollbarColorsFromTheme = (
       }
   }
 }
+
+export const createPortalElement = (id: string, portalName: string): void => {
+  const portalExists = document.getElementById(id)
+  if (portalExists) {
+    return
+  }
+
+  const portalElement = document.createElement('div')
+  portalElement.setAttribute('class', `cf-${portalName}-portal`)
+  portalElement.setAttribute('id', id)
+
+  document.body.appendChild(portalElement)
+}
+
+export const destroyPortalElement = (id: string): void => {
+  const portalElement = document.getElementById(id)
+
+  if (portalElement) {
+    portalElement.remove()
+  }
+}
