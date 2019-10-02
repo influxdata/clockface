@@ -1,8 +1,9 @@
 # Changelog
 
-### 0.0.33
+### 0.0.33 (Unreleased)
 
 - [#319](https://github.com/influxdata/clockface/pull/319): Convert `ColorPicker` component family to `FunctionComponent` and wrap with `forwardRef`
+- [#318](https://github.com/influxdata/clockface/pull/318): Convert `Table` component family to `FunctionComponent` and wrap with `forwardRef`
 - [#317](https://github.com/influxdata/clockface/pull/317): Convert `Button` component family to `FunctionComponent` and wrap with `forwardRef`
 - [#316](https://github.com/influxdata/clockface/pull/316): Convert `Popover` component family to `FunctionComponent` and wrap with `forwardRef`
 - [#316](https://github.com/influxdata/clockface/pull/316): Convert `AppWrapper` component family to `FunctionComponent` and wrap with `forwardRef`
@@ -25,7 +26,7 @@
 - [#313](https://github.com/influxdata/clockface/pull/313): [Breaking] Remove `widthPixels` prop from `Input` in favor of `style` with default width
 - [#313](https://github.com/influxdata/clockface/pull/313): [Breaking] Remove `widthPixels` prop from `TextArea` in favor of `style` with default width
 
-### 0.0.32 (Unreleased)
+### 0.0.32
 
 - [#281](https://github.com/influxdata/clockface/pull/281): Revert absolute path changes
 

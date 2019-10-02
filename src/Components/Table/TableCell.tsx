@@ -1,63 +1,60 @@
 // Libraries
-import React, {Component, CSSProperties} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps, Alignment, VerticalAlignment} from '../../Types'
+import {StandardFunctionProps, Alignment, VerticalAlignment} from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface TableCellProps extends StandardFunctionProps {
   /** How many columns this cell should take up */
-  colSpan: number
+  colSpan?: number
   /** Horizontal alignment of contents */
-  horizontalAlignment: Alignment
+  horizontalAlignment?: Alignment
   /** Vertical alignment of contents */
-  verticalAlignment: VerticalAlignment
+  verticalAlignment?: VerticalAlignment
   /** Width of column, can be % or px */
   width?: string
 }
 
-export class TableCell extends Component<Props> {
-  public static readonly displayName = 'TableCell'
+export type TableCellRef = HTMLTableDataCellElement
 
-  public static defaultProps = {
-    testID: 'table-cell',
-    colSpan: 1,
-    horizontalAlignment: Alignment.Left,
-    verticalAlignment: VerticalAlignment.Middle,
-  }
+export const TableCell = forwardRef<TableCellRef, TableCellProps>(
+  (
+    {
+      id,
+      style,
+      testID = 'table-cell',
+      colSpan = 1,
+      children,
+      className,
+      verticalAlignment = VerticalAlignment.Middle,
+      horizontalAlignment = Alignment.Left,
+    },
+    ref
+  ) => {
+    const tableCellClass = classnames('cf-table--cell', {
+      [`${className}`]: className,
+    })
 
-  public render() {
-    const {testID, children, id, colSpan} = this.props
+    const tableCellStyle = {
+      textAlign: horizontalAlignment,
+      verticalAlign: verticalAlignment,
+      ...style,
+    }
 
     return (
       <td
-        className={this.className}
-        data-testid={testID}
         id={id}
+        ref={ref}
+        style={tableCellStyle}
         colSpan={colSpan}
-        style={this.style}
+        className={tableCellClass}
+        data-testid={testID}
       >
         {children}
       </td>
     )
   }
+)
 
-  private get style(): CSSProperties {
-    const {horizontalAlignment, verticalAlignment, width, style} = this.props
-
-    return {
-      textAlign: horizontalAlignment,
-      verticalAlign: verticalAlignment,
-      width,
-      ...style,
-    }
-  }
-
-  private get className(): string {
-    const {className} = this.props
-
-    return classnames('cf-table--cell', {
-      [`${className}`]: className,
-    })
-  }
-}
+TableCell.displayName = 'TableCell'

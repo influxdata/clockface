@@ -1,39 +1,32 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardClassProps {}
+export interface TableFooterProps extends StandardFunctionProps {}
 
-export class TableFooter extends Component<Props> {
-  public static readonly displayName = 'TableFooter'
+export type TableFooterRef = HTMLTableSectionElement
 
-  public static defaultProps = {
-    testID: 'table-footer',
-  }
-
-  public render() {
-    const {testID, children, id, style} = this.props
+export const TableFooter = forwardRef<TableFooterRef, TableFooterProps>(
+  ({id, style, testID = 'table-footer', children, className}, ref) => {
+    const tableFooterClass = classnames('cf-table--footer', {
+      [`${className}`]: className,
+    })
 
     return (
       <tfoot
-        className={this.className}
-        data-testid={testID}
         id={id}
+        ref={ref}
         style={style}
+        className={tableFooterClass}
+        data-testid={testID}
       >
         {children}
       </tfoot>
     )
   }
+)
 
-  private get className(): string {
-    const {className} = this.props
-
-    return classnames('cf-table--footer', {
-      [`${className}`]: className,
-    })
-  }
-}
+TableFooter.displayName = 'TableFooter'
