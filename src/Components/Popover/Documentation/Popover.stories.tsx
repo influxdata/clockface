@@ -1,5 +1,5 @@
 // Libraries
-import * as React from 'react'
+import React, {createRef} from 'react'
 import marked from 'marked'
 
 // Storybook
@@ -13,13 +13,15 @@ import {
   object,
 } from '@storybook/addon-knobs'
 import {jsxDecorator} from 'storybook-addon-jsx'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
-import {Popover} from './Base/Popover'
-import {ReflessPopover} from './Composed/ReflessPopover'
-import {QuestionMarkTooltip} from './Composed/QuestionMarkTooltip'
-import {DismissButton} from '../Button/Composed/DismissButton'
+import {Popover, PopoverRef} from '..'
+import {ReflessPopover} from '../Composed/ReflessPopover'
+import {
+  QuestionMarkTooltip,
+  QuestionMarkTooltipRef,
+} from '../Composed/QuestionMarkTooltip'
 
 // Types
 import {
@@ -27,12 +29,12 @@ import {
   PopoverInteraction,
   PopoverPosition,
   ComponentColor,
-} from '../../Types'
+} from '../../../Types'
 
 // Notes
-import PopoverReadme from './Base/Popover.md'
-import ReflessPopoverReadme from './Composed/ReflessPopover.md'
-import QuestionMarkTooltipReadme from './Composed/QuestionMarkTooltip.md'
+import PopoverReadme from './Popover.md'
+import ReflessPopoverReadme from './ReflessPopover.md'
+import QuestionMarkTooltipReadme from './QuestionMarkTooltip.md'
 
 const popoverStories = storiesOf('Atomic|Popover/Base', module)
   .addDecorator(withKnobs)
@@ -55,6 +57,20 @@ popoverStories.add(
   () => {
     const triggerRefA = React.createRef<HTMLDivElement>()
     const triggerRefB = React.createRef<HTMLDivElement>()
+    const popover1Ref = createRef<PopoverRef>()
+    const popover2Ref = createRef<PopoverRef>()
+
+    const log1Ref = (): void => {
+      /* eslint-disable */
+      console.log(popover1Ref.current)
+      /* eslint-enable */
+    }
+
+    const log2Ref = (): void => {
+      /* eslint-disable */
+      console.log(popover2Ref.current)
+      /* eslint-enable */
+    }
 
     return (
       <div className="story--example">
@@ -63,35 +79,31 @@ popoverStories.add(
           ref={triggerRefA}
           style={{marginRight: '60px'}}
         >
-          Popover Trigger Element
+          Click Me
         </div>
         <div className="mockComponent mockButton" ref={triggerRefB}>
           Hover Me
         </div>
-        <Popover
+        <Popover.Popover
+          ref={popover1Ref}
           triggerRef={triggerRefA}
           visible={boolean('visible', false)}
           enableDefaultStyles={false}
-          contents={onHide => (
+          contents={(onHide: any) => (
             <>
               PopoverContents
-              <DismissButton onClick={onHide} />
+              <Popover.DismissButton onClick={onHide} />
+              <div className="story--test-buttons">
+                <button onClick={log1Ref}>Log Ref</button>
+              </div>
             </>
           )}
           className={text('className', '')}
           style={object('style', exampleStyle)}
           caretSize={number('caretSize', 8)}
           distanceFromTrigger={number('distanceFromTrigger', 4)}
-          showEvent={
-            PopoverInteraction[
-              select('showEvent', mapEnumKeys(PopoverInteraction), 'Click')
-            ]
-          }
-          hideEvent={
-            PopoverInteraction[
-              select('hideEvent', mapEnumKeys(PopoverInteraction), 'Click')
-            ]
-          }
+          showEvent={PopoverInteraction.Click}
+          hideEvent={PopoverInteraction.Click}
           position={
             PopoverPosition[
               select('position', mapEnumKeys(PopoverPosition), 'Below')
@@ -106,16 +118,22 @@ popoverStories.add(
             PopoverType[select('type', mapEnumKeys(PopoverType), 'Outline')]
           }
         />
-        <Popover
+        <Popover.Popover
+          ref={popover2Ref}
           triggerRef={triggerRefB}
           enableDefaultStyles={boolean('enableDefaultStyles', true)}
           contents={() => (
             <>
-              I'm just a simple popover looking for my
-              <br />
-              place in this <strong>vast and beautiful</strong> world.
-              <br />
-              Will you help me?
+              <div style={{marginTop: '30px'}}>
+                I'm just a simple popover looking for my
+                <br />
+                place in this <strong>vast and beautiful</strong> world.
+                <br />
+                Will you help me?
+              </div>
+              <div className="story--test-buttons">
+                <button onClick={log2Ref}>Log Ref</button>
+              </div>
             </>
           )}
           showEvent={PopoverInteraction.Hover}
@@ -144,7 +162,7 @@ composedPopoverStories.add(
         contents={onHide => (
           <>
             PopoverContents
-            <DismissButton onClick={onHide} />
+            <Popover.DismissButton onClick={onHide} />
           </>
         )}
         className={text('className', '')}
@@ -152,16 +170,8 @@ composedPopoverStories.add(
         triggerStyle={object('triggerStyle', {display: 'inline-block'})}
         caretSize={number('caretSize', 8)}
         distanceFromTrigger={number('distanceFromTrigger', 4)}
-        showEvent={
-          PopoverInteraction[
-            select('showEvent', mapEnumKeys(PopoverInteraction), 'Click')
-          ]
-        }
-        hideEvent={
-          PopoverInteraction[
-            select('hideEvent', mapEnumKeys(PopoverInteraction), 'Click')
-          ]
-        }
+        showEvent={PopoverInteraction.Click}
+        hideEvent={PopoverInteraction.Click}
         position={
           PopoverPosition[
             select('position', mapEnumKeys(PopoverPosition), 'Below')
@@ -187,22 +197,36 @@ composedPopoverStories.add(
 
 composedPopoverStories.add(
   'QuestionMarkTooltip',
-  () => (
-    <div className="story--example">
-      <QuestionMarkTooltip
-        diameter={number('diameter', 18)}
-        tooltipContents={text('tooltipContents', 'Hello world!')}
-        className={text('className', '')}
-        style={object('style', {})}
-        tooltipStyle={object('tooltipStyle', {})}
-        color={
-          ComponentColor[
-            select('color', mapEnumKeys(ComponentColor), 'Primary')
-          ]
-        }
-      />
-    </div>
-  ),
+  () => {
+    const popoverRef = createRef<QuestionMarkTooltipRef>()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(popoverRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <QuestionMarkTooltip
+          ref={popoverRef}
+          diameter={number('diameter', 18)}
+          tooltipContents={text('tooltipContents', 'Hello world!')}
+          className={text('className', '')}
+          style={object('style', {})}
+          tooltipStyle={object('tooltipStyle', {})}
+          color={
+            ComponentColor[
+              select('color', mapEnumKeys(ComponentColor), 'Primary')
+            ]
+          }
+        />
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(QuestionMarkTooltipReadme),

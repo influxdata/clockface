@@ -13,9 +13,11 @@ import {
   ComponentSize,
   ComponentColor,
   ComponentStatus,
+  DropdownMenuTheme,
+  DropdownMenuScrollbarColors,
 } from '../Types'
 
-export const validateHexCode = (colorHex: string): string | null => {
+export const validateHexCode = (colorHex: string): string => {
   const isValidLength = colorHex.length === HEX_CODE_CHAR_LENGTH
   const beginsWithHash = colorHex.substring(0, 1) === '#'
 
@@ -34,7 +36,7 @@ export const validateHexCode = (colorHex: string): string | null => {
   }
 
   if (!errorMessage.length) {
-    return null
+    return ''
   }
 
   return errorMessage.join(', ')
@@ -197,4 +199,32 @@ export const generateRangeSliderTrackFillStyle = (
   }
 
   return
+}
+
+export const getScrollbarColorsFromTheme = (
+  theme: DropdownMenuTheme
+): DropdownMenuScrollbarColors => {
+  switch (theme) {
+    case DropdownMenuTheme.Malachite:
+      return {
+        thumbStartColor: InfluxColors.Wasabi,
+        thumbStopColor: InfluxColors.Neutrino,
+      }
+    case DropdownMenuTheme.Onyx:
+      return {
+        thumbStartColor: InfluxColors.Laser,
+        thumbStopColor: InfluxColors.Comet,
+      }
+    case DropdownMenuTheme.Amethyst:
+      return {
+        thumbStartColor: InfluxColors.Neutrino,
+        thumbStopColor: InfluxColors.Moonstone,
+      }
+    case DropdownMenuTheme.Sapphire:
+    default:
+      return {
+        thumbStartColor: InfluxColors.Neutrino,
+        thumbStopColor: InfluxColors.Hydrogen,
+      }
+  }
 }
