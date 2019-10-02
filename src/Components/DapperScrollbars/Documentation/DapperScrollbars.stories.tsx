@@ -26,7 +26,11 @@ const scrollbarStories = storiesOf('Utilities|Scrollbars', module)
   .addDecorator(jsxDecorator)
 
 const fixedDefaultStyle = {width: '300px', height: '180px'}
-const autoSizeDefaultStyle = {width: '300px', maxWidth: '300px', maxHeight: '300px'}
+const autoSizeDefaultStyle = {
+  width: '300px',
+  maxWidth: '300px',
+  maxHeight: '300px',
+}
 const contentStyle = {width: '600px'}
 const exampleTextDefault = `Try modifying this text to see how scrolling is affected! Distillery raclette swag, actually selfies cred neutra put a bird on it mlkshk hexagon fam. Iceland man braid echo park succulents flexitarian occupy. Organic health goth activated charcoal helvetica poke beard swag tacos drinking vinegar pop-up kickstarter wolf normcore lyft chillwave. Microdosing migas blog intelligentsia air plant typewriter, echo park mumblecore kombucha yuccie wayfarers poutine actually locavore distillery.
 Blue bottle four loko kogi woke activated charcoal forage tote bag sartorial. Hammock normcore lo-fi tbh trust fund man bun post-ironic locavore DIY plaid wolf tumeric. Poutine cred microdosing, typewriter jianbing marfa vegan. Kombucha four dollar toast organic bespoke af cred freegan meditation biodiesel tilde chia. Tofu microdosing retro lo-fi, DIY raclette kitsch. 
