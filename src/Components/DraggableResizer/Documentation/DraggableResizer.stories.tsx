@@ -7,13 +7,13 @@ import {storiesOf} from '@storybook/react'
 import {jsxDecorator} from 'storybook-addon-jsx'
 import {withKnobs, select, number} from '@storybook/addon-knobs'
 import {withState} from '@dump247/storybook-state'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Types
-import {Orientation, Gradients} from '../../Types'
+import {Orientation, Gradients} from '../../../Types'
 
 // Components
-import {DraggableResizer} from './DraggableResizer'
+import {DraggableResizer} from '../'
 
 // Notes
 import DraggableResizerReadme from './DraggableResizer.md'
