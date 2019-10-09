@@ -1,5 +1,5 @@
 // Libraries
-import * as React from 'react'
+import React, {createRef} from 'react'
 import marked from 'marked'
 
 // Storybook
@@ -13,7 +13,7 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 import {Orientation, Gradients} from '../../../Types'
 
 // Components
-import {DraggableResizer} from '../'
+import {DraggableResizer, DraggableResizerPanelRef} from '../'
 
 // Notes
 import DraggableResizerReadme from './DraggableResizer.md'
@@ -98,13 +98,25 @@ draggableResizerStories.add(
 
 draggableResizerStories.add(
   'DraggableResizerPanel',
-  () => (
+  () => {
+    const draggableResizerPanelRef = createRef<DraggableResizerPanelRef>()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(draggableResizerPanelRef.current)
+      /* eslint-enable */
+    }
+
+    return (
     <div className="story--example">
-      <DraggableResizer.Panel minSizePixels={50} sizePercent={0.5}>
+      <DraggableResizer.Panel ref={draggableResizerPanelRef} minSizePixels={50} sizePercent={0.5}>
         <div className="mockCard" />
       </DraggableResizer.Panel>
+      <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
     </div>
-  ),
+  )},
   {
     readme: {
       content: marked(DraggableResizerPanelReadme),

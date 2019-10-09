@@ -1,5 +1,5 @@
 // Libraries
-import React, {FunctionComponent, createRef, useState} from 'react'
+import React, {FunctionComponent, createRef, useState, useEffect} from 'react'
 import classnames from 'classnames'
 
 // Components
@@ -41,6 +41,13 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
 }) => {
   const [dragIndex, setDragIndex] = useState<number>(NULL_DRAG)
 
+  useEffect(() => {
+    if (dragIndex > -1) {
+      window.addEventListener('mousemove', handleDrag)
+      window.addEventListener('mouseup', handleStopDrag)
+    }
+  }, [dragIndex])
+
   const panelsCount = React.Children.count(children)
 
   const isDragging = dragIndex !== NULL_DRAG
@@ -54,16 +61,26 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
     [`${className}`]: className,
   })
 
-  const handleStartDrag = (dragIndex: number): void => {
-    setDragIndex(dragIndex)
+  const calculatePanelSize = (panelIndex: number): number => {
+    const prevPanelIndex = panelIndex - 1
 
-    window.addEventListener('mousemove', handleDrag)
-    window.addEventListener('mouseup', handleStopDrag)
+    if (panelIndex === 0) {
+      return handlePositions[panelIndex]
+    }
+
+    if (panelIndex === handlePositions.length) {
+      return 1 - handlePositions[prevPanelIndex]
+    }
+
+    return handlePositions[panelIndex] - handlePositions[prevPanelIndex]
+  }
+
+  const handleStartDrag = (d: number): void => {
+    setDragIndex(d)
   }
 
   const handleStopDrag = (): void => {
     setDragIndex(NULL_DRAG)
-
     window.removeEventListener('mousemove', handleDrag)
     window.removeEventListener('mouseup', handleStopDrag)
   }
@@ -99,7 +116,6 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
 
     const newPos = mouseRelativePos / containerSize
     const newPositions = [...handlePositions]
-    console.log('first', newPositions)
 
     // Update the position of the handle being dragged
     newPositions[dragIndex] = newPos
@@ -120,8 +136,6 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
       }
     }
 
-    console.log('second', newPositions)
-
     onChangePositions(newPositions)
   }
 
@@ -133,68 +147,9 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
       id={id}
       style={style}
     >
-      <DraggableResizerChildren
-        testID={testID}
-        dragIndex={dragIndex}
-        panelsCount={panelsCount}
-        handleGradient={handleGradient}
-        handleOrientation={handleOrientation}
-        handlePositions={handlePositions}
-        handleStartDrag={handleStartDrag}
-      >
-        {children}
-      </DraggableResizerChildren>
-    </div>
-  )
-}
-
-DraggableResizerRoot.displayName = 'DraggableResizer'
-
-interface DraggableResizerChildrenProps extends StandardFunctionProps {
-  testID: string
-  dragIndex: number
-  panelsCount?: number
-  handleGradient: Gradients
-  handleOrientation: Orientation
-  handlePositions: number[]
-  handleStartDrag: (dragIndex: number) => void
-}
-
-const DraggableResizerChildren: FunctionComponent<
-  DraggableResizerChildrenProps
-> = ({
-  testID,
-  children,
-  dragIndex,
-  panelsCount,
-  handleGradient,
-  handlePositions,
-  handleStartDrag,
-  handleOrientation,
-}) => {
-  if (!panelsCount) {
-    return null
-  }
-
-  const calculatePanelSize = (panelIndex: number): number => {
-    const prevPanelIndex = panelIndex - 1
-
-    if (panelIndex === 0) {
-      return handlePositions[panelIndex]
-    }
-
-    if (panelIndex === handlePositions.length) {
-      return 1 - handlePositions[prevPanelIndex]
-    }
-
-    return handlePositions[panelIndex] - handlePositions[prevPanelIndex]
-  }
-
-  return (
-    <>
       {React.Children.map(children, (child: JSX.Element, i: number) => {
         if (child.type !== DraggableResizerPanel) {
-          return <></>
+          return null
         }
 
         const isLastPanel = i === panelsCount - 1
@@ -220,6 +175,8 @@ const DraggableResizerChildren: FunctionComponent<
           </>
         )
       })}
-    </>
+    </div>
   )
 }
+
+DraggableResizerRoot.displayName = 'DraggableResizer'
