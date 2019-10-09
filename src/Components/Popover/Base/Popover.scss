@@ -6,7 +6,7 @@
 */
 
 .cf-popover-portal {
-  @include portal-style(9999)
+  @include portal-style($z--popovers);
 }
 
 .cf-popover {

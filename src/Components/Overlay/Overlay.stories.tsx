@@ -16,13 +16,14 @@ import {mapEnumKeys} from '../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {Overlay} from './Overlay'
+import {OverlayRoot as Overlay} from './Overlay'
 import {OverlayContainer} from './OverlayContainer'
 import {OverlayMask} from './OverlayMask'
 import {OverlayHeader} from './OverlayHeader'
 import {OverlayBody} from './OverlayBody'
 import {OverlayFooter} from './OverlayFooter'
 import {Button} from '../Button/Composed/Button'
+import {SpringTestContainer} from './SpringTestContainer'
 
 // Types
 import {Gradients, ComponentColor} from '../../Types'
@@ -51,7 +52,21 @@ overlayStories.add(
   () => (
     <div className="story--example">
       {instructionsElement}
-      <Overlay visible={boolean('visible', false)}>
+      <Overlay
+        visible={boolean('visible', true)}
+        renderMaskElement={style => (
+          <OverlayMask
+            style={style}
+            gradient={
+              Gradients[
+                Gradients[
+                  select('gradient', mapEnumKeys(Gradients), 'GundamPilot')
+                ]
+              ]
+            }
+          />
+        )}
+      >
         <OverlayContainer maxWidth={400}>
           <OverlayHeader
             title="Howdy partner!"
@@ -194,8 +209,9 @@ overlayExampleStories.add(
       {instructionsElement}
       <Overlay
         visible={boolean('visible', false)}
-        renderMaskElement={
+        renderMaskElement={style => (
           <OverlayMask
+            style={style}
             gradient={
               Gradients[
                 Gradients[
@@ -204,7 +220,7 @@ overlayExampleStories.add(
               ]
             }
           />
-        }
+        )}
       >
         <OverlayContainer maxWidth={number('maxWidth', 400)}>
           <OverlayHeader
@@ -234,3 +250,9 @@ overlayExampleStories.add(
     },
   }
 )
+
+overlayStories.add('react-spring test', () => (
+  <div className="story--example">
+    <SpringTestContainer />
+  </div>
+))

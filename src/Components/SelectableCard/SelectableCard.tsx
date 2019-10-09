@@ -22,13 +22,13 @@ export interface SelectableCardProps extends StandardFunctionProps {
   /** Useful for toggling selected state */
   onClick: (id?: string) => void
   /** Controls font size of the card's label */
-  fontSize: ComponentSize
+  fontSize?: ComponentSize
   /** Controls the color of the selected border */
-  color: ComponentColor
+  color?: ComponentColor
   /** Renders the card in selected state */
-  selected: boolean
+  selected?: boolean
   /** Renders the card in disabled state */
-  disabled: boolean
+  disabled?: boolean
   /** Unique identifier for this card, is passed in to the hidden checkbox input */
   id: string
   /** Name of the form containing this card */

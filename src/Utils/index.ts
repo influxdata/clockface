@@ -247,5 +247,7 @@ export const destroyPortalElement = (id: string): void => {
 
   if (portalElement) {
     portalElement.remove()
+  } else {
+    console.error('cannot find element')
   }
 }
