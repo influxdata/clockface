@@ -108,15 +108,20 @@ draggableResizerStories.add(
     }
 
     return (
-    <div className="story--example">
-      <DraggableResizer.Panel ref={draggableResizerPanelRef} minSizePixels={50} sizePercent={0.5}>
-        <div className="mockCard" />
-      </DraggableResizer.Panel>
-      <div className="story--test-buttons">
+      <div className="story--example">
+        <DraggableResizer.Panel
+          ref={draggableResizerPanelRef}
+          minSizePixels={50}
+          sizePercent={0.5}
+        >
+          <div className="mockCard" />
+        </DraggableResizer.Panel>
+        <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
         </div>
-    </div>
-  )},
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(DraggableResizerPanelReadme),
