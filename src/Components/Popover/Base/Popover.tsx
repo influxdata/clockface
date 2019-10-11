@@ -3,8 +3,8 @@ import React, {
   useState,
   useEffect,
   RefObject,
-  forwardRef,
   MouseEvent,
+  forwardRef,
 } from 'react'
 import {createPortal} from 'react-dom'
 import uuid from 'uuid'
@@ -26,6 +26,7 @@ import {
   PopoverInteraction,
   StandardFunctionProps,
 } from '../../../Types'
+import {PopoverDialogRef} from './PopoverDialog'
 
 export interface PopoverProps extends StandardFunctionProps {
   /** Popover dialog color */
@@ -58,7 +59,7 @@ export interface PopoverProps extends StandardFunctionProps {
   enableDefaultStyles?: boolean
 }
 
-export type PopoverRef = HTMLSpanElement
+export type PopoverRef = PopoverDialogRef
 
 interface CustomMouseEvent extends MouseEvent {
   relatedTarget: Element

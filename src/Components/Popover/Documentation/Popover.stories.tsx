@@ -16,12 +16,13 @@ import {jsxDecorator} from 'storybook-addon-jsx'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
-import {Popover, PopoverRef} from '..'
+import {Popover, PopoverRef} from '../'
 import {ReflessPopover} from '../Composed/ReflessPopover'
 import {
   QuestionMarkTooltip,
   QuestionMarkTooltipRef,
 } from '../Composed/QuestionMarkTooltip'
+import {SquareButton} from '../../Button/Composed/SquareButton'
 
 // Types
 import {
@@ -29,6 +30,8 @@ import {
   PopoverInteraction,
   PopoverPosition,
   ComponentColor,
+  IconFont,
+  ComponentStatus,
 } from '../../../Types'
 
 // Notes
@@ -55,9 +58,9 @@ const exampleStyle = {
 popoverStories.add(
   'Popover',
   () => {
-    const triggerRefA = React.createRef<HTMLDivElement>()
-    const triggerRefB = React.createRef<HTMLDivElement>()
-    const triggerRefC = React.createRef<HTMLDivElement>()
+    const triggerRefA = createRef<HTMLDivElement>()
+    const triggerRefB = createRef<HTMLDivElement>()
+    const triggerRefC = createRef<HTMLButtonElement>()
     const popover1Ref = createRef<PopoverRef>()
     const popover2Ref = createRef<PopoverRef>()
     const popover3Ref = createRef<PopoverRef>()
@@ -96,9 +99,14 @@ popoverStories.add(
         >
           Hover Me
         </div>
-        <div className="mockComponent mockButton" ref={triggerRefC}>
+        <SquareButton
+          icon={IconFont.Zap}
+          ref={triggerRefC}
+          status={ComponentStatus.Disabled}
+        />
+        {/* <div className="mockComponent mockButton" ref={triggerRefC}>
           Always Visible
-        </div>
+        </div> */}
         <Popover.Popover
           ref={popover1Ref}
           triggerRef={triggerRefA}
@@ -177,7 +185,7 @@ popoverStories.add(
           )}
           showEvent={PopoverInteraction.None}
           hideEvent={PopoverInteraction.None}
-          position={PopoverPosition.Above}
+          position={PopoverPosition.Below}
           color={ComponentColor.Success}
           type={PopoverType.Outline}
         />
