@@ -11,7 +11,7 @@ import {mapEnumKeys} from '../../Utils/storybook'
 // Components
 import {IndexList} from './IndexList'
 import {SquareButton} from '../Button/Composed/SquareButton'
-import {EmptyState} from '../EmptyState/EmptyState'
+import {EmptyState} from '../EmptyState'
 
 // Types
 import {IconFont, ComponentColor, Alignment, Sort} from '../../Types'
@@ -94,7 +94,7 @@ indexListStories.add(
         columnCount={1}
         emptyState={
           <EmptyState>
-            <EmptyState.Text text="No children present" />
+            <EmptyState.Text>No children present</EmptyState.Text>
           </EmptyState>
         }
       />

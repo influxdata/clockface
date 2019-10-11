@@ -1,36 +1,28 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardClassProps {
-  /** Secondary text to be displayed when no elements are loaded */
-  text: string
-}
+export type EmptyStateSubTextRef = HTMLParagraphElement
 
-export class EmptyStateSubText extends Component<Props> {
-  public static readonly displayName = 'EmptyStateSubText'
+export const EmptyStateSubText = forwardRef<
+  EmptyStateSubTextRef,
+  StandardFunctionProps
+>(({id, children, style, className, testID = 'empty-state--sub-text'}, ref) => {
+  const EmptyStateSubTextClass = `cf-empty-state--sub-text ${className}`
 
-  public static defaultProps = {
-    testID: 'empty-state--sub-text',
-  }
+  return (
+    <p
+      id={id}
+      ref={ref}
+      style={style}
+      data-testid={testID}
+      className={EmptyStateSubTextClass}
+    >
+      {children}
+    </p>
+  )
+})
 
-  render() {
-    const {text, testID, id, style} = this.props
-
-    return (
-      <p className={this.className} data-testid={testID} id={id} style={style}>
-        {text}
-      </p>
-    )
-  }
-
-  private get className(): string {
-    const {className} = this.props
-
-    return className
-      ? `cf-empty-state--sub-text ${className}`
-      : 'cf-empty-state--sub-text'
-  }
-}
+EmptyStateSubText.displayName = 'EmptyStateSubText'
