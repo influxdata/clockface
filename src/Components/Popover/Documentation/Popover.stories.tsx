@@ -104,9 +104,6 @@ popoverStories.add(
           ref={triggerRefC}
           status={ComponentStatus.Disabled}
         />
-        {/* <div className="mockComponent mockButton" ref={triggerRefC}>
-          Always Visible
-        </div> */}
         <Popover.Popover
           ref={popover1Ref}
           triggerRef={triggerRefA}
