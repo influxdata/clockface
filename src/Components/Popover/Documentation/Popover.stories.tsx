@@ -57,8 +57,10 @@ popoverStories.add(
   () => {
     const triggerRefA = React.createRef<HTMLDivElement>()
     const triggerRefB = React.createRef<HTMLDivElement>()
+    const triggerRefC = React.createRef<HTMLDivElement>()
     const popover1Ref = createRef<PopoverRef>()
     const popover2Ref = createRef<PopoverRef>()
+    const popover3Ref = createRef<PopoverRef>()
 
     const log1Ref = (): void => {
       /* eslint-disable */
@@ -72,6 +74,12 @@ popoverStories.add(
       /* eslint-enable */
     }
 
+    const log3Ref = (): void => {
+      /* eslint-disable */
+      console.log(popover3Ref.current)
+      /* eslint-enable */
+    }
+
     return (
       <div className="story--example">
         <div
@@ -81,13 +89,19 @@ popoverStories.add(
         >
           Click Me
         </div>
-        <div className="mockComponent mockButton" ref={triggerRefB}>
+        <div
+          className="mockComponent mockButton"
+          ref={triggerRefB}
+          style={{marginRight: '60px'}}
+        >
           Hover Me
+        </div>
+        <div className="mockComponent mockButton" ref={triggerRefC}>
+          Always Visible
         </div>
         <Popover.Popover
           ref={popover1Ref}
           triggerRef={triggerRefA}
-          visible={boolean('visible', false)}
           enableDefaultStyles={false}
           contents={(onHide: any) => (
             <>
@@ -141,6 +155,31 @@ popoverStories.add(
           position={PopoverPosition.ToTheRight}
           color={ComponentColor.Secondary}
           type={PopoverType.Solid}
+        />
+        <Popover.Popover
+          ref={popover3Ref}
+          triggerRef={triggerRefC}
+          visible={true}
+          enableDefaultStyles={boolean('enableDefaultStyles', true)}
+          contents={() => (
+            <>
+              <div style={{marginTop: '30px'}}>
+                I'm just a simple popover looking for my
+                <br />
+                place in this <strong>vast and beautiful</strong> world.
+                <br />
+                Will you help me?
+              </div>
+              <div className="story--test-buttons">
+                <button onClick={log3Ref}>Log Ref</button>
+              </div>
+            </>
+          )}
+          showEvent={PopoverInteraction.None}
+          hideEvent={PopoverInteraction.None}
+          position={PopoverPosition.Above}
+          color={ComponentColor.Success}
+          type={PopoverType.Outline}
         />
       </div>
     )
