@@ -2,6 +2,7 @@
 
 ### 0.0.33 (Unreleased)
 
+- [#327](https://github.com/influxdata/clockface/pull/327) Fix rendering issue with "always visible" `Popover`s
 - [#324](https://github.com/influxdata/clockface/pull/324): Convert `DraggableResizer` component family to `FunctionComponent` and wrap with `forwardRef`
 - [#320](https://github.com/influxdata/clockface/pull/320): Convert `DapperScrollbars` component to `FunctionComponent` and update `react-scrollbars-custom` dependency to `4.0.20`
 - [#319](https://github.com/influxdata/clockface/pull/319): Convert `ColorPicker` component family to `FunctionComponent` and wrap with `forwardRef`
