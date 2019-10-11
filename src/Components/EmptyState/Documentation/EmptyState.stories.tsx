@@ -9,7 +9,7 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {EmptyState, EmptyStateRef} from '../'
+import {EmptyState, EmptyStateRef, EmptyStateTextRef, EmptyStateSubTextRef} from '../'
 import {Button} from '../../Button/Composed/Button'
 
 // Types
@@ -137,7 +137,7 @@ emptyStateStories.add(
 emptyStateStories.add(
   'EmptyStateText',
   () => {
-    const emptyStateTextRef = createRef<EmptyStateRef>()
+    const emptyStateTextRef = createRef<EmptyStateTextRef>()
 
     const logRef = (): void => {
       /* eslint-disable */
@@ -169,17 +169,17 @@ emptyStateStories.add(
 emptyStateStories.add(
   'EmptyStateSubText',
   () => {
-    const emptyStateTextRef = createRef<EmptyStateRef>()
+    const emptyStateSubTextRef = createRef<EmptyStateSubTextRef>()
 
     const logRef = (): void => {
       /* eslint-disable */
-      console.log(emptyStateTextRef.current)
+      console.log(emptyStateSubTextRef.current)
       /* eslint-enable */
     }
 
     return (
       <div className="story--example">
-        <EmptyState.SubText ref={emptyStateTextRef}>
+        <EmptyState.SubText ref={emptyStateSubTextRef}>
           {text('text', 'Sub Text')}
         </EmptyState.SubText>
         <div className="story--test-buttons">

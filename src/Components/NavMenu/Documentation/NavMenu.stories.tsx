@@ -1,19 +1,19 @@
 // Libraries
-import * as React from 'react'
+import React, {createRef} from 'react'
 import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from '../../../Utils/storybook'
 import {withKnobs, boolean, text, select, radios} from '@storybook/addon-knobs'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {NavMenu} from '../../Components/NavMenu/NavMenu'
-import {Icon} from '../../Components/Icon/Icon'
+import {NavMenu, NavMenuRef, NavMenuItemRef} from '../'
+import {Icon} from '../../Icon/Icon'
 
 // Types
-import {IconFont} from '../../Types'
+import {IconFont} from '../../../Types'
 
 // Notes
 import NavMenuReadme from './NavMenu.md'
@@ -32,9 +32,18 @@ enum NavItems {
 
 navMenuStories.add(
   'NavMenu',
-  () => (
+  () => {
+    const navMenuRef = createRef<NavMenuRef>()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(navMenuRef.current)
+      /* eslint-enable */
+    }
+
+    return (
     <div className="story--example">
-      <NavMenu>
+      <NavMenu.NavMenu ref={navMenuRef}>
         <NavMenu.Item
           titleLink={className => (
             <a className={className} href="#">
@@ -120,9 +129,12 @@ navMenuStories.add(
             NavItems.Third
           }
         />
-      </NavMenu>
+      </NavMenu.NavMenu>
+      <div className="story--test-buttons">
+        <button onClick={logRef}>Log Ref</button>
+      </div>
     </div>
-  ),
+  )},
   {
     readme: {
       content: marked(NavMenuReadme),
@@ -132,9 +144,19 @@ navMenuStories.add(
 
 navMenuStories.add(
   'NavMenuItem',
-  () => (
+  () => {
+    const navMenuRef = createRef<NavMenuItemRef>()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(navMenuRef.current)
+      /* eslint-enable */
+    }
+
+    return (
     <div className="story--example">
       <NavMenu.Item
+        ref={navMenuRef}
         titleLink={className => (
           <a className={className} href="#">
             {text('title', 'Item Title')}
@@ -174,8 +196,11 @@ navMenuStories.add(
           active={false}
         />
       </NavMenu.Item>
+      <div className="story--test-buttons">
+        <button onClick={logRef}>Log Ref</button>
+      </div>
     </div>
-  ),
+  )},
   {
     readme: {
       content: marked(NavMenuItemReadme),
