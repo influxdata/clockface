@@ -16,5 +16,5 @@ export class DraggableResizer extends Component<DraggableResizerProps> {
   }
 }
 
-export {DraggableResizerProps, DraggableResizerRef} from './DraggableResizer'
+export {DraggableResizerProps} from './DraggableResizer'
 export * from './DraggableResizerPanel'
