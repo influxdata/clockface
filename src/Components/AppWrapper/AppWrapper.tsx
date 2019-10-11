@@ -10,7 +10,7 @@ import {StandardFunctionProps} from '../../Types'
 
 interface AppWrapperProps extends StandardFunctionProps {
   /** Hides the page header and nav menu so that the contents can take up the whole screen */
-  presentationMode: boolean
+  presentationMode?: boolean
 }
 
 export type AppWrapperRef = HTMLDivElement

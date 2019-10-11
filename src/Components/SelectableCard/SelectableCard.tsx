@@ -17,20 +17,20 @@ import {
 import './SelectableCard.scss'
 
 export interface SelectableCardProps extends StandardFunctionProps {
+  /** Unique identifier for this card, is passed in to the hidden checkbox input */
+  id: string
   /** Text label */
   label: string
   /** Useful for toggling selected state */
   onClick: (id?: string) => void
   /** Controls font size of the card's label */
-  fontSize: ComponentSize
+  fontSize?: ComponentSize
   /** Controls the color of the selected border */
-  color: ComponentColor
+  color?: ComponentColor
   /** Renders the card in selected state */
-  selected: boolean
+  selected?: boolean
   /** Renders the card in disabled state */
-  disabled: boolean
-  /** Unique identifier for this card, is passed in to the hidden checkbox input */
-  id: string
+  disabled?: boolean
   /** Name of the form containing this card */
   formName?: string
   /** Customize the icon that appears in selected state */
