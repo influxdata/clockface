@@ -8,6 +8,7 @@ import {DraggableResizerPanel} from './DraggableResizerPanel'
 export class DraggableResizer extends Component<DraggableResizerProps> {
   public static readonly displayName = 'DraggableResizer'
 
+  public static DraggableResizer = DraggableResizerRoot
   public static Panel = DraggableResizerPanel
 
   render() {
@@ -15,5 +16,5 @@ export class DraggableResizer extends Component<DraggableResizerProps> {
   }
 }
 
-export {DraggableResizerProps} from './DraggableResizer'
+export {DraggableResizerProps, DraggableResizerRef} from './DraggableResizer'
 export * from './DraggableResizerPanel'

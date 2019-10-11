@@ -8,7 +8,7 @@ import {Gradients, Orientation, StandardFunctionProps} from '../../Types'
 // Constants
 import {getColorsFromGradient} from '../../Constants/colors'
 
-interface DraggableResizerHandleProps extends StandardFunctionProps {
+export interface DraggableResizerHandleProps extends StandardFunctionProps {
   /** Expects a number between 0 - 1 */
   position: number
   /** Gets passed a function by being a child of DraggableResizer */
