@@ -16,12 +16,13 @@ import {jsxDecorator} from 'storybook-addon-jsx'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
-import {Popover, PopoverRef} from '..'
+import {Popover, PopoverRef} from '../'
 import {ReflessPopover} from '../Composed/ReflessPopover'
 import {
   QuestionMarkTooltip,
   QuestionMarkTooltipRef,
 } from '../Composed/QuestionMarkTooltip'
+import {SquareButton} from '../../Button/Composed/SquareButton'
 
 // Types
 import {
@@ -29,6 +30,8 @@ import {
   PopoverInteraction,
   PopoverPosition,
   ComponentColor,
+  IconFont,
+  ComponentStatus,
 } from '../../../Types'
 
 // Notes
@@ -55,10 +58,12 @@ const exampleStyle = {
 popoverStories.add(
   'Popover',
   () => {
-    const triggerRefA = React.createRef<HTMLDivElement>()
-    const triggerRefB = React.createRef<HTMLDivElement>()
+    const triggerRefA = createRef<HTMLDivElement>()
+    const triggerRefB = createRef<HTMLDivElement>()
+    const triggerRefC = createRef<HTMLButtonElement>()
     const popover1Ref = createRef<PopoverRef>()
     const popover2Ref = createRef<PopoverRef>()
+    const popover3Ref = createRef<PopoverRef>()
 
     const log1Ref = (): void => {
       /* eslint-disable */
@@ -72,6 +77,12 @@ popoverStories.add(
       /* eslint-enable */
     }
 
+    const log3Ref = (): void => {
+      /* eslint-disable */
+      console.log(popover3Ref.current)
+      /* eslint-enable */
+    }
+
     return (
       <div className="story--example">
         <div
@@ -81,13 +92,21 @@ popoverStories.add(
         >
           Click Me
         </div>
-        <div className="mockComponent mockButton" ref={triggerRefB}>
+        <div
+          className="mockComponent mockButton"
+          ref={triggerRefB}
+          style={{marginRight: '60px'}}
+        >
           Hover Me
         </div>
+        <SquareButton
+          icon={IconFont.Zap}
+          ref={triggerRefC}
+          status={ComponentStatus.Disabled}
+        />
         <Popover.Popover
           ref={popover1Ref}
           triggerRef={triggerRefA}
-          visible={boolean('visible', false)}
           enableDefaultStyles={false}
           contents={(onHide: any) => (
             <>
@@ -141,6 +160,31 @@ popoverStories.add(
           position={PopoverPosition.ToTheRight}
           color={ComponentColor.Secondary}
           type={PopoverType.Solid}
+        />
+        <Popover.Popover
+          ref={popover3Ref}
+          triggerRef={triggerRefC}
+          visible={true}
+          enableDefaultStyles={boolean('enableDefaultStyles', true)}
+          contents={() => (
+            <>
+              <div style={{marginTop: '30px'}}>
+                I'm just a simple popover looking for my
+                <br />
+                place in this <strong>vast and beautiful</strong> world.
+                <br />
+                Will you help me?
+              </div>
+              <div className="story--test-buttons">
+                <button onClick={log3Ref}>Log Ref</button>
+              </div>
+            </>
+          )}
+          showEvent={PopoverInteraction.None}
+          hideEvent={PopoverInteraction.None}
+          position={PopoverPosition.Below}
+          color={ComponentColor.Success}
+          type={PopoverType.Outline}
         />
       </div>
     )

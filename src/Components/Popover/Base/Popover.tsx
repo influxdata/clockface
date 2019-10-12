@@ -3,14 +3,17 @@ import React, {
   useState,
   useEffect,
   RefObject,
-  forwardRef,
   MouseEvent,
+  forwardRef,
 } from 'react'
 import {createPortal} from 'react-dom'
 import uuid from 'uuid'
 
 // Components
 import {PopoverDialog} from './PopoverDialog'
+
+// Utils
+import {createPortalElement, destroyPortalElement} from '../../../Utils/index'
 
 // Styles
 import './Popover.scss'
@@ -23,6 +26,7 @@ import {
   PopoverInteraction,
   StandardFunctionProps,
 } from '../../../Types'
+import {PopoverDialogRef} from './PopoverDialog'
 
 export interface PopoverProps extends StandardFunctionProps {
   /** Popover dialog color */
@@ -55,13 +59,13 @@ export interface PopoverProps extends StandardFunctionProps {
   enableDefaultStyles?: boolean
 }
 
-export type PopoverRef = HTMLSpanElement
+export type PopoverRef = PopoverDialogRef
 
 interface CustomMouseEvent extends MouseEvent {
   relatedTarget: Element
 }
 
-let uniquePortalID: string = ''
+const popoverPortalName = 'popover'
 
 export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
   (
@@ -88,6 +92,28 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
     ref
   ) => {
     const [expanded, setExpanded] = useState<boolean>(!!visible)
+    const [portalID, setPortalID] = useState<string>('')
+
+    useEffect((): (() => void) => {
+      const newPortalID = `cf-${popoverPortalName}-portal-${uuid.v4()}`
+      setPortalID(newPortalID)
+
+      createPortalElement(newPortalID, popoverPortalName)
+      handleAddEventListeners()
+
+      return (): void => {
+        destroyPortalElement(newPortalID)
+        handleRemoveEventListeners()
+      }
+    }, [])
+
+    useEffect(() => {
+      if (visible) {
+        handleShowDialog()
+      } else if (!visible) {
+        handleHideDialog()
+      }
+    }, [visible])
 
     const handleTriggerClick = (e: MouseEvent): void => {
       e.stopPropagation()
@@ -147,27 +173,6 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
       setExpanded(false)
     }
 
-    const handleCreatePortalElement = (): void => {
-      const portalExists = document.getElementById(uniquePortalID)
-      if (portalExists) {
-        return
-      }
-
-      const portalElement = document.createElement('div')
-      portalElement.setAttribute('class', 'cf-popover-portal')
-      portalElement.setAttribute('id', uniquePortalID)
-
-      document.body.appendChild(portalElement)
-    }
-
-    const handleDestroyPortalElement = (): void => {
-      const portalElement = document.getElementById(uniquePortalID)
-
-      if (portalElement) {
-        portalElement.remove()
-      }
-    }
-
     const handleAddEventListeners = (): void => {
       if (!triggerRef.current) {
         return
@@ -203,50 +208,30 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
       )
     }
 
-    useEffect((): (() => void) => {
-      uniquePortalID = `cf-popover-portal-${uuid.v4()}`
-      handleCreatePortalElement()
-      handleAddEventListeners()
-
-      return (): void => {
-        handleRemoveEventListeners()
-        handleDestroyPortalElement()
-      }
-    }, [])
-
-    useEffect(() => {
-      if (visible) {
-        handleShowDialog()
-      } else if (!visible) {
-        handleHideDialog()
-      }
-    }, [visible])
-
-    const portalElement = document.getElementById(uniquePortalID)
+    const portalElement = document.getElementById(portalID)
 
     if (!portalElement || !expanded) {
       return null
     }
 
     const popover = (
-      <span ref={ref}>
-        <PopoverDialog
-          enableDefaultStyles={enableDefaultStyles}
-          distanceFromTrigger={distanceFromTrigger}
-          onClickOutside={handleClickOutside}
-          onMouseLeave={handleDialogMouseLeave}
-          triggerRef={triggerRef}
-          className={className}
-          caretSize={caretSize}
-          position={position}
-          contents={contents(handleHideDialog)}
-          testID={testID}
-          color={color}
-          style={style}
-          type={type}
-          id={id}
-        />
-      </span>
+      <PopoverDialog
+        enableDefaultStyles={enableDefaultStyles}
+        distanceFromTrigger={distanceFromTrigger}
+        onClickOutside={handleClickOutside}
+        onMouseLeave={handleDialogMouseLeave}
+        triggerRef={triggerRef}
+        className={className}
+        caretSize={caretSize}
+        position={position}
+        contents={contents(handleHideDialog)}
+        testID={testID}
+        color={color}
+        style={style}
+        type={type}
+        ref={ref}
+        id={id}
+      />
     )
 
     return createPortal(popover, portalElement)
