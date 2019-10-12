@@ -96,7 +96,7 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
 
     useEffect((): (() => void) => {
       const newPortalID = `cf-${popoverPortalName}-portal-${uuid.v4()}`
-      !portalID && setPortalID(newPortalID)
+      setPortalID(newPortalID)
 
       createPortalElement(newPortalID, popoverPortalName)
       handleAddEventListeners()
