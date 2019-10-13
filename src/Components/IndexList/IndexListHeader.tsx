@@ -1,36 +1,32 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardClassProps {}
+export interface IndexListHeaderProps extends StandardFunctionProps {}
 
-export class IndexListHeader extends Component<Props> {
-  public static readonly displayName = 'IndexListHeader'
+export type IndexListHeaderRef = HTMLTableSectionElement
 
-  public static defaultProps = {
-    testID: 'index-list--header',
-  }
+export const IndexListHeader = forwardRef<
+  IndexListHeaderRef,
+  IndexListHeaderProps
+>(({className, children, id, style, testID = 'index-list--header'}, ref) => {
+  const IndexListHeaderClass = className
+    ? `index-list--header ${className}`
+    : 'index-list--header'
 
-  public render() {
-    const {children, testID, id, style} = this.props
+  return (
+    <thead
+      id={id}
+      ref={ref}
+      style={style}
+      data-testid={testID}
+      className={IndexListHeaderClass}
+    >
+      <tr>{children}</tr>
+    </thead>
+  )
+})
 
-    return (
-      <thead
-        className={this.className}
-        data-testid={testID}
-        id={id}
-        style={style}
-      >
-        <tr>{children}</tr>
-      </thead>
-    )
-  }
-
-  private get className(): string {
-    const {className} = this.props
-
-    return className ? `index-list--header ${className}` : 'index-list--header'
-  }
-}
+IndexListHeader.displayName = 'IndexListHeader'

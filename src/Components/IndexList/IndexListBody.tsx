@@ -1,30 +1,39 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface IndexListBodyProps extends StandardFunctionProps {
   /** Rendered when no children are passed in */
   emptyState: JSX.Element
   /** Used to ensure the empty state takes up the full width of the table */
   columnCount: number
 }
 
-export class IndexListBody extends Component<Props> {
-  public static readonly displayName = 'IndexListBody'
+export type IndexListBodyRef = HTMLTableSectionElement
 
-  public static defaultProps = {
-    testID: 'index-list--body',
-  }
-
-  public render() {
-    const {children, columnCount, emptyState, testID, id, style} = this.props
+export const IndexListBody = forwardRef<IndexListBodyRef, IndexListBodyProps>(
+  (
+    {
+      id,
+      style,
+      children,
+      className,
+      emptyState,
+      columnCount,
+      testID = 'index-list--body',
+    },
+    ref
+  ) => {
+    const IndexListBodyClass = className
+      ? `index-list--body ${className}`
+      : 'index-list--body'
 
     if (React.Children.count(children)) {
       return (
         <tbody
-          className={this.className}
+          className={IndexListBodyClass}
           data-testid={testID}
           id={id}
           style={style}
@@ -35,7 +44,11 @@ export class IndexListBody extends Component<Props> {
     }
 
     return (
-      <tbody className="index-list--empty" data-testid={`${testID} empty`}>
+      <tbody
+        ref={ref}
+        className="index-list--empty"
+        data-testid={`${testID} empty`}
+      >
         <tr className="index-list--empty-row">
           <td colSpan={columnCount}>
             <div className="index-list--empty-cell" data-testid="empty-state">
@@ -46,10 +59,6 @@ export class IndexListBody extends Component<Props> {
       </tbody>
     )
   }
+)
 
-  private get className(): string {
-    const {className} = this.props
-
-    return className ? `index-list--body ${className}` : 'index-list--body'
-  }
-}
+IndexListBody.displayName = 'IndexListBody'

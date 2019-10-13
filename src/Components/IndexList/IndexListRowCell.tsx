@@ -1,52 +1,56 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {Alignment, StandardClassProps} from '../../Types'
+import {Alignment, StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface IndexListRowCellProps extends StandardFunctionProps {
   /** Text alignment of contents */
-  alignment: Alignment
+  alignment?: Alignment
   /** If true the contents of this cell will be hidden until the containing row is hovered */
-  revealOnHover: boolean
+  revealOnHover?: boolean
 }
 
-export class IndexListRowCell extends Component<Props> {
-  public static readonly displayName = 'IndexListCell'
+export type IndexListRowCellRef = HTMLTableDataCellElement
 
-  public static defaultProps = {
-    alignment: Alignment.Left,
-    revealOnHover: false,
-    testID: 'table-cell',
-  }
-
-  public render() {
-    const {children, testID, id, style} = this.props
-
-    return (
-      <td className={this.className}>
-        <div
-          className="index-list--cell"
-          data-testid={testID}
-          id={id}
-          style={style}
-        >
-          {children}
-        </div>
-      </td>
-    )
-  }
-
-  private get className(): string {
-    const {alignment, revealOnHover, className} = this.props
-
-    return classnames('index-list--row-cell', {
+export const IndexListRowCell = forwardRef<
+  IndexListRowCellRef,
+  IndexListRowCellProps
+>(
+  (
+    {
+      children,
+      id,
+      style,
+      className,
+      alignment = Alignment.Left,
+      revealOnHover = false,
+      testID = 'table-cell',
+    },
+    ref
+  ) => {
+    const IndexListRowCellClass = classnames('index-list--row-cell', {
       'index-list--show-hover': revealOnHover,
       'index-list--align-left': alignment === Alignment.Left,
       'index-list--align-center': alignment === Alignment.Center,
       'index-list--align-right': alignment === Alignment.Right,
       [`${className}`]: className,
     })
+
+    return (
+      <td ref={ref} className={IndexListRowCellClass}>
+        <div
+          id={id}
+          style={style}
+          data-testid={testID}
+          className="index-list--cell"
+        >
+          {children}
+        </div>
+      </td>
+    )
   }
-}
+)
+
+IndexListRowCell.displayName = 'IndexListCell'

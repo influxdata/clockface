@@ -9,7 +9,12 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {EmptyState, EmptyStateRef, EmptyStateTextRef, EmptyStateSubTextRef} from '../'
+import {
+  EmptyState,
+  EmptyStateRef,
+  EmptyStateTextRef,
+  EmptyStateSubTextRef,
+} from '../'
 import {Button} from '../../Button/Composed/Button'
 
 // Types
