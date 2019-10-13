@@ -1,18 +1,18 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
 
 // Components
-import {FlexBox} from '../FlexBox'
+import {FlexBox, FlexBoxRef} from '../FlexBox'
 
 // Types
 import {
-  StandardClassProps,
+  StandardFunctionProps,
   Orientation,
   FlexDirection,
   AlignItems,
 } from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface TabsContainerProps extends StandardFunctionProps {
   /** Should match the orientation prop of Tabs component */
   orientation: Orientation
   /** Stretches TabsContainer to fit parent width */
@@ -21,35 +21,33 @@ interface Props extends StandardClassProps {
   stretchToFitHeight?: boolean
 }
 
-export class TabsContainer extends Component<Props> {
-  public static readonly displayName = 'TabsContainer'
+export type TabsContainerRef = FlexBoxRef
 
-  public static defaultProps = {
-    testID: 'tabs--container',
-  }
-
-  public render() {
-    const {
-      testID,
+export const TabsContainer = forwardRef<TabsContainerRef, TabsContainerProps>(
+  (
+    {
       id,
-      children,
       style,
+      children,
       className,
       orientation,
       stretchToFitWidth,
       stretchToFitHeight,
-    } = this.props
-
+      testID = 'tabs--container',
+    },
+    ref
+  ) => {
     const direction =
       orientation === Orientation.Vertical
         ? FlexDirection.Row
         : FlexDirection.Column
 
     return (
-      <FlexBox
+      <FlexBox.FlexBox
         className={className}
         data-testid={testID}
         id={id}
+        ref={ref}
         style={style}
         direction={direction}
         alignItems={AlignItems.Stretch}
@@ -57,7 +55,9 @@ export class TabsContainer extends Component<Props> {
         stretchToFitHeight={stretchToFitHeight}
       >
         {children}
-      </FlexBox>
+      </FlexBox.FlexBox>
     )
   }
-}
+)
+
+TabsContainer.displayName = 'TabsContainer'
