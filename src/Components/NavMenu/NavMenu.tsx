@@ -1,48 +1,38 @@
 // Libraries
-import React, {PureComponent} from 'react'
+import React, {forwardRef, useState} from 'react'
 import classnames from 'classnames'
 import _ from 'lodash'
 
-// Components
-import {NavMenuItem} from './NavMenuItem'
-import {NavMenuSubItem} from './NavMenuSubItem'
-
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardFunctionProps} from '../../Types'
 
 // Styles
 import './NavMenu.scss'
 
-type Props = StandardClassProps
+export type NavMenuProps = StandardFunctionProps
 
-interface State {
-  menuVisible: boolean
-}
+export type NavMenuRef = HTMLElement
 
-export class NavMenu extends PureComponent<Props, State> {
-  public static readonly displayName = 'NavMenu'
+export const NavMenuRoot = forwardRef<NavMenuRef, NavMenuProps>(
+  ({id, style, children, className, testID = 'nav-menu'}, ref) => {
+    const [menuVisible, setMenuVisible] = useState(false)
 
-  public static defaultProps = {
-    testID: 'nav-menu',
-  }
+    const navMenuRootClass = classnames('cf-nav', {
+      'cf-nav__expanded': menuVisible,
+      [`${className}`]: className,
+    })
 
-  public static Item = NavMenuItem
-  public static SubItem = NavMenuSubItem
+    const toggleClassName = classnames('cf-nav--toggle', {
+      'cf-nav--toggle__expanded': menuVisible,
+    })
 
-  constructor(props: Props) {
-    super(props)
-
-    this.state = {
-      menuVisible: false,
+    const handleToggleMenu = (): void => {
+      setMenuVisible(!menuVisible)
     }
-  }
-
-  public render() {
-    const {children, testID, id, style} = this.props
 
     return (
       <>
-        <div className={this.toggleClassName} onClick={this.handleToggleMenu}>
+        <div className={toggleClassName} onClick={handleToggleMenu}>
           <div className="cf-nav--hamburger">
             <div className="cf-nav--hamburger-top" />
             <div className="cf-nav--hamburger-middle" />
@@ -50,10 +40,11 @@ export class NavMenu extends PureComponent<Props, State> {
           </div>
         </div>
         <nav
-          className={this.className}
-          data-testid={testID}
           id={id}
+          ref={ref}
           style={style}
+          data-testid={testID}
+          className={navMenuRootClass}
         >
           <div className="cf-nav--menu">{children}</div>
         </nav>
@@ -61,26 +52,6 @@ export class NavMenu extends PureComponent<Props, State> {
       </>
     )
   }
+)
 
-  private get className(): string {
-    const {className} = this.props
-    const {menuVisible} = this.state
-
-    return classnames('cf-nav', {
-      'cf-nav__expanded': menuVisible,
-      [`${className}`]: className,
-    })
-  }
-
-  private get toggleClassName(): string {
-    const {menuVisible} = this.state
-
-    return classnames('cf-nav--toggle', {
-      'cf-nav--toggle__expanded': menuVisible,
-    })
-  }
-
-  private handleToggleMenu = (): void => {
-    this.setState({menuVisible: !this.state.menuVisible})
-  }
-}
+NavMenuRoot.displayName = 'NavMenu'

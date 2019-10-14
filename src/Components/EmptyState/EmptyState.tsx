@@ -1,54 +1,49 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
-// Components
-import {EmptyStateText} from './EmptyStateText'
-import {EmptyStateSubText} from './EmptyStateSubText'
-
 // Types
-import {ComponentSize, StandardClassProps} from '../../Types'
+import {ComponentSize, StandardFunctionProps} from '../../Types'
 
 // Styles
 import './EmptyState.scss'
 
-interface Props extends StandardClassProps {
+export interface EmptyStateProps extends StandardFunctionProps {
   /** Controls vertical padding in container and font size of children */
-  size: ComponentSize
+  size?: ComponentSize
 }
 
-export class EmptyState extends Component<Props> {
-  public static readonly displayName = 'EmptyState'
+export type EmptyStateRef = HTMLDivElement
 
-  public static defaultProps = {
-    size: ComponentSize.Small,
-    testID: 'empty-state',
-  }
-
-  public static Text = EmptyStateText
-  public static SubText = EmptyStateSubText
-
-  public render() {
-    const {children, testID, id, style} = this.props
+export const EmptyStateRoot = forwardRef<EmptyStateRef, EmptyStateProps>(
+  (
+    {
+      id,
+      style,
+      children,
+      className,
+      testID = 'empty-state',
+      size = ComponentSize.Small,
+    },
+    ref
+  ) => {
+    const emptyStateClass = classnames('cf-empty-state', {
+      [`cf-empty-state--${size}`]: size,
+      [`${className}`]: className,
+    })
 
     return (
       <div
-        className={this.className}
-        data-testid={testID}
         id={id}
+        ref={ref}
         style={style}
+        data-testid={testID}
+        className={emptyStateClass}
       >
         {children}
       </div>
     )
   }
+)
 
-  private get className(): string {
-    const {className, size} = this.props
-
-    return classnames('cf-empty-state', {
-      [`cf-empty-state--${size}`]: size,
-      [`${className}`]: className,
-    })
-  }
-}
+EmptyStateRoot.displayName = 'EmptyState'

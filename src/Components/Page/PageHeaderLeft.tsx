@@ -1,42 +1,33 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
+import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardFunctionProps} from '../../Types'
 
-// Constants
-import {DEFAULT_OFFSET} from '../../Constants/pageLayout'
+export interface PageHeaderLeftProps extends StandardFunctionProps {}
 
-interface Props extends StandardClassProps {}
+export type PageHeaderLeftRef = HTMLDivElement
 
-export class PageHeaderLeft extends Component<Props> {
-  public static readonly displayName = 'PageHeaderLeft'
+export const PageHeaderLeft = forwardRef<
+  PageHeaderLeftRef,
+  PageHeaderLeftProps
+>(({id, style, children, className, testID = 'page-header--left'}, ref) => {
+  const pageHeaderLeftClass = classnames('cf-page-header--left', {
+    [`${className}`]: className,
+  })
 
-  public static defaultProps = {
-    offsetPixels: DEFAULT_OFFSET,
-    testID: 'page-header--left',
-  }
+  return (
+    <div
+      id={id}
+      ref={ref}
+      style={style}
+      data-testid={testID}
+      className={pageHeaderLeftClass}
+    >
+      {children}
+    </div>
+  )
+})
 
-  public render() {
-    const {children, testID, id, style} = this.props
-
-    return (
-      <div
-        className={this.className}
-        style={style}
-        data-testid={testID}
-        id={id}
-      >
-        {children}
-      </div>
-    )
-  }
-
-  private get className(): string {
-    const {className} = this.props
-
-    return className
-      ? `cf-page-header--left ${className}`
-      : 'cf-page-header--left'
-  }
-}
+PageHeaderLeft.displayName = 'PageHeaderLeft'

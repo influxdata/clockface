@@ -1,46 +1,36 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardFunctionProps} from '../../Types'
 
-// Constants
-import {DEFAULT_OFFSET} from '../../Constants/pageLayout'
+export interface PageHeaderRightProps extends StandardFunctionProps {}
 
-interface Props extends StandardClassProps {}
+export type PageHeaderRightRef = HTMLDivElement
 
-export class PageHeaderRight extends Component<Props> {
-  public static readonly displayName = 'PageHeaderRight'
+export const PageHeaderRight = forwardRef<
+  PageHeaderRightRef,
+  PageHeaderRightProps
+>(({children, id, style, className, testID = 'page-header--right'}, ref) => {
+  const noChildren = React.Children.count(children) === 0
 
-  public static defaultProps = {
-    offsetPixels: DEFAULT_OFFSET,
-    testID: 'page-header--right',
-  }
+  const pageHeaderRightClass = classnames('cf-page-header--right', {
+    'cf-page-header--no-children': noChildren,
+    [`${className}`]: className,
+  })
 
-  public render() {
-    const {children, testID, id, style} = this.props
+  return (
+    <div
+      id={id}
+      ref={ref}
+      style={style}
+      data-testid={testID}
+      className={pageHeaderRightClass}
+    >
+      {children}
+    </div>
+  )
+})
 
-    return (
-      <div
-        className={this.className}
-        style={style}
-        data-testid={testID}
-        id={id}
-      >
-        {children}
-      </div>
-    )
-  }
-
-  private get className(): string {
-    const {className, children} = this.props
-
-    const noChildren = React.Children.count(children) === 0
-
-    return classnames('cf-page-header--right', {
-      'cf-page-header--no-children': noChildren,
-      [`${className}`]: className,
-    })
-  }
-}
+PageHeaderRight.displayName = 'PageHeaderRight'
