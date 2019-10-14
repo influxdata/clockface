@@ -27,11 +27,12 @@ import {
   DropdownLinkItemRef,
   DropdownMenuRef,
   DropdownMenuContentsRef,
-  SelectDropdown,
-  SelectDropdownRef,
+} from '../'
+import {SelectDropdown, SelectDropdownRef} from '../Composed/SelectDropdown'
+import {
   MultiSelectDropdown,
   MultiSelectDropdownRef,
-} from '../'
+} from '../Composed/MultiSelectDropdown'
 
 // Types
 import {

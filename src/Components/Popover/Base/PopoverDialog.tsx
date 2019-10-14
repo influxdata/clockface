@@ -1,10 +1,10 @@
 // Libraries
 import React, {
-  createRef,
+  useRef,
   RefObject,
   MouseEvent,
   useLayoutEffect,
-  FunctionComponent,
+  forwardRef,
 } from 'react'
 import classnames from 'classnames'
 
@@ -23,7 +23,7 @@ import {
   StandardFunctionProps,
 } from '../../../Types'
 
-export interface Props extends StandardFunctionProps {
+export interface PopoverDialogProps extends StandardFunctionProps {
   /** Bounding rectangle of trigger element */
   triggerRef: RefObject<any>
   /** Pixel distance between trigger and popover dialog */
@@ -46,90 +46,103 @@ export interface Props extends StandardFunctionProps {
   enableDefaultStyles: boolean
 }
 
-export const PopoverDialog: FunctionComponent<Props> = ({
-  id,
-  type,
-  style,
-  color,
-  testID,
-  contents,
-  position,
-  className,
-  caretSize,
-  triggerRef,
-  onMouseLeave,
-  onClickOutside,
-  distanceFromTrigger,
-  enableDefaultStyles,
-}) => {
-  const dialogRef = createRef<HTMLDivElement>()
-  const caretRef = createRef<HTMLDivElement>()
+export type PopoverDialogRef = HTMLDivElement
 
-  const handleUpdateStyles = (): void => {
-    const {dialogStyles, caretStyles} = calculatePopoverStyles(
+export const PopoverDialog = forwardRef<PopoverDialogRef, PopoverDialogProps>(
+  (
+    {
+      id,
+      type,
+      style,
+      color,
+      testID,
+      contents,
       position,
-      triggerRef,
-      dialogRef,
+      className,
       caretSize,
-      distanceFromTrigger
-    )
+      triggerRef,
+      onMouseLeave,
+      onClickOutside,
+      distanceFromTrigger,
+      enableDefaultStyles,
+    },
+    ref
+  ) => {
+    const dialogRef = useRef<HTMLDivElement>(null)
+    const caretRef = useRef<HTMLDivElement>(null)
 
-    const dialogStyleString = convertCSSPropertiesToString(dialogStyles)
-    const caretStyleString = convertCSSPropertiesToString(caretStyles)
+    const handleUpdateStyles = (): void => {
+      if (!triggerRef.current || !dialogRef.current) {
+        return
+      }
 
-    if (dialogRef.current) {
-      dialogRef.current.setAttribute('style', dialogStyleString)
+      const {dialogStyles, caretStyles} = calculatePopoverStyles(
+        position,
+        triggerRef,
+        dialogRef,
+        caretSize,
+        distanceFromTrigger
+      )
+
+      const dialogStyleString = convertCSSPropertiesToString(dialogStyles)
+      const caretStyleString = convertCSSPropertiesToString(caretStyles)
+
+      if (dialogRef.current) {
+        dialogRef.current.setAttribute('style', dialogStyleString)
+      }
+
+      if (caretRef.current) {
+        caretRef.current.setAttribute('style', caretStyleString)
+      }
     }
 
-    if (caretRef.current) {
-      caretRef.current.setAttribute('style', caretStyleString)
-    }
-  }
+    const popoverDialogClassName = classnames('cf-popover', {
+      [`${className}`]: className,
+      [`cf-popover__${color}`]: color,
+      [`cf-popover__${type}`]: type,
+    })
 
-  const popoverDialogClassName = classnames('cf-popover', {
-    [`${className}`]: className,
-    [`cf-popover__${color}`]: color,
-    [`cf-popover__${type}`]: type,
-  })
+    const contentsClassName = classnames('cf-popover--contents', {
+      'cf-popover--contents__default-styles': enableDefaultStyles,
+    })
 
-  const contentsClassName = classnames('cf-popover--contents', {
-    'cf-popover--contents__default-styles': enableDefaultStyles,
-  })
+    useLayoutEffect((): (() => void) => {
+      handleUpdateStyles()
+      window.addEventListener('scroll', handleUpdateStyles)
+      window.addEventListener('resize', handleUpdateStyles)
 
-  useLayoutEffect((): (() => void) => {
-    window.addEventListener('scroll', handleUpdateStyles)
-    window.addEventListener('resize', handleUpdateStyles)
+      return (): void => {
+        window.removeEventListener('scroll', handleUpdateStyles)
+        window.removeEventListener('resize', handleUpdateStyles)
+      }
+    }, [])
 
-    return (): void => {
-      window.removeEventListener('scroll', handleUpdateStyles)
-      window.removeEventListener('resize', handleUpdateStyles)
-    }
-  }, [])
+    useLayoutEffect(() => {
+      handleUpdateStyles()
+    })
 
-  useLayoutEffect(() => {
-    handleUpdateStyles()
-  })
-
-  return (
-    <ClickOutside onClickOutside={onClickOutside}>
-      <div
-        onMouseLeave={onMouseLeave}
-        className={popoverDialogClassName}
-        ref={dialogRef}
-        data-testid={`${testID}--dialog`}
-        id={id}
-      >
+    return (
+      <ClickOutside onClickOutside={onClickOutside}>
         <div
-          style={style}
-          className={contentsClassName}
-          data-testid={`${testID}--contents`}
+          id={id}
+          ref={dialogRef}
+          className={popoverDialogClassName}
+          data-testid={`${testID}--dialog`}
+          onMouseLeave={onMouseLeave}
         >
-          {contents}
+          <div
+            ref={ref}
+            style={style}
+            className={contentsClassName}
+            data-testid={`${testID}--contents`}
+          >
+            {contents}
+          </div>
+          <div className="cf-popover--caret" ref={caretRef} />
         </div>
-        <div className="cf-popover--caret" ref={caretRef} />
-      </div>
-    </ClickOutside>
-  )
-}
+      </ClickOutside>
+    )
+  }
+)
 
 PopoverDialog.displayName = 'PopoverDialog'

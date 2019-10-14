@@ -3505,10 +3505,10 @@ clone@^1.0.2:
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
   integrity sha1-2jCcwmPfFZlMaIypAheco8fNfH4=
 
-cnbuilder@^1.0.0:
-  version "1.0.14"
-  resolved "https://registry.yarnpkg.com/cnbuilder/-/cnbuilder-1.0.14.tgz#849f323f0b054b084b35560e40ef446ef9eea8a4"
-  integrity sha512-Lna83KYpzRZjp/Kox64m4McIY1GfC9iD587kEKOPXFj6cyM2EToElEQkBbaTBkp3UY1Svi8Q3oj+++/1VCXORA==
+cnbuilder@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/cnbuilder/-/cnbuilder-1.1.7.tgz#04ef08d278efd69bc65a95b087328455a85a2eef"
+  integrity sha512-8D9dpabOVOh7GX/qPZ60sJpqxHaiLqSDsuZOYH1TvoNkgMrO7BJHCbNepHHoglSdU//M2sjLHaL9Vu0qibSV2A==
 
 coa@^2.0.2:
   version "2.0.2"
@@ -8990,10 +8990,18 @@ react-dom@^16.5.2, react-dom@^16.8.3:
     prop-types "^15.6.2"
     scheduler "^0.13.6"
 
-react-draggable@^3.1.1, react-draggable@^3.3.0:
+react-draggable@^3.1.1:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/react-draggable/-/react-draggable-3.3.0.tgz#2ed7ea3f92e7d742d747f9e6324860606cd4d997"
   integrity sha512-U7/jD0tAW4T0S7DCPK0kkKLyL0z61sC/eqU+NUfDjnq+JtBKaYKDHpsK2wazctiA4alEzCXUnzkREoxppOySVw==
+  dependencies:
+    classnames "^2.2.5"
+    prop-types "^15.6.0"
+
+react-draggable@^3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/react-draggable/-/react-draggable-3.3.2.tgz#966ef1d90f2387af3c2d8bd3516f601ea42ca359"
+  integrity sha512-oaz8a6enjbPtx5qb0oDWxtDNuybOylvto1QLydsXgKmwT7e3GXC2eMVDwEMIUYJIFqVG72XpOv673UuuAq6LhA==
   dependencies:
     classnames "^2.2.5"
     prop-types "^15.6.0"
@@ -9107,14 +9115,14 @@ react-resize-detector@^4.0.5:
     raf-schd "^4.0.0"
     resize-observer-polyfill "^1.5.1"
 
-react-scrollbars-custom@^4.0.4:
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/react-scrollbars-custom/-/react-scrollbars-custom-4.0.5.tgz#3fa702aa849eebf9cc9f47a7dec713da423898a6"
-  integrity sha512-u6eHUFqRx3G3YymRD18w7ntA0U4NnbchzX29EaHbU+yCd5I2LEOkoCuexEObMoJVC9lovwF78BSQY8Sfb8IaQQ==
+react-scrollbars-custom@^4.0.20:
+  version "4.0.20"
+  resolved "https://registry.yarnpkg.com/react-scrollbars-custom/-/react-scrollbars-custom-4.0.20.tgz#5cdeb864aacfcc5b6e9c7e532cff1a5ca290b739"
+  integrity sha512-mYEljeOpYabspUrSEFf52bwzUcAd6lU1sgMd/Hp0jh9sOeps1fs/FoiSfFqDZWcshMTekTia/GPYbwhCJOFa9w==
   dependencies:
-    cnbuilder "^1.0.0"
-    react-draggable "^3.3.0"
-    zoom-level "^1.1.0"
+    cnbuilder "^1.1.7"
+    react-draggable "^3.3.2"
+    zoom-level "^1.2.4"
 
 react-select@^2.2.0:
   version "2.4.4"
@@ -11548,7 +11556,7 @@ yargs@^12.0.5:
     y18n "^3.2.1 || ^4.0.0"
     yargs-parser "^11.1.1"
 
-zoom-level@^1.1.0:
-  version "1.1.13"
-  resolved "https://registry.yarnpkg.com/zoom-level/-/zoom-level-1.1.13.tgz#cad96a5964eff69f054b733b1de1facb5c629aa7"
-  integrity sha512-BFNE30A1ifQd217pzEaqftgz+NcedJbedj4rMCRBnoJ0N2J2n01hvIRdz4fMXFWEeCOIYPvRgojyNI1EyuCdiw==
+zoom-level@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/zoom-level/-/zoom-level-1.2.4.tgz#52bc5ae3af945cac82f9f685e8707fa2c9b962e2"
+  integrity sha512-nGFUhyU3Y4jWh6l+hYCVVUxu3vrD0i/RkumJRzYGU0COMWMs2Szs84mltacd64R9zJcxwKckWQN/KKbfB1btVA==

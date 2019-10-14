@@ -1,33 +1,56 @@
 // Libraries
-import React, {Component, CSSProperties} from 'react'
+import React, {forwardRef, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface DraggableResizerPanelProps extends StandardFunctionProps {
   /** Panel will not shrink past this size (experimental, not guaranteed to work) */
-  minSizePixels: number
+  minSizePixels?: number
   /** Does not have a value initially, gets passed a value by being a child of DraggableResizer */
   sizePercent?: number
   /** Test ID for Integration Tests */
 }
 
-export class DraggableResizerPanel extends Component<Props> {
-  public static readonly displayName = 'DraggableResizerPanel'
+export type DraggableResizerPanelRef = HTMLDivElement
 
-  public static defaultProps = {
-    minSizePixels: 0,
-    testID: 'draggable-resizer--panel',
-  }
+export const DraggableResizerPanel = forwardRef<
+  DraggableResizerPanelRef,
+  DraggableResizerPanelProps
+>(
+  (
+    {
+      id,
+      style,
+      children,
+      className,
+      sizePercent,
+      minSizePixels = 0,
+      testID = 'draggable-resizer--panel',
+    },
+    ref
+  ) => {
+    const draggableResizerPanelClass = classnames(
+      'cf-draggable-resizer--panel',
+      {
+        [`${className}`]: className,
+      }
+    )
 
-  public render() {
-    const {children, testID, id} = this.props
+    const draggableResizerPanelStyle = (): CSSProperties | undefined => {
+      if (sizePercent) {
+        return {flex: `${sizePercent} 0 ${minSizePixels}px`, ...style}
+      }
+
+      return style
+    }
 
     return (
       <div
-        className={this.className}
-        style={this.style}
+        ref={ref}
+        className={draggableResizerPanelClass}
+        style={draggableResizerPanelStyle()}
         data-testid={testID}
         id={id}
       >
@@ -35,22 +58,6 @@ export class DraggableResizerPanel extends Component<Props> {
       </div>
     )
   }
+)
 
-  private get className(): string {
-    const {className} = this.props
-
-    return classnames('cf-draggable-resizer--panel', {
-      [`${className}`]: className,
-    })
-  }
-
-  private get style(): CSSProperties | undefined {
-    const {sizePercent, minSizePixels, style} = this.props
-
-    if (sizePercent) {
-      return {flex: `${sizePercent} 0 ${minSizePixels}px`, ...style}
-    }
-
-    return style
-  }
-}
+DraggableResizerPanel.displayName = 'DraggableResizerPanel'

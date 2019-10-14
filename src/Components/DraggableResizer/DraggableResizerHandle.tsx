@@ -1,44 +1,91 @@
 // Libraries
-import React, {PureComponent, CSSProperties} from 'react'
+import React, {forwardRef, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {Gradients, Orientation, StandardClassProps} from '../../Types'
+import {Gradients, Orientation, StandardFunctionProps} from '../../Types'
 
 // Constants
 import {getColorsFromGradient} from '../../Constants/colors'
 
-interface Props extends StandardClassProps {
+export interface DraggableResizerHandleProps extends StandardFunctionProps {
   /** Expects a number between 0 - 1 */
   position: number
   /** Gets passed a function by being a child of DraggableResizer */
-  onStartDrag: (dragIndex: number) => void
+  onStartDrag?: (dragIndex: number) => void
   /** Gets passed a value by being a child of DraggableResizer */
-  dragging: boolean
+  dragging?: boolean
   /** Gets passed a value by being a child of DraggableResizer */
-  dragIndex: number
+  dragIndex?: number
   /** Gradient theme for handle */
   gradient: Gradients
   /** Orientation of handle */
   orientation: Orientation
 }
 
-export class DraggableResizerHandle extends PureComponent<Props> {
-  public static readonly displayName = 'DraggableResizerHandle'
+export type DraggableResizerHandleRef = HTMLDivElement
 
-  public static defaultProps = {
-    dragIndex: 9999,
-    dragging: false,
-    onStartDrag: () => {},
-  }
+export const DraggableResizerHandle = forwardRef<
+  DraggableResizerHandleRef,
+  DraggableResizerHandleProps
+>(
+  (
+    {
+      id,
+      style,
+      testID,
+      gradient,
+      className,
+      orientation,
+      dragging = false,
+      dragIndex = 9999,
+      onStartDrag = () => {},
+    },
+    ref
+  ) => {
+    const handleMouseDown = (): void => {
+      onStartDrag(dragIndex)
+    }
 
-  public render() {
-    const {testID, id, style} = this.props
+    const DraggableResizerHandleClass = classnames(
+      'cf-draggable-resizer--handle',
+      {
+        'cf-draggable-resizer--handle-dragging': dragging,
+        [`${className}`]: className,
+      }
+    )
+
+    const gradientStyle = (): CSSProperties | undefined => {
+      if (!orientation || !gradient) {
+        return
+      }
+
+      const colors = getColorsFromGradient(gradient)
+
+      if (orientation == Orientation.Vertical) {
+        return {
+          background: `linear-gradient(to bottom,  ${colors.start} 0%,${
+            colors.stop
+          } 100%)`,
+        }
+      }
+
+      if (orientation === Orientation.Horizontal) {
+        return {
+          background: `linear-gradient(to right,  ${colors.start} 0%,${
+            colors.stop
+          } 100%)`,
+        }
+      }
+
+      return
+    }
 
     return (
       <div
-        className={this.className}
-        onMouseDown={this.handleMouseDown}
+        ref={ref}
+        className={DraggableResizerHandleClass}
+        onMouseDown={handleMouseDown}
         title="Drag to resize"
         data-testid={testID}
         style={style}
@@ -46,52 +93,11 @@ export class DraggableResizerHandle extends PureComponent<Props> {
       >
         <div
           className="cf-draggable-resizer--gradient"
-          style={this.gradientStyle}
+          style={gradientStyle()}
         />
       </div>
     )
   }
+)
 
-  private handleMouseDown = (): void => {
-    const {dragIndex, onStartDrag} = this.props
-
-    onStartDrag(dragIndex)
-  }
-
-  private get className(): string {
-    const {dragging, className} = this.props
-
-    return classnames('cf-draggable-resizer--handle', {
-      'cf-draggable-resizer--handle-dragging': dragging,
-      [`${className}`]: className,
-    })
-  }
-
-  private get gradientStyle(): CSSProperties | undefined {
-    const {orientation, gradient} = this.props
-
-    if (!orientation || !gradient) {
-      return
-    }
-
-    const colors = getColorsFromGradient(gradient)
-
-    if (orientation == Orientation.Vertical) {
-      return {
-        background: `linear-gradient(to bottom,  ${colors.start} 0%,${
-          colors.stop
-        } 100%)`,
-      }
-    }
-
-    if (orientation === Orientation.Horizontal) {
-      return {
-        background: `linear-gradient(to right,  ${colors.start} 0%,${
-          colors.stop
-        } 100%)`,
-      }
-    }
-
-    return
-  }
-}
+DraggableResizerHandle.displayName = 'DraggableResizerHandle'
