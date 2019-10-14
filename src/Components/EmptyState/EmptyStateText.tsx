@@ -1,5 +1,6 @@
 // Libraries
 import React, {forwardRef} from 'react'
+import classnames from 'classnames'
 
 // Types
 import {StandardFunctionProps} from '../../Types'
@@ -10,9 +11,9 @@ export const EmptyStateText = forwardRef<
   EmptyStateTextRef,
   StandardFunctionProps
 >(({id, style, className, children, testID = 'empty-state--text'}, ref) => {
-  const EmptyStateText = className
-    ? `cf-empty-state--text ${className}`
-    : 'cf-empty-state--text'
+  const emptyStateTextClass = classnames('cf-empty-state--text', {
+    [`${className}`]: className,
+  })
 
   return (
     <h4
@@ -20,7 +21,7 @@ export const EmptyStateText = forwardRef<
       ref={ref}
       style={style}
       data-testid={testID}
-      className={EmptyStateText}
+      className={emptyStateTextClass}
     >
       {children}
     </h4>

@@ -40,13 +40,13 @@ export const IndexListHeaderCell = forwardRef<
     },
     ref
   ) => {
-    const IndexListHeaderCellClass = classnames('index-list--header-cell', {
-      'index-list--align-left': alignment === Alignment.Left,
-      'index-list--align-center': alignment === Alignment.Center,
-      'index-list--align-right': alignment === Alignment.Right,
-      'index-list--sortable': isSortable(sort),
-      'index-list--sort-descending': sort === Sort.Descending,
-      'index-list--sort-ascending': sort === Sort.Ascending,
+    const IndexListHeaderCellClass = classnames('cf-index-list--header-cell', {
+      'cf-index-list--align-left': alignment === Alignment.Left,
+      'cf-index-list--align-center': alignment === Alignment.Center,
+      'cf-index-list--align-right': alignment === Alignment.Right,
+      'cf-index-list--sortable': isSortable(sort),
+      'cf-index-list--sort-descending': sort === Sort.Descending,
+      'cf-index-list--sort-ascending': sort === Sort.Ascending,
     })
 
     const handleClick = (): void => {
@@ -84,7 +84,7 @@ IndexListHeaderCell.displayName = 'IndexListHeaderCell'
 const SortIndicator: FunctionComponent<{sortable: boolean}> = ({sortable}) => {
   if (sortable) {
     return (
-      <span className="index-list--sort-arrow">
+      <span className="cf-index-list--sort-arrow">
         <span className="icon caret-down" />
       </span>
     )

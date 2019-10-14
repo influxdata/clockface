@@ -30,11 +30,11 @@ export const IndexListRowCell = forwardRef<
     },
     ref
   ) => {
-    const IndexListRowCellClass = classnames('index-list--row-cell', {
-      'index-list--show-hover': revealOnHover,
-      'index-list--align-left': alignment === Alignment.Left,
-      'index-list--align-center': alignment === Alignment.Center,
-      'index-list--align-right': alignment === Alignment.Right,
+    const IndexListRowCellClass = classnames('cf-index-list--row-cell', {
+      'cf-index-list--show-hover': revealOnHover,
+      'cf-index-list--align-left': alignment === Alignment.Left,
+      'cf-index-list--align-center': alignment === Alignment.Center,
+      'cf-index-list--align-right': alignment === Alignment.Right,
       [`${className}`]: className,
     })
 
@@ -44,7 +44,7 @@ export const IndexListRowCell = forwardRef<
           id={id}
           style={style}
           data-testid={testID}
-          className="index-list--cell"
+          className="cf-index-list--cell"
         >
           {children}
         </div>

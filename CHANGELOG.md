@@ -2,6 +2,14 @@
 
 ### 0.0.33 (Unreleased)
 
+- [#328](https://github.com/influxdata/clockface/pull/328): Convert `IndexList` component family to `FunctionComponent` and wrap with `forwardRef`
+- [#328](https://github.com/influxdata/clockface/pull/328): [Breaking] Prepend `cf-` to all `IndexList` class names
+- [#328](https://github.com/influxdata/clockface/pull/328): Convert `NavMenu` component family to `FunctionComponent` and wrap with `forwardRef`
+- [#328](https://github.com/influxdata/clockface/pull/328): Convert `Tabs` component family to `FunctionComponent` and wrap with `forwardRef`
+- [#328](https://github.com/influxdata/clockface/pull/328): Convert `EmptyState` component family to `FunctionComponent` and wrap with `forwardRef`
+- [#328](https://github.com/influxdata/clockface/pull/328): [Breaking] Remove `text` and `highlightedText` props from `EmptyStateText` and `EmptyStateSubtext` components in favor of directly passing children
+- [#328](https://github.com/influxdata/clockface/pull/328): Convert `Page` component family to `FunctionComponent` and wrap with `forwardRef`
+- [#328](https://github.com/influxdata/clockface/pull/328): [Breaking] Export `PageHeaderLeft`, `PageHeaderCenter`, and `PageHeaderRight` directly from `Page` instead of `Page.Header`
 - [#327](https://github.com/influxdata/clockface/pull/327) Fix rendering issue with "always visible" `Popover`s
 - [#324](https://github.com/influxdata/clockface/pull/324): Convert `DraggableResizer` component family to `FunctionComponent` and wrap with `forwardRef`
 - [#320](https://github.com/influxdata/clockface/pull/320): Convert `DapperScrollbars` component to `FunctionComponent` and update `react-scrollbars-custom` dependency to `4.0.20`

@@ -27,7 +27,7 @@ export const EmptyStateRoot = forwardRef<EmptyStateRef, EmptyStateProps>(
     },
     ref
   ) => {
-    const EmptyStateClass = classnames('cf-empty-state', {
+    const emptyStateClass = classnames('cf-empty-state', {
       [`cf-empty-state--${size}`]: size,
       [`${className}`]: className,
     })
@@ -38,7 +38,7 @@ export const EmptyStateRoot = forwardRef<EmptyStateRef, EmptyStateProps>(
         ref={ref}
         style={style}
         data-testid={testID}
-        className={EmptyStateClass}
+        className={emptyStateClass}
       >
         {children}
       </div>

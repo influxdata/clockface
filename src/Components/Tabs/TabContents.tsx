@@ -27,7 +27,7 @@ export const TabContents = forwardRef<TabContentsRef, TabContentsProps>(
     },
     ref
   ) => {
-    const TabContentsClass = classnames('cf-tabs--tab-contents', {
+    const tabContentsClass = classnames('cf-tabs--tab-contents', {
       [`cf-tabs--tab-contents__${padding}`]: padding,
       [`${className}`]: className,
     })
@@ -35,7 +35,7 @@ export const TabContents = forwardRef<TabContentsRef, TabContentsProps>(
     return (
       <div
         ref={ref}
-        className={TabContentsClass}
+        className={tabContentsClass}
         data-testid={testID}
         id={id}
         style={{backgroundColor, ...style}}

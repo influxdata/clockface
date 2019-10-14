@@ -30,7 +30,7 @@ export const NavMenuItem = forwardRef<NavMenuItemRef, NavMenuItemProps>(
     },
     ref
   ) => {
-    const NavMenuItemClass = classnames('cf-nav--item', {
+    const navMenuItemClass = classnames('cf-nav--item', {
       active,
       [`${className}`]: className,
     })
@@ -38,7 +38,7 @@ export const NavMenuItem = forwardRef<NavMenuItemRef, NavMenuItemProps>(
     return (
       <div
         ref={ref}
-        className={NavMenuItemClass}
+        className={navMenuItemClass}
         data-testid={testID}
         id={id}
         style={style}

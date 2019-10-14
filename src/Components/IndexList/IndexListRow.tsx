@@ -17,9 +17,9 @@ export const IndexListRow = forwardRef<IndexListRowRef, IndexListRowProps>(
     {children, id, style, className, disabled = false, testID = 'table-row'},
     ref
   ) => {
-    const IndexListRowClass = classnames('index-list--row', {
-      'index-list--row-disabled': disabled,
-      [`${className}`]: !!className,
+    const IndexListRowClass = classnames('cf-index-list--row', {
+      'cf-index-list--row-disabled': disabled,
+      [`${className}`]: className,
     })
 
     return (

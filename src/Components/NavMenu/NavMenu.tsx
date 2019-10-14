@@ -17,15 +17,14 @@ export const NavMenuRoot = forwardRef<NavMenuRef, NavMenuProps>(
   ({id, style, children, className, testID = 'nav-menu'}, ref) => {
     const [menuVisible, setMenuVisible] = useState(false)
 
-    const NavMenuRootClass = classnames('cf-nav', {
+    const navMenuRootClass = classnames('cf-nav', {
       'cf-nav__expanded': menuVisible,
       [`${className}`]: className,
     })
-    const toggleClassName = (): string => {
-      return classnames('cf-nav--toggle', {
-        'cf-nav--toggle__expanded': menuVisible,
-      })
-    }
+
+    const toggleClassName = classnames('cf-nav--toggle', {
+      'cf-nav--toggle__expanded': menuVisible,
+    })
 
     const handleToggleMenu = (): void => {
       setMenuVisible(!menuVisible)
@@ -33,7 +32,7 @@ export const NavMenuRoot = forwardRef<NavMenuRef, NavMenuProps>(
 
     return (
       <>
-        <div className={toggleClassName()} onClick={handleToggleMenu}>
+        <div className={toggleClassName} onClick={handleToggleMenu}>
           <div className="cf-nav--hamburger">
             <div className="cf-nav--hamburger-top" />
             <div className="cf-nav--hamburger-middle" />
@@ -45,7 +44,7 @@ export const NavMenuRoot = forwardRef<NavMenuRef, NavMenuProps>(
           ref={ref}
           style={style}
           data-testid={testID}
-          className={NavMenuRootClass}
+          className={navMenuRootClass}
         >
           <div className="cf-nav--menu">{children}</div>
         </nav>

@@ -1,5 +1,6 @@
 // Libraries
 import React, {forwardRef} from 'react'
+import classnames from 'classnames'
 
 // Types
 import {StandardFunctionProps} from '../../Types'
@@ -12,9 +13,9 @@ export const IndexListHeader = forwardRef<
   IndexListHeaderRef,
   IndexListHeaderProps
 >(({className, children, id, style, testID = 'index-list--header'}, ref) => {
-  const IndexListHeaderClass = className
-    ? `index-list--header ${className}`
-    : 'index-list--header'
+  const indexListHeaderClass = classnames('cf-index-list--header', {
+    [`${className}`]: className,
+  })
 
   return (
     <thead
@@ -22,7 +23,7 @@ export const IndexListHeader = forwardRef<
       ref={ref}
       style={style}
       data-testid={testID}
-      className={IndexListHeaderClass}
+      className={indexListHeaderClass}
     >
       <tr>{children}</tr>
     </thead>

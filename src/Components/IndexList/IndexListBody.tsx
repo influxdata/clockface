@@ -3,6 +3,7 @@ import React, {forwardRef} from 'react'
 
 // Types
 import {StandardFunctionProps} from '../../Types'
+import classnames from 'classnames'
 
 export interface IndexListBodyProps extends StandardFunctionProps {
   /** Rendered when no children are passed in */
@@ -26,14 +27,14 @@ export const IndexListBody = forwardRef<IndexListBodyRef, IndexListBodyProps>(
     },
     ref
   ) => {
-    const IndexListBodyClass = className
-      ? `index-list--body ${className}`
-      : 'index-list--body'
+    const indexListBodyClass = classnames('cf-index-list--body', {
+      [`${className}`]: className,
+    })
 
     if (React.Children.count(children)) {
       return (
         <tbody
-          className={IndexListBodyClass}
+          className={indexListBodyClass}
           data-testid={testID}
           id={id}
           style={style}
@@ -46,12 +47,15 @@ export const IndexListBody = forwardRef<IndexListBodyRef, IndexListBodyProps>(
     return (
       <tbody
         ref={ref}
-        className="index-list--empty"
+        className="cf-index-list--empty"
         data-testid={`${testID} empty`}
       >
-        <tr className="index-list--empty-row">
+        <tr className="cf-index-list--empty-row">
           <td colSpan={columnCount}>
-            <div className="index-list--empty-cell" data-testid="empty-state">
+            <div
+              className="cf-index-list--empty-cell"
+              data-testid="empty-state"
+            >
               {emptyState}
             </div>
           </td>

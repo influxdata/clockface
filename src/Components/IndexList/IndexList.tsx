@@ -1,5 +1,6 @@
 // Libraries
 import React, {forwardRef} from 'react'
+import classnames from 'classnames'
 
 // Types
 import {StandardFunctionProps} from '../../Types'
@@ -13,12 +14,14 @@ export type IndexListRef = HTMLTableElement
 
 export const IndexListRoot = forwardRef<IndexListRef, IndexListProps>(
   ({children, className, id, style, testID = 'index-list'}, ref) => {
-    const IndexListClass = className ? `index-list ${className}` : 'index-list'
+    const indexListClass = classnames('cf-index-list', {
+      [`${className}`]: className,
+    })
 
     return (
       <table
         ref={ref}
-        className={IndexListClass}
+        className={indexListClass}
         data-testid={testID}
         id={id}
         style={style}

@@ -42,7 +42,7 @@ export const TabsRoot = forwardRef<TabsRef, TabsProps>(
     },
     ref
   ) => {
-    const TabsClass = classnames('cf-tabs', {
+    const tabsClass = classnames('cf-tabs', {
       [`cf-tabs__align-${alignment}`]: alignment,
       [`cf-tabs__${orientation}`]: orientation,
       [`cf-tabs__padding-${padding}`]: padding,
@@ -52,7 +52,7 @@ export const TabsRoot = forwardRef<TabsRef, TabsProps>(
     return (
       <nav
         ref={ref}
-        className={TabsClass}
+        className={tabsClass}
         data-testid={testID}
         id={id}
         style={{

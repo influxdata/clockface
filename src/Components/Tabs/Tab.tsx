@@ -77,7 +77,7 @@ export const Tab = forwardRef<TabRef, TabProps>(
 
     const darkText = textColor() === InfluxColors.Kevlar
 
-    const TabClass = classnames('cf-tabs--tab', {
+    const tabClass = classnames('cf-tabs--tab', {
       [`cf-tabs--tab__${size}`]: size,
       'cf-tabs--tab__active': active,
       'cf-tabs--tab__dark-text': darkText,
@@ -88,7 +88,7 @@ export const Tab = forwardRef<TabRef, TabProps>(
     return (
       <div
         ref={ref}
-        className={TabClass}
+        className={tabClass}
         data-testid={testID}
         id={id}
         style={{backgroundColor, color: textColor(), ...style}}
