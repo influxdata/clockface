@@ -38,6 +38,7 @@ selectableCardStories.add(
     const selectableCard2Ref: RefObject<SelectableCardRef> = createRef()
     const selectableCard3Ref: RefObject<SelectableCardRef> = createRef()
     const selectableCard4Ref: RefObject<SelectableCardRef> = createRef()
+    const selectableCard5Ref: RefObject<SelectableCardRef> = createRef()
 
     const logRefs = (): void => {
       /* eslint-disable */
@@ -45,6 +46,7 @@ selectableCardStories.add(
       console.log('SelectableCard 2', selectableCard2Ref.current)
       console.log('SelectableCard 3', selectableCard3Ref.current)
       console.log('SelectableCard 4', selectableCard4Ref.current)
+      console.log('SelectableCard 5', selectableCard5Ref.current)
       /* eslint-enable */
     }
 
@@ -112,7 +114,7 @@ selectableCardStories.add(
           <div className="mockComponent stretch">Image</div>
         </SelectableCard>
         <SelectableCard
-          ref={selectableCard2Ref}
+          ref={selectableCard3Ref}
           style={object('style', exampleStyle)}
           id="selected-disabled-card"
           icon={
@@ -142,7 +144,7 @@ selectableCardStories.add(
           <div className="mockComponent stretch">Image</div>
         </SelectableCard>
         <SelectableCard
-          ref={selectableCard3Ref}
+          ref={selectableCard4Ref}
           style={object('style', exampleStyle)}
           id="default-card"
           icon={
@@ -172,7 +174,7 @@ selectableCardStories.add(
           <div className="mockComponent stretch">Image</div>
         </SelectableCard>
         <SelectableCard
-          ref={selectableCard3Ref}
+          ref={selectableCard5Ref}
           style={object('style', exampleStyle)}
           id="disabled-card"
           icon={
