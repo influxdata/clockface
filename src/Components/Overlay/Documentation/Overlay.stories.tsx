@@ -25,7 +25,7 @@ import {OverlayFooter} from '../OverlayFooter'
 import {Button} from '../../Button/Composed/Button'
 
 // Types
-import {Gradients, ComponentColor} from '../../../Types'
+import {Gradients, ComponentColor, ComponentSize} from '../../../Types'
 
 // Notes
 import OverlayReadme from './Overlay.md'
@@ -67,7 +67,14 @@ overlayStories.add(
           />
         )}
       >
-        <OverlayContainer maxWidth={400}>
+        <OverlayContainer
+          maxWidth={400}
+          margin={
+            ComponentSize[
+              select('margin', mapEnumKeys(ComponentSize), 'Medium')
+            ]
+          }
+        >
           <OverlayHeader
             title="Howdy partner!"
             onDismiss={() => {

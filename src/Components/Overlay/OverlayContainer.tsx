@@ -3,11 +3,13 @@ import React, {PureComponent, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardClassProps, ComponentSize} from '../../Types'
 
 interface Props extends StandardClassProps {
   /** Pixel width maximum for overlay */
   maxWidth: number
+  /** Margins on all sides of overlay */
+  margin?: ComponentSize
 }
 
 export class OverlayContainer extends PureComponent<Props> {
@@ -16,16 +18,20 @@ export class OverlayContainer extends PureComponent<Props> {
   public static defaultProps = {
     maxWidth: 800,
     testID: 'overlay--container',
+    margin: ComponentSize.Medium,
   }
 
   public render() {
-    const {children, className, testID, id} = this.props
+    const {children, className, testID, id, margin} = this.props
+
+    const classname = classnames('cf-overlay--container', {
+      [`cf-overlay--container__${margin}`]: margin,
+      [`${className}`]: className,
+    })
 
     return (
       <div
-        className={classnames('cf-overlay--container', {
-          [`${className}`]: className,
-        })}
+        className={classname}
         data-testid={testID}
         style={this.style}
         id={id}

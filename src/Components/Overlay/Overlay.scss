@@ -34,8 +34,8 @@ $overlay--container-padding: $cf-marg-c + $cf-marg-d;
 }
 
 .cf-overlay--children {
-  position: relative;
-  z-index: 2;
+  display: flex;
+  justify-content: center;
 }
 
 .cf-overlay {
@@ -45,9 +45,24 @@ $overlay--container-padding: $cf-marg-c + $cf-marg-d;
 
 .cf-overlay--container {
   @extend %overlay-children;
-  margin: $overlay--container-padding auto;
   background-color: $g2-kevlar;
   border-radius: $cf-radius;
+
+  &__xs {
+    margin: $page--gutter-xs;
+  }
+
+  &__sm {
+    margin: $page--gutter-sm;
+  }
+
+  &__md {
+    margin: $page--gutter-md;
+  }
+
+  &__lg {
+    margin: $page--gutter-lg;
+  }
 }
 
 .cf-overlay--header {
