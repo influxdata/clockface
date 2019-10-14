@@ -2,6 +2,9 @@
 
 ### 0.0.33 (Unreleased)
 
+- [#329](https://github.com/influxdata/clockface/pull/329): Convert `Overlay` component family to `FunctionComponent` and wrap with `forwardRef`
+- [#329](https://github.com/influxdata/clockface/pull/329): Use `react-spring` library to handle Overlay animations
+- [#329](https://github.com/influxdata/clockface/pull/329): Allow `OverlayContainer` margin to be customized
 - [#327](https://github.com/influxdata/clockface/pull/327) Fix rendering issue with "always visible" `Popover`s
 - [#324](https://github.com/influxdata/clockface/pull/324): Convert `DraggableResizer` component family to `FunctionComponent` and wrap with `forwardRef`
 - [#320](https://github.com/influxdata/clockface/pull/320): Convert `DapperScrollbars` component to `FunctionComponent` and update `react-scrollbars-custom` dependency to `4.0.20`
