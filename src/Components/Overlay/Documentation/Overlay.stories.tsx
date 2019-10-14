@@ -52,7 +52,8 @@ overlayStories.add(
     <div className="story--example">
       {instructionsElement}
       <Overlay
-        visible={boolean('visible', true)}
+        transitionDuration={number('transitionDuration', 360)}
+        visible={boolean('visible', false)}
         renderMaskElement={style => (
           <OverlayMask
             style={style}

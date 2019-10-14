@@ -25,9 +25,12 @@ import {StandardFunctionProps, InfluxColors} from '../../Types'
 import './Overlay.scss'
 
 export interface OverlayProps extends StandardFunctionProps {
+  /** Controls visibility of the overlay */
   visible: boolean
   /** Will replace the mask element with a custom element, useful for customizing the mask appearance */
   renderMaskElement?: (style: CSSProperties) => JSX.Element
+  /** Controls the transition timing */
+  transitionDuration?: number
 }
 
 const overlayPortalName = 'overlay'
@@ -38,6 +41,7 @@ export const OverlayRoot: FunctionComponent<OverlayProps> = ({
   visible,
   children,
   className,
+  transitionDuration = 360,
   renderMaskElement = (style: CSSProperties) => <OverlayMask style={style} />,
 }) => {
   const [portalID, setPortalID] = useState<string>('')
@@ -60,7 +64,7 @@ export const OverlayRoot: FunctionComponent<OverlayProps> = ({
   }
 
   const transitionConfig = {
-    duration: 310,
+    duration: transitionDuration,
     easing: easings.easeExpInOut,
   }
 
@@ -84,6 +88,7 @@ export const OverlayRoot: FunctionComponent<OverlayProps> = ({
               className={overlayClass}
               thumbStartColor={InfluxColors.White}
               thumbStopColor={InfluxColors.Moonstone}
+              noScrollX={true}
               autoHide={false}
               testID={testID}
               id={id}
