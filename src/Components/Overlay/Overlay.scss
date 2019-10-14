@@ -10,6 +10,8 @@ $overlay--header-height: $page--header-size;
 $overlay--title-size: $page--title-size;
 $overlay--title-weight: $page--title-weight;
 $overlay--container-padding: $cf-marg-c + $cf-marg-d;
+$overlay--z: 20;
+$overlay--mask-z: 10;
 
 .cf-overlay-portal {
   @include portal-style($z--overlays);
@@ -30,7 +32,7 @@ $overlay--container-padding: $cf-marg-c + $cf-marg-d;
 
 .cf-overlay--mask {
   @extend %overlay-styles;
-  z-index: $z--overlays - 10;
+  z-index: $overlay--mask-z;
 }
 
 .cf-overlay--children {
@@ -40,7 +42,7 @@ $overlay--container-padding: $cf-marg-c + $cf-marg-d;
 
 .cf-overlay {
   @extend %overlay-styles;
-  z-index: $z--overlays;
+  z-index: $overlay--z;
 }
 
 .cf-overlay--container {

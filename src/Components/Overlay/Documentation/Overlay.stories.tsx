@@ -1,5 +1,5 @@
 // Libraries
-import * as React from 'react'
+import React, {RefObject, createRef} from 'react'
 import marked from 'marked'
 
 // Storybook
@@ -17,11 +17,11 @@ import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {OverlayRoot as Overlay} from '../Overlay'
-import {OverlayContainer} from '../OverlayContainer'
-import {OverlayMask} from '../OverlayMask'
-import {OverlayHeader} from '../OverlayHeader'
-import {OverlayBody} from '../OverlayBody'
-import {OverlayFooter} from '../OverlayFooter'
+import {OverlayContainer, OverlayContainerRef} from '../OverlayContainer'
+import {OverlayMask, OverlayMaskRef} from '../OverlayMask'
+import {OverlayHeader, OverlayHeaderRef} from '../OverlayHeader'
+import {OverlayBody, OverlayBodyRef} from '../OverlayBody'
+import {OverlayFooter, OverlayFooterRef} from '../OverlayFooter'
 import {Button} from '../../Button/Composed/Button'
 
 // Types
@@ -105,15 +105,34 @@ overlayStories.add(
 
 overlayStories.add(
   'OverlayContainer',
-  () => (
-    <div className="story--example">
-      <OverlayContainer maxWidth={number('maxWidth', 800)}>
-        <div className="mockComponent" style={{width: '100%', height: '400px'}}>
-          Header, Body, or Footer go here
+  () => {
+    const overlayContainerRef: RefObject<OverlayContainerRef> = createRef()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(overlayContainerRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
         </div>
-      </OverlayContainer>
-    </div>
-  ),
+        <OverlayContainer
+          maxWidth={number('maxWidth', 800)}
+          ref={overlayContainerRef}
+        >
+          <div
+            className="mockComponent"
+            style={{width: '100%', height: '400px'}}
+          >
+            Header, Body, or Footer go here
+          </div>
+        </OverlayContainer>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(OverlayContainerReadme),
@@ -123,23 +142,35 @@ overlayStories.add(
 
 overlayStories.add(
   'OverlayMask',
-  () => (
-    <div
-      className={`story--example overlay--example ${
-        boolean('visible', false) ? 'show-overlay' : ''
-      }`}
-    >
-      {instructionsElement}
-      <OverlayMask
-        gradient={
-          Gradients[
-            Gradients[select('gradient', mapEnumKeys(Gradients), 'GundamPilot')]
-          ]
-        }
-        backgroundColor={color('backgroundColor', '')}
-      />
-    </div>
-  ),
+  () => {
+    const overlayMaskRef: RefObject<OverlayMaskRef> = createRef()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(overlayMaskRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+        {instructionsElement}
+        <OverlayMask
+          ref={overlayMaskRef}
+          gradient={
+            Gradients[
+              Gradients[
+                select('gradient', mapEnumKeys(Gradients), 'GundamPilot')
+              ]
+            ]
+          }
+          backgroundColor={color('backgroundColor', '')}
+        />
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(OverlayMaskReadme),
@@ -149,16 +180,30 @@ overlayStories.add(
 
 overlayStories.add(
   'OverlayHeader',
-  () => (
-    <div className="story--example">
-      <OverlayHeader
-        title={text('title', 'Are you sure?')}
-        onDismiss={() => {
-          alert('Dismissed')
-        }}
-      />
-    </div>
-  ),
+  () => {
+    const overlayHeaderRef: RefObject<OverlayHeaderRef> = createRef()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(overlayHeaderRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+        <OverlayHeader
+          ref={overlayHeaderRef}
+          title={text('title', 'Are you sure?')}
+          onDismiss={() => {
+            alert('Dismissed')
+          }}
+        />
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(OverlayHeaderReadme),
@@ -168,15 +213,31 @@ overlayStories.add(
 
 overlayStories.add(
   'OverlayBody',
-  () => (
-    <div className="story--example">
-      <OverlayBody>
-        <div className="mockComponent" style={{width: '100%', height: '300px'}}>
-          This is a great place to stick a form or important text
+  () => {
+    const overlayBodyRef: RefObject<OverlayBodyRef> = createRef()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(overlayBodyRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
         </div>
-      </OverlayBody>
-    </div>
-  ),
+        <OverlayBody ref={overlayBodyRef}>
+          <div
+            className="mockComponent"
+            style={{width: '100%', height: '300px'}}
+          >
+            This is a great place to stick a form or important text
+          </div>
+        </OverlayBody>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(OverlayBodyReadme),
@@ -186,18 +247,31 @@ overlayStories.add(
 
 overlayStories.add(
   'OverlayFooter',
-  () => (
-    <div className="story--example">
-      <OverlayFooter>
-        <div className="mockComponent" style={{width: '120px'}}>
-          Action Button
+  () => {
+    const overlayFooterRef: RefObject<OverlayFooterRef> = createRef()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(overlayFooterRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
         </div>
-        <div className="mockComponent" style={{width: '120px'}}>
-          Action Button
-        </div>
-      </OverlayFooter>
-    </div>
-  ),
+        <OverlayFooter ref={overlayFooterRef}>
+          <div className="mockComponent" style={{width: '120px'}}>
+            Action Button
+          </div>
+          <div className="mockComponent" style={{width: '120px'}}>
+            Action Button
+          </div>
+        </OverlayFooter>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(OverlayFooterReadme),
