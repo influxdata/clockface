@@ -2,6 +2,7 @@
 
 ### 0.0.33 (Unreleased)
 
+- [#331](https://github.com/influxdata/clockface/pull/331): Improve legiblity of `SelectableCard` default state
 - [#328](https://github.com/influxdata/clockface/pull/328): Convert `IndexList` component family to `FunctionComponent` and wrap with `forwardRef`
 - [#328](https://github.com/influxdata/clockface/pull/328): [Breaking] Prepend `cf-` to all `IndexList` class names
 - [#328](https://github.com/influxdata/clockface/pull/328): Convert `NavMenu` component family to `FunctionComponent` and wrap with `forwardRef`
