@@ -1,71 +1,44 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef, useEffect} from 'react'
 import classnames from 'classnames'
 
-// Components
-import {PageHeader} from './PageHeader'
-import {PageTitle} from './PageTitle'
-import {PageSubTitle} from './PageSubTitle'
-import {PageContents} from './PageContents'
-
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardFunctionProps} from '../../Types'
 
 // Styles
 import './Page.scss'
 
-interface Props extends StandardClassProps {
+export interface PageProps extends StandardFunctionProps {
   /** Use this prop to update document.title when the page first renders &  on subsequent updates */
   titleTag?: string
 }
 
-export class Page extends Component<Props> {
-  public static readonly displayName = 'Page'
+export type PageRef = HTMLDivElement
 
-  public static defaultProps = {
-    testID: 'page',
-    presentationMode: false,
-  }
+export const PageRoot = forwardRef<PageRef, PageProps>(
+  ({id, style, titleTag, children, className, testID = 'page'}, ref) => {
+    useEffect(() => {
+      if (titleTag) {
+        document.title = `${titleTag}`
+      }
+    }, [titleTag])
 
-  public static Header = PageHeader
-  public static Title = PageTitle
-  public static SubTitle = PageSubTitle
-  public static Contents = PageContents
-
-  public componentDidMount() {
-    const {titleTag} = this.props
-
-    if (titleTag) {
-      document.title = `${titleTag}`
-    }
-  }
-
-  public componentDidUpdate(prevProps: Props) {
-    if (prevProps.titleTag !== this.props.titleTag && this.props.titleTag) {
-      document.title = `${this.props.titleTag}`
-    }
-  }
-
-  public render() {
-    const {children, testID, id, style} = this.props
+    const pageClass = classnames('cf-page', {
+      [`${className}`]: className,
+    })
 
     return (
       <div
-        className={this.className}
-        data-testid={testID}
         id={id}
+        ref={ref}
         style={style}
+        data-testid={testID}
+        className={pageClass}
       >
         {children}
       </div>
     )
   }
+)
 
-  private get className(): string {
-    const {className} = this.props
-
-    return classnames('cf-page', {
-      [`${className}`]: className,
-    })
-  }
-}
+PageRoot.displayName = 'Page'

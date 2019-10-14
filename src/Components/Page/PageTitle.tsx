@@ -1,42 +1,37 @@
 // Libraries
-import React, {PureComponent} from 'react'
-
+import React, {forwardRef} from 'react'
+import classnames from 'classnames'
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface PageTitleProps extends StandardFunctionProps {
   /** Text to display in title */
   title: string
   /** Alternate text for screen readers */
   altText?: string
 }
 
-export class PageTitle extends PureComponent<Props> {
-  public static readonly displayName = 'PageTitle'
+export type PageTitleRef = HTMLHeadingElement
 
-  public static defaultProps = {
-    testID: 'page-title',
-  }
-
-  public render() {
-    const {title, altText, testID, id, style} = this.props
+export const PageTitle = forwardRef<PageTitleRef, PageTitleProps>(
+  ({title, altText, className, id, style, testID = 'page-title'}, ref) => {
+    const pageTitleClass = classnames('cf-page--title', {
+      [`${className}`]: className,
+    })
 
     return (
       <h1
-        className={this.className}
+        className={pageTitleClass}
         title={altText}
         data-testid={testID}
         id={id}
+        ref={ref}
         style={style}
       >
         {title}
       </h1>
     )
   }
+)
 
-  private get className(): string {
-    const {className} = this.props
-
-    return className ? `cf-page--title ${className}` : 'cf-page--title'
-  }
-}
+PageTitle.displayName = 'PageTitle'

@@ -11,7 +11,7 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 // Components
 import {AppWrapper, AppWrapperRef} from '../AppWrapper'
 import {NavMenu} from '../../NavMenu'
-import {Page} from '../../Page/Page'
+import {Page} from '../../Page/index'
 import {Icon} from '../../Icon/Icon'
 
 // Types
@@ -306,21 +306,21 @@ layoutStories.add(
                   ]
                 }
               >
-                <Page.Header.Left>
+                <Page.HeaderLeft>
                   <Page.Title title={text('PageTitle title', 'Page Title')} />
-                </Page.Header.Left>
-                <Page.Header.Center>
+                </Page.HeaderLeft>
+                <Page.HeaderCenter>
                   {boolean('Button in PageHeaderCenter', true) ? (
                     <div className="mockComponent mockButton">
                       Center Button
                     </div>
                   ) : null}
-                </Page.Header.Center>
-                <Page.Header.Right>
+                </Page.HeaderCenter>
+                <Page.HeaderRight>
                   {boolean('Button in PageHeaderRight', true) ? (
                     <div className="mockComponent mockButton">Right Button</div>
                   ) : null}
-                </Page.Header.Right>
+                </Page.HeaderRight>
               </Page.Header>
               <Page.Contents
                 fullWidth={boolean('fullWidth', false)}

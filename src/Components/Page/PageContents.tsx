@@ -1,89 +1,83 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Components
 import {DapperScrollbars} from '../DapperScrollbars/DapperScrollbars'
 
 // Types
-import {StandardClassProps, ComponentSize} from '../../Types'
+import {StandardFunctionProps, ComponentSize} from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface PageContentsProps extends StandardFunctionProps {
   /** Allows the page contents to fill the width of the screen */
-  fullWidth: boolean
+  fullWidth?: boolean
   /** Allows contents to scroll on overflow */
-  scrollable: boolean
+  scrollable?: boolean
   /** If scrollable is true, this toggles whether the scrollbar is always visible */
-  autoHideScrollbar: boolean
+  autoHideScrollbar?: boolean
   /** Controls the gutters (left and right margins) */
-  gutters: ComponentSize
+  gutters?: ComponentSize
 }
 
-export class PageContents extends Component<Props> {
-  public static readonly displayName = 'PageContents'
+export type PageContentsRef = HTMLDivElement
 
-  public static defaultProps = {
-    fullHeight: false,
-    scrollable: false,
-    testID: 'page-contents',
-    autoHideScrollbar: false,
-    gutters: ComponentSize.Medium,
-  }
-
-  public render() {
-    const {
-      scrollable,
-      testID,
+export const PageContents = forwardRef<PageContentsRef, PageContentsProps>(
+  (
+    {
       id,
       style,
       children,
-      fullWidth,
-      autoHideScrollbar,
-    } = this.props
-
-    let kids = children
-
-    if (fullWidth) {
-      kids = <div className="cf-page-contents__fluid">{kids}</div>
-    } else {
-      kids = <div className="cf-page-contents__fixed">{kids}</div>
-    }
-
-    if (scrollable) {
-      kids = (
-        <DapperScrollbars
-          className={this.className}
-          autoHide={autoHideScrollbar}
-          testID={testID}
-          id={id}
-          style={style}
-        >
-          {kids}
-        </DapperScrollbars>
-      )
-    } else {
-      kids = (
-        <div
-          className={this.className}
-          data-testid={testID}
-          id={id}
-          style={style}
-        >
-          {kids}
-        </div>
-      )
-    }
-
-    return kids
-  }
-
-  private get className(): string {
-    const {className, scrollable, gutters} = this.props
-
-    return classnames('cf-page-contents', {
+      className,
+      fullWidth = false,
+      scrollable = false,
+      testID = 'page-contents',
+      autoHideScrollbar = false,
+      gutters = ComponentSize.Medium,
+    },
+    ref
+  ) => {
+    const pageContentsClass = classnames('cf-page-contents', {
       'cf-page-contents__no-scroll': !scrollable,
       [`cf-page__gutter-${gutters}`]: gutters,
       [`${className}`]: className,
     })
+
+    const widthClass = fullWidth
+      ? 'cf-page-contents__fluid'
+      : 'cf-page-contents__fixed'
+
+    const kids = (
+      <div ref={ref} className={widthClass}>
+        {children}
+      </div>
+    )
+
+    if (scrollable) {
+      return (
+        <DapperScrollbars
+          id={id}
+          style={style}
+          testID={testID}
+          autoHide={autoHideScrollbar}
+          className={pageContentsClass}
+        >
+          {kids}
+        </DapperScrollbars>
+      )
+    }
+
+    return (
+      <div
+        id={id}
+        ref={ref}
+        style={style}
+        data-testid={testID}
+        className={pageContentsClass}
+      >
+        {kids}
+      </div>
+    )
   }
-}
+)
+
+PageContents.displayName = 'PageContents'
