@@ -12,21 +12,20 @@ import {
   color,
   select,
 } from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from '../../../Utils/storybook'
 import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
-import {OverlayRoot as Overlay} from './Overlay'
-import {OverlayContainer} from './OverlayContainer'
-import {OverlayMask} from './OverlayMask'
-import {OverlayHeader} from './OverlayHeader'
-import {OverlayBody} from './OverlayBody'
-import {OverlayFooter} from './OverlayFooter'
-import {Button} from '../Button/Composed/Button'
-import {SpringTestContainer} from './SpringTestContainer'
+import {OverlayRoot as Overlay} from '../Overlay'
+import {OverlayContainer} from '../OverlayContainer'
+import {OverlayMask} from '../OverlayMask'
+import {OverlayHeader} from '../OverlayHeader'
+import {OverlayBody} from '../OverlayBody'
+import {OverlayFooter} from '../OverlayFooter'
+import {Button} from '../../Button/Composed/Button'
 
 // Types
-import {Gradients, ComponentColor} from '../../Types'
+import {Gradients, ComponentColor} from '../../../Types'
 
 // Notes
 import OverlayReadme from './Overlay.md'
@@ -250,9 +249,3 @@ overlayExampleStories.add(
     },
   }
 )
-
-overlayStories.add('react-spring test', () => (
-  <div className="story--example">
-    <SpringTestContainer />
-  </div>
-))
