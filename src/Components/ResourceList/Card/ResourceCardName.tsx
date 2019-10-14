@@ -1,56 +1,53 @@
 // Libraries
-import React, {Component, MouseEvent} from 'react'
+import React, {forwardRef, MouseEvent} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from '../../../Types'
+import {StandardFunctionProps} from '../../../Types'
 
 // Styles
 import './ResourceCardName.scss'
 
-interface Props extends StandardClassProps {
+export interface ResourceCardNameProps extends StandardFunctionProps {
   /** Text to display as name */
   name: string
   /** Fires when the name is clicked */
   onClick?: (e: MouseEvent<HTMLAnchorElement>) => void
 }
 
-export class ResourceCardName extends Component<Props> {
-  public static readonly displayName = 'ResourceCardName'
+export type ResourceCardNameRef = HTMLDivElement
 
-  public static defaultProps = {
-    testID: 'resource-name',
-  }
+export const ResourceCardName = forwardRef<
+  ResourceCardNameRef,
+  ResourceCardNameProps
+>(({id, name, style, testID = 'resource-name', onClick, className}, ref) => {
+  const resourceNameClass = classnames('cf-resource-name', {
+    [`${className}`]: className,
+  })
 
-  public render() {
-    const {name, testID, id, style} = this.props
+  const resourceNameLinkClass = classnames('cf-resource-name--text', {
+    'cf-resource-name--text__link': onClick,
+  })
 
-    return (
-      <div
-        className="cf-resource-name"
-        data-testid={testID}
-        id={id}
-        style={style}
-      >
-        <span className={this.linkClassName} onClick={this.handleClick}>
-          <span>{name}</span>
-        </span>
-      </div>
-    )
-  }
-
-  private get linkClassName(): string {
-    const {onClick} = this.props
-
-    return classnames('cf-resource-name--text', {
-      'cf-resource-name--text__link': onClick,
-    })
-  }
-
-  private handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
-    const {onClick} = this.props
+  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     if (onClick) {
       onClick(e)
     }
   }
-}
+
+  return (
+    <div
+      id={id}
+      ref={ref}
+      style={style}
+      className={resourceNameClass}
+      data-testid={testID}
+    >
+      <span className={resourceNameLinkClass} onClick={handleClick}>
+        <span>{name}</span>
+      </span>
+    </div>
+  )
+})
+
+ResourceCardName.displayName = 'ResourceCardName'
