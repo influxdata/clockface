@@ -3,6 +3,9 @@
 ### 0.0.33 (Unreleased)
 
 - [#331](https://github.com/influxdata/clockface/pull/331): Improve legiblity of `SelectableCard` default state
+- [#329](https://github.com/influxdata/clockface/pull/329): Convert `Overlay` component family to `FunctionComponent` and wrap with `forwardRef`
+- [#329](https://github.com/influxdata/clockface/pull/329): Use `react-spring` library to handle Overlay animations
+- [#329](https://github.com/influxdata/clockface/pull/329): Allow `OverlayContainer` margin to be customized
 - [#328](https://github.com/influxdata/clockface/pull/328): Convert `IndexList` component family to `FunctionComponent` and wrap with `forwardRef`
 - [#328](https://github.com/influxdata/clockface/pull/328): [Breaking] Prepend `cf-` to all `IndexList` class names
 - [#328](https://github.com/influxdata/clockface/pull/328): Convert `NavMenu` component family to `FunctionComponent` and wrap with `forwardRef`

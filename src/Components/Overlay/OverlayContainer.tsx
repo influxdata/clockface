@@ -1,43 +1,54 @@
 // Libraries
-import React, {PureComponent, CSSProperties} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardFunctionProps, ComponentSize} from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface OverlayContainerProps extends StandardFunctionProps {
   /** Pixel width maximum for overlay */
-  maxWidth: number
+  maxWidth?: number
+  /** Margins on all sides of overlay */
+  margin?: ComponentSize
 }
 
-export class OverlayContainer extends PureComponent<Props> {
-  public static readonly displayName = 'OverlayContainer'
+export type OverlayContainerRef = HTMLDivElement
 
-  public static defaultProps = {
-    maxWidth: 800,
-    testID: 'overlay--container',
-  }
+export const OverlayContainer = forwardRef<
+  OverlayContainerRef,
+  OverlayContainerProps
+>(
+  (
+    {
+      id,
+      style,
+      testID = 'overlay--container',
+      margin = ComponentSize.Medium,
+      children,
+      maxWidth = 800,
+      className,
+    },
+    ref
+  ) => {
+    const overlayContainerClass = classnames('cf-overlay--container', {
+      [`cf-overlay--container__${margin}`]: margin,
+      [`${className}`]: className,
+    })
 
-  public render() {
-    const {children, className, testID, id} = this.props
+    const overlayContainerStyle = {maxWidth: `${maxWidth}px`, ...style}
 
     return (
       <div
-        className={classnames('cf-overlay--container', {
-          [`${className}`]: className,
-        })}
-        data-testid={testID}
-        style={this.style}
         id={id}
+        ref={ref}
+        style={overlayContainerStyle}
+        className={overlayContainerClass}
+        data-testid={testID}
       >
         {children}
       </div>
     )
   }
+)
 
-  private get style(): CSSProperties {
-    const {maxWidth, style} = this.props
-
-    return {maxWidth: `${maxWidth}px`, ...style}
-  }
-}
+OverlayContainer.displayName = 'OverlayContainer'

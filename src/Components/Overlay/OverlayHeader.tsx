@@ -1,45 +1,44 @@
 // Libraries
-import React, {PureComponent} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface OverlayHeaderProps extends StandardFunctionProps {
   /** Title of the Overlay */
   title: string
   /** Passing a function into this prop will cause the Dismiss "X" to render in the header */
   onDismiss?: () => void
 }
 
-export class OverlayHeader extends PureComponent<Props> {
-  public static readonly displayName = 'OverlayHeader'
+export type OverlayHeaderRef = HTMLDivElement
 
-  public static defaultProps = {
-    testID: 'overlay--header',
-  }
-
-  constructor(props: Props) {
-    super(props)
-  }
-
-  public render() {
-    const {
-      title,
-      onDismiss,
-      children,
-      testID,
-      className,
+export const OverlayHeader = forwardRef<OverlayHeaderRef, OverlayHeaderProps>(
+  (
+    {
       id,
       style,
-    } = this.props
-
-    const classname = classnames('cf-overlay--header', {
+      title,
+      testID = 'overlay--header',
+      children,
+      className,
+      onDismiss,
+    },
+    ref
+  ) => {
+    const overlayHeaderClass = classnames('cf-overlay--header', {
       [`${className}`]: className,
     })
 
     return (
-      <div className={classname} data-testid={testID} id={id} style={style}>
+      <div
+        id={id}
+        ref={ref}
+        style={style}
+        className={overlayHeaderClass}
+        data-testid={testID}
+      >
         <div className="cf-overlay--title">{title}</div>
         {onDismiss && (
           <button
@@ -52,4 +51,6 @@ export class OverlayHeader extends PureComponent<Props> {
       </div>
     )
   }
-}
+)
+
+OverlayHeader.displayName = 'OverlayHeader'

@@ -92,5 +92,10 @@
     "typecheck": "tsc --noEmit --pretty",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "publishStorybook": "storybook-to-ghpages --out=.out"
+  },
+  "dependencies": {
+    "@types/d3-ease": "^1.0.8",
+    "d3-ease": "^1.0.5",
+    "react-spring": "^8.0.27"
   }
 }

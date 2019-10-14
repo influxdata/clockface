@@ -202,6 +202,11 @@ body.sb-show-main {
     @extend .story--example;
     flex-direction: column;
   }
+
+  & > .cf-overlay--mask {
+    width: 100% !important;
+    height: 100% !important;
+  }
 }
 
 .overlay--example {
@@ -738,6 +743,7 @@ table.two-axis-table {
   top: 12px;
   right: 12px;
   position: absolute;
+  z-index: 5000;
   display: flex;
   align-items: flex-end;
   flex-direction: column;

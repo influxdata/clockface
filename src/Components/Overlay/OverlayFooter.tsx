@@ -1,5 +1,5 @@
 // Libraries
-import React, {PureComponent} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Components
@@ -11,27 +11,27 @@ import {
   JustifyContent,
   AlignItems,
   ComponentSize,
-  StandardClassProps,
+  StandardFunctionProps,
 } from '../../Types'
 
-interface Props extends StandardClassProps {}
+export interface OverlayFooterProps extends StandardFunctionProps {}
 
-export class OverlayFooter extends PureComponent<Props> {
-  public static readonly displayName = 'OverlayFooter'
+export type OverlayFooterRef = HTMLDivElement
 
-  public static defaultProps = {
-    testID: 'overlay--footer',
-  }
-
-  public render() {
-    const {children, className, testID, id, style} = this.props
-
-    const classname = classnames('cf-overlay--footer', {
+export const OverlayFooter = forwardRef<OverlayFooterRef, OverlayFooterProps>(
+  ({id, style, testID = 'overlay--footer', children, className}, ref) => {
+    const overlayFooterClass = classnames('cf-overlay--footer', {
       [`${className}`]: className,
     })
 
     return (
-      <div className={classname} data-testid={testID} id={id} style={style}>
+      <div
+        id={id}
+        ref={ref}
+        style={style}
+        className={overlayFooterClass}
+        data-testid={testID}
+      >
         <FlexBox
           margin={ComponentSize.Small}
           direction={FlexDirection.Row}
@@ -44,4 +44,6 @@ export class OverlayFooter extends PureComponent<Props> {
       </div>
     )
   }
-}
+)
+
+OverlayFooter.displayName = 'OverlayFooter'

@@ -1,124 +1,122 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {
+  FunctionComponent,
+  CSSProperties,
+  useLayoutEffect,
+  useState,
+} from 'react'
+import {createPortal} from 'react-dom'
+import {Transition} from 'react-spring/renderprops'
 import classnames from 'classnames'
+import uuid from 'uuid'
+import * as easings from 'd3-ease'
 
 // Components
-import {OverlayContainer} from './OverlayContainer'
 import {OverlayMask} from './OverlayMask'
-import {OverlayHeader} from './OverlayHeader'
-import {OverlayBody} from './OverlayBody'
-import {OverlayFooter} from './OverlayFooter'
 import {DapperScrollbars} from '../DapperScrollbars/DapperScrollbars'
 
+// Utils
+import {createPortalElement, destroyPortalElement} from '../../Utils'
+
 // Types
-import {StandardClassProps, InfluxColors} from '../../Types'
+import {StandardFunctionProps, InfluxColors} from '../../Types'
 
 // Styles
 import './Overlay.scss'
 
-interface Props extends StandardClassProps {
-  /** Controls showing/hiding the overlay */
+export interface OverlayProps extends StandardFunctionProps {
+  /** Controls visibility of the overlay */
   visible: boolean
   /** Will replace the mask element with a custom element, useful for customizing the mask appearance */
-  renderMaskElement: JSX.Element
+  renderMaskElement?: (style: CSSProperties) => JSX.Element
+  /** Controls the transition timing */
+  transitionDuration?: number
 }
 
-interface State {
-  showChildren: boolean
-}
+const overlayPortalName = 'overlay'
 
-export class Overlay extends Component<Props, State> {
-  public static readonly displayName = 'Overlay'
+export const OverlayRoot: FunctionComponent<OverlayProps> = ({
+  id,
+  testID = 'overlay',
+  visible,
+  children,
+  className,
+  transitionDuration = 360,
+  renderMaskElement = (style: CSSProperties) => <OverlayMask style={style} />,
+}) => {
+  const [portalID, setPortalID] = useState<string>('')
 
-  public static Container = OverlayContainer
-  public static Mask = OverlayMask
-  public static Header = OverlayHeader
-  public static Body = OverlayBody
-  public static Footer = OverlayFooter
+  useLayoutEffect((): (() => void) => {
+    const newPortalID = `cf-${overlayPortalName}-portal-${uuid.v4()}`
+    !portalID && setPortalID(newPortalID)
 
-  public static defaultProps = {
-    testID: 'overlay',
-    renderMaskElement: <OverlayMask />,
-  }
+    createPortalElement(newPortalID, overlayPortalName)
 
-  public static getDerivedStateFromProps(props: Props) {
-    if (props.visible) {
-      return {showChildren: true}
+    return (): void => {
+      destroyPortalElement(newPortalID)
     }
+  }, [])
 
-    return {}
+  const portalElement = document.getElementById(portalID)
+
+  if (!portalElement) {
+    return null
   }
 
-  private animationTimer: number
-
-  constructor(props: Props) {
-    super(props)
-
-    this.state = {
-      showChildren: false,
-    }
+  const transitionConfig = {
+    duration: transitionDuration,
+    easing: easings.easeExpInOut,
   }
 
-  public componentDidUpdate(prevProps: Props) {
-    if (prevProps.visible && !this.props.visible) {
-      clearTimeout(this.animationTimer)
-      this.animationTimer = window.setTimeout(this.hideChildren, 300)
-    }
-  }
+  const overlayClass = classnames('cf-overlay', {
+    [`${className}`]: className,
+  })
 
-  public render() {
-    const {testID, renderMaskElement, id} = this.props
-
-    return (
-      <DapperScrollbars
-        className={this.overlayClass}
-        thumbStartColor={InfluxColors.White}
-        thumbStopColor={InfluxColors.Moonstone}
-        autoHide={false}
-        testID={testID}
-        id={id}
+  const overlay = (
+    <>
+      <Transition
+        items={visible}
+        from={{opacity: 0, transform: 'translateY(44px)'}}
+        enter={{opacity: 1, transform: 'translateY(0)'}}
+        leave={{opacity: 0, transform: 'translateY(44px)'}}
+        config={transitionConfig}
       >
-        {this.childContainer}
-        {renderMaskElement}
-      </DapperScrollbars>
-    )
-  }
+        {visible =>
+          visible &&
+          (props => (
+            <DapperScrollbars
+              className={overlayClass}
+              thumbStartColor={InfluxColors.White}
+              thumbStopColor={InfluxColors.Moonstone}
+              noScrollX={true}
+              autoHide={false}
+              testID={testID}
+              id={id}
+            >
+              <div
+                className="cf-overlay--children"
+                data-testid={`${testID}--children`}
+                style={props}
+              >
+                {children}
+              </div>
+            </DapperScrollbars>
+          ))
+        }
+      </Transition>
+      <Transition
+        items={visible}
+        from={{opacity: 0}}
+        enter={{opacity: 0.7}}
+        leave={{opacity: 0}}
+        config={transitionConfig}
+      >
+        {visible => visible && (props => renderMaskElement(props))}
+      </Transition>
+    </>
+  )
 
-  private get childContainer(): JSX.Element {
-    const {children, testID, style} = this.props
-    const {showChildren} = this.state
-
-    if (showChildren) {
-      return (
-        <div
-          className="cf-overlay--transition"
-          data-testid={`${testID}--children`}
-          style={style}
-        >
-          {children}
-        </div>
-      )
-    }
-
-    return (
-      <div
-        className="cf-overlay--transition"
-        data-testid={`${testID}--children`}
-        style={style}
-      />
-    )
-  }
-
-  private get overlayClass(): string {
-    const {visible, className} = this.props
-
-    return classnames('cf-overlay', {
-      show: visible,
-      [`${className}`]: className,
-    })
-  }
-
-  private hideChildren = (): void => {
-    this.setState({showChildren: false})
-  }
+  return createPortal(overlay, portalElement)
 }
+
+OverlayRoot.displayName = 'Overlay'
