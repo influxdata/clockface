@@ -14,24 +14,24 @@ import {
   object,
   number,
 } from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
-import {ResourceList} from './List/ResourceList'
-import {ResourceListHeader} from './List/ResourceListHeader'
-import {ResourceListBody} from './List/ResourceListBody'
-import {ResourceListSorter} from './List/ResourceListSorter'
-import {ResourceCard} from './Card/ResourceCard'
-import {ResourceCardName} from './Card/ResourceCardName'
-import {ResourceCardEditableName} from './Card/ResourceCardEditableName'
-import {ResourceCardDescription} from './Card/ResourceCardDescription'
-import {ResourceCardEditableDescription} from './Card/ResourceCardEditableDescription'
-import {Input} from '../Inputs/Input'
-import {EmptyState} from '../EmptyState'
-import {SlideToggle} from '../SlideToggle'
-import {SquareButton} from '../Button/Composed/SquareButton'
-import {Label} from '../Label/Label'
-import {FlexBox} from '../FlexBox'
+import {ResourceList} from '../List/ResourceList'
+import {ResourceListHeader} from '../List/ResourceListHeader'
+import {ResourceListBody} from '../List/ResourceListBody'
+import {ResourceListSorter} from '../List/ResourceListSorter'
+import {ResourceCard} from '../Card'
+import {ResourceCardName} from '../Card/ResourceCardName'
+import {ResourceCardEditableName} from '../Card/ResourceCardEditableName'
+import {ResourceCardDescription} from '../Card/ResourceCardDescription'
+import {ResourceCardEditableDescription} from '../Card/ResourceCardEditableDescription'
+import {Input} from '../../Inputs/Input'
+import {EmptyState} from '../../EmptyState'
+import {SlideToggle} from '../../SlideToggle'
+import {SquareButton} from '../../Button/Composed/SquareButton'
+import {Label} from '../../Label/Label'
+import {FlexBox} from '../../FlexBox'
 
 // Types
 import {
@@ -40,18 +40,18 @@ import {
   ComponentSize,
   ComponentColor,
   FlexDirection,
-} from '../../Types'
+} from '../../../Types'
 
 // Notes
-import ResourceListReadme from './List/ResourceList.md'
-import ResourceListHeaderReadme from './List/ResourceListHeader.md'
-import ResourceListBodyReadme from './List/ResourceListBody.md'
-import ResourceListSorterReadme from './List/ResourceListSorter.md'
-import ResourceCardReadme from './Card/ResourceCard.md'
-import ResourceCardDescriptionReadme from './Card/ResourceCardDescription.md'
-import ResourceCardEditableDescriptionReadme from './Card/ResourceCardEditableDescription.md'
-import ResourceCardNameReadme from './Card/ResourceCardName.md'
-import ResourceCardEditableNameReadme from './Card/ResourceCardEditableName.md'
+import ResourceListReadme from './ResourceList.md'
+import ResourceListHeaderReadme from './ResourceListHeader.md'
+import ResourceListBodyReadme from './ResourceListBody.md'
+import ResourceListSorterReadme from './ResourceListSorter.md'
+import ResourceCardReadme from './ResourceCard.md'
+import ResourceCardDescriptionReadme from './ResourceCardDescription.md'
+import ResourceCardEditableDescriptionReadme from './ResourceCardEditableDescription.md'
+import ResourceCardNameReadme from './ResourceCardName.md'
+import ResourceCardEditableNameReadme from './ResourceCardEditableName.md'
 import ResourceListExampleReadme from './ResourceListExample.md'
 import ResourceCardExampleReadme from './ResourceCardExample.md'
 
