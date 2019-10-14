@@ -27,7 +27,7 @@ import {ResourceCardEditableName} from './Card/ResourceCardEditableName'
 import {ResourceCardDescription} from './Card/ResourceCardDescription'
 import {ResourceCardEditableDescription} from './Card/ResourceCardEditableDescription'
 import {Input} from '../Inputs/Input'
-import {EmptyState} from '../EmptyState/EmptyState'
+import {EmptyState} from '../EmptyState'
 import {SlideToggle} from '../SlideToggle'
 import {SquareButton} from '../Button/Composed/SquareButton'
 import {Label} from '../Label/Label'
@@ -384,13 +384,11 @@ resourceListExampleStories.add(
         <ResourceList.Body
           emptyState={
             <EmptyState>
-              <EmptyState.Text
-                text={
-                  text('Search term', '') === ''
-                    ? 'No dashboards exist'
-                    : 'No dashboards match your search term'
-                }
-              />
+              <EmptyState.Text>
+                {text('Search term', '') === ''
+                  ? 'No dashboards exist'
+                  : 'No dashboards match your search term'}
+              </EmptyState.Text>
             </EmptyState>
           }
         >

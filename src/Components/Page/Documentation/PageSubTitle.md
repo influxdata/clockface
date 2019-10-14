@@ -1,11 +1,13 @@
 # Page Sub-Title
 
-Used primarily within `<Page.Header.Left />` as the secondary title of a page, hence the name. It is best used in combination with `<Page.Title />`.
+Used primarily within `<Page.HeaderLeft />` as the secondary title of a page, hence the name. It is best used in combination with `<Page.Title />`.
 
 ### Usage
+
 ```tsx
 import {Page} from '@influxdata/clockface'
 ```
+
 ```tsx
 <Page.SubTitle />
 ```
@@ -13,6 +15,7 @@ import {Page} from '@influxdata/clockface'
 ### Recommended
 
 Best used with `FlexBox` and `Page.Title` like so:
+
 ```tsx
 <FlexBox
   direction={FlexDirection.Column}
@@ -25,8 +28,8 @@ Best used with `FlexBox` and `Page.Title` like so:
 ```
 
 ### Example
-<!-- STORY -->
 
+<!-- STORY -->
 
 <!-- STORY HIDE START -->
 

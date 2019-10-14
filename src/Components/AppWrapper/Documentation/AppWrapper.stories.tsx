@@ -10,8 +10,8 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
 import {AppWrapper, AppWrapperRef} from '../AppWrapper'
-import {NavMenu} from '../../NavMenu/NavMenu'
-import {Page} from '../../Page/Page'
+import {NavMenu} from '../../NavMenu'
+import {Page} from '../../Page/index'
 import {Icon} from '../../Icon/Icon'
 
 // Types
@@ -47,12 +47,12 @@ layoutStories.add(
           >
             <NavMenu>
               <NavMenu.Item
-                titleLink={className => (
+                titleLink={(className: string) => (
                   <a className={className} href="#">
                     JohnDoe (OrgName)
                   </a>
                 )}
-                iconLink={className => (
+                iconLink={(className: string) => (
                   <a className={className} href="#">
                     <Icon glyph={IconFont.CuboNav} />
                   </a>
@@ -60,7 +60,7 @@ layoutStories.add(
                 active={false}
               >
                 <NavMenu.SubItem
-                  titleLink={className => (
+                  titleLink={(className: string) => (
                     <a className={className} href="#">
                       Switch Organizations
                     </a>
@@ -68,7 +68,7 @@ layoutStories.add(
                   active={false}
                 />
                 <NavMenu.SubItem
-                  titleLink={className => (
+                  titleLink={(className: string) => (
                     <a className={className} href="#">
                       Create Organization
                     </a>
@@ -76,7 +76,7 @@ layoutStories.add(
                   active={false}
                 />
                 <NavMenu.SubItem
-                  titleLink={className => (
+                  titleLink={(className: string) => (
                     <a className={className} href="#">
                       Logout
                     </a>
@@ -85,12 +85,12 @@ layoutStories.add(
                 />
               </NavMenu.Item>
               <NavMenu.Item
-                titleLink={className => (
+                titleLink={(className: string) => (
                   <a className={className} href="#">
                     Data Explorer
                   </a>
                 )}
-                iconLink={className => (
+                iconLink={(className: string) => (
                   <a className={className} href="#">
                     <Icon glyph={IconFont.GraphLine} />
                   </a>
@@ -98,12 +98,12 @@ layoutStories.add(
                 active={false}
               />
               <NavMenu.Item
-                titleLink={className => (
+                titleLink={(className: string) => (
                   <a className={className} href="#">
                     Dashboards
                   </a>
                 )}
-                iconLink={className => (
+                iconLink={(className: string) => (
                   <a className={className} href="#">
                     <Icon glyph={IconFont.Dashboards} />
                   </a>
@@ -111,12 +111,12 @@ layoutStories.add(
                 active={false}
               />
               <NavMenu.Item
-                titleLink={className => (
+                titleLink={(className: string) => (
                   <a className={className} href="#">
                     Tasks
                   </a>
                 )}
-                iconLink={className => (
+                iconLink={(className: string) => (
                   <a className={className} href="#">
                     <Icon glyph={IconFont.Calendar} />
                   </a>
@@ -124,12 +124,12 @@ layoutStories.add(
                 active={true}
               />
               <NavMenu.Item
-                titleLink={className => (
+                titleLink={(className: string) => (
                   <a className={className} href="#">
                     Monitoring & Alerting
                   </a>
                 )}
-                iconLink={className => (
+                iconLink={(className: string) => (
                   <a className={className} href="#">
                     <Icon glyph={IconFont.Bell} />
                   </a>
@@ -137,7 +137,7 @@ layoutStories.add(
                 active={false}
               >
                 <NavMenu.SubItem
-                  titleLink={className => (
+                  titleLink={(className: string) => (
                     <a className={className} href="#">
                       History
                     </a>
@@ -146,12 +146,12 @@ layoutStories.add(
                 />
               </NavMenu.Item>
               <NavMenu.Item
-                titleLink={className => (
+                titleLink={(className: string) => (
                   <a className={className} href="#">
                     Load Data
                   </a>
                 )}
-                iconLink={className => (
+                iconLink={(className: string) => (
                   <a className={className} href="#">
                     <Icon glyph={IconFont.DisksNav} />
                   </a>
@@ -159,7 +159,7 @@ layoutStories.add(
                 active={false}
               >
                 <NavMenu.SubItem
-                  titleLink={className => (
+                  titleLink={(className: string) => (
                     <a className={className} href="#">
                       Buckets
                     </a>
@@ -167,7 +167,7 @@ layoutStories.add(
                   active={false}
                 />
                 <NavMenu.SubItem
-                  titleLink={className => (
+                  titleLink={(className: string) => (
                     <a className={className} href="#">
                       Telegraf
                     </a>
@@ -175,7 +175,7 @@ layoutStories.add(
                   active={false}
                 />
                 <NavMenu.SubItem
-                  titleLink={className => (
+                  titleLink={(className: string) => (
                     <a className={className} href="#">
                       Scrapers
                     </a>
@@ -183,7 +183,7 @@ layoutStories.add(
                   active={false}
                 />
                 <NavMenu.SubItem
-                  titleLink={className => (
+                  titleLink={(className: string) => (
                     <a className={className} href="#">
                       Tokens
                     </a>
@@ -191,7 +191,7 @@ layoutStories.add(
                   active={false}
                 />
                 <NavMenu.SubItem
-                  titleLink={className => (
+                  titleLink={(className: string) => (
                     <a className={className} href="#">
                       Client Libraries
                     </a>
@@ -200,12 +200,12 @@ layoutStories.add(
                 />
               </NavMenu.Item>
               <NavMenu.Item
-                titleLink={className => (
+                titleLink={(className: string) => (
                   <a className={className} href="#">
                     Settings
                   </a>
                 )}
-                iconLink={className => (
+                iconLink={(className: string) => (
                   <a className={className} href="#">
                     <Icon glyph={IconFont.WrenchNav} />
                   </a>
@@ -213,7 +213,7 @@ layoutStories.add(
                 active={false}
               >
                 <NavMenu.SubItem
-                  titleLink={className => (
+                  titleLink={(className: string) => (
                     <a className={className} href="#">
                       Members
                     </a>
@@ -221,7 +221,7 @@ layoutStories.add(
                   active={false}
                 />
                 <NavMenu.SubItem
-                  titleLink={className => (
+                  titleLink={(className: string) => (
                     <a className={className} href="#">
                       Variables
                     </a>
@@ -229,7 +229,7 @@ layoutStories.add(
                   active={false}
                 />
                 <NavMenu.SubItem
-                  titleLink={className => (
+                  titleLink={(className: string) => (
                     <a className={className} href="#">
                       Templates
                     </a>
@@ -237,7 +237,7 @@ layoutStories.add(
                   active={false}
                 />
                 <NavMenu.SubItem
-                  titleLink={className => (
+                  titleLink={(className: string) => (
                     <a className={className} href="#">
                       Labels
                     </a>
@@ -245,7 +245,7 @@ layoutStories.add(
                   active={false}
                 />
                 <NavMenu.SubItem
-                  titleLink={className => (
+                  titleLink={(className: string) => (
                     <a className={className} href="#">
                       Profile
                     </a>
@@ -254,12 +254,12 @@ layoutStories.add(
                 />
               </NavMenu.Item>
               <NavMenu.Item
-                titleLink={className => (
+                titleLink={(className: string) => (
                   <a className={className} href="#">
                     Cloud
                   </a>
                 )}
-                iconLink={className => (
+                iconLink={(className: string) => (
                   <a className={className} href="#">
                     <Icon glyph={IconFont.Cloud} />
                   </a>
@@ -267,7 +267,7 @@ layoutStories.add(
                 active={false}
               >
                 <NavMenu.SubItem
-                  titleLink={className => (
+                  titleLink={(className: string) => (
                     <a className={className} href="#">
                       Billing
                     </a>
@@ -275,7 +275,7 @@ layoutStories.add(
                   active={false}
                 />
                 <NavMenu.SubItem
-                  titleLink={className => (
+                  titleLink={(className: string) => (
                     <a className={className} href="#">
                       Usage
                     </a>
@@ -284,12 +284,12 @@ layoutStories.add(
                 />
               </NavMenu.Item>
               <NavMenu.Item
-                titleLink={className => (
+                titleLink={(className: string) => (
                   <a className={className} href="#">
                     Feedback
                   </a>
                 )}
-                iconLink={className => (
+                iconLink={(className: string) => (
                   <a className={className} href="#">
                     <Icon glyph={IconFont.NavChat} />
                   </a>
@@ -306,21 +306,21 @@ layoutStories.add(
                   ]
                 }
               >
-                <Page.Header.Left>
+                <Page.HeaderLeft>
                   <Page.Title title={text('PageTitle title', 'Page Title')} />
-                </Page.Header.Left>
-                <Page.Header.Center>
+                </Page.HeaderLeft>
+                <Page.HeaderCenter>
                   {boolean('Button in PageHeaderCenter', true) ? (
                     <div className="mockComponent mockButton">
                       Center Button
                     </div>
                   ) : null}
-                </Page.Header.Center>
-                <Page.Header.Right>
+                </Page.HeaderCenter>
+                <Page.HeaderRight>
                   {boolean('Button in PageHeaderRight', true) ? (
                     <div className="mockComponent mockButton">Right Button</div>
                   ) : null}
-                </Page.Header.Right>
+                </Page.HeaderRight>
               </Page.Header>
               <Page.Contents
                 fullWidth={boolean('fullWidth', false)}

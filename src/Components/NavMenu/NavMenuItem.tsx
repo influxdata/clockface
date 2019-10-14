@@ -1,11 +1,11 @@
 // Libraries
-import React, {PureComponent} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface NavMenuItemProps extends StandardFunctionProps {
   /** Render prop for linked title text */
   titleLink: (className: string) => JSX.Element
   /** Render prop for linked icon component */
@@ -14,31 +14,31 @@ interface Props extends StandardClassProps {
   active: boolean
 }
 
-export class NavMenuItem extends PureComponent<Props> {
-  public static readonly displayName = 'NavMenuItem'
+export type NavMenuItemRef = HTMLDivElement
 
-  public static defaultProps = {
-    testID: 'nav-menu--item',
-  }
-
-  public render() {
-    const {
-      children,
-      active,
-      testID,
-      className,
-      titleLink,
-      iconLink,
+export const NavMenuItem = forwardRef<NavMenuItemRef, NavMenuItemProps>(
+  (
+    {
       id,
       style,
-    } = this.props
+      active,
+      iconLink,
+      children,
+      titleLink,
+      className,
+      testID = 'nav-menu--item',
+    },
+    ref
+  ) => {
+    const navMenuItemClass = classnames('cf-nav--item', {
+      active,
+      [`${className}`]: className,
+    })
 
     return (
       <div
-        className={classnames('cf-nav--item', {
-          active,
-          [`${className}`]: className,
-        })}
+        ref={ref}
+        className={navMenuItemClass}
         data-testid={testID}
         id={id}
         style={style}
@@ -51,4 +51,6 @@ export class NavMenuItem extends PureComponent<Props> {
       </div>
     )
   }
-}
+)
+
+NavMenuItem.displayName = 'NavMenuItem'

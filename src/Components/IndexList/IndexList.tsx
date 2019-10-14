@@ -1,40 +1,27 @@
 // Libraries
-import React, {Component} from 'react'
-
-// Components
-import {IndexListBody} from './IndexListBody'
-import {IndexListHeader} from './IndexListHeader'
-import {IndexListHeaderCell} from './IndexListHeaderCell'
-import {IndexListRow} from './IndexListRow'
-import {IndexListRowCell} from './IndexListRowCell'
+import React, {forwardRef} from 'react'
+import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardFunctionProps} from '../../Types'
 
 // Styles
 import './IndexList.scss'
 
-interface Props extends StandardClassProps {}
+export interface IndexListProps extends StandardFunctionProps {}
 
-export class IndexList extends Component<Props> {
-  public static readonly displayName = 'IndexList'
+export type IndexListRef = HTMLTableElement
 
-  public static Body = IndexListBody
-  public static Header = IndexListHeader
-  public static HeaderCell = IndexListHeaderCell
-  public static Row = IndexListRow
-  public static Cell = IndexListRowCell
-
-  public static defaultProps = {
-    testID: 'index-list',
-  }
-
-  public render() {
-    const {children, testID, id, style} = this.props
+export const IndexListRoot = forwardRef<IndexListRef, IndexListProps>(
+  ({children, className, id, style, testID = 'index-list'}, ref) => {
+    const indexListClass = classnames('cf-index-list', {
+      [`${className}`]: className,
+    })
 
     return (
       <table
-        className={this.className}
+        ref={ref}
+        className={indexListClass}
         data-testid={testID}
         id={id}
         style={style}
@@ -43,10 +30,6 @@ export class IndexList extends Component<Props> {
       </table>
     )
   }
+)
 
-  private get className(): string {
-    const {className} = this.props
-
-    return className ? `index-list ${className}` : 'index-list'
-  }
-}
+IndexListRoot.displayName = 'IndexList'

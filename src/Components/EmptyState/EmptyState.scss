@@ -19,7 +19,8 @@
   color: $empty-state-text;
   @extend %no-user-select;
 
-  em {
+  em,
+  b {
     font-weight: 600;
     font-style: normal;
     color: $empty-state-highlight;

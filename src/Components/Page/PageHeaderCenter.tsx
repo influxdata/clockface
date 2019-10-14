@@ -1,46 +1,36 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardFunctionProps} from '../../Types'
 
-// Constants
-import {DEFAULT_PAGE_HEADER_CENTER_WIDTH} from '../../Constants/pageLayout'
+export interface PageHeaderCenterProps extends StandardFunctionProps {}
 
-interface Props extends StandardClassProps {}
+export type PageHeaderCenterRef = HTMLDivElement
 
-export class PageHeaderCenter extends Component<Props> {
-  public static readonly displayName = 'PageHeaderCenter'
+export const PageHeaderCenter = forwardRef<
+  PageHeaderCenterRef,
+  PageHeaderCenterProps
+>(({className, children, id, style, testID = 'page-header--center'}, ref) => {
+  const noChildren = React.Children.count(children) === 0
 
-  public static defaultProps = {
-    widthPixels: DEFAULT_PAGE_HEADER_CENTER_WIDTH,
-    testID: 'page-header--center',
-  }
+  const pageHeaderCenterClass = classnames('cf-page-header--center', {
+    'cf-page-header--no-children': noChildren,
+    [`${className}`]: className,
+  })
 
-  public render() {
-    const {children, testID, id, style} = this.props
+  return (
+    <div
+      id={id}
+      ref={ref}
+      style={style}
+      data-testid={testID}
+      className={pageHeaderCenterClass}
+    >
+      {children}
+    </div>
+  )
+})
 
-    return (
-      <div
-        className={this.className}
-        style={style}
-        data-testid={testID}
-        id={id}
-      >
-        {children}
-      </div>
-    )
-  }
-
-  private get className(): string {
-    const {className, children} = this.props
-
-    const noChildren = React.Children.count(children) === 0
-
-    return classnames('cf-page-header--center', {
-      'cf-page-header--no-children': noChildren,
-      [`${className}`]: className,
-    })
-  }
-}
+PageHeaderCenter.displayName = 'PageHeaderCenter'
