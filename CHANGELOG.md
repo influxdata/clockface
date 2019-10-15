@@ -3,6 +3,7 @@
 ### 0.0.33 (Unreleased)
 
 - [#333](https://github.com/influxdata/clockface/pull/333): Convert `ResourceList` component family to `FunctionComponent` and wrap with `forwardRef`
+- [#333](https://github.com/influxdata/clockface/pull/333): [Breaking] Prepend `cf-` to `ResourceCardDescription` & `ResourceCardEditableDescription` class names
 - [#328](https://github.com/influxdata/clockface/pull/328): Convert `IndexList` component family to `FunctionComponent` and wrap with `forwardRef`
 - [#328](https://github.com/influxdata/clockface/pull/328): [Breaking] Prepend `cf-` to all `IndexList` class names
 - [#328](https://github.com/influxdata/clockface/pull/328): Convert `NavMenu` component family to `FunctionComponent` and wrap with `forwardRef`
