@@ -1,51 +1,53 @@
 // Libraries
-import React, {PureComponent} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from '../../../Types'
+import {StandardFunctionProps} from '../../../Types'
 
-interface Props extends StandardClassProps {
+export interface ResourceListHeaderProps extends StandardFunctionProps {
   /** Used for rendering a filter input above the list, opposite the sort headers */
   filterComponent?: JSX.Element
 }
 
-export class ResourceListHeader extends PureComponent<Props> {
-  public static readonly displayName = 'ResourceListHeader'
+export type ResourceListHeaderRef = HTMLDivElement
 
-  public static defaultProps = {
-    testID: 'resource-list--header',
-  }
+export const ResourceListHeader = forwardRef<
+  ResourceListHeaderRef,
+  ResourceListHeaderProps
+>(
+  (
+    {
+      id,
+      style,
+      testID = 'resource-list--header',
+      children,
+      className,
+      filterComponent,
+    },
+    ref
+  ) => {
+    const resourceListHeaderClass = classnames('cf-resource-list--header', {
+      [`${className}`]: className,
+    })
 
-  public render() {
-    const {children, testID, id, style} = this.props
+    const filter = filterComponent && (
+      <div className="cf-resource-list--filter">{filterComponent}</div>
+    )
 
     return (
       <div
-        className={this.className}
-        data-testid={testID}
         id={id}
+        ref={ref}
         style={style}
+        className={resourceListHeaderClass}
+        data-testid={testID}
       >
-        {this.filter}
+        {filter}
         <div className="cf-resource-list--sorting">{children}</div>
       </div>
     )
   }
+)
 
-  private get filter(): JSX.Element | undefined {
-    const {filterComponent} = this.props
-
-    if (filterComponent) {
-      return <div className="cf-resource-list--filter">{filterComponent}</div>
-    }
-
-    return
-  }
-
-  private get className(): string {
-    const {className} = this.props
-
-    return classnames('cf-resource-list--header', {[`${className}`]: className})
-  }
-}
+ResourceListHeader.displayName = 'ResourceListHeader'

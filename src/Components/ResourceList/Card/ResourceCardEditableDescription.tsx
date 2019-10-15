@@ -1,150 +1,146 @@
 // Libraries
-import React, {Component, KeyboardEvent, ChangeEvent} from 'react'
+import React, {
+  forwardRef,
+  KeyboardEvent,
+  ChangeEvent,
+  RefObject,
+  useState,
+} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {Input} from '../../Inputs/Input'
+import {Input, InputRef} from '../../Inputs/Input'
 import {Icon} from '../../Icon/Icon'
 import {ClickOutside} from '../../ClickOutside/ClickOutside'
 
 // Types
-import {StandardClassProps, ComponentSize, IconFont} from '../../../Types'
+import {StandardFunctionProps, ComponentSize, IconFont} from '../../../Types'
 
 // Styles
 import './ResourceCardDescription.scss'
 
-interface Props extends StandardClassProps {
+export interface ResourceCardEditableDescriptionProps
+  extends StandardFunctionProps {
+  /** Called when user hits enter or blurs the input  */
+  onUpdate: (description: string) => void
   /** Text to display in description */
   description: string
   /** Placeholder text to display in input during editing */
-  placeholder: string
-  /** Called when user hits enter or blurs the input  */
-  onUpdate: (description: string) => void
+  placeholder?: string
+  /** Pass through to assign a ref to the Input present in edit mode */
+  inputRef?: RefObject<InputRef>
 }
 
-interface State {
-  isEditing: boolean
-  workingDescription: string
-}
+export type ResourceCardEditableDescriptionRef = HTMLDivElement
 
-export class ResourceCardEditableDescription extends Component<Props, State> {
-  public static readonly displayName = 'ResourceCardEditableDescription'
+export const ResourceCardEditableDescription = forwardRef<
+  ResourceCardEditableDescriptionRef,
+  ResourceCardEditableDescriptionProps
+>(
+  (
+    {
+      id,
+      style,
+      testID = 'resource-list--editable-description',
+      onUpdate,
+      inputRef,
+      className,
+      description,
+      placeholder = '',
+    },
+    ref
+  ) => {
+    const [isEditing, setEditingState] = useState<boolean>(false)
+    const [workingDescription, setWorkingDescription] = useState<string>(
+      description
+    )
 
-  public static defaultProps = {
-    testID: 'resource-list--editable-description',
-    placeholder: '',
-  }
+    const resourceCardEditableDescriptionClass = classnames(
+      'cf-resource-description cf-resource-description__editable',
+      {
+        [`${className}`]: className,
+      }
+    )
 
-  constructor(props: Props) {
-    super(props)
+    const resourceCardEditableDescriptionPreviewClass = classnames(
+      'cf-resource-description--preview',
+      {
+        untitled: !description,
+      }
+    )
 
-    this.state = {
-      isEditing: false,
-      workingDescription: props.description,
+    const handleStartEditing = (): void => {
+      setEditingState(true)
     }
-  }
 
-  public render() {
-    const {description, testID, id, style} = this.props
-    const {isEditing} = this.state
+    const handleStopEditing = async (): Promise<void> => {
+      await onUpdate(workingDescription)
+      setEditingState(false)
+    }
+
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
+      setWorkingDescription(e.target.value)
+    }
+
+    const handleKeyDown = async (
+      e: KeyboardEvent<HTMLInputElement>
+    ): Promise<void> => {
+      if (e.key === 'Enter') {
+        await onUpdate(workingDescription)
+        setEditingState(false)
+      }
+
+      if (e.key === 'Escape') {
+        setWorkingDescription(description)
+        setEditingState(false)
+      }
+    }
+
+    const handleInputFocus = (e: ChangeEvent<HTMLInputElement>): void => {
+      e.currentTarget.select()
+    }
+
+    let descriptionElement = (
+      <div
+        className={resourceCardEditableDescriptionPreviewClass}
+        onClick={handleStartEditing}
+      >
+        {description || 'No description'}
+        <Icon glyph={IconFont.Pencil} />
+      </div>
+    )
 
     if (isEditing) {
-      return (
-        <div
-          className={this.className}
-          data-testid={testID}
-          id={id}
-          style={style}
-        >
-          <ClickOutside onClickOutside={this.handleStopEditing}>
-            {this.input}
-          </ClickOutside>
-        </div>
+      descriptionElement = (
+        <ClickOutside onClickOutside={handleStopEditing}>
+          <Input
+            ref={inputRef}
+            size={ComponentSize.ExtraSmall}
+            autoFocus={true}
+            spellCheck={false}
+            placeholder={placeholder}
+            onFocus={handleInputFocus}
+            onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
+            className="cf-resource-description--input"
+            value={workingDescription}
+          />
+        </ClickOutside>
       )
     }
 
     return (
-      <div className={this.className} data-testid={testID}>
-        <div
-          className={this.previewClassName}
-          onClick={this.handleStartEditing}
-        >
-          {description || 'No description'}
-          <Icon glyph={IconFont.Pencil} />
-        </div>
+      <div
+        id={id}
+        ref={ref}
+        style={style}
+        className={resourceCardEditableDescriptionClass}
+        data-testid={testID}
+      >
+        {descriptionElement}
       </div>
     )
   }
+)
 
-  private get className(): string {
-    const {className} = this.props
-
-    return classnames('resource-description resource-description__editable', {
-      [`${className}`]: className,
-    })
-  }
-
-  private get input(): JSX.Element {
-    const {placeholder} = this.props
-    const {workingDescription} = this.state
-
-    return (
-      <Input
-        size={ComponentSize.ExtraSmall}
-        autoFocus={true}
-        spellCheck={false}
-        placeholder={placeholder}
-        onFocus={this.handleInputFocus}
-        onChange={this.handleInputChange}
-        onKeyDown={this.handleKeyDown}
-        className="resource-description--input"
-        value={workingDescription}
-      />
-    )
-  }
-
-  private handleStartEditing = (): void => {
-    this.setState({isEditing: true})
-  }
-
-  private handleStopEditing = async (): Promise<void> => {
-    const {workingDescription} = this.state
-    const {onUpdate} = this.props
-
-    await onUpdate(workingDescription)
-
-    this.setState({isEditing: false})
-  }
-
-  private handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    this.setState({workingDescription: e.target.value})
-  }
-
-  private handleKeyDown = async (
-    e: KeyboardEvent<HTMLInputElement>
-  ): Promise<void> => {
-    const {onUpdate, description} = this.props
-    const {workingDescription} = this.state
-
-    if (e.key === 'Enter') {
-      await onUpdate(workingDescription)
-      this.setState({isEditing: false})
-    }
-
-    if (e.key === 'Escape') {
-      this.setState({isEditing: false, workingDescription: description})
-    }
-  }
-
-  private handleInputFocus = (e: ChangeEvent<HTMLInputElement>): void => {
-    e.currentTarget.select()
-  }
-
-  private get previewClassName(): string {
-    const {description} = this.props
-
-    return classnames('resource-description--preview', {
-      untitled: !description,
-    })
-  }
-}
+ResourceCardEditableDescription.displayName = 'ResourceCardEditableDescription'

@@ -1,53 +1,53 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from '../../../Types'
+import {StandardFunctionProps} from '../../../Types'
 
 // Styles
 import './ResourceCardDescription.scss'
 
-interface Props extends StandardClassProps {
+export interface ResourceCardDescriptionProps extends StandardFunctionProps {
   /** Text to display in description */
   description: string
 }
 
-export class ResourceCardDescription extends Component<Props> {
-  public static readonly displayName = 'ResourceCardDescription'
+export type ResourceCardDescriptionRef = HTMLDivElement
 
-  public static defaultProps = {
-    testID: 'resource-list--description',
-  }
+export const ResourceCardDescription = forwardRef<
+  ResourceCardDescriptionRef,
+  ResourceCardDescriptionProps
+>(
+  (
+    {id, style, testID = 'resource-list--description', className, description},
+    ref
+  ) => {
+    const resourceCardDescriptionClass = classnames('cf-resource-description', {
+      [`${className}`]: className,
+    })
 
-  public render() {
-    const {description, testID, id, style} = this.props
+    const resourceCardDescriptionPreviewClass = classnames(
+      'cf-resource-description--preview',
+      {
+        untitled: !description,
+      }
+    )
 
     return (
       <div
-        className={this.className}
-        data-testid={testID}
         id={id}
+        ref={ref}
         style={style}
+        className={resourceCardDescriptionClass}
+        data-testid={testID}
       >
-        <div className={this.previewClassName}>
+        <div className={resourceCardDescriptionPreviewClass}>
           {description || 'No description'}
         </div>
       </div>
     )
   }
+)
 
-  private get className(): string {
-    const {className} = this.props
-
-    return classnames('resource-description', {[`${className}`]: className})
-  }
-
-  private get previewClassName(): string {
-    const {description} = this.props
-
-    return classnames('resource-description--preview', {
-      untitled: !description,
-    })
-  }
-}
+ResourceCardDescription.displayName = 'ResourceCardDescription'

@@ -1,54 +1,58 @@
 // Libraries
-import React, {PureComponent, ReactNode} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from '../../../Types'
+import {StandardFunctionProps} from '../../../Types'
 
-interface Props extends StandardClassProps {
+export interface ResourceListBodyProps extends StandardFunctionProps {
   /** Element to show when no children are passed in, useful for implementing filtering */
   emptyState: JSX.Element
 }
 
-export class ResourceListBody extends PureComponent<Props> {
-  public static readonly displayName = 'ResourceListBody'
+export type ResourceListBodyRef = HTMLDivElement
 
-  public static defaultProps = {
-    testID: 'resource-list--body',
-  }
+export const ResourceListBody = forwardRef<
+  ResourceListBodyRef,
+  ResourceListBodyProps
+>(
+  (
+    {
+      id,
+      style,
+      testID = 'resource-list--body',
+      children,
+      className,
+      emptyState,
+    },
+    ref
+  ) => {
+    const resourceListBodyClass = classnames('cf-resource-list--body', {
+      [`${className}`]: className,
+    })
 
-  public render() {
-    const {testID, id, style} = this.props
-
-    return (
-      <div
-        className={this.className}
-        data-testid={testID}
-        id={id}
-        style={style}
-      >
-        {this.children}
-      </div>
-    )
-  }
-
-  private get children(): JSX.Element | ReactNode {
-    const {children, emptyState} = this.props
+    let childElement = children
 
     if (
       React.Children.count(children) === 0 ||
       children === undefined ||
       children === null
     ) {
-      return emptyState
+      childElement = emptyState
     }
 
-    return children
+    return (
+      <div
+        id={id}
+        ref={ref}
+        style={style}
+        className={resourceListBodyClass}
+        data-testid={testID}
+      >
+        {childElement}
+      </div>
+    )
   }
+)
 
-  private get className(): string {
-    const {className} = this.props
-
-    return classnames('cf-resource-list--body', {[`${className}`]: className})
-  }
-}
+ResourceListBody.displayName = 'ResourceListBody'
