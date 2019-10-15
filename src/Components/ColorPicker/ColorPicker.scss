@@ -88,12 +88,12 @@ $color-picker--margin: 0;
   position: relative;
 }
 
-.input.cf-color-picker--input {
+.cf-input.cf-color-picker--input {
   flex: 1 0 0;
   margin-right: $cf-marg-a;
 
   > input {
-    padding-left: $cf-marg-d;
+    padding-left: $cf-marg-d - $cf-marg-a;
   }
 }
 
