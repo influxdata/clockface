@@ -31,24 +31,6 @@ export interface FormValidationElementProps extends StandardFunctionProps {
 
 export type FormValidationElementRef = HTMLDivElement
 
-// public componentDidUpdate(prevProps: Props, prevState: State) {
-//   if (prevProps.value === this.props.value) {
-//     return
-//   }
-
-//   const {validationFunc, onStatusChange} = this.props
-//   const errorMessage = validationFunc(this.props.value)
-//   const newStatus = errorMessage
-//     ? ComponentStatus.Error
-//     : ComponentStatus.Valid
-
-//   if (onStatusChange && prevState.status !== newStatus) {
-//     onStatusChange(newStatus)
-//   }
-
-//   this.setState({status: newStatus, errorMessage})
-// }
-
 export const FormValidationElement = forwardRef<
   FormValidationElementRef,
   FormValidationElementProps
