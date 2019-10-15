@@ -132,7 +132,6 @@ export const ColorPicker = forwardRef<ColorPickerSwatchRef, ColorPickerProps>(
           <Input
             className="cf-color-picker--input"
             placeholder="#000000"
-            inputStyle={{paddingLeft: '29px'}}
             value={color}
             onChange={handleInputChange}
             maxLength={HEX_CODE_CHAR_LENGTH}
