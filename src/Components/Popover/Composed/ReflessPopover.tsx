@@ -1,5 +1,5 @@
 // Libraries
-import React, {FunctionComponent, createRef, CSSProperties} from 'react'
+import React, {FunctionComponent, RefObject, useRef, CSSProperties} from 'react'
 
 // Components
 import {PopoverProps} from '../Base/Popover'
@@ -31,7 +31,7 @@ export const ReflessPopover: FunctionComponent<ReflessPopoverProps> = ({
   enableDefaultStyles,
   testID = 'refless-popover',
 }) => {
-  const triggerRef = createRef<HTMLDivElement>()
+  const triggerRef: RefObject<HTMLDivElement> = useRef(null)
 
   return (
     <>

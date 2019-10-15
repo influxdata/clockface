@@ -1,5 +1,5 @@
 // Libraries
-import React, {forwardRef, createRef, CSSProperties} from 'react'
+import React, {forwardRef, useRef, RefObject, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Components
@@ -46,7 +46,7 @@ export const QuestionMarkTooltip = forwardRef<
     },
     ref
   ) => {
-    const triggerRef = createRef<HTMLDivElement>()
+    const triggerRef: RefObject<HTMLDivElement> = useRef(null)
 
     const circleClassName = classnames('cf-question-mark-tooltip', {
       [`${className}`]: className,
