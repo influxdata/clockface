@@ -23,12 +23,12 @@ export const ResourceCardDescription = forwardRef<
     {id, style, testID = 'resource-list--description', className, description},
     ref
   ) => {
-    const resourceCardDescriptionClass = classnames('resource-description', {
+    const resourceCardDescriptionClass = classnames('cf-resource-description', {
       [`${className}`]: className,
     })
 
     const resourceCardDescriptionPreviewClass = classnames(
-      'resource-description--preview',
+      'cf-resource-description--preview',
       {
         untitled: !description,
       }

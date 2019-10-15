@@ -56,14 +56,14 @@ export const ResourceCardEditableDescription = forwardRef<
     )
 
     const resourceCardEditableDescriptionClass = classnames(
-      'resource-description resource-description__editable',
+      'cf-resource-description cf-resource-description__editable',
       {
         [`${className}`]: className,
       }
     )
 
     const resourceCardEditableDescriptionPreviewClass = classnames(
-      'resource-description--preview',
+      'cf-resource-description--preview',
       {
         untitled: !description,
       }
@@ -122,7 +122,7 @@ export const ResourceCardEditableDescription = forwardRef<
             onFocus={handleInputFocus}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
-            className="resource-description--input"
+            className="cf-resource-description--input"
             value={workingDescription}
           />
         </ClickOutside>
