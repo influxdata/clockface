@@ -1,5 +1,5 @@
 // Libraries
-import React, {FunctionComponent, createRef} from 'react'
+import React, {FunctionComponent, useRef, RefObject} from 'react'
 
 // Components
 import {Button, ButtonProps} from './Button'
@@ -36,8 +36,6 @@ interface ConfirmationButtonProps
   returnValue?: any
 }
 
-const triggerRef = createRef<HTMLButtonElement>()
-
 export const ConfirmationButton: FunctionComponent<ConfirmationButtonProps> = ({
   id,
   icon,
@@ -60,6 +58,8 @@ export const ConfirmationButton: FunctionComponent<ConfirmationButtonProps> = ({
   popoverColor = ComponentColor.Default,
   confirmationButtonColor = ComponentColor.Danger,
 }) => {
+  const triggerRef: RefObject<HTMLButtonElement> = useRef(null)
+
   const isDisabled =
     status === ComponentStatus.Disabled || status === ComponentStatus.Loading
 
