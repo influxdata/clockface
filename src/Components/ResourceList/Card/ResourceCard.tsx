@@ -53,7 +53,7 @@ export const ResourceCardRoot = forwardRef<ResourceCardRef, ResourceCardProps>(
     const toggleElement = toggle && (
       <div className="cf-resource-card--toggle">{toggle}</div>
     )
-    const contextMenuElement = toggle && (
+    const contextMenuElement = contextMenu && (
       <div className="cf-resource-card--context-menu">{contextMenu}</div>
     )
     const descriptionElement = description && (
