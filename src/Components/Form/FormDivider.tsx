@@ -1,54 +1,41 @@
 // Libraries
-import React, {Component, CSSProperties} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {InfluxColors, StandardClassProps} from '../../Types'
+import {InfluxColors, StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface FormDividerProps extends StandardFunctionProps {
   /** Optional coloration for horizontal rule in divider */
   lineColor?: InfluxColors | string
 }
 
-export class FormDivider extends Component<Props> {
-  public static readonly displayName = 'FormDivider'
+export type FormDividerRef = HTMLDivElement
 
-  public static defaultProps = {
-    testID: 'form--divider',
-  }
-
-  public render() {
-    const {testID, id} = this.props
-
-    return (
-      <div
-        className={this.className}
-        data-testid={testID}
-        style={this.style}
-        id={id}
-      />
-    )
-  }
-
-  private get className(): string {
-    const {className, lineColor} = this.props
-
-    return classnames('cf-form--divider', {
+export const FormDivider = forwardRef<FormDividerRef, FormDividerProps>(
+  ({id, style, className, lineColor, testID = 'form--divider'}, ref) => {
+    const formDividerClass = classnames('cf-form--divider', {
       [`${className}`]: className,
       'cf-form--divider-line': lineColor,
     })
+
+    const formDividerStyle = lineColor
+      ? {
+          backgroundColor: lineColor,
+          ...style,
+        }
+      : style
+
+    return (
+      <div
+        id={id}
+        ref={ref}
+        data-testid={testID}
+        style={formDividerStyle}
+        className={formDividerClass}
+      />
+    )
   }
+)
 
-  private get style(): CSSProperties | undefined {
-    const {lineColor, style} = this.props
-
-    if (lineColor) {
-      return {
-        backgroundColor: lineColor,
-        ...style,
-      }
-    }
-
-    return style
-  }
-}
+FormDivider.displayName = 'FormDivider'

@@ -873,11 +873,11 @@
 }
 
 // Date Picker Custom Classes
-.date-picker {
+.cf-date-picker {
   margin: $cf-marg-a;
   margin-top: 0;
 
-  .date-picker--calendar {
+  .cf-date-picker--calendar {
     background-color: transparent;
     border: none;
     color: $c-pool;
@@ -886,7 +886,7 @@
     align-items: stretch;
   }
 
-  .date-picker--day {
+  .cf-date-picker--day {
     color: $g7-graphite;
 
     &:hover {
@@ -895,7 +895,7 @@
     }
   }
 
-  .date-picker--day-in-month {
+  .cf-date-picker--day-in-month {
     color: $g14-chromium;
 
     &:hover {

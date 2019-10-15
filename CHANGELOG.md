@@ -2,6 +2,9 @@
 
 ### 0.0.33 (Unreleased)
 
+- [#334](https://github.com/influxdata/clockface/pull/334): [Breaking] Prepend `cf-` to all `DatePicker` class names
+- [#334](https://github.com/influxdata/clockface/pull/334): Convert `DatePicker` and `DateRangePicker` components to `FunctionComponent` and wrap with `forwardRef`
+- [#334](https://github.com/influxdata/clockface/pull/334): Convert `Form` component family to `FunctionComponent` and wrap with `forwardRef`
 - [#331](https://github.com/influxdata/clockface/pull/331): Improve legiblity of `SelectableCard` default state
 - [#329](https://github.com/influxdata/clockface/pull/329): Convert `Overlay` component family to `FunctionComponent` and wrap with `forwardRef`
 - [#329](https://github.com/influxdata/clockface/pull/329): Use `react-spring` library to handle Overlay animations

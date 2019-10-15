@@ -1,5 +1,5 @@
 // Libraries
-import * as React from 'react'
+import React, {createRef} from 'react'
 import marked from 'marked'
 
 // Storybook
@@ -13,27 +13,30 @@ import {
   number,
 } from '@storybook/addon-knobs'
 import {jsxDecorator} from 'storybook-addon-jsx'
-import {mapEnumKeys} from '../../Utils/storybook'
+import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
-import {Form} from './Form'
-import {FormBox} from './FormBox'
-import {FormLabel} from './FormLabel'
-import {FormFooter} from './FormFooter'
-import {FormDivider} from './FormDivider'
-import {FormElement} from './FormElement'
-import {FormHelpText} from './FormHelpText'
-import {FormElementError} from './FormElementError'
-import {FormValidationElement} from './FormValidationElement'
-import {Grid} from '../Grid'
-import {Button} from '../Button/Composed/Button'
-import {Input} from '../Inputs/Input'
-import {FlexBox} from '../FlexBox'
-import {SlideToggle} from '../SlideToggle'
-import {Panel} from '../Panel'
-import {TextBlock} from '../TextBlock/TextBlock'
-import {DismissButton} from '../Button/Composed/DismissButton'
-import {SelectDropdown} from '../Dropdowns/Composed/SelectDropdown'
+import {
+  Form,
+  FormBoxRef,
+  FormLabelRef,
+  FormFooterRef,
+  FormDividerRef,
+  FormElementRef,
+  FormHelpTextRef,
+  FormElementErrorRef,
+  FormValidationElementRef,
+} from '../index'
+
+import {Grid} from '../../Grid'
+import {Button} from '../../Button/Composed/Button'
+import {Input} from '../../Inputs/Input'
+import {FlexBox} from '../../FlexBox'
+import {SlideToggle} from '../../SlideToggle'
+import {Panel} from '../../Panel'
+import {TextBlock} from '../../TextBlock/TextBlock'
+import {DismissButton} from '../../Button/Composed/DismissButton'
+import {SelectDropdown} from '../../Dropdowns/Composed/SelectDropdown'
 
 // Types
 import {
@@ -45,11 +48,12 @@ import {
   AlignItems,
   InputType,
   InfluxColors,
-} from '../../Types'
+} from '../../../Types'
 
 // Notes
 import FormReadme from './Form.md'
 import NaturalLanguageFormReadme from './NaturalLanguageForm.md'
+import {FormRef} from '../Form'
 
 const formStories = storiesOf('Components|Forms/Standard', module)
   .addDecorator(withKnobs)
@@ -69,13 +73,26 @@ const mockValidationFunc = (value: string): string | null => {
 
 formStories.add(
   'Form',
-  () => (
-    <div className="story--example">
-      <div className="story--form-example">
-        <Form />
+  () => {
+    const formRef = createRef<FormRef>()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(formRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <div className="story--form-example">
+          <Form.Form ref={formRef} />
+        </div>
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
       </div>
-    </div>
-  ),
+    )
+  },
   {
     readme: {
       content: marked(FormReadme),
@@ -85,13 +102,26 @@ formStories.add(
 
 formStories.add(
   'FormBox',
-  () => (
-    <div className="story--example">
-      <div className="story--form-example">
-        <FormBox />
+  () => {
+    const formBoxRef = createRef<FormBoxRef>()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(formBoxRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <div className="story--form-example">
+          <Form.Box ref={formBoxRef} />
+        </div>
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
       </div>
-    </div>
-  ),
+    )
+  },
   {
     readme: {
       content: marked(FormReadme),
@@ -101,13 +131,26 @@ formStories.add(
 
 formStories.add(
   'FormDivider',
-  () => (
-    <div className="story--example">
-      <div className="story--form-example">
-        <FormDivider lineColor={color('color', '')} />
+  () => {
+    const formDividerRef = createRef<FormDividerRef>()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(formDividerRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <div className="story--form-example">
+          <Form.Divider ref={formDividerRef} lineColor={color('color', '')} />
+        </div>
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
       </div>
-    </div>
-  ),
+    )
+  },
   {
     readme: {
       content: marked(FormReadme),
@@ -117,20 +160,34 @@ formStories.add(
 
 formStories.add(
   'FormElement',
-  () => (
-    <div className="story--example">
-      <div className="story--form-example">
-        <FormElement
-          label={text('label', 'Element Label')}
-          helpText={text('helpText', 'Help Text')}
-          errorMessage={text('errorMessage', 'Error Message')}
-          required={boolean('required', true)}
-        >
-          <div className="mockComponent mockInput">Input Goes Here</div>
-        </FormElement>
+  () => {
+    const formElementRef = createRef<FormElementRef>()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(formElementRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <div className="story--form-example">
+          <Form.Element
+            ref={formElementRef}
+            label={text('label', 'Element Label')}
+            helpText={text('helpText', 'Help Text')}
+            errorMessage={text('errorMessage', 'Error Message')}
+            required={boolean('required', true)}
+          >
+            <div className="mockComponent mockInput">Input Goes Here</div>
+          </Form.Element>
+        </div>
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
       </div>
-    </div>
-  ),
+    )
+  },
   {
     readme: {
       content: marked(FormReadme),
@@ -140,11 +197,27 @@ formStories.add(
 
 formStories.add(
   'FormElementError',
-  () => (
-    <div className="story--example">
-      <FormElementError message={text('errorMessage', 'Error Message')} />
-    </div>
-  ),
+  () => {
+    const formElementErrorRef = createRef<FormElementErrorRef>()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(formElementErrorRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <Form.ElementError
+          ref={formElementErrorRef}
+          message={text('errorMessage', 'Error Message')}
+        />
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(FormReadme),
@@ -154,14 +227,27 @@ formStories.add(
 
 formStories.add(
   'FormFooter',
-  () => (
-    <div className="story--example">
-      <FormFooter>
-        <Button text="Cancel" />
-        <Button text="Confirm" color={ComponentColor.Success} />
-      </FormFooter>
-    </div>
-  ),
+  () => {
+    const formFooterRef = createRef<FormFooterRef>()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(formFooterRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <Form.Footer ref={formFooterRef}>
+          <Button text="Cancel" />
+          <Button text="Confirm" color={ComponentColor.Success} />
+        </Form.Footer>
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(FormReadme),
@@ -171,13 +257,29 @@ formStories.add(
 
 formStories.add(
   'FormHelpText',
-  () => (
-    <div className="story--example">
-      <div className="story--form-example">
-        <FormHelpText text={text('helpText', 'Help Text')} />
+  () => {
+    const formHelpTextRef = createRef<FormHelpTextRef>()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(formHelpTextRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <div className="story--form-example">
+          <Form.HelpText
+            ref={formHelpTextRef}
+            text={text('helpText', 'Help Text')}
+          />
+        </div>
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
       </div>
-    </div>
-  ),
+    )
+  },
   {
     readme: {
       content: marked(FormReadme),
@@ -187,16 +289,30 @@ formStories.add(
 
 formStories.add(
   'FormLabel',
-  () => (
-    <div className="story--example">
-      <div className="story--form-example">
-        <FormLabel
-          label={text('label', 'Element Label')}
-          required={boolean('required', true)}
-        />
+  () => {
+    const formLabelRef = createRef<FormLabelRef>()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(formLabelRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <div className="story--form-example">
+          <Form.Label
+            ref={formLabelRef}
+            label={text('label', 'Element Label')}
+            required={boolean('required', true)}
+          />
+        </div>
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
       </div>
-    </div>
-  ),
+    )
+  },
   {
     readme: {
       content: marked(FormReadme),
@@ -206,23 +322,37 @@ formStories.add(
 
 formStories.add(
   'FormValidationElement',
-  () => (
-    <div className="story--example">
-      <div className="story--form-example">
-        <FormValidationElement
-          label={text('label', 'Element Label')}
-          value={text('value', 'Input Value (delete this to cause error)')}
-          helpText={text('helpText', 'Help Text')}
-          required={boolean('required', true)}
-          validationFunc={mockValidationFunc}
-        >
-          {status => (
-            <div className="mockComponent input">{`(status) => <child>${status}</child>`}</div>
-          )}
-        </FormValidationElement>
+  () => {
+    const formValidationElementRef = createRef<FormValidationElementRef>()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(formValidationElementRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <div className="story--form-example">
+          <Form.ValidationElement
+            ref={formValidationElementRef}
+            label={text('label', 'Element Label')}
+            value={text('value', 'Input Value (delete this to cause error)')}
+            helpText={text('helpText', 'Help Text')}
+            required={boolean('required', true)}
+            validationFunc={mockValidationFunc}
+          >
+            {status => (
+              <div className="mockComponent input">{`(status) => <child>${status}</child>`}</div>
+            )}
+          </Form.ValidationElement>
+        </div>
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
       </div>
-    </div>
-  ),
+    )
+  },
   {
     readme: {
       content: marked(FormReadme),
