@@ -1,31 +1,27 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardClassProps {}
+export interface FormBoxProps extends StandardFunctionProps {}
 
-export class FormBox extends Component<Props> {
-  public static readonly displayName = 'FormBox'
+export type FormBoxRef = HTMLDivElement
 
-  public static defaultProps = {
-    className: '',
-    testID: 'form--box',
-  }
-
-  public render() {
-    const {children, className, testID, id, style} = this.props
-
+export const FormBox = forwardRef<FormBoxRef, FormBoxProps>(
+  ({children, id, style, className = '', testID = 'form--box'}, ref) => {
     return (
       <div
-        className={`cf-form--box ${className}`}
-        data-testid={testID}
         id={id}
+        ref={ref}
         style={style}
+        data-testid={testID}
+        className={`cf-form--box ${className}`}
       >
         {children}
       </div>
     )
   }
-}
+)
+
+FormBox.displayName = 'FormBox'

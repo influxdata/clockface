@@ -2,6 +2,9 @@
 
 ### 0.0.33 (Unreleased)
 
+- [#334](https://github.com/influxdata/clockface/pull/334): [Breaking] Prepend `cf-` to all `DatePicker` class names
+- [#334](https://github.com/influxdata/clockface/pull/334): Convert `DatePicker` and `DateRangePicker` components to `FunctionComponent` and wrap with `forwardRef`
+- [#334](https://github.com/influxdata/clockface/pull/334): Convert `Form` component family to `FunctionComponent` and wrap with `forwardRef`
 - [#333](https://github.com/influxdata/clockface/pull/333): Convert `ResourceList` component family to `FunctionComponent` and wrap with `forwardRef`
 - [#333](https://github.com/influxdata/clockface/pull/333): [Breaking] Prepend `cf-` to `ResourceCardDescription` & `ResourceCardEditableDescription` class names
 - [#331](https://github.com/influxdata/clockface/pull/331): Improve legiblity of `SelectableCard` default state

@@ -1,11 +1,11 @@
 // Libraries
-import React, {PureComponent, ChangeEvent} from 'react'
+import React, {forwardRef, ChangeEvent, useState} from 'react'
 import ReactDatePicker from 'react-datepicker'
 import moment from 'moment'
 
 // Components
 import {Input} from '../../Inputs/Input'
-import {Form} from '../../Form/Form'
+import {Form} from '../../Form/index'
 
 // Styles
 import '../DatePicker.scss'
@@ -14,21 +14,16 @@ import '../DatePicker.scss'
 import {
   ComponentSize,
   ComponentStatus,
-  StandardClassProps,
+  StandardFunctionProps,
 } from '../../../Types'
 
-interface Props extends StandardClassProps {
+interface DatePickerProps extends StandardFunctionProps {
   /** Label for input field */
   label: string
   /** Date value */
   dateTime?: string | null
   /** Function called once a date is selected */
   onSelectDate: (date: string) => void
-}
-
-interface State {
-  inputValue: string
-  inputFormat: string
 }
 
 const isValidRTC3339 = (d: string): boolean => {
@@ -56,122 +51,119 @@ const getFormat = (d: string): string | undefined => {
   return
 }
 
-export class DatePicker extends PureComponent<Props, State> {
-  private inCurrentMonth: boolean = false
+export type DatePickerRef = HTMLDivElement
 
-  public static defaultProps = {
-    testID: 'date-picker',
-  }
+export const DatePicker = forwardRef<DatePickerRef, DatePickerProps>(
+  ({dateTime, label, style, onSelectDate, testID = 'date-picker'}, ref) => {
+    const [inputValue, setInputValue] = useState('')
+    const [inputFormat, setInputFormat] = useState('')
 
-  state = {
-    inputValue: '',
-    inputFormat: '',
-  }
-
-  public render() {
-    const {dateTime, label, testID, style} = this.props
+    let inCurrentMonth = false
 
     const date = new Date(dateTime || Date.now())
 
+    const formattedInputValue = (): string => {
+      if (isInputValueInvalid()) {
+        return inputValue
+      }
+
+      if (inputFormat) {
+        return moment(dateTime || '').format(inputFormat)
+      }
+
+      return moment(dateTime || '').format('YYYY-MM-DD HH:mm:ss.SSS')
+    }
+
+    const isInputValueInvalid = (): boolean => {
+      if (inputValue === null) {
+        return false
+      }
+
+      return !isValidRTC3339(inputValue)
+    }
+
+    const inputErrorMessage = (): string | undefined => {
+      if (isInputValueInvalid()) {
+        return 'Format must be YYYY-MM-DD [HH:mm:ss.SSS]'
+      }
+
+      return '\u00a0\u00a0'
+    }
+
+    const inputStatus = (): ComponentStatus => {
+      if (isInputValueInvalid()) {
+        return ComponentStatus.Error
+      }
+      return ComponentStatus.Default
+    }
+
+    const dayClassName = (date: Date): string => {
+      const day = date.getDate()
+
+      if (day === 1) {
+        inCurrentMonth = !inCurrentMonth
+      }
+
+      if (inCurrentMonth) {
+        return 'cf-date-picker--day-in-month'
+      }
+
+      return 'cf-date-picker--day'
+    }
+
+    const handleSelectDate = (date: Date): void => {
+      onSelectDate(date.toISOString())
+    }
+
+    const handleChangeInput = (e: ChangeEvent<HTMLInputElement>): void => {
+      const value = e.target.value
+
+      if (isValidRTC3339(value)) {
+        onSelectDate(moment(value).toISOString())
+        setInputValue(value)
+        setInputFormat(getFormat(value) || '')
+        return
+      }
+
+      setInputValue(value)
+      setInputFormat('')
+    }
+
     return (
-      <div className="date-picker" data-testid={testID} style={style}>
-        <Form.Element label={label} errorMessage={this.inputErrorMessage}>
+      <div
+        ref={ref}
+        className="cf-date-picker"
+        data-testid={testID}
+        style={style}
+      >
+        <Form.Element label={label} errorMessage={inputErrorMessage()}>
           <Input
             size={ComponentSize.Medium}
             className="react-datepicker-ignore-onclickoutside"
             titleText={label}
-            value={this.inputValue}
-            onChange={this.handleChangeInput}
-            status={this.inputStatus}
+            value={formattedInputValue()}
+            onChange={handleChangeInput}
+            status={inputStatus()}
           />
         </Form.Element>
         <ReactDatePicker
           inline
           selected={date}
-          onChange={this.handleSelectDate}
+          onChange={handleSelectDate}
           startOpen={true}
           dateFormat="yyyy-MM-dd HH:mm"
           showTimeSelect={true}
           timeFormat="HH:mm"
           shouldCloseOnSelect={false}
           disabledKeyboardNavigation={true}
-          calendarClassName="date-picker--calendar"
-          dayClassName={this.dayClassName}
+          calendarClassName="cf-date-picker--calendar"
+          dayClassName={dayClassName}
           timeIntervals={60}
           fixedHeight={true}
         />
       </div>
     )
   }
+)
 
-  private get inputValue(): string {
-    const {dateTime} = this.props
-    const {inputValue, inputFormat} = this.state
-
-    if (this.isInputValueInvalid) {
-      return inputValue
-    }
-
-    if (inputFormat) {
-      return moment(dateTime || '').format(inputFormat)
-    }
-
-    return moment(dateTime || '').format('YYYY-MM-DD HH:mm:ss.SSS')
-  }
-
-  private get isInputValueInvalid(): boolean {
-    const {inputValue} = this.state
-    if (inputValue === null) {
-      return false
-    }
-
-    return !isValidRTC3339(inputValue)
-  }
-
-  private get inputErrorMessage(): string | undefined {
-    if (this.isInputValueInvalid) {
-      return 'Format must be YYYY-MM-DD [HH:mm:ss.SSS]'
-    }
-
-    return '\u00a0\u00a0'
-  }
-
-  private get inputStatus(): ComponentStatus {
-    if (this.isInputValueInvalid) {
-      return ComponentStatus.Error
-    }
-    return ComponentStatus.Default
-  }
-
-  private dayClassName = (date: Date) => {
-    const day = date.getDate()
-
-    if (day === 1) {
-      this.inCurrentMonth = !this.inCurrentMonth
-    }
-
-    if (this.inCurrentMonth) {
-      return 'date-picker--day-in-month'
-    }
-
-    return 'date-picker--day'
-  }
-
-  private handleSelectDate = (date: Date): void => {
-    const {onSelectDate} = this.props
-    onSelectDate(date.toISOString())
-  }
-
-  private handleChangeInput = (e: ChangeEvent<HTMLInputElement>): void => {
-    const {onSelectDate} = this.props
-    const value = e.target.value
-
-    if (isValidRTC3339(value)) {
-      onSelectDate(moment(value).toISOString())
-      this.setState({inputValue: value, inputFormat: getFormat(value) || ''})
-      return
-    }
-
-    this.setState({inputValue: value, inputFormat: ''})
-  }
-}
+DatePicker.displayName = 'DatePicker'

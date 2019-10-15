@@ -1,22 +1,14 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
-// Components
-import {FormElement} from './FormElement'
-import {FormValidationElement} from './FormValidationElement'
-import {FormLabel} from './FormLabel'
-import {FormDivider} from './FormDivider'
-import {FormFooter} from './FormFooter'
-import {FormBox} from './FormBox'
-
 // Types
-import {StandardClassProps, AutoComplete, EncType, Method} from '../../Types'
+import {StandardFunctionProps, AutoComplete, EncType, Method} from '../../Types'
 
 // Styles
 import './Form.scss'
 
-interface Props extends StandardClassProps {
+export interface FormProps extends StandardFunctionProps {
   /** Form submit URI */
   action?: string
   /** A space-delimited list of character encodings. */
@@ -36,78 +28,67 @@ interface Props extends StandardClassProps {
   /** Context name or keyword */
   target?: string
   /** If true prevents default event during onSubmit */
-  preventDefault: boolean
+  preventDefault?: boolean
 }
 
-export class Form extends Component<Props> {
-  public static readonly displayName = 'Form'
+export type FormRef = HTMLFormElement
 
-  public static defaultProps = {
-    testID: 'form-container',
-    preventDefault: true,
-  }
-
-  public static ValidationElement = FormValidationElement
-  public static Element = FormElement
-  public static Label = FormLabel
-  public static Divider = FormDivider
-  public static Footer = FormFooter
-  public static Box = FormBox
-
-  public render() {
-    const {
-      children,
-      style,
-      testID,
+export const FormRoot = forwardRef<FormRef, FormProps>(
+  (
+    {
       id,
-      action,
-      acceptCharset,
-      autoComplete,
-      encType,
-      method,
       name,
-      noValidate,
+      style,
+      method,
       target,
-    } = this.props
+      action,
+      encType,
+      onSubmit,
+      children,
+      className,
+      noValidate,
+      autoComplete,
+      acceptCharset,
+      testID = 'form-container',
+      preventDefault = true,
+    },
+    ref
+  ) => {
+    const formWrapperClass = classnames('cf-form--wrapper', {
+      [`${className}`]: className,
+    })
+
+    const handleSubmit = (e: React.FormEvent): void => {
+      if (preventDefault) {
+        e.preventDefault()
+      }
+
+      if (onSubmit) {
+        onSubmit(e)
+      }
+    }
 
     return (
       <form
-        acceptCharset={acceptCharset}
-        action={action}
-        autoComplete={autoComplete}
-        encType={encType}
-        method={method}
-        name={name}
-        noValidate={noValidate}
-        style={style}
-        target={target}
-        className={this.formWrapperClass}
-        onSubmit={this.handleSubmit}
-        data-testid={testID}
         id={id}
+        ref={ref}
+        name={name}
+        style={style}
+        method={method}
+        target={target}
+        action={action}
+        encType={encType}
+        data-testid={testID}
+        onSubmit={handleSubmit}
+        noValidate={noValidate}
+        autoComplete={autoComplete}
+        className={formWrapperClass}
+        acceptCharset={acceptCharset}
       >
         {children}
       </form>
     )
   }
+)
 
-  private handleSubmit = (e: React.FormEvent): void => {
-    const {onSubmit, preventDefault} = this.props
-
-    if (preventDefault) {
-      e.preventDefault()
-    }
-
-    if (onSubmit) {
-      onSubmit(e)
-    }
-  }
-
-  private get formWrapperClass(): string {
-    const {className} = this.props
-
-    return classnames('cf-form--wrapper', {
-      [`${className}`]: className,
-    })
-  }
-}
+FormRoot.displayName = 'Form'

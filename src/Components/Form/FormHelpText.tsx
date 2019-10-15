@@ -1,39 +1,35 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
+import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface FormHelpTextProps extends StandardFunctionProps {
   /** Input discription  or instruction text */
   text: string
 }
 
-export class FormHelpText extends Component<Props> {
-  public static readonly displayName = 'FormHelpText'
+export type FormHelpTextRef = HTMLSpanElement
 
-  public static defaultProps = {
-    testID: 'form--help-text',
-  }
-
-  public render() {
-    const {text, testID, id, style} = this.props
+export const FormHelpText = forwardRef<FormHelpTextRef, FormHelpTextProps>(
+  ({text, className, id, style, testID = 'form--help-text'}, ref) => {
+    const formHelpTextClass = classnames('cf-form--help-text', {
+      [`${className}`]: className,
+    })
 
     return (
       <span
-        className={this.className}
-        data-testid={testID}
         id={id}
+        ref={ref}
         style={style}
+        data-testid={testID}
+        className={formHelpTextClass}
       >
         {text}
       </span>
     )
   }
+)
 
-  private get className(): string {
-    const {className} = this.props
-
-    return className ? `cf-form--help-text ${className}` : 'cf-form--help-text'
-  }
-}
+FormHelpText.displayName = 'FormHelpText'
