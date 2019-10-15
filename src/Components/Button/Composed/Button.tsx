@@ -95,7 +95,6 @@ export const Button = forwardRef<ButtonRef, ButtonProps>(
           placeIconAfterText={placeIconAfterText}
           text={text}
           icon={icon}
-          shape={shape}
         />
         {status === ComponentStatus.Loading && (
           <div className={`cf-button-spinner cf-button-spinner--${size}`} />
@@ -109,27 +108,29 @@ Button.displayName = 'Button'
 
 const IconAndText: FunctionComponent<{
   text?: string
-  icon: IconFont | string
-  shape: ButtonShape
+  icon?: IconFont | string
   placeIconAfterText: boolean
-}> = ({text, icon, shape, placeIconAfterText}) => {
-  const showText = shape === ButtonShape.Square || !!text
-  const iconEl = <Icon glyph={icon} className="cf-button-icon" />
-  const textEl = <span className="cf-button--label">{text}</span>
+}> = ({text, icon, placeIconAfterText}) => {
+  const iconEl = !!icon && <Icon glyph={icon} className="cf-button-icon" />
+  const textEl = !!text && <span className="cf-button--label">{text}</span>
+
+  if (!icon && !text) {
+    return null
+  }
 
   if (placeIconAfterText) {
     return (
       <>
-        {showText && textEl}
-        {!!icon && iconEl}
+        {textEl}
+        {iconEl}
       </>
     )
   }
 
   return (
     <>
-      {!!icon && iconEl}
-      {showText && textEl}
+      {iconEl}
+      {textEl}
     </>
   )
 }
