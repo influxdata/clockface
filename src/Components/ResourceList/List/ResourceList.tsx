@@ -1,49 +1,35 @@
 // Libraries
-import React, {PureComponent} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
-// Components
-import {ResourceListHeader} from './ResourceListHeader'
-import {ResourceListSorter} from './ResourceListSorter'
-import {ResourceListBody} from './ResourceListBody'
-
 // Types
-import {StandardClassProps} from '../../../Types'
+import {StandardFunctionProps} from '../../../Types'
 
 // Styles
 import './ResourceList.scss'
 
-interface Props extends StandardClassProps {}
+export interface ResourceListProps extends StandardFunctionProps {}
 
-export class ResourceList extends PureComponent<Props> {
-  public static readonly displayName = 'ResourceList'
+export type ResourceListRef = HTMLDivElement
 
-  public static defaultProps = {
-    testID: 'resource-list',
-  }
-
-  public static Header = ResourceListHeader
-  public static Sorter = ResourceListSorter
-  public static Body = ResourceListBody
-
-  public render() {
-    const {children, testID, id, style} = this.props
+export const ResourceListRoot = forwardRef<ResourceListRef, ResourceListProps>(
+  ({id, style, testID = 'resource-list', children, className}, ref) => {
+    const resourceListClass = classnames('cf-resource-list', {
+      [`${className}`]: className,
+    })
 
     return (
       <div
-        className={this.className}
-        data-testid={testID}
         id={id}
+        ref={ref}
         style={style}
+        className={resourceListClass}
+        data-testid={testID}
       >
         {children}
       </div>
     )
   }
+)
 
-  private get className(): string {
-    const {className} = this.props
-
-    return classnames('cf-resource-list', {[`${className}`]: className})
-  }
-}
+ResourceListRoot.displayName = 'ResourceList'
