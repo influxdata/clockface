@@ -71,18 +71,19 @@ datePickerBaseStories.add(
     }
 
     return (
-    <div className="story--example">
-      <DatePicker
-      ref={datePickerRef}
-        dateTime={text('Date Time', '')}
-        onSelectDate={() => {}}
-        label={text('Label', 'Date Picker')}
-      />
-      <div className="story--test-buttons">
+      <div className="story--example">
+        <DatePicker
+          ref={datePickerRef}
+          dateTime={text('Date Time', '')}
+          onSelectDate={() => {}}
+          label={text('Label', 'Date Picker')}
+        />
+        <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
         </div>
-    </div>
-  )},
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(DatePickerReadme),
