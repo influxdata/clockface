@@ -18,11 +18,11 @@ import './QuestionMarkTooltip.scss'
 
 export interface QuestionMarkTooltipProps extends StandardFunctionProps {
   /** Controls the size of the question mark circle */
-  diameter: number
+  diameter?: number
   /** Contents to display in tooltip */
   tooltipContents: JSX.Element | string
   /** Coloration of tooltip and question mark circle */
-  color: ComponentColor
+  color?: ComponentColor
   /** Useful for customizing the tooltip itself */
   tooltipStyle?: CSSProperties
 }
