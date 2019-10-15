@@ -1,5 +1,5 @@
 // Libraries
-import React from 'react'
+import React, {RefObject, createRef} from 'react'
 import marked from 'marked'
 
 // Storybook
@@ -9,10 +9,16 @@ import {withKnobs, text, boolean, select, object} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
-import {ResourceList} from '../List/ResourceList'
-import {ResourceListHeader} from '../List/ResourceListHeader'
-import {ResourceListBody} from '../List/ResourceListBody'
-import {ResourceListSorter} from '../List/ResourceListSorter'
+import {ResourceList, ResourceListRef} from '../List'
+import {
+  ResourceListHeader,
+  ResourceListHeaderRef,
+} from '../List/ResourceListHeader'
+import {ResourceListBody, ResourceListBodyRef} from '../List/ResourceListBody'
+import {
+  ResourceListSorter,
+  ResourceListSorterRef,
+} from '../List/ResourceListSorter'
 import {ResourceCard} from '../Card'
 import {Input} from '../../Inputs/Input'
 import {EmptyState} from '../../EmptyState'
@@ -43,11 +49,24 @@ const resourceListExampleStories = storiesOf(
 
 resourceListStories.add(
   'ResourceList',
-  () => (
-    <div className="story--example">
-      <ResourceList />
-    </div>
-  ),
+  () => {
+    const resourceListRef: RefObject<ResourceListRef> = createRef()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(resourceListRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+        <ResourceList.ResourceList ref={resourceListRef} />
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(ResourceListReadme),
@@ -72,27 +91,60 @@ const exampleHeaderSorts = [
 
 resourceListStories.add(
   'ResourceListHeader',
-  () => (
-    <div className="story--example">
-      <ResourceListHeader
-        filterComponent={
-          <div className="mockComponent" style={{width: '300px'}}>
-            Filter Input goes here
-          </div>
-        }
-      >
-        {exampleHeaderSorts.map(header => (
-          <ResourceListSorter
-            key={header.key}
-            sortKey={header.key}
-            name={header.name}
-            sort={Sort.None}
-            onClick={() => {}}
-          />
-        ))}
-      </ResourceListHeader>
-    </div>
-  ),
+  () => {
+    const resourceListHeaderRef: RefObject<ResourceListHeaderRef> = createRef()
+    const resourceListSorterNameRef: RefObject<
+      ResourceListSorterRef
+    > = createRef()
+    const resourceListSorterCreatedRef: RefObject<
+      ResourceListSorterRef
+    > = createRef()
+    const resourceListSorterColorRef: RefObject<
+      ResourceListSorterRef
+    > = createRef()
+
+    const sorterRefs = [
+      resourceListSorterNameRef,
+      resourceListSorterCreatedRef,
+      resourceListSorterColorRef,
+    ]
+
+    const logRefs = (): void => {
+      /* eslint-disable */
+      console.log('ResourceListHeader', resourceListHeaderRef.current)
+      console.log('ResourceListSorter (Name)', resourceListSorterNameRef.current)
+      console.log('ResourceListSorter (Created)', resourceListSorterCreatedRef.current)
+      console.log('ResourceListSorter (Color)', resourceListSorterColorRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <div className="story--test-buttons">
+          <button onClick={logRefs}>Log Refs</button>
+        </div>
+        <ResourceListHeader
+          ref={resourceListHeaderRef}
+          filterComponent={
+            <div className="mockComponent" style={{width: '300px'}}>
+              Filter Input goes here
+            </div>
+          }
+        >
+          {exampleHeaderSorts.map((header, i) => (
+            <ResourceListSorter
+              ref={sorterRefs[i]}
+              key={header.key}
+              sortKey={header.key}
+              name={header.name}
+              sort={Sort.None}
+              onClick={() => {}}
+            />
+          ))}
+        </ResourceListHeader>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(ResourceListHeaderReadme),
@@ -102,15 +154,29 @@ resourceListStories.add(
 
 resourceListStories.add(
   'ResourceListBody',
-  () => (
-    <div className="story--example">
-      <ResourceListBody
-        emptyState={
-          <div className="mockComponent stretch">EmptyState goes here</div>
-        }
-      />
-    </div>
-  ),
+  () => {
+    const resourceListBodyRef: RefObject<ResourceListBodyRef> = createRef()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(resourceListBodyRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+        <ResourceListBody
+          ref={resourceListBodyRef}
+          emptyState={
+            <div className="mockComponent stretch">EmptyState goes here</div>
+          }
+        />
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(ResourceListBodyReadme),
@@ -120,18 +186,32 @@ resourceListStories.add(
 
 resourceListStories.add(
   'ResourceListSorter',
-  () => (
-    <div className="story--example">
-      <ResourceListSorter
-        name={text('name', 'Created At')}
-        onClick={nextSort =>
-          alert(`onClick fired! Next sort is: "${nextSort}"`)
-        }
-        sort={Sort[select('sort', mapEnumKeys(Sort), 'None')]}
-        sortKey={text('sortKey', 'created_at')}
-      />
-    </div>
-  ),
+  () => {
+    const resourceListSorterRef: RefObject<ResourceListSorterRef> = createRef()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(resourceListSorterRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+        <ResourceListSorter
+          ref={resourceListSorterRef}
+          name={text('name', 'Created At')}
+          onClick={nextSort =>
+            alert(`onClick fired! Next sort is: "${nextSort}"`)
+          }
+          sort={Sort[select('sort', mapEnumKeys(Sort), 'None')]}
+          sortKey={text('sortKey', 'created_at')}
+        />
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(ResourceListSorterReadme),
