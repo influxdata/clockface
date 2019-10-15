@@ -110,7 +110,7 @@ $color-picker--margin: 0;
   border: $cf-border solid $g5-pepper;
   transition: background-color 0.25s ease, border-color 0.25s ease;
 
-  .input:hover + & {
+  .cf-input:hover + & {
     border-color: $g7-graphite;
   }
 }
