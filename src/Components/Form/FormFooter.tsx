@@ -1,39 +1,31 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardClassProps {}
+export interface FormFooterProps extends StandardFunctionProps {}
 
-export class FormFooter extends Component<Props> {
-  public static readonly displayName = 'FormFooter'
+export type FormFooterRef = HTMLDivElement
 
-  public static defaultProps = {
-    testID: 'form--footer',
-  }
-
-  public render() {
-    const {children, testID, id, style} = this.props
-
+export const FormFooter = forwardRef<FormFooterRef, FormFooterProps>(
+  ({className, children, testID = 'form--footer', id, style}, ref) => {
+    const formFooterClass = classnames('cf-form--element cf-form--footer', {
+      [`${className}`]: className,
+    })
     return (
       <div
-        className={this.className}
-        data-testid={testID}
         id={id}
+        ref={ref}
         style={style}
+        data-testid={testID}
+        className={formFooterClass}
       >
         {children}
       </div>
     )
   }
+)
 
-  private get className(): string {
-    const {className} = this.props
-
-    return classnames('cf-form--element cf-form--footer', {
-      [`${className}`]: className,
-    })
-  }
-}
+FormFooter.displayName = 'FormFooter'

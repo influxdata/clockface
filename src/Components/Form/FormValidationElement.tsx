@@ -1,5 +1,5 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef, useState, useEffect} from 'react'
 import classnames from 'classnames'
 
 // Components
@@ -8,9 +8,9 @@ import {FormElementError} from './FormElementError'
 import {FormHelpText} from './FormHelpText'
 
 // Types
-import {StandardClassProps, ComponentStatus} from '../../Types'
+import {StandardFunctionProps, ComponentStatus} from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface FormValidationElementProps extends StandardFunctionProps {
   /** Child components */
   children: (status: ComponentStatus) => React.ReactNode
   /** Function used for validation check */
@@ -29,117 +29,90 @@ interface Props extends StandardClassProps {
   required?: boolean
 }
 
-interface State {
-  errorMessage: string | null
-  status: ComponentStatus
-}
+export type FormValidationElementRef = HTMLDivElement
 
-export class FormValidationElement extends Component<Props, State> {
-  public static readonly displayName = 'FormValidationElement'
+// public componentDidUpdate(prevProps: Props, prevState: State) {
+//   if (prevProps.value === this.props.value) {
+//     return
+//   }
 
-  public static defaultProps = {
-    testID: 'form--validation-element',
-  }
+//   const {validationFunc, onStatusChange} = this.props
+//   const errorMessage = validationFunc(this.props.value)
+//   const newStatus = errorMessage
+//     ? ComponentStatus.Error
+//     : ComponentStatus.Valid
 
-  constructor(props: Props) {
-    super(props)
+//   if (onStatusChange && prevState.status !== newStatus) {
+//     onStatusChange(newStatus)
+//   }
 
-    this.state = {
-      errorMessage: null,
-      status: ComponentStatus.Default,
-    }
-  }
+//   this.setState({status: newStatus, errorMessage})
+// }
 
-  public componentDidUpdate(prevProps: Props, prevState: State) {
-    if (prevProps.value === this.props.value) {
-      return
-    }
+export const FormValidationElement = forwardRef<
+  FormValidationElementRef,
+  FormValidationElementProps
+>(
+  (
+    {
+      id,
+      value,
+      style,
+      label,
+      helpText,
+      children,
+      required,
+      labelAddOn,
+      className,
+      validationFunc,
+      onStatusChange,
+      testID = 'form--validation-element',
+    },
+    ref
+  ) => {
+    const [errorMessage, setErrorMessage] = useState<string | null>(null)
+    const [status, setStatus] = useState<ComponentStatus>(
+      ComponentStatus.Default
+    )
 
-    const {validationFunc, onStatusChange} = this.props
-    const errorMessage = validationFunc(this.props.value)
-    const newStatus = errorMessage
-      ? ComponentStatus.Error
-      : ComponentStatus.Valid
+    useEffect(() => {
+      const errorMessage = validationFunc(value)
 
-    if (onStatusChange && prevState.status !== newStatus) {
-      onStatusChange(newStatus)
-    }
+      const newStatus = errorMessage
+        ? ComponentStatus.Error
+        : ComponentStatus.Valid
 
-    this.setState({status: newStatus, errorMessage})
-  }
+      if (onStatusChange && status !== newStatus) {
+        onStatusChange(newStatus)
+      }
 
-  public render() {
-    const {testID, id, style} = this.props
+      setStatus(newStatus)
+      setErrorMessage(errorMessage)
+    }, [value])
+
+    const formValidationElementClass = classnames('cf-form--element', {
+      [`${className}`]: className,
+    })
 
     return (
       <div
-        className={this.className}
-        data-testid={testID}
         id={id}
+        ref={ref}
         style={style}
+        data-testid={testID}
+        className={formValidationElementClass}
       >
-        {this.label}
-        {this.children}
-        {this.errorMessage}
-        {this.helpText}
+        {!!label && (
+          <FormLabel label={label} required={required}>
+            {labelAddOn && labelAddOn()}
+          </FormLabel>
+        )}
+        {children(status)}
+        {!!errorMessage && <FormElementError message={errorMessage} />}
+        {!!helpText && <FormHelpText text={helpText} />}
       </div>
     )
   }
+)
 
-  private get className(): string {
-    const {className} = this.props
-
-    return classnames('cf-form--element', {[`${className}`]: className})
-  }
-
-  private get label(): JSX.Element | undefined {
-    const {label, required} = this.props
-
-    if (!label) {
-      return
-    }
-
-    return (
-      <FormLabel label={label} required={required}>
-        {this.labelChild}
-      </FormLabel>
-    )
-  }
-
-  private get labelChild(): JSX.Element | undefined {
-    const {labelAddOn} = this.props
-
-    if (!labelAddOn) {
-      return
-    }
-
-    return labelAddOn()
-  }
-
-  private get helpText(): JSX.Element | undefined {
-    const {helpText} = this.props
-
-    if (!helpText) {
-      return
-    }
-
-    return <FormHelpText text={helpText} />
-  }
-
-  private get children(): React.ReactNode {
-    const {children} = this.props
-    const {status} = this.state
-
-    return children(status)
-  }
-
-  private get errorMessage(): JSX.Element | undefined {
-    const {errorMessage} = this.state
-
-    if (!errorMessage) {
-      return
-    }
-
-    return <FormElementError message={errorMessage} />
-  }
-}
+FormValidationElement.displayName = 'FormValidationElement'

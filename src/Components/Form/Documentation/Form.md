@@ -3,10 +3,13 @@
 Form is a family of components that are a styled extension of HTML5 forms.
 
 ### Usage
+
 ```tsx
 import {Form} from '@influxdata/clockface'
 ```
+
 All components of the `Form` family can be accessed via sub-class from the single import.
+
 ```tsx
 <Form />
 <Form.Box />
@@ -16,12 +19,12 @@ All components of the `Form` family can be accessed via sub-class from the singl
 <Form.Footer />
 <Form.HelpText />
 <Form.Label />
-<Form.ValidationElememnt />
+<Form.ValidationElement />
 ```
 
 ### Example
-<!-- STORY -->
 
+<!-- STORY -->
 
 <!-- STORY HIDE START -->
 

@@ -1,5 +1,5 @@
 // Libraries
-import React, {Component} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Components
@@ -8,9 +8,9 @@ import {FormElementError} from './FormElementError'
 import {FormHelpText} from './FormHelpText'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardClassProps {
+export interface FormElementProps extends StandardFunctionProps {
   /** Label Text */
   label: string
   /** Input instruction text */
@@ -23,78 +23,47 @@ interface Props extends StandardClassProps {
   required?: boolean
 }
 
-export class FormElement extends Component<Props> {
-  public static readonly displayName = 'FormElement'
+export type FormElementRef = HTMLDivElement
 
-  public static defaultProps = {
-    testID: 'form--element',
-  }
-
-  public render() {
-    const {children, testID, id, style} = this.props
+export const FormElement = forwardRef<FormElementRef, FormElementProps>(
+  (
+    {
+      id,
+      label,
+      style,
+      required,
+      helpText,
+      children,
+      className,
+      labelAddOn,
+      errorMessage,
+      testID = 'form--element',
+    },
+    ref
+  ) => {
+    const formElementClass = classnames('cf-form--element', {
+      [`${className}`]: className,
+    })
 
     return (
       <div
-        className={this.className}
-        data-testid={testID}
         id={id}
+        ref={ref}
         style={style}
+        data-testid={testID}
+        className={formElementClass}
       >
-        {this.label}
+        {!!label && (
+          <FormLabel label={label} required={required}>
+            {!!labelAddOn && labelAddOn()}
+          </FormLabel>
+        )}
         {children}
-        {this.errorMessage}
-        {this.helpText}
+        {!!errorMessage && <FormElementError message={errorMessage} />}
+        {!!helpText && <FormHelpText text={helpText} />}
       </div>
     )
   }
+)
 
-  private get className(): string {
-    const {className} = this.props
-
-    return classnames('cf-form--element', {[`${className}`]: className})
-  }
-
-  private get label(): JSX.Element | undefined {
-    const {label, required} = this.props
-
-    if (!label) {
-      return
-    }
-
-    return (
-      <FormLabel label={label} required={required}>
-        {this.labelChild}
-      </FormLabel>
-    )
-  }
-
-  private get labelChild(): JSX.Element | undefined {
-    const {labelAddOn} = this.props
-
-    if (!labelAddOn) {
-      return
-    }
-
-    return labelAddOn()
-  }
-
-  private get helpText(): JSX.Element | undefined {
-    const {helpText} = this.props
-
-    if (!helpText) {
-      return
-    }
-
-    return <FormHelpText text={helpText} />
-  }
-
-  private get errorMessage(): JSX.Element | undefined {
-    const {errorMessage} = this.props
-
-    if (!errorMessage) {
-      return
-    }
-
-    return <FormElementError message={errorMessage} />
-  }
-}
+FormElement.displayName = 'FormElement'
