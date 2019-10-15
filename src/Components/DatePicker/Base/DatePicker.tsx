@@ -105,10 +105,10 @@ export const DatePicker = forwardRef<DatePickerRef, DatePickerProps>(
       }
 
       if (inCurrentMonth) {
-        return 'date-picker--day-in-month'
+        return 'cf-date-picker--day-in-month'
       }
 
-      return 'date-picker--day'
+      return 'cf-date-picker--day'
     }
 
     const handleSelectDate = (date: Date): void => {
@@ -130,7 +130,12 @@ export const DatePicker = forwardRef<DatePickerRef, DatePickerProps>(
     }
 
     return (
-      <div ref={ref} className="date-picker" data-testid={testID} style={style}>
+      <div
+        ref={ref}
+        className="cf-date-picker"
+        data-testid={testID}
+        style={style}
+      >
         <Form.Element label={label} errorMessage={inputErrorMessage()}>
           <Input
             size={ComponentSize.Medium}
@@ -151,7 +156,7 @@ export const DatePicker = forwardRef<DatePickerRef, DatePickerProps>(
           timeFormat="HH:mm"
           shouldCloseOnSelect={false}
           disabledKeyboardNavigation={true}
-          calendarClassName="date-picker--calendar"
+          calendarClassName="cf-date-picker--calendar"
           dayClassName={dayClassName}
           timeIntervals={60}
           fixedHeight={true}
