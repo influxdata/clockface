@@ -1,59 +1,63 @@
 // Libraries
-import React, {PureComponent, CSSProperties} from 'react'
+import React, {forwardRef, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {InfluxColors, Gradients, StandardClassProps} from '../../Types'
+import {InfluxColors, Gradients, StandardFunctionProps} from '../../Types'
 
 // Constants
 import {getColorsFromGradient} from '../../Constants/colors'
 
-interface Props extends StandardClassProps {
+export interface OverlayMaskProps extends StandardFunctionProps {
   /** Optional gradient theme of panel*/
-  gradient: Gradients
+  gradient?: Gradients
   /** Optional background color of panel, supercedes gradient prop  */
   backgroundColor?: InfluxColors | string
 }
 
-export class OverlayMask extends PureComponent<Props> {
-  public static readonly displayName = 'OverlayMask'
+export type OverlayMaskRef = HTMLDivElement
 
-  public static defaultProps = {
-    gradient: Gradients.GundamPilot,
-    testID: 'overlay--mask',
-  }
-
-  public render() {
-    const {testID, className, id} = this.props
-
-    const classname = classnames('cf-overlay--mask', {
+export const OverlayMask = forwardRef<OverlayMaskRef, OverlayMaskProps>(
+  (
+    {
+      id,
+      style,
+      testID = 'overlay--mask',
+      gradient = Gradients.GundamPilot,
+      className,
+      backgroundColor,
+    },
+    ref
+  ) => {
+    const overlayMaskClass = classnames('cf-overlay--mask', {
       [`${className}`]: className,
     })
 
+    const overlayMaskStyle = (): CSSProperties => {
+      if (backgroundColor) {
+        return {backgroundColor, ...style}
+      }
+
+      const colors = getColorsFromGradient(gradient)
+
+      return {
+        background: `linear-gradient(45deg,  ${colors.start} 0%,${
+          colors.stop
+        } 100%)`,
+        ...style,
+      }
+    }
+
     return (
       <div
-        className={classname}
-        data-testid={testID}
-        style={this.style}
         id={id}
+        ref={ref}
+        style={overlayMaskStyle()}
+        className={overlayMaskClass}
+        data-testid={testID}
       />
     )
   }
+)
 
-  private get style(): CSSProperties {
-    const {backgroundColor, gradient, style} = this.props
-
-    if (backgroundColor) {
-      return {backgroundColor, ...style}
-    }
-
-    const colors = getColorsFromGradient(gradient)
-
-    return {
-      background: `linear-gradient(45deg,  ${colors.start} 0%,${
-        colors.stop
-      } 100%)`,
-      ...style,
-    }
-  }
-}
+OverlayMask.displayName = 'OverlayMask'

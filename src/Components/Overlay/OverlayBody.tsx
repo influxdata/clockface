@@ -1,30 +1,32 @@
 // Libraries
-import React, {PureComponent} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardClassProps} from '../../Types'
+import {StandardFunctionProps} from '../../Types'
 
-interface Props extends StandardClassProps {}
+export interface OverlayBodyProps extends StandardFunctionProps {}
 
-export class OverlayBody extends PureComponent<Props> {
-  public static readonly displayName = 'OverlayBody'
+export type OverlayBodyRef = HTMLDivElement
 
-  public static defaultProps = {
-    testID: 'overlay--body',
-  }
-
-  public render() {
-    const {children, className, testID, id, style} = this.props
-
-    const classname = classnames('cf-overlay--body', {
+export const OverlayBody = forwardRef<OverlayBodyRef, OverlayBodyProps>(
+  ({id, style, testID = 'overlay--body', children, className}, ref) => {
+    const overlayBodyClass = classnames('cf-overlay--body', {
       [`${className}`]: className,
     })
 
     return (
-      <div className={classname} data-testid={testID} id={id} style={style}>
+      <div
+        id={id}
+        ref={ref}
+        style={style}
+        className={overlayBodyClass}
+        data-testid={testID}
+      >
         {children}
       </div>
     )
   }
-}
+)
+
+OverlayBody.displayName = 'OverlayBody'

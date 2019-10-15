@@ -10,13 +10,18 @@ $overlay--header-height: $page--header-size;
 $overlay--title-size: $page--title-size;
 $overlay--title-weight: $page--title-weight;
 $overlay--container-padding: $cf-marg-c + $cf-marg-d;
-$overlay--transition-distance: 72px;
+$overlay--z: 20;
+$overlay--mask-z: 10;
 
-// Mixin for shared styles
+.cf-overlay-portal {
+  @include portal-style($z--overlays);
+}
+
+// Mixins for shared styles
 %overlay-styles {
-  position: fixed !important;
-  width: 100% !important;
-  height: 100% !important;
+  position: absolute !important;
+  width: 100vw !important;
+  height: 100vh !important;
   top: 0;
   left: 0;
 }
@@ -26,50 +31,40 @@ $overlay--transition-distance: 72px;
 }
 
 .cf-overlay--mask {
-  z-index: 0;
   @extend %overlay-styles;
-  opacity: 0;
-  transition: opacity 0.25s ease;
+  z-index: $overlay--mask-z;
 }
 
-.cf-overlay--transition {
-  position: relative;
-  z-index: 2;
-  transform: translateY($overlay--transition-distance);
-  opacity: 0;
-  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-    opacity 0.25s ease;
+.cf-overlay--children {
+  display: flex;
+  justify-content: center;
 }
 
 .cf-overlay {
-  z-index: $z--overlays;
   @extend %overlay-styles;
-  transition: all 0.25s ease;
-  pointer-events: none;
-  opacity: 0;
-
-  &.show {
-    opacity: 1;
-    pointer-events: all;
-  }
-}
-
-// Open State
-.cf-overlay.show {
-  .cf-overlay--mask {
-    opacity: 0.7;
-  }
-  .cf-overlay--transition {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  z-index: $overlay--z;
 }
 
 .cf-overlay--container {
   @extend %overlay-children;
-  margin: $overlay--container-padding auto;
   background-color: $g2-kevlar;
   border-radius: $cf-radius;
+
+  &__xs {
+    margin: $page--gutter-xs;
+  }
+
+  &__sm {
+    margin: $page--gutter-sm;
+  }
+
+  &__md {
+    margin: $page--gutter-md;
+  }
+
+  &__lg {
+    margin: $page--gutter-lg;
+  }
 }
 
 .cf-overlay--header {
