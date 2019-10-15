@@ -11,7 +11,7 @@ import {QuestionMarkTooltip} from '@influxdata/clockface'
 ```tsx
 <QuestionMarkTooltip
   diameter={18}
-  contents={
+  tooltipContents={
 
       // Contents go here, can be text or an element
 
