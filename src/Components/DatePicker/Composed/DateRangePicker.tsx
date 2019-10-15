@@ -1,87 +1,73 @@
 // Libraries
-import React, {PureComponent} from 'react'
+import React, {forwardRef, useState} from 'react'
 
 // Components
 import {DatePicker} from '../Base/DatePicker'
 import {Button} from '../../Button/Composed/Button'
-import {FlexBox} from '../../FlexBox'
+import {FlexBox, FlexBoxRef} from '../../FlexBox/index'
 
 // Types
 import {
   TimeRange,
   ComponentColor,
   ComponentSize,
-  StandardClassProps,
+  StandardFunctionProps,
   FlexDirection,
 } from '../../../Types'
 
-interface Props extends StandardClassProps {
+export interface DateRangePickerProps extends StandardFunctionProps {
   /** Object of {upper: string, lower: string | null, seconds: number, format: string, label: string, duration: string} */
   timeRange: TimeRange
   /** Function called when time range is set */
   onSetTimeRange: (timeRange: TimeRange) => void
 }
 
-interface State {
-  lower: string
-  upper?: string | null
-}
+export type DateRangePickerRef = FlexBoxRef
 
-export class DateRangePicker extends PureComponent<Props, State> {
-  public static defaultProps = {
-    testID: 'date-range-picker',
-  }
+export const DateRangePicker = forwardRef<
+  DateRangePickerRef,
+  DateRangePickerProps
+>(({style, timeRange, onSetTimeRange, testID = 'date-range-picker'}, ref) => {
+  const [lower, setLower] = useState<string>(timeRange['lower'])
+  const [upper, setUpper] = useState<string | null | undefined>(
+    timeRange['upper']
+  )
 
-  constructor(props: Props) {
-    super(props)
-    const {
-      timeRange: {lower, upper},
-    } = props
-
-    this.state = {lower, upper}
-  }
-
-  public render() {
-    const {testID, style} = this.props
-    const {upper, lower} = this.state
-
-    return (
-      <FlexBox direction={FlexDirection.Column} style={style}>
-        <FlexBox direction={FlexDirection.Row} data-testid={testID}>
-          <DatePicker
-            dateTime={lower}
-            onSelectDate={this.handleSelectLower}
-            label="Start"
-          />
-          <DatePicker
-            dateTime={upper}
-            onSelectDate={this.handleSelectUpper}
-            label="Stop"
-          />
-        </FlexBox>
-        <Button
-          className="range-picker--submit"
-          color={ComponentColor.Primary}
-          size={ComponentSize.Small}
-          onClick={this.handleSetTimeRange}
-          text="Apply Time Range"
-        />
-      </FlexBox>
-    )
-  }
-
-  private handleSetTimeRange = (): void => {
-    const {onSetTimeRange, timeRange} = this.props
-    const {upper, lower} = this.state
-
+  const handleSetTimeRange = (): void => {
     onSetTimeRange({...timeRange, lower, upper})
   }
 
-  private handleSelectLower = (lower: string): void => {
-    this.setState({lower})
+  const handleSelectLower = (lower: string): void => {
+    setLower(lower)
   }
 
-  private handleSelectUpper = (upper: string): void => {
-    this.setState({upper})
+  const handleSelectUpper = (upper: string): void => {
+    setUpper(upper)
   }
-}
+
+  return (
+    <FlexBox.FlexBox ref={ref} direction={FlexDirection.Column} style={style}>
+      <FlexBox direction={FlexDirection.Row} data-testid={testID}>
+        <DatePicker
+          dateTime={lower}
+          onSelectDate={handleSelectLower}
+          label="Start"
+        />
+        <DatePicker
+          dateTime={upper}
+          onSelectDate={handleSelectUpper}
+          label="Stop"
+        />
+      </FlexBox>
+      <Button
+        className="range-picker--submit"
+        color={ComponentColor.Primary}
+        size={ComponentSize.Small}
+        onClick={handleSetTimeRange}
+        text="Apply Time Range"
+      />
+    </FlexBox.FlexBox>
+  )
+})
+
+DateRangePicker.displayName = 'DateRangePicker'
