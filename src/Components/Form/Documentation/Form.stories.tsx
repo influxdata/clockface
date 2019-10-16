@@ -343,7 +343,14 @@ formStories.add(
             validationFunc={mockValidationFunc}
           >
             {status => (
-              <div className="mockComponent input">{`(status) => <child>${status}</child>`}</div>
+              <Input
+                status={status}
+                value={text(
+                  'value',
+                  'Input Value (delete this to cause error)'
+                )}
+                onChange={() => {}}
+              />
             )}
           </Form.ValidationElement>
         </div>
@@ -415,6 +422,7 @@ formExampleStories.add(
                         placeholder="A user needs a name..."
                         value={text('Username', '')}
                         status={status}
+                        onChange={() => {}}
                       />
                     )}
                   </Form.ValidationElement>
@@ -432,6 +440,7 @@ formExampleStories.add(
                         placeholder="example@example.com"
                         value={text('Email', '')}
                         status={status}
+                        onChange={() => {}}
                       />
                     )}
                   </Form.ValidationElement>
@@ -442,6 +451,7 @@ formExampleStories.add(
                       size={ComponentSize.Medium}
                       placeholder="What role does this user play?"
                       value={text('Description', '')}
+                      onChange={() => {}}
                     />
                   </Form.Element>
                 </Grid.Column>
