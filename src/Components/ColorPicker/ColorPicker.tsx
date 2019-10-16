@@ -49,7 +49,7 @@ export const ColorPicker = forwardRef<ColorPickerSwatchRef, ColorPickerProps>(
   (
     {
       id,
-      style,
+      style = {width: '100%'},
       color,
       onChange,
       className,
