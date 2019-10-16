@@ -1,6 +1,8 @@
 # Changelog
 
-### 0.0.33 (Unreleased)
+### 1.0.1 (Unreleased)
+
+### 1.0.0
 
 - [#334](https://github.com/influxdata/clockface/pull/334): [Breaking] Prepend `cf-` to all `DatePicker` class names
 - [#334](https://github.com/influxdata/clockface/pull/334): Convert `DatePicker` and `DateRangePicker` components to `FunctionComponent` and wrap with `forwardRef`
