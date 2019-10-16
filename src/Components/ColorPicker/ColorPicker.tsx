@@ -76,7 +76,12 @@ export const ColorPicker = forwardRef<ColorPickerSwatchRef, ColorPickerProps>(
     }
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
-      onChange(e.target.value, inputStatus)
+      const nextColor = e.target.value.trim()
+      const nextStatus = !!validationFunc(nextColor)
+        ? ComponentStatus.Error
+        : ComponentStatus.Valid
+
+      onChange(nextColor, nextStatus)
     }
 
     const handleInputBlur = (e: ChangeEvent<HTMLInputElement>): void => {
