@@ -2,6 +2,9 @@
 
 ### 1.0.1 (Unreleased)
 
+- [#340](https://github.com/influxdata/clockface/pull/340): Refactor `ColorPicker` to accept a custom validation function
+- [#340](https://github.com/influxdata/clockface/pull/340): Refactor `ColorPicker` and `FormValidationComponent` to work more like controlled components
+
 ### 1.0.0
 
 - [#334](https://github.com/influxdata/clockface/pull/334): [Breaking] Prepend `cf-` to all `DatePicker` class names
