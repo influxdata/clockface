@@ -17,6 +17,9 @@ export interface StandardFunctionProps {
   className?: string
 }
 
+// Standard Validation Function
+export type ValidationFunction = (input: string) => string | null
+
 // Shared Data Types
 export enum ComponentColor {
   Default = 'default',

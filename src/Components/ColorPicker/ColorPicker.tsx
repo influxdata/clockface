@@ -19,6 +19,7 @@ import {
   ComponentStatus,
   Color,
   StandardFunctionProps,
+  ValidationFunction,
 } from '../../Types'
 
 // Utils
@@ -39,7 +40,7 @@ interface ColorPickerProps extends StandardFunctionProps {
   /** How many color swatches to render in each row */
   swatchesPerRow?: number
   /** Enforces hexcode format by defult, pass in your own function to customize */
-  validationFunc?: (color: string) => string | null
+  validationFunc?: ValidationFunction
 }
 
 export type ColorPickerRef = HTMLDivElement
