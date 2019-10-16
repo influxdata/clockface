@@ -1,10 +1,5 @@
 // Libraries
-import React, {
-  forwardRef,
-  ChangeEvent,
-  useState,
-  FunctionComponent,
-} from 'react'
+import React, {forwardRef, ChangeEvent, FunctionComponent} from 'react'
 import classnames from 'classnames'
 import _ from 'lodash'
 
@@ -15,8 +10,7 @@ import {ColorPickerSwatch, ColorPickerSwatchRef} from './ColorPickerSwatch'
 import {FormElementError} from '../Form/FormElementError'
 
 // Constants
-import {HEX_CHARACTERS} from '../../Constants'
-import {influxColors, HEX_CODE_CHAR_LENGTH} from '../../Constants/colors'
+import {influxColors} from '../../Constants/colors'
 
 // Types
 import {
@@ -28,7 +22,7 @@ import {
 } from '../../Types'
 
 // Utils
-import {validateHexCode} from '../../Utils/index'
+import {validateHexCode, VALID_HEX_LENGTH} from '../../Utils/hexCodeValidation'
 
 // Styles
 import './ColorPicker.scss'
@@ -44,6 +38,8 @@ interface ColorPickerProps extends StandardFunctionProps {
   maintainInputFocus?: boolean
   /** How many color swatches to render in each row */
   swatchesPerRow?: number
+  /** Enforces hexcode format by defult, pass in your own function to customize */
+  validationFunc?: (color: string) => string | null
 }
 
 export type ColorPickerRef = HTMLDivElement
@@ -60,35 +56,26 @@ export const ColorPicker = forwardRef<ColorPickerSwatchRef, ColorPickerProps>(
       colors = influxColors,
       testID = 'color-picker',
       maintainInputFocus = false,
+      validationFunc = validateHexCode,
     },
     ref
   ) => {
-    const [errorMessage, setErrorMessage] = useState('')
+    const errorMessage = validationFunc(color)
 
     const colorPickerClass = classnames('cf-color-picker', {
       [`${className}`]: className,
     })
 
-    const inputStatus = errorMessage
+    const inputStatus = !!errorMessage
       ? ComponentStatus.Error
       : ComponentStatus.Valid
 
     const handleSwatchClick = (hex: string): void => {
-      setErrorMessage('')
       onChange(hex, ComponentStatus.Valid)
     }
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
-      const trimmedValue = e.target.value.trim()
-      const cleanedValue = trimmedValue
-        .split('')
-        .filter(char => HEX_CHARACTERS.includes(char.toLowerCase()))
-        .join('')
-
-      const newErrorMessage = validateHexCode(cleanedValue)
-
-      setErrorMessage(newErrorMessage)
-      onChange(cleanedValue, inputStatus)
+      onChange(e.target.value, inputStatus)
     }
 
     const handleInputBlur = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -101,7 +88,6 @@ export const ColorPicker = forwardRef<ColorPickerSwatchRef, ColorPickerProps>(
       const randomColor = _.sample(colors)
       const hex = _.get(randomColor, 'hex') || ''
 
-      setErrorMessage('')
       onChange(hex, ComponentStatus.Valid)
     }
 
@@ -134,7 +120,7 @@ export const ColorPicker = forwardRef<ColorPickerSwatchRef, ColorPickerProps>(
             placeholder="#000000"
             value={color}
             onChange={handleInputChange}
-            maxLength={HEX_CODE_CHAR_LENGTH}
+            maxLength={VALID_HEX_LENGTH}
             onBlur={handleInputBlur}
             autoFocus={maintainInputFocus}
             status={inputStatus}
@@ -166,9 +152,11 @@ const ColorPreview: FunctionComponent<{color: string}> = ({color}) => {
   )
 }
 
+ColorPreview.displayName = 'ColorPickerPreview'
+
 const ErrorMessage: FunctionComponent<{
   testID: string
-  errorMessage: string
+  errorMessage: string | null
 }> = ({testID, errorMessage}) => {
   if (!errorMessage) {
     return null
@@ -180,3 +168,5 @@ const ErrorMessage: FunctionComponent<{
     </div>
   )
 }
+
+ErrorMessage.displayName = 'ColorPickerError'

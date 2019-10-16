@@ -3,7 +3,6 @@ import {CSSProperties} from 'react'
 import chroma from 'chroma-js'
 
 // Constants
-import {HEX_CODE_CHAR_LENGTH} from '../Constants/colors'
 import {getColorsFromGradient} from '../Constants/colors'
 
 // Types
@@ -16,31 +15,6 @@ import {
   DropdownMenuTheme,
   DropdownMenuScrollbarColors,
 } from '../Types'
-
-export const validateHexCode = (colorHex: string): string => {
-  const isValidLength = colorHex.length === HEX_CODE_CHAR_LENGTH
-  const beginsWithHash = colorHex.substring(0, 1) === '#'
-
-  const errorMessage = []
-
-  if (!beginsWithHash) {
-    errorMessage.push('Hexcodes must begin with #')
-  }
-
-  if (!isValidLength) {
-    if (errorMessage.length) {
-      errorMessage.push(`and must be ${HEX_CODE_CHAR_LENGTH} characters`)
-    } else {
-      errorMessage.push(`Hexcodes must be ${HEX_CODE_CHAR_LENGTH} characters`)
-    }
-  }
-
-  if (!errorMessage.length) {
-    return ''
-  }
-
-  return errorMessage.join(', ')
-}
 
 export const convertCSSPropertiesToString = (styles: CSSProperties): string =>
   Object.entries(styles).reduce((styleString, [propName, propValue]) => {
