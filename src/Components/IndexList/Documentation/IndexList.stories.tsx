@@ -197,6 +197,7 @@ indexListStories.add(
         <IndexList.Row
           ref={indexListRowRef}
           disabled={boolean('disabled', false)}
+          brighten={boolean('brighten', false)}
         />
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
@@ -270,6 +271,8 @@ indexListExampleStories.add(
       'Spherical and protected by a thick peel',
     ])
 
+    const disabledRows = array('Disabled Rows', ['Banana'])
+
     return (
       <div className="story--example">
         <IndexList>
@@ -287,7 +290,11 @@ indexListExampleStories.add(
             columnCount={exampleNames.length}
           >
             {exampleHeaders.map((row, i) => (
-              <IndexList.Row key={`row--${row}${i}`}>
+              <IndexList.Row
+                key={`row--${row}${i}`}
+                brighten={boolean('brighten', false)}
+                disabled={disabledRows.includes(exampleNames[i])}
+              >
                 <IndexList.Cell>{exampleNames[i]}</IndexList.Cell>
                 <IndexList.Cell>{exampleDescriptions[i]}</IndexList.Cell>
                 <IndexList.Cell

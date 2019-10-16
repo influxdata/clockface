@@ -86,8 +86,34 @@
   opacity: 1;
 }
 
-// Row Disabled State
-.cf-index-list--row.cf-index-list--row-disabled
+/*
+  Depth Styling
+  ------------------------------------------------------------------------------
+*/
+
+.cf-index-list--row__nested {
+  .cf-index-list--cell {
+    background-color: $g4-onyx;
+  }
+  &:hover .cf-index-list--cell {
+    background-color: $g5-pepper;
+  }
+  &.cf-index-list--row__disabled .cf-index-list--cell {
+    background-color: rgba($g4-onyx, 0.5);
+  }
+  &.cf-index-list--row__disabled:hover .cf-index-list--cell {
+    background-color: rgba($g4-onyx, 0.7);
+  }
+  .cf-index-list--empty-cell {
+    background-color: rgba($g4-onyx, 0.5);
+  }
+}
+
+/*
+  Row Disabled State
+  ------------------------------------------------------------------------------
+*/
+.cf-index-list--row.cf-index-list--row__disabled
   .cf-index-list--row-cell
   .cf-index-list--cell {
   background-color: rgba($g3-castle, 0.5);
@@ -104,7 +130,7 @@
 }
 
 // Row Disabled Hover State
-.cf-index-list--row.cf-index-list--row-disabled:hover
+.cf-index-list--row.cf-index-list--row__disabled:hover
   .cf-index-list--row-cell
   .cf-index-list--cell {
   background-color: rgba($g3-castle, 0.7);
@@ -126,33 +152,6 @@
   align-content: center;
   justify-content: center;
   color: $empty-state-text;
-}
-
-/*
-  Depth Styling
-  ------------------------------------------------------------------------------
-*/
-
-.cf-tabs--contents,
-// TODO: Remove this .tabbed-page rule when the component is phased out
-.cf-tabbed-page {
-  .cf-index-list--cell {
-    background-color: $g4-onyx;
-  }
-  .cf-index-list--row:hover .cf-index-list--cell {
-    background-color: $g5-pepper;
-  }
-  .cf-index-list--row-cell.cf-index-list--row-disabled .cf-index-list--cell {
-    background-color: rgba($g4-onyx, 0.5);
-  }
-  .cf-index-list--row:hover
-    .cf-index-list--row-cell.cf-index-list--row-disabled
-    .cf-index-list--cell {
-    background-color: rgba($g4-onyx, 0.7);
-  }
-  .cf-index-list--empty-cell {
-    background-color: rgba($g4-onyx, 0.5);
-  }
 }
 
 /*
