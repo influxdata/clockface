@@ -28,7 +28,7 @@ export const validateHexCode: ValidationFunction = (
   }
 
   // Cannot contain invalid characters
-  const invalidChars = color.replace(/[#abcdefABCDEF123456790]/g, '')
+  const invalidChars = color.replace(/[#abcdefABCDEF0123456789]/g, '')
   if (invalidChars.length) {
     return 'Invalid hexcode'
   }
