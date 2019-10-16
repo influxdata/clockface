@@ -4,18 +4,6 @@ import {CSSProperties, ReactNode} from 'react'
 export type Omit<K, V> = Pick<K, Exclude<keyof K, V>>
 
 // Standardized prop definitons
-
-export interface StandardClassProps {
-  /** ID for Integration Tests */
-  testID: string
-  /** Useful for overriding styles of the component and its constituent elements */
-  className?: string
-  /** Unique identifier for getting an element */
-  id?: string
-  /** Useful for setting common attributes like width or height */
-  style?: CSSProperties
-}
-
 export interface StandardFunctionProps {
   /** Unique identifier for getting an element */
   id?: string
@@ -28,6 +16,9 @@ export interface StandardFunctionProps {
   /** Useful for overriding styles of the component and its constituent elements */
   className?: string
 }
+
+// Standard Validation Function
+export type ValidationFunction = (input: string) => string | null
 
 // Shared Data Types
 export enum ComponentColor {

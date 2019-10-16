@@ -1,5 +1,5 @@
 // Libraries
-import React, {forwardRef, useState, useEffect} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Components
@@ -8,13 +8,17 @@ import {FormElementError} from './FormElementError'
 import {FormHelpText} from './FormHelpText'
 
 // Types
-import {StandardFunctionProps, ComponentStatus} from '../../Types'
+import {
+  StandardFunctionProps,
+  ComponentStatus,
+  ValidationFunction,
+} from '../../Types'
 
 export interface FormValidationElementProps extends StandardFunctionProps {
   /** Child components */
   children: (status: ComponentStatus) => React.ReactNode
   /** Function used for validation check */
-  validationFunc: (value: any) => string | null
+  validationFunc: ValidationFunction
   /** Function called when validation status */
   onStatusChange?: (newStatus: ComponentStatus) => void
   /** Element to be displayed along with label */
@@ -22,7 +26,7 @@ export interface FormValidationElementProps extends StandardFunctionProps {
   /** Label Text */
   label: string
   /** Field value */
-  value: any
+  value: string
   /** Input instruction text */
   helpText?: string
   /** Whether this field is required to submit form, adds red required asterisk */
@@ -52,25 +56,15 @@ export const FormValidationElement = forwardRef<
     },
     ref
   ) => {
-    const [errorMessage, setErrorMessage] = useState<string | null>(null)
-    const [status, setStatus] = useState<ComponentStatus>(
-      ComponentStatus.Default
-    )
+    const errorMessage = validationFunc(value)
 
-    useEffect(() => {
-      const errorMessage = validationFunc(value)
+    const status = !!errorMessage
+      ? ComponentStatus.Error
+      : ComponentStatus.Valid
 
-      const newStatus = errorMessage
-        ? ComponentStatus.Error
-        : ComponentStatus.Valid
-
-      if (onStatusChange && status !== newStatus) {
-        onStatusChange(newStatus)
-      }
-
-      setStatus(newStatus)
-      setErrorMessage(errorMessage)
-    }, [value])
+    if (onStatusChange) {
+      onStatusChange(status)
+    }
 
     const formValidationElementClass = classnames('cf-form--element', {
       [`${className}`]: className,

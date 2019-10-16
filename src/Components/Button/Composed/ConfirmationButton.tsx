@@ -19,7 +19,7 @@ import {
 } from '../../../Types'
 
 interface ConfirmationButtonProps
-  extends Omit<ButtonProps, 'onClick' | 'active' | 'type' | 'refObject'> {
+  extends Omit<ButtonProps, 'onClick' | 'active' | 'type'> {
   /** Text to appear in confirmation popover */
   confirmationLabel: string
   /** Text to appear in confirmation button */
@@ -71,6 +71,7 @@ export const ConfirmationButton: FunctionComponent<ConfirmationButtonProps> = ({
         enableDefaultStyles={false}
         contents={onHide => (
           <ConfirmationContents
+            testID={testID}
             onHide={onHide}
             onConfirm={onConfirm}
             returnValue={returnValue}
@@ -110,9 +111,9 @@ const ConfirmationContents: FunctionComponent<{
   returnValue?: any
   onConfirm: (returnValue?: any) => void
   confirmationLabel: string
-  testID?: string
+  testID: string
   confirmationButtonText: string
-  confirmationButtonColor?: ComponentColor
+  confirmationButtonColor: ComponentColor
   size?: ComponentSize
 }> = ({
   onHide,
@@ -149,3 +150,5 @@ const ConfirmationContents: FunctionComponent<{
     </div>
   )
 }
+
+ConfirmationContents.displayName = 'ConfirmationButtonContents'

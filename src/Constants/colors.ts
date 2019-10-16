@@ -6,8 +6,6 @@ import {
   DropdownMenuTheme,
 } from '../Types'
 
-export const HEX_CODE_CHAR_LENGTH = 7
-
 export const influxColors: Color[] = [
   // Row 1
   {
