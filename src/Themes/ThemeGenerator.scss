@@ -1,0 +1,89 @@
+@import '../Styles/modules';
+
+/*
+   Theme Generator
+   -----------------------------------------------------------------------------
+*/
+
+.theme-generator {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.theme-generator--section {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-bottom: 50px;
+}
+
+.theme-generator--details {
+  flex: 1 1 0;
+  padding-right: 50px;
+  font-size: 15px;
+
+  h2 {
+    letter-spacing: 0;
+    font-size: 2em;
+  }
+
+  p {
+    color: $g13-mist;
+    font-weight: 500;
+    font-size: 1em;
+  }
+}
+
+.theme-generator--grid {
+  flex: 4 4 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.theme-generator--color {
+  display: flex;
+  align-items: center;
+
+  p {
+    margin: 0;
+
+    b {
+      min-width: 80px;
+      display: inline-block;
+    }
+    code {
+      color: $g18-cloud;
+      font-family: monospace;
+      margin-right: 50px;
+    }
+  }
+}
+
+.theme-generator--swatch {
+  height: 42px;
+  flex: 1 0 0;
+}
+
+.theme-generator--contrast {
+  border-radius: 4px;
+  display: flex;
+  padding: 8px;
+  flex-direction: column;
+  align-items: stretch;
+  font-weight: 600;
+}
+
+.theme-generator--contrast-white {
+  padding: 8px;
+  color: #fff;
+}
+
+.theme-generator--contrast-black {
+  padding: 8px;
+  color: #000;
+}
+
+
