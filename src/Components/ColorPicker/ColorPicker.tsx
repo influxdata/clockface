@@ -23,7 +23,11 @@ import {
 } from '../../Types'
 
 // Utils
-import {validateHexCode, VALID_HEX_LENGTH} from '../../Utils/hexCodeValidation'
+import {
+  validateHexCode,
+  VALID_HEX_LENGTH,
+  invalidHexCharacters,
+} from '../../Utils/hexCodeValidation'
 
 // Styles
 import './ColorPicker.scss'
@@ -41,6 +45,8 @@ interface ColorPickerProps extends StandardFunctionProps {
   swatchesPerRow?: number
   /** Enforces hexcode format by defult, pass in your own function to customize */
   validationFunc?: ValidationFunction
+  /** Characters matching this expression will be stripped out of the value before being passed into onChange */
+  invalidChars?: RegExp
 }
 
 export type ColorPickerRef = HTMLDivElement
@@ -58,6 +64,7 @@ export const ColorPicker = forwardRef<ColorPickerSwatchRef, ColorPickerProps>(
       testID = 'color-picker',
       maintainInputFocus = false,
       validationFunc = validateHexCode,
+      invalidChars = invalidHexCharacters,
     },
     ref
   ) => {
@@ -76,7 +83,16 @@ export const ColorPicker = forwardRef<ColorPickerSwatchRef, ColorPickerProps>(
     }
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
-      const nextColor = e.target.value.trim()
+      let nextColor = e.target.value
+
+      if (invalidChars) {
+        nextColor = e.target.value.replace(invalidChars, '')
+      }
+
+      // This is not using the inputStatus variable becuase that information
+      // is stale and this outgoing information needs to be fresh in order
+      // for the stateful parent to correctly make decisions
+
       const nextStatus = !!validationFunc(nextColor)
         ? ComponentStatus.Error
         : ComponentStatus.Valid
