@@ -46,18 +46,19 @@ colorPickerStories.add(
       /* eslint-enable */
     }
 
+    const defaultStyle = {width: '400px'}
+
     return (
       <div className="story--example">
-        <div style={{width: `${number('Parent Width (px)', 300)}`}}>
-          <ColorPicker
-            ref={colorPickerRef}
-            color={text('color', `${InfluxColors.Honeydew}`)}
-            onChange={color => {
-              alert(`Swatch selected: ${color}`)
-            }}
-            maintainInputFocus={boolean('maintainInputFocus', false)}
-          />
-        </div>
+        <ColorPicker
+          ref={colorPickerRef}
+          style={object('style', defaultStyle)}
+          color={text('color', `${InfluxColors.Honeydew}`)}
+          onChange={(color, status) => {
+            alert(`Color: ${color}, Status: ${status}`)
+          }}
+          maintainInputFocus={boolean('maintainInputFocus', false)}
+        />
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
         </div>
