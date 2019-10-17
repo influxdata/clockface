@@ -1,6 +1,13 @@
 # Changelog
 
-### 1.0.1 (Unreleased)
+### 1.0.3 (Unreleased)
+
+### 1.0.2
+
+- [#341](https://github.com/influxdata/clockface/pull/341): Refactor `ColorPicker` to accept RegEx string that controls the input value
+- [#341](https://github.com/influxdata/clockface/pull/341): Fix `ColorPicker` bug causing the component to report stale status 
+
+### 1.0.1
 
 - [#340](https://github.com/influxdata/clockface/pull/340): Refactor `ColorPicker` to accept a custom validation function
 - [#340](https://github.com/influxdata/clockface/pull/340): Refactor `ColorPicker` and `FormValidationComponent` to work more like controlled components
