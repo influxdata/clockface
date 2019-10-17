@@ -61,7 +61,11 @@ navMenuStories.add(
             )}
             active={
               NavItems[
-                radios<NavItems>('active item', mapEnumKeys(NavItems))
+                radios<NavItems>(
+                  'active item',
+                  mapEnumKeys(NavItems),
+                  NavItems.First
+                )
               ] == NavItems.First
             }
           />
@@ -82,7 +86,11 @@ navMenuStories.add(
             )}
             active={
               NavItems[
-                radios<NavItems>('active item', mapEnumKeys(NavItems))
+                radios<NavItems>(
+                  'active item',
+                  mapEnumKeys(NavItems),
+                  NavItems.First
+                )
               ] == NavItems.Second
             }
           >
@@ -128,7 +136,11 @@ navMenuStories.add(
             )}
             active={
               NavItems[
-                radios<NavItems>('active item', mapEnumKeys(NavItems))
+                radios<NavItems>(
+                  'active item',
+                  mapEnumKeys(NavItems),
+                  NavItems.First
+                )
               ] == NavItems.Third
             }
           />
