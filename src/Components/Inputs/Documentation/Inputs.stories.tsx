@@ -105,7 +105,11 @@ inputsBaseStories.add(
           }
           autocomplete={
             AutoComplete[
-              radios<AutoComplete>('autocomplete', mapEnumKeys(AutoComplete))
+              radios<AutoComplete>(
+                'autocomplete',
+                mapEnumKeys(AutoComplete),
+                AutoComplete.Off
+              )
             ]
           }
           type={InputType.Text}
@@ -189,7 +193,11 @@ inputsBaseStories.add(
         }
         autocomplete={
           AutoComplete[
-            radios<AutoComplete>('autocomplete', mapEnumKeys(AutoComplete))
+            radios<AutoComplete>(
+              'autocomplete',
+              mapEnumKeys(AutoComplete),
+              AutoComplete.Off
+            )
           ]
         }
         type={InputType.Password}
@@ -231,7 +239,11 @@ inputsBaseStories.add(
         }
         autocomplete={
           AutoComplete[
-            radios<AutoComplete>('autocomplete', mapEnumKeys(AutoComplete))
+            radios<AutoComplete>(
+              'autocomplete',
+              mapEnumKeys(AutoComplete),
+              AutoComplete.Off
+            )
           ]
         }
         type={InputType.Email}
@@ -314,7 +326,11 @@ inputsBaseStories.add('TextArea', () => {
         onChange={() => {}}
         autocomplete={
           AutoComplete[
-            radios<AutoComplete>('autocomplete', mapEnumKeys(AutoComplete))
+            radios<AutoComplete>(
+              'autocomplete',
+              mapEnumKeys(AutoComplete),
+              AutoComplete.Off
+            )
           ]
         }
         size={
