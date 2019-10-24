@@ -134,7 +134,13 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
     }
 
     const handleTriggerMouseLeave = (e: CustomMouseEvent): void => {
-      if (e.relatedTarget.className.includes('cf-popover')) {
+      // added explicit checks to resolve #15565
+      // https://github.com/influxdata/influxdb/issues/15565
+      if (
+        e &&
+        e.relatedTarget &&
+        e.relatedTarget.className.includes('cf-popover')
+      ) {
         return
       }
 
