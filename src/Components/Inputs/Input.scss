@@ -5,69 +5,54 @@
   ------------------------------------------------------------------------------
 */
 
-$input-bg: $g2-kevlar;
-$input-disabled-bg: $g3-castle;
-
-$input-text: $g15-platinum;
-$input-border: $g5-pepper;
-$input-hover-text: $g17-whisper;
-$input-hover-border: $g7-graphite;
-$input-focus-text: $g20-white;
-$input-focus-border: $c-pool;
-$input-disabled-text: $g9-mountain;
-$input-disabled-border: $g4-onyx;
-
-$input-field-z: 1;
-$input-shadow-z: $input-field-z + 1;
-$input-status-z: $input-field-z + 2;
-
 .cf-input {
   position: relative;
 }
 
 .cf-input-field {
   position: relative;
-  z-index: $input-field-z;
+  z-index: $cf-input--field-z;
   width: 100%;
   font-weight: 600;
   font-family: $cf-text-font;
-  transition: background-color 0.25s ease, border-color 0.25s ease,
-    box-shadow 0.25s ease, color 0.25s ease;
+  transition: $cf-input--transition;
   outline: none;
   appearance: none;
   border-radius: $cf-radius;
-  background-color: $input-bg;
-  color: $input-text;
-  border: $cf-border solid $input-border;
+  background-color: $cf-input-background--default;
+  color: $cf-input-text--default;
+  border: $cf-border solid $cf-input-border--default;
 
   &:hover {
-    border-color: $input-hover-border;
-    color: $input-hover-text;
+    background-color: $cf-input-background--hover;
+    border-color: $cf-input-border--hover;
+    color: $cf-input-text--hover;
   }
 
   &:focus {
-    color: $input-focus-text;
-    border-color: $input-focus-border;
-    box-shadow: 0 0 6px 0 $input-focus-border;
+    background-color: $cf-input-background--focused;
+    border-color: $cf-input-border--focused;
+    color: $cf-input-text--focused;
+    box-shadow: 0 0 6px 0 $cf-input-border--focused;
   }
 
   &::-webkit-input-placeholder {
-    color: $input-disabled-text;
+    color: $cf-input--placeholder-text;
     font-weight: 600 !important;
     font-style: italic;
   }
   &::-moz-placeholder {
-    color: $input-disabled-text;
+    color: $cf-input--placeholder-text;
     font-weight: 600 !important;
     font-style: italic;
   }
   &:-ms-input-placeholder {
-    color: $input-disabled-text;
+    color: $cf-input--placeholder-text;
     font-weight: 600 !important;
     font-style: italic;
   }
   &:-moz-placeholder {
-    color: $input-disabled-text;
+    color: $cf-input--placeholder-text;
     font-weight: 600 !important;
     font-style: italic;
   }
@@ -77,50 +62,26 @@ $input-status-z: $input-field-z + 2;
   Input Icons (Including Status)
   ------------------------------------------------------------------------------
 */
-.cf-input-icon,
-.cf-input-status {
+.cf-input-icon {
   pointer-events: none;
   top: 50%;
   position: absolute;
-  z-index: $input-status-z;
+  z-index: $cf-input--status-z;
   transition: color 0.25s ease;
   font-size: 1.1em;
 }
 
-.cf-input-status {
-  transform: translate(50%, -50%);
-}
-
 .cf-input-icon {
   transform: translate(-50%, -50%);
-  color: $input-text;
+  color: $cf-input-text--default;
 }
 
 .cf-input-field:hover + .cf-input-icon {
-  color: $input-hover-text;
+  color: $cf-input-text--hover;
 }
 
 .cf-input-field:focus + .cf-input-icon {
-  color: $input-focus-text;
-}
-
-.cf-input-shadow {
-  pointer-events: none;
-  position: absolute;
-  z-index: $input-shadow-z;
-  height: calc(100% - #{$cf-border * 2});
-  top: $cf-border;
-  border-radius: 0 3px 3px 0;
-  @include gradient-h(rgba($input-bg, 0), $input-bg);
-  border-style: solid;
-  border-color: $input-bg;
-  border-width: 0;
-  transition: opacity 0.25s ease;
-  opacity: 0;
-}
-
-.cf-input-status + .cf-input-shadow {
-  opacity: 1;
+  color: $cf-input-text--focused;
 }
 
 /*
@@ -134,9 +95,9 @@ $input-status-z: $input-field-z + 2;
 
 .cf-input--checkbox {
   position: relative;
-  background-color: $g2-kevlar;
+  background-color: $cf-input-background--default;
   border-radius: $cf-radius;
-  border: $cf-border solid $g5-pepper;
+  border: $cf-border solid $cf-input-border--default;
   transition: border-color 0.25s ease, background-color 0.25s ease;
 
   &:after {
@@ -146,7 +107,7 @@ $input-status-z: $input-field-z + 2;
     left: 50%;
     transform: translate(-50%, -50%) scale(1.5,1.5);
     border-radius: 50%;
-    background: $c-pool;
+    background: $cf-input-border--focused;
     z-index: 2;
     opacity: 0;
     transition: opacity 0.25s ease, transform 0.25s ease;
@@ -158,7 +119,8 @@ $input-status-z: $input-field-z + 2;
   }
 
   &:hover {
-    border-color: $g7-graphite;
+    background-color: $cf-input-background--hover;
+    border-color: $cf-input-border--hover;
     cursor: pointer;
   }
 }
@@ -185,24 +147,9 @@ $input-status-z: $input-field-z + 2;
     left: ($height / 2) + $cf-border;
   }
 
-  .cf-input-status {
-    right: $height / 2;
-  }
-
   .cf-input-pseudo {
     height: $height;
     width: $height;
-  }
-
-  .cf-input-shadow {
-    width: $height;
-    right: $padding;
-    border-right-width: $padding;
-  }
-
-  .cf-input-spinner {
-    width: $height / 2;
-    height: $height / 2;
   }
 
   .cf-input--checkbox {
@@ -231,63 +178,20 @@ $input-status-z: $input-field-z + 2;
 }
 
 /*
-  Valid State
-  ------------------------------------------------------------------------------
-*/
-.cf-input__valid {
-  .cf-input-status {
-    color: $c-rainforest;
-  }
-}
-
-/*
   Error State
   ------------------------------------------------------------------------------
 */
 .cf-input__error {
-  .cf-input-status {
-    color: $c-dreamsicle;
-  }
   .cf-input-field {
-    border-color: $c-curacao;
+    border-color: $cf-input-border--error;
   }
   .cf-input-field:hover {
-    border-color: $c-dreamsicle;
+    border-color: $cf-input-border--error-hover;
   }
   .cf-input-field:focus {
-    border-color: $c-dreamsicle;
-    box-shadow: 0 0 6px 0 $c-fire;
+    border-color: $cf-input-border--error-focused;
+    box-shadow: 0 0 6px 0 $cf-input-border--error-focused;
   }
-}
-
-/*
-  Loading State
-  ------------------------------------------------------------------------------
-*/
-.cf-input__loading {
-  .cf-input-status {
-    color: $c-pool;
-  }
-}
-
-@keyframes LoadingSpinner {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.cf-input-spinner {
-  border-style: solid;
-  border-radius: 50%;
-  animation-duration: 0.85s;
-  animation-name: LoadingSpinner;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  border: $cf-border solid $g5-pepper;
-  border-top-color: $c-pool;
 }
 
 /*
@@ -297,17 +201,17 @@ $input-status-z: $input-field-z + 2;
 .cf-input__disabled {
   .cf-input-icon,
   .cf-input-field:hover + .cf-input-icon {
-    color: $input-disabled-text;
+    color: $cf-input-text--disabled;
   }
   .cf-input--checkbox {
     &,
     &:hover {
       cursor: default;
-      border-color: $input-disabled-border;
-      background-color: $input-disabled-bg;
+      border-color: $cf-input-border--disabled;
+      background-color: $cf-input-background--disabled;
 
       &:after {
-        background-color: $input-disabled-text;
+        background-color: $cf-input-text--disabled;
       }
     }
   }
@@ -316,8 +220,8 @@ $input-status-z: $input-field-z + 2;
 .cf-input-field[disabled],
 .cf-input-field[disabled]:hover {
   cursor: default;
-  border-color: $input-disabled-border;
-  background-color: $input-disabled-bg;
-  color: $input-disabled-text;
+  border-color: $cf-input-border--disabled;
+  background-color: $cf-input-background--disabled;
+  color: $cf-input-text--disabled;
   font-style: italic;
 }

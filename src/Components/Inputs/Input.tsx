@@ -5,12 +5,12 @@ import React, {
   KeyboardEvent,
   forwardRef,
   RefObject,
-  FunctionComponent,
 } from 'react'
 import classnames from 'classnames'
 
 // Components
 import {Icon} from '../Icon/Icon'
+import {StatusIndicator} from './StatusIndicator'
 
 // Styles
 import './Input.scss'
@@ -148,6 +148,14 @@ export const Input = forwardRef<InputRef, InputProps>(
 
     return (
       <div className={inputClass} style={style} ref={containerRef}>
+        {type !== InputType.Checkbox && (
+          <StatusIndicator
+            status={status}
+            shadow={true}
+            testID={testID}
+            size={size}
+          />
+        )}
         <input
           id={id}
           ref={ref}
@@ -180,59 +188,9 @@ export const Input = forwardRef<InputRef, InputProps>(
         />
         {type === InputType.Checkbox && <div className={inputCheckboxClass} />}
         {iconElement}
-        {type !== InputType.Checkbox && (
-          <InputStatusIndicator status={status} />
-        )}
       </div>
     )
   }
 )
 
 Input.displayName = 'Input'
-
-interface InputStatusIndicatorProps {
-  status: ComponentStatus
-}
-
-const InputStatusIndicator: FunctionComponent<InputStatusIndicatorProps> = ({
-  status,
-}) => {
-  if (status === ComponentStatus.Loading) {
-    return (
-      <>
-        <div className="cf-input-status">
-          <div className="cf-input-spinner" />
-        </div>
-        <div className="cf-input-shadow" />
-      </>
-    )
-  }
-
-  if (status === ComponentStatus.Error) {
-    return (
-      <>
-        <Icon
-          glyph={IconFont.AlertTriangle}
-          className="cf-input-status"
-          testID="input-error"
-        />
-        <div className="cf-input-shadow" />
-      </>
-    )
-  }
-
-  if (status === ComponentStatus.Valid) {
-    return (
-      <>
-        <Icon
-          glyph={IconFont.Checkmark}
-          className="cf-input-status"
-          testID="input-valid"
-        />
-        <div className="cf-input-shadow" />
-      </>
-    )
-  }
-
-  return <div className="cf-input-shadow" />
-}
