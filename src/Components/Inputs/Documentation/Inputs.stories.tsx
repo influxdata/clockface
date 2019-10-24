@@ -319,7 +319,7 @@ inputsBaseStories.add(
       console.log('TextAreaRef (Valid)', textAreaRefValid.current)
       console.log('TextAreaRef (Error)', textAreaRefError.current)
       console.log('TextAreaRef (Loading)', textAreaRefLoading.current)
-      console.log('TextAreaContainerRef', textAreaContainerRef.current)
+      console.log('TextAreaContainerRef (Default)', textAreaContainerRef.current)
       /* eslint-enable */
     }
 
@@ -358,7 +358,6 @@ inputsBaseStories.add(
         />
         <TextArea
           ref={textAreaRefDisabled}
-          containerRef={textAreaContainerRef}
           value={text('value', 'Example text can be controlled from the Knobs panel on the right')}
           maxLength={number('maxLength', 50)}
           minLength={number('minLength', 5)}
@@ -384,7 +383,6 @@ inputsBaseStories.add(
         />
         <TextArea
           ref={textAreaRefValid}
-          containerRef={textAreaContainerRef}
           value={text('value', 'Example text can be controlled from the Knobs panel on the right')}
           maxLength={number('maxLength', 50)}
           minLength={number('minLength', 5)}
@@ -410,7 +408,6 @@ inputsBaseStories.add(
         />
         <TextArea
           ref={textAreaRefError}
-          containerRef={textAreaContainerRef}
           value={text('value', 'Example text can be controlled from the Knobs panel on the right')}
           maxLength={number('maxLength', 50)}
           minLength={number('minLength', 5)}
@@ -436,7 +433,6 @@ inputsBaseStories.add(
         />
         <TextArea
           ref={textAreaRefLoading}
-          containerRef={textAreaContainerRef}
           value={text('value', 'Example text can be controlled from the Knobs panel on the right')}
           maxLength={number('maxLength', 50)}
           minLength={number('minLength', 5)}
