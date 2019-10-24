@@ -2,8 +2,8 @@
 import React, {ChangeEvent, KeyboardEvent, forwardRef, RefObject} from 'react'
 import classnames from 'classnames'
 
-// Styles
-import './TextArea.scss'
+// Components
+import {StatusIndicator} from './StatusIndicator'
 
 // Types
 import {
@@ -11,13 +11,12 @@ import {
   ComponentSize,
   AutoComplete,
   StandardFunctionProps,
+  Wrap,
 } from '../../Types'
 
-export enum Wrap {
-  Hard = 'hard',
-  Soft = 'soft',
-  Off = 'off',
-}
+
+// Styles
+import './TextArea.scss'
 
 export interface TextAreaProps extends StandardFunctionProps {
   /** TextArea Component size */
@@ -66,6 +65,8 @@ export interface TextAreaProps extends StandardFunctionProps {
   value?: string
   /** Container ref */
   containerRef?: RefObject<TextAreaContainerRef>
+  /** Use a monospace font */
+  monospace?: boolean
 }
 
 export type TextAreaRef = HTMLTextAreaElement
@@ -94,6 +95,7 @@ export const TextArea = forwardRef<TextAreaRef, TextAreaProps>(
       className,
       maxLength,
       minLength,
+      monospace = false,
       onKeyDown,
       autoFocus = false,
       spellCheck = false,
@@ -104,13 +106,17 @@ export const TextArea = forwardRef<TextAreaRef, TextAreaProps>(
     },
     ref
   ) => {
-    const textAreaClass = classnames('cf-text-area--container', {
-      [`cf-input-${size}`]: size,
+    const textAreaClass = classnames('cf-text-area', {
+      [`cf-text-area__${size}`]: size,
+      [`cf-text-area__${status}`]: status,
+      'cf-text-area__monospace-font': monospace,
+      'cf-text-area__regular-font': !monospace,
       [`${className}`]: className,
     })
 
     return (
       <div className={textAreaClass} style={style} ref={containerRef}>
+        <StatusIndicator status={status} size={size} shadow={false} testID={testID} />
         <textarea
           id={id}
           ref={ref}
@@ -127,7 +133,7 @@ export const TextArea = forwardRef<TextAreaRef, TextAreaProps>(
           disabled={status === ComponentStatus.Disabled}
           readOnly={readOnly}
           required={required}
-          className="cf-text-area"
+          className="cf-text-area--input"
           autoFocus={autoFocus}
           maxLength={maxLength}
           onKeyDown={onKeyDown}

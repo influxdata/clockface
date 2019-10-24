@@ -415,3 +415,9 @@ export enum Method {
   Get = 'get',
   Dialog = 'dialog',
 }
+
+export enum Wrap {
+  Hard = 'hard',
+  Soft = 'soft',
+  Off = 'off',
+}

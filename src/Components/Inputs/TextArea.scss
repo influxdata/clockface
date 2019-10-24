@@ -5,82 +5,112 @@
   ------------------------------------------------------------------------------
 */
 
-$text-area-bg: $g2-kevlar;
-$text-area-disabled-bg: $g3-castle;
-
-$text-area-text: $g15-platinum;
-$text-area-border: $g5-pepper;
-$text-area-hover-text: $g17-whisper;
-$text-area-hover-border: $g7-graphite;
-$text-area-focus-text: $g20-white;
-$text-area-focus-border: $c-pool;
-$text-area-disabled-text: $g9-mountain;
-
-$text-area-field-z: 1;
-$text-area-shadow-z: $text-area-field-z + 1;
-$text-area-status-z: $text-area-field-z + 2;
-
-.cf-text-area--container {
-  width: 100%;
-  height: 100%;
-}
 .cf-text-area {
   position: relative;
-  padding: 15px;
-  z-index: $text-area-field-z;
+}
+
+.cf-text-area--input {
+  z-index: $cf-input--field-z;
   width: 100%;
   height: 100%;
   font-weight: 600;
-  font-size: small;
   resize: none;
-  font-family: $cf-text-font;
-  transition: background-color 0.25s ease, border-color 0.25s ease,
-    box-shadow 0.25s ease, color 0.25s ease;
+  transition: $cf-input--transition;
   outline: none;
   appearance: none;
   border-radius: $cf-radius;
-  background-color: $text-area-bg;
-  color: $text-area-text;
-  border: $cf-border solid $text-area-border;
+  background-color: $cf-input-background--default;
+  border: $cf-border solid $cf-input-border--default;
+  color: $cf-input-text--default;
 
   &:hover {
-    border-color: $text-area-hover-border;
-    color: $text-area-hover-text;
+    background-color: $cf-input-background--hover;
+    border-color: $cf-input-border--hover;
+    color: $cf-input-text--hover;
   }
 
   &:focus {
-    color: $text-area-focus-text;
-    border-color: $text-area-focus-border;
-    box-shadow: 0 0 6px 0 $text-area-focus-border;
+    background-color: $cf-input-background--focused;
+    color: $cf-input-text--focused;
+    border-color: $cf-input-border--focused;
+    box-shadow: 0 0 6px 0 $cf-input-border--focused;
   }
 
   &[disabled],
   &[disabled]:hover {
     cursor: default;
-    border-color: $text-area-border;
-    background-color: $text-area-disabled-bg;
-    color: $text-area-disabled-text;
+    border-color: $cf-input-border--disabled;
+    background-color: $cf-input-background--disabled;
+    color: $cf-input-text--disabled;
     font-style: italic;
   }
 
   &::-webkit-text-area-placeholder {
-    color: $text-area-disabled-text;
+    color: $cf-input--placeholder-text;
     font-weight: 600 !important;
     font-style: italic;
   }
   &::-moz-placeholder {
-    color: $text-area-disabled-text;
+    color: $cf-input--placeholder-text;
     font-weight: 600 !important;
     font-style: italic;
   }
   &:-ms-text-area-placeholder {
-    color: $text-area-disabled-text;
+    color: $cf-input--placeholder-text;
     font-weight: 600 !important;
     font-style: italic;
   }
   &:-moz-placeholder {
-    color: $text-area-disabled-text;
+    color: $cf-input--placeholder-text;
     font-weight: 600 !important;
     font-style: italic;
   }
+
+  .cf-text-area__regular-font & {
+    font-family: $cf-text-font;
+  }
+  .cf-text-area__monospace-font & {
+    font-family: $cf-code-font;
+  }
+}
+
+/*
+  Error State
+  ------------------------------------------------------------------------------
+*/
+.cf-text-area__error {
+  .cf-text-area--input {
+    border-color: $cf-input-border--error;
+  }
+  .cf-text-area--input:hover {
+    border-color: $cf-input-border--error-hover;
+  }
+  .cf-text-area--input:focus {
+    border-color: $cf-input-border--error-focused;
+    box-shadow: 0 0 6px 0 $cf-input-border--error-focused;
+  }
+}
+
+/*
+  Size Modifiers
+  ------------------------------------------------------------------------------
+*/
+@mixin textAreaSizeModifier($fontSize, $padding) {
+  .cf-text-area--input {
+    font-size: $fontSize;
+    padding: $padding;
+  }
+}
+
+.cf-text-area__xs {
+  @include textAreaSizeModifier($form-xs-font, $form-xs-padding);
+}
+.cf-text-area__sm {
+  @include textAreaSizeModifier($form-sm-font, $form-sm-padding);
+}
+.cf-text-area__md {
+  @include textAreaSizeModifier($form-md-font, $form-md-padding);
+}
+.cf-text-area__lg {
+  @include textAreaSizeModifier($form-lg-font, $form-lg-padding);
 }

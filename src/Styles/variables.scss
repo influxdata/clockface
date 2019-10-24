@@ -93,7 +93,7 @@ $cf-text-selection-color: $g20-white;
 /*
    Form Element Sizing
    -----------------------------------------------------------------------------
-   These ensure consistent sizing across ]elements such as Buttons, Radio,
+   These ensure consistent sizing across elements such as Buttons, Radio,
    Dropdown, Input, etc.
 */
 
@@ -121,3 +121,37 @@ $form-lg-font: 17px;
 $empty-state-text: $g9-mountain;
 $empty-state-highlight: $g13-mist;
 
+/*
+   Input Styles
+   -----------------------------------------------------------------------------
+   These ensure consistent appearance across different kinds of inputs
+*/
+
+$cf-input--transition: background-color 0.25s ease, border-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease, color 0.25s ease;
+
+$cf-input-background--default: $g2-kevlar;
+$cf-input-background--focused: $g2-kevlar;
+$cf-input-background--hover: $g2-kevlar;
+$cf-input-background--disabled: $g3-castle;
+
+$cf-input-text--default: $g15-platinum;
+$cf-input-text--focused: $g20-white;
+$cf-input-text--hover: $g17-whisper;
+$cf-input-text--disabled: $g9-mountain;
+
+$cf-input-border--default: $g5-pepper;
+$cf-input-border--focused: $c-pool;
+$cf-input-border--hover: mix($cf-input-border--default, $cf-input-border--focused, 50%);
+$cf-input-border--disabled: $g4-onyx;
+
+$cf-input-border--error: mix($cf-input-border--default, $c-dreamsicle, 70%);
+$cf-input-border--error-hover: $c-dreamsicle;
+$cf-input-border--error-focused: $c-dreamsicle;
+
+$cf-input--field-z: 1;
+$cf-input--shadow-z: $cf-input--field-z + 1;
+$cf-input--status-z: $cf-input--shadow-z + 1;
+
+$cf-input--placeholder-text: $g9-mountain;
