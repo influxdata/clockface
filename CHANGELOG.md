@@ -2,8 +2,10 @@
 
 ### 1.0.3 (Unreleased)
 
-- [#342](https://github.com/influxdata/clockface/pull/342): Upgrade typescript, eslint, & storybook dependencies
+- [#352](https://github.com/influxdata/clockface/pull/352): Refactor `TextArea` component to accept customization like `Input`
+- [#352](https://github.com/influxdata/clockface/pull/352): Fix bug causing `TextArea` to be very tiny
 - [#350](https://github.com/influxdata/clockface/pull/350): Added explicit check for `className` in Popover `handleTriggerMouseLeave` method
+- [#342](https://github.com/influxdata/clockface/pull/342): Upgrade typescript, eslint, & storybook dependencies
 
 ### 1.0.2
 
