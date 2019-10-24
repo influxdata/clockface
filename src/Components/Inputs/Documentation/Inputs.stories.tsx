@@ -51,6 +51,7 @@ import {
 import InputReadme from './Input.md'
 import AutoInputReadme from './AutoInput.md'
 import RangeSliderReadme from './RangeSlider.md'
+import TextAreaReadme from './TextArea.md'
 
 const inputsBaseStories = storiesOf('Components|Inputs/Base', module)
   .addDecorator(withKnobs)
@@ -301,56 +302,173 @@ inputsBaseStories.add(
   }
 )
 
-inputsBaseStories.add('TextArea', () => {
-  const textAreaRef: RefObject<TextAreaRef> = createRef()
-  const textAreaContainerRef: RefObject<TextAreaContainerRef> = createRef()
+inputsBaseStories.add(
+  'TextArea',
+  () => {
+    const textAreaRefDefault: RefObject<TextAreaRef> = createRef()
+    const textAreaRefDisabled: RefObject<TextAreaRef> = createRef()
+    const textAreaRefValid: RefObject<TextAreaRef> = createRef()
+    const textAreaRefError: RefObject<TextAreaRef> = createRef()
+    const textAreaRefLoading: RefObject<TextAreaRef> = createRef()
+    const textAreaContainerRef: RefObject<TextAreaContainerRef> = createRef()
 
-  const handleLogRefs = (): void => {
-    /* eslint-disable */
-    console.log('TextAreaRef', textAreaRef.current)
-    console.log('TextAreaContainerRef', textAreaContainerRef.current)
-    /* eslint-enable */
-  }
+    const handleLogRefs = (): void => {
+      /* eslint-disable */
+      console.log('TextAreaRef (Default)', textAreaRefDefault.current)
+      console.log('TextAreaRef (Disabled)', textAreaRefDisabled.current)
+      console.log('TextAreaRef (Valid)', textAreaRefValid.current)
+      console.log('TextAreaRef (Error)', textAreaRefError.current)
+      console.log('TextAreaRef (Loading)', textAreaRefLoading.current)
+      console.log('TextAreaContainerRef', textAreaContainerRef.current)
+      /* eslint-enable */
+    }
 
-  const exampleTextAreaStyle = {width: '300px'}
+    const exampleTextAreaStyle = {width: '160px', margin: '0 10px'}
 
-  return (
-    <div className="story--example">
-      <TextArea
-        ref={textAreaRef}
-        containerRef={textAreaContainerRef}
-        value={text('value', 'Value Text')}
-        maxLength={number('maxLength', 50)}
-        minLength={number('minLength', 5)}
-        placeholder={text('placeholder', 'Placeholder Text')}
-        onChange={() => {}}
-        autocomplete={
-          AutoComplete[
+    return (
+      <div className="story--example">
+        <div className="story--test-buttons">
+          <button onClick={handleLogRefs}>Log Refs</button>
+        </div>
+        <TextArea
+          ref={textAreaRefDefault}
+          containerRef={textAreaContainerRef}
+          value={text('value', 'Example text can be controlled from the Knobs panel on the right')}
+          maxLength={number('maxLength', 50)}
+          minLength={number('minLength', 5)}
+          placeholder={text('placeholder', 'Placeholder Text')}
+          onChange={() => {}}
+          monospace={boolean('monospace', false)}
+          autocomplete={
+            AutoComplete[
+              radios<AutoComplete>(
+                'autocomplete',
+                mapEnumKeys(AutoComplete),
+                AutoComplete.Off
+              )
+            ]
+          }
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          style={object('style', exampleTextAreaStyle)}
+          cols={number('cols', 20)}
+          rows={number('rows', 10)}
+          status={ComponentStatus.Default}
+        />
+        <TextArea
+          ref={textAreaRefDisabled}
+          containerRef={textAreaContainerRef}
+          value={text('value', 'Example text can be controlled from the Knobs panel on the right')}
+          maxLength={number('maxLength', 50)}
+          minLength={number('minLength', 5)}
+          placeholder={text('placeholder', 'Placeholder Text')}
+          onChange={() => {}}
+          monospace={boolean('monospace', false)}
+          autocomplete={
+            AutoComplete[
             radios<AutoComplete>(
               'autocomplete',
               mapEnumKeys(AutoComplete),
               AutoComplete.Off
             )
-          ]
-        }
-        size={
-          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-        }
-        style={object('style', exampleTextAreaStyle)}
-        cols={number('cols', 20)}
-        rows={number('rows', 20)}
-        status={
-          ComponentStatus[
-            select('status', mapEnumKeys(ComponentStatus), 'Default')
-          ]
-        }
-      />
-      <div className="story--test-buttons">
-        <button onClick={handleLogRefs}>Log Refs</button>
+            ]
+          }
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          style={object('style', exampleTextAreaStyle)}
+          cols={number('cols', 20)}
+          rows={number('rows', 10)}
+          status={ComponentStatus.Disabled}
+        />
+        <TextArea
+          ref={textAreaRefValid}
+          containerRef={textAreaContainerRef}
+          value={text('value', 'Example text can be controlled from the Knobs panel on the right')}
+          maxLength={number('maxLength', 50)}
+          minLength={number('minLength', 5)}
+          placeholder={text('placeholder', 'Placeholder Text')}
+          onChange={() => {}}
+          monospace={boolean('monospace', false)}
+          autocomplete={
+            AutoComplete[
+            radios<AutoComplete>(
+              'autocomplete',
+              mapEnumKeys(AutoComplete),
+              AutoComplete.Off
+            )
+            ]
+          }
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          style={object('style', exampleTextAreaStyle)}
+          cols={number('cols', 20)}
+          rows={number('rows', 10)}
+          status={ComponentStatus.Valid}
+        />
+        <TextArea
+          ref={textAreaRefError}
+          containerRef={textAreaContainerRef}
+          value={text('value', 'Example text can be controlled from the Knobs panel on the right')}
+          maxLength={number('maxLength', 50)}
+          minLength={number('minLength', 5)}
+          placeholder={text('placeholder', 'Placeholder Text')}
+          onChange={() => {}}
+          monospace={boolean('monospace', false)}
+          autocomplete={
+            AutoComplete[
+            radios<AutoComplete>(
+              'autocomplete',
+              mapEnumKeys(AutoComplete),
+              AutoComplete.Off
+            )
+            ]
+          }
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          style={object('style', exampleTextAreaStyle)}
+          cols={number('cols', 20)}
+          rows={number('rows', 10)}
+          status={ComponentStatus.Error}
+        />
+        <TextArea
+          ref={textAreaRefLoading}
+          containerRef={textAreaContainerRef}
+          value={text('value', 'Example text can be controlled from the Knobs panel on the right')}
+          maxLength={number('maxLength', 50)}
+          minLength={number('minLength', 5)}
+          placeholder={text('placeholder', 'Placeholder Text')}
+          onChange={() => {}}
+          monospace={boolean('monospace', false)}
+          autocomplete={
+            AutoComplete[
+            radios<AutoComplete>(
+              'autocomplete',
+              mapEnumKeys(AutoComplete),
+              AutoComplete.Off
+            )
+            ]
+          }
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          style={object('style', exampleTextAreaStyle)}
+          cols={number('cols', 20)}
+          rows={number('rows', 10)}
+          status={ComponentStatus.Loading}
+        />
       </div>
-    </div>
-  )
-})
+    )
+  },
+  {
+    readme: {
+      content: marked(TextAreaReadme),
+    },
+  }
+)
 
 inputsComposedStories.add(
   'AutoInput',
