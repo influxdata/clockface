@@ -3,6 +3,7 @@
 ### 1.0.3 (Unreleased)
 
 - [#342](https://github.com/influxdata/clockface/pull/342): Upgrade typescript, eslint, & storybook dependencies
+- [#350](https://github.com/influxdata/clockface/pull/350): Added explicit check for `className` in Popover `handleTriggerMouseLeave` method
 
 ### 1.0.2
 
