@@ -31,8 +31,8 @@ const handleValidation = (value: string): string | null => {
     return 'This field cannot be empty'
   }
 
-  if (value.length > 20) {
-    return 'Must be less than 20 characters'
+  if (value.length >= 21) {
+    return 'Must be 20 characters or less'
   }
 
   return null

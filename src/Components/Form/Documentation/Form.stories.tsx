@@ -37,6 +37,7 @@ import {Panel} from '../../Panel'
 import {TextBlock} from '../../TextBlock/TextBlock'
 import {DismissButton} from '../../Button/Composed/DismissButton'
 import {SelectDropdown} from '../../Dropdowns/Composed/SelectDropdown'
+import {FormValidationTest} from './FormValidationTest'
 
 // Types
 import {
@@ -52,6 +53,7 @@ import {
 
 // Notes
 import FormReadme from './Form.md'
+import FormValidationElementReadme from './FormValidationElement.md'
 import NaturalLanguageFormReadme from './NaturalLanguageForm.md'
 import {FormRef} from '../Form'
 
@@ -362,9 +364,20 @@ formStories.add(
   },
   {
     readme: {
-      content: marked(FormReadme),
+      content: marked(FormValidationElementReadme),
     },
   }
+)
+
+formExampleStories.add(
+  'Validation Function',
+  () => (
+    <div className="story--example" style={{flexDirection: 'column'}}><FormValidationTest /></div>
+  ), {
+  readme: {
+    content: marked(FormValidationElementReadme),
+  },
+}
 )
 
 formExampleStories.add(
