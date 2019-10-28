@@ -2,6 +2,7 @@
 
 ### 1.0.3 (Unreleased)
 
+- [#355](https://github.com/influxdata/clockface/issues/355): Add gradients in the green-yellow & yellow-red spectrums to the `Gradients` enum
 - [#352](https://github.com/influxdata/clockface/pull/352): Refactor `TextArea` component to accept customization like `Input`
 - [#352](https://github.com/influxdata/clockface/pull/352): Fix bug causing `TextArea` to be very tiny
 - [#350](https://github.com/influxdata/clockface/pull/350): Added explicit check for `className` in Popover `handleTriggerMouseLeave` method
