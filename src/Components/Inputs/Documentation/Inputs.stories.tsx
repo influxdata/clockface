@@ -333,7 +333,10 @@ inputsBaseStories.add(
         <TextArea
           ref={textAreaRefDefault}
           containerRef={textAreaContainerRef}
-          value={text('value', 'Example text can be controlled from the Knobs panel on the right')}
+          value={text(
+            'value',
+            'Example text can be controlled from the Knobs panel on the right'
+          )}
           maxLength={number('maxLength', 50)}
           minLength={number('minLength', 5)}
           placeholder={text('placeholder', 'Placeholder Text')}
@@ -358,7 +361,10 @@ inputsBaseStories.add(
         />
         <TextArea
           ref={textAreaRefDisabled}
-          value={text('value', 'Example text can be controlled from the Knobs panel on the right')}
+          value={text(
+            'value',
+            'Example text can be controlled from the Knobs panel on the right'
+          )}
           maxLength={number('maxLength', 50)}
           minLength={number('minLength', 5)}
           placeholder={text('placeholder', 'Placeholder Text')}
@@ -366,11 +372,11 @@ inputsBaseStories.add(
           monospace={boolean('monospace', false)}
           autocomplete={
             AutoComplete[
-            radios<AutoComplete>(
-              'autocomplete',
-              mapEnumKeys(AutoComplete),
-              AutoComplete.Off
-            )
+              radios<AutoComplete>(
+                'autocomplete',
+                mapEnumKeys(AutoComplete),
+                AutoComplete.Off
+              )
             ]
           }
           size={
@@ -383,7 +389,10 @@ inputsBaseStories.add(
         />
         <TextArea
           ref={textAreaRefValid}
-          value={text('value', 'Example text can be controlled from the Knobs panel on the right')}
+          value={text(
+            'value',
+            'Example text can be controlled from the Knobs panel on the right'
+          )}
           maxLength={number('maxLength', 50)}
           minLength={number('minLength', 5)}
           placeholder={text('placeholder', 'Placeholder Text')}
@@ -391,11 +400,11 @@ inputsBaseStories.add(
           monospace={boolean('monospace', false)}
           autocomplete={
             AutoComplete[
-            radios<AutoComplete>(
-              'autocomplete',
-              mapEnumKeys(AutoComplete),
-              AutoComplete.Off
-            )
+              radios<AutoComplete>(
+                'autocomplete',
+                mapEnumKeys(AutoComplete),
+                AutoComplete.Off
+              )
             ]
           }
           size={
@@ -408,7 +417,10 @@ inputsBaseStories.add(
         />
         <TextArea
           ref={textAreaRefError}
-          value={text('value', 'Example text can be controlled from the Knobs panel on the right')}
+          value={text(
+            'value',
+            'Example text can be controlled from the Knobs panel on the right'
+          )}
           maxLength={number('maxLength', 50)}
           minLength={number('minLength', 5)}
           placeholder={text('placeholder', 'Placeholder Text')}
@@ -416,11 +428,11 @@ inputsBaseStories.add(
           monospace={boolean('monospace', false)}
           autocomplete={
             AutoComplete[
-            radios<AutoComplete>(
-              'autocomplete',
-              mapEnumKeys(AutoComplete),
-              AutoComplete.Off
-            )
+              radios<AutoComplete>(
+                'autocomplete',
+                mapEnumKeys(AutoComplete),
+                AutoComplete.Off
+              )
             ]
           }
           size={
@@ -433,7 +445,10 @@ inputsBaseStories.add(
         />
         <TextArea
           ref={textAreaRefLoading}
-          value={text('value', 'Example text can be controlled from the Knobs panel on the right')}
+          value={text(
+            'value',
+            'Example text can be controlled from the Knobs panel on the right'
+          )}
           maxLength={number('maxLength', 50)}
           minLength={number('minLength', 5)}
           placeholder={text('placeholder', 'Placeholder Text')}
@@ -441,11 +456,11 @@ inputsBaseStories.add(
           monospace={boolean('monospace', false)}
           autocomplete={
             AutoComplete[
-            radios<AutoComplete>(
-              'autocomplete',
-              mapEnumKeys(AutoComplete),
-              AutoComplete.Off
-            )
+              radios<AutoComplete>(
+                'autocomplete',
+                mapEnumKeys(AutoComplete),
+                AutoComplete.Off
+              )
             ]
           }
           size={

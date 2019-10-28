@@ -372,12 +372,15 @@ formStories.add(
 formExampleStories.add(
   'Validation Function',
   () => (
-    <div className="story--example" style={{flexDirection: 'column'}}><FormValidationTest /></div>
-  ), {
-  readme: {
-    content: marked(FormValidationElementReadme),
-  },
-}
+    <div className="story--example" style={{flexDirection: 'column'}}>
+      <FormValidationTest />
+    </div>
+  ),
+  {
+    readme: {
+      content: marked(FormValidationElementReadme),
+    },
+  }
 )
 
 formExampleStories.add(

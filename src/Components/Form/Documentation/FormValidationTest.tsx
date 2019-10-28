@@ -25,8 +25,19 @@ export class FormValidationTest extends Component<Props, State> {
     const {inputValue} = this.state
 
     return (
-      <FormValidationElement label="This is a test" value={inputValue} validationFunc={this.handleValidation}>
-        {status => <Input status={status} value={inputValue} onChange={this.handleInputChange} placeholder="Try typing something in here to see validation happen" />}
+      <FormValidationElement
+        label="This is a test"
+        value={inputValue}
+        validationFunc={this.handleValidation}
+      >
+        {status => (
+          <Input
+            status={status}
+            value={inputValue}
+            onChange={this.handleInputChange}
+            placeholder="Try typing something in here to see validation happen"
+          />
+        )}
       </FormValidationElement>
     )
   }

@@ -50,13 +50,13 @@ export const StatusIndicator = forwardRef<
     })
 
     let statusElement: JSX.Element = <></>
-    const shadowElement = shadow && <div className="cf-status-indicator--shadow" />
+    const shadowElement = shadow && (
+      <div className="cf-status-indicator--shadow" />
+    )
 
     if (status === ComponentStatus.Loading) {
       statusElement = (
-        <span
-          className="cf-status-indicator--child"
-        >
+        <span className="cf-status-indicator--child">
           <div className="cf-status-indicator--spinner" />
         </span>
       )
@@ -81,10 +81,13 @@ export const StatusIndicator = forwardRef<
     }
 
     return (
-      <div className={statusIndicatorClass} data-testid={`${testID}--${status}`}
+      <div
+        className={statusIndicatorClass}
+        data-testid={`${testID}--${status}`}
         ref={ref}
         id={id}
-        style={style}>
+        style={style}
+      >
         {statusElement}
         {shadowElement}
       </div>

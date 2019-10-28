@@ -58,9 +58,8 @@ export const FormValidationElement = forwardRef<
   ) => {
     const shouldPerformValidation = useRef<boolean>(false)
 
-    let errorMessage = null 
+    let errorMessage = null
     let status = ComponentStatus.Default
-
 
     useEffect(() => {
       shouldPerformValidation.current = true
@@ -68,9 +67,7 @@ export const FormValidationElement = forwardRef<
 
     if (shouldPerformValidation.current) {
       errorMessage = validationFunc(value)
-      status = !!errorMessage
-        ? ComponentStatus.Error
-        : ComponentStatus.Valid
+      status = !!errorMessage ? ComponentStatus.Error : ComponentStatus.Valid
     }
 
     if (onStatusChange) {
