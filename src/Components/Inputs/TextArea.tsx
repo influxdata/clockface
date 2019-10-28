@@ -14,7 +14,6 @@ import {
   Wrap,
 } from '../../Types'
 
-
 // Styles
 import './TextArea.scss'
 
@@ -116,7 +115,12 @@ export const TextArea = forwardRef<TextAreaRef, TextAreaProps>(
 
     return (
       <div className={textAreaClass} style={style} ref={containerRef}>
-        <StatusIndicator status={status} size={size} shadow={false} testID={testID} />
+        <StatusIndicator
+          status={status}
+          size={size}
+          shadow={false}
+          testID={testID}
+        />
         <textarea
           id={id}
           ref={ref}
