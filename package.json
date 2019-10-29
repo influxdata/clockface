@@ -88,7 +88,7 @@
     "test": "yarn run lint && yarn run typecheck",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "lint:fix": "eslint --fix 'src/**/*.{ts,tsx}'",
-    "typecheck": "tsc --noEmit --pretty",
+    "typecheck": "tsc --noEmit --pretty --skipLibCheck",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "publishStorybook": "storybook-to-ghpages --out=.out"
   },
