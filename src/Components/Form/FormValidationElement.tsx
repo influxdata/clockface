@@ -1,5 +1,5 @@
 // Libraries
-import React, {forwardRef} from 'react'
+import React, {forwardRef, useEffect, useRef} from 'react'
 import classnames from 'classnames'
 
 // Components
@@ -56,11 +56,19 @@ export const FormValidationElement = forwardRef<
     },
     ref
   ) => {
-    const errorMessage = validationFunc(value)
+    const shouldPerformValidation = useRef<boolean>(false)
 
-    const status = !!errorMessage
-      ? ComponentStatus.Error
-      : ComponentStatus.Valid
+    let errorMessage = null
+    let status = ComponentStatus.Default
+
+    useEffect(() => {
+      shouldPerformValidation.current = true
+    }, [value])
+
+    if (shouldPerformValidation.current) {
+      errorMessage = validationFunc(value)
+      status = !!errorMessage ? ComponentStatus.Error : ComponentStatus.Valid
+    }
 
     if (onStatusChange) {
       onStatusChange(status)
