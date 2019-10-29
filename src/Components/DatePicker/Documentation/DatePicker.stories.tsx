@@ -4,7 +4,6 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {jsxDecorator} from 'storybook-addon-jsx'
 import {withKnobs, text} from '@storybook/addon-knobs'
 
 // Components
@@ -15,16 +14,15 @@ import {DatePicker, DatePickerRef} from '../Base/DatePicker'
 import DatePickerReadme from './DatePicker.md'
 import DateRangePickerReadme from './DateRangePicker.md'
 
-const datePickerBaseStories = storiesOf('Components|DatePicker/Base', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const datePickerBaseStories = storiesOf(
+  'Components|DatePicker/Base',
+  module
+).addDecorator(withKnobs)
 
 const datePickerComposedStories = storiesOf(
   'Components|DatePicker/Composed',
   module
-)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+).addDecorator(withKnobs)
 
 datePickerComposedStories.add(
   'Date Range Picker',

@@ -6,7 +6,6 @@ import marked from 'marked'
 import {storiesOf} from '@storybook/react'
 import {withKnobs, select, text, boolean, object} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
-import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {
@@ -31,9 +30,9 @@ import {
 // Notes
 import TableReadme from './Table.md'
 
-const tableStories = storiesOf('Components|Table/Family', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const tableStories = storiesOf('Components|Table/Family', module).addDecorator(
+  withKnobs
+)
 
 tableStories.add(
   'Table',

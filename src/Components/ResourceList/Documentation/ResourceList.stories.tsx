@@ -4,7 +4,6 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {jsxDecorator} from 'storybook-addon-jsx'
 import {withKnobs, text, boolean, select, object} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
@@ -36,16 +35,12 @@ import ResourceListExampleReadme from './ResourceListExample.md'
 const resourceListStories = storiesOf(
   'Components|ResourceList/List Family',
   module
-)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+).addDecorator(withKnobs)
 
 const resourceListExampleStories = storiesOf(
   'Components|ResourceList/Examples',
   module
-)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+).addDecorator(withKnobs)
 
 resourceListStories.add(
   'ResourceList',

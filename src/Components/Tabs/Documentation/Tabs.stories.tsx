@@ -4,7 +4,6 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {jsxDecorator} from 'storybook-addon-jsx'
 import {withKnobs, text, select, color, boolean} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
@@ -27,9 +26,10 @@ import TabReadme from './Tab.md'
 import TabContentsReadme from './TabContents.md'
 import TabsContainerReadme from './TabsContainer.md'
 
-const tabsStories = storiesOf('Components|Navigation/Tabs', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const tabsStories = storiesOf(
+  'Components|Navigation/Tabs',
+  module
+).addDecorator(withKnobs)
 
 tabsStories.add(
   'Tabs',

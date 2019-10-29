@@ -4,7 +4,6 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {jsxDecorator} from 'storybook-addon-jsx'
 import {withKnobs, select, number} from '@storybook/addon-knobs'
 import {withState} from '@dump247/storybook-state'
 import {mapEnumKeys} from '../../../Utils/storybook'
@@ -37,16 +36,12 @@ const fourPanelsInitialState: StoryState = {
 const draggableResizerExamplesStories = storiesOf(
   'Layout|Draggable Resizer/Examples',
   module
-)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+).addDecorator(withKnobs)
 
 const draggableResizerStories = storiesOf(
   'Layout|Draggable Resizer/Family',
   module
-)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+).addDecorator(withKnobs)
 
 const exampleHandlePositionRange = {
   range: true,

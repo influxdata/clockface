@@ -12,7 +12,6 @@ import {
   text,
   number,
 } from '@storybook/addon-knobs'
-import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {DapperScrollbars} from '../DapperScrollbars'
@@ -21,9 +20,9 @@ import {DapperScrollbars} from '../DapperScrollbars'
 import DapperScrollbarsExample1Readme from './DapperScrollbarsExample1.md'
 import DapperScrollbarsExample2Readme from './DapperScrollbarsExample2.md'
 
-const scrollbarStories = storiesOf('Utilities|Scrollbars', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const scrollbarStories = storiesOf('Utilities|Scrollbars', module).addDecorator(
+  withKnobs
+)
 
 const fixedDefaultStyle = {width: '300px', height: '180px'}
 const autoSizeDefaultStyle = {

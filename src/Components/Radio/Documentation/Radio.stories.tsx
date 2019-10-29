@@ -14,7 +14,6 @@ import {
 } from '@storybook/addon-knobs'
 import {withState} from '@dump247/storybook-state'
 import {mapEnumKeys} from '../../../Utils/storybook'
-import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {Radio, RadioRef, RadioButtonRef} from '../'
@@ -36,13 +35,14 @@ const initialState: StoryState = {
   activeItemID: 'mode-compose',
 }
 
-const radioStories = storiesOf('Components|Radios/Family', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const radioStories = storiesOf('Components|Radios/Family', module).addDecorator(
+  withKnobs
+)
 
-const radioExampleStories = storiesOf('Components|Radios/Examples', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const radioExampleStories = storiesOf(
+  'Components|Radios/Examples',
+  module
+).addDecorator(withKnobs)
 
 const mirepoix = ['Celery', 'Carrot', 'Onion']
 

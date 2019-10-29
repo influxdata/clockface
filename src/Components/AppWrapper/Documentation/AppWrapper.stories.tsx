@@ -5,7 +5,6 @@ import marked from 'marked'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, boolean, text, number, select} from '@storybook/addon-knobs'
-import {jsxDecorator} from 'storybook-addon-jsx'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
@@ -20,9 +19,9 @@ import {IconFont, ComponentSize} from '../../../Types'
 // Notes
 import AppWrapperReadme from './AppWrapper.md'
 
-const layoutStories = storiesOf('Layout|AppWrapper', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const layoutStories = storiesOf('Layout|AppWrapper', module).addDecorator(
+  withKnobs
+)
 
 layoutStories.add(
   'AppWrapper',

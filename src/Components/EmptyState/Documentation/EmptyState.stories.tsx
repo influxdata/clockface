@@ -6,7 +6,6 @@ import marked from 'marked'
 import {storiesOf} from '@storybook/react'
 import {withKnobs, text, select} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
-import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {
@@ -27,16 +26,15 @@ import EmptyStateSubTextReadme from './EmptyStateSubText.md'
 import EmptyStateExampleAReadme from './EmptyStateExampleA.md'
 import EmptyStateExampleBReadme from './EmptyStateExampleB.md'
 
-const emptyStateStories = storiesOf('Components|Empty States/Family', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const emptyStateStories = storiesOf(
+  'Components|Empty States/Family',
+  module
+).addDecorator(withKnobs)
 
 const emptyStateExampleStories = storiesOf(
   'Components|Empty States/Examples',
   module
-)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+).addDecorator(withKnobs)
 
 emptyStateExampleStories.add(
   'No Dashboards',

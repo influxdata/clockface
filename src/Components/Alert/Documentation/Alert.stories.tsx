@@ -4,7 +4,6 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {jsxDecorator} from 'storybook-addon-jsx'
 import {withKnobs, text, select} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
@@ -17,9 +16,7 @@ import {ComponentColor, IconFont} from '../../../Types'
 // Notes
 import AlertReadme from './Alert.md'
 
-const alertStories = storiesOf('Atomic|Alert', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const alertStories = storiesOf('Atomic|Alert', module).addDecorator(withKnobs)
 
 alertStories.add(
   'Example',

@@ -5,7 +5,6 @@ import marked from 'marked'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, boolean, text, number, select} from '@storybook/addon-knobs'
-import {jsxDecorator} from 'storybook-addon-jsx'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
@@ -42,13 +41,14 @@ import PageSubTitleReadme from './PageSubTitle.md'
 import {PageTitleRef} from '../PageTitle'
 import {PageSubTitleRef} from '../PageSubTitle'
 
-const pageStories = storiesOf('Layout|Page/Family', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const pageStories = storiesOf('Layout|Page/Family', module).addDecorator(
+  withKnobs
+)
 
-const pageExampleStories = storiesOf('Layout|Page/Examples', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const pageExampleStories = storiesOf(
+  'Layout|Page/Examples',
+  module
+).addDecorator(withKnobs)
 
 pageStories.add(
   'Page',

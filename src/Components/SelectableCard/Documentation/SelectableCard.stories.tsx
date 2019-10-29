@@ -6,7 +6,6 @@ import marked from 'marked'
 import {storiesOf} from '@storybook/react'
 import {withKnobs, text, boolean, select, object} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
-import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {SelectableCard, SelectableCardRef} from '../'
@@ -20,9 +19,7 @@ import SelectableCardReadme from './SelectableCard.md'
 const selectableCardStories = storiesOf(
   'Components|Cards/SelectableCard',
   module
-)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+).addDecorator(withKnobs)
 
 const exampleStyle = {
   width: '200px',

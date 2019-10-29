@@ -14,7 +14,6 @@ import {
   object,
 } from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
-import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {
@@ -55,16 +54,15 @@ import DropdownMenuReadme from './DropdownMenu.md'
 import SelectDropdownReadme from './SelectDropdown.md'
 import MultiSelectDropdownReadme from './MultiSelectDropdown.md'
 
-const dropdownFamilyStories = storiesOf('Components|Dropdowns/Family', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const dropdownFamilyStories = storiesOf(
+  'Components|Dropdowns/Family',
+  module
+).addDecorator(withKnobs)
 
 const dropdownComposedStories = storiesOf(
   'Components|Dropdowns/Composed',
   module
-)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+).addDecorator(withKnobs)
 
 const defaultDropdownStyle = {width: '250px'}
 

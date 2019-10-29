@@ -12,7 +12,7 @@ addParameters({
   },
   readme: {
     codeTheme: 'Dracula',
-  }
+  },
 })
 
 const req = require.context('../src/', true, /.stories.tsx$/)

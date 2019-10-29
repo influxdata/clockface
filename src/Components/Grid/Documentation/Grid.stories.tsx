@@ -6,7 +6,6 @@ import marked from 'marked'
 import {storiesOf} from '@storybook/react'
 import {withKnobs, select} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
-import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {Grid, GridRef, GridRowRef, GridColumnRef} from '../'
@@ -17,9 +16,9 @@ import {Columns} from '../../../Types'
 // Notes
 import GridReadme from './Grid.md'
 
-const gridStories = storiesOf('Layout|12 Column Grid', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const gridStories = storiesOf('Layout|12 Column Grid', module).addDecorator(
+  withKnobs
+)
 
 gridStories.add(
   'Grid',

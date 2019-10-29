@@ -6,7 +6,6 @@ import marked from 'marked'
 import {storiesOf} from '@storybook/react'
 import {withKnobs, text, select, color} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
-import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {
@@ -31,13 +30,14 @@ import ExampleAReadme from './PanelExampleA.md'
 import ExampleBReadme from './PanelExampleB.md'
 import ExampleCReadme from './PanelExampleC.md'
 
-const panelStories = storiesOf('Components|Panels/Family', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const panelStories = storiesOf('Components|Panels/Family', module).addDecorator(
+  withKnobs
+)
 
-const panelExampleStories = storiesOf('Components|Panels/Examples', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const panelExampleStories = storiesOf(
+  'Components|Panels/Examples',
+  module
+).addDecorator(withKnobs)
 
 panelStories.add(
   'Panel',

@@ -14,7 +14,6 @@ import {
   object,
 } from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
-import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {
@@ -53,13 +52,15 @@ import AutoInputReadme from './AutoInput.md'
 import RangeSliderReadme from './RangeSlider.md'
 import TextAreaReadme from './TextArea.md'
 
-const inputsBaseStories = storiesOf('Components|Inputs/Base', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const inputsBaseStories = storiesOf(
+  'Components|Inputs/Base',
+  module
+).addDecorator(withKnobs)
 
-const inputsComposedStories = storiesOf('Components|Inputs/Composed', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const inputsComposedStories = storiesOf(
+  'Components|Inputs/Composed',
+  module
+).addDecorator(withKnobs)
 
 const defaultInputStyle = {
   width: '200px',

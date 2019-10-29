@@ -4,7 +4,6 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {jsxDecorator} from 'storybook-addon-jsx'
 import {withKnobs, text, select, boolean} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
@@ -33,13 +32,15 @@ import SquareButtonReadme from './SquareButton.md'
 import ConfirmationButtonReadme from './ConfirmationButton.md'
 import DismissButtonReadme from './DismissButton.md'
 
-const buttonBaseStories = storiesOf('Components|Buttons/Base', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const buttonBaseStories = storiesOf(
+  'Components|Buttons/Base',
+  module
+).addDecorator(withKnobs)
 
-const buttonComposedStories = storiesOf('Components|Buttons/Composed', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const buttonComposedStories = storiesOf(
+  'Components|Buttons/Composed',
+  module
+).addDecorator(withKnobs)
 
 buttonComposedStories.add(
   'StandardButton',

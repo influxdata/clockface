@@ -6,7 +6,6 @@ import marked from 'marked'
 import {storiesOf} from '@storybook/react'
 import {withKnobs, select, boolean, number} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
-import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {FlexBox, FlexBoxRef, FlexBoxChildRef} from '../'
@@ -23,9 +22,9 @@ import {
 import FlexBoxReadme from './FlexBox.md'
 import FlexBoxChildReadme from './FlexBoxChild.md'
 
-const componentSpacerStories = storiesOf('Layout|FlexBox', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const componentSpacerStories = storiesOf('Layout|FlexBox', module).addDecorator(
+  withKnobs
+)
 
 componentSpacerStories.add(
   'FlexBox',

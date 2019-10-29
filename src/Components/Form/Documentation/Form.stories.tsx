@@ -12,7 +12,6 @@ import {
   select,
   number,
 } from '@storybook/addon-knobs'
-import {jsxDecorator} from 'storybook-addon-jsx'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
@@ -57,13 +56,14 @@ import FormValidationElementReadme from './FormValidationElement.md'
 import NaturalLanguageFormReadme from './NaturalLanguageForm.md'
 import {FormRef} from '../Form'
 
-const formStories = storiesOf('Components|Forms/Standard', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const formStories = storiesOf('Components|Forms/Standard', module).addDecorator(
+  withKnobs
+)
 
-const formExampleStories = storiesOf('Components|Forms/Examples', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const formExampleStories = storiesOf(
+  'Components|Forms/Examples',
+  module
+).addDecorator(withKnobs)
 
 const mockValidationFunc = (value: string): string | null => {
   if (!value) {

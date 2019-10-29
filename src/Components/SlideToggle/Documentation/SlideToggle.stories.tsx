@@ -7,7 +7,6 @@ import {storiesOf} from '@storybook/react'
 import {withKnobs, text, select, boolean} from '@storybook/addon-knobs'
 import {withState} from '@dump247/storybook-state'
 import {mapEnumKeys} from '../../../Utils/storybook'
-import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {SlideToggle, SlideToggleRef, SlideToggleLabelRef} from '../'
@@ -40,16 +39,15 @@ const initialState: StoryState = {
   optionC: false,
 }
 
-const slideToggleStories = storiesOf('Components|Slide Toggles/Family', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const slideToggleStories = storiesOf(
+  'Components|Slide Toggles/Family',
+  module
+).addDecorator(withKnobs)
 
 const slideToggleExampleStories = storiesOf(
   'Components|Slide Toggles/Examples',
   module
-)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+).addDecorator(withKnobs)
 
 slideToggleStories.add(
   'SlideToggle',
