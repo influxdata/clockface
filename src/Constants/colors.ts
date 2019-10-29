@@ -311,6 +311,70 @@ export const influxGradients = {
     start: InfluxColors.Yeti,
     stop: InfluxColors.Mint,
   },
+  CephalopodInk: {
+    start: InfluxColors.Gypsy,
+    stop: InfluxColors.Oak,
+  },
+  JungleDusk: {
+    start: InfluxColors.Emerald,
+    stop: InfluxColors.Topaz,
+  },
+  JalapenoTaco: {
+    start: InfluxColors.Viridian,
+    stop: InfluxColors.Tiger,
+  },
+  MangoGrove: {
+    start: InfluxColors.Rainforest,
+    stop: InfluxColors.Pineapple,
+  },
+  CitrusSodapop: {
+    start: InfluxColors.Honeydew,
+    stop: InfluxColors.Thunder,
+  },
+  CandyApple: {
+    start: InfluxColors.Krypton,
+    stop: InfluxColors.Sulfur,
+  },
+  MillennialAvocado: {
+    start: InfluxColors.Wasabi,
+    stop: InfluxColors.Daisy,
+  },
+  MintyFresh: {
+    start: InfluxColors.Mint,
+    stop: InfluxColors.Banana,
+  },
+  DarkChocolate: {
+    start: InfluxColors.Oak,
+    stop: InfluxColors.Basalt,
+  },
+  SavannaHeat: {
+    start: InfluxColors.Topaz,
+    stop: InfluxColors.Ruby,
+  },
+  FuyuPersimmon: {
+    start: InfluxColors.Tiger,
+    stop: InfluxColors.Fire,
+  },
+  ScotchBonnet: {
+    start: InfluxColors.Pineapple,
+    stop: InfluxColors.Curacao,
+  },
+  CaliforniaCampfire: {
+    start: InfluxColors.Thunder,
+    stop: InfluxColors.Dreamsicle,
+  },
+  JustPeachy: {
+    start: InfluxColors.Sulfur,
+    stop: InfluxColors.Tungsten,
+  },
+  GoldenHour: {
+    start: InfluxColors.Daisy,
+    stop: InfluxColors.Marmelade,
+  },
+  SimpleCream: {
+    start: InfluxColors.Banana,
+    stop: InfluxColors.Flan,
+  },
   WarpSpeed: {
     start: InfluxColors.DeepPurple,
     stop: InfluxColors.Magenta,
