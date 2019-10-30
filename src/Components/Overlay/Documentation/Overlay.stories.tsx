@@ -200,7 +200,9 @@ overlayStories.add(
           onDismiss={() => {
             alert('Dismissed')
           }}
-        />
+        >
+          <div className="mockComponent mockButton">Child Element</div>
+        </OverlayHeader>
       </div>
     )
   },

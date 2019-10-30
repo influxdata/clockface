@@ -40,6 +40,7 @@ export const OverlayHeader = forwardRef<OverlayHeaderRef, OverlayHeaderProps>(
         data-testid={testID}
       >
         <div className="cf-overlay--title">{title}</div>
+        {children && children}
         {onDismiss && (
           <button
             className="cf-overlay--dismiss"
@@ -47,7 +48,6 @@ export const OverlayHeader = forwardRef<OverlayHeaderRef, OverlayHeaderProps>(
             type="button"
           />
         )}
-        {children && children}
       </div>
     )
   }
