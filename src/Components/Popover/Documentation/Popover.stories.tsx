@@ -50,7 +50,6 @@ const composedPopoverStories = storiesOf(
 
 const testPopoverStories = storiesOf('Atomic|Popover/Tests', module)
   .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
 
 const exampleStyle = {
   width: '250px',
