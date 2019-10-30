@@ -1,5 +1,5 @@
 // Libraries
-import React, { FunctionComponent, useRef, RefObject, CSSProperties} from 'react'
+import React, {FunctionComponent, useRef, RefObject, CSSProperties} from 'react'
 
 // Components
 import {Button, ButtonProps} from './Button'
@@ -91,7 +91,7 @@ export const ConfirmationButton: FunctionComponent<ConfirmationButtonProps> = ({
         testID={`${testID}--popover`}
         disabled={isDisabled}
         triggerRef={triggerRef}
-        />
+      />
       <Button
         className={className}
         placeIconAfterText={placeIconAfterText}

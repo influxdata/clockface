@@ -48,8 +48,10 @@ const composedPopoverStories = storiesOf(
   module
 ).addDecorator(withKnobs)
 
-const testPopoverStories = storiesOf('Atomic|Popover/Tests', module)
-  .addDecorator(withKnobs)
+const testPopoverStories = storiesOf(
+  'Atomic|Popover/Tests',
+  module
+).addDecorator(withKnobs)
 
 const exampleStyle = {
   width: '250px',
