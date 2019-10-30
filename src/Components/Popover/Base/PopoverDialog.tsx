@@ -112,11 +112,7 @@ export const PopoverDialog = forwardRef<PopoverDialogRef, PopoverDialogProps>(
     const hidePopoverWhenOutOfView = (
       entries: IntersectionObserverEntry[]
     ): void => {
-      if (!entries.length) {
-        return
-      }
-
-      if (entries[0].isIntersecting === false) {
+      if (!!entries.length && entries[0].isIntersecting === false) {
         onHide()
       }
     }
