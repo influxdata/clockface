@@ -1,6 +1,10 @@
 # Changelog
 
-### 1.0.3 (Unreleased)
+### 1.0.4 (Unreleased)
+
+- [#365](https://github.com/influxdata/clockface/pull/365): Fix attachment of `Popover` when trigger element is nested in a scrolling element
+
+### 1.0.3
 
 - [#360](https://github.com/influxdata/clockface/pull/360): Add gradients in the green-yellow & yellow-red spectrums to the `Gradients` enum
 - [#356](https://github.com/influxdata/clockface/pull/356): Fix bug causing `FormValidationElement` to render in error state before the user has interacted with anything
