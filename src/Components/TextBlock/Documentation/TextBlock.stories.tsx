@@ -4,7 +4,6 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {jsxDecorator} from 'storybook-addon-jsx'
 import {
   withKnobs,
   text,
@@ -24,9 +23,9 @@ import {ComponentSize} from '../../../Types'
 // Notes
 import TextBlockReadme from './TextBlock.md'
 
-const textBlockStories = storiesOf('Atomic|TextBlock', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const textBlockStories = storiesOf('Atomic|TextBlock', module).addDecorator(
+  withKnobs
+)
 
 const customTextBlockStyles: CSSProperties = {
   backgroundImage: 'linear-gradient(90deg, #ff0054 0%, rgba(0,212,255,1) 100%)',

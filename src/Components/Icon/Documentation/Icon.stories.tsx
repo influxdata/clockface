@@ -6,7 +6,6 @@ import marked from 'marked'
 import {storiesOf} from '@storybook/react'
 import {withKnobs, select, object} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
-import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {Icon, IconRef} from '../'
@@ -17,9 +16,7 @@ import {IconFont} from '../../../Types'
 // Notes
 import IconReadme from './Icon.md'
 
-const iconStories = storiesOf('Atomic|Icon', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const iconStories = storiesOf('Atomic|Icon', module).addDecorator(withKnobs)
 
 iconStories.add(
   'Example',

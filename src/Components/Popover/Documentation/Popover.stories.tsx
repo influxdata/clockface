@@ -12,7 +12,6 @@ import {
   text,
   object,
 } from '@storybook/addon-knobs'
-import {jsxDecorator} from 'storybook-addon-jsx'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
@@ -39,13 +38,14 @@ import PopoverReadme from './Popover.md'
 import ReflessPopoverReadme from './ReflessPopover.md'
 import QuestionMarkTooltipReadme from './QuestionMarkTooltip.md'
 
-const popoverStories = storiesOf('Atomic|Popover/Base', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const popoverStories = storiesOf('Atomic|Popover/Base', module).addDecorator(
+  withKnobs
+)
 
-const composedPopoverStories = storiesOf('Atomic|Popover/Composed', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const composedPopoverStories = storiesOf(
+  'Atomic|Popover/Composed',
+  module
+).addDecorator(withKnobs)
 
 const exampleStyle = {
   width: '250px',

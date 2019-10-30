@@ -6,7 +6,6 @@ import marked from 'marked'
 import {storiesOf} from '@storybook/react'
 import {withKnobs, select, text, color} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
-import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {Label, LabelRef} from '../'
@@ -17,9 +16,7 @@ import {ComponentSize, InfluxColors} from '../../../Types'
 // Notes
 import LabelReadme from './Label.md'
 
-const labelStories = storiesOf('Atomic|Label', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const labelStories = storiesOf('Atomic|Label', module).addDecorator(withKnobs)
 
 labelStories.add(
   'Examples',

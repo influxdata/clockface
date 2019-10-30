@@ -4,7 +4,6 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {jsxDecorator} from 'storybook-addon-jsx'
 import {withKnobs, text, boolean, array, number} from '@storybook/addon-knobs'
 
 // Components
@@ -46,16 +45,12 @@ import ResourceCardExampleReadme from './ResourceCardExample.md'
 const resourceListCardStories = storiesOf(
   'Components|ResourceList/Card Family',
   module
-)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+).addDecorator(withKnobs)
 
 const resourceListExampleStories = storiesOf(
   'Components|ResourceList/Examples',
   module
-)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+).addDecorator(withKnobs)
 
 const resourceCardMeta = ['Created by Bob', 'Updated 25m ago']
 

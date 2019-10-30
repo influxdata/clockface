@@ -13,7 +13,6 @@ import {
   select,
 } from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
-import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {OverlayRoot as Overlay} from '../Overlay'
@@ -42,9 +41,10 @@ const instructionsElement = (
   </p>
 )
 
-const overlayStories = storiesOf('Components|Overlays/Family', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const overlayStories = storiesOf(
+  'Components|Overlays/Family',
+  module
+).addDecorator(withKnobs)
 
 overlayStories.add(
   'Overlay',
@@ -279,9 +279,10 @@ overlayStories.add(
   }
 )
 
-const overlayExampleStories = storiesOf('Components|Overlays/Examples', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const overlayExampleStories = storiesOf(
+  'Components|Overlays/Examples',
+  module
+).addDecorator(withKnobs)
 
 overlayExampleStories.add(
   'Confirmation Overlay',

@@ -6,7 +6,6 @@ import marked from 'marked'
 import {storiesOf} from '@storybook/react'
 import {withKnobs, select, number, text} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
-import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {
@@ -32,23 +31,17 @@ import WaitingTextReadme from './WaitingText.md'
 const spinnerContainerStories = storiesOf(
   'Components|Spinners/Container',
   module
-)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+).addDecorator(withKnobs)
 
 const spinnerVisualStories = storiesOf(
   'Components|Spinners/Visual Spinners',
   module
-)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+).addDecorator(withKnobs)
 
 const spinnerTextStories = storiesOf(
   'Components|Spinners/Text Spinners',
   module
-)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+).addDecorator(withKnobs)
 
 spinnerContainerStories.add(
   'SpinnerContainer',

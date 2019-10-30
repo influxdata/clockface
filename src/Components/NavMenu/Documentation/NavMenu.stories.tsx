@@ -6,7 +6,6 @@ import marked from 'marked'
 import {storiesOf} from '@storybook/react'
 import {mapEnumKeys} from '../../../Utils/storybook'
 import {withKnobs, boolean, text, select, radios} from '@storybook/addon-knobs'
-import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {NavMenu, NavMenuRef, NavMenuItemRef} from '../'
@@ -20,9 +19,10 @@ import NavMenuReadme from './NavMenu.md'
 import NavMenuItemReadme from './NavMenuItem.md'
 import NavMenuSubItemReadme from './NavMenuSubItem.md'
 
-const navMenuStories = storiesOf('Components|Navigation/NavMenu', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const navMenuStories = storiesOf(
+  'Components|Navigation/NavMenu',
+  module
+).addDecorator(withKnobs)
 
 enum NavItems {
   First = 'First',

@@ -12,7 +12,6 @@ import {
   object,
   text,
 } from '@storybook/addon-knobs'
-import {jsxDecorator} from 'storybook-addon-jsx'
 
 // Components
 import {ColorPicker, ColorPickerRef} from '../ColorPicker'
@@ -24,16 +23,15 @@ import {InfluxColors} from '../../../Types'
 import ColorPickerReadme from './ColorPicker.md'
 import ColorPickerCustomReadme from './ColorPickerCustom.md'
 
-const colorPickerStories = storiesOf('Components|Color Picker/Family', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const colorPickerStories = storiesOf(
+  'Components|Color Picker/Family',
+  module
+).addDecorator(withKnobs)
 
 const colorPickerExampleStories = storiesOf(
   'Components|Color Picker/Examples',
   module
-)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+).addDecorator(withKnobs)
 
 colorPickerStories.add(
   'ColorPicker',

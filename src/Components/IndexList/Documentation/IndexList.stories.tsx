@@ -4,7 +4,6 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {jsxDecorator} from 'storybook-addon-jsx'
 import {withKnobs, array, text, select, boolean} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
@@ -33,16 +32,15 @@ import IndexListRowReadme from './IndexListRow.md'
 import IndexListRowCellReadme from './IndexListRowCell.md'
 import IndexListExampleReadme from './IndexListExample.md'
 
-const indexListStories = storiesOf('Components|IndexList/Family', module)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+const indexListStories = storiesOf(
+  'Components|IndexList/Family',
+  module
+).addDecorator(withKnobs)
 
 const indexListExampleStories = storiesOf(
   'Components|IndexList/Examples',
   module
-)
-  .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
+).addDecorator(withKnobs)
 
 indexListStories.add(
   'IndexList',
