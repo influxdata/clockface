@@ -1,6 +1,10 @@
 # Changelog
 
-### 1.0.3 (Unreleased)
+### 1.0.4 (Unreleased)
+
+- [#365](https://github.com/influxdata/clockface/pull/365): Fix attachment of `Popover` when trigger element is nested in a scrolling element
+
+### 1.0.3
 
 - [#363](https://github.com/influxdata/clockface/pull/363): Remove `@dump247/storybook-state`, `storybook-addon-jsx`, and `react-docgen-typescript-webpack-plugin` dependencies, add hooks to Storybook stories
 - [#360](https://github.com/influxdata/clockface/pull/360): Add gradients in the green-yellow & yellow-red spectrums to the `Gradients` enum
