@@ -108,7 +108,7 @@ export const PopoverDialog = forwardRef<PopoverDialogRef, PopoverDialogProps>(
 
     useLayoutEffect((): (() => void) => {
       handleUpdateStyles()
-      window.addEventListener('scroll', handleUpdateStyles)
+      window.addEventListener('scroll', handleUpdateStyles, true)
       window.addEventListener('resize', handleUpdateStyles)
 
       return (): void => {
