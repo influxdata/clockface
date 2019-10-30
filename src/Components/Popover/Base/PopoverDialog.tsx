@@ -109,7 +109,9 @@ export const PopoverDialog = forwardRef<PopoverDialogRef, PopoverDialogProps>(
       'cf-popover--contents__default-styles': enableDefaultStyles,
     })
 
-    const hidePopoverWhenOutOfView = (entries: IntersectionObserverEntry[]): void => {
+    const hidePopoverWhenOutOfView = (
+      entries: IntersectionObserverEntry[]
+    ): void => {
       if (!entries.length) {
         return
       }
@@ -120,10 +122,10 @@ export const PopoverDialog = forwardRef<PopoverDialogRef, PopoverDialogProps>(
     }
 
     const observer = new IntersectionObserver(hidePopoverWhenOutOfView)
-    
+
     useLayoutEffect((): (() => void) => {
       handleUpdateStyles()
-      observer.observe(triggerRef.current) 
+      observer.observe(triggerRef.current)
       window.addEventListener('scroll', handleUpdateStyles, true)
       window.addEventListener('resize', handleUpdateStyles)
 

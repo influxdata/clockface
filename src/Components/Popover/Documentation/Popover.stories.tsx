@@ -286,21 +286,17 @@ composedPopoverStories.add(
 testPopoverStories.add('Popover Trigger within a DapperScrollbars', () => {
   const triggerRef = createRef<HTMLDivElement>()
 
-  window.addEventListener('scroll', () => {
-    console.log('scroll')
-  })
-
   return (
-  <div className="story--example">
+    <div className="story--example">
       <Popover.Popover
         triggerRef={triggerRef}
         contents={() => (
           <>
             <div>
               I'm just a simple popover looking for my
-                <br />
+              <br />
               place in this <strong>vast and beautiful</strong> world.
-                <br />
+              <br />
               Will you help me?
             </div>
           </>
@@ -311,23 +307,64 @@ testPopoverStories.add('Popover Trigger within a DapperScrollbars', () => {
         color={ComponentColor.Success}
         type={PopoverType.Outline}
       />
-    <DapperScrollbars style={{width: '100%', height: '100%', position: 'absolute'}}>
-      <div style={{padding: '30px'}}>
-        <p>Lorem ipsum dolor amet mixtape authentic lomo stumptown messenger bag hexagon artisan, beard enamel pin biodiesel keytar tumeric raw denim iceland selfies. Blue bottle banh mi hot chicken plaid irony raclette yr skateboard messenger bag four dollar toast food truck palo santo tote bag. Hella hell of trust fund celiac, shaman whatever intelligentsia prism sriracha man braid fanny pack cardigan af semiotics. Retro freegan locavore, blue bottle hell of tofu austin direct trade williamsburg actually tattooed forage occupy plaid kitsch. Microdosing 3 wolf moon four loko, shabby chic sriracha echo park hell of small batch franzen chia tumeric. Hashtag authentic echo park, cornhole flannel sartorial cloud bread taxidermy.</p>
-          <p>Poke tbh synth, everyday carry hella small batch XOXO salvia literally 3 wolf moon pork belly. Blog marfa migas iPhone, crucifix salvia tousled. Actually hella polaroid kitsch waistcoat tote bag forage palo santo single-origin coffee cornhole umami fingerstache. Heirloom gastropub twee pickled tumblr snackwave portland leggings raclette shabby chic kitsch knausgaard. Lumbersexual palo santo woke forage narwhal meh letterpress. Gochujang YOLO cardigan, hexagon hell of kogi succulents squid brooklyn.</p>
-        <p>Poke tbh synth, everyday carry hella small batch XOXO salvia literally 3 wolf moon pork belly. Blog marfa migas iPhone, crucifix salvia tousled. Actually hella polaroid kitsch waistcoat tote bag forage palo santo single-origin coffee cornhole umami fingerstache. Heirloom gastropub twee pickled tumblr snackwave portland leggings raclette shabby chic kitsch knausgaard. Lumbersexual palo santo woke forage narwhal meh letterpress. Gochujang YOLO cardigan, hexagon hell of kogi succulents squid brooklyn.</p>
-        <div
-          className="mockComponent mockButton"
-          ref={triggerRef}
-          style={{margin: '30px 0'}}
-        >
-          Click Me
+      <DapperScrollbars
+        style={{width: '100%', height: '100%', position: 'absolute'}}
+      >
+        <div style={{padding: '30px'}}>
+          <p>
+            Lorem ipsum dolor amet mixtape authentic lomo stumptown messenger
+            bag hexagon artisan, beard enamel pin biodiesel keytar tumeric raw
+            denim iceland selfies. Blue bottle banh mi hot chicken plaid irony
+            raclette yr skateboard messenger bag four dollar toast food truck
+            palo santo tote bag. Hella hell of trust fund celiac, shaman
+            whatever intelligentsia prism sriracha man braid fanny pack cardigan
+            af semiotics. Retro freegan locavore, blue bottle hell of tofu
+            austin direct trade williamsburg actually tattooed forage occupy
+            plaid kitsch. Microdosing 3 wolf moon four loko, shabby chic
+            sriracha echo park hell of small batch franzen chia tumeric. Hashtag
+            authentic echo park, cornhole flannel sartorial cloud bread
+            taxidermy.
+          </p>
+          <p>
+            Poke tbh synth, everyday carry hella small batch XOXO salvia
+            literally 3 wolf moon pork belly. Blog marfa migas iPhone, crucifix
+            salvia tousled. Actually hella polaroid kitsch waistcoat tote bag
+            forage palo santo single-origin coffee cornhole umami fingerstache.
+            Heirloom gastropub twee pickled tumblr snackwave portland leggings
+            raclette shabby chic kitsch knausgaard. Lumbersexual palo santo woke
+            forage narwhal meh letterpress. Gochujang YOLO cardigan, hexagon
+            hell of kogi succulents squid brooklyn.
+          </p>
+          <p>
+            Poke tbh synth, everyday carry hella small batch XOXO salvia
+            literally 3 wolf moon pork belly. Blog marfa migas iPhone, crucifix
+            salvia tousled. Actually hella polaroid kitsch waistcoat tote bag
+            forage palo santo single-origin coffee cornhole umami fingerstache.
+            Heirloom gastropub twee pickled tumblr snackwave portland leggings
+            raclette shabby chic kitsch knausgaard. Lumbersexual palo santo woke
+            forage narwhal meh letterpress. Gochujang YOLO cardigan, hexagon
+            hell of kogi succulents squid brooklyn.
+          </p>
+          <div
+            className="mockComponent mockButton"
+            ref={triggerRef}
+            style={{margin: '30px 0'}}
+          >
+            Click Me
+          </div>
+          <p>
+            Ennui truffaut artisan drinking vinegar distillery tumeric roof
+            party kickstarter. Leggings vice try-hard cardigan crucifix pork
+            belly poutine. Yuccie 8-bit leggings, kombucha gluten-free
+            post-ironic knausgaard snackwave craft beer. Tumblr shabby chic deep
+            v, irony slow-carb celiac skateboard kale chips succulents ennui
+            franzen.
+          </p>
         </div>
-        <p>Ennui truffaut artisan drinking vinegar distillery tumeric roof party kickstarter. Leggings vice try-hard cardigan crucifix pork belly poutine. Yuccie 8-bit leggings, kombucha gluten-free post-ironic knausgaard snackwave craft beer. Tumblr shabby chic deep v, irony slow-carb celiac skateboard kale chips succulents ennui franzen.</p>
-      </div>
-    </DapperScrollbars>
-  </div>
-)})
+      </DapperScrollbars>
+    </div>
+  )
+})
 
 testPopoverStories.add('Popover Trigger within a scrollable DIV', () => {
   const triggerRef = createRef<HTMLDivElement>()
@@ -340,9 +377,9 @@ testPopoverStories.add('Popover Trigger within a scrollable DIV', () => {
           <>
             <div>
               I'm just a simple popover looking for my
-                <br />
+              <br />
               place in this <strong>vast and beautiful</strong> world.
-                <br />
+              <br />
               Will you help me?
             </div>
           </>
@@ -353,17 +390,52 @@ testPopoverStories.add('Popover Trigger within a scrollable DIV', () => {
         color={ComponentColor.Success}
         type={PopoverType.Outline}
       />
-      <div style={{overflow: 'auto', position: 'absolute', width: '100%', height: '100%', padding: '30px' }}>
-        <p>Lorem ipsum dolor amet mixtape authentic lomo stumptown messenger bag hexagon artisan, beard enamel pin biodiesel keytar tumeric raw denim iceland selfies. Blue bottle banh mi hot chicken plaid irony raclette yr skateboard messenger bag four dollar toast food truck palo santo tote bag. Hella hell of trust fund celiac, shaman whatever intelligentsia prism sriracha man braid fanny pack cardigan af semiotics. Retro freegan locavore, blue bottle hell of tofu austin direct trade williamsburg actually tattooed forage occupy plaid kitsch. Microdosing 3 wolf moon four loko, shabby chic sriracha echo park hell of small batch franzen chia tumeric. Hashtag authentic echo park, cornhole flannel sartorial cloud bread taxidermy.</p>
-        <p>Poke tbh synth, everyday carry hella small batch XOXO salvia literally 3 wolf moon pork belly. Blog marfa migas iPhone, crucifix salvia tousled. Actually hella polaroid kitsch waistcoat tote bag forage palo santo single-origin coffee cornhole umami fingerstache. Heirloom gastropub twee pickled tumblr snackwave portland leggings raclette shabby chic kitsch knausgaard. Lumbersexual palo santo woke forage narwhal meh letterpress. Gochujang YOLO cardigan, hexagon hell of kogi succulents squid brooklyn.</p>
+      <div
+        style={{
+          overflow: 'auto',
+          position: 'absolute',
+          width: '100%',
+          height: '100%',
+          padding: '30px',
+        }}
+      >
+        <p>
+          Lorem ipsum dolor amet mixtape authentic lomo stumptown messenger bag
+          hexagon artisan, beard enamel pin biodiesel keytar tumeric raw denim
+          iceland selfies. Blue bottle banh mi hot chicken plaid irony raclette
+          yr skateboard messenger bag four dollar toast food truck palo santo
+          tote bag. Hella hell of trust fund celiac, shaman whatever
+          intelligentsia prism sriracha man braid fanny pack cardigan af
+          semiotics. Retro freegan locavore, blue bottle hell of tofu austin
+          direct trade williamsburg actually tattooed forage occupy plaid
+          kitsch. Microdosing 3 wolf moon four loko, shabby chic sriracha echo
+          park hell of small batch franzen chia tumeric. Hashtag authentic echo
+          park, cornhole flannel sartorial cloud bread taxidermy.
+        </p>
+        <p>
+          Poke tbh synth, everyday carry hella small batch XOXO salvia literally
+          3 wolf moon pork belly. Blog marfa migas iPhone, crucifix salvia
+          tousled. Actually hella polaroid kitsch waistcoat tote bag forage palo
+          santo single-origin coffee cornhole umami fingerstache. Heirloom
+          gastropub twee pickled tumblr snackwave portland leggings raclette
+          shabby chic kitsch knausgaard. Lumbersexual palo santo woke forage
+          narwhal meh letterpress. Gochujang YOLO cardigan, hexagon hell of kogi
+          succulents squid brooklyn.
+        </p>
         <div
           className="mockComponent mockButton"
           ref={triggerRef}
-          style={{ margin: '30px 0' }}
+          style={{margin: '30px 0'}}
         >
           Click Me
-      </div>
-        <p>Ennui truffaut artisan drinking vinegar distillery tumeric roof party kickstarter. Leggings vice try-hard cardigan crucifix pork belly poutine. Yuccie 8-bit leggings, kombucha gluten-free post-ironic knausgaard snackwave craft beer. Tumblr shabby chic deep v, irony slow-carb celiac skateboard kale chips succulents ennui franzen.</p>
+        </div>
+        <p>
+          Ennui truffaut artisan drinking vinegar distillery tumeric roof party
+          kickstarter. Leggings vice try-hard cardigan crucifix pork belly
+          poutine. Yuccie 8-bit leggings, kombucha gluten-free post-ironic
+          knausgaard snackwave craft beer. Tumblr shabby chic deep v, irony
+          slow-carb celiac skateboard kale chips succulents ennui franzen.
+        </p>
       </div>
     </div>
   )
