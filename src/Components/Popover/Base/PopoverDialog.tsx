@@ -44,6 +44,8 @@ export interface PopoverDialogProps extends StandardFunctionProps {
   caretSize: number
   /** Adds reasonable styles to popover dialog contents so you do not have to */
   enableDefaultStyles: boolean
+  /** Allows the popover to dismiss itself when the trigger is no longer in view */
+  onHide: () => void
 }
 
 export type PopoverDialogRef = HTMLDivElement
@@ -55,6 +57,7 @@ export const PopoverDialog = forwardRef<PopoverDialogRef, PopoverDialogProps>(
       type,
       style,
       color,
+      onHide,
       testID,
       contents,
       position,
@@ -106,12 +109,26 @@ export const PopoverDialog = forwardRef<PopoverDialogRef, PopoverDialogProps>(
       'cf-popover--contents__default-styles': enableDefaultStyles,
     })
 
+    const hidePopoverWhenOutOfView = (entries: IntersectionObserverEntry[]): void => {
+      if (!entries.length) {
+        return
+      }
+
+      if (entries[0].isIntersecting === false) {
+        onHide()
+      }
+    }
+
+    const observer = new IntersectionObserver(hidePopoverWhenOutOfView)
+    
     useLayoutEffect((): (() => void) => {
       handleUpdateStyles()
+      observer.observe(triggerRef.current) 
       window.addEventListener('scroll', handleUpdateStyles, true)
       window.addEventListener('resize', handleUpdateStyles)
 
       return (): void => {
+        observer.disconnect()
         window.removeEventListener('scroll', handleUpdateStyles)
         window.removeEventListener('resize', handleUpdateStyles)
       }

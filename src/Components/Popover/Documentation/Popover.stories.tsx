@@ -314,6 +314,7 @@ testPopoverStories.add('Popover Trigger within a DapperScrollbars', () => {
     <DapperScrollbars style={{width: '100%', height: '100%', position: 'absolute'}}>
       <div style={{padding: '30px'}}>
         <p>Lorem ipsum dolor amet mixtape authentic lomo stumptown messenger bag hexagon artisan, beard enamel pin biodiesel keytar tumeric raw denim iceland selfies. Blue bottle banh mi hot chicken plaid irony raclette yr skateboard messenger bag four dollar toast food truck palo santo tote bag. Hella hell of trust fund celiac, shaman whatever intelligentsia prism sriracha man braid fanny pack cardigan af semiotics. Retro freegan locavore, blue bottle hell of tofu austin direct trade williamsburg actually tattooed forage occupy plaid kitsch. Microdosing 3 wolf moon four loko, shabby chic sriracha echo park hell of small batch franzen chia tumeric. Hashtag authentic echo park, cornhole flannel sartorial cloud bread taxidermy.</p>
+          <p>Poke tbh synth, everyday carry hella small batch XOXO salvia literally 3 wolf moon pork belly. Blog marfa migas iPhone, crucifix salvia tousled. Actually hella polaroid kitsch waistcoat tote bag forage palo santo single-origin coffee cornhole umami fingerstache. Heirloom gastropub twee pickled tumblr snackwave portland leggings raclette shabby chic kitsch knausgaard. Lumbersexual palo santo woke forage narwhal meh letterpress. Gochujang YOLO cardigan, hexagon hell of kogi succulents squid brooklyn.</p>
         <p>Poke tbh synth, everyday carry hella small batch XOXO salvia literally 3 wolf moon pork belly. Blog marfa migas iPhone, crucifix salvia tousled. Actually hella polaroid kitsch waistcoat tote bag forage palo santo single-origin coffee cornhole umami fingerstache. Heirloom gastropub twee pickled tumblr snackwave portland leggings raclette shabby chic kitsch knausgaard. Lumbersexual palo santo woke forage narwhal meh letterpress. Gochujang YOLO cardigan, hexagon hell of kogi succulents squid brooklyn.</p>
         <div
           className="mockComponent mockButton"
@@ -330,10 +331,6 @@ testPopoverStories.add('Popover Trigger within a DapperScrollbars', () => {
 
 testPopoverStories.add('Popover Trigger within a scrollable DIV', () => {
   const triggerRef = createRef<HTMLDivElement>()
-
-  document.addEventListener('scroll', () => {
-    console.log('scroll')
-  }, true)
 
   return (
     <div className="story--example">
