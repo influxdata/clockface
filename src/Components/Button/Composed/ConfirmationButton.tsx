@@ -1,5 +1,5 @@
 // Libraries
-import React, {FunctionComponent, useRef, RefObject} from 'react'
+import React, { FunctionComponent, useRef, RefObject, CSSProperties} from 'react'
 
 // Components
 import {Button, ButtonProps} from './Button'
@@ -30,6 +30,10 @@ interface ConfirmationButtonProps
   popoverColor?: ComponentColor
   /** Means of applying color to popover */
   popoverType?: PopoverType
+  /** Allows customization of Popover */
+  popoverClassName?: string
+  /** Allows customization of Popover */
+  popoverStyle?: CSSProperties
   /** Function to call when confirmation is clicked, passes 'value' prop in */
   onConfirm: (returnValue?: any) => void
   /** Optional value to have passed back via onConfirm */
@@ -46,6 +50,8 @@ export const ConfirmationButton: FunctionComponent<ConfirmationButtonProps> = ({
   titleText,
   onConfirm,
   returnValue,
+  popoverStyle,
+  popoverClassName,
   confirmationLabel,
   confirmationButtonText,
   size = ComponentSize.Small,
@@ -66,6 +72,8 @@ export const ConfirmationButton: FunctionComponent<ConfirmationButtonProps> = ({
   return (
     <>
       <Popover
+        className={popoverClassName}
+        style={popoverStyle}
         color={popoverColor}
         type={popoverType}
         enableDefaultStyles={false}
@@ -82,9 +90,8 @@ export const ConfirmationButton: FunctionComponent<ConfirmationButtonProps> = ({
         )}
         testID={`${testID}--popover`}
         disabled={isDisabled}
-        style={style}
         triggerRef={triggerRef}
-      />
+        />
       <Button
         className={className}
         placeIconAfterText={placeIconAfterText}
@@ -94,6 +101,7 @@ export const ConfirmationButton: FunctionComponent<ConfirmationButtonProps> = ({
         ref={triggerRef}
         status={status}
         color={color}
+        style={style}
         shape={shape}
         text={text}
         size={size}
