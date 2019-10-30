@@ -12,7 +12,6 @@ import {
   number,
   object,
 } from '@storybook/addon-knobs'
-import {withState} from '@dump247/storybook-state'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
@@ -25,15 +24,7 @@ import {ComponentColor, ComponentSize, ButtonShape} from '../../../Types'
 import RadioReadme from './Radio.md'
 import RadioButtonReadme from './RadioButton.md'
 import RadioExampleReadme from './RadioExample.md'
-
-// State
-interface StoryState {
-  activeItemID: string
-}
-
-const initialState: StoryState = {
-  activeItemID: 'mode-compose',
-}
+import {useState} from '@storybook/addons'
 
 const radioStories = storiesOf('Components|Radios/Family', module).addDecorator(
   withKnobs
@@ -162,42 +153,46 @@ radioStories.add(
 
 radioExampleStories.add(
   'Note Editor Mode Toggle',
-  withState(initialState)(({store}) => (
-    <div className="story--example">
-      <div style={{width: `${number('Parent width', 240)}px`}}>
-        <Radio
-          size={
-            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-          }
-          color={
-            ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Default')
-            ]
-          }
-          shape={ButtonShape.StretchToFit}
-        >
-          <Radio.Button
-            titleText="Compose your Note using Markdown"
-            id="mode-compose"
-            active={store.state.activeItemID === 'mode-compose'}
-            value="mode-compose"
-            onClick={activeItemID => store.set({activeItemID})}
+  () => {
+    const [activeItemID, updateActiveItemID] = useState<string>('mode-compose')
+
+    return (
+      <div className="story--example">
+        <div style={{width: `${number('Parent width', 240)}px`}}>
+          <Radio
+            size={
+              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+            }
+            color={
+              ComponentColor[
+                select('color', mapEnumKeys(ComponentColor), 'Default')
+              ]
+            }
+            shape={ButtonShape.StretchToFit}
           >
-            Compose
-          </Radio.Button>
-          <Radio.Button
-            titleText="See a preview of your Note"
-            id="mode-preview"
-            active={store.state.activeItemID === 'mode-preview'}
-            value="mode-preview"
-            onClick={activeItemID => store.set({activeItemID})}
-          >
-            Preview
-          </Radio.Button>
-        </Radio>
+            <Radio.Button
+              titleText="Compose your Note using Markdown"
+              id="mode-compose"
+              active={activeItemID === 'mode-compose'}
+              value="mode-compose"
+              onClick={activeItemID => updateActiveItemID(activeItemID)}
+            >
+              Compose
+            </Radio.Button>
+            <Radio.Button
+              titleText="See a preview of your Note"
+              id="mode-preview"
+              active={activeItemID === 'mode-preview'}
+              value="mode-preview"
+              onClick={activeItemID => updateActiveItemID(activeItemID)}
+            >
+              Preview
+            </Radio.Button>
+          </Radio>
+        </div>
       </div>
-    </div>
-  )),
+    )
+  },
   {
     readme: {
       content: marked(RadioExampleReadme),

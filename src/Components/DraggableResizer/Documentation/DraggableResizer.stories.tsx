@@ -5,7 +5,6 @@ import marked from 'marked'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, select, number} from '@storybook/addon-knobs'
-import {withState} from '@dump247/storybook-state'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Types
@@ -19,19 +18,7 @@ import DraggableResizerReadme from './DraggableResizer.md'
 import DraggableResizerPanelReadme from './DraggableResizerPanel.md'
 import DraggableResizerExampleAReadme from './DraggableResizerExampleA.md'
 import DraggableResizerExampleBReadme from './DraggableResizerExampleB.md'
-
-// State
-interface StoryState {
-  handlePositions: number[]
-}
-
-const twoPanelsInitialState: StoryState = {
-  handlePositions: [0.5],
-}
-
-const fourPanelsInitialState: StoryState = {
-  handlePositions: [0.25, 0.5, 0.75],
-}
+import {useState} from '@storybook/addons'
 
 const draggableResizerExamplesStories = storiesOf(
   'Layout|Draggable Resizer/Examples',
@@ -126,7 +113,8 @@ draggableResizerStories.add(
 
 draggableResizerExamplesStories.add(
   '2 Panels',
-  withState(twoPanelsInitialState)(({store}) => {
+  () => {
+    const [position, updatePosition] = useState<number[]>([0.5])
     const draggableResizerPanelRef1 = createRef<DraggableResizerPanelRef>()
     const draggableResizerPanelRef2 = createRef<DraggableResizerPanelRef>()
 
@@ -152,8 +140,8 @@ draggableResizerExamplesStories.add(
               ]
             ]
           }
-          {...store.state}
-          onChangePositions={handlePositions => store.set({handlePositions})}
+          handlePositions={position}
+          onChangePositions={handlePositions => updatePosition(handlePositions)}
         >
           <DraggableResizer.Panel ref={draggableResizerPanelRef1}>
             <div className="mockCard">
@@ -171,7 +159,7 @@ draggableResizerExamplesStories.add(
         </div>
       </div>
     )
-  }),
+  },
   {
     readme: {
       content: marked(DraggableResizerExampleAReadme),
@@ -181,7 +169,9 @@ draggableResizerExamplesStories.add(
 
 draggableResizerExamplesStories.add(
   '4 Panels',
-  withState(fourPanelsInitialState)(({store}) => {
+  () => {
+    const [positions, updatePositions] = useState<number[]>([0.25, 0.5, 0.75])
+
     const draggableResizerPanelRef1 = createRef<DraggableResizerPanelRef>()
     const draggableResizerPanelRef2 = createRef<DraggableResizerPanelRef>()
     const draggableResizerPanelRef3 = createRef<DraggableResizerPanelRef>()
@@ -211,8 +201,10 @@ draggableResizerExamplesStories.add(
               ]
             ]
           }
-          {...store.state}
-          onChangePositions={handlePositions => store.set({handlePositions})}
+          handlePositions={positions}
+          onChangePositions={handlePositions =>
+            updatePositions(handlePositions)
+          }
         >
           <DraggableResizer.Panel ref={draggableResizerPanelRef1}>
             <div className="mockCard">
@@ -240,7 +232,7 @@ draggableResizerExamplesStories.add(
         </div>
       </div>
     )
-  }),
+  },
   {
     readme: {
       content: marked(DraggableResizerExampleBReadme),
