@@ -231,6 +231,7 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
         caretSize={caretSize}
         position={position}
         contents={contents(handleHideDialog)}
+        visible={visible}
         testID={testID}
         onHide={handleHideDialog}
         color={color}
