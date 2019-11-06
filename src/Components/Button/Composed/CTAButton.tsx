@@ -20,7 +20,7 @@ import {
   ButtonType,
 } from '../../../Types'
 
-interface CTAButtonProps extends Omit<ButtonBaseProps, 'size'>{
+interface CTAButtonProps extends Omit<ButtonBaseProps, 'size'> {
   /** Text to be displayed on button */
   text?: string
   /** Icon to be displayed to the left of text or in place of text */
@@ -52,12 +52,9 @@ export const CTAButton = forwardRef<CTAButtonRef, CTAButtonProps>(
     },
     ref
   ) => {
-    const CTAButtonClass = classnames(
-      `cf-cta-button`,
-      {
-        [`${className}`]: className,
-      }
-    )
+    const CTAButtonClass = classnames(`cf-cta-button`, {
+      [`${className}`]: className,
+    })
 
     return (
       <ButtonBase
@@ -82,7 +79,11 @@ export const CTAButton = forwardRef<CTAButtonRef, CTAButtonProps>(
           icon={icon}
         />
         {status === ComponentStatus.Loading && (
-          <div className={`cf-button-spinner cf-button-spinner--${ComponentSize.Large}`} />
+          <div
+            className={`cf-button-spinner cf-button-spinner--${
+              ComponentSize.Large
+            }`}
+          />
         )}
       </ButtonBase>
     )

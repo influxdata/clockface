@@ -5,9 +5,7 @@ import React, {FunctionComponent} from 'react'
 import {Icon} from '../../Icon/Icon'
 
 // Types
-import {
-  IconFont,
-} from '../../../Types'
+import {IconFont} from '../../../Types'
 
 export interface IconAndTextProps {
   text?: string
@@ -15,7 +13,11 @@ export interface IconAndTextProps {
   placeIconAfterText?: boolean
 }
 
-export const IconAndText: FunctionComponent<IconAndTextProps> = ({text, icon, placeIconAfterText = false}) => {
+export const IconAndText: FunctionComponent<IconAndTextProps> = ({
+  text,
+  icon,
+  placeIconAfterText = false,
+}) => {
   const iconEl = !!icon && <Icon glyph={icon} className="cf-button-icon" />
   const textEl = !!text && <span className="cf-button--label">{text}</span>
 

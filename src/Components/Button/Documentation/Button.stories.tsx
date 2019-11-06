@@ -12,8 +12,8 @@ import {Button, ButtonRef} from '../Composed/Button'
 import {SquareButton, SquareButtonRef} from '../Composed/SquareButton'
 import {ConfirmationButton} from '../Composed/ConfirmationButton'
 import {DismissButton, DismissButtonRef} from '../Composed/DismissButton'
-import { ButtonBase, ButtonBaseRef } from '../Base/ButtonBase'
-import { CTAButton, CTAButtonRef} from '../Composed/CTAButton'
+import {ButtonBase, ButtonBaseRef} from '../Base/ButtonBase'
+import {CTAButton, CTAButtonRef} from '../Composed/CTAButton'
 
 // Types
 import {
@@ -271,30 +271,30 @@ buttonComposedStories.add(
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
         </div>
-          <CTAButton
-            ref={buttonRef}
-            onClick={() => alert('Clicked!')}
-            color={
-              ComponentColor[
+        <CTAButton
+          ref={buttonRef}
+          onClick={() => alert('Clicked!')}
+          color={
+            ComponentColor[
               select('color', mapEnumKeys(ComponentColor), 'Secondary')
-              ]
-            }
-            status={
-              ComponentStatus[
+            ]
+          }
+          status={
+            ComponentStatus[
               select('status', mapEnumKeys(ComponentStatus), 'Default')
-              ]
-            }
+            ]
+          }
           shape={
             ButtonShape[select('shape', mapEnumKeys(ButtonShape), 'Default')]
           }
           text={text('text', 'Buy Now')}
           icon={
             IconFont[
-            select('icon', { None: 'none', ...mapEnumKeys(IconFont) }, 'None')
+              select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
             ]
           }
           placeIconAfterText={boolean('placeIconAfterText', false)}
-          />
+        />
       </div>
     )
   },
