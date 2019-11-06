@@ -12,7 +12,8 @@ import {Button, ButtonRef} from '../Composed/Button'
 import {SquareButton, SquareButtonRef} from '../Composed/SquareButton'
 import {ConfirmationButton} from '../Composed/ConfirmationButton'
 import {DismissButton, DismissButtonRef} from '../Composed/DismissButton'
-import {ButtonBase, ButtonBaseRef} from '../Base/ButtonBase'
+import { ButtonBase, ButtonBaseRef } from '../Base/ButtonBase'
+import { CTAButton, CTAButtonRef} from '../Composed/CTAButton'
 
 // Types
 import {
@@ -31,6 +32,7 @@ import ButtonReadme from './Button.md'
 import SquareButtonReadme from './SquareButton.md'
 import ConfirmationButtonReadme from './ConfirmationButton.md'
 import DismissButtonReadme from './DismissButton.md'
+import CTAButtonReadme from './CTAButton.md'
 
 const buttonBaseStories = storiesOf(
   'Components|Buttons/Base',
@@ -249,6 +251,56 @@ buttonComposedStories.add(
   {
     readme: {
       content: marked(DismissButtonReadme),
+    },
+  }
+)
+
+buttonComposedStories.add(
+  'CTAButton',
+  () => {
+    const buttonRef = createRef<CTAButtonRef>()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(buttonRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+          <CTAButton
+            ref={buttonRef}
+            onClick={() => alert('Clicked!')}
+            color={
+              ComponentColor[
+              select('color', mapEnumKeys(ComponentColor), 'Secondary')
+              ]
+            }
+            status={
+              ComponentStatus[
+              select('status', mapEnumKeys(ComponentStatus), 'Default')
+              ]
+            }
+          shape={
+            ButtonShape[select('shape', mapEnumKeys(ButtonShape), 'Default')]
+          }
+          text={text('text', 'Buy Now')}
+          icon={
+            IconFont[
+            select('icon', { None: 'none', ...mapEnumKeys(IconFont) }, 'None')
+            ]
+          }
+          placeIconAfterText={boolean('placeIconAfterText', false)}
+          />
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(CTAButtonReadme),
     },
   }
 )
