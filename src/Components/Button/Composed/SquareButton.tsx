@@ -5,9 +5,6 @@ import React, {forwardRef, MouseEvent} from 'react'
 import {ButtonBase, ButtonBaseRef} from '../Base/ButtonBase'
 import {Icon} from '../../Icon/Icon'
 
-// Styles
-import '../Button.scss'
-
 // Types
 import {
   ComponentStatus,
