@@ -33,11 +33,17 @@ $cf-cta-button--height: $cf-marg-e + $cf-marg-b;
   }
 }
 
+// Square Shape
 .cf-button-lg.cf-cta-button.cf-button-square {
   width: $cf-cta-button--height;
   padding: 0;
 
+  > .cf-button--label {
+    display: none;
+  }
+
   > .cf-button-icon {
     margin-right: 0;
+    margin-left: 0;
   }
 }
