@@ -1,6 +1,10 @@
 # Changelog
 
-### 1.0.4 (Unreleased)
+### 1.0.5 (Unreleased)
+
+- [#372](https://github.com/influxdata/clockface/pull/372): Introduce `CTAButton` as a composed version of `Button`
+
+### 1.0.4
 
 - [#366](https://github.com/influxdata/clockface/pull/366): Prevent children of `OverlayHeader` from disrupting the position of the dismiss button
 - [#366](https://github.com/influxdata/clockface/pull/366): Allow more customization of `Popover` within `ConfirmationButton`
