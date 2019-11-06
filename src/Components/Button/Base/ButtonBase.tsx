@@ -15,7 +15,7 @@ import {
   StandardFunctionProps,
 } from '../../../Types'
 
-interface ButtonBaseProps extends StandardFunctionProps {
+export interface ButtonBaseProps extends StandardFunctionProps {
   /** Function to be called on button click */
   onClick?: (e?: MouseEvent<HTMLButtonElement>) => void
   /** Text to be displayed on hover tooltip */
@@ -23,17 +23,17 @@ interface ButtonBaseProps extends StandardFunctionProps {
   /** Keyboard control tab order  */
   tabIndex?: number
   /** Button color */
-  color: ComponentColor
+  color?: ComponentColor
   /** Button size */
-  size: ComponentSize
+  size?: ComponentSize
   /** Square or rectangle */
-  shape: ButtonShape
+  shape?: ButtonShape
   /** Button status state default, loading, or disabled */
-  status: ComponentStatus
+  status?: ComponentStatus
   /** Toggles button highlighted active state */
-  active: boolean
+  active?: boolean
   /** Button type of 'button' or 'submit' */
-  type: ButtonType
+  type?: ButtonType
 }
 
 export type ButtonBaseRef = HTMLButtonElement

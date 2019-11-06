@@ -1,9 +1,9 @@
 // Libraries
-import React, {MouseEvent, forwardRef, FunctionComponent} from 'react'
+import React, {MouseEvent, forwardRef} from 'react'
 
 // Components
 import {ButtonBase, ButtonBaseRef} from '../Base/ButtonBase'
-import {Icon} from '../../Icon/Icon'
+import {IconAndText} from './IconAndText'
 
 // Styles
 import '../Button.scss'
@@ -105,32 +105,3 @@ export const Button = forwardRef<ButtonRef, ButtonProps>(
 )
 
 Button.displayName = 'Button'
-
-const IconAndText: FunctionComponent<{
-  text?: string
-  icon?: IconFont | string
-  placeIconAfterText: boolean
-}> = ({text, icon, placeIconAfterText}) => {
-  const iconEl = !!icon && <Icon glyph={icon} className="cf-button-icon" />
-  const textEl = !!text && <span className="cf-button--label">{text}</span>
-
-  if (!icon && !text) {
-    return null
-  }
-
-  if (placeIconAfterText) {
-    return (
-      <>
-        {textEl}
-        {iconEl}
-      </>
-    )
-  }
-
-  return (
-    <>
-      {iconEl}
-      {textEl}
-    </>
-  )
-}
