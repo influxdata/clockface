@@ -46,6 +46,8 @@ export interface PopoverDialogProps extends StandardFunctionProps {
   enableDefaultStyles: boolean
   /** Allows the popover to dismiss itself when the trigger is no longer in view */
   onHide: () => void
+  /** This keeps the Popover visible no matter what */
+  visible?: boolean
 }
 
 export type PopoverDialogRef = HTMLDivElement
@@ -59,6 +61,7 @@ export const PopoverDialog = forwardRef<PopoverDialogRef, PopoverDialogProps>(
       color,
       onHide,
       testID,
+      visible,
       contents,
       position,
       className,
@@ -112,6 +115,10 @@ export const PopoverDialog = forwardRef<PopoverDialogRef, PopoverDialogProps>(
     const hidePopoverWhenOutOfView = (
       entries: IntersectionObserverEntry[]
     ): void => {
+      if (visible) {
+        return
+      }
+
       if (!!entries.length && entries[0].isIntersecting === false) {
         onHide()
       }
