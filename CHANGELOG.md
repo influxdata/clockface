@@ -3,6 +3,7 @@
 ### 1.0.5 (Unreleased)
 
 - [#372](https://github.com/influxdata/clockface/pull/372): Introduce `CTAButton` as a composed version of `Button`
+- [#368](https://github.com/influxdata/clockface/pull/368): Ensure `Popover` visible prop is not overridden by being out of view
 
 ### 1.0.4
 
