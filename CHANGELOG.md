@@ -2,6 +2,7 @@
 
 ### 1.0.5 (Unreleased)
 
+- [#373](https://github.com/influxdata/clockface/pull/373): Handle NaN appropriately in numeric Inputs by updating value, type, and status
 - [#368](https://github.com/influxdata/clockface/pull/368): Ensure `Popover` visible prop is not overridden by being out of view
 
 ### 1.0.4
