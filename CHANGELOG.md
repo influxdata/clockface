@@ -2,6 +2,9 @@
 
 ### 1.0.5 (Unreleased)
 
+- [#375](https://github.com/influxdata/clockface/pull/375): Add `onMouseEnter`, `onMouseLeave`, `onMouseOver`, and `onMouseOut` to all button components
+- [#375](https://github.com/influxdata/clockface/pull/375): Ensure all button component prop interfaces are extending `ButtonBaseProps`
+- [#373](https://github.com/influxdata/clockface/pull/373): Handle NaN appropriately in numeric Inputs by updating value, type, and status
 - [#372](https://github.com/influxdata/clockface/pull/372): Introduce `CTAButton` as a composed version of `Button`
 - [#368](https://github.com/influxdata/clockface/pull/368): Ensure `Popover` visible prop is not overridden by being out of view
 

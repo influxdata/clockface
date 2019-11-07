@@ -1,5 +1,5 @@
 // Libraries
-import React, {MouseEvent, forwardRef} from 'react'
+import React, {forwardRef} from 'react'
 
 // Components
 import {ButtonBase, ButtonBaseRef} from '../Base/ButtonBase'
@@ -16,32 +16,14 @@ import {
   ComponentSize,
   ComponentColor,
   ComponentStatus,
-  StandardFunctionProps,
 } from '../../../Types'
+import {ButtonBaseProps} from '../Base/ButtonBase'
 
-export interface ButtonProps extends StandardFunctionProps {
+export interface ButtonProps extends ButtonBaseProps {
   /** Text to be displayed on button */
   text?: string
-  /** Function to be called on button click */
-  onClick?: (e?: MouseEvent<HTMLButtonElement>) => void
   /** Icon to be displayed to the left of text or in place of text */
   icon?: IconFont
-  /** Text to be displayed on hover tooltip */
-  titleText?: string
-  /** Keyboard control tab order  */
-  tabIndex?: number
-  /** Button color */
-  color?: ComponentColor
-  /** Button size */
-  size?: ComponentSize
-  /** Square or rectangle */
-  shape?: ButtonShape
-  /** Button status state default, loading, or disabled */
-  status?: ComponentStatus
-  /** Toggles button highlighted active state */
-  active?: boolean
-  /** Button type of 'button' or 'submit' */
-  type?: ButtonType
   /** Reverse ordering of text and icon */
   placeIconAfterText?: boolean
 }
@@ -58,6 +40,10 @@ export const Button = forwardRef<ButtonRef, ButtonProps>(
       tabIndex,
       titleText,
       className,
+      onMouseOut,
+      onMouseOver,
+      onMouseEnter,
+      onMouseLeave,
       icon = '',
       active = false,
       testID = 'button',
@@ -87,6 +73,10 @@ export const Button = forwardRef<ButtonRef, ButtonProps>(
         status={status}
         testID={testID}
         onClick={onClick}
+        onMouseOut={onMouseOut}
+        onMouseOver={onMouseOver}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
         className={className}
         titleText={titleText || text}
         tabIndex={!!tabIndex ? tabIndex : 0}

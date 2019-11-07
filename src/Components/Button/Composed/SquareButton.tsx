@@ -1,5 +1,5 @@
 // Libraries
-import React, {forwardRef, MouseEvent} from 'react'
+import React, {forwardRef} from 'react'
 
 // Components
 import {ButtonBase, ButtonBaseRef} from '../Base/ButtonBase'
@@ -7,34 +7,19 @@ import {Icon} from '../../Icon/Icon'
 
 // Types
 import {
+  Omit,
   ComponentStatus,
   ComponentColor,
   ComponentSize,
   ButtonShape,
   IconFont,
   ButtonType,
-  StandardFunctionProps,
 } from '../../../Types'
+import {ButtonBaseProps} from '../Base/ButtonBase'
 
-interface SquareButtonProps extends StandardFunctionProps {
-  /** Function to be called on button click */
-  onClick?: (e?: MouseEvent<HTMLButtonElement>) => void
+export interface SquareButtonProps extends Omit<ButtonBaseProps, 'Shape'> {
   /** Icon to be displayed to the left of text or in place of text */
   icon: IconFont
-  /** Text to be displayed on hover tooltip */
-  titleText?: string
-  /** Keyboard control tab order  */
-  tabIndex?: number
-  /** Button color */
-  color?: ComponentColor
-  /** Button size */
-  size?: ComponentSize
-  /** Button status state default, loading, or disabled */
-  status?: ComponentStatus
-  /** Toggles button highlighted active state */
-  active?: boolean
-  /** Button type of 'button' or 'submit' */
-  type?: ButtonType
 }
 
 export type SquareButtonRef = ButtonBaseRef
@@ -55,6 +40,10 @@ export const SquareButton = forwardRef<SquareButtonRef, SquareButtonProps>(
       active = false,
       type = ButtonType.Button,
       testID = 'square-button',
+      onMouseOut,
+      onMouseOver,
+      onMouseEnter,
+      onMouseLeave,
     },
     ref
   ) => {
@@ -65,6 +54,10 @@ export const SquareButton = forwardRef<SquareButtonRef, SquareButtonProps>(
         ref={ref}
         tabIndex={!!tabIndex ? tabIndex : 0}
         onClick={onClick}
+        onMouseOut={onMouseOut}
+        onMouseOver={onMouseOver}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
         testID={testID}
         status={status}
         active={active}

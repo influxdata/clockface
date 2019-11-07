@@ -18,6 +18,14 @@ import {
 export interface ButtonBaseProps extends StandardFunctionProps {
   /** Function to be called on button click */
   onClick?: (e?: MouseEvent<HTMLButtonElement>) => void
+  /** Function to be called on mouse over */
+  onMouseOver?: (e?: MouseEvent<HTMLButtonElement>) => void
+  /** Function to be called on mouse out */
+  onMouseOut?: (e?: MouseEvent<HTMLButtonElement>) => void
+  /** Function to be called on mouse enter */
+  onMouseEnter?: (e?: MouseEvent<HTMLButtonElement>) => void
+  /** Function to be called on mouse leave */
+  onMouseLeave?: (e?: MouseEvent<HTMLButtonElement>) => void
   /** Text to be displayed on hover tooltip */
   titleText?: string
   /** Keyboard control tab order  */
@@ -48,6 +56,10 @@ export const ButtonBase = forwardRef<ButtonBaseRef, ButtonBaseProps>(
       tabIndex,
       titleText,
       className,
+      onMouseOut,
+      onMouseOver,
+      onMouseEnter,
+      onMouseLeave,
       active = false,
       testID = 'button-base',
       type = ButtonType.Button,
@@ -78,6 +90,10 @@ export const ButtonBase = forwardRef<ButtonBaseRef, ButtonBaseProps>(
         className={buttonBaseClass}
         disabled={disabled}
         onClick={onClick}
+        onMouseOut={onMouseOut}
+        onMouseOver={onMouseOver}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
         title={titleText}
         tabIndex={!!tabIndex ? tabIndex : 0}
         type={type}

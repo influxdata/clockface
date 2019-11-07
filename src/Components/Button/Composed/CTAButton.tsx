@@ -42,6 +42,10 @@ export const CTAButton = forwardRef<CTAButtonRef, CTAButtonProps>(
       tabIndex,
       titleText,
       className,
+      onMouseOut,
+      onMouseOver,
+      onMouseEnter,
+      onMouseLeave,
       active = false,
       testID = 'cta-button',
       type = ButtonType.Button,
@@ -62,6 +66,10 @@ export const CTAButton = forwardRef<CTAButtonRef, CTAButtonProps>(
         titleText={titleText}
         tabIndex={tabIndex}
         onClick={onClick}
+        onMouseOut={onMouseOut}
+        onMouseOver={onMouseOver}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
         status={status}
         testID={testID}
         active={active}

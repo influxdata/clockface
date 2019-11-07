@@ -4,6 +4,7 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
+import {useState} from '@storybook/addons'
 import {
   withKnobs,
   radios,
@@ -131,35 +132,41 @@ inputsBaseStories.add(
 
 inputsBaseStories.add(
   'Input (Number)',
-  () => (
-    <div className="story--example">
-      <Input
-        min={number('min', 0)}
-        max={number('max', 50)}
-        value={number('value', 25)}
-        onChange={() => {}}
-        name={text('name', 'Name')}
-        titleText={text('titleText', 'Title Text')}
-        disabledTitleText={text('disabledTitleText', 'Disabled Title Text')}
-        maxLength={number('maxLength', 24)}
-        icon={
-          IconFont[
-            select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
-          ]
-        }
-        style={object('style', defaultInputStyle)}
-        status={
-          ComponentStatus[
-            select('status', mapEnumKeys(ComponentStatus), 'Default')
-          ]
-        }
-        size={
-          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-        }
-        type={InputType.Number}
-      />
-    </div>
-  ),
+  () => {
+    const [value, setValue] = useState<number>(25)
+
+    return (
+      <div className="story--example">
+        <Input
+          min={number('min', 0)}
+          max={number('max', 50)}
+          value={value}
+          onChange={e =>
+            setValue(e.target.value === '' ? NaN : Number(e.target.value))
+          }
+          name={text('name', 'Name')}
+          titleText={text('titleText', 'Title Text')}
+          disabledTitleText={text('disabledTitleText', 'Disabled Title Text')}
+          maxLength={number('maxLength', 24)}
+          icon={
+            IconFont[
+              select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
+            ]
+          }
+          style={object('style', defaultInputStyle)}
+          status={
+            ComponentStatus[
+              select('status', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          type={InputType.Number}
+        />
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(InputReadme),

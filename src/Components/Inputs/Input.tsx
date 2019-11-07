@@ -125,21 +125,27 @@ export const Input = forwardRef<InputRef, InputProps>(
     },
     ref
   ) => {
+    const correctStatus = value === value ? status : ComponentStatus.Error
+
     const inputClass = classnames('cf-input', {
       [`cf-input-${size}`]: size,
       'cf-input__has-checkbox': type === InputType.Checkbox,
       'cf-input__has-icon': icon,
-      'cf-input__valid': status === ComponentStatus.Valid,
-      'cf-input__error': status === ComponentStatus.Error,
-      'cf-input__loading': status === ComponentStatus.Loading,
-      'cf-input__disabled': status === ComponentStatus.Disabled,
+      'cf-input__valid': correctStatus === ComponentStatus.Valid,
+      'cf-input__error': correctStatus === ComponentStatus.Error,
+      'cf-input__loading': correctStatus === ComponentStatus.Loading,
+      'cf-input__disabled': correctStatus === ComponentStatus.Disabled,
       [`${className}`]: className,
     })
 
     const inputCheckboxClass = classnames('cf-input--checkbox', {checked})
 
-    const correctlyTypedValue: string | number =
-      type === InputType.Number ? Number(value) : `${value}`
+    const correctlyTypedValue: string | number = value === value ? value : ''
+    const correctType: string = value === value ? type : 'text'
+    const correctlyTypedMin: string | number | undefined =
+      min === min ? min : ''
+    const correctlyTypedMax: string | number | undefined =
+      max === max ? max : ''
 
     const iconElement = icon && <Icon glyph={icon} className="cf-input-icon" />
 
@@ -150,7 +156,7 @@ export const Input = forwardRef<InputRef, InputProps>(
       <div className={inputClass} style={style} ref={containerRef}>
         {type !== InputType.Checkbox && (
           <StatusIndicator
-            status={status}
+            status={correctStatus}
             shadow={true}
             testID={testID}
             size={size}
@@ -159,14 +165,14 @@ export const Input = forwardRef<InputRef, InputProps>(
         <input
           id={id}
           ref={ref}
-          min={min}
-          max={max}
+          min={correctlyTypedMin}
+          max={correctlyTypedMax}
           step={step}
           checked={checked}
           title={title}
           autoComplete={autocomplete}
           name={name}
-          type={type}
+          type={correctType}
           value={correctlyTypedValue}
           placeholder={placeholder}
           autoFocus={autoFocus}
