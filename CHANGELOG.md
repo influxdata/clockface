@@ -1,6 +1,8 @@
 # Changelog
 
-### 1.0.5 (Unreleased)
+#### 1.0.6 (Unreleased)
+
+#### 1.0.5
 
 - [#375](https://github.com/influxdata/clockface/pull/375): Add `onMouseEnter`, `onMouseLeave`, `onMouseOver`, and `onMouseOut` to all button components
 - [#375](https://github.com/influxdata/clockface/pull/375): Ensure all button component prop interfaces are extending `ButtonBaseProps`
@@ -8,13 +10,13 @@
 - [#372](https://github.com/influxdata/clockface/pull/372): Introduce `CTAButton` as a composed version of `Button`
 - [#368](https://github.com/influxdata/clockface/pull/368): Ensure `Popover` visible prop is not overridden by being out of view
 
-### 1.0.4
+#### 1.0.4
 
 - [#366](https://github.com/influxdata/clockface/pull/366): Prevent children of `OverlayHeader` from disrupting the position of the dismiss button
 - [#366](https://github.com/influxdata/clockface/pull/366): Allow more customization of `Popover` within `ConfirmationButton`
 - [#365](https://github.com/influxdata/clockface/pull/365): Fix attachment of `Popover` when trigger element is nested in a scrolling element
 
-### 1.0.3
+#### 1.0.3
 
 - [#363](https://github.com/influxdata/clockface/pull/363): Remove `@dump247/storybook-state`, `storybook-addon-jsx`, and `react-docgen-typescript-webpack-plugin` dependencies, add hooks to Storybook stories
 - [#360](https://github.com/influxdata/clockface/pull/360): Add gradients in the green-yellow & yellow-red spectrums to the `Gradients` enum
@@ -24,17 +26,17 @@
 - [#350](https://github.com/influxdata/clockface/pull/350): Added explicit check for `className` in Popover `handleTriggerMouseLeave` method
 - [#342](https://github.com/influxdata/clockface/pull/342): Upgrade typescript, eslint, & storybook dependencies
 
-### 1.0.2
+#### 1.0.2
 
 - [#341](https://github.com/influxdata/clockface/pull/341): Refactor `ColorPicker` to accept RegEx string that controls the input value
 - [#341](https://github.com/influxdata/clockface/pull/341): Fix `ColorPicker` bug causing the component to report stale status
 
-### 1.0.1
+#### 1.0.1
 
 - [#340](https://github.com/influxdata/clockface/pull/340): Refactor `ColorPicker` to accept a custom validation function
 - [#340](https://github.com/influxdata/clockface/pull/340): Refactor `ColorPicker` and `FormValidationComponent` to work more like controlled components
 
-### 1.0.0
+## 1.0.0
 
 - [#334](https://github.com/influxdata/clockface/pull/334): [Breaking] Prepend `cf-` to all `DatePicker` class names
 - [#334](https://github.com/influxdata/clockface/pull/334): Convert `DatePicker` and `DateRangePicker` components to `FunctionComponent` and wrap with `forwardRef`
@@ -81,19 +83,19 @@
 - [#313](https://github.com/influxdata/clockface/pull/313): [Breaking] Remove `widthPixels` prop from `Input` in favor of `style` with default width
 - [#313](https://github.com/influxdata/clockface/pull/313): [Breaking] Remove `widthPixels` prop from `TextArea` in favor of `style` with default width
 
-### 0.0.32
+#### 0.0.32
 
 - [#281](https://github.com/influxdata/clockface/pull/281): Revert absolute path changes
 
-### 0.0.31
+#### 0.0.31
 
 - [#278](https://github.com/influxdata/clockface/pull/278): Add rollup-plugin-includepaths to handle unresolved paths
 
-### 0.0.30
+#### 0.0.30
 
 - [#277](https://github.com/influxdata/clockface/pull/277): Fix export paths to be absolute instead of relative
 
-### 0.0.29
+#### 0.0.29
 
 - [#276](https://github.com/influxdata/clockface/pull/276): Replace all relative import paths with absolute paths
 - [#275](https://github.com/influxdata/clockface/pull/275): Support absolute import paths
@@ -112,7 +114,7 @@
 - [#265](https://github.com/influxdata/clockface/pull/265): [Breaking] Make `PageHeader` and sub-components responsive
 - [#264](https://github.com/influxdata/clockface/pull/264): [Breaking] Update `SelectableCard` component with top-label design
 
-### 0.0.28
+#### 0.0.28
 
 - [#256](https://github.com/influxdata/clockface/pull/256): Add markdown documentation for `NavMenu` component family
 - [#255](https://github.com/influxdata/clockface/pull/255): Introduce `TextPopover` as a simplified composed version of `Popover`
@@ -123,9 +125,9 @@
 - [#252](https://github.com/influxdata/clockface/pull/252): Add new colors and gradients from InfluxData Brand guidelines
 - [#251](https://github.com/influxdata/clockface/pull/251): Introduce `Wand`, `WrenchNav`, and `DisksNav` icons to icon font
 
-### 0.0.27 - 🆘
+#### 0.0.27 - 🆘
 
-### 0.0.26
+#### 0.0.26
 
 - [#243](https://github.com/influxdata/clockface/pull/243): [Breaking] Make `PanelHeader` composable (we recommend using `PanelTitle` as a child instead of `title` prop)
 - [#243](https://github.com/influxdata/clockface/pull/243): Do not render `ResourceCardName` & `ResourceCardEditableName` as links if no `onClick` prop is passed
@@ -140,7 +142,7 @@
 - [#243](https://github.com/influxdata/clockface/pull/243): Ensure `Popover` dialog can be moused into when show interaction is `Hover`
 - [#243](https://github.com/influxdata/clockface/pull/243): Ensure the hidden input inside `SelectableCard` is controlled
 
-### 0.0.25
+#### 0.0.25
 
 - [#231](https://github.com/influxdata/clockface/pull/231): Introduce `RangeSlider` input component
 - [#229](https://github.com/influxdata/clockface/pull/229): Introduce `SelectableCard` as a port of `CardSelect` from the InfluxDB repository
@@ -151,13 +153,13 @@
 - [#219](https://github.com/influxdata/clockface/pull/219): [Breaking] remove `color` prop from `Icon`
 - [#219](https://github.com/influxdata/clockface/pull/219): Ensure `className` prop in `TextArea` is being implemented correctly
 
-### 0.0.24
+#### 0.0.24
 
 - [#211](https://github.com/influxdata/clockface/pull/211): Ensure `ConfirmationButton` is exported
 
-### 0.0.23 - 🆘
+#### 0.0.23 - 🆘
 
-### 0.0.22
+#### 0.0.22
 
 - [#208](https://github.com/influxdata/clockface/pull/208): Fix `TextArea` onChange not returning event
 - [#207](https://github.com/influxdata/clockface/pull/207): Introduce `TextBlock`, `DismissButton`, and `FlexChild` components
@@ -166,11 +168,11 @@
 - [#202](https://github.com/influxdata/clockface/pull/202): Introduce standardized `Popover` component
 - [#197](https://github.com/influxdata/clockface/pull/197): Port `AutoInput` component from InfluxDB and add to `Input` family
 
-### 0.0.21
+#### 0.0.21
 
 - [#198](https://github.com/influxdata/clockface/pull/198): Botched release 😢
 
-### 0.0.20
+#### 0.0.20
 
 - [#193](https://github.com/influxdata/clockface/pull/193): Extend `Dropdowns` to optionally drop up, fix liminal gap in dropdown parent element, and introduce `DropdownItemEmpty` component
 - [#192](https://github.com/influxdata/clockface/pull/192): Add missing prefix to restore padding around page content
