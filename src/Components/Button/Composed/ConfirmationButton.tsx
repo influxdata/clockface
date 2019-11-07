@@ -18,8 +18,17 @@ import {
   PopoverType,
 } from '../../../Types'
 
-interface ConfirmationButtonProps
-  extends Omit<ButtonProps, 'onClick' | 'active' | 'type'> {
+export interface ConfirmationButtonProps
+  extends Omit<
+    ButtonProps,
+    | 'onClick'
+    | 'active'
+    | 'type'
+    | 'onMouseEnter'
+    | 'onMouseLeave'
+    | 'onMouseOver'
+    | 'onMouseOut'
+  > {
   /** Text to appear in confirmation popover */
   confirmationLabel: string
   /** Text to appear in confirmation button */

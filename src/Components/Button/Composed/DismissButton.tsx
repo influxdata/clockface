@@ -1,5 +1,5 @@
 // Libraries
-import React, {forwardRef, MouseEvent} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Components
@@ -10,28 +10,15 @@ import './DismissButton.scss'
 
 // Types
 import {
-  StandardFunctionProps,
   ComponentStatus,
   ComponentColor,
   IconFont,
   ComponentSize,
   ButtonType,
 } from '../../../Types'
+import {ButtonBaseProps} from '../Base/ButtonBase'
 
-export interface DismissButtonProps extends StandardFunctionProps {
-  /** Function to be called on button click */
-  onClick?: (e?: MouseEvent<HTMLButtonElement>) => void
-  /** Button color */
-  color?: ComponentColor
-  /** Button size */
-  size?: ComponentSize
-  /** Button status state default, loading, or disabled */
-  status?: ComponentStatus
-  /** Toggles button highlighted active state */
-  active?: boolean
-  /** Button type of 'button' or 'submit' */
-  type?: ButtonType
-}
+export interface DismissButtonProps extends ButtonBaseProps {}
 
 export type DismissButtonRef = SquareButtonRef
 
@@ -41,7 +28,13 @@ export const DismissButton = forwardRef<DismissButtonRef, DismissButtonProps>(
       id,
       style,
       onClick,
+      tabIndex,
+      titleText,
       className,
+      onMouseOut,
+      onMouseOver,
+      onMouseEnter,
+      onMouseLeave,
       active = false,
       type = ButtonType.Button,
       testID = 'dismiss-button',
@@ -57,6 +50,8 @@ export const DismissButton = forwardRef<DismissButtonRef, DismissButtonProps>(
 
     return (
       <SquareButton
+        tabIndex={tabIndex}
+        titleText={titleText}
         icon={IconFont.Remove}
         color={color}
         className={SquareButtonClass}
@@ -64,6 +59,10 @@ export const DismissButton = forwardRef<DismissButtonRef, DismissButtonProps>(
         id={id}
         size={size}
         onClick={onClick}
+        onMouseOut={onMouseOut}
+        onMouseOver={onMouseOver}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
         status={status}
         active={active}
         type={type}
