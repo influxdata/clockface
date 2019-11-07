@@ -5,9 +5,6 @@ import React, {forwardRef} from 'react'
 import {ButtonBase, ButtonBaseRef} from '../Base/ButtonBase'
 import {Icon} from '../../Icon/Icon'
 
-// Styles
-import '../Button.scss'
-
 // Types
 import {
   Omit,

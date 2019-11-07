@@ -1,0 +1,49 @@
+@import '../../../Styles/modules';
+
+/*
+  CTA (Call to Action) Button Styles
+  ------------------------------------------------------------------------------
+*/
+
+$cf-cta-button--height: $cf-marg-e + $cf-marg-b;
+
+.cf-button-lg.cf-cta-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: $cf-cta-button--height;
+  padding: 0 $cf-marg-d;
+  
+  > .cf-button-icon {
+    font-size: floor($cf-text-base-4 * 1.25);
+
+    &:first-child {
+      margin-right: 0.4em;
+    }
+    &:last-child {
+      margin-left: 0.4em;
+    }
+  }
+  
+  > .cf-button--label {
+    font-size: $cf-text-base-4;
+    margin: 0;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+  }
+}
+
+// Square Shape
+.cf-button-lg.cf-cta-button.cf-button-square {
+  width: $cf-cta-button--height;
+  padding: 0;
+
+  > .cf-button--label {
+    display: none;
+  }
+
+  > .cf-button-icon {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}

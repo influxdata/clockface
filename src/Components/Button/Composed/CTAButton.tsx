@@ -1,25 +1,26 @@
 // Libraries
 import React, {forwardRef} from 'react'
+import classnames from 'classnames'
 
 // Components
-import {ButtonBase, ButtonBaseRef} from '../Base/ButtonBase'
+import {ButtonBase, ButtonBaseRef, ButtonBaseProps} from '../Base/ButtonBase'
 import {IconAndText} from './IconAndText'
 
 // Styles
-import '../Button.scss'
+import './CTAButton.scss'
 
 // Types
 import {
+  Omit,
   IconFont,
-  ButtonType,
-  ButtonShape,
-  ComponentSize,
-  ComponentColor,
   ComponentStatus,
+  ComponentColor,
+  ComponentSize,
+  ButtonShape,
+  ButtonType,
 } from '../../../Types'
-import {ButtonBaseProps} from '../Base/ButtonBase'
 
-export interface ButtonProps extends ButtonBaseProps {
+interface CTAButtonProps extends Omit<ButtonBaseProps, 'size'> {
   /** Text to be displayed on button */
   text?: string
   /** Icon to be displayed to the left of text or in place of text */
@@ -28,13 +29,14 @@ export interface ButtonProps extends ButtonBaseProps {
   placeIconAfterText?: boolean
 }
 
-export type ButtonRef = ButtonBaseRef
+export type CTAButtonRef = ButtonBaseRef
 
-export const Button = forwardRef<ButtonRef, ButtonProps>(
+export const CTAButton = forwardRef<CTAButtonRef, CTAButtonProps>(
   (
     {
       id,
       text,
+      icon,
       style,
       onClick,
       tabIndex,
@@ -44,42 +46,40 @@ export const Button = forwardRef<ButtonRef, ButtonProps>(
       onMouseOver,
       onMouseEnter,
       onMouseLeave,
-      icon = '',
       active = false,
-      testID = 'button',
+      testID = 'cta-button',
       type = ButtonType.Button,
-      size = ComponentSize.Small,
-      placeIconAfterText = false,
       shape = ButtonShape.Default,
       color = ComponentColor.Default,
       status = ComponentStatus.Default,
+      placeIconAfterText,
     },
     ref
   ) => {
-    if (!icon && !text) {
-      throw new Error('Button requires either "text" or "icon" props')
-    }
+    const CTAButtonClass = classnames(`cf-cta-button`, {
+      [`${className}`]: className,
+    })
 
     return (
       <ButtonBase
-        id={id}
-        ref={ref}
-        size={size}
-        type={type}
-        color={color}
-        shape={shape}
-        style={style}
-        active={active}
-        status={status}
-        testID={testID}
+        className={CTAButtonClass}
+        titleText={titleText}
+        tabIndex={tabIndex}
         onClick={onClick}
         onMouseOut={onMouseOut}
         onMouseOver={onMouseOver}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
-        className={className}
-        titleText={titleText || text}
-        tabIndex={!!tabIndex ? tabIndex : 0}
+        status={status}
+        testID={testID}
+        active={active}
+        color={color}
+        style={style}
+        shape={shape}
+        size={ComponentSize.Large}
+        type={type}
+        ref={ref}
+        id={id}
       >
         <IconAndText
           placeIconAfterText={placeIconAfterText}
@@ -87,11 +87,15 @@ export const Button = forwardRef<ButtonRef, ButtonProps>(
           icon={icon}
         />
         {status === ComponentStatus.Loading && (
-          <div className={`cf-button-spinner cf-button-spinner--${size}`} />
+          <div
+            className={`cf-button-spinner cf-button-spinner--${
+              ComponentSize.Large
+            }`}
+          />
         )}
       </ButtonBase>
     )
   }
 )
 
-Button.displayName = 'Button'
+CTAButton.displayName = 'CTAButton'
