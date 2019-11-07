@@ -7,8 +7,8 @@ We use `yarn` to manage dependencies and build the project.
 
 Get to know our key maintainers:
 
-@alexpaxton
-@mavarius
+[@alexpaxton](https://github.com/alexpaxton)
+[@mavarius](https://github.com/mavarius)
 
 ## Submitting a Pull Request
 
