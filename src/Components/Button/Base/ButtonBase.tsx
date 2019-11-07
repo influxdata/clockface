@@ -31,17 +31,17 @@ export interface ButtonBaseProps extends StandardFunctionProps {
   /** Keyboard control tab order  */
   tabIndex?: number
   /** Button color */
-  color: ComponentColor
+  color?: ComponentColor
   /** Button size */
-  size: ComponentSize
+  size?: ComponentSize
   /** Square or rectangle */
-  shape: ButtonShape
+  shape?: ButtonShape
   /** Button status state default, loading, or disabled */
-  status: ComponentStatus
+  status?: ComponentStatus
   /** Toggles button highlighted active state */
-  active: boolean
+  active?: boolean
   /** Button type of 'button' or 'submit' */
-  type: ButtonType
+  type?: ButtonType
 }
 
 export type ButtonBaseRef = HTMLButtonElement
