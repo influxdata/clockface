@@ -54,11 +54,10 @@ export const RightClickMenu = forwardRef<
         return
       }
 
-      const menuStyles = {...calculateRightClickMenuStyles(
-        mouseOffset,
-        triggerRef,
-        menuRef
-      ), ...style}
+      const menuStyles = {
+        ...calculateRightClickMenuStyles(mouseOffset, triggerRef, menuRef),
+        ...style,
+      }
 
       const menuStyleString = convertCSSPropertiesToString(menuStyles)
 
