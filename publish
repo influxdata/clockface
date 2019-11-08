@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e 
+set -e
 
 RELEASE_TYPE=${1:-patch}
 
@@ -26,7 +26,7 @@ echo "Installing dependencies"
 yarn -s install --frozen-lockfile
 
 echo "Running tests"
-yarn -s run test
+yarn -s run ci
 
 echo "Building production build"
 yarn run build
