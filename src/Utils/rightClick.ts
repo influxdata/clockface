@@ -37,7 +37,7 @@ export const calculateRightClickMenuStyles = (
       const top = `${mouseY}px`
       menuStyles = {...menuStyles, top}
     } else {
-      const top = `${mouseY + menuRect.height}px`
+      const top = `${mouseY - menuRect.height}px`
       menuStyles = {...menuStyles, top}
     }
   }
