@@ -45,6 +45,7 @@ body.sb-show-main {
   min-height: $form-sm-height;
   padding: $cf-marg-a;
   line-height: 16px;
+  user-select: none;
   text-align: center;
 
   &.alt-color {
