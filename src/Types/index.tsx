@@ -437,3 +437,8 @@ export enum Wrap {
   Soft = 'soft',
   Off = 'off',
 }
+
+export interface Coordinates {
+  x: number
+  y: number
+}
