@@ -6,7 +6,7 @@ import marked from 'marked'
 import {storiesOf} from '@storybook/react'
 
 // Components
-import {ClickOutside} from './ClickOutside'
+import {ClickOutside} from '../ClickOutside'
 
 // Notes
 import ClickOutsideReadme from './ClickOutside.md'
