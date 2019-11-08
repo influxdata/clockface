@@ -35,7 +35,7 @@ rightClickStories.add(
 
     return (
       <div className="story--example">
-        <div className="mockComponent mockButton" ref={triggerRef}>
+        <div className="clickTestZone" ref={triggerRef}>
           Right Click Me
         </div>
         <RightClick.RightClick
