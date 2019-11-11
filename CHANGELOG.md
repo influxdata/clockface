@@ -2,6 +2,8 @@
 
 #### 1.0.6 (Unreleased)
 
+- [#377](https://github.com/influxdata/clockface/pull/377): Introduce `RightClick` component
+
 #### 1.0.5
 
 - [#375](https://github.com/influxdata/clockface/pull/375): Add `onMouseEnter`, `onMouseLeave`, `onMouseOver`, and `onMouseOut` to all button components
