@@ -1,0 +1,82 @@
+@import '../../Styles/modules';
+
+/*
+  Snippet
+  ------------------------------------------------------------------------------
+*/
+
+.cf-snippet {
+  background-color: #f00;
+  border-radius: $cf-radius;
+
+  pre[class*="language-"] {
+    padding: $cf-marg-b;
+    margin: 0;
+  }
+  
+  pre[class*="language-"], code[class*="language-"] {
+    font-family: $cf-code-font;
+    font-weight: 600;
+    font-size: 13px;
+    background-color: $g0-obsidian;
+    text-shadow: none;
+
+    span.token {
+      color: $c-dreamsicle;
+    }
+    span.keyword {
+      color: $c-pool;
+    }
+    span.number {
+      color: $c-pool;
+    }
+    span.function {
+      color: $c-pool;
+    }
+    span.string {
+      color: $c-pool;
+    }
+    span.boolean {
+      color: $c-pool;
+    }
+    span.operator {
+      color: $c-pool;
+    }
+    span.punctuation {
+      color: $c-pool;
+    }
+    span.atrule {
+      color: $c-pool;
+    }
+    span.url {
+      color: $c-pool;
+    }
+    span.selector {
+      color: $c-pool;
+    }
+    span.property {
+      color: $c-pool;
+    }
+    span.important {
+      color: $c-pool;
+    }
+    span.style {
+      color: $c-pool;
+    }
+    span.comment {
+      color: $g10-wolf;
+    }
+    span.builtin {
+      color: $c-dreamsicle;
+    }
+    // span.entity[title=">"] {
+    //   cursor: text;
+    //   visibility: hidden;
+    //   &:after {
+    //     visibility: visible;
+    //     content: ">";
+    //     font-size: 13px;
+    //   }
+    // }
+  }
+}
