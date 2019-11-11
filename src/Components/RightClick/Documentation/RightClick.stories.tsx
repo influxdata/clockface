@@ -1,10 +1,10 @@
 // Libraries
-import React, {createRef} from 'react'
+import React, {useRef} from 'react'
 import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, select, text, object} from '@storybook/addon-knobs'
+import {withKnobs, select, text, object, boolean} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
@@ -24,8 +24,8 @@ const rightClickStories = storiesOf(
 rightClickStories.add(
   'RightClick',
   () => {
-    const triggerRef = createRef<HTMLDivElement>()
-    const rightClickMenuRef = createRef<RightClickRef>()
+    const triggerRef = useRef<HTMLDivElement>(null)
+    const rightClickMenuRef = useRef<RightClickRef>(null)
 
     const logRef = (): void => {
       /* eslint-disable */
@@ -40,8 +40,9 @@ rightClickStories.add(
         </div>
         <RightClick.RightClick
           ref={rightClickMenuRef}
-          className={text('className', '')}
           triggerRef={triggerRef}
+          disabled={boolean('disabled', false)}
+          className={text('className', '')}
           style={object('style', {})}
           color={
             ComponentColor[

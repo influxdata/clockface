@@ -77,21 +77,22 @@ export const RightClickRoot = forwardRef<RightClickRef, RightClickProps>(
     }, [])
 
     const handleTriggerClick = (e: MouseEvent): void => {
+      if (disabled || !triggerRef.current) {
+        // triggerRef.current can be set to null in a specific context:
+        // If you are using RightClick within a FunctionComponent and
+        // are using createRef it will not work. You must use useRef
+        return
+      }
+      
       e.preventDefault()
       e.stopPropagation()
 
-      if (disabled) {
-        return
-      }
+      const {clientX, clientY} = e
+      const {top, left} = triggerRef.current.getBoundingClientRect()
 
-      if (triggerRef.current) {
-        const {clientX, clientY} = e
-        const {top, left} = triggerRef.current.getBoundingClientRect()
-
-        mouseOffset.current = {
-          x: Math.abs(left - clientX),
-          y: Math.abs(top - clientY),
-        }
+      mouseOffset.current = {
+        x: Math.ceil(Math.abs(left - clientX)),
+        y: Math.ceil(Math.abs(top - clientY)),
       }
 
       handleShowMenu()
