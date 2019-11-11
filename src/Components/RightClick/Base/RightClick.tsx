@@ -83,7 +83,7 @@ export const RightClickRoot = forwardRef<RightClickRef, RightClickProps>(
         // are using createRef it will not work. You must use useRef
         return
       }
-      
+
       e.preventDefault()
       e.stopPropagation()
 
