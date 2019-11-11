@@ -66,6 +66,7 @@ rightClickStories.add(
           >
             Carrot
           </RightClick.MenuItem>
+          <RightClick.Divider />
           <RightClick.MenuItem
             onClick={value => {
               alert(value)

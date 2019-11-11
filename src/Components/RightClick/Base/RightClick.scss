@@ -13,8 +13,7 @@
   position: fixed;
   z-index: 9999;
   background-color: $g2-kevlar;
-  padding: $cf-marg-a;
-  border-radius: $cf-radius * 2;
+  border-radius: $cf-radius;
   border-style: solid;
   border-width: $cf-border;
 }
@@ -29,7 +28,7 @@
 }
 
 .cf-right-click--menu-item {
-  padding: $cf-marg-a $cf-marg-b;
+  padding: ($cf-marg-a * 1.5) $cf-marg-b;
   font-size: $cf-text-base;
   line-height: $cf-text-base;
   color: $g11-sidewalk;
@@ -38,7 +37,14 @@
   user-select: none;
   margin: 0;
   transition: color 0.25s ease, background-color 0.25s ease;
-  border-radius: $cf-radius-sm;
+
+  &:first-child {
+    border-radius: $cf-radius-sm $cf-radius-sm 0 0;
+  }
+
+  &:last-child {
+    border-radius: 0 0 $cf-radius-sm $cf-radius-sm;
+  }
 
   &:hover {
     cursor: pointer;
@@ -54,6 +60,14 @@
     background-color: transparent;
   }
 }
+
+.cf-right-click--divider {
+  height: $cf-border;
+  width: 100%;
+  background-color: $g5-pepper;
+  margin: $cf-border 0;
+}
+
 /*
   Color Modifiers
   ------------------------------------------------------------------------------
