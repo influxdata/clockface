@@ -15,7 +15,6 @@ import {
   InputType,
   StandardFunctionProps,
   ComponentColor,
-  Orientation,
   ComponentSize,
   AutoComplete,
   ComponentStatus,
@@ -40,8 +39,6 @@ export interface RangeSliderProps extends StandardFunctionProps {
   size?: ComponentSize
   /** Color of slider handle */
   color?: ComponentColor
-  /** Color of slider track */
-  orientation?: Orientation
   /** Fill the track before the handle to indicate percentage */
   fill?: boolean
   /** Displays the min and max values below the slider */

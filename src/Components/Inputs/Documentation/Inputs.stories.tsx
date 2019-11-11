@@ -44,7 +44,6 @@ import {
   AlignItems,
   InputType,
   AutoInputMode,
-  Orientation,
 } from '../../../Types'
 
 // Notes
@@ -584,11 +583,6 @@ inputsComposedStories.add(
           value={number('value', 50)}
           step={number('step', 0)}
           onChange={() => {}}
-          orientation={
-            Orientation[
-              select('orientation', mapEnumKeys(Orientation), 'Horizontal')
-            ]
-          }
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
