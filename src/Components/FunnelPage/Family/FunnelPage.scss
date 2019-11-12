@@ -5,6 +5,10 @@
   ------------------------------------------------------------------------------
 */
 
+$funnel-page--base-font: 16px;
+$funnel-page--tiny-gutter: $cf-marg-b;
+$funnel-page--gutter: $cf-marg-d;
+
 .cf-funnel-page {
   width: 100%;
   height: 100%;
@@ -13,6 +17,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 .cf-funnel-page--scroll {
@@ -35,10 +40,12 @@
 }
 
 .cf-funnel-page--content {
+  margin: 0 auto;
   width: 100%;
+  max-width: $page--funnel-max-width;
   text-align: center;
-  padding: $cf-marg-b;
-  font-size: 16px;
+  padding: $funnel-page--tiny-gutter;
+  font-size: $funnel-page--base-font;
   color: $c-moonstone;
 
   h1,
@@ -67,11 +74,57 @@
 
 @media screen and (min-width: $grid--breakpoint-md) {
   .cf-funnel-page--content {
-    padding: $cf-marg-d;
+    padding: $funnel-page--gutter;
   }
 }
 
 .cf-funnel-page--logo {
   width: 100%;
   display: flex;
+}
+
+/*
+  Funnel Page Footer
+  ------------------------------------------------------------------------------
+*/
+
+.cf-funnel-page--footer {
+  width: 100%;
+  background-color: $g2-kevlar;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $cf-marg-c;
+    transform: translateY(-100%);
+    background-color: #f00;
+    pointer-events: none;
+    z-index: 5;
+    @include gradient-v(rgba($g0-obsidian, 0), rgba($g0-obsidian, 0.25));
+  }
+}
+
+.cf-funnel-page--footer-section,
+.cf-funnel-page--footer-container {
+  display: flex;
+  justify-content: center;
+}
+
+.cf-funnel-page--footer-container {
+  width: 100%;
+  padding: 0 $funnel-page--tiny-gutter;
+  max-width: $page--funnel-max-width;
+}
+
+@media screen and (min-width: $grid--breakpoint-md) {
+  .cf-funnel-page--footer-container {
+    padding: 0 $funnel-page--gutter;
+  }
 }
