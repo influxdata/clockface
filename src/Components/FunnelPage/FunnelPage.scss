@@ -41,8 +41,27 @@
   font-size: 16px;
   color: $c-moonstone;
 
+  h1,
+  h2,
+  h3,
   strong {
     color: $g20-white;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-weight: 300;
+  }
+
+  h4,
+  h5,
+  h6 {
+    font-weight: 600;
+  }
+
+  strong {
+    font-weight: 900;
   }
 }
 
