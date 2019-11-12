@@ -1,4 +1,9 @@
-import React, { ChangeEvent, forwardRef, FunctionComponent, CSSProperties} from 'react'
+import React, {
+  ChangeEvent,
+  forwardRef,
+  FunctionComponent,
+  CSSProperties,
+} from 'react'
 import classnames from 'classnames'
 
 // Components
@@ -104,14 +109,21 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
     }
 
     const labelStyle = {
-      flex: `0 0 ${labelCharLength * 11}px`
+      flex: `0 0 ${labelCharLength * 11}px`,
     }
 
     const cleanedValue = valueWithBounds(value, min, max)
 
     return (
       <div className={rangeSliderClass} style={style}>
-        <RangeSliderLabel value={min} prefix={labelPrefix} suffix={labelSuffix} style={labelStyle} hidden={hideLabels} testID={`${testID}--min`} />
+        <RangeSliderLabel
+          value={min}
+          prefix={labelPrefix}
+          suffix={labelSuffix}
+          style={labelStyle}
+          hidden={hideLabels}
+          testID={`${testID}--min`}
+        />
         <Input
           id={id}
           ref={ref}
@@ -127,9 +139,16 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
           className={rangeSliderInputClass}
           inputStyle={inputStyle}
           autocomplete={autocomplete}
-          />
+        />
         <div className="cf-range-slider--focus" />
-        <RangeSliderLabel value={max} prefix={labelPrefix} suffix={labelSuffix} style={labelStyle} hidden={hideLabels} testID={`${testID}--max`} />
+        <RangeSliderLabel
+          value={max}
+          prefix={labelPrefix}
+          suffix={labelSuffix}
+          style={labelStyle}
+          hidden={hideLabels}
+          testID={`${testID}--max`}
+        />
       </div>
     )
   }
@@ -161,13 +180,24 @@ interface RangeSliderLabelProps {
   testID: string
 }
 
-const RangeSliderLabel: FunctionComponent<RangeSliderLabelProps> = ({value, prefix, suffix, hidden, style, testID}) => {
+const RangeSliderLabel: FunctionComponent<RangeSliderLabelProps> = ({
+  value,
+  prefix,
+  suffix,
+  hidden,
+  style,
+  testID,
+}) => {
   if (hidden) {
     return null
   }
 
   return (
-    <span className="cf-range-slider--label" style={style} data-testid={testID}>{prefix}{value}{suffix}</span>
+    <span className="cf-range-slider--label" style={style} data-testid={testID}>
+      {prefix}
+      {value}
+      {suffix}
+    </span>
   )
 }
 
