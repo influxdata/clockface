@@ -1,5 +1,5 @@
 // Libraries
-import React, {RefObject, createRef} from 'react'
+import React, {RefObject, createRef, ChangeEvent} from 'react'
 import marked from 'marked'
 
 // Storybook
@@ -44,7 +44,6 @@ import {
   AlignItems,
   InputType,
   AutoInputMode,
-  Orientation,
 } from '../../../Types'
 
 // Notes
@@ -565,7 +564,12 @@ inputsComposedStories.add(
 inputsComposedStories.add(
   'Range Slider',
   () => {
+    const [rangeSliderValue, setRangeSliderValue] = useState<number>(50)
     const rangeSliderRef: RefObject<RangeSliderRef> = createRef()
+
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
+      setRangeSliderValue(parseInt(e.target.value))
+    }
 
     const handleLogRef = (): void => {
       /* eslint-disable */
@@ -581,14 +585,9 @@ inputsComposedStories.add(
           ref={rangeSliderRef}
           min={number('min', 0)}
           max={number('max', 100)}
-          value={number('value', 50)}
+          value={rangeSliderValue}
           step={number('step', 0)}
-          onChange={() => {}}
-          orientation={
-            Orientation[
-              select('orientation', mapEnumKeys(Orientation), 'Horizontal')
-            ]
-          }
+          onChange={handleInputChange}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
@@ -597,6 +596,8 @@ inputsComposedStories.add(
               select('color', mapEnumKeys(ComponentColor), 'Primary')
             ]
           }
+          labelPrefix={text('labelPrefix', '')}
+          labelSuffix={text('labelSuffix', '')}
           fill={boolean('fill', true)}
           hideLabels={boolean('hide labels', false)}
           style={object('style', exampleRangeSliderStyle)}
