@@ -3,7 +3,7 @@ import {CSSProperties} from 'react'
 import chroma from 'chroma-js'
 
 // Constants
-import {getColorsFromGradient} from '../Constants/colors'
+import {getColorsFromGradient} from '../Utils/colors'
 
 // Types
 import {
