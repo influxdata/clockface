@@ -2,6 +2,9 @@
 
 #### 1.0.6 (Unreleased)
 
+- [#389](https://github.com/influxdata/clockface/pull/389): Move `RangeSlider` labels inside visible rectangle
+- [#389](https://github.com/influxdata/clockface/pull/389): Add optional `labelPrefix` and `labelSuffix` props to `RangeSlider`
+
 #### 1.0.5
 
 - [#379](https://github.com/influxdata/clockface/pull/379): Add tests and testing CI infrastructure
