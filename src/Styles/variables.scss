@@ -39,6 +39,15 @@ $page--sub-title-weight: 500;
 $page--background: $g1-raven;
 
 /*
+   Responsive Breakpoints
+   -----------------------------------------------------------------------------
+*/
+
+$grid--breakpoint-sm: 750px;
+$grid--breakpoint-md: 1080px;
+$grid--breakpoint-lg: 1500px;
+
+/*
    Motifs
    -----------------------------------------------------------------------------
    Goal is to re-use these variables as much as possible to ensure powerful
