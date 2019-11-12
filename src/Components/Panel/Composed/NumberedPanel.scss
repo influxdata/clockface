@@ -1,0 +1,59 @@
+@import '../../../Styles/modules';
+
+/*
+   Numbered Panels
+   -----------------------------------------------------------------------------
+*/
+
+$numbered-panel-gutter-small: $cf-marg-d;
+$numbered-panel-gutter: $cf-marg-e;
+
+.cf-numbered-panel {
+  padding: 0 $numbered-panel-gutter-small;
+
+  @media screen and (min-width: 1080px) {
+    padding: 0 $numbered-panel-gutter;
+  }
+}
+
+.cf-numbered-panel--indicator {
+  user-select: none;
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba($g0-obsidian, 0.25);
+  font-weight: 900;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  color: $c-honeydew;
+}
+
+/*
+  Size Modifiers
+  ------------------------------------------------------------------------------
+*/
+
+@mixin numberedPanelIndicatorSizeModifier($fontSize, $diameter, $offset) {
+  font-size: $fontSize;
+  width: $diameter;
+  height: $diameter;
+  line-height: $diameter;
+  top: ($offset * 2) + ($fontSize * 0.75);
+  left: ($numbered-panel-gutter-small / 2) + $offset;
+
+  @media screen and (min-width: 1080px) {
+    left: ($numbered-panel-gutter / 2) + $offset;
+  }
+}
+
+.cf-numbered-panel--indicator__xs {
+  @include numberedPanelIndicatorSizeModifier($form-xs-font, $form-xs-height, $form-xs-padding)
+}
+.cf-numbered-panel--indicator__sm {
+  @include numberedPanelIndicatorSizeModifier($form-sm-font, $form-sm-height, $form-sm-padding)
+}
+.cf-numbered-panel--indicator__md {
+  @include numberedPanelIndicatorSizeModifier($form-md-font, $form-md-height, $form-md-padding)
+}
+.cf-numbered-panel--indicator__lg {
+  @include numberedPanelIndicatorSizeModifier($form-lg-font, $form-lg-height, $form-lg-padding)
+}
