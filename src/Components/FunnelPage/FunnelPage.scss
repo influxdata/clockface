@@ -1,0 +1,58 @@
+@import '../../Styles/modules';
+
+/*
+  Funnel Page
+  ------------------------------------------------------------------------------
+*/
+
+.cf-funnel-page {
+  width: 100%;
+  height: 100%;
+  flex: 1 0 0;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cf-funnel-page--scroll {
+  z-index: 3;
+}
+
+.cf-funnel-page--gradient {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+
+  & + .cf-funnel-page--gradient {
+    z-index: 1;
+
+    & + .cf-funnel-page--gradient {
+      z-index: 2;
+    }
+  }
+}
+
+.cf-funnel-page--content {
+  width: 100%;
+  text-align: center;
+  padding: $cf-marg-b;
+  font-size: 16px;
+  color: $c-moonstone;
+
+  strong {
+    color: $g20-white;
+  }
+}
+
+@media screen and (min-width: $grid--breakpoint-md) {
+  .cf-funnel-page--content {
+    padding: $cf-marg-d;
+  }
+}
+
+.cf-funnel-page--logo {
+  width: 100%;
+  display: flex;
+}
