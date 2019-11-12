@@ -108,56 +108,88 @@ $slider-hover: $g17-whisper;
   }
 }
 
-.cf-range-slider--wrapper {
+.cf-range-slider {
+  display: flex;
+  align-items: center;
   width: 100%;
+  border-radius: $cf-radius;
+  background: $slider-bg;
+  position: relative;
 }
 
-.cf-range-slider--container {
-  width: 100%;
-  height: 30px;
-  background: $slider-bg;
-  border: 2px solid $slider-track;
-  border-radius: $cf-radius;
+.cf-range-slider--input {
+  flex: 1 0 0;
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0 $cf-marg-c;
-  transition: border-color 0.25s ease;
+}
 
-  &:hover {
-    border-color: $slider-hover-border;
+.cf-range-slider--label {
+  font-size: 12px;
+  font-weight: 600;
+  @extend %no-user-select;
+
+  &:first-of-type {
+    text-align: left;
+  }
+
+  &:last-of-type {
+    text-align: right;
   }
 }
 
-.cf-range-slider--labels {
-  margin-top: $cf-marg-a;
-  padding: 0 $cf-marg-c;
-  display: inline-flex;
-  width: 100%;
-  justify-content: space-between;
+.cf-range-slider--focus {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: $cf-border solid $slider-track;
+  border-radius: $cf-radius;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  pointer-events: none;
+}
 
-  .cf-range-slider--bound {
-    text-align: center;
-    font-size: 12px;
-    font-weight: 600;
-    @extend %no-user-select;
-  }
+.cf-input:hover + .cf-range-slider--focus {
+  border-color: $cf-input-border--hover;
+}
+
+.cf-input__focused + .cf-range-slider--focus,
+.cf-input__focused:hover + .cf-range-slider--focus {
+  box-shadow: 0 0 6px 0 $cf-input-border--focused;
+  border-color: $cf-input-border--focused;
 }
 
 /*
   Size Modifiers
   ------------------------------------------------------------------------------
 */
-@mixin sliderSizeModifier($fontSize, $height, $containerHeight) {
+@mixin rangeSliderSizeModifier($fontSize, $height, $containerHeight, $padding) {
   $slider-handle-mod-height: $height + 10px;
+  padding: 0 $padding;
 
-  &.cf-range-slider--container {
+  &.cf-range-slider--input {
     height: $containerHeight;
+  }
+
+  .cf-range-slider--label {
+    font-size: $fontSize;
+
+    &:first-of-type {
+      margin-right: $padding;
+    }
+    &:last-of-type {
+      margin-left: $padding;
+    }
   }
 
   input[type='range'] {
     height: $height;
+    
+    &:focus {
+      box-shadow: none;
+    }
 
     &::-webkit-slider-runnable-track {
       height: $height;
@@ -166,6 +198,7 @@ $slider-hover: $g17-whisper;
     &::-webkit-slider-thumb {
       height: $slider-handle-mod-height;
       width: $slider-handle-mod-height;
+      border-radius: 50%;
       margin-top: -(($slider-handle-mod-height/2) - ($height/2));
     }
 
@@ -188,31 +221,31 @@ $slider-hover: $g17-whisper;
     }
   }
 
-  &.cf-range-slider--fill {
+  &.cf-range-slider__fill {
     ::-moz-range-progress {
       height: $height;
     }
   }
 }
 
-.cf-input-xs {
-  @include sliderSizeModifier($form-xs-font, $cf-marg-a, $form-xs-height);
+.cf-range-slider__xs {
+  @include rangeSliderSizeModifier($form-xs-font, $cf-marg-a, $form-xs-height, $form-xs-padding);
 }
-.cf-input-sm {
-  @include sliderSizeModifier($form-sm-font, ($cf-marg-a + 2), $form-sm-height);
+.cf-range-slider__sm {
+  @include rangeSliderSizeModifier($form-sm-font, ($cf-marg-a + 2), $form-sm-height, $form-sm-padding);
 }
-.cf-input-md {
-  @include sliderSizeModifier($form-md-font, $cf-marg-b, $form-md-height);
+.cf-range-slider__md {
+  @include rangeSliderSizeModifier($form-md-font, $cf-marg-b, $form-md-height, $form-md-padding);
 }
-.cf-input-lg {
-  @include sliderSizeModifier($form-lg-font, ($cf-marg-b + 2), $form-lg-height);
+.cf-range-slider__lg {
+  @include rangeSliderSizeModifier($form-lg-font, ($cf-marg-b + 2), $form-lg-height, $form-lg-padding);
 }
 
 /*
   Color Modifiers
   ------------------------------------------------------------------------------
 */
-@mixin handleColorModifier($bg, $bgHover, $bgActive) {
+@mixin rangeSliderColorModifier($bg, $bgHover, $bgActive) {
   input[type='range'] {
     &::-webkit-slider-thumb {
       background: $bg;
@@ -242,23 +275,23 @@ $slider-hover: $g17-whisper;
   }
 }
 
-.cf-range-slider--default {
-  @include handleColorModifier($g7-graphite, $g8-storm, $g9-mountain);
+.cf-range-slider__default {
+  @include rangeSliderColorModifier($g7-graphite, $g8-storm, $g9-mountain);
 }
-.cf-range-slider--primary {
-  @include handleColorModifier($c-pool, $c-laser, $c-hydrogen);
+.cf-range-slider__primary {
+  @include rangeSliderColorModifier($c-pool, $c-laser, $c-hydrogen);
 }
-.cf-range-slider--secondary {
-  @include handleColorModifier($c-star, $c-comet, $c-potassium);
+.cf-range-slider__secondary {
+  @include rangeSliderColorModifier($c-star, $c-comet, $c-potassium);
 }
-.cf-range-slider--success {
-  @include handleColorModifier($c-rainforest, $c-honeydew, $c-wasabi);
+.cf-range-slider__success {
+  @include rangeSliderColorModifier($c-rainforest, $c-honeydew, $c-wasabi);
 }
-.cf-range-slider--warning {
-  @include handleColorModifier($c-pineapple, $c-thunder, $c-daisy);
+.cf-range-slider__warning {
+  @include rangeSliderColorModifier($c-pineapple, $c-thunder, $c-daisy);
 }
-.cf-range-slider--danger {
-  @include handleColorModifier($c-curacao, $c-dreamsicle, $c-tungsten);
+.cf-range-slider__danger {
+  @include rangeSliderColorModifier($c-curacao, $c-dreamsicle, $c-tungsten);
 }
 
 /*
@@ -266,7 +299,7 @@ $slider-hover: $g17-whisper;
   ------------------------------------------------------------------------------
 */
 
-.cf-range-slider--container.cf-input__disabled {
+.cf-range-slider--input.cf-input__disabled {
   border-color: $slider-track-disabled;
 
   &:hover {
@@ -274,7 +307,7 @@ $slider-hover: $g17-whisper;
   }
 }
 
-.cf-input__disabled + .cf-range-slider--labels {
+.cf-range-slider__disabled .cf-range-slider--label {
   color: $slider-disabled-text;
   font-style: italic;
 }
