@@ -42,6 +42,9 @@ alertStories.add(
     return (
       <div className="mockPageWrapper">
         <div className="mockPage">
+          <div className="story--test-buttons">
+            <button onClick={logRef}>Log Ref</button>
+          </div>
           <AppWrapper>
             <FunnelPage ref={funnelPageRef} logo={logo}>
               <h2>Use H2 for Funnel Page titles</h2>
@@ -100,9 +103,6 @@ alertStories.add(
               </p>
             </FunnelPage>
           </AppWrapper>
-        </div>
-        <div className="story--test-buttons">
-          <button onClick={logRef}>Log Ref</button>
         </div>
       </div>
     )

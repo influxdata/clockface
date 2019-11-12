@@ -108,7 +108,14 @@ export const FunnelPage = forwardRef<FunnelPageRef, FunnelPageProps>(
             data-testid={`${testID}--content`}
             style={style}
           >
-            {logo ? <div className="cf-funnel-page--logo">{logo}</div> : null}
+            {logo ? (
+              <div
+                className="cf-funnel-page--logo"
+                data-testid={`${testID}--logo`}
+              >
+                {logo}
+              </div>
+            ) : null}
             {children}
           </div>
         </DapperScrollbars>
