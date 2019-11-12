@@ -5,6 +5,7 @@ import React, {
   KeyboardEvent,
   forwardRef,
   RefObject,
+  useState,
 } from 'react'
 import classnames from 'classnames'
 
@@ -125,10 +126,12 @@ export const Input = forwardRef<InputRef, InputProps>(
     },
     ref
   ) => {
+    const [isFocused, setFocus] = useState<boolean>(autoFocus)
     const correctStatus = value === value ? status : ComponentStatus.Error
 
     const inputClass = classnames('cf-input', {
       [`cf-input-${size}`]: size,
+      'cf-input__focused': isFocused,
       'cf-input__has-checkbox': type === InputType.Checkbox,
       'cf-input__has-icon': icon,
       'cf-input__valid': correctStatus === ComponentStatus.Valid,
@@ -137,6 +140,22 @@ export const Input = forwardRef<InputRef, InputProps>(
       'cf-input__disabled': correctStatus === ComponentStatus.Disabled,
       [`${className}`]: className,
     })
+
+    const handleInputFocus = (e: ChangeEvent<HTMLInputElement>): void => {
+      setFocus(true)
+
+      if (onFocus) {
+        onFocus(e)
+      }
+    }
+
+    const handleInputBlur = (e: ChangeEvent<HTMLInputElement>): void => {
+      setFocus(false)
+
+      if (onBlur) {
+        onBlur(e)
+      }
+    }
 
     const inputCheckboxClass = classnames('cf-input--checkbox', {checked})
 
@@ -178,8 +197,8 @@ export const Input = forwardRef<InputRef, InputProps>(
           autoFocus={autoFocus}
           spellCheck={spellCheck}
           onChange={onChange}
-          onBlur={onBlur}
-          onFocus={onFocus}
+          onBlur={handleInputBlur}
+          onFocus={handleInputFocus}
           onKeyPress={onKeyPress}
           onKeyUp={onKeyUp}
           onKeyDown={onKeyDown}
