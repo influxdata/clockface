@@ -1,4 +1,4 @@
-import React, {ChangeEvent, forwardRef} from 'react'
+import React, { ChangeEvent, forwardRef, FunctionComponent, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Components
@@ -43,6 +43,10 @@ export interface RangeSliderProps extends StandardFunctionProps {
   fill?: boolean
   /** Displays the min and max values below the slider */
   hideLabels?: boolean
+  /** Adds a prefix to labels */
+  labelPrefix?: string
+  /** Adds a suffix to labels */
+  labelSuffix?: string
 }
 
 export type RangeSliderRef = HTMLInputElement
@@ -64,6 +68,8 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
       onChange,
       className,
       hideLabels = false,
+      labelPrefix,
+      labelSuffix,
       autocomplete,
     },
     ref
@@ -88,15 +94,24 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
       status
     )
 
+    let labelCharLength = String(max).length
+
+    if (labelPrefix) {
+      labelCharLength += labelPrefix.length
+    }
+    if (labelSuffix) {
+      labelCharLength += labelSuffix.length
+    }
+
     const labelStyle = {
-      flex: `0 0 ${String(max).length * 11}px`
+      flex: `0 0 ${labelCharLength * 11}px`
     }
 
     const cleanedValue = valueWithBounds(value, min, max)
 
     return (
       <div className={rangeSliderClass} style={style}>
-        {!hideLabels && <span className="cf-range-slider--label" style={labelStyle}>{min}</span>}
+        <RangeSliderLabel value={min} prefix={labelPrefix} suffix={labelSuffix} style={labelStyle} hidden={hideLabels} testID={`${testID}--min`} />
         <Input
           id={id}
           ref={ref}
@@ -113,8 +128,8 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
           inputStyle={inputStyle}
           autocomplete={autocomplete}
           />
-          <div className="cf-range-slider--focus" />
-        {!hideLabels && <span className="cf-range-slider--label" style={labelStyle}>{max}</span>}
+        <div className="cf-range-slider--focus" />
+        <RangeSliderLabel value={max} prefix={labelPrefix} suffix={labelSuffix} style={labelStyle} hidden={hideLabels} testID={`${testID}--max`} />
       </div>
     )
   }
@@ -136,3 +151,24 @@ const valueWithBounds = (value: number, min: number, max: number): number => {
 
   return value
 }
+
+interface RangeSliderLabelProps {
+  value: number
+  prefix?: string
+  suffix?: string
+  hidden?: boolean
+  style?: CSSProperties
+  testID: string
+}
+
+const RangeSliderLabel: FunctionComponent<RangeSliderLabelProps> = ({value, prefix, suffix, hidden, style, testID}) => {
+  if (hidden) {
+    return null
+  }
+
+  return (
+    <span className="cf-range-slider--label" style={style} data-testid={testID}>{prefix}{value}{suffix}</span>
+  )
+}
+
+RangeSliderLabel.displayName = 'RangeSliderLabel'

@@ -596,6 +596,8 @@ inputsComposedStories.add(
               select('color', mapEnumKeys(ComponentColor), 'Primary')
             ]
           }
+          labelPrefix={text('labelPrefix', '')}
+          labelSuffix={text('labelSuffix', '')}
           fill={boolean('fill', true)}
           hideLabels={boolean('hide labels', false)}
           style={object('style', exampleRangeSliderStyle)}
