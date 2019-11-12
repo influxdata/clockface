@@ -1,11 +1,20 @@
-# Funnel Page
+# FunnelPage
 
-Alerts are a great way to draw the user's attention to important information. They are best positioned across the top of the page or above other content to ensure they are seen first. Different colors of Alert can be used to denote severity of the information.
+Funnel pages are designed to guide a user through a funnel (aka focused workflow) with minimal distractions. For this reason there is no navigation (beyond the optional logo) and the content is scaled up with the assumption that the copy will be minimal. While the background colors of the page are customizable we recommend sticking with the defaults to adhere to InfluxData brand guidelines.
 
 ### Usage
 
 ```tsx
 import {FunnelPage} from '@influxdata/clockface'
+```
+```tsx
+// Recommended usage:
+<AppWrapper>
+  <FunnelPage>
+    <h2>I am a title!</h2>
+    <h5>I am a sub-title</h5>
+  </FunnelPage>
+</AppWrapper>
 ```
 
 ### Example
