@@ -9,7 +9,7 @@ import {FunnelPage} from '@influxdata/clockface'
 ```
 ```tsx
 // Recommended usage:
-<AppWrapper>
+<AppWrapper type="funnel">
   <FunnelPage>
     <h2>I am a title!</h2>
     <h5>I am a sub-title</h5>

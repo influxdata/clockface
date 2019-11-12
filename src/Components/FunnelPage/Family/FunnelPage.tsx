@@ -4,16 +4,16 @@ import classnames from 'classnames'
 import chroma from 'chroma-js'
 
 // Components
-import {DapperScrollbars} from '../DapperScrollbars/DapperScrollbars'
+import {DapperScrollbars} from '../../DapperScrollbars/DapperScrollbars'
 
 // Utilities
-import {generateInlineCSSGradient} from '../../Utils/colors'
+import {generateInlineCSSGradient} from '../../../Utils/colors'
 
 // Styles
 import './FunnelPage.scss'
 
 // Types
-import {InfluxColors, StandardFunctionProps} from '../../Types'
+import {InfluxColors, StandardFunctionProps} from '../../../Types'
 
 export interface FunnelPageProps extends StandardFunctionProps {
   /** Places a logo in the top left corner */
@@ -30,7 +30,7 @@ export interface FunnelPageProps extends StandardFunctionProps {
 
 export type FunnelPageRef = HTMLDivElement
 
-export const FunnelPage = forwardRef<FunnelPageRef, FunnelPageProps>(
+export const FunnelPageRoot = forwardRef<FunnelPageRef, FunnelPageProps>(
   (
     {
       id,
@@ -127,4 +127,4 @@ export const FunnelPage = forwardRef<FunnelPageRef, FunnelPageProps>(
   }
 )
 
-FunnelPage.displayName = 'FunnelPage'
+FunnelPageRoot.displayName = 'FunnelPage'

@@ -4,20 +4,20 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs} from '@storybook/addon-knobs'
-// import {mapEnumKeys} from '../../../Utils/storybook'
+import {withKnobs, select} from '@storybook/addon-knobs'
+import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
-import {FunnelPage, FunnelPageRef} from '../FunnelPage'
+import {FunnelPage, FunnelPageRef} from '../'
 import {AppWrapper} from '../../AppWrapper/AppWrapper'
 
 // Types
-// import {InfluxColors} from '../../../Types'
+import {InfluxColors} from '../../../Types'
 
 // Notes
 import FunnelPageReadme from './FunnelPage.md'
 
-const alertStories = storiesOf('Layout|FunnelPage', module).addDecorator(
+const alertStories = storiesOf('Layout|FunnelPage/Family', module).addDecorator(
   withKnobs
 )
 
@@ -45,8 +45,30 @@ alertStories.add(
           <div className="story--test-buttons">
             <button onClick={logRef}>Log Ref</button>
           </div>
-          <AppWrapper>
-            <FunnelPage ref={funnelPageRef} logo={logo}>
+          <AppWrapper type="funnel">
+            <FunnelPage.FunnelPage
+              ref={funnelPageRef}
+              logo={logo}
+              backgroundColor={
+                InfluxColors[
+                  select(
+                    'backgroundColor',
+                    mapEnumKeys(InfluxColors),
+                    'DeepPurple'
+                  )
+                ]
+              }
+              accentColorA={
+                InfluxColors[
+                  select('accentColorA', mapEnumKeys(InfluxColors), 'Magenta')
+                ]
+              }
+              accentColorB={
+                InfluxColors[
+                  select('accentColorB', mapEnumKeys(InfluxColors), 'Amethyst')
+                ]
+              }
+            >
               <h2>Use H2 for Funnel Page titles</h2>
               <h5>
                 Use H5 for <strong>Funnel Page</strong> sub-titles,
@@ -101,7 +123,7 @@ alertStories.add(
                 hella trust fund readymade 3 wolf moon meditation swag. Selvage
                 irony paleo franzen pork belly shoreditch.
               </p>
-            </FunnelPage>
+            </FunnelPage.FunnelPage>
           </AppWrapper>
         </div>
       </div>
