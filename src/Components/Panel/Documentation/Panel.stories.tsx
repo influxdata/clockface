@@ -4,7 +4,7 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, text, select, color, number} from '@storybook/addon-knobs'
+import {withKnobs, text, select, color, number, object} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
@@ -218,6 +218,7 @@ panelComposedStories.add(
           numberSize={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
+          style={object('style', {width: '600px'})}
         >
           <Panel.Header
             size={

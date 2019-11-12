@@ -33,7 +33,7 @@ $numbered-panel-gutter: $cf-marg-e;
 */
 
 @mixin numberedPanelIndicatorSizeModifier($fontSize, $diameter, $offset) {
-  font-size: $fontSize;
+  font-size: $fontSize * 1.2;
   width: $diameter;
   height: $diameter;
   line-height: $diameter;
