@@ -9,13 +9,21 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
 import {FunnelPage, FunnelPageRef, FunnelPageFooterRef} from '../'
-import { AppWrapper } from '../../AppWrapper/AppWrapper'
-import { Icon } from '../../Icon/Icon'
-import { Button } from '../../Button/Composed/Button'
+import {AppWrapper} from '../../AppWrapper/AppWrapper'
+import {Icon} from '../../Icon/Icon'
+import {Button} from '../../Button/Composed/Button'
 import {FlexBox} from '../../FlexBox'
 
 // Types
-import {InfluxColors, IconFont, JustifyContent, AlignItems, FlexDirection, ComponentColor, ComponentSize} from '../../../Types'
+import {
+  InfluxColors,
+  IconFont,
+  JustifyContent,
+  AlignItems,
+  FlexDirection,
+  ComponentColor,
+  ComponentSize,
+} from '../../../Types'
 
 // Notes
 import FunnelPageReadme from './FunnelPage.md'
@@ -247,12 +255,33 @@ funnelPageExampleStories.add(
               <FunnelPage.FooterSection
                 style={{backgroundColor: InfluxColors.Raven}}
               >
-                <p style={{ margin: '6px 0', fontWeight: 900, fontSize: '14px' }}><Icon glyph={IconFont.Bell} style={{fontSize: '1.25em', marginRight: '0.5em'}} /> Set budgets and alerts to control costs</p>
+                <p style={{margin: '6px 0', fontWeight: 900, fontSize: '14px'}}>
+                  <Icon
+                    glyph={IconFont.Bell}
+                    style={{fontSize: '1.25em', marginRight: '0.5em'}}
+                  />{' '}
+                  Set budgets and alerts to control costs
+                </p>
               </FunnelPage.FooterSection>
               <FunnelPage.FooterSection>
-                <FlexBox justifyContent={JustifyContent.SpaceBetween} alignItems={AlignItems.Center} direction={FlexDirection.Row} stretchToFitWidth={true} style={{margin: '18px 0'}}>
-                  <div><h2 style={{color: InfluxColors.Rainforest, margin: '0'}}>$450/mo</h2><h5 style={{margin: '0'}}>Estimated Costs</h5></div>
-                  <Button color={ComponentColor.Secondary} text="Upgrade to Usage-Based Plan" size={ComponentSize.Large} />
+                <FlexBox
+                  justifyContent={JustifyContent.SpaceBetween}
+                  alignItems={AlignItems.Center}
+                  direction={FlexDirection.Row}
+                  stretchToFitWidth={true}
+                  style={{margin: '18px 0'}}
+                >
+                  <div>
+                    <h2 style={{color: InfluxColors.Rainforest, margin: '0'}}>
+                      $450/mo
+                    </h2>
+                    <h5 style={{margin: '0'}}>Estimated Costs</h5>
+                  </div>
+                  <Button
+                    color={ComponentColor.Secondary}
+                    text="Upgrade to Usage-Based Plan"
+                    size={ComponentSize.Large}
+                  />
                 </FlexBox>
               </FunnelPage.FooterSection>
             </FunnelPage.Footer>

@@ -32,9 +32,7 @@ export const FunnelPageFooterSection = forwardRef<
         style={style}
         ref={ref}
       >
-        <div className="cf-funnel-page--footer-container">
-          {children}
-        </div>
+        <div className="cf-funnel-page--footer-container">{children}</div>
       </div>
     )
   }
