@@ -17,6 +17,7 @@
   color: $cf-text-default;
   background-color: $page--background;
   overflow: hidden;
+  font-size: $cf-body-text;
 }
 
 @media screen and (min-width: $nav-menu--breakpoint) {
