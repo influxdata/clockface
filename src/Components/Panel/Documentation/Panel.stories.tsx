@@ -4,7 +4,7 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, text, select, color} from '@storybook/addon-knobs'
+import {withKnobs, text, select, color, number} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
@@ -16,6 +16,7 @@ import {
   PanelBodyRef,
   PanelFooterRef,
 } from '../'
+import {NumberedPanel, NumberedPanelRef} from '../Composed/NumberedPanel'
 import {Grid} from '../../Grid'
 
 // Types
@@ -29,10 +30,16 @@ import PanelFooterReadme from './PanelFooter.md'
 import ExampleAReadme from './PanelExampleA.md'
 import ExampleBReadme from './PanelExampleB.md'
 import ExampleCReadme from './PanelExampleC.md'
+import NumberedPanelReadme from './NumberedPanel.md'
 
 const panelStories = storiesOf('Components|Panels/Family', module).addDecorator(
   withKnobs
 )
+
+const panelComposedStories = storiesOf(
+  'Components|Panels/Composed',
+  module
+).addDecorator(withKnobs)
 
 const panelExampleStories = storiesOf(
   'Components|Panels/Examples',
@@ -185,6 +192,62 @@ panelStories.add(
   {
     readme: {
       content: marked(PanelFooterReadme),
+    },
+  }
+)
+
+panelComposedStories.add(
+  'NumberedPanel',
+  () => {
+    const numberedPanelRef: RefObject<NumberedPanelRef> = createRef()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+    console.log(numberedPanelRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+        <NumberedPanel
+          ref={numberedPanelRef}
+          number={number('number', 4)}
+          numberSize={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+        >
+          <Panel.Header
+            size={
+              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+            }
+          >
+            <Panel.Title
+              size={
+                ComponentSize[
+                  select('size', mapEnumKeys(ComponentSize), 'Small')
+                ]
+              }
+            >
+              Acquire Funds
+            </Panel.Title>
+          </Panel.Header>
+          <Panel.Body
+            size={
+              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+            }
+          >
+            <p>sdfsf</p>
+          </Panel.Body>
+        </NumberedPanel>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(NumberedPanelReadme),
     },
   }
 )
