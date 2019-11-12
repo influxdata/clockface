@@ -4,7 +4,14 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, text, select, color, number, object} from '@storybook/addon-knobs'
+import {
+  withKnobs,
+  text,
+  select,
+  color,
+  number,
+  object,
+} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
