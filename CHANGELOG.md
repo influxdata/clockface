@@ -2,6 +2,10 @@
 
 #### 1.0.6 (Unreleased)
 
+- [#390](https://github.com/influxdata/clockface/pull/390): Introduce `FunnelPage` component
+- [#390](https://github.com/influxdata/clockface/pull/390): Introduce `StickyFooter` component
+- [#390](https://github.com/influxdata/clockface/pull/390): [Breaking] Refactor typography font sizes to be relative instead of absolute for increased flexibility
+
 #### 1.0.5
 
 - [#379](https://github.com/influxdata/clockface/pull/379): Add tests and testing CI infrastructure
