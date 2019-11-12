@@ -5,6 +5,8 @@
 - [#390](https://github.com/influxdata/clockface/pull/390): Introduce `FunnelPage` component
 - [#390](https://github.com/influxdata/clockface/pull/390): Introduce `StickyFooter` component
 - [#390](https://github.com/influxdata/clockface/pull/390): [Breaking] Refactor typography font sizes to be relative instead of absolute for increased flexibility
+- [#389](https://github.com/influxdata/clockface/pull/389): Move `RangeSlider` labels inside visible rectangle
+- [#389](https://github.com/influxdata/clockface/pull/389): Add optional `labelPrefix` and `labelSuffix` props to `RangeSlider`
 
 #### 1.0.5
 
