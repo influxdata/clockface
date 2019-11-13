@@ -22,7 +22,7 @@ import {
 } from './'
 
 // Constants
-import {getColorsFromGradient} from '../Constants/colors'
+import {getColorsFromGradient} from '../Utils/colors'
 
 // Notes
 import TypesReadme from './Types.md'

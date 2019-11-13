@@ -1,10 +1,4 @@
-import {
-  Color,
-  InfluxColors,
-  Gradients,
-  Gradient,
-  DropdownMenuTheme,
-} from '../Types'
+import {Color, InfluxColors} from '../Types'
 
 export const influxColors: Color[] = [
   // Row 1
@@ -426,10 +420,4 @@ export const dropdownScrollColors = {
     start: InfluxColors.Neutrino,
     stop: InfluxColors.Krypton,
   },
-}
-
-export const getColorsFromGradient = (
-  gradient: Gradients | DropdownMenuTheme | string
-): Gradient => {
-  return dropdownScrollColors[gradient] || influxGradients[gradient]
 }
