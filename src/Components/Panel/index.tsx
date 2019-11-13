@@ -2,11 +2,11 @@
 import React, {Component} from 'react'
 
 // Components
-import {PanelRoot, PanelProps} from './Panel'
-import {PanelHeader} from './PanelHeader'
-import {PanelTitle} from './PanelTitle'
-import {PanelBody} from './PanelBody'
-import {PanelFooter} from './PanelFooter'
+import {PanelRoot, PanelProps} from './Family/Panel'
+import {PanelHeader} from './Family/PanelHeader'
+import {PanelTitle} from './Family/PanelTitle'
+import {PanelBody} from './Family/PanelBody'
+import {PanelFooter} from './Family/PanelFooter'
 
 export class Panel extends Component<PanelProps> {
   public static readonly displayName = 'Panel'
@@ -22,8 +22,8 @@ export class Panel extends Component<PanelProps> {
   }
 }
 
-export {PanelProps, PanelRef} from './Panel'
-export * from './PanelHeader'
-export * from './PanelTitle'
-export * from './PanelBody'
-export * from './PanelFooter'
+export {PanelProps, PanelRef} from './Family/Panel'
+export * from './Family/PanelHeader'
+export * from './Family/PanelTitle'
+export * from './Family/PanelBody'
+export * from './Family/PanelFooter'

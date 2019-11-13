@@ -3,7 +3,7 @@ import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {FlexBox} from '../FlexBox'
+import {FlexBox} from '../../FlexBox'
 
 // Types
 import {
@@ -12,7 +12,7 @@ import {
   AlignItems,
   StandardFunctionProps,
   ComponentSize,
-} from '../../Types'
+} from '../../../Types'
 
 export interface PanelHeaderProps extends StandardFunctionProps {
   /** Vertical or horizontal flex alignment */

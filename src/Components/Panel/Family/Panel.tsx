@@ -9,13 +9,16 @@ import {
   InfluxColors,
   StandardFunctionProps,
   ComponentColor,
-} from '../../Types'
+} from '../../../Types'
 
 // Utils
-import {generatePanelStyle, calculateTextColorFromBackground} from '../../Utils'
+import {
+  generatePanelStyle,
+  calculateTextColorFromBackground,
+} from '../../../Utils'
 
 // Components
-import {DismissButton} from '../Button/Composed/DismissButton'
+import {DismissButton} from '../../Button/Composed/DismissButton'
 
 // Styles
 import './Panel.scss'
