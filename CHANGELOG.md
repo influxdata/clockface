@@ -2,6 +2,7 @@
 
 #### 1.0.6 (Unreleased)
 
+- [#392](https://github.com/influxdata/clockface/pull/392): Make `g1-raven` slightly darker and cooler
 - [#389](https://github.com/influxdata/clockface/pull/389): Move `RangeSlider` labels inside visible rectangle
 - [#389](https://github.com/influxdata/clockface/pull/389): Add optional `labelPrefix` and `labelSuffix` props to `RangeSlider`
 
