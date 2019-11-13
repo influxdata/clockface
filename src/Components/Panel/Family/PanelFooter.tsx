@@ -3,29 +3,29 @@ import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardFunctionProps, ComponentSize} from '../../Types'
+import {StandardFunctionProps, ComponentSize} from '../../../Types'
 
-export interface PanelTitleProps extends StandardFunctionProps {
+export interface PanelFooterProps extends StandardFunctionProps {
   /** Controls padding */
   size?: ComponentSize
 }
 
-export type PanelTitleRef = HTMLDivElement
+export type PanelFooterRef = HTMLDivElement
 
-export const PanelTitle = forwardRef<PanelTitleRef, PanelTitleProps>(
+export const PanelFooter = forwardRef<PanelFooterRef, PanelFooterProps>(
   (
     {
       id,
       style,
       size = ComponentSize.Small,
-      testID = 'panel--title',
+      testID = 'panel--footer',
       children,
       className,
     },
     ref
   ) => {
-    const panelTitleClass = classnames('cf-panel--title', {
-      [`cf-panel--title__${size}`]: size,
+    const panelFooterClass = classnames('cf-panel--footer', {
+      [`cf-panel--footer__${size}`]: size,
       [`${className}`]: className,
     })
 
@@ -35,7 +35,7 @@ export const PanelTitle = forwardRef<PanelTitleRef, PanelTitleProps>(
         ref={ref}
         style={style}
         data-testid={testID}
-        className={panelTitleClass}
+        className={panelFooterClass}
       >
         {children}
       </div>
@@ -43,4 +43,4 @@ export const PanelTitle = forwardRef<PanelTitleRef, PanelTitleProps>(
   }
 )
 
-PanelTitle.displayName = 'PanelTitle'
+PanelFooter.displayName = 'PanelFooter'
