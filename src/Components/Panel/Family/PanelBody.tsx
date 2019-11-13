@@ -3,7 +3,7 @@ import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardFunctionProps, ComponentSize} from '../../Types'
+import {StandardFunctionProps, ComponentSize} from '../../../Types'
 
 export interface PanelBodyProps extends StandardFunctionProps {
   /** Controls padding */
