@@ -1,0 +1,31 @@
+@import '../../../Styles/modules';
+
+/*
+  ButtonBase Contrast Tester
+  ------------------------------------------------------------------------------
+*/
+
+table.button-base-contrast-tester {
+  width: 100%;
+  border-collapse: collapse;
+
+  th {
+    padding-bottom: $cf-marg-c;
+  }
+
+  th, td {
+    font-size: 13px;
+    font-weight: 600;
+    border: 0;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .cf-button {
+    margin: $cf-marg-a;
+  }
+
+  td:first-child {
+    text-align: left;
+  }
+}
