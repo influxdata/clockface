@@ -207,6 +207,10 @@ body.sb-show-main {
     width: 100% !important;
     height: 100% !important;
   }
+
+  &.top {
+    align-items: flex-start;
+  }
 }
 
 .overlay--example {
