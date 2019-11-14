@@ -2,6 +2,8 @@
 
 #### 1.0.6 (Unreleased)
 
+- [#395](https://github.com/influxdata/clockface/pull/395): Introduce `PopNav` component family
+- [#395](https://github.com/influxdata/clockface/pull/395): Introduce `AppHeader` component family
 - [#392](https://github.com/influxdata/clockface/pull/392): Make `g1-raven` slightly darker and cooler
 - [#391](https://github.com/influxdata/clockface/pull/391): Introduce `NumberedPanel` as composed variant of `Panel`
 - [#390](https://github.com/influxdata/clockface/pull/390): Introduce `FunnelPage` component family
