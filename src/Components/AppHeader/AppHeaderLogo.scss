@@ -27,15 +27,15 @@
   height: $height;
 }
 
-.cf-app-header--logo-xs {
+.cf-app-header--logo__xs {
   @include appHeaderLogoSizeModifier($form-xs-font, $form-xs-height);
 }
-.cf-app-header--logo-sm {
+.cf-app-header--logo__sm {
   @include appHeaderLogoSizeModifier($form-sm-font, $form-sm-height);
 }
-.cf-app-header--logo-md {
+.cf-app-header--logo__md {
   @include appHeaderLogoSizeModifier($form-md-font, $form-md-height);
 }
-.cf-app-header--logo-lg {
+.cf-app-header--logo__lg {
   @include appHeaderLogoSizeModifier($form-lg-font, $form-lg-height);
 }

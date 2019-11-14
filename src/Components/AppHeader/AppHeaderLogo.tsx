@@ -31,7 +31,7 @@ export const AppHeaderLogo = forwardRef<AppHeaderLogoRef, AppHeaderLogoProps>(
     ref
   ) => {
     const appHeaderLogoClass = classnames('cf-app-header--logo', {
-      [`cf-app-header--logo-${size}`]: size,
+      [`cf-app-header--logo__${size}`]: size,
       [`${className}`]: className,
     })
 

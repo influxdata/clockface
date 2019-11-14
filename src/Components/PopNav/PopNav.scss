@@ -10,17 +10,17 @@
   flex-direction: column;
   justify-content: flex-start;
 
-  &.cf-pop-nav-left {
+  &.cf-pop-nav__left {
     align-items: flex-start;
     text-align: left;
   }
 
-  &.cf-pop-nav-center {
+  &.cf-pop-nav__center {
     align-items: center;
     text-align: center;
   }
 
-  &.cf-pop-nav-right {
+  &.cf-pop-nav__right {
     align-items: flex-end;
     text-align: right;
   }
@@ -59,6 +59,7 @@
   font-size: 13px;
   font-weight: 600;
   visibility: hidden;
+  z-index: $z--nav-menu;
 }
 
 .cf-nav__expanded {
@@ -162,15 +163,15 @@
   }
 }
 
-.cf-pop-nav-xs {
+.cf-pop-nav__xs {
   @include popNavSizeModifier($form-xs-font, $form-xs-height);
 }
-.cf-pop-nav-sm {
+.cf-pop-nav__sm {
   @include popNavSizeModifier($form-sm-font, $form-sm-height);
 }
-.cf-pop-nav-md {
+.cf-pop-nav__md {
   @include popNavSizeModifier($form-md-font, $form-md-height);
 }
-.cf-pop-nav-lg {
+.cf-pop-nav__lg {
   @include popNavSizeModifier($form-lg-font, $form-lg-height);
 }

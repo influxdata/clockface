@@ -34,28 +34,28 @@
   }
 }
 
-.cf-app-header-xs {
+.cf-app-header__xs {
   @include appHeaderSizeModifier(
     $form-xs-font,
     $form-xs-padding,
     $form-xs-height
   );
 }
-.cf-app-header-sm {
+.cf-app-header__sm {
   @include appHeaderSizeModifier(
     $form-sm-font,
     $form-sm-padding,
     $form-sm-height
   );
 }
-.cf-app-header-md {
+.cf-app-header__md {
   @include appHeaderSizeModifier(
     $form-md-font,
     $form-md-padding,
     $form-md-height
   );
 }
-.cf-app-header-lg {
+.cf-app-header__lg {
   @include appHeaderSizeModifier(
     $form-lg-font,
     $form-lg-padding,

@@ -28,7 +28,7 @@ export const AppHeaderRoot = forwardRef<AppHeaderRef, AppHeaderProps>(
     ref
   ) => {
     const appHeaderClass = classnames('cf-app-header', {
-      [`cf-app-header-${size}`]: size,
+      [`cf-app-header__${size}`]: size,
       [`${className}`]: className,
     })
 

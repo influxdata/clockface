@@ -49,8 +49,8 @@ export const PopNavRoot = forwardRef<PopNavRef, PopNavProps>(
     const [menuVisible, setMenuVisible] = useState<boolean>(visible)
 
     const popNavClass = classnames('cf-pop-nav', {
-      [`cf-pop-nav-${size}`]: size,
-      [`cf-pop-nav-${align}`]: align,
+      [`cf-pop-nav__${size}`]: size,
+      [`cf-pop-nav__${align}`]: align,
       'cf-nav__expanded': menuVisible,
       [`${className}`]: className,
     })

@@ -25,17 +25,17 @@ import AppHeaderLogoReadme from './AppHeaderLogo.md'
 import {Button} from '../../Button/Composed/Button'
 import {FlexBox} from '../../FlexBox'
 
-const dropdownFamilyStories = storiesOf(
+const appHeaderFamilyStories = storiesOf(
   'Layout|AppHeader/Family',
   module
 ).addDecorator(withKnobs)
 
-const dropdownExampleStories = storiesOf(
+const appHeaderExampleStories = storiesOf(
   'Layout|AppHeader/Example',
   module
 ).addDecorator(withKnobs)
 
-dropdownFamilyStories.add(
+appHeaderFamilyStories.add(
   'AppHeader',
   () => {
     const appHeaderRef = createRef<AppHeaderRef>()
@@ -67,7 +67,7 @@ dropdownFamilyStories.add(
   }
 )
 
-dropdownFamilyStories.add(
+appHeaderFamilyStories.add(
   'AppHeaderLogo',
   () => {
     const appHeaderLogoRef = createRef<AppHeaderLogoRef>()
@@ -103,7 +103,7 @@ dropdownFamilyStories.add(
   }
 )
 
-dropdownExampleStories.add(
+appHeaderExampleStories.add(
   'AppHeader',
   () => {
     return (
