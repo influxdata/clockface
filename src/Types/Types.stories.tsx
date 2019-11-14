@@ -348,12 +348,18 @@ dataTypeStories.add(
     }
 
     const colorsArray = convertEnumToObjArray(InfluxColors)
+    const gradientsArray = Object.keys(Gradients)
+
     const nuetrals = colorsArray.slice(0, 21)
     const blues = colorsArray.slice(21, 29)
     const purples = colorsArray.slice(29, 37)
     const greens = colorsArray.slice(37, 45)
     const yellows = colorsArray.slice(45, 53)
     const reds = colorsArray.slice(53, 61)
+    const brandColors = colorsArray.slice(61, 64)
+
+    const clockfaceGradients = gradientsArray.slice(0, 40)
+    const brandGradients = gradientsArray.slice(40, 50)
 
     const colorCardClassName = (hexcode: string): string => {
       const lightContrast = chroma.contrast(InfluxColors.White, hexcode)
@@ -385,7 +391,7 @@ dataTypeStories.add(
 
     return (
       <div className="markdown-body">
-        <h3>Clockface Color Palette</h3>
+        <h3>Clockface Colors</h3>
         <pre className="language-js">
           <code>
             import &#123;InfluxColors&#125; from '@influxdata/clockface'
@@ -469,13 +475,39 @@ dataTypeStories.add(
             </div>
           ))}
         </div>
+        <h5>InfluxData Brand Colors</h5>
+        <div className="colors-grid">
+          {brandColors.map(color => (
+            <div
+              className={colorCardClassName(color.value)}
+              key={color.key}
+              style={{ backgroundColor: color.value }}
+            >
+              <p>{color.key}</p>
+              <p className="colors-grid--hex">{color.value}</p>
+            </div>
+          ))}
+        </div>
         <hr />
         <h3>Clockface Gradients</h3>
         <pre className="language-js">
           <code>import &#123;Gradients&#125; from '@influxdata/clockface'</code>
         </pre>
+        <h5>Multi-Hue Gradients</h5>
         <div className="gradients-grid">
-          {Object.keys(Gradients).map(g => (
+          {clockfaceGradients.map(g => (
+            <div
+              className={gradientCardClassName(g)}
+              key={g}
+              style={generateGradientStyle(g)}
+            >
+              <p>{g}</p>
+            </div>
+          ))}
+        </div>
+        <h5>InfluxData Brand Gradients</h5>
+        <div className="gradients-grid">
+          {brandGradients.map(g => (
             <div
               className={gradientCardClassName(g)}
               key={g}

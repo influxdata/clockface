@@ -373,6 +373,10 @@ export const influxGradients = {
     start: InfluxColors.DeepPurple,
     stop: InfluxColors.Magenta,
   },
+  PowerStone: {
+    start: InfluxColors.Void,
+    stop: InfluxColors.Magenta,
+  },
   OminousFog: {
     start: InfluxColors.DeepPurple,
     stop: InfluxColors.Comet,
@@ -389,7 +393,7 @@ export const influxGradients = {
     start: InfluxColors.Pool,
     stop: InfluxColors.Magenta,
   },
-  Radioactive: {
+  RadioactiveWarning: {
     start: InfluxColors.Pool,
     stop: InfluxColors.Chartreuse,
   },

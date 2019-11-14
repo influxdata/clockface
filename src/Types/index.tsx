@@ -97,14 +97,15 @@ export enum Gradients {
   MintyFresh = 'MintyFresh',
   SimpleCream = 'SimpleCream',
   WarpSpeed = 'WarpSpeed',
-  OminousFog = 'OminousFog',
+  PowerStone = 'PowerStone',
   MilkyWay = 'MilkyWay',
   LazyAfternoon = 'LazyAfternoon',
   NineteenEightyFour = 'NineteenEightyFour',
-  Radioactive = 'Radioactive',
+  RadioactiveWarning = 'RadioactiveWarning',
   LostGalaxy = 'LostGalaxy',
   GrapeSoda = 'GrapeSoda',
   LavenderLatte = 'LavenderLatte',
+  OminousFog = 'OminousFog',
 }
 
 export enum DropdownMenuTheme {
