@@ -1,0 +1,98 @@
+@import '../../../Styles/modules';
+
+/*
+  Right-Click Menu Styles
+  ------------------------------------------------------------------------------
+*/
+
+.cf-right-click-portal {
+  @include portal-style($z--right-click);
+}
+
+.cf-right-click {
+  position: fixed;
+  z-index: 9999;
+  background-color: $g2-kevlar;
+  border-radius: $cf-radius;
+  border-style: solid;
+  border-width: $cf-border;
+}
+
+.cf-right-click--menu {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cf-right-click--menu-item {
+  padding: ($cf-marg-a * 1.5) $cf-marg-b;
+  font-size: $cf-text-base;
+  line-height: $cf-text-base;
+  color: $g11-sidewalk;
+  white-space: nowrap;
+  font-weight: 600;
+  user-select: none;
+  margin: 0;
+  transition: color 0.25s ease, background-color 0.25s ease;
+
+  &:first-child {
+    border-radius: $cf-radius-sm $cf-radius-sm 0 0;
+  }
+
+  &:last-child {
+    border-radius: 0 0 $cf-radius-sm $cf-radius-sm;
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: $g20-white;
+    background-color: $g5-pepper;
+  }
+
+  &.cf-right-click--menu-item__disabled,
+  &.cf-right-click--menu-item__disabled:hover {
+    cursor: default;
+    font-style: italic;
+    color: $g8-storm;
+    background-color: transparent;
+  }
+}
+
+.cf-right-click--divider {
+  height: $cf-border;
+  width: 100%;
+  background-color: $g5-pepper;
+  margin: $cf-border 0;
+}
+
+/*
+  Color Modifiers
+  ------------------------------------------------------------------------------
+*/
+
+@mixin rightClickColorModifier($borderColor, $glowColor) {
+  border-color: $borderColor;
+  box-shadow: 0 0 5px 0 $glowColor;
+}
+
+.cf-right-click__default {
+  @include rightClickColorModifier($g11-sidewalk, $g8-storm);
+}
+.cf-right-click__primary {
+  @include rightClickColorModifier($c-pool, $c-ocean);
+}
+.cf-right-click__secondary {
+  @include rightClickColorModifier($c-comet, $c-star);
+}
+.cf-right-click__success {
+  @include rightClickColorModifier($c-honeydew, $c-rainforest);
+}
+.cf-right-click__warning {
+  @include rightClickColorModifier($c-thunder, $c-tiger);
+}
+.cf-right-click__danger {
+  @include rightClickColorModifier($c-dreamsicle, $c-fire);
+}
