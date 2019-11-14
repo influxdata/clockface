@@ -8,11 +8,12 @@ import {withKnobs, text, select, boolean} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
+import {ButtonBase, ButtonBaseRef} from '../Base/ButtonBase'
+import {ButtonBaseContrastTester} from '../Base/ButtonBaseContrastTester'
 import {Button, ButtonRef} from '../Composed/Button'
 import {SquareButton, SquareButtonRef} from '../Composed/SquareButton'
 import {ConfirmationButton} from '../Composed/ConfirmationButton'
 import {DismissButton, DismissButtonRef} from '../Composed/DismissButton'
-import {ButtonBase, ButtonBaseRef} from '../Base/ButtonBase'
 import {CTAButton, CTAButtonRef} from '../Composed/CTAButton'
 
 // Types
@@ -33,6 +34,7 @@ import SquareButtonReadme from './SquareButton.md'
 import ConfirmationButtonReadme from './ConfirmationButton.md'
 import DismissButtonReadme from './DismissButton.md'
 import CTAButtonReadme from './CTAButton.md'
+import ButtonBaseContrastTesterReadme from './ButtonBaseContrastTester.md'
 
 const buttonBaseStories = storiesOf(
   'Components|Buttons/Base',
@@ -96,6 +98,22 @@ buttonComposedStories.add(
   {
     readme: {
       content: marked(ButtonReadme),
+    },
+  }
+)
+
+buttonBaseStories.add(
+  'Contrast Tester',
+  () => {
+    return (
+      <div className="story--example">
+        <ButtonBaseContrastTester />
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(ButtonBaseContrastTesterReadme),
     },
   }
 )
