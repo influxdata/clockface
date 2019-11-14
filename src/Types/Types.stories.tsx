@@ -416,7 +416,7 @@ dataTypeStories.add(
             <div
               className={colorCardClassName(color.value)}
               key={color.key}
-              style={{ backgroundColor: color.value }}
+              style={{backgroundColor: color.value}}
             >
               <p>{color.key}</p>
               <p className="colors-grid--hex">{color.value}</p>
@@ -429,7 +429,7 @@ dataTypeStories.add(
             <div
               className={colorCardClassName(color.value)}
               key={color.key}
-              style={{ backgroundColor: color.value }}
+              style={{backgroundColor: color.value}}
             >
               <p>{color.key}</p>
               <p className="colors-grid--hex">{color.value}</p>
@@ -442,7 +442,7 @@ dataTypeStories.add(
             <div
               className={colorCardClassName(color.value)}
               key={color.key}
-              style={{ backgroundColor: color.value }}
+              style={{backgroundColor: color.value}}
             >
               <p>{color.key}</p>
               <p className="colors-grid--hex">{color.value}</p>
@@ -455,7 +455,7 @@ dataTypeStories.add(
             <div
               className={colorCardClassName(color.value)}
               key={color.key}
-              style={{ backgroundColor: color.value }}
+              style={{backgroundColor: color.value}}
             >
               <p>{color.key}</p>
               <p className="colors-grid--hex">{color.value}</p>
@@ -468,7 +468,7 @@ dataTypeStories.add(
             <div
               className={colorCardClassName(color.value)}
               key={color.key}
-              style={{ backgroundColor: color.value }}
+              style={{backgroundColor: color.value}}
             >
               <p>{color.key}</p>
               <p className="colors-grid--hex">{color.value}</p>
@@ -481,7 +481,7 @@ dataTypeStories.add(
             <div
               className={colorCardClassName(color.value)}
               key={color.key}
-              style={{ backgroundColor: color.value }}
+              style={{backgroundColor: color.value}}
             >
               <p>{color.key}</p>
               <p className="colors-grid--hex">{color.value}</p>
