@@ -97,14 +97,15 @@ export enum Gradients {
   MintyFresh = 'MintyFresh',
   SimpleCream = 'SimpleCream',
   WarpSpeed = 'WarpSpeed',
-  OminousFog = 'OminousFog',
+  PowerStone = 'PowerStone',
   MilkyWay = 'MilkyWay',
   LazyAfternoon = 'LazyAfternoon',
   NineteenEightyFour = 'NineteenEightyFour',
-  Radioactive = 'Radioactive',
+  RadioactiveWarning = 'RadioactiveWarning',
   LostGalaxy = 'LostGalaxy',
   GrapeSoda = 'GrapeSoda',
   LavenderLatte = 'LavenderLatte',
+  OminousFog = 'OminousFog',
 }
 
 export enum DropdownMenuTheme {
@@ -139,7 +140,7 @@ export enum ButtonType {
 export enum InfluxColors {
   // Greys
   Obsidian = '#0f0e15',
-  Raven = '#1c1c21',
+  Raven = '#181820',
   Kevlar = '#202028',
   Castle = '#292933',
   Onyx = '#31313d',

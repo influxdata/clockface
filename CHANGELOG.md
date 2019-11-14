@@ -2,10 +2,17 @@
 
 #### 1.0.6 (Unreleased)
 
+- [#392](https://github.com/influxdata/clockface/pull/392): Make `g1-raven` slightly darker and cooler
+- [#391](https://github.com/influxdata/clockface/pull/391): Introduce `NumberedPanel` as composed variant of `Panel`
+- [#390](https://github.com/influxdata/clockface/pull/390): Introduce `FunnelPage` component family
+- [#390](https://github.com/influxdata/clockface/pull/390): [Breaking] Refactor typography font sizes to be relative instead of absolute for increased flexibility
+- [#389](https://github.com/influxdata/clockface/pull/389): Move `RangeSlider` labels inside visible rectangle
+- [#389](https://github.com/influxdata/clockface/pull/389): Add optional `labelPrefix` and `labelSuffix` props to `RangeSlider`
 - [#377](https://github.com/influxdata/clockface/pull/377): Introduce `RightClick` component
 
 #### 1.0.5
 
+- [#379](https://github.com/influxdata/clockface/pull/379): Add tests and testing CI infrastructure
 - [#375](https://github.com/influxdata/clockface/pull/375): Add `onMouseEnter`, `onMouseLeave`, `onMouseOver`, and `onMouseOut` to all button components
 - [#375](https://github.com/influxdata/clockface/pull/375): Ensure all button component prop interfaces are extending `ButtonBaseProps`
 - [#373](https://github.com/influxdata/clockface/pull/373): Handle NaN appropriately in numeric Inputs by updating value, type, and status

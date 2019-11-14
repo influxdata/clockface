@@ -37,6 +37,16 @@ $page--title-weight: 400;
 $page--sub-title-size: 12px;
 $page--sub-title-weight: 500;
 $page--background: $g1-raven;
+$page--funnel-max-width: 1200px;
+
+/*
+   Responsive Breakpoints
+   -----------------------------------------------------------------------------
+*/
+
+$grid--breakpoint-sm: 750px;
+$grid--breakpoint-md: 1080px;
+$grid--breakpoint-lg: 1500px;
 
 /*
    Motifs
@@ -65,14 +75,15 @@ $cf-text-font: 'Roboto', Helvetica, Arial, Tahoma, Verdana, sans-serif;
 $cf-code-font: 'RobotoMono', monospace;
 $cf-icon-font: 'icomoon';
 
-$cf-text-tiny: 11px;
-$cf-text-base: 12px;
+$cf-body-text: 12px;
+$cf-text-tiny: 0.8em;
+$cf-text-base: 1em;
 $cf-text-scale: 1.19; 
-$cf-text-base-1: (ceil($cf-text-base * $cf-text-scale));
-$cf-text-base-2: (ceil($cf-text-base * $cf-text-scale * $cf-text-scale));
-$cf-text-base-3: (ceil($cf-text-base * $cf-text-scale * $cf-text-scale * $cf-text-scale));
-$cf-text-base-4: (ceil($cf-text-base * $cf-text-scale * $cf-text-scale * $cf-text-scale * $cf-text-scale));
-$cf-text-base-5: (ceil($cf-text-base * $cf-text-scale * $cf-text-scale * $cf-text-scale * $cf-text-scale * $cf-text-scale));
+$cf-text-base-1: ($cf-text-base * $cf-text-scale);
+$cf-text-base-2: ($cf-text-base * $cf-text-scale * $cf-text-scale);
+$cf-text-base-3: ($cf-text-base * $cf-text-scale * $cf-text-scale * $cf-text-scale);
+$cf-text-base-4: ($cf-text-base * $cf-text-scale * $cf-text-scale * $cf-text-scale * $cf-text-scale);
+$cf-text-base-5: ($cf-text-base * $cf-text-scale * $cf-text-scale * $cf-text-scale * $cf-text-scale * $cf-text-scale);
 
 $cf-text-default: $g13-mist;
 $cf-link-weight: 700;

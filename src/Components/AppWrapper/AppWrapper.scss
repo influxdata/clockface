@@ -7,7 +7,6 @@
 
 .clockface--app-wrapper {
   display: flex;
-  flex-direction: column;
   align-items: center;
   position: absolute;
   width: 100%;
@@ -17,10 +16,16 @@
   color: $cf-text-default;
   background-color: $page--background;
   overflow: hidden;
+  font-size: $cf-body-text;
+}
+
+.clockface--app-wrapper__standard,
+.clockface--app-wrapper__funnel {
+  flex-direction: column;
 }
 
 @media screen and (min-width: $nav-menu--breakpoint) {
-  .clockface--app-wrapper {
+  .clockface--app-wrapper__standard {
     flex-direction: row;
   }
 }

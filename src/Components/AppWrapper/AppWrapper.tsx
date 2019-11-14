@@ -8,9 +8,13 @@ import './AppWrapper.scss'
 // Types
 import {StandardFunctionProps} from '../../Types'
 
-interface AppWrapperProps extends StandardFunctionProps {
+export type AppWrapperType = 'standard' | 'funnel'
+
+export interface AppWrapperProps extends StandardFunctionProps {
   /** Hides the page header and nav menu so that the contents can take up the whole screen */
   presentationMode?: boolean
+  /** Controls responsive layout (can be either "page" for "funnel") */
+  type?: AppWrapperType
 }
 
 export type AppWrapperRef = HTMLDivElement
@@ -19,6 +23,7 @@ export const AppWrapper = forwardRef<AppWrapperRef, AppWrapperProps>(
   (
     {
       id = 'cf-app-wrapper',
+      type = 'standard',
       style,
       testID = 'app-wrapper',
       children,
@@ -29,6 +34,7 @@ export const AppWrapper = forwardRef<AppWrapperRef, AppWrapperProps>(
   ) => {
     const appWrapperClass = classnames('clockface--app-wrapper', {
       'clockface--app-wrapper__presentation-mode': presentationMode,
+      [`clockface--app-wrapper__${type}`]: type,
       [`${className}`]: className,
     })
 

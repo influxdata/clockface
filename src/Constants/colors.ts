@@ -1,10 +1,4 @@
-import {
-  Color,
-  InfluxColors,
-  Gradients,
-  Gradient,
-  DropdownMenuTheme,
-} from '../Types'
+import {Color, InfluxColors} from '../Types'
 
 export const influxColors: Color[] = [
   // Row 1
@@ -379,6 +373,10 @@ export const influxGradients = {
     start: InfluxColors.DeepPurple,
     stop: InfluxColors.Magenta,
   },
+  PowerStone: {
+    start: InfluxColors.Void,
+    stop: InfluxColors.Magenta,
+  },
   OminousFog: {
     start: InfluxColors.DeepPurple,
     stop: InfluxColors.Comet,
@@ -395,7 +393,7 @@ export const influxGradients = {
     start: InfluxColors.Pool,
     stop: InfluxColors.Magenta,
   },
-  Radioactive: {
+  RadioactiveWarning: {
     start: InfluxColors.Pool,
     stop: InfluxColors.Chartreuse,
   },
@@ -426,10 +424,4 @@ export const dropdownScrollColors = {
     start: InfluxColors.Neutrino,
     stop: InfluxColors.Krypton,
   },
-}
-
-export const getColorsFromGradient = (
-  gradient: Gradients | DropdownMenuTheme | string
-): Gradient => {
-  return dropdownScrollColors[gradient] || influxGradients[gradient]
 }

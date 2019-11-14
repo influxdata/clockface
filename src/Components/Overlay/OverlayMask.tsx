@@ -6,7 +6,7 @@ import classnames from 'classnames'
 import {InfluxColors, Gradients, StandardFunctionProps} from '../../Types'
 
 // Constants
-import {getColorsFromGradient} from '../../Constants/colors'
+import {getColorsFromGradient} from '../../Utils/colors'
 
 export interface OverlayMaskProps extends StandardFunctionProps {
   /** Optional gradient theme of panel*/
