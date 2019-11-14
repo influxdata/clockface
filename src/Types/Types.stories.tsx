@@ -348,10 +348,18 @@ dataTypeStories.add(
     }
 
     const colorsArray = convertEnumToObjArray(InfluxColors)
+    const nuetrals = colorsArray.slice(0, 21)
+    const blues = colorsArray.slice(21, 29)
+    const purples = colorsArray.slice(29, 37)
+    const greens = colorsArray.slice(37, 45)
+    const yellows = colorsArray.slice(45, 53)
+    const reds = colorsArray.slice(53, 61)
 
     const colorCardClassName = (hexcode: string): string => {
+      const lightContrast = chroma.contrast(InfluxColors.White, hexcode)
+      const darkContrast = chroma.contrast(InfluxColors.Obsidian, hexcode)
       const cardTextColor =
-        chroma(hexcode).luminance() >= 0.4 ? 'dark-text' : 'light-text'
+        lightContrast >= darkContrast ? 'light-text' : 'dark-text'
 
       return `colors-grid--card ${cardTextColor}`
     }
@@ -359,8 +367,10 @@ dataTypeStories.add(
     const gradientCardClassName = (gradient: string): string => {
       const {start} = getColorsFromGradient(gradient)
 
+      const lightContrast = chroma.contrast(InfluxColors.White, start)
+      const darkContrast = chroma.contrast(InfluxColors.Obsidian, start)
       const cardTextColor =
-        chroma(start).luminance() >= 0.4 ? 'dark-text' : 'light-text'
+        lightContrast >= darkContrast ? 'light-text' : 'dark-text'
 
       return `gradients-grid--card ${cardTextColor}`
     }
@@ -381,12 +391,78 @@ dataTypeStories.add(
             import &#123;InfluxColors&#125; from '@influxdata/clockface'
           </code>
         </pre>
+        <h5>Nuetrals</h5>
         <div className="colors-grid">
-          {colorsArray.map(color => (
+          {nuetrals.map((color, i) => (
             <div
               className={colorCardClassName(color.value)}
               key={color.key}
               style={{backgroundColor: color.value}}
+            >
+              <p>{`G${i} ${color.key}`}</p>
+              <p className="colors-grid--hex">{color.value}</p>
+            </div>
+          ))}
+        </div>
+        <h5>Blues</h5>
+        <div className="colors-grid">
+          {blues.map(color => (
+            <div
+              className={colorCardClassName(color.value)}
+              key={color.key}
+              style={{ backgroundColor: color.value }}
+            >
+              <p>{color.key}</p>
+              <p className="colors-grid--hex">{color.value}</p>
+            </div>
+          ))}
+        </div>
+        <h5>Purples</h5>
+        <div className="colors-grid">
+          {purples.map(color => (
+            <div
+              className={colorCardClassName(color.value)}
+              key={color.key}
+              style={{ backgroundColor: color.value }}
+            >
+              <p>{color.key}</p>
+              <p className="colors-grid--hex">{color.value}</p>
+            </div>
+          ))}
+        </div>
+        <h5>Greens</h5>
+        <div className="colors-grid">
+          {greens.map(color => (
+            <div
+              className={colorCardClassName(color.value)}
+              key={color.key}
+              style={{ backgroundColor: color.value }}
+            >
+              <p>{color.key}</p>
+              <p className="colors-grid--hex">{color.value}</p>
+            </div>
+          ))}
+        </div>
+        <h5>Yellows</h5>
+        <div className="colors-grid">
+          {yellows.map(color => (
+            <div
+              className={colorCardClassName(color.value)}
+              key={color.key}
+              style={{ backgroundColor: color.value }}
+            >
+              <p>{color.key}</p>
+              <p className="colors-grid--hex">{color.value}</p>
+            </div>
+          ))}
+        </div>
+        <h5>Reds</h5>
+        <div className="colors-grid">
+          {reds.map(color => (
+            <div
+              className={colorCardClassName(color.value)}
+              key={color.key}
+              style={{ backgroundColor: color.value }}
             >
               <p>{color.key}</p>
               <p className="colors-grid--hex">{color.value}</p>
