@@ -9,12 +9,21 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
 import {AppWrapper, AppWrapperRef} from '../AppWrapper'
+import {AppHeader} from '../../AppHeader'
 import {NavMenu} from '../../NavMenu'
+import {FlexBox} from '../../FlexBox'
+import {Button} from '../../Button/Composed/Button'
+import {PopNav} from '../../PopNav'
 import {Page} from '../../Page/index'
 import {Icon} from '../../Icon/Icon'
 
 // Types
-import {IconFont, ComponentSize} from '../../../Types'
+import {
+  IconFont,
+  ComponentSize,
+  FlexDirection,
+  ComponentColor,
+} from '../../../Types'
 
 // Notes
 import AppWrapperReadme from './AppWrapper.md'
@@ -36,10 +45,101 @@ layoutStories.add(
 
     return (
       <div className="mockPageWrapper">
-        <div className="story--test-buttons relative">
-          <button onClick={logRef}>Log Ref</button>
-        </div>
         <div className="mockPage">
+          <AppHeader
+            size={
+              ComponentSize[
+                select('header size', mapEnumKeys(ComponentSize), 'Small')
+              ]
+            }
+          >
+            <AppHeader.Logo
+              src={text(
+                'src',
+                'https://influxdata.github.io/branding/img/downloads/influxdata-logo--full--white-alpha.png'
+              )}
+              size={
+                ComponentSize[
+                  select('header size', mapEnumKeys(ComponentSize), 'Small')
+                ]
+              }
+            />
+            <FlexBox
+              direction={FlexDirection.Row}
+              margin={ComponentSize.Medium}
+            >
+              <Button
+                size={
+                  ComponentSize[
+                    select('header size', mapEnumKeys(ComponentSize), 'Small')
+                  ]
+                }
+                text="Shiny Button"
+                color={ComponentColor.Success}
+              />
+              <PopNav
+                size={
+                  ComponentSize[
+                    select('header size', mapEnumKeys(ComponentSize), 'Small')
+                  ]
+                }
+                buttonColor={
+                  ComponentColor[
+                    select(
+                      'PopNav button color',
+                      {None: 'none', ...mapEnumKeys(ComponentColor)},
+                      'none'
+                    )
+                  ]
+                }
+              >
+                <div
+                  style={{
+                    margin: '0 16px',
+                  }}
+                >
+                  <div
+                    style={{
+                      color: 'white',
+                    }}
+                  >
+                    Signed in as
+                  </div>
+                  <div
+                    style={{
+                      color: '#BEF0FF',
+                    }}
+                  >
+                    somewhatlongusername@yourdomain.com
+                  </div>
+                </div>
+                <PopNav.Item
+                  titleLink={className => (
+                    <a className={className} href="#">
+                      First Item
+                    </a>
+                  )}
+                  active={false}
+                />
+                <PopNav.Item
+                  titleLink={className => (
+                    <a className={className} href="#">
+                      Second Item
+                    </a>
+                  )}
+                  active={false}
+                />
+                <PopNav.Item
+                  titleLink={className => (
+                    <a className={className} href="#">
+                      Third Item
+                    </a>
+                  )}
+                  active={false}
+                />
+              </PopNav>
+            </FlexBox>
+          </AppHeader>
           <AppWrapper
             ref={appWrapperRef}
             presentationMode={boolean('presentationMode', false)}
@@ -342,6 +442,9 @@ layoutStories.add(
               </Page.Contents>
             </Page>
           </AppWrapper>
+        </div>
+        <div className="story--test-buttons relative">
+          <button onClick={logRef}>Log Ref</button>
         </div>
       </div>
     )

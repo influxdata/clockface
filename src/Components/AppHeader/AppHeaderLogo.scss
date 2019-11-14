@@ -1,0 +1,41 @@
+@import '../../Styles/modules';
+
+/*
+   Top Nav
+   -----------------------------------------------------------------------------
+*/
+
+.cf-app-header--logo {
+  height: 30px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: flex-start;
+  @extend %no-user-select;
+
+  > img {
+    object-fit: contain;
+    height: 100%;
+  }
+}
+
+/*
+  Size Modifiers
+  ------------------------------------------------------------------------------
+*/
+@mixin appHeaderLogoSizeModifier($fontSize, $height) {
+  font-size: $fontSize;
+  height: $height;
+}
+
+.cf-app-header--logo__xs {
+  @include appHeaderLogoSizeModifier($form-xs-font, $form-xs-height);
+}
+.cf-app-header--logo__sm {
+  @include appHeaderLogoSizeModifier($form-sm-font, $form-sm-height);
+}
+.cf-app-header--logo__md {
+  @include appHeaderLogoSizeModifier($form-md-font, $form-md-height);
+}
+.cf-app-header--logo__lg {
+  @include appHeaderLogoSizeModifier($form-lg-font, $form-lg-height);
+}

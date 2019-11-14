@@ -1,0 +1,64 @@
+@import '../../Styles/modules';
+
+/*
+   App Header
+   -----------------------------------------------------------------------------
+*/
+
+.cf-app-header {
+  width: 100%;
+  min-width: 100%;
+  background-color: $g2-kevlar;
+  padding: $cf-marg-a;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+
+  + .clockface--app-wrapper {
+    top: 30px;
+  }
+}
+
+/*
+  Size Modifiers
+  ------------------------------------------------------------------------------
+*/
+
+@mixin appHeaderSizeModifier($fontSize, $padding, $height) {
+  font-size: $fontSize;
+  padding: $padding;
+  line-height: $height - ($cf-border * 2);
+
+  + .clockface--app-wrapper {
+    top: $height + ($padding * 2);
+  }
+}
+
+.cf-app-header__xs {
+  @include appHeaderSizeModifier(
+    $form-xs-font,
+    $form-xs-padding,
+    $form-xs-height
+  );
+}
+.cf-app-header__sm {
+  @include appHeaderSizeModifier(
+    $form-sm-font,
+    $form-sm-padding,
+    $form-sm-height
+  );
+}
+.cf-app-header__md {
+  @include appHeaderSizeModifier(
+    $form-md-font,
+    $form-md-padding,
+    $form-md-height
+  );
+}
+.cf-app-header__lg {
+  @include appHeaderSizeModifier(
+    $form-lg-font,
+    $form-lg-padding,
+    $form-lg-height
+  );
+}
