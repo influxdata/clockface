@@ -139,9 +139,7 @@ popoverStories.add(
               select('color', mapEnumKeys(ComponentColor), 'Primary')
             ]
           }
-          type={
-            Appearance[select('type', mapEnumKeys(Appearance), 'Outline')]
-          }
+          type={Appearance[select('type', mapEnumKeys(Appearance), 'Outline')]}
         />
         <Popover.Popover
           ref={popover2Ref}

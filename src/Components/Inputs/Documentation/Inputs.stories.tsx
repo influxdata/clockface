@@ -32,7 +32,7 @@ import {
   TextAreaRef,
   TextAreaContainerRef,
 } from '../'
-import {SlideToggle} from '../../SlideToggle'
+import {InputLabel, InputLabelRef} from '../InputLabel'
 import {RadioRef, RadioButtonRef} from '../../Radio/index'
 import {FlexBox} from '../../FlexBox'
 
@@ -57,6 +57,7 @@ import AutoInputReadme from './AutoInput.md'
 import RangeSliderReadme from './RangeSlider.md'
 import TextAreaReadme from './TextArea.md'
 import ToggleReadme from './Toggle.md'
+import InputLabelReadme from './InputLabel.md'
 
 const inputsBaseStories = storiesOf(
   'Components|Inputs/Base',
@@ -296,14 +297,15 @@ inputsBaseStories.add(
             type={InputType.Checkbox}
             checked={boolean('checked', true)}
           />
-          <SlideToggle.Label
-            text={text('Label: text', 'I Agree to Terms and Conditions')}
+          <InputLabel
             size={
               ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
             }
             active={boolean('checked', true)}
             wrapText={boolean('Label: wrapText', true)}
-          />
+          >
+            {text('Label: text', 'I Agree to Terms and Conditions')}
+          </InputLabel>
         </FlexBox>
       </div>
     </div>
@@ -311,6 +313,42 @@ inputsBaseStories.add(
   {
     readme: {
       content: marked(InputReadme),
+    },
+  }
+)
+
+inputsBaseStories.add(
+  'InputLabel',
+  () => {
+    const inputLabelRef: RefObject<InputLabelRef> = createRef()
+
+    const handleLogRefs = (): void => {
+      /* eslint-disable */
+      console.log('ToggleRef', inputLabelRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <InputLabel
+          ref={inputLabelRef}
+          style={object('style', {})}
+          active={boolean('active', true)}
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+        >
+          {text('children', 'I am a label!')}
+        </InputLabel>
+        <div className="story--test-buttons">
+          <button onClick={handleLogRefs}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(InputLabelReadme),
     },
   }
 )
@@ -343,30 +381,46 @@ inputsBaseStories.add(
           style={object('style', {})}
           icon={
             IconFont[
-            select('icon', { None: 'none', ...mapEnumKeys(IconFont) }, 'None')
+              select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
             ]
           }
           status={
             ComponentStatus[
-            select('status', mapEnumKeys(ComponentStatus), 'Default')
+              select('status', mapEnumKeys(ComponentStatus), 'Default')
             ]
           }
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
           color={
-            ComponentColor[select('color', mapEnumKeys(ComponentColor), 'Primary')]
+            ComponentColor[
+              select('color', mapEnumKeys(ComponentColor), 'Primary')
+            ]
           }
           appearance={
             Appearance[select('appearance', mapEnumKeys(Appearance), 'Outline')]
           }
           type={
             InputToggleType[
-            select('type', mapEnumKeys(InputToggleType), 'Checkbox')
+              select('type', mapEnumKeys(InputToggleType), 'Checkbox')
             ]
           }
           onChange={c => setChecked(c)}
-        />
+        >
+          {!!text('label', '') && (
+            <InputLabel
+              size={
+                ComponentSize[
+                  select('size', mapEnumKeys(ComponentSize), 'Small')
+                ]
+              }
+              active={checked}
+              htmlFor={text('id', 'example_toggle_id')}
+            >
+              {text('label', '')}
+            </InputLabel>
+          )}
+        </Toggle>
         <div className="story--test-buttons">
           <button onClick={handleLogRefs}>Log Refs</button>
         </div>

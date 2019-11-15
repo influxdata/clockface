@@ -8,8 +8,9 @@ import {withKnobs, text, select, boolean} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
-import {SlideToggle, SlideToggleRef, SlideToggleLabelRef} from '../'
+import {SlideToggle, SlideToggleRef} from '../'
 import {FlexBox} from '../../FlexBox'
+import {InputLabel} from '../../Inputs/InputLabel'
 
 // Types
 import {
@@ -21,7 +22,7 @@ import {
 
 // Notes
 import SlideToggleReadme from './SlideToggle.md'
-import SlideToggleLabelReadme from './SlideToggleLabel.md'
+// import SlideToggleLabelReadme from './SlideToggleLabel.md'
 import ControlsListReadme from './ControlsList.md'
 import SlideToggleWithLabelsReadme from './SlideToggleWithLabels.md'
 import {useState} from '@storybook/addons'
@@ -77,41 +78,6 @@ slideToggleStories.add(
   }
 )
 
-slideToggleStories.add(
-  'SlideToggleLabel',
-  () => {
-    const slideToggleLabelRef: RefObject<SlideToggleLabelRef> = createRef()
-
-    const logRef = (): void => {
-      /* eslint-disable */
-      console.log(slideToggleLabelRef.current)
-      /* eslint-enable */
-    }
-
-    return (
-      <div className="story--example">
-        <SlideToggle.Label
-          ref={slideToggleLabelRef}
-          text={text('text', 'Label Text')}
-          size={
-            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-          }
-          active={boolean('active', true)}
-          wrapText={boolean('wrapText', false)}
-        />
-        <div className="story--test-buttons">
-          <button onClick={logRef}>Log Ref</button>
-        </div>
-      </div>
-    )
-  },
-  {
-    readme: {
-      content: marked(SlideToggleLabelReadme),
-    },
-  }
-)
-
 slideToggleExampleStories.add(
   'SlideToggle with labels',
   () => (
@@ -121,14 +87,15 @@ slideToggleExampleStories.add(
         alignItems={AlignItems.Center}
         margin={ComponentSize.Medium}
       >
-        <SlideToggle.Label
-          text={text('Left Label: text', 'Apples')}
+        <InputLabel
           wrapText={boolean('Left Label: wrapText', false)}
           active={!boolean('active', false)}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
-        />
+        >
+          {text('Left Label: text', 'Apples')}
+        </InputLabel>
         <SlideToggle
           onChange={() => alert('clicked')}
           active={boolean('active', false)}
@@ -141,14 +108,15 @@ slideToggleExampleStories.add(
             ]
           }
         />
-        <SlideToggle.Label
-          text={text('Right Label: text', 'Oranges')}
+        <InputLabel
           wrapText={boolean('Right Label: wrapText', false)}
           active={boolean('active', false)}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
-        />
+        >
+          {text('Right Label: text', 'Oranges')}
+        </InputLabel>
       </FlexBox>
     </div>
   ),
@@ -190,10 +158,7 @@ slideToggleExampleStories.add(
                   ]
                 }
               />
-              <SlideToggle.Label
-                text="Send email notifications"
-                active={optionA}
-              />
+              <InputLabel active={optionA}>Send email notifications</InputLabel>
             </FlexBox>
             <FlexBox
               direction={FlexDirection.Row}
@@ -211,7 +176,7 @@ slideToggleExampleStories.add(
                   ]
                 }
               />
-              <SlideToggle.Label text="Send a raven" active={optionB} />
+              <InputLabel active={optionB}>Send a raven</InputLabel>
             </FlexBox>
             <FlexBox
               direction={FlexDirection.Row}
@@ -229,7 +194,7 @@ slideToggleExampleStories.add(
                   ]
                 }
               />
-              <SlideToggle.Label text="Send an owl" active={optionC} />
+              <InputLabel active={optionC}>Send an owl</InputLabel>
             </FlexBox>
           </FlexBox>
         </div>

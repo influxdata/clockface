@@ -5,55 +5,58 @@ import classnames from 'classnames'
 // Types
 import {ComponentSize, StandardFunctionProps} from '../../Types'
 
-export interface SlideToggleLabelProps extends StandardFunctionProps {
-  /** Text to be displayed as label */
-  text: string
+// Styles
+import './InputLabel.scss'
+
+export interface InputLabelProps extends StandardFunctionProps {
   /** Used to match the state of the associated SlideToggle */
   active?: boolean
   /** Button size */
   size?: ComponentSize
   /** Controls text wrapping */
   wrapText?: boolean
+  /** Associate this label with a specific input */
+  htmlFor?: string
 }
 
-export type SlideToggleLabelRef = HTMLDivElement
+export type InputLabelRef = HTMLLabelElement
 
-export const SlideToggleLabel = forwardRef<
-  SlideToggleLabelRef,
-  SlideToggleLabelProps
->(
+export const InputLabel = forwardRef<InputLabelRef, InputLabelProps>(
   (
     {
       id,
-      text,
       size = ComponentSize.Small,
       style,
       active = true,
-      testID = 'slide-toggle--label',
+      testID = 'input-label',
+      htmlFor,
       wrapText = false,
+      children,
       className,
     },
     ref
   ) => {
-    const slideToggleLabelClass = classnames('cf-slide-toggle--label', {
+    const slideToggleLabelClass = classnames('cf-input-label', {
       [`${className}`]: className,
-      'cf-slide-toggle--label__wrap': wrapText,
-      [`cf-slide-toggle--label-${size}`]: size,
-      'cf-slide-toggle--label__active': active,
+      'cf-input-label__wrap': wrapText,
+      [`cf-input-label__${size}`]: size,
+      'cf-input-label__active': active,
+      'cf-input-label__clickable': htmlFor,
     })
 
     return (
-      <div
+      <label
         id={id}
         ref={ref}
         style={style}
+        htmlFor={htmlFor}
         className={slideToggleLabelClass}
         data-testid={testID}
       >
-        {text}
-      </div>
+        {children}
+      </label>
     )
   }
 )
 
-SlideToggleLabel.displayName = 'SlideToggleLabel'
+InputLabel.displayName = 'InputLabel'

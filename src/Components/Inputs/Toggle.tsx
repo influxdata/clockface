@@ -99,7 +99,7 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
       autoFocus = false,
       onKeyDown,
       onKeyPress,
-      appearance = Appearance.Outline,
+      appearance = Appearance.Outline,
       containerRef,
       disabledTitleText = 'This input is disabled',
     },
@@ -116,6 +116,7 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
       'cf-toggle__checkbox': type === InputToggleType.Checkbox,
       'cf-toggle__radio': type === InputToggleType.Radio,
       'cf-toggle__disabled': status === ComponentStatus.Disabled,
+      'cf-toggle__labelled': !!React.Children.count(children),
       [`${className}`]: className,
     })
 
@@ -156,7 +157,9 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
     let indicator = <span className="cf-toggle--indicator cf-toggle--dot" />
 
     if (icon) {
-      indicator = <Icon glyph={icon} className="cf-toggle--indicator cf-toggle--icon" />
+      indicator = (
+        <Icon glyph={icon} className="cf-toggle--indicator cf-toggle--icon" />
+      )
     }
 
     const title =
@@ -183,7 +186,7 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
           disabled={status === ComponentStatus.Disabled}
           tabIndex={tabIndex}
           data-testid={testID}
-          />
+        />
         <label htmlFor={id} className="cf-toggle--visual-input" title={title}>
           {indicator}
         </label>
