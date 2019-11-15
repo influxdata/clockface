@@ -17,7 +17,7 @@
   }
 }
 
-.cf-toggle--label {
+.cf-toggle--visual-input {
   position: relative;
   display: block;
   border-width: $cf-border;
@@ -63,24 +63,24 @@
 
 // Outline Appearance
 .cf-toggle__outline {
-  .cf-toggle--label {
+  .cf-toggle--visual-input {
     background-color: $cf-input-background--default;
     border-color: $cf-input-border--default;
   }
 
-  &:hover .cf-toggle--label {
+  &:hover .cf-toggle--visual-input {
     background-color: $cf-input-background--hover;
     border-color: $cf-input-border--hover;
   }
 
-  &.cf-toggle__focused .cf-toggle--label,
-  &.cf-toggle__focused:hover .cf-toggle--label {
+  &.cf-toggle__focused .cf-toggle--visual-input,
+  &.cf-toggle__focused:hover .cf-toggle--visual-input {
     background-color: $cf-input-background--focused;
     border-color: $cf-input-border--focused;
   }
 
-  &.cf-toggle__disabled .cf-toggle--label,
-  &.cf-toggle__disabled:hover .cf-toggle--label {
+  &.cf-toggle__disabled .cf-toggle--visual-input,
+  &.cf-toggle__disabled:hover .cf-toggle--visual-input {
     background-color: $cf-input-background--disabled;
     border-color: $cf-input-border--disabled;
   }
@@ -94,7 +94,7 @@
   height: $size;
   width: $size;
 
-  .cf-toggle--label {
+  .cf-toggle--visual-input {
     height: $size;
     width: $size;
   }
@@ -142,7 +142,7 @@
   }
 
   // Solid Appearance
-  &.cf-toggle__solid .cf-toggle--label {
+  &.cf-toggle__solid .cf-toggle--visual-input {
     border-color: $solidBackground;
     background-color: $solidBackground;
   }
@@ -153,7 +153,7 @@
     background-color: $solidIndicator;
   }
   &.cf-toggle__solid:hover {
-    .cf-toggle--label {
+    .cf-toggle--visual-input {
       border-color: $solidBackgroundHover;
       background-color: $solidBackgroundHover;
     }
@@ -164,8 +164,8 @@
       background-color: $solidIndicatorHover;
     }
   }
-  &.cf-toggle__disabled.cf-toggle__solid .cf-toggle--label,
-  &.cf-toggle__disabled.cf-toggle__solid:hover .cf-toggle--label {
+  &.cf-toggle__disabled.cf-toggle__solid .cf-toggle--visual-input,
+  &.cf-toggle__disabled.cf-toggle__solid:hover .cf-toggle--visual-input {
     border-color: mix($solidBackground, $cf-input-background--disabled, 20%);
     background-color: mix($solidBackground, $cf-input-background--disabled, 20%);
   }
@@ -197,4 +197,3 @@
 .cf-toggle__danger {
   @include toggleColorModifier($c-dreamsicle, $c-ruby, $c-fire, $c-dreamsicle, $c-tungsten);
 }
-  

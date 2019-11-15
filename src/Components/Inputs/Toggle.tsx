@@ -183,7 +183,7 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
           tabIndex={tabIndex}
           data-testid={testID}
           />
-        <label htmlFor={id} className="cf-toggle--label" title={title}>
+        <label htmlFor={id} className="cf-toggle--visual-input" title={title}>
           {indicator}
         </label>
       </div>
