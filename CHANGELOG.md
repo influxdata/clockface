@@ -1,6 +1,8 @@
 # Changelog
 
-#### 1.0.6 (Unreleased)
+#### 1.0.7 (Unreleased)
+
+#### 1.0.6
 
 - [#396](https://github.com/influxdata/clockface/pull/396): Improve contrast in `NavMenu`
 - [#395](https://github.com/influxdata/clockface/pull/395): Introduce `PopNav` component family
