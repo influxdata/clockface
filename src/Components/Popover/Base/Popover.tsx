@@ -20,7 +20,7 @@ import './Popover.scss'
 
 // Types
 import {
-  PopoverType,
+  Appearance,
   ComponentColor,
   PopoverPosition,
   PopoverInteraction,
@@ -48,7 +48,7 @@ export interface PopoverProps extends StandardFunctionProps {
   /** Where to position the popover relative to the trigger (assuming it fits there) */
   position?: PopoverPosition
   /** Means of applying color to popover */
-  type: PopoverType
+  type: Appearance
   /** Overrides internal popover expanded state */
   visible?: boolean
   /** Disables the popover's show interaction */
@@ -82,7 +82,7 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
       disabled = false,
       testID = 'popover',
       distanceFromTrigger = 4,
-      type = PopoverType.Outline,
+      type = Appearance.Outline,
       enableDefaultStyles = true,
       color = ComponentColor.Primary,
       position = PopoverPosition.Below,

@@ -26,7 +26,7 @@ import {DapperScrollbars} from '../../DapperScrollbars/DapperScrollbars'
 
 // Types
 import {
-  PopoverType,
+  Appearance,
   PopoverInteraction,
   PopoverPosition,
   ComponentColor,
@@ -140,7 +140,7 @@ popoverStories.add(
             ]
           }
           type={
-            PopoverType[select('type', mapEnumKeys(PopoverType), 'Outline')]
+            Appearance[select('type', mapEnumKeys(Appearance), 'Outline')]
           }
         />
         <Popover.Popover
@@ -165,7 +165,7 @@ popoverStories.add(
           hideEvent={PopoverInteraction.Hover}
           position={PopoverPosition.ToTheRight}
           color={ComponentColor.Secondary}
-          type={PopoverType.Solid}
+          type={Appearance.Solid}
         />
         <Popover.Popover
           ref={popover3Ref}
@@ -190,7 +190,7 @@ popoverStories.add(
           hideEvent={PopoverInteraction.None}
           position={PopoverPosition.Below}
           color={ComponentColor.Success}
-          type={PopoverType.Outline}
+          type={Appearance.Outline}
         />
       </div>
     )
@@ -232,7 +232,7 @@ composedPopoverStories.add(
             select('color', mapEnumKeys(ComponentColor), 'Primary')
           ]
         }
-        type={PopoverType[select('type', mapEnumKeys(PopoverType), 'Outline')]}
+        type={Appearance[select('type', mapEnumKeys(Appearance), 'Outline')]}
       >
         <div className="mockComponent mockButton">Popover Trigger Element</div>
       </ReflessPopover>
@@ -306,7 +306,7 @@ testPopoverStories.add('Popover Trigger within a DapperScrollbars', () => {
         hideEvent={PopoverInteraction.Click}
         position={PopoverPosition.Below}
         color={ComponentColor.Success}
-        type={PopoverType.Outline}
+        type={Appearance.Outline}
       />
       <DapperScrollbars
         style={{width: '100%', height: '100%', position: 'absolute'}}

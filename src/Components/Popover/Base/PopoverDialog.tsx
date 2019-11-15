@@ -17,7 +17,7 @@ import {calculatePopoverStyles} from '../../../Utils/popovers'
 
 // Types
 import {
-  PopoverType,
+  Appearance,
   ComponentColor,
   PopoverPosition,
   StandardFunctionProps,
@@ -33,7 +33,7 @@ export interface PopoverDialogProps extends StandardFunctionProps {
   /** Popover dialog color */
   color: ComponentColor
   /** Means of applying color to popover */
-  type: PopoverType
+  type: Appearance
   /** Popover dialog contents */
   contents: JSX.Element
   /** Handles clicks detected outside the popover dialog element */

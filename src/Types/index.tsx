@@ -416,7 +416,7 @@ export enum PopoverPosition {
   ToTheRight = 'to-right',
 }
 
-export enum PopoverType {
+export enum Appearance {
   Solid = 'solid',
   Outline = 'outline',
 }

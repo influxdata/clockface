@@ -10,7 +10,7 @@ import {
   StandardFunctionProps,
   ComponentColor,
   PopoverInteraction,
-  PopoverType,
+  Appearance,
 } from '../../../Types'
 
 // Styles
@@ -92,7 +92,7 @@ export const QuestionMarkTooltip = forwardRef<
           testID={`${testID}-tooltip`}
           style={tooltipStyle}
           color={color}
-          type={PopoverType.Outline}
+          type={Appearance.Outline}
           id={id}
         />
       </span>
