@@ -33,7 +33,7 @@
     background-color: $cf-input-background--focused;
     border-color: $cf-input-border--focused;
     color: $cf-input-text--focused;
-    box-shadow: 0 0 6px 0 $cf-input-border--focused;
+    box-shadow: $cf-input--box-shadow;
   }
 
   &::-webkit-input-placeholder {
