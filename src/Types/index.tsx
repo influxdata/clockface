@@ -398,6 +398,11 @@ export enum InputType {
   Range = 'range',
 }
 
+export enum InputToggleType {
+  Checkbox = 'checkbox',
+  Radio = 'radio',
+}
+
 export enum AutoInputMode {
   Auto = 'auto',
   Custom = 'custom',

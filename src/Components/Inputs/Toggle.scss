@@ -1,0 +1,200 @@
+@import '../../Styles/modules';
+
+/*
+  Toggle Styles
+  ------------------------------------------------------------------------------
+*/
+
+.cf-toggle {
+  position: relative;
+
+  // Visually obscures underlying input
+  & > input[type="radio"],
+  & > input[type="checkbox"] {
+    position: fixed;
+    top: -500px;
+    left: - 500px;
+  }
+}
+
+.cf-toggle--label {
+  position: relative;
+  display: block;
+  border-width: $cf-border;
+  border-style: solid;
+  transition: $cf-input--transition;
+
+  .cf-toggle:hover:not(.cf-toggle__disabled) & {
+    cursor: pointer;
+  }
+
+  .cf-toggle__focused &,
+  .cf-toggle__focused:hover & {
+    box-shadow: $cf-input--box-shadow;
+  }
+
+  .cf-toggle__radio & {
+    border-radius: 50%;
+  }
+  
+  .cf-toggle__checkbox & {
+    border-radius: $cf-radius;
+  }
+
+  input[type="radio"]:checked + & .cf-toggle--indicator,
+  input[type="checkbox"]:checked + & .cf-toggle--indicator {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1,1);
+  }
+}
+
+.cf-toggle--indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(2,2);
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease, color 0.25s ease, background-color 0.25s ease;
+}
+
+.cf-toggle--dot {
+  border-radius: 50%;
+}
+
+// Outline Appearance
+.cf-toggle__outline {
+  .cf-toggle--label {
+    background-color: $cf-input-background--default;
+    border-color: $cf-input-border--default;
+  }
+
+  &:hover .cf-toggle--label {
+    background-color: $cf-input-background--hover;
+    border-color: $cf-input-border--hover;
+  }
+
+  &.cf-toggle__focused .cf-toggle--label,
+  &.cf-toggle__focused:hover .cf-toggle--label {
+    background-color: $cf-input-background--focused;
+    border-color: $cf-input-border--focused;
+  }
+
+  &.cf-toggle__disabled .cf-toggle--label,
+  &.cf-toggle__disabled:hover .cf-toggle--label {
+    background-color: $cf-input-background--disabled;
+    border-color: $cf-input-border--disabled;
+  }
+}
+
+/*
+  Size Modifiers
+  ------------------------------------------------------------------------------
+*/
+@mixin toggleSizeModifier($fontSize, $size) {
+  height: $size;
+  width: $size;
+
+  .cf-toggle--label {
+    height: $size;
+    width: $size;
+  }
+
+  .cf-toggle--icon {
+    font-size: floor($fontSize * 1.25);
+  }
+
+  .cf-toggle--dot {
+    width: floor($size * 0.5);
+    height: floor($size * 0.5);
+  }
+}
+
+.cf-toggle__xs {
+  @include toggleSizeModifier($form-xs-font, $form-xs-height);
+}
+.cf-toggle__sm {
+  @include toggleSizeModifier($form-sm-font, $form-sm-height);
+}
+.cf-toggle__md {
+  @include toggleSizeModifier($form-md-font, $form-md-height);
+}
+.cf-toggle__lg {
+  @include toggleSizeModifier($form-lg-font, $form-lg-height);
+}
+
+/*
+  Color Modifiers
+  ------------------------------------------------------------------------------
+*/
+@mixin toggleColorModifier($outlineIndicator, $solidBackground, $solidBackgroundHover, $solidIndicator, $solidIndicatorHover) {
+  // Outline Appearance
+  &.cf-toggle__outline .cf-toggle--icon {
+    color: $outlineIndicator;
+  }
+  &.cf-toggle__outline .cf-toggle--dot {
+    background-color: $outlineIndicator;
+  }
+  &.cf-toggle__disabled.cf-toggle__outline .cf-toggle--icon {
+    color: mix($cf-input-text--disabled, $cf-input-background--disabled, 50%);
+  }
+  &.cf-toggle__disabled.cf-toggle__outline .cf-toggle--dot {
+    background-color: mix($cf-input-text--disabled, $cf-input-background--disabled, 50%);
+  }
+
+  // Solid Appearance
+  &.cf-toggle__solid .cf-toggle--label {
+    border-color: $solidBackground;
+    background-color: $solidBackground;
+  }
+  &.cf-toggle__solid .cf-toggle--icon {
+    color: $solidIndicator;
+  }
+  &.cf-toggle__solid .cf-toggle--dot {
+    background-color: $solidIndicator;
+  }
+  &.cf-toggle__solid:hover {
+    .cf-toggle--label {
+      border-color: $solidBackgroundHover;
+      background-color: $solidBackgroundHover;
+    }
+    .cf-toggle--icon {
+      color: $solidIndicatorHover;
+    }
+    .cf-toggle--dot {
+      background-color: $solidIndicatorHover;
+    }
+  }
+  &.cf-toggle__disabled.cf-toggle__solid .cf-toggle--label,
+  &.cf-toggle__disabled.cf-toggle__solid:hover .cf-toggle--label {
+    border-color: mix($solidBackground, $cf-input-background--disabled, 20%);
+    background-color: mix($solidBackground, $cf-input-background--disabled, 20%);
+  }
+  &.cf-toggle__disabled.cf-toggle__solid .cf-toggle--icon,
+  &.cf-toggle__disabled.cf-toggle__solid:hover .cf-toggle--icon {
+    color: mix($solidIndicator, $cf-input-text--disabled, 20%);
+  }
+  &.cf-toggle__disabled.cf-toggle__solid .cf-toggle--dot,
+  &.cf-toggle__disabled.cf-toggle__solid:hover .cf-toggle--dot {
+    background-color: mix($solidIndicator, $cf-input-text--disabled, 20%);
+  }
+}
+
+.cf-toggle__default {
+  @include toggleColorModifier($g18-cloud, $g2-kevlar, $g3-castle, $c-pool, $c-laser);
+}
+.cf-toggle__primary {
+  @include toggleColorModifier($c-pool, $c-sapphire, $c-ocean, $c-laser, $c-hydrogen);
+}
+.cf-toggle__secondary {
+  @include toggleColorModifier($c-comet, $c-void, $c-amethyst, $c-comet, $c-potassium);
+}
+.cf-toggle__success {
+  @include toggleColorModifier($c-rainforest, $c-emerald, $c-viridian, $c-honeydew, $c-krypton);
+}
+.cf-toggle__warning {
+  @include toggleColorModifier($c-thunder, $c-topaz, $c-tiger, $c-thunder, $c-sulfur);
+}
+.cf-toggle__danger {
+  @include toggleColorModifier($c-dreamsicle, $c-ruby, $c-fire, $c-dreamsicle, $c-tungsten);
+}
+  
