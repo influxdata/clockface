@@ -2,6 +2,7 @@
 
 #### 1.0.6 (Unreleased)
 
+- [#396](https://github.com/influxdata/clockface/pull/396): Improve contrast in `NavMenu`
 - [#395](https://github.com/influxdata/clockface/pull/395): Introduce `PopNav` component family
 - [#395](https://github.com/influxdata/clockface/pull/395): Introduce `AppHeader` component family
 - [#392](https://github.com/influxdata/clockface/pull/392): Make `g1-raven` slightly darker and cooler

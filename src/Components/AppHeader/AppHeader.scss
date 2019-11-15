@@ -31,6 +31,7 @@
 
   + .clockface--app-wrapper {
     top: $height + ($padding * 2);
+    height: calc(100% - #{$height + ($padding * 2)});
   }
 }
 

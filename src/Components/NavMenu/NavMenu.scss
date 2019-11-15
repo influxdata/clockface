@@ -208,7 +208,7 @@
 
   &:hover {
     color: $g20-white;
-    @include gradient-h($c-laser, $c-potassium);
+    @include gradient-h($nav-menu--bg-hover, $nav-menu--bg-hover-accent);
   }
 }
 
@@ -216,7 +216,7 @@
 .cf-nav--item.active {
   .cf-nav--item-header {
     color: $g20-white;
-    @include gradient-h($c-laser, $c-potassium);
+    @include gradient-h($nav-menu--bg-hover, $nav-menu--bg-hover-accent);
   }
   .cf-nav--item-icon {
     color: $g20-white;
@@ -253,7 +253,7 @@
     width: 100%;
     height: 100%;
     border-radius: $cf-radius 0 0 $cf-radius;
-    @include gradient-h($c-laser, $c-potassium);
+    @include gradient-h($nav-menu--bg-hover, $nav-menu--bg-hover-accent);
     z-index: -1;
     opacity: 0;
     transition: opacity 0.25s ease;
@@ -334,12 +334,22 @@
       font-size: ceil($nav-menu--size * 0.4222);
     }
 
+    .cf-nav--item:first-child & {
+      border-top-right-radius: $cf-radius;
+    }
+
+    .cf-nav--item:last-child & {
+      border-bottom-right-radius: $cf-radius;
+    }
+
     .cf-nav--item:hover & {
       &,
       &:link,
       &:active,
       &:visited {
-        background-color: $c-pool;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        background-color: $nav-menu--bg;
         color: $g20-white;
       }
     }
@@ -359,7 +369,7 @@
       &:active,
       &:visited,
       &:hover {
-        background-color: $c-pool;
+        background-color: $nav-menu--bg;
         text-shadow:
           0 0 9px $c-yeti,
           0 0 15px $c-hydrogen,
@@ -375,7 +385,7 @@
     left: $nav-menu--size;
     align-items: stretch;
     border-radius: 0 $cf-radius $cf-radius 0;
-    @include gradient-h($c-pool, $c-comet);
+    @include gradient-h($nav-menu--bg, $nav-menu--bg-accent);
 
     .cf-nav--item:hover & {
       display: flex;
@@ -404,6 +414,11 @@
   .cf-nav--sub-item {
     padding: 6px $nav-menu--gutter;
     margin: 0;
+
+    &:after {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
   }
 }
 
