@@ -18,6 +18,9 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
 import {
+  Toggle,
+  ToggleRef,
+  ToggleContainerRef,
   Input,
   InputRef,
   InputContainerRef,
@@ -44,6 +47,8 @@ import {
   AlignItems,
   InputType,
   AutoInputMode,
+  InputToggleType,
+  Appearance,
 } from '../../../Types'
 
 // Notes
@@ -51,6 +56,7 @@ import InputReadme from './Input.md'
 import AutoInputReadme from './AutoInput.md'
 import RangeSliderReadme from './RangeSlider.md'
 import TextAreaReadme from './TextArea.md'
+import ToggleReadme from './Toggle.md'
 
 const inputsBaseStories = storiesOf(
   'Components|Inputs/Base',
@@ -305,6 +311,71 @@ inputsBaseStories.add(
   {
     readme: {
       content: marked(InputReadme),
+    },
+  }
+)
+
+inputsBaseStories.add(
+  'Toggle',
+  () => {
+    const toggleRef: RefObject<ToggleRef> = createRef()
+    const toggleContainerRef: RefObject<ToggleContainerRef> = createRef()
+
+    const [checked, setChecked] = useState<boolean>(false)
+
+    const handleLogRefs = (): void => {
+      /* eslint-disable */
+      console.log('ToggleRef', toggleRef.current)
+      console.log('ToggleContainerRef', toggleContainerRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <Toggle
+          checked={checked}
+          ref={toggleRef}
+          titleText={text('titleText', 'Title Text')}
+          disabledTitleText={text('disabledTitleText', 'Disabled Title Text')}
+          containerRef={toggleContainerRef}
+          id={text('id', 'example_toggle_id')}
+          value={text('value', 'Value Text')}
+          style={object('style', {})}
+          icon={
+            IconFont[
+            select('icon', { None: 'none', ...mapEnumKeys(IconFont) }, 'None')
+            ]
+          }
+          status={
+            ComponentStatus[
+            select('status', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          color={
+            ComponentColor[select('color', mapEnumKeys(ComponentColor), 'Primary')]
+          }
+          appearance={
+            Appearance[select('appearance', mapEnumKeys(Appearance), 'Outline')]
+          }
+          type={
+            InputToggleType[
+            select('type', mapEnumKeys(InputToggleType), 'Checkbox')
+            ]
+          }
+          onChange={c => setChecked(c)}
+        />
+        <div className="story--test-buttons">
+          <button onClick={handleLogRefs}>Log Refs</button>
+        </div>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(ToggleReadme),
     },
   }
 )
