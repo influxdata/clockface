@@ -91,6 +91,7 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
       onFocus,
       checked,
       onKeyUp,
+      children,
       tabIndex,
       onChange,
       titleText = '',
@@ -186,6 +187,7 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
         <label htmlFor={id} className="cf-toggle--visual-input" title={title}>
           {indicator}
         </label>
+        {children}
       </div>
     )
   }

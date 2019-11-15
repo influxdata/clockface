@@ -6,6 +6,7 @@
 */
 
 .cf-toggle {
+  display: flex;
   position: relative;
 
   // Visually obscures underlying input
@@ -92,7 +93,6 @@
 */
 @mixin toggleSizeModifier($fontSize, $size) {
   height: $size;
-  width: $size;
 
   .cf-toggle--visual-input {
     height: $size;
