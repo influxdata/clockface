@@ -2,6 +2,10 @@
 
 #### 1.0.7 (Unreleased)
 
+- [#397](https://github.com/influxdata/clockface/pull/397): Introduce `Toggle` component as an abstraction of HTML radio and checkbox inputs
+- [#397](https://github.com/influxdata/clockface/pull/397): [Breaking] Refactor `SlideToggleLabel` into the generic `InputLabel`
+- [#397](https://github.com/influxdata/clockface/pull/397): [Breaking] Rename `PopoverType` enum to the more generic `Appearance`
+
 #### 1.0.6
 
 - [#396](https://github.com/influxdata/clockface/pull/396): Improve contrast in `NavMenu`
