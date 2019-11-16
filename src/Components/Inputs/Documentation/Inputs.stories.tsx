@@ -787,7 +787,9 @@ inputsExampleStories.add(
               ]
             }
             appearance={
-              Appearance[select('appearance', mapEnumKeys(Appearance), 'Outline')]
+              Appearance[
+                select('appearance', mapEnumKeys(Appearance), 'Outline')
+              ]
             }
           >
             <InputLabel active={weapon === 'chainsaw'} htmlFor="chainsaw">
@@ -809,7 +811,9 @@ inputsExampleStories.add(
               ]
             }
             appearance={
-              Appearance[select('appearance', mapEnumKeys(Appearance), 'Outline')]
+              Appearance[
+                select('appearance', mapEnumKeys(Appearance), 'Outline')
+              ]
             }
           >
             <InputLabel active={weapon === 'crowbar'} htmlFor="crowbar">
@@ -831,7 +835,9 @@ inputsExampleStories.add(
               ]
             }
             appearance={
-              Appearance[select('appearance', mapEnumKeys(Appearance), 'Outline')]
+              Appearance[
+                select('appearance', mapEnumKeys(Appearance), 'Outline')
+              ]
             }
           >
             <InputLabel active={weapon === 'katana'} htmlFor="katana">
