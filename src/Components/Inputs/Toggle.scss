@@ -25,6 +25,7 @@
   border-width: $cf-border;
   border-style: solid;
   transition: $cf-input--transition;
+  outline: none;
 
   .cf-toggle:hover:not(.cf-toggle__disabled) & {
     cursor: pointer;

@@ -58,6 +58,7 @@ import RangeSliderReadme from './RangeSlider.md'
 import TextAreaReadme from './TextArea.md'
 import ToggleReadme from './Toggle.md'
 import InputLabelReadme from './InputLabel.md'
+import MultipleChoiceForm from './MultipleChoiceForm.md'
 
 const inputsBaseStories = storiesOf(
   'Components|Inputs/Base',
@@ -66,6 +67,11 @@ const inputsBaseStories = storiesOf(
 
 const inputsComposedStories = storiesOf(
   'Components|Inputs/Composed',
+  module
+).addDecorator(withKnobs)
+
+const inputsExampleStories = storiesOf(
+  'Components|Inputs/Examples',
   module
 ).addDecorator(withKnobs)
 
@@ -361,6 +367,10 @@ inputsBaseStories.add(
 
     const [checked, setChecked] = useState<boolean>(false)
 
+    const handleToggleChange = (): void => {
+      setChecked(!checked)
+    }
+
     const handleLogRefs = (): void => {
       /* eslint-disable */
       console.log('ToggleRef', toggleRef.current)
@@ -405,7 +415,7 @@ inputsBaseStories.add(
               select('type', mapEnumKeys(InputToggleType), 'Checkbox')
             ]
           }
-          onChange={c => setChecked(c)}
+          onChange={handleToggleChange}
         >
           {!!text('label', '') && (
             <InputLabel
@@ -741,6 +751,100 @@ inputsComposedStories.add(
   {
     readme: {
       content: marked(RangeSliderReadme),
+    },
+  }
+)
+
+inputsExampleStories.add(
+  'Multiple Choice Form',
+  () => {
+    const [weapon, setWeapon] = useState<string>('chainsaw')
+
+    const handleToggleChange = (value: string): void => {
+      setWeapon(value)
+    }
+
+    return (
+      <div className="story--example">
+        <FlexBox
+          direction={FlexDirection.Column}
+          margin={ComponentSize.Large}
+          alignItems={AlignItems.FlexStart}
+        >
+          <p>Choose a weapon to fight zombies with</p>
+          <Toggle
+            tabIndex={1}
+            value="chainsaw"
+            id="chainsaw"
+            name="zombie_fighting_weapon"
+            checked={weapon === 'chainsaw'}
+            onChange={handleToggleChange}
+            type={InputToggleType.Radio}
+            size={ComponentSize.ExtraSmall}
+            color={
+              ComponentColor[
+                select('color', mapEnumKeys(ComponentColor), 'Primary')
+              ]
+            }
+            appearance={
+              Appearance[select('appearance', mapEnumKeys(Appearance), 'Outline')]
+            }
+          >
+            <InputLabel active={weapon === 'chainsaw'} htmlFor="chainsaw">
+              Chainsaw
+            </InputLabel>
+          </Toggle>
+          <Toggle
+            tabIndex={2}
+            value="crowbar"
+            id="crowbar"
+            name="zombie_fighting_weapon"
+            checked={weapon === 'crowbar'}
+            onChange={handleToggleChange}
+            type={InputToggleType.Radio}
+            size={ComponentSize.ExtraSmall}
+            color={
+              ComponentColor[
+                select('color', mapEnumKeys(ComponentColor), 'Primary')
+              ]
+            }
+            appearance={
+              Appearance[select('appearance', mapEnumKeys(Appearance), 'Outline')]
+            }
+          >
+            <InputLabel active={weapon === 'crowbar'} htmlFor="crowbar">
+              Crowbar
+            </InputLabel>
+          </Toggle>
+          <Toggle
+            tabIndex={3}
+            value="katana"
+            id="katana"
+            name="zombie_fighting_weapon"
+            checked={weapon === 'katana'}
+            onChange={handleToggleChange}
+            type={InputToggleType.Radio}
+            size={ComponentSize.ExtraSmall}
+            color={
+              ComponentColor[
+                select('color', mapEnumKeys(ComponentColor), 'Primary')
+              ]
+            }
+            appearance={
+              Appearance[select('appearance', mapEnumKeys(Appearance), 'Outline')]
+            }
+          >
+            <InputLabel active={weapon === 'katana'} htmlFor="katana">
+              Katana
+            </InputLabel>
+          </Toggle>
+        </FlexBox>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(MultipleChoiceForm),
     },
   }
 )

@@ -17,6 +17,8 @@ export interface InputLabelProps extends StandardFunctionProps {
   wrapText?: boolean
   /** Associate this label with a specific input */
   htmlFor?: string
+  /** Keyboard control tab order  */
+  tabIndex?: number
 }
 
 export type InputLabelRef = HTMLLabelElement
@@ -32,6 +34,7 @@ export const InputLabel = forwardRef<InputLabelRef, InputLabelProps>(
       htmlFor,
       wrapText = false,
       children,
+      tabIndex,
       className,
     },
     ref
@@ -50,6 +53,7 @@ export const InputLabel = forwardRef<InputLabelRef, InputLabelProps>(
         ref={ref}
         style={style}
         htmlFor={htmlFor}
+        tabIndex={tabIndex}
         className={slideToggleLabelClass}
         data-testid={testID}
       >

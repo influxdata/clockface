@@ -34,15 +34,15 @@ export interface ToggleProps extends Omit<StandardFunctionProps, 'id'> {
   /** Choose either "Radio" or "Checkbox" */
   type: InputToggleType
   /** Function to be called on change */
-  onChange: (checked: boolean) => void
+  onChange: (value?: string) => void
   /** Function to be called on focus loss */
-  onBlur?: (e?: ChangeEvent<HTMLInputElement>) => void
+  onBlur?: (e?: ChangeEvent<HTMLLabelElement>) => void
   /** Function to be called on focus gain */
-  onFocus?: (e?: ChangeEvent<HTMLInputElement>) => void
+  onFocus?: (e?: ChangeEvent<HTMLLabelElement>) => void
   /** Function to be called on key press */
   onKeyPress?: (e: KeyboardEvent<HTMLInputElement>) => void
   /** Function to be called on key up */
-  onKeyUp?: (e: KeyboardEvent<HTMLInputElement>) => void
+  onKeyUp?: (e: KeyboardEvent<HTMLLabelElement>) => void
   /** Function to be called on key down */
   onKeyDown?: (e: KeyboardEvent<HTMLInputElement>) => void
   /** Icon to be displayed to the left of text */
@@ -82,7 +82,7 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
       type,
       size = ComponentSize.Small,
       name,
-      style = {width: '100%'},
+      style,
       value = '',
       color = ComponentColor.Primary,
       status = ComponentStatus.Default,
@@ -121,10 +121,10 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
     })
 
     const handleInputChange = (): void => {
-      onChange(!checked)
+      onChange(value)
     }
 
-    const handleKeyUp = (e: KeyboardEvent<HTMLInputElement>): void => {
+    const handleKeyUp = (e: KeyboardEvent<HTMLLabelElement>): void => {
       if (e.key === 'Enter') {
         handleInputChange()
       }
@@ -138,7 +138,7 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
       }
     }
 
-    const handleInputFocus = (e: ChangeEvent<HTMLInputElement>): void => {
+    const handleInputFocus = (e: ChangeEvent<HTMLLabelElement>): void => {
       setFocus(true)
 
       if (onFocus) {
@@ -146,7 +146,7 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
       }
     }
 
-    const handleInputBlur = (e: ChangeEvent<HTMLInputElement>): void => {
+    const handleInputBlur = (e: ChangeEvent<HTMLLabelElement>): void => {
       setFocus(false)
 
       if (onBlur) {
@@ -177,17 +177,22 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
           value={value}
           autoFocus={autoFocus}
           onChange={handleInputChange}
+          onKeyPress={onKeyPress}
+          onKeyDown={onKeyDown}
+          tabIndex={-1}
+          className="cf-toggle--input"
+          disabled={status === ComponentStatus.Disabled}
+          data-testid={testID}
+        />
+        <label
+          htmlFor={id}
+          className="cf-toggle--visual-input"
+          title={title}
+          tabIndex={tabIndex}
           onBlur={handleInputBlur}
           onFocus={handleInputFocus}
           onKeyUp={handleKeyUp}
-          onKeyPress={onKeyPress}
-          onKeyDown={onKeyDown}
-          className="cf-toggle--input"
-          disabled={status === ComponentStatus.Disabled}
-          tabIndex={tabIndex}
-          data-testid={testID}
-        />
-        <label htmlFor={id} className="cf-toggle--visual-input" title={title}>
+        >
           {indicator}
         </label>
         {children}
