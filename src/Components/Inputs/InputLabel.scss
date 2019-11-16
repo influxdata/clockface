@@ -9,14 +9,11 @@
   white-space: nowrap;
   font-weight: 600;
   @include no-user-select();
-  color: $g13-mist;
-  opacity: 0.66;
-  transition: opacity 0.25s ease;
-  font-style: italic;
+  color: $g11-sidewalk;
+  transition: color 0.25s ease;
   
   &.cf-input-label__active {
-    font-style: normal;
-    opacity: 1;
+    color: $g18-cloud;
   }
 
   &.cf-input-label__wrap {
