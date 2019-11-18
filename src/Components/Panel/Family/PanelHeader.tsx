@@ -7,13 +7,15 @@ import {FlexBox, FlexBoxProps, FlexBoxRef} from '../../FlexBox'
 
 // Types
 import {
+  Omit,
   FlexDirection,
   JustifyContent,
   AlignItems,
   ComponentSize,
 } from '../../../Types'
 
-export interface PanelHeaderProps extends Omit<FlexBoxProps, 'stretchToFitWidth' | 'stretchToFitHeight'> {
+export interface PanelHeaderProps
+  extends Omit<FlexBoxProps, 'stretchToFitWidth' | 'stretchToFitHeight'> {
   /** Controls padding */
   size?: ComponentSize
 }
@@ -42,20 +44,20 @@ export const PanelHeader = forwardRef<PanelHeaderRef, PanelHeaderProps>(
     })
 
     return (
-        <FlexBox.FlexBox
-          id={id}
-          ref={ref}
-          style={style}
-          margin={margin}
-          className={panelHeaderClass}
-          direction={direction}
-          alignItems={alignItems}
-          data-testid={testID}
-          justifyContent={justifyContent}
-          stretchToFitWidth={true}
-        >
-          {children}
-        </FlexBox.FlexBox>
+      <FlexBox.FlexBox
+        id={id}
+        ref={ref}
+        style={style}
+        margin={margin}
+        className={panelHeaderClass}
+        direction={direction}
+        alignItems={alignItems}
+        data-testid={testID}
+        justifyContent={justifyContent}
+        stretchToFitWidth={true}
+      >
+        {children}
+      </FlexBox.FlexBox>
     )
   }
 )
