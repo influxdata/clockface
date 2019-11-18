@@ -8,7 +8,8 @@ import {FlexBox, FlexBoxRef, FlexBoxProps} from '../../FlexBox'
 // Types
 import {Omit, ComponentSize, JustifyContent} from '../../../Types'
 
-export interface PanelFooterProps extends Omit<FlexBoxProps, 'stretchToFitWidth' | 'stretchToFitHeight'> {
+export interface PanelFooterProps
+  extends Omit<FlexBoxProps, 'stretchToFitWidth' | 'stretchToFitHeight'> {
   /** Controls padding */
   size?: ComponentSize
 }
