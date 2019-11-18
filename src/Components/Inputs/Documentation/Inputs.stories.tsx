@@ -389,6 +389,7 @@ inputsBaseStories.add(
           id={text('id', 'example_toggle_id')}
           value={text('value', 'Value Text')}
           style={object('style', {})}
+          tabIndex={number('tabIndex', 1)}
           icon={
             IconFont[
               select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
