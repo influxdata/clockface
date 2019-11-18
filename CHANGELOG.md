@@ -2,6 +2,11 @@
 
 #### 1.0.7 (Unreleased)
 
+- [#400](https://github.com/influxdata/clockface/pull/400): Refactor `PanelHeader`, `PanelBody`, and `PanelFooter` to extend `FlexBox`
+- [#400](https://github.com/influxdata/clockface/pull/400): [Breaking] Remove `PanelTitle` component
+- [#400](https://github.com/influxdata/clockface/pull/400): [Breaking] Rename `childMargin` prop to `margin` in `PanelHeader`
+- [#400](https://github.com/influxdata/clockface/pull/400): [Breaking] Refactor `NumberedPanel` to have a built in `PanelHeader`
+
 #### 1.0.6
 
 - [#396](https://github.com/influxdata/clockface/pull/396): Improve contrast in `NavMenu`

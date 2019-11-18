@@ -1,6 +1,6 @@
 # Panel Header
 
-Panel Headers are best used to denote the title of a panel. They can be accessed via the single `Panel` import as a subclass.
+Panel Headers are best used to denote the title of a panel. They can be accessed via the single `Panel` import as a subclass. `PanelHeader` extends `FlexBox` so the child layout can be controlled using the same props.
 
 ### Usage
 ```tsx
@@ -8,14 +8,14 @@ import {Panel} from '@influxdata/clockface'
 ```
 ```tsx
 <Panel.Header>
-  <Panel.Title>Title!</Panel.Title>
+  <h2>Title!</h2>
   // Additional children such as a button or dropdown
 </Panel.Header>
 ```
 
-### Customization
+### Titling
 
-We recommend using `<Panel.Title />` as the child element, but you can also pass in whatever you want. `PanelHeader` makes use of `FlexBox` so the positioning scheme can be controlled using the same props.
+We recommend using any of the HTML header elements as a panel title. As of version `1.0.7` `PanelTitle` is deprecated.
 
 ### Example
 <!-- STORY -->

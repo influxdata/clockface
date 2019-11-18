@@ -2,15 +2,24 @@
 import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
-// Types
-import {StandardFunctionProps, ComponentSize} from '../../../Types'
+// Components
+import {FlexBox, FlexBoxProps, FlexBoxRef} from '../../FlexBox'
 
-export interface PanelBodyProps extends StandardFunctionProps {
+// Types
+import {
+  ComponentSize,
+  AlignItems,
+  FlexDirection,
+  JustifyContent,
+} from '../../../Types'
+
+export interface PanelBodyProps
+  extends Omit<FlexBoxProps, 'stretchToFitWidth' | 'stretchToFitHeight'> {
   /** Controls padding */
   size?: ComponentSize
 }
 
-export type PanelBodyRef = HTMLDivElement
+export type PanelBodyRef = FlexBoxRef
 
 export const PanelBody = forwardRef<PanelBodyRef, PanelBodyProps>(
   (
@@ -18,9 +27,13 @@ export const PanelBody = forwardRef<PanelBodyRef, PanelBodyProps>(
       id,
       size = ComponentSize.Small,
       style,
+      margin,
       testID = 'panel--body',
       children,
       className,
+      direction = FlexDirection.Column,
+      alignItems = AlignItems.Stretch,
+      justifyContent = JustifyContent.FlexStart,
     },
     ref
   ) => {
@@ -30,15 +43,20 @@ export const PanelBody = forwardRef<PanelBodyRef, PanelBodyProps>(
     })
 
     return (
-      <div
+      <FlexBox.FlexBox
         id={id}
         ref={ref}
         style={style}
-        data-testid={testID}
+        margin={margin}
         className={panelBodyClass}
+        direction={direction}
+        alignItems={alignItems}
+        data-testid={testID}
+        justifyContent={justifyContent}
+        stretchToFitWidth={true}
       >
         {children}
-      </div>
+      </FlexBox.FlexBox>
     )
   }
 )

@@ -19,7 +19,6 @@ import {
   Panel,
   PanelRef,
   PanelHeaderRef,
-  PanelTitleRef,
   PanelBodyRef,
   PanelFooterRef,
 } from '../'
@@ -27,7 +26,15 @@ import {NumberedPanel, NumberedPanelRef} from '../Composed/NumberedPanel'
 import {Grid} from '../../Grid'
 
 // Types
-import {Gradients, ComponentSize, InfluxColors, Columns} from '../../../Types'
+import {
+  Gradients,
+  ComponentSize,
+  InfluxColors,
+  Columns,
+  JustifyContent,
+  FlexDirection,
+  AlignItems,
+} from '../../../Types'
 
 // Notes
 import PanelReadme from './Panel.md'
@@ -96,14 +103,14 @@ panelStories.add(
   'PanelHeader',
   () => {
     const panelHeaderRef: RefObject<PanelHeaderRef> = createRef()
-    const panelTitleRef: RefObject<PanelTitleRef> = createRef()
 
     const logPanelRefs = (): void => {
       /* eslint-disable */
       console.log('PanelHeader', panelHeaderRef.current)
-      console.log('PanelTitle', panelTitleRef.current)
       /* eslint-enable */
     }
+
+    const headerTypes = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6']
 
     return (
       <div className="story--example">
@@ -112,15 +119,45 @@ panelStories.add(
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
+          direction={
+            FlexDirection[
+              select('direction', mapEnumKeys(FlexDirection), 'Row')
+            ]
+          }
+          alignItems={
+            AlignItems[select('alignItems', mapEnumKeys(AlignItems), 'Center')]
+          }
+          justifyContent={
+            JustifyContent[
+              select(
+                'justifyContent ',
+                mapEnumKeys(JustifyContent),
+                'SpaceBetween'
+              )
+            ]
+          }
+          margin={
+            ComponentSize[
+              select(
+                'margin',
+                {None: '', ...mapEnumKeys(ComponentSize)},
+                'None'
+              )
+            ]
+          }
         >
-          <Panel.Title
-            ref={panelTitleRef}
-            size={
-              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-            }
-          >
-            {text('title', 'I am a cool Panel')}
-          </Panel.Title>
+          {select('title element', headerTypes, headerTypes[3]) ===
+            headerTypes[0] && <h1>{text('title', 'I am a cool Panel')}</h1>}
+          {select('title element', headerTypes, headerTypes[3]) ===
+            headerTypes[1] && <h2>{text('title', 'I am a cool Panel')}</h2>}
+          {select('title element', headerTypes, headerTypes[3]) ===
+            headerTypes[2] && <h3>{text('title', 'I am a cool Panel')}</h3>}
+          {select('title element', headerTypes, headerTypes[3]) ===
+            headerTypes[3] && <h4>{text('title', 'I am a cool Panel')}</h4>}
+          {select('title element', headerTypes, headerTypes[3]) ===
+            headerTypes[4] && <h5>{text('title', 'I am a cool Panel')}</h5>}
+          {select('title element', headerTypes, headerTypes[3]) ===
+            headerTypes[5] && <h6>{text('title', 'I am a cool Panel')}</h6>}
         </Panel.Header>
         <div className="story--test-buttons">
           <button onClick={logPanelRefs}>Log Refs</button>
@@ -153,8 +190,39 @@ panelStories.add(
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
+          direction={
+            FlexDirection[
+              select('direction', mapEnumKeys(FlexDirection), 'Column')
+            ]
+          }
+          alignItems={
+            AlignItems[select('alignItems', mapEnumKeys(AlignItems), 'Stretch')]
+          }
+          justifyContent={
+            JustifyContent[
+              select(
+                'justifyContent ',
+                mapEnumKeys(JustifyContent),
+                'FlexStart'
+              )
+            ]
+          }
+          margin={
+            ComponentSize[
+              select(
+                'margin',
+                {None: '', ...mapEnumKeys(ComponentSize)},
+                'None'
+              )
+            ]
+          }
         >
-          <span>{text('children', 'Example paragraph text')}</span>
+          <p>
+            {text(
+              'children',
+              'Lorem ipsum dolor amet aesthetic quinoa small batch crucifix snackwave pabst typewriter kinfolk craft beer wolf unicorn activated charcoal chambray tattooed. Pok pok everyday carry tattooed etsy, small batch photo booth paleo cray prism fanny pack cred. Beard vinyl affogato leggings. Cold-pressed selfies pinterest crucifix freegan cronut glossier vegan drinking vinegar food truck quinoa lumbersexual.'
+            )}
+          </p>
         </Panel.Body>
         <div className="story--test-buttons">
           <button onClick={logPanelRef}>Log Ref</button>
@@ -187,8 +255,31 @@ panelStories.add(
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
+          direction={
+            FlexDirection[
+              select('direction', mapEnumKeys(FlexDirection), 'Row')
+            ]
+          }
+          alignItems={
+            AlignItems[select('alignItems', mapEnumKeys(AlignItems), 'Center')]
+          }
+          justifyContent={
+            JustifyContent[
+              select('justifyContent ', mapEnumKeys(JustifyContent), 'Center')
+            ]
+          }
+          margin={
+            ComponentSize[
+              select(
+                'margin',
+                {None: '', ...mapEnumKeys(ComponentSize)},
+                'None'
+              )
+            ]
+          }
         >
-          <span>{text('children', 'Example footer text')}</span>
+          <div className="mockComponent mockButton">Button</div>
+          <div className="mockComponent mockButton">Button</div>
         </Panel.Footer>
         <div className="story--test-buttons">
           <button onClick={logPanelRef}>Log Ref</button>
@@ -220,28 +311,17 @@ panelComposedStories.add(
           <button onClick={logRef}>Log Ref</button>
         </div>
         <NumberedPanel
+          title={<h5>Acquire Funds</h5>}
           ref={numberedPanelRef}
           number={number('number', 4)}
           numberSize={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
           style={object('style', {width: '600px'})}
+          headerSize={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
         >
-          <Panel.Header
-            size={
-              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-            }
-          >
-            <Panel.Title
-              size={
-                ComponentSize[
-                  select('size', mapEnumKeys(ComponentSize), 'Small')
-                ]
-              }
-            >
-              Acquire Funds
-            </Panel.Title>
-          </Panel.Header>
           <Panel.Body
             size={
               ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
@@ -281,23 +361,17 @@ panelExampleStories.add(
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
         >
-          <Panel.Title
-            size={
-              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-            }
-          >
-            Welcome!
-          </Panel.Title>
+          <h3>Welcome!</h3>
         </Panel.Header>
         <Panel.Body
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
         >
-          <h5>We've built a lot of cool new things to make your life easier</h5>
-          <h5>
+          <p>We've built a lot of cool new things to make your life easier</p>
+          <p>
             <a href="#">Click Here</a> to take the tour
-          </h5>
+          </p>
         </Panel.Body>
       </Panel>
     </div>
@@ -319,13 +393,7 @@ panelExampleStories.add(
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
         >
-          <Panel.Title
-            size={
-              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-            }
-          >
-            Getting started with InfluxDB 2.0
-          </Panel.Title>
+          <h5>Getting started with InfluxDB 2.0</h5>
         </Panel.Header>
         <Panel.Body
           size={
@@ -387,13 +455,7 @@ panelExampleStories.add(
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
         >
-          <Panel.Title
-            size={
-              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-            }
-          >
-            Danger Zone!
-          </Panel.Title>
+          <h3>Danger Zone!</h3>
         </Panel.Header>
         <Panel.Body
           size={

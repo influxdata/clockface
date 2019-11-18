@@ -9,10 +9,12 @@ $numbered-panel-gutter-small: $cf-marg-d;
 $numbered-panel-gutter: $cf-marg-e;
 
 .cf-numbered-panel {
-  padding: 0 $numbered-panel-gutter-small;
+  padding-left: $numbered-panel-gutter-small;
+  padding-right: $numbered-panel-gutter-small;
 
   @media screen and (min-width: 1080px) {
-    padding: 0 $numbered-panel-gutter;
+    padding-left: $numbered-panel-gutter;
+    padding-right: $numbered-panel-gutter;
   }
 }
 
@@ -23,7 +25,7 @@ $numbered-panel-gutter: $cf-marg-e;
   background-color: rgba($g0-obsidian, 0.25);
   font-weight: 900;
   text-align: center;
-  transform: translate(-50%, -50%);
+  transform: translate(0, -50%);
   color: $c-honeydew;
 }
 
@@ -32,28 +34,31 @@ $numbered-panel-gutter: $cf-marg-e;
   ------------------------------------------------------------------------------
 */
 
-@mixin numberedPanelIndicatorSizeModifier($fontSize, $diameter, $offset) {
+@mixin numberedPanelIndicatorSizeModifier($fontSize, $diameter) {
   font-size: $fontSize * 1.2;
-  width: $diameter;
-  height: $diameter;
-  line-height: $diameter;
-  top: ($offset * 2) + ($fontSize * 0.75);
-  left: ($numbered-panel-gutter-small / 2) + $offset;
+  width: $diameter * 0.75;
+  height: $diameter * 0.75;
+  line-height: $diameter * 0.75;
+  top: 50%;
+  left: ($numbered-panel-gutter-small / 2) * -1;
 
   @media screen and (min-width: 1080px) {
-    left: ($numbered-panel-gutter / 2) + $offset;
+    left: ($numbered-panel-gutter / 2) * -1;
+    width: $diameter;
+    height: $diameter;
+    line-height: $diameter;
   }
 }
 
 .cf-numbered-panel--indicator__xs {
-  @include numberedPanelIndicatorSizeModifier($form-xs-font, $form-xs-height, $form-xs-padding)
+  @include numberedPanelIndicatorSizeModifier($form-xs-font, $form-xs-height);
 }
 .cf-numbered-panel--indicator__sm {
-  @include numberedPanelIndicatorSizeModifier($form-sm-font, $form-sm-height, $form-sm-padding)
+  @include numberedPanelIndicatorSizeModifier($form-sm-font, $form-sm-height);
 }
 .cf-numbered-panel--indicator__md {
-  @include numberedPanelIndicatorSizeModifier($form-md-font, $form-md-height, $form-md-padding)
+  @include numberedPanelIndicatorSizeModifier($form-md-font, $form-md-height);
 }
 .cf-numbered-panel--indicator__lg {
-  @include numberedPanelIndicatorSizeModifier($form-lg-font, $form-lg-height, $form-lg-padding)
+  @include numberedPanelIndicatorSizeModifier($form-lg-font, $form-lg-height);
 }
