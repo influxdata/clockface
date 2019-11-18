@@ -27,7 +27,15 @@ import {NumberedPanel, NumberedPanelRef} from '../Composed/NumberedPanel'
 import {Grid} from '../../Grid'
 
 // Types
-import {Gradients, ComponentSize, InfluxColors, Columns} from '../../../Types'
+import {
+  Gradients,
+  ComponentSize,
+  InfluxColors,
+  Columns,
+  JustifyContent,
+  FlexDirection,
+  AlignItems,
+} from '../../../Types'
 
 // Notes
 import PanelReadme from './Panel.md'
@@ -112,6 +120,32 @@ panelStories.add(
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
+          direction={
+            FlexDirection[
+              select('direction', mapEnumKeys(FlexDirection), 'Row')
+            ]
+          }
+          alignItems={
+            AlignItems[select('alignItems', mapEnumKeys(AlignItems), 'Center')]
+          }
+          justifyContent={
+            JustifyContent[
+              select(
+                'justifyContent ',
+                mapEnumKeys(JustifyContent),
+                'SpaceBetween'
+              )
+            ]
+          }
+          margin={
+            ComponentSize[
+              select(
+                'margin',
+                {None: '', ...mapEnumKeys(ComponentSize)},
+                'None'
+              )
+            ]
+          }
         >
           <Panel.Title
             ref={panelTitleRef}
@@ -153,8 +187,39 @@ panelStories.add(
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
+          direction={
+            FlexDirection[
+              select('direction', mapEnumKeys(FlexDirection), 'Column')
+            ]
+          }
+          alignItems={
+            AlignItems[select('alignItems', mapEnumKeys(AlignItems), 'Stretch')]
+          }
+          justifyContent={
+            JustifyContent[
+              select(
+                'justifyContent ',
+                mapEnumKeys(JustifyContent),
+                'FlexStart'
+              )
+            ]
+          }
+          margin={
+            ComponentSize[
+              select(
+                'margin',
+                {None: '', ...mapEnumKeys(ComponentSize)},
+                'None'
+              )
+            ]
+          }
         >
-          <span>{text('children', 'Example paragraph text')}</span>
+          <p>
+            {text(
+              'children',
+              'Lorem ipsum dolor amet aesthetic quinoa small batch crucifix snackwave pabst typewriter kinfolk craft beer wolf unicorn activated charcoal chambray tattooed. Pok pok everyday carry tattooed etsy, small batch photo booth paleo cray prism fanny pack cred. Beard vinyl affogato leggings. Cold-pressed selfies pinterest crucifix freegan cronut glossier vegan drinking vinegar food truck quinoa lumbersexual.'
+            )}
+          </p>
         </Panel.Body>
         <div className="story--test-buttons">
           <button onClick={logPanelRef}>Log Ref</button>
@@ -187,8 +252,31 @@ panelStories.add(
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
+          direction={
+            FlexDirection[
+              select('direction', mapEnumKeys(FlexDirection), 'Row')
+            ]
+          }
+          alignItems={
+            AlignItems[select('alignItems', mapEnumKeys(AlignItems), 'Center')]
+          }
+          justifyContent={
+            JustifyContent[
+              select('justifyContent ', mapEnumKeys(JustifyContent), 'Center')
+            ]
+          }
+          margin={
+            ComponentSize[
+              select(
+                'margin',
+                {None: '', ...mapEnumKeys(ComponentSize)},
+                'None'
+              )
+            ]
+          }
         >
-          <span>{text('children', 'Example footer text')}</span>
+          <div className="mockComponent mockButton">Button</div>
+          <div className="mockComponent mockButton">Button</div>
         </Panel.Footer>
         <div className="story--test-buttons">
           <button onClick={logPanelRef}>Log Ref</button>
