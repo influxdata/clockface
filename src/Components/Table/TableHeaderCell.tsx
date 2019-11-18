@@ -12,8 +12,6 @@ export interface TableHeaderCellProps extends StandardFunctionProps {
   horizontalAlignment?: Alignment
   /** Vertical alignment of contents */
   verticalAlignment?: VerticalAlignment
-  /** Width of column, can be % or px */
-  width?: string
 }
 
 export type TableHeaderCellRef = HTMLTableHeaderCellElement
@@ -26,7 +24,6 @@ export const TableHeaderCell = forwardRef<
     {
       id,
       style,
-      width,
       testID = 'table-header-cell',
       colSpan = 1,
       children,
@@ -43,7 +40,6 @@ export const TableHeaderCell = forwardRef<
     const tableHeaderCellStyle = {
       textAlign: horizontalAlignment,
       verticalAlign: verticalAlignment,
-      width,
       ...style,
     }
 

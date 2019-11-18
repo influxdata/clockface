@@ -85,7 +85,7 @@ tableStories.add(
             <Table.Row ref={tableRowRef}>
               <Table.HeaderCell
                 ref={tableHeaderCellRef}
-                width={text('Name - width', '30%')}
+                style={{width: `${text('Name - width', '30%')}`}}
                 horizontalAlignment={
                   Alignment[
                     select(
@@ -99,7 +99,7 @@ tableStories.add(
                 Name
               </Table.HeaderCell>
               <Table.HeaderCell
-                width={text('Description - width', '50%')}
+                style={{width: `${text('Description - width', '50%')}`}}
                 horizontalAlignment={
                   Alignment[
                     select(
@@ -113,7 +113,7 @@ tableStories.add(
                 Description
               </Table.HeaderCell>
               <Table.HeaderCell
-                width={text('Price - width', '20%')}
+                style={{width: `${text('Price - width', '20%')}`}}
                 horizontalAlignment={
                   Alignment[
                     select(
@@ -142,7 +142,7 @@ tableStories.add(
             >
               <Table.Cell
                 ref={tableCellRef}
-                width={text('Name - width', '30%')}
+                style={{width: `${text('Name - width', '30%')}`}}
                 horizontalAlignment={
                   Alignment[
                     select(
@@ -156,7 +156,7 @@ tableStories.add(
                 Peach
               </Table.Cell>
               <Table.Cell
-                width={text('Description - width', '50%')}
+                style={{width: `${text('Description - width', '50%')}`}}
                 horizontalAlignment={
                   Alignment[
                     select(
@@ -170,7 +170,7 @@ tableStories.add(
                 A sweet fruit that makes a great pie
               </Table.Cell>
               <Table.Cell
-                width={text('Price - width', '20%')}
+                style={{width: `${text('Price - width', '20%')}`}}
                 horizontalAlignment={
                   Alignment[
                     select(
@@ -196,7 +196,7 @@ tableStories.add(
               }
             >
               <Table.Cell
-                width={text('Name - width', '30%')}
+                style={{width: `${text('Name - width', '30%')}`}}
                 horizontalAlignment={
                   Alignment[
                     select(
@@ -210,7 +210,7 @@ tableStories.add(
                 Pineapple
               </Table.Cell>
               <Table.Cell
-                width={text('Description - width', '50%')}
+                style={{width: `${text('Description - width', '50%')}`}}
                 horizontalAlignment={
                   Alignment[
                     select(
@@ -225,7 +225,7 @@ tableStories.add(
                 Colada
               </Table.Cell>
               <Table.Cell
-                width={text('Price - width', '20%')}
+                style={{width: `${text('Price - width', '20%')}`}}
                 horizontalAlignment={
                   Alignment[
                     select(
@@ -251,7 +251,7 @@ tableStories.add(
               }
             >
               <Table.Cell
-                width={text('Name - width', '30%')}
+                style={{width: `${text('Name - width', '30%')}`}}
                 horizontalAlignment={
                   Alignment[
                     select(
@@ -265,7 +265,7 @@ tableStories.add(
                 Yuzu
               </Table.Cell>
               <Table.Cell
-                width={text('Description - width', '50%')}
+                style={{width: `${text('Description - width', '50%')}`}}
                 horizontalAlignment={
                   Alignment[
                     select(
@@ -279,7 +279,7 @@ tableStories.add(
                 A golden citrus fruit from Japan & China with a powerful aroma
               </Table.Cell>
               <Table.Cell
-                width={text('Price - width', '20%')}
+                style={{width: `${text('Price - width', '20%')}`}}
                 horizontalAlignment={
                   Alignment[
                     select(
@@ -305,7 +305,7 @@ tableStories.add(
               }
             >
               <Table.Cell
-                width={text('Name - width', '30%')}
+                style={{width: `${text('Name - width', '30%')}`}}
                 horizontalAlignment={
                   Alignment[
                     select(
@@ -319,7 +319,7 @@ tableStories.add(
                 Lychee
               </Table.Cell>
               <Table.Cell
-                width={text('Description - width', '50%')}
+                style={{width: `${text('Description - width', '50%')}`}}
                 horizontalAlignment={
                   Alignment[
                     select(
@@ -333,7 +333,7 @@ tableStories.add(
                 A light and refreshing fruit encased in a spiky shell
               </Table.Cell>
               <Table.Cell
-                width={text('Price - width', '20%')}
+                style={{width: `${text('Price - width', '20%')}`}}
                 horizontalAlignment={
                   Alignment[
                     select(
