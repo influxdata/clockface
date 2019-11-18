@@ -128,39 +128,3 @@ $slide-toggle--gap: $cf-border * 2;
     @include slideToggleColorModifier($c-pineapple, $c-thunder);
   }
 }
-
-/*
-  Optional Label
-  ------------------------------------------------------------------------------
-*/
-.cf-slide-toggle--label {
-  white-space: nowrap;
-  font-weight: 600;
-  @include no-user-select();
-  color: $g13-mist;
-  opacity: 0.66;
-  transition: opacity 0.25s ease;
-  font-style: italic;
-  
-  &.cf-slide-toggle--label__active {
-    font-style: normal;
-    opacity: 1;
-  }
-
-  &.cf-slide-toggle--label__wrap {
-    white-space: normal;
-  }
-}
-
-.cf-slide-toggle--label-xs {
-  font-size: $form-xs-font;
-}
-.cf-slide-toggle--label-sm {
-  font-size: $form-sm-font;
-}
-.cf-slide-toggle--label-md {
-  font-size: $form-md-font;
-}
-.cf-slide-toggle--label-lg {
-  font-size: $form-lg-font;
-}

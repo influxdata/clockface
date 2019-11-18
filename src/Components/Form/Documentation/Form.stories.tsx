@@ -32,6 +32,7 @@ import {Button} from '../../Button/Composed/Button'
 import {Input} from '../../Inputs/Input'
 import {FlexBox} from '../../FlexBox'
 import {SlideToggle} from '../../SlideToggle'
+import {InputLabel} from '../../Inputs/InputLabel'
 import {Panel} from '../../Panel'
 import {TextBlock} from '../../TextBlock/TextBlock'
 import {DismissButton} from '../../Button/Composed/DismissButton'
@@ -486,10 +487,9 @@ formExampleStories.add(
                           size={ComponentSize.ExtraSmall}
                           color={ComponentColor.Primary}
                         />
-                        <SlideToggle.Label
-                          text="Add this user to all teams?"
-                          active={boolean('Team Toggle', true)}
-                        />
+                        <InputLabel active={boolean('Team Toggle', true)}>
+                          Add this user to all teams?
+                        </InputLabel>
                       </FlexBox>
                     </Form.Box>
                   </Form.Element>

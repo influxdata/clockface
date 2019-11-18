@@ -398,6 +398,11 @@ export enum InputType {
   Range = 'range',
 }
 
+export enum InputToggleType {
+  Checkbox = 'checkbox',
+  Radio = 'radio',
+}
+
 export enum AutoInputMode {
   Auto = 'auto',
   Custom = 'custom',
@@ -416,7 +421,7 @@ export enum PopoverPosition {
   ToTheRight = 'to-right',
 }
 
-export enum PopoverType {
+export enum Appearance {
   Solid = 'solid',
   Outline = 'outline',
 }

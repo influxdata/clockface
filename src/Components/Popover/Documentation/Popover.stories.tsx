@@ -1,5 +1,5 @@
 // Libraries
-import React, {createRef} from 'react'
+import React, {useRef} from 'react'
 import marked from 'marked'
 
 // Storybook
@@ -26,7 +26,7 @@ import {DapperScrollbars} from '../../DapperScrollbars/DapperScrollbars'
 
 // Types
 import {
-  PopoverType,
+  Appearance,
   PopoverInteraction,
   PopoverPosition,
   ComponentColor,
@@ -64,12 +64,12 @@ const exampleStyle = {
 popoverStories.add(
   'Popover',
   () => {
-    const triggerRefA = createRef<HTMLDivElement>()
-    const triggerRefB = createRef<HTMLDivElement>()
-    const triggerRefC = createRef<HTMLButtonElement>()
-    const popover1Ref = createRef<PopoverRef>()
-    const popover2Ref = createRef<PopoverRef>()
-    const popover3Ref = createRef<PopoverRef>()
+    const triggerRefA = useRef<HTMLDivElement>(null)
+    const triggerRefB = useRef<HTMLDivElement>(null)
+    const triggerRefC = useRef<HTMLButtonElement>(null)
+    const popover1Ref = useRef<PopoverRef>(null)
+    const popover2Ref = useRef<PopoverRef>(null)
+    const popover3Ref = useRef<PopoverRef>(null)
 
     const log1Ref = (): void => {
       /* eslint-disable */
@@ -139,8 +139,8 @@ popoverStories.add(
               select('color', mapEnumKeys(ComponentColor), 'Primary')
             ]
           }
-          type={
-            PopoverType[select('type', mapEnumKeys(PopoverType), 'Outline')]
+          appearance={
+            Appearance[select('appearance', mapEnumKeys(Appearance), 'Outline')]
           }
         />
         <Popover.Popover
@@ -165,7 +165,7 @@ popoverStories.add(
           hideEvent={PopoverInteraction.Hover}
           position={PopoverPosition.ToTheRight}
           color={ComponentColor.Secondary}
-          type={PopoverType.Solid}
+          appearance={Appearance.Solid}
         />
         <Popover.Popover
           ref={popover3Ref}
@@ -190,7 +190,7 @@ popoverStories.add(
           hideEvent={PopoverInteraction.None}
           position={PopoverPosition.Below}
           color={ComponentColor.Success}
-          type={PopoverType.Outline}
+          appearance={Appearance.Outline}
         />
       </div>
     )
@@ -232,7 +232,9 @@ composedPopoverStories.add(
             select('color', mapEnumKeys(ComponentColor), 'Primary')
           ]
         }
-        type={PopoverType[select('type', mapEnumKeys(PopoverType), 'Outline')]}
+        appearance={
+          Appearance[select('appearance', mapEnumKeys(Appearance), 'Outline')]
+        }
       >
         <div className="mockComponent mockButton">Popover Trigger Element</div>
       </ReflessPopover>
@@ -248,7 +250,7 @@ composedPopoverStories.add(
 composedPopoverStories.add(
   'QuestionMarkTooltip',
   () => {
-    const popoverRef = createRef<QuestionMarkTooltipRef>()
+    const popoverRef = useRef<QuestionMarkTooltipRef>(null)
 
     const logRef = (): void => {
       /* eslint-disable */
@@ -285,7 +287,7 @@ composedPopoverStories.add(
 )
 
 testPopoverStories.add('Popover Trigger within a DapperScrollbars', () => {
-  const triggerRef = createRef<HTMLDivElement>()
+  const triggerRef = useRef<HTMLDivElement>(null)
 
   return (
     <div className="story--example">
@@ -306,7 +308,7 @@ testPopoverStories.add('Popover Trigger within a DapperScrollbars', () => {
         hideEvent={PopoverInteraction.Click}
         position={PopoverPosition.Below}
         color={ComponentColor.Success}
-        type={PopoverType.Outline}
+        appearance={Appearance.Outline}
       />
       <DapperScrollbars
         style={{width: '100%', height: '100%', position: 'absolute'}}

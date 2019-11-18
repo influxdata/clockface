@@ -18,7 +18,7 @@ import {CTAButton, CTAButtonRef} from '../Composed/CTAButton'
 
 // Types
 import {
-  PopoverType,
+  Appearance,
   ComponentColor,
   ComponentSize,
   IconFont,
@@ -187,8 +187,8 @@ buttonComposedStories.add(
             select('popoverColor', mapEnumKeys(ComponentColor), 'Default')
           ]
         }
-        popoverType={
-          PopoverType[select('popoverType', mapEnumKeys(PopoverType), 'Solid')]
+        popoverAppearance={
+          Appearance[select('appearance', mapEnumKeys(Appearance), 'Solid')]
         }
         onConfirm={value => alert(`returnValue: ${value}`)}
         returnValue={text('returnValue', '')}
