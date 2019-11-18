@@ -187,8 +187,8 @@ buttonComposedStories.add(
             select('popoverColor', mapEnumKeys(ComponentColor), 'Default')
           ]
         }
-        popoverType={
-          Appearance[select('popoverType', mapEnumKeys(Appearance), 'Solid')]
+        popoverAppearance={
+          Appearance[select('appearance', mapEnumKeys(Appearance), 'Solid')]
         }
         onConfirm={value => alert(`returnValue: ${value}`)}
         returnValue={text('returnValue', '')}

@@ -33,7 +33,7 @@ export interface PopoverDialogProps extends StandardFunctionProps {
   /** Popover dialog color */
   color: ComponentColor
   /** Means of applying color to popover */
-  type: Appearance
+  appearance: Appearance
   /** Popover dialog contents */
   contents: JSX.Element
   /** Handles clicks detected outside the popover dialog element */
@@ -56,7 +56,6 @@ export const PopoverDialog = forwardRef<PopoverDialogRef, PopoverDialogProps>(
   (
     {
       id,
-      type,
       style,
       color,
       onHide,
@@ -66,6 +65,7 @@ export const PopoverDialog = forwardRef<PopoverDialogRef, PopoverDialogProps>(
       position,
       className,
       caretSize,
+      appearance,
       triggerRef,
       onMouseLeave,
       onClickOutside,
@@ -105,7 +105,7 @@ export const PopoverDialog = forwardRef<PopoverDialogRef, PopoverDialogProps>(
     const popoverDialogClassName = classnames('cf-popover', {
       [`${className}`]: className,
       [`cf-popover__${color}`]: color,
-      [`cf-popover__${type}`]: type,
+      [`cf-popover__${appearance}`]: appearance,
     })
 
     const contentsClassName = classnames('cf-popover--contents', {

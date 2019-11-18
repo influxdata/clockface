@@ -48,7 +48,7 @@ export interface PopoverProps extends StandardFunctionProps {
   /** Where to position the popover relative to the trigger (assuming it fits there) */
   position?: PopoverPosition
   /** Means of applying color to popover */
-  type: Appearance
+  appearance: Appearance
   /** Overrides internal popover expanded state */
   visible?: boolean
   /** Disables the popover's show interaction */
@@ -82,7 +82,7 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
       disabled = false,
       testID = 'popover',
       distanceFromTrigger = 4,
-      type = Appearance.Outline,
+      appearance = Appearance.Outline,
       enableDefaultStyles = true,
       color = ComponentColor.Primary,
       position = PopoverPosition.Below,
@@ -227,8 +227,9 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
         onClickOutside={handleClickOutside}
         onMouseLeave={handleDialogMouseLeave}
         triggerRef={triggerRef}
-        className={className}
+        appearance={appearance}
         caretSize={caretSize}
+        className={className}
         position={position}
         contents={contents(handleHideDialog)}
         visible={visible}
@@ -236,7 +237,6 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
         onHide={handleHideDialog}
         color={color}
         style={style}
-        type={type}
         ref={ref}
         id={id}
       />

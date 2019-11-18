@@ -15,7 +15,6 @@ interface ReflessPopoverProps extends Omit<PopoverProps, 'triggerRef'> {
 
 export const ReflessPopover: FunctionComponent<ReflessPopoverProps> = ({
   id,
-  type,
   color,
   style,
   visible,
@@ -26,6 +25,7 @@ export const ReflessPopover: FunctionComponent<ReflessPopoverProps> = ({
   hideEvent,
   showEvent,
   caretSize,
+  appearance,
   triggerStyle,
   distanceFromTrigger,
   enableDefaultStyles,
@@ -46,6 +46,7 @@ export const ReflessPopover: FunctionComponent<ReflessPopoverProps> = ({
         distanceFromTrigger={distanceFromTrigger}
         enableDefaultStyles={enableDefaultStyles}
         triggerRef={triggerRef}
+        appearance={appearance}
         caretSize={caretSize}
         showEvent={showEvent}
         hideEvent={hideEvent}
@@ -56,7 +57,6 @@ export const ReflessPopover: FunctionComponent<ReflessPopoverProps> = ({
         testID={testID}
         style={style}
         color={color}
-        type={type}
         id={id}
       />
     </>

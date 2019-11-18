@@ -92,7 +92,7 @@ export const QuestionMarkTooltip = forwardRef<
           testID={`${testID}-tooltip`}
           style={tooltipStyle}
           color={color}
-          type={Appearance.Outline}
+          appearance={Appearance.Outline}
           id={id}
         />
       </span>

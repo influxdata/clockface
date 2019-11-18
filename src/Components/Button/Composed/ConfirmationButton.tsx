@@ -38,7 +38,7 @@ export interface ConfirmationButtonProps
   /** Popover dialog color */
   popoverColor?: ComponentColor
   /** Means of applying color to popover */
-  popoverType?: Appearance
+  popoverAppearance?: Appearance
   /** Allows customization of Popover */
   popoverClassName?: string
   /** Allows customization of Popover */
@@ -68,7 +68,7 @@ export const ConfirmationButton: FunctionComponent<ConfirmationButtonProps> = ({
   shape = ButtonShape.Default,
   testID = 'confirmation-button',
   color = ComponentColor.Default,
-  popoverType = Appearance.Solid,
+  popoverAppearance = Appearance.Solid,
   status = ComponentStatus.Default,
   popoverColor = ComponentColor.Default,
   confirmationButtonColor = ComponentColor.Danger,
@@ -84,7 +84,7 @@ export const ConfirmationButton: FunctionComponent<ConfirmationButtonProps> = ({
         className={popoverClassName}
         style={popoverStyle}
         color={popoverColor}
-        type={popoverType}
+        appearance={popoverAppearance}
         enableDefaultStyles={false}
         contents={onHide => (
           <ConfirmationContents
