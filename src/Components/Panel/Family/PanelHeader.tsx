@@ -3,44 +3,37 @@ import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {FlexBox} from '../../FlexBox'
+import {FlexBox, FlexBoxProps, FlexBoxRef} from '../../FlexBox'
 
 // Types
 import {
+  Omit,
   FlexDirection,
   JustifyContent,
   AlignItems,
-  StandardFunctionProps,
   ComponentSize,
 } from '../../../Types'
 
-export interface PanelHeaderProps extends StandardFunctionProps {
-  /** Vertical or horizontal flex alignment */
-  flexDirection?: FlexDirection
-  /** Inserted margin between children */
-  childMargin?: ComponentSize
-  /** Can be FlexStart, FlexEnd, Center, SpaceBetween, or SpaceAround */
-  justifyContent?: JustifyContent
-  /** Can be FlexStart, FlexEnd, Center, or Stretch */
-  alignItems?: AlignItems
+export interface PanelHeaderProps
+  extends Omit<FlexBoxProps, 'stretchToFitWidth' | 'stretchToFitHeight'> {
   /** Controls padding */
   size?: ComponentSize
 }
 
-export type PanelHeaderRef = HTMLDivElement
+export type PanelHeaderRef = FlexBoxRef
 
 export const PanelHeader = forwardRef<PanelHeaderRef, PanelHeaderProps>(
   (
     {
       id,
-      style,
       size = ComponentSize.Small,
+      style,
       testID = 'panel--header',
+      margin,
       children,
       className,
+      direction = FlexDirection.Row,
       alignItems = AlignItems.Center,
-      childMargin,
-      flexDirection = FlexDirection.Row,
       justifyContent = JustifyContent.SpaceBetween,
     },
     ref
@@ -51,23 +44,20 @@ export const PanelHeader = forwardRef<PanelHeaderRef, PanelHeaderProps>(
     })
 
     return (
-      <div
+      <FlexBox.FlexBox
         id={id}
         ref={ref}
         style={style}
-        data-testid={testID}
+        margin={margin}
         className={panelHeaderClass}
+        direction={direction}
+        alignItems={alignItems}
+        data-testid={testID}
+        justifyContent={justifyContent}
+        stretchToFitWidth={true}
       >
-        <FlexBox
-          direction={flexDirection}
-          justifyContent={justifyContent}
-          alignItems={alignItems}
-          stretchToFitWidth={true}
-          margin={childMargin}
-        >
-          {children}
-        </FlexBox>
-      </div>
+        {children}
+      </FlexBox.FlexBox>
     )
   }
 )

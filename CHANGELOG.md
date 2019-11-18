@@ -2,6 +2,10 @@
 
 #### 1.0.7 (Unreleased)
 
+- [#400](https://github.com/influxdata/clockface/pull/400): Refactor `PanelHeader`, `PanelBody`, and `PanelFooter` to extend `FlexBox`
+- [#400](https://github.com/influxdata/clockface/pull/400): [Breaking] Remove `PanelTitle` component
+- [#400](https://github.com/influxdata/clockface/pull/400): [Breaking] Rename `childMargin` prop to `margin` in `PanelHeader`
+- [#400](https://github.com/influxdata/clockface/pull/400): [Breaking] Refactor `NumberedPanel` to have a built in `PanelHeader`
 - [#397](https://github.com/influxdata/clockface/pull/397): Introduce `Toggle` component as an abstraction of HTML radio and checkbox inputs
 - [#397](https://github.com/influxdata/clockface/pull/397): [Breaking] Refactor `SlideToggleLabel` into the generic `InputLabel`
 - [#397](https://github.com/influxdata/clockface/pull/397): [Breaking] Rename `PopoverType` enum to the more generic `Appearance`
