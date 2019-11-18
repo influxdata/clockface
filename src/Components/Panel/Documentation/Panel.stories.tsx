@@ -19,7 +19,6 @@ import {
   Panel,
   PanelRef,
   PanelHeaderRef,
-  PanelTitleRef,
   PanelBodyRef,
   PanelFooterRef,
 } from '../'
@@ -104,14 +103,14 @@ panelStories.add(
   'PanelHeader',
   () => {
     const panelHeaderRef: RefObject<PanelHeaderRef> = createRef()
-    const panelTitleRef: RefObject<PanelTitleRef> = createRef()
 
     const logPanelRefs = (): void => {
       /* eslint-disable */
       console.log('PanelHeader', panelHeaderRef.current)
-      console.log('PanelTitle', panelTitleRef.current)
       /* eslint-enable */
     }
+
+    const headerTypes = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6']
 
     return (
       <div className="story--example">
@@ -147,14 +146,18 @@ panelStories.add(
             ]
           }
         >
-          <Panel.Title
-            ref={panelTitleRef}
-            size={
-              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-            }
-          >
-            {text('title', 'I am a cool Panel')}
-          </Panel.Title>
+          {select('title element', headerTypes, headerTypes[3]) ===
+            headerTypes[0] && <h1>{text('title', 'I am a cool Panel')}</h1>}
+          {select('title element', headerTypes, headerTypes[3]) ===
+            headerTypes[1] && <h2>{text('title', 'I am a cool Panel')}</h2>}
+          {select('title element', headerTypes, headerTypes[3]) ===
+            headerTypes[2] && <h3>{text('title', 'I am a cool Panel')}</h3>}
+          {select('title element', headerTypes, headerTypes[3]) ===
+            headerTypes[3] && <h4>{text('title', 'I am a cool Panel')}</h4>}
+          {select('title element', headerTypes, headerTypes[3]) ===
+            headerTypes[4] && <h5>{text('title', 'I am a cool Panel')}</h5>}
+          {select('title element', headerTypes, headerTypes[3]) ===
+            headerTypes[5] && <h6>{text('title', 'I am a cool Panel')}</h6>}
         </Panel.Header>
         <div className="story--test-buttons">
           <button onClick={logPanelRefs}>Log Refs</button>
@@ -320,15 +323,7 @@ panelComposedStories.add(
               ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
             }
           >
-            <Panel.Title
-              size={
-                ComponentSize[
-                  select('size', mapEnumKeys(ComponentSize), 'Small')
-                ]
-              }
-            >
-              Acquire Funds
-            </Panel.Title>
+            <h3>Acquire Funds</h3>
           </Panel.Header>
           <Panel.Body
             size={
@@ -369,23 +364,17 @@ panelExampleStories.add(
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
         >
-          <Panel.Title
-            size={
-              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-            }
-          >
-            Welcome!
-          </Panel.Title>
+          <h3>Welcome!</h3>
         </Panel.Header>
         <Panel.Body
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
         >
-          <h5>We've built a lot of cool new things to make your life easier</h5>
-          <h5>
+          <p>We've built a lot of cool new things to make your life easier</p>
+          <p>
             <a href="#">Click Here</a> to take the tour
-          </h5>
+          </p>
         </Panel.Body>
       </Panel>
     </div>
@@ -407,13 +396,7 @@ panelExampleStories.add(
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
         >
-          <Panel.Title
-            size={
-              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-            }
-          >
-            Getting started with InfluxDB 2.0
-          </Panel.Title>
+          <h5>Getting started with InfluxDB 2.0</h5>
         </Panel.Header>
         <Panel.Body
           size={
@@ -475,13 +458,7 @@ panelExampleStories.add(
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
         >
-          <Panel.Title
-            size={
-              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-            }
-          >
-            Danger Zone!
-          </Panel.Title>
+          <h3>Danger Zone!</h3>
         </Panel.Header>
         <Panel.Body
           size={

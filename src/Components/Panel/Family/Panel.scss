@@ -6,41 +6,66 @@
 */
 
 .cf-panel {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
   border-radius: $cf-radius;
   position: relative;
 }
 
-.cf-panel--title {
-  width: 100%;
-  font-style: normal;
-  font-weight: 600;
-  letter-spacing: 0.015em;
-  margin: 0;
-  line-height: 1em;
-  @extend %no-user-select;
-}
-
 .cf-panel--body {
   width: 100%;
-
+  
   > *:first-child {
     margin-top: 0;
   }
-
+  
   > *:last-child {
     margin-bottom: 0;
   }
-
+  
   .cf-panel--header + & {
     padding-top: 0;
   }
 }
 
+.cf-panel--header {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    line-height: 1em;
+    @extend %no-user-select;
+  }
+
+  &.cf-flex-box__row {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  &.cf-flex-box__column {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+}
+
 .cf-panel--footer {
-  width: 100%;
   border-radius: 0 0 $cf-radius $cf-radius;
   background-color: rgba($g0-obsidian, 0.1);
 }
@@ -49,44 +74,29 @@
   Size Modifiers
   ------------------------------------------------------------------------------
 */
-@mixin panelHeaderSizeModifier($padding) {
+@mixin panelHeaderBodySizeModifier($padding) {
   padding: $padding * 2;
 }
 
-.cf-panel--header__xs {
-  @include panelHeaderSizeModifier($form-xs-padding);
-}
-.cf-panel--header__sm {
-  @include panelHeaderSizeModifier($form-sm-padding);
-}
-.cf-panel--header__md {
-  @include panelHeaderSizeModifier($form-md-padding);
-}
-.cf-panel--header__lg {
-  @include panelHeaderSizeModifier($form-lg-padding);
-}
-
-@mixin panelBodySizeModifier($padding, $fontSize) {
-  font-size: $fontSize;
-  padding: $padding * 2;
-}
-
+.cf-panel--header__xs,
 .cf-panel--body__xs {
-  @include panelBodySizeModifier($form-xs-padding, $form-xs-font);
+  @include panelHeaderBodySizeModifier($form-xs-padding);
 }
+.cf-panel--header__sm,
 .cf-panel--body__sm {
-  @include panelBodySizeModifier($form-sm-padding, $form-sm-font);
+  @include panelHeaderBodySizeModifier($form-sm-padding);
 }
+.cf-panel--header__md,
 .cf-panel--body__md {
-  @include panelBodySizeModifier($form-md-padding, $form-md-font);
+  @include panelHeaderBodySizeModifier($form-md-padding);
 }
+.cf-panel--header__lg,
 .cf-panel--body__lg {
-  @include panelBodySizeModifier($form-lg-padding, $form-lg-font);
+  @include panelHeaderBodySizeModifier($form-lg-padding);
 }
 
 @mixin panelFooterSizeModifier($padding, $fontSize) {
   padding: $padding ($padding * 2);
-  font-size: ceil($fontSize * 0.75);
 }
 
 .cf-panel--footer__xs {
@@ -102,31 +112,13 @@
   @include panelFooterSizeModifier($form-lg-padding, $form-lg-font);
 }
 
-@mixin panelTitleSizeModifier($fontWeight, $fontSize) {
-  font-weight: $fontWeight;
-  font-size: ceil($fontSize * 1.33);
-}
-
-.cf-panel--title__xs {
-  @include panelTitleSizeModifier(600, $form-xs-font);
-}
-.cf-panel--title__sm {
-  @include panelTitleSizeModifier(600, $form-sm-font);
-}
-.cf-panel--title__md {
-  @include panelTitleSizeModifier(500, $form-md-font);
-}
-.cf-panel--title__lg {
-  @include panelTitleSizeModifier(400, $form-lg-font);
-}
-
 /*
   Contrast Text Modifiers
   ------------------------------------------------------------------------------
 */
 
 .cf-panel__dark-text {
-  .cf-panel--title,
+  .cf-panel--header,
   .cf-panel--body,
   .cf-panel--footer {
     color: rgba($g2-kevlar, 0.75);
@@ -134,7 +126,7 @@
 }
 
 .cf-panel__light-text {
-  .cf-panel--title,
+  .cf-panel--header,
   .cf-panel--body,
   .cf-panel--footer {
     color: rgba($g20-white, 0.75);
@@ -147,5 +139,6 @@
 */
 
 .cf-panel--body hr {
+  width: 100%;
   margin: $cf-marg-c 0;
 }
