@@ -22,7 +22,6 @@ import {
 
 // Notes
 import SlideToggleReadme from './SlideToggle.md'
-// import SlideToggleLabelReadme from './SlideToggleLabel.md'
 import ControlsListReadme from './ControlsList.md'
 import SlideToggleWithLabelsReadme from './SlideToggleWithLabels.md'
 import {useState} from '@storybook/addons'
