@@ -2,25 +2,32 @@
 import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
-// Types
-import {StandardFunctionProps, ComponentSize} from '../../../Types'
+// Components
+import {FlexBox, FlexBoxRef, FlexBoxProps} from '../../FlexBox'
 
-export interface PanelFooterProps extends StandardFunctionProps {
+// Types
+import {Omit, ComponentSize, JustifyContent} from '../../../Types'
+
+export interface PanelFooterProps extends Omit<FlexBoxProps, 'stretchToFitWidth' | 'stretchToFitHeight'> {
   /** Controls padding */
   size?: ComponentSize
 }
 
-export type PanelFooterRef = HTMLDivElement
+export type PanelFooterRef = FlexBoxRef
 
 export const PanelFooter = forwardRef<PanelFooterRef, PanelFooterProps>(
   (
     {
       id,
-      style,
       size = ComponentSize.Small,
+      style,
       testID = 'panel--footer',
+      margin,
       children,
       className,
+      direction,
+      alignItems,
+      justifyContent = JustifyContent.Center,
     },
     ref
   ) => {
@@ -30,15 +37,20 @@ export const PanelFooter = forwardRef<PanelFooterRef, PanelFooterProps>(
     })
 
     return (
-      <div
+      <FlexBox.FlexBox
         id={id}
         ref={ref}
         style={style}
-        data-testid={testID}
+        margin={margin}
+        direction={direction}
         className={panelFooterClass}
+        alignItems={alignItems}
+        data-testid={testID}
+        justifyContent={justifyContent}
+        stretchToFitWidth={true}
       >
         {children}
-      </div>
+      </FlexBox.FlexBox>
     )
   }
 )
