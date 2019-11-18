@@ -2,6 +2,7 @@
 
 #### 1.0.7 (Unreleased)
 
+- [#402](https://github.com/influxdata/clockface/pull/402): [Breaking] Remove `width` prop from `TableCell` and `TableHeaderCell`
 - [#400](https://github.com/influxdata/clockface/pull/400): Refactor `PanelHeader`, `PanelBody`, and `PanelFooter` to extend `FlexBox`
 - [#400](https://github.com/influxdata/clockface/pull/400): [Breaking] Remove `PanelTitle` component
 - [#400](https://github.com/influxdata/clockface/pull/400): [Breaking] Rename `childMargin` prop to `margin` in `PanelHeader`
