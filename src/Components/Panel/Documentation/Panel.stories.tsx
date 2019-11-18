@@ -311,20 +311,17 @@ panelComposedStories.add(
           <button onClick={logRef}>Log Ref</button>
         </div>
         <NumberedPanel
+          title={<h5>Acquire Funds</h5>}
           ref={numberedPanelRef}
           number={number('number', 4)}
           numberSize={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
           style={object('style', {width: '600px'})}
+          headerSize={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
         >
-          <Panel.Header
-            size={
-              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-            }
-          >
-            <h3>Acquire Funds</h3>
-          </Panel.Header>
           <Panel.Body
             size={
               ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]

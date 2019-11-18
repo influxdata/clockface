@@ -12,12 +12,16 @@ import {Panel, PanelProps, PanelRef} from '../'
 import {ComponentSize} from '../../../Types'
 
 export interface NumberedPanelProps extends PanelProps {
+  /** Panel title */
+  title: JSX.Element
   /** Number to display */
   number: number
   /** Customize appearance of number element */
   numberStyle?: CSSProperties
   /** Use the same size value as your PanelHeader */
   numberSize?: ComponentSize
+  /** Controls padding on nested header component */
+  headerSize?: ComponentSize
 }
 
 export type NumberedPanelRef = PanelRef
@@ -26,13 +30,19 @@ export const NumberedPanel = forwardRef<NumberedPanelRef, NumberedPanelProps>(
   (
     {
       id,
+      title,
       style = {width: '100%'},
       testID = 'numbered-panel',
       number,
+      gradient,
       children,
       className,
+      onDismiss,
+      headerSize,
       numberSize = ComponentSize.Small,
       numberStyle,
+      backgroundColor,
+      dismissButtonColor,
     },
     ref
   ) => {
@@ -47,15 +57,22 @@ export const NumberedPanel = forwardRef<NumberedPanelRef, NumberedPanelProps>(
 
     return (
       <Panel.Panel
-        className={numberedPanelClassName}
-        ref={ref}
-        testID={testID}
-        style={style}
         id={id}
+        ref={ref}
+        style={style}
+        testID={testID}
+        gradient={gradient}
+        onDismiss={onDismiss}
+        className={numberedPanelClassName}
+        backgroundColor={backgroundColor}
+        dismissButtonColor={dismissButtonColor}
       >
-        <div className={numberedPanelIndicatorClassName} style={numberStyle}>
-          {number}
-        </div>
+        <Panel.Header size={headerSize}>
+          <div className={numberedPanelIndicatorClassName} style={numberStyle}>
+            {number}
+          </div>
+          {title}
+        </Panel.Header>
         {children}
       </Panel.Panel>
     )
