@@ -12,8 +12,6 @@ export interface TableCellProps extends StandardFunctionProps {
   horizontalAlignment?: Alignment
   /** Vertical alignment of contents */
   verticalAlignment?: VerticalAlignment
-  /** Width of column, can be % or px */
-  width?: string
 }
 
 export type TableCellRef = HTMLTableDataCellElement
