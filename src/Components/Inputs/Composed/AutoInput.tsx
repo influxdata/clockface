@@ -3,7 +3,7 @@ import React, {forwardRef, RefObject} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {Radio, RadioRef, RadioButtonRef} from '../../Radio/index'
+import {SelectGroup, SelectGroupRef, SelectGroupButtonRef} from '../../SelectGroup/index'
 
 // Types
 import {
@@ -24,16 +24,16 @@ export interface AutoInputProps extends StandardFunctionProps {
   onChangeMode: (mode: AutoInputMode) => void
   /** Modality of radio, either "Auto" or "Custom" */
   mode: AutoInputMode
-  /** Radio color */
+  /** SelectGroup color */
   color?: ComponentColor
-  /** Controls size of Radio & Input sub-components */
+  /** Controls size of SelectGroup & Input sub-components */
   size?: ComponentSize
-  /** Pass through ref for Radio */
-  radioRef?: RefObject<RadioRef>
-  /** Pass through ref for "Auto" RadioButton */
-  radioButtonAutoRef?: RefObject<RadioButtonRef>
-  /** Pass through ref for "Custom" RadioButton */
-  radioButtonCustomRef?: RefObject<RadioButtonRef>
+  /** Pass through ref for SelectGroup */
+  radioRef?: RefObject<SelectGroupRef>
+  /** Pass through ref for "Auto" SelectGroupButton */
+  radioButtonAutoRef?: RefObject<SelectGroupButtonRef>
+  /** Pass through ref for "Custom" SelectGroupButton */
+  radioButtonCustomRef?: RefObject<SelectGroupButtonRef>
 }
 
 export type AutoInputRef = HTMLDivElement
@@ -69,13 +69,13 @@ export const AutoInput = forwardRef<AutoInputRef, AutoInputProps>(
         className={autoInputClass}
       >
         <div className="cf-auto-input--radio">
-          <Radio.Radio
+          <SelectGroup.SelectGroup
             ref={radioRef}
             shape={ButtonShape.StretchToFit}
             size={size}
             color={color}
           >
-            <Radio.Button
+            <SelectGroup.Button
               active={mode === AutoInputMode.Auto}
               id={`${id}--${AutoInputMode.Auto}`}
               testID={`${testID}--${AutoInputMode.Auto}`}
@@ -85,8 +85,8 @@ export const AutoInput = forwardRef<AutoInputRef, AutoInputProps>(
               ref={radioButtonAutoRef}
             >
               Auto
-            </Radio.Button>
-            <Radio.Button
+            </SelectGroup.Button>
+            <SelectGroup.Button
               active={mode === AutoInputMode.Custom}
               id={`${id}--${AutoInputMode.Custom}`}
               testID={`${testID}--${AutoInputMode.Custom}`}
@@ -96,8 +96,8 @@ export const AutoInput = forwardRef<AutoInputRef, AutoInputProps>(
               ref={radioButtonCustomRef}
             >
               Custom
-            </Radio.Button>
-          </Radio.Radio>
+            </SelectGroup.Button>
+          </SelectGroup.SelectGroup>
         </div>
         {mode === AutoInputMode.Custom && (
           <div

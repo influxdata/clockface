@@ -1,15 +1,15 @@
-# Radio Button
+# SelectGroup Button
 
-RadioButton is the member of the Radio Family; every member of the component family can be accessed from the same single import. We recommend using it as a child of `<Radio />` because it receives its appearance from its parent.
+SelectGroupButton is the member of the SelectGroup Family; every member of the component family can be accessed from the same single import. We recommend using it as a child of `<SelectGroup />` because it receives its appearance from its parent.
 
 ### Usage
 ```tsx
-import {Radio} from '@influxdata/clockface'
+import {SelectGroup} from '@influxdata/clockface'
 ```
 ```tsx
-<Radio.Button>
+<SelectGroup.Button>
   // Children
-</Radio.Button>
+</SelectGroup.Button>
 ```
 
 ### Example
@@ -17,7 +17,7 @@ import {Radio} from '@influxdata/clockface'
 
 ### Customizability
 
-The `value` prop can return whatever you want. It does not need to match the displayed label of the RadioButton. Thsi is very useful if you want to use objects in state instead of just strings. Here's an example:
+The `value` prop can return whatever you want. It does not need to match the displayed label of the SelectGroupButton. Thsi is very useful if you want to use objects in state instead of just strings. Here's an example:
 
 ```tsx
 const items = [
@@ -43,7 +43,7 @@ const items = [
 ```
 ```tsx
 items.map(item => (
-  <Radio.Button
+  <SelectGroup.Button
     key={item.id}
     id={item.id}
     value={item}
@@ -52,7 +52,7 @@ items.map(item => (
     active={this.state.activeID === item.id}
   >
     {item.name}
-  </Radio.Button>
+  </SelectGroup.Button>
 ))
 ```
 

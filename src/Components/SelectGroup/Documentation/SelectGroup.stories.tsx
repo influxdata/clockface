@@ -15,7 +15,7 @@ import {
 import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
-import {Radio, RadioRef, RadioButtonRef} from '../'
+import {SelectGroup, SelectGroupRef, SelectGroupButtonRef} from '../'
 
 // Types
 import {
@@ -26,53 +26,53 @@ import {
 } from '../../../Types'
 
 // Notes
-import RadioReadme from './Radio.md'
-import RadioButtonReadme from './RadioButton.md'
-import RadioExampleReadme from './RadioExample.md'
+import SelectGroupReadme from './SelectGroup.md'
+import SelectGroupButtonReadme from './SelectGroupButton.md'
+import SelectGroupExampleReadme from './SelectGroupExample.md'
 import {useState} from '@storybook/addons'
 
-const radioStories = storiesOf('Components|Radios/Family', module).addDecorator(
+const selectGroupStories = storiesOf('Components|SelectGroup/Family', module).addDecorator(
   withKnobs
 )
 
-const radioExampleStories = storiesOf(
-  'Components|Radios/Examples',
+const selectGroupExampleStories = storiesOf(
+  'Components|SelectGroup/Examples',
   module
 ).addDecorator(withKnobs)
 
-radioStories.add(
-  'Radio',
+selectGroupStories.add(
+  'SelectGroup',
   () => {
     const mirepoix = ['Celery', 'Carrot', 'Onion', 'Garlic']
 
-    const [selectedRadio, setSelectedRadio] = useState<string>(mirepoix[0])
+    const [selectedSelectGroup, setSelectedSelectGroup] = useState<string>(mirepoix[0])
     const [selectedCheckbox, setSelectedCheckbox] = useState<string[]>([
       mirepoix[0],
     ])
-    const radioRef: RefObject<RadioRef> = createRef()
-    const radioButtonCeleryRef: RefObject<RadioButtonRef> = createRef()
-    const radioButtonCarrotRef: RefObject<RadioButtonRef> = createRef()
-    const radioButtonOnionRef: RefObject<RadioButtonRef> = createRef()
+    const selectGroupRef: RefObject<SelectGroupRef> = createRef()
+    const selectGroupButtonCeleryRef: RefObject<SelectGroupButtonRef> = createRef()
+    const selectGroupButtonCarrotRef: RefObject<SelectGroupButtonRef> = createRef()
+    const selectGroupButtonOnionRef: RefObject<SelectGroupButtonRef> = createRef()
 
-    const radioButtonRefs = {
-      Celery: radioButtonCeleryRef,
-      Carrot: radioButtonCarrotRef,
-      Onion: radioButtonOnionRef,
+    const selectGroupButtonRefs = {
+      Celery: selectGroupButtonCeleryRef,
+      Carrot: selectGroupButtonCarrotRef,
+      Onion: selectGroupButtonOnionRef,
     }
 
-    const logRadioRefs = (): void => {
+    const logSelectGroupRefs = (): void => {
       /* eslint-disable */
-      console.log('Radio', radioRef.current)
-      console.log('RadioButton', radioButtonCeleryRef.current)
-      console.log('RadioButton', radioButtonCarrotRef.current)
-      console.log('RadioButton', radioButtonOnionRef.current)
+      console.log('SelectGroup', selectGroupRef.current)
+      console.log('SelectGroupButton', selectGroupButtonCeleryRef.current)
+      console.log('SelectGroupButton', selectGroupButtonCarrotRef.current)
+      console.log('SelectGroupButton', selectGroupButtonOnionRef.current)
       /* eslint-enable */
     }
 
     return (
       <div className="story--example">
-        <Radio.Radio
-          ref={radioRef}
+        <SelectGroup.SelectGroup
+          ref={selectGroupRef}
           style={object('style', {width: '260px'})}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
@@ -89,15 +89,15 @@ radioStories.add(
           }
         >
           {mirepoix.map((btn, i) => {
-            const isRadio =
-              select('type', mapEnumKeys(InputToggleType), 'Radio') === 'Radio'
-            const active = isRadio
-              ? selectedRadio === btn
+            const isSelectGroup =
+              select('type', mapEnumKeys(InputToggleType), 'SelectGroup') === 'SelectGroup'
+            const active = isSelectGroup
+              ? selectedSelectGroup === btn
               : selectedCheckbox.includes(btn)
 
             const setActive = (value: any): void => {
-              if (isRadio) {
-                setSelectedRadio(value)
+              if (isSelectGroup) {
+                setSelectedSelectGroup(value)
               } else {
                 let updatedSelection = selectedCheckbox
                 if (selectedCheckbox.includes(btn)) {
@@ -114,19 +114,19 @@ radioStories.add(
               (boolean('disabled (carrot)', false) && btn === mirepoix[1])
 
             return (
-              <Radio.Button
+              <SelectGroup.Button
                 type={
                   InputToggleType[
-                    select('type', mapEnumKeys(InputToggleType), 'Radio')
+                    select('type', mapEnumKeys(InputToggleType), 'SelectGroup')
                   ]
                 }
                 name={
-                  select('type', mapEnumKeys(InputToggleType), 'Radio') ===
-                  'Radio'
+                  select('type', mapEnumKeys(InputToggleType), 'SelectGroup') ===
+                  'SelectGroup'
                     ? 'mirepoix'
                     : `mirepoix-${btn}`
                 }
-                ref={radioButtonRefs[btn]}
+                ref={selectGroupButtonRefs[btn]}
                 key={btn}
                 id={btn}
                 tabIndex={i + 1}
@@ -137,41 +137,41 @@ radioStories.add(
                 disabled={disabled}
               >
                 {btn}
-              </Radio.Button>
+              </SelectGroup.Button>
             )
           })}
-        </Radio.Radio>
+        </SelectGroup.SelectGroup>
         <div className="story--test-buttons">
-          <button onClick={logRadioRefs}>Log Refs</button>
+          <button onClick={logSelectGroupRefs}>Log Refs</button>
         </div>
       </div>
     )
   },
   {
     readme: {
-      content: marked(RadioReadme),
+      content: marked(SelectGroupReadme),
     },
   }
 )
 
-radioStories.add(
-  'RadioButton',
+selectGroupStories.add(
+  'SelectGroupButton',
   () => {
-    const radioButtonRef: RefObject<RadioButtonRef> = createRef()
+    const selectGroupButtonRef: RefObject<SelectGroupButtonRef> = createRef()
 
-    const logRadioButtonRef = (): void => {
+    const logSelectGroupButtonRef = (): void => {
       /* eslint-disable */
-      console.log(radioButtonRef.current)
+      console.log(selectGroupButtonRef.current)
       /* eslint-enable */
     }
 
     return (
       <div className="story--example">
-        <Radio.Button
-          ref={radioButtonRef}
-          id={text('id', 'example-radio-option')}
+        <SelectGroup.Button
+          ref={selectGroupButtonRef}
+          id={text('id', 'example-selectGroup-option')}
           active={boolean('active', false)}
-          value={text('value', 'example-radio-option')}
+          value={text('value', 'example-selectGroup-option')}
           onClick={value => {
             alert(value)
           }}
@@ -183,21 +183,21 @@ radioStories.add(
           )}
         >
           {text('children', 'Button Label')}
-        </Radio.Button>
+        </SelectGroup.Button>
         <div className="story--test-buttons">
-          <button onClick={logRadioButtonRef}>Log Ref</button>
+          <button onClick={logSelectGroupButtonRef}>Log Ref</button>
         </div>
       </div>
     )
   },
   {
     readme: {
-      content: marked(RadioButtonReadme),
+      content: marked(SelectGroupButtonReadme),
     },
   }
 )
 
-radioExampleStories.add(
+selectGroupExampleStories.add(
   'Note Editor Mode Toggle',
   () => {
     const [activeItemID, updateActiveItemID] = useState<string>('mode-compose')
@@ -205,7 +205,7 @@ radioExampleStories.add(
     return (
       <div className="story--example">
         <div style={{width: `${number('Parent width', 240)}px`}}>
-          <Radio
+          <SelectGroup
             size={
               ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
             }
@@ -216,7 +216,7 @@ radioExampleStories.add(
             }
             shape={ButtonShape.StretchToFit}
           >
-            <Radio.Button
+            <SelectGroup.Button
               titleText="Compose your Note using Markdown"
               id="mode-compose"
               active={activeItemID === 'mode-compose'}
@@ -224,8 +224,8 @@ radioExampleStories.add(
               onClick={activeItemID => updateActiveItemID(activeItemID)}
             >
               Compose
-            </Radio.Button>
-            <Radio.Button
+            </SelectGroup.Button>
+            <SelectGroup.Button
               titleText="See a preview of your Note"
               id="mode-preview"
               active={activeItemID === 'mode-preview'}
@@ -233,15 +233,15 @@ radioExampleStories.add(
               onClick={activeItemID => updateActiveItemID(activeItemID)}
             >
               Preview
-            </Radio.Button>
-          </Radio>
+            </SelectGroup.Button>
+          </SelectGroup>
         </div>
       </div>
     )
   },
   {
     readme: {
-      content: marked(RadioExampleReadme),
+      content: marked(SelectGroupExampleReadme),
     },
   }
 )

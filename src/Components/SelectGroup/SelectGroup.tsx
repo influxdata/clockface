@@ -11,20 +11,20 @@ import {
 } from '../../Types'
 
 // Styles
-import './Radio.scss'
+import './SelectGroup.scss'
 
-export interface RadioProps extends StandardFunctionProps {
-  /** Radio color */
+export interface SelectGroupProps extends StandardFunctionProps {
+  /** SelectGroup color */
   color?: ComponentColor
-  /** Radio size */
+  /** SelectGroup size */
   size?: ComponentSize
   /** Shape... */
   shape?: ButtonShape
 }
 
-export type RadioRef = HTMLDivElement
+export type SelectGroupRef = HTMLDivElement
 
-export const RadioRoot = forwardRef<RadioRef, RadioProps>(
+export const SelectGroupRoot = forwardRef<SelectGroupRef, SelectGroupProps>(
   (
     {
       id,
@@ -32,17 +32,17 @@ export const RadioRoot = forwardRef<RadioRef, RadioProps>(
       style,
       shape = ButtonShape.Default,
       color = ComponentColor.Primary,
-      testID = 'radio-button',
+      testID = 'select-group',
       children,
       className,
     },
     ref
   ) => {
-    const radioClassName = classnames('cf-radio-buttons', {
-      [`cf-radio-buttons__${color}`]: color,
-      [`cf-radio-buttons__${size}`]: size,
-      'cf-radio-buttons__square': shape === ButtonShape.Square,
-      'cf-radio-buttons__stretch': shape === ButtonShape.StretchToFit,
+    const radioClassName = classnames('cf-select-group', {
+      [`cf-select-group__${color}`]: color,
+      [`cf-select-group__${size}`]: size,
+      'cf-select-group__square': shape === ButtonShape.Square,
+      'cf-select-group__stretch': shape === ButtonShape.StretchToFit,
       [`${className}`]: className,
     })
 
@@ -60,4 +60,4 @@ export const RadioRoot = forwardRef<RadioRef, RadioProps>(
   }
 )
 
-RadioRoot.displayName = 'Radio'
+SelectGroupRoot.displayName = 'SelectGroup'

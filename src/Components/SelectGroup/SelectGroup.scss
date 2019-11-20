@@ -1,16 +1,16 @@
 @import "../../Styles/modules.scss";
 
 /*
-  Radio Component
+  SelectGroup Component
   ------------------------------------------------------------------------------
 */
 
-$radio-buttons--padding: $cf-marg-a;
+$select-group--padding: $cf-marg-a;
 
-.cf-radio-buttons {
+.cf-select-group {
   display: inline-flex;
   align-items: stretch;
-  padding: $radio-buttons--padding;
+  padding: $select-group--padding;
   border-radius: $cf-radius;
   background-color: $g5-pepper;
 
@@ -24,7 +24,7 @@ $radio-buttons--padding: $cf-marg-a;
   }
 }
 
-.cf-radio-button {
+.cf-select-group--option {
   @include no-user-select();
   border: 0;
   font-family: $cf-text-font;
@@ -60,13 +60,13 @@ $radio-buttons--padding: $cf-marg-a;
     }
   }
 
-  &.cf-radio-button__active {
+  &.cf-select-group--option__active {
     color: $g20-white;
   }
 
-  &.cf-radio-button__disabled,
-  &.cf-radio-button__disabled:hover,
-  &.cf-radio-button__disabled:focus {
+  &.cf-select-group--option__disabled,
+  &.cf-select-group--option__disabled:hover,
+  &.cf-select-group--option__disabled:focus {
     box-shadow: none;
     background-color: transparent;
     font-style: italic;
@@ -83,32 +83,32 @@ $radio-buttons--padding: $cf-marg-a;
 @mixin radioButtonSizeModifier($fontSize, $padding, $height) {
   height: $height;
 
-  .cf-radio-button {
-    height: $height - ($radio-buttons--padding * 2);
-    line-height: $height - ($radio-buttons--padding * 2);
+  .cf-select-group--option {
+    height: $height - ($select-group--padding * 2);
+    line-height: $height - ($select-group--padding * 2);
     padding: 0 $padding;
     font-size: $fontSize;
   }
 
   // Square Buttons
-  &.cf-radio-buttons__square .cf-radio-button {
+  &.cf-select-group__square .cf-select-group--option {
     padding: 0;
     flex-grow: 0;
     flex-shrink: 0;
-    width: $height - ($radio-buttons--padding * 2);
+    width: $height - ($select-group--padding * 2);
   }
 }
 
-.cf-radio-buttons__xs {
+.cf-select-group__xs {
   @include radioButtonSizeModifier($form-xs-font, $form-xs-padding, $form-xs-height);
 }
-.cf-radio-buttons__sm {
+.cf-select-group__sm {
   @include radioButtonSizeModifier($form-sm-font, $form-sm-padding, $form-sm-height);
 }
-.cf-radio-buttons__md {
+.cf-select-group__md {
   @include radioButtonSizeModifier($form-md-font, $form-md-padding, $form-md-height);
 }
-.cf-radio-buttons__lg {
+.cf-select-group__lg {
   @include radioButtonSizeModifier($form-lg-font, $form-lg-padding, $form-lg-height);
 }
 
@@ -119,33 +119,33 @@ $radio-buttons--padding: $cf-marg-a;
 */
 
 @mixin radioButtonColorModifier($background, $text) {
-  .cf-radio-button.cf-radio-button__active {
+  .cf-select-group--option.cf-select-group--option__active {
     color: $g20-white;
     background-color: $background;
 
-    &.cf-radio-button__disabled {
+    &.cf-select-group--option__disabled {
       color: mix($g20-white, mix($background, $g5-pepper, 50%), 50%);
       background-color: mix($background, $g5-pepper, 50%);
     }
   }
 }
 
-.cf-radio-buttons__default {
+.cf-select-group__default {
   @include radioButtonColorModifier($g7-graphite, $g20-white);
 }
-.cf-radio-buttons__primary {
+.cf-select-group__primary {
   @include radioButtonColorModifier($c-pool, $g20-white);
 }
-.cf-radio-buttons__secondary {
+.cf-select-group__secondary {
   @include radioButtonColorModifier($c-star, $g20-white);
 }
-.cf-radio-buttons__success {
+.cf-select-group__success {
   @include radioButtonColorModifier($c-rainforest, $g20-white);
 }
-.cf-radio-buttons__danger {
+.cf-select-group__danger {
   @include radioButtonColorModifier($c-curacao, $g20-white);
 }
-.cf-radio-buttons__warning {
+.cf-select-group__warning {
   @include radioButtonColorModifier($c-pineapple, $g2-kevlar);
 }
 
@@ -154,10 +154,10 @@ $radio-buttons--padding: $cf-marg-a;
   ------------------------------------------------------------------------------
 */
 
-.cf-radio-buttons.cf-radio-buttons__stretch {
+.cf-select-group.cf-select-group__stretch {
   width: 100%;
 
-  .cf-radio-button {
+  .cf-select-group--option {
     flex: 1 0 0;
   }
 }

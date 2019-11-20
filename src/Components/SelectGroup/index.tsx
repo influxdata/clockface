@@ -2,19 +2,19 @@
 import React, {Component} from 'react'
 
 // Components
-import {RadioRoot, RadioProps} from './Radio'
-import {RadioButton} from './RadioButton'
+import {SelectGroupRoot, SelectGroupProps} from './SelectGroup'
+import {SelectGroupButton} from './SelectGroupButton'
 
-export class Radio extends Component<RadioProps> {
-  public static readonly displayName = 'Radio'
+export class SelectGroup extends Component<SelectGroupProps> {
+  public static readonly displayName = 'SelectGroup'
 
-  public static Radio = RadioRoot
-  public static Button = RadioButton
+  public static SelectGroup = SelectGroupRoot
+  public static Button = SelectGroupButton
 
   render() {
-    return <RadioRoot {...this.props} />
+    return <SelectGroupRoot {...this.props} />
   }
 }
 
-export {RadioProps, RadioRef} from './Radio'
-export * from './RadioButton'
+export {SelectGroupProps, SelectGroupRef} from './SelectGroup'
+export * from './SelectGroupButton'

@@ -5,7 +5,7 @@ import classnames from 'classnames'
 // Types
 import {StandardFunctionProps, InputToggleType, Omit} from '../../Types'
 
-export interface RadioButtonProps extends Omit<StandardFunctionProps, 'id'> {
+export interface SelectGroupButtonProps extends Omit<StandardFunctionProps, 'id'> {
   /** Unique identifier for this radio button */
   id: string
   /** Toggles radio button active state */
@@ -26,18 +26,18 @@ export interface RadioButtonProps extends Omit<StandardFunctionProps, 'id'> {
   disabled?: boolean
   /** Text to be displayed on hover tooltip when radio button is disabled */
   disabledTitleText?: string
-  /** Choose either "Radio" or "Checkbox" */
+  /** Choose either "SelectGroup" or "Checkbox" */
   type?: InputToggleType
   /** Refers to the visible element rather than the hidden input that ref refers to */
-  containerRef?: RefObject<RadioButtonContainerRef>
+  containerRef?: RefObject<SelectGroupButtonContainerRef>
   /** Sets the hidden input to readonly mode */
   readOnly?: boolean
 }
 
-export type RadioButtonRef = HTMLInputElement
-export type RadioButtonContainerRef = HTMLLabelElement
+export type SelectGroupButtonRef = HTMLInputElement
+export type SelectGroupButtonContainerRef = HTMLLabelElement
 
-export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
+export const SelectGroupButton = forwardRef<SelectGroupButtonRef, SelectGroupButtonProps>(
   (
     {
       id,
@@ -45,7 +45,7 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
       type = InputToggleType.Radio,
       value,
       style,
-      testID = 'radio--button',
+      testID = 'select-group--item',
       active,
       onClick,
       onKeyUp,
@@ -60,9 +60,9 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
     },
     ref
   ) => {
-    const radioButtonClass = classnames('cf-radio-button', {
-      'cf-radio-button__active': active,
-      'cf-radio-button__disabled': disabled,
+    const radioButtonClass = classnames('cf-select-group--option', {
+      'cf-select-group--option__active': active,
+      'cf-select-group--option__disabled': disabled,
       [`${className}`]: className,
     })
 
@@ -72,7 +72,7 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
       onClick(value)
     }
 
-    const handleKeyUp = (e: KeyboardEvent<RadioButtonContainerRef>): void => {
+    const handleKeyUp = (e: KeyboardEvent<SelectGroupButtonContainerRef>): void => {
       if (e.key === ' ') {
         handleInputChange()
       }
@@ -116,4 +116,4 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
   }
 )
 
-RadioButton.displayName = 'RadioButton'
+SelectGroupButton.displayName = 'SelectGroupButton'
