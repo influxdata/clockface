@@ -14,8 +14,9 @@
   & > input[type="radio"],
   & > input[type="checkbox"] {
     position: fixed;
-    top: -500px;
-    left: - 500px;
+    top: 0px;
+    left: 0px;
+    visibility: hidden;
   }
 }
 
