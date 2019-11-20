@@ -63,7 +63,7 @@ export interface ToggleProps extends Omit<StandardFunctionProps, 'id'> {
   status?: ComponentStatus
   /** Whether or not the input receives autofocus when mounted */
   autoFocus?: boolean
-  /** Pass through for container ref */
+  /** Refers to the visible element rather than the hidden input that ref refers to */
   containerRef?: RefObject<ToggleContainerRef>
   /** Controls color of toggle */
   color?: ComponentColor
@@ -182,7 +182,7 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
           tabIndex={-1}
           className="cf-toggle--input"
           disabled={status === ComponentStatus.Disabled}
-          data-testid={testID}
+          data-testid={`${testID}--input`}
         />
         <label
           htmlFor={id}
@@ -192,6 +192,7 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
           onBlur={handleInputBlur}
           onFocus={handleInputFocus}
           onKeyUp={handleKeyUp}
+          data-testid={testID}
         >
           {indicator}
         </label>
