@@ -2,6 +2,9 @@
 
 #### 1.0.8 (Unreleased)
 
+- [#408](https://github.com/influxdata/clockface/pull/408): Refactor `RadioButton` to include either a checkbox or radio input under the hood to enable better interactions with HTML5 forms
+- [#408](https://github.com/influxdata/clockface/pull/408): Enable tab focus interactions to improve `RadioButton` accessibility
+- [#408](https://github.com/influxdata/clockface/pull/408): [Breaking] Require `id` prop for all `RadioButton` components
 - [#407](https://github.com/influxdata/clockface/pull/407): Prevent `DropdownMenu` from dismissing when the scrollbar is clicked or dragged
 
 #### 1.0.7
