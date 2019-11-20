@@ -18,7 +18,7 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 import {Radio, RadioRef, RadioButtonRef} from '../'
 
 // Types
-import {ComponentColor, ComponentSize, ButtonShape} from '../../../Types'
+import { ComponentColor, ComponentSize, ButtonShape, InputToggleType} from '../../../Types'
 
 // Notes
 import RadioReadme from './Radio.md'
@@ -35,11 +35,14 @@ const radioExampleStories = storiesOf(
   module
 ).addDecorator(withKnobs)
 
-const mirepoix = ['Celery', 'Carrot', 'Onion']
 
 radioStories.add(
   'Radio',
   () => {
+    const mirepoix = ['Celery', 'Carrot', 'Onion', 'Garlic']
+
+    const [selectedRadio, setSelectedRadio] = useState<string>(mirepoix[0])
+    const [selectedCheckbox, setSelectedCheckbox] = useState<string[]>([mirepoix[0]])
     const radioRef: RefObject<RadioRef> = createRef()
     const radioButtonCeleryRef: RefObject<RadioButtonRef> = createRef()
     const radioButtonCarrotRef: RefObject<RadioButtonRef> = createRef()
@@ -64,7 +67,7 @@ radioStories.add(
       <div className="story--example">
         <Radio.Radio
           ref={radioRef}
-          style={object('style', {width: '200px'})}
+          style={object('style', {width: '260px'})}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
@@ -79,21 +82,47 @@ radioStories.add(
             ]
           }
         >
-          {mirepoix.map(btn => (
+          {mirepoix.map((btn, i) => {
+            const isRadio = select('type', mapEnumKeys(InputToggleType), 'Radio') === 'Radio'
+            const active = isRadio ? selectedRadio === btn : selectedCheckbox.includes(btn)
+            
+            const setActive = (value: any): void => {
+              if (isRadio) {
+                setSelectedRadio(value)
+              } else {
+                let updatedSelection = selectedCheckbox
+                if (selectedCheckbox.includes(btn)) {
+                  updatedSelection = updatedSelection.filter(s => s !== btn)
+                } else {
+                  updatedSelection = [...updatedSelection, btn]
+                }
+                setSelectedCheckbox(updatedSelection)
+              }
+            }
+
+            const disabled = btn === mirepoix[3] || (boolean('disabled (carrot)', false) && btn === mirepoix[1])
+
+            return(
             <Radio.Button
+              type={
+                InputToggleType[
+                  select('type', mapEnumKeys(InputToggleType), 'Radio')
+                ]
+              }
+              name={select('type', mapEnumKeys(InputToggleType), 'Radio') === 'Radio' ? 'mirepoix' : `mirepoix-${btn}`}
               ref={radioButtonRefs[btn]}
               key={btn}
               id={btn}
-              active={btn === text('Active Button', mirepoix[0])}
+              tabIndex={i + 1}
+              active={active}
               value={btn}
               titleText={btn}
-              onClick={value =>
-                alert(`RadioButton clicked! Value returned: ${value}`)
-              }
+              onClick={setActive}
+                disabled={disabled}
             >
               {btn}
             </Radio.Button>
-          ))}
+          )})}
         </Radio.Radio>
         <div className="story--test-buttons">
           <button onClick={logRadioRefs}>Log Refs</button>

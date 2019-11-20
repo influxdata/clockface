@@ -13,6 +13,14 @@ $radio-buttons--padding: $cf-marg-a;
   padding: $radio-buttons--padding;
   border-radius: $cf-radius;
   background-color: $g5-pepper;
+
+  // Visually obscures underlying input
+  & > input[type="radio"],
+  & > input[type="checkbox"] {
+    position: fixed;
+    top: -500px;
+    left: - 500px;
+  }
 }
 
 .cf-radio-button {
@@ -21,7 +29,7 @@ $radio-buttons--padding: $cf-marg-a;
   font-family: $cf-text-font;
   font-weight: 600;
   background-color: transparent;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
   color: $g11-sidewalk;
   text-transform: capitalize;
   border-radius: $cf-radius-sm;
@@ -29,20 +37,40 @@ $radio-buttons--padding: $cf-marg-a;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: $cf-border;
 
-  &:hover {
-    color: $g15-platinum;
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $g6-smoke;
+    color: $g18-cloud;
     cursor: pointer;
   }
 
-  &.active {
+  &:focus {
+    box-shadow: $cf-input--box-shadow;
+
+      &:active {
+      box-shadow: none;
+    }
+  }
+
+  &.cf-radio-button__active {
     color: $g20-white;
   }
 
-  &.disabled,
-  &.disabled:hover {
+  &.cf-radio-button__disabled,
+  &.cf-radio-button__disabled:hover,
+  &.cf-radio-button__disabled:focus {
+    box-shadow: none;
+    background-color: transparent;
     font-style: italic;
     color: $g7-graphite;
+    cursor: default;
   }
 }
 
@@ -62,7 +90,7 @@ $radio-buttons--padding: $cf-marg-a;
   }
 
   // Square Buttons
-  &.cf-radio-buttons--square .cf-radio-button {
+  &.cf-radio-buttons__square .cf-radio-button {
     padding: 0;
     flex-grow: 0;
     flex-shrink: 0;
@@ -70,16 +98,16 @@ $radio-buttons--padding: $cf-marg-a;
   }
 }
 
-.cf-radio-buttons--xs {
+.cf-radio-buttons__xs {
   @include radioButtonSizeModifier($form-xs-font, $form-xs-padding, $form-xs-height);
 }
-.cf-radio-buttons--sm {
+.cf-radio-buttons__sm {
   @include radioButtonSizeModifier($form-sm-font, $form-sm-padding, $form-sm-height);
 }
-.cf-radio-buttons--md {
+.cf-radio-buttons__md {
   @include radioButtonSizeModifier($form-md-font, $form-md-padding, $form-md-height);
 }
-.cf-radio-buttons--lg {
+.cf-radio-buttons__lg {
   @include radioButtonSizeModifier($form-lg-font, $form-lg-padding, $form-lg-height);
 }
 
@@ -89,35 +117,35 @@ $radio-buttons--padding: $cf-marg-a;
   ------------------------------------------------------------------------------
 */
 
-.cf-radio-buttons--default {
-  .cf-radio-button.active {
-    background-color: $g7-graphite;
+@mixin radioButtonColorModifier($background, $text) {
+  .cf-radio-button.cf-radio-button__active {
+    color: $g20-white;
+    background-color: $background;
+
+    &.cf-radio-button__disabled {
+      color: mix($g20-white, mix($background, $g5-pepper, 50%), 50%);
+      background-color: mix($background, $g5-pepper, 50%);
+    }
   }
 }
-.cf-radio-buttons--primary {
-  .cf-radio-button.active {
-    background-color: $c-pool;
-  }
+
+.cf-radio-buttons__default {
+  @include radioButtonColorModifier($g7-graphite, $g20-white);
 }
-.cf-radio-buttons--secondary {
-  .cf-radio-button.active {
-    background-color: $c-star;
-  }
+.cf-radio-buttons__primary {
+  @include radioButtonColorModifier($c-pool, $g20-white);
 }
-.cf-radio-buttons--success {
-  .cf-radio-button.active {
-    background-color: $c-rainforest;
-  }
+.cf-radio-buttons__secondary {
+  @include radioButtonColorModifier($c-star, $g20-white);
 }
-.cf-radio-buttons--danger {
-  .cf-radio-button.active {
-    background-color: $c-curacao;
-  }
+.cf-radio-buttons__success {
+  @include radioButtonColorModifier($c-rainforest, $g20-white);
 }
-.cf-radio-buttons--warning {
-  .cf-radio-button.active {
-    background-color: $c-pineapple;
-  }
+.cf-radio-buttons__danger {
+  @include radioButtonColorModifier($c-curacao, $g20-white);
+}
+.cf-radio-buttons__warning {
+  @include radioButtonColorModifier($c-pineapple, $g2-kevlar);
 }
 
 /*
@@ -125,7 +153,7 @@ $radio-buttons--padding: $cf-marg-a;
   ------------------------------------------------------------------------------
 */
 
-.cf-radio-buttons.cf-radio-buttons--stretch {
+.cf-radio-buttons.cf-radio-buttons__stretch {
   width: 100%;
 
   .cf-radio-button {

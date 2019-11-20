@@ -39,10 +39,10 @@ export const RadioRoot = forwardRef<RadioRef, RadioProps>(
     ref
   ) => {
     const radioClassName = classnames('cf-radio-buttons', {
-      [`cf-radio-buttons--${color}`]: color,
-      [`cf-radio-buttons--${size}`]: size,
-      'cf-radio-buttons--square': shape === ButtonShape.Square,
-      'cf-radio-buttons--stretch': shape === ButtonShape.StretchToFit,
+      [`cf-radio-buttons__${color}`]: color,
+      [`cf-radio-buttons__${size}`]: size,
+      'cf-radio-buttons__square': shape === ButtonShape.Square,
+      'cf-radio-buttons__stretch': shape === ButtonShape.StretchToFit,
       [`${className}`]: className,
     })
 
