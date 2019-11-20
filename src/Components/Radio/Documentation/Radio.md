@@ -33,7 +33,6 @@ const mirepoix = [
   'Onion',
 ]
 ```
-You don't need to use an enum but it provides some handy strictness
 ```tsx
 const [radioState, setRadioState] = useState<string>(mirepoix[0])
 ```
@@ -57,7 +56,7 @@ mirepoix.map((veg, i) => (
     value={veg}
     active={radioState === veg}
     onClick={handleRadioClick}
-    tabIndex={i}
+    tabIndex={i + 1}
   >
     {veg}
   </Radio.Button>
