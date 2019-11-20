@@ -1,6 +1,6 @@
-# SelectGroup Button
+# SelectGroupButton
 
-SelectGroupOption is the member of the SelectGroup Family; every member of the component family can be accessed from the same single import. We recommend using it as a child of `<SelectGroup />` because it receives its appearance from its parent.
+SelectGroupOption is the member of the `SelectGroup` Family; every member of the component family can be accessed from the same single import. We recommend using it as a child of `<SelectGroup />` because it receives its appearance from its parent.
 
 ### Usage
 ```tsx
@@ -44,8 +44,9 @@ const items = [
 ```tsx
 items.map(item => (
   <SelectGroup.Option
-    key={item.id}
     id={item.id}
+    key={item.id}
+    name="fruits"
     value={item}
     titleText={item.desc}
     onClick={this.clickHandler}
