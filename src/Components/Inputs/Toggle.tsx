@@ -161,8 +161,7 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
       )
     }
 
-    const title =
-      disabled ? disabledTitleText : titleText
+    const title = disabled ? disabledTitleText : titleText
 
     return (
       <div className={toggleClass} style={style} ref={containerRef}>
@@ -182,7 +181,7 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
           onKeyPress={onKeyPress}
           data-testid={`${testID}--input`}
           defaultChecked={checked}
-          />
+        />
         <label
           title={title}
           onBlur={handleInputBlur}

@@ -104,7 +104,7 @@ export const SelectGroupOption = forwardRef<
           disabled={disabled}
           tabIndex={tabDisabled}
           data-testid={`${testID}--input`}
-          />
+        />
         <label
           ref={containerRef}
           title={title}
