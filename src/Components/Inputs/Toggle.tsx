@@ -18,7 +18,6 @@ import './Toggle.scss'
 import {
   Omit,
   ComponentColor,
-  ComponentStatus,
   ComponentSize,
   IconFont,
   StandardFunctionProps,
@@ -51,16 +50,16 @@ export interface ToggleProps extends Omit<StandardFunctionProps, 'id'> {
   tabIndex?: number
   /** Used to group toggles together in a form */
   name?: string
-  /** Input field value to be updated with 'on X' functions */
+  /** Togle field value to be updated with 'on X' functions */
   value?: string
   /** Text to be displayed on hover tooltip */
   titleText?: string
   /** Text to be displayed on hover tooltip when radio button is disabled */
   disabledTitleText?: string
-  /** Input Component size */
+  /** Toggle Component size */
   size?: ComponentSize
-  /** Input status state */
-  status?: ComponentStatus
+  /** Prevents the user from interacting with this component */
+  disabled?: boolean
   /** Whether or not the input receives autofocus when mounted */
   autoFocus?: boolean
   /** Refers to the visible element rather than the hidden input that ref refers to */
@@ -69,8 +68,6 @@ export interface ToggleProps extends Omit<StandardFunctionProps, 'id'> {
   color?: ComponentColor
   /** Renders the toggle as either "Solid" or "Outline" */
   appearance?: Appearance
-  /** Sets the hidden input to readonly mode */
-  readOnly?: boolean
 }
 
 export type ToggleRef = HTMLInputElement
@@ -87,16 +84,15 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
       style,
       value = '',
       color = ComponentColor.Primary,
-      status = ComponentStatus.Default,
       onBlur,
       testID = 'toggle',
       onFocus,
       checked,
       onKeyUp,
+      disabled = false,
       children,
       tabIndex,
       onChange,
-      readOnly,
       titleText = '',
       className,
       autoFocus = false,
@@ -118,18 +114,22 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
       'cf-toggle__focused': isFocused,
       'cf-toggle__checkbox': type === InputToggleType.Checkbox,
       'cf-toggle__radio': type === InputToggleType.Radio,
-      'cf-toggle__disabled': status === ComponentStatus.Disabled,
+      'cf-toggle__disabled': disabled,
       'cf-toggle__labelled': !!React.Children.count(children),
       [`${className}`]: className,
     })
 
-    const handleInputChange = (): void => {
+    const handleClick = (): void => {
+      if (disabled) {
+        return
+      }
+
       onChange(value)
     }
 
     const handleKeyUp = (e: KeyboardEvent<HTMLLabelElement>): void => {
       if (e.key === ' ') {
-        handleInputChange()
+        handleClick()
       }
 
       if (onKeyUp) {
@@ -162,7 +162,7 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
     }
 
     const title =
-      status === ComponentStatus.Disabled ? disabledTitleText : titleText
+      disabled ? disabledTitleText : titleText
 
     return (
       <div className={toggleClass} style={style} ref={containerRef}>
@@ -173,22 +173,22 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
           name={name}
           title={title}
           value={value}
-          checked={checked}
-          onChange={handleInputChange}
           tabIndex={-1}
-          disabled={status === ComponentStatus.Disabled}
-          readOnly={readOnly}
+          disabled={disabled}
+          readOnly={true}
           onKeyDown={onKeyDown}
           autoFocus={autoFocus}
           className="cf-toggle--input"
           onKeyPress={onKeyPress}
           data-testid={`${testID}--input`}
-        />
+          defaultChecked={checked}
+          />
         <label
           title={title}
           onBlur={handleInputBlur}
           htmlFor={id}
           onFocus={handleInputFocus}
+          onClick={handleClick}
           onKeyUp={handleKeyUp}
           tabIndex={tabIndex}
           className="cf-toggle--visual-input"

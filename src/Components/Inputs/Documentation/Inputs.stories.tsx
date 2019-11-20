@@ -395,11 +395,7 @@ inputsBaseStories.add(
               select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
             ]
           }
-          status={
-            ComponentStatus[
-              select('status', mapEnumKeys(ComponentStatus), 'Default')
-            ]
-          }
+          disabled={boolean('disabled', false)}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }

@@ -23,7 +23,7 @@ export interface SelectGroupOptionProps
   onKeyUp?: (e: KeyboardEvent<HTMLLabelElement>) => void
   /** Text to be displayed on hover tooltip */
   titleText?: string
-  /** Toggles disabled state */
+  /** Prevents the user from interacting with this component */
   disabled?: boolean
   /** Text to be displayed on hover tooltip when radio button is disabled */
   disabledTitleText?: string
@@ -31,8 +31,6 @@ export interface SelectGroupOptionProps
   type?: InputToggleType
   /** Refers to the visible element rather than the hidden input that ref refers to */
   containerRef?: RefObject<SelectGroupOptionContainerRef>
-  /** Sets the hidden input to readonly mode */
-  readOnly?: boolean
 }
 
 export type SelectGroupOptionRef = HTMLInputElement
@@ -54,7 +52,6 @@ export const SelectGroupOption = forwardRef<
       onClick,
       onKeyUp,
       tabIndex,
-      readOnly = false,
       disabled = false,
       children,
       className,
@@ -72,7 +69,11 @@ export const SelectGroupOption = forwardRef<
 
     const title = disabled ? disabledTitleText : titleText
 
-    const handleInputChange = () => {
+    const handleClick = () => {
+      if (disabled) {
+        return
+      }
+
       onClick(value)
     }
 
@@ -80,7 +81,7 @@ export const SelectGroupOption = forwardRef<
       e: KeyboardEvent<SelectGroupOptionContainerRef>
     ): void => {
       if (e.key === ' ') {
-        handleInputChange()
+        handleClick()
       }
 
       if (onKeyUp) {
@@ -98,18 +99,18 @@ export const SelectGroupOption = forwardRef<
           type={type}
           name={name}
           title={title}
-          readOnly={readOnly}
-          checked={active}
-          onChange={handleInputChange}
+          readOnly={true}
+          defaultChecked={active}
           disabled={disabled}
           tabIndex={tabDisabled}
           data-testid={`${testID}--input`}
-        />
+          />
         <label
           ref={containerRef}
           title={title}
           style={style}
           htmlFor={id}
+          onClick={handleClick}
           onKeyUp={handleKeyUp}
           tabIndex={disabled ? tabDisabled : tabIndex}
           className={radioButtonClass}
