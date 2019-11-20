@@ -1,6 +1,10 @@
 # Changelog
 
-#### 1.0.7 (Unreleased)
+#### 1.0.8 (Unreleased)
+
+- [#407](https://github.com/influxdata/clockface/pull/407): Prevent `DropdownMenu` from dismissing when the scrollbar is clicked or dragged
+
+#### 1.0.7
 
 - [#402](https://github.com/influxdata/clockface/pull/402): [Breaking] Remove `width` prop from `TableCell` and `TableHeaderCell`
 - [#400](https://github.com/influxdata/clockface/pull/400): Refactor `PanelHeader`, `PanelBody`, and `PanelFooter` to extend `FlexBox`
