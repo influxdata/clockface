@@ -69,6 +69,8 @@ export interface ToggleProps extends Omit<StandardFunctionProps, 'id'> {
   color?: ComponentColor
   /** Renders the toggle as either "Solid" or "Outline" */
   appearance?: Appearance
+  /** Sets the hidden input to readonly mode */
+  readOnly?: boolean
 }
 
 export type ToggleRef = HTMLInputElement
@@ -94,6 +96,7 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
       children,
       tabIndex,
       onChange,
+      readOnly,
       titleText = '',
       className,
       autoFocus = false,
@@ -167,27 +170,28 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
           id={id}
           ref={ref}
           type={type}
-          checked={checked}
-          title={title}
           name={name}
+          title={title}
           value={value}
-          autoFocus={autoFocus}
+          checked={checked}
           onChange={handleInputChange}
-          onKeyPress={onKeyPress}
-          onKeyDown={onKeyDown}
           tabIndex={-1}
-          className="cf-toggle--input"
           disabled={status === ComponentStatus.Disabled}
+          readOnly={readOnly}
+          onKeyDown={onKeyDown}
+          autoFocus={autoFocus}
+          className="cf-toggle--input"
+          onKeyPress={onKeyPress}
           data-testid={`${testID}--input`}
         />
         <label
-          htmlFor={id}
-          className="cf-toggle--visual-input"
           title={title}
-          tabIndex={tabIndex}
           onBlur={handleInputBlur}
+          htmlFor={id}
           onFocus={handleInputFocus}
           onKeyUp={handleKeyUp}
+          tabIndex={tabIndex}
+          className="cf-toggle--visual-input"
           data-testid={testID}
         >
           {indicator}

@@ -30,6 +30,8 @@ export interface RadioButtonProps extends Omit<StandardFunctionProps, 'id'> {
   type?: InputToggleType
   /** Refers to the visible element rather than the hidden input that ref refers to */
   containerRef?: RefObject<RadioButtonContainerRef>
+  /** Sets the hidden input to readonly mode */
+  readOnly?: boolean
 }
 
 export type RadioButtonRef = HTMLInputElement
@@ -48,6 +50,7 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
       onClick,
       onKeyUp,
       tabIndex,
+      readOnly = false,
       disabled = false,
       children,
       className,
@@ -89,6 +92,7 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
           type={type}
           name={name}
           title={title}
+          readOnly={readOnly}
           checked={active}
           onChange={handleInputChange}
           disabled={disabled}
