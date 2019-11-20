@@ -3,7 +3,11 @@ import React, {forwardRef, RefObject} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {SelectGroup, SelectGroupRef, SelectGroupButtonRef} from '../../SelectGroup/index'
+import {
+  SelectGroup,
+  SelectGroupRef,
+  SelectGroupOptionRef,
+} from '../../SelectGroup/index'
 
 // Types
 import {
@@ -30,10 +34,10 @@ export interface AutoInputProps extends StandardFunctionProps {
   size?: ComponentSize
   /** Pass through ref for SelectGroup */
   radioRef?: RefObject<SelectGroupRef>
-  /** Pass through ref for "Auto" SelectGroupButton */
-  radioButtonAutoRef?: RefObject<SelectGroupButtonRef>
-  /** Pass through ref for "Custom" SelectGroupButton */
-  radioButtonCustomRef?: RefObject<SelectGroupButtonRef>
+  /** Pass through ref for "Auto" SelectGroupOption */
+  radioButtonAutoRef?: RefObject<SelectGroupOptionRef>
+  /** Pass through ref for "Custom" SelectGroupOption */
+  radioButtonCustomRef?: RefObject<SelectGroupOptionRef>
 }
 
 export type AutoInputRef = HTMLDivElement
@@ -75,7 +79,7 @@ export const AutoInput = forwardRef<AutoInputRef, AutoInputProps>(
             size={size}
             color={color}
           >
-            <SelectGroup.Button
+            <SelectGroup.Option
               active={mode === AutoInputMode.Auto}
               id={`${id}--${AutoInputMode.Auto}`}
               testID={`${testID}--${AutoInputMode.Auto}`}
@@ -85,8 +89,8 @@ export const AutoInput = forwardRef<AutoInputRef, AutoInputProps>(
               ref={radioButtonAutoRef}
             >
               Auto
-            </SelectGroup.Button>
-            <SelectGroup.Button
+            </SelectGroup.Option>
+            <SelectGroup.Option
               active={mode === AutoInputMode.Custom}
               id={`${id}--${AutoInputMode.Custom}`}
               testID={`${testID}--${AutoInputMode.Custom}`}
@@ -96,7 +100,7 @@ export const AutoInput = forwardRef<AutoInputRef, AutoInputProps>(
               ref={radioButtonCustomRef}
             >
               Custom
-            </SelectGroup.Button>
+            </SelectGroup.Option>
           </SelectGroup.SelectGroup>
         </div>
         {mode === AutoInputMode.Custom && (

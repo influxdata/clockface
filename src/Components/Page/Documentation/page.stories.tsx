@@ -260,7 +260,7 @@ pageExampleStories.add(
           </Page.HeaderLeft>
           <Page.HeaderCenter>
             <SelectGroup shape={ButtonShape.StretchToFit}>
-              <SelectGroup.Button
+              <SelectGroup.Option
                 id="mode--write"
                 titleText="Write Mode"
                 active={true}
@@ -268,8 +268,8 @@ pageExampleStories.add(
                 onClick={() => {}}
               >
                 Write
-              </SelectGroup.Button>
-              <SelectGroup.Button
+              </SelectGroup.Option>
+              <SelectGroup.Option
                 id="mode--preview"
                 titleText="Preview Mode"
                 active={false}
@@ -277,7 +277,7 @@ pageExampleStories.add(
                 onClick={() => {}}
               >
                 Preview
-              </SelectGroup.Button>
+              </SelectGroup.Option>
             </SelectGroup>
           </Page.HeaderCenter>
           <Page.HeaderRight>

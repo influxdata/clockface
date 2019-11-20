@@ -15,7 +15,7 @@ import {
 import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
-import {SelectGroup, SelectGroupRef, SelectGroupButtonRef} from '../'
+import {SelectGroup, SelectGroupRef, SelectGroupOptionRef} from '../'
 
 // Types
 import {
@@ -27,13 +27,14 @@ import {
 
 // Notes
 import SelectGroupReadme from './SelectGroup.md'
-import SelectGroupButtonReadme from './SelectGroupButton.md'
+import SelectGroupOptionReadme from './SelectGroupOption.md'
 import SelectGroupExampleReadme from './SelectGroupExample.md'
 import {useState} from '@storybook/addons'
 
-const selectGroupStories = storiesOf('Components|SelectGroup/Family', module).addDecorator(
-  withKnobs
-)
+const selectGroupStories = storiesOf(
+  'Components|SelectGroup/Family',
+  module
+).addDecorator(withKnobs)
 
 const selectGroupExampleStories = storiesOf(
   'Components|SelectGroup/Examples',
@@ -45,14 +46,22 @@ selectGroupStories.add(
   () => {
     const mirepoix = ['Celery', 'Carrot', 'Onion', 'Garlic']
 
-    const [selectedSelectGroup, setSelectedSelectGroup] = useState<string>(mirepoix[0])
+    const [selectedSelectGroup, setSelectedSelectGroup] = useState<string>(
+      mirepoix[0]
+    )
     const [selectedCheckbox, setSelectedCheckbox] = useState<string[]>([
       mirepoix[0],
     ])
     const selectGroupRef: RefObject<SelectGroupRef> = createRef()
-    const selectGroupButtonCeleryRef: RefObject<SelectGroupButtonRef> = createRef()
-    const selectGroupButtonCarrotRef: RefObject<SelectGroupButtonRef> = createRef()
-    const selectGroupButtonOnionRef: RefObject<SelectGroupButtonRef> = createRef()
+    const selectGroupButtonCeleryRef: RefObject<
+      SelectGroupOptionRef
+    > = createRef()
+    const selectGroupButtonCarrotRef: RefObject<
+      SelectGroupOptionRef
+    > = createRef()
+    const selectGroupButtonOnionRef: RefObject<
+      SelectGroupOptionRef
+    > = createRef()
 
     const selectGroupButtonRefs = {
       Celery: selectGroupButtonCeleryRef,
@@ -63,9 +72,9 @@ selectGroupStories.add(
     const logSelectGroupRefs = (): void => {
       /* eslint-disable */
       console.log('SelectGroup', selectGroupRef.current)
-      console.log('SelectGroupButton', selectGroupButtonCeleryRef.current)
-      console.log('SelectGroupButton', selectGroupButtonCarrotRef.current)
-      console.log('SelectGroupButton', selectGroupButtonOnionRef.current)
+      console.log('SelectGroupOption', selectGroupButtonCeleryRef.current)
+      console.log('SelectGroupOption', selectGroupButtonCarrotRef.current)
+      console.log('SelectGroupOption', selectGroupButtonOnionRef.current)
       /* eslint-enable */
     }
 
@@ -90,7 +99,8 @@ selectGroupStories.add(
         >
           {mirepoix.map((btn, i) => {
             const isSelectGroup =
-              select('type', mapEnumKeys(InputToggleType), 'SelectGroup') === 'SelectGroup'
+              select('type', mapEnumKeys(InputToggleType), 'SelectGroup') ===
+              'SelectGroup'
             const active = isSelectGroup
               ? selectedSelectGroup === btn
               : selectedCheckbox.includes(btn)
@@ -114,15 +124,18 @@ selectGroupStories.add(
               (boolean('disabled (carrot)', false) && btn === mirepoix[1])
 
             return (
-              <SelectGroup.Button
+              <SelectGroup.Option
                 type={
                   InputToggleType[
                     select('type', mapEnumKeys(InputToggleType), 'SelectGroup')
                   ]
                 }
                 name={
-                  select('type', mapEnumKeys(InputToggleType), 'SelectGroup') ===
-                  'SelectGroup'
+                  select(
+                    'type',
+                    mapEnumKeys(InputToggleType),
+                    'SelectGroup'
+                  ) === 'SelectGroup'
                     ? 'mirepoix'
                     : `mirepoix-${btn}`
                 }
@@ -137,7 +150,7 @@ selectGroupStories.add(
                 disabled={disabled}
               >
                 {btn}
-              </SelectGroup.Button>
+              </SelectGroup.Option>
             )
           })}
         </SelectGroup.SelectGroup>
@@ -155,11 +168,11 @@ selectGroupStories.add(
 )
 
 selectGroupStories.add(
-  'SelectGroupButton',
+  'SelectGroupOption',
   () => {
-    const selectGroupButtonRef: RefObject<SelectGroupButtonRef> = createRef()
+    const selectGroupButtonRef: RefObject<SelectGroupOptionRef> = createRef()
 
-    const logSelectGroupButtonRef = (): void => {
+    const logSelectGroupOptionRef = (): void => {
       /* eslint-disable */
       console.log(selectGroupButtonRef.current)
       /* eslint-enable */
@@ -167,7 +180,7 @@ selectGroupStories.add(
 
     return (
       <div className="story--example">
-        <SelectGroup.Button
+        <SelectGroup.Option
           ref={selectGroupButtonRef}
           id={text('id', 'example-selectGroup-option')}
           active={boolean('active', false)}
@@ -183,16 +196,16 @@ selectGroupStories.add(
           )}
         >
           {text('children', 'Button Label')}
-        </SelectGroup.Button>
+        </SelectGroup.Option>
         <div className="story--test-buttons">
-          <button onClick={logSelectGroupButtonRef}>Log Ref</button>
+          <button onClick={logSelectGroupOptionRef}>Log Ref</button>
         </div>
       </div>
     )
   },
   {
     readme: {
-      content: marked(SelectGroupButtonReadme),
+      content: marked(SelectGroupOptionReadme),
     },
   }
 )
@@ -216,7 +229,7 @@ selectGroupExampleStories.add(
             }
             shape={ButtonShape.StretchToFit}
           >
-            <SelectGroup.Button
+            <SelectGroup.Option
               titleText="Compose your Note using Markdown"
               id="mode-compose"
               active={activeItemID === 'mode-compose'}
@@ -224,8 +237,8 @@ selectGroupExampleStories.add(
               onClick={activeItemID => updateActiveItemID(activeItemID)}
             >
               Compose
-            </SelectGroup.Button>
-            <SelectGroup.Button
+            </SelectGroup.Option>
+            <SelectGroup.Option
               titleText="See a preview of your Note"
               id="mode-preview"
               active={activeItemID === 'mode-preview'}
@@ -233,7 +246,7 @@ selectGroupExampleStories.add(
               onClick={activeItemID => updateActiveItemID(activeItemID)}
             >
               Preview
-            </SelectGroup.Button>
+            </SelectGroup.Option>
           </SelectGroup>
         </div>
       </div>

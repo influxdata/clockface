@@ -5,7 +5,8 @@ import classnames from 'classnames'
 // Types
 import {StandardFunctionProps, InputToggleType, Omit} from '../../Types'
 
-export interface SelectGroupButtonProps extends Omit<StandardFunctionProps, 'id'> {
+export interface SelectGroupOptionProps
+  extends Omit<StandardFunctionProps, 'id'> {
   /** Unique identifier for this radio button */
   id: string
   /** Toggles radio button active state */
@@ -29,15 +30,18 @@ export interface SelectGroupButtonProps extends Omit<StandardFunctionProps, 'id'
   /** Choose either "SelectGroup" or "Checkbox" */
   type?: InputToggleType
   /** Refers to the visible element rather than the hidden input that ref refers to */
-  containerRef?: RefObject<SelectGroupButtonContainerRef>
+  containerRef?: RefObject<SelectGroupOptionContainerRef>
   /** Sets the hidden input to readonly mode */
   readOnly?: boolean
 }
 
-export type SelectGroupButtonRef = HTMLInputElement
-export type SelectGroupButtonContainerRef = HTMLLabelElement
+export type SelectGroupOptionRef = HTMLInputElement
+export type SelectGroupOptionContainerRef = HTMLLabelElement
 
-export const SelectGroupButton = forwardRef<SelectGroupButtonRef, SelectGroupButtonProps>(
+export const SelectGroupOption = forwardRef<
+  SelectGroupOptionRef,
+  SelectGroupOptionProps
+>(
   (
     {
       id,
@@ -45,7 +49,7 @@ export const SelectGroupButton = forwardRef<SelectGroupButtonRef, SelectGroupBut
       type = InputToggleType.Radio,
       value,
       style,
-      testID = 'select-group--item',
+      testID = 'select-group--option',
       active,
       onClick,
       onKeyUp,
@@ -72,7 +76,9 @@ export const SelectGroupButton = forwardRef<SelectGroupButtonRef, SelectGroupBut
       onClick(value)
     }
 
-    const handleKeyUp = (e: KeyboardEvent<SelectGroupButtonContainerRef>): void => {
+    const handleKeyUp = (
+      e: KeyboardEvent<SelectGroupOptionContainerRef>
+    ): void => {
       if (e.key === ' ') {
         handleInputChange()
       }
@@ -116,4 +122,4 @@ export const SelectGroupButton = forwardRef<SelectGroupButtonRef, SelectGroupBut
   }
 )
 
-SelectGroupButton.displayName = 'SelectGroupButton'
+SelectGroupOption.displayName = 'SelectGroupOption'
