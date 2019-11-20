@@ -125,12 +125,8 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
     }
 
     const handleKeyUp = (e: KeyboardEvent<HTMLLabelElement>): void => {
-      if (e.key === 'Enter') {
+      if (e.key === ' ') {
         handleInputChange()
-      }
-
-      if (e.key === 'Escape') {
-        e.currentTarget.blur()
       }
 
       if (onKeyUp) {

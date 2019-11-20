@@ -70,12 +70,8 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
     }
 
     const handleKeyUp = (e: KeyboardEvent<RadioButtonContainerRef>): void => {
-      if (e.key === 'Enter') {
+      if (e.key === ' ') {
         handleInputChange()
-      }
-
-      if (e.key === 'Escape') {
-        e.currentTarget.blur()
       }
 
       if (onKeyUp) {
