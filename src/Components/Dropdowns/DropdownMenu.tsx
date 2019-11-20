@@ -77,7 +77,6 @@ export const DropdownMenu = forwardRef<DropdownMenuRef, DropdownMenuProps>(
         id={id}
         ref={ref}
         style={style}
-        onClick={onCollapse}
         className={DropdownMenuClass}
         data-testid={testID}
       >
@@ -94,6 +93,7 @@ export const DropdownMenu = forwardRef<DropdownMenuRef, DropdownMenuProps>(
           <div
             ref={contentsRef}
             style={contentsStyle}
+            onClick={onCollapse}
             className="cf-dropdown-menu--contents"
             data-testid={`${testID}--contents`}
           >

@@ -1,10 +1,10 @@
-# Square Button
+# SquareButton
 
 This is composed variation of a the Base Button intended for a common use case to save time. The Square button only contains a single icon and includes status indicators.
 
 ### Usage
 ```tsx
-import {Button} from '@influxdata/clockface'
+import {SquareButton} from '@influxdata/clockface'
 ```
 
 ### Example
