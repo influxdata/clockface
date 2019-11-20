@@ -98,6 +98,7 @@ export const SelectGroupOption = forwardRef<
           ref={ref}
           type={type}
           name={name}
+          value={id}
           title={title}
           readOnly={true}
           defaultChecked={active}
