@@ -1,6 +1,6 @@
 # Bullet
 
-This component displays either text or an icon symbol in a colored circle.
+This component displays either text or an icon symbol in a colored circle. `glyph` supercedes `text` prop.
 
 ### Usage
 
