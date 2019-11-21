@@ -1,6 +1,6 @@
 # AutoInput
 
-This component is a composed combination of `Radio` and `Input`. It is useful when you want to toggle between automatically selecting a value and having the user input a value. It is essentially a simple toggleable show/hide container for an input of your choosing; we recommend using a regular `Input` component.
+This component is a composed combination of `SelectGroup` and `Input`. It is useful when you want to toggle between automatically selecting a value and having the user input a value. It is essentially a simple toggleable show/hide container for an input of your choosing; we recommend using a regular `Input` component.
 
 ### Usage
 ```tsx

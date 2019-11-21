@@ -1,7 +1,10 @@
 # Changelog
 
-#### 1.0.8 (Unreleased)
+#### 1.1.0 (Unreleased)
 
+- [#408](https://github.com/influxdata/clockface/pull/408): [Breaking] Refactor `Radio` family to become `SelectGroup` family which supports keyboard access, multi and single select, and contains hidden inputs to play nicer with HTML5 forms
+- [#408](https://github.com/influxdata/clockface/pull/408): Enable tab focus interactions to improve `SelectGroupOption` accessibility
+- [#408](https://github.com/influxdata/clockface/pull/408): [Breaking] Require `id` prop for all `SelectGroupOption` components
 - [#407](https://github.com/influxdata/clockface/pull/407): Prevent `DropdownMenu` from dismissing when the scrollbar is clicked or dragged
 
 #### 1.0.7

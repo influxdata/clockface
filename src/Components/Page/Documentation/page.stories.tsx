@@ -17,7 +17,7 @@ import {
   PageHeaderRightRef,
   PageContentsRef,
 } from '../index'
-import {Radio} from '../../Radio/index'
+import {SelectGroup} from '../../SelectGroup/index'
 import {SquareButton} from '../../Button/Composed/SquareButton'
 import {FlexBox} from '../../FlexBox'
 
@@ -259,8 +259,8 @@ pageExampleStories.add(
             </FlexBox>
           </Page.HeaderLeft>
           <Page.HeaderCenter>
-            <Radio shape={ButtonShape.StretchToFit}>
-              <Radio.Button
+            <SelectGroup shape={ButtonShape.StretchToFit}>
+              <SelectGroup.Option
                 id="mode--write"
                 titleText="Write Mode"
                 active={true}
@@ -268,8 +268,8 @@ pageExampleStories.add(
                 onClick={() => {}}
               >
                 Write
-              </Radio.Button>
-              <Radio.Button
+              </SelectGroup.Option>
+              <SelectGroup.Option
                 id="mode--preview"
                 titleText="Preview Mode"
                 active={false}
@@ -277,8 +277,8 @@ pageExampleStories.add(
                 onClick={() => {}}
               >
                 Preview
-              </Radio.Button>
-            </Radio>
+              </SelectGroup.Option>
+            </SelectGroup>
           </Page.HeaderCenter>
           <Page.HeaderRight>
             <SquareButton icon={IconFont.Remove} />

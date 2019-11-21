@@ -207,6 +207,7 @@ body.sb-show-main {
   align-content: center;
   padding: 64px;
   position: relative;
+  margin-bottom: 24px;
 
   &__column {
     @extend .story--example;

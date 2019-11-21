@@ -33,7 +33,7 @@ import {
   TextAreaContainerRef,
 } from '../'
 import {InputLabel, InputLabelRef} from '../InputLabel'
-import {RadioRef, RadioButtonRef} from '../../Radio/index'
+import {SelectGroupRef, SelectGroupOptionRef} from '../../SelectGroup/index'
 import {FlexBox} from '../../FlexBox'
 
 // Types
@@ -395,11 +395,7 @@ inputsBaseStories.add(
               select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
             ]
           }
-          status={
-            ComponentStatus[
-              select('status', mapEnumKeys(ComponentStatus), 'Default')
-            ]
-          }
+          disabled={boolean('disabled', false)}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
@@ -628,16 +624,20 @@ inputsComposedStories.add(
   'AutoInput',
   () => {
     const autoInputRef: RefObject<AutoInputRef> = createRef()
-    const autoInputRadioRef: RefObject<RadioRef> = createRef()
-    const autoInputRadioAutoRef: RefObject<RadioButtonRef> = createRef()
-    const autoInputRadioCustomRef: RefObject<RadioButtonRef> = createRef()
+    const autoInputSelectGroupRef: RefObject<SelectGroupRef> = createRef()
+    const autoInputSelectGroupAutoRef: RefObject<
+      SelectGroupOptionRef
+    > = createRef()
+    const autoInputSelectGroupCustomRef: RefObject<
+      SelectGroupOptionRef
+    > = createRef()
 
     const handleLogRef = (): void => {
       /* eslint-disable */
       console.log('AutoInput', autoInputRef.current)
-      console.log('AutoInput Radio', autoInputRadioRef.current)
-      console.log('AutoInput RadioButton', autoInputRadioAutoRef.current)
-      console.log('AutoInput RadioButton', autoInputRadioCustomRef.current)
+      console.log('AutoInput SelectGroup', autoInputSelectGroupRef.current)
+      console.log('AutoInput SelectGroupOption', autoInputSelectGroupAutoRef.current)
+      console.log('AutoInput SelectGroupOption', autoInputSelectGroupCustomRef.current)
       /* eslint-enable */
     }
 
@@ -647,9 +647,9 @@ inputsComposedStories.add(
       <div className="story--example">
         <AutoInput
           ref={autoInputRef}
-          radioRef={autoInputRadioRef}
-          radioButtonAutoRef={autoInputRadioAutoRef}
-          radioButtonCustomRef={autoInputRadioCustomRef}
+          radioRef={autoInputSelectGroupRef}
+          radioButtonAutoRef={autoInputSelectGroupAutoRef}
+          radioButtonCustomRef={autoInputSelectGroupCustomRef}
           style={object('style', exampleAutoInputStyle)}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
