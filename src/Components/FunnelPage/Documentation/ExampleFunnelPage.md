@@ -1,20 +1,11 @@
-# Example Funnel Page
+# Sign Up Page
 
-This example utilizes all the components designed to collectively implement Funnel Page type designs.
+This example utilizes all the components necessary to build a Cloud 2 sign up page. See the `FunnelPage` documentation for how to ensure the typography is correct
 
 ### Usage
 
 ```tsx
-import {FunnelPage} from '@influxdata/clockface'
-```
-```tsx
-// Recommended usage:
-<AppWrapper type="funnel">
-  <FunnelPage />
-  <FunnelPage.Footer>
-    <FunnelPage.FooterSection>I am a footer!</FunnelPage.FooterSection>
-  </FunnelPage.Footer>
-</AppWrapper>
+import {FunnelPage, Panel, Bullet, CTAButton} from '@influxdata/clockface'
 ```
 
 ### Example
