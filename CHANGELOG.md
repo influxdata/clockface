@@ -9,6 +9,9 @@
 
 #### 1.0.7
 
+- [#409](https://github.com/influxdata/clockface/pull/409): Introduce `PanelSymbolHeader` component
+- [#409](https://github.com/influxdata/clockface/pull/409): Introduce `Bullet` component
+- [#409](https://github.com/influxdata/clockface/pull/409): [Breaking] Remove `NumberedPanel`
 - [#402](https://github.com/influxdata/clockface/pull/402): [Breaking] Remove `width` prop from `TableCell` and `TableHeaderCell`
 - [#400](https://github.com/influxdata/clockface/pull/400): Refactor `PanelHeader`, `PanelBody`, and `PanelFooter` to extend `FlexBox`
 - [#400](https://github.com/influxdata/clockface/pull/400): [Breaking] Remove `PanelTitle` component
