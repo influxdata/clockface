@@ -9,7 +9,7 @@ import {withKnobs, boolean, text, select, radios} from '@storybook/addon-knobs'
 
 // Components
 import {NavMenu, NavMenuRef, NavMenuItemRef} from '../'
-import {Icon} from '../../Icon/Icon'
+import {Icon} from '../../Icon/Base/Icon'
 
 // Types
 import {IconFont} from '../../../Types'

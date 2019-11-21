@@ -1,1 +1,2 @@
-export * from './Icon'
+export * from './Base/Icon'
+export * from './Composed/Bullet'

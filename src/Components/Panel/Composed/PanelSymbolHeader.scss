@@ -1,0 +1,96 @@
+@import '../../../Styles/modules';
+
+/*
+   Panel Symbol Header
+   -----------------------------------------------------------------------------
+*/
+
+$panel-symbol-header-gutter-small: $cf-marg-d;
+$panel-symbol-header-gutter: $cf-marg-e;
+
+.cf-panel--symbol-header {
+  padding-left: $panel-symbol-header-gutter-small;
+  padding-right: $panel-symbol-header-gutter-small;
+
+  .cf-panel--symbol-header--title {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  & ~ .cf-panel--body,
+  & ~ .cf-panel--footer {
+    padding-left: $panel-symbol-header-gutter-small;
+    padding-right: $panel-symbol-header-gutter-small;
+  }
+
+  .cf-panel--symbol-header--symbol {
+    position: absolute;
+    left: ($panel-symbol-header-gutter-small / 2);
+    transform: translate(-50%, 0);
+  }
+
+  @media screen and (min-width: 1080px) {
+    padding-left: $panel-symbol-header-gutter;
+    padding-right: $panel-symbol-header-gutter;
+
+    & ~ .cf-panel--body,
+    & ~ .cf-panel--footer {
+      padding-left: $panel-symbol-header-gutter;
+      padding-right: $panel-symbol-header-gutter;
+    }
+
+    .cf-panel--symbol-header--symbol {
+      left: ($panel-symbol-header-gutter / 2);
+    }
+  }
+}
+
+/*
+  Size Modifiers
+  ------------------------------------------------------------------------------
+*/
+
+@mixin panelSymbolHeaderSizeModifier($size) {
+  padding-left: $panel-symbol-header-gutter-small + $size;
+  padding-right: $panel-symbol-header-gutter-small + $size;
+
+  & ~ .cf-panel--body,
+  & ~ .cf-panel--footer {
+    padding-left: $panel-symbol-header-gutter-small + $size;
+    padding-right: $panel-symbol-header-gutter-small + $size;
+  }
+
+  .cf-panel--symbol-header--symbol {
+    left: (($panel-symbol-header-gutter-small + $size) / 2);
+  }
+
+  @media screen and (min-width: 1080px) {
+    padding-left: $panel-symbol-header-gutter + $size;
+    padding-right: $panel-symbol-header-gutter + $size;
+
+    & ~ .cf-panel--body,
+    & ~ .cf-panel--footer {
+      padding-left: $panel-symbol-header-gutter + $size;
+      padding-right: $panel-symbol-header-gutter + $size;
+    }
+
+    .cf-panel--symbol-header--symbol {
+      left: (($panel-symbol-header-gutter + $size) / 2);
+    }
+  }
+}
+
+.cf-panel--symbol-header__xs {
+  @include panelSymbolHeaderSizeModifier($form-xs-height);
+}
+.cf-panel--symbol-header__sm {
+  @include panelSymbolHeaderSizeModifier($form-sm-height);
+}
+.cf-panel--symbol-header__md {
+  @include panelSymbolHeaderSizeModifier($form-md-height);
+}
+.cf-panel--symbol-header__lg {
+  @include panelSymbolHeaderSizeModifier($form-lg-height);
+}

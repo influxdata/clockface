@@ -3,7 +3,7 @@ import React, {forwardRef} from 'react'
 
 // Components
 import {ButtonBase, ButtonBaseRef} from '../Base/ButtonBase'
-import {Icon} from '../../Icon/Icon'
+import {Icon} from '../../Icon/Base/Icon'
 
 // Types
 import {

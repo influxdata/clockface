@@ -9,7 +9,7 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
 import {Tabs, TabsRef, TabRef, TabContentsRef, TabsContainerRef} from '../'
-import {Icon} from '../../Icon/Icon'
+import {Icon} from '../../Icon/Base/Icon'
 
 // Types
 import {

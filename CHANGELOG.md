@@ -2,6 +2,9 @@
 
 #### 1.1.0 (Unreleased)
 
+- [#409](https://github.com/influxdata/clockface/pull/409): Introduce `PanelSymbolHeader` component
+- [#409](https://github.com/influxdata/clockface/pull/409): Introduce `Bullet` component
+- [#409](https://github.com/influxdata/clockface/pull/409): [Breaking] Remove `NumberedPanel`
 - [#408](https://github.com/influxdata/clockface/pull/408): [Breaking] Refactor `Radio` family to become `SelectGroup` family which supports keyboard access, multi and single select, and contains hidden inputs to play nicer with HTML5 forms
 - [#408](https://github.com/influxdata/clockface/pull/408): Enable tab focus interactions to improve `SelectGroupOption` accessibility
 - [#408](https://github.com/influxdata/clockface/pull/408): [Breaking] Require `id` prop for all `SelectGroupOption` components
