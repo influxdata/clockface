@@ -5,7 +5,8 @@
   ------------------------------------------------------------------------------
 */
 
-$funnel-page--base-font: 16px;
+$funnel-page--base-font: 14px;
+$funnel-page--base-font--large: 16px;
 $funnel-page--tiny-gutter: $cf-marg-b;
 $funnel-page--gutter: $cf-marg-d;
 
@@ -48,32 +49,41 @@ $funnel-page--gutter: $cf-marg-d;
   font-size: $funnel-page--base-font;
   color: $c-moonstone;
 
-  h1,
-  h2,
-  h3,
+  .cf-funnel-page--title {
+    font-weight: 400;
+    color: $g20-white;
+    font-size: 1.75em;
+    margin-bottom: 0em;
+  }
+
+  .cf-funnel-page--subtitle {
+    font-weight: 500;
+    font-size: 1.125em;
+    margin: 1.25em 0;
+  }
+
+  .cf-funnel-page--panel-title {
+    font-size: 1.125em;
+    font-weight: 500;
+  }
+
+  .cf-panel {
+    margin-bottom: $cf-marg-a;
+  }
+
+  .cf-cta-button {
+    margin-bottom: $cf-marg-d;
+  }
+
   strong {
     color: $g20-white;
-  }
-
-  h1,
-  h2,
-  h3 {
-    font-weight: 300;
-  }
-
-  h4,
-  h5,
-  h6 {
-    font-weight: 600;
-  }
-
-  strong {
     font-weight: 900;
   }
 }
 
 @media screen and (min-width: $grid--breakpoint-md) {
   .cf-funnel-page--content {
+    font-size: $funnel-page--base-font--large;
     padding: $funnel-page--gutter;
   }
 }
