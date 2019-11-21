@@ -93,7 +93,9 @@ funnelPageStories.add(
               }
             >
               <h1 className="cf-funnel-page--title">I am a page title</h1>
-              <p className="cf-funnel-page--subtitle">I am a <strong>subtitle</strong></p>
+              <p className="cf-funnel-page--subtitle">
+                I am a <strong>subtitle</strong>
+              </p>
               <p>
                 Hell of wayfarers bespoke, butcher unicorn adaptogen kitsch
                 enamel pin sustainable. Hoodie adaptogen pok pok, tofu small
@@ -211,10 +213,9 @@ funnelPageExampleStories.add(
                       />
                       <Panel.Body>
                         <p style={{textAlign: 'left'}}>
-                          Use a <code>H4</code> for panel titles. Lorem ipsum
-                          dolor amet cold-pressed selvage literally humblebrag
-                          YOLO, kale chips adaptogen whatever synth deep v
-                          letterpress iceland post-ironic.
+                          Lorem ipsum dolor amet cold-pressed selvage literally
+                          humblebrag YOLO, kale chips adaptogen whatever synth
+                          deep v letterpress iceland post-ironic.
                         </p>
                       </Panel.Body>
                     </Panel>
