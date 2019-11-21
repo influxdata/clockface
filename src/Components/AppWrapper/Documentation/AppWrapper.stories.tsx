@@ -15,7 +15,7 @@ import {FlexBox} from '../../FlexBox'
 import {Button} from '../../Button/Composed/Button'
 import {PopNav} from '../../PopNav'
 import {Page} from '../../Page/index'
-import {Icon} from '../../Icon/Icon'
+import {Icon} from '../../Icon/Base/Icon'
 
 // Types
 import {

@@ -4,14 +4,7 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {
-  withKnobs,
-  text,
-  select,
-  color,
-  number,
-  object,
-} from '@storybook/addon-knobs'
+import {withKnobs, text, select, color} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
@@ -21,9 +14,10 @@ import {
   PanelHeaderRef,
   PanelBodyRef,
   PanelFooterRef,
+  PanelSymbolHeaderRef,
 } from '../'
-import {NumberedPanel, NumberedPanelRef} from '../Composed/NumberedPanel'
 import {Grid} from '../../Grid'
+import {Bullet} from '../../Icon'
 
 // Types
 import {
@@ -39,12 +33,13 @@ import {
 // Notes
 import PanelReadme from './Panel.md'
 import PanelHeaderReadme from './PanelHeader.md'
+import PanelSymbolHeaderReadme from './PanelSymbolHeader.md'
 import PanelBodyReadme from './PanelBody.md'
 import PanelFooterReadme from './PanelFooter.md'
 import ExampleAReadme from './PanelExampleA.md'
 import ExampleBReadme from './PanelExampleB.md'
 import ExampleCReadme from './PanelExampleC.md'
-import NumberedPanelReadme from './NumberedPanel.md'
+import ExampleDReadme from './PanelExampleD.md'
 
 const panelStories = storiesOf('Components|Panels/Family', module).addDecorator(
   withKnobs
@@ -295,47 +290,32 @@ panelStories.add(
 )
 
 panelComposedStories.add(
-  'NumberedPanel',
+  'PanelSymbolHeader',
   () => {
-    const numberedPanelRef: RefObject<NumberedPanelRef> = createRef()
+    const panelSymbolHeaderRef: RefObject<PanelSymbolHeaderRef> = createRef()
 
-    const logRef = (): void => {
+    const logPanelSymbolHeaderRef = (): void => {
       /* eslint-disable */
-    console.log(numberedPanelRef.current)
+      console.log(panelSymbolHeaderRef.current)
       /* eslint-enable */
     }
 
     return (
       <div className="story--example">
+        <Panel.SymbolHeader
+          ref={panelSymbolHeaderRef}
+          symbol={<Bullet text={1} />}
+          title={<h4>Panel Title</h4>}
+        />
         <div className="story--test-buttons">
-          <button onClick={logRef}>Log Ref</button>
+          <button onClick={logPanelSymbolHeaderRef}>Log Ref</button>
         </div>
-        <NumberedPanel
-          title={<h5>Acquire Funds</h5>}
-          ref={numberedPanelRef}
-          number={number('number', 4)}
-          numberSize={
-            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-          }
-          style={object('style', {width: '600px'})}
-          headerSize={
-            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-          }
-        >
-          <Panel.Body
-            size={
-              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-            }
-          >
-            <p>sdfsf</p>
-          </Panel.Body>
-        </NumberedPanel>
       </div>
     )
   },
   {
     readme: {
-      content: marked(NumberedPanelReadme),
+      content: marked(PanelSymbolHeaderReadme),
     },
   }
 )
@@ -470,6 +450,54 @@ panelExampleStories.add(
   {
     readme: {
       content: marked(ExampleCReadme),
+    },
+  }
+)
+
+panelExampleStories.add(
+  'Numbered Panel',
+  () => (
+    <div className="story--example">
+      <Panel style={{width: '100%'}}>
+        <Panel.SymbolHeader
+          symbol={
+            <Bullet
+              text={1}
+              size={
+                ComponentSize[
+                  select('symbol size', mapEnumKeys(ComponentSize), 'Medium')
+                ]
+              }
+            />
+          }
+          title={<h5>Panel Title</h5>}
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+        >
+          Panel Header Content
+        </Panel.SymbolHeader>
+        <Panel.Body
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+        >
+          Panel Body Content
+        </Panel.Body>
+        <Panel.Footer
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          justifyContent={JustifyContent.FlexStart}
+        >
+          <p>Panel Footer Content</p>
+        </Panel.Footer>
+      </Panel>
+    </div>
+  ),
+  {
+    readme: {
+      content: marked(ExampleDReadme),
     },
   }
 )

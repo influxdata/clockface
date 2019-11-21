@@ -649,22 +649,22 @@ $color-grid-card-width: 154px;
   display: flex;
   border-radius: $cf-radius-sm;
   flex-direction: column;
-  
+
   > p {
     opacity: 0.8;
     margin: 0 !important;
     font-size: 12px !important;
     font-weight: 700;
-    
+
     &.colors-grid--hex {
       text-transform: uppercase;
     }
   }
-  
+
   &.dark-text > p {
     color: $g0-obsidian !important;
   }
-  
+
   &.light-text > p {
     color: $g20-white !important;
   }
@@ -738,6 +738,12 @@ $color-grid-card-width: 154px;
   background-color: $g1-raven;
   border-radius: $cf-radius;
   margin: 1px;
+}
+
+.story-spacer {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /*

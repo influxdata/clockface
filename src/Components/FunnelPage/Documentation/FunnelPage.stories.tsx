@@ -10,7 +10,7 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 // Components
 import {FunnelPage, FunnelPageRef, FunnelPageFooterRef} from '../'
 import {AppWrapper} from '../../AppWrapper/AppWrapper'
-import {Icon} from '../../Icon/Icon'
+import {Icon} from '../../Icon/Base/Icon'
 import {Button} from '../../Button/Composed/Button'
 import {FlexBox} from '../../FlexBox'
 

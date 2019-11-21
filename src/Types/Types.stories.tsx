@@ -9,7 +9,7 @@ import {storiesOf} from '@storybook/react'
 // Components
 import {Button} from '../Components/Button/Composed/Button'
 import {Input} from '../Components/Inputs/Input'
-import {Icon} from '../Components/Icon/Icon'
+import {Icon} from '../Components/Icon/Base/Icon'
 
 // Types
 import {
