@@ -5,8 +5,8 @@
    -----------------------------------------------------------------------------
 */
 
-$panel-symbol-header-gutter-small: $cf-marg-d;
-$panel-symbol-header-gutter: $cf-marg-e;
+$panel-symbol-header-gutter-small: $cf-marg-c;
+$panel-symbol-header-gutter: $cf-marg-d + $cf-marg-b;
 
 .cf-panel--symbol-header {
   padding-left: $panel-symbol-header-gutter-small;

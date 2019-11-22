@@ -5,17 +5,19 @@
   ------------------------------------------------------------------------------
 */
 
-$cf-cta-button--height: $cf-marg-e + $cf-marg-b;
+$cf-cta-button--height: $cf-marg-e + $cf-marg-a;
+$cf-cta-button--font: 1.375em;
+$cf-cta-button--icon: 1.7em;
 
 .cf-button-lg.cf-cta-button {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   height: $cf-cta-button--height;
   padding: 0 $cf-marg-d;
   
   > .cf-button-icon {
-    font-size: floor($cf-text-base-4 * 1.25);
+    font-size: $cf-cta-button--icon;
 
     &:first-child {
       margin-right: 0.4em;
@@ -26,7 +28,7 @@ $cf-cta-button--height: $cf-marg-e + $cf-marg-b;
   }
   
   > .cf-button--label {
-    font-size: $cf-text-base-4;
+    font-size: $cf-cta-button--font;
     margin: 0;
     font-weight: 900;
     letter-spacing: -0.02em;
