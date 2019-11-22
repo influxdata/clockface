@@ -16,7 +16,9 @@ For semantic purposes the page title should always be `h1`. The subtitles can be
 |:------------|:--------|:------|
 | Page Title | `<h1 />` | `.cf-funnel-page--title` |
 | Subtitle | `any` | `.cf-funnel-page--subtitle` |
-| Panel Title | `any` | `.cf-funnel-page--panel-title` |
+| Panel Title | `<h3 />`* | `.cf-funnel-page--panel-title` |
+
+* While we recommend `<h3 />` as the element for Panel Titles, feel free to adjust as necessary.
 
 ```tsx
 // Recommended usage:

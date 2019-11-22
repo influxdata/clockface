@@ -206,9 +206,9 @@ funnelPageExampleStories.add(
                       <Panel.SymbolHeader
                         symbol={<Bullet text="1" />}
                         title={
-                          <h5 className="cf-funnel-page--panel-title">
+                          <h3 className="cf-funnel-page--panel-title">
                             Get a coconut
-                          </h5>
+                          </h3>
                         }
                       />
                       <Panel.Body>
@@ -223,9 +223,9 @@ funnelPageExampleStories.add(
                       <Panel.SymbolHeader
                         symbol={<Bullet text="2" />}
                         title={
-                          <h5 className="cf-funnel-page--panel-title">
+                          <h3 className="cf-funnel-page--panel-title">
                             Put a lime in the coconut
-                          </h5>
+                          </h3>
                         }
                       />
                       <Panel.Body>
@@ -240,9 +240,9 @@ funnelPageExampleStories.add(
                       <Panel.SymbolHeader
                         symbol={<Bullet text="3" />}
                         title={
-                          <h5 className="cf-funnel-page--panel-title">
+                          <h3 className="cf-funnel-page--panel-title">
                             Mix it all up
-                          </h5>
+                          </h3>
                         }
                       />
                       <Panel.Body>
