@@ -1,5 +1,5 @@
 // Libraries
-import React, { forwardRef, CSSProperties} from 'react'
+import React, {forwardRef, CSSProperties} from 'react'
 import classnames from 'classnames'
 
 // Types
@@ -18,7 +18,18 @@ export interface SquareGridProps extends StandardFunctionProps {
 export type SquareGridRef = HTMLDivElement
 
 export const SquareGridRoot = forwardRef<SquareGridRef, SquareGridProps>(
-  ({ id, style = {width: '100%'}, testID = 'square-grid', children, className, cardSize, gutter}, ref) => {
+  (
+    {
+      id,
+      style = {width: '100%'},
+      testID = 'square-grid',
+      children,
+      className,
+      cardSize,
+      gutter,
+    },
+    ref
+  ) => {
     const gridClass = classnames('cf-square-grid', {
       [`cf-square-grid__gutter-${gutter}`]: gutter,
       [`${className}`]: className,
