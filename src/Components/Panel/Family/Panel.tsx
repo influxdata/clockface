@@ -13,7 +13,7 @@ import {
 
 // Utils
 import {
-  generatePanelStyle,
+  generateBackgroundStyle,
   calculateTextColorFromBackground,
 } from '../../../Utils'
 
@@ -66,7 +66,7 @@ export const PanelRoot = forwardRef<PanelRef, PanelProps>(
       <DismissButton onClick={onDismiss} color={dismissButtonColor} />
     )
 
-    const panelStyle = generatePanelStyle(backgroundColor, gradient, style)
+    const panelStyle = generateBackgroundStyle(backgroundColor, gradient, style)
 
     return (
       <div

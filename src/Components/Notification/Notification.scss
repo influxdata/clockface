@@ -1,0 +1,129 @@
+@import '../../Styles/modules';
+
+/*
+    Notification
+    ----------------------------------------------------------------------------
+*/
+
+.cf-notification {
+  padding: $cf-marg-c;
+  margin-bottom: $cf-marg-a;
+  color: $g18-cloud;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-radius: $cf-radius;
+  font-weight: 500;
+
+  &.cf-notification__no-dismiss {
+    padding-right: $cf-marg-d;
+  }
+
+  .cf-notification--contents {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    .cf-notification--children {
+      min-height: 30px;
+      display: inline-flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+  }
+
+  .cf-notification--icon {
+    margin-right: $cf-marg-b;
+    display: inline-flex;
+    height: 30px;
+    width: 30px;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cf-notification--dismiss {
+    flex-shrink: 0;
+    margin-left: $cf-marg-b;
+    background-color: transparent;
+    border: none;
+    color: $g18-cloud;
+    opacity: 0.6;
+    transition: opacity 0.25s ease-in-out;
+
+    &:active,
+    &:focus,
+    &:active:hover,
+    &.active,
+    &.active:hover {
+      background-color: transparent;
+      border: none;
+      box-shadow: none;
+    }
+
+    &:focus,
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.cf-notification-portal {
+  position: fixed;
+  display: inline-flex;
+  flex-direction: column;
+
+  &.cf-notification__top {
+    top: $cf-marg-c;
+    justify-content: flex-start;
+  }
+
+  &.cf-notification__middle {
+    top: 50%;
+    bottom: 50%;
+    justify-content: center;
+  }
+
+  &.cf-notification__bottom {
+    bottom: $cf-marg-c;
+    justify-content: flex-end;
+    flex-direction: column-reverse;
+  }
+
+  &.cf-notification__left {
+    left: $cf-marg-c;
+    align-items: flex-start;
+  }
+
+  &.cf-notification__center {
+    left: 50%;
+    right: 50%;
+    align-items: center;
+  }
+
+  &.cf-notification__right {
+    right: $cf-marg-c;
+    align-items: flex-end;
+  }
+}
+
+/*
+  Contrast Text Modifiers
+  ------------------------------------------------------------------------------
+*/
+
+.cf-notification__dark-text {
+  color: rgba($g2-kevlar, 0.75);
+
+  .cf-notification--dismiss {
+    color: rgba($g2-kevlar, 0.75);
+  }
+}
+
+.cf-notification__light-text {
+  color: rgba($g20-white, 0.75);
+
+  .cf-notification--dismiss {
+    color: rgba($g20-white, 0.75);
+  }
+}

@@ -39,7 +39,7 @@ export const calculateTextColorFromBackground = (
   return chroma(backgroundColor).luminance() >= mediumGrey ? 'dark' : 'light'
 }
 
-export const generatePanelStyle = (
+export const generateBackgroundStyle = (
   backgroundColor: InfluxColors | string,
   gradient?: Gradients,
   style?: CSSProperties
@@ -203,14 +203,23 @@ export const getScrollbarColorsFromTheme = (
   }
 }
 
-export const createPortalElement = (id: string, portalName: string): void => {
+export const createPortalElement = (
+  id: string,
+  portalName: string,
+  classNames?: string
+): void => {
   const portalExists = document.getElementById(id)
   if (portalExists) {
     return
   }
 
+  const additionalClassNames = classNames ? ' ' + classNames : ''
+
   const portalElement = document.createElement('div')
-  portalElement.setAttribute('class', `cf-${portalName}-portal`)
+  portalElement.setAttribute(
+    'class',
+    `cf-${portalName}-portal${additionalClassNames}`
+  )
   portalElement.setAttribute('id', id)
 
   document.body.appendChild(portalElement)
