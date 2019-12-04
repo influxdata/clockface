@@ -25,6 +25,7 @@ import {
   InfluxColors,
   Alignment,
   VerticalAlignment,
+  ComponentSize,
 } from '../../../Types'
 
 // Notes
@@ -57,6 +58,9 @@ notificationStories.add(
         <NotificationDialog
           ref={notificationDialogRef}
           visible={boolean('visible', true)}
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
           icon={
             IconFont[
               select(

@@ -10,6 +10,7 @@ import {
   IconFont,
   Gradients,
   InfluxColors,
+  ComponentSize,
   StandardFunctionProps,
 } from '../../Types'
 
@@ -34,6 +35,8 @@ export interface NotificationDialogProps extends StandardFunctionProps {
   backgroundColor?: InfluxColors | string
   /** If a function is passed in a dismiss button will appear on the notification */
   onDismiss?: () => void
+  /** Controls padding and font size of the notification */
+  size?: ComponentSize
 }
 
 export type NotificationDialogRef = HTMLDivElement
@@ -45,6 +48,7 @@ export const NotificationDialog = forwardRef<
   (
     {
       id,
+      size = ComponentSize.Small,
       icon,
       style,
       testID = 'notification',
@@ -63,6 +67,7 @@ export const NotificationDialog = forwardRef<
 
     const notificationDialogClassName = classnames('cf-notification', {
       'cf-notification--has-icon': icon,
+      [`cf-notification__${size}`]: size,
       [`cf-notification__${textColor}-text`]: textColor,
       'cf-notification__no-dismiss': !onDismiss,
       [`${className}`]: className,

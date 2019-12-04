@@ -6,7 +6,6 @@
 */
 
 .cf-notification {
-  padding: $cf-marg-c;
   margin-bottom: $cf-marg-a;
   color: $g18-cloud;
   display: inline-flex;
@@ -33,13 +32,14 @@
   }
 
   .cf-notification--icon {
+    font-size: 1.125em;
     margin-right: $cf-marg-b;
     display: inline-flex;
-    height: 30px;
-    width: 30px;
     flex-shrink: 0;
     justify-content: center;
     align-items: center;
+    width: $form-sm-height;
+    height: $form-sm-height;
   }
 
   .cf-notification--dismiss {
@@ -105,6 +105,28 @@
     right: $cf-marg-c;
     align-items: flex-end;
   }
+}
+
+/*
+  Size Modifiers
+  ------------------------------------------------------------------------------
+*/
+@mixin notificationSizeModifier($padding, $fontSize) {
+  padding: $padding;
+  font-size: $fontSize;
+}
+
+.cf-notification__xs {
+  @include notificationSizeModifier($cf-marg-a, 13px);
+}
+.cf-notification__sm {
+  @include notificationSizeModifier($cf-marg-b, 14px);
+}
+.cf-notification__md {
+  @include notificationSizeModifier($cf-marg-c, 15px);
+}
+.cf-notification__lg {
+  @include notificationSizeModifier($cf-marg-c + $cf-marg-a, 16px);
 }
 
 /*
