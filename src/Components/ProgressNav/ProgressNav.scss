@@ -1,0 +1,191 @@
+@import '../../Styles/modules';
+
+/*
+   Progress Bar Navigation
+   -----------------------------------------------------------------------------
+*/
+
+$progress-nav--line-thickness: $cf-marg-a;
+$progress-nav--bg: $g0-obsidian;
+$progress-nav--bg-hover: $g7-graphite;
+
+.cf-progress-nav {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+
+  &.cf-progress-nav__horizontal {
+    flex-direction: row;
+  }
+
+  &.cf-progress-nav__vertical {
+    flex-direction: column;
+  }
+}
+
+.cf-progress-nav--step {
+  user-select: none;
+  display: flex;
+  align-items: center;
+
+  .cf-progress-nav__horizontal & {
+    flex-direction: column;
+  }
+  .cf-progress-nav__vertical & {
+    flex-direction: row;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.cf-progress-nav--circle {
+  background-color: $progress-nav--bg;
+  border: $progress-nav--line-thickness solid $progress-nav--bg;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  border-radius: 50%;
+
+  .cf-progress-nav--step:hover & {
+    border-color: $progress-nav--bg-hover;
+  }
+}
+
+.cf-progress-nav--bar {
+  flex-grow: 1;
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    background-color: $progress-nav--bg;
+    transition: background-color 0.25s ease;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+  }
+
+  .cf-progress-nav__horizontal &:after {
+    height: $progress-nav--line-thickness;
+    width: 100%;
+  }
+  .cf-progress-nav__vertical &:after {
+    height: 100%;
+    width: $progress-nav--line-thickness;
+  }
+}
+
+.cf-progress-nav--icon {
+  transition: opacity 0.25s ease, color 0.25s ease;
+  font-size: 1.25em;
+}
+
+.cf-progress-nav--label {
+  font-size: 1.25em;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+  color: rgba($g20-white, 0.5);
+  transition: color 0.25s ease;
+
+  .cf-progress-nav--step:hover & {
+    color: rgba($g20-white, 0.75);
+  }
+  
+  &.cf-progress-nav--label__wrap-text {
+    white-space: initial;
+  }
+}
+
+/*
+  Active State of Step
+  ------------------------------------------------------------------------------
+*/
+
+.cf-progress-nav--step__active,
+.cf-progress-nav--step__active:hover {
+  .cf-progress-nav--circle {
+    background-color: $progress-nav--bg-hover;
+    border-color: $progress-nav--bg-hover;
+  }
+  .cf-progress-nav--label {
+    color: $g20-white;
+  }
+}
+
+/*
+  Size Modifiers
+  ------------------------------------------------------------------------------
+*/
+
+@mixin progressNavSizeModifier($circle, $font, $gap) {
+  font-size: $font;
+
+  .cf-progress-nav--bar {
+    flex-basis: $gap;
+  }
+
+  &.cf-progress-nav__horizontal {
+    .cf-progress-nav--step {
+      flex-basis: $circle;
+      width: $circle;
+    }
+    .cf-progress-nav--bar {
+      height: $circle;
+    }
+    .cf-progress-nav--label {
+      margin-top: $gap;
+    }
+  }
+  &.cf-progress-nav__vertical {
+    .cf-progress-nav--step {
+      flex-basis: $circle;
+      height: $circle;
+    }
+    .cf-progress-nav--bar {
+      width: $circle;
+    }
+    .cf-progress-nav--label {
+      margin-left: $gap;
+    }
+  }
+  .cf-progress-nav--circle {
+    width: $circle;
+    height: $circle;
+  }
+}
+
+.cf-progress-nav__xs {
+  @include progressNavSizeModifier($form-xs-height, $form-xs-font, $cf-marg-a);
+}
+.cf-progress-nav__sm {
+  @include progressNavSizeModifier($form-sm-height, $form-sm-font, $cf-marg-b);
+}
+.cf-progress-nav__md {
+  @include progressNavSizeModifier($form-md-height, $form-md-font, $cf-marg-b + $cf-marg-a);
+}
+.cf-progress-nav__lg {
+  @include progressNavSizeModifier($form-lg-height, $form-lg-font, $cf-marg-c);
+}
+
+/*
+  Status Modifiers
+  ------------------------------------------------------------------------------
+*/
+
+.cf-progress-nav--step__valid {
+  .cf-progress-nav--circle {
+    background-color: $c-rainforest;
+    border-color: $c-rainforest;
+  }
+  .cf-progress-nav--icon {
+    color: $g20-white;
+  }
+  & + .cf-progress-nav--bar:after {
+    background-color: $c-rainforest;
+  }
+}

@@ -16,10 +16,9 @@ import {ComponentSize} from '../../../Types'
 // Notes
 import SquareGridReadme from './SquareGrid.md'
 
-const squareGridStories = storiesOf(
-  'Layout|Fluid Square Grid',
-  module
-).addDecorator(withKnobs)
+const squareGridStories = storiesOf('Layout|Navigation', module).addDecorator(
+  withKnobs
+)
 
 squareGridStories.add(
   'SquareGrid',

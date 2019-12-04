@@ -7,17 +7,17 @@ import {StandardFunctionProps, InputToggleType, Omit} from '../../Types'
 
 export interface SelectGroupOptionProps
   extends Omit<StandardFunctionProps, 'id'> {
-  /** Unique identifier for this radio button */
+  /** Unique identifier for this select group item */
   id: string
-  /** Toggles radio button active state */
+  /** Toggles select group item active state */
   active: boolean
-  /** Input value of the selected radio button */
+  /** Input value of the selected select group item */
   value: any
   /** Keyboard control tab order  */
   tabIndex?: number
   /** Used to group toggles together in a form */
   name?: string
-  /** Function to be called on radio button click */
+  /** Function to be called on select group item click */
   onClick: (value: any) => void
   /** Function to be called on key up */
   onKeyUp?: (e: KeyboardEvent<HTMLLabelElement>) => void
@@ -25,7 +25,7 @@ export interface SelectGroupOptionProps
   titleText?: string
   /** Prevents the user from interacting with this component */
   disabled?: boolean
-  /** Text to be displayed on hover tooltip when radio button is disabled */
+  /** Text to be displayed on hover tooltip when select group item is disabled */
   disabledTitleText?: string
   /** Choose either "SelectGroup" or "Checkbox" */
   type?: InputToggleType
