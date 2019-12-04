@@ -11,6 +11,7 @@ import {
   boolean,
   color,
   number,
+  object,
 } from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
@@ -47,6 +48,10 @@ notificationStories.add(
       /* eslint-enable */
     }
 
+    const defaultNotificationStyle = {
+      maxWidth: '500px',
+    }
+
     const handleClose = (): void => {
       /* eslint-disable */
       alert('calling onDismiss')
@@ -61,6 +66,7 @@ notificationStories.add(
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
+          style={object('style', defaultNotificationStyle)}
           icon={
             IconFont[
               select(
@@ -82,7 +88,7 @@ notificationStories.add(
           backgroundColor={color('backgroundColor', `${InfluxColors.Castle}`)}
           onDismiss={handleClose}
         >
-          {text('text', 'Congrats! The thing has happened!')}
+          <span>{text('text', 'Congrats! The thing has happened!')}</span>
         </NotificationDialog>
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>

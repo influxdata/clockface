@@ -42,7 +42,7 @@ export const Notification = forwardRef<NotificationRef, NotificationProps>(
     {
       id,
       icon,
-      style,
+      style = {maxWidth: '500px'},
       testID,
       visible = true,
       duration = Infinity,
