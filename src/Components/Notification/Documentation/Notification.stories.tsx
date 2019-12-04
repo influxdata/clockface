@@ -129,6 +129,9 @@ notificationStories.add(
           icon={IconFont.Checkmark}
           gradient={Gradients.MiyazakiSky}
           onDismiss={handleClose}
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
         >
           Oh hi there, this is notification #1.
         </Notification>
@@ -137,6 +140,9 @@ notificationStories.add(
           icon={IconFont.BellRinging}
           gradient={Gradients.GarageBand}
           onDismiss={handleClose}
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
         >
           Greetings, all the way from notification #2!
         </Notification>
@@ -145,6 +151,9 @@ notificationStories.add(
           icon={IconFont.Star}
           gradient={Gradients.MangoGrove}
           onDismiss={handleClose}
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
         >
           Avast ye matey! this is notification #3!
         </Notification>
@@ -154,6 +163,9 @@ notificationStories.add(
           gradient={Gradients.OminousFog}
           horizontalAlignment={Alignment.Left}
           verticalAlignment={VerticalAlignment.Bottom}
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
         >
           Sneaky ninja notification.
         </Notification>
@@ -164,6 +176,9 @@ notificationStories.add(
           style={{width: '330px'}}
           horizontalAlignment={Alignment.Center}
           verticalAlignment={VerticalAlignment.Bottom}
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
         >
           Another sneaky ninja notification.
         </Notification>
@@ -176,6 +191,9 @@ notificationStories.add(
           style={{width: '500px'}}
           verticalAlignment={VerticalAlignment.Top}
           horizontalAlignment={Alignment.Center}
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
         >
           Warning notification #4 will call onTimeout in{' '}
           {number('Top Center duration', 3000) / 1000} seconds...
