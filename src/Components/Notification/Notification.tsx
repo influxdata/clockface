@@ -48,7 +48,7 @@ export const Notification = forwardRef<NotificationRef, NotificationProps>(
       id,
       icon,
       size = ComponentSize.Medium,
-      style = {maxWidth: '500px'},
+      style,
       testID,
       visible = true,
       duration = Infinity,
