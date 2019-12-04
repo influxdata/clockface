@@ -2,6 +2,7 @@
 
 #### 1.1.0 (Unreleased)
 
+- [#415](https://github.com/influxdata/clockface/pull/415): Fix `DapperScrollbars` to persist scroll position and prevent jumping
 - [#414](https://github.com/influxdata/clockface/pull/414): Introduce `Notification` components for briefly conveying information
 - [#413](https://github.com/influxdata/clockface/pull/413): Introduce `SquareGrid` components for fluid, responsive, proportial grids
 - [#410](https://github.com/influxdata/clockface/pull/410): Create CSS classes for styling `FunnelPage` typography

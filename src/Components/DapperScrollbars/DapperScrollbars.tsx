@@ -1,5 +1,5 @@
 // Libraries
-import React, {FunctionComponent} from 'react'
+import React, {FunctionComponent, useRef, useState, useEffect} from 'react'
 import _ from 'lodash'
 import classnames from 'classnames'
 import Scrollbar from 'react-scrollbars-custom'
@@ -62,6 +62,15 @@ export const DapperScrollbars: FunctionComponent<DapperScrollbarsProps> = ({
   removeTrackYWhenNotUsed = true,
   removeTrackXWhenNotUsed = true,
 }) => {
+  const scrollEl = useRef<any>(null)
+  const [scrollTopPos, setScrollTopPos] = useState<number>(Number(scrollTop))
+  const [scrollLeftPos, setScrollLeftPos] = useState<number>(Number(scrollLeft))
+
+  useEffect(() => {
+    setScrollTopPos(Number(scrollTop))
+    setScrollLeftPos(Number(scrollLeft))
+  }, [scrollTop, scrollLeft])
+
   const dapperScrollbarsClass = classnames('cf-dapper-scrollbars', {
     'cf-dapper-scrollbars--autohide': autoHide,
     [`${className}`]: className,
@@ -75,8 +84,15 @@ export const DapperScrollbars: FunctionComponent<DapperScrollbarsProps> = ({
     background: `linear-gradient(to bottom,  ${thumbStartColor} 0%,${thumbStopColor} 100%)`,
   }
 
+  const handleOnScroll = () => {
+    setScrollTopPos(scrollEl.current.scrollTop)
+    setScrollLeftPos(scrollEl.current.scrollLeft)
+  }
+
   return (
     <Scrollbar
+      ref={scrollEl}
+      onScroll={handleOnScroll}
       data-testid={testID}
       translateContentSizesToHolder={autoSize}
       translateContentSizeYToHolder={autoSizeHeight}
@@ -102,8 +118,8 @@ export const DapperScrollbars: FunctionComponent<DapperScrollbarsProps> = ({
         style: thumbYStyle,
         className: 'cf-dapper-scrollbars--thumb-y',
       }}
-      scrollTop={scrollTop}
-      scrollLeft={scrollLeft}
+      scrollTop={scrollTopPos}
+      scrollLeft={scrollLeftPos}
       id={id}
       download={null}
       inlist={null}
