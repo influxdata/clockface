@@ -8,7 +8,12 @@ import * as easings from 'd3-ease'
 import {NotificationDialog} from './NotificationDialog'
 
 // Types
-import {Alignment, InfluxColors, VerticalAlignment, ComponentSize} from '../../Types'
+import {
+  Alignment,
+  InfluxColors,
+  VerticalAlignment,
+  ComponentSize,
+} from '../../Types'
 import {
   NotificationDialogProps,
   NotificationDialogRef,
