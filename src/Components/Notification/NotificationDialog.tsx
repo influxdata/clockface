@@ -36,7 +36,7 @@ export interface NotificationDialogProps extends StandardFunctionProps {
   /** If a function is passed in a dismiss button will appear on the notification */
   onDismiss?: () => void
   /** Controls padding and font size of the notification */
-  size?: ComponentSize
+  size: ComponentSize
 }
 
 export type NotificationDialogRef = HTMLDivElement
@@ -48,7 +48,7 @@ export const NotificationDialog = forwardRef<
   (
     {
       id,
-      size = ComponentSize.Small,
+      size,
       icon,
       style,
       testID = 'notification',

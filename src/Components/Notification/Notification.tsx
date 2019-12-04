@@ -8,7 +8,7 @@ import * as easings from 'd3-ease'
 import {NotificationDialog} from './NotificationDialog'
 
 // Types
-import {Alignment, InfluxColors, VerticalAlignment} from '../../Types'
+import {Alignment, InfluxColors, VerticalAlignment, ComponentSize} from '../../Types'
 import {
   NotificationDialogProps,
   NotificationDialogRef,
@@ -42,6 +42,7 @@ export const Notification = forwardRef<NotificationRef, NotificationProps>(
     {
       id,
       icon,
+      size = ComponentSize.Medium,
       style = {maxWidth: '500px'},
       testID,
       visible = true,
@@ -134,6 +135,7 @@ export const Notification = forwardRef<NotificationRef, NotificationProps>(
               gradient={gradient}
               testID={testID}
               style={{...style, ...props}}
+              size={size}
               icon={icon}
               ref={ref}
               id={id}
