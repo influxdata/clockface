@@ -107,9 +107,18 @@ resourceListStories.add(
     const logRefs = (): void => {
       /* eslint-disable */
       console.log('ResourceListHeader', resourceListHeaderRef.current)
-      console.log('ResourceListSorter (Name)', resourceListSorterNameRef.current)
-      console.log('ResourceListSorter (Created)', resourceListSorterCreatedRef.current)
-      console.log('ResourceListSorter (Color)', resourceListSorterColorRef.current)
+      console.log(
+        'ResourceListSorter (Name)',
+        resourceListSorterNameRef.current
+      )
+      console.log(
+        'ResourceListSorter (Created)',
+        resourceListSorterCreatedRef.current
+      )
+      console.log(
+        'ResourceListSorter (Color)',
+        resourceListSorterColorRef.current
+      )
       /* eslint-enable */
     }
 

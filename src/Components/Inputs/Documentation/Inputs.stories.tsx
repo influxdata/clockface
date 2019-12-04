@@ -458,7 +458,10 @@ inputsBaseStories.add(
       console.log('TextAreaRef (Valid)', textAreaRefValid.current)
       console.log('TextAreaRef (Error)', textAreaRefError.current)
       console.log('TextAreaRef (Loading)', textAreaRefLoading.current)
-      console.log('TextAreaContainerRef (Default)', textAreaContainerRef.current)
+      console.log(
+        'TextAreaContainerRef (Default)',
+        textAreaContainerRef.current
+      )
       /* eslint-enable */
     }
 
@@ -636,8 +639,14 @@ inputsComposedStories.add(
       /* eslint-disable */
       console.log('AutoInput', autoInputRef.current)
       console.log('AutoInput SelectGroup', autoInputSelectGroupRef.current)
-      console.log('AutoInput SelectGroupOption', autoInputSelectGroupAutoRef.current)
-      console.log('AutoInput SelectGroupOption', autoInputSelectGroupCustomRef.current)
+      console.log(
+        'AutoInput SelectGroupOption',
+        autoInputSelectGroupAutoRef.current
+      )
+      console.log(
+        'AutoInput SelectGroupOption',
+        autoInputSelectGroupCustomRef.current
+      )
       /* eslint-enable */
     }
 
