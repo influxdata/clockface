@@ -67,7 +67,10 @@ resourceListCardStories.add(
       /* eslint-disable */
       console.log('ResourceCard', resourceCardRef.current)
       console.log('ResourceCardName', resourceCardNameRef.current)
-      console.log('ResourceCardEditableDescription', resourceCardEditableDescriptionRef.current)
+      console.log(
+        'ResourceCardEditableDescription',
+        resourceCardEditableDescriptionRef.current
+      )
       /* eslint-enable */
     }
 
@@ -162,7 +165,10 @@ resourceListCardStories.add(
 
     const logRefs = (): void => {
       /* eslint-disable */
-      console.log('ResourceCardEditableDescription', resourceCardEditableDescriptionRef.current)
+      console.log(
+        'ResourceCardEditableDescription',
+        resourceCardEditableDescriptionRef.current
+      )
       /* eslint-enable */
     }
 

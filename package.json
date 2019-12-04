@@ -91,6 +91,8 @@
     "test:watch": "jest --watch --verbose",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "lint:fix": "eslint --fix 'src/**/*.{ts,tsx}'",
+    "prettier": "prettier --config .prettierrc.json --check 'src/**/*.{ts,tsx}'",
+    "prettier:fix": "prettier --config .prettierrc.json --write 'src/**/*.{ts,tsx}'",
     "typecheck": "tsc --noEmit --pretty",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "publishStorybook": "storybook-to-ghpages --out=.out"
