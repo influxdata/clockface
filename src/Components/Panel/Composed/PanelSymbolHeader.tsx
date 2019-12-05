@@ -43,6 +43,9 @@ export const PanelSymbolHeader = forwardRef<
       symbol,
       children,
       className,
+      direction = FlexDirection.Row,
+      alignItems = AlignItems.Center,
+      justifyContent = JustifyContent.SpaceBetween,
     },
     ref
   ) => {
@@ -58,7 +61,10 @@ export const PanelSymbolHeader = forwardRef<
         size={size}
         style={style}
         className={panelSymbolHeaderClassName}
+        direction={direction}
+        alignItems={alignItems}
         data-testid={testID}
+        justifyContent={justifyContent}
       >
         <div className="cf-panel--symbol-header--title">
           <div className="cf-panel--symbol-header--symbol">{symbol}</div>
