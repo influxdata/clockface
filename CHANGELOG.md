@@ -1,6 +1,8 @@
 # Changelog
 
-#### 1.1.0 (Unreleased)
+#### 1.1.1 (Unreleased)
+
+#### 1.1.0
 
 - [#415](https://github.com/influxdata/clockface/pull/415): Fix `DapperScrollbars` to persist scroll position and prevent jumping
 - [#414](https://github.com/influxdata/clockface/pull/414): Introduce `Notification` components for briefly conveying information
