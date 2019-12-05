@@ -6,18 +6,25 @@ import classnames from 'classnames'
 import './PanelSymbolHeader.scss'
 
 // Components
-import {Panel, PanelHeaderRef} from '..'
+import {
+  PanelHeader,
+  PanelHeaderProps,
+  PanelHeaderRef,
+} from '../Family/PanelHeader'
 
 // Types
-import {ComponentSize, StandardFunctionProps} from '../../../Types'
+import {
+  ComponentSize,
+  FlexDirection,
+  AlignItems,
+  JustifyContent,
+} from '../../../Types'
 
-export interface PanelSymbolHeaderProps extends StandardFunctionProps {
+export interface PanelSymbolHeaderProps extends PanelHeaderProps {
   /** Element to display before header text (Bullet or Icon) */
   symbol?: JSX.Element
   /** Panel title */
   title?: JSX.Element
-  /** Controls padding on nested header component */
-  size?: ComponentSize
 }
 
 export type PanelSymbolHeaderRef = PanelHeaderRef
@@ -29,13 +36,16 @@ export const PanelSymbolHeader = forwardRef<
   (
     {
       id,
+      size = ComponentSize.Small,
       style,
       title,
       testID = 'panel--symbol-header',
       symbol,
       children,
       className,
-      size = ComponentSize.Small,
+      direction = FlexDirection.Row,
+      alignItems = AlignItems.Center,
+      justifyContent = JustifyContent.SpaceBetween,
     },
     ref
   ) => {
@@ -45,20 +55,23 @@ export const PanelSymbolHeader = forwardRef<
     })
 
     return (
-      <Panel.Header
-        className={panelSymbolHeaderClassName}
-        data-testid={testID}
+      <PanelHeader
+        id={id}
+        ref={ref}
         size={size}
         style={style}
-        ref={ref}
-        id={id}
+        className={panelSymbolHeaderClassName}
+        direction={direction}
+        alignItems={alignItems}
+        data-testid={testID}
+        justifyContent={justifyContent}
       >
         <div className="cf-panel--symbol-header--title">
           <div className="cf-panel--symbol-header--symbol">{symbol}</div>
           {title}
         </div>
         {children}
-      </Panel.Header>
+      </PanelHeader>
     )
   }
 )

@@ -94,6 +94,7 @@
     "prettier": "prettier --config .prettierrc.json --check 'src/**/*.{ts,tsx}'",
     "prettier:fix": "prettier --config .prettierrc.json --write 'src/**/*.{ts,tsx}'",
     "typecheck": "tsc --noEmit --pretty",
+    "fix": "eslint --fix 'src/**/*.{ts,tsx}'; prettier --config .prettierrc.json --check 'src/**/*.{ts,tsx}'",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "publishStorybook": "storybook-to-ghpages --out=.out"
   },
