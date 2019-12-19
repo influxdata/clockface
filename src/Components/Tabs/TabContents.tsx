@@ -7,7 +7,7 @@ import {StandardFunctionProps, InfluxColors, ComponentSize} from '../../Types'
 
 export interface TabContentsProps extends StandardFunctionProps {
   /** Padding of contents */
-  padding: ComponentSize
+  padding?: ComponentSize
   /** Background color, should match color of Tab */
   backgroundColor?: InfluxColors | string
 }
