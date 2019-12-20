@@ -2,6 +2,8 @@
 
 #### 1.1.1 (Unreleased)
 
+- [#422](https://github.com/influxdata/clockface/pull/422): Render the empty state when ResourceList.Body receives boolean false as children
+
 #### 1.1.0
 
 - [#415](https://github.com/influxdata/clockface/pull/415): Fix `DapperScrollbars` to persist scroll position and prevent jumping

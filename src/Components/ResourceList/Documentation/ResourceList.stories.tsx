@@ -167,6 +167,16 @@ resourceListStories.add(
       /* eslint-enable */
     }
 
+    const options: any = {
+      null: null,
+      false: false,
+      'React elements': 'Resource List appears here YAY!',
+    }
+    const children = select(
+      'Children',
+      options,
+      'Resource List appears here YAY!'
+    )
     return (
       <div className="story--example">
         <div className="story--test-buttons">
@@ -177,7 +187,9 @@ resourceListStories.add(
           emptyState={
             <div className="mockComponent stretch">EmptyState goes here</div>
           }
-        />
+        >
+          {children}
+        </ResourceListBody>
       </div>
     )
   },
