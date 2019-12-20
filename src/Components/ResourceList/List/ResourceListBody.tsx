@@ -36,7 +36,8 @@ export const ResourceListBody = forwardRef<
     if (
       React.Children.count(children) === 0 ||
       children === undefined ||
-      children === null
+      children === null ||
+      children === false
     ) {
       childElement = emptyState
     }
