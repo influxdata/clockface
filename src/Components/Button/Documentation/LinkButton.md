@@ -14,6 +14,10 @@ import {LinkButton} from '@influxdata/clockface'
 
 Specifies where to open the linked document
 
+```tsx
+import {LinkTarget} from '@influxdata/clockface'
+```
+
 | Target | Opens in |
 |:----------|:---------------------------------------------------|
 | `_blank` | A new window or tab |
@@ -25,6 +29,10 @@ Specifies where to open the linked document
 ### Rel
 
 Specifies the relationship between the current document and the linked document
+
+```tsx
+import {LinkRel} from '@influxdata/clockface'
+```
 
 | Rel | Description |
 |:-------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|
