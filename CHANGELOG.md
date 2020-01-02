@@ -2,6 +2,8 @@
 
 #### 1.1.1 (Unreleased)
 
+- [#424](https://github.com/influxdata/clockface/pull/424): Introduce `LinkButton` component as a composed variation of `Button`
+
 #### 1.1.0
 
 - [#415](https://github.com/influxdata/clockface/pull/415): Fix `DapperScrollbars` to persist scroll position and prevent jumping
