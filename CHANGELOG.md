@@ -3,6 +3,7 @@
 #### 1.1.1 (Unreleased)
 
 - [#424](https://github.com/influxdata/clockface/pull/424): Introduce `LinkButton` component as a composed variation of `Button`
+- [#424](https://github.com/influxdata/clockface/pull/424): Pass back optional event object to `RightClickMenuItem` click handler
 - [#422](https://github.com/influxdata/clockface/pull/422): Render the empty state when ResourceList.Body receives boolean false as children
 
 #### 1.1.0
