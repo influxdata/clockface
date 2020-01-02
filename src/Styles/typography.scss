@@ -12,8 +12,8 @@ body {
 
 // Base Link Styles
 // -----------------------------------------------------------------------------
-a:link,
-a:visited {
+a:not(.cf-button):link,
+a:not(.cf-button):visited {
   color: $cf-link-default;
   transition: color 0.25s ease;
   text-decoration: none;
@@ -32,8 +32,8 @@ a:visited {
     color: $cf-text-secondary;
   }
 }
-a:hover,
-a:active {
+a:not(.cf-button):hover,
+a:not(.cf-button):active {
   color: $cf-link-default-hover;
   text-decoration: none;
 
