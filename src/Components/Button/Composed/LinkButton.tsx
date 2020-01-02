@@ -30,7 +30,7 @@ interface LinkButtonProps
   /** Destination for link button */
   href: string
   /** Where to open to the link */
-  target?: LinkTarget
+  target?: LinkTarget | string
   /** Describes the relationship between this document and the linked document */
   rel?: LinkRel
 }
@@ -48,7 +48,7 @@ export const LinkButton = forwardRef<LinkButtonRef, LinkButtonProps>(
       href,
       style,
       active,
-      target,
+      target = LinkTarget.Self,
       tabIndex,
       titleText,
       className,
