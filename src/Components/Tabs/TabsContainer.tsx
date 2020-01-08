@@ -45,7 +45,7 @@ export const TabsContainer = forwardRef<TabsContainerRef, TabsContainerProps>(
     return (
       <FlexBox.FlexBox
         className={className}
-        data-testid={testID}
+        testID={testID}
         id={id}
         ref={ref}
         style={style}

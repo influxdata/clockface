@@ -52,7 +52,7 @@ export const PanelHeader = forwardRef<PanelHeaderRef, PanelHeaderProps>(
         className={panelHeaderClass}
         direction={direction}
         alignItems={alignItems}
-        data-testid={testID}
+        testID={testID}
         justifyContent={justifyContent}
         stretchToFitWidth={true}
       >

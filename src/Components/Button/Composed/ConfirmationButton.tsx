@@ -158,7 +158,7 @@ const ConfirmationContents: FunctionComponent<{
         </span>
       )}
       <Button
-        data-testid={`${testID}--confirm-button`}
+        testID={`${testID}--confirm-button`}
         onClick={handleClick}
         text={confirmationButtonText}
         color={confirmationButtonColor}

@@ -2,6 +2,7 @@
 
 #### 1.1.1 (Unreleased)
 
+- [#426](https://github.com/influxdata/clockface/pull/426): Replace `data-testid` with `testID` props in components overriding testID.
 - [#422](https://github.com/influxdata/clockface/pull/422): Render the empty state when ResourceList.Body receives boolean false as children
 
 #### 1.1.0

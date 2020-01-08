@@ -63,7 +63,7 @@ export const PanelSymbolHeader = forwardRef<
         className={panelSymbolHeaderClassName}
         direction={direction}
         alignItems={alignItems}
-        data-testid={testID}
+        testID={testID}
         justifyContent={justifyContent}
       >
         <div className="cf-panel--symbol-header--title">

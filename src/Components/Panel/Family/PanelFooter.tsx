@@ -46,7 +46,7 @@ export const PanelFooter = forwardRef<PanelFooterRef, PanelFooterProps>(
         direction={direction}
         className={panelFooterClass}
         alignItems={alignItems}
-        data-testid={testID}
+        testID={testID}
         justifyContent={justifyContent}
         stretchToFitWidth={true}
       >
