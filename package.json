@@ -84,6 +84,7 @@
     "uuid": "^3.2.1"
   },
   "scripts": {
+    "clean": "rm -rf node_modules",
     "start": "rollup -cw",
     "build": "rm -rf dist && NODE_ENV=production rollup -c",
     "ci": "yarn test && yarn lint && yarn typecheck",

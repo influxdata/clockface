@@ -448,3 +448,26 @@ export interface Coordinates {
   x: number
   y: number
 }
+
+export enum LinkTarget {
+  Blank = '_blank',
+  Parent = '_parent',
+  Self = '_self',
+  Top = '_top',
+}
+
+export enum LinkRel {
+  Alternate = 'alternate',
+  Author = 'author',
+  Bookmark = 'bookmark',
+  External = 'external',
+  Help = 'help',
+  License = 'license',
+  Next = 'next',
+  NoFollow = 'nofollow',
+  NoOpener = 'noopener',
+  NoReferrer = 'noreferrer',
+  Prev = 'prev',
+  Search = 'search',
+  Tag = 'tag',
+}

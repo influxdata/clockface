@@ -1,5 +1,5 @@
 // Libraries
-import React, {forwardRef} from 'react'
+import React, {forwardRef, MouseEvent} from 'react'
 import classnames from 'classnames'
 
 // Types
@@ -7,7 +7,7 @@ import {StandardFunctionProps} from '../../../Types'
 
 export interface RightClickMenuItemProps extends StandardFunctionProps {
   /** Click handler */
-  onClick: (value?: any) => void
+  onClick: (value?: any, e?: MouseEvent<HTMLLIElement>) => void
   /** Disabled */
   disabled?: boolean
   /** Optional return value */
@@ -41,12 +41,12 @@ export const RightClickMenuItem = forwardRef<
       }
     )
 
-    const handleClick = (): void => {
+    const handleClick = (e: MouseEvent<HTMLLIElement>): void => {
       if (disabled) {
         return
       }
 
-      onClick(value)
+      onClick(value, e)
     }
 
     return (
