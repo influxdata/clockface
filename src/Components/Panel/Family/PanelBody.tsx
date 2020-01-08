@@ -51,7 +51,7 @@ export const PanelBody = forwardRef<PanelBodyRef, PanelBodyProps>(
         className={panelBodyClass}
         direction={direction}
         alignItems={alignItems}
-        data-testid={testID}
+        testID={testID}
         justifyContent={justifyContent}
         stretchToFitWidth={true}
       >

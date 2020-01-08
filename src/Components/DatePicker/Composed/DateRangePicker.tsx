@@ -47,7 +47,7 @@ export const DateRangePicker = forwardRef<
 
   return (
     <FlexBox.FlexBox ref={ref} direction={FlexDirection.Column} style={style}>
-      <FlexBox direction={FlexDirection.Row} data-testid={testID}>
+      <FlexBox direction={FlexDirection.Row} testID={testID}>
         <DatePicker
           dateTime={lower}
           onSelectDate={handleSelectLower}
