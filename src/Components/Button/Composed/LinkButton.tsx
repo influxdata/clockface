@@ -17,6 +17,9 @@ import {
   LinkRel,
 } from '../../../Types'
 
+// Styles
+import './LinkButton.scss'
+
 interface LinkButtonProps
   extends Omit<
     ButtonProps,

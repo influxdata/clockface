@@ -1,6 +1,10 @@
 # Changelog
 
-#### 1.1.1 (Unreleased)
+#### 1.1.2 (Unreleased)
+
+- [#427](https://github.com/influxdata/clockface/pull/427): Remove link color exclusion rule & add `LinkButton` styles
+
+#### 1.1.1
 
 - [#426](https://github.com/influxdata/clockface/pull/426): Replace `data-testid` with `testID` props in components overriding testID.
 - [#424](https://github.com/influxdata/clockface/pull/424): Introduce `LinkButton` component as a composed variation of `Button`
