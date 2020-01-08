@@ -12,8 +12,8 @@ body {
 
 // Base Link Styles
 // -----------------------------------------------------------------------------
-a:not(.cf-button):link,
-a:not(.cf-button):visited {
+a:link,
+a:visited {
   color: $cf-link-default;
   transition: color 0.25s ease;
   text-decoration: none;
@@ -32,8 +32,8 @@ a:not(.cf-button):visited {
     color: $cf-text-secondary;
   }
 }
-a:not(.cf-button):hover,
-a:not(.cf-button):active {
+a:hover,
+a:active {
   color: $cf-link-default-hover;
   text-decoration: none;
 
@@ -84,7 +84,8 @@ p {
   line-height: 1.55em;
   font-weight: 400;
 
-  b,strong {
+  b,
+  strong {
     font-weight: 900;
   }
 
@@ -151,7 +152,8 @@ h6 {
     font-weight: 500;
   }
 }
-ol,ul {
+ol,
+ul {
   @extend %type-base-styles;
   padding-left: $cf-marg-c;
   font-size: $cf-text-base;
@@ -196,12 +198,13 @@ blockquote {
     border-width: 0 $cf-border $cf-border 0;
   }
 
-  b,strong {
+  b,
+  strong {
     font-weight: 900;
   }
 }
 hr {
-  border:0;
+  border: 0;
   height: 2px;
   margin: $cf-marg-c 0 $cf-marg-d 0;
   background-color: $g5-pepper;
@@ -212,7 +215,8 @@ hr {
 }
 
 // Type Formatting
-b,strong {
+b,
+strong {
   font-weight: 900;
 }
 mark {

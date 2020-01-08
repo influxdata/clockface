@@ -1,0 +1,50 @@
+@import '../../../Styles/modules';
+
+/*
+  Link Button
+  ------------------------------------------------------------------------------
+*/
+
+a:link,
+a:visited {
+  &.cf-button-default {
+    color: $g14-chromium;
+  }
+  &.cf-button-primary {
+    color: $c-yeti;
+  }
+  &.cf-button-secondary {
+    color: $c-twilight;
+  }
+  &.cf-button-success {
+    color: $c-mint;
+  }
+  &.cf-button-warning {
+    color: $g20-white;
+  }
+  &.cf-button-danger {
+    color: $g20-white;
+  }
+}
+
+a:hover,
+a:active {
+  &.cf-button-default {
+    color: $g18-cloud;
+  }
+  &.cf-button-primary {
+    color: $g20-white;
+  }
+  &.cf-button-secondary {
+    color: $g20-white;
+  }
+  &.cf-button-success {
+    color: $g20-white;
+  }
+  &.cf-button-warning {
+    color: $g20-white;
+  }
+  &.cf-button-danger {
+    color: $g20-white;
+  }
+}
