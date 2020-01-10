@@ -1,6 +1,10 @@
 # Changelog
 
-#### 1.1.2 (Unreleased)
+#### 1.1.3 (Unreleased)
+
+- [#428](https://github.com/influxdata/clockface/pull/428): Add missing export for `LinkButton`
+
+#### 1.1.2
 
 - [#427](https://github.com/influxdata/clockface/pull/427): Remove link color exclusion rule & add `LinkButton` styles
 
