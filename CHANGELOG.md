@@ -1,8 +1,13 @@
 # Changelog
 
-#### 1.1.3 (Unreleased)
+#### 1.1.5 (Unreleased)
+
+#### 1.1.4
 
 - [#431](https://github.com/influxdata/clockface/pull/431): Add `VisibilityInput` component
+
+#### 1.1.3
+
 - [#428](https://github.com/influxdata/clockface/pull/428): Add missing export for `LinkButton`
 
 #### 1.1.2
