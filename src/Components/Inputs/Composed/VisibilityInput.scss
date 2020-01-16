@@ -1,0 +1,68 @@
+@import '../../../Styles/modules';
+
+/*
+  Password Input Styles
+  ------------------------------------------------------------------------------
+*/
+
+.cf-visibility-input-icon {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  opacity: 0.4;
+  transition: opacity 0.25s ease;
+  position: absolute;
+  transform: translateX(-100%);
+  z-index: 3;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &:active:hover,
+  &:visited,
+  &:disabled,
+  &:disabled:hover {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  &:hover,
+  &:focus {
+    opacity: 0.7;
+  }
+
+  &:active,
+  &:active:hover {
+    opacity: 1;
+  }
+
+  &:disabled:hover {
+    opacity: 0.4;
+  }
+}
+
+@mixin visibilityButtonSizeModifier($height) {
+  .cf-input-field {
+    padding-right: $height * 1.3;
+  }
+
+  .cf-status-indicator {
+    transform: translateX(-$height * 0.7);
+  }
+}
+
+.cf-visibility-input {
+  .cf-input-xs {
+    @include visibilityButtonSizeModifier($form-xs-height);
+  }
+  .cf-input-sm {
+    @include visibilityButtonSizeModifier($form-sm-height);
+  }
+  .cf-input-md {
+    @include visibilityButtonSizeModifier($form-md-height);
+  }
+  .cf-input-lg {
+    @include visibilityButtonSizeModifier($form-lg-height);
+  }
+}
