@@ -113,6 +113,7 @@ export const Input = forwardRef<InputRef, InputProps>(
       onChange,
       titleText = '',
       className,
+      children,
       autoFocus = false,
       maxLength,
       onKeyDown,
@@ -213,6 +214,7 @@ export const Input = forwardRef<InputRef, InputProps>(
         />
         {type === InputType.Checkbox && <div className={inputCheckboxClass} />}
         {iconElement}
+        {children}
       </div>
     )
   }

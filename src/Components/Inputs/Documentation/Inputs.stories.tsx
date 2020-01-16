@@ -31,6 +31,8 @@ import {
   TextArea,
   TextAreaRef,
   TextAreaContainerRef,
+  VisibilityInput,
+  VisibilityInputRef,
 } from '../'
 import {InputLabel, InputLabelRef} from '../InputLabel'
 import {SelectGroupRef, SelectGroupOptionRef} from '../../SelectGroup/index'
@@ -54,6 +56,7 @@ import {
 // Notes
 import InputReadme from './Input.md'
 import AutoInputReadme from './AutoInput.md'
+import VisibilityInputReadme from './VisibilityInput.md'
 import RangeSliderReadme from './RangeSlider.md'
 import TextAreaReadme from './TextArea.md'
 import ToggleReadme from './Toggle.md'
@@ -619,6 +622,66 @@ inputsBaseStories.add(
   {
     readme: {
       content: marked(TextAreaReadme),
+    },
+  }
+)
+
+inputsComposedStories.add(
+  'Visibility Input',
+  () => {
+    const visibilityInputRef: RefObject<VisibilityInputRef> = createRef()
+
+    const handleLogRefs = (): void => {
+      /* eslint-disable */
+      console.log('VisibilityInputRef', visibilityInputRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <VisibilityInput
+          ref={visibilityInputRef}
+          placeholder={text('placeholder', 'Placeholder Text')}
+          value={text('value', 'Value Text')}
+          onChange={() => {}}
+          name={text('name', 'Name')}
+          titleText={text('titleText', 'Title Text')}
+          disabledTitleText={text('disabledTitleText', 'Disabled Title Text')}
+          maxLength={number('maxLength', 24)}
+          icon={
+            IconFont[
+              select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
+            ]
+          }
+          visible={boolean('visible', false)}
+          style={object('style', defaultInputStyle)}
+          status={
+            ComponentStatus[
+              select('status', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          autocomplete={
+            AutoComplete[
+              radios<AutoComplete>(
+                'autocomplete',
+                mapEnumKeys(AutoComplete),
+                AutoComplete.Off
+              )
+            ]
+          }
+        />
+        <div className="story--test-buttons">
+          <button onClick={handleLogRefs}>Log Refs</button>
+        </div>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(VisibilityInputReadme),
     },
   }
 )
