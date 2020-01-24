@@ -1,6 +1,10 @@
 # Changelog
 
-#### 1.1.5 (Unreleased)
+#### 1.1.6 (Unreleased)
+
+#### 1.1.5
+
+- [ #433](https://github.com/influxdata/clockface/pull/433): Fix `Notification` component exports
 
 #### 1.1.4
 
