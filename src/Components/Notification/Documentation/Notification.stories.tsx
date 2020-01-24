@@ -15,8 +15,7 @@ import {
 import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
-import {Notification} from '../Notification'
-import {NotificationDialog, NotificationDialogRef} from '../NotificationDialog'
+import {Notification, NotificationDialog, NotificationDialogRef} from '../index'
 
 // Types
 import {
