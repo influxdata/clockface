@@ -25,7 +25,7 @@ import {createPortalElement, destroyPortalElement} from '../../Utils'
 // Styles
 import './Notification.scss'
 
-interface NotificationProps extends NotificationDialogProps {
+export interface NotificationProps extends NotificationDialogProps {
   /** Positioning the notification left, center, or right on the window */
   horizontalAlignment?: Alignment
   /** Positioning the notification top, middle, or bottom on the window */
@@ -42,7 +42,7 @@ export type NotificationRef = NotificationDialogRef
 
 const notificationsPortalName = `notification`
 
-export const Notification = forwardRef<NotificationRef, NotificationProps>(
+export const NotificationRoot = forwardRef<NotificationRef, NotificationProps>(
   (
     {
       id,
@@ -156,4 +156,4 @@ export const Notification = forwardRef<NotificationRef, NotificationProps>(
   }
 )
 
-Notification.displayName = 'Notification'
+NotificationRoot.displayName = 'Notification'
