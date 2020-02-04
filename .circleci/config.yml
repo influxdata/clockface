@@ -1,4 +1,20 @@
-version: 2
+version: "2.1"
+
+commands:
+  install_aws_cli_tools:
+    description: >
+      Install aws cli tools for publishing the build to s3 and manipulating cloudfront, our CDN
+    steps:
+      - run:
+          name: Download Pip
+          command: curl -O https://bootstrap.pypa.io/get-pip.py
+      - run:
+          name: Install Pip
+          command: python3 get-pip.py --user
+      - run:
+          name: Install aws cli tools
+          command: pip3 install awscli --upgrade --user
+
 jobs:
   build:
     docker:
@@ -16,3 +32,13 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}
       - run: yarn ci
+  publish:
+    branches:
+      only: master
+    requires:
+      - build
+    steps:
+      - install_aws_cli_tools
+      - run:
+          name: Publish
+          command: ../publish
