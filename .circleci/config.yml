@@ -33,12 +33,10 @@ jobs:
           key: v1-dependencies-{{ checksum "yarn.lock" }}
       - run: yarn ci
   publish:
-    branches:
-      only: master
-    requires:
-      - build
+    docker:
+      - image: circleci/node:lts
     steps:
       - install_aws_cli_tools
-      - run:
-          name: Publish
-          command: ../publish
+      - run: which aws
+    branches:
+      only: bs_clockface_cdn
