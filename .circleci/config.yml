@@ -38,5 +38,19 @@ jobs:
     steps:
       - install_aws_cli_tools
       - run: which aws
-    branches:
-      only: bs_clockface_cdn
+
+workflows:
+  version: "2.1"
+  build:
+    jobs:
+      - build
+
+  publish:
+    jobs:
+      - build
+      - publish:
+          requires:
+            - build
+          filters:
+            branches:
+              only: bs_clockface_cdn
