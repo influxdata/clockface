@@ -37,4 +37,10 @@ yarn -s publish --$RELEASE_TYPE --access=public
 echo "Pushing git commit and tag"
 git push --follow-tags
 
+echo "Syncing to static storage"
+aws s3 sync dist s3://assets.influxdata.com/clockface --acl=public-read --delete
+
+echo "Invalidating previous CDN cache"
+aws cloudfront create-invalidation --distribution-id E7U3ELRZ6ZGNT --paths "/clockface/*"
+
 echo "Publish successful!"
