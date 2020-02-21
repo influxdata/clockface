@@ -1,5 +1,7 @@
 # Changelog
 
+#### 1.2.1 (Unreleased)
+
 #### 1.2.0
 
 - [#436](https://github.com/influxdata/clockface/pull/436): variables.scss is now exported as part of the clockface bundle `@influxdata/clockface/dist/variables.scss`
