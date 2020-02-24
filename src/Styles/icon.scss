@@ -125,6 +125,9 @@
   &.duplicate:before {
     content: '\e917';
   }
+  &.erlenmeyer:before {
+    content: '\e958';
+  }
   &.expand-a:before {
     content: '\e944';
   }
@@ -164,6 +167,15 @@
   &.link:before {
     content: '\e92e';
   }
+  &.maximize:before {
+    content: '\e955';
+  }
+  &.minimize:before {
+    content: '\e954';
+  }
+  &.nav-chat:before {
+    content: '\e941';
+  }
   &.oauth:before {
     content: '\e94f';
   }
@@ -188,8 +200,14 @@
   &.plus-skinny:before {
     content: '\e922';
   }
+  &.polaroid:before {
+    content: '\e95b';
+  }
   &.pulse-c:before {
     content: '\e936';
+  }
+  &.redo:before {
+    content: '\e959';
   }
   &.refresh:before {
     content: '\e949';
@@ -226,6 +244,9 @@
   }
   &.triangle:before {
     content: '\e92c';
+  }
+  &.undo:before {
+    content: '\e95a';
   }
   &.user:before {
     content: '\e90d';
@@ -274,9 +295,6 @@
   }
   &.graphline-2:before {
     content: '\e924';
-  }
-  &.nav-chat:before {
-    content: '\e941';
   }
   &.users-duo:before {
     content: '\e93b';
