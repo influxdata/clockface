@@ -5,6 +5,11 @@
   ------------------------------------------------------------------------------
 */
 
+$cf-tab--text: $g11-sidewalk;
+$cf-tab--text-hover: $g14-chromium;
+$cf-tab--text-active: $g18-cloud;
+$cf-tab--border-color: $g5-pepper;
+
 .cf-tabs {
   display: flex;
   align-items: stretch;
@@ -12,25 +17,13 @@
   &__horizontal {
     width: 100%;
     flex-direction: row;
-    &,
-    .cf-tabs--tab {
-      border-radius: $cf-radius $cf-radius 0 0;
-    }
-    .cf-tabs--tab {
-      margin-right: $cf-border;
-    }
+    border-bottom: $cf-border solid $cf-tab--border-color;
   }
   
   &__vertical {
     height: 100%;
     flex-direction: column;
-    &,
-    .cf-tabs--tab {
-      border-radius: $cf-radius 0 0 $cf-radius;
-    }
-    .cf-tabs--tab {
-      margin-bottom: $cf-border;
-    }
+    border-right: $cf-border solid $cf-tab--border-color;
   }
 
   &__align-left {
@@ -49,22 +42,54 @@
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  transition: opacity 0.25s ease;
-  opacity: 0.4;
+  transition: color 0.25s ease;
+  color: $cf-tab--text;
+  position: relative;
 
-  &__active,
-  &:hover {
-    cursor: pointer;
-    opacity: 1;
+  &:after {
+    content: '';
+    position: absolute;
+    background-color: $cf-tab--border-color;
+    opacity: 0;
+    transition: opacity 0.25s ease, height 0.25s ease, width 0.25s ease;
   }
 
-  &:last-child {
-    margin-right: 0;
-    margin-bottom: 0;
+  &:hover {
+    cursor: pointer;
+    color: $cf-tab--text-hover;
+  }
+
+  &__active,
+  &__active:hover {
+    color: $cf-tab--text-active;
   }
 
   > .cf-icon {
     display: inline-block;
+  }
+
+  .cf-tabs__horizontal &:after {
+    width: 100%;
+    height: 0;
+    left: 0;
+    bottom: 0;
+  }
+
+  .cf-tabs__horizontal &__active:after {
+    height: $cf-marg-b;
+    opacity: 1;
+  }
+
+  .cf-tabs__vertical &:after {
+    height: 100%;
+    width: 0;
+    top: 0;
+    right: 0;
+  }
+
+  .cf-tabs__vertical &__active:after {
+    width: $cf-marg-b;
+    opacity: 1;
   }
 }
 
@@ -78,39 +103,6 @@
 }
 
 /*
-  Padding Modifiers 
-  ------------------------------------------------------------------------------
-*/
-
-@mixin tabsPaddingModifier($padding) {
-  padding: $padding;
-
-  &.cf-tabs__horizontal {
-    padding-bottom: 0;
-  }
-  &.cf-tabs__vertical {
-    padding-right: 0;
-  }
-}
-
-.cf-tabs__padding-xs,
-.cf-tabs--tab-contents__xs {
-  @include tabsPaddingModifier($cf-marg-a);
-}
-.cf-tabs__padding-sm,
-.cf-tabs--tab-contents__sm {
-  @include tabsPaddingModifier($cf-marg-b);
-}
-.cf-tabs__padding-md,
-.cf-tabs--tab-contents__md {
-  @include tabsPaddingModifier($cf-marg-c);
-}
-.cf-tabs__padding-lg,
-.cf-tabs--tab-contents__lg {
-  @include tabsPaddingModifier($cf-marg-d);
-}
-
-/*
   Tab Contents
   ------------------------------------------------------------------------------
 */
@@ -118,14 +110,6 @@
 .cf-tabs--tab-contents {
   position: relative;
   flex: 1 0 0;
-
-  .cf-tabs__horizontal + & {
-    border-radius: 0 0 $cf-radius $cf-radius;
-  }
-
-  .cf-tabs__vertical + & {
-    border-radius: 0 $cf-radius $cf-radius 0;
-  }
 }
 
 /*
@@ -134,42 +118,90 @@
 */
 
 @mixin tabSizeModifier($fontSize, $tabPadding, $tabHeight) {
-  height: $tabHeight + $cf-marg-b;
-  padding: 0 $tabPadding + $cf-marg-a;
-
-  > .cf-icon {
-    margin-right: ceil($tabPadding * 0.66);
-    font-size: ceil($fontSize * 1.25);
+  .cf-tabs--tab {
+    height: $tabHeight + $cf-marg-b;
+    padding: $tabPadding 0;
+  
+    > .cf-icon {
+      margin-right: ceil($tabPadding * 0.66);
+      font-size: ceil($fontSize * 1.25);
+    }
+  
+    > .cf-tabs--tab-dismiss {
+      margin-left: ceil($tabPadding * 0.66);
+    }
+  
+    .cf-tabs--tab-label {
+      font-size: $fontSize + 1;
+    }
+  
+    .cf-tabs--tab-dismiss {
+      margin-top: $cf-marg-b;
+      margin-bottom: $cf-marg-b;
+      height: $tabHeight;
+      width: $tabHeight;
+      margin-left: -$cf-border;
+      margin-right: -$tabPadding;
+    }
   }
 
-  > .cf-tabs--tab-dismiss {
-    margin-left: ceil($tabPadding * 0.66);
+  &.cf-tabs__vertical .cf-tabs--tab {
+    padding-right: $tabPadding * 2;
   }
 
-  .cf-tabs--tab-label {
-    font-size: $fontSize + 1;
+  &.cf-tabs__horizontal {
+    &.cf-tabs__align-left {
+      .cf-tabs--tab {
+        margin-right: $tabPadding * 2;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+    &.cf-tabs__align-center {
+      .cf-tabs--tab {
+        margin-left: $tabPadding;
+        margin-right: $tabPadding;
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+    &.cf-tabs__align-right {
+      .cf-tabs--tab {
+        margin-left: $tabPadding * 2;
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+    }
   }
 
-  .cf-tabs--tab-dismiss {
-    margin-top: $cf-marg-b;
-    margin-bottom: $cf-marg-b;
-    height: $tabHeight;
-    width: $tabHeight;
-    margin-left: -$cf-border;
-    margin-right: -$tabPadding;
+  &.cf-tabs__horizontal + .cf-tabs--tab-contents {
+    padding-top: $tabPadding * 2;
+  }
+  &.cf-tabs__vertical + .cf-tabs--tab-contents {
+    padding-left: $tabPadding * 2;
   }
 }
 
-.cf-tabs--tab__xs {
+.cf-tabs__xs {
   @include tabSizeModifier($form-xs-font, $form-xs-padding, $form-xs-height);
 }
-.cf-tabs--tab__sm {
+.cf-tabs__sm {
   @include tabSizeModifier($form-sm-font, $form-sm-padding, $form-sm-height);
 }
-.cf-tabs--tab__md {
+.cf-tabs__md {
   @include tabSizeModifier($form-md-font, $form-md-padding, $form-md-height);
 }
-.cf-tabs--tab__lg {
+.cf-tabs__lg {
   @include tabSizeModifier($form-lg-font, $form-lg-padding, $form-lg-height);
   .cf-tabs--tab-label {
     font-weight: 500;
@@ -199,8 +231,6 @@
   background-color: transparent;
   border: 0;
   outline: none;
-  opacity: 0;
-  transition: opacity 0.25s ease;
 
   &:before,
   &:after {
@@ -212,6 +242,8 @@
     top: 50%;
     left: 50%;
     z-index: 2;
+    background-color: $cf-tab--border-color;
+    transition: background-color 0.25s ease;
   }
 
   &:before {
@@ -221,29 +253,37 @@
     transform: translate(-50%,-50%) rotate(-45deg);
   }
 
-  .cf-tabs--tab__dark-text &:before,
-  .cf-tabs--tab__dark-text &:after {
-    background-color: $g2-kevlar;
-  }
-
-  .cf-tabs--tab__light-text &:before,
-  .cf-tabs--tab__light-text &:after {
-    background-color: $g20-white;
-  }
-
   .cf-tabs--tab:hover & {
-    opacity: 0.4;
+    opacity: 1;
   }
 
   .cf-tabs--tab:hover &:hover {
     cursor: pointer;
     opacity: 1;
+
+    &:before,
+    &:after {
+      background-color: $cf-tab--text;
+    }
   }
+
 
   &:active,
   &:active .cf-tabs--tab-dismiss-circle,
   &:active:hover,
   &:active:hover .cf-tabs--tab-dismiss-circle {
     opacity: 1;
+  }
+
+  
+  &:active:before,
+  &:active:after,
+  &:hover:active:before,
+  &:hover:active:after,
+  .cf-tabs--tab:hover &:active:before,
+  .cf-tabs--tab:hover &:active:after,
+  .cf-tabs--tab:hover &:hover:active:before,
+  .cf-tabs--tab:hover &:hover:active:after {
+    background-color: $g20-white;
   }
 }
