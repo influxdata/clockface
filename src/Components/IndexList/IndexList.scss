@@ -5,6 +5,9 @@
   ------------------------------------------------------------------------------
 */
 
+$cf-index-list--row-height: 52px;
+$cf-index-list--sort-text: $g11-sidewalk;
+
 .cf-index-list {
   border: 0;
   border-collapse: collapse;
@@ -18,7 +21,7 @@
   padding: 0 13px;
   font-size: $form-md-font;
   font-weight: 600;
-  color: $g11-sidewalk;
+  color: $g9-mountain;
   white-space: nowrap;
   height: 52px;
 }
@@ -26,10 +29,10 @@
 .cf-index-list--cell {
   height: calc(100% - #{$cf-border});
   padding: $cf-marg-a + $cf-marg-b;
-  background-color: $g3-castle;
+  background-color: $cf-card-background--default;
   font-size: $form-md-font;
   font-weight: 500;
-  color: $g13-mist;
+  color: $cf-card-text--default;
   display: flex;
   align-items: center;
   transition: background-color 0.25s ease, color 0.25s ease;
@@ -60,7 +63,7 @@
 // TD Style
 .cf-index-list--row-cell {
   position: relative;
-  height: 52px;
+  height: $cf-index-list--row-height;
 
   &:first-child .cf-index-list--cell {
     border-radius: $cf-radius 0 0 $cf-radius;
@@ -71,10 +74,15 @@
   }
 }
 
+// Row Style
+.cf-index-list--row {
+  @extend %panel-shadow;
+}
+
 // Row hover State
 .cf-index-list--row:hover .cf-index-list--cell {
-  background-color: $g4-onyx;
-  color: $g18-cloud;
+  background-color: $cf-card-background--hover;
+  color: $cf-card-text--hover;
 }
 
 // Show cell contents on row hover
@@ -116,8 +124,8 @@
 .cf-index-list--row.cf-index-list--row__disabled
   .cf-index-list--row-cell
   .cf-index-list--cell {
-  background-color: rgba($g3-castle, 0.5);
-  color: $g9-mountain;
+  background-color: $cf-card-background--disabled;
+  color: $cf-card-text--disabled;
   font-style: italic;
 
   a:link,
@@ -133,8 +141,8 @@
 .cf-index-list--row.cf-index-list--row__disabled:hover
   .cf-index-list--row-cell
   .cf-index-list--cell {
-  background-color: rgba($g3-castle, 0.7);
-  color: $g15-platinum;
+  background-color: $cf-card-background--disabled;
+  color: $cf-card-text--disabled;
 
   a:link,
   a:visited,
@@ -146,7 +154,7 @@
 
 // Empty state
 .cf-index-list--empty-cell {
-  background-color: rgba($g3-castle, 0.5);
+  background-color: $cf-card-text--disabled;
   border-radius: $cf-radius;
   display: flex;
   align-content: center;
@@ -189,7 +197,7 @@
 
 .cf-index-list--header-cell.cf-index-list--sort-ascending,
 .cf-index-list--header-cell.cf-index-list--sort-descending {
-  color: $g17-whisper;
+  color: $cf-index-list--sort-text;
 }
 
 .cf-index-list--sort-ascending .cf-index-list--sort-arrow {

@@ -38,14 +38,14 @@
 
 .cf-form--label {
   width: 100%;
-  color: $g11-sidewalk;
+  color: $cf-label--default;
   margin: 0 0 $cf-marg-a 0;
 }
 
 .cf-form--help-text {
   font-style: italic;
   line-height: 16px;
-  color: $g11-sidewalk;
+  color: $cf-label--default;
   margin: $cf-marg-a 0 0 0;
 }
 
@@ -71,7 +71,7 @@
 
   &-line {
     height: $cf-border;
-    background-color: $g5-pepper;
+    background-color: $cf-card--border;
     margin: (($form-sm-height - $cf-marg-b) / 2) 0;
     border-radius: $cf-border / 2;
   }
@@ -100,7 +100,7 @@
 .cf-form--box {
   width: 100%;
   border-radius: $cf-radius;
-  background-color: $g4-onyx;
-  padding: $cf-marg-b 11px;
+  background-color: $cf-card-background--default;
+  padding: $cf-marg-b ($cf-marg-b + $cf-marg-a);
   min-height: $form-sm-height;
 }

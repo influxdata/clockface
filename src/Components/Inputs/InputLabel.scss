@@ -9,11 +9,11 @@
   white-space: nowrap;
   font-weight: 600;
   @include no-user-select();
-  color: $g11-sidewalk;
+  color: $cf-label--default;
   transition: color 0.25s ease;
   
   &.cf-input-label__active {
-    color: $g18-cloud;
+    color: $cf-label--active;
   }
 
   &.cf-input-label__wrap {

@@ -20,7 +20,7 @@ $z--drag-n-drop: 5000;
    NavMenu + Page components
 */
 
-$nav-menu--size: 50px;
+$nav-menu--size: 60px;
 $nav-menu--gutter: 16px;
 $nav-menu--bg: $c-pool;
 $nav-menu--bg-accent: $c-star;
@@ -91,6 +91,8 @@ $cf-text-base-4: ($cf-text-base * $cf-text-scale * $cf-text-scale * $cf-text-sca
 $cf-text-base-5: ($cf-text-base * $cf-text-scale * $cf-text-scale * $cf-text-scale * $cf-text-scale * $cf-text-scale);
 
 $cf-text-default: $g13-mist;
+$cf-text-header: $g17-whisper;
+
 $cf-link-weight: 700;
 $cf-link-default: $c-pool;
 $cf-link-default-hover: $c-laser;
@@ -98,8 +100,8 @@ $cf-link-success: $c-rainforest;
 $cf-link-success-hover: $c-honeydew;
 $cf-link-warning: $c-pineapple;
 $cf-link-warning-hover: $c-thunder;
-$cf-text-secondary: $c-star;
-$cf-text-secondary-hover: $c-comet;
+$cf-link-secondary: $c-comet;
+$cf-link-secondary-hover: $c-potassium;
 $cf-link-danger: $c-curacao;
 $cf-link-danger-hover:  $c-dreamsicle;
 
@@ -152,10 +154,10 @@ $cf-input-background--focused: $g2-kevlar;
 $cf-input-background--hover: $g2-kevlar;
 $cf-input-background--disabled: $g3-castle;
 
-$cf-input-text--default: $g15-platinum;
+$cf-input-text--default: $g13-mist;
 $cf-input-text--focused: $g20-white;
-$cf-input-text--hover: $g17-whisper;
-$cf-input-text--disabled: $g9-mountain;
+$cf-input-text--hover: $g15-platinum;
+$cf-input-text--disabled: $empty-state-text;
 
 $cf-input-border--default: $g5-pepper;
 $cf-input-border--focused: $c-pool;
@@ -173,3 +175,31 @@ $cf-input--status-z: $cf-input--shadow-z + 1;
 $cf-input--placeholder-text: $g9-mountain;
 
 $cf-input--box-shadow: 0 0 6px 0 $cf-input-border--focused;
+
+/*
+   Card Styles
+   -----------------------------------------------------------------------------
+   These ensure consistent appearance across different kinds of cards
+*/
+
+$cf-card-background--default: $g3-castle;
+$cf-card-background--hover: $g4-onyx;
+$cf-card-background--disabled: rgba($g3-castle, 50%);
+
+$cf-card-text--default: $g13-mist;
+$cf-card-text--hover: $g18-cloud;
+$cf-card-text--disabled: $g9-mountain;
+
+$cf-card--border: $g5-pepper;
+$cf-card--border-hover: $g6-smoke;
+$cf-card--border-disabled: $g6-smoke;
+
+/*
+   Label Styles
+   -----------------------------------------------------------------------------
+   Used in both Inputs and Forms
+*/
+
+$cf-label--default: $g11-sidewalk;
+$cf-label--hover: $g15-platinum;
+$cf-label--active: $g18-cloud;
