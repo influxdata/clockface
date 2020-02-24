@@ -295,7 +295,7 @@ body.sb-show-main {
 
 .storybook-readme-story div.markdown-body {
   font-size: $docs-text-base;
-  font-family: 'Roboto', Helvetica, Arial, Tahoma, Verdana, sans-serif;
+  font-family: 'Rubik', Helvetica, Arial, Tahoma, Verdana, sans-serif;
 
   a:link,
   a:visited,
@@ -414,7 +414,8 @@ body.sb-show-main {
   }
 
   code {
-    font-family: 'RobotoMono', monospace;
+    font-family: 'IBMPlexMono', monospace;
+    font-style: italic;
     text-shadow: none;
     font-weight: 500;
     color: $c-potassium;
