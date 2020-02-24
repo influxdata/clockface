@@ -130,7 +130,9 @@ $scrollbar-offset: 3px;
 %drop-shadow {
   box-shadow: 0 0 10px 2px $g2-kevlar;
 }
-
+%panel-shadow {
+  box-shadow: 0 1px 4px 1px rgba($g0-obsidian, 0.2);
+}
 
 @mixin portal-style($z) {
   z-index: $z;
