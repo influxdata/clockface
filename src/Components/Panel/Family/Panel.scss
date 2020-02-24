@@ -145,3 +145,15 @@
   width: 100%;
   margin: $cf-marg-c 0;
 }
+
+/*
+   Bordered Panels
+   -----------------------------------------------------------------------------
+*/
+
+.cf-panel__bordered {
+  button.cf-dismiss-button {
+    top: -$cf-border;
+    right: -$cf-border;
+  }
+}

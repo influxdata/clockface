@@ -76,6 +76,7 @@ export const NotificationDialog = forwardRef<
     const notificationDialogStyle = generateBackgroundStyle(
       backgroundColor,
       gradient,
+      false,
       style
     )
 
