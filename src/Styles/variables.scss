@@ -215,7 +215,7 @@ $cf-label--active: $g18-cloud;
 $overlay--gutter: $cf-marg-c + $cf-marg-b;
 $overlay--header-height: $page--header-size;
 $overlay--title-font: $page--title-font;
-$overlay--title-size: $page--title-size;
+$overlay--title-size: $page--title-size * 0.666;
 $overlay--title-weight: $page--title-weight;
 $overlay--title-color: $page--title-color;
 $overlay--container-padding: $cf-marg-c + $cf-marg-d;
