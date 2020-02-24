@@ -6,20 +6,21 @@ import marked from 'marked'
 import {storiesOf} from '@storybook/react'
 import {withKnobs, boolean, text, number, select} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
+import {useState} from '@storybook/addons'
 
 // Components
 import {
   Page,
   PageRef,
-  PageHeaderRef,
-  PageHeaderCenterRef,
-  PageHeaderLeftRef,
-  PageHeaderRightRef,
+  PageControlBarRef,
+  PageControlBarCenterRef,
+  PageControlBarLeftRef,
+  PageControlBarRightRef,
   PageContentsRef,
 } from '../index'
 import {SelectGroup} from '../../SelectGroup/index'
 import {SquareButton} from '../../Button/Composed/SquareButton'
-import {FlexBox} from '../../FlexBox'
+import {SelectDropdown} from '../../Dropdowns/Composed/SelectDropdown'
 
 // Types
 import {
@@ -27,19 +28,15 @@ import {
   ComponentColor,
   ComponentSize,
   ButtonShape,
-  FlexDirection,
-  AlignItems,
 } from '../../../Types'
 
 // Notes
 import FullPageReadme from './FullPage.md'
 import PageReadme from './Page.md'
-import PageHeaderReadme from './PageHeader.md'
+import PageControlBarReadme from './PageControlBar.md'
 import PageContentsReadme from './PageContents.md'
 import PageTitleReadme from './PageTitle.md'
-import PageSubTitleReadme from './PageSubTitle.md'
 import {PageTitleRef} from '../PageTitle'
-import {PageSubTitleRef} from '../PageSubTitle'
 
 const pageStories = storiesOf('Layout|Page/Family', module).addDecorator(
   withKnobs
@@ -78,26 +75,26 @@ pageStories.add(
 )
 
 pageStories.add(
-  'PageHeader',
+  'PageControlBar',
   () => {
-    const pageHeaderRef = createRef<PageHeaderRef>()
-    const pageHeaderLeftRef = createRef<PageHeaderLeftRef>()
-    const pageHeaderCenterRef = createRef<PageHeaderCenterRef>()
-    const pageHeaderRightRef = createRef<PageHeaderRightRef>()
+    const pageControlBarRef = createRef<PageControlBarRef>()
+    const pageControlBarLeftRef = createRef<PageControlBarLeftRef>()
+    const pageControlBarCenterRef = createRef<PageControlBarCenterRef>()
+    const pageControlBarRightRef = createRef<PageControlBarRightRef>()
 
     const logRef = (): void => {
       /* eslint-disable */
-      console.log(pageHeaderRef.current)
-      console.log(pageHeaderLeftRef.current)
-      console.log(pageHeaderCenterRef.current)
-      console.log(pageHeaderRightRef.current)
+      console.log(pageControlBarRef.current)
+      console.log(pageControlBarLeftRef.current)
+      console.log(pageControlBarCenterRef.current)
+      console.log(pageControlBarRightRef.current)
       /* eslint-enable */
     }
 
     return (
       <div className="story--example">
-        <Page.Header
-          ref={pageHeaderRef}
+        <Page.ControlBar
+          ref={pageControlBarRef}
           fullWidth={boolean('fullWidth', false)}
           gutters={
             ComponentSize[
@@ -105,22 +102,22 @@ pageStories.add(
             ]
           }
         >
-          <Page.HeaderLeft ref={pageHeaderLeftRef}>
+          <Page.ControlBarLeft ref={pageControlBarLeftRef}>
             <div className="mockComponent" style={{width: '100%'}}>
               Left
             </div>
-          </Page.HeaderLeft>
-          <Page.HeaderCenter ref={pageHeaderCenterRef}>
+          </Page.ControlBarLeft>
+          <Page.ControlBarCenter ref={pageControlBarCenterRef}>
             <div className="mockComponent" style={{width: '100%'}}>
               Center
             </div>
-          </Page.HeaderCenter>
-          <Page.HeaderRight ref={pageHeaderRightRef}>
+          </Page.ControlBarCenter>
+          <Page.ControlBarRight ref={pageControlBarRightRef}>
             <div className="mockComponent" style={{width: '100%'}}>
               Right
             </div>
-          </Page.HeaderRight>
-        </Page.Header>
+          </Page.ControlBarRight>
+        </Page.ControlBar>
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Refs</button>
         </div>
@@ -129,7 +126,7 @@ pageStories.add(
   },
   {
     readme: {
-      content: marked(PageHeaderReadme),
+      content: marked(PageControlBarReadme),
     },
   }
 )
@@ -205,107 +202,106 @@ pageStories.add(
   }
 )
 
-pageStories.add(
-  'PageSubTitle',
+pageExampleStories.add(
+  'Full Page',
   () => {
-    const pageSubTitleRef = createRef<PageSubTitleRef>()
+    const [dropdownActiveItem, setDropdownActiveItem] = useState<string>(
+      'Square'
+    )
+    const dummyDropdownOptions = [
+      'Circle',
+      'Triangle',
+      'Square',
+      'Pentagon',
+      'Hexagon',
+    ]
 
-    const logRef = (): void => {
-      /* eslint-disable */
-      console.log(pageSubTitleRef.current)
-      /* eslint-enable */
+    const handleDropdownToggle = (item: string): void => {
+      setDropdownActiveItem(item)
     }
 
     return (
-      <div className="story--example">
-        <Page.SubTitle
-          ref={pageSubTitleRef}
-          title={text('title', 'I am a page title!')}
-        />
-        <div className="story--test-buttons">
-          <button onClick={logRef}>Log Ref</button>
-        </div>
+      <div className="mockPage appWrapper">
+        <Page>
+          <Page.Header
+            fullWidth={boolean('fullWidth', false)}
+            gutters={
+              ComponentSize[
+                select('gutters', mapEnumKeys(ComponentSize), 'Small')
+              ]
+            }
+          >
+            <h1>Title</h1>
+            <span>Bloob</span>
+          </Page.Header>
+          <Page.ControlBar
+            fullWidth={boolean('fullWidth', false)}
+            gutters={
+              ComponentSize[
+                select('gutters', mapEnumKeys(ComponentSize), 'Small')
+              ]
+            }
+          >
+            <Page.ControlBarLeft>
+              <SelectDropdown
+                options={dummyDropdownOptions}
+                selectedOption={dropdownActiveItem}
+                onSelect={handleDropdownToggle}
+                style={{width: '300px'}}
+              />
+            </Page.ControlBarLeft>
+            <Page.ControlBarCenter>
+              <SelectGroup
+                shape={ButtonShape.StretchToFit}
+                style={{width: '200px'}}
+              >
+                <SelectGroup.Option
+                  id="mode--write"
+                  titleText="Write Mode"
+                  active={true}
+                  value="write"
+                  onClick={() => {}}
+                >
+                  Write
+                </SelectGroup.Option>
+                <SelectGroup.Option
+                  id="mode--preview"
+                  titleText="Preview Mode"
+                  active={false}
+                  value="preview"
+                  onClick={() => {}}
+                >
+                  Preview
+                </SelectGroup.Option>
+              </SelectGroup>
+            </Page.ControlBarCenter>
+            <Page.ControlBarRight>
+              <SquareButton icon={IconFont.Remove} />
+              <SquareButton
+                icon={IconFont.Checkmark}
+                color={ComponentColor.Success}
+              />
+            </Page.ControlBarRight>
+          </Page.ControlBar>
+          <Page.Contents
+            fullWidth={boolean('fullWidth', false)}
+            scrollable={boolean('scrollable', false)}
+            autoHideScrollbar={boolean('autoHideScrollbar', false)}
+            gutters={
+              ComponentSize[
+                select('gutters', mapEnumKeys(ComponentSize), 'Small')
+              ]
+            }
+          >
+            <div
+              className="mockComponent stretch"
+              style={{height: `${text('contents height', '100%')}`}}
+            />
+          </Page.Contents>
+        </Page>
       </div>
     )
   },
-  {
-    readme: {
-      content: marked(PageSubTitleReadme),
-    },
-  }
-)
-
-pageExampleStories.add(
-  'Full Page',
-  () => (
-    <div className="mockPage appWrapper">
-      <Page>
-        <Page.Header
-          fullWidth={boolean('fullWidth', false)}
-          gutters={
-            ComponentSize[
-              select('gutters', mapEnumKeys(ComponentSize), 'Small')
-            ]
-          }
-        >
-          <Page.HeaderLeft>
-            <FlexBox
-              alignItems={AlignItems.FlexStart}
-              direction={FlexDirection.Column}
-              margin={ComponentSize.Small}
-            >
-              <Page.Title title="Markdown Editor" />
-              <Page.SubTitle title="A handy tool made by us for you" />
-            </FlexBox>
-          </Page.HeaderLeft>
-          <Page.HeaderCenter>
-            <SelectGroup shape={ButtonShape.StretchToFit}>
-              <SelectGroup.Option
-                id="mode--write"
-                titleText="Write Mode"
-                active={true}
-                value="write"
-                onClick={() => {}}
-              >
-                Write
-              </SelectGroup.Option>
-              <SelectGroup.Option
-                id="mode--preview"
-                titleText="Preview Mode"
-                active={false}
-                value="preview"
-                onClick={() => {}}
-              >
-                Preview
-              </SelectGroup.Option>
-            </SelectGroup>
-          </Page.HeaderCenter>
-          <Page.HeaderRight>
-            <SquareButton icon={IconFont.Remove} />
-            <SquareButton
-              icon={IconFont.Checkmark}
-              color={ComponentColor.Success}
-            />
-          </Page.HeaderRight>
-        </Page.Header>
-        <Page.Contents
-          fullWidth={boolean('fullWidth', false)}
-          scrollable={boolean('scrollable', false)}
-          autoHideScrollbar={boolean('autoHideScrollbar', false)}
-          gutters={
-            ComponentSize[
-              select('gutters', mapEnumKeys(ComponentSize), 'Small')
-            ]
-          }
-        >
-          <div
-            className="mockComponent stretch"
-            style={{height: `${text('contents height', '100%')}`}}
-          />
-        </Page.Contents>
-      </Page>
-    </div>
-  ),
   {
     readme: {
       content: marked(FullPageReadme),

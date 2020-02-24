@@ -1,8 +1,12 @@
 // Libraries
 import React, {forwardRef} from 'react'
 import classnames from 'classnames'
+
+// Components
+import {Heading} from '../Typography'
+
 // Types
-import {StandardFunctionProps} from '../../Types'
+import {StandardFunctionProps, HeadingElement, Typeface} from '../../Types'
 
 export interface PageTitleProps extends StandardFunctionProps {
   /** Text to display in title */
@@ -20,16 +24,20 @@ export const PageTitle = forwardRef<PageTitleRef, PageTitleProps>(
     })
 
     return (
-      <h1
-        className={pageTitleClass}
-        title={altText}
-        data-testid={testID}
+      <Heading
         id={id}
+        alt={altText}
         ref={ref}
+        bold={true}
+        type={Typeface.Rubik}
         style={style}
+        testID={testID}
+        element={HeadingElement.H1}
+        className={pageTitleClass}
+        appearance={HeadingElement.H3}
       >
         {title}
-      </h1>
+      </Heading>
     )
   }
 )

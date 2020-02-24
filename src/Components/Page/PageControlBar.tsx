@@ -5,18 +5,18 @@ import classnames from 'classnames'
 // Types
 import {StandardFunctionProps, ComponentSize} from '../../Types'
 
-export interface PageHeaderProps extends StandardFunctionProps {
+export interface PageControlBarProps extends StandardFunctionProps {
   /** Allows the control bar to fill the width of the screen */
   fullWidth: boolean
   /** Controls the gutters (left and right margins) */
   gutters?: ComponentSize
 }
 
-export type PageHeaderRef = HTMLDivElement
+export type PageControlBarRef = HTMLDivElement
 
-export const PageHeader = forwardRef<
-  PageHeaderRef,
-  PageHeaderProps
+export const PageControlBar = forwardRef<
+  PageControlBarRef,
+  PageControlBarProps
 >(
   (
     {
@@ -25,19 +25,19 @@ export const PageHeader = forwardRef<
       children,
       className,
       fullWidth,
-      testID = 'page-header',
+      testID = 'page-control-bar',
       gutters = ComponentSize.Medium,
     },
     ref
   ) => {
-    const pageHeaderClass = classnames('cf-page-header', {
+    const pageControlBarClass = classnames('cf-page-control-bar', {
       [`cf-page__gutter-${gutters}`]: gutters,
       [`${className}`]: className,
     })
 
     const containerClassName = fullWidth
-      ? 'cf-page-header--fluid'
-      : 'cf-page-header--fixed'
+      ? 'cf-page-control-bar--fluid'
+      : 'cf-page-control-bar--fixed'
 
     return (
       <div
@@ -45,7 +45,7 @@ export const PageHeader = forwardRef<
         ref={ref}
         style={style}
         data-testid={testID}
-        className={pageHeaderClass}
+        className={pageControlBarClass}
       >
         <div className={containerClassName}>{children}</div>
       </div>
@@ -53,4 +53,4 @@ export const PageHeader = forwardRef<
   }
 )
 
-PageHeader.displayName = 'PageHeader'
+PageControlBar.displayName = 'PageControlBar'

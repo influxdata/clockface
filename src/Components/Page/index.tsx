@@ -3,24 +3,24 @@ import React, {Component} from 'react'
 
 // Components
 import {PageRoot, PageProps} from './Page'
-import {PageTitle} from './PageTitle'
 import {PageHeader} from './PageHeader'
-import {PageHeaderLeft} from './PageHeaderLeft'
-import {PageHeaderCenter} from './PageHeaderCenter'
-import {PageHeaderRight} from './PageHeaderRight'
-import {PageSubTitle} from './PageSubTitle'
+import {PageTitle} from './PageTitle'
+import {PageControlBar} from './PageControlBar'
+import {PageControlBarLeft} from './PageControlBarLeft'
+import {PageControlBarCenter} from './PageControlBarCenter'
+import {PageControlBarRight} from './PageControlBarRight'
 import {PageContents} from './PageContents'
 
 export class Page extends Component<PageProps> {
   public static readonly displayName = 'Page'
 
   public static Page = PageRoot
-  public static Title = PageTitle
   public static Header = PageHeader
-  public static HeaderLeft = PageHeaderLeft
-  public static HeaderCenter = PageHeaderCenter
-  public static HeaderRight = PageHeaderRight
-  public static SubTitle = PageSubTitle
+  public static Title = PageTitle
+  public static ControlBar = PageControlBar
+  public static ControlBarLeft = PageControlBarLeft
+  public static ControlBarCenter = PageControlBarCenter
+  public static ControlBarRight = PageControlBarRight
   public static Contents = PageContents
 
   render() {
@@ -29,10 +29,10 @@ export class Page extends Component<PageProps> {
 }
 
 export {PageProps, PageRef} from './Page'
-export * from './PageTitle'
 export * from './PageHeader'
-export * from './PageHeaderLeft'
-export * from './PageHeaderCenter'
-export * from './PageHeaderRight'
-export * from './PageSubTitle'
+export * from './PageTitle'
+export * from './PageControlBar'
+export * from './PageControlBarLeft'
+export * from './PageControlBarCenter'
+export * from './PageControlBarRight'
 export * from './PageContents'

@@ -1,4 +1,4 @@
-# Page Header
+# PageControlBar
 
 Used alongside `<Page.Contents />` to layout page, this component is for containing the header of the page.
 
@@ -9,15 +9,15 @@ import {Page} from '@influxdata/clockface'
 ```
 
 ```tsx
-<Page.Header>
+<Page.ControlBar>
   // Should always have left & right children, center is optional
-  <Page.HeaderLeft />
-  <Page.HeaderCenter />
-  <Page.HeaderRight />
-</Page.Header>
+  <Page.ControlBarLeft />
+  <Page.ControlBarCenter />
+  <Page.ControlBarRight />
+</Page.ControlBar>
 ```
 
-If you are planning to use `<Page.HeaderCenter />` keep in mind it requires a fixed pixel width to be specified. The pixel width is used to ensure the center is actually centered.
+If you are planning to use `<Page.ControlBarCenter />` keep in mind it requires a fixed pixel width to be specified. The pixel width is used to ensure the center is actually centered.
 
 ### Example
 

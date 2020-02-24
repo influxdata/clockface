@@ -28,6 +28,8 @@
 
 .cf-page-header--fluid,
 .cf-page-header--fixed,
+.cf-page-control-bar--fluid,
+.cf-page-control-bar--fixed,
 .cf-page-contents__fluid,
 .cf-page-contents__fixed {
   width: 100%;
@@ -35,6 +37,7 @@
 }
 
 .cf-page-header--fixed,
+.cf-page-control-bar--fixed,
 .cf-page-contents__fixed {
   margin: 0 auto;
   max-width: $page--max-width;
@@ -47,56 +50,76 @@
 
 .cf-page-header {
   width: 100%;
+  height: $page--header-size;
   flex: 0 0 $page--header-size;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .cf-page-header--fluid,
 .cf-page-header--fixed {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*
+   Page Control Bar
+   -----------------------------------------------------------------------------
+*/
+
+.cf-page-control-bar {
+  width: 100%;
+  flex: 0 0 $page--control-bar-size;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.cf-page-control-bar--fluid,
+.cf-page-control-bar--fixed {
+  display: flex;
   flex-direction: column;
   align-items: stretch;
 }
 
-.cf-page-header--left,
-.cf-page-header--right,
-.cf-page-header--center {
+.cf-page-control-bar--left,
+.cf-page-control-bar--right,
+.cf-page-control-bar--center {
   display: flex;
   align-items: center;
   text-align: center;
   justify-content: center;
   flex: 0 0 $nav-menu--size;
 
-  &.cf-page-header--no-children {
+  &.cf-page-control-bar--no-children {
     display: none;
   }
 }
 
-.cf-page-header--center:not(.cf-page-header--no-children) + .cf-page-header--right {
+.cf-page-control-bar--center:not(.cf-page-control-bar--no-children) + .cf-page-control-bar--right {
   flex: 0 0 ($nav-menu--size - (($nav-menu--size - $form-sm-height) / 2));
   align-items: flex-start;
 }
 
-.cf-page-header--left {
+.cf-page-control-bar--left {
   padding: 0 ($nav-menu--size - $page--gutter-xs);
 }
 
 @media screen and (min-width: $nav-menu--breakpoint) {
-  .cf-page-header {
-    align-items: center;
-  }
+  // .cf-page-control-bar {
+  //   align-items: center;
+  // }
 
-  .cf-page-header--fluid,
-  .cf-page-header--fixed {
+  .cf-page-control-bar--fluid,
+  .cf-page-control-bar--fixed {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     flex-wrap: nowrap;
   }
 
-  .cf-page-header--left {
+  .cf-page-control-bar--left {
     padding: 0;
     justify-content: flex-start;
     text-align: left;
@@ -106,12 +129,12 @@
     }
   }
 
-  .cf-page-header--center {
+  .cf-page-control-bar--center {
     flex: 0 0 0;
   }
 
-  .cf-page-header--right,
-  .cf-page-header--center:not(.cf-page-header--no-children) + .cf-page-header--right {
+  .cf-page-control-bar--right,
+  .cf-page-control-bar--center:not(.cf-page-control-bar--no-children) + .cf-page-control-bar--right {
     justify-content: flex-end;
     text-align: right;
     flex: 1 0 30%;
@@ -120,10 +143,10 @@
     }
   }
 
-  .cf-page-header--left,
-  .cf-page-header--right,
-  .cf-page-header--center {
-    &.cf-page-header--no-children {
+  .cf-page-control-bar--left,
+  .cf-page-control-bar--right,
+  .cf-page-control-bar--center {
+    &.cf-page-control-bar--no-children {
       display: flex;
     }
   }
@@ -134,29 +157,15 @@
   ------------------------------------------------------------------------------
 */
 
-.cf-page--title,
-.cf-page--sub-title {
+.cf-heading.cf-page--title {
   letter-spacing: 0;
   text-transform: none;
   font-style: normal;
   cursor: default;
   display: inline-block;
-  margin: 0;
-  @include no-user-select();
-}
-
-.cf-page--title {
-  color: $g15-platinum;
+  color: $cf-text-default;
   font-size: $page--title-size;
   line-height: $page--title-size;
-  font-weight: $page--title-weight;
-}
-
-.cf-page--sub-title {
-  color: $g9-mountain;
-  font-size: $page--sub-title-size;
-  line-height: $page--sub-title-size;
-  font-weight: $page--sub-title-weight;
 }
 
 /*
@@ -171,7 +180,7 @@
   overflow: hidden;
 
   & > .cf-dapper-scrollbars--track-y {
-    background-color: $g3-castle !important;
+    background-color: $g4-onyx !important;
   }
 }
 
@@ -214,6 +223,8 @@
 @mixin pageGutterModifier($gutter) {
   .cf-page-header--fluid,
   .cf-page-header--fixed,
+  .cf-page-control-bar--fluid,
+  .cf-page-control-bar--fixed,
   .cf-page-contents__fluid,
   .cf-page-contents__fixed {
     padding: 0 $gutter;
