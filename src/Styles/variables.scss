@@ -28,17 +28,19 @@ $nav-menu--bg-hover: $c-laser;
 $nav-menu--bg-hover-accent: $c-comet;
 $nav-menu--breakpoint: 800px;
 
-$page--header-size: 66px;
+$page--background: $g1-raven;
+
+$page--header-size: 88px;
+$page--control-bar-size: 44px;
+$page--title-size: 2em;
+$page--title-weight: 400;
+
 $page--gutter-xs: 12px;
 $page--gutter-sm: 20px;
 $page--gutter-md: 32px;
 $page--gutter-lg: 54px;
+
 $page--max-width: 1608px;
-$page--title-size: 21px;
-$page--title-weight: 400;
-$page--sub-title-size: 12px;
-$page--sub-title-weight: 500;
-$page--background: $g1-raven;
 $page--funnel-max-width: 1200px;
 
 /*
