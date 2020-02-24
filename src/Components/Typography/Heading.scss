@@ -1,0 +1,61 @@
+@import '../../Styles/modules';
+
+/*
+  Heading Styles
+  ------------------------------------------------------------------------------
+*/
+
+.cf-heading {
+  font-weight: 400;
+  user-select: none;
+  margin: 0;
+}
+
+.cf-heading__bold {
+  font-weight: 700;
+}
+
+.cf-heading__standard {
+  font-family: $cf-text-font;
+}
+
+.cf-heading__monospace {
+  font-family: $cf-code-font;
+}
+
+.cf-heading__brand {
+  font-family: $cf-header-font;
+}
+
+.cf-heading__underline {
+  padding-bottom: 0.25em;
+  border-bottom: $cf-border solid $g5-pepper;
+}
+
+.cf-heading__selectable {
+  user-select: auto;
+}
+
+.cf-heading__h1 {
+  font-size: $cf-text-base-5;
+}
+
+.cf-heading__h2 {
+  font-size: $cf-text-base-4;
+}
+
+.cf-heading__h3 {
+  font-size: $cf-text-base-3;
+}
+
+.cf-heading__h4 {
+  font-size: $cf-text-base-2;
+}
+
+.cf-heading__h5 {
+  font-size: $cf-text-base-1;
+}
+
+.cf-heading__h6 {
+  font-size: $cf-text-base;
+}
