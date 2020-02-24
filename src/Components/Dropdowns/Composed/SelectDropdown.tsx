@@ -56,7 +56,7 @@ export const SelectDropdown = forwardRef<
       options,
       onSelect,
       className,
-      menuTheme = DropdownMenuTheme.Sapphire,
+      menuTheme = DropdownMenuTheme.Onyx,
       buttonSize = ComponentSize.Small,
       buttonIcon,
       buttonColor = ComponentColor.Default,

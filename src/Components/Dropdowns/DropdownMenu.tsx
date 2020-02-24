@@ -40,7 +40,7 @@ export const DropdownMenu = forwardRef<DropdownMenuRef, DropdownMenuProps>(
   (
     {
       id,
-      theme = DropdownMenuTheme.Sapphire,
+      theme = DropdownMenuTheme.Onyx,
       style = {width: '100%'},
       testID = 'dropdown-menu',
       children,

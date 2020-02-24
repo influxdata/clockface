@@ -186,8 +186,8 @@ export const getScrollbarColorsFromTheme = (
       }
     case DropdownMenuTheme.Onyx:
       return {
-        thumbStartColor: InfluxColors.Laser,
-        thumbStopColor: InfluxColors.Comet,
+        thumbStartColor: InfluxColors.Pearl,
+        thumbStopColor: InfluxColors.Sidewalk,
       }
     case DropdownMenuTheme.Amethyst:
       return {

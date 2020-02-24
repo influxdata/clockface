@@ -35,7 +35,7 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   position: absolute;
   width: 100%;
   left: 0;
-  z-index: 500;
+  z-index: 5000;
 }
 
 .cf-dropdown-menu {
@@ -300,9 +300,9 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
 .cf-dropdown__onyx {
   @include dropdownMenuColor(
     $g2-kevlar,
-    $g4-onyx,
-    $g4-onyx,
-    $g6-smoke,
+    $g5-pepper,
+    $c-pool,
+    $c-star,
     $g0-obsidian,
     $g2-kevlar,
     $g11-sidewalk,

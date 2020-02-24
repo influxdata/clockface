@@ -8,7 +8,7 @@ import Scrollbar from 'react-scrollbars-custom'
 import './DapperScrollbars.scss'
 
 // Types
-import {StandardFunctionProps} from '../../Types'
+import {StandardFunctionProps, InfluxColors} from '../../Types'
 
 interface DapperScrollbarsProps extends StandardFunctionProps {
   /** Toggle display of tracks when no scrolling is necessary */
@@ -24,9 +24,9 @@ interface DapperScrollbarsProps extends StandardFunctionProps {
   /** Disable scrolling */
   noScroll?: boolean
   /** Gradient start color */
-  thumbStartColor?: string
+  thumbStartColor?: string | InfluxColors
   /** Gradient end color */
-  thumbStopColor?: string
+  thumbStopColor?: string | InfluxColors
   /** Hide scrollbar when not actively scrolling */
   autoHide?: boolean
   /** Scroll container will grow to fit the content width and height */
@@ -55,8 +55,8 @@ export const DapperScrollbars: FunctionComponent<DapperScrollbarsProps> = ({
   noScrollY = false,
   autoSizeWidth = false,
   autoSizeHeight = false,
-  thumbStopColor = '#9394FF',
-  thumbStartColor = '#00C9FF',
+  thumbStopColor = InfluxColors.Pool,
+  thumbStartColor = InfluxColors.Star,
   testID = 'dapper-scrollbars',
   removeTracksWhenNotUsed = true,
   removeTrackYWhenNotUsed = true,

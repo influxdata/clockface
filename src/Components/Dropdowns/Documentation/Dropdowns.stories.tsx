@@ -337,7 +337,7 @@ dropdownFamilyStories.add(
             contentsRef={dropdownMenuContentsRef}
             theme={
               DropdownMenuTheme[
-                select('theme', mapEnumKeys(DropdownMenuTheme), 'Sapphire')
+                select('theme', mapEnumKeys(DropdownMenuTheme), 'Onyx')
               ]
             }
             maxHeight={number('maxHeight', 250)}
@@ -572,7 +572,7 @@ dropdownComposedStories.add(
           dropUp={boolean('dropUp', false)}
           menuTheme={
             DropdownMenuTheme[
-              select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Sapphire')
+              select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Onyx')
             ]
           }
           onSelect={option => {
@@ -651,7 +651,7 @@ dropdownComposedStories.add(
           dropUp={boolean('dropUp', false)}
           menuTheme={
             DropdownMenuTheme[
-              select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Sapphire')
+              select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Onyx')
             ]
           }
           onSelect={option => {

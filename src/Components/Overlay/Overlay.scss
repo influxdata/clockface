@@ -47,7 +47,7 @@ $overlay--mask-z: 10;
 
 .cf-overlay--container {
   @extend %overlay-children;
-  background-color: $g2-kevlar;
+  background-color: $g1-raven;
   border-radius: $cf-radius;
 
   &__xs {
@@ -80,7 +80,7 @@ $overlay--mask-z: 10;
 .cf-overlay--title {
   font-size: $overlay--title-size;
   font-weight: $overlay--title-weight;
-  color: $g17-whisper;
+  color: $g15-platinum;
   white-space: nowrap;
 }
 
@@ -102,7 +102,7 @@ $overlay--mask-z: 10;
     width: 22px;
     height: 2px;
     border-radius: 1px;
-    background-color: $g11-sidewalk;
+    background-color: $g9-mountain;
     transition: background-color 0.25s ease;
   }
   &:before {
@@ -117,7 +117,7 @@ $overlay--mask-z: 10;
   }
   &:hover:before,
   &:hover:after {
-    background-color: $g18-cloud;
+    background-color: $c-laser;
   }
 }
 
