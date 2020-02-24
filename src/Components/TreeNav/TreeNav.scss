@@ -1,0 +1,466 @@
+@import '../../Styles/modules';
+
+/*
+    Tree Style Navigation Menu
+    ----------------------------------------------------------------------------
+*/
+
+$cf-tree-nav__width: 56px;
+$cf-tree-nav__expanded-width: 250px;
+
+$cf-tree-nav__gradient-a: $c-star;
+$cf-tree-nav__gradient-b: $c-pool;
+
+$cf-tree-nav__bg: $g2-kevlar;
+$cf-tree-nav__dot-radius: $cf-marg-c + $cf-border;
+
+$cf-tree-nav__bg-hover: $g3-castle;
+$cf-tree-nav__bg-active: $g4-onyx;
+
+.cf-tree-nav {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  flex: 0 0 $cf-tree-nav__width;
+  background-color: $cf-tree-nav__bg;
+  width: $cf-tree-nav__width;
+  position: relative;
+  transition: flex-basis 0.25s ease;
+  z-index: $z--nav-menu;
+  user-select: none;
+}
+
+.cf-tree-nav--children {
+  flex: 1 0 0;
+}
+
+.cf-tree-nav--toggle {
+  width: 100%;
+  height: 30px;
+  flex: 0 0 30px;
+  position: relative;
+  border-top: $cf-border solid $g5-pepper;
+  background-color: $g2-kevlar;
+  color: $g7-graphite;
+  transition: color 0.25s ease, background-color 0.25s ease;
+
+  &:hover {
+    background-color: $g3-castle;
+    color: $g13-mist;
+    cursor: pointer;
+  }
+
+  > .cf-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    font-size: 1.25em;
+  }
+}
+
+.cf-tree-nav__expanded {
+  flex: 0 0 $cf-tree-nav__expanded-width;
+  width: $cf-tree-nav__expanded-width;
+}
+
+%cf-tree-nav--block {
+  flex: 0 0 $cf-tree-nav__width;
+  height: $cf-tree-nav__width;
+  display: flex;
+  align-items: center;
+  transition: color 0.25s ease, background-color 0.25s ease;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+/*
+  Menu Header
+  ------------------------------------------------------------------------------
+*/
+
+.cf-tree-nav--header,
+a.cf-tree-nav--header:link,
+a.cf-tree-nav--header:visited,
+a.cf-tree-nav--header:active {
+  position: relative;
+  color: $g20-white;
+  @extend %cf-tree-nav--block;
+  @include gradient-diag-up($c-pool, $c-pool);
+
+  &:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+    z-index: 0;
+    transition: opacity 0.25s ease;
+    opacity: 0;
+    @include gradient-diag-up($c-laser, mix($c-star, $c-pool, 50%));
+  }
+
+  & .cf-icon {
+    font-size: 1.9em;
+  }
+
+  &:hover {
+    cursor: default;
+  }
+
+  &.cf-tree-nav--header__clickable {
+    transition: background-color 0.25s ease, color 0.25s ease;
+
+    &:hover {
+      cursor: pointer;
+
+      &:after {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .cf-tree-nav--label,
+  .cf-tree-nav--square {
+    z-index: 1;
+  }
+
+  .cf-tree-nav--label {
+    display: none;
+  }
+}
+
+.cf-tree-nav--header__active,
+.cf-tree-nav--header__active:hover,
+a.cf-tree-nav--header__active:link,
+a.cf-tree-nav--header__active:visited,
+a.cf-tree-nav--header__active:hover {
+  cursor: pointer;
+
+  &:after {
+    opacity: 1;
+  }
+}
+
+/*
+  Menu Items
+  ------------------------------------------------------------------------------
+*/
+
+.cf-tree-nav--item {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $cf-border;
+    height: 100%;
+    @include gradient-v($cf-tree-nav__gradient-a, $cf-tree-nav__gradient-b);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+}
+
+.cf-tree-nav--item-block,
+a.cf-tree-nav--item-block:link,
+a.cf-tree-nav--item-block:visited,
+a.cf-tree-nav--item-block:active {
+  @extend %cf-tree-nav--block;
+  color: $g12-forge;
+  background-color: $g2-kevlar;
+
+  &:hover {
+    color: $g18-cloud;
+    background-color: $cf-tree-nav__bg-hover;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    height: $cf-border;
+    z-index: 2;
+    width: $cf-tree-nav__width * 0.25;
+    transition: opacity 0.25s ease;
+    opacity: 0;
+  }
+
+  &:before {
+    top: 0;
+    @include gradient-h($cf-tree-nav__gradient-a, rgba($cf-tree-nav__gradient-a, 0%));
+  }
+
+  &:after {
+    bottom: 0;
+    @include gradient-h($cf-tree-nav__gradient-b, rgba($cf-tree-nav__gradient-b, 0%));
+  }
+}
+
+.cf-tree-nav--square {
+  width: $cf-tree-nav__width;
+  height: $cf-tree-nav__width;
+  flex: 0 0 $cf-tree-nav__width;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cf-tree-nav--item .cf-tree-nav--square > .cf-icon {
+  font-size: 1.7em;
+  position: relative;
+  top: -0.3em;
+}
+
+.cf-tree-nav--label {
+  font-size: 0.9em;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: absolute;
+  text-align: center;
+  bottom: 0.5em;
+  left: $cf-marg-a;
+  width: $cf-tree-nav__width - $cf-marg-b;
+}
+
+.cf-tree-nav--caret {
+  width: $cf-tree-nav__width;
+  height: $cf-tree-nav__width;
+  flex: 0 0 $cf-tree-nav__width;
+  position: relative;
+  transition: transform 0.25s ease;
+  transform: rotate(0deg);
+  display: none;
+  
+  &:before {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+}
+
+.cf-tree-nav--item__active {
+  &.cf-tree-nav--item:after {
+    opacity: 1;
+  }
+  .cf-tree-nav--item-block,
+  .cf-tree-nav--item-block:hover,
+  a.cf-tree-nav--item-block:link,
+  a.cf-tree-nav--item-block:visited,
+  a.cf-tree-nav--item-block:active {
+    color: $g20-white;
+    background-color: $cf-tree-nav__bg-active;
+
+    .cf-tree-nav--label {
+      background-color: $cf-tree-nav__bg-active;
+    }
+  }
+  .cf-tree-nav--item-block:before,
+  .cf-tree-nav--item-block:after {
+    opacity: 1;
+  }
+  .cf-tree-nav--caret {
+    transform: rotate(90deg);
+  }
+}
+
+/*
+  Sub-Menu
+  ------------------------------------------------------------------------------
+*/
+
+.cf-tree-nav--sub-menu {
+  display: none;
+  flex-direction: column;
+  align-items: stretch;
+  padding-left: calc(#{$cf-tree-nav__width} - 0.75em);
+  padding-bottom: $cf-marg-b;
+  background-color: $cf-tree-nav__bg-active;
+}
+
+.cf-tree-nav--sub-item {
+  font-weight: 600;
+  display: flex;
+  padding-bottom: $cf-border;
+}
+
+.cf-tree-nav--sub-item-label,
+a.cf-tree-nav--sub-item-label,
+a.cf-tree-nav--sub-item-label:link,
+a.cf-tree-nav--sub-item-label:visited,
+a.cf-tree-nav--sub-item-label:active {
+  font-size: 1.1em;
+  padding: 0.3em 0.75em;
+  border-radius: 2em;
+  transition: color 0.25s ease, background-color 0.25s ease;
+  color: $g13-mist;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $g7-graphite;
+    color: $g20-white;
+  }
+}
+
+.cf-tree-nav--sub-item__active {
+  .cf-tree-nav--sub-item-label,
+  a.cf-tree-nav--sub-item-label:link,
+  a.cf-tree-nav--sub-item-label:visited,
+  a.cf-tree-nav--sub-item-label:active,
+  .cf-tree-nav--sub-item-label:hover {
+    background-color: $c-pool;
+    color: $g20-white;
+  }
+}
+
+/*
+  User Widget
+  ------------------------------------------------------------------------------
+*/
+
+$cf-tree-nav--user-block-gap: $cf-marg-b;
+$cf-tree-nav--user-block: $cf-tree-nav__width - ($cf-tree-nav--user-block-gap * 2);
+$cf-tree-nav--avatar-radius: $cf-tree-nav__width * 0.5;
+$cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-radius) / 2) - $cf-border;
+
+.cf-tree-nav--user {
+  position: relative;
+  height: $cf-tree-nav__width;
+}
+
+.cf-tree-nav--avatar {
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  flex: 0 0 $cf-tree-nav--avatar-radius;
+  width: $cf-tree-nav--avatar-radius;
+  height: $cf-tree-nav--avatar-radius;
+  margin-top: $cf-tree-nav--user-padding;
+  @include gradient-diag-up($c-honeydew, $c-pool);
+
+  > .cf-icon {
+    color: $g20-white;
+    font-size: 2.75em;
+    position: absolute;
+    bottom: -18%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.cf-tree-nav--user-block {
+  // background-color: $g5-pepper;
+  border: $g5-pepper $cf-border solid;
+  color: $g15-platinum;
+  position: absolute;
+  top: $cf-tree-nav--user-block-gap;
+  right: $cf-tree-nav--user-block-gap;
+  bottom: $cf-tree-nav--user-block-gap;
+  left: $cf-tree-nav--user-block-gap;
+  border-radius: $cf-tree-nav--avatar-radius;
+  display: flex;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  padding: 0 $cf-tree-nav--user-padding;
+
+  &:hover {
+    cursor: pointer;
+    color: $g20-white;
+    // background-color: $g7-graphite;
+    border-color: $g8-storm;
+  }
+}
+
+.cf-tree-nav--avatar-label {
+  display: none;
+  width: calc(100% - #{($cf-tree-nav__width * 0.5) + $cf-marg-b + $cf-marg-d - $cf-marg-a});
+  flex: 1 0 0;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  margin-left: $cf-marg-b;
+  margin-right: $cf-marg-d - $cf-marg-a;
+}
+.cf-tree-nav--username,
+.cf-tree-nav--team {
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cf-tree-nav--username {
+  font-size: 1.125em;
+  line-height: 1.125em;
+  font-weight: 700;
+}
+
+.cf-tree-nav--team {
+  font-size: 1em;
+  line-height: 1em;
+  margin-top: $cf-border;
+  opacity: 0.6;
+}
+
+.cf-tree-nav--user-caret {
+  position: absolute;
+  top: 50%;
+  right: $cf-marg-c + $cf-marg-a;
+  transform: translate(50%, -50%);
+}
+
+/*
+  Banner
+  ------------------------------------------------------------------------------
+*/
+
+.cf-tree-nav--banner {
+  padding: $cf-marg-c;
+  display: none;
+}
+
+/*
+  Expanded State
+  ------------------------------------------------------------------------------
+*/
+
+.cf-tree-nav__expanded {
+  .cf-tree-nav--label,
+  .cf-tree-nav--header .cf-tree-nav--label {
+    position: static;
+    top: initial;
+    left: initial;
+    display: flex;
+    font-size: 1.25em;
+    font-weight: 500;
+    flex: 1 0 0;
+    display: flex;
+  }
+  .cf-tree-nav--item__active .cf-tree-nav--sub-menu {
+    display: flex;
+  }
+  .cf-tree-nav--caret {
+    display: flex;
+  }
+  .cf-tree-nav--banner {
+    display: flex;
+  }
+  .cf-tree-nav--item .cf-tree-nav--square > .cf-icon {
+    top: 0;
+  }
+  .cf-tree-nav--avatar-label {
+    display: flex;
+  }
+}
