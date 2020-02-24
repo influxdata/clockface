@@ -107,10 +107,6 @@
 }
 
 @media screen and (min-width: $nav-menu--breakpoint) {
-  // .cf-page-control-bar {
-  //   align-items: center;
-  // }
-
   .cf-page-control-bar--fluid,
   .cf-page-control-bar--fixed {
     flex-direction: row;

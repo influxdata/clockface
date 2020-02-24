@@ -15,44 +15,6 @@ $z--nav-mask: 9890;
 $z--drag-n-drop: 5000;
 
 /*
-   Page Layout
-   -----------------------------------------------------------------------------
-   NavMenu + Page components
-*/
-
-$nav-menu--size: 60px;
-$nav-menu--gutter: 16px;
-$nav-menu--bg: $c-pool;
-$nav-menu--bg-accent: $c-star;
-$nav-menu--bg-hover: $c-laser;
-$nav-menu--bg-hover-accent: $c-comet;
-$nav-menu--breakpoint: 800px;
-
-$page--background: $g1-raven;
-
-$page--header-size: 88px;
-$page--control-bar-size: 44px;
-$page--title-size: 2em;
-$page--title-weight: 400;
-
-$page--gutter-xs: 12px;
-$page--gutter-sm: 20px;
-$page--gutter-md: 32px;
-$page--gutter-lg: 54px;
-
-$page--max-width: 1608px;
-$page--funnel-max-width: 1200px;
-
-/*
-   Responsive Breakpoints
-   -----------------------------------------------------------------------------
-*/
-
-$grid--breakpoint-sm: 750px;
-$grid--breakpoint-md: 1080px;
-$grid--breakpoint-lg: 1500px;
-
-/*
    Motifs
    -----------------------------------------------------------------------------
    Goal is to re-use these variables as much as possible to ensure powerful
@@ -71,7 +33,7 @@ $cf-radius: 4px;
 $cf-radius-sm: $cf-radius - 1px;
 
 /*
-   Typography
+   Typography Variables
    -----------------------------------------------------------------------------
 */
 
@@ -109,6 +71,46 @@ $cf-text-selection-bg: $c-pool;
 $cf-text-selection-color: $g20-white;
 
 /*
+   Page Layout Variables
+   -----------------------------------------------------------------------------
+   NavMenu + Page components
+*/
+
+$nav-menu--size: 60px;
+$nav-menu--gutter: 16px;
+$nav-menu--bg: $c-pool;
+$nav-menu--bg-accent: $c-star;
+$nav-menu--bg-hover: $c-laser;
+$nav-menu--bg-hover-accent: $c-comet;
+$nav-menu--breakpoint: 800px;
+
+$page--background: $g1-raven;
+
+$page--header-size: 88px;
+$page--control-bar-size: 44px;
+$page--title-size: 2.4em;
+$page--title-weight: 400;
+$page--title-font: $cf-header-font;
+$page--title-color: $cf-text-header;
+
+$page--gutter-xs: 12px;
+$page--gutter-sm: 20px;
+$page--gutter-md: 32px;
+$page--gutter-lg: 54px;
+
+$page--max-width: 1608px;
+$page--funnel-max-width: 1200px;
+
+/*
+   Responsive Breakpoints
+   -----------------------------------------------------------------------------
+*/
+
+$grid--breakpoint-sm: 750px;
+$grid--breakpoint-md: 1080px;
+$grid--breakpoint-lg: 1500px;
+
+/*
    Form Element Sizing
    -----------------------------------------------------------------------------
    These ensure consistent sizing across elements such as Buttons, SelectGroup,
@@ -140,7 +142,7 @@ $empty-state-text: $g9-mountain;
 $empty-state-highlight: $g13-mist;
 
 /*
-   Input Styles
+   Input Variables
    -----------------------------------------------------------------------------
    These ensure consistent appearance across different kinds of inputs
 */
@@ -177,7 +179,7 @@ $cf-input--placeholder-text: $g9-mountain;
 $cf-input--box-shadow: 0 0 6px 0 $cf-input-border--focused;
 
 /*
-   Card Styles
+   Card Variables
    -----------------------------------------------------------------------------
    These ensure consistent appearance across different kinds of cards
 */
@@ -195,7 +197,7 @@ $cf-card--border-hover: $g6-smoke;
 $cf-card--border-disabled: $g6-smoke;
 
 /*
-   Label Styles
+   Label Variables
    -----------------------------------------------------------------------------
    Used in both Inputs and Forms
 */
@@ -203,3 +205,19 @@ $cf-card--border-disabled: $g6-smoke;
 $cf-label--default: $g11-sidewalk;
 $cf-label--hover: $g15-platinum;
 $cf-label--active: $g18-cloud;
+
+/*
+   Overlay Variables
+   -----------------------------------------------------------------------------
+   Used in both Inputs and Forms
+*/
+
+$overlay--gutter: $cf-marg-c + $cf-marg-b;
+$overlay--header-height: $page--header-size;
+$overlay--title-font: $page--title-font;
+$overlay--title-size: $page--title-size;
+$overlay--title-weight: $page--title-weight;
+$overlay--title-color: $page--title-color;
+$overlay--container-padding: $cf-marg-c + $cf-marg-d;
+$overlay--z: 20;
+$overlay--mask-z: 10;
