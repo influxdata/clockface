@@ -1,6 +1,7 @@
 /*
-   Influx Color Palette
+   Influx Color Palette (SCSS Variables)
    -----------------------------------------------------------------------------
+   Only use these variables internally
 */
 
 // Nuetrals (Dark to Light)
@@ -37,34 +38,34 @@ $c-marmelade: #FFDCCF;
 $c-flan: #FFF7F4;
 
 // InfluxDB (Dark to Light)
-$c-abyss: #182838;
-$c-sapphire: #326BBA;
-$c-ocean: #4591ED;
-$c-pool: #22ADF6;
+$c-abyss: #120653;
+$c-sapphire: #0b3a8d;
+$c-ocean: #066fc5;
+$c-pool: #00a3ff;
 $c-laser: #00C9FF;
 $c-hydrogen: #6BDFFF;
 $c-neutrino: #BEF0FF;
 $c-yeti: #F0FCFF;
 
 // Chronograf (Dark to Light)
-$c-shadow: #1F2039;
-$c-void: #311F94;
-$c-amethyst: #513CC6;
-$c-star: #7A65F2;
-$c-comet: #9394FF;
-$c-potassium: #B1B6FF;
-$c-moonstone: #C9D0FF;
-$c-twilight: #F2F4FF;
+$c-shadow: #2b007e;
+$c-void: #5c10a0;
+$c-amethyst: #8e1fc3;
+$c-star: #be2ee4;
+$c-comet: #ce58eb;
+$c-potassium: #dd84f1;
+$c-moonstone: #ebadf8;
+$c-twilight: #fad9ff;
 
 // Kapacitor (Dark to Light)
-$c-gypsy: #152B2D;
-$c-emerald: #108174;
-$c-viridian: #32B08C;
-$c-rainforest: #4ED8A0;
-$c-honeydew: #7CE490;
-$c-krypton: #A5F3B4;
-$c-wasabi: #C6FFD0;
-$c-mint: #F2FFF4;
+$c-gypsy: #003e34;
+$c-emerald: #006f49;
+$c-viridian: #009f5f;
+$c-rainforest: #34bb55;
+$c-honeydew: #67d74e;
+$c-krypton: #9bf445;
+$c-wasabi: #c6f98e;
+$c-mint: #f3ffd6;
 
 // Warnings (Dark to Light)
 $c-oak: #3F241F;
