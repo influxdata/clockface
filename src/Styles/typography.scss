@@ -29,7 +29,7 @@ a:visited {
     color: $cf-link-warning;
   }
   &.link-secondary {
-    color: $cf-text-secondary;
+    color: $cf-link-secondary;
   }
 }
 a:hover,
@@ -46,8 +46,8 @@ a:active {
   &.link-warning {
     color: $cf-link-warning-hover;
   }
-  &.link-secondar {
-    color: $cf-text-secondary-hover;
+  &.link-secondary {
+    color: $cf-link-secondary-hover;
   }
 }
 
