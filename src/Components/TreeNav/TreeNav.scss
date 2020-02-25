@@ -12,6 +12,7 @@ $cf-tree-nav__gradient-a: $c-star;
 $cf-tree-nav__gradient-b: $c-pool;
 
 $cf-tree-nav__border: $g5-pepper;
+$cf-tree-nav__border-hover: $g8-storm;
 $cf-tree-nav__bg: $g2-kevlar;
 $cf-tree-nav__bg-hover: $g3-castle;
 $cf-tree-nav__bg-active: $g4-onyx;
@@ -19,6 +20,18 @@ $cf-tree-nav__text: $g12-forge;
 $cf-tree-nav__text-hover: $g17-whisper;
 $cf-tree-nav__text-active: $g20-white;
 
+$cf-tree-nav__sub-item-text: $g13-mist;
+$cf-tree-nav__sub-item-text-hover: $g20-white;
+$cf-tree-nav__sub-item-text-active: $g20-white;
+$cf-tree-nav__sub-item-bg: transparent;
+$cf-tree-nav__sub-item-bg-hover: $g7-graphite;
+$cf-tree-nav__sub-item-bg-active: $c-pool;
+
+$cf-tree-nav__user-text: $g15-platinum;
+$cf-tree-nav__user-text-hover: $g20-white;
+$cf-tree-nav__user-icon: $g20-white;
+$cf-tree-nav__user-color-a: $c-honeydew;
+$cf-tree-nav__user-color-b: $c-pool;
 
 $cf-tree-nav__toggle-icon: $g7-graphite;
 $cf-tree-nav__toggle-icon-hover: $g13-mist;
@@ -332,12 +345,13 @@ a.cf-tree-nav--sub-item-label:active {
   padding: 0.3em 0.75em;
   border-radius: 2em;
   transition: color 0.25s ease, background-color 0.25s ease;
-  color: $g13-mist;
+  color: $cf-tree-nav__sub-item-text;
+  background-color: $cf-tree-nav__sub-item-bg;
 
   &:hover {
     cursor: pointer;
-    background-color: $g7-graphite;
-    color: $g20-white;
+    background-color: $cf-tree-nav__sub-item-bg-hover;
+    color: $cf-tree-nav__sub-item-text-hover;
   }
 }
 
@@ -347,8 +361,8 @@ a.cf-tree-nav--sub-item-label:active {
   a.cf-tree-nav--sub-item-label:visited,
   a.cf-tree-nav--sub-item-label:active,
   .cf-tree-nav--sub-item-label:hover {
-    background-color: $c-pool;
-    color: $g20-white;
+    background-color: $cf-tree-nav__sub-item-bg-active;
+    color: $cf-tree-nav__sub-item-text-active;
   }
 }
 
@@ -375,10 +389,10 @@ $cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-ra
   width: $cf-tree-nav--avatar-radius;
   height: $cf-tree-nav--avatar-radius;
   margin-top: $cf-tree-nav--user-padding;
-  @include gradient-diag-up($c-honeydew, $c-pool);
+  @include gradient-diag-up($cf-tree-nav__user-color-a, $cf-tree-nav__user-color-b);
 
   > .cf-icon {
-    color: $g20-white;
+    color: $cf-tree-nav__user-icon;
     font-size: 2.75em;
     position: absolute;
     bottom: -18%;
@@ -388,8 +402,8 @@ $cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-ra
 }
 
 .cf-tree-nav--user-block {
-  border: $g5-pepper $cf-border solid;
-  color: $g15-platinum;
+  border: $cf-tree-nav__border $cf-border solid;
+  color: $cf-tree-nav__user-text;
   position: absolute;
   top: $cf-tree-nav--user-block-gap;
   right: $cf-tree-nav--user-block-gap;
@@ -402,8 +416,8 @@ $cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-ra
 
   &:hover {
     cursor: pointer;
-    color: $g20-white;
-    border-color: $g8-storm;
+    color: $cf-tree-nav__user-text-hover;
+    border-color: $cf-tree-nav__border-hover;
   }
 }
 
