@@ -52,7 +52,6 @@ export const Tab = forwardRef<TabRef, TabProps>(
       }
     }
 
-
     const tabClass = classnames('cf-tabs--tab', {
       'cf-tabs--tab__active': active,
       [`${className}`]: className,

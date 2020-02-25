@@ -14,10 +14,7 @@ export interface PageHeaderProps extends StandardFunctionProps {
 
 export type PageHeaderRef = HTMLDivElement
 
-export const PageHeader = forwardRef<
-  PageHeaderRef,
-  PageHeaderProps
->(
+export const PageHeader = forwardRef<PageHeaderRef, PageHeaderProps>(
   (
     {
       id,

@@ -4,12 +4,7 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {
-  withKnobs,
-  text,
-  select,
-  boolean,
-} from '@storybook/addon-knobs'
+import {withKnobs, text, select, boolean} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
@@ -44,16 +39,20 @@ headingStories.add(
             HeadingElement[select('element', mapEnumKeys(HeadingElement), 'H1')]
           }
           appearance={
-            HeadingElement[select('appearance', {Inherit: '', ...mapEnumKeys(HeadingElement)}, 'Inherit')]
+            HeadingElement[
+              select(
+                'appearance',
+                {Inherit: '', ...mapEnumKeys(HeadingElement)},
+                'Inherit'
+              )
+            ]
           }
-          type={
-            Typeface[select('type', mapEnumKeys(Typeface), 'Roboto')]
-          }
+          type={Typeface[select('type', mapEnumKeys(Typeface), 'Roboto')]}
           bold={boolean('bold', false)}
           underline={boolean('underline', false)}
           selectable={boolean('selectable', false)}
         >
-          {text('text','Gigantic Mental Fortitude')}
+          {text('text', 'Gigantic Mental Fortitude')}
         </Heading>
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>

@@ -50,78 +50,106 @@ navMenuStories.add(
       <div className="mockPageWrapper">
         <div className="mockPage">
           <AppWrapper>
-            <TreeNav.TreeNav ref={navMenuRef} expanded={expanded} onToggleClick={handleToggleExpanded}>
+            <TreeNav.TreeNav
+              ref={navMenuRef}
+              expanded={expanded}
+              onToggleClick={handleToggleExpanded}
+            >
               <TreeNav.Item
                 id="item-1"
                 label={text('Item 1', 'First Item')}
-                icon={<Icon
-                  glyph={
-                    IconFont[select('1 - icon', mapEnumKeys(IconFont), 'Disks')]
-                  }
-                />}
+                icon={
+                  <Icon
+                    glyph={
+                      IconFont[
+                        select('1 - icon', mapEnumKeys(IconFont), 'Disks')
+                      ]
+                    }
+                  />
+                }
                 onClick={handleItemClick}
                 active={activeItem === 'item-1'}
               />
               <TreeNav.Item
                 id="item-2"
                 label={text('Item 2', 'Second Item')}
-                icon={<Icon
-                  glyph={
-                    IconFont[select('2 - icon', mapEnumKeys(IconFont), 'Zap')]
-                  }
-                />}
+                icon={
+                  <Icon
+                    glyph={
+                      IconFont[select('2 - icon', mapEnumKeys(IconFont), 'Zap')]
+                    }
+                  />
+                }
                 onClick={handleItemClick}
                 active={activeItem === 'item-2'}
               />
               <TreeNav.Item
                 id="item-3"
                 label={text('Item 3', 'Third Item')}
-                icon={<Icon
-                  glyph={
-                    IconFont[select('3 - icon', mapEnumKeys(IconFont), 'Group')]
-                  }
-                />}
+                icon={
+                  <Icon
+                    glyph={
+                      IconFont[
+                        select('3 - icon', mapEnumKeys(IconFont), 'Group')
+                      ]
+                    }
+                  />
+                }
                 onClick={handleItemClick}
                 active={activeItem === 'item-3'}
               />
               <TreeNav.Item
                 id="item-4"
                 label="Link Item"
-                icon={<Icon
-                  glyph={IconFont.Import}
-                />}
+                icon={<Icon glyph={IconFont.Import} />}
                 active={activeItem === 'item-4'}
-                linkElement={className => <a href="#" className={className}>Bloop</a>}
+                linkElement={className => (
+                  <a href="#" className={className}>
+                    Bloop
+                  </a>
+                )}
               />
               <TreeNav.Item
                 id="item-5"
                 label="Link Item + Menu"
-                icon={<Icon
-                  glyph={IconFont.Import}
-                />}
+                icon={<Icon glyph={IconFont.Import} />}
                 active={true}
-                linkElement={className => <a href="#" className={className}>Bloop</a>}
+                linkElement={className => (
+                  <a href="#" className={className}>
+                    Bloop
+                  </a>
+                )}
               >
                 <TreeNav.SubMenu>
                   <TreeNav.SubItem
                     id="item-5-sub-1"
                     label="Banana"
-                    linkElement={className => <a href="#" className={className}>Bloop</a>}
+                    linkElement={className => (
+                      <a href="#" className={className}>
+                        Bloop
+                      </a>
+                    )}
                   />
                   <TreeNav.SubItem
                     id="item-5-sub-2"
                     label="Dragonfruit"
-                    linkElement={className => <a href="#" className={className}>Bloop</a>}
+                    linkElement={className => (
+                      <a href="#" className={className}>
+                        Bloop
+                      </a>
+                    )}
                     active={true}
                   />
                 </TreeNav.SubMenu>
               </TreeNav.Item>
             </TreeNav.TreeNav>
             <Page>
-            <Page.Header fullWidth={false}>
-              <Page.Title title="I am a page" />
-            </Page.Header>
-            <Page.Contents fullWidth={false}><p>sfsds</p></Page.Contents>
+              <Page.Header fullWidth={false}>
+                <Page.Title title="I am a page" />
+              </Page.Header>
+              <Page.Contents fullWidth={false}>
+                <p>sfsds</p>
+              </Page.Contents>
             </Page>
           </AppWrapper>
           <div className="story--test-buttons">
