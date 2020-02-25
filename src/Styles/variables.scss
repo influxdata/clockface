@@ -125,6 +125,12 @@ $cf-text-font: 'Rubik', Helvetica, Arial, Tahoma, Verdana, sans-serif;
 $cf-code-font: 'IBMPlexMono', monospace;
 $cf-icon-font: 'icomoon';
 
+$cf-font-weight--light: 300;
+$cf-font-weight--regular: 400;
+$cf-font-weight--medium: 500;
+$cf-font-weight--bold: 700;
+$cf-font-weight--black: 900;
+
 $cf-body-text: 12px;
 $cf-text-tiny: 0.8em;
 $cf-text-base: 1em;
@@ -138,7 +144,7 @@ $cf-text-base-5: ($cf-text-base * $cf-text-scale * $cf-text-scale * $cf-text-sca
 $cf-text-default: $g13-mist;
 $cf-text-header: $g17-whisper;
 
-$cf-link-weight: 700;
+$cf-link-weight: $cf-font-weight--bold;
 $cf-link-default: $c-pool;
 $cf-link-default-hover: $c-laser;
 $cf-link-success: $c-rainforest;
@@ -152,6 +158,7 @@ $cf-link-danger-hover:  $c-dreamsicle;
 
 $cf-text-selection-bg: $c-pool;
 $cf-text-selection-color: $g20-white;
+
 
 /*
    Page Layout Variables
@@ -280,7 +287,7 @@ $cf-card--border-hover: $g6-smoke;
 $cf-card--border-disabled: $g6-smoke;
 
 $cf-card--name-font-size: 17px;
-$cf-card--name-font-weight: 500;
+$cf-card--name-font-weight: $cf-font-weight--medium;
 
 /*
    Label Variables
