@@ -292,7 +292,6 @@ a.cf-tree-nav--item-block:active {
 }
 
 .cf-tree-nav--sub-item {
-  font-weight: 600;
   display: flex;
   padding-bottom: $cf-border;
 }
@@ -302,6 +301,7 @@ a.cf-tree-nav--sub-item-label,
 a.cf-tree-nav--sub-item-label:link,
 a.cf-tree-nav--sub-item-label:visited,
 a.cf-tree-nav--sub-item-label:active {
+  font-weight: 500;
   font-size: 1.1em;
   padding: 0.3em 0.75em;
   border-radius: 2em;
