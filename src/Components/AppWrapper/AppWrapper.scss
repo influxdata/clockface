@@ -36,8 +36,10 @@
 */
 
 .clockface--app-wrapper__presentation-mode {
-  .cf-nav, 
+  .cf-nav,
+  .cf-tree-nav, 
   .cf-page-header,
+  .cf-page-control-bar,
   .cf-nav--mask,
   .cf-nav--toggle {
     display: none;
