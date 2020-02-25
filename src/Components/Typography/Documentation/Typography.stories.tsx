@@ -11,7 +11,7 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 import {Heading, HeadingRef} from '../'
 
 // Types
-import {HeadingElement, Typeface} from '../../../Types'
+import {HeadingElement, Typeface, FontWeight} from '../../../Types'
 
 // Notes
 import HeadingReadme from './Heading.md'
@@ -48,7 +48,7 @@ headingStories.add(
             ]
           }
           type={Typeface[select('type', mapEnumKeys(Typeface), 'Roboto')]}
-          bold={boolean('bold', false)}
+          weight={FontWeight[select('weight', mapEnumKeys(FontWeight), 'Medium')]}
           underline={boolean('underline', false)}
           selectable={boolean('selectable', false)}
         >

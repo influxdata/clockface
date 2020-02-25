@@ -11,8 +11,24 @@
   margin: 0;
 }
 
-.cf-heading__bold {
+.cf-heading__300 {
+  font-weight: 300;
+}
+
+.cf-heading__400 {
+  font-weight: 400;
+}
+
+.cf-heading__500 {
+  font-weight: 500;
+}
+
+.cf-heading__700 {
   font-weight: 700;
+}
+
+.cf-heading__900 {
+  font-weight: 900;
 }
 
 .cf-heading__standard {
@@ -23,12 +39,8 @@
   font-family: $cf-code-font;
 }
 
-.cf-heading__brand {
-  font-family: $cf-header-font;
-}
-
 .cf-heading__underline {
-  padding-bottom: 0.25em;
+  padding-bottom: 0.3em;
   border-bottom: $cf-border solid $g5-pepper;
 }
 

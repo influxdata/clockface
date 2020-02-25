@@ -3,14 +3,18 @@ import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardFunctionProps, Typeface, HeadingElement} from '../../Types'
+import {
+  StandardFunctionProps,
+  Typeface,
+  HeadingElement,
+  FontWeight,
+} from '../../Types'
 
 // Styles
 import './Heading.scss'
 
 export interface HeadingProps extends StandardFunctionProps {
-  /** Contents of heading */
-  bold?: boolean
+  weight?: FontWeight
   /** Use monospace font instead of default */
   type?: Typeface
   /** Controls appearance of border below heading */
@@ -32,8 +36,8 @@ export const Heading = forwardRef<HeadingRef, HeadingProps>(
     {
       id,
       alt,
-      bold,
-      type = Typeface.Roboto,
+      weight = FontWeight.Medium,
+      type = Typeface.Rubik,
       style,
       underline,
       testID = 'heading',
@@ -48,10 +52,9 @@ export const Heading = forwardRef<HeadingRef, HeadingProps>(
     const visualElement = appearance || element
 
     const headingClass = classnames('cf-heading', {
-      'cf-heading__standard': type === Typeface.Roboto,
-      'cf-heading__monospace': type === Typeface.RobotoMonospace,
-      'cf-heading__brand': type === Typeface.Rubik,
-      'cf-heading__bold': bold,
+      'cf-heading__standard': type === Typeface.Rubik,
+      'cf-heading__monospace': type === Typeface.IBMPlexMono,
+      [`cf-heading__${weight}`]: weight,
       'cf-heading__underline': underline,
       'cf-heading__selectable': selectable,
       [`cf-heading__${visualElement}`]: visualElement,

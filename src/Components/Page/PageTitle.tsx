@@ -6,7 +6,12 @@ import classnames from 'classnames'
 import {Heading} from '../Typography'
 
 // Types
-import {StandardFunctionProps, HeadingElement, Typeface} from '../../Types'
+import {
+  StandardFunctionProps,
+  HeadingElement,
+  Typeface,
+  FontWeight,
+} from '../../Types'
 
 export interface PageTitleProps extends StandardFunctionProps {
   /** Text to display in title */
@@ -28,7 +33,7 @@ export const PageTitle = forwardRef<PageTitleRef, PageTitleProps>(
         id={id}
         alt={altText}
         ref={ref}
-        bold={false}
+        weight={FontWeight.Medium}
         type={Typeface.Rubik}
         style={style}
         testID={testID}
