@@ -268,10 +268,6 @@ a.cf-tree-nav--item-block:active {
   a.cf-tree-nav--item-block:active {
     color: $cf-tree-nav__text-active;
     background-color: $cf-tree-nav__bg-active;
-
-    .cf-tree-nav--label {
-      background-color: $cf-tree-nav__bg-active;
-    }
   }
   .cf-tree-nav--item-block:before,
   .cf-tree-nav--item-block:after {
