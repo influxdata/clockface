@@ -1,4 +1,87 @@
 /*
+   Influx Color Palette
+   -----------------------------------------------------------------------------
+*/
+
+// Neutrals
+$g0-obsidian: #0f0e15;
+$g1-raven: #181820;
+$g2-kevlar: #202028;
+$g3-castle: #292933;
+$g4-onyx: #31313d;
+$g5-pepper: #383846;
+$g6-smoke: #434453;
+$g7-graphite: #545667;
+$g8-storm: #676978;
+$g9-mountain: #757888;
+$g10-wolf: #8e91a1;
+$g11-sidewalk: #999dab;
+$g12-forge: #a4a8b6;
+$g13-mist: #bec2cc;
+$g14-chromium: #c6cad3;
+$g15-platinum: #d4d7dd;
+$g16-pearl: #e7e8eb;
+$g17-whisper: #eeeff2;
+$g18-cloud: #f6f6f8;
+$g19-ghost: #fafafc;
+$g20-white: #ffffff;
+
+// Reds
+$c-basalt: #2F1F29;
+$c-ruby: #BF3D5E;
+$c-fire: #DC4E58;
+$c-curacao: #F95F53;
+$c-dreamsicle: #FF8564;
+$c-tungsten: #FFB6A0;
+$c-marmelade: #FFDCCF;
+$c-flan: #FFF7F4;
+
+// Blues
+$c-abyss: #120653;
+$c-sapphire: #0b3a8d;
+$c-ocean: #066fc5;
+$c-pool: #00a3ff;
+$c-laser: #00C9FF;
+$c-hydrogen: #6BDFFF;
+$c-neutrino: #BEF0FF;
+$c-yeti: #F0FCFF;
+
+// Purples
+$c-shadow: #2b007e;
+$c-void: #5c10a0;
+$c-amethyst: #8e1fc3;
+$c-star: #be2ee4;
+$c-comet: #ce58eb;
+$c-potassium: #dd84f1;
+$c-moonstone: #ebadf8;
+$c-twilight: #fad9ff;
+
+// Greens
+$c-gypsy: #003e34;
+$c-emerald: #006f49;
+$c-viridian: #009f5f;
+$c-rainforest: #34bb55;
+$c-honeydew: #67d74e;
+$c-krypton: #9bf445;
+$c-wasabi: #c6f98e;
+$c-mint: #f3ffd6;
+
+// Yellows
+$c-oak: #3F241F;
+$c-topaz: #E85B1C;
+$c-tiger: #F48D38;
+$c-pineapple: #FFB94A;
+$c-thunder: #FFD255;
+$c-sulfur: #FFE480;
+$c-daisy: #FFF6B8;
+$c-banana: #FFFDDE;
+
+// Marketing Brand Colors
+$c-chartreuse: #D6F622;
+$c-magenta: #BF2FE5;
+$c-deeppurple: #13002D;
+
+/*
    Z Variables
    -----------------------------------------------------------------------------
    Might not actually need any of these yet
@@ -221,3 +304,150 @@ $overlay--title-color: $page--title-color;
 $overlay--container-padding: $cf-marg-c + $cf-marg-d;
 $overlay--z: 20;
 $overlay--mask-z: 10;
+/*
+   Mixins
+   -----------------------------------------------------------------------------
+*/
+
+@mixin gradient-v($startColor, $endColor) {
+  background: $startColor;
+  background: -moz-linear-gradient(top,  $startColor 0%, $endColor 100%);
+  background: -webkit-linear-gradient(top,  $startColor 0%,$endColor 100%);
+  background: linear-gradient(to bottom,  $startColor 0%,$endColor 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$startColor', endColorstr='$endColor',GradientType=0 );
+}
+@mixin gradient-h($startColor, $endColor) {
+  background: $startColor;
+  background: -moz-linear-gradient(left,  $startColor 0%, $endColor 100%);
+  background: -webkit-linear-gradient(left,  $startColor 0%,$endColor 100%);
+  background: linear-gradient(to right,  $startColor 0%,$endColor 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$startColor', endColorstr='$endColor',GradientType=1 );
+}
+@mixin gradient-diag-up($startColor, $endColor) {
+  background: $startColor;
+  background: -moz-linear-gradient(45deg,  $startColor 0%, $endColor 100%);
+  background: -webkit-linear-gradient(45deg,  $startColor 0%,$endColor 100%);
+  background: linear-gradient(45deg,  $startColor 0%,$endColor 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$startColor', endColorstr='$endColor',GradientType=1 );
+}
+@mixin gradient-diag-down($startColor, $endColor) {
+  background: $startColor;
+  background: -moz-linear-gradient(135deg,  $startColor 0%, $endColor 100%) !important;
+  background: -webkit-linear-gradient(135deg,  $startColor 0%,$endColor 100%) !important;
+  background: linear-gradient(135deg,  $startColor 0%,$endColor 100%) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$startColor', endColorstr='$endColor',GradientType=1 ) !important;
+}
+@mixin gradient-r($startColor, $endColor) {
+  background: $startColor;
+  background: -moz-radial-gradient(center, ellipse cover,  $startColor 0%, $endColor 100%);
+  background: -webkit-radial-gradient(center, ellipse cover,  $startColor 0%,$endColor 100%);
+  background: radial-gradient(ellipse at center,  $startColor 0%,$endColor 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$startColor', endColorstr='$endColor',GradientType=1 );
+}
+
+// Custom Scrollbars (Chrome Only)
+$scrollbar-width: 16px;
+$scrollbar-offset: 3px;
+@mixin custom-scrollbar($trackColor, $handleColor) {
+  &::-webkit-scrollbar {
+    width: $scrollbar-width;
+
+    &-button {
+      background-color: $trackColor;
+    }
+    &-track {
+      background-color: $trackColor;
+    }
+    &-track-piece {
+      background-color: $trackColor;
+      border: $scrollbar-offset solid $trackColor;
+      border-radius: ($scrollbar-width / 2);
+    }
+    &-thumb {
+      background-color: $handleColor;
+      border: $scrollbar-offset solid $trackColor;
+      border-radius: ($scrollbar-width / 2);
+    }
+    &-corner {
+      background-color: $trackColor;
+    }
+  }
+  &::-webkit-resizer {
+    background-color: $trackColor;
+  }
+}
+
+@mixin custom-scrollbar-round($trackColor, $handleColor) {
+  &::-webkit-scrollbar {
+    width: $scrollbar-width;
+    border-top-right-radius: $cf-radius;
+    border-top-left-radius: $cf-radius;
+    border-bottom-left-radius: $cf-radius;
+    border-bottom-right-radius: $cf-radius;
+
+    &-button {
+      background-color: $trackColor;
+    }
+    &-track {
+      background-color: $trackColor;
+      border-top-right-radius: ($scrollbar-width / 2);
+      border-top-left-radius: ($scrollbar-width / 2);
+      border-bottom-left-radius: ($scrollbar-width / 2);
+      border-bottom-right-radius: ($scrollbar-width / 2);
+    }
+    &-track-piece {
+      background-color: $trackColor;
+      border: $scrollbar-offset solid $trackColor;
+      border-radius: ($scrollbar-width / 2);
+    }
+    &-thumb {
+      background-color: $handleColor;
+      border: $scrollbar-offset solid $trackColor;
+      border-radius: ($scrollbar-width / 2);
+    }
+    &-corner {
+      background-color: $trackColor;
+    }
+  }
+  &::-webkit-resizer {
+    background-color: $trackColor;
+  }
+}
+
+
+// Block user select
+@mixin no-user-select() {
+  user-select: none !important;
+  -moz-user-select: none !important;
+  -webkit-user-select: none !important;
+  -ms-user-select: none !important;
+  -o-user-select: none !important;
+  &, &:hover {
+    cursor: default;
+  }
+}
+%no-user-select {
+  user-select: none !important;
+  -moz-user-select: none !important;
+  -webkit-user-select: none !important;
+  -ms-user-select: none !important;
+  -o-user-select: none !important;
+  &, &:hover {
+    cursor: default;
+  }
+}
+
+// Shadows
+%drop-shadow {
+  box-shadow: 0 0 10px 2px $g2-kevlar;
+}
+%panel-shadow {
+  box-shadow: 0 1px 4px 1px rgba($g0-obsidian, 0.2);
+}
+
+@mixin portal-style($z) {
+  z-index: $z;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
