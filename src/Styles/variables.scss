@@ -304,6 +304,43 @@ $overlay--title-color: $page--title-color;
 $overlay--container-padding: $cf-marg-c + $cf-marg-d;
 $overlay--z: 20;
 $overlay--mask-z: 10;
+
+/*
+   Tree Nav Variables
+   -----------------------------------------------------------------------------
+*/
+
+$cf-tree-nav__width: 56px;
+$cf-tree-nav__expanded-width: 250px;
+
+$cf-tree-nav__gradient-a: $c-star;
+$cf-tree-nav__gradient-b: $c-pool;
+
+$cf-tree-nav__border: $g5-pepper;
+$cf-tree-nav__border-hover: $g8-storm;
+$cf-tree-nav__bg: $g2-kevlar;
+$cf-tree-nav__bg-hover: $g3-castle;
+$cf-tree-nav__bg-active: $g4-onyx;
+$cf-tree-nav__text: $g12-forge;
+$cf-tree-nav__text-hover: $g17-whisper;
+$cf-tree-nav__text-active: $g20-white;
+
+$cf-tree-nav__sub-item-text: $g13-mist;
+$cf-tree-nav__sub-item-text-hover: $g20-white;
+$cf-tree-nav__sub-item-text-active: $g20-white;
+$cf-tree-nav__sub-item-bg: transparent;
+$cf-tree-nav__sub-item-bg-hover: $g7-graphite;
+$cf-tree-nav__sub-item-bg-active: $c-pool;
+
+$cf-tree-nav__user-text: $g15-platinum;
+$cf-tree-nav__user-text-hover: $g20-white;
+$cf-tree-nav__user-icon: $g20-white;
+$cf-tree-nav__user-color-a: $c-honeydew;
+$cf-tree-nav__user-color-b: $c-pool;
+
+$cf-tree-nav__toggle-icon: $g7-graphite;
+$cf-tree-nav__toggle-icon-hover: $g13-mist;
+
 /*
    Mixins
    -----------------------------------------------------------------------------
