@@ -66,6 +66,7 @@ $slide-toggle--gap: $cf-border * 2;
   border-radius: $size / 2;
   padding: 0 $slide-toggle--gap;
   width: (floor($size * 0.75) * 2) - $slide-toggle--gap;
+  flex: 0 0 (floor($size * 0.75) * 2) - $slide-toggle--gap;
 
 
   .cf-slide-toggle--knob,
