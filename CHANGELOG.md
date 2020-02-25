@@ -1,10 +1,14 @@
 # Changelog
 
-#### 1.1.6 (Unreleased)
+#### 1.2.1 (Unreleased)
+
+#### 1.2.0
+
+- [#436](https://github.com/influxdata/clockface/pull/436): variables.scss is now exported as part of the clockface bundle `@influxdata/clockface/dist/variables.scss`
 
 #### 1.1.5
 
-- [ #433](https://github.com/influxdata/clockface/pull/433): Fix `Notification` component exports
+- [#433](https://github.com/influxdata/clockface/pull/433): Fix `Notification` component exports
 
 #### 1.1.4
 
