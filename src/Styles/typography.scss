@@ -86,7 +86,7 @@ p {
 
   b,
   strong {
-    font-weight: 900;
+    font-weight: 600;
   }
 
   small {
@@ -147,7 +147,7 @@ h6 {
   @extend %type-small-styles;
   line-height: 1.25em;
   font-size: $cf-text-base;
-  font-weight: 900;
+  font-weight: 600;
   small {
     font-weight: 500;
   }
@@ -200,7 +200,7 @@ blockquote {
 
   b,
   strong {
-    font-weight: 900;
+    font-weight: 600;
   }
 }
 hr {
@@ -217,7 +217,7 @@ hr {
 // Type Formatting
 b,
 strong {
-  font-weight: 900;
+  font-weight: 600;
 }
 mark {
   background-color: $c-emerald;
