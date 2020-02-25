@@ -269,8 +269,8 @@ a.cf-tree-nav--item-block:active {
     color: $cf-tree-nav__text-active;
     background-color: $cf-tree-nav__bg-active;
   }
-  .cf-tree-nav--item-block:before,
-  .cf-tree-nav--item-block:after {
+  a.cf-tree-nav--item-block:before,
+  a.cf-tree-nav--item-block:after {
     opacity: 1;
   }
   .cf-tree-nav--expander:before,
