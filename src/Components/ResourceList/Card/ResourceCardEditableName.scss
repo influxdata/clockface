@@ -5,13 +5,10 @@
   ------------------------------------------------------------------------------
 */
 
-$cf-card--name-font-weight: 17px;
-$cf-card--name-font-weight: 600;
-
 .cf-resource-name--text,
 .cf-resource-name--text__link,
 .cf-input.cf-resource-editable-name--input > input {
-  font-size: $cf-card--name-font-weight;
+  font-size: $cf-card--name-font-size;
   font-weight: $cf-card--name-font-weight;
   font-family: $cf-text-font;
 }
