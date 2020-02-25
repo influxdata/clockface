@@ -78,12 +78,15 @@
   }
 
   .cf-button-icon {
-    font-size: floor($fontSize * 1.25);
+    font-size: floor($fontSize * 1.2);
   }
 }
 
 .cf-button-xs {
   @include buttonSizeModifier($form-xs-font, $form-xs-padding, $form-xs-height);
+  .cf-button-icon {
+    font-size: $form-xs-font;
+  }
 }
 .cf-button-sm {
   @include buttonSizeModifier($form-sm-font, $form-sm-padding, $form-sm-height);

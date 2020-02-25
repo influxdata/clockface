@@ -479,9 +479,8 @@ export enum LinkRel {
 }
 
 export enum Typeface {
-  Roboto = 'roboto',
-  RobotoMonospace = 'roboto-mono',
-  Rubik = 'Rubik',
+  IBMPlexMono = 'ibm-plex-mono',
+  Rubik = 'rubik',
 }
 
 export enum HeadingElement {
@@ -491,4 +490,8 @@ export enum HeadingElement {
   H4 = 'h4',
   H5 = 'h5',
   H6 = 'h6',
+  Span = 'span',
+  Div = 'div',
+  P = 'p',
+}
 }

@@ -194,7 +194,8 @@
 .react-datepicker-year-header {
   margin-top: 0;
   color: $g18-cloud;
-  font-weight: 700;
+  font-weight: 500;
+  font-size: 0.8em;
 }
 
 .react-datepicker__current-month {
@@ -422,6 +423,7 @@
   padding: $cf-marg-a $cf-marg-b;
   height: initial;
   margin: 0;
+  font-size: 0.8em;
 }
 
 .react-datepicker__time-container
@@ -500,11 +502,12 @@
   line-height: 1.7rem;
   text-align: center;
   margin: 0.166rem;
+  font-size: 0.8em;
 }
 
 .react-datepicker__day-name {
   color: $c-rainforest;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .react-datepicker__month--selected,

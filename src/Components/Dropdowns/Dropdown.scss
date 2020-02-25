@@ -63,7 +63,7 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   padding: $dropdown-item--padding-v $dropdown-item--padding-h;
   font-size: $form-sm-font;
   line-height: $form-sm-font;
-  font-weight: 600;
+  font-weight: 500;
   text-align: left;
 }
 
@@ -197,7 +197,7 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   a:link,
   a:active,
   a:visited {
-    font-weight: 600;
+    font-weight: 500;
     color: rgba($g20-white, 0.75);
   }
 
