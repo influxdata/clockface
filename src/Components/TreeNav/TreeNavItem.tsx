@@ -2,11 +2,8 @@
 import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
-// Components
-import {Icon} from '../Icon'
-
 // Types
-import {StandardFunctionProps, Omit, IconFont} from '../../Types'
+import {StandardFunctionProps, Omit} from '../../Types'
 
 export interface TreeNavItemProps extends Omit<StandardFunctionProps, 'id'> {
   /** Unique identifier for nav item */
@@ -52,12 +49,10 @@ export const TreeNavItem = forwardRef<TreeNavItemRef, TreeNavItemProps>(
       }
     }
 
-    let caret = <></>
+    let expandIcon = <></>
 
     if (React.Children.count(children) > 0) {
-      caret = (
-        <Icon glyph={IconFont.CaretRight} className="cf-tree-nav--caret" />
-      )
+      expandIcon = <span className="cf-tree-nav--expander" />
     }
 
     if (linkElement) {
@@ -65,7 +60,7 @@ export const TreeNavItem = forwardRef<TreeNavItemRef, TreeNavItemProps>(
         <>
           <div className="cf-tree-nav--square">{icon}</div>
           <div className="cf-tree-nav--label">{label}</div>
-          {caret}
+          {expandIcon}
         </>
       )
       const link = React.cloneElement(
@@ -94,7 +89,7 @@ export const TreeNavItem = forwardRef<TreeNavItemRef, TreeNavItemProps>(
         >
           <div className="cf-tree-nav--square">{icon}</div>
           <div className="cf-tree-nav--label">{label}</div>
-          {caret}
+          {expandIcon}
         </div>
         {children}
       </div>

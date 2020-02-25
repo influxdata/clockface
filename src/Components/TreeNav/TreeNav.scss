@@ -11,11 +11,17 @@ $cf-tree-nav__expanded-width: 250px;
 $cf-tree-nav__gradient-a: $c-star;
 $cf-tree-nav__gradient-b: $c-pool;
 
+$cf-tree-nav__border: $g5-pepper;
 $cf-tree-nav__bg: $g2-kevlar;
-$cf-tree-nav__dot-radius: $cf-marg-c + $cf-border;
-
 $cf-tree-nav__bg-hover: $g3-castle;
 $cf-tree-nav__bg-active: $g4-onyx;
+$cf-tree-nav__text: $g12-forge;
+$cf-tree-nav__text-hover: $g17-whisper;
+$cf-tree-nav__text-active: $g20-white;
+
+
+$cf-tree-nav__toggle-icon: $g7-graphite;
+$cf-tree-nav__toggle-icon-hover: $g13-mist;
 
 .cf-tree-nav {
   height: 100%;
@@ -40,14 +46,14 @@ $cf-tree-nav__bg-active: $g4-onyx;
   height: 30px;
   flex: 0 0 30px;
   position: relative;
-  border-top: $cf-border solid $g5-pepper;
-  background-color: $g2-kevlar;
-  color: $g7-graphite;
+  border-top: $cf-border solid $cf-tree-nav__border;
+  background-color: $cf-tree-nav__bg;
+  color: $cf-tree-nav__toggle-icon;
   transition: color 0.25s ease, background-color 0.25s ease;
 
   &:hover {
-    background-color: $g3-castle;
-    color: $g13-mist;
+    background-color: $cf-tree-nav__bg-hover;
+    color: $cf-tree-nav__toggle-icon-hover;
     cursor: pointer;
   }
 
@@ -176,11 +182,11 @@ a.cf-tree-nav--item-block:link,
 a.cf-tree-nav--item-block:visited,
 a.cf-tree-nav--item-block:active {
   @extend %cf-tree-nav--block;
-  color: $g12-forge;
-  background-color: $g2-kevlar;
+  color: $cf-tree-nav__text;
+  background-color: $cf-tree-nav__bg;
 
   &:hover {
-    color: $g18-cloud;
+    color: $cf-tree-nav__text-hover;
     background-color: $cf-tree-nav__bg-hover;
   }
 
@@ -235,20 +241,36 @@ a.cf-tree-nav--item-block:active {
   width: $cf-tree-nav__width - $cf-marg-b;
 }
 
-.cf-tree-nav--caret {
+.cf-tree-nav--expander {
   width: $cf-tree-nav__width;
   height: $cf-tree-nav__width;
   flex: 0 0 $cf-tree-nav__width;
   position: relative;
-  transition: transform 0.25s ease;
-  transform: rotate(0deg);
   display: none;
   
-  &:before {
+  &:before,
+  &:after {
+    content: '';
+    width: $cf-tree-nav__width * 0.2;
+    height: $cf-border;
+    background-color: $cf-tree-nav__text;
     position: absolute;
     top: 50%;
-    right: 50%;
-    transform: translate(50%, -50%);
+    left: 50%;
+    border-radius: $cf-border / 2;
+    transition: transform 0.25s ease, background-color 0.25s ease;
+  }
+  
+  &:before {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  &:after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  .cf-tree-nav--item-block:hover &:before,
+  .cf-tree-nav--item-block:hover &:after {
+    background-color: $cf-tree-nav__text-hover;
   }
 }
 
@@ -261,7 +283,7 @@ a.cf-tree-nav--item-block:active {
   a.cf-tree-nav--item-block:link,
   a.cf-tree-nav--item-block:visited,
   a.cf-tree-nav--item-block:active {
-    color: $g20-white;
+    color: $cf-tree-nav__text-active;
     background-color: $cf-tree-nav__bg-active;
 
     .cf-tree-nav--label {
@@ -272,8 +294,12 @@ a.cf-tree-nav--item-block:active {
   .cf-tree-nav--item-block:after {
     opacity: 1;
   }
-  .cf-tree-nav--caret {
-    transform: rotate(90deg);
+  .cf-tree-nav--expander:before,
+  .cf-tree-nav--expander:after {
+    background-color: $cf-tree-nav__text-active;
+  }
+  .cf-tree-nav--expander:after {
+    transform: translate(-50%, -50%) rotate(0deg);
   }
 }
 
@@ -362,7 +388,6 @@ $cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-ra
 }
 
 .cf-tree-nav--user-block {
-  // background-color: $g5-pepper;
   border: $g5-pepper $cf-border solid;
   color: $g15-platinum;
   position: absolute;
@@ -378,7 +403,6 @@ $cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-ra
   &:hover {
     cursor: pointer;
     color: $g20-white;
-    // background-color: $g7-graphite;
     border-color: $g8-storm;
   }
 }
@@ -451,7 +475,7 @@ $cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-ra
   .cf-tree-nav--item__active .cf-tree-nav--sub-menu {
     display: flex;
   }
-  .cf-tree-nav--caret {
+  .cf-tree-nav--expander {
     display: flex;
   }
   .cf-tree-nav--banner {
