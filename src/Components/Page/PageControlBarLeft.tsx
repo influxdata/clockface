@@ -17,7 +17,10 @@ export const PageControlBarLeft = forwardRef<
     {id, style, children, className, testID = 'page-control-bar--left'},
     ref
   ) => {
+    const noChildren = React.Children.count(children) === 0
+
     const pageControlBarLeftClass = classnames('cf-page-control-bar--left', {
+      'cf-page-control-bar__no-children': noChildren,
       [`${className}`]: className,
     })
 

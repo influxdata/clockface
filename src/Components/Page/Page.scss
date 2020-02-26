@@ -50,8 +50,8 @@
 
 .cf-page-header {
   width: 100%;
-  height: $page--header-size;
-  flex: 0 0 $page--header-size;
+  height: $page--header-size-sm;
+  flex: 0 0 $page--header-size-sm;
   display: flex;
   align-items: center;
 }
@@ -59,8 +59,9 @@
 .cf-page-header--fluid,
 .cf-page-header--fixed {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 /*
@@ -70,10 +71,15 @@
 
 .cf-page-control-bar {
   width: 100%;
-  flex: 0 0 $page--control-bar-size;
   display: flex;
   justify-content: center;
   align-items: flex-start;
+}
+
+@media screen and (min-width: $nav-menu--breakpoint) {
+  .cf-page-control-bar {
+    flex: 0 0 $page--control-bar-size;
+  }
 }
 
 .cf-page-control-bar--fluid,
@@ -87,17 +93,17 @@
 .cf-page-control-bar--right,
 .cf-page-control-bar--center {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   text-align: center;
   justify-content: center;
-  flex: 0 0 $nav-menu--size;
+  flex: 0 0 ($nav-menu--size - (($nav-menu--size - $form-sm-height) / 2));
 
-  &.cf-page-control-bar--no-children {
+  &.cf-page-control-bar__no-children {
     display: none;
   }
 }
 
-.cf-page-control-bar--center:not(.cf-page-control-bar--no-children) + .cf-page-control-bar--right {
+.cf-page-control-bar--center:not(.cf-page-control-bar__no-children) + .cf-page-control-bar--right {
   flex: 0 0 ($nav-menu--size - (($nav-menu--size - $form-sm-height) / 2));
   align-items: flex-start;
 }
@@ -130,7 +136,7 @@
   }
 
   .cf-page-control-bar--right,
-  .cf-page-control-bar--center:not(.cf-page-control-bar--no-children) + .cf-page-control-bar--right {
+  .cf-page-control-bar--center:not(.cf-page-control-bar__no-children) + .cf-page-control-bar--right {
     justify-content: flex-end;
     text-align: right;
     flex: 1 0 30%;
@@ -142,9 +148,20 @@
   .cf-page-control-bar--left,
   .cf-page-control-bar--right,
   .cf-page-control-bar--center {
-    &.cf-page-control-bar--no-children {
+    &.cf-page-control-bar__no-children {
       display: flex;
     }
+  }
+
+  .cf-page-header {
+    height: $page--header-size;
+    flex: 0 0 $page--header-size;
+  }
+
+  .cf-page-header--fluid,
+  .cf-page-header--fixed {
+    justify-content: space-between;
+    text-align: left;
   }
 }
 
@@ -160,8 +177,15 @@
   cursor: default;
   display: inline-block;
   color: $cf-text-default;
-  font-size: $page--title-size;
-  line-height: $page--title-size;
+  font-size: $page--title-size-sm;
+  line-height: $page--title-size-sm;
+}
+
+@media screen and (min-width: $nav-menu--breakpoint) {
+  .cf-heading.cf-page--title {
+    font-size: $page--title-size;
+    line-height: $page--title-size;
+  }
 }
 
 /*

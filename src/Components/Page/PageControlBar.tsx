@@ -30,7 +30,10 @@ export const PageControlBar = forwardRef<
     },
     ref
   ) => {
+    const noChildren = React.Children.count(children) === 0
+
     const pageControlBarClass = classnames('cf-page-control-bar', {
+      'cf-page-control-bar__no-children': noChildren,
       [`cf-page__gutter-${gutters}`]: gutters,
       [`${className}`]: className,
     })

@@ -22,7 +22,7 @@ export const PageControlBarCenter = forwardRef<
     const pageControlBarCenterClass = classnames(
       'cf-page-control-bar--center',
       {
-        'cf-page-control-bar--no-children': noChildren,
+        'cf-page-control-bar__no-children': noChildren,
         [`${className}`]: className,
       }
     )
