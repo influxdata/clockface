@@ -494,6 +494,7 @@ $cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-ra
   }
 
   .cf-tree-nav--children {
+    background-color: transparent;
     position: relative !important;
     height: auto !important;
     top: 0;
