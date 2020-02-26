@@ -491,7 +491,6 @@ $cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-ra
     position: relative;
     transition: flex-basis 0.25s ease;
     z-index: $z--nav-menu;
-    user-select: none;
   }
 
   .cf-tree-nav--children {
@@ -543,133 +542,21 @@ $cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-ra
     ----------------------------------------------------------------------------
   */
 
-  .cf-tree-nav--item {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    position: relative;
-
-    &:after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: $cf-border;
-      height: 100%;
-      @include gradient-v($cf-tree-nav__gradient-a, $cf-tree-nav__gradient-b);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.25s ease;
-    }
-  }
-
-  .cf-tree-nav--item-block,
-  a.cf-tree-nav--item-block:link,
-  a.cf-tree-nav--item-block:visited,
-  a.cf-tree-nav--item-block:active {
-    @extend %cf-tree-nav--block;
-    color: $cf-tree-nav__text;
-    background-color: $cf-tree-nav__bg;
-
-    &:hover {
-      color: $cf-tree-nav__text-hover;
-      background-color: $cf-tree-nav__bg-hover;
-    }
-
-    &:before,
-    &:after {
-      content: '';
-      position: absolute;
-      left: 0;
-      height: $cf-border;
-      z-index: 2;
-      width: $cf-tree-nav__width * 0.25;
-      transition: opacity 0.25s ease;
-      opacity: 0;
-    }
-
-    &:before {
-      top: 0;
-      @include gradient-h($cf-tree-nav__gradient-a, rgba($cf-tree-nav__gradient-a, 0%));
-    }
-
-    &:after {
-      bottom: 0;
-      @include gradient-h($cf-tree-nav__gradient-b, rgba($cf-tree-nav__gradient-b, 0%));
-    }
-  }
-
   .cf-tree-nav--square {
     width: $cf-tree-nav__width;
     height: $cf-tree-nav__width;
     flex: 0 0 $cf-tree-nav__width;
   }
 
-  .cf-tree-nav--label {
-    font-size: 1.25em;
-    font-weight: 500;
-    flex: 1 0 0;
-    display: flex;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
   .cf-tree-nav--expander {
     width: $cf-tree-nav__width;
     height: $cf-tree-nav__width;
     flex: 0 0 $cf-tree-nav__width;
-    position: relative;
-    display: block;
     
     &:before,
     &:after {
       content: '';
       width: $cf-tree-nav__width * 0.2;
-      height: $cf-border;
-      background-color: $cf-tree-nav__text;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      border-radius: $cf-border / 2;
-      transition: transform 0.25s ease, background-color 0.25s ease;
-    }
-    
-    &:before {
-      transform: translate(-50%, -50%) rotate(0deg);
-    }
-    &:after {
-      transform: translate(-50%, -50%) rotate(90deg);
-    }
-
-    .cf-tree-nav--item-block:hover &:before,
-    .cf-tree-nav--item-block:hover &:after {
-      background-color: $cf-tree-nav__text-hover;
-    }
-  }
-
-  .cf-tree-nav--item__active {
-    &.cf-tree-nav--item:after {
-      opacity: 1;
-    }
-    .cf-tree-nav--item-block,
-    .cf-tree-nav--item-block:hover,
-    a.cf-tree-nav--item-block:link,
-    a.cf-tree-nav--item-block:visited,
-    a.cf-tree-nav--item-block:active {
-      color: $cf-tree-nav__text-active;
-      background-color: $cf-tree-nav__bg-active;
-    }
-    a.cf-tree-nav--item-block:before,
-    a.cf-tree-nav--item-block:after {
-      opacity: 1;
-    }
-    .cf-tree-nav--expander:before,
-    .cf-tree-nav--expander:after {
-      background-color: $cf-tree-nav__text-active;
-    }
-    .cf-tree-nav--expander:after {
-      transform: translate(-50%, -50%) rotate(0deg);
     }
   }
 
