@@ -6,57 +6,91 @@
 */
 
 
-.cf-tree-nav {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  flex: 0 0 $cf-tree-nav__width;
-  background-color: $cf-tree-nav__bg;
-  width: $cf-tree-nav__width;
-  position: relative;
-  transition: flex-basis 0.25s ease;
-  z-index: $z--nav-menu;
+.cf-tree-nav,
+.cf-tree-nav__collapsed {
+  width: 100%;
   user-select: none;
 }
 
 .cf-tree-nav--children {
-  flex: 1 0 0;
+  position: absolute !important;
+  top: $cf-tree-nav__small-height;
+  z-index: $z--nav-menu;
+  left: 0;
+  height: calc(100% - #{$cf-tree-nav__small-height}) !important;
+  width: 100%;
+  background-color: $cf-tree-nav__bg;
+  display: block;
+
+  .cf-tree-nav__collapsed & {
+    display: none;
+  }
 }
 
 .cf-tree-nav--toggle {
-  width: 100%;
-  height: 30px;
-  flex: 0 0 30px;
-  position: relative;
-  border-top: $cf-border solid $cf-tree-nav__border;
-  background-color: $cf-tree-nav__bg;
-  color: $cf-tree-nav__toggle-icon;
-  transition: color 0.25s ease, background-color 0.25s ease;
+  width: $cf-tree-nav__small-height;
+  height: $cf-tree-nav__small-height;
+  flex: 0 0 $cf-tree-nav__small-height;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: $z--nav-menu + 5;
 
   &:hover {
-    background-color: $cf-tree-nav__bg-hover;
-    color: $cf-tree-nav__toggle-icon-hover;
     cursor: pointer;
   }
 
   > .cf-icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -55%);
-    font-size: 1.25em;
+    display: none;
   }
 }
 
-.cf-tree-nav__expanded {
-  flex: 0 0 $cf-tree-nav__expanded-width;
-  width: $cf-tree-nav__expanded-width;
+.cf-tree-nav--hamburger {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &,
+  &:before,
+  &:after {
+    width: floor($cf-tree-nav__width * 0.3);
+    height: $cf-border;
+    border-radius: $cf-border / 2;
+  }
+  
+  &:before,
+  &:after {
+    background-color: $g20-white;
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 50%;
+  }
+
+  &:before {
+    transform: translate(-50%, 0%) rotate(45deg);
+  }
+
+  &:after {
+    transform: translate(-50%, 0%) rotate(-45deg);
+  }
+
+  .cf-tree-nav__collapsed & {
+    background-color: $g20-white;
+  }
+
+  .cf-tree-nav__collapsed &:before {
+    transform: translate(-50%, 300%);
+  }
+  .cf-tree-nav__collapsed &:after {
+    transform: translate(-50%, -300%);
+  }
 }
 
 %cf-tree-nav--block {
-  flex: 0 0 $cf-tree-nav__width;
-  height: $cf-tree-nav__width;
+  flex: 0 0 $cf-tree-nav__small-height;
+  height: $cf-tree-nav__small-height;
   display: flex;
   align-items: center;
   transition: color 0.25s ease, background-color 0.25s ease;
@@ -117,10 +151,6 @@ a.cf-tree-nav--header:active {
   .cf-tree-nav--square {
     z-index: 1;
   }
-
-  .cf-tree-nav--label {
-    display: none;
-  }
 }
 
 .cf-tree-nav--header__active,
@@ -180,7 +210,7 @@ a.cf-tree-nav--item-block:active {
     left: 0;
     height: $cf-border;
     z-index: 2;
-    width: $cf-tree-nav__width * 0.25;
+    width: $cf-tree-nav__small-height * 0.25;
     transition: opacity 0.25s ease;
     opacity: 0;
   }
@@ -197,9 +227,9 @@ a.cf-tree-nav--item-block:active {
 }
 
 .cf-tree-nav--square {
-  width: $cf-tree-nav__width;
-  height: $cf-tree-nav__width;
-  flex: 0 0 $cf-tree-nav__width;
+  width: $cf-tree-nav__small-height;
+  height: $cf-tree-nav__small-height;
+  flex: 0 0 $cf-tree-nav__small-height;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -207,34 +237,29 @@ a.cf-tree-nav--item-block:active {
 
 .cf-tree-nav--item .cf-tree-nav--square > .cf-icon {
   font-size: 1.7em;
-  position: relative;
-  top: -0.3em;
 }
 
 .cf-tree-nav--label {
-  font-size: 0.9em;
+  flex: 1 0 0;
+  display: flex;
+  font-size: 1.25em;
   font-weight: 500;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  position: absolute;
   text-align: center;
-  bottom: 0.5em;
-  left: $cf-marg-a;
-  width: $cf-tree-nav__width - $cf-marg-b;
 }
 
 .cf-tree-nav--expander {
-  width: $cf-tree-nav__width;
-  height: $cf-tree-nav__width;
-  flex: 0 0 $cf-tree-nav__width;
+  width: $cf-tree-nav__small-height;
+  height: $cf-tree-nav__small-height;
+  flex: 0 0 $cf-tree-nav__small-height;
   position: relative;
-  display: none;
   
   &:before,
   &:after {
     content: '';
-    width: $cf-tree-nav__width * 0.2;
+    width: $cf-tree-nav__small-height * 0.2;
     height: $cf-border;
     background-color: $cf-tree-nav__text;
     position: absolute;
@@ -269,6 +294,8 @@ a.cf-tree-nav--item-block:active {
     color: $cf-tree-nav__text-active;
     background-color: $cf-tree-nav__bg-active;
   }
+  .cf-tree-nav--item-block:before,
+  .cf-tree-nav--item-block:after,
   a.cf-tree-nav--item-block:before,
   a.cf-tree-nav--item-block:after {
     opacity: 1;
@@ -279,6 +306,9 @@ a.cf-tree-nav--item-block:active {
   }
   .cf-tree-nav--expander:after {
     transform: translate(-50%, -50%) rotate(0deg);
+  }
+  .cf-tree-nav--sub-menu {
+    display: flex;
   }
 }
 
@@ -329,6 +359,10 @@ a.cf-tree-nav--sub-item-label:active {
   .cf-tree-nav--sub-item-label:hover {
     background-color: $cf-tree-nav__sub-item-bg-active;
     color: $cf-tree-nav__sub-item-text-active;
+  }
+
+  .cf-tree-nav--sub-menu {
+    display: flex;
   }
 }
 
@@ -388,7 +422,7 @@ $cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-ra
 }
 
 .cf-tree-nav--avatar-label {
-  display: none;
+  display: flex;
   width: calc(100% - #{($cf-tree-nav__width * 0.5) + $cf-marg-b + $cf-marg-d - $cf-marg-a});
   flex: 1 0 0;
   flex-direction: column;
@@ -432,39 +466,246 @@ $cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-ra
 
 .cf-tree-nav--banner {
   padding: $cf-marg-c;
-  display: none;
+  display: block;
 }
 
 /*
-  Expanded State
+  Large Screen Display
   ------------------------------------------------------------------------------
 */
 
-.cf-tree-nav__expanded {
-  .cf-tree-nav--label,
-  .cf-tree-nav--header .cf-tree-nav--label {
-    position: static;
-    top: initial;
-    left: initial;
+@media screen and (min-width: $nav-menu--breakpoint) {
+  %cf-tree-nav--block {
+    flex: 0 0 $cf-tree-nav__width;
+    height: $cf-tree-nav__width;
+  }
+
+  .cf-tree-nav {
+    height: 100%;
     display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex: 0 0 $cf-tree-nav__expanded-width;
+    width: $cf-tree-nav__expanded-width;
+    background-color: $cf-tree-nav__bg;
+    position: relative;
+    transition: flex-basis 0.25s ease;
+    z-index: $z--nav-menu;
+    user-select: none;
+  }
+
+  .cf-tree-nav--children {
+    position: relative !important;
+    height: auto !important;
+    top: 0;
+    left: 0;
+    flex: 1 0 0;
+
+    &,
+    .cf-tree-nav__collapsed & {
+      display: block;
+    }
+  }
+
+  .cf-tree-nav--hamburger {
+    display: none;
+  }
+
+  .cf-tree-nav--toggle {
+    top: initial;
+    right: initial;
+    width: 100%;
+    height: 30px;
+    flex: 0 0 30px;
+    position: relative;
+    border-top: $cf-border solid $cf-tree-nav__border;
+    background-color: $cf-tree-nav__bg;
+    color: $cf-tree-nav__toggle-icon;
+    transition: color 0.25s ease, background-color 0.25s ease;
+
+    &:hover {
+      background-color: $cf-tree-nav__bg-hover;
+      color: $cf-tree-nav__toggle-icon-hover;
+    }
+
+    > .cf-icon {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -55%);
+      font-size: 1.25em;
+    }
+  }
+
+  /*
+    Menu Items
+    ----------------------------------------------------------------------------
+  */
+
+  .cf-tree-nav--item {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: $cf-border;
+      height: 100%;
+      @include gradient-v($cf-tree-nav__gradient-a, $cf-tree-nav__gradient-b);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+  }
+
+  .cf-tree-nav--item-block,
+  a.cf-tree-nav--item-block:link,
+  a.cf-tree-nav--item-block:visited,
+  a.cf-tree-nav--item-block:active {
+    @extend %cf-tree-nav--block;
+    color: $cf-tree-nav__text;
+    background-color: $cf-tree-nav__bg;
+
+    &:hover {
+      color: $cf-tree-nav__text-hover;
+      background-color: $cf-tree-nav__bg-hover;
+    }
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      height: $cf-border;
+      z-index: 2;
+      width: $cf-tree-nav__width * 0.25;
+      transition: opacity 0.25s ease;
+      opacity: 0;
+    }
+
+    &:before {
+      top: 0;
+      @include gradient-h($cf-tree-nav__gradient-a, rgba($cf-tree-nav__gradient-a, 0%));
+    }
+
+    &:after {
+      bottom: 0;
+      @include gradient-h($cf-tree-nav__gradient-b, rgba($cf-tree-nav__gradient-b, 0%));
+    }
+  }
+
+  .cf-tree-nav--square {
+    width: $cf-tree-nav__width;
+    height: $cf-tree-nav__width;
+    flex: 0 0 $cf-tree-nav__width;
+  }
+
+  .cf-tree-nav--label {
     font-size: 1.25em;
     font-weight: 500;
     flex: 1 0 0;
     display: flex;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
-  .cf-tree-nav--item__active .cf-tree-nav--sub-menu {
-    display: flex;
-  }
+
   .cf-tree-nav--expander {
-    display: flex;
+    width: $cf-tree-nav__width;
+    height: $cf-tree-nav__width;
+    flex: 0 0 $cf-tree-nav__width;
+    position: relative;
+    display: block;
+    
+    &:before,
+    &:after {
+      content: '';
+      width: $cf-tree-nav__width * 0.2;
+      height: $cf-border;
+      background-color: $cf-tree-nav__text;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border-radius: $cf-border / 2;
+      transition: transform 0.25s ease, background-color 0.25s ease;
+    }
+    
+    &:before {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    &:after {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    .cf-tree-nav--item-block:hover &:before,
+    .cf-tree-nav--item-block:hover &:after {
+      background-color: $cf-tree-nav__text-hover;
+    }
   }
-  .cf-tree-nav--banner {
-    display: flex;
+
+  .cf-tree-nav--item__active {
+    &.cf-tree-nav--item:after {
+      opacity: 1;
+    }
+    .cf-tree-nav--item-block,
+    .cf-tree-nav--item-block:hover,
+    a.cf-tree-nav--item-block:link,
+    a.cf-tree-nav--item-block:visited,
+    a.cf-tree-nav--item-block:active {
+      color: $cf-tree-nav__text-active;
+      background-color: $cf-tree-nav__bg-active;
+    }
+    a.cf-tree-nav--item-block:before,
+    a.cf-tree-nav--item-block:after {
+      opacity: 1;
+    }
+    .cf-tree-nav--expander:before,
+    .cf-tree-nav--expander:after {
+      background-color: $cf-tree-nav__text-active;
+    }
+    .cf-tree-nav--expander:after {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
   }
-  .cf-tree-nav--item .cf-tree-nav--square > .cf-icon {
-    top: 0;
-  }
-  .cf-tree-nav--avatar-label {
-    display: flex;
+
+  /*
+    Collapsed State
+    ----------------------------------------------------------------------------
+  */
+
+  .cf-tree-nav__collapsed {
+    flex: 0 0 $cf-tree-nav__width;
+    width: $cf-tree-nav__width;
+    
+    .cf-tree-nav--label {
+      display: block;
+      font-size: 0.9em;
+      font-weight: 500;
+      position: absolute;
+      text-align: center;
+      bottom: 0.5em;
+      left: $cf-marg-a;
+      width: $cf-tree-nav__width - $cf-marg-b;
+    }
+
+    .cf-tree-nav--header .cf-tree-nav--label {
+      display: none;
+    }
+    .cf-tree-nav--sub-menu,
+    .cf-tree-nav--expander,
+    .cf-tree-nav--banner,
+    .cf-tree-nav--user-caret {
+      display: none;
+    }
+
+    .cf-tree-nav--item .cf-tree-nav--square > .cf-icon {
+      position: relative;
+      top: -0.3em;
+    }
   }
 }

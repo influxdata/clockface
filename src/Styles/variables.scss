@@ -176,8 +176,10 @@ $nav-menu--breakpoint: 800px;
 
 $page--background: $g1-raven;
 
+$page--header-size-sm: 66px;
 $page--header-size: 88px;
 $page--control-bar-size: 44px;
+$page--title-size-sm: 1.8em;
 $page--title-size: 2.4em;
 $page--title-weight: 400;
 $page--title-font: $cf-header-font;
@@ -322,6 +324,7 @@ $overlay--mask-z: 10;
 
 $cf-tree-nav__width: 56px;
 $cf-tree-nav__expanded-width: 250px;
+$cf-tree-nav__small-height: 48px;
 
 $cf-tree-nav__gradient-a: $c-star;
 $cf-tree-nav__gradient-b: $c-pool;

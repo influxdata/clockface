@@ -42,28 +42,15 @@ export const TreeNavRoot = forwardRef<TreeNavRef, TreeNavProps>(
     ref
   ) => {
     const navMenuRootClass = classnames('cf-tree-nav', {
-      'cf-tree-nav__expanded': expanded,
+      'cf-tree-nav__collapsed': !expanded,
       [`${className}`]: className,
     })
 
     let banner = <></>
     let toggleElement = <></>
 
-    if (bannerElement) {
+    if (bannerElement && expanded) {
       banner = <div className="cf-tree-nav--banner">{bannerElement}</div>
-    }
-
-    const wrappedChildren = (): JSX.Element => {
-      if (expanded) {
-        return (
-          <DapperScrollbars className="cf-tree-nav--children" noScrollX={true}>
-            {children}
-            {banner}
-          </DapperScrollbars>
-        )
-      }
-
-      return <div className="cf-tree-nav--children">{children}</div>
     }
 
     if (onToggleClick) {
@@ -71,6 +58,7 @@ export const TreeNavRoot = forwardRef<TreeNavRef, TreeNavProps>(
       toggleElement = (
         <div className="cf-tree-nav--toggle" onClick={onToggleClick}>
           <Icon glyph={toggleIcon} />
+          <div className="cf-tree-nav--hamburger" />
         </div>
       )
     }
@@ -84,7 +72,10 @@ export const TreeNavRoot = forwardRef<TreeNavRef, TreeNavProps>(
         className={navMenuRootClass}
       >
         {headerElement}
-        {wrappedChildren()}
+        <DapperScrollbars className="cf-tree-nav--children" noScrollX={true}>
+          {children}
+          {banner}
+        </DapperScrollbars>
         {toggleElement}
       </nav>
     )
