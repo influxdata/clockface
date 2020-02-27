@@ -54,11 +54,32 @@ navMenuStories.add(
               ref={navMenuRef}
               expanded={expanded}
               onToggleClick={handleToggleExpanded}
-              userElement={<TreeNav.User username="Captain Milkshake" team="Dairy Desperados">
-                <TreeNav.UserItem id="logout" label="Logout" onClick={id => alert(id)} />
-                <TreeNav.UserItem id="billing" label="Billing" linkElement={className => <a href="#" className={className} />} />
-                <TreeNav.UserItem id="usage" label="Usage" linkElement={className => <a href="#" className={className} />} />
-              </TreeNav.User>}
+              userElement={
+                <TreeNav.User
+                  username="Captain Milkshake"
+                  team="Dairy Desperados"
+                >
+                  <TreeNav.UserItem
+                    id="logout"
+                    label="Logout"
+                    onClick={id => alert(id)}
+                  />
+                  <TreeNav.UserItem
+                    id="billing"
+                    label="Billing"
+                    linkElement={className => (
+                      <a href="#" className={className} />
+                    )}
+                  />
+                  <TreeNav.UserItem
+                    id="usage"
+                    label="Usage"
+                    linkElement={className => (
+                      <a href="#" className={className} />
+                    )}
+                  />
+                </TreeNav.User>
+              }
             >
               <TreeNav.Item
                 id="item-1"

@@ -48,7 +48,9 @@ headingStories.add(
             ]
           }
           type={Typeface[select('type', mapEnumKeys(Typeface), 'Roboto')]}
-          weight={FontWeight[select('weight', mapEnumKeys(FontWeight), 'Medium')]}
+          weight={
+            FontWeight[select('weight', mapEnumKeys(FontWeight), 'Medium')]
+          }
           underline={boolean('underline', false)}
           selectable={boolean('selectable', false)}
         >
