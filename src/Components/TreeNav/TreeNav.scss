@@ -12,19 +12,26 @@
   user-select: none;
 }
 
-.cf-tree-nav--children {
-  position: absolute !important;
+.cf-tree-nav--menu {
+  position: absolute;
   top: $cf-tree-nav__small-height;
   z-index: $z--nav-menu;
   left: 0;
   height: calc(100% - #{$cf-tree-nav__small-height}) !important;
   width: 100%;
   background-color: $cf-tree-nav__bg;
-  display: block;
-
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  
   .cf-tree-nav__collapsed & {
     display: none;
   }
+}
+
+.cf-tree-nav--scroll-area {
+  flex: 1 0 0;
+  display: block;
 }
 
 .cf-tree-nav--toggle {
@@ -371,14 +378,13 @@ a.cf-tree-nav--sub-item-label:active {
   ------------------------------------------------------------------------------
 */
 
-$cf-tree-nav--user-block-gap: $cf-marg-b;
+$cf-tree-nav--user-block-gap: $cf-marg-a + $cf-border;
 $cf-tree-nav--user-block: $cf-tree-nav__width - ($cf-tree-nav--user-block-gap * 2);
 $cf-tree-nav--avatar-radius: $cf-tree-nav__width * 0.5;
 $cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-radius) / 2) - $cf-border;
 
 .cf-tree-nav--user {
-  position: relative;
-  height: $cf-tree-nav__width;
+  padding: $cf-tree-nav--user-block-gap;
 }
 
 .cf-tree-nav--avatar {
@@ -388,8 +394,8 @@ $cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-ra
   flex: 0 0 $cf-tree-nav--avatar-radius;
   width: $cf-tree-nav--avatar-radius;
   height: $cf-tree-nav--avatar-radius;
-  margin-top: $cf-tree-nav--user-padding;
-  @include gradient-diag-up($cf-tree-nav__user-color-a, $cf-tree-nav__user-color-b);
+  margin: $cf-tree-nav--user-padding;
+  @include gradient-diag-up($cf-tree-nav__user-color-b, $cf-tree-nav__user-color-a);
 
   > .cf-icon {
     color: $cf-tree-nav__user-icon;
@@ -402,34 +408,44 @@ $cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-ra
 }
 
 .cf-tree-nav--user-block {
-  border: $cf-tree-nav__border $cf-border solid;
   color: $cf-tree-nav__user-text;
-  position: absolute;
-  top: $cf-tree-nav--user-block-gap;
-  right: $cf-tree-nav--user-block-gap;
-  bottom: $cf-tree-nav--user-block-gap;
-  left: $cf-tree-nav--user-block-gap;
-  border-radius: $cf-tree-nav--avatar-radius;
+  border: $cf-tree-nav__border $cf-border solid;
+  background-color: $cf-tree-nav__user-bg;
+  position: relative;
+  border-radius: $cf-radius;
   display: flex;
   transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
-  padding: 0 $cf-tree-nav--user-padding;
 
-  &:hover {
+  .cf-tree-nav--user__expandable &:hover {
     cursor: pointer;
     color: $cf-tree-nav__user-text-hover;
     border-color: $cf-tree-nav__border-hover;
+    background-color: $cf-tree-nav__user-bg-hover;
+  }
+
+  .cf-tree-nav--user__expanded &,
+  .cf-tree-nav--user__expanded &:hover {
+    position: relative;
+    z-index: $z--nav-menu;
+    color: $cf-tree-nav__user-text-active;
+    border-color: $cf-tree-nav__border-active;
+    background-color: $cf-tree-nav__user-bg-active;
   }
 }
 
 .cf-tree-nav--avatar-label {
   display: flex;
-  width: calc(100% - #{($cf-tree-nav__width * 0.5) + $cf-marg-b + $cf-marg-d - $cf-marg-a});
+  width: calc(100% - #{($cf-tree-nav__width * 0.5) + $cf-marg-d + $cf-marg-d});
   flex: 1 0 0;
   flex-direction: column;
   align-items: stretch;
   justify-content: center;
   margin-left: $cf-marg-b;
-  margin-right: $cf-marg-d - $cf-marg-a;
+  margin-right: $cf-marg-b;
+  
+  .cf-tree-nav--user__expandable & {
+    margin-right: $cf-marg-d;
+  }
 }
 .cf-tree-nav--username,
 .cf-tree-nav--team {
@@ -457,6 +473,49 @@ $cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-ra
   top: 50%;
   right: $cf-marg-c + $cf-marg-a;
   transform: translate(50%, -50%);
+}
+
+.cf-tree-nav--user-menu {
+  z-index: $z--nav-menu + 5;
+  position: absolute;
+  top: $cf-tree-nav--user-block + $cf-tree-nav--user-block-gap - $cf-marg-a;
+  left: $cf-tree-nav--user-block-gap;
+  right: $cf-tree-nav--user-block-gap;
+  background-color: $cf-tree-nav__user-menu-bg;
+  border: $cf-border solid $cf-tree-nav__border-active;
+  border-top-width: 0;
+  border-radius: 0 0 $cf-radius $cf-radius;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  .cf-tree-nav--username,
+  .cf-tree-nav--team {
+    margin: 0.75em 1em;
+    display: none;
+  }
+  .cf-tree-nav--team {
+    margin-top: -0.25em;
+  }
+}
+
+.cf-tree-nav--user-item,
+a.cf-tree-nav--user-item:link,
+a.cf-tree-nav--user-item:visited,
+a.cf-tree-nav--user-item:active {
+  font-weight: 500;
+  font-size: 1.1em;
+  padding: 0.75em 1em;
+  padding-left: $cf-tree-nav--user-block + $cf-border;
+  color: $cf-tree-nav__sub-item-text;
+  transition: color 0.25s ease, background-color 0.25s ease;
+}
+
+.cf-tree-nav--user-item:hover,
+a.cf-tree-nav--user-item:hover {
+  cursor: pointer;
+  color: $cf-tree-nav__sub-item-text-hover;
+  background-color: $cf-tree-nav__user-menu-item-hover;
 }
 
 /*
@@ -493,7 +552,7 @@ $cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-ra
     z-index: $z--nav-menu;
   }
 
-  .cf-tree-nav--children {
+  .cf-tree-nav--menu {
     background-color: transparent;
     position: relative !important;
     height: auto !important;
@@ -503,7 +562,7 @@ $cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-ra
 
     &,
     .cf-tree-nav__collapsed & {
-      display: block;
+      display: flex;
     }
   }
 
@@ -587,13 +646,54 @@ $cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-ra
     .cf-tree-nav--sub-menu,
     .cf-tree-nav--expander,
     .cf-tree-nav--banner,
-    .cf-tree-nav--user-caret {
+    .cf-tree-nav--user-caret,
+    .cf-tree-nav--avatar-label {
       display: none;
     }
 
     .cf-tree-nav--item .cf-tree-nav--square > .cf-icon {
       position: relative;
       top: -0.3em;
+    }
+
+    .cf-tree-nav--user-item,
+    a.cf-tree-nav--user-item:link,
+    a.cf-tree-nav--user-item:visited,
+    a.cf-tree-nav--user-item:active {
+      padding-left: 1em;
+    }
+
+    .cf-tree-nav--user-menu {
+      top: $cf-tree-nav--user-block-gap;
+      left: $cf-tree-nav--user-block + $cf-tree-nav--user-block-gap + $cf-marg-a;
+      right: initial;
+      border-top-width: $cf-border;
+      border-radius: $cf-radius;
+      @include panel-shadow();
+
+      &:before,
+      &:after {
+        content: '';
+        border: $cf-marg-b + $cf-marg-a solid transparent;
+        position: absolute;
+        left: 0;
+        top: $cf-tree-nav--user-block / 2;
+        pointer-events: none;
+      }
+
+      &:before {
+        transform: translate(-100%, -50%);
+        border-right-color: $cf-tree-nav__border-active;
+      }
+      &:after {
+        transform: translate(-85%, -50%);
+        border-right-color: $cf-tree-nav__user-menu-bg;
+      }
+
+      .cf-tree-nav--username,
+      .cf-tree-nav--team {
+        display: block;
+      }
     }
   }
 }

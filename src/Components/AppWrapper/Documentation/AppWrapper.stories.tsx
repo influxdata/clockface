@@ -552,12 +552,28 @@ layoutStories.add(
               bannerElement={banner}
               expanded={navState}
               onToggleClick={handleToggleNavState}
+              userElement={
+                <TreeNav.User
+                  id="user"
+                  username="john.doe123456@supercool.com"
+                  team="USAF 101st Airborne Division"
+                >
+                  {boolean('show user links', false) ? (
+                    <>
+                      <TreeNav.UserItem id="logout" label="Logout" />
+                      <TreeNav.UserItem id="billing" label="Billing" />
+                      <TreeNav.UserItem
+                        id="usage"
+                        label="Usage"
+                        linkElement={className => (
+                          <a href="#" className={className} />
+                        )}
+                      />
+                    </>
+                  ) : null}
+                </TreeNav.User>
+              }
             >
-              <TreeNav.User
-                id="user"
-                username="john.doe123456@supercool.com"
-                team="USAF 101st Airborne Division"
-              />
               <TreeNav.Item
                 id="data"
                 label="Data"

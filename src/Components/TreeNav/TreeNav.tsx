@@ -22,6 +22,8 @@ export interface TreeNavProps extends StandardFunctionProps {
   headerElement?: JSX.Element
   /** Banner to appear in expanded menu */
   bannerElement?: JSX.Element
+  /** User widget to appear below the header element */
+  userElement?: JSX.Element
 }
 
 export type TreeNavRef = HTMLElement
@@ -32,10 +34,11 @@ export const TreeNavRoot = forwardRef<TreeNavRef, TreeNavProps>(
       id,
       style,
       testID = 'tree-nav',
-      bannerElement,
       children,
       expanded = true,
       className,
+      userElement,
+      bannerElement,
       onToggleClick,
       headerElement,
     },
@@ -72,10 +75,16 @@ export const TreeNavRoot = forwardRef<TreeNavRef, TreeNavProps>(
         className={navMenuRootClass}
       >
         {headerElement}
-        <DapperScrollbars className="cf-tree-nav--children" noScrollX={true}>
-          {children}
-          {banner}
-        </DapperScrollbars>
+        <div className="cf-tree-nav--menu">
+          {userElement}
+          <DapperScrollbars
+            className="cf-tree-nav--scroll-area"
+            noScrollX={true}
+          >
+            {children}
+            {banner}
+          </DapperScrollbars>
+        </div>
         {toggleElement}
       </nav>
     )
