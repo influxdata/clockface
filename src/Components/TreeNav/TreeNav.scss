@@ -120,6 +120,7 @@ a.cf-tree-nav--header:active {
   color: $g20-white;
   @extend %cf-tree-nav--block;
   @include gradient-diag-up($c-pool, $c-pool);
+  align-items: stretch;
 
   &:after {
     position: absolute;
@@ -157,6 +158,16 @@ a.cf-tree-nav--header:active {
   .cf-tree-nav--label,
   .cf-tree-nav--square {
     z-index: 1;
+  }
+
+  .cf-tree-nav--label {
+    align-items: center;
+  }
+
+  img,
+  svg {
+    height: floor($cf-tree-nav__small-height * 0.46);
+    width: auto;
   }
 }
 

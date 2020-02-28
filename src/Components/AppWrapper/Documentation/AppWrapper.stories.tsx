@@ -19,6 +19,7 @@ import {PopNav} from '../../PopNav'
 import {Page} from '../../Page/index'
 import {Icon} from '../../Icon/Base/Icon'
 import {TreeNav} from '../../TreeNav'
+import {InfluxDBCloudLogo} from '../../Logo'
 
 // Types
 import {
@@ -544,7 +545,9 @@ layoutStories.add(
                 <TreeNav.Header
                   id="home"
                   icon={<Icon glyph={IconFont.CuboNav} />}
-                  label={<>InfluxDB Cloud</>}
+                  label={
+                    <InfluxDBCloudLogo cloud={boolean('Logo: cloud', true)} />
+                  }
                   onClick={handleNavClick}
                   active={isItemActive('home')}
                 />
