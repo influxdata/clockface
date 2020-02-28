@@ -401,6 +401,18 @@ layoutStories.add(
               />
             </NavMenu>
             <Page titleTag="bloop">
+              <Page.Header
+                fullWidth={boolean('fullWidth', false)}
+                gutters={
+                  ComponentSize[
+                    select('gutters', mapEnumKeys(ComponentSize), 'Small')
+                  ]
+                }
+              >
+                <Page.Title
+                  title={text('Page Title', 'Page head, feet, and toes')}
+                />
+              </Page.Header>
               <Page.ControlBar
                 fullWidth={boolean('fullWidth', false)}
                 gutters={
@@ -410,17 +422,19 @@ layoutStories.add(
                 }
               >
                 <Page.ControlBarLeft>
-                  <Page.Title title={text('PageTitle title', 'Page Title')} />
+                  {boolean('Button in PageControlBarLeft', true) ? (
+                    <div className="mockComponent mockButton">Left Button</div>
+                  ) : null}
                 </Page.ControlBarLeft>
                 <Page.ControlBarCenter>
-                  {boolean('Button in PageHeaderCenter', true) ? (
+                  {boolean('Button in PageControlBarCenter', true) ? (
                     <div className="mockComponent mockButton">
                       Center Button
                     </div>
                   ) : null}
                 </Page.ControlBarCenter>
                 <Page.ControlBarRight>
-                  {boolean('Button in PageHeaderRight', true) ? (
+                  {boolean('Button in PageControlBarRight', true) ? (
                     <div className="mockComponent mockButton">Right Button</div>
                   ) : null}
                 </Page.ControlBarRight>
