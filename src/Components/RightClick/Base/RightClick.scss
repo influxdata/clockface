@@ -1,4 +1,4 @@
-@import '../../../Styles/modules';
+@import '../../../Styles/variables';
 
 /*
   Right-Click Menu Styles
@@ -6,7 +6,7 @@
 */
 
 .cf-right-click-portal {
-  @include portal-style($z--right-click);
+  @include portal-style($cf-z--right-click);
 }
 
 .cf-right-click {
@@ -33,7 +33,7 @@
   line-height: $cf-text-base;
   color: $g11-sidewalk;
   white-space: nowrap;
-  font-weight: 600;
+  font-weight: $cf-font-weight--medium;
   user-select: none;
   margin: 0;
   transition: color 0.25s ease, background-color 0.25s ease;

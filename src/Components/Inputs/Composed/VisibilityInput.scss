@@ -1,4 +1,4 @@
-@import '../../../Styles/modules';
+@import '../../../Styles/variables';
 
 /*
   Password Input Styles
@@ -54,15 +54,15 @@
 
 .cf-visibility-input {
   .cf-input-xs {
-    @include visibilityButtonSizeModifier($form-xs-height);
+    @include visibilityButtonSizeModifier($cf-form-xs-height);
   }
   .cf-input-sm {
-    @include visibilityButtonSizeModifier($form-sm-height);
+    @include visibilityButtonSizeModifier($cf-form-sm-height);
   }
   .cf-input-md {
-    @include visibilityButtonSizeModifier($form-md-height);
+    @include visibilityButtonSizeModifier($cf-form-md-height);
   }
   .cf-input-lg {
-    @include visibilityButtonSizeModifier($form-lg-height);
+    @include visibilityButtonSizeModifier($cf-form-lg-height);
   }
 }

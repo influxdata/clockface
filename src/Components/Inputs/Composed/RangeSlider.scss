@@ -1,4 +1,4 @@
-@import '../../../Styles/modules';
+@import '../../../Styles/variables';
 
 $slider-bg: $g2-kevlar;
 $slider-hover-border: $g7-graphite;
@@ -127,7 +127,7 @@ $slider-hover: $g17-whisper;
 
 .cf-range-slider--label {
   font-size: 12px;
-  font-weight: 600;
+  font-weight: $cf-font-weight--medium;
   @extend %no-user-select;
 
   &:first-of-type {
@@ -229,16 +229,16 @@ $slider-hover: $g17-whisper;
 }
 
 .cf-range-slider__xs {
-  @include rangeSliderSizeModifier($form-xs-font, $cf-marg-a, $form-xs-height, $form-xs-padding);
+  @include rangeSliderSizeModifier($cf-form-xs-font, $cf-marg-a, $cf-form-xs-height, $cf-form-xs-padding);
 }
 .cf-range-slider__sm {
-  @include rangeSliderSizeModifier($form-sm-font, ($cf-marg-a + 2), $form-sm-height, $form-sm-padding);
+  @include rangeSliderSizeModifier($cf-form-sm-font, ($cf-marg-a + 2), $cf-form-sm-height, $cf-form-sm-padding);
 }
 .cf-range-slider__md {
-  @include rangeSliderSizeModifier($form-md-font, $cf-marg-b, $form-md-height, $form-md-padding);
+  @include rangeSliderSizeModifier($cf-form-md-font, $cf-marg-b, $cf-form-md-height, $cf-form-md-padding);
 }
 .cf-range-slider__lg {
-  @include rangeSliderSizeModifier($form-lg-font, ($cf-marg-b + 2), $form-lg-height, $form-lg-padding);
+  @include rangeSliderSizeModifier($cf-form-lg-font, ($cf-marg-b + 2), $cf-form-lg-height, $cf-form-lg-padding);
 }
 
 /*

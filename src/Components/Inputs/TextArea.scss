@@ -1,4 +1,4 @@
-@import '../../Styles/modules';
+@import '../../Styles/variables';
 
 /*
   TextArea Styles
@@ -13,7 +13,7 @@
   z-index: $cf-input--field-z;
   width: 100%;
   height: 100%;
-  font-weight: 600;
+  font-weight: $cf-font-weight--medium;
   resize: none;
   transition: $cf-input--transition;
   outline: none;
@@ -47,22 +47,22 @@
 
   &::-webkit-text-area-placeholder {
     color: $cf-input--placeholder-text;
-    font-weight: 600 !important;
+    font-weight: $cf-font-weight--medium !important;
     font-style: italic;
   }
   &::-moz-placeholder {
     color: $cf-input--placeholder-text;
-    font-weight: 600 !important;
+    font-weight: $cf-font-weight--medium !important;
     font-style: italic;
   }
   &:-ms-text-area-placeholder {
     color: $cf-input--placeholder-text;
-    font-weight: 600 !important;
+    font-weight: $cf-font-weight--medium !important;
     font-style: italic;
   }
   &:-moz-placeholder {
     color: $cf-input--placeholder-text;
-    font-weight: 600 !important;
+    font-weight: $cf-font-weight--medium !important;
     font-style: italic;
   }
 
@@ -103,14 +103,14 @@
 }
 
 .cf-text-area__xs {
-  @include textAreaSizeModifier($form-xs-font, $form-xs-padding);
+  @include textAreaSizeModifier($cf-form-xs-font, $cf-form-xs-padding);
 }
 .cf-text-area__sm {
-  @include textAreaSizeModifier($form-sm-font, $form-sm-padding);
+  @include textAreaSizeModifier($cf-form-sm-font, $cf-form-sm-padding);
 }
 .cf-text-area__md {
-  @include textAreaSizeModifier($form-md-font, $form-md-padding);
+  @include textAreaSizeModifier($cf-form-md-font, $cf-form-md-padding);
 }
 .cf-text-area__lg {
-  @include textAreaSizeModifier($form-lg-font, $form-lg-padding);
+  @include textAreaSizeModifier($cf-form-lg-font, $cf-form-lg-padding);
 }

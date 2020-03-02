@@ -1,4 +1,4 @@
-@import '../../Styles/modules';
+@import '../../Styles/variables';
 
 $table-border--primary: $g6-smoke;
 $table-border--secondary: $g4-onyx;
@@ -16,12 +16,12 @@ $table-row-background: $g3-castle;
 .cf-table--cell {
   color: $g11-sidewalk;
   transition: background-color 0.25s ease, color 0.25s ease;
-  font-weight: 500;  
+  font-weight: $cf-font-weight--medium;  
 }
 
 .cf-table--header-cell {
   color: $g15-platinum;
-  font-weight: 900;  
+  font-weight: $cf-font-weight--bold;  
 }
 
 .cf-table--row {
@@ -142,16 +142,16 @@ $table-row-background: $g3-castle;
 }
 
 .cf-table__padding-xs {
-  @include tablePaddingModifier($form-xs-padding);
+  @include tablePaddingModifier($cf-form-xs-padding);
 }
 .cf-table__padding-sm {
-  @include tablePaddingModifier($form-sm-padding);
+  @include tablePaddingModifier($cf-form-sm-padding);
 }
 .cf-table__padding-md {
-  @include tablePaddingModifier($form-md-padding);
+  @include tablePaddingModifier($cf-form-md-padding);
 }
 .cf-table__padding-lg {
-  @include tablePaddingModifier($form-lg-padding);
+  @include tablePaddingModifier($cf-form-lg-padding);
 }
 
 /*
@@ -167,16 +167,16 @@ $table-row-background: $g3-castle;
 }
 
 .cf-table__font-xs {
-  @include tableFontModifier($form-xs-font);
+  @include tableFontModifier($cf-form-xs-font);
 }
 .cf-table__font-sm {
-  @include tableFontModifier($form-sm-font);
+  @include tableFontModifier($cf-form-sm-font);
 }
 .cf-table__font-md {
-  @include tableFontModifier($form-md-font);
+  @include tableFontModifier($cf-form-md-font);
 }
 .cf-table__font-lg {
-  @include tableFontModifier($form-lg-font);
+  @include tableFontModifier($cf-form-lg-font);
 }
 
 /*

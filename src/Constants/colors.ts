@@ -3,27 +3,27 @@ import {Color, InfluxColors} from '../Types'
 export const influxColors: Color[] = [
   // Row 1
   {
-    hex: '#311F94',
+    hex: '#5c10a0',
     name: 'Void',
   },
   {
-    hex: '#513CC6',
+    hex: '#8e1fc3',
     name: 'Amethyst',
   },
   {
-    hex: '#7A65F2',
+    hex: '#be2ee4',
     name: 'Star',
   },
   {
-    hex: '#9394FF',
+    hex: '#ce58eb',
     name: 'Comet',
   },
   {
-    hex: '#B1B6FF',
+    hex: '#dd84f1',
     name: 'Potassium',
   },
   {
-    hex: '#C9D0FF',
+    hex: '#ebadf8',
     name: 'Moonstone',
   },
   {
@@ -44,15 +44,15 @@ export const influxColors: Color[] = [
   },
   // Row 2
   {
-    hex: '#326BBA',
+    hex: '#0b3a8d',
     name: 'Sapphire',
   },
   {
-    hex: '#4591ED',
+    hex: '#066fc5',
     name: 'Ocean',
   },
   {
-    hex: '#22ADF6',
+    hex: '#00a3ff',
     name: 'Pool',
   },
   {
@@ -85,27 +85,27 @@ export const influxColors: Color[] = [
   },
   // Row 3
   {
-    hex: '#108174',
+    hex: '#006f49',
     name: 'Emerald',
   },
   {
-    hex: '#32B08C',
+    hex: '#009f5f',
     name: 'Viridian',
   },
   {
-    hex: '#4ED8A0',
+    hex: '#34bb55',
     name: 'Rainforest',
   },
   {
-    hex: '#7CE490',
+    hex: '#67d74e',
     name: 'Honeydew',
   },
   {
-    hex: '#A5F3B4',
+    hex: '#9bf445',
     name: 'Krypton',
   },
   {
-    hex: '#C6FFD0',
+    hex: '#c6f98e',
     name: 'Wasabi',
   },
   {

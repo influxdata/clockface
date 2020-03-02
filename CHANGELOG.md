@@ -1,8 +1,24 @@
 # Changelog
 
-#### 1.2.1 (Unreleased)
+#### 2.0.1 (Unreleased)
 
-#### 1.2.0
+## 2.0 (aka Pendulum)
+
+- [#437](https://github.com/influxdata/clockface/pull/437): Introduce new color palette
+- [#437](https://github.com/influxdata/clockface/pull/437): Remove Roboto typeface and replace with Rubik (also shrinks the binary)
+- [#437](https://github.com/influxdata/clockface/pull/437): [Breaking] Rename `PageHeader` to `PageControlBar`
+- [#437](https://github.com/influxdata/clockface/pull/437): Introduce simplified `PageHeader` component
+- [#437](https://github.com/influxdata/clockface/pull/437): [Breaking] Remove background color and padding props from `Tabs` family 
+- [#437](https://github.com/influxdata/clockface/pull/437): Add `bordered` prop to `Panel`
+- [#437](https://github.com/influxdata/clockface/pull/437): Introduce `Heading` component
+- [#437](https://github.com/influxdata/clockface/pull/437): Introduce `InfluxDataLogo` and `InfluxDBCloudLogo` components
+- [#437](https://github.com/influxdata/clockface/pull/437): Redesign `Button` component
+- [#437](https://github.com/influxdata/clockface/pull/437): Introduce `TreeNav` component family
+- [#437](https://github.com/influxdata/clockface/pull/437): Combined `variables.scss`, `mixins.scss`, and `influx-colors.scss` into a single file
+- [#437](https://github.com/influxdata/clockface/pull/437): Introduce variables to enforce available font weights in `Rubik` and replace all font weight defintions with the variables
+
+
+#### 1.2.1
 
 - [#436](https://github.com/influxdata/clockface/pull/436): variables.scss is now exported as part of the clockface bundle `@influxdata/clockface/dist/variables.scss`
 

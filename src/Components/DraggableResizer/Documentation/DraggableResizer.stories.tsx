@@ -6,6 +6,7 @@ import marked from 'marked'
 import {storiesOf} from '@storybook/react'
 import {withKnobs, select, number} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
+import {useState} from '@storybook/addons'
 
 // Types
 import {Orientation, Gradients} from '../../../Types'
@@ -18,7 +19,6 @@ import DraggableResizerReadme from './DraggableResizer.md'
 import DraggableResizerPanelReadme from './DraggableResizerPanel.md'
 import DraggableResizerExampleAReadme from './DraggableResizerExampleA.md'
 import DraggableResizerExampleBReadme from './DraggableResizerExampleB.md'
-import {useState} from '@storybook/addons'
 
 const draggableResizerExamplesStories = storiesOf(
   'Layout|Draggable Resizer/Examples',

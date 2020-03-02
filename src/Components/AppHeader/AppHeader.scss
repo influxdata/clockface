@@ -1,4 +1,4 @@
-@import '../../Styles/modules';
+@import '../../Styles/variables';
 
 /*
    App Header
@@ -37,29 +37,29 @@
 
 .cf-app-header__xs {
   @include appHeaderSizeModifier(
-    $form-xs-font,
-    $form-xs-padding,
-    $form-xs-height
+    $cf-form-xs-font,
+    $cf-form-xs-padding,
+    $cf-form-xs-height
   );
 }
 .cf-app-header__sm {
   @include appHeaderSizeModifier(
-    $form-sm-font,
-    $form-sm-padding,
-    $form-sm-height
+    $cf-form-sm-font,
+    $cf-form-sm-padding,
+    $cf-form-sm-height
   );
 }
 .cf-app-header__md {
   @include appHeaderSizeModifier(
-    $form-md-font,
-    $form-md-padding,
-    $form-md-height
+    $cf-form-md-font,
+    $cf-form-md-padding,
+    $cf-form-md-height
   );
 }
 .cf-app-header__lg {
   @include appHeaderSizeModifier(
-    $form-lg-font,
-    $form-lg-padding,
-    $form-lg-height
+    $cf-form-lg-font,
+    $cf-form-lg-padding,
+    $cf-form-lg-height
   );
 }

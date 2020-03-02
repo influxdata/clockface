@@ -6,7 +6,7 @@ import classnames from 'classnames'
 import {StandardFunctionProps, ComponentSize} from '../../Types'
 
 export interface PageHeaderProps extends StandardFunctionProps {
-  /** Allows the page header to fill the width of the screen */
+  /** Allows the control bar to fill the width of the screen */
   fullWidth: boolean
   /** Controls the gutters (left and right margins) */
   gutters?: ComponentSize

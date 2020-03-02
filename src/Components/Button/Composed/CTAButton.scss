@@ -1,4 +1,4 @@
-@import '../../../Styles/modules';
+@import '../../../Styles/variables';
 
 /*
   CTA (Call to Action) Button Styles
@@ -30,7 +30,7 @@ $cf-cta-button--icon: 1.7em;
   > .cf-button--label {
     font-size: $cf-cta-button--font;
     margin: 0;
-    font-weight: 900;
+    font-weight: $cf-font-weight--medium;
     letter-spacing: -0.02em;
   }
 }

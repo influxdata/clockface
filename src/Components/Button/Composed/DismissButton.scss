@@ -1,4 +1,4 @@
-@import '../../../Styles/modules';
+@import '../../../Styles/variables';
 
 /*
   Dismiss Button
@@ -6,31 +6,34 @@
 */
 
 button.cf-dismiss-button {
-  border-radius: 50%;
+  &,
+  &:after {
+    border-radius: 50%;
+  }
+
   position: absolute;
   top: 0;
   right: 0;
   transform: translate(40%, -40%);
+}
 
-  & > .cf-icon {
-    display: none;
-  }
-
+.cf-dismiss-button--x {
+  transition: opacity 0.25s ease;
+  opacity: 0.8;
+  
   &:before,
   &:after {
     content: '';
-    display: block;
     position: absolute;
-    width: $form-xs-height - $cf-marg-b - $cf-border;
+    display: block;
+    width: $cf-form-xs-height - $cf-marg-b - $cf-border;
     height: $cf-border * 1.5;
     background-color: $g20-white;
     border-radius: $cf-border * 1.5 / 2;
     top: 50%;
     left: 50%;
-    transition: opacity 0.25s ease;
-    opacity: 0.8;
   }
-
+  
   &:before {
     transform: translate(-50%, -50%) rotate(45deg);
   }
@@ -39,8 +42,8 @@ button.cf-dismiss-button {
     transform: translate(-50%, -50%) rotate(-45deg);
   }
 
-  &:hover:before,
-  &:hover:after {
+  button.cf-dismiss-button:hover &,
+  button.cf-dismiss-button:focus & {
     opacity: 1;
   }
 }

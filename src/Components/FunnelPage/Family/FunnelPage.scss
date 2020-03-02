@@ -1,4 +1,4 @@
-@import '../../../Styles/modules';
+@import '../../../Styles/variables';
 
 /*
   Funnel Page
@@ -43,28 +43,28 @@ $funnel-page--gutter: $cf-marg-d;
 .cf-funnel-page--content {
   margin: 0 auto;
   width: 100%;
-  max-width: $page--funnel-max-width;
+  max-width: $cf-page--funnel-max-width;
   text-align: center;
   padding: $funnel-page--tiny-gutter;
   font-size: $funnel-page--base-font;
-  color: $c-moonstone;
+  color: $c-neutrino;
 
   .cf-funnel-page--title {
-    font-weight: 400;
+    font-weight: $cf-font-weight--regular;
     color: $g20-white;
     font-size: 1.75em;
     margin-bottom: 0em;
   }
 
   .cf-funnel-page--subtitle {
-    font-weight: 500;
+    font-weight: $cf-font-weight--medium;
     font-size: 1.125em;
     margin: 1.25em 0;
   }
 
   .cf-funnel-page--panel-title {
     font-size: 1.125em;
-    font-weight: 500;
+    font-weight: $cf-font-weight--medium;
   }
 
   .cf-panel {
@@ -77,11 +77,11 @@ $funnel-page--gutter: $cf-marg-d;
 
   strong {
     color: $g20-white;
-    font-weight: 900;
+    font-weight: $cf-font-weight--medium;
   }
 }
 
-@media screen and (min-width: $grid--breakpoint-md) {
+@media screen and (min-width: $cf-grid--breakpoint-md) {
   .cf-funnel-page--content {
     font-size: $funnel-page--base-font--large;
     padding: $funnel-page--gutter;
@@ -130,10 +130,10 @@ $funnel-page--gutter: $cf-marg-d;
 .cf-funnel-page--footer-container {
   width: 100%;
   padding: 0 $funnel-page--tiny-gutter;
-  max-width: $page--funnel-max-width;
+  max-width: $cf-page--funnel-max-width;
 }
 
-@media screen and (min-width: $grid--breakpoint-md) {
+@media screen and (min-width: $cf-grid--breakpoint-md) {
   .cf-funnel-page--footer-container {
     padding: 0 $funnel-page--gutter;
   }

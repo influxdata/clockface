@@ -1,4 +1,4 @@
-@import '../../Styles/modules';
+@import '../../Styles/variables';
 
 /*
   Form Styles
@@ -31,21 +31,21 @@
   text-align: left;
   display: inline-block;
   font-size: 12px;
-  font-weight: 600;
-  padding: 0 ($form-sm-padding + $cf-border);
+  font-weight: $cf-font-weight--medium;
+  padding: 0 ($cf-form-sm-padding + $cf-border);
   @extend %no-user-select;
 }
 
 .cf-form--label {
   width: 100%;
-  color: $g11-sidewalk;
+  color: $cf-label--default;
   margin: 0 0 $cf-marg-a 0;
 }
 
 .cf-form--help-text {
   font-style: italic;
   line-height: 16px;
-  color: $g11-sidewalk;
+  color: $cf-label--default;
   margin: $cf-marg-a 0 0 0;
 }
 
@@ -67,12 +67,12 @@
 */
 .cf-form--divider {
   width: 100%;
-  height: $form-sm-height - $cf-marg-b;
+  height: $cf-form-sm-height - $cf-marg-b;
 
   &-line {
     height: $cf-border;
-    background-color: $g5-pepper;
-    margin: (($form-sm-height - $cf-marg-b) / 2) 0;
+    background-color: $cf-card--border;
+    margin: (($cf-form-sm-height - $cf-marg-b) / 2) 0;
     border-radius: $cf-border / 2;
   }
 }
@@ -85,7 +85,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-top: $form-sm-height - $cf-marg-b;
+  margin-top: $cf-form-sm-height - $cf-marg-b;
   margin-bottom: 0;
 
   > * {
@@ -100,7 +100,7 @@
 .cf-form--box {
   width: 100%;
   border-radius: $cf-radius;
-  background-color: $g4-onyx;
-  padding: $cf-marg-b 11px;
-  min-height: $form-sm-height;
+  background-color: $cf-card-background--default;
+  padding: $cf-marg-b ($cf-marg-b + $cf-marg-a);
+  min-height: $cf-form-sm-height;
 }

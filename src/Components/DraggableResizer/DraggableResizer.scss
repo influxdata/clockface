@@ -1,4 +1,4 @@
-@import '../../Styles/modules';
+@import '../../Styles/variables';
 
 /*
   Draggable Resizer
@@ -34,7 +34,7 @@
 
 .cf-draggable-resizer--dragging {
   position: relative;
-  z-index: $z--draggable-resizer-mask;
+  z-index: $cf-z--draggable-resizer-mask;
   user-select: none;
 
   &:after {

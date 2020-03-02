@@ -1,4 +1,4 @@
-@import '../../Styles/modules';
+@import '../../Styles/variables';
 
 /*
    Page Layout
@@ -13,7 +13,7 @@
   align-items: stretch;
 }
 
-@media screen and (min-width: $nav-menu--breakpoint) {
+@media screen and (min-width: $cf-nav-menu--breakpoint) {
   .cf-page {
     width: auto;
     height: 100%;
@@ -28,16 +28,19 @@
 
 .cf-page-header--fluid,
 .cf-page-header--fixed,
+.cf-page-control-bar--fluid,
+.cf-page-control-bar--fixed,
 .cf-page-contents__fluid,
 .cf-page-contents__fixed {
   width: 100%;
-  padding: 0 $page--gutter-xs;
+  padding: 0 $cf-page--gutter-xs;
 }
 
 .cf-page-header--fixed,
+.cf-page-control-bar--fixed,
 .cf-page-contents__fixed {
   margin: 0 auto;
-  max-width: $page--max-width;
+  max-width: $cf-page--max-width;
 }
 
 /*
@@ -47,56 +50,78 @@
 
 .cf-page-header {
   width: 100%;
-  flex: 0 0 $page--header-size;
+  height: $cf-page--header-size-sm;
+  flex: 0 0 $cf-page--header-size-sm;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .cf-page-header--fluid,
 .cf-page-header--fixed {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/*
+   Page Control Bar
+   -----------------------------------------------------------------------------
+*/
+
+.cf-page-control-bar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+@media screen and (min-width: $cf-nav-menu--breakpoint) {
+  .cf-page-control-bar {
+    flex: 0 0 $cf-page--control-bar-size;
+  }
+}
+
+.cf-page-control-bar--fluid,
+.cf-page-control-bar--fixed {
+  display: flex;
   flex-direction: column;
   align-items: stretch;
 }
 
-.cf-page-header--left,
-.cf-page-header--right,
-.cf-page-header--center {
+.cf-page-control-bar--left,
+.cf-page-control-bar--right,
+.cf-page-control-bar--center {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   text-align: center;
   justify-content: center;
-  flex: 0 0 $nav-menu--size;
+  flex: 0 0 ($cf-nav-menu--size - (($cf-nav-menu--size - $cf-form-sm-height) / 2));
 
-  &.cf-page-header--no-children {
+  &.cf-page-control-bar__no-children {
     display: none;
   }
 }
 
-.cf-page-header--center:not(.cf-page-header--no-children) + .cf-page-header--right {
-  flex: 0 0 ($nav-menu--size - (($nav-menu--size - $form-sm-height) / 2));
+.cf-page-control-bar--center:not(.cf-page-control-bar__no-children) + .cf-page-control-bar--right {
+  flex: 0 0 ($cf-nav-menu--size - (($cf-nav-menu--size - $cf-form-sm-height) / 2));
   align-items: flex-start;
 }
 
-.cf-page-header--left {
-  padding: 0 ($nav-menu--size - $page--gutter-xs);
+.cf-page-control-bar--left {
+  padding: 0 ($cf-nav-menu--size - $cf-page--gutter-xs);
 }
 
-@media screen and (min-width: $nav-menu--breakpoint) {
-  .cf-page-header {
-    align-items: center;
-  }
-
-  .cf-page-header--fluid,
-  .cf-page-header--fixed {
+@media screen and (min-width: $cf-nav-menu--breakpoint) {
+  .cf-page-control-bar--fluid,
+  .cf-page-control-bar--fixed {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     flex-wrap: nowrap;
   }
 
-  .cf-page-header--left {
+  .cf-page-control-bar--left {
     padding: 0;
     justify-content: flex-start;
     text-align: left;
@@ -106,12 +131,12 @@
     }
   }
 
-  .cf-page-header--center {
+  .cf-page-control-bar--center {
     flex: 0 0 0;
   }
 
-  .cf-page-header--right,
-  .cf-page-header--center:not(.cf-page-header--no-children) + .cf-page-header--right {
+  .cf-page-control-bar--right,
+  .cf-page-control-bar--center:not(.cf-page-control-bar__no-children) + .cf-page-control-bar--right {
     justify-content: flex-end;
     text-align: right;
     flex: 1 0 30%;
@@ -120,12 +145,23 @@
     }
   }
 
-  .cf-page-header--left,
-  .cf-page-header--right,
-  .cf-page-header--center {
-    &.cf-page-header--no-children {
+  .cf-page-control-bar--left,
+  .cf-page-control-bar--right,
+  .cf-page-control-bar--center {
+    &.cf-page-control-bar__no-children {
       display: flex;
     }
+  }
+
+  .cf-page-header {
+    height: $cf-page--header-size;
+    flex: 0 0 $cf-page--header-size;
+  }
+
+  .cf-page-header--fluid,
+  .cf-page-header--fixed {
+    justify-content: space-between;
+    text-align: left;
   }
 }
 
@@ -134,29 +170,22 @@
   ------------------------------------------------------------------------------
 */
 
-.cf-page--title,
-.cf-page--sub-title {
+.cf-heading.cf-page--title {
   letter-spacing: 0;
   text-transform: none;
   font-style: normal;
   cursor: default;
   display: inline-block;
-  margin: 0;
-  @include no-user-select();
+  color: $cf-text-default;
+  font-size: $cf-page--title-size-sm;
+  line-height: $cf-page--title-size-sm;
 }
 
-.cf-page--title {
-  color: $g15-platinum;
-  font-size: $page--title-size;
-  line-height: $page--title-size;
-  font-weight: $page--title-weight;
-}
-
-.cf-page--sub-title {
-  color: $g9-mountain;
-  font-size: $page--sub-title-size;
-  line-height: $page--sub-title-size;
-  font-weight: $page--sub-title-weight;
+@media screen and (min-width: $cf-nav-menu--breakpoint) {
+  .cf-heading.cf-page--title {
+    font-size: $cf-page--title-size;
+    line-height: $cf-page--title-size;
+  }
 }
 
 /*
@@ -171,7 +200,7 @@
   overflow: hidden;
 
   & > .cf-dapper-scrollbars--track-y {
-    background-color: $g3-castle !important;
+    background-color: $g4-onyx !important;
   }
 }
 
@@ -190,7 +219,7 @@
 
 .cf-page-contents.cf-dapper-scrollbars .cf-page-contents__fluid,
 .cf-page-contents.cf-dapper-scrollbars .cf-page-contents__fixed {
-  padding-bottom: $page--gutter-xs;
+  padding-bottom: $cf-page--gutter-xs;
 }
 
 /*
@@ -214,6 +243,8 @@
 @mixin pageGutterModifier($gutter) {
   .cf-page-header--fluid,
   .cf-page-header--fixed,
+  .cf-page-control-bar--fluid,
+  .cf-page-control-bar--fixed,
   .cf-page-contents__fluid,
   .cf-page-contents__fixed {
     padding: 0 $gutter;
@@ -225,17 +256,17 @@
   }
 }
 
-@media screen and (min-width: $nav-menu--breakpoint) {
+@media screen and (min-width: $cf-nav-menu--breakpoint) {
   .cf-page__gutter-xs {
-    @include pageGutterModifier($page--gutter-xs);
+    @include pageGutterModifier($cf-page--gutter-xs);
   }
   .cf-page__gutter-sm {
-    @include pageGutterModifier($page--gutter-sm);
+    @include pageGutterModifier($cf-page--gutter-sm);
   }
   .cf-page__gutter-md {
-    @include pageGutterModifier($page--gutter-md);
+    @include pageGutterModifier($cf-page--gutter-md);
   }
   .cf-page__gutter-lg {
-    @include pageGutterModifier($page--gutter-lg);
+    @include pageGutterModifier($cf-page--gutter-lg);
   }
 }

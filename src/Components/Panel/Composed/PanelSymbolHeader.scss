@@ -1,4 +1,4 @@
-@import '../../../Styles/modules';
+@import '../../../Styles/variables';
 
 /*
    Panel Symbol Header
@@ -83,14 +83,14 @@ $panel-symbol-header-gutter: $cf-marg-d + $cf-marg-b;
 }
 
 .cf-panel--symbol-header__xs {
-  @include panelSymbolHeaderSizeModifier($form-xs-height);
+  @include panelSymbolHeaderSizeModifier($cf-form-xs-height);
 }
 .cf-panel--symbol-header__sm {
-  @include panelSymbolHeaderSizeModifier($form-sm-height);
+  @include panelSymbolHeaderSizeModifier($cf-form-sm-height);
 }
 .cf-panel--symbol-header__md {
-  @include panelSymbolHeaderSizeModifier($form-md-height);
+  @include panelSymbolHeaderSizeModifier($cf-form-md-height);
 }
 .cf-panel--symbol-header__lg {
-  @include panelSymbolHeaderSizeModifier($form-lg-height);
+  @include panelSymbolHeaderSizeModifier($cf-form-lg-height);
 }

@@ -1,29 +1,26 @@
-@import "../../../Styles/modules.scss";
+@import "../../../Styles/variables.scss";
 
 /*
   Editable Name for Resource Cards
   ------------------------------------------------------------------------------
 */
 
-$resource-name-font-size: 17px;
-$resource-name-font-weight: 600;
-
 .cf-resource-name--text,
 .cf-resource-name--text__link,
 .cf-input.cf-resource-editable-name--input > input {
-  font-size: $resource-name-font-size;
-  font-weight: $resource-name-font-weight;
+  font-size: $cf-card--name-font-size;
+  font-weight: $cf-card--name-font-weight;
   font-family: $cf-text-font;
 }
 
 .cf-resource-editable-name > a {
   display: inline-block;
   white-space: nowrap;
-  line-height: $form-xs-height;
+  line-height: $cf-form-xs-height;
 }
 
 .cf-resource-editable-name {
-  height: $form-xs-height;
+  height: $cf-form-xs-height;
   position: relative;
   display: inline-flex;
   flex-wrap: nowrap;
@@ -32,21 +29,21 @@ $resource-name-font-weight: 600;
 /* Ensure placeholder text matches font weight of title */
 .cf-input.cf-resource-editable-name--input > input {
   &::-webkit-input-placeholder {
-    font-weight: $resource-name-font-weight !important;
+    font-weight: $cf-card--name-font-weight !important;
   }
   &::-moz-placeholder {
-    font-weight: $resource-name-font-weight !important;
+    font-weight: $cf-card--name-font-weight !important;
   }
   &:-ms-input-placeholder {
-    font-weight: $resource-name-font-weight !important;
+    font-weight: $cf-card--name-font-weight !important;
   }
   &:-moz-placeholder {
-    font-weight: $resource-name-font-weight !important;
+    font-weight: $cf-card--name-font-weight !important;
   }
 }
 
 .cf-resource-editable-name--toggle {
-  font-size: $resource-name-font-size * 0.75;
+  font-size: $cf-card--name-font-weight * 0.75;
   transform: translateY(-10%);
   padding: $cf-marg-a;
   display: inline-block;

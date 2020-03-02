@@ -1,4 +1,4 @@
-@import '../../Styles/modules';
+@import '../../Styles/variables';
 
 /*
   Text Block
@@ -6,7 +6,7 @@
 */
 
 .cf-text-block {
-  font-weight: 600;
+  font-weight: $cf-font-weight--medium;
   border-radius: $cf-radius;
   white-space: nowrap;
   user-select: none;
@@ -33,14 +33,14 @@
 }
 
 .cf-text-block__xs {
-  @include textBlockSizeModifier($form-xs-font, $form-xs-height, $form-xs-padding);
+  @include textBlockSizeModifier($cf-form-xs-font, $cf-form-xs-height, $cf-form-xs-padding);
 }
 .cf-text-block__sm {
-  @include textBlockSizeModifier($form-sm-font, $form-sm-height, $form-sm-padding);
+  @include textBlockSizeModifier($cf-form-sm-font, $cf-form-sm-height, $cf-form-sm-padding);
 }
 .cf-text-block__md {
-  @include textBlockSizeModifier($form-md-font, $form-md-height, $form-md-padding);
+  @include textBlockSizeModifier($cf-form-md-font, $cf-form-md-height, $cf-form-md-padding);
 }
 .cf-text-block__lg {
-  @include textBlockSizeModifier($form-lg-font, $form-lg-height, $form-lg-padding);
+  @include textBlockSizeModifier($cf-form-lg-font, $cf-form-lg-height, $cf-form-lg-padding);
 }

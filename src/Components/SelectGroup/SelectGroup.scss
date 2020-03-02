@@ -1,4 +1,4 @@
-@import "../../Styles/modules.scss";
+@import "../../Styles/variables.scss";
 
 /*
   SelectGroup Component
@@ -28,7 +28,7 @@ $select-group--padding: $cf-marg-a;
   @include no-user-select();
   border: 0;
   font-family: $cf-text-font;
-  font-weight: 600;
+  font-weight: $cf-font-weight--medium;
   background-color: transparent;
   transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
   color: $g11-sidewalk;
@@ -100,16 +100,16 @@ $select-group--padding: $cf-marg-a;
 }
 
 .cf-select-group__xs {
-  @include radioButtonSizeModifier($form-xs-font, $form-xs-padding, $form-xs-height);
+  @include radioButtonSizeModifier($cf-form-xs-font, $cf-form-xs-padding, $cf-form-xs-height);
 }
 .cf-select-group__sm {
-  @include radioButtonSizeModifier($form-sm-font, $form-sm-padding, $form-sm-height);
+  @include radioButtonSizeModifier($cf-form-sm-font, $cf-form-sm-padding, $cf-form-sm-height);
 }
 .cf-select-group__md {
-  @include radioButtonSizeModifier($form-md-font, $form-md-padding, $form-md-height);
+  @include radioButtonSizeModifier($cf-form-md-font, $cf-form-md-padding, $cf-form-md-height);
 }
 .cf-select-group__lg {
-  @include radioButtonSizeModifier($form-lg-font, $form-lg-padding, $form-lg-height);
+  @include radioButtonSizeModifier($cf-form-lg-font, $cf-form-lg-padding, $cf-form-lg-height);
 }
 
 

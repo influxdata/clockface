@@ -1,4 +1,4 @@
-@import '../../Styles/modules';
+@import '../../Styles/variables';
 
 /*
   Alert
@@ -11,7 +11,7 @@ $alert--icon-padding: $cf-marg-d + $cf-marg-a;
   width: 100%;
   border-radius: $cf-radius;
   padding: $cf-border;
-  font-size: $form-md-font;
+  font-size: $cf-form-md-font;
   user-select: none;
 
   p,
@@ -24,9 +24,9 @@ $alert--icon-padding: $cf-marg-d + $cf-marg-a;
   ol,
   ul,
   li {
-    font-weight: 600;
+    font-weight: $cf-font-weight--medium;
     strong {
-      font-weight: 900;
+      font-weight: $cf-font-weight--bold;
     }
 
     &:first-of-type {
@@ -39,7 +39,7 @@ $alert--icon-padding: $cf-marg-d + $cf-marg-a;
   }
 
   p {
-    font-size: $form-md-font;
+    font-size: $cf-form-md-font;
   }
 }
 

@@ -1,4 +1,4 @@
-@import '../../../Styles/modules';
+@import '../../../Styles/variables';
 
 /*
   Question Mark Tooltip Styles
@@ -9,7 +9,7 @@
   border-radius: 50%;
   background-color: $g8-storm;
   color: $g1-raven;
-  font-weight: 900;
+  font-weight: $cf-font-weight--black;
   display: inline-flex;
   justify-content: center;
   position: relative;

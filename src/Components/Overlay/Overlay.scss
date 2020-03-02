@@ -1,20 +1,12 @@
-@import '../../Styles/modules';
+@import '../../Styles/variables';
 
 /*
    Overlays
    -----------------------------------------------------------------------------
 */
 
-$overlay--gutter: $cf-marg-c + $cf-marg-b;
-$overlay--header-height: $page--header-size;
-$overlay--title-size: $page--title-size;
-$overlay--title-weight: $page--title-weight;
-$overlay--container-padding: $cf-marg-c + $cf-marg-d;
-$overlay--z: 20;
-$overlay--mask-z: 10;
-
 .cf-overlay-portal {
-  @include portal-style($z--overlays);
+  @include portal-style($cf-z--overlays);
 }
 
 // Mixins for shared styles
@@ -32,7 +24,7 @@ $overlay--mask-z: 10;
 
 .cf-overlay--mask {
   @extend %overlay-styles;
-  z-index: $overlay--mask-z;
+  z-index: $cf-overlay--mask-z;
 }
 
 .cf-overlay--children {
@@ -42,51 +34,52 @@ $overlay--mask-z: 10;
 
 .cf-overlay {
   @extend %overlay-styles;
-  z-index: $overlay--z;
+  z-index: $cf-overlay--z;
 }
 
 .cf-overlay--container {
   @extend %overlay-children;
-  background-color: $g2-kevlar;
+  background-color: $g1-raven;
   border-radius: $cf-radius;
 
   &__xs {
-    margin: $page--gutter-xs;
+    margin: $cf-page--gutter-xs;
   }
 
   &__sm {
-    margin: $page--gutter-sm;
+    margin: $cf-page--gutter-sm;
   }
 
   &__md {
-    margin: $page--gutter-md;
+    margin: $cf-page--gutter-md;
   }
 
   &__lg {
-    margin: $page--gutter-lg;
+    margin: $cf-page--gutter-lg;
   }
 }
 
 .cf-overlay--header {
   @extend %overlay-children;
-  height: $overlay--header-height;
+  height: $cf-overlay--header-height;
   display: flex;
-  padding: 0 $overlay--gutter;
+  padding: 0 $cf-overlay--gutter;
   justify-content: space-between;
   align-items: center;
   @include no-user-select();
 }
 
 .cf-overlay--title {
-  font-size: $overlay--title-size;
-  font-weight: $overlay--title-weight;
-  color: $g17-whisper;
+  font-family: $cf-overlay--title-font;
+  font-size: $cf-overlay--title-size;
+  font-weight: $cf-overlay--title-weight;
+  color: $cf-overlay--title-color;
   white-space: nowrap;
 }
 
 .cf-overlay--dismiss {
-  width: ($overlay--header-height - 20px);
-  height: ($overlay--header-height - 20px);
+  width: ($cf-overlay--header-height - 20px);
+  height: ($cf-overlay--header-height - 20px);
   position: relative;
   background-color: transparent;
   border: 0;
@@ -102,7 +95,7 @@ $overlay--mask-z: 10;
     width: 22px;
     height: 2px;
     border-radius: 1px;
-    background-color: $g11-sidewalk;
+    background-color: $g9-mountain;
     transition: background-color 0.25s ease;
   }
   &:before {
@@ -117,23 +110,20 @@ $overlay--mask-z: 10;
   }
   &:hover:before,
   &:hover:after {
-    background-color: $g18-cloud;
+    background-color: $c-laser;
   }
 }
 
 .cf-overlay--body {
   @extend %overlay-children;
-  padding: $overlay--gutter;
+  padding: $cf-overlay--gutter;
   padding-top: 0;
-  color: $g13-mist;
-
-  p {
-    font-weight: 500;
-  }
+  color: $cf-input-text--default;
+  font-size: 0.9em;
 }
 
 .cf-overlay--footer {
   @extend %overlay-children;
-  padding: $overlay--gutter;
+  padding: $cf-overlay--gutter;
   padding-top: 0;
 }

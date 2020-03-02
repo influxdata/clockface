@@ -1,4 +1,4 @@
-@import '../src/Styles/modules';
+@import '../src/Styles/variables';
 @import '../src/Styles/shared';
 
 html,
@@ -19,7 +19,7 @@ body.sb-show-main {
   }
 
   .props-table--prop {
-    font-weight: 700;
+    font-weight: $cf-font-weight--bold;
   }
 
   th {
@@ -40,9 +40,9 @@ body.sb-show-main {
   align-items: center;
   align-content: center;
   color: $g2-kevlar;
-  font-weight: 700;
+  font-weight: $cf-font-weight--bold;
   font-size: 12px;
-  min-height: $form-sm-height;
+  min-height: $cf-form-sm-height;
   padding: $cf-marg-a;
   line-height: 16px;
   user-select: none;
@@ -63,7 +63,7 @@ body.sb-show-main {
   }
 
   &.mockInput {
-    height: $form-sm-height;
+    height: $cf-form-sm-height;
     width: 100%;
   }
 
@@ -159,7 +159,7 @@ body.sb-show-main {
   align-items: stretch;
 }
 
-@media screen and (min-width: $nav-menu--breakpoint) {
+@media screen and (min-width: $cf-nav-menu--breakpoint) {
   .appWrapper {
     flex-direction: row;
   }
@@ -179,7 +179,7 @@ body.sb-show-main {
 
 .mockCard {
   border-radius: $cf-radius;
-  font-weight: 700;
+  font-weight: $cf-font-weight--bold;
   font-size: 12px;
   position: relative;
   width: 100%;
@@ -257,7 +257,7 @@ body.sb-show-main {
   }
 
   p {
-    font-weight: 600;
+    font-weight: $cf-font-weight--medium;
     margin: 0;
   }
 }
@@ -295,12 +295,12 @@ body.sb-show-main {
 
 .storybook-readme-story div.markdown-body {
   font-size: $docs-text-base;
-  font-family: 'Roboto', Helvetica, Arial, Tahoma, Verdana, sans-serif;
+  font-family: 'Rubik', Helvetica, Arial, Tahoma, Verdana, sans-serif;
 
   a:link,
   a:visited,
   a:active {
-    font-weight: 900;
+    font-weight: $cf-font-weight--black;
     text-decoration: underline;
     transition: color 0.25s ease, text-shadow 0.25s ease;
   }
@@ -340,59 +340,59 @@ body.sb-show-main {
   h1 {
     line-height: 1.25em;
     font-size: ceil($docs-text-base-5 * $docs-text-scale);
-    font-weight: 300;
+    font-weight: $cf-font-weight--light;
     letter-spacing: 0.01em;
   }
   h2 {
     line-height: 1.25em;
     font-size: $docs-text-base-4;
-    font-weight: 300;
+    font-weight: $cf-font-weight--light;
   }
   h3 {
     line-height: 1.25em;
     font-size: $docs-text-base-3;
-    font-weight: 500;
+    font-weight: $cf-font-weight--medium;
     small {
-      font-weight: 500;
+      font-weight: $cf-font-weight--medium;
     }
   }
   h4 {
     line-height: 1.25em;
     font-size: $docs-text-base-2;
-    font-weight: 400;
+    font-weight: $cf-font-weight--regular;
     small {
-      font-weight: 400;
+      font-weight: $cf-font-weight--regular;
     }
   }
   h5 {
     line-height: 1.25em;
     font-size: $docs-text-base-1;
-    font-weight: 600;
+    font-weight: $cf-font-weight--medium;
     small {
-      font-weight: 500;
+      font-weight: $cf-font-weight--medium;
     }
   }
   h6 {
     line-height: 1.25em;
     font-size: $docs-text-base;
-    font-weight: 900;
+    font-weight: $cf-font-weight--black;
     small {
-      font-weight: 500;
+      font-weight: $cf-font-weight--medium;
     }
   }
   p {
     color: $g11-sidewalk;
     font-size: $docs-text-base;
     line-height: 1.55em;
-    font-weight: 500;
+    font-weight: $cf-font-weight--medium;
 
     b,
     strong {
-      font-weight: 900;
+      font-weight: $cf-font-weight--black;
     }
 
     small {
-      font-weight: 500;
+      font-weight: $cf-font-weight--medium;
     }
   }
 
@@ -403,7 +403,7 @@ body.sb-show-main {
 
   li {
     line-height: 1.55em;
-    font-weight: 500;
+    font-weight: $cf-font-weight--medium;
   }
 
   hr {
@@ -414,9 +414,10 @@ body.sb-show-main {
   }
 
   code {
-    font-family: 'RobotoMono', monospace;
+    font-family: 'IBMPlexMono', monospace;
+    font-style: normal;
     text-shadow: none;
-    font-weight: 500;
+    font-weight: $cf-font-weight--medium;
     color: $c-potassium;
     background-color: $g1-raven;
     font-size: inherit;
@@ -526,7 +527,7 @@ body.sb-show-main {
       line-height: 18px;
       padding: 0 6px;
       white-space: nowrap;
-      font-weight: 600;
+      font-weight: $cf-font-weight--medium;
       text-shadow: none;
       background-color: $g0-obsidian;
       border-bottom-left-radius: 6px;
@@ -654,7 +655,7 @@ $color-grid-card-width: 154px;
     opacity: 0.8;
     margin: 0 !important;
     font-size: 12px !important;
-    font-weight: 700;
+    font-weight: $cf-font-weight--bold;
 
     &.colors-grid--hex {
       text-transform: uppercase;
@@ -785,7 +786,7 @@ $color-grid-card-width: 154px;
   button {
     margin-bottom: 4px;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: $cf-font-weight--bold;
     height: 24px;
     line-height: 24px;
     padding: 0 8px;

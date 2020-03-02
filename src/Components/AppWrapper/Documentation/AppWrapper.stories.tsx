@@ -1,11 +1,13 @@
 // Libraries
 import React, {createRef} from 'react'
 import marked from 'marked'
+import {startsWith} from 'lodash'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, boolean, text, number, select} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
+import {useState} from '@storybook/addons'
 
 // Components
 import {AppWrapper, AppWrapperRef} from '../AppWrapper'
@@ -16,6 +18,8 @@ import {Button} from '../../Button/Composed/Button'
 import {PopNav} from '../../PopNav'
 import {Page} from '../../Page/index'
 import {Icon} from '../../Icon/Base/Icon'
+import {TreeNav} from '../../TreeNav'
+import {InfluxDBCloudLogo} from '../../Logo'
 
 // Types
 import {
@@ -186,7 +190,7 @@ layoutStories.add(
               <NavMenu.Item
                 titleLink={(className: string) => (
                   <a className={className} href="#">
-                    Data Explorer
+                    Queries
                   </a>
                 )}
                 iconLink={(className: string) => (
@@ -225,7 +229,7 @@ layoutStories.add(
               <NavMenu.Item
                 titleLink={(className: string) => (
                   <a className={className} href="#">
-                    Monitoring & Alerting
+                    Monitoring & Alerts
                   </a>
                 )}
                 iconLink={(className: string) => (
@@ -405,22 +409,36 @@ layoutStories.add(
                   ]
                 }
               >
-                <Page.HeaderLeft>
-                  <Page.Title title={text('PageTitle title', 'Page Title')} />
-                </Page.HeaderLeft>
-                <Page.HeaderCenter>
-                  {boolean('Button in PageHeaderCenter', true) ? (
+                <Page.Title
+                  title={text('Page Title', 'Page head, feet, and toes')}
+                />
+              </Page.Header>
+              <Page.ControlBar
+                fullWidth={boolean('fullWidth', false)}
+                gutters={
+                  ComponentSize[
+                    select('gutters', mapEnumKeys(ComponentSize), 'Small')
+                  ]
+                }
+              >
+                <Page.ControlBarLeft>
+                  {boolean('Button in PageControlBarLeft', true) ? (
+                    <div className="mockComponent mockButton">Left Button</div>
+                  ) : null}
+                </Page.ControlBarLeft>
+                <Page.ControlBarCenter>
+                  {boolean('Button in PageControlBarCenter', true) ? (
                     <div className="mockComponent mockButton">
                       Center Button
                     </div>
                   ) : null}
-                </Page.HeaderCenter>
-                <Page.HeaderRight>
-                  {boolean('Button in PageHeaderRight', true) ? (
+                </Page.ControlBarCenter>
+                <Page.ControlBarRight>
+                  {boolean('Button in PageControlBarRight', true) ? (
                     <div className="mockComponent mockButton">Right Button</div>
                   ) : null}
-                </Page.HeaderRight>
-              </Page.Header>
+                </Page.ControlBarRight>
+              </Page.ControlBar>
               <Page.Contents
                 fullWidth={boolean('fullWidth', false)}
                 scrollable={boolean('scrollable', true)}
@@ -444,6 +462,293 @@ layoutStories.add(
           </AppWrapper>
         </div>
         <div className="story--test-buttons relative">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(AppWrapperReadme),
+    },
+  }
+)
+
+layoutStories.add(
+  'AppWrapper + TreeNav',
+  () => {
+    const [navState, setNavState] = useState<boolean>(true)
+    const [navActiveItem, setNavActiveItem] = useState<string>('boards')
+    const appWrapperRef = createRef<AppWrapperRef>()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(appWrapperRef.current)
+      /* eslint-enable */
+    }
+
+    const handleToggleNavState = (): void => {
+      const newState = !navState
+
+      setNavState(newState)
+    }
+
+    const handleNavClick = (id: string): void => {
+      setNavActiveItem(id)
+    }
+
+    const isItemActive = (id: string): boolean => {
+      if (id === navActiveItem || startsWith(navActiveItem, id)) {
+        return true
+      }
+
+      return false
+    }
+
+    const navItems = [
+      {id: 'home', label: 'Getting Started'},
+      {id: 'user', label: 'JohnDoe (OrgName)'},
+      {id: 'data', label: 'Data'},
+      {id: 'data-buckets', label: 'Buckets'},
+      {id: 'data-sources', label: 'Sources'},
+      {id: 'queries', label: 'Queries'},
+      {id: 'boards', label: 'Boards'},
+      {id: 'team', label: 'Team'},
+      {id: 'tasks', label: 'Tasks'},
+      {id: 'alerts', label: 'Alerts'},
+      {id: 'settings', label: 'Settings'},
+      {id: 'settings-members', label: 'Members'},
+      {id: 'settings-variables', label: 'Variables'},
+      {id: 'settings-templates', label: 'Templates'},
+      {id: 'settings-labels', label: 'Labels'},
+      {id: 'settings-profile', label: 'Profile'},
+    ]
+
+    const lookupPageTitle = (): string => {
+      const activeItem = navItems.find(item => item.id === navActiveItem)
+
+      if (activeItem) {
+        return activeItem.label
+      }
+
+      return 'I am a page title!'
+    }
+
+    const banner = (
+      <div
+        style={{
+          width: '100%',
+          height: '100px',
+          backgroundColor: '#333',
+          borderRadius: '4px',
+        }}
+      >
+        Banner
+      </div>
+    )
+
+    return (
+      <div className="mockPageWrapper">
+        <div className="mockPage">
+          <AppWrapper
+            ref={appWrapperRef}
+            presentationMode={boolean('presentationMode', false)}
+          >
+            <TreeNav
+              headerElement={
+                <TreeNav.Header
+                  id="home"
+                  icon={<Icon glyph={IconFont.CuboNav} />}
+                  label={
+                    <InfluxDBCloudLogo cloud={boolean('Logo: cloud', true)} />
+                  }
+                  onClick={handleNavClick}
+                  active={isItemActive('home')}
+                />
+              }
+              bannerElement={banner}
+              expanded={navState}
+              onToggleClick={handleToggleNavState}
+              userElement={
+                <TreeNav.User
+                  id="user"
+                  username="john.doe123456@supercool.com"
+                  team="USAF 101st Airborne Division"
+                >
+                  {boolean('show user links', false) ? (
+                    <>
+                      <TreeNav.UserItem id="logout" label="Logout" />
+                      <TreeNav.UserItem id="billing" label="Billing" />
+                      <TreeNav.UserItem
+                        id="usage"
+                        label="Usage"
+                        linkElement={className => (
+                          <a href="#" className={className} />
+                        )}
+                      />
+                    </>
+                  ) : null}
+                </TreeNav.User>
+              }
+            >
+              <TreeNav.Item
+                id="data"
+                label="Data"
+                icon={<Icon glyph={IconFont.DisksNav} />}
+                active={isItemActive('data')}
+                onClick={handleNavClick}
+              >
+                <TreeNav.SubMenu>
+                  <TreeNav.SubItem
+                    id="data-buckets"
+                    label="Buckets"
+                    active={isItemActive('data-buckets')}
+                    onClick={handleNavClick}
+                  />
+                  <TreeNav.SubItem
+                    id="data-sources"
+                    label="Sources"
+                    active={isItemActive('data-sources')}
+                    onClick={handleNavClick}
+                  />
+                </TreeNav.SubMenu>
+              </TreeNav.Item>
+              <TreeNav.Item
+                id="queries"
+                label="Queries"
+                icon={<Icon glyph={IconFont.GraphLine} />}
+                active={isItemActive('queries')}
+                onClick={handleNavClick}
+              />
+              <TreeNav.Item
+                id="boards"
+                label="Boards"
+                icon={<Icon glyph={IconFont.Dashboards} />}
+                active={isItemActive('boards')}
+                onClick={handleNavClick}
+              />
+              <TreeNav.Item
+                id="team"
+                label="Team"
+                icon={<Icon glyph={IconFont.UsersDuo} />}
+                active={isItemActive('team')}
+                onClick={handleNavClick}
+              />
+              <TreeNav.Item
+                id="tasks"
+                label="Tasks"
+                icon={<Icon glyph={IconFont.Calendar} />}
+                active={isItemActive('tasks')}
+                onClick={handleNavClick}
+              />
+              <TreeNav.Item
+                id="alerts"
+                label="Alerts"
+                icon={<Icon glyph={IconFont.Bell} />}
+                active={isItemActive('alerts')}
+                onClick={handleNavClick}
+              />
+              <TreeNav.Item
+                id="settings"
+                label="Settings"
+                icon={<Icon glyph={IconFont.WrenchNav} />}
+                active={isItemActive('settings')}
+                onClick={handleNavClick}
+              >
+                <TreeNav.SubMenu>
+                  <TreeNav.SubItem
+                    id="settings-members"
+                    label="Members"
+                    active={isItemActive('settings-members')}
+                    onClick={handleNavClick}
+                  />
+                  <TreeNav.SubItem
+                    id="settings-variables"
+                    label="Variables"
+                    active={isItemActive('settings-variables')}
+                    onClick={handleNavClick}
+                  />
+                  <TreeNav.SubItem
+                    id="settings-templates"
+                    label="Templates"
+                    active={isItemActive('settings-templates')}
+                    onClick={handleNavClick}
+                  />
+                  <TreeNav.SubItem
+                    id="settings-labels"
+                    label="Labels"
+                    active={isItemActive('settings-labels')}
+                    onClick={handleNavClick}
+                  />
+                  <TreeNav.SubItem
+                    id="settings-profile"
+                    label="Profile"
+                    active={isItemActive('settings-profile')}
+                    onClick={handleNavClick}
+                  />
+                </TreeNav.SubMenu>
+              </TreeNav.Item>
+            </TreeNav>
+            <Page titleTag="bloop">
+              <Page.Header
+                fullWidth={boolean('fullWidth', false)}
+                gutters={
+                  ComponentSize[
+                    select('gutters', mapEnumKeys(ComponentSize), 'Small')
+                  ]
+                }
+              >
+                <Page.Title title={lookupPageTitle()} />
+              </Page.Header>
+              <Page.ControlBar
+                fullWidth={boolean('fullWidth', false)}
+                gutters={
+                  ComponentSize[
+                    select('gutters', mapEnumKeys(ComponentSize), 'Small')
+                  ]
+                }
+              >
+                <Page.ControlBarLeft>
+                  {boolean('Button in PageControlBarLeft', true) ? (
+                    <div className="mockComponent mockButton">Left Button</div>
+                  ) : null}
+                </Page.ControlBarLeft>
+                <Page.ControlBarCenter>
+                  {boolean('Button in PageControlBarCenter', true) ? (
+                    <div className="mockComponent mockButton">
+                      Center Button
+                    </div>
+                  ) : null}
+                </Page.ControlBarCenter>
+                <Page.ControlBarRight>
+                  {boolean('Button in PageControlBarRight', true) ? (
+                    <div className="mockComponent mockButton">Right Button</div>
+                  ) : null}
+                </Page.ControlBarRight>
+              </Page.ControlBar>
+              <Page.Contents
+                fullWidth={boolean('fullWidth', false)}
+                scrollable={boolean('scrollable', true)}
+                gutters={
+                  ComponentSize[
+                    select('gutters', mapEnumKeys(ComponentSize), 'Small')
+                  ]
+                }
+              >
+                <div
+                  className="mockComponent pageContents"
+                  style={{height: `${number('mock contents height', 1200)}px`}}
+                >
+                  <h4>
+                    Here's some dummy text to help show where page contents are
+                    and for scrolling
+                  </h4>
+                </div>
+              </Page.Contents>
+            </Page>
+          </AppWrapper>
+        </div>
+        <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
         </div>
       </div>

@@ -1,4 +1,4 @@
-@import '../../Styles/modules';
+@import '../../Styles/variables';
 
 /*
    Clockface Application Wrapper
@@ -14,7 +14,7 @@
   top: 0;
   left: 0;
   color: $cf-text-default;
-  background-color: $page--background;
+  background-color: $cf-page--background;
   overflow: hidden;
   font-size: $cf-body-text;
 }
@@ -24,7 +24,7 @@
   flex-direction: column;
 }
 
-@media screen and (min-width: $nav-menu--breakpoint) {
+@media screen and (min-width: $cf-nav-menu--breakpoint) {
   .clockface--app-wrapper__standard {
     flex-direction: row;
   }
@@ -36,8 +36,10 @@
 */
 
 .clockface--app-wrapper__presentation-mode {
-  .cf-nav, 
+  .cf-nav,
+  .cf-tree-nav, 
   .cf-page-header,
+  .cf-page-control-bar,
   .cf-nav--mask,
   .cf-nav--toggle {
     display: none;
@@ -47,6 +49,6 @@
   .cf-page-contents__fluid,
   .cf-page-contents.cf-dapper-scrollbars .cf-page-contents__fluid,
   .cf-page-contents.cf-dapper-scrollbars .cf-page-contents__fixed {
-    padding: $page--gutter-xs;
+    padding: $cf-page--gutter-xs;
   }
 }

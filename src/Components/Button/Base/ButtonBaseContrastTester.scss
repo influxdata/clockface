@@ -1,4 +1,4 @@
-@import '../../../Styles/modules';
+@import '../../../Styles/variables';
 
 /*
   ButtonBase Contrast Tester
@@ -15,7 +15,7 @@ table.button-base-contrast-tester {
 
   th, td {
     font-size: 13px;
-    font-weight: 600;
+    font-weight: $cf-font-weight--medium;
     border: 0;
     text-align: center;
     vertical-align: middle;

@@ -1,0 +1,73 @@
+@import '../../Styles/variables';
+
+/*
+  Heading Styles
+  ------------------------------------------------------------------------------
+*/
+
+.cf-heading {
+  font-weight: $cf-font-weight--regular;
+  user-select: none;
+  margin: 0;
+}
+
+.cf-heading__300 {
+  font-weight: $cf-font-weight--light;
+}
+
+.cf-heading__400 {
+  font-weight: $cf-font-weight--regular;
+}
+
+.cf-heading__500 {
+  font-weight: $cf-font-weight--medium;
+}
+
+.cf-heading__700 {
+  font-weight: $cf-font-weight--bold;
+}
+
+.cf-heading__900 {
+  font-weight: $cf-font-weight--black;
+}
+
+.cf-heading__standard {
+  font-family: $cf-text-font;
+}
+
+.cf-heading__monospace {
+  font-family: $cf-code-font;
+}
+
+.cf-heading__underline {
+  padding-bottom: 0.3em;
+  border-bottom: $cf-border solid $g5-pepper;
+}
+
+.cf-heading__selectable {
+  user-select: auto;
+}
+
+.cf-heading__h1 {
+  font-size: $cf-text-base-5;
+}
+
+.cf-heading__h2 {
+  font-size: $cf-text-base-4;
+}
+
+.cf-heading__h3 {
+  font-size: $cf-text-base-3;
+}
+
+.cf-heading__h4 {
+  font-size: $cf-text-base-2;
+}
+
+.cf-heading__h5 {
+  font-size: $cf-text-base-1;
+}
+
+.cf-heading__h6 {
+  font-size: $cf-text-base;
+}

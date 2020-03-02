@@ -4,7 +4,7 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, text, select, color} from '@storybook/addon-knobs'
+import {withKnobs, text, select, color, boolean} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
@@ -335,6 +335,7 @@ panelExampleStories.add(
           ]
         }
         onDismiss={() => alert('onDismiss clicked!')}
+        border={boolean('border', false)}
       >
         <Panel.Header
           size={

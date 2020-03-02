@@ -1,4 +1,4 @@
-@import '../../Styles/modules';
+@import '../../Styles/variables';
 
 /*
   Dropdown Button
@@ -84,17 +84,17 @@
 }
 
 .cf-dropdown--button.cf-button-xs {
-  @include buttonSizing($form-xs-padding, $form-xs-font, $form-xs-height);
+  @include buttonSizing($cf-form-xs-padding, $cf-form-xs-font, $cf-form-xs-height);
 }
 
 .cf-dropdown--button.cf-button-sm {
-  @include buttonSizing($form-sm-padding, $form-sm-font, $form-sm-height);
+  @include buttonSizing($cf-form-sm-padding, $cf-form-sm-font, $cf-form-sm-height);
 }
 
 .cf-dropdown--button.cf-button-md {
-  @include buttonSizing($form-md-padding, $form-md-font, $form-md-height);
+  @include buttonSizing($cf-form-md-padding, $cf-form-md-font, $cf-form-md-height);
 }
 
 .cf-dropdown--button.cf-button-lg {
-  @include buttonSizing($form-lg-padding, $form-lg-font, $form-lg-height);
+  @include buttonSizing($cf-form-lg-padding, $cf-form-lg-font, $cf-form-lg-height);
 }

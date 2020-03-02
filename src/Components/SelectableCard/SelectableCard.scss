@@ -1,4 +1,4 @@
-@import '../../Styles/modules.scss';
+@import '../../Styles/variables.scss';
 
 /*
   Selectable Card
@@ -11,7 +11,7 @@ $selectable-card--label: $g13-mist;
 
 $selectable-card--bg-hover: $g7-graphite;
 $selectable-card--body-hover: $g3-castle;
-$selectable-card--label-hover: $g18-cloud;
+$selectable-card--label-hover: $g20-white;
 
 $selectable-card--bg-disabled: $g4-onyx;
 $selectable-card--body-disabled: $g3-castle;
@@ -31,6 +31,7 @@ $selectable-card--label-disabled: $g8-storm;
   justify-content: stretch;
   align-items: center;
   cursor: pointer;
+  @extend %panel-shadow;
 
   &:hover {
     border-color: $selectable-card--bg-hover;
@@ -83,7 +84,7 @@ $selectable-card--label-disabled: $g8-storm;
   text-overflow: ellipsis;
   color: $selectable-card--label;
   transition: color 0.25s ease;
-  font-weight: 600;
+  font-weight: $cf-font-weight--medium;
   position: relative;
 }
 
@@ -151,44 +152,53 @@ $selectable-card--label-disabled: $g8-storm;
   Color Modifiers
   ------------------------------------------------------------------------------
 */
-@mixin selectableCardColorModifier($color) {
+@mixin selectableCardColorModifier($color, $text) {
   &.cf-selectable-card__selected,
   &.cf-selectable-card__selected:hover {
     border-color: $color;
     background-color: $color;
+
+    .cf-selectable-card--label {
+      color: $text;
+    }
   }
 
   .cf-selectable-card--icon {
     color: $color;
   }
 
-  &.cf-selectable-card__selected.cf-selectable-card__disabled {
+  &.cf-selectable-card__selected.cf-selectable-card__disabled,
+  &.cf-selectable-card__selected.cf-selectable-card__disabled:hover {
     border-color: mix($color, $selectable-card--body, 30%);
     background-color: mix($color, $selectable-card--body, 30%);
 
     .cf-selectable-card--icon {
       color: mix($color, $selectable-card--body, 30%);
     }
+
+    .cf-selectable-card--label {
+      color: mix($text, $color, 20%);
+    }
   }
 }
 
 .cf-selectable-card__default {
-  @include selectableCardColorModifier($g15-platinum);
+  @include selectableCardColorModifier($g7-graphite, $g18-cloud);
 }
 .cf-selectable-card__primary {
-  @include selectableCardColorModifier($c-pool);
+  @include selectableCardColorModifier($c-pool, $g20-white);
 }
 .cf-selectable-card__secondary {
-  @include selectableCardColorModifier($c-comet);
+  @include selectableCardColorModifier($c-comet, $g20-white);
 }
 .cf-selectable-card__success {
-  @include selectableCardColorModifier($c-rainforest);
+  @include selectableCardColorModifier($c-honeydew, $g5-pepper);
 }
 .cf-selectable-card__warning {
-  @include selectableCardColorModifier($c-pineapple);
+  @include selectableCardColorModifier($c-pineapple, $g5-pepper);
 }
 .cf-selectable-card__danger {
-  @include selectableCardColorModifier($c-dreamsicle);
+  @include selectableCardColorModifier($c-dreamsicle, $g5-pepper);
 }
 
 /*
@@ -214,14 +224,14 @@ $selectable-card--label-disabled: $g8-storm;
 }
 
 .cf-selectable-card__xs {
-  @include selectableCardSizeModifier($form-xs-font, $form-xs-padding);
+  @include selectableCardSizeModifier($cf-form-xs-font, $cf-form-xs-padding);
 }
 .cf-selectable-card__sm {
-  @include selectableCardSizeModifier($form-sm-font, $form-sm-padding);
+  @include selectableCardSizeModifier($cf-form-sm-font, $cf-form-sm-padding);
 }
 .cf-selectable-card__md {
-  @include selectableCardSizeModifier($form-md-font, $form-md-padding);
+  @include selectableCardSizeModifier($cf-form-md-font, $cf-form-md-padding);
 }
 .cf-selectable-card__lg {
-  @include selectableCardSizeModifier($form-lg-font, $form-lg-padding);
+  @include selectableCardSizeModifier($cf-form-lg-font, $cf-form-lg-padding);
 }

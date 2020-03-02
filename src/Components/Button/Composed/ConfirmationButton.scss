@@ -1,4 +1,4 @@
-@import '../../../Styles/modules';
+@import '../../../Styles/variables';
 
 /*
   Confirmation Button Styles
@@ -14,7 +14,7 @@
 .cf-confirmation-button--label {
   margin: 0 $cf-marg-b;
   white-space: nowrap;
-  font-weight: 500;
+  font-weight: $cf-font-weight--medium;
   user-select: none;
-  font-size: $form-md-font;
+  font-size: $cf-form-md-font;
 }

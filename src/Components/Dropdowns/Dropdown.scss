@@ -1,4 +1,4 @@
-@import '../../Styles/modules';
+@import '../../Styles/variables';
 
 $dropdown-item--dot-radius: 6px;
 $dropdown-item--checkbox-size: 12px;
@@ -14,16 +14,16 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   position: relative;
 
   &.cf-dropdown-xs {
-    height: $form-xs-height;
+    height: $cf-form-xs-height;
   }
   &.cf-dropdown-sm {
-    height: $form-sm-height;
+    height: $cf-form-sm-height;
   }
   &.cf-dropdown-md {
-    height: $form-md-height;
+    height: $cf-form-md-height;
   }
   &.cf-dropdown-lg {
-    height: $form-lg-height;
+    height: $cf-form-lg-height;
   }
 }
 
@@ -35,7 +35,7 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   position: absolute;
   width: 100%;
   left: 0;
-  z-index: 500;
+  z-index: 5000;
 }
 
 .cf-dropdown-menu {
@@ -61,9 +61,9 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
 
 @mixin dropdownItemStyles() {
   padding: $dropdown-item--padding-v $dropdown-item--padding-h;
-  font-size: $form-sm-font;
-  line-height: $form-sm-font;
-  font-weight: 600;
+  font-size: $cf-form-sm-font;
+  line-height: $cf-form-sm-font;
+  font-weight: $cf-font-weight--medium;
   text-align: left;
 }
 
@@ -197,7 +197,7 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   a:link,
   a:active,
   a:visited {
-    font-weight: 600;
+    font-weight: $cf-font-weight--medium;
     color: rgba($g20-white, 0.75);
   }
 
@@ -300,9 +300,9 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
 .cf-dropdown__onyx {
   @include dropdownMenuColor(
     $g2-kevlar,
-    $g4-onyx,
-    $g4-onyx,
-    $g6-smoke,
+    $g5-pepper,
+    $c-pool,
+    $c-star,
     $g0-obsidian,
     $g2-kevlar,
     $g11-sidewalk,

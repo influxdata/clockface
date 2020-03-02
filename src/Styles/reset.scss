@@ -1,4 +1,4 @@
-@import "./modules";
+@import "./variables";
 
 /*
    Reset
@@ -12,7 +12,7 @@
 }
 
 html, body {
-  background-color: $page--background;
+  background-color: $cf-page--background;
 }
 
 body {

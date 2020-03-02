@@ -7,7 +7,6 @@ import {
   ComponentSize,
   StandardFunctionProps,
   Orientation,
-  InfluxColors,
   Alignment,
 } from '../../Types'
 
@@ -17,10 +16,8 @@ import './Tabs.scss'
 export interface TabsProps extends StandardFunctionProps {
   /** Layout of tabs */
   orientation?: Orientation
-  /** Controls whether the container renders with padding or not */
-  padding?: ComponentSize
-  /** Background color of tab container */
-  backgroundColor?: InfluxColors | string
+  /** Size of tabs */
+  size?: ComponentSize
   /** Alignment of tabs within container (perpendicular to orientation) */
   alignment?: Alignment
 }
@@ -31,13 +28,12 @@ export const TabsRoot = forwardRef<TabsRef, TabsProps>(
   (
     {
       className,
-      padding,
+      size,
       testID = 'tabs',
       orientation = Orientation.Horizontal,
       alignment = Alignment.Left,
       children,
       id,
-      backgroundColor,
       style,
     },
     ref
@@ -45,7 +41,7 @@ export const TabsRoot = forwardRef<TabsRef, TabsProps>(
     const tabsClass = classnames('cf-tabs', {
       [`cf-tabs__align-${alignment}`]: alignment,
       [`cf-tabs__${orientation}`]: orientation,
-      [`cf-tabs__padding-${padding}`]: padding,
+      [`cf-tabs__${size}`]: size,
       [`${className}`]: className,
     })
 
@@ -55,10 +51,7 @@ export const TabsRoot = forwardRef<TabsRef, TabsProps>(
         className={tabsClass}
         data-testid={testID}
         id={id}
-        style={{
-          backgroundColor,
-          ...style,
-        }}
+        style={style}
       >
         {children}
       </nav>

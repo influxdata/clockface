@@ -1,4 +1,4 @@
-@import '../../Styles/modules';
+@import '../../Styles/variables';
 
 /*
   Status Indicator Styles
@@ -79,16 +79,16 @@
 }
 
 .cf-status-indicator__xs {
-  @include statusIndicatorSizeModifier($form-xs-font, $form-xs-height);
+  @include statusIndicatorSizeModifier($cf-form-xs-font, $cf-form-xs-height);
 }
 .cf-status-indicator__sm {
-  @include statusIndicatorSizeModifier($form-sm-font, $form-sm-height);
+  @include statusIndicatorSizeModifier($cf-form-sm-font, $cf-form-sm-height);
 }
 .cf-status-indicator__md {
-  @include statusIndicatorSizeModifier($form-md-font, $form-md-height);
+  @include statusIndicatorSizeModifier($cf-form-md-font, $cf-form-md-height);
 }
 .cf-status-indicator__lg {
-  @include statusIndicatorSizeModifier($form-lg-font, $form-lg-height);
+  @include statusIndicatorSizeModifier($cf-form-lg-font, $cf-form-lg-height);
 }
 
 /*

@@ -1,4 +1,4 @@
-@import '../../Styles/modules';
+@import '../../Styles/variables';
 
 /*
     Notification
@@ -13,7 +13,7 @@
   justify-content: space-between;
   align-items: flex-start;
   border-radius: $cf-radius;
-  font-weight: 500;
+  font-weight: $cf-font-weight--medium;
 
   &.cf-notification__no-dismiss {
     padding-right: $cf-marg-d;
@@ -39,8 +39,8 @@
     flex-shrink: 0;
     justify-content: center;
     align-items: center;
-    width: $form-sm-height;
-    height: $form-sm-height;
+    width: $cf-form-sm-height;
+    height: $cf-form-sm-height;
   }
 
   .cf-notification--dismiss {

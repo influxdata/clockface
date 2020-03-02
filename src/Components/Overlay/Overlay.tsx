@@ -87,7 +87,7 @@ export const OverlayRoot: FunctionComponent<OverlayProps> = ({
             <DapperScrollbars
               className={overlayClass}
               thumbStartColor={InfluxColors.White}
-              thumbStopColor={InfluxColors.Moonstone}
+              thumbStopColor={InfluxColors.Hydrogen}
               noScrollX={true}
               autoHide={false}
               testID={testID}

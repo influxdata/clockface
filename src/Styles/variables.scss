@@ -1,54 +1,101 @@
 /*
+   Influx Color Palette
+   -----------------------------------------------------------------------------
+*/
+
+// Neutrals
+$g0-obsidian: #0f0e15;
+$g1-raven: #181820;
+$g2-kevlar: #202028;
+$g3-castle: #292933;
+$g4-onyx: #31313d;
+$g5-pepper: #383846;
+$g6-smoke: #434453;
+$g7-graphite: #545667;
+$g8-storm: #676978;
+$g9-mountain: #757888;
+$g10-wolf: #8e91a1;
+$g11-sidewalk: #999dab;
+$g12-forge: #a4a8b6;
+$g13-mist: #bec2cc;
+$g14-chromium: #c6cad3;
+$g15-platinum: #d4d7dd;
+$g16-pearl: #e7e8eb;
+$g17-whisper: #eeeff2;
+$g18-cloud: #f6f6f8;
+$g19-ghost: #fafafc;
+$g20-white: #ffffff;
+
+// Reds
+$c-basalt: #2F1F29;
+$c-ruby: #BF3D5E;
+$c-fire: #DC4E58;
+$c-curacao: #F95F53;
+$c-dreamsicle: #FF8564;
+$c-tungsten: #FFB6A0;
+$c-marmelade: #FFDCCF;
+$c-flan: #FFF7F4;
+
+// Blues
+$c-abyss: #120653;
+$c-sapphire: #0b3a8d;
+$c-ocean: #066fc5;
+$c-pool: #00a3ff;
+$c-laser: #00C9FF;
+$c-hydrogen: #6BDFFF;
+$c-neutrino: #BEF0FF;
+$c-yeti: #F0FCFF;
+
+// Purples
+$c-shadow: #2b007e;
+$c-void: #5c10a0;
+$c-amethyst: #8e1fc3;
+$c-star: #be2ee4;
+$c-comet: #ce58eb;
+$c-potassium: #dd84f1;
+$c-moonstone: #ebadf8;
+$c-twilight: #fad9ff;
+
+// Greens
+$c-gypsy: #003e34;
+$c-emerald: #006f49;
+$c-viridian: #009f5f;
+$c-rainforest: #34bb55;
+$c-honeydew: #67d74e;
+$c-krypton: #9bf445;
+$c-wasabi: #c6f98e;
+$c-mint: #f3ffd6;
+
+// Yellows
+$c-oak: #3F241F;
+$c-topaz: #E85B1C;
+$c-tiger: #F48D38;
+$c-pineapple: #FFB94A;
+$c-thunder: #FFD255;
+$c-sulfur: #FFE480;
+$c-daisy: #FFF6B8;
+$c-banana: #FFFDDE;
+
+// Marketing Brand Colors
+$c-chartreuse: #D6F622;
+$c-magenta: #BF2FE5;
+$c-deeppurple: #13002D;
+
+/*
    Z Variables
    -----------------------------------------------------------------------------
    Might not actually need any of these yet
 */
 
-$z--notifications: 9999;
-$z--right-click: 9995;
-$z--popovers: 9990;
-$z--draggable-resizer-mask: 9980;
-$z--overlays: 9940;
-$z--nav-toggle: 9999;
-$z--nav-menu: 9900;
-$z--nav-mask: 9890;
-$z--drag-n-drop: 5000;
-
-/*
-   Page Layout
-   -----------------------------------------------------------------------------
-   NavMenu + Page components
-*/
-
-$nav-menu--size: 50px;
-$nav-menu--gutter: 16px;
-$nav-menu--bg: $c-pool;
-$nav-menu--bg-accent: $c-star;
-$nav-menu--bg-hover: $c-laser;
-$nav-menu--bg-hover-accent: $c-comet;
-$nav-menu--breakpoint: 800px;
-
-$page--header-size: 66px;
-$page--gutter-xs: 12px;
-$page--gutter-sm: 20px;
-$page--gutter-md: 32px;
-$page--gutter-lg: 54px;
-$page--max-width: 1608px;
-$page--title-size: 21px;
-$page--title-weight: 400;
-$page--sub-title-size: 12px;
-$page--sub-title-weight: 500;
-$page--background: $g1-raven;
-$page--funnel-max-width: 1200px;
-
-/*
-   Responsive Breakpoints
-   -----------------------------------------------------------------------------
-*/
-
-$grid--breakpoint-sm: 750px;
-$grid--breakpoint-md: 1080px;
-$grid--breakpoint-lg: 1500px;
+$cf-z--notifications: 9999;
+$cf-z--right-click: 9995;
+$cf-z--popovers: 9990;
+$cf-z--draggable-resizer-mask: 9980;
+$cf-z--overlays: 9940;
+$cf-z--nav-toggle: 9999;
+$cf-z--nav-menu: 9900;
+$cf-z--nav-mask: 9890;
+$cf-z--drag-n-drop: 5000;
 
 /*
    Motifs
@@ -69,13 +116,20 @@ $cf-radius: 4px;
 $cf-radius-sm: $cf-radius - 1px;
 
 /*
-   Typography
+   Typography Variables
    -----------------------------------------------------------------------------
 */
 
-$cf-text-font: 'Roboto', Helvetica, Arial, Tahoma, Verdana, sans-serif;
-$cf-code-font: 'RobotoMono', monospace;
+$cf-header-font: 'Rubik', Helvetica, Arial, Tahoma, Verdana, sans-serif;
+$cf-text-font: 'Rubik', Helvetica, Arial, Tahoma, Verdana, sans-serif;
+$cf-code-font: 'IBMPlexMono', monospace;
 $cf-icon-font: 'icomoon';
+
+$cf-font-weight--light: 300;
+$cf-font-weight--regular: 400;
+$cf-font-weight--medium: 500;
+$cf-font-weight--bold: 700;
+$cf-font-weight--black: 900;
 
 $cf-body-text: 12px;
 $cf-text-tiny: 0.8em;
@@ -88,20 +142,65 @@ $cf-text-base-4: ($cf-text-base * $cf-text-scale * $cf-text-scale * $cf-text-sca
 $cf-text-base-5: ($cf-text-base * $cf-text-scale * $cf-text-scale * $cf-text-scale * $cf-text-scale * $cf-text-scale);
 
 $cf-text-default: $g13-mist;
-$cf-link-weight: 700;
+$cf-text-header: $g17-whisper;
+
+$cf-link-weight: $cf-font-weight--bold;
 $cf-link-default: $c-pool;
 $cf-link-default-hover: $c-laser;
 $cf-link-success: $c-rainforest;
 $cf-link-success-hover: $c-honeydew;
 $cf-link-warning: $c-pineapple;
 $cf-link-warning-hover: $c-thunder;
-$cf-text-secondary: $c-star;
-$cf-text-secondary-hover: $c-comet;
+$cf-link-secondary: $c-comet;
+$cf-link-secondary-hover: $c-potassium;
 $cf-link-danger: $c-curacao;
 $cf-link-danger-hover:  $c-dreamsicle;
 
 $cf-text-selection-bg: $c-pool;
 $cf-text-selection-color: $g20-white;
+
+
+/*
+   Page Layout Variables
+   -----------------------------------------------------------------------------
+   NavMenu + Page components
+*/
+
+$cf-nav-menu--size: 60px;
+$cf-nav-menu--gutter: 16px;
+$cf-nav-menu--bg: $c-pool;
+$cf-nav-menu--bg-accent: $c-star;
+$cf-nav-menu--bg-hover: $c-laser;
+$cf-nav-menu--bg-hover-accent: $c-comet;
+$cf-nav-menu--breakpoint: 800px;
+
+$cf-page--background: $g1-raven;
+
+$cf-page--header-size-sm: 66px;
+$cf-page--header-size: 88px;
+$cf-page--control-bar-size: 44px;
+$cf-page--title-size-sm: 1.8em;
+$cf-page--title-size: 2.4em;
+$cf-page--title-weight: 400;
+$cf-page--title-font: $cf-header-font;
+$cf-page--title-color: $cf-text-header;
+
+$cf-page--gutter-xs: 12px;
+$cf-page--gutter-sm: 20px;
+$cf-page--gutter-md: 32px;
+$cf-page--gutter-lg: 54px;
+
+$cf-page--max-width: 1608px;
+$cf-page--funnel-max-width: 1200px;
+
+/*
+   Responsive Breakpoints
+   -----------------------------------------------------------------------------
+*/
+
+$cf-grid--breakpoint-sm: 750px;
+$cf-grid--breakpoint-md: 1080px;
+$cf-grid--breakpoint-lg: 1500px;
 
 /*
    Form Element Sizing
@@ -110,32 +209,32 @@ $cf-text-selection-color: $g20-white;
    Dropdown, Input, etc.
 */
 
-$form-xs-height: 22px;
-$form-xs-padding: 6px;
-$form-xs-font: 11px;
+$cf-form-xs-height: 22px;
+$cf-form-xs-padding: 8px;
+$cf-form-xs-font: 12px;
 
-$form-sm-height: 30px;
-$form-sm-padding: 9px;
-$form-sm-font: 12px;
+$cf-form-sm-height: 30px;
+$cf-form-sm-padding: 10px;
+$cf-form-sm-font: 13px;
 
-$form-md-height: 38px;
-$form-md-padding: 12px;
-$form-md-font: 13px;
+$cf-form-md-height: 38px;
+$cf-form-md-padding: 14px;
+$cf-form-md-font: 14px;
 
-$form-lg-height: 46px;
-$form-lg-padding: 15px;
-$form-lg-font: 17px;
+$cf-form-lg-height: 46px;
+$cf-form-lg-padding: 18px;
+$cf-form-lg-font: 17px;
 
 /*
    Empty State
    -----------------------------------------------------------------------------
 */
 
-$empty-state-text: $g9-mountain;
-$empty-state-highlight: $g13-mist;
+$cf-empty-state-text: $g9-mountain;
+$cf-empty-state-highlight: $g13-mist;
 
 /*
-   Input Styles
+   Input Variables
    -----------------------------------------------------------------------------
    These ensure consistent appearance across different kinds of inputs
 */
@@ -149,10 +248,10 @@ $cf-input-background--focused: $g2-kevlar;
 $cf-input-background--hover: $g2-kevlar;
 $cf-input-background--disabled: $g3-castle;
 
-$cf-input-text--default: $g15-platinum;
+$cf-input-text--default: $g13-mist;
 $cf-input-text--focused: $g20-white;
-$cf-input-text--hover: $g17-whisper;
-$cf-input-text--disabled: $g9-mountain;
+$cf-input-text--hover: $g15-platinum;
+$cf-input-text--disabled: $cf-empty-state-text;
 
 $cf-input-border--default: $g5-pepper;
 $cf-input-border--focused: $c-pool;
@@ -170,3 +269,245 @@ $cf-input--status-z: $cf-input--shadow-z + 1;
 $cf-input--placeholder-text: $g9-mountain;
 
 $cf-input--box-shadow: 0 0 6px 0 $cf-input-border--focused;
+
+/*
+   Card Variables
+   -----------------------------------------------------------------------------
+   These ensure consistent appearance across different kinds of cards
+*/
+
+$cf-card-background--default: $g3-castle;
+$cf-card-background--hover: $g4-onyx;
+$cf-card-background--disabled: rgba($g3-castle, 50%);
+
+$cf-card-text--default: $g13-mist;
+$cf-card-text--hover: $g18-cloud;
+$cf-card-text--disabled: $g9-mountain;
+
+$cf-card--border: $g5-pepper;
+$cf-card--border-hover: $g6-smoke;
+$cf-card--border-disabled: $g6-smoke;
+
+$cf-card--name-font-size: 17px;
+$cf-card--name-font-weight: $cf-font-weight--medium;
+
+/*
+   Label Variables
+   -----------------------------------------------------------------------------
+   Used in both Inputs and Forms
+*/
+
+$cf-label--default: $g11-sidewalk;
+$cf-label--hover: $g15-platinum;
+$cf-label--active: $g18-cloud;
+
+/*
+   Overlay Variables
+   -----------------------------------------------------------------------------
+   Used in both Inputs and Forms
+*/
+
+$cf-overlay--gutter: $cf-marg-c + $cf-marg-b;
+$cf-overlay--header-height: $cf-page--header-size;
+$cf-overlay--title-font: $cf-page--title-font;
+$cf-overlay--title-size: $cf-page--title-size * 0.666;
+$cf-overlay--title-weight: $cf-page--title-weight;
+$cf-overlay--title-color: $cf-page--title-color;
+$cf-overlay--container-padding: $cf-marg-c + $cf-marg-d;
+$cf-overlay--z: 20;
+$cf-overlay--mask-z: 10;
+
+/*
+   Tree Nav Variables
+   -----------------------------------------------------------------------------
+*/
+
+$cf-tree-nav__width: 56px;
+$cf-tree-nav__expanded-width: 250px;
+$cf-tree-nav__small-height: 48px;
+
+$cf-tree-nav__gradient-a: $c-star;
+$cf-tree-nav__gradient-b: $c-pool;
+
+$cf-tree-nav__border: $g5-pepper;
+$cf-tree-nav__border-hover: $g8-storm;
+$cf-tree-nav__border-active: $c-pool;
+$cf-tree-nav__bg: $g2-kevlar;
+$cf-tree-nav__bg-hover: $g3-castle;
+$cf-tree-nav__bg-active: $g4-onyx;
+$cf-tree-nav__text: $g12-forge;
+$cf-tree-nav__text-hover: $g17-whisper;
+$cf-tree-nav__text-active: $g20-white;
+
+$cf-tree-nav__sub-item-text: $g13-mist;
+$cf-tree-nav__sub-item-text-hover: $g20-white;
+$cf-tree-nav__sub-item-text-active: $g20-white;
+$cf-tree-nav__sub-item-bg: transparent;
+$cf-tree-nav__sub-item-bg-hover: $g7-graphite;
+$cf-tree-nav__sub-item-bg-active: $c-pool;
+
+$cf-tree-nav__user-bg: $cf-tree-nav__bg;
+$cf-tree-nav__user-bg-hover: $cf-tree-nav__bg;
+$cf-tree-nav__user-bg-active: $cf-tree-nav__bg-hover;
+$cf-tree-nav__user-text: $g15-platinum;
+$cf-tree-nav__user-text-hover: $g20-white;
+$cf-tree-nav__user-text-active: $g20-white;
+$cf-tree-nav__user-icon: $g20-white;
+$cf-tree-nav__user-color-a: $c-honeydew;
+$cf-tree-nav__user-color-b: $c-pool;
+$cf-tree-nav__user-menu-bg: $g3-castle;
+$cf-tree-nav__user-menu-item-hover: $g5-pepper;
+
+$cf-tree-nav__toggle-icon: $g7-graphite;
+$cf-tree-nav__toggle-icon-hover: $g13-mist;
+
+/*
+   Mixins
+   -----------------------------------------------------------------------------
+*/
+
+@mixin gradient-v($startColor, $endColor) {
+  background-color: $startColor;
+  background: -moz-linear-gradient(top,  $startColor 0%, $endColor 100%);
+  background: -webkit-linear-gradient(top,  $startColor 0%,$endColor 100%);
+  background: linear-gradient(to bottom,  $startColor 0%,$endColor 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$startColor', endColorstr='$endColor',GradientType=0 );
+}
+@mixin gradient-h($startColor, $endColor) {
+  background-color: $startColor;
+  background: -moz-linear-gradient(left,  $startColor 0%, $endColor 100%);
+  background: -webkit-linear-gradient(left,  $startColor 0%,$endColor 100%);
+  background: linear-gradient(to right,  $startColor 0%,$endColor 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$startColor', endColorstr='$endColor',GradientType=1 );
+}
+@mixin gradient-diag-up($startColor, $endColor) {
+  background-color: $startColor;
+  background: -moz-linear-gradient(45deg,  $startColor 0%, $endColor 100%);
+  background: -webkit-linear-gradient(45deg,  $startColor 0%,$endColor 100%);
+  background: linear-gradient(45deg,  $startColor 0%,$endColor 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$startColor', endColorstr='$endColor',GradientType=1 );
+}
+@mixin gradient-diag-down($startColor, $endColor) {
+  background-color: $startColor;
+  background: -moz-linear-gradient(135deg,  $startColor 0%, $endColor 100%) !important;
+  background: -webkit-linear-gradient(135deg,  $startColor 0%,$endColor 100%) !important;
+  background: linear-gradient(135deg,  $startColor 0%,$endColor 100%) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$startColor', endColorstr='$endColor',GradientType=1 ) !important;
+}
+@mixin gradient-r($startColor, $endColor) {
+  background-color: $startColor;
+  background: -moz-radial-gradient(center, ellipse cover,  $startColor 0%, $endColor 100%);
+  background: -webkit-radial-gradient(center, ellipse cover,  $startColor 0%,$endColor 100%);
+  background: radial-gradient(ellipse at center,  $startColor 0%,$endColor 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$startColor', endColorstr='$endColor',GradientType=1 );
+}
+
+// Custom Scrollbars (Chrome Only)
+$cf-scrollbar-width: 16px;
+$cf-scrollbar-offset: 3px;
+@mixin custom-scrollbar($trackColor, $handleColor) {
+  &::-webkit-scrollbar {
+    width: $cf-scrollbar-width;
+
+    &-button {
+      background-color: $trackColor;
+    }
+    &-track {
+      background-color: $trackColor;
+    }
+    &-track-piece {
+      background-color: $trackColor;
+      border: $cf-scrollbar-offset solid $trackColor;
+      border-radius: ($cf-scrollbar-width / 2);
+    }
+    &-thumb {
+      background-color: $handleColor;
+      border: $cf-scrollbar-offset solid $trackColor;
+      border-radius: ($cf-scrollbar-width / 2);
+    }
+    &-corner {
+      background-color: $trackColor;
+    }
+  }
+  &::-webkit-resizer {
+    background-color: $trackColor;
+  }
+}
+
+@mixin custom-scrollbar-round($trackColor, $handleColor) {
+  &::-webkit-scrollbar {
+    width: $cf-scrollbar-width;
+    border-top-right-radius: $cf-radius;
+    border-top-left-radius: $cf-radius;
+    border-bottom-left-radius: $cf-radius;
+    border-bottom-right-radius: $cf-radius;
+
+    &-button {
+      background-color: $trackColor;
+    }
+    &-track {
+      background-color: $trackColor;
+      border-top-right-radius: ($cf-scrollbar-width / 2);
+      border-top-left-radius: ($cf-scrollbar-width / 2);
+      border-bottom-left-radius: ($cf-scrollbar-width / 2);
+      border-bottom-right-radius: ($cf-scrollbar-width / 2);
+    }
+    &-track-piece {
+      background-color: $trackColor;
+      border: $cf-scrollbar-offset solid $trackColor;
+      border-radius: ($cf-scrollbar-width / 2);
+    }
+    &-thumb {
+      background-color: $handleColor;
+      border: $cf-scrollbar-offset solid $trackColor;
+      border-radius: ($cf-scrollbar-width / 2);
+    }
+    &-corner {
+      background-color: $trackColor;
+    }
+  }
+  &::-webkit-resizer {
+    background-color: $trackColor;
+  }
+}
+
+
+// Block user select
+@mixin no-user-select() {
+  user-select: none !important;
+  -moz-user-select: none !important;
+  -webkit-user-select: none !important;
+  -ms-user-select: none !important;
+  -o-user-select: none !important;
+  &, &:hover {
+    cursor: default;
+  }
+}
+%no-user-select {
+  user-select: none !important;
+  -moz-user-select: none !important;
+  -webkit-user-select: none !important;
+  -ms-user-select: none !important;
+  -o-user-select: none !important;
+  &, &:hover {
+    cursor: default;
+  }
+}
+
+// Shadows
+%drop-shadow {
+  box-shadow: 0 0 10px 2px $g2-kevlar;
+}
+%panel-shadow {
+  box-shadow: 0 1px 4px 1px rgba($g0-obsidian, 0.2);
+}
+@mixin panel-shadow {
+  box-shadow: 0 1px 4px 1px rgba($g0-obsidian, 0.2);
+}
+
+@mixin portal-style($z) {
+  z-index: $z;
+  position: fixed;
+  top: 0;
+  left: 0;
+}

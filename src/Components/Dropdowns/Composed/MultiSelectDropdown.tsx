@@ -58,7 +58,7 @@ export const MultiSelectDropdown = forwardRef<
       options,
       onSelect,
       emptyText = 'None selected',
-      menuTheme = DropdownMenuTheme.Sapphire,
+      menuTheme = DropdownMenuTheme.Onyx,
       className,
       buttonSize = ComponentSize.Small,
       buttonIcon,

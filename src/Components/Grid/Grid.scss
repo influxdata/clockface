@@ -1,4 +1,4 @@
-@import '../../Styles/modules';
+@import '../../Styles/variables';
 
 /*
    12 Column Grid
@@ -142,7 +142,7 @@ $grid--col-12: 100%;
 
 //  Small Screen Grid
 //  ----------------------------------------------------------------------------
-@media screen and (min-width: $grid--breakpoint-sm) {
+@media screen and (min-width: $cf-grid--breakpoint-sm) {
   .cf-col-sm {
     &-1 {
       width: $grid--col-1;
@@ -220,7 +220,7 @@ $grid--col-12: 100%;
 
 //  Medium Screen Grid
 //  ----------------------------------------------------------------------------
-@media screen and (min-width: $grid--breakpoint-md) {
+@media screen and (min-width: $cf-grid--breakpoint-md) {
   .cf-col-md {
     &-1 {
       width: $grid--col-1;
@@ -298,7 +298,7 @@ $grid--col-12: 100%;
 
 //  Large Screen Grid
 //  ----------------------------------------------------------------------------
-@media screen and (min-width: $grid--breakpoint-lg) {
+@media screen and (min-width: $cf-grid--breakpoint-lg) {
   .cf-col-lg {
     &-1 {
       width: $grid--col-1;

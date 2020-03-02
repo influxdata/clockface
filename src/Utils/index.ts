@@ -42,12 +42,16 @@ export const calculateTextColorFromBackground = (
 export const generateBackgroundStyle = (
   backgroundColor: InfluxColors | string,
   gradient?: Gradients,
+  bordered?: boolean,
   style?: CSSProperties
 ): CSSProperties => {
+  let border = `2px solid ${backgroundColor}`
   let panelStyle: CSSProperties = {backgroundColor}
 
   if (gradient) {
     const colors = getColorsFromGradient(gradient)
+
+    border = `2px solid ${colors.stop}`
 
     panelStyle = {
       ...panelStyle,
@@ -55,6 +59,10 @@ export const generateBackgroundStyle = (
         colors.stop
       } 100%)`,
     }
+  }
+
+  if (bordered) {
+    panelStyle = {...panelStyle, border}
   }
 
   if (style) {
@@ -186,8 +194,8 @@ export const getScrollbarColorsFromTheme = (
       }
     case DropdownMenuTheme.Onyx:
       return {
-        thumbStartColor: InfluxColors.Laser,
-        thumbStopColor: InfluxColors.Comet,
+        thumbStartColor: InfluxColors.Pearl,
+        thumbStopColor: InfluxColors.Sidewalk,
       }
     case DropdownMenuTheme.Amethyst:
       return {

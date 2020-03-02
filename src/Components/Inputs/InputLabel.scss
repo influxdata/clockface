@@ -1,4 +1,4 @@
-@import '../../Styles/modules.scss';
+@import '../../Styles/variables.scss';
 
 /*
   Slide Toggle Component
@@ -7,13 +7,13 @@
 
 .cf-input-label {
   white-space: nowrap;
-  font-weight: 600;
+  font-weight: $cf-font-weight--medium;
   @include no-user-select();
-  color: $g11-sidewalk;
+  color: $cf-label--default;
   transition: color 0.25s ease;
   
   &.cf-input-label__active {
-    color: $g18-cloud;
+    color: $cf-label--active;
   }
 
   &.cf-input-label__wrap {
@@ -25,14 +25,14 @@
 }
 
 .cf-input-label__xs {
-  font-size: $form-xs-font;
+  font-size: $cf-form-xs-font;
 }
 .cf-input-label__sm {
-  font-size: $form-sm-font;
+  font-size: $cf-form-sm-font;
 }
 .cf-input-label__md {
-  font-size: $form-md-font;
+  font-size: $cf-form-md-font;
 }
 .cf-input-label__lg {
-  font-size: $form-lg-font;
+  font-size: $cf-form-lg-font;
 }

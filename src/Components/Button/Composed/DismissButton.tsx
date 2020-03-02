@@ -3,7 +3,7 @@ import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {SquareButton, SquareButtonRef} from './SquareButton'
+import {ButtonBase, ButtonBaseRef} from '../Base/ButtonBase'
 
 // Styles
 import './DismissButton.scss'
@@ -12,7 +12,7 @@ import './DismissButton.scss'
 import {
   ComponentStatus,
   ComponentColor,
-  IconFont,
+  ButtonShape,
   ComponentSize,
   ButtonType,
 } from '../../../Types'
@@ -20,7 +20,7 @@ import {ButtonBaseProps} from '../Base/ButtonBase'
 
 export interface DismissButtonProps extends ButtonBaseProps {}
 
-export type DismissButtonRef = SquareButtonRef
+export type DismissButtonRef = ButtonBaseRef
 
 export const DismissButton = forwardRef<DismissButtonRef, DismissButtonProps>(
   (
@@ -49,10 +49,10 @@ export const DismissButton = forwardRef<DismissButtonRef, DismissButtonProps>(
     })
 
     return (
-      <SquareButton
+      <ButtonBase
         tabIndex={tabIndex}
         titleText={titleText}
-        icon={IconFont.Remove}
+        shape={ButtonShape.Square}
         color={color}
         className={SquareButtonClass}
         testID={testID}
@@ -68,7 +68,9 @@ export const DismissButton = forwardRef<DismissButtonRef, DismissButtonProps>(
         type={type}
         style={style}
         ref={ref}
-      />
+      >
+        <div className="cf-dismiss-button--x" />
+      </ButtonBase>
     )
   }
 )

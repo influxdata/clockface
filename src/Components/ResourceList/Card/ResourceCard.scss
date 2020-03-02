@@ -1,4 +1,4 @@
-@import "../../../Styles/modules";
+@import "../../../Styles/variables";
 
 /*
   Resource Card
@@ -9,6 +9,7 @@ $resource-card--row-gap: $cf-marg-a - ($cf-border / 2);
 
 .cf-resource-card {
   width: 100%;
+  @extend %panel-shadow;
 }
 
 .cf-resource-card,
@@ -20,8 +21,8 @@ $resource-card--row-gap: $cf-marg-a - ($cf-border / 2);
   flex-direction: row;
   align-items: stretch;
   position: relative;
-  color: $g13-mist;
-  background-color: $g3-castle;
+  color: $cf-card-text--default;
+  background-color: $cf-card-background--default;
   border-radius: $cf-radius;
   padding: $cf-marg-b $cf-marg-c;
   padding-bottom: $cf-marg-b - $resource-card--row-gap;
@@ -29,8 +30,8 @@ $resource-card--row-gap: $cf-marg-a - ($cf-border / 2);
   transition: background-color 0.25s ease, color 0.25s ease;
   
   &:hover {
-    color: $g16-pearl;
-    background-color: $g4-onyx;
+    color: $cf-card-text--hover;
+    background-color: $cf-card-background--hover;
   }
 }
 
@@ -50,15 +51,15 @@ $resource-card--row-gap: $cf-marg-a - ($cf-border / 2);
 .cf-resource-card--meta {
   display: flex;
   align-items: center;
-  font-size: $form-xs-font;
-  font-weight: 600;
-  color: $g11-sidewalk;
+  font-size: $cf-form-xs-font;
+  font-weight: $cf-font-weight--medium;
+  color: $cf-empty-state-text;
   padding-bottom: $cf-border;
 }
 
 .cf-resource-card--meta-item {
   transition: border-color 0.25s ease, color 0.25s ease;
-  border-right: $cf-border solid $g5-pepper;
+  border-right: $cf-border solid $cf-card--border;
   padding-right: $cf-marg-b + $cf-marg-a;
   margin-right: $cf-marg-b + $cf-marg-a;
 
@@ -69,8 +70,7 @@ $resource-card--row-gap: $cf-marg-a - ($cf-border / 2);
   }
 
   .cf-resource-card:hover & {
-    color: $g15-platinum;
-    border-color: $g7-graphite;
+    border-color: $cf-card--border-hover;
   }
 }
 
@@ -92,34 +92,12 @@ $resource-card--row-gap: $cf-marg-a - ($cf-border / 2);
 */
 
 .cf-resource-card.cf-resource-card__disabled {
-  background-color: rgba($g3-castle, 0.5);
-  color: $g9-mountain;
+  background-color: $cf-card-background--disabled;
+  color: $cf-card-text--disabled;
   font-style: italic;
 
-  .cf-resource-card--meta {
-    color: $g9-mountain;
-  }
-
+  .cf-resource-card--meta,
   &:hover .cf-resource-card--meta {
-    color: $g12-forge;
+    border-color: $cf-card--border-disabled;
   }
-}
-
-/*
-  Depth Styling
-  ------------------------------------------------------------------------------
-*/
-
-.panel .cf-resource-card,
-.tabs .cf-resource-card {
-  background-color: $g4-onyx;
-
-  &:hover {
-    background-color: $g5-pepper;
-  }
-}
-
-.panel .cf-resource-card.cf-resource-card__disabled,
-.tabs .cf-resource-card.cf-resource-card__disabled {
-  background-color: rgba($g4-onyx, 0.5);
 }

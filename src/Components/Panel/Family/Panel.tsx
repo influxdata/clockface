@@ -32,6 +32,8 @@ export interface PanelProps extends StandardFunctionProps {
   onDismiss?: () => void
   /** Applies to the dismiss button rendered when onDismiss is present */
   dismissButtonColor?: ComponentColor
+  /** Renders a border based on the background color or gradient */
+  border?: boolean
 }
 
 export type PanelRef = HTMLDivElement
@@ -42,6 +44,7 @@ export const PanelRoot = forwardRef<PanelRef, PanelProps>(
       id,
       style,
       testID = 'panel',
+      border = false,
       gradient,
       children,
       className,
@@ -59,6 +62,7 @@ export const PanelRoot = forwardRef<PanelRef, PanelProps>(
     const panelClass = classnames('cf-panel', {
       [`${className}`]: className,
       'cf-panel__gradient': gradient,
+      'cf-panel__bordered': border,
       [`cf-panel__${textColor}-text`]: textColor,
     })
 
@@ -66,7 +70,12 @@ export const PanelRoot = forwardRef<PanelRef, PanelProps>(
       <DismissButton onClick={onDismiss} color={dismissButtonColor} />
     )
 
-    const panelStyle = generateBackgroundStyle(backgroundColor, gradient, style)
+    const panelStyle = generateBackgroundStyle(
+      backgroundColor,
+      gradient,
+      border,
+      style
+    )
 
     return (
       <div

@@ -1,4 +1,4 @@
-@import '../../Styles/modules';
+@import '../../Styles/variables';
 
 /*
   Toggle Styles
@@ -121,16 +121,16 @@
 }
 
 .cf-toggle__xs {
-  @include toggleSizeModifier($form-xs-font, $form-xs-height, $form-xs-padding);
+  @include toggleSizeModifier($cf-form-xs-font, $cf-form-xs-height, $cf-form-xs-padding);
 }
 .cf-toggle__sm {
-  @include toggleSizeModifier($form-sm-font, $form-sm-height, $form-sm-padding);
+  @include toggleSizeModifier($cf-form-sm-font, $cf-form-sm-height, $cf-form-sm-padding);
 }
 .cf-toggle__md {
-  @include toggleSizeModifier($form-md-font, $form-md-height, $form-md-padding);
+  @include toggleSizeModifier($cf-form-md-font, $cf-form-md-height, $cf-form-md-padding);
 }
 .cf-toggle__lg {
-  @include toggleSizeModifier($form-lg-font, $form-lg-height, $form-lg-padding);
+  @include toggleSizeModifier($cf-form-lg-font, $cf-form-lg-height, $cf-form-lg-padding);
 }
 
 /*
