@@ -38,7 +38,7 @@ tabsStories.add(
       /* eslint-enable */
     }
 
-    const handleClick = (id: string): void => {
+    const handleTabClick = (id: string): void => {
       setActiveTab(id)
     }
 
@@ -62,26 +62,26 @@ tabsStories.add(
             active={activeTab === 'circles'}
             id="circles"
             text="Circles"
-            onClick={handleClick}
+            onClick={handleTabClick}
           />
           <Tabs.Tab
             active={activeTab === 'triangles'}
             id="triangles"
             text="Triangles"
-            onClick={handleClick}
+            onClick={handleTabClick}
           />
           <Tabs.Tab
             active={activeTab === 'squares'}
             id="squares"
             text="Squares"
-            onClick={handleClick}
+            onClick={handleTabClick}
             onDismiss={() => {}}
           />
           <Tabs.Tab
             active={activeTab === 'pentagons'}
             id="pentagons"
             text="Pentagons"
-            onClick={handleClick}
+            onClick={handleTabClick}
           />
         </Tabs.Tabs>
         <div className="story--test-buttons">
