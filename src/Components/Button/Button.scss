@@ -83,19 +83,19 @@
 }
 
 .cf-button-xs {
-  @include buttonSizeModifier($form-xs-font, $form-xs-padding, $form-xs-height);
+  @include buttonSizeModifier($cf-form-xs-font, $cf-form-xs-padding, $cf-form-xs-height);
   .cf-button-icon {
-    font-size: $form-xs-font;
+    font-size: $cf-form-xs-font;
   }
 }
 .cf-button-sm {
-  @include buttonSizeModifier($form-sm-font, $form-sm-padding, $form-sm-height);
+  @include buttonSizeModifier($cf-form-sm-font, $cf-form-sm-padding, $cf-form-sm-height);
 }
 .cf-button-md {
-  @include buttonSizeModifier($form-md-font, $form-md-padding, $form-md-height);
+  @include buttonSizeModifier($cf-form-md-font, $cf-form-md-padding, $cf-form-md-height);
 }
 .cf-button-lg {
-  @include buttonSizeModifier($form-lg-font, $form-lg-padding, $form-lg-height);
+  @include buttonSizeModifier($cf-form-lg-font, $cf-form-lg-padding, $cf-form-lg-height);
 }
 
 /*
@@ -107,16 +107,16 @@
   text-align: center;
 
   &.cf-button-xs {
-    width: $form-xs-height;
+    width: $cf-form-xs-height;
   }
   &.cf-button-sm {
-    width: $form-sm-height;
+    width: $cf-form-sm-height;
   }
   &.cf-button-md {
-    width: $form-md-height;
+    width: $cf-form-md-height;
   }
   &.cf-button-lg {
-    width: $form-lg-height;
+    width: $cf-form-lg-height;
   }
 }
 

@@ -87,15 +87,15 @@ $c-deeppurple: #13002D;
    Might not actually need any of these yet
 */
 
-$z--notifications: 9999;
-$z--right-click: 9995;
-$z--popovers: 9990;
-$z--draggable-resizer-mask: 9980;
-$z--overlays: 9940;
-$z--nav-toggle: 9999;
-$z--nav-menu: 9900;
-$z--nav-mask: 9890;
-$z--drag-n-drop: 5000;
+$cf-z--notifications: 9999;
+$cf-z--right-click: 9995;
+$cf-z--popovers: 9990;
+$cf-z--draggable-resizer-mask: 9980;
+$cf-z--overlays: 9940;
+$cf-z--nav-toggle: 9999;
+$cf-z--nav-menu: 9900;
+$cf-z--nav-mask: 9890;
+$cf-z--drag-n-drop: 5000;
 
 /*
    Motifs
@@ -166,41 +166,41 @@ $cf-text-selection-color: $g20-white;
    NavMenu + Page components
 */
 
-$nav-menu--size: 60px;
-$nav-menu--gutter: 16px;
-$nav-menu--bg: $c-pool;
-$nav-menu--bg-accent: $c-star;
-$nav-menu--bg-hover: $c-laser;
-$nav-menu--bg-hover-accent: $c-comet;
-$nav-menu--breakpoint: 800px;
+$cf-nav-menu--size: 60px;
+$cf-nav-menu--gutter: 16px;
+$cf-nav-menu--bg: $c-pool;
+$cf-nav-menu--bg-accent: $c-star;
+$cf-nav-menu--bg-hover: $c-laser;
+$cf-nav-menu--bg-hover-accent: $c-comet;
+$cf-nav-menu--breakpoint: 800px;
 
-$page--background: $g1-raven;
+$cf-page--background: $g1-raven;
 
-$page--header-size-sm: 66px;
-$page--header-size: 88px;
-$page--control-bar-size: 44px;
-$page--title-size-sm: 1.8em;
-$page--title-size: 2.4em;
-$page--title-weight: 400;
-$page--title-font: $cf-header-font;
-$page--title-color: $cf-text-header;
+$cf-page--header-size-sm: 66px;
+$cf-page--header-size: 88px;
+$cf-page--control-bar-size: 44px;
+$cf-page--title-size-sm: 1.8em;
+$cf-page--title-size: 2.4em;
+$cf-page--title-weight: 400;
+$cf-page--title-font: $cf-header-font;
+$cf-page--title-color: $cf-text-header;
 
-$page--gutter-xs: 12px;
-$page--gutter-sm: 20px;
-$page--gutter-md: 32px;
-$page--gutter-lg: 54px;
+$cf-page--gutter-xs: 12px;
+$cf-page--gutter-sm: 20px;
+$cf-page--gutter-md: 32px;
+$cf-page--gutter-lg: 54px;
 
-$page--max-width: 1608px;
-$page--funnel-max-width: 1200px;
+$cf-page--max-width: 1608px;
+$cf-page--funnel-max-width: 1200px;
 
 /*
    Responsive Breakpoints
    -----------------------------------------------------------------------------
 */
 
-$grid--breakpoint-sm: 750px;
-$grid--breakpoint-md: 1080px;
-$grid--breakpoint-lg: 1500px;
+$cf-grid--breakpoint-sm: 750px;
+$cf-grid--breakpoint-md: 1080px;
+$cf-grid--breakpoint-lg: 1500px;
 
 /*
    Form Element Sizing
@@ -209,29 +209,29 @@ $grid--breakpoint-lg: 1500px;
    Dropdown, Input, etc.
 */
 
-$form-xs-height: 22px;
-$form-xs-padding: 8px;
-$form-xs-font: 12px;
+$cf-form-xs-height: 22px;
+$cf-form-xs-padding: 8px;
+$cf-form-xs-font: 12px;
 
-$form-sm-height: 30px;
-$form-sm-padding: 10px;
-$form-sm-font: 13px;
+$cf-form-sm-height: 30px;
+$cf-form-sm-padding: 10px;
+$cf-form-sm-font: 13px;
 
-$form-md-height: 38px;
-$form-md-padding: 14px;
-$form-md-font: 14px;
+$cf-form-md-height: 38px;
+$cf-form-md-padding: 14px;
+$cf-form-md-font: 14px;
 
-$form-lg-height: 46px;
-$form-lg-padding: 18px;
-$form-lg-font: 17px;
+$cf-form-lg-height: 46px;
+$cf-form-lg-padding: 18px;
+$cf-form-lg-font: 17px;
 
 /*
    Empty State
    -----------------------------------------------------------------------------
 */
 
-$empty-state-text: $g9-mountain;
-$empty-state-highlight: $g13-mist;
+$cf-empty-state-text: $g9-mountain;
+$cf-empty-state-highlight: $g13-mist;
 
 /*
    Input Variables
@@ -251,7 +251,7 @@ $cf-input-background--disabled: $g3-castle;
 $cf-input-text--default: $g13-mist;
 $cf-input-text--focused: $g20-white;
 $cf-input-text--hover: $g15-platinum;
-$cf-input-text--disabled: $empty-state-text;
+$cf-input-text--disabled: $cf-empty-state-text;
 
 $cf-input-border--default: $g5-pepper;
 $cf-input-border--focused: $c-pool;
@@ -307,15 +307,15 @@ $cf-label--active: $g18-cloud;
    Used in both Inputs and Forms
 */
 
-$overlay--gutter: $cf-marg-c + $cf-marg-b;
-$overlay--header-height: $page--header-size;
-$overlay--title-font: $page--title-font;
-$overlay--title-size: $page--title-size * 0.666;
-$overlay--title-weight: $page--title-weight;
-$overlay--title-color: $page--title-color;
-$overlay--container-padding: $cf-marg-c + $cf-marg-d;
-$overlay--z: 20;
-$overlay--mask-z: 10;
+$cf-overlay--gutter: $cf-marg-c + $cf-marg-b;
+$cf-overlay--header-height: $cf-page--header-size;
+$cf-overlay--title-font: $cf-page--title-font;
+$cf-overlay--title-size: $cf-page--title-size * 0.666;
+$cf-overlay--title-weight: $cf-page--title-weight;
+$cf-overlay--title-color: $cf-page--title-color;
+$cf-overlay--container-padding: $cf-marg-c + $cf-marg-d;
+$cf-overlay--z: 20;
+$cf-overlay--mask-z: 10;
 
 /*
    Tree Nav Variables
@@ -403,11 +403,11 @@ $cf-tree-nav__toggle-icon-hover: $g13-mist;
 }
 
 // Custom Scrollbars (Chrome Only)
-$scrollbar-width: 16px;
-$scrollbar-offset: 3px;
+$cf-scrollbar-width: 16px;
+$cf-scrollbar-offset: 3px;
 @mixin custom-scrollbar($trackColor, $handleColor) {
   &::-webkit-scrollbar {
-    width: $scrollbar-width;
+    width: $cf-scrollbar-width;
 
     &-button {
       background-color: $trackColor;
@@ -417,13 +417,13 @@ $scrollbar-offset: 3px;
     }
     &-track-piece {
       background-color: $trackColor;
-      border: $scrollbar-offset solid $trackColor;
-      border-radius: ($scrollbar-width / 2);
+      border: $cf-scrollbar-offset solid $trackColor;
+      border-radius: ($cf-scrollbar-width / 2);
     }
     &-thumb {
       background-color: $handleColor;
-      border: $scrollbar-offset solid $trackColor;
-      border-radius: ($scrollbar-width / 2);
+      border: $cf-scrollbar-offset solid $trackColor;
+      border-radius: ($cf-scrollbar-width / 2);
     }
     &-corner {
       background-color: $trackColor;
@@ -436,7 +436,7 @@ $scrollbar-offset: 3px;
 
 @mixin custom-scrollbar-round($trackColor, $handleColor) {
   &::-webkit-scrollbar {
-    width: $scrollbar-width;
+    width: $cf-scrollbar-width;
     border-top-right-radius: $cf-radius;
     border-top-left-radius: $cf-radius;
     border-bottom-left-radius: $cf-radius;
@@ -447,20 +447,20 @@ $scrollbar-offset: 3px;
     }
     &-track {
       background-color: $trackColor;
-      border-top-right-radius: ($scrollbar-width / 2);
-      border-top-left-radius: ($scrollbar-width / 2);
-      border-bottom-left-radius: ($scrollbar-width / 2);
-      border-bottom-right-radius: ($scrollbar-width / 2);
+      border-top-right-radius: ($cf-scrollbar-width / 2);
+      border-top-left-radius: ($cf-scrollbar-width / 2);
+      border-bottom-left-radius: ($cf-scrollbar-width / 2);
+      border-bottom-right-radius: ($cf-scrollbar-width / 2);
     }
     &-track-piece {
       background-color: $trackColor;
-      border: $scrollbar-offset solid $trackColor;
-      border-radius: ($scrollbar-width / 2);
+      border: $cf-scrollbar-offset solid $trackColor;
+      border-radius: ($cf-scrollbar-width / 2);
     }
     &-thumb {
       background-color: $handleColor;
-      border: $scrollbar-offset solid $trackColor;
-      border-radius: ($scrollbar-width / 2);
+      border: $cf-scrollbar-offset solid $trackColor;
+      border-radius: ($cf-scrollbar-width / 2);
     }
     &-corner {
       background-color: $trackColor;

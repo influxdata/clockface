@@ -32,7 +32,7 @@
   display: inline-block;
   font-size: 12px;
   font-weight: $cf-font-weight--medium;
-  padding: 0 ($form-sm-padding + $cf-border);
+  padding: 0 ($cf-form-sm-padding + $cf-border);
   @extend %no-user-select;
 }
 
@@ -67,12 +67,12 @@
 */
 .cf-form--divider {
   width: 100%;
-  height: $form-sm-height - $cf-marg-b;
+  height: $cf-form-sm-height - $cf-marg-b;
 
   &-line {
     height: $cf-border;
     background-color: $cf-card--border;
-    margin: (($form-sm-height - $cf-marg-b) / 2) 0;
+    margin: (($cf-form-sm-height - $cf-marg-b) / 2) 0;
     border-radius: $cf-border / 2;
   }
 }
@@ -85,7 +85,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-top: $form-sm-height - $cf-marg-b;
+  margin-top: $cf-form-sm-height - $cf-marg-b;
   margin-bottom: 0;
 
   > * {
@@ -102,5 +102,5 @@
   border-radius: $cf-radius;
   background-color: $cf-card-background--default;
   padding: $cf-marg-b ($cf-marg-b + $cf-marg-a);
-  min-height: $form-sm-height;
+  min-height: $cf-form-sm-height;
 }

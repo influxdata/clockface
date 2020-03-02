@@ -13,7 +13,7 @@
   align-items: stretch;
 }
 
-@media screen and (min-width: $nav-menu--breakpoint) {
+@media screen and (min-width: $cf-nav-menu--breakpoint) {
   .cf-page {
     width: auto;
     height: 100%;
@@ -33,14 +33,14 @@
 .cf-page-contents__fluid,
 .cf-page-contents__fixed {
   width: 100%;
-  padding: 0 $page--gutter-xs;
+  padding: 0 $cf-page--gutter-xs;
 }
 
 .cf-page-header--fixed,
 .cf-page-control-bar--fixed,
 .cf-page-contents__fixed {
   margin: 0 auto;
-  max-width: $page--max-width;
+  max-width: $cf-page--max-width;
 }
 
 /*
@@ -50,8 +50,8 @@
 
 .cf-page-header {
   width: 100%;
-  height: $page--header-size-sm;
-  flex: 0 0 $page--header-size-sm;
+  height: $cf-page--header-size-sm;
+  flex: 0 0 $cf-page--header-size-sm;
   display: flex;
   align-items: center;
 }
@@ -76,9 +76,9 @@
   align-items: flex-start;
 }
 
-@media screen and (min-width: $nav-menu--breakpoint) {
+@media screen and (min-width: $cf-nav-menu--breakpoint) {
   .cf-page-control-bar {
-    flex: 0 0 $page--control-bar-size;
+    flex: 0 0 $cf-page--control-bar-size;
   }
 }
 
@@ -96,7 +96,7 @@
   align-items: flex-start;
   text-align: center;
   justify-content: center;
-  flex: 0 0 ($nav-menu--size - (($nav-menu--size - $form-sm-height) / 2));
+  flex: 0 0 ($cf-nav-menu--size - (($cf-nav-menu--size - $cf-form-sm-height) / 2));
 
   &.cf-page-control-bar__no-children {
     display: none;
@@ -104,15 +104,15 @@
 }
 
 .cf-page-control-bar--center:not(.cf-page-control-bar__no-children) + .cf-page-control-bar--right {
-  flex: 0 0 ($nav-menu--size - (($nav-menu--size - $form-sm-height) / 2));
+  flex: 0 0 ($cf-nav-menu--size - (($cf-nav-menu--size - $cf-form-sm-height) / 2));
   align-items: flex-start;
 }
 
 .cf-page-control-bar--left {
-  padding: 0 ($nav-menu--size - $page--gutter-xs);
+  padding: 0 ($cf-nav-menu--size - $cf-page--gutter-xs);
 }
 
-@media screen and (min-width: $nav-menu--breakpoint) {
+@media screen and (min-width: $cf-nav-menu--breakpoint) {
   .cf-page-control-bar--fluid,
   .cf-page-control-bar--fixed {
     flex-direction: row;
@@ -154,8 +154,8 @@
   }
 
   .cf-page-header {
-    height: $page--header-size;
-    flex: 0 0 $page--header-size;
+    height: $cf-page--header-size;
+    flex: 0 0 $cf-page--header-size;
   }
 
   .cf-page-header--fluid,
@@ -177,14 +177,14 @@
   cursor: default;
   display: inline-block;
   color: $cf-text-default;
-  font-size: $page--title-size-sm;
-  line-height: $page--title-size-sm;
+  font-size: $cf-page--title-size-sm;
+  line-height: $cf-page--title-size-sm;
 }
 
-@media screen and (min-width: $nav-menu--breakpoint) {
+@media screen and (min-width: $cf-nav-menu--breakpoint) {
   .cf-heading.cf-page--title {
-    font-size: $page--title-size;
-    line-height: $page--title-size;
+    font-size: $cf-page--title-size;
+    line-height: $cf-page--title-size;
   }
 }
 
@@ -219,7 +219,7 @@
 
 .cf-page-contents.cf-dapper-scrollbars .cf-page-contents__fluid,
 .cf-page-contents.cf-dapper-scrollbars .cf-page-contents__fixed {
-  padding-bottom: $page--gutter-xs;
+  padding-bottom: $cf-page--gutter-xs;
 }
 
 /*
@@ -256,17 +256,17 @@
   }
 }
 
-@media screen and (min-width: $nav-menu--breakpoint) {
+@media screen and (min-width: $cf-nav-menu--breakpoint) {
   .cf-page__gutter-xs {
-    @include pageGutterModifier($page--gutter-xs);
+    @include pageGutterModifier($cf-page--gutter-xs);
   }
   .cf-page__gutter-sm {
-    @include pageGutterModifier($page--gutter-sm);
+    @include pageGutterModifier($cf-page--gutter-sm);
   }
   .cf-page__gutter-md {
-    @include pageGutterModifier($page--gutter-md);
+    @include pageGutterModifier($cf-page--gutter-md);
   }
   .cf-page__gutter-lg {
-    @include pageGutterModifier($page--gutter-lg);
+    @include pageGutterModifier($cf-page--gutter-lg);
   }
 }

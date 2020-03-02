@@ -224,14 +224,14 @@ $selectable-card--label-disabled: $g8-storm;
 }
 
 .cf-selectable-card__xs {
-  @include selectableCardSizeModifier($form-xs-font, $form-xs-padding);
+  @include selectableCardSizeModifier($cf-form-xs-font, $cf-form-xs-padding);
 }
 .cf-selectable-card__sm {
-  @include selectableCardSizeModifier($form-sm-font, $form-sm-padding);
+  @include selectableCardSizeModifier($cf-form-sm-font, $cf-form-sm-padding);
 }
 .cf-selectable-card__md {
-  @include selectableCardSizeModifier($form-md-font, $form-md-padding);
+  @include selectableCardSizeModifier($cf-form-md-font, $cf-form-md-padding);
 }
 .cf-selectable-card__lg {
-  @include selectableCardSizeModifier($form-lg-font, $form-lg-padding);
+  @include selectableCardSizeModifier($cf-form-lg-font, $cf-form-lg-padding);
 }

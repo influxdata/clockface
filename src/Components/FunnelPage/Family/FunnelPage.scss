@@ -43,7 +43,7 @@ $funnel-page--gutter: $cf-marg-d;
 .cf-funnel-page--content {
   margin: 0 auto;
   width: 100%;
-  max-width: $page--funnel-max-width;
+  max-width: $cf-page--funnel-max-width;
   text-align: center;
   padding: $funnel-page--tiny-gutter;
   font-size: $funnel-page--base-font;
@@ -81,7 +81,7 @@ $funnel-page--gutter: $cf-marg-d;
   }
 }
 
-@media screen and (min-width: $grid--breakpoint-md) {
+@media screen and (min-width: $cf-grid--breakpoint-md) {
   .cf-funnel-page--content {
     font-size: $funnel-page--base-font--large;
     padding: $funnel-page--gutter;
@@ -130,10 +130,10 @@ $funnel-page--gutter: $cf-marg-d;
 .cf-funnel-page--footer-container {
   width: 100%;
   padding: 0 $funnel-page--tiny-gutter;
-  max-width: $page--funnel-max-width;
+  max-width: $cf-page--funnel-max-width;
 }
 
-@media screen and (min-width: $grid--breakpoint-md) {
+@media screen and (min-width: $cf-grid--breakpoint-md) {
   .cf-funnel-page--footer-container {
     padding: 0 $funnel-page--gutter;
   }

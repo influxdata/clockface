@@ -83,19 +83,19 @@
 
 .cf-panel--header__xs,
 .cf-panel--body__xs {
-  @include panelHeaderBodySizeModifier($form-xs-padding);
+  @include panelHeaderBodySizeModifier($cf-form-xs-padding);
 }
 .cf-panel--header__sm,
 .cf-panel--body__sm {
-  @include panelHeaderBodySizeModifier($form-sm-padding);
+  @include panelHeaderBodySizeModifier($cf-form-sm-padding);
 }
 .cf-panel--header__md,
 .cf-panel--body__md {
-  @include panelHeaderBodySizeModifier($form-md-padding);
+  @include panelHeaderBodySizeModifier($cf-form-md-padding);
 }
 .cf-panel--header__lg,
 .cf-panel--body__lg {
-  @include panelHeaderBodySizeModifier($form-lg-padding);
+  @include panelHeaderBodySizeModifier($cf-form-lg-padding);
 }
 
 @mixin panelFooterSizeModifier($padding, $fontSize) {
@@ -103,16 +103,16 @@
 }
 
 .cf-panel--footer__xs {
-  @include panelFooterSizeModifier($form-xs-padding, $form-xs-font);
+  @include panelFooterSizeModifier($cf-form-xs-padding, $cf-form-xs-font);
 }
 .cf-panel--footer__sm {
-  @include panelFooterSizeModifier($form-sm-padding, $form-sm-font);
+  @include panelFooterSizeModifier($cf-form-sm-padding, $cf-form-sm-font);
 }
 .cf-panel--footer__md {
-  @include panelFooterSizeModifier($form-md-padding, $form-md-font);
+  @include panelFooterSizeModifier($cf-form-md-padding, $cf-form-md-font);
 }
 .cf-panel--footer__lg {
-  @include panelFooterSizeModifier($form-lg-padding, $form-lg-font);
+  @include panelFooterSizeModifier($cf-form-lg-padding, $cf-form-lg-font);
 }
 
 /*

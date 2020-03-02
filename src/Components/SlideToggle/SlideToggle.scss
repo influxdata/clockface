@@ -79,16 +79,16 @@ $slide-toggle--gap: $cf-border * 2;
 
 .cf-slide-toggle {
   &.cf-slide-toggle-xs {
-    @include slideToggleSizeModifier($form-xs-height);
+    @include slideToggleSizeModifier($cf-form-xs-height);
   }
   &.cf-slide-toggle-sm {
-    @include slideToggleSizeModifier($form-sm-height);
+    @include slideToggleSizeModifier($cf-form-sm-height);
   }
   &.cf-slide-toggle-md {
-    @include slideToggleSizeModifier($form-md-height);
+    @include slideToggleSizeModifier($cf-form-md-height);
   }
   &.cf-slide-toggle-lg {
-    @include slideToggleSizeModifier($form-lg-height);
+    @include slideToggleSizeModifier($cf-form-lg-height);
   }
 }
 

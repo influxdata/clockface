@@ -59,7 +59,7 @@
   font-size: 13px;
   font-weight: $cf-font-weight--medium;
   visibility: hidden;
-  z-index: $z--nav-menu;
+  z-index: $cf-z--nav-menu;
 }
 
 .cf-nav__expanded {
@@ -164,14 +164,14 @@
 }
 
 .cf-pop-nav__xs {
-  @include popNavSizeModifier($form-xs-font, $form-xs-height);
+  @include popNavSizeModifier($cf-form-xs-font, $cf-form-xs-height);
 }
 .cf-pop-nav__sm {
-  @include popNavSizeModifier($form-sm-font, $form-sm-height);
+  @include popNavSizeModifier($cf-form-sm-font, $cf-form-sm-height);
 }
 .cf-pop-nav__md {
-  @include popNavSizeModifier($form-md-font, $form-md-height);
+  @include popNavSizeModifier($cf-form-md-font, $cf-form-md-height);
 }
 .cf-pop-nav__lg {
-  @include popNavSizeModifier($form-lg-font, $form-lg-height);
+  @include popNavSizeModifier($cf-form-lg-font, $cf-form-lg-height);
 }

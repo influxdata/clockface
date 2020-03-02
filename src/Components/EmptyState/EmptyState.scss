@@ -16,14 +16,14 @@
 .cf-empty-state--sub-text {
   margin-bottom: 0;
   text-align: center;
-  color: $empty-state-text;
+  color: $cf-empty-state-text;
   @extend %no-user-select;
 
   em,
   b {
     font-weight: $cf-font-weight--medium;
     font-style: normal;
-    color: $empty-state-highlight;
+    color: $cf-empty-state-highlight;
   }
 }
 
@@ -63,17 +63,17 @@
 }
 
 .cf-empty-state--xs {
-  @include emptyStateSizeModifier($form-xs-font, $cf-marg-a);
+  @include emptyStateSizeModifier($cf-form-xs-font, $cf-marg-a);
 }
 
 .cf-empty-state--sm {
-  @include emptyStateSizeModifier($form-sm-font, $cf-marg-b);
+  @include emptyStateSizeModifier($cf-form-sm-font, $cf-marg-b);
 }
 
 .cf-empty-state--md {
-  @include emptyStateSizeModifier($form-md-font, $cf-marg-c);
+  @include emptyStateSizeModifier($cf-form-md-font, $cf-marg-c);
 }
 
 .cf-empty-state--lg {
-  @include emptyStateSizeModifier($form-lg-font, $cf-marg-d);
+  @include emptyStateSizeModifier($cf-form-lg-font, $cf-marg-d);
 }

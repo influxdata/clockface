@@ -7,12 +7,12 @@
 
 .cf-resource-description {
   width: 100%;
-  min-height: $form-xs-height;
+  min-height: $cf-form-xs-height;
 }
 
 .cf-resource-description--preview,
 .cf-input.cf-resource-description--input > input {
-  font-size: $form-xs-font;
+  font-size: $cf-form-xs-font;
   font-weight: $cf-font-weight--medium;
   font-family: $cf-text-font;
 }
@@ -34,7 +34,7 @@
   color: $g13-mist;
   transition: color 0.25s ease, background-color 0.25s ease,
     border-color 0.25s ease;
-  line-height: $form-xs-font + $cf-border;
+  line-height: $cf-form-xs-font + $cf-border;
 
   .cf-icon {
     position: relative;

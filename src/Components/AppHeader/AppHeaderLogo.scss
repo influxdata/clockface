@@ -28,14 +28,14 @@
 }
 
 .cf-app-header--logo__xs {
-  @include appHeaderLogoSizeModifier($form-xs-font, $form-xs-height);
+  @include appHeaderLogoSizeModifier($cf-form-xs-font, $cf-form-xs-height);
 }
 .cf-app-header--logo__sm {
-  @include appHeaderLogoSizeModifier($form-sm-font, $form-sm-height);
+  @include appHeaderLogoSizeModifier($cf-form-sm-font, $cf-form-sm-height);
 }
 .cf-app-header--logo__md {
-  @include appHeaderLogoSizeModifier($form-md-font, $form-md-height);
+  @include appHeaderLogoSizeModifier($cf-form-md-font, $cf-form-md-height);
 }
 .cf-app-header--logo__lg {
-  @include appHeaderLogoSizeModifier($form-lg-font, $form-lg-height);
+  @include appHeaderLogoSizeModifier($cf-form-lg-font, $cf-form-lg-height);
 }

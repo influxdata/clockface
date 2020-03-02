@@ -14,16 +14,16 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   position: relative;
 
   &.cf-dropdown-xs {
-    height: $form-xs-height;
+    height: $cf-form-xs-height;
   }
   &.cf-dropdown-sm {
-    height: $form-sm-height;
+    height: $cf-form-sm-height;
   }
   &.cf-dropdown-md {
-    height: $form-md-height;
+    height: $cf-form-md-height;
   }
   &.cf-dropdown-lg {
-    height: $form-lg-height;
+    height: $cf-form-lg-height;
   }
 }
 
@@ -61,8 +61,8 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
 
 @mixin dropdownItemStyles() {
   padding: $dropdown-item--padding-v $dropdown-item--padding-h;
-  font-size: $form-sm-font;
-  line-height: $form-sm-font;
+  font-size: $cf-form-sm-font;
+  line-height: $cf-form-sm-font;
   font-weight: $cf-font-weight--medium;
   text-align: left;
 }

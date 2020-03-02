@@ -51,9 +51,9 @@ $resource-card--row-gap: $cf-marg-a - ($cf-border / 2);
 .cf-resource-card--meta {
   display: flex;
   align-items: center;
-  font-size: $form-xs-font;
+  font-size: $cf-form-xs-font;
   font-weight: $cf-font-weight--medium;
-  color: $empty-state-text;
+  color: $cf-empty-state-text;
   padding-bottom: $cf-border;
 }
 

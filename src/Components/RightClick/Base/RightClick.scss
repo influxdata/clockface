@@ -6,7 +6,7 @@
 */
 
 .cf-right-click-portal {
-  @include portal-style($z--right-click);
+  @include portal-style($cf-z--right-click);
 }
 
 .cf-right-click {

@@ -11,7 +11,7 @@
   width: 100%;
   top: 0;
   left: 0;
-  z-index: $z--nav-menu;
+  z-index: $cf-z--nav-menu;
   transform: translateX(-100%);
   transition: transform 0.4s ease-in-out;
   display: flex;
@@ -27,10 +27,10 @@
   width: 100%;
   top: 0;
   left: 0;
-  background-color: $page--background;
+  background-color: $cf-page--background;
   opacity: 0;
   pointer-events: none;
-  z-index: $z--nav-mask;
+  z-index: $cf-z--nav-mask;
   transition: opacity 0.25s ease;
 
   .cf-nav__expanded + & {
@@ -39,12 +39,12 @@
 }
 
 .cf-nav--toggle {
-  z-index: $z--nav-toggle;
+  z-index: $cf-z--nav-toggle;
   position: absolute;
   top: 0;
   left: 0;
-  width: $nav-menu--size;
-  height: $nav-menu--size;
+  width: $cf-nav-menu--size;
+  height: $cf-nav-menu--size;
 
   &:hover {
     cursor: pointer;
@@ -53,8 +53,8 @@
 
 .cf-nav--hamburger {
   position: absolute;
-  height: $nav-menu--size;
-  width: $nav-menu--size;
+  height: $cf-nav-menu--size;
+  width: $cf-nav-menu--size;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -64,7 +64,7 @@
 .cf-nav--hamburger-top,
 .cf-nav--hamburger-middle,
 .cf-nav--hamburger-bottom {
-  width: ceil($nav-menu--size * 0.4);
+  width: ceil($cf-nav-menu--size * 0.4);
   height: $cf-border;
   position: absolute;
   top: 50%;
@@ -141,8 +141,8 @@
   flex-direction: column;
   overflow: auto;
   height: 100%;
-  @include gradient-h($nav-menu--bg,$nav-menu--bg-accent);
-  padding-top: ceil($nav-menu--size * 1);
+  @include gradient-h($cf-nav-menu--bg,$cf-nav-menu--bg-accent);
+  padding-top: ceil($cf-nav-menu--size * 1);
   padding-left: $cf-marg-b;
   padding-bottom: $cf-marg-b;
 }
@@ -155,8 +155,8 @@
 
 .cf-nav--item-icon {
   display: block;
-  width: ceil($nav-menu--size * 0.75);
-  height: ceil($nav-menu--size * 0.75);
+  width: ceil($cf-nav-menu--size * 0.75);
+  height: ceil($cf-nav-menu--size * 0.75);
   position: absolute;
   pointer-events: none;
   z-index: 1;
@@ -168,7 +168,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    font-size: ceil($nav-menu--size * 0.3);
+    font-size: ceil($cf-nav-menu--size * 0.3);
   }
   
   &,
@@ -190,10 +190,10 @@
 
 .cf-nav--item-header {
   display: block;
-  height: ceil($nav-menu--size * 0.75);
-  line-height: ceil($nav-menu--size * 0.75);
-  font-size: $form-lg-font;
-  padding: 0 ceil($nav-menu--size * 0.75);
+  height: ceil($cf-nav-menu--size * 0.75);
+  line-height: ceil($cf-nav-menu--size * 0.75);
+  font-size: $cf-form-lg-font;
+  padding: 0 ceil($cf-nav-menu--size * 0.75);
   white-space: nowrap;
   border-radius: $cf-radius 0 0 $cf-radius;
   
@@ -208,7 +208,7 @@
 
   &:hover {
     color: $g20-white;
-    @include gradient-h($nav-menu--bg-hover, $nav-menu--bg-hover-accent);
+    @include gradient-h($cf-nav-menu--bg-hover, $cf-nav-menu--bg-hover-accent);
   }
 }
 
@@ -216,7 +216,7 @@
 .cf-nav--item.active {
   .cf-nav--item-header {
     color: $g20-white;
-    @include gradient-h($nav-menu--bg-hover, $nav-menu--bg-hover-accent);
+    @include gradient-h($cf-nav-menu--bg-hover, $cf-nav-menu--bg-hover-accent);
   }
   .cf-nav--item-icon {
     color: $g20-white;
@@ -229,8 +229,8 @@
 
 // Sub Menu Items
 .cf-nav--sub-item {
-  margin-left: ceil($nav-menu--size * 0.75);
-  padding: 6px ceil($nav-menu--gutter * 0.75);
+  margin-left: ceil($cf-nav-menu--size * 0.75);
+  padding: 6px ceil($cf-nav-menu--gutter * 0.75);
   user-select: none;
   font-size: 13px;
   white-space: nowrap;
@@ -253,7 +253,7 @@
     width: 100%;
     height: 100%;
     border-radius: $cf-radius 0 0 $cf-radius;
-    @include gradient-h($nav-menu--bg-hover, $nav-menu--bg-hover-accent);
+    @include gradient-h($cf-nav-menu--bg-hover, $cf-nav-menu--bg-hover-accent);
     z-index: -1;
     opacity: 0;
     transition: opacity 0.25s ease;
@@ -274,7 +274,7 @@
     Navigation Menu (Large Screens)
     ----------------------------------------------------------------------------
 */
-@media screen and (min-width: $nav-menu--breakpoint) {
+@media screen and (min-width: $cf-nav-menu--breakpoint) {
   .cf-nav--toggle,
   .cf-nav--mask {
     display: none;
@@ -290,7 +290,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: $nav-menu--size;
+    width: $cf-nav-menu--size;
     transform: translateX(0);
     transition: none;
   }
@@ -308,8 +308,8 @@
   }
 
   .cf-nav--item {
-    width: $nav-menu--size;
-    height: $nav-menu--size;
+    width: $cf-nav-menu--size;
+    height: $cf-nav-menu--size;
 
     &:hover {
       z-index: 9999;
@@ -317,8 +317,8 @@
   }
 
   .cf-nav--item-icon {
-    width: $nav-menu--size;
-    height: $nav-menu--size;
+    width: $cf-nav-menu--size;
+    height: $cf-nav-menu--size;
     pointer-events: all;
     z-index: 2;
     
@@ -331,7 +331,7 @@
     }
 
     > .cf-icon {
-      font-size: ceil($nav-menu--size * 0.4222);
+      font-size: ceil($cf-nav-menu--size * 0.4222);
     }
 
     .cf-nav--item:first-child & {
@@ -349,7 +349,7 @@
       &:visited {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
-        background-color: $nav-menu--bg;
+        background-color: $cf-nav-menu--bg;
         color: $g20-white;
       }
     }
@@ -369,7 +369,7 @@
       &:active,
       &:visited,
       &:hover {
-        background-color: $nav-menu--bg;
+        background-color: $cf-nav-menu--bg;
         text-shadow:
           0 0 9px $c-yeti,
           0 0 15px $c-hydrogen,
@@ -382,10 +382,10 @@
     display: none;
     position: absolute;
     top: 0;
-    left: $nav-menu--size;
+    left: $cf-nav-menu--size;
     align-items: stretch;
     border-radius: 0 $cf-radius $cf-radius 0;
-    @include gradient-h($nav-menu--bg, $nav-menu--bg-accent);
+    @include gradient-h($cf-nav-menu--bg, $cf-nav-menu--bg-accent);
 
     .cf-nav--item:hover & {
       display: flex;
@@ -393,9 +393,9 @@
   }
 
   .cf-nav--item-header {
-    height: $nav-menu--size;
-    line-height: $nav-menu--size;
-    padding: 0 $nav-menu--gutter;
+    height: $cf-nav-menu--size;
+    line-height: $cf-nav-menu--size;
+    padding: 0 $cf-nav-menu--gutter;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 
@@ -412,7 +412,7 @@
   }
 
   .cf-nav--sub-item {
-    padding: 6px $nav-menu--gutter;
+    padding: 6px $cf-nav-menu--gutter;
     margin: 0;
 
     &:after {

@@ -15,7 +15,7 @@
 .cf-tree-nav--menu {
   position: absolute;
   top: $cf-tree-nav__small-height;
-  z-index: $z--nav-menu;
+  z-index: $cf-z--nav-menu;
   left: 0;
   height: calc(100% - #{$cf-tree-nav__small-height}) !important;
   width: 100%;
@@ -41,7 +41,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  z-index: $z--nav-menu + 5;
+  z-index: $cf-z--nav-menu + 5;
 
   &:hover {
     cursor: pointer;
@@ -437,7 +437,7 @@ $cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-ra
   .cf-tree-nav--user__expanded &,
   .cf-tree-nav--user__expanded &:hover {
     position: relative;
-    z-index: $z--nav-menu;
+    z-index: $cf-z--nav-menu;
     color: $cf-tree-nav__user-text-active;
     border-color: $cf-tree-nav__border-active;
     background-color: $cf-tree-nav__user-bg-active;
@@ -487,7 +487,7 @@ $cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-ra
 }
 
 .cf-tree-nav--user-menu {
-  z-index: $z--nav-menu + 5;
+  z-index: $cf-z--nav-menu + 5;
   position: absolute;
   top: $cf-tree-nav--user-block + $cf-tree-nav--user-block-gap - $cf-marg-a;
   left: $cf-tree-nav--user-block-gap;
@@ -544,7 +544,7 @@ a.cf-tree-nav--user-item:hover {
   ------------------------------------------------------------------------------
 */
 
-@media screen and (min-width: $nav-menu--breakpoint) {
+@media screen and (min-width: $cf-nav-menu--breakpoint) {
   %cf-tree-nav--block {
     flex: 0 0 $cf-tree-nav__width;
     height: $cf-tree-nav__width;
@@ -560,7 +560,7 @@ a.cf-tree-nav--user-item:hover {
     background-color: $cf-tree-nav__bg;
     position: relative;
     transition: flex-basis 0.25s ease;
-    z-index: $z--nav-menu;
+    z-index: $cf-z--nav-menu;
   }
 
   .cf-tree-nav--menu {

@@ -6,7 +6,7 @@
 */
 
 .cf-overlay-portal {
-  @include portal-style($z--overlays);
+  @include portal-style($cf-z--overlays);
 }
 
 // Mixins for shared styles
@@ -24,7 +24,7 @@
 
 .cf-overlay--mask {
   @extend %overlay-styles;
-  z-index: $overlay--mask-z;
+  z-index: $cf-overlay--mask-z;
 }
 
 .cf-overlay--children {
@@ -34,7 +34,7 @@
 
 .cf-overlay {
   @extend %overlay-styles;
-  z-index: $overlay--z;
+  z-index: $cf-overlay--z;
 }
 
 .cf-overlay--container {
@@ -43,43 +43,43 @@
   border-radius: $cf-radius;
 
   &__xs {
-    margin: $page--gutter-xs;
+    margin: $cf-page--gutter-xs;
   }
 
   &__sm {
-    margin: $page--gutter-sm;
+    margin: $cf-page--gutter-sm;
   }
 
   &__md {
-    margin: $page--gutter-md;
+    margin: $cf-page--gutter-md;
   }
 
   &__lg {
-    margin: $page--gutter-lg;
+    margin: $cf-page--gutter-lg;
   }
 }
 
 .cf-overlay--header {
   @extend %overlay-children;
-  height: $overlay--header-height;
+  height: $cf-overlay--header-height;
   display: flex;
-  padding: 0 $overlay--gutter;
+  padding: 0 $cf-overlay--gutter;
   justify-content: space-between;
   align-items: center;
   @include no-user-select();
 }
 
 .cf-overlay--title {
-  font-family: $overlay--title-font;
-  font-size: $overlay--title-size;
-  font-weight: $overlay--title-weight;
-  color: $overlay--title-color;
+  font-family: $cf-overlay--title-font;
+  font-size: $cf-overlay--title-size;
+  font-weight: $cf-overlay--title-weight;
+  color: $cf-overlay--title-color;
   white-space: nowrap;
 }
 
 .cf-overlay--dismiss {
-  width: ($overlay--header-height - 20px);
-  height: ($overlay--header-height - 20px);
+  width: ($cf-overlay--header-height - 20px);
+  height: ($cf-overlay--header-height - 20px);
   position: relative;
   background-color: transparent;
   border: 0;
@@ -116,7 +116,7 @@
 
 .cf-overlay--body {
   @extend %overlay-children;
-  padding: $overlay--gutter;
+  padding: $cf-overlay--gutter;
   padding-top: 0;
   color: $cf-input-text--default;
   font-size: 0.9em;
@@ -124,6 +124,6 @@
 
 .cf-overlay--footer {
   @extend %overlay-children;
-  padding: $overlay--gutter;
+  padding: $cf-overlay--gutter;
   padding-top: 0;
 }

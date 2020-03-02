@@ -42,7 +42,7 @@ body.sb-show-main {
   color: $g2-kevlar;
   font-weight: $cf-font-weight--bold;
   font-size: 12px;
-  min-height: $form-sm-height;
+  min-height: $cf-form-sm-height;
   padding: $cf-marg-a;
   line-height: 16px;
   user-select: none;
@@ -63,7 +63,7 @@ body.sb-show-main {
   }
 
   &.mockInput {
-    height: $form-sm-height;
+    height: $cf-form-sm-height;
     width: 100%;
   }
 
@@ -159,7 +159,7 @@ body.sb-show-main {
   align-items: stretch;
 }
 
-@media screen and (min-width: $nav-menu--breakpoint) {
+@media screen and (min-width: $cf-nav-menu--breakpoint) {
   .appWrapper {
     flex-direction: row;
   }

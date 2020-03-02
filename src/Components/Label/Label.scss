@@ -98,19 +98,19 @@
 }
 
 .cf-label--xs {
-  @include labelSizeModifier($form-xs-font, $form-xs-padding, $form-xs-height);
+  @include labelSizeModifier($cf-form-xs-font, $cf-form-xs-padding, $cf-form-xs-height);
 }
 
 .cf-label--sm {
-  @include labelSizeModifier($form-sm-font, $form-sm-padding, $form-sm-height);
+  @include labelSizeModifier($cf-form-sm-font, $cf-form-sm-padding, $cf-form-sm-height);
 }
 
 .cf-label--md {
-  @include labelSizeModifier($form-md-font, $form-md-padding, $form-md-height);
+  @include labelSizeModifier($cf-form-md-font, $cf-form-md-padding, $cf-form-md-height);
 }
 
 .cf-label--lg {
-  @include labelSizeModifier($form-lg-font, $form-lg-padding, $form-lg-height);
+  @include labelSizeModifier($cf-form-lg-font, $cf-form-lg-padding, $cf-form-lg-height);
 }
 
 .cf-label--colorless {
