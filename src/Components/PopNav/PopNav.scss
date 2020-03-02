@@ -57,7 +57,7 @@
   position: absolute;
   margin-top: 30px + $cf-marg-b;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: $cf-font-weight--medium;
   visibility: hidden;
   z-index: $z--nav-menu;
 }
@@ -111,7 +111,7 @@
   &:link,
   &:visited,
   &:active {
-    font-weight: 500;
+    font-weight: $cf-font-weight--medium;
     color: $c-neutrino;
   }
 

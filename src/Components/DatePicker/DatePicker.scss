@@ -194,7 +194,7 @@
 .react-datepicker-year-header {
   margin-top: 0;
   color: $g18-cloud;
-  font-weight: 500;
+  font-weight: $cf-font-weight--medium;
   font-size: 0.8em;
 }
 
@@ -507,7 +507,7 @@
 
 .react-datepicker__day-name {
   color: $c-rainforest;
-  font-weight: 500;
+  font-weight: $cf-font-weight--medium;
 }
 
 .react-datepicker__month--selected,

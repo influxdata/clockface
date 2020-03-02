@@ -201,7 +201,7 @@
   &:link,
   &:visited,
   &:active {
-    font-weight: 500;
+    font-weight: $cf-font-weight--medium;
     transition: none;
     color: $c-yeti;
   }
@@ -241,7 +241,7 @@
   &:link,
   &:visited,
   &:active {
-    font-weight: 500;
+    font-weight: $cf-font-weight--medium;
     color: $c-neutrino;
   }
   

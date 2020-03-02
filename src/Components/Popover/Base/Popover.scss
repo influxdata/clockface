@@ -109,7 +109,7 @@
   padding: $cf-marg-c;
   font-size: $cf-text-base;
   line-height: 1.5em;
-  font-weight: 500;
+  font-weight: $cf-font-weight--medium;
   color: $g13-mist;
 
   > *:first-child {
@@ -122,7 +122,7 @@
 
   strong {
     color: $g18-cloud;
-    font-weight: 700;
+    font-weight: $cf-font-weight--bold;
   }
 
   .cf-popover__solid.cf-popover__primary &,

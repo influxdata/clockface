@@ -16,12 +16,12 @@ $table-row-background: $g3-castle;
 .cf-table--cell {
   color: $g11-sidewalk;
   transition: background-color 0.25s ease, color 0.25s ease;
-  font-weight: 500;  
+  font-weight: $cf-font-weight--medium;  
 }
 
 .cf-table--header-cell {
   color: $g15-platinum;
-  font-weight: 700;  
+  font-weight: $cf-font-weight--bold;  
 }
 
 .cf-table--row {

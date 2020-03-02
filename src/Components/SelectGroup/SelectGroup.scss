@@ -28,7 +28,7 @@ $select-group--padding: $cf-marg-a;
   @include no-user-select();
   border: 0;
   font-family: $cf-text-font;
-  font-weight: 500;
+  font-weight: $cf-font-weight--medium;
   background-color: transparent;
   transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
   color: $g11-sidewalk;

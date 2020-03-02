@@ -13,7 +13,7 @@
   position: relative;
   z-index: $cf-input--field-z;
   width: 100%;
-  font-weight: 500;
+  font-weight: $cf-font-weight--medium;
   font-family: $cf-text-font;
   transition: $cf-input--transition;
   outline: none;
@@ -38,22 +38,22 @@
 
   &::-webkit-input-placeholder {
     color: $cf-input--placeholder-text;
-    font-weight: 500 !important;
+    font-weight: $cf-font-weight--medium !important;
     font-style: italic;
   }
   &::-moz-placeholder {
     color: $cf-input--placeholder-text;
-    font-weight: 500 !important;
+    font-weight: $cf-font-weight--medium !important;
     font-style: italic;
   }
   &:-ms-input-placeholder {
     color: $cf-input--placeholder-text;
-    font-weight: 500 !important;
+    font-weight: $cf-font-weight--medium !important;
     font-style: italic;
   }
   &:-moz-placeholder {
     color: $cf-input--placeholder-text;
-    font-weight: 500 !important;
+    font-weight: $cf-font-weight--medium !important;
     font-style: italic;
   }
 }

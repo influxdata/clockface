@@ -13,7 +13,7 @@
 .cf-resource-description--preview,
 .cf-input.cf-resource-description--input > input {
   font-size: $form-xs-font;
-  font-weight: 500;
+  font-weight: $cf-font-weight--medium;
   font-family: $cf-text-font;
 }
 
@@ -64,15 +64,15 @@
 /* Ensure placeholder text matches font weight of title */
 .cf-input.cf-resource-description--input > input {
   &::-webkit-input-placeholder {
-    font-weight: 500 !important;
+    font-weight: $cf-font-weight--medium !important;
   }
   &::-moz-placeholder {
-    font-weight: 500 !important;
+    font-weight: $cf-font-weight--medium !important;
   }
   &:-ms-input-placeholder {
-    font-weight: 500 !important;
+    font-weight: $cf-font-weight--medium !important;
   }
   &:-moz-placeholder {
-    font-weight: 500 !important;
+    font-weight: $cf-font-weight--medium !important;
   }
 }

@@ -261,7 +261,7 @@ a.cf-tree-nav--item-block:active {
   flex: 1 0 0;
   display: flex;
   font-size: 1.25em;
-  font-weight: 500;
+  font-weight: $cf-font-weight--medium;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -354,7 +354,7 @@ a.cf-tree-nav--sub-item-label,
 a.cf-tree-nav--sub-item-label:link,
 a.cf-tree-nav--sub-item-label:visited,
 a.cf-tree-nav--sub-item-label:active {
-  font-weight: 500;
+  font-weight: $cf-font-weight--medium;
   font-size: 1.1em;
   padding: 0.3em 0.75em;
   border-radius: 2em;
@@ -469,7 +469,7 @@ $cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-ra
 .cf-tree-nav--username {
   font-size: 1.125em;
   line-height: 1.125em;
-  font-weight: 500;
+  font-weight: $cf-font-weight--medium;
 }
 
 .cf-tree-nav--team {
@@ -514,7 +514,7 @@ $cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-ra
 a.cf-tree-nav--user-item:link,
 a.cf-tree-nav--user-item:visited,
 a.cf-tree-nav--user-item:active {
-  font-weight: 500;
+  font-weight: $cf-font-weight--medium;
   font-size: 1.1em;
   padding: 0.75em 1em;
   padding-left: $cf-tree-nav--user-block + $cf-border;
@@ -643,7 +643,7 @@ a.cf-tree-nav--user-item:hover {
     .cf-tree-nav--label {
       display: block;
       font-size: 0.9em;
-      font-weight: 500;
+      font-weight: $cf-font-weight--medium;
       position: absolute;
       text-align: center;
       bottom: 0.5em;

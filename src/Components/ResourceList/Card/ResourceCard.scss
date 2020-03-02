@@ -52,7 +52,7 @@ $resource-card--row-gap: $cf-marg-a - ($cf-border / 2);
   display: flex;
   align-items: center;
   font-size: $form-xs-font;
-  font-weight: 500;
+  font-weight: $cf-font-weight--medium;
   color: $empty-state-text;
   padding-bottom: $cf-border;
 }

@@ -82,17 +82,17 @@ p {
   @extend %type-base-styles;
   font-size: $cf-text-base;
   line-height: 1.55em;
-  font-weight: 400;
+  font-weight: $cf-font-weight--regular;
 
   b,
   strong {
-    font-weight: 500;
+    font-weight: $cf-font-weight--medium;
   }
 
   small {
     color: $cf-text-default;
     font-size: $cf-text-tiny;
-    font-weight: 500;
+    font-weight: $cf-font-weight--medium;
   }
 }
 
@@ -101,7 +101,7 @@ h1 {
   @extend %type-small-styles;
   line-height: 1.25em;
   font-size: $cf-text-base-5;
-  font-weight: 300;
+  font-weight: $cf-font-weight--light;
   letter-spacing: -0.01em;
 }
 h2 {
@@ -109,7 +109,7 @@ h2 {
   @extend %type-small-styles;
   line-height: 1.25em;
   font-size: $cf-text-base-4;
-  font-weight: 300;
+  font-weight: $cf-font-weight--light;
   letter-spacing: -0.01em;
 }
 h3 {
@@ -117,9 +117,9 @@ h3 {
   @extend %type-small-styles;
   line-height: 1.25em;
   font-size: $cf-text-base-3;
-  font-weight: 400;
+  font-weight: $cf-font-weight--regular;
   small {
-    font-weight: 400;
+    font-weight: $cf-font-weight--regular;
   }
 }
 h4 {
@@ -127,9 +127,9 @@ h4 {
   @extend %type-small-styles;
   line-height: 1.25em;
   font-size: $cf-text-base-2;
-  font-weight: 400;
+  font-weight: $cf-font-weight--regular;
   small {
-    font-weight: 400;
+    font-weight: $cf-font-weight--regular;
   }
 }
 h5 {
@@ -137,9 +137,9 @@ h5 {
   @extend %type-small-styles;
   line-height: 1.25em;
   font-size: $cf-text-base-1;
-  font-weight: 500;
+  font-weight: $cf-font-weight--medium;
   small {
-    font-weight: 500;
+    font-weight: $cf-font-weight--medium;
   }
 }
 h6 {
@@ -147,9 +147,9 @@ h6 {
   @extend %type-small-styles;
   line-height: 1.25em;
   font-size: $cf-text-base;
-  font-weight: 500;
+  font-weight: $cf-font-weight--medium;
   small {
-    font-weight: 500;
+    font-weight: $cf-font-weight--medium;
   }
 }
 ol,
@@ -158,7 +158,7 @@ ul {
   padding-left: $cf-marg-c;
   font-size: $cf-text-base;
   line-height: 1.55em;
-  font-weight: 500;
+  font-weight: $cf-font-weight--medium;
 }
 li {
   margin: 0 0 $cf-marg-b 0;
@@ -171,7 +171,7 @@ blockquote {
   @extend %type-base-styles;
   font-size: $cf-text-base;
   line-height: 1.55em;
-  font-weight: 400;
+  font-weight: $cf-font-weight--regular;
   border: 0;
   padding: $cf-marg-b $cf-marg-c;
   color: $cf-text-default;
@@ -200,7 +200,7 @@ blockquote {
 
   b,
   strong {
-    font-weight: 500;
+    font-weight: $cf-font-weight--medium;
   }
 }
 hr {
@@ -217,7 +217,7 @@ hr {
 // Type Formatting
 b,
 strong {
-  font-weight: 500;
+  font-weight: $cf-font-weight--medium;
 }
 mark {
   background-color: $c-emerald;

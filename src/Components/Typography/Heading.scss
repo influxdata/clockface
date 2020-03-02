@@ -6,29 +6,29 @@
 */
 
 .cf-heading {
-  font-weight: 400;
+  font-weight: $cf-font-weight--regular;
   user-select: none;
   margin: 0;
 }
 
 .cf-heading__300 {
-  font-weight: 300;
+  font-weight: $cf-font-weight--light;
 }
 
 .cf-heading__400 {
-  font-weight: 400;
+  font-weight: $cf-font-weight--regular;
 }
 
 .cf-heading__500 {
-  font-weight: 500;
+  font-weight: $cf-font-weight--medium;
 }
 
 .cf-heading__700 {
-  font-weight: 700;
+  font-weight: $cf-font-weight--bold;
 }
 
 .cf-heading__900 {
-  font-weight: 900;
+  font-weight: $cf-font-weight--black;
 }
 
 .cf-heading__standard {

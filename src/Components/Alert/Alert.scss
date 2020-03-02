@@ -24,9 +24,9 @@ $alert--icon-padding: $cf-marg-d + $cf-marg-a;
   ol,
   ul,
   li {
-    font-weight: 500;
+    font-weight: $cf-font-weight--medium;
     strong {
-      font-weight: 700;
+      font-weight: $cf-font-weight--bold;
     }
 
     &:first-of-type {

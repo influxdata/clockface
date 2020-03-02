@@ -33,7 +33,7 @@
   line-height: $cf-text-base;
   color: $g11-sidewalk;
   white-space: nowrap;
-  font-weight: 500;
+  font-weight: $cf-font-weight--medium;
   user-select: none;
   margin: 0;
   transition: color 0.25s ease, background-color 0.25s ease;
