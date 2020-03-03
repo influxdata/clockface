@@ -14,6 +14,7 @@ Then run the publish script in the root of the repo:
 ```
 ./publish
 ```
+You can follow `./publish` by either `patch`, `major`, or `minor`. If nothing is specified the default is `patch`
 
 Then upload the latest Storybook docs to the GitHub pages site by running:
 
