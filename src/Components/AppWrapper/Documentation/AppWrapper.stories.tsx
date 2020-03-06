@@ -564,6 +564,11 @@ layoutStories.add(
                   }
                   onClick={handleNavClick}
                   active={isItemActive('home')}
+                  color={
+                    ComponentColor[
+                      select('color', mapEnumKeys(ComponentColor), 'Primary')
+                    ]
+                  }
                 />
               }
               bannerElement={banner}
