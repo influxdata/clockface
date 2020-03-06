@@ -73,10 +73,10 @@ $cf-tab--border-color: $g5-pepper;
     height: 0;
     left: 0;
     bottom: 0;
+    border-radius: $cf-radius-sm $cf-radius-sm 0 0;
   }
 
   .cf-tabs__horizontal &__active:after {
-    height: $cf-marg-b;
     opacity: 1;
   }
 
@@ -119,7 +119,7 @@ $cf-tab--border-color: $g5-pepper;
 
 @mixin tabSizeModifier($fontSize, $tabPadding, $tabHeight) {
   .cf-tabs--tab {
-    height: $tabHeight + $cf-marg-b;
+    height: floor($tabHeight * 1.35);
     padding: $tabPadding 0;
   
     > .cf-icon {
@@ -143,6 +143,9 @@ $cf-tab--border-color: $g5-pepper;
       margin-left: -$cf-border;
       margin-right: -$tabPadding;
     }
+  }
+  .cf-tabs--tab__active:after {
+    height: floor($tabHeight * 0.18);
   }
 
   &.cf-tabs__vertical .cf-tabs--tab {
