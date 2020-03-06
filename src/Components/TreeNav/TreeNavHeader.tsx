@@ -3,7 +3,7 @@ import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardFunctionProps, Omit} from '../../Types'
+import {StandardFunctionProps, Omit, ComponentColor} from '../../Types'
 
 export interface TreeNavHeaderProps extends Omit<StandardFunctionProps, 'id'> {
   /** Unique identifier for nav item */
@@ -12,6 +12,8 @@ export interface TreeNavHeaderProps extends Omit<StandardFunctionProps, 'id'> {
   icon: JSX.Element
   /** Label to appear to the right of the icon, only visible when expanded */
   label: JSX.Element
+  /** Coloration of the Header */
+  color?: ComponentColor
   /** Controls state of item */
   active?: boolean
   /** Click behavior */
@@ -28,6 +30,7 @@ export const TreeNavHeader = forwardRef<TreeNavHeaderRef, TreeNavHeaderProps>(
       id,
       icon,
       label,
+      color = ComponentColor.Primary,
       style,
       active,
       testID = 'tree-nav--header',
@@ -40,6 +43,7 @@ export const TreeNavHeader = forwardRef<TreeNavHeaderRef, TreeNavHeaderProps>(
     const navMenuHeaderClass = classnames('cf-tree-nav--header', {
       'cf-tree-nav--header__clickable': onClick || linkElement,
       'cf-tree-nav--header__active': active,
+      [`cf-tree-nav--header__${color}`]: color,
       [`${className}`]: className,
     })
 
