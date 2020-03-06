@@ -19,8 +19,10 @@ import {
   PageContentsRef,
 } from '../index'
 import {SelectGroup} from '../../SelectGroup/index'
+import {Button} from '../../Button/Composed/Button'
 import {SquareButton} from '../../Button/Composed/SquareButton'
 import {SelectDropdown} from '../../Dropdowns/Composed/SelectDropdown'
+import {QuestionMarkTooltip} from '../../Popover/Composed/QuestionMarkTooltip'
 
 // Types
 import {
@@ -276,6 +278,8 @@ pageExampleStories.add(
               </SelectGroup>
             </Page.ControlBarCenter>
             <Page.ControlBarRight>
+              <QuestionMarkTooltip tooltipContents="Yeehaw I'm a tooltip" />
+              <Button text="Export Data" icon={IconFont.Export} />
               <SquareButton icon={IconFont.Remove} />
               <SquareButton
                 icon={IconFont.Checkmark}

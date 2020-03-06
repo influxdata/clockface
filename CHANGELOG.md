@@ -2,6 +2,7 @@
 
 #### 2.0.1 (Unreleased)
 
+- [#445](https://github.com/influxdata/clockface/pull/445): Ensure proper spacing and alignment of `PageControlBar` children at all screen sizes
 - [#444](https://github.com/influxdata/clockface/pull/444): Polish appearance of `Tabs` component
 - [#443](https://github.com/influxdata/clockface/pull/443): Enable `TreeNavHeader` to utilize the `ComponentColor` type
 - [#442](https://github.com/influxdata/clockface/pull/442): Update design of `InfluxDBCloudLogo` to conform to brand guidelines
