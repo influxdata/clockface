@@ -2,6 +2,7 @@
 
 #### 2.0.1 (Unreleased)
 
+- [#442](https://github.com/influxdata/clockface/pull/442): Update design of `InfluxDBCloudLogo` to conform to brand guidelines
 - [#441](https://github.com/influxdata/clockface/pull/441): Fix rendering of Rubik font by using `woff2` format instead of `ttf`
 
 ## 2.0 (aka Pendulum)
