@@ -2,6 +2,7 @@
 
 #### 2.0.1 (Unreleased)
 
+- [#445](https://github.com/influxdata/clockface/pull/445): Ensure proper spacing and alignment of `PageControlBar` children at all screen sizes
 - [#441](https://github.com/influxdata/clockface/pull/441): Fix rendering of Rubik font by using `woff2` format instead of `ttf`
 
 ## 2.0 (aka Pendulum)
