@@ -2,6 +2,7 @@
 
 #### 2.0.1 (Unreleased)
 
+- [#444](https://github.com/influxdata/clockface/pull/444): Polish appearance of `Tabs` component
 - [#441](https://github.com/influxdata/clockface/pull/441): Fix rendering of Rubik font by using `woff2` format instead of `ttf`
 
 ## 2.0 (aka Pendulum)
