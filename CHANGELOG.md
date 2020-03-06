@@ -2,6 +2,7 @@
 
 #### 2.0.1 (Unreleased)
 
+- [#443](https://github.com/influxdata/clockface/pull/443): Enable `TreeNavHeader` to utilize the `ComponentColor` type
 - [#441](https://github.com/influxdata/clockface/pull/441): Fix rendering of Rubik font by using `woff2` format instead of `ttf`
 
 ## 2.0 (aka Pendulum)
