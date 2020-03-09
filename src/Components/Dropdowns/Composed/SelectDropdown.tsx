@@ -103,6 +103,7 @@ export const SelectDropdown = forwardRef<
               key={o}
               type={DropdownItemType.Dot}
               value={o}
+              title={o}
               selected={o === selectedOption}
               onClick={onSelect}
             >
