@@ -1,6 +1,10 @@
 # Changelog
 
-#### 2.0.1 (Unreleased)
+#### 2.0.2 (Unreleased)
+
+- [#449](https://github.com/influxdata/clockface/pull/449): Added an onClick prop to the Heading component to allow headings to be clicked
+
+#### 2.0.1
 
 - [#445](https://github.com/influxdata/clockface/pull/445): Ensure proper spacing and alignment of `PageControlBar` children at all screen sizes
 - [#444](https://github.com/influxdata/clockface/pull/444): Polish appearance of `Tabs` component
@@ -14,7 +18,7 @@
 - [#437](https://github.com/influxdata/clockface/pull/437): Remove Roboto typeface and replace with Rubik (also shrinks the binary)
 - [#437](https://github.com/influxdata/clockface/pull/437): [Breaking] Rename `PageHeader` to `PageControlBar`
 - [#437](https://github.com/influxdata/clockface/pull/437): Introduce simplified `PageHeader` component
-- [#437](https://github.com/influxdata/clockface/pull/437): [Breaking] Remove background color and padding props from `Tabs` family 
+- [#437](https://github.com/influxdata/clockface/pull/437): [Breaking] Remove background color and padding props from `Tabs` family
 - [#437](https://github.com/influxdata/clockface/pull/437): Add `bordered` prop to `Panel`
 - [#437](https://github.com/influxdata/clockface/pull/437): Introduce `Heading` component
 - [#437](https://github.com/influxdata/clockface/pull/437): Introduce `InfluxDataLogo` and `InfluxDBCloudLogo` components

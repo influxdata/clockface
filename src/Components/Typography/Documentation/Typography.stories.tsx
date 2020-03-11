@@ -47,12 +47,13 @@ headingStories.add(
               )
             ]
           }
-          type={Typeface[select('type', mapEnumKeys(Typeface), 'Roboto')]}
+          type={Typeface[select('type', mapEnumKeys(Typeface), 'Rubik')]}
           weight={
             FontWeight[select('weight', mapEnumKeys(FontWeight), 'Medium')]
           }
           underline={boolean('underline', false)}
           selectable={boolean('selectable', false)}
+          onClick={() => alert('clicked')}
         >
           {text('text', 'Gigantic Mental Fortitude')}
         </Heading>

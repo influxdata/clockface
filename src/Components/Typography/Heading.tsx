@@ -1,5 +1,5 @@
 // Libraries
-import React, {forwardRef} from 'react'
+import React, {forwardRef, MouseEvent} from 'react'
 import classnames from 'classnames'
 
 // Types
@@ -25,6 +25,8 @@ export interface HeadingProps extends StandardFunctionProps {
   appearance?: HeadingElement
   /** Controls whether the text can be selected */
   selectable?: boolean
+  /** Function to be called on button click */
+  onClick?: (e?: MouseEvent<HTMLButtonElement>) => void
   /** Alternate text */
   alt?: string
 }
@@ -46,6 +48,7 @@ export const Heading = forwardRef<HeadingRef, HeadingProps>(
       className,
       selectable = false,
       appearance,
+      onClick,
     },
     ref
   ) => {
@@ -65,7 +68,15 @@ export const Heading = forwardRef<HeadingRef, HeadingProps>(
 
     return React.createElement(
       headingElement,
-      {id: id, ref, alt, style, className: headingClass, 'data-testid': testID},
+      {
+        id,
+        ref,
+        alt,
+        style,
+        className: headingClass,
+        'data-testid': testID,
+        onClick,
+      },
       children
     )
   }
