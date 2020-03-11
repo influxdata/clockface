@@ -1,13 +1,16 @@
 # Changelog
 
-#### 2.0.1 (Unreleased)
+#### 2.0.2 (Unreleased)
+
+- [#449](https://github.com/influxdata/clockface/pull/449): Added an onClick prop to the Heading component to allow headings to be clicked
+
+#### 2.0.1
 
 - [#445](https://github.com/influxdata/clockface/pull/445): Ensure proper spacing and alignment of `PageControlBar` children at all screen sizes
 - [#444](https://github.com/influxdata/clockface/pull/444): Polish appearance of `Tabs` component
 - [#443](https://github.com/influxdata/clockface/pull/443): Enable `TreeNavHeader` to utilize the `ComponentColor` type
 - [#442](https://github.com/influxdata/clockface/pull/442): Update design of `InfluxDBCloudLogo` to conform to brand guidelines
 - [#441](https://github.com/influxdata/clockface/pull/441): Fix rendering of Rubik font by using `woff2` format instead of `ttf`
-- [#449](https://github.com/influxdata/clockface/pull/449): Added an onClick prop to the Heading component to allow headings to be clicked
 
 ## 2.0 (aka Pendulum)
 
