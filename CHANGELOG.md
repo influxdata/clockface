@@ -7,6 +7,7 @@
 - [#443](https://github.com/influxdata/clockface/pull/443): Enable `TreeNavHeader` to utilize the `ComponentColor` type
 - [#442](https://github.com/influxdata/clockface/pull/442): Update design of `InfluxDBCloudLogo` to conform to brand guidelines
 - [#441](https://github.com/influxdata/clockface/pull/441): Fix rendering of Rubik font by using `woff2` format instead of `ttf`
+- [#449](https://github.com/influxdata/clockface/pull/449): Added an onClick prop to the Heading component to allow headings to be clicked
 
 ## 2.0 (aka Pendulum)
 
@@ -14,7 +15,7 @@
 - [#437](https://github.com/influxdata/clockface/pull/437): Remove Roboto typeface and replace with Rubik (also shrinks the binary)
 - [#437](https://github.com/influxdata/clockface/pull/437): [Breaking] Rename `PageHeader` to `PageControlBar`
 - [#437](https://github.com/influxdata/clockface/pull/437): Introduce simplified `PageHeader` component
-- [#437](https://github.com/influxdata/clockface/pull/437): [Breaking] Remove background color and padding props from `Tabs` family 
+- [#437](https://github.com/influxdata/clockface/pull/437): [Breaking] Remove background color and padding props from `Tabs` family
 - [#437](https://github.com/influxdata/clockface/pull/437): Add `bordered` prop to `Panel`
 - [#437](https://github.com/influxdata/clockface/pull/437): Introduce `Heading` component
 - [#437](https://github.com/influxdata/clockface/pull/437): Introduce `InfluxDataLogo` and `InfluxDBCloudLogo` components
