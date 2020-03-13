@@ -2,6 +2,7 @@
 
 #### 2.0.2 (Unreleased)
 
+- [#453](https://github.com/influxdata/clockface/pull/453): Add Sun & Moon icons to icon font
 - [#451](https://github.com/influxdata/clockface/pull/451): Add optional `title` prop to `DropdownItem`
 - [#451](https://github.com/influxdata/clockface/pull/451): Add default value for `checked` in `Toggle` to prevent a bug
 - [#451](https://github.com/influxdata/clockface/pull/451): Update `Warning` and `Danger` styles for Buttons to be more distinct and single hue
