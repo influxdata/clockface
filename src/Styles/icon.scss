@@ -38,11 +38,11 @@
   &.alerts:before {
     content: '\e921';
   }
-  &.annotate:before {
-    content: '\e953';
-  }
   &.annotate-plus:before {
     content: '\e952';
+  }
+  &.annotate:before {
+    content: '\e953';
   }
   &.authzero:before {
     content: '\e951';
@@ -50,14 +50,20 @@
   &.bar-chart:before {
     content: '\e913';
   }
-  &.bell:before {
-    content: '\e934';
+  &.bell-ringing:before {
+    content: '\e935';
   }
   &.bell-solid:before {
     content: '\e937';
   }
+  &.bell:before {
+    content: '\e934';
+  }
   &.brush:before {
     content: '\e93d';
+  }
+  &.calendar:before {
+    content: '\e938';
   }
   &.capacitor2:before {
     content: '\e923';
@@ -74,17 +80,23 @@
   &.caret-up:before {
     content: '\e906';
   }
+  &.chat:before {
+    content: '\e933';
+  }
   &.checkmark:before {
     content: '\e918';
-  }
-  &.circle:before {
-    content: '\e940';
   }
   &.circle-thick:before {
     content: '\e90e';
   }
+  &.circle:before {
+    content: '\e940';
+  }
   &.clock:before {
     content: '\e920';
+  }
+  &.cloud:before {
+    content: '\e93f';
   }
   &.cog-outline:before {
     content: '\e91c';
@@ -104,6 +116,9 @@
   &.cube:before {
     content: '\e90b';
   }
+  &.cubo-nav:before {
+    content: '\e91a';
+  }
   &.cubo-uniform:before {
     content: '\e93c';
   }
@@ -115,6 +130,12 @@
   }
   &.dash-j:before {
     content: '\e92b';
+  }
+  &.dashboards:before {
+    content: '\e93a';
+  }
+  &.disks-nav:before {
+    content: '\e946';
   }
   &.disks:before {
     content: '\e950';
@@ -137,14 +158,14 @@
   &.export:before {
     content: '\e90f';
   }
-  &.eye:before {
-    content: '\e91f';
-  }
   &.eye-closed:before {
     content: '\e956';
   }
   &.eye-open:before {
     content: '\e957';
+  }
+  &.eye:before {
+    content: '\e91f';
   }
   &.github:before {
     content: '\e928';
@@ -152,14 +173,17 @@
   &.google:before {
     content: '\e92a';
   }
+  &.graphline-2:before {
+    content: '\e924';
+  }
   &.group:before {
     content: '\e908';
   }
-  &.heroku:before {
-    content: '\e947';
-  }
   &.heroku-simple:before {
     content: '\e948';
+  }
+  &.heroku:before {
+    content: '\e947';
   }
   &.import:before {
     content: '\e910';
@@ -172,6 +196,9 @@
   }
   &.minimize:before {
     content: '\e954';
+  }
+  &.moon:before {
+    content: "\e95c";
   }
   &.nav-chat:before {
     content: '\e941';
@@ -194,11 +221,11 @@
   &.play:before {
     content: '\e914';
   }
-  &.plus:before {
-    content: '\e90a';
-  }
   &.plus-skinny:before {
     content: '\e922';
+  }
+  &.plus:before {
+    content: '\e90a';
   }
   &.polaroid:before {
     content: '\e95b';
@@ -224,17 +251,20 @@
   &.shuffle:before {
     content: '\e94e';
   }
-  &.square:before {
-    content: '\e93e';
-  }
   &.square-check:before {
     content: '\e943';
+  }
+  &.square:before {
+    content: '\e93e';
   }
   &.star:before {
     content: '\e930';
   }
   &.stop:before {
     content: '\e931';
+  }
+  &.sun:before {
+    content: "\e95d";
   }
   &.text-block:before {
     content: '\e911';
@@ -248,9 +278,6 @@
   &.undo:before {
     content: '\e95a';
   }
-  &.user:before {
-    content: '\e90d';
-  }
   &.user-add:before {
     content: '\e907';
   }
@@ -259,6 +286,12 @@
   }
   &.user-remove:before {
     content: '\e904';
+  }
+  &.user:before {
+    content: '\e90d';
+  }
+  &.users-duo:before {
+    content: '\e93b';
   }
   &.users-trio:before {
     content: '\e939';
@@ -269,40 +302,13 @@
   &.wood:before {
     content: '\e91e';
   }
+  &.wrench-nav:before {
+    content: '\e94d';
+  }
   &.wrench:before {
     content: '\e919';
   }
   &.zap:before {
     content: '\e932';
-  }
-  &.bell-ringing:before {
-    content: '\e935';
-  }
-  &.calendar:before {
-    content: '\e938';
-  }
-  &.cloud:before {
-    content: '\e93f';
-  }
-  &.cubo-nav:before {
-    content: '\e91a';
-  }
-  &.dashboards:before {
-    content: '\e93a';
-  }
-  &.disks-nav:before {
-    content: '\e946';
-  }
-  &.graphline-2:before {
-    content: '\e924';
-  }
-  &.users-duo:before {
-    content: '\e93b';
-  }
-  &.wrench-nav:before {
-    content: '\e94d';
-  }
-  &.chat:before {
-    content: '\e933';
   }
 }
