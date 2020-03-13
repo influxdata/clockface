@@ -1,6 +1,6 @@
 # Heading
 
-This is a all-purpose element for rendering text headings in your UI. 
+This is a all-purpose element for rendering text headings in your UI.
 
 ### Usage
 ```tsx
@@ -9,7 +9,7 @@ import {Heading, Typeface, HeadingElement, FontWeight} from '@influxdata/clockfa
 ```tsx
 <Heading
   element={HeadingElement.H1}
-  type={Typeface.Roboto}
+  type={Typeface.Rubik}
   weight={FontWeight.Bold}
   underline={false}
   selectable={true}
