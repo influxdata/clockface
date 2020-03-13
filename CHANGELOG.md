@@ -2,7 +2,10 @@
 
 #### 2.0.2 (Unreleased)
 
-- [#449](https://github.com/influxdata/clockface/pull/449): Added an onClick prop to the Heading component to allow headings to be clicked
+- [#451](https://github.com/influxdata/clockface/pull/451): Add optional `title` prop to `DropdownItem`
+- [#451](https://github.com/influxdata/clockface/pull/451): Add default value for `checked` in `Toggle` to prevent a bug
+- [#451](https://github.com/influxdata/clockface/pull/451): Update `Warning` and `Danger` styles for Buttons to be more distinct and single hue
+- [#449](https://github.com/influxdata/clockface/pull/449): Add optional `onClick` prop to the `Heading` component
 
 #### 2.0.1
 

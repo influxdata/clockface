@@ -19,6 +19,8 @@ export interface DropdownItemProps extends StandardFunctionProps {
   onClick?: (value?: any) => void
   /** Controls whether the text contents of this item wrap or not */
   wrapText?: boolean
+  /** Title attribute */
+  title?: string
 }
 
 export type DropdownItemRef = HTMLDivElement
@@ -30,6 +32,7 @@ export const DropdownItem = forwardRef<DropdownItemRef, DropdownItemProps>(
       type = DropdownItemType.None,
       style,
       value,
+      title,
       testID = 'dropdown-item',
       onClick,
       wrapText = false,
@@ -61,6 +64,7 @@ export const DropdownItem = forwardRef<DropdownItemRef, DropdownItemProps>(
         id={id}
         ref={ref}
         style={style}
+        title={title}
         onClick={handleClick}
         className={dropdownItemClass}
         data-testid={testID}

@@ -172,7 +172,7 @@
   &.cf-button--disabled,
   &.cf-button--disabled:hover,
   &.cf-button--disabled:focus {
-    color: rgba(mix($text, $bgA, 40%), 0.8);
+    color: rgba(mix($text, $bgB, 50%), 0.8);
     font-style: italic;
     @include gradient-diag-up(mix($bgA, $g3-castle, 25%), mix($bgB, $g3-castle, 25%));
     box-shadow: none;
@@ -201,10 +201,10 @@
   @include buttonColorModifier($c-emerald, mix($c-honeydew, $c-pool, 80%), $c-rainforest, mix($c-krypton, $c-laser, 80%), $g20-white, $g20-white);
 }
 .cf-button-warning {
-  @include buttonColorModifier($c-pineapple, $c-curacao, $c-sulfur, $c-tungsten, $g4-onyx, $g6-smoke);
+  @include buttonColorModifier($c-topaz, $c-pineapple, $c-thunder, $c-daisy, $g4-onyx, $g6-smoke);
 }
 .cf-button-danger {
-  @include buttonColorModifier($c-ruby, $c-amethyst, $c-curacao, $c-comet, $g20-white, $g20-white);
+  @include buttonColorModifier($c-ruby, $c-curacao, $c-curacao, $c-tungsten, $g20-white, $g20-white);
 }
 
 /*

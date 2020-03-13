@@ -106,6 +106,7 @@ export const MultiSelectDropdown = forwardRef<
               key={o}
               type={DropdownItemType.Checkbox}
               value={o}
+              title={o}
               selected={selectedOptions.includes(o)}
               onClick={onSelect}
             >

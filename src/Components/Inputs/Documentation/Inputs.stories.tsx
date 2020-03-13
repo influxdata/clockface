@@ -370,7 +370,10 @@ inputsBaseStories.add(
 
     const [checked, setChecked] = useState<boolean>(false)
 
-    const handleToggleChange = (): void => {
+    const handleToggleChange = (value: string): void => {
+      /* eslint-disable */
+      console.log('onChange fired!', value)
+      /* eslint-enable */
       setChecked(!checked)
     }
 

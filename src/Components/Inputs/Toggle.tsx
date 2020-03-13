@@ -87,7 +87,7 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
       onBlur,
       testID = 'toggle',
       onFocus,
-      checked,
+      checked = false,
       onKeyUp,
       disabled = false,
       children,
