@@ -4,7 +4,7 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, select} from '@storybook/addon-knobs'
+import {withKnobs, select, boolean} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
@@ -72,6 +72,7 @@ funnelPageStories.add(
             <FunnelPage.FunnelPage
               ref={funnelPageRef}
               logo={logo}
+              enableGraphic={boolean('enableGraphic', false)}
               backgroundColor={
                 InfluxColors[
                   select(
@@ -192,7 +193,10 @@ funnelPageExampleStories.add(
       <div className="mockPageWrapper">
         <div className="mockPage">
           <AppWrapper type="funnel">
-            <FunnelPage logo={logo}>
+            <FunnelPage
+              logo={logo}
+              enableGraphic={boolean('enableGraphic', false)}
+            >
               <Grid>
                 <Grid.Row>
                   <Grid.Column widthSM={Columns.Eight} offsetSM={Columns.Two}>
