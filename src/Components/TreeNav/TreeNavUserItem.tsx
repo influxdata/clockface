@@ -41,7 +41,11 @@ export const TreeNavUserItem: FunctionComponent<TreeNavUserItemProps> = ({
   }
 
   if (linkElement) {
-    return React.cloneElement(linkElement(treeNavUserItemClass), [], label)
+    return React.cloneElement(
+      linkElement(treeNavUserItemClass),
+      {'data-testid': testID},
+      label
+    )
   }
 
   return (

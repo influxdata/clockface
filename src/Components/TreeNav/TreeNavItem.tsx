@@ -69,7 +69,7 @@ export const TreeNavItem = forwardRef<TreeNavItemRef, TreeNavItemProps>(
       )
       const link = React.cloneElement(
         linkElement('cf-tree-nav--item-block'),
-        [],
+        {'data-testid': testID},
         linkItems
       )
 

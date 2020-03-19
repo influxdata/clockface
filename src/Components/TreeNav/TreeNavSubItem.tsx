@@ -48,7 +48,7 @@ export const TreeNavSubItem: FunctionComponent<TreeNavSubItemProps> = ({
   if (linkElement) {
     labelElement = React.cloneElement(
       linkElement('cf-tree-nav--sub-item-label'),
-      [],
+      {'data-testid': testID},
       label
     )
   }
