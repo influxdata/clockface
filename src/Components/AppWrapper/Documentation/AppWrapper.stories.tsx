@@ -572,6 +572,10 @@ layoutStories.add(
                 />
               }
               bannerElement={banner}
+              showBannerWhenCollapsed={boolean(
+                'showBannerWhenCollapsed',
+                false
+              )}
               expanded={navState}
               onToggleClick={handleToggleNavState}
               userElement={
