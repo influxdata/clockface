@@ -52,19 +52,12 @@ export const TreeNavItem = forwardRef<TreeNavItemRef, TreeNavItemProps>(
       }
     }
 
-    let expandIcon = <></>
-
-    if (React.Children.count(children) > 0) {
-      expandIcon = <span className="cf-tree-nav--expander" />
-    }
-
     if (linkElement) {
       const linkItems = (
         <>
           <div className="cf-tree-nav--square">{icon}</div>
           <div className="cf-tree-nav--label">{label}</div>
           <div className="cf-tree-nav--short-label">{shortLabel || label}</div>
-          {expandIcon}
         </>
       )
       const link = React.cloneElement(
@@ -94,7 +87,6 @@ export const TreeNavItem = forwardRef<TreeNavItemRef, TreeNavItemProps>(
           <div className="cf-tree-nav--square">{icon}</div>
           <div className="cf-tree-nav--label">{label}</div>
           <div className="cf-tree-nav--short-label">{shortLabel || label}</div>
-          {expandIcon}
         </div>
         {children}
       </div>
