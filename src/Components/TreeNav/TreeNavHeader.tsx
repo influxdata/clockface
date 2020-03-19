@@ -62,7 +62,7 @@ export const TreeNavHeader = forwardRef<TreeNavHeaderRef, TreeNavHeaderProps>(
       )
       const link = React.cloneElement(
         linkElement(navMenuHeaderClass),
-        [],
+        {'data-testid': testID},
         linkItems
       )
 
