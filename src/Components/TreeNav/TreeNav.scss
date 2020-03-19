@@ -6,8 +6,7 @@
 */
 
 
-.cf-tree-nav,
-.cf-tree-nav__collapsed {
+.cf-tree-nav {
   width: 100%;
   user-select: none;
 }
@@ -23,10 +22,10 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  
-  .cf-tree-nav__collapsed & {
-    display: none;
-  }
+}
+
+.cf-tree-nav__mobile-collapsed .cf-tree-nav--menu {
+  display: none;
 }
 
 .cf-tree-nav--scroll-area {
@@ -35,6 +34,10 @@
 }
 
 .cf-tree-nav--toggle {
+  display: none;
+}
+
+.cf-tree-nav--mobile-toggle {
   width: $cf-tree-nav__small-height;
   height: $cf-tree-nav__small-height;
   flex: 0 0 $cf-tree-nav__small-height;
@@ -45,10 +48,6 @@
 
   &:hover {
     cursor: pointer;
-  }
-
-  > .cf-icon {
-    display: none;
   }
 }
 
@@ -83,14 +82,14 @@
     transform: translate(-50%, 0%) rotate(-45deg);
   }
 
-  .cf-tree-nav__collapsed & {
+  .cf-tree-nav__mobile-collapsed & {
     background-color: $g20-white;
   }
 
-  .cf-tree-nav__collapsed &:before {
+  .cf-tree-nav__mobile-collapsed &:before {
     transform: translate(-50%, 300%);
   }
-  .cf-tree-nav__collapsed &:after {
+  .cf-tree-nav__mobile-collapsed &:after {
     transform: translate(-50%, -300%);
   }
 }
@@ -590,7 +589,9 @@ a.cf-tree-nav--user-item:hover {
     z-index: $cf-z--nav-menu;
   }
 
-  .cf-tree-nav--menu {
+  .cf-tree-nav--menu,
+  .cf-tree-nav__mobile-collapsed .cf-tree-nav--menu {
+    display: flex;
     background-color: transparent;
     position: relative !important;
     height: auto !important;
@@ -603,14 +604,13 @@ a.cf-tree-nav--user-item:hover {
       display: flex;
     }
   }
-
-  .cf-tree-nav--hamburger {
+  
+  .cf-tree-nav--mobile-toggle {
     display: none;
   }
 
   .cf-tree-nav--toggle {
-    top: initial;
-    right: initial;
+    display: block;
     width: 100%;
     height: 30px;
     flex: 0 0 30px;
@@ -621,6 +621,7 @@ a.cf-tree-nav--user-item:hover {
     transition: color 0.25s ease, background-color 0.25s ease;
 
     &:hover {
+      cursor: pointer;
       background-color: $cf-tree-nav__bg-hover;
       color: $cf-tree-nav__toggle-icon-hover;
     }
