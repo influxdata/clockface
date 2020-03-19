@@ -44,8 +44,12 @@ export const TreeNavUser = forwardRef<TreeNavUserRef, TreeNavUserProps>(
     if (hasChildren && expandedState) {
       childWrapper = (
         <div className="cf-tree-nav--user-menu">
-          <div className="cf-tree-nav--username">{username}</div>
-          <div className="cf-tree-nav--team">{team}</div>
+          <div className="cf-tree-nav--username" title={username}>
+            {username}
+          </div>
+          <div className="cf-tree-nav--team" title={team}>
+            {team}
+          </div>
           {children}
         </div>
       )
@@ -78,8 +82,12 @@ export const TreeNavUser = forwardRef<TreeNavUserRef, TreeNavUserProps>(
               <Icon glyph={IconFont.User} />
             </div>
             <div className="cf-tree-nav--avatar-label">
-              <div className="cf-tree-nav--username">{username}</div>
-              <div className="cf-tree-nav--team">{team}</div>
+              <div className="cf-tree-nav--username" title={username}>
+                {username}
+              </div>
+              <div className="cf-tree-nav--team" title={team}>
+                {team}
+              </div>
               {caret}
             </div>
           </div>
