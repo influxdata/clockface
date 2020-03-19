@@ -201,7 +201,7 @@
   @include buttonColorModifier($c-emerald, mix($c-honeydew, $c-pool, 80%), $c-rainforest, mix($c-krypton, $c-laser, 80%), $g20-white, $g20-white);
 }
 .cf-button-warning {
-  @include buttonColorModifier($c-topaz, $c-pineapple, $c-thunder, $c-daisy, $g4-onyx, $g6-smoke);
+  @include buttonColorModifier($c-topaz, $c-pineapple, $c-thunder, $c-daisy, $g4-onyx, $g4-onyx);
 }
 .cf-button-danger {
   @include buttonColorModifier($c-ruby, $c-curacao, $c-curacao, $c-tungsten, $g20-white, $g20-white);
