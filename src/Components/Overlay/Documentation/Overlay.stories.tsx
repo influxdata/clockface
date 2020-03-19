@@ -76,7 +76,7 @@ overlayStories.add(
           }
         >
           <OverlayHeader
-            title="Howdy partner!"
+            title={text('title', 'Howdy partner!')}
             onDismiss={() => {
               alert('Overlay dismiss clicked')
             }}

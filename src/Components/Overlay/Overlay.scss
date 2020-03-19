@@ -66,6 +66,7 @@
   padding: 0 $cf-overlay--gutter;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   @include no-user-select();
 }
 
@@ -75,10 +76,16 @@
   font-weight: $cf-overlay--title-weight;
   color: $cf-overlay--title-color;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  .cf-overlay--header__dismissable & {
+    width: calc(100% - #{$cf-overlay--header-height - 50px});
+  }
 }
 
 .cf-overlay--dismiss {
-  width: ($cf-overlay--header-height - 20px);
+  width: ($cf-overlay--header-height - 50px);
   height: ($cf-overlay--header-height - 20px);
   position: relative;
   background-color: transparent;
@@ -91,7 +98,7 @@
     content: '';
     position: absolute;
     top: 50%;
-    left: calc(50% + 10px);
+    left: 50%;
     width: 22px;
     height: 2px;
     border-radius: 1px;
