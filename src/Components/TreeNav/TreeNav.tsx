@@ -59,7 +59,12 @@ export const TreeNavRoot = forwardRef<TreeNavRef, TreeNavProps>(
     let toggleElement = <></>
 
     if (bannerElement && expanded) {
-      banner = <div className="cf-tree-nav--banner">{bannerElement}</div>
+      banner = (
+        <>
+          <div className="cf-tree-nav--banner-spacer" />
+          <div className="cf-tree-nav--banner">{bannerElement}</div>
+        </>
+      )
     }
 
     if (onToggleClick) {

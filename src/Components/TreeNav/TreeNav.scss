@@ -31,6 +31,18 @@
 .cf-tree-nav--scroll-area {
   flex: 1 0 0;
   display: block;
+
+  .cf-dapper-scrollbars--content {
+    display: flex !important;
+    flex-direction: column;
+  }
+}
+
+.cf-tree-nav--children {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .cf-tree-nav--toggle {
@@ -562,6 +574,11 @@ a.cf-tree-nav--user-item:hover {
 .cf-tree-nav--banner {
   padding: $cf-marg-c;
   display: block;
+}
+
+.cf-tree-nav--banner-spacer {
+  flex: 1 0 0;
+  width: 100%;
 }
 
 /*
