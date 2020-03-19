@@ -572,8 +572,8 @@ layoutStories.add(
                 />
               }
               bannerElement={banner}
-              showBannerWhenCollapsed={boolean(
-                'showBannerWhenCollapsed',
+              hideBannerWhenCollapsed={boolean(
+                'hideBannerWhenCollapsed',
                 false
               )}
               expanded={navState}

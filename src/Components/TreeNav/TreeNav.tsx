@@ -25,7 +25,7 @@ export interface TreeNavProps extends StandardFunctionProps {
   /** User widget to appear below the header element */
   userElement?: JSX.Element
   /** Controls how the Banner element renders when in collapsed state */
-  showBannerWhenCollapsed?: boolean
+  hideBannerWhenCollapsed?: boolean
 }
 
 export type TreeNavRef = HTMLElement
@@ -44,7 +44,7 @@ export const TreeNavRoot = forwardRef<TreeNavRef, TreeNavProps>(
       bannerElement,
       onToggleClick,
       headerElement,
-      showBannerWhenCollapsed = false,
+      hideBannerWhenCollapsed = false,
     },
     ref
   ) => {
@@ -63,7 +63,7 @@ export const TreeNavRoot = forwardRef<TreeNavRef, TreeNavProps>(
 
     if (bannerElement) {
       const bannerClass = classnames('cf-tree-nav--banner', {
-        'cf-tree-nav--banner__always-visible': showBannerWhenCollapsed,
+        'cf-tree-nav--banner__always-visible': !hideBannerWhenCollapsed,
       })
 
       banner = (
