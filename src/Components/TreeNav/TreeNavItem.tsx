@@ -12,6 +12,8 @@ export interface TreeNavItemProps extends Omit<StandardFunctionProps, 'id'> {
   icon: JSX.Element
   /** Label to appear to the right of the icon, only visible when expanded */
   label: string
+  /** Optional label displayed when the TreeNav is collapsed */
+  shortLabel?: string
   /** Click behavior */
   onClick?: (id: string) => void
   /** Controls state of item */
@@ -34,6 +36,7 @@ export const TreeNavItem = forwardRef<TreeNavItemRef, TreeNavItemProps>(
       onClick,
       children,
       className,
+      shortLabel,
       linkElement,
     },
     ref
@@ -60,6 +63,7 @@ export const TreeNavItem = forwardRef<TreeNavItemRef, TreeNavItemProps>(
         <>
           <div className="cf-tree-nav--square">{icon}</div>
           <div className="cf-tree-nav--label">{label}</div>
+          <div className="cf-tree-nav--short-label">{shortLabel || label}</div>
           {expandIcon}
         </>
       )
@@ -89,6 +93,7 @@ export const TreeNavItem = forwardRef<TreeNavItemRef, TreeNavItemProps>(
         >
           <div className="cf-tree-nav--square">{icon}</div>
           <div className="cf-tree-nav--label">{label}</div>
+          <div className="cf-tree-nav--short-label">{shortLabel || label}</div>
           {expandIcon}
         </div>
         {children}

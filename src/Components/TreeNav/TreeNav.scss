@@ -286,6 +286,10 @@ a.cf-tree-nav--item-block:active {
   text-align: center;
 }
 
+.cf-tree-nav--short-label {
+  display: none;
+}
+
 .cf-tree-nav--expander {
   width: $cf-tree-nav__small-height;
   height: $cf-tree-nav__small-height;
@@ -476,6 +480,7 @@ $cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-ra
     margin-right: $cf-marg-d;
   }
 }
+
 .cf-tree-nav--username,
 .cf-tree-nav--team {
   text-align: left;
@@ -659,6 +664,10 @@ a.cf-tree-nav--user-item:hover {
     width: $cf-tree-nav__width;
     
     .cf-tree-nav--label {
+      display: none;
+    }
+
+    .cf-tree-nav--short-label {
       display: block;
       font-size: 0.9em;
       font-weight: $cf-font-weight--medium;
@@ -669,9 +678,6 @@ a.cf-tree-nav--user-item:hover {
       width: $cf-tree-nav__width - $cf-marg-b;
     }
 
-    .cf-tree-nav--header .cf-tree-nav--label {
-      display: none;
-    }
     .cf-tree-nav--sub-menu,
     .cf-tree-nav--expander,
     .cf-tree-nav--banner,
