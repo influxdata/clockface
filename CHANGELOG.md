@@ -5,7 +5,7 @@
 - [#464](https://github.com/influxdata/clockface/pull/464): Ensure `testID` prop is assigned to `TreeNav` children using `linkElement` prop
 - [#464](https://github.com/influxdata/clockface/pull/464): Allow optional `shortLabel` on `TreeNavItem` strictly for display when `TreeNav` is collapsed
 - [#464](https://github.com/influxdata/clockface/pull/464): Make `TreeNavSubMenu` visible so long as the entire `TreeNav` is visible
-
+- [#464](https://github.com/influxdata/clockface/pull/464): Allow `TreeNav` to be opened and closed on small screens independently of the `expanded` prop
 
 #### 2.0.2
 
