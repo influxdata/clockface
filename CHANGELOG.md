@@ -1,6 +1,13 @@
 # Changelog
 
-#### 2.0.2 (Unreleased)
+#### 2.0.3 (Unreleased)
+
+- [#464](https://github.com/influxdata/clockface/pull/464): Ensure `testID` prop is assigned to `TreeNav` children using `linkElement` prop
+- [#464](https://github.com/influxdata/clockface/pull/464): Allow optional `shortLabel` on `TreeNavItem` strictly for display when `TreeNav` is collapsed
+- [#464](https://github.com/influxdata/clockface/pull/464): Make `TreeNavSubMenu` visible so long as the entire `TreeNav` is visible
+
+
+#### 2.0.2
 
 - [#453](https://github.com/influxdata/clockface/pull/453): Add Sun & Moon icons to icon font
 - [#451](https://github.com/influxdata/clockface/pull/451): Add optional `title` prop to `DropdownItem`
