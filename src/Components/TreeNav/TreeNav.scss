@@ -275,14 +275,18 @@ a.cf-tree-nav--item-block:active {
   font-size: 1.7em;
 }
 
+.cf-tree-nav--label,
+.cf-tree-nav--short-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .cf-tree-nav--label {
   flex: 1 0 0;
   display: flex;
   font-size: 1.25em;
   font-weight: $cf-font-weight--medium;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   text-align: center;
 }
 
