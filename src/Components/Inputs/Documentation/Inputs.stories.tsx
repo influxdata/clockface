@@ -632,6 +632,8 @@ inputsBaseStories.add(
 inputsComposedStories.add(
   'Visibility Input',
   () => {
+    const [value, setValue] = useState<string>('Value text')
+    const [visibility, setVisibility] = useState<'show' | 'hide'>('show')
     const visibilityInputRef: RefObject<VisibilityInputRef> = createRef()
 
     const handleLogRefs = (): void => {
@@ -640,13 +642,25 @@ inputsComposedStories.add(
       /* eslint-enable */
     }
 
+    const handleToggleClick = (): void => {
+      if (visibility === 'show') {
+        setVisibility('hide')
+      } else {
+        setVisibility('show')
+      }
+    }
+
+    const handleInputChange = (e: ChangeEvent<VisibilityInputRef>): void => {
+      setValue(e.target.value)
+    }
+
     return (
       <div className="story--example">
         <VisibilityInput
           ref={visibilityInputRef}
           placeholder={text('placeholder', 'Placeholder Text')}
-          value={text('value', 'Value Text')}
-          onChange={() => {}}
+          value={value}
+          onChange={handleInputChange}
           name={text('name', 'Name')}
           titleText={text('titleText', 'Title Text')}
           disabledTitleText={text('disabledTitleText', 'Disabled Title Text')}
@@ -656,7 +670,7 @@ inputsComposedStories.add(
               select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
             ]
           }
-          visible={boolean('visible', false)}
+          visible={visibility === 'show'}
           style={object('style', defaultInputStyle)}
           status={
             ComponentStatus[
@@ -666,6 +680,7 @@ inputsComposedStories.add(
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
+          onToggleClick={handleToggleClick}
           autocomplete={
             AutoComplete[
               radios<AutoComplete>(

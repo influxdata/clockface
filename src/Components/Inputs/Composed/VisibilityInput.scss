@@ -5,8 +5,9 @@
   ------------------------------------------------------------------------------
 */
 
-.cf-visibility-input-icon {
+.cf-visibility-input--icon {
   background: transparent;
+  background-image: none;
   border: none;
   box-shadow: none;
   opacity: 0.4;
@@ -14,6 +15,10 @@
   position: absolute;
   transform: translateX(-100%);
   z-index: 3;
+
+  &:after {
+    content: none;
+  }
 
   &:hover,
   &:focus,
