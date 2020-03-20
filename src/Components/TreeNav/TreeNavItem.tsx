@@ -3,7 +3,7 @@ import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardFunctionProps, Omit} from '../../Types'
+import {StandardFunctionProps, Omit, RenderLinkElement} from '../../Types'
 
 export interface TreeNavItemProps extends Omit<StandardFunctionProps, 'id'> {
   /** Unique identifier for nav item */
@@ -19,7 +19,7 @@ export interface TreeNavItemProps extends Omit<StandardFunctionProps, 'id'> {
   /** Controls state of item */
   active?: boolean
   /** Optional link element. Will override onClick prop */
-  linkElement?: (className: string) => JSX.Element
+  linkElement?: RenderLinkElement
 }
 
 export type TreeNavItemRef = HTMLDivElement
