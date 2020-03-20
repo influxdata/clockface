@@ -150,9 +150,5 @@ $funnel-page--scroll-z: $funnel-page--graphic-z + 1;
 */
 
 .cf-funnel-page--graphic {
-  z-index: $funnel-page--graphic-z;
-  background-image: url('./FunnelPageGraphic.svg');
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  @include funnel-page-background;
 }

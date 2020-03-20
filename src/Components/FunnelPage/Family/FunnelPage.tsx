@@ -11,7 +11,6 @@ import {generateInlineCSSGradient} from '../../../Utils/colors'
 
 // Styles
 import './FunnelPage.scss'
-import './FunnelPageGraphic.svg'
 
 // Types
 import {InfluxColors, StandardFunctionProps} from '../../../Types'
