@@ -134,7 +134,7 @@ $cf-font-weight--black: 900;
 $cf-body-text: 12px;
 $cf-text-tiny: 0.8em;
 $cf-text-base: 1em;
-$cf-text-scale: 1.19; 
+$cf-text-scale: 1.19;
 $cf-text-base-1: ($cf-text-base * $cf-text-scale);
 $cf-text-base-2: ($cf-text-base * $cf-text-scale * $cf-text-scale);
 $cf-text-base-3: ($cf-text-base * $cf-text-scale * $cf-text-scale * $cf-text-scale);
@@ -242,7 +242,7 @@ $cf-empty-state-highlight: $g13-mist;
 $cf-input--transition: background-color 0.25s ease, border-color 0.25s ease,
     color 0.25s ease,
     box-shadow 0.25s ease, color 0.25s ease;
-    
+
 $cf-input-background--default: $g2-kevlar;
 $cf-input-background--focused: $g2-kevlar;
 $cf-input-background--hover: $g2-kevlar;
@@ -510,4 +510,12 @@ $cf-scrollbar-offset: 3px;
   position: fixed;
   top: 0;
   left: 0;
+}
+
+@mixin funnel-page-background() {
+  z-index: $funnel-page--graphic-z;
+  background-image: url('./Images/FunnelPageGraphic.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

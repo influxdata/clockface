@@ -26,6 +26,8 @@ export interface FunnelPageProps extends StandardFunctionProps {
   accentColorB?: InfluxColors | string
   /** Control inline styles of the outermost elemment */
   pageStyle?: CSSProperties
+  /** Renders a graphic in the funnel page */
+  enableGraphic?: boolean
 }
 
 export type FunnelPageRef = HTMLDivElement
@@ -42,6 +44,7 @@ export const FunnelPageRoot = forwardRef<FunnelPageRef, FunnelPageProps>(
       className,
       accentColorA = InfluxColors.Sapphire,
       accentColorB = InfluxColors.Amethyst,
+      enableGraphic = false,
       backgroundColor = InfluxColors.DeepPurple,
     },
     ref
@@ -94,6 +97,12 @@ export const FunnelPageRoot = forwardRef<FunnelPageRef, FunnelPageProps>(
       backgroundGradientColors
     )
 
+    let backgroundGraphic = <></>
+
+    if (enableGraphic) {
+      backgroundGraphic = <div className="cf-funnel-page--graphic" />
+    }
+
     return (
       <div
         className={funnelPageClassName}
@@ -119,6 +128,7 @@ export const FunnelPageRoot = forwardRef<FunnelPageRef, FunnelPageProps>(
             {children}
           </div>
         </DapperScrollbars>
+        {backgroundGraphic}
         <div className="cf-funnel-page--gradient" style={accentGradientA} />
         <div className="cf-funnel-page--gradient" style={accentGradientB} />
         <div className="cf-funnel-page--gradient" style={backgroundGradient} />

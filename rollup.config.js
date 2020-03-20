@@ -28,6 +28,7 @@ let plugins = [
     targets: [
       {src: 'src/Styles/Fonts', dest: 'dist'},
       {src: 'src/Styles/variables.scss', dest: 'dist'},
+      {src: '*/**/Images/*', dest: 'dist/Images'}
     ],
   }),
   sourceMaps(),

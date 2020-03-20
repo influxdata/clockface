@@ -2,6 +2,8 @@
 
 #### 2.0.3 (Unreleased)
 
+- [#470](https://github.com/influxdata/clockface/pull/470): Add optional `enableGraphic` prop to `FunnelPage`
+- [#470](https://github.com/influxdata/clockface/pull/470): Add image asset loading to rollup and webpack configurations
 - [#469](https://github.com/influxdata/clockface/pull/469): Add optional `linkElement` prop to `Tab`
 - [#466](https://github.com/influxdata/clockface/pull/466): Fix `OverlayHeading` overflow issue
 - [#466](https://github.com/influxdata/clockface/pull/466): Enable optional text wrapping in `OverlayHeading`

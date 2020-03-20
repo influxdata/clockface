@@ -9,6 +9,11 @@ $funnel-page--base-font: 14px;
 $funnel-page--base-font--large: 16px;
 $funnel-page--tiny-gutter: $cf-marg-b;
 $funnel-page--gutter: $cf-marg-d;
+$funnel-page--gradient-a-z: 0;
+$funnel-page--gradient-b-z: $funnel-page--gradient-a-z + 1;
+$funnel-page--gradient-c-z: $funnel-page--gradient-b-z + 1;
+$funnel-page--graphic-z: $funnel-page--gradient-c-z + 1;
+$funnel-page--scroll-z: $funnel-page--graphic-z + 1;
 
 .cf-funnel-page {
   width: 100%;
@@ -22,22 +27,23 @@ $funnel-page--gutter: $cf-marg-d;
 }
 
 .cf-funnel-page--scroll {
-  z-index: 3;
+  z-index: $funnel-page--scroll-z;
 }
 
-.cf-funnel-page--gradient {
+.cf-funnel-page--gradient,
+.cf-funnel-page--graphic {
   position: absolute;
   width: 100%;
   height: 100%;
-  z-index: 0;
+  z-index: $funnel-page--gradient-a-z;
+}
 
-  & + .cf-funnel-page--gradient {
-    z-index: 1;
+.cf-funnel-page--gradient + .cf-funnel-page--gradient {
+  z-index: $funnel-page--gradient-b-z;
+}
 
-    & + .cf-funnel-page--gradient {
-      z-index: 2;
-    }
-  }
+.cf-funnel-page--gradient + .cf-funnel-page--gradient + .cf-funnel-page--gradient {
+  z-index: $funnel-page--gradient-c-z;
 }
 
 .cf-funnel-page--content {
@@ -118,7 +124,6 @@ $funnel-page--gutter: $cf-marg-d;
     width: 100%;
     height: $cf-marg-c;
     transform: translateY(-100%);
-    background-color: #f00;
     pointer-events: none;
     z-index: 5;
     @include gradient-v(rgba($g0-obsidian, 0), rgba($g0-obsidian, 0.25));
@@ -141,4 +146,13 @@ $funnel-page--gutter: $cf-marg-d;
   .cf-funnel-page--footer-container {
     padding: 0 $funnel-page--gutter;
   }
+}
+
+/*
+  Funnel Page Graphic
+  ------------------------------------------------------------------------------
+*/
+
+.cf-funnel-page--graphic {
+  @include funnel-page-background;
 }
