@@ -2,6 +2,10 @@
 
 #### 2.0.3 (Unreleased)
 
+- [#466](https://github.com/influxdata/clockface/pull/466): Fix `OverlayHeading` overflow issue
+- [#466](https://github.com/influxdata/clockface/pull/466): Fix appearance of dismiss buttons in `NotificationDialog`
+- [#466](https://github.com/influxdata/clockface/pull/466): Fix appearance of toggle in `VisibilityInput`
+- [#466](https://github.com/influxdata/clockface/pull/466): Ensure `Heading` component does not remove margins specified in the funnel page heading styles
 - [#465](https://github.com/influxdata/clockface/pull/465): Fix gradient mixin transparency issue
 - [#464](https://github.com/influxdata/clockface/pull/464): Ensure `testID` prop is assigned to `TreeNav` children using `linkElement` prop
 - [#464](https://github.com/influxdata/clockface/pull/464): Allow optional `shortLabel` on `TreeNavItem` strictly for display when `TreeNav` is collapsed
