@@ -4,7 +4,7 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, select} from '@storybook/addon-knobs'
+import {withKnobs, select, boolean} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
@@ -16,6 +16,7 @@ import {CTAButton} from '../../Button/Composed/CTAButton'
 import {Grid} from '../../Grid'
 import {Panel} from '../../Panel'
 import {FlexBox} from '../../FlexBox'
+import {Heading} from '../../Typography'
 
 // Types
 import {
@@ -27,6 +28,7 @@ import {
   ComponentColor,
   ComponentSize,
   Columns,
+  HeadingElement,
 } from '../../../Types'
 
 // Notes
@@ -55,11 +57,13 @@ funnelPageStories.add(
       /* eslint-enable */
     }
 
-    const logo = (
+    const logo = boolean('show logo', true) ? (
       <img
         src="https://influxdata.github.io/branding/img/downloads/influxdata-logo--full--white-alpha.png"
         width="170"
       />
+    ) : (
+      undefined
     )
 
     return (
@@ -83,7 +87,7 @@ funnelPageStories.add(
               }
               accentColorA={
                 InfluxColors[
-                  select('accentColorA', mapEnumKeys(InfluxColors), 'Magenta')
+                  select('accentColorA', mapEnumKeys(InfluxColors), 'Sapphire')
                 ]
               }
               accentColorB={
@@ -92,10 +96,18 @@ funnelPageStories.add(
                 ]
               }
             >
-              <h1 className="cf-funnel-page--title">I am a page title</h1>
-              <p className="cf-funnel-page--subtitle">
+              <Heading
+                element={HeadingElement.H1}
+                className="cf-funnel-page--title"
+              >
+                I am a page title
+              </Heading>
+              <Heading
+                element={HeadingElement.P}
+                className="cf-funnel-page--subtitle"
+              >
                 I am a <strong>subtitle</strong>
-              </p>
+              </Heading>
               <p>
                 Hell of wayfarers bespoke, butcher unicorn adaptogen kitsch
                 enamel pin sustainable. Hoodie adaptogen pok pok, tofu small
@@ -196,19 +208,28 @@ funnelPageExampleStories.add(
               <Grid>
                 <Grid.Row>
                   <Grid.Column widthSM={Columns.Eight} offsetSM={Columns.Two}>
-                    <h1 className="cf-funnel-page--title">
+                    <Heading
+                      element={HeadingElement.H1}
+                      className="cf-funnel-page--title"
+                    >
                       Create your Free InfluxCloud Account
-                    </h1>
-                    <p className="cf-funnel-page--subtitle">
+                    </Heading>
+                    <Heading
+                      element={HeadingElement.P}
+                      className="cf-funnel-page--subtitle"
+                    >
                       No credit card required
-                    </p>
+                    </Heading>
                     <Panel>
                       <Panel.SymbolHeader
                         symbol={<Bullet text="1" />}
                         title={
-                          <h3 className="cf-funnel-page--panel-title">
+                          <Heading
+                            element={HeadingElement.H3}
+                            className="cf-funnel-page--panel-title"
+                          >
                             Get a coconut
-                          </h3>
+                          </Heading>
                         }
                       />
                       <Panel.Body>

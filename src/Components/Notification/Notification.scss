@@ -15,20 +15,17 @@
   border-radius: $cf-radius;
   font-weight: $cf-font-weight--medium;
 
-  &.cf-notification__no-dismiss {
-    padding-right: $cf-marg-d;
-  }
-
   .cf-notification--contents {
     display: inline-flex;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
 
     .cf-notification--children {
       min-height: 30px;
       display: inline-flex;
       justify-content: flex-start;
       align-items: center;
+      word-break: break-all;
     }
   }
 
@@ -47,6 +44,7 @@
     flex-shrink: 0;
     margin-left: $cf-marg-b;
     background-color: transparent;
+    background-image: none;
     border: none;
     color: $g18-cloud;
     opacity: 0.6;
@@ -67,6 +65,10 @@
       opacity: 1;
     }
   }
+}
+
+.cf-notification--dismiss:after {
+  content: none;
 }
 
 .cf-notification-portal {
@@ -113,8 +115,16 @@
   ------------------------------------------------------------------------------
 */
 @mixin notificationSizeModifier($padding, $fontSize) {
-  padding: $padding;
+  padding: $padding ceil($padding * 2);
   font-size: $fontSize;
+
+  &.cf-notification__dismissable {
+    padding-right: $padding;
+  }
+
+  &.cf-notification__has-icon {
+    padding-left: $padding;
+  }
 }
 
 .cf-notification__xs {
@@ -136,17 +146,17 @@
 */
 
 .cf-notification__dark-text {
-  color: rgba($g2-kevlar, 0.75);
+  color: rgba($g2-kevlar, 0.85);
 
   .cf-notification--dismiss {
-    color: rgba($g2-kevlar, 0.75);
+    color: rgba($g2-kevlar, 0.85);
   }
 }
 
 .cf-notification__light-text {
-  color: rgba($g20-white, 0.75);
+  color: rgba($g20-white, 0.85);
 
   .cf-notification--dismiss {
-    color: rgba($g20-white, 0.75);
+    color: rgba($g20-white, 0.85);
   }
 }

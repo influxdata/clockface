@@ -179,7 +179,7 @@ const VisibilityIcon: FunctionComponent<VisibilityIconProps> = ({
   return (
     <SquareButton
       status={iconStatus}
-      className="cf-visibility-input-icon"
+      className="cf-visibility-input--icon"
       size={size}
       icon={visible ? IconFont.EyeOpen : IconFont.EyeClosed}
       onClick={onClick}

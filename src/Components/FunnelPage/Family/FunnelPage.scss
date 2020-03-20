@@ -49,20 +49,24 @@ $funnel-page--gutter: $cf-marg-d;
   font-size: $funnel-page--base-font;
   color: $c-neutrino;
 
-  .cf-funnel-page--title {
+  .cf-funnel-page--title,
+  .cf-funnel-page--title.cf-heading {
     font-weight: $cf-font-weight--regular;
     color: $g20-white;
     font-size: 1.75em;
+    margin-top: 1em;
     margin-bottom: 0em;
   }
 
-  .cf-funnel-page--subtitle {
+  .cf-funnel-page--subtitle,
+  .cf-funnel-page--subtitle.cf-heading {
     font-weight: $cf-font-weight--medium;
     font-size: 1.125em;
     margin: 1.25em 0;
   }
 
-  .cf-funnel-page--panel-title {
+  .cf-funnel-page--panel-title,
+  .cf-funnel-page--panel-title.cf-heading {
     font-size: 1.125em;
     font-weight: $cf-font-weight--medium;
   }
