@@ -78,6 +78,7 @@ a.cf-tabs--tab:visited {
     width: 0;
     top: 0;
     right: 0;
+    border-radius: $cf-radius-sm 0 0 $cf-radius-sm;
   }
 }
 
@@ -152,7 +153,7 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
       margin-right: -$tabPadding;
     }
   }
-  .cf-tabs--tab__active .cf-tabs--state-indicator {
+  &.cf-tabs__horizontal .cf-tabs--tab__active .cf-tabs--state-indicator {
     height: floor($tabHeight * 0.18);
   }
 
