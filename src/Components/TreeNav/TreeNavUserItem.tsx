@@ -3,7 +3,7 @@ import React, {FunctionComponent} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardFunctionProps, Omit} from '../../Types'
+import {StandardFunctionProps, Omit, RenderLinkElement} from '../../Types'
 
 export interface TreeNavUserItemProps
   extends Omit<StandardFunctionProps, 'id'> {
@@ -16,7 +16,7 @@ export interface TreeNavUserItemProps
   /** Click behavior */
   onClick?: (id: string) => void
   /** Optional link element. Will override onClick prop */
-  linkElement?: (className: string) => JSX.Element
+  linkElement?: RenderLinkElement
 }
 
 export const TreeNavUserItem: FunctionComponent<TreeNavUserItemProps> = ({

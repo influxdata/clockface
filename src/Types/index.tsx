@@ -20,6 +20,9 @@ export interface StandardFunctionProps {
 // Standard Validation Function
 export type ValidationFunction = (input: string) => string | null
 
+// Passing in link elements
+export type RenderLinkElement = (className: string) => JSX.Element
+
 // Shared Data Types
 export enum ComponentColor {
   Default = 'default',
