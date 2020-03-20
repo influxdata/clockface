@@ -10,6 +10,8 @@ export interface OverlayHeaderProps extends StandardFunctionProps {
   title: string
   /** Passing a function into this prop will cause the Dismiss "X" to render in the header */
   onDismiss?: () => void
+  /** Wrap text */
+  wrapText?: boolean
 }
 
 export type OverlayHeaderRef = HTMLDivElement
@@ -21,6 +23,7 @@ export const OverlayHeader = forwardRef<OverlayHeaderRef, OverlayHeaderProps>(
       style,
       title,
       testID = 'overlay--header',
+      wrapText = false,
       children,
       className,
       onDismiss,
@@ -28,6 +31,9 @@ export const OverlayHeader = forwardRef<OverlayHeaderRef, OverlayHeaderProps>(
     ref
   ) => {
     const overlayHeaderClass = classnames('cf-overlay--header', {
+      'cf-overlay--header__wrap': wrapText,
+      'cf-overlay--header__nowrap': !wrapText,
+      'cf-overlay--header__dismissable': onDismiss,
       [`${className}`]: className,
     })
 
@@ -39,7 +45,9 @@ export const OverlayHeader = forwardRef<OverlayHeaderRef, OverlayHeaderProps>(
         className={overlayHeaderClass}
         data-testid={testID}
       >
-        <div className="cf-overlay--title">{title}</div>
+        <div className="cf-overlay--title" title={title}>
+          {title}
+        </div>
         {children && children}
         {onDismiss && (
           <button

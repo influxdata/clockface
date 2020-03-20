@@ -66,10 +66,10 @@ export const NotificationDialog = forwardRef<
     )
 
     const notificationDialogClassName = classnames('cf-notification', {
-      'cf-notification--has-icon': icon,
+      'cf-notification__has-icon': icon,
       [`cf-notification__${size}`]: size,
       [`cf-notification__${textColor}-text`]: textColor,
-      'cf-notification__no-dismiss': !onDismiss,
+      'cf-notification__dismissable': onDismiss,
       [`${className}`]: className,
     })
 
@@ -94,8 +94,8 @@ export const NotificationDialog = forwardRef<
         style={notificationDialogStyle}
         ref={ref}
       >
+        {!!icon && <Icon glyph={icon} className="cf-notification--icon" />}
         <div className="cf-notification--contents">
-          {!!icon && <Icon glyph={icon} className="cf-notification--icon" />}
           <div className="cf-notification--children">{children}</div>
         </div>
         {onDismiss && (

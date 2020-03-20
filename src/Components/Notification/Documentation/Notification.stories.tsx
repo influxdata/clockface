@@ -79,7 +79,7 @@ notificationStories.add(
             ]
           }
           backgroundColor={color('backgroundColor', `${InfluxColors.Castle}`)}
-          onDismiss={handleClose}
+          onDismiss={boolean('dismissable', true) ? handleClose : undefined}
         >
           <span>{text('text', 'Congrats! The thing has happened!')}</span>
         </NotificationDialog>

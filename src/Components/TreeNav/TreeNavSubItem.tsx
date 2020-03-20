@@ -3,7 +3,7 @@ import React, {FunctionComponent} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardFunctionProps, Omit} from '../../Types'
+import {StandardFunctionProps, Omit, RenderLinkElement} from '../../Types'
 
 export interface TreeNavSubItemProps extends Omit<StandardFunctionProps, 'id'> {
   /** Unique identifier for nav sub item */
@@ -15,7 +15,7 @@ export interface TreeNavSubItemProps extends Omit<StandardFunctionProps, 'id'> {
   /** Click behavior */
   onClick?: (id: string) => void
   /** Optional link element. Will override onClick prop */
-  linkElement?: (className: string) => JSX.Element
+  linkElement?: RenderLinkElement
 }
 
 export const TreeNavSubItem: FunctionComponent<TreeNavSubItemProps> = ({
@@ -48,7 +48,7 @@ export const TreeNavSubItem: FunctionComponent<TreeNavSubItemProps> = ({
   if (linkElement) {
     labelElement = React.cloneElement(
       linkElement('cf-tree-nav--sub-item-label'),
-      [],
+      {'data-testid': testID},
       label
     )
   }

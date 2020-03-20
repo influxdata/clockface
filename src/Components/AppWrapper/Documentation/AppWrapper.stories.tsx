@@ -510,10 +510,10 @@ layoutStories.add(
       {id: 'user', label: 'JohnDoe (OrgName)'},
       {id: 'data', label: 'Data'},
       {id: 'data-buckets', label: 'Buckets'},
-      {id: 'data-sources', label: 'Sources'},
-      {id: 'queries', label: 'Queries'},
-      {id: 'boards', label: 'Boards'},
-      {id: 'team', label: 'Team'},
+      {id: 'data-sources', label: 'Data Sources'},
+      {id: 'explore', label: 'Data Explorer'},
+      {id: 'boards', label: 'Dashboards'},
+      {id: 'org', label: 'Organization'},
       {id: 'tasks', label: 'Tasks'},
       {id: 'alerts', label: 'Alerts'},
       {id: 'settings', label: 'Settings'},
@@ -572,6 +572,10 @@ layoutStories.add(
                 />
               }
               bannerElement={banner}
+              hideBannerWhenCollapsed={boolean(
+                'hideBannerWhenCollapsed',
+                false
+              )}
               expanded={navState}
               onToggleClick={handleToggleNavState}
               userElement={
@@ -619,24 +623,27 @@ layoutStories.add(
                 </TreeNav.SubMenu>
               </TreeNav.Item>
               <TreeNav.Item
-                id="queries"
-                label="Queries"
+                id="explore"
+                label="Data Explorer"
+                shortLabel="Explore"
                 icon={<Icon glyph={IconFont.GraphLine} />}
-                active={isItemActive('queries')}
+                active={isItemActive('explore')}
                 onClick={handleNavClick}
               />
               <TreeNav.Item
                 id="boards"
-                label="Boards"
+                label="Dashboards"
+                shortLabel="Boards"
                 icon={<Icon glyph={IconFont.Dashboards} />}
                 active={isItemActive('boards')}
                 onClick={handleNavClick}
               />
               <TreeNav.Item
-                id="team"
-                label="Team"
+                id="org"
+                label="Organization"
+                shortLabel="Org"
                 icon={<Icon glyph={IconFont.UsersDuo} />}
-                active={isItemActive('team')}
+                active={isItemActive('org')}
                 onClick={handleNavClick}
               />
               <TreeNav.Item

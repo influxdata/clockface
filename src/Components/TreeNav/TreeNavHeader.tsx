@@ -3,7 +3,12 @@ import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardFunctionProps, Omit, ComponentColor} from '../../Types'
+import {
+  StandardFunctionProps,
+  Omit,
+  ComponentColor,
+  RenderLinkElement,
+} from '../../Types'
 
 export interface TreeNavHeaderProps extends Omit<StandardFunctionProps, 'id'> {
   /** Unique identifier for nav item */
@@ -19,7 +24,7 @@ export interface TreeNavHeaderProps extends Omit<StandardFunctionProps, 'id'> {
   /** Click behavior */
   onClick?: (id: string) => void
   /** Optional link element. Will override onClick prop */
-  linkElement?: (className: string) => JSX.Element
+  linkElement?: RenderLinkElement
 }
 
 export type TreeNavHeaderRef = HTMLDivElement
@@ -62,7 +67,7 @@ export const TreeNavHeader = forwardRef<TreeNavHeaderRef, TreeNavHeaderProps>(
       )
       const link = React.cloneElement(
         linkElement(navMenuHeaderClass),
-        [],
+        {'data-testid': testID},
         linkItems
       )
 

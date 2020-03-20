@@ -6,8 +6,7 @@
 */
 
 
-.cf-tree-nav,
-.cf-tree-nav__collapsed {
+.cf-tree-nav {
   width: 100%;
   user-select: none;
 }
@@ -23,18 +22,34 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  
-  .cf-tree-nav__collapsed & {
-    display: none;
-  }
+}
+
+.cf-tree-nav__mobile-collapsed .cf-tree-nav--menu {
+  display: none;
 }
 
 .cf-tree-nav--scroll-area {
   flex: 1 0 0;
   display: block;
+
+  .cf-dapper-scrollbars--content {
+    display: flex !important;
+    flex-direction: column;
+  }
+}
+
+.cf-tree-nav--children {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .cf-tree-nav--toggle {
+  display: none;
+}
+
+.cf-tree-nav--mobile-toggle {
   width: $cf-tree-nav__small-height;
   height: $cf-tree-nav__small-height;
   flex: 0 0 $cf-tree-nav__small-height;
@@ -45,10 +60,6 @@
 
   &:hover {
     cursor: pointer;
-  }
-
-  > .cf-icon {
-    display: none;
   }
 }
 
@@ -83,14 +94,14 @@
     transform: translate(-50%, 0%) rotate(-45deg);
   }
 
-  .cf-tree-nav__collapsed & {
+  .cf-tree-nav__mobile-collapsed & {
     background-color: $g20-white;
   }
 
-  .cf-tree-nav__collapsed &:before {
+  .cf-tree-nav__mobile-collapsed &:before {
     transform: translate(-50%, 300%);
   }
-  .cf-tree-nav__collapsed &:after {
+  .cf-tree-nav__mobile-collapsed &:after {
     transform: translate(-50%, -300%);
   }
 }
@@ -275,47 +286,23 @@ a.cf-tree-nav--item-block:active {
   font-size: 1.7em;
 }
 
+.cf-tree-nav--label,
+.cf-tree-nav--short-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .cf-tree-nav--label {
   flex: 1 0 0;
   display: flex;
   font-size: 1.25em;
   font-weight: $cf-font-weight--medium;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   text-align: center;
 }
 
-.cf-tree-nav--expander {
-  width: $cf-tree-nav__small-height;
-  height: $cf-tree-nav__small-height;
-  flex: 0 0 $cf-tree-nav__small-height;
-  position: relative;
-  
-  &:before,
-  &:after {
-    content: '';
-    width: $cf-tree-nav__small-height * 0.2;
-    height: $cf-border;
-    background-color: $cf-tree-nav__text;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    border-radius: $cf-border / 2;
-    transition: transform 0.25s ease, background-color 0.25s ease;
-  }
-  
-  &:before {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  &:after {
-    transform: translate(-50%, -50%) rotate(90deg);
-  }
-
-  .cf-tree-nav--item-block:hover &:before,
-  .cf-tree-nav--item-block:hover &:after {
-    background-color: $cf-tree-nav__text-hover;
-  }
+.cf-tree-nav--short-label {
+  display: none;
 }
 
 .cf-tree-nav--item__active {
@@ -336,15 +323,9 @@ a.cf-tree-nav--item-block:active {
   a.cf-tree-nav--item-block:after {
     opacity: 1;
   }
-  .cf-tree-nav--expander:before,
-  .cf-tree-nav--expander:after {
-    background-color: $cf-tree-nav__text-active;
-  }
-  .cf-tree-nav--expander:after {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
+
   .cf-tree-nav--sub-menu {
-    display: flex;
+    background-color: $cf-tree-nav__bg-active;
   }
 }
 
@@ -354,12 +335,11 @@ a.cf-tree-nav--item-block:active {
 */
 
 .cf-tree-nav--sub-menu {
-  display: none;
+  display: flex;
   flex-direction: column;
   align-items: stretch;
-  padding-left: calc(#{$cf-tree-nav__width} - 0.75em);
+  padding-left: calc(#{$cf-tree-nav__width} - 1.5em);
   padding-bottom: $cf-marg-b;
-  background-color: $cf-tree-nav__bg-active;
 }
 
 .cf-tree-nav--sub-item {
@@ -395,10 +375,6 @@ a.cf-tree-nav--sub-item-label:active {
   .cf-tree-nav--sub-item-label:hover {
     background-color: $cf-tree-nav__sub-item-bg-active;
     color: $cf-tree-nav__sub-item-text-active;
-  }
-
-  .cf-tree-nav--sub-menu {
-    display: flex;
   }
 }
 
@@ -476,6 +452,7 @@ $cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-ra
     margin-right: $cf-marg-d;
   }
 }
+
 .cf-tree-nav--username,
 .cf-tree-nav--team {
   text-align: left;
@@ -538,6 +515,7 @@ a.cf-tree-nav--user-item:active {
   padding-left: $cf-tree-nav--user-block + $cf-border;
   color: $cf-tree-nav__sub-item-text;
   transition: color 0.25s ease, background-color 0.25s ease;
+  white-space: nowrap;
 }
 
 .cf-tree-nav--user-item:hover,
@@ -555,6 +533,11 @@ a.cf-tree-nav--user-item:hover {
 .cf-tree-nav--banner {
   padding: $cf-marg-c;
   display: block;
+}
+
+.cf-tree-nav--banner-spacer {
+  flex: 1 0 0;
+  width: 100%;
 }
 
 /*
@@ -581,7 +564,9 @@ a.cf-tree-nav--user-item:hover {
     z-index: $cf-z--nav-menu;
   }
 
-  .cf-tree-nav--menu {
+  .cf-tree-nav--menu,
+  .cf-tree-nav__mobile-collapsed .cf-tree-nav--menu {
+    display: flex;
     background-color: transparent;
     position: relative !important;
     height: auto !important;
@@ -594,14 +579,13 @@ a.cf-tree-nav--user-item:hover {
       display: flex;
     }
   }
-
-  .cf-tree-nav--hamburger {
+  
+  .cf-tree-nav--mobile-toggle {
     display: none;
   }
 
   .cf-tree-nav--toggle {
-    top: initial;
-    right: initial;
+    display: block;
     width: 100%;
     height: 30px;
     flex: 0 0 30px;
@@ -612,6 +596,7 @@ a.cf-tree-nav--user-item:hover {
     transition: color 0.25s ease, background-color 0.25s ease;
 
     &:hover {
+      cursor: pointer;
       background-color: $cf-tree-nav__bg-hover;
       color: $cf-tree-nav__toggle-icon-hover;
     }
@@ -637,16 +622,8 @@ a.cf-tree-nav--user-item:hover {
     flex: 0 0 $cf-tree-nav__width;
   }
 
-  .cf-tree-nav--expander {
-    width: $cf-tree-nav__width;
-    height: $cf-tree-nav__width;
-    flex: 0 0 $cf-tree-nav__width;
-    
-    &:before,
-    &:after {
-      content: '';
-      width: $cf-tree-nav__width * 0.2;
-    }
+  .cf-tree-nav--sub-menu {
+    padding-left: calc(#{$cf-tree-nav__width} - 0.75em);
   }
 
   /*
@@ -659,6 +636,10 @@ a.cf-tree-nav--user-item:hover {
     width: $cf-tree-nav__width;
     
     .cf-tree-nav--label {
+      display: none;
+    }
+
+    .cf-tree-nav--short-label {
       display: block;
       font-size: 0.9em;
       font-weight: $cf-font-weight--medium;
@@ -669,14 +650,17 @@ a.cf-tree-nav--user-item:hover {
       width: $cf-tree-nav__width - $cf-marg-b;
     }
 
-    .cf-tree-nav--header .cf-tree-nav--label {
-      display: none;
-    }
     .cf-tree-nav--sub-menu,
-    .cf-tree-nav--expander,
-    .cf-tree-nav--banner,
     .cf-tree-nav--user-caret,
     .cf-tree-nav--avatar-label {
+      display: none;
+    }
+
+    .cf-tree-nav--banner {
+      padding: $cf-marg-a;
+    }
+
+    .cf-tree-nav--banner:not(.cf-tree-nav--banner__always-visible) {
       display: none;
     }
 

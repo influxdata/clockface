@@ -1,5 +1,5 @@
 // Libraries
-import React, {forwardRef} from 'react'
+import React, {forwardRef, useState} from 'react'
 import classnames from 'classnames'
 import _ from 'lodash'
 
@@ -24,9 +24,12 @@ export interface TreeNavProps extends StandardFunctionProps {
   bannerElement?: JSX.Element
   /** User widget to appear below the header element */
   userElement?: JSX.Element
+  /** Controls how the Banner element renders when in collapsed state */
+  hideBannerWhenCollapsed?: boolean
 }
 
 export type TreeNavRef = HTMLElement
+export type TreeNavMobileState = 'expanded' | 'collapsed'
 
 export const TreeNavRoot = forwardRef<TreeNavRef, TreeNavProps>(
   (
@@ -41,19 +44,34 @@ export const TreeNavRoot = forwardRef<TreeNavRef, TreeNavProps>(
       bannerElement,
       onToggleClick,
       headerElement,
+      hideBannerWhenCollapsed = false,
     },
     ref
   ) => {
+    const [mobileState, setMobileState] = useState<TreeNavMobileState>(
+      'collapsed'
+    )
+
     const navMenuRootClass = classnames('cf-tree-nav', {
       'cf-tree-nav__collapsed': !expanded,
+      'cf-tree-nav__mobile-collapsed': mobileState === 'collapsed',
       [`${className}`]: className,
     })
 
     let banner = <></>
     let toggleElement = <></>
 
-    if (bannerElement && expanded) {
-      banner = <div className="cf-tree-nav--banner">{bannerElement}</div>
+    if (bannerElement) {
+      const bannerClass = classnames('cf-tree-nav--banner', {
+        'cf-tree-nav--banner__always-visible': !hideBannerWhenCollapsed,
+      })
+
+      banner = (
+        <>
+          <div className="cf-tree-nav--banner-spacer" />
+          <div className={bannerClass}>{bannerElement}</div>
+        </>
+      )
     }
 
     if (onToggleClick) {
@@ -61,9 +79,16 @@ export const TreeNavRoot = forwardRef<TreeNavRef, TreeNavProps>(
       toggleElement = (
         <div className="cf-tree-nav--toggle" onClick={onToggleClick}>
           <Icon glyph={toggleIcon} />
-          <div className="cf-tree-nav--hamburger" />
         </div>
       )
+    }
+
+    const handleMobileToggleClick = (): void => {
+      if (mobileState === 'expanded') {
+        setMobileState('collapsed')
+      } else {
+        setMobileState('expanded')
+      }
     }
 
     return (
@@ -86,6 +111,12 @@ export const TreeNavRoot = forwardRef<TreeNavRef, TreeNavProps>(
           </DapperScrollbars>
         </div>
         {toggleElement}
+        <div
+          className="cf-tree-nav--mobile-toggle"
+          onClick={handleMobileToggleClick}
+        >
+          <div className="cf-tree-nav--hamburger" />
+        </div>
       </nav>
     )
   }

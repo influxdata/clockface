@@ -1,6 +1,21 @@
 # Changelog
 
-#### 2.0.2 (Unreleased)
+#### 2.0.3 (Unreleased)
+
+- [#469](https://github.com/influxdata/clockface/pull/469): Add optional `linkElement` prop to `Tab`
+- [#466](https://github.com/influxdata/clockface/pull/466): Fix `OverlayHeading` overflow issue
+- [#466](https://github.com/influxdata/clockface/pull/466): Enable optional text wrapping in `OverlayHeading`
+- [#466](https://github.com/influxdata/clockface/pull/466): Fix appearance of dismiss buttons in `NotificationDialog`
+- [#466](https://github.com/influxdata/clockface/pull/466): Fix appearance of toggle in `VisibilityInput`
+- [#466](https://github.com/influxdata/clockface/pull/466): Ensure `Heading` component does not remove margins specified in the funnel page heading styles
+- [#465](https://github.com/influxdata/clockface/pull/465): Fix gradient mixin transparency issue
+- [#464](https://github.com/influxdata/clockface/pull/464): Ensure `testID` prop is assigned to `TreeNav` children using `linkElement` prop
+- [#464](https://github.com/influxdata/clockface/pull/464): Allow optional `shortLabel` on `TreeNavItem` strictly for display when `TreeNav` is collapsed
+- [#464](https://github.com/influxdata/clockface/pull/464): Make `TreeNavSubMenu` visible so long as the entire `TreeNav` is visible
+- [#464](https://github.com/influxdata/clockface/pull/464): Allow `TreeNav` to be opened and closed on small screens independently of the `expanded` prop
+- [#464](https://github.com/influxdata/clockface/pull/464): Allow banner element to optionally remain visible when `TreeNav` is collapsed
+
+#### 2.0.2
 
 - [#453](https://github.com/influxdata/clockface/pull/453): Add Sun & Moon icons to icon font
 - [#451](https://github.com/influxdata/clockface/pull/451): Add optional `title` prop to `DropdownItem`

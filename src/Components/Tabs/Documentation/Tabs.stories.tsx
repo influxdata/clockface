@@ -83,6 +83,12 @@ tabsStories.add(
             text="Pentagons"
             onClick={handleTabClick}
           />
+          <Tabs.Tab
+            active={activeTab === 'hexagons'}
+            id="hexagons"
+            text="Hexagons (Link)"
+            linkElement={className => <a href="#" className={className} />}
+          />
         </Tabs.Tabs>
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>

@@ -3,13 +3,13 @@ import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardFunctionProps} from '../../Types'
+import {StandardFunctionProps, RenderLinkElement} from '../../Types'
 
 export interface NavMenuItemProps extends StandardFunctionProps {
   /** Render prop for linked title text */
-  titleLink: (className: string) => JSX.Element
+  titleLink: RenderLinkElement
   /** Render prop for linked icon component */
-  iconLink: (className: string) => JSX.Element
+  iconLink: RenderLinkElement
   /** Controls highlighting of the menu item */
   active: boolean
 }

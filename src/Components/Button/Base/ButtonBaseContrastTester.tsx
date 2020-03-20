@@ -8,6 +8,9 @@ import {ButtonBase, ButtonBaseRef} from './ButtonBase'
 // Types
 import {ComponentColor, ComponentStatus} from '../../../Types'
 
+// Utils
+import {getAverageColorFromLinearGradient} from '../../../Utils/colors'
+
 // Styles
 import './ButtonBaseContrastTester.scss'
 
@@ -117,17 +120,23 @@ export const ButtonBaseContrastTester: FunctionComponent<{}> = () => {
       // Default State
       const defaultStyle = window.getComputedStyle(button.defaultRef.current)
       const defaultColor = `${defaultStyle.color}`
-      const defaultBackground = `${defaultStyle.backgroundColor}`
+      const defaultBackground = getAverageColorFromLinearGradient(
+        `${defaultStyle.backgroundImage}`
+      )
 
       // Active State
       const activeStyle = window.getComputedStyle(button.activeRef.current)
       const activeColor = `${activeStyle.color}`
-      const activeBackground = `${activeStyle.backgroundColor}`
+      const activeBackground = getAverageColorFromLinearGradient(
+        `${activeStyle.backgroundImage}`
+      )
 
       // Disabled State
       const disabledStyle = window.getComputedStyle(button.disabledRef.current)
       const disabledColor = `${disabledStyle.color}`
-      const disabledBackground = `${disabledStyle.backgroundColor}`
+      const disabledBackground = getAverageColorFromLinearGradient(
+        `${disabledStyle.backgroundImage}`
+      )
 
       return {
         default: chroma.contrast(defaultColor, defaultBackground).toFixed(2),
