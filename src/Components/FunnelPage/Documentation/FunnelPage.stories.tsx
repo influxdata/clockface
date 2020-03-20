@@ -84,7 +84,7 @@ funnelPageStories.add(
               }
               accentColorA={
                 InfluxColors[
-                  select('accentColorA', mapEnumKeys(InfluxColors), 'Magenta')
+                  select('accentColorA', mapEnumKeys(InfluxColors), 'Sapphire')
                 ]
               }
               accentColorB={
