@@ -2,6 +2,7 @@
 
 #### 2.0.3 (Unreleased)
 
+- [#465](https://github.com/influxdata/clockface/pull/465): Fix gradient mixin transparency issue
 - [#464](https://github.com/influxdata/clockface/pull/464): Ensure `testID` prop is assigned to `TreeNav` children using `linkElement` prop
 - [#464](https://github.com/influxdata/clockface/pull/464): Allow optional `shortLabel` on `TreeNavItem` strictly for display when `TreeNav` is collapsed
 - [#464](https://github.com/influxdata/clockface/pull/464): Make `TreeNavSubMenu` visible so long as the entire `TreeNav` is visible
