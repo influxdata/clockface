@@ -61,32 +61,49 @@
 
 .cf-overlay--header {
   @extend %overlay-children;
-  height: $cf-overlay--header-height;
   display: flex;
-  padding: 0 $cf-overlay--gutter;
   justify-content: space-between;
-  align-items: center;
   width: 100%;
   @include no-user-select();
 }
+
 
 .cf-overlay--title {
   font-family: $cf-overlay--title-font;
   font-size: $cf-overlay--title-size;
   font-weight: $cf-overlay--title-weight;
   color: $cf-overlay--title-color;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-
+  
   .cf-overlay--header__dismissable & {
     width: calc(100% - #{$cf-overlay--header-height - 50px});
   }
 }
 
+.cf-overlay--header__nowrap {
+  height: $cf-overlay--header-height;
+  padding: 0 $cf-overlay--gutter;
+  align-items: center;
+
+  .cf-overlay--title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.cf-overlay--header__wrap {
+  min-height: $cf-overlay--header-height;
+  padding: $cf-marg-c $cf-overlay--gutter;
+  align-items: flex-start;
+
+  .cf-overlay--title {
+    word-break: break-all;
+  }
+}
+
 .cf-overlay--dismiss {
   width: ($cf-overlay--header-height - 50px);
-  height: ($cf-overlay--header-height - 20px);
+  height: ($cf-overlay--header-height - 32px);
   position: relative;
   background-color: transparent;
   border: 0;

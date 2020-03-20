@@ -76,6 +76,7 @@ overlayStories.add(
           }
         >
           <OverlayHeader
+            wrapText={boolean('wrap header text', false)}
             title={text('title', 'Howdy partner!')}
             onDismiss={() => {
               alert('Overlay dismiss clicked')
