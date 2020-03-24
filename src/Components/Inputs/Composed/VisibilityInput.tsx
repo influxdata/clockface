@@ -124,12 +124,10 @@ export const VisibilityInput = forwardRef<
     const handleToggleClick = (e: MouseEvent<HTMLButtonElement>): void => {
       if (onToggleClick) {
         onToggleClick(e)
+      } else if (mode === 'visible') {
+        setMode('hidden')
       } else {
-        if (mode === 'visible') {
-          setMode('hidden')
-        } else {
-          setMode('visible')
-        }
+        setMode('visible')
       }
     }
 
