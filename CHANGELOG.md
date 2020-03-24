@@ -2,6 +2,8 @@
 
 #### 2.0.4 (Unreleased)
 
+- [#472](https://github.com/influxdata/clockface/pull/472): Add `Upgrade` and `Cubo` icons to icon font
+
 #### 2.0.3
 
 - [#470](https://github.com/influxdata/clockface/pull/470): Add optional `enableGraphic` prop to `FunnelPage`
