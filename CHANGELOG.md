@@ -1,6 +1,10 @@
 # Changelog
 
-#### 2.0.3 (Unreleased)
+#### 2.0.4 (Unreleased)
+
+- [#474](https://github.com/influxdata/clockface/pull/474): Refactor `VisibilityInput` to manage its state internally by default with the option to override using props
+
+#### 2.0.3
 
 - [#470](https://github.com/influxdata/clockface/pull/470): Add optional `enableGraphic` prop to `FunnelPage`
 - [#470](https://github.com/influxdata/clockface/pull/470): Add image asset loading to rollup and webpack configurations
