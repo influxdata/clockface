@@ -1,6 +1,8 @@
 # Changelog
 
-#### 2.0.3 (Unreleased)
+#### 2.0.4 (Unreleased)
+
+#### 2.0.3
 
 - [#470](https://github.com/influxdata/clockface/pull/470): Add optional `enableGraphic` prop to `FunnelPage`
 - [#470](https://github.com/influxdata/clockface/pull/470): Add image asset loading to rollup and webpack configurations

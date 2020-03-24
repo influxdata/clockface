@@ -122,6 +122,9 @@
   &.cubo-uniform:before {
     content: '\e93c';
   }
+  &.cubo:before {
+    content: "\e95e";
+  }
   &.dash-f:before {
     content: '\e927';
   }
@@ -277,6 +280,9 @@
   }
   &.undo:before {
     content: '\e95a';
+  }
+  &.upgrade:before {
+    content: "\e95f";
   }
   &.user-add:before {
     content: '\e907';
