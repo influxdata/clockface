@@ -40,9 +40,7 @@ export const Tab = forwardRef<TabRef, TabProps>(
     },
     ref
   ) => {
-    const handleClick = (e: MouseEvent<HTMLDivElement>): void => {
-      e.stopPropagation()
-
+    const handleClick = (): void => {
       if (onClick) {
         onClick(id)
       }
