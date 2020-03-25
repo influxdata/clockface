@@ -15,6 +15,9 @@ import {
   Orientation,
 } from '../../Types'
 
+// Constants
+import {TABS_DEFAULT_BREAKPOINT} from '../../Constants'
+
 // Styles
 import './Tabs.scss'
 
@@ -51,12 +54,14 @@ export const TabsRoot = forwardRef<
       orientation = Orientation.Horizontal,
       dropdownLabel = 'dropdownLabel',
       dropdownAlignment = Alignment.Center,
-      dropdownBreakpoint,
+      dropdownBreakpoint = TABS_DEFAULT_BREAKPOINT,
     },
     ref
   ) => {
     const [screenWidth, setScreenWidth] = useState<number>(9999)
     const [state, setState] = useState<'visible' | 'hidden'>('hidden')
+
+    const useDropdown = dropdownBreakpoint !== TABS_DEFAULT_BREAKPOINT
 
     const tabsClass = classnames('cf-tabs', {
       [`cf-tabs__align-${alignment}`]: alignment,
@@ -73,7 +78,7 @@ export const TabsRoot = forwardRef<
     })
 
     useEffect((): (() => void) => {
-      if (!!dropdownBreakpoint) {
+      if (useDropdown) {
         setScreenWidth(window.innerWidth)
         window.addEventListener('resize', handleResize)
       }
@@ -101,7 +106,7 @@ export const TabsRoot = forwardRef<
       }
     }
 
-    if (!!dropdownBreakpoint && screenWidth <= dropdownBreakpoint) {
+    if (useDropdown && screenWidth <= dropdownBreakpoint) {
       return (
         <ClickOutside onClickOutside={handleHideMenu}>
           <nav
