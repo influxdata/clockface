@@ -299,3 +299,258 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
     background-color: $g20-white;
   }
 }
+
+
+/*
+  Responsive Tabs
+  ------------------------------------------------------------------------------
+*/
+
+.cf-responsive-tabs {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  position: relative;
+  border-bottom: $cf-border solid $cf-tab--border-color;
+}
+
+.cf-responsive-tabs--active {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1 0 0;
+  font-weight: $cf-font-weight--medium;
+  color: $g13-mist;
+  transition: color 0.25s ease;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.cf-responsive-tabs--icon {
+  position: absolute;
+  top: 50%;
+  display: block;
+  transform: translate(50%, -50%);
+  transition: transform 0.25s ease;
+
+  .cf-responsive-tabs__visible & {
+    transform: translate(50%, -50%) rotate(180deg);
+  }
+}
+
+.cf-responsive-tabs--active:hover {
+  cursor: pointer;
+  color: $g18-cloud;
+}
+
+.cf-responsive-tabs--menu {
+  position: absolute;
+  top: calc(100% + #{$cf-border * 2});
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  flex-direction: column;
+  align-items: stretch;
+  @include gradient-h($c-void, $c-sapphire);
+  @include panel-shadow();
+  border-radius: $cf-radius;
+
+
+  .cf-responsive-tabs__hidden & {
+    display: none;
+  }
+
+  .cf-responsive-tabs__visible & {
+    display: flex;
+  }
+}
+
+.cf-responsive-tabs__mobile-align-left {
+  .cf-responsive-tabs--active,
+  .cf-tabs--tab {
+    text-align: left;
+  }
+}
+
+.cf-responsive-tabs__mobile-align-center {
+  .cf-responsive-tabs--active,
+  .cf-tabs--tab {
+    text-align: center;
+  }
+}
+
+.cf-responsive-tabs__mobile-align-right {
+  .cf-responsive-tabs--active,
+  .cf-tabs--tab {
+    text-align: right;
+  }
+}
+
+@mixin responsiveTabSizeModifier($fontSize, $tabPadding, $tabHeight) {
+  .cf-responsive-tabs--active,
+  .cf-tabs--tab {
+    font-size: $fontSize;
+    height: floor($tabHeight * 1.35);
+    line-height: floor($tabHeight * 1.35);
+    padding: 0 floor($tabHeight * (1.35 / 3));
+  }
+
+  &.cf-responsive-tabs__mobile-align-right .cf-responsive-tabs--active {
+    padding-right: floor($tabHeight * 1.35);
+  }
+
+  .cf-responsive-tabs--icon {
+    font-size: $fontSize;
+    right: floor($tabHeight * 1.35) / 2;
+  }
+
+  .cf-tabs--tab:first-child {
+    border-radius: $cf-radius $cf-radius 0 0;
+  }
+
+  .cf-tabs--tab:last-child {
+    border-radius: 0 0 $cf-radius $cf-radius;
+  }
+
+  .cf-tabs--tab {
+    color: mix($c-potassium, $c-hydrogen, 50%);
+
+    &:hover {
+      color: $g20-white;
+    }
+  }
+
+  .cf-tabs--tab__active {
+    color: $g20-white;
+    @include gradient-h($c-star, $c-pool);
+  }
+}
+
+.cf-responsive-tabs__xs {
+  @include responsiveTabSizeModifier($cf-form-xs-font, $cf-form-xs-padding, $cf-form-xs-height);
+}
+
+.cf-responsive-tabs__sm {
+  @include responsiveTabSizeModifier($cf-form-sm-font, $cf-form-sm-padding, $cf-form-sm-height);
+}
+
+.cf-responsive-tabs__md {
+  @include responsiveTabSizeModifier($cf-form-md-font, $cf-form-md-padding, $cf-form-md-height);
+}
+
+.cf-responsive-tabs__lg {
+  @include responsiveTabSizeModifier($cf-form-lg-font, $cf-form-lg-padding, $cf-form-lg-height);
+}
+
+@mixin responsiveTabSizeLargeModifier($tabSpacing, $activeHeight) {
+  &.cf-responsive-tabs__align-left {
+    .cf-responsive-tabs--menu {
+      justify-content: flex-start;
+    }
+
+    .cf-tabs--tab {
+      margin-right: $tabSpacing;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &.cf-responsive-tabs__align-center {
+    .cf-responsive-tabs--menu {
+      justify-content: center;
+    }
+
+    .cf-tabs--tab {
+      margin-left: $tabSpacing / 2;
+      margin-right: $tabSpacing / 2;
+
+      &:first-child {
+        margin-left: 0;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &.cf-responsive-tabs__align-right {
+    .cf-responsive-tabs--menu {
+      justify-content: flex-end;
+    }
+
+    .cf-tabs--tab {
+      margin-left: $tabSpacing;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .cf-tabs--tab__active .cf-tabs--state-indicator {
+    height: floor($activeHeight * 0.25);
+  }
+}
+
+@media screen and (min-width: $cf-grid--breakpoint-sm) {
+  .cf-responsive-tabs--active,
+  .cf-responsive-tabs--icon {
+    display: none;
+  }
+
+  .cf-responsive-tabs--menu {
+    background-color: transparent;
+    background-image: none;
+    border-radius: 0;
+  }
+  .cf-responsive-tabs__hidden .cf-responsive-tabs--menu,
+  .cf-responsive-tabs__visible .cf-responsive-tabs--menu {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .cf-responsive-tabs .cf-tabs--tab {
+    background-color: transparent;
+    background-image: none;
+    color: $cf-tab--text;
+    padding-left: 0;
+    padding-right: 0;
+
+    &:hover {
+      color: $cf-tab--text-hover;
+    }
+  }
+
+  .cf-responsive-tabs .cf-tabs--tab.cf-tabs--tab__active,
+  .cf-responsive-tabs .cf-tabs--tab.cf-tabs--tab__active:hover {
+    color: $cf-tab--text-active;
+  }
+
+  .cf-responsive-tabs .cf-tabs--state-indicator {
+    width: 100%;
+    bottom: 0;
+    height: 0;
+    opacity: 1;
+    transition: height 0.25s ease;
+    border-radius: $cf-radius-sm $cf-radius-sm 0 0;
+  }
+
+  .cf-responsive-tabs__xs {
+    @include responsiveTabSizeLargeModifier($cf-marg-b + $cf-marg-a, $cf-form-xs-height);
+  }
+
+  .cf-responsive-tabs__sm {
+    @include responsiveTabSizeLargeModifier($cf-marg-c, $cf-form-sm-height);
+  }
+
+  .cf-responsive-tabs__md {
+    @include responsiveTabSizeLargeModifier($cf-marg-c + $cf-marg-a, $cf-form-md-height);
+  }
+
+  .cf-responsive-tabs__lg {
+    @include responsiveTabSizeLargeModifier($cf-marg-d, $cf-form-lg-height);
+  }
+}

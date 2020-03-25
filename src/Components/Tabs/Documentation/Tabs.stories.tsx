@@ -1,6 +1,7 @@
 // Libraries
 import React, {createRef} from 'react'
 import marked from 'marked'
+import {get} from 'lodash'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
@@ -9,7 +10,15 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 import {useState} from '@storybook/addons'
 
 // Components
-import {Tabs, TabsRef, TabRef, TabContentsRef, TabsContainerRef} from '../'
+import {
+  Tabs,
+  TabsRef,
+  TabRef,
+  TabContentsRef,
+  TabsContainerRef,
+  ResponsiveTabs,
+  ResponsiveTabsRef,
+} from '../'
 import {Icon} from '../../Icon/Base/Icon'
 
 // Types
@@ -20,6 +29,7 @@ import TabsReadme from './Tabs.md'
 import TabReadme from './Tab.md'
 import TabContentsReadme from './TabContents.md'
 import TabsContainerReadme from './TabsContainer.md'
+import ResponsiveTabsReadme from './ResponsiveTabs.md'
 
 const tabsStories = storiesOf(
   'Components|Navigation/Tabs',
@@ -40,6 +50,12 @@ tabsStories.add(
 
     const handleTabClick = (id: string): void => {
       setActiveTab(id)
+    }
+
+    const handleTabDismiss = (id: string): void => {
+      /* eslint-disable */
+      console.log('dismissed tab: ', id)
+      /* eslint-enable */
     }
 
     return (
@@ -75,7 +91,7 @@ tabsStories.add(
             id="squares"
             text="Squares"
             onClick={handleTabClick}
-            onDismiss={() => {}}
+            onDismiss={handleTabDismiss}
           />
           <Tabs.Tab
             active={activeTab === 'pentagons'}
@@ -240,6 +256,95 @@ tabsStories.add(
   {
     readme: {
       content: marked(TabsContainerReadme),
+    },
+  }
+)
+
+tabsStories.add(
+  'ResponsiveTabs',
+  () => {
+    const [activeTab, setActiveTab] = useState<string>('pomelo')
+    const responsiveTabsRef = createRef<ResponsiveTabsRef>()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(responsiveTabsRef.current)
+      /* eslint-enable */
+    }
+
+    const handleTabClick = (id: string): void => {
+      setActiveTab(id)
+    }
+
+    const exampleTabs = [
+      {
+        id: 'yuzu',
+        label: 'Yuzu',
+      },
+      {
+        id: 'mandarin',
+        label: 'Mandarin',
+      },
+      {
+        id: 'citron',
+        label: 'Citron',
+      },
+      {
+        id: 'pomelo',
+        label: 'Pomelo',
+      },
+      {
+        id: 'kabosu',
+        label: 'Kabosu',
+      },
+      {
+        id: 'sudachi',
+        label: 'Sudachi',
+      },
+    ]
+
+    const activeTabLabel = get(
+      exampleTabs.find(tab => tab.id === activeTab),
+      'label',
+      'No active tab'
+    )
+
+    return (
+      <div className="story--example">
+        <ResponsiveTabs.Tabs
+          ref={responsiveTabsRef}
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Medium')]
+          }
+          alignment={
+            Alignment[select('alignment', mapEnumKeys(Alignment), 'Left')]
+          }
+          mobileAlignment={
+            Alignment[
+              select('mobile alignment', mapEnumKeys(Alignment), 'Center')
+            ]
+          }
+          activeTabLabel={activeTabLabel}
+        >
+          {exampleTabs.map(tab => (
+            <ResponsiveTabs.Tab
+              key={tab.id}
+              active={activeTab === tab.id}
+              id={tab.id}
+              text={tab.label}
+              onClick={handleTabClick}
+            />
+          ))}
+        </ResponsiveTabs.Tabs>
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(ResponsiveTabsReadme),
     },
   }
 )
