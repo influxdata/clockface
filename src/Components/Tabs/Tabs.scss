@@ -243,7 +243,7 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
   width: calc(35% + #{$cf-marg-b});
   height: calc(35% + #{$cf-marg-b});
   transform: translate(-50%,-50%);
-  transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease, background-color 0.25s ease;
   opacity: 0;
 }
 
@@ -403,6 +403,71 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
   }
 }
 
+// Update styles for dismiss button within dropdown mode
+.cf-tabs--dropdown-menu .cf-tabs--tab .cf-tabs--tab-dismiss {
+  opacity: 1;
+  position: absolute;
+  top: 50%;
+
+  &:before,
+  &:after {
+    background-color: $cf-tab-dropdown--menu-bg-b;
+  }
+
+  .cf-tabs--tab-dismiss-circle {
+    opacity: 1;
+    background-color: $cf-tab-dropdown--item-text;
+  }
+}
+
+.cf-tabs--dropdown-menu .cf-tabs--tab .cf-tabs--tab-dismiss:hover {
+  .cf-tabs--tab-dismiss-circle {
+    background-color: $cf-tab-dropdown--item-text-active;
+  }
+}
+
+.cf-tabs--dropdown-menu .cf-tabs--tab__active .cf-tabs--tab-dismiss,
+.cf-tabs--dropdown-menu .cf-tabs--tab__active .cf-tabs--tab-dismiss:hover {
+  .cf-tabs--tab-dismiss-circle {
+    background-color: $cf-tab-dropdown--item-text-active;
+  }
+}
+
+.cf-tabs--dropdown__align-left .cf-tabs--tab .cf-tabs--tab-dismiss,
+.cf-tabs--dropdown__align-left .cf-tabs--tab .cf-tabs--tab-dismiss:hover,
+.cf-tabs--dropdown__align-center .cf-tabs--tab .cf-tabs--tab-dismiss,
+.cf-tabs--dropdown__align-center .cf-tabs--tab .cf-tabs--tab-dismiss:hover {
+  &:before,
+  &:after {
+    background-color: $cf-tab-dropdown--menu-bg-b;
+  }
+}
+.cf-tabs--dropdown__align-left .cf-tabs--tab__active .cf-tabs--tab-dismiss,
+.cf-tabs--dropdown__align-left .cf-tabs--tab__active .cf-tabs--tab-dismiss:hover,
+.cf-tabs--dropdown__align-center .cf-tabs--tab__active .cf-tabs--tab-dismiss,
+.cf-tabs--dropdown__align-center .cf-tabs--tab__active .cf-tabs--tab-dismiss:hover {
+  &:before,
+  &:after {
+    background-color: $cf-tab-dropdown--item-bg-b;
+  }
+}
+
+.cf-tabs--dropdown__align-right .cf-tabs--tab .cf-tabs--tab-dismiss,
+.cf-tabs--dropdown__align-right .cf-tabs--tab .cf-tabs--tab-dismiss:hover {
+  &:before,
+  &:after {
+    background-color: $cf-tab-dropdown--menu-bg-a;
+  }
+}
+
+.cf-tabs--dropdown__align-right .cf-tabs--tab__active .cf-tabs--tab-dismiss,
+.cf-tabs--dropdown__align-right .cf-tabs--tab__active .cf-tabs--tab-dismiss:hover {
+  &:before,
+  &:after {
+    background-color: $cf-tab-dropdown--item-bg-a;
+  }
+}
+
 @mixin responsiveTabSizeModifier($fontSize, $tabPadding, $tabHeight) {
   .cf-tabs--dropdown-label,
   .cf-tabs--tab {
@@ -429,17 +494,40 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
     border-radius: 0 0 $cf-radius $cf-radius;
   }
 
-  .cf-tabs--tab {
+  .cf-tabs--tab,
+  a.cf-tabs--tab:link,
+  a.cf-tabs--tab:visited,
+  a.cf-tabs--tab:active {
     color: $cf-tab-dropdown--item-text;
-
-    &:hover {
-      color: $cf-tab-dropdown--item-text-active;
-    }
   }
 
-  .cf-tabs--tab__active {
+  .cf-tabs--tab:hover,
+  a.cf-tabs--tab:hover {
+    color: $cf-tab-dropdown--item-text-active;
+  }
+
+  .cf-tabs--tab__active,
+  a.cf-tabs--tab__active:link,
+  a.cf-tabs--tab__active:visited,
+  a.cf-tabs--tab__active:active {
     color: $cf-tab-dropdown--item-text-active;
     @include gradient-h($cf-tab-dropdown--item-bg-a, $cf-tab-dropdown--item-bg-b);
+  }
+
+  .cf-tabs--tab-dismiss {
+    width: $tabHeight;
+    height: $tabHeight;
+  }
+
+  &.cf-tabs--dropdown__align-left .cf-tabs--tab-dismiss,
+  &.cf-tabs--dropdown__align-center .cf-tabs--tab-dismiss {
+    right: $tabHeight / 2;
+    transform: translate(50%, -50%);
+  }
+
+  &.cf-tabs--dropdown__align-right .cf-tabs--tab-dismiss {
+    left: $tabHeight / 2;
+    transform: translate(-50%, -50%);
   }
 }
 

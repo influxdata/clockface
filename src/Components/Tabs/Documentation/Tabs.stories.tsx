@@ -306,6 +306,11 @@ tabsExampleStories.add(
           alignment={
             Alignment[select('alignment', mapEnumKeys(Alignment), 'Left')]
           }
+          dropdownAlignment={
+            Alignment[
+              select('dropdownAlignment', mapEnumKeys(Alignment), 'Center')
+            ]
+          }
           dropdownBreakpoint={number('dropdownBreakpoint', 700)}
         >
           <Tabs.Tab
@@ -338,6 +343,13 @@ tabsExampleStories.add(
             id="hexagons"
             text="Hexagons (Link)"
             linkElement={className => <a href="#" className={className} />}
+          />
+          <Tabs.Tab
+            active={activeTab === 'septagons'}
+            id="septagons"
+            text="Septagons (Link)"
+            linkElement={className => <a href="#" className={className} />}
+            onDismiss={handleTabDismiss}
           />
         </Tabs.Tabs>
         <div className="story--test-buttons">
