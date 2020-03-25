@@ -2,6 +2,7 @@
 
 #### 2.0.4 (Unreleased)
 
+- [#475](https://github.com/influxdata/clockface/pull/475): Introduce `ResponsiveTabs` component as an alternative to `Tabs` for use on smaller displays
 - [#472](https://github.com/influxdata/clockface/pull/472): Add `Upgrade` and `Cubo` icons to icon font
 
 #### 2.0.3
