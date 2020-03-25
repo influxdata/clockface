@@ -4,6 +4,7 @@ import React, {
   MouseEvent,
   forwardRef,
   FunctionComponent,
+  useState,
 } from 'react'
 import classnames from 'classnames'
 
@@ -112,9 +113,23 @@ export const VisibilityInput = forwardRef<
     },
     ref
   ) => {
+    const [mode, setMode] = useState<'visible' | 'hidden'>('hidden')
     const visibilityInputClass = classnames('cf-visibility-input', {
       [`${className}`]: className,
     })
+
+    const visibility = visible || mode === 'visible'
+    const inputType = visibility ? InputType.Text : InputType.Password
+
+    const handleToggleClick = (e: MouseEvent<HTMLButtonElement>): void => {
+      if (onToggleClick) {
+        onToggleClick(e)
+      } else if (mode === 'visible') {
+        setMode('hidden')
+      } else {
+        setMode('visible')
+      }
+    }
 
     return (
       <div className={visibilityInputClass} style={style}>
@@ -138,7 +153,7 @@ export const VisibilityInput = forwardRef<
           maxLength={maxLength}
           disabledTitleText={disabledTitleText}
           titleText={titleText}
-          type={visible ? InputType.Text : InputType.Password}
+          type={inputType}
           value={value}
           testID={testID}
           status={status}
@@ -149,8 +164,8 @@ export const VisibilityInput = forwardRef<
           <VisibilityIcon
             status={status}
             size={size}
-            visible={visible}
-            onClick={onToggleClick}
+            visible={visibility}
+            onClick={handleToggleClick}
           />
         </Input>
       </div>
@@ -164,7 +179,7 @@ interface VisibilityIconProps {
   visible: boolean
   status: ComponentStatus
   size: ComponentSize
-  onClick?: (e?: MouseEvent<HTMLButtonElement>) => void
+  onClick: (e: MouseEvent<HTMLButtonElement>) => void
 }
 
 const VisibilityIcon: FunctionComponent<VisibilityIconProps> = ({

@@ -633,21 +633,12 @@ inputsComposedStories.add(
   'Visibility Input',
   () => {
     const [value, setValue] = useState<string>('Value text')
-    const [visibility, setVisibility] = useState<'show' | 'hide'>('show')
     const visibilityInputRef: RefObject<VisibilityInputRef> = createRef()
 
     const handleLogRefs = (): void => {
       /* eslint-disable */
       console.log('VisibilityInputRef', visibilityInputRef.current)
       /* eslint-enable */
-    }
-
-    const handleToggleClick = (): void => {
-      if (visibility === 'show') {
-        setVisibility('hide')
-      } else {
-        setVisibility('show')
-      }
     }
 
     const handleInputChange = (e: ChangeEvent<VisibilityInputRef>): void => {
@@ -670,7 +661,6 @@ inputsComposedStories.add(
               select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
             ]
           }
-          visible={visibility === 'show'}
           style={object('style', defaultInputStyle)}
           status={
             ComponentStatus[
@@ -680,7 +670,6 @@ inputsComposedStories.add(
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
-          onToggleClick={handleToggleClick}
           autocomplete={
             AutoComplete[
               radios<AutoComplete>(

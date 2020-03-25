@@ -3,6 +3,7 @@
 #### 2.0.4 (Unreleased)
 
 - [#475](https://github.com/influxdata/clockface/pull/475): Refactor `Tabs` to optionally render as a space-efficient dropdown at a customizable breakpoint
+- [#474](https://github.com/influxdata/clockface/pull/474): Refactor `VisibilityInput` to manage its state internally by default with the option to override using props
 - [#472](https://github.com/influxdata/clockface/pull/472): Add `Upgrade` and `Cubo` icons to icon font
 
 #### 2.0.3
