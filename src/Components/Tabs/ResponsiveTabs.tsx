@@ -2,6 +2,10 @@
 import React, {forwardRef, useState, useEffect} from 'react'
 import classnames from 'classnames'
 
+// Components
+import {Icon} from '../Icon'
+import {ClickOutside} from '../ClickOutside/ClickOutside'
+
 // Types
 import {
   ComponentSize,
@@ -11,9 +15,8 @@ import {
   Orientation,
 } from '../../Types'
 
-// Components
-import {Icon} from '../Icon'
-import {ClickOutside} from '../ClickOutside/ClickOutside'
+// Styles
+import './Tabs.scss'
 
 export interface ResponsiveTabsProps extends StandardFunctionProps {
   /** Size of tabs */
