@@ -5,7 +5,7 @@ import {get} from 'lodash'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, text, select, boolean} from '@storybook/addon-knobs'
+import {withKnobs, text, select, boolean, number} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
 import {useState} from '@storybook/addons'
 
@@ -303,7 +303,7 @@ tabsStories.add(
       },
     ]
 
-    const activeTabLabel = get(
+    const dropdownLabel = get(
       exampleTabs.find(tab => tab.id === activeTab),
       'label',
       'No active tab'
@@ -319,12 +319,18 @@ tabsStories.add(
           alignment={
             Alignment[select('alignment', mapEnumKeys(Alignment), 'Left')]
           }
-          mobileAlignment={
+          dropdownAlignment={
             Alignment[
-              select('mobile alignment', mapEnumKeys(Alignment), 'Center')
+              select('dropdownAlignment', mapEnumKeys(Alignment), 'Center')
             ]
           }
-          activeTabLabel={activeTabLabel}
+          dropdownLabel={dropdownLabel}
+          orientation={
+            Orientation[
+              select('orientation', mapEnumKeys(Orientation), 'Horizontal')
+            ]
+          }
+          dropdownBreakpoint={number('dropdownBreakpoint', 750)}
         >
           {exampleTabs.map(tab => (
             <ResponsiveTabs.Tab

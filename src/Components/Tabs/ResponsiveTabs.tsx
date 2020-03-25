@@ -1,5 +1,5 @@
 // Libraries
-import React, {forwardRef, useState} from 'react'
+import React, {forwardRef, useState, useEffect} from 'react'
 import classnames from 'classnames'
 
 // Types
@@ -8,10 +8,8 @@ import {
   StandardFunctionProps,
   Alignment,
   IconFont,
+  Orientation,
 } from '../../Types'
-
-// Constants
-import {GRID_BREAKPOINT_SM} from '../../Constants'
 
 // Components
 import {Icon} from '../Icon'
@@ -20,12 +18,16 @@ import {ClickOutside} from '../ClickOutside/ClickOutside'
 export interface ResponsiveTabsProps extends StandardFunctionProps {
   /** Size of tabs */
   size?: ComponentSize
-  /** Alignment of tabs within container (small displays) */
-  mobileAlignment?: Alignment
   /** Alignment of tabs within container (large displays) */
   alignment?: Alignment
+  /** Layout axis of tabs */
+  orientation?: Orientation
+  /** When the viewport is wider than this amount, render as tabs */
+  dropdownBreakpoint?: number
   /** Label that only appears on small displays to indicate which tab is active when the component is collapsed  */
-  activeTabLabel: string
+  dropdownLabel?: string
+  /** Alignment of tabs within container (small displays) */
+  dropdownAlignment?: Alignment
 }
 
 export type ResponsiveTabsRef = HTMLElement
@@ -39,31 +41,53 @@ export const ResponsiveTabsRoot = forwardRef<
       id,
       size = ComponentSize.Medium,
       style,
-      testID = 'responsive-tabs',
+      testID = 'tabs',
       children,
       alignment = Alignment.Left,
       className,
-      activeTabLabel,
-      mobileAlignment = Alignment.Center,
+      orientation = Orientation.Horizontal,
+      dropdownLabel = 'dropdownLabel',
+      dropdownAlignment = Alignment.Center,
+      dropdownBreakpoint,
     },
     ref
   ) => {
+    const [screenWidth, setScreenWidth] = useState<number>(9999)
     const [state, setState] = useState<'visible' | 'hidden'>('hidden')
 
-    const tabsClass = classnames('cf-responsive-tabs', {
-      [`cf-responsive-tabs__${state}`]: state,
-      [`cf-responsive-tabs__mobile-align-${mobileAlignment}`]: mobileAlignment,
-      [`cf-responsive-tabs__align-${alignment}`]: alignment,
-      [`cf-responsive-tabs__${size}`]: size,
+    const tabsClass = classnames('cf-tabs', {
+      [`cf-tabs__align-${alignment}`]: alignment,
+      [`cf-tabs__${orientation}`]: orientation,
+      [`cf-tabs__${size}`]: size,
       [`${className}`]: className,
     })
 
-    const handleToggleMenu = (): void => {
-      const windowWidth = window.innerWidth
+    const tabsDropdownClass = classnames('cf-tabs--dropdown', {
+      [`cf-tabs--dropdown__${state}`]: state,
+      [`cf-tabs--dropdown__align-${dropdownAlignment}`]: dropdownAlignment,
+      [`cf-tabs--dropdown__${size}`]: size,
+      [`${className}`]: className,
+    })
 
-      if (state === 'visible' && windowWidth <= GRID_BREAKPOINT_SM) {
+    useEffect((): (() => void) => {
+      if (!!dropdownBreakpoint) {
+        setScreenWidth(window.innerWidth)
+        window.addEventListener('resize', handleResize)
+      }
+
+      return (): void => {
+        window.removeEventListener('resize', handleResize)
+      }
+    }, [])
+
+    const handleResize = (): void => {
+      setScreenWidth(window.innerWidth)
+    }
+
+    const handleToggleMenu = (): void => {
+      if (state === 'visible') {
         setState('hidden')
-      } else if (windowWidth <= GRID_BREAKPOINT_SM) {
+      } else {
         setState('visible')
       }
     }
@@ -74,26 +98,40 @@ export const ResponsiveTabsRoot = forwardRef<
       }
     }
 
+    if (!!dropdownBreakpoint && screenWidth <= dropdownBreakpoint) {
+      return (
+        <ClickOutside onClickOutside={handleHideMenu}>
+          <nav
+            id={id}
+            ref={ref}
+            style={style}
+            onClick={handleToggleMenu}
+            className={tabsDropdownClass}
+            data-testid={testID}
+          >
+            <div className="cf-tabs--dropdown-label">
+              {dropdownLabel}
+              <Icon
+                glyph={IconFont.CaretDown}
+                className="cf-tabs--dropdown-icon"
+              />
+            </div>
+            <div className="cf-tabs--dropdown-menu">{children}</div>
+          </nav>
+        </ClickOutside>
+      )
+    }
+
     return (
-      <ClickOutside onClickOutside={handleHideMenu}>
-        <nav
-          id={id}
-          ref={ref}
-          style={style}
-          onClick={handleToggleMenu}
-          className={tabsClass}
-          data-testid={testID}
-        >
-          <div className="cf-responsive-tabs--active">
-            {activeTabLabel}
-            <Icon
-              glyph={IconFont.CaretDown}
-              className="cf-responsive-tabs--icon"
-            />
-          </div>
-          <div className="cf-responsive-tabs--menu">{children}</div>
-        </nav>
-      </ClickOutside>
+      <nav
+        id={id}
+        ref={ref}
+        style={style}
+        className={tabsClass}
+        data-testid={testID}
+      >
+        {children}
+      </nav>
     )
   }
 )
