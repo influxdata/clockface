@@ -1,1 +1,5 @@
 export const DROPDOWN_DIVIDER_SHORTCODE = '---'
+
+export const GRID_BREAKPOINT_SM = 750
+export const GRID_BREAKPOINT_MD = 1080
+export const GRID_BREAKPOINT_LG = 1500
