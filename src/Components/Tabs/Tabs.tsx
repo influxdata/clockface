@@ -13,10 +13,8 @@ import {
   Alignment,
   IconFont,
   Orientation,
+  Breakpoint,
 } from '../../Types'
-
-// Constants
-import {TABS_DEFAULT_BREAKPOINT} from '../../Constants'
 
 // Styles
 import './Tabs.scss'
@@ -29,7 +27,7 @@ export interface TabsProps extends StandardFunctionProps {
   /** Layout axis of tabs */
   orientation?: Orientation
   /** When the viewport is wider than this amount, render as tabs */
-  dropdownBreakpoint?: number
+  dropdownBreakpoint?: Breakpoint | number
   /** Label that only appears on small displays to indicate which tab is active when the component is collapsed  */
   dropdownLabel?: string
   /** Alignment of tabs within container (small displays) */
@@ -51,14 +49,14 @@ export const TabsRoot = forwardRef<TabsRef, TabsProps>(
       orientation = Orientation.Horizontal,
       dropdownLabel = 'dropdownLabel',
       dropdownAlignment = Alignment.Center,
-      dropdownBreakpoint = TABS_DEFAULT_BREAKPOINT,
+      dropdownBreakpoint = Breakpoint.None,
     },
     ref
   ) => {
     const [screenWidth, setScreenWidth] = useState<number>(9999)
     const [state, setState] = useState<'visible' | 'hidden'>('hidden')
 
-    const useDropdown = dropdownBreakpoint !== TABS_DEFAULT_BREAKPOINT
+    const useDropdown = dropdownBreakpoint !== Breakpoint.None
 
     const tabsClass = classnames('cf-tabs', {
       [`cf-tabs__align-${alignment}`]: alignment,
