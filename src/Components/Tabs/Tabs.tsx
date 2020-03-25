@@ -27,14 +27,14 @@ export type TabsRef = HTMLElement
 export const TabsRoot = forwardRef<TabsRef, TabsProps>(
   (
     {
-      className,
-      size,
-      testID = 'tabs',
-      orientation = Orientation.Horizontal,
-      alignment = Alignment.Left,
-      children,
       id,
+      size,
       style,
+      testID = 'tabs',
+      children,
+      alignment = Alignment.Left,
+      className,
+      orientation = Orientation.Horizontal,
     },
     ref
   ) => {
@@ -47,11 +47,11 @@ export const TabsRoot = forwardRef<TabsRef, TabsProps>(
 
     return (
       <nav
+        id={id}
         ref={ref}
+        style={style}
         className={tabsClass}
         data-testid={testID}
-        id={id}
-        style={style}
       >
         {children}
       </nav>
