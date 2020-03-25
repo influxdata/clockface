@@ -5,4 +5,3 @@ export const GRID_BREAKPOINT_MD = 1080
 export const GRID_BREAKPOINT_LG = 1500
 
 export const TABS_DEFAULT_BREAKPOINT = 0
-

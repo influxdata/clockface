@@ -38,10 +38,7 @@ export interface TabsProps extends StandardFunctionProps {
 
 export type TabsRef = HTMLElement
 
-export const TabsRoot = forwardRef<
-  TabsRef,
-  TabsProps
->(
+export const TabsRoot = forwardRef<TabsRef, TabsProps>(
   (
     {
       id,
