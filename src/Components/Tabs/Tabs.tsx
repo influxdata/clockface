@@ -56,7 +56,7 @@ export const TabsRoot = forwardRef<TabsRef, TabsProps>(
     const [screenWidth, setScreenWidth] = useState<number>(9999)
     const [state, setState] = useState<'visible' | 'hidden'>('hidden')
 
-    const useDropdown = dropdownBreakpoint !== Breakpoint.None
+    const isDropdownEnabled = dropdownBreakpoint !== Breakpoint.None
 
     const tabsClass = classnames('cf-tabs', {
       [`cf-tabs__align-${alignment}`]: alignment,
@@ -73,7 +73,7 @@ export const TabsRoot = forwardRef<TabsRef, TabsProps>(
     })
 
     useEffect((): (() => void) => {
-      if (useDropdown) {
+      if (isDropdownEnabled) {
         setScreenWidth(window.innerWidth)
         window.addEventListener('resize', handleResize)
       }
@@ -101,7 +101,7 @@ export const TabsRoot = forwardRef<TabsRef, TabsProps>(
       }
     }
 
-    if (useDropdown && screenWidth <= dropdownBreakpoint) {
+    if (isDropdownEnabled && screenWidth <= dropdownBreakpoint) {
       return (
         <ClickOutside onClickOutside={handleHideMenu}>
           <nav
