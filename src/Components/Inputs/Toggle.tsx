@@ -180,7 +180,7 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
           className="cf-toggle--input"
           onKeyPress={onKeyPress}
           data-testid={`${testID}--input`}
-          defaultChecked={checked}
+          checked={checked}
         />
         <label
           title={title}
