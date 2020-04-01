@@ -2,6 +2,7 @@
 
 #### 2.0.4 (Unreleased)
 
+- [#477](https://github.com/influxdata/clockface/pull/477): Fix replace `defaultChecked` with `checked` attribute in `Toggle` component
 - [#474](https://github.com/influxdata/clockface/pull/474): Refactor `VisibilityInput` to manage its state internally by default with the option to override using props
 - [#472](https://github.com/influxdata/clockface/pull/472): Add `Upgrade` and `Cubo` icons to icon font
 
@@ -52,7 +53,6 @@
 - [#437](https://github.com/influxdata/clockface/pull/437): Introduce `TreeNav` component family
 - [#437](https://github.com/influxdata/clockface/pull/437): Combined `variables.scss`, `mixins.scss`, and `influx-colors.scss` into a single file
 - [#437](https://github.com/influxdata/clockface/pull/437): Introduce variables to enforce available font weights in `Rubik` and replace all font weight defintions with the variables
-
 
 #### 1.2.1
 
