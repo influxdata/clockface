@@ -1,0 +1,93 @@
+@import "../../../Styles/variables.scss";
+
+/*
+  Resource Meta Items
+  ------------------------------------------------------------------------------
+*/
+
+.cf-resource-meta {
+  color: $g9-mountain;
+}
+
+.cf-resource-meta--item {
+  font-size: $cf-form-xs-font;
+  font-weight: $cf-font-weight--medium;
+  border-style: solid;
+  border-color: $cf-card--border;
+  border-width: 0;
+  transition: border-color 0.25s ease, color 0.25s ease;
+
+  .cf-resource-card__highlight:hover & {
+    color: $g11-sidewalk;
+    border-color: $cf-card--border-hover;
+  }
+
+  .cf-resource-card__disabled &,
+  .cf-resource-card__disabled:hover &,
+  .cf-resource-card__disabled.cf-resource-card__highlight &,
+  .cf-resource-card__disabled.cf-resource-card__highlight:hover & {
+    color: $g8-storm;
+    border-color: rgba($cf-card--border, 0.5);
+    font-style: italic;
+  }
+}
+
+.cf-flex-box__row {
+  &.cf-flex-box__justify-flex-start,
+  &.cf-flex-box__justify-center {
+    > .cf-resource-meta--item {
+      border-right-width: $cf-border;
+      padding-right: $cf-marg-b + $cf-marg-a;
+      margin-right: $cf-marg-b + $cf-marg-a;
+
+      &:last-child {
+        border-right-width: 0;
+        padding-right: 0;
+        margin-right: 0;
+      }
+    }
+  }
+  &.cf-flex-box__justify-flex-end {
+    > .cf-resource-meta--item {
+      border-left-width: $cf-border;
+      padding-left: $cf-marg-b + $cf-marg-a;
+      margin-left: $cf-marg-b + $cf-marg-a;
+
+      &:first-child {
+        border-left-width: 0;
+        padding-left: 0;
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+.cf-flex-box__column {
+  &.cf-flex-box__justify-flex-start,
+  &.cf-flex-box__justify-center {
+    > .cf-resource-meta--item {
+      border-bottom-width: $cf-border;
+      padding-bottom: $cf-marg-b + $cf-marg-a;
+      margin-bottom: $cf-marg-b + $cf-marg-a;
+
+      &:last-child {
+        border-bottom-width: 0;
+        padding-bottom: 0;
+        margin-bottom: 0;
+      }
+    }
+  }
+  &.cf-flex-box__justify-flex-end {
+    > .cf-resource-meta--item {
+      border-top-width: $cf-border;
+      padding-top: $cf-marg-b + $cf-marg-a;
+      margin-top: $cf-marg-b + $cf-marg-a;
+
+      &:first-child {
+        border-top-width: 0;
+        padding-top: 0;
+        margin-top: 0;
+      }
+    }
+  }
+}
