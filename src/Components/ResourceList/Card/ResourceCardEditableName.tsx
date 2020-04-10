@@ -148,7 +148,6 @@ export const ResourceCardEditableName = forwardRef<
         ref={ref}
         style={style}
         className={resourceCardEditableNameClass}
-        data-testid={testID}
       >
         <SpinnerContainer
           loading={loading}
@@ -157,6 +156,7 @@ export const ResourceCardEditableName = forwardRef<
           <span
             className={resourceCardEditableNameLinkClass}
             onClick={handleClick}
+            data-testid={testID}
           >
             <span>{name || noNameString}</span>
           </span>
