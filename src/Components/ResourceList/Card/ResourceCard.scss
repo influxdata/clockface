@@ -5,85 +5,30 @@
   ------------------------------------------------------------------------------
 */
 
-$resource-card--row-gap: $cf-marg-a - ($cf-border / 2);
-
 .cf-resource-card {
-  width: 100%;
-  @extend %panel-shadow;
-}
-
-.cf-resource-card,
-.cf-resource-card--contents {
   display: flex;
-}
-
-.cf-resource-card {
-  flex-direction: row;
-  align-items: stretch;
+  width: 100%;
   position: relative;
   color: $cf-card-text--default;
   background-color: $cf-card-background--default;
   border-radius: $cf-radius;
   padding: $cf-marg-b $cf-marg-c;
-  padding-bottom: $cf-marg-b - $resource-card--row-gap;
-  margin-bottom: $cf-border;
+  @extend %panel-shadow;
+}
+
+.cf-resource-card__highlight {
   transition: background-color 0.25s ease, color 0.25s ease;
-  
+
   &:hover {
     color: $cf-card-text--hover;
     background-color: $cf-card-background--hover;
   }
 }
 
-.cf-resource-card--contents {
-  flex-direction: column;
-  flex: 1 0 0;
-}
-
-.cf-resource-card--row {
-  margin-bottom: $resource-card--row-gap;
-}
-
-.cf-resource-card--toggle {
-  padding-right: $cf-marg-c;
-}
-
-.cf-resource-card--meta {
-  display: flex;
-  align-items: center;
-  font-size: $cf-form-xs-font;
-  font-weight: $cf-font-weight--medium;
-  color: $cf-empty-state-text;
-  padding-bottom: $cf-border;
-}
-
-.cf-resource-card--meta-item {
-  transition: border-color 0.25s ease, color 0.25s ease;
-  border-right: $cf-border solid $cf-card--border;
-  padding-right: $cf-marg-b + $cf-marg-a;
-  margin-right: $cf-marg-b + $cf-marg-a;
-
-  &:last-child {
-    border-right: 0;
-    padding-right: 0;
-    margin-right: 0;
-  }
-
-  .cf-resource-card:hover & {
-    border-color: $cf-card--border-hover;
-  }
-}
-
 .cf-resource-card--context-menu {
-  opacity: 0;
-  transition: opacity 0.25s ease;
   position: absolute;
   top: $cf-marg-b;
   right: $cf-marg-b;
-
-  .cf-resource-card:hover & {
-    opacity: 1;
-  }
 }
 
 /*
@@ -91,13 +36,27 @@ $resource-card--row-gap: $cf-marg-a - ($cf-border / 2);
   ------------------------------------------------------------------------------
 */
 
-.cf-resource-card.cf-resource-card__disabled {
+.cf-resource-card.cf-resource-card__disabled,
+.cf-resource-card.cf-resource-card__disabled:hover,
+.cf-resource-card.cf-resource-card__disabled.cf-resource-card__highlight,
+.cf-resource-card.cf-resource-card__disabled.cf-resource-card__highlight:hover {
   background-color: $cf-card-background--disabled;
   color: $cf-card-text--disabled;
   font-style: italic;
+}
 
-  .cf-resource-card--meta,
-  &:hover .cf-resource-card--meta {
-    border-color: $cf-card--border-disabled;
+/*
+  Context Menu Interactions
+  ------------------------------------------------------------------------------
+*/
+
+.cf-resource-card__context-hover {
+  .cf-resource-card--context-menu {
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  &:hover .cf-resource-card--context-menu {
+    opacity: 1;
   }
 }

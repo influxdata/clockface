@@ -325,24 +325,17 @@ resourceListExampleStories.add(
               d.name.toLocaleLowerCase().includes(text('Search term', ''))
             )
             .map(dash => (
-              <ResourceCard
-                key={dash.id}
-                name={<ResourceCard.Name name={dash.name} />}
-                description={
-                  <ResourceCard.EditableDescription
-                    description={dash.description}
-                    onUpdate={desc =>
-                      alert(`onUpate description fired: ${desc}`)
-                    }
-                  />
-                }
-                metaData={[
-                  <>Last updated {dash.updatedAt}</>,
-                  <>
-                    Created by <b>{dash.createdBy}</b>
-                  </>,
-                ]}
-              />
+              <ResourceCard key={dash.id}>
+                <ResourceCard.Name name={dash.name} />
+                <ResourceCard.EditableDescription
+                  description={dash.description}
+                  onUpdate={desc => alert(`onUpate description fired: ${desc}`)}
+                />
+                <>Last updated {dash.updatedAt}</>,
+                <>
+                  Created by <b>{dash.createdBy}</b>
+                </>
+              </ResourceCard>
             ))}
         </ResourceList.Body>
       </ResourceList>
