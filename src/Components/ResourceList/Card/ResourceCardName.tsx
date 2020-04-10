@@ -36,14 +36,12 @@ export const ResourceCardName = forwardRef<
   }
 
   return (
-    <div
-      id={id}
-      ref={ref}
-      style={style}
-      className={resourceNameClass}
-      data-testid={testID}
-    >
-      <span className={resourceNameLinkClass} onClick={handleClick}>
+    <div id={id} ref={ref} style={style} className={resourceNameClass}>
+      <span
+        className={resourceNameLinkClass}
+        onClick={handleClick}
+        data-testid={testID}
+      >
         <span>{name}</span>
       </span>
     </div>
