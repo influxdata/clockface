@@ -4,7 +4,17 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, text, boolean, array, number} from '@storybook/addon-knobs'
+import {
+  withKnobs,
+  text,
+  boolean,
+  array,
+  number,
+  select,
+  object,
+} from '@storybook/addon-knobs'
+import {mapEnumKeys} from '../../../Utils/storybook'
+import {useState} from '@storybook/addons'
 
 // Components
 import {ResourceCard, ResourceCardRef} from '../Card'
@@ -21,6 +31,7 @@ import {
   ResourceCardEditableDescription,
   ResourceCardEditableDescriptionRef,
 } from '../Card/ResourceCardEditableDescription'
+import {ResourceCardMeta, ResourceCardMetaRef} from '../Card/ResourceCardMeta'
 import {SlideToggle} from '../../SlideToggle'
 import {SquareButton} from '../../Button/Composed/SquareButton'
 import {Label} from '../../Label/Label'
@@ -32,6 +43,8 @@ import {
   ComponentSize,
   ComponentColor,
   FlexDirection,
+  AlignItems,
+  JustifyContent,
 } from '../../../Types'
 
 // Notes
@@ -40,6 +53,7 @@ import ResourceCardDescriptionReadme from './ResourceCardDescription.md'
 import ResourceCardEditableDescriptionReadme from './ResourceCardEditableDescription.md'
 import ResourceCardNameReadme from './ResourceCardName.md'
 import ResourceCardEditableNameReadme from './ResourceCardEditableName.md'
+import ResourceCardMetaReadme from './ResourceCardMeta.md'
 import ResourceCardExampleReadme from './ResourceCardExample.md'
 
 const resourceListCardStories = storiesOf(
@@ -59,19 +73,30 @@ resourceListCardStories.add(
   () => {
     const resourceCardRef: RefObject<ResourceCardRef> = createRef()
     const resourceCardNameRef: RefObject<ResourceCardNameRef> = createRef()
+    const resourceCardMetaRef: RefObject<ResourceCardMetaRef> = createRef()
     const resourceCardEditableDescriptionRef: RefObject<
       ResourceCardEditableDescriptionRef
     > = createRef()
+
+    const [name, setName] = useState<string>('Edit my name!')
+    const [description, setDescription] = useState<string>(
+      'Heirloom letterpress shaman, mixtape swag +1 8-bit coloring book ennui fanny pack small batch farm-to-table seitan sriracha austin. 8-bit mustache master cleanse bitters, vinyl shoreditch hot chicken authentic quinoa.'
+    )
 
     const logRefs = (): void => {
       /* eslint-disable */
       console.log('ResourceCard', resourceCardRef.current)
       console.log('ResourceCardName', resourceCardNameRef.current)
+      console.log('ResourceCardMeta', resourceCardMetaRef.current)
       console.log(
         'ResourceCardEditableDescription',
         resourceCardEditableDescriptionRef.current
       )
       /* eslint-enable */
+    }
+
+    const resourceCardExampleStyle = {
+      width: '500px',
     }
 
     return (
@@ -81,36 +106,61 @@ resourceListCardStories.add(
         </div>
         <ResourceCard.ResourceCard
           ref={resourceCardRef}
-          name={
-            <ResourceCardName
-              ref={resourceCardNameRef}
-              name={text('name', 'Card Name')}
-              onClick={() => alert('<ResourceCardName /> onClick fired!')}
-            />
-          }
-          description={
-            <ResourceCardEditableDescription
-              ref={resourceCardEditableDescriptionRef}
-              description={text(
-                'description',
-                'Heirloom letterpress shaman, mixtape swag +1 8-bit coloring book ennui fanny pack small batch farm-to-table seitan sriracha austin. 8-bit mustache master cleanse bitters, vinyl shoreditch hot chicken authentic quinoa. '
-              )}
-              onUpdate={description =>
-                alert(
-                  `<ResourceCardEditableDescription /> onUpdate fired with "${description}"`
-                )
-              }
-              placeholder={text(
-                'description placeholder',
-                'Enter a description'
-              )}
-            />
-          }
           disabled={boolean('disabled', false)}
-          metaData={array('metaData', resourceCardMeta).map(meta => (
-            <span key={meta}>{meta}</span>
-          ))}
-        />
+          contextMenuInteraction={select(
+            'contextMenuInteraction',
+            ['alwaysVisible', 'showOnHover'],
+            'showOnHover'
+          )}
+          style={object('style', resourceCardExampleStyle)}
+          direction={
+            FlexDirection[
+              select('direction', mapEnumKeys(FlexDirection), 'Column')
+            ]
+          }
+          alignItems={
+            AlignItems[select('alignItems', mapEnumKeys(AlignItems), 'Stretch')]
+          }
+          justifyContent={
+            JustifyContent[
+              select(
+                'justifyContent ',
+                mapEnumKeys(JustifyContent),
+                'FlexStart'
+              )
+            ]
+          }
+          margin={
+            ComponentSize[select('margin', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          contextMenu={
+            <div
+              className="mockComponent"
+              style={{width: '90px', height: '26px'}}
+            >
+              Menu
+            </div>
+          }
+          highlightOnHover={boolean('highlightOnHover', true)}
+        >
+          <ResourceCardEditableName
+            ref={resourceCardNameRef}
+            name={name}
+            onUpdate={setName}
+            onClick={() => alert('<ResourceCardEditableName /> onClick fired!')}
+          />
+          <ResourceCardEditableDescription
+            ref={resourceCardEditableDescriptionRef}
+            description={description}
+            onUpdate={setDescription}
+            placeholder={text('description placeholder', 'Enter a description')}
+          />
+          <ResourceCardMeta ref={resourceCardMetaRef}>
+            {array('metaData', resourceCardMeta).map(meta => (
+              <span key={meta}>{meta}</span>
+            ))}
+          </ResourceCardMeta>
+        </ResourceCard.ResourceCard>
       </div>
     )
   },
@@ -290,40 +340,63 @@ resourceListCardStories.add(
   }
 )
 
+resourceListCardStories.add(
+  'ResourceCardMeta',
+  () => {
+    const resourceCardMeta: RefObject<ResourceCardMetaRef> = createRef()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(resourceCardMeta.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+        <ResourceCardMeta
+          ref={resourceCardMeta}
+          direction={
+            FlexDirection[
+              select('direction', mapEnumKeys(FlexDirection), 'Row')
+            ]
+          }
+          alignItems={
+            AlignItems[select('alignItems', mapEnumKeys(AlignItems), 'Center')]
+          }
+          justifyContent={
+            JustifyContent[
+              select(
+                'justifyContent ',
+                mapEnumKeys(JustifyContent),
+                'FlexStart'
+              )
+            ]
+          }
+        >
+          <span>Boosh</span>
+          <span>Bang</span>
+          <span>Wham</span>
+          <span>Pow</span>
+        </ResourceCardMeta>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(ResourceCardMetaReadme),
+    },
+  }
+)
+
 resourceListExampleStories.add(
   'Toggleable Card',
   () => (
     <div className="story--example">
       <div style={{width: `${number('Width (px)', 500)}px`}}>
         <ResourceCard
-          name={
-            <ResourceCard.Name
-              name={text('name', 'Just another brick in the wall')}
-            />
-          }
-          description={
-            <ResourceCard.EditableDescription
-              description={text(
-                'description',
-                'Hey! Teacher! Leave us kids alone'
-              )}
-              onUpdate={desc => alert(`onUpate description fired: ${desc}`)}
-            />
-          }
-          metaData={[
-            <>Last updated 2h ago</>,
-            <>
-              Created by <b>Pink Floyd</b>
-            </>,
-          ]}
-          disabled={boolean('disabled', false)}
-          toggle={
-            <SlideToggle
-              size={ComponentSize.ExtraSmall}
-              active={!boolean('disabled', false)}
-              onChange={() => {}}
-            />
-          }
           contextMenu={
             <SquareButton
               size={ComponentSize.ExtraSmall}
@@ -331,32 +404,50 @@ resourceListExampleStories.add(
               color={ComponentColor.Danger}
             />
           }
-          labels={
-            <FlexBox direction={FlexDirection.Row} margin={ComponentSize.Small}>
-              <Label
-                id="CRIT"
-                description="I'm a cool label"
-                name="CRIT"
-                color="#da3434"
-                size={ComponentSize.ExtraSmall}
-              />
-              <Label
-                id="WARN"
-                description="I'm a cool label"
-                name="WARN"
-                color="#f2b218"
-                size={ComponentSize.ExtraSmall}
-              />
-              <Label
-                id="OK"
-                description="I'm a cool label"
-                name="OK"
-                color="#6ac255"
-                size={ComponentSize.ExtraSmall}
-              />
-            </FlexBox>
-          }
-        />
+        >
+          <SlideToggle
+            size={ComponentSize.ExtraSmall}
+            active={!boolean('disabled', false)}
+            onChange={() => {}}
+          />
+          <ResourceCard.Name
+            name={text('name', 'Just another brick in the wall')}
+          />
+          <ResourceCard.EditableDescription
+            description={text(
+              'description',
+              'Hey! Teacher! Leave us kids alone'
+            )}
+            onUpdate={desc => alert(`onUpate description fired: ${desc}`)}
+          />
+          <>Last updated 2h ago</>,
+          <>
+            Created by <b>Pink Floyd</b>
+          </>
+          <FlexBox direction={FlexDirection.Row} margin={ComponentSize.Small}>
+            <Label
+              id="CRIT"
+              description="I'm a cool label"
+              name="CRIT"
+              color="#da3434"
+              size={ComponentSize.ExtraSmall}
+            />
+            <Label
+              id="WARN"
+              description="I'm a cool label"
+              name="WARN"
+              color="#f2b218"
+              size={ComponentSize.ExtraSmall}
+            />
+            <Label
+              id="OK"
+              description="I'm a cool label"
+              name="OK"
+              color="#6ac255"
+              size={ComponentSize.ExtraSmall}
+            />
+          </FlexBox>
+        </ResourceCard>
       </div>
     </div>
   ),
