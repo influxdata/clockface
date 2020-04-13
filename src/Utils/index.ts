@@ -1,6 +1,7 @@
 //Libraries
 import {CSSProperties} from 'react'
 import chroma from 'chroma-js'
+import {uniq, shuffle, capitalize, random} from 'lodash'
 
 // Constants
 import {getColorsFromGradient} from '../Utils/colors'
@@ -14,6 +15,7 @@ import {
   ComponentStatus,
   DropdownMenuTheme,
   DropdownMenuScrollbarColors,
+  IconFont,
 } from '../Types'
 
 export const convertCSSPropertiesToString = (styles: CSSProperties): string =>
@@ -241,4 +243,46 @@ export const destroyPortalElement = (id: string): void => {
   } else {
     console.error('cannot portal find element')
   }
+}
+
+export const getDictionary = (): string[] => {
+  const hipsterIpsum =
+    "Ennui yr chartreuse poutine, cronut fixie brooklyn twee PBR&B irony authentic biodiesel hammock normcore gochujang. Lo-fi roof party brooklyn 90's keytar pop-up butcher. Polaroid fixie skateboard mixtape, actually church-key listicle meditation four dollar toast tilde snackwave. Tofu asymmetrical YOLO waistcoat narwhal taxidermy lyft flexitarian kitsch tbh vape small batch. Trust fund plaid hot chicken, typewriter aesthetic sriracha thundercats kitsch marfa truffaut.Tbh DIY banjo, health goth franzen aesthetic hashtag cray readymade.Pug everyday carry health goth, keffiyeh migas pop - up vape farm - to - table chicharrones fashion axe banjo echo park austin flannel polaroid.Brunch deep v health goth, crucifix ramps bespoke whatever intelligentsia. 90's brunch bitters artisan green juice chicharrones. Fingerstache ramps photo booth thundercats heirloom brooklyn neutra etsy man bun affogato marfa waistcoat. Beard pinterest franzen umami bitters chicharrones tumeric roof party deep v gastropub.Four dollar toast everyday carry actually, art party prism bushwick tbh celiac wolf.Celiac deep v blue bottle, iPhone kale chips hoodie raclette.Messenger bag sustainable enamel pin tofu brooklyn vice plaid.Enamel pin flexitarian lyft, chicharrones sriracha gluten - free tilde cloud bread bespoke godard.Jianbing ennui paleo etsy migas forage. Fingerstache tumblr food truck quinoa shabby chic schlitz heirloom pour - over.Chillwave tumeric venmo, +1 brooklyn pop - up gastropub kogi 8 - bit.Drinking vinegar letterpress flexitarian tumeric tofu yr vinyl edison bulb fam cliche ennui.Butcher pitchfork knausgaard 90's. Offal sartorial aesthetic, art party adaptogen truffaut literally. Forage pitchfork kickstarter you probably haven't heard of them, scenester retro schlitz salvia ennui kale chips etsy. Pabst gastropub occupy vinyl, shabby chic poke tumeric cred coloring book everyday carry artisan sriracha knausgaard put a bird on it bitters. Tofu yr banjo, artisan marfa cloud bread seitan +1 ugh pork belly chia. Health goth jean shorts brooklyn polaroid pickled bicycle rights salvia af, cliche occupy dreamcatcher unicorn. Seitan meh bitters affogato, kale chips copper mug meggings microdosing godard jianbing brunch direct trade. Banh mi literally schlitz, meggings master cleanse mlkshk bushwick artisan dreamcatcher 90's humblebrag."
+  const cleanedText = hipsterIpsum
+    .replace(/[.,]+/g, '')
+    .replace(/(\s-\s)/g, ' ')
+  const deDupedText = uniq(
+    cleanedText.split(' ').map(word => word.toLocaleLowerCase())
+  )
+
+  return deDupedText
+}
+
+export const generateRandomText = (
+  wordCountLower: number,
+  wordCountUpper: number
+): string => {
+  const dictionary = getDictionary()
+  const wordCount = random(wordCountLower, wordCountUpper)
+
+  const randomText = shuffle(dictionary)
+    .slice(0, wordCount)
+    .map((text, i) => (i === 0 ? capitalize(text) : text))
+    .join(' ')
+
+  return randomText
+}
+
+export const getRandomIcon = (): IconFont => {
+  const iconKeys = Object.keys(IconFont)
+  const randomIconKey = iconKeys[random(0, iconKeys.length)]
+
+  return IconFont[randomIconKey]
+}
+
+export const getRandomGradient = (): Gradients => {
+  const gradientKeys = Object.keys(Gradients)
+  const randomIconKey = gradientKeys[random(0, gradientKeys.length)]
+
+  return Gradients[randomIconKey]
 }
