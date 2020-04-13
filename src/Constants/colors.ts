@@ -410,6 +410,79 @@ export const influxGradients = {
     start: InfluxColors.DeepPurple,
     stop: InfluxColors.Star,
   },
+  // Single Hue Gradients
+  DefaultDark: {
+    start: InfluxColors.Castle,
+    stop: InfluxColors.Smoke,
+  },
+  Default: {
+    start: InfluxColors.Wolf,
+    stop: InfluxColors.Mist,
+  },
+  DefaultLight: {
+    start: InfluxColors.Mist,
+    stop: InfluxColors.Cloud,
+  },
+  PrimaryDark: {
+    start: InfluxColors.Sapphire,
+    stop: InfluxColors.Ocean,
+  },
+  Primary: {
+    start: InfluxColors.Pool,
+    stop: InfluxColors.Laser,
+  },
+  PrimaryLight: {
+    start: InfluxColors.Laser,
+    stop: InfluxColors.Hydrogen,
+  },
+  SecondaryDark: {
+    start: InfluxColors.Void,
+    stop: InfluxColors.Amethyst,
+  },
+  Secondary: {
+    start: InfluxColors.Star,
+    stop: InfluxColors.Comet,
+  },
+  SecondaryLight: {
+    start: InfluxColors.Comet,
+    stop: InfluxColors.Moonstone,
+  },
+  SuccessDark: {
+    start: InfluxColors.Emerald,
+    stop: InfluxColors.Viridian,
+  },
+  Success: {
+    start: InfluxColors.Rainforest,
+    stop: InfluxColors.Honeydew,
+  },
+  SuccessLight: {
+    start: InfluxColors.Honeydew,
+    stop: InfluxColors.Krypton,
+  },
+  WarningDark: {
+    start: InfluxColors.Topaz,
+    stop: InfluxColors.Tiger,
+  },
+  Warning: {
+    start: InfluxColors.Pineapple,
+    stop: InfluxColors.Thunder,
+  },
+  WarningLight: {
+    start: InfluxColors.Thunder,
+    stop: InfluxColors.Sulfur,
+  },
+  DangerDark: {
+    start: InfluxColors.Ruby,
+    stop: InfluxColors.Fire,
+  },
+  Danger: {
+    start: InfluxColors.Curacao,
+    stop: InfluxColors.Dreamsicle,
+  },
+  DangerLight: {
+    start: InfluxColors.Dreamsicle,
+    stop: InfluxColors.Tungsten,
+  },
 }
 
 export const dropdownScrollColors = {
