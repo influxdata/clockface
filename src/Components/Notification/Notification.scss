@@ -5,8 +5,9 @@
     ----------------------------------------------------------------------------
 */
 
+$cf-notification-screen-margin: $cf-marg-c;
+
 .cf-notification {
-  max-width: 500px;
   margin-bottom: $cf-marg-a;
   color: $g18-cloud;
   display: inline-flex;
@@ -74,38 +75,43 @@
   position: fixed;
   display: inline-flex;
   flex-direction: column;
+  z-index: $cf-z--notifications;
 
   &.cf-notification__top {
-    top: $cf-marg-c;
+    top: $cf-notification-screen-margin;
     justify-content: flex-start;
   }
 
   &.cf-notification__middle {
     top: 50%;
-    bottom: 50%;
+    transform: translateY(-50%);
     justify-content: center;
   }
 
   &.cf-notification__bottom {
-    bottom: $cf-marg-c;
+    bottom: $cf-notification-screen-margin;
     justify-content: flex-end;
     flex-direction: column-reverse;
   }
 
   &.cf-notification__left {
-    left: $cf-marg-c;
+    left: $cf-notification-screen-margin;
     align-items: flex-start;
   }
 
   &.cf-notification__center {
     left: 50%;
-    right: 50%;
+    transform: translateX(-50%);
     align-items: center;
   }
 
   &.cf-notification__right {
-    right: $cf-marg-c;
+    right: $cf-notification-screen-margin;
     align-items: flex-end;
+  }
+
+  &.cf-notification__middle.cf-notification__center {
+    transform: translate(-50%, -50%);
   }
 }
 
