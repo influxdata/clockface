@@ -356,10 +356,16 @@ dataTypeStories.add(
     const greens = colorsArray.slice(37, 45)
     const yellows = colorsArray.slice(45, 53)
     const reds = colorsArray.slice(53, 61)
-    const brandColors = colorsArray.slice(61, 64)
+    const brandColors = colorsArray.slice(61, 66)
 
     const clockfaceGradients = gradientsArray.slice(0, 40)
     const brandGradients = gradientsArray.slice(40, 50)
+    const defaultGradients = gradientsArray.slice(50, 53)
+    const primaryGradients = gradientsArray.slice(53, 56)
+    const secondaryGradients = gradientsArray.slice(56, 59)
+    const successGradients = gradientsArray.slice(59, 62)
+    const warningGradients = gradientsArray.slice(62, 65)
+    const dangerGradients = gradientsArray.slice(65, 68)
 
     const colorCardClassName = (hexcode: string): string => {
       const lightContrast = chroma.contrast(InfluxColors.White, hexcode)
@@ -508,6 +514,79 @@ dataTypeStories.add(
         <h5>InfluxData Brand Gradients</h5>
         <div className="gradients-grid">
           {brandGradients.map(g => (
+            <div
+              className={gradientCardClassName(g)}
+              key={g}
+              style={generateGradientStyle(g)}
+            >
+              <p>{g}</p>
+            </div>
+          ))}
+        </div>
+        <h5>Single Hue Gradients</h5>
+        <p>Default (Grey)</p>
+        <div className="gradients-grid">
+          {defaultGradients.map(g => (
+            <div
+              className={gradientCardClassName(g)}
+              key={g}
+              style={generateGradientStyle(g)}
+            >
+              <p>{g}</p>
+            </div>
+          ))}
+        </div>
+        <p>Primary (Blue)</p>
+        <div className="gradients-grid">
+          {primaryGradients.map(g => (
+            <div
+              className={gradientCardClassName(g)}
+              key={g}
+              style={generateGradientStyle(g)}
+            >
+              <p>{g}</p>
+            </div>
+          ))}
+        </div>
+        <p>Secondary (Purple)</p>
+        <div className="gradients-grid">
+          {secondaryGradients.map(g => (
+            <div
+              className={gradientCardClassName(g)}
+              key={g}
+              style={generateGradientStyle(g)}
+            >
+              <p>{g}</p>
+            </div>
+          ))}
+        </div>
+        <p>Success (Green)</p>
+        <div className="gradients-grid">
+          {successGradients.map(g => (
+            <div
+              className={gradientCardClassName(g)}
+              key={g}
+              style={generateGradientStyle(g)}
+            >
+              <p>{g}</p>
+            </div>
+          ))}
+        </div>
+        <p>Warning (Yellow)</p>
+        <div className="gradients-grid">
+          {warningGradients.map(g => (
+            <div
+              className={gradientCardClassName(g)}
+              key={g}
+              style={generateGradientStyle(g)}
+            >
+              <p>{g}</p>
+            </div>
+          ))}
+        </div>
+        <p>Danger (Red)</p>
+        <div className="gradients-grid">
+          {dangerGradients.map(g => (
             <div
               className={gradientCardClassName(g)}
               key={g}
