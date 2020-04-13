@@ -1,8 +1,11 @@
 # Changelog
 
-#### 2.0.4 (Unreleased)
+#### 2.0.5 (Unreleased)
 
 - [#484](https://github.com/influxdata/clockface/pull/484): Fix `z-index` issue causing notifications to appear underneath `FunnelPage`
+
+#### 2.0.4
+
 - [#483](https://github.com/influxdata/clockface/pull/483): Add single-hue gradients for each color spectrum
 - [#481](https://github.com/influxdata/clockface/pull/481): Ensure `testID` and `onClick` are attached to the same element in `ResourceName` and `ResourceNameEditable`
 - [#477](https://github.com/influxdata/clockface/pull/477): Fix replace `defaultChecked` with `checked` attribute in `Toggle` component
