@@ -1,8 +1,14 @@
 # Changelog
 
-#### 2.0.4 (Unreleased)
+#### 2.0.5 (Unreleased)
 
-- [#475](https://github.com/influxdata/clockface/pull/475): Refactor `Tabs` to optionally render as a space-efficient dropdown at a customizable breakpoint
+[#475](https://github.com/influxdata/clockface/pull/475): Refactor `Tabs` to optionally render as a space-efficient dropdown at a customizable breakpoint
+
+#### 2.0.4
+
+- [#483](https://github.com/influxdata/clockface/pull/483): Add single-hue gradients for each color spectrum
+- [#481](https://github.com/influxdata/clockface/pull/481): Ensure `testID` and `onClick` are attached to the same element in `ResourceName` and `ResourceNameEditable`
+- [#477](https://github.com/influxdata/clockface/pull/477): Fix replace `defaultChecked` with `checked` attribute in `Toggle` component
 - [#474](https://github.com/influxdata/clockface/pull/474): Refactor `VisibilityInput` to manage its state internally by default with the option to override using props
 - [#472](https://github.com/influxdata/clockface/pull/472): Add `Upgrade` and `Cubo` icons to icon font
 
@@ -53,7 +59,6 @@
 - [#437](https://github.com/influxdata/clockface/pull/437): Introduce `TreeNav` component family
 - [#437](https://github.com/influxdata/clockface/pull/437): Combined `variables.scss`, `mixins.scss`, and `influx-colors.scss` into a single file
 - [#437](https://github.com/influxdata/clockface/pull/437): Introduce variables to enforce available font weights in `Rubik` and replace all font weight defintions with the variables
-
 
 #### 1.2.1
 

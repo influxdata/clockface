@@ -104,6 +104,7 @@ export enum Gradients {
   RobotLogic = 'RobotLogic',
   MintyFresh = 'MintyFresh',
   SimpleCream = 'SimpleCream',
+  // Brand Gradients
   WarpSpeed = 'WarpSpeed',
   PowerStone = 'PowerStone',
   MilkyWay = 'MilkyWay',
@@ -114,6 +115,25 @@ export enum Gradients {
   GrapeSoda = 'GrapeSoda',
   LavenderLatte = 'LavenderLatte',
   OminousFog = 'OminousFog',
+  // Single Hue Gradients
+  DefaultLight = 'DefaultLight',
+  Default = 'Default',
+  DefaultDark = 'DefaultDark',
+  PrimaryLight = 'PrimaryLight',
+  Primary = 'Primary',
+  PrimaryDark = 'PrimaryDark',
+  SecondaryLight = 'SecondaryLight',
+  Secondary = 'Secondary',
+  SecondaryDark = 'SecondaryDark',
+  SuccessLight = 'SuccessLight',
+  Success = 'Success',
+  SuccessDark = 'SuccessDark',
+  WarningLight = 'WarningLight',
+  Warning = 'Warning',
+  WarningDark = 'WarningDark',
+  DangerLight = 'DangerLight',
+  Danger = 'Danger',
+  DangerDark = 'DangerDark',
 }
 
 export enum DropdownMenuTheme {
@@ -217,6 +237,8 @@ export enum InfluxColors {
   Chartreuse = '#D6F622',
   DeepPurple = '#13002D',
   Magenta = '#BF2FE5',
+  Galaxy = '#9394FF',
+  Pulsar = '#513CC6',
 }
 
 export enum IconFont {
