@@ -282,7 +282,7 @@ export const getRandomIcon = (): IconFont => {
 
 export const getRandomGradient = (): Gradients => {
   const gradientKeys = Object.keys(Gradients)
-  const randomIconKey = gradientKeys[random(0, gradientKeys.length)]
+  const randomGradientKey = gradientKeys[random(0, gradientKeys.length)]
 
-  return Gradients[randomIconKey]
+  return Gradients[randomGradientKey]
 }
