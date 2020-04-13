@@ -31,9 +31,9 @@ export interface NotificationProps extends NotificationDialogProps {
   /** Positioning the notification top, middle, or bottom on the window */
   verticalAlignment?: VerticalAlignment
   /** If a function is passed in a dismiss button will appear on the notification */
-  onDismiss?: () => void
+  onDismiss?: (id?: string) => void
   /** Function called when duration expires */
-  onTimeout?: () => void
+  onTimeout?: (id?: string) => void
   /** Duration before notification calls onTimeout function */
   duration?: number
 }
@@ -42,13 +42,15 @@ export type NotificationRef = NotificationDialogRef
 
 const notificationsPortalName = `notification`
 
+const defaultNotificationStyle = {maxWidth: '500px'}
+
 export const NotificationRoot = forwardRef<NotificationRef, NotificationProps>(
   (
     {
       id,
       icon,
       size = ComponentSize.Medium,
-      style,
+      style = defaultNotificationStyle,
       testID,
       visible = true,
       duration = Infinity,
@@ -88,7 +90,7 @@ export const NotificationRoot = forwardRef<NotificationRef, NotificationProps>(
 
     const handleTimeout = () => {
       if (onTimeout) {
-        onTimeout()
+        onTimeout(id)
       }
     }
 

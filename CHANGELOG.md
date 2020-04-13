@@ -1,9 +1,14 @@
 # Changelog
 
-#### 2.0.4 (Unreleased)
+#### 2.0.5 (Unreleased)
 
+- [#484](https://github.com/influxdata/clockface/pull/484): Fix `z-index` issue causing notifications to appear underneath `FunnelPage`
 - [#482](https://github.com/influxdata/clockface/pull/482): [Breaking] Remove render props from `ResourceCard` in favor of `children`
 - [#482](https://github.com/influxdata/clockface/pull/482): Refactor `ResourceCard` to extend `FlexBox` to offer more layout control
+
+#### 2.0.4
+
+- [#483](https://github.com/influxdata/clockface/pull/483): Add single-hue gradients for each color spectrum
 - [#481](https://github.com/influxdata/clockface/pull/481): Ensure `testID` and `onClick` are attached to the same element in `ResourceName` and `ResourceNameEditable`
 - [#477](https://github.com/influxdata/clockface/pull/477): Fix replace `defaultChecked` with `checked` attribute in `Toggle` component
 - [#474](https://github.com/influxdata/clockface/pull/474): Refactor `VisibilityInput` to manage its state internally by default with the option to override using props

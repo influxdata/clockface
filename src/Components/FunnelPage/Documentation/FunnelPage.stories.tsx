@@ -6,6 +6,7 @@ import marked from 'marked'
 import {storiesOf} from '@storybook/react'
 import {withKnobs, select, boolean} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
+import {useState} from '@storybook/addons'
 
 // Components
 import {FunnelPage, FunnelPageRef, FunnelPageFooterRef} from '../'
@@ -17,6 +18,7 @@ import {Grid} from '../../Grid'
 import {Panel} from '../../Panel'
 import {FlexBox} from '../../FlexBox'
 import {Heading} from '../../Typography'
+import {Notification} from '../../Notification'
 
 // Types
 import {
@@ -29,6 +31,7 @@ import {
   ComponentSize,
   Columns,
   HeadingElement,
+  Gradients,
 } from '../../../Types'
 
 // Notes
@@ -201,6 +204,16 @@ funnelPageExampleStories.add(
       />
     )
 
+    const [notificationState, setNotificationState] = useState<boolean>(false)
+
+    const handleDismissNotification = (): void => {
+      setNotificationState(false)
+    }
+
+    const handleShowNotification = (): void => {
+      setNotificationState(true)
+    }
+
     return (
       <div className="mockPageWrapper">
         <div className="mockPage">
@@ -209,6 +222,15 @@ funnelPageExampleStories.add(
               logo={logo}
               enableGraphic={boolean('enableGraphic', false)}
             >
+              <Notification
+                size={ComponentSize.Small}
+                visible={notificationState}
+                icon={IconFont.Zap}
+                gradient={Gradients.KawaiiDesu}
+                onDismiss={handleDismissNotification}
+              >
+                Yeehaw I'm a notification
+              </Notification>
               <Grid>
                 <Grid.Row>
                   <Grid.Column widthSM={Columns.Eight} offsetSM={Columns.Two}>
@@ -324,6 +346,7 @@ funnelPageExampleStories.add(
                           color={ComponentColor.Secondary}
                           text="Upgrade to Usage-Based Plan"
                           size={ComponentSize.Large}
+                          onClick={handleShowNotification}
                         />
                       </FlexBox>
                     </Grid.Column>
