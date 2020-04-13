@@ -369,25 +369,26 @@ export const influxGradients = {
     start: InfluxColors.Banana,
     stop: InfluxColors.Flan,
   },
+  // Brand Gradients
   WarpSpeed: {
     start: InfluxColors.DeepPurple,
-    stop: InfluxColors.Magenta,
+    stop: InfluxColors.Void,
   },
   PowerStone: {
     start: InfluxColors.Void,
     stop: InfluxColors.Magenta,
   },
   OminousFog: {
-    start: InfluxColors.DeepPurple,
-    stop: InfluxColors.Comet,
+    start: InfluxColors.Pulsar,
+    stop: InfluxColors.Galaxy,
   },
   MilkyWay: {
     start: InfluxColors.Magenta,
-    stop: InfluxColors.Comet,
+    stop: InfluxColors.Galaxy,
   },
   LazyAfternoon: {
     start: InfluxColors.Pool,
-    stop: InfluxColors.Comet,
+    stop: InfluxColors.Galaxy,
   },
   NineteenEightyFour: {
     start: InfluxColors.Pool,
@@ -399,7 +400,7 @@ export const influxGradients = {
   },
   LostGalaxy: {
     start: InfluxColors.DeepPurple,
-    stop: InfluxColors.Void,
+    stop: InfluxColors.Pulsar,
   },
   GrapeSoda: {
     start: InfluxColors.DeepPurple,
@@ -408,6 +409,79 @@ export const influxGradients = {
   LavenderLatte: {
     start: InfluxColors.DeepPurple,
     stop: InfluxColors.Star,
+  },
+  // Single Hue Gradients
+  DefaultDark: {
+    start: InfluxColors.Castle,
+    stop: InfluxColors.Smoke,
+  },
+  Default: {
+    start: InfluxColors.Wolf,
+    stop: InfluxColors.Mist,
+  },
+  DefaultLight: {
+    start: InfluxColors.Mist,
+    stop: InfluxColors.Cloud,
+  },
+  PrimaryDark: {
+    start: InfluxColors.Sapphire,
+    stop: InfluxColors.Ocean,
+  },
+  Primary: {
+    start: InfluxColors.Pool,
+    stop: InfluxColors.Laser,
+  },
+  PrimaryLight: {
+    start: InfluxColors.Laser,
+    stop: InfluxColors.Hydrogen,
+  },
+  SecondaryDark: {
+    start: InfluxColors.Void,
+    stop: InfluxColors.Amethyst,
+  },
+  Secondary: {
+    start: InfluxColors.Star,
+    stop: InfluxColors.Comet,
+  },
+  SecondaryLight: {
+    start: InfluxColors.Comet,
+    stop: InfluxColors.Moonstone,
+  },
+  SuccessDark: {
+    start: InfluxColors.Emerald,
+    stop: InfluxColors.Viridian,
+  },
+  Success: {
+    start: InfluxColors.Rainforest,
+    stop: InfluxColors.Honeydew,
+  },
+  SuccessLight: {
+    start: InfluxColors.Honeydew,
+    stop: InfluxColors.Krypton,
+  },
+  WarningDark: {
+    start: InfluxColors.Topaz,
+    stop: InfluxColors.Tiger,
+  },
+  Warning: {
+    start: InfluxColors.Pineapple,
+    stop: InfluxColors.Thunder,
+  },
+  WarningLight: {
+    start: InfluxColors.Thunder,
+    stop: InfluxColors.Sulfur,
+  },
+  DangerDark: {
+    start: InfluxColors.Ruby,
+    stop: InfluxColors.Fire,
+  },
+  Danger: {
+    start: InfluxColors.Curacao,
+    stop: InfluxColors.Dreamsicle,
+  },
+  DangerLight: {
+    start: InfluxColors.Dreamsicle,
+    stop: InfluxColors.Tungsten,
   },
 }
 
