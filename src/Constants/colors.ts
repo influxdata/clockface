@@ -369,25 +369,26 @@ export const influxGradients = {
     start: InfluxColors.Banana,
     stop: InfluxColors.Flan,
   },
+  // Brand Gradients
   WarpSpeed: {
     start: InfluxColors.DeepPurple,
-    stop: InfluxColors.Magenta,
+    stop: InfluxColors.Void,
   },
   PowerStone: {
     start: InfluxColors.Void,
     stop: InfluxColors.Magenta,
   },
   OminousFog: {
-    start: InfluxColors.DeepPurple,
-    stop: InfluxColors.Comet,
+    start: InfluxColors.Pulsar,
+    stop: InfluxColors.Galaxy,
   },
   MilkyWay: {
     start: InfluxColors.Magenta,
-    stop: InfluxColors.Comet,
+    stop: InfluxColors.Galaxy,
   },
   LazyAfternoon: {
     start: InfluxColors.Pool,
-    stop: InfluxColors.Comet,
+    stop: InfluxColors.Galaxy,
   },
   NineteenEightyFour: {
     start: InfluxColors.Pool,
@@ -399,7 +400,7 @@ export const influxGradients = {
   },
   LostGalaxy: {
     start: InfluxColors.DeepPurple,
-    stop: InfluxColors.Void,
+    stop: InfluxColors.Pulsar,
   },
   GrapeSoda: {
     start: InfluxColors.DeepPurple,
