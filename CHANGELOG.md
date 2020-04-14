@@ -1,8 +1,11 @@
 # Changelog
 
-#### 2.0.5 (Unreleased)
+#### 2.1.0 (Unreleased)
 
-[#475](https://github.com/influxdata/clockface/pull/475): Refactor `Tabs` to optionally render as a space-efficient dropdown at a customizable breakpoint
+- [#484](https://github.com/influxdata/clockface/pull/484): Fix `z-index` issue causing notifications to appear underneath `FunnelPage`
+- [#482](https://github.com/influxdata/clockface/pull/482): [Breaking] Remove render props from `ResourceCard` in favor of `children`
+- [#482](https://github.com/influxdata/clockface/pull/482): Refactor `ResourceCard` to extend `FlexBox` to offer more layout control
+- [#475](https://github.com/influxdata/clockface/pull/475): Refactor `Tabs` to optionally render as a space-efficient dropdown at a customizable breakpoint
 
 #### 2.0.4
 

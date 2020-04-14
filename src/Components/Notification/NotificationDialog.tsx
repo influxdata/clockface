@@ -34,7 +34,7 @@ export interface NotificationDialogProps extends StandardFunctionProps {
   /** Notification color */
   backgroundColor?: InfluxColors | string
   /** If a function is passed in a dismiss button will appear on the notification */
-  onDismiss?: () => void
+  onDismiss?: (id?: string) => void
   /** Controls padding and font size of the notification */
   size: ComponentSize
 }
@@ -82,7 +82,7 @@ export const NotificationDialog = forwardRef<
 
     const handleDismiss = () => {
       if (onDismiss) {
-        onDismiss()
+        onDismiss(id)
       }
     }
 

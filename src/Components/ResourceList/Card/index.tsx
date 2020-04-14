@@ -7,6 +7,7 @@ import {ResourceCardName} from './ResourceCardName'
 import {ResourceCardEditableName} from './ResourceCardEditableName'
 import {ResourceCardDescription} from './ResourceCardDescription'
 import {ResourceCardEditableDescription} from './ResourceCardEditableDescription'
+import {ResourceCardMeta} from './ResourceCardMeta'
 
 export class ResourceCard extends Component<ResourceCardProps> {
   public static readonly displayName = 'ResourceCard'
@@ -16,6 +17,7 @@ export class ResourceCard extends Component<ResourceCardProps> {
   public static EditableName = ResourceCardEditableName
   public static Description = ResourceCardDescription
   public static EditableDescription = ResourceCardEditableDescription
+  public static Meta = ResourceCardMeta
 
   render() {
     return <ResourceCardRoot {...this.props} />
@@ -27,3 +29,4 @@ export * from './ResourceCardName'
 export * from './ResourceCardEditableName'
 export * from './ResourceCardDescription'
 export * from './ResourceCardEditableDescription'
+export * from './ResourceCardMeta'

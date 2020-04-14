@@ -1,6 +1,7 @@
 // Libraries
 import React, {createRef} from 'react'
 import marked from 'marked'
+import uuid from 'uuid'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
@@ -11,8 +12,17 @@ import {
   boolean,
   color,
   number,
+  object,
 } from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
+import {useState} from '@storybook/addons'
+
+// Utils
+import {
+  generateRandomText,
+  getRandomIcon,
+  getRandomGradient,
+} from '../../../Utils'
 
 // Components
 import {Notification, NotificationDialog, NotificationDialogRef} from '../index'
@@ -29,11 +39,204 @@ import {
 
 // Notes
 import NotificationReadme from './Notification.md'
+import NotificationDialogReadme from './NotificationDialog.md'
 
 const notificationStories = storiesOf(
   'Atomic|Notification',
   module
 ).addDecorator(withKnobs)
+
+interface TestNotification {
+  id: string
+  text: string
+  icon: IconFont
+  gradient: Gradients
+  visible: boolean
+  horizontalAlign: Alignment
+  verticalAlign: VerticalAlignment
+}
+
+notificationStories.add(
+  'Notification',
+  () => {
+    const [notifications, updateNotifications] = useState<TestNotification[]>(
+      []
+    )
+
+    const randomTextLower = number('randomTextLower', 5)
+    const randomTextUpper = number('randomTextUpper', 30)
+
+    const defaultNotificationStyle = {maxWidth: '500px'}
+
+    const handleGenerateNotification = (
+      verticalAlign: VerticalAlignment,
+      horizontalAlign: Alignment
+    ) => (): void => {
+      const id = uuid.v4()
+      const text = generateRandomText(randomTextLower, randomTextUpper)
+      const icon = getRandomIcon()
+      const gradient = getRandomGradient()
+      const visible = true
+
+      const newNotification: TestNotification = {
+        id,
+        text,
+        icon,
+        gradient,
+        visible,
+        horizontalAlign,
+        verticalAlign,
+      }
+
+      const updatedNotifications = [...notifications, newNotification]
+
+      updateNotifications(updatedNotifications)
+    }
+
+    const handleDismiss = (id: string): void => {
+      const updatedNotifications = notifications.map(n => {
+        if (n.id === id) {
+          return {...n, visible: false}
+        }
+
+        return n
+      })
+
+      updateNotifications(updatedNotifications)
+    }
+
+    const handleDismissNotifications = (): void => {
+      const updatedNotifications = notifications.map(n => ({
+        ...n,
+        visible: false,
+      }))
+      updateNotifications(updatedNotifications)
+    }
+
+    return (
+      <div className="story--example" style={{flexDirection: 'column'}}>
+        <p>Click a button to generate a random notification</p>
+        <div className="notification-tester">
+          <div>
+            <button
+              className="story--test-button"
+              onClick={handleGenerateNotification(
+                VerticalAlignment.Top,
+                Alignment.Left
+              )}
+            >
+              Top Left
+            </button>
+            <button
+              className="story--test-button"
+              onClick={handleGenerateNotification(
+                VerticalAlignment.Top,
+                Alignment.Center
+              )}
+            >
+              Top Center
+            </button>
+            <button
+              className="story--test-button"
+              onClick={handleGenerateNotification(
+                VerticalAlignment.Top,
+                Alignment.Right
+              )}
+            >
+              Top Right
+            </button>
+          </div>
+          <div>
+            <button
+              className="story--test-button"
+              onClick={handleGenerateNotification(
+                VerticalAlignment.Middle,
+                Alignment.Left
+              )}
+            >
+              Middle Left
+            </button>
+            <button
+              className="story--test-button"
+              onClick={handleGenerateNotification(
+                VerticalAlignment.Middle,
+                Alignment.Center
+              )}
+            >
+              Middle Center
+            </button>
+            <button
+              className="story--test-button"
+              onClick={handleGenerateNotification(
+                VerticalAlignment.Middle,
+                Alignment.Right
+              )}
+            >
+              Middle Right
+            </button>
+          </div>
+          <div>
+            <button
+              className="story--test-button"
+              onClick={handleGenerateNotification(
+                VerticalAlignment.Bottom,
+                Alignment.Left
+              )}
+            >
+              Bottom Left
+            </button>
+            <button
+              className="story--test-button"
+              onClick={handleGenerateNotification(
+                VerticalAlignment.Bottom,
+                Alignment.Center
+              )}
+            >
+              Bottom Center
+            </button>
+            <button
+              className="story--test-button"
+              onClick={handleGenerateNotification(
+                VerticalAlignment.Bottom,
+                Alignment.Right
+              )}
+            >
+              Bottom Right
+            </button>
+          </div>
+        </div>
+        <button
+          className="story--test-button"
+          onClick={handleDismissNotifications}
+          disabled={notifications.length === 0}
+        >
+          Dismiss All
+        </button>
+        {notifications.map(notification => (
+          <Notification
+            key={notification.id}
+            id={notification.id}
+            visible={notification.visible}
+            icon={notification.icon}
+            gradient={notification.gradient}
+            onDismiss={handleDismiss}
+            size={ComponentSize.Small}
+            horizontalAlignment={notification.horizontalAlign}
+            verticalAlignment={notification.verticalAlign}
+            style={object('style', defaultNotificationStyle)}
+          >
+            {notification.text}
+          </Notification>
+        ))}
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(NotificationReadme),
+    },
+  }
+)
 
 notificationStories.add(
   'NotificationDialog',
@@ -91,112 +294,7 @@ notificationStories.add(
   },
   {
     readme: {
-      content: marked(NotificationReadme),
-    },
-  }
-)
-
-notificationStories.add(
-  'Example',
-  () => {
-    const handleClose = (): void => {
-      /* eslint-disable */
-      alert('calling onDismiss')
-      /* eslint-enable */
-    }
-
-    const handleTimeout = (): void => {
-      /* eslint-disable */
-      alert('calling onTimeout')
-      /* eslint-enable */
-    }
-
-    return (
-      <div className="story--example">
-        <p>
-          Look in the <strong>Knobs</strong> panel to toggle notification
-          visibility.
-        </p>
-        <Notification
-          visible={boolean('Top Right #1 visible', false)}
-          icon={IconFont.Checkmark}
-          gradient={Gradients.MiyazakiSky}
-          onDismiss={handleClose}
-          size={
-            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-          }
-        >
-          Oh hi there, this is notification #1.
-        </Notification>
-        <Notification
-          visible={boolean('Top Right #2 visible', false)}
-          icon={IconFont.BellRinging}
-          gradient={Gradients.GarageBand}
-          onDismiss={handleClose}
-          size={
-            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-          }
-        >
-          Greetings, all the way from notification #2!
-        </Notification>
-        <Notification
-          visible={boolean('Top Right #3 visible', false)}
-          icon={IconFont.Star}
-          gradient={Gradients.MangoGrove}
-          onDismiss={handleClose}
-          size={
-            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-          }
-        >
-          Avast ye matey! this is notification #3!
-        </Notification>
-        <Notification
-          visible={boolean('Bottom Left visible', false)}
-          icon={IconFont.EyeOpen}
-          gradient={Gradients.OminousFog}
-          horizontalAlignment={Alignment.Left}
-          verticalAlignment={VerticalAlignment.Bottom}
-          size={
-            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-          }
-        >
-          Sneaky ninja notification.
-        </Notification>
-        <Notification
-          visible={boolean('Bottom Center visible', false)}
-          icon={IconFont.Eye}
-          gradient={Gradients.MilkyWay}
-          style={{width: '330px'}}
-          horizontalAlignment={Alignment.Center}
-          verticalAlignment={VerticalAlignment.Bottom}
-          size={
-            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-          }
-        >
-          Another sneaky ninja notification.
-        </Notification>
-        <Notification
-          visible={boolean('Top Center visible', false)}
-          icon={IconFont.AlertTriangle}
-          gradient={Gradients.ScotchBonnet}
-          duration={number('Top Center duration', 3000)}
-          onTimeout={handleTimeout}
-          style={{width: '500px'}}
-          verticalAlignment={VerticalAlignment.Top}
-          horizontalAlignment={Alignment.Center}
-          size={
-            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-          }
-        >
-          Warning notification #4 will call onTimeout in{' '}
-          {number('Top Center duration', 3000) / 1000} seconds...
-        </Notification>
-      </div>
-    )
-  },
-  {
-    readme: {
-      content: marked(NotificationReadme),
+      content: marked(NotificationDialogReadme),
     },
   }
 )
