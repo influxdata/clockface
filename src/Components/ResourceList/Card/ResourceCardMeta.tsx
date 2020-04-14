@@ -40,14 +40,12 @@ export const ResourceCardMeta = forwardRef<
       [`${className}`]: className,
     })
 
-    let wrappedChildren = children
+    let wrappedChildren
 
     if (React.Children.count(children) > 0) {
-      const childArray: JSX.Element[] = []
-
-      React.Children.forEach(children, child => {
-        childArray.push(<div className="cf-resource-meta--item">{child}</div>)
-      })
+      const childArray: JSX.Element[] = React.Children.map(children, child => (
+        <div className="cf-resource-meta--item">{child}</div>
+      ))
 
       wrappedChildren = <>{childArray}</>
     }
