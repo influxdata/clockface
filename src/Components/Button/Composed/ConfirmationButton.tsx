@@ -43,6 +43,10 @@ export interface ConfirmationButtonProps
   popoverClassName?: string
   /** Allows customization of Popover */
   popoverStyle?: CSSProperties
+  /** Callback function fired when state changes to "show" */
+  onShow?: () => void
+  /** Callback function fired when state changes to "hide" */
+  onHide?: () => void
   /** Function to call when confirmation is clicked, passes 'value' prop in */
   onConfirm: (returnValue?: any) => void
   /** Optional value to have passed back via onConfirm */
@@ -54,6 +58,8 @@ export const ConfirmationButton: FunctionComponent<ConfirmationButtonProps> = ({
   icon,
   text,
   style,
+  onHide,
+  onShow,
   tabIndex,
   className,
   titleText,
@@ -86,6 +92,8 @@ export const ConfirmationButton: FunctionComponent<ConfirmationButtonProps> = ({
         color={popoverColor}
         appearance={popoverAppearance}
         enableDefaultStyles={false}
+        onShow={onShow}
+        onHide={onHide}
         contents={onHide => (
           <ConfirmationContents
             testID={testID}
