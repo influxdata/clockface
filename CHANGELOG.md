@@ -8,6 +8,7 @@
 - [#482](https://github.com/influxdata/clockface/pull/482): [Breaking] Remove render props from `ResourceCard` in favor of `children`
 - [#482](https://github.com/influxdata/clockface/pull/482): Refactor `ResourceCard` to extend `FlexBox` to offer more layout control
 - [#475](https://github.com/influxdata/clockface/pull/475): Refactor `Tabs` to optionally render as a space-efficient dropdown at a customizable breakpoint
+- [#489](https://github.com/influxdata/clockface/pull/489): Remove same color used by text from the background in IndexList body
 
 #### 2.0.4
 
