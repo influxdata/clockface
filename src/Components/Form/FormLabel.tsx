@@ -10,13 +10,24 @@ export interface FormLabelProps extends StandardFunctionProps {
   label: string
   /** Whether this field is required to submit form, adds red required asterisk */
   required?: boolean
+  /** Useful for associating a label with an input */
+  htmlFor?: string
 }
 
 export type FormLabelRef = HTMLLabelElement
 
 export const FormLabel = forwardRef<FormLabelRef, FormLabelProps>(
   (
-    {label, children, className, required, id, style, testID = 'form--label'},
+    {
+      id,
+      label,
+      style,
+      testID = 'form--label',
+      htmlFor,
+      children,
+      required,
+      className,
+    },
     ref
   ) => {
     const formLabelClass = classnames('cf-form--label', {
@@ -30,6 +41,7 @@ export const FormLabel = forwardRef<FormLabelRef, FormLabelProps>(
         style={style}
         data-testid={testID}
         className={formLabelClass}
+        htmlFor={htmlFor}
       >
         <span>
           {label}
