@@ -1,4 +1,9 @@
 import {CSSProperties, ReactNode} from 'react'
+import {
+  GRID_BREAKPOINT_SM,
+  GRID_BREAKPOINT_MD,
+  GRID_BREAKPOINT_LG,
+} from '../Constants'
 
 // Utilities
 export type Omit<K, V> = Pick<K, Exclude<keyof K, V>>
@@ -530,4 +535,11 @@ export enum FontWeight {
   Medium = '500',
   Bold = '700',
   Black = '900',
+}
+
+export enum Breakpoint {
+  None = 0,
+  Small = GRID_BREAKPOINT_SM,
+  Medium = GRID_BREAKPOINT_MD,
+  Large = GRID_BREAKPOINT_LG,
 }
