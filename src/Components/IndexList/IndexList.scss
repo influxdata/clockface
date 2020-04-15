@@ -154,6 +154,7 @@ $cf-index-list--sort-text: $g11-sidewalk;
 
 // Empty state
 .cf-index-list--empty-cell {
+  background-color: $cf-card-background--disabled;
   border-radius: $cf-radius;
   display: flex;
   align-content: center;
