@@ -132,6 +132,7 @@ buttonComposedStories.add(
       console.log(buttonRef.current)
       /* eslint-enable */
     }
+
     return (
       <div className="story--example">
         <SquareButton
@@ -170,52 +171,70 @@ buttonComposedStories.add(
 
 buttonComposedStories.add(
   'ConfirmationButton',
-  () => (
-    <div className="story--example">
-      <ConfirmationButton
-        confirmationButtonText={text(
-          'confirmationButtonText',
-          'Yes, Delete it'
-        )}
-        confirmationButtonColor={
-          ComponentColor[
-            select('confirmationColor', mapEnumKeys(ComponentColor), 'Danger')
-          ]
-        }
-        confirmationLabel={text(
-          'confirmationLabel',
-          'Really delete your soul?'
-        )}
-        popoverColor={
-          ComponentColor[
-            select('popoverColor', mapEnumKeys(ComponentColor), 'Default')
-          ]
-        }
-        popoverAppearance={
-          Appearance[select('appearance', mapEnumKeys(Appearance), 'Solid')]
-        }
-        onConfirm={value => alert(`returnValue: ${value}`)}
-        returnValue={text('returnValue', '')}
-        icon={IconFont[select('icon', mapEnumKeys(IconFont), 'Trash')]}
-        titleText={text('titleText', 'Title Text')}
-        color={
-          ComponentColor[select('color', mapEnumKeys(ComponentColor), 'Danger')]
-        }
-        size={
-          ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-        }
-        shape={
-          ButtonShape[select('shape', mapEnumKeys(ButtonShape), 'Default')]
-        }
-        text={text('text', 'Delete Soul')}
-        status={
-          ComponentStatus[
-            select('status', mapEnumKeys(ComponentStatus), 'Default')
-          ]
-        }
-      />
-    </div>
-  ),
+  () => {
+    const onShow = (): void => {
+      /* eslint-disable */
+      console.log('calling onShow')
+      /* eslint-enable */
+    }
+
+    const onHide = (): void => {
+      /* eslint-disable */
+      console.log('calling onHide')
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <ConfirmationButton
+          confirmationButtonText={text(
+            'confirmationButtonText',
+            'Yes, Delete it'
+          )}
+          onShow={onShow}
+          onHide={onHide}
+          confirmationButtonColor={
+            ComponentColor[
+              select('confirmationColor', mapEnumKeys(ComponentColor), 'Danger')
+            ]
+          }
+          confirmationLabel={text(
+            'confirmationLabel',
+            'Really delete your soul?'
+          )}
+          popoverColor={
+            ComponentColor[
+              select('popoverColor', mapEnumKeys(ComponentColor), 'Default')
+            ]
+          }
+          popoverAppearance={
+            Appearance[select('appearance', mapEnumKeys(Appearance), 'Solid')]
+          }
+          onConfirm={value => alert(`returnValue: ${value}`)}
+          returnValue={text('returnValue', '')}
+          icon={IconFont[select('icon', mapEnumKeys(IconFont), 'Trash')]}
+          titleText={text('titleText', 'Title Text')}
+          color={
+            ComponentColor[
+              select('color', mapEnumKeys(ComponentColor), 'Danger')
+            ]
+          }
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          shape={
+            ButtonShape[select('shape', mapEnumKeys(ButtonShape), 'Default')]
+          }
+          text={text('text', 'Delete Soul')}
+          status={
+            ComponentStatus[
+              select('status', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
+        />
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(ConfirmationButtonReadme),

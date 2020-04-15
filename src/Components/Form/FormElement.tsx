@@ -21,6 +21,8 @@ export interface FormElementProps extends StandardFunctionProps {
   labelAddOn?: () => JSX.Element
   /** Whether this field is required to submit form, adds red required asterisk */
   required?: boolean
+  /** Useful for associating a label with an input */
+  htmlFor?: string
 }
 
 export type FormElementRef = HTMLDivElement
@@ -31,6 +33,7 @@ export const FormElement = forwardRef<FormElementRef, FormElementProps>(
       id,
       label,
       style,
+      htmlFor,
       required,
       helpText,
       children,
@@ -54,7 +57,7 @@ export const FormElement = forwardRef<FormElementRef, FormElementProps>(
         className={formElementClass}
       >
         {!!label && (
-          <FormLabel label={label} required={required}>
+          <FormLabel label={label} required={required} htmlFor={htmlFor}>
             {!!labelAddOn && labelAddOn()}
           </FormLabel>
         )}
