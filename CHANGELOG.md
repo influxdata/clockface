@@ -2,6 +2,7 @@
 
 #### 2.1.0 (Unreleased)
 
+- [#487](https://github.com/influxdata/clockface/pull/487): Add `htmlFor` prop to `FormLabel`, `FormElement`, `FormValidationElement`
 - [#486](https://github.com/influxdata/clockface/pull/486): Expose `onShow` and `onHide` props in `ConfirmationButton` component
 - [#484](https://github.com/influxdata/clockface/pull/484): Fix `z-index` issue causing notifications to appear underneath `FunnelPage`
 - [#482](https://github.com/influxdata/clockface/pull/482): [Breaking] Remove render props from `ResourceCard` in favor of `children`

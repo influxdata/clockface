@@ -31,6 +31,8 @@ export interface FormValidationElementProps extends StandardFunctionProps {
   helpText?: string
   /** Whether this field is required to submit form, adds red required asterisk */
   required?: boolean
+  /** Useful for associating a label with an input */
+  htmlFor?: string
 }
 
 export type FormValidationElementRef = HTMLDivElement
@@ -45,6 +47,7 @@ export const FormValidationElement = forwardRef<
       value,
       style,
       label,
+      htmlFor,
       helpText,
       children,
       required,
@@ -87,7 +90,7 @@ export const FormValidationElement = forwardRef<
         className={formValidationElementClass}
       >
         {!!label && (
-          <FormLabel label={label} required={required}>
+          <FormLabel label={label} required={required} htmlFor={htmlFor}>
             {labelAddOn && labelAddOn()}
           </FormLabel>
         )}
