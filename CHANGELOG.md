@@ -1,14 +1,16 @@
 # Changelog
 
+#### 2.1.1 (Unreleased)
+
 #### 2.1.0 [2020-04-16]
 
+- [#489](https://github.com/influxdata/clockface/pull/489): Remove same color used by text from the background in IndexList body
 - [#487](https://github.com/influxdata/clockface/pull/487): Add `htmlFor` prop to `FormLabel`, `FormElement`, `FormValidationElement`
 - [#486](https://github.com/influxdata/clockface/pull/486): Expose `onShow` and `onHide` props in `ConfirmationButton` component
 - [#484](https://github.com/influxdata/clockface/pull/484): Fix `z-index` issue causing notifications to appear underneath `FunnelPage`
 - [#482](https://github.com/influxdata/clockface/pull/482): [Breaking] Remove render props from `ResourceCard` in favor of `children`
 - [#482](https://github.com/influxdata/clockface/pull/482): Refactor `ResourceCard` to extend `FlexBox` to offer more layout control
 - [#475](https://github.com/influxdata/clockface/pull/475): Refactor `Tabs` to optionally render as a space-efficient dropdown at a customizable breakpoint
-- [#489](https://github.com/influxdata/clockface/pull/489): Remove same color used by text from the background in IndexList body
 
 #### 2.0.4
 
