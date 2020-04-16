@@ -1,6 +1,6 @@
 # Changelog
 
-#### 2.1.0 (Unreleased)
+#### 2.1.0 [2020-04-16]
 
 - [#487](https://github.com/influxdata/clockface/pull/487): Add `htmlFor` prop to `FormLabel`, `FormElement`, `FormValidationElement`
 - [#486](https://github.com/influxdata/clockface/pull/486): Expose `onShow` and `onHide` props in `ConfirmationButton` component
