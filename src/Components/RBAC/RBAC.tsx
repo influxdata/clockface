@@ -3,12 +3,12 @@ import React from 'react'
 
 type Test = ((...args: any[]) => boolean) | undefined
 
-export interface RBACProps<P, Y, N> {
+export interface RBACProps<P> {
   permissions?: P[] | undefined
   perform?: P
   test?: Test
-  yes: () => Y
-  no: () => N
+  yes: () => any
+  no: () => any
 }
 
 function check<P>(permissions: P[] = [], action: P, test: Test) {
@@ -23,13 +23,7 @@ function check<P>(permissions: P[] = [], action: P, test: Test) {
   return false
 }
 
-export function RBAC<P, Y, N>({
-  permissions,
-  perform,
-  test,
-  yes,
-  no,
-}: RBACProps<P, Y, N>) {
+export function RBAC<P>({permissions, perform, test, yes, no}: RBACProps<P>) {
   return <>{check<P | undefined>(permissions, perform, test) ? yes() : no()}</>
 }
 

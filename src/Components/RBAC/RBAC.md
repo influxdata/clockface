@@ -10,11 +10,15 @@ import {RBAC} from '@influxdata/clockface'
 ```
 
 ```tsx
-<RBAC
-    permissions={["read:database", "read:users"...]}
-    perform="read:users"
-    yes={() => <h1>you can read users</h1>}
-    no={() => <h1>insufficient permissions</h1>}
+type Permission = 'read:db' | 'write:db' | 'read:users' | 'write:users'
+```
+
+```tsx
+<RBAC<Permission>
+  permissions={['read:db', 'read:users']}
+  perform="read:users"
+  yes={() => <h1>you can read users</h1>}
+  no={() => <h1>insufficient permissions</h1>}
 />
 ```
 
