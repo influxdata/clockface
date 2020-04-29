@@ -57,9 +57,7 @@ export const generateBackgroundStyle = (
 
     panelStyle = {
       ...panelStyle,
-      background: `linear-gradient(45deg,  ${colors.start} 0%,${
-        colors.stop
-      } 100%)`,
+      background: `linear-gradient(45deg,  ${colors.start} 0%,${colors.stop} 100%)`,
     }
   }
 
@@ -176,9 +174,7 @@ export const generateRangeSliderTrackFillStyle = (
 
   if (fill) {
     return {
-      background: `linear-gradient(to right, ${fillColor[color]} 0%, ${
-        fillColor[color]
-      } ${pos}%, ${InfluxColors.Pepper} ${pos}%, ${InfluxColors.Pepper} 100%)`,
+      background: `linear-gradient(to right, ${fillColor[color]} 0%, ${fillColor[color]} ${pos}%, ${InfluxColors.Pepper} ${pos}%, ${InfluxColors.Pepper} 100%)`,
     }
   }
 

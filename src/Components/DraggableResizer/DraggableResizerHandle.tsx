@@ -64,17 +64,13 @@ export const DraggableResizerHandle = forwardRef<
 
       if (orientation == Orientation.Vertical) {
         return {
-          background: `linear-gradient(to bottom,  ${colors.start} 0%,${
-            colors.stop
-          } 100%)`,
+          background: `linear-gradient(to bottom,  ${colors.start} 0%,${colors.stop} 100%)`,
         }
       }
 
       if (orientation === Orientation.Horizontal) {
         return {
-          background: `linear-gradient(to right,  ${colors.start} 0%,${
-            colors.stop
-          } 100%)`,
+          background: `linear-gradient(to right,  ${colors.start} 0%,${colors.stop} 100%)`,
         }
       }
 

@@ -55,6 +55,6 @@
     "react/no-unescaped-entities": "off",
     "react/prop-types": "off",
     "react/no-find-dom-node": "off",
-    "react/jsx-uses-react": "on"
+    "react/jsx-uses-react": "error"
   }
 }

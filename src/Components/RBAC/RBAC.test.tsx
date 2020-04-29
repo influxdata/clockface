@@ -26,7 +26,7 @@ describe('RBAC Component', () => {
   })
 
   it('renders "yes" when the provided test passes', () => {
-    const {queryByTestId} = setup({test: () => true, perform: ""})
+    const {queryByTestId} = setup({test: () => true, perform: ''})
 
     const yes = queryByTestId('yes')
     const no = queryByTestId('no')
@@ -36,7 +36,7 @@ describe('RBAC Component', () => {
   })
 
   it('renders "no" when the provided test fails', () => {
-    const {queryByTestId} = setup({test: () => false, perform: ""})
+    const {queryByTestId} = setup({test: () => false, perform: ''})
 
     const yes = queryByTestId('yes')
     const no = queryByTestId('no')
@@ -46,7 +46,7 @@ describe('RBAC Component', () => {
   })
 
   it('renders "no" when no not have permission', () => {
-    const {queryByTestId} = setup({perform: "write:universe"})
+    const {queryByTestId} = setup({perform: 'write:universe'})
 
     const yes = queryByTestId('yes')
     const no = queryByTestId('no')
@@ -54,5 +54,4 @@ describe('RBAC Component', () => {
     expect(no?.textContent).toBe('you shall not pass')
     expect(yes).toBe(null)
   })
-
 })

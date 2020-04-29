@@ -46,12 +46,8 @@ const spinnerTextStories = storiesOf(
 spinnerContainerStories.add(
   'SpinnerContainer',
   () => {
-    const technoSpinnerRef: React.RefObject<
-      TechnoSpinnerRef
-    > = React.createRef()
-    const spinnerContainerRef: React.RefObject<
-      SpinnerContainerRef
-    > = React.createRef()
+    const technoSpinnerRef: React.RefObject<TechnoSpinnerRef> = React.createRef()
+    const spinnerContainerRef: React.RefObject<SpinnerContainerRef> = React.createRef()
 
     const handleLogRefs = (): void => {
       /* eslint-disable */
@@ -97,9 +93,7 @@ spinnerContainerStories.add(
 spinnerVisualStories.add(
   'TechnoSpinner',
   () => {
-    const technoSpinnerRef: React.RefObject<
-      TechnoSpinnerRef
-    > = React.createRef()
+    const technoSpinnerRef: React.RefObject<TechnoSpinnerRef> = React.createRef()
 
     const handleLogRef = (): void => {
       /* eslint-disable */
@@ -134,9 +128,7 @@ spinnerVisualStories.add(
 spinnerVisualStories.add(
   'SparkleSpinner',
   () => {
-    const sparkleSpinnerRef: React.RefObject<
-      SparkleSpinnerRef
-    > = React.createRef()
+    const sparkleSpinnerRef: React.RefObject<SparkleSpinnerRef> = React.createRef()
 
     const handleLogRef = (): void => {
       /* eslint-disable */

@@ -53,15 +53,9 @@ selectGroupStories.add(
       mirepoix[0],
     ])
     const selectGroupRef: RefObject<SelectGroupRef> = createRef()
-    const selectGroupButtonCeleryRef: RefObject<
-      SelectGroupOptionRef
-    > = createRef()
-    const selectGroupButtonCarrotRef: RefObject<
-      SelectGroupOptionRef
-    > = createRef()
-    const selectGroupButtonOnionRef: RefObject<
-      SelectGroupOptionRef
-    > = createRef()
+    const selectGroupButtonCeleryRef: RefObject<SelectGroupOptionRef> = createRef()
+    const selectGroupButtonCarrotRef: RefObject<SelectGroupOptionRef> = createRef()
+    const selectGroupButtonOnionRef: RefObject<SelectGroupOptionRef> = createRef()
 
     const selectGroupButtonRefs = {
       Celery: selectGroupButtonCeleryRef,

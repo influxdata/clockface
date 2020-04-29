@@ -41,9 +41,7 @@ export const OverlayMask = forwardRef<OverlayMaskRef, OverlayMaskProps>(
       const colors = getColorsFromGradient(gradient)
 
       return {
-        background: `linear-gradient(45deg,  ${colors.start} 0%,${
-          colors.stop
-        } 100%)`,
+        background: `linear-gradient(45deg,  ${colors.start} 0%,${colors.stop} 100%)`,
         ...style,
       }
     }
