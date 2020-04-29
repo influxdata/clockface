@@ -23,7 +23,7 @@ function check<P>(permissions: P[] = [], action: P, test: Test) {
   return false
 }
 
-function RBAC<P, Y, N>({
+export function RBAC<P, Y, N>({
   permissions,
   perform,
   test,
