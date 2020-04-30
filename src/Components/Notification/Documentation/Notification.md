@@ -18,6 +18,16 @@ You can pass in a `backgroundColor` or `gradient` to control the colorization of
 
 By default a notification will have `max-width: 500px`. If you want to change that pass in a new style object to the `style` prop.
 
+### Testing
+
+All testIDs are based on the single `testID` prop
+
+| Element | Default Value | Custom Value |
+|:----------------|:-------------------------|:-------------------|
+| Dialog | `notification` | `custom` |
+| Dismiss Button | `notification--dismiss` | `custom--dismiss` |
+| Child Container | `notification--children` | `custom--children` |
+
 ### Example
 
 <!-- STORY -->
