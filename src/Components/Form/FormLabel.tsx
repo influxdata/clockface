@@ -14,7 +14,7 @@ export interface FormLabelProps extends StandardFunctionProps {
   htmlFor?: string
 }
 
-export type FormLabelRef = HTMLLabelElement
+export type FormLabelRef = HTMLDivElement & HTMLLabelElement
 
 export const FormLabel = forwardRef<FormLabelRef, FormLabelProps>(
   (
@@ -34,21 +34,41 @@ export const FormLabel = forwardRef<FormLabelRef, FormLabelProps>(
       [`${className}`]: className,
     })
 
+    const labelChildren = (
+      <>
+        <div className="cf-form--label-text">
+          {label}
+          {!!required && <span className="cf-form--label-required">*</span>}
+        </div>
+        {children}
+      </>
+    )
+
+    if (htmlFor) {
+      return (
+        <label
+          id={id}
+          ref={ref}
+          style={style}
+          htmlFor={htmlFor}
+          data-testid={testID}
+          className={formLabelClass}
+        >
+          {labelChildren}
+        </label>
+      )
+    }
+
     return (
-      <label
+      <div
         id={id}
         ref={ref}
         style={style}
         data-testid={testID}
         className={formLabelClass}
-        htmlFor={htmlFor}
       >
-        <span>
-          {label}
-          {!!required && <span className="cf-form--label-required">*</span>}
-        </span>
-        {children}
-      </label>
+        {labelChildren}
+      </div>
     )
   }
 )

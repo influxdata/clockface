@@ -35,7 +35,7 @@ export interface FormValidationElementProps extends StandardFunctionProps {
   htmlFor?: string
 }
 
-export type FormValidationElementRef = HTMLDivElement
+export type FormValidationElementRef = HTMLLabelElement
 
 export const FormValidationElement = forwardRef<
   FormValidationElementRef,
@@ -82,22 +82,23 @@ export const FormValidationElement = forwardRef<
     })
 
     return (
-      <div
+      <label
         id={id}
         ref={ref}
         style={style}
+        htmlFor={htmlFor}
         data-testid={testID}
         className={formValidationElementClass}
       >
         {!!label && (
-          <FormLabel label={label} required={required} htmlFor={htmlFor}>
+          <FormLabel label={label} required={required}>
             {labelAddOn && labelAddOn()}
           </FormLabel>
         )}
         {children(status)}
         {!!errorMessage && <FormElementError message={errorMessage} />}
         {!!helpText && <FormHelpText text={helpText} />}
-      </div>
+      </label>
     )
   }
 )
