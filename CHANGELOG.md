@@ -2,6 +2,7 @@
 
 #### 2.1.1 (Unreleased)
 
+- [#495](https://github.com/influxdata/clockface/pull/495): Add optional `disabled` prop to `DropdownItem` and `DropdownLinkItem`
 - [#493](https://github.com/influxdata/clockface/pull/493): Add testIDs to `Notification` dismiss button and child wrapper for easy testing
 
 #### 2.1.0 [2020-04-16]
