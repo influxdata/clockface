@@ -25,7 +25,7 @@ export interface FormElementProps extends StandardFunctionProps {
   htmlFor?: string
 }
 
-export type FormElementRef = HTMLLabelElement
+export type FormElementRef = HTMLLabelElement & HTMLDivElement
 
 export const FormElement = forwardRef<FormElementRef, FormElementProps>(
   (
@@ -48,15 +48,8 @@ export const FormElement = forwardRef<FormElementRef, FormElementProps>(
       [`${className}`]: className,
     })
 
-    return (
-      <label
-        id={id}
-        ref={ref}
-        style={style}
-        htmlFor={htmlFor}
-        data-testid={testID}
-        className={formElementClass}
-      >
+    const formElementElements = (
+      <>
         {!!label && (
           <FormLabel label={label} required={required}>
             {!!labelAddOn && labelAddOn()}
@@ -65,7 +58,34 @@ export const FormElement = forwardRef<FormElementRef, FormElementProps>(
         {children}
         {!!errorMessage && <FormElementError message={errorMessage} />}
         {!!helpText && <FormHelpText text={helpText} />}
-      </label>
+      </>
+    )
+
+    if (htmlFor) {
+      return (
+        <label
+          id={id}
+          ref={ref}
+          style={style}
+          htmlFor={htmlFor}
+          data-testid={testID}
+          className={formElementClass}
+        >
+          {formElementElements}
+        </label>
+      )
+    }
+
+    return (
+      <div
+        id={id}
+        ref={ref}
+        style={style}
+        data-testid={testID}
+        className={formElementClass}
+      >
+        {formElementElements}
+      </div>
     )
   }
 )
