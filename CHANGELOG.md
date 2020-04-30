@@ -1,6 +1,8 @@
 # Changelog
 
-#### 2.1.1 (Unreleased)
+#### 2.1.2 (Unreleased)
+
+#### 2.1.1 [2020-04-30]
 
 - [#497](https://github.com/influxdata/clockface/pull/497): Add `CATLinkButton` component as composed variant of `LinkButton`
 - [#496](https://github.com/influxdata/clockface/pull/496): Add optional `htmlFor` prop to `FormElement` and `FormValidationElement` that, if true, will render the components with `<label />` instead  of `<div />`
