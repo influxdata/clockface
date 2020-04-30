@@ -172,6 +172,20 @@ formStories.add(
       /* eslint-enable */
     }
 
+    const addOnElement = () => (
+      <div
+        className="mockComponent mockInput"
+        style={{
+          width: '20px',
+          height: '20px',
+          minHeight: '20px',
+          borderRadius: '10px',
+        }}
+      >
+        $
+      </div>
+    )
+
     return (
       <div className="story--example">
         <div className="story--form-example">
@@ -181,6 +195,7 @@ formStories.add(
             helpText={text('helpText', 'Help Text')}
             errorMessage={text('errorMessage', 'Error Message')}
             required={boolean('required', true)}
+            labelAddOn={boolean('labelAddOn', false) ? addOnElement : undefined}
           >
             <div className="mockComponent mockInput">Input Goes Here</div>
           </Form.Element>
