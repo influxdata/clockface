@@ -21,6 +21,8 @@ export interface DropdownItemProps extends StandardFunctionProps {
   wrapText?: boolean
   /** Title attribute */
   title?: string
+  /** Prevents any interaction with this element, including the onClick function */
+  disabled?: boolean
 }
 
 export type DropdownItemRef = HTMLDivElement
@@ -38,6 +40,7 @@ export const DropdownItem = forwardRef<DropdownItemRef, DropdownItemProps>(
       wrapText = false,
       selected = false,
       children,
+      disabled,
       className,
     },
     ref
@@ -49,12 +52,13 @@ export const DropdownItem = forwardRef<DropdownItemRef, DropdownItemProps>(
       [`${className}`]: className,
       'cf-dropdown-item__wrap': wrapText,
       'cf-dropdown-item__no-wrap': !wrapText,
+      'cf-dropdown-item__disabled': disabled,
     })
 
     const handleClick = (e: MouseEvent<HTMLElement>): void => {
       e.preventDefault()
 
-      if (onClick) {
+      if (onClick && !disabled) {
         onClick(value)
       }
     }
