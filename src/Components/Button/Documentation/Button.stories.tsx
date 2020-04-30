@@ -15,6 +15,7 @@ import {SquareButton, SquareButtonRef} from '../Composed/SquareButton'
 import {ConfirmationButton} from '../Composed/ConfirmationButton'
 import {DismissButton, DismissButtonRef} from '../Composed/DismissButton'
 import {CTAButton, CTAButtonRef} from '../Composed/CTAButton'
+import {CTALinkButton, CTALinkButtonRef} from '../Composed/CTALinkButton'
 import {LinkButton, LinkButtonRef} from '../Composed/LinkButton'
 
 // Types
@@ -37,6 +38,7 @@ import SquareButtonReadme from './SquareButton.md'
 import ConfirmationButtonReadme from './ConfirmationButton.md'
 import DismissButtonReadme from './DismissButton.md'
 import CTAButtonReadme from './CTAButton.md'
+import CTALinkButtonReadme from './CTALinkButton.md'
 import LinkButtonReadme from './LinkButton.md'
 import ButtonBaseContrastTesterReadme from './ButtonBaseContrastTester.md'
 
@@ -451,6 +453,65 @@ buttonComposedStories.add(
   {
     readme: {
       content: marked(LinkButtonReadme),
+    },
+  }
+)
+
+buttonComposedStories.add(
+  'CTALinkButton',
+  () => {
+    const buttonRef = createRef<CTALinkButtonRef>()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(buttonRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <CTALinkButton
+          href={text('href', 'http://www.example.com')}
+          target={
+            LinkTarget[select('target', mapEnumKeys(LinkTarget), 'Blank')]
+          }
+          rel={
+            LinkRel[
+              select('rel', {None: 'none', ...mapEnumKeys(LinkRel)}, 'None')
+            ]
+          }
+          ref={buttonRef}
+          icon={
+            IconFont[
+              select('icon', {None: '', ...mapEnumKeys(IconFont)}, 'Zap')
+            ]
+          }
+          text={text('text', 'Yeehaw')}
+          titleText={text('titleText', 'Title Text')}
+          color={
+            ComponentColor[
+              select('color', mapEnumKeys(ComponentColor), 'Primary')
+            ]
+          }
+          status={
+            ComponentStatus[
+              select('status', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
+          shape={
+            ButtonShape[select('shape', mapEnumKeys(ButtonShape), 'Default')]
+          }
+          active={boolean('active', false)}
+        />
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(CTALinkButtonReadme),
     },
   }
 )
