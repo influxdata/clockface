@@ -15,6 +15,8 @@ export interface DropdownLinkItemProps extends StandardFunctionProps {
   type?: DropdownItemType
   /** Controls whether the text contents of this item wrap or not */
   wrapText?: boolean
+  /** Renders the element in a disabled state, does not affect functionality */
+  disabled?: boolean
 }
 
 export type DropdownLinkItemRef = HTMLDivElement
@@ -32,6 +34,7 @@ export const DropdownLinkItem = forwardRef<
       wrapText = false,
       selected = false,
       children,
+      disabled,
       className,
     },
     ref
@@ -45,6 +48,7 @@ export const DropdownLinkItem = forwardRef<
         [`${className}`]: className,
         'cf-dropdown-item__wrap': wrapText,
         'cf-dropdown-item__no-wrap': !wrapText,
+        'cf-dropdown-item__disabled': disabled,
       }
     )
 

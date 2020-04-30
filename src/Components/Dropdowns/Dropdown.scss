@@ -212,6 +212,23 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
 }
 
 /*
+  Dropdown Item (Disabled State)
+  ------------------------------------------------------------------------------
+*/
+
+.cf-dropdown-item__disabled,
+.cf-dropdown-item__disabled:hover,
+.cf-dropdown-link-item.cf-dropdown-item__disabled a,
+.cf-dropdown-link-item.cf-dropdown-item__disabled a:link,
+.cf-dropdown-link-item.cf-dropdown-item__disabled a:visited,
+.cf-dropdown-link-item.cf-dropdown-item__disabled a:active,
+.cf-dropdown-link-item.cf-dropdown-item__disabled a:hover {
+  color: rgba($g20-white, 0.45);
+  font-style: italic;
+  cursor: default;
+}
+
+/*
   Dropdown Empty Item
   ------------------------------------------------------------------------------
 */
@@ -242,8 +259,8 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
 ) {
   @include gradient-h($backgroundA, $backgroundB);
 
-  .cf-dropdown-item:hover,
-  .cf-dropdown-item.active {
+  .cf-dropdown-item:not(.cf-dropdown-item__disabled):hover,
+  .cf-dropdown-item.active:not(.cf-dropdown-item__disabled) {
     @include gradient-h($hoverA, $hoverB);
   }
   .cf-dropdown-divider {
@@ -252,6 +269,9 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   }
   .cf-dropdown-item--checkbox {
     background-color: $dividerA;
+  }
+  .cf-dropdown-item__disabled .cf-dropdown-item--checkbox {
+    background-color: mix($backgroundA, $dividerA);
   }
   .cf-dropdown-item--checkbox:after {
     background-color: $checkbox;
