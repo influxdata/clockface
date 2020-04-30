@@ -40,6 +40,16 @@
   width: 100%;
   color: $cf-label--default;
   margin: 0 0 $cf-marg-a 0;
+  display: flex;
+  align-items: center;
+}
+
+.cf-form--label-text {
+  margin-right: $cf-marg-b;
+
+  &:only-child {
+    margin-right: 0;
+  }
 }
 
 .cf-form--help-text {
