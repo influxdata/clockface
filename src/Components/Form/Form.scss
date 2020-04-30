@@ -30,7 +30,7 @@
 .cf-form--element-error {
   text-align: left;
   display: inline-block;
-  font-size: 12px;
+  font-size: $cf-form-sm-font;
   font-weight: $cf-font-weight--medium;
   padding: 0 ($cf-form-sm-padding + $cf-border);
   @extend %no-user-select;
