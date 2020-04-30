@@ -20,7 +20,7 @@ import {
 // Styles
 import './LinkButton.scss'
 
-interface LinkButtonProps
+export interface LinkButtonProps
   extends Omit<
     ButtonProps,
     | 'onClick'

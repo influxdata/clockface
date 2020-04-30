@@ -20,7 +20,7 @@ import {
   ButtonType,
 } from '../../../Types'
 
-interface CTAButtonProps extends Omit<ButtonBaseProps, 'size'> {
+export interface CTAButtonProps extends Omit<ButtonBaseProps, 'size'> {
   /** Text to be displayed on button */
   text?: string
   /** Icon to be displayed to the left of text or in place of text */
