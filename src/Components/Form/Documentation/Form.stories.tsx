@@ -53,6 +53,7 @@ import {
 
 // Notes
 import FormReadme from './Form.md'
+import FormElementReadme from './FormElement.md'
 import FormValidationElementReadme from './FormValidationElement.md'
 import NaturalLanguageFormReadme from './NaturalLanguageForm.md'
 import {FormRef} from '../Form'
@@ -172,6 +173,20 @@ formStories.add(
       /* eslint-enable */
     }
 
+    const addOnElement = () => (
+      <div
+        className="mockComponent mockInput"
+        style={{
+          width: '20px',
+          height: '20px',
+          minHeight: '20px',
+          borderRadius: '10px',
+        }}
+      >
+        $
+      </div>
+    )
+
     return (
       <div className="story--example">
         <div className="story--form-example">
@@ -181,6 +196,7 @@ formStories.add(
             helpText={text('helpText', 'Help Text')}
             errorMessage={text('errorMessage', 'Error Message')}
             required={boolean('required', true)}
+            labelAddOn={boolean('labelAddOn', false) ? addOnElement : undefined}
           >
             <div className="mockComponent mockInput">Input Goes Here</div>
           </Form.Element>
@@ -193,7 +209,7 @@ formStories.add(
   },
   {
     readme: {
-      content: marked(FormReadme),
+      content: marked(FormElementReadme),
     },
   }
 )
