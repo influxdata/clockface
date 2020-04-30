@@ -2,6 +2,8 @@
 
 #### 2.1.1 (Unreleased)
 
+- [#493](https://github.com/influxdata/clockface/pull/493): Add testIDs to `Notification` dismiss button and child wrapper for easy testing
+
 #### 2.1.0 [2020-04-16]
 
 - [#489](https://github.com/influxdata/clockface/pull/489): Remove same color used by text from the background in IndexList body
