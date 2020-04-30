@@ -96,13 +96,19 @@ export const NotificationDialog = forwardRef<
       >
         {!!icon && <Icon glyph={icon} className="cf-notification--icon" />}
         <div className="cf-notification--contents">
-          <div className="cf-notification--children">{children}</div>
+          <div
+            className="cf-notification--children"
+            data-testid={`${testID}--children`}
+          >
+            {children}
+          </div>
         </div>
         {onDismiss && (
           <SquareButton
             icon={IconFont.Remove}
             onClick={handleDismiss}
             className="cf-notification--dismiss"
+            testID={`${testID}--dismiss`}
           />
         )}
       </div>
