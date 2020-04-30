@@ -53,6 +53,7 @@ import {
 
 // Notes
 import FormReadme from './Form.md'
+import FormElementReadme from './FormElement.md'
 import FormValidationElementReadme from './FormValidationElement.md'
 import NaturalLanguageFormReadme from './NaturalLanguageForm.md'
 import {FormRef} from '../Form'
@@ -208,7 +209,7 @@ formStories.add(
   },
   {
     readme: {
-      content: marked(FormReadme),
+      content: marked(FormElementReadme),
     },
   }
 )
