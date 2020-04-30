@@ -103,6 +103,7 @@ export const NotificationDialog = forwardRef<
             icon={IconFont.Remove}
             onClick={handleDismiss}
             className="cf-notification--dismiss"
+            testID={`${testID}--dismiss`}
           />
         )}
       </div>
