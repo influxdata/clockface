@@ -325,9 +325,7 @@ dropdownFamilyStories.add(
   'DropdownMenu',
   () => {
     const dropdownMenuRef: RefObject<DropdownMenuRef> = createRef()
-    const dropdownMenuContentsRef: RefObject<
-      DropdownMenuContentsRef
-    > = createRef()
+    const dropdownMenuContentsRef: RefObject<DropdownMenuContentsRef> = createRef()
 
     const logRef = (): void => {
       /* eslint-disable */
@@ -566,9 +564,7 @@ dropdownComposedStories.add(
     ]
     const defaultMultiSelectSelectedOptions = ['Celery', 'Onion']
 
-    const multiSelectDropdownRef: RefObject<
-      MultiSelectDropdownRef
-    > = createRef()
+    const multiSelectDropdownRef: RefObject<MultiSelectDropdownRef> = createRef()
 
     const logRef = (): void => {
       /* eslint-disable */

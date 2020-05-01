@@ -7,9 +7,9 @@ interface DropdownItemSelectionIndicatorProps {
   type: DropdownItemType
 }
 
-export const DropdownItemSelectionIndicator: FunctionComponent<
-  DropdownItemSelectionIndicatorProps
-> = ({type}) => {
+export const DropdownItemSelectionIndicator: FunctionComponent<DropdownItemSelectionIndicatorProps> = ({
+  type,
+}) => {
   switch (type) {
     case DropdownItemType.Checkbox:
       return <div className="cf-dropdown-item--checkbox" />

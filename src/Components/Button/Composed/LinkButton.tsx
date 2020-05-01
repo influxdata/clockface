@@ -96,9 +96,7 @@ export const LinkButton = forwardRef<LinkButtonRef, LinkButtonProps>(
         />
         {status === ComponentStatus.Loading && (
           <div
-            className={`cf-button-spinner cf-button-spinner--${
-              ComponentSize.Large
-            }`}
+            className={`cf-button-spinner cf-button-spinner--${ComponentSize.Large}`}
           />
         )}
       </a>

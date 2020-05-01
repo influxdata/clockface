@@ -698,12 +698,8 @@ inputsComposedStories.add(
   () => {
     const autoInputRef: RefObject<AutoInputRef> = createRef()
     const autoInputSelectGroupRef: RefObject<SelectGroupRef> = createRef()
-    const autoInputSelectGroupAutoRef: RefObject<
-      SelectGroupOptionRef
-    > = createRef()
-    const autoInputSelectGroupCustomRef: RefObject<
-      SelectGroupOptionRef
-    > = createRef()
+    const autoInputSelectGroupAutoRef: RefObject<SelectGroupOptionRef> = createRef()
+    const autoInputSelectGroupCustomRef: RefObject<SelectGroupOptionRef> = createRef()
 
     const handleLogRef = (): void => {
       /* eslint-disable */

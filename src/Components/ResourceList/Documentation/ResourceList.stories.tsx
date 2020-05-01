@@ -88,15 +88,9 @@ resourceListStories.add(
   'ResourceListHeader',
   () => {
     const resourceListHeaderRef: RefObject<ResourceListHeaderRef> = createRef()
-    const resourceListSorterNameRef: RefObject<
-      ResourceListSorterRef
-    > = createRef()
-    const resourceListSorterCreatedRef: RefObject<
-      ResourceListSorterRef
-    > = createRef()
-    const resourceListSorterColorRef: RefObject<
-      ResourceListSorterRef
-    > = createRef()
+    const resourceListSorterNameRef: RefObject<ResourceListSorterRef> = createRef()
+    const resourceListSorterCreatedRef: RefObject<ResourceListSorterRef> = createRef()
+    const resourceListSorterColorRef: RefObject<ResourceListSorterRef> = createRef()
 
     const sorterRefs = [
       resourceListSorterNameRef,

@@ -88,9 +88,7 @@ export const CTAButton = forwardRef<CTAButtonRef, CTAButtonProps>(
         />
         {status === ComponentStatus.Loading && (
           <div
-            className={`cf-button-spinner cf-button-spinner--${
-              ComponentSize.Large
-            }`}
+            className={`cf-button-spinner cf-button-spinner--${ComponentSize.Large}`}
           />
         )}
       </ButtonBase>

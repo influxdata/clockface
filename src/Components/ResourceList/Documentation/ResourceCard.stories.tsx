@@ -74,9 +74,7 @@ resourceListCardStories.add(
     const resourceCardRef: RefObject<ResourceCardRef> = createRef()
     const resourceCardNameRef: RefObject<ResourceCardNameRef> = createRef()
     const resourceCardMetaRef: RefObject<ResourceCardMetaRef> = createRef()
-    const resourceCardEditableDescriptionRef: RefObject<
-      ResourceCardEditableDescriptionRef
-    > = createRef()
+    const resourceCardEditableDescriptionRef: RefObject<ResourceCardEditableDescriptionRef> = createRef()
 
     const [name, setName] = useState<string>('Edit my name!')
     const [description, setDescription] = useState<string>(
@@ -174,9 +172,7 @@ resourceListCardStories.add(
 resourceListCardStories.add(
   'ResourceCardDescription',
   () => {
-    const resourceCardDescriptionRef: RefObject<
-      ResourceCardDescriptionRef
-    > = createRef()
+    const resourceCardDescriptionRef: RefObject<ResourceCardDescriptionRef> = createRef()
 
     const logRef = (): void => {
       /* eslint-disable */
@@ -209,9 +205,7 @@ resourceListCardStories.add(
 resourceListCardStories.add(
   'ResourceCardEditableDescription',
   () => {
-    const resourceCardEditableDescriptionRef: RefObject<
-      ResourceCardEditableDescriptionRef
-    > = createRef()
+    const resourceCardEditableDescriptionRef: RefObject<ResourceCardEditableDescriptionRef> = createRef()
 
     const logRefs = (): void => {
       /* eslint-disable */
@@ -292,12 +286,8 @@ resourceListCardStories.add(
 resourceListCardStories.add(
   'ResourceCardEditableName',
   () => {
-    const resourceCardEditableNameRef1: RefObject<
-      ResourceCardEditableNameRef
-    > = createRef()
-    const resourceCardEditableNameRef2: RefObject<
-      ResourceCardEditableNameRef
-    > = createRef()
+    const resourceCardEditableNameRef1: RefObject<ResourceCardEditableNameRef> = createRef()
+    const resourceCardEditableNameRef2: RefObject<ResourceCardEditableNameRef> = createRef()
 
     const logRefs = (): void => {
       /* eslint-disable */
