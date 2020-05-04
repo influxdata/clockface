@@ -2,7 +2,7 @@
 
 #### 2.1.2 (Unreleased)
 
-- [#499](https://github.com/influxdata/clockface/pull/499): Fix export for `CATLinkButton`
+- [#499](https://github.com/influxdata/clockface/pull/499): Fix export for `CTALinkButton`
 - [#492](https://github.com/influxdata/clockface/pull/492): Introduce `RBAC` component that conditionally renders content based on permissions
 
 #### 2.1.1 [2020-04-30]
