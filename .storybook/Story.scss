@@ -222,6 +222,15 @@ body.sb-show-main {
   &.top {
     align-items: flex-start;
   }
+
+  code {
+    background-color: $g0-obsidian;
+    color: $c-galaxy;
+    font-weight: 700;
+    line-height: 1em;
+    padding: 3px 7px;
+    border-radius: 3px;
+  }
 }
 
 .overlay--example {
@@ -259,6 +268,12 @@ body.sb-show-main {
   p {
     font-weight: $cf-font-weight--medium;
     margin: 0;
+  }
+}
+
+.story--invisible-table {
+  td {
+    padding: 22px;
   }
 }
 
