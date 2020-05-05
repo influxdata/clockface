@@ -2,11 +2,12 @@
 
 #### 2.1.2 (Unreleased)
 
-- [#499](https://github.com/influxdata/clockface/pull/499): Fix export for `CATLinkButton`
+- [#499](https://github.com/influxdata/clockface/pull/499): Fix export for `CTALinkButton`
+- [#492](https://github.com/influxdata/clockface/pull/492): Introduce `RBAC` component that conditionally renders content based on permissions
 
 #### 2.1.1 [2020-04-30]
 
-- [#497](https://github.com/influxdata/clockface/pull/497): Add `CATLinkButton` component as composed variant of `LinkButton`
+- [#497](https://github.com/influxdata/clockface/pull/497): Introduce `CTALinkButton` component as composed variant of `LinkButton`
 - [#496](https://github.com/influxdata/clockface/pull/496): Add optional `htmlFor` prop to `FormElement` and `FormValidationElement` that, if true, will render the components with `<label />` instead of `<div />`
 - [#495](https://github.com/influxdata/clockface/pull/495): Add optional `disabled` prop to `DropdownItem` and `DropdownLinkItem`
 - [#493](https://github.com/influxdata/clockface/pull/493): Add testIDs to `Notification` dismiss button and child wrapper for easy testing
