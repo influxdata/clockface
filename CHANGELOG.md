@@ -7,7 +7,7 @@
 
 #### 2.1.1 [2020-04-30]
 
-- [#497](https://github.com/influxdata/clockface/pull/497): Introduce `CATLinkButton` component as composed variant of `LinkButton`
+- [#497](https://github.com/influxdata/clockface/pull/497): Introduce `CTALinkButton` component as composed variant of `LinkButton`
 - [#496](https://github.com/influxdata/clockface/pull/496): Add optional `htmlFor` prop to `FormElement` and `FormValidationElement` that, if true, will render the components with `<label />` instead of `<div />`
 - [#495](https://github.com/influxdata/clockface/pull/495): Add optional `disabled` prop to `DropdownItem` and `DropdownLinkItem`
 - [#493](https://github.com/influxdata/clockface/pull/493): Add testIDs to `Notification` dismiss button and child wrapper for easy testing
