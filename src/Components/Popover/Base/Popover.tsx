@@ -57,6 +57,8 @@ export interface PopoverProps extends StandardFunctionProps {
   triggerRef: RefObject<any>
   /** Adds reasonable styles to popover dialog contents so you do not have to */
   enableDefaultStyles?: boolean
+  /** If true the popover can be dismissed via the Escape key */
+  enableEscapeKey?: boolean
 }
 
 export type PopoverRef = PopoverDialogRef
@@ -84,6 +86,7 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
       distanceFromTrigger = 4,
       appearance = Appearance.Outline,
       enableDefaultStyles = true,
+      enableEscapeKey = true,
       color = ComponentColor.Primary,
       position = PopoverPosition.Below,
       showEvent = PopoverInteraction.Click,
@@ -99,14 +102,20 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
       setPortalID(newPortalID)
 
       createPortalElement(newPortalID, popoverPortalName)
-      handleAddEventListeners()
+      handleAddEventListenersToTrigger()
+
+      if (enableEscapeKey) {
+        handleAddEscapeKeyListener()
+      }
 
       return (): void => {
         destroyPortalElement(newPortalID)
-        handleRemoveEventListeners()
+        handleRemoveEventListenersFromTrigger()
+        handleRemoveEscapeKeyListener()
       }
     }, [])
 
+    // Show or hide dialog in reponse to changes in "visible" prop
     useEffect(() => {
       if (visible) {
         handleShowDialog()
@@ -114,6 +123,15 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
         handleHideDialog()
       }
     }, [visible])
+
+    // Add or remove event listeners in response to changes in "enableEscapeKey" prop
+    useEffect(() => {
+      if (enableEscapeKey) {
+        handleAddEscapeKeyListener()
+      } else if (!enableEscapeKey) {
+        handleRemoveEscapeKeyListener()
+      }
+    }, [enableEscapeKey])
 
     const handleTriggerClick = (e: MouseEvent): void => {
       e.stopPropagation()
@@ -169,6 +187,14 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
       }
     }
 
+    const handleEscapeKey = (e: KeyboardEvent): void => {
+      // Only hide dialog on escape key press if it is allowed
+      // and the dialog is not forced to be visible externally
+      if (e.key === 'Escape' && enableEscapeKey && !visible) {
+        handleHideDialog()
+      }
+    }
+
     const handleShowDialog = (): void => {
       onShow && onShow()
       setExpanded(true)
@@ -179,7 +205,15 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
       setExpanded(false)
     }
 
-    const handleAddEventListeners = (): void => {
+    const handleAddEscapeKeyListener = (): void => {
+      window.addEventListener('keydown', handleEscapeKey)
+    }
+
+    const handleRemoveEscapeKeyListener = (): void => {
+      window.removeEventListener('keydown', handleEscapeKey)
+    }
+
+    const handleAddEventListenersToTrigger = (): void => {
       if (!triggerRef.current) {
         return
       }
@@ -198,7 +232,7 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
       }
     }
 
-    const handleRemoveEventListeners = (): void => {
+    const handleRemoveEventListenersFromTrigger = (): void => {
       if (!triggerRef.current) {
         return
       }
