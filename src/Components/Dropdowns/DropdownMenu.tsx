@@ -119,6 +119,11 @@ const calculateSelectedPosition = (
   const items = React.Children.map(children, child =>
     _.get(child, 'props.selected', false)
   )
+
+  if (!items) {
+    return 0
+  }
+
   const itemIndex = items.findIndex(item => item === true)
 
   return itemHeight * itemIndex
