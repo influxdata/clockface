@@ -2,6 +2,7 @@
 
 #### 2.1.2 (Unreleased)
 
+- [#503](https://github.com/influxdata/clockface/pull/503): Expose `onScroll` and `onUpdate` props in `DapperScrollbars`
 - [#499](https://github.com/influxdata/clockface/pull/499): Fix export for `CTALinkButton`
 - [#492](https://github.com/influxdata/clockface/pull/492): Introduce `RBAC` component that conditionally renders content based on permissions
 
