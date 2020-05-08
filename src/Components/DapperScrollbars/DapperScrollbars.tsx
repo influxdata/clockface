@@ -87,6 +87,8 @@ export const DapperScrollbars: FunctionComponent<DapperScrollbarsProps> = ({
   removeTrackXWhenNotUsed = true,
 }) => {
   const scrollEl = useRef<any>(null)
+  // State is used here to ensure that the scroll position does not jump when
+  // a component using DapperScrollbars re-renders
   const [scrollTopPos, setScrollTopPos] = useState<number>(Number(scrollTop))
   const [scrollLeftPos, setScrollLeftPos] = useState<number>(Number(scrollLeft))
 
