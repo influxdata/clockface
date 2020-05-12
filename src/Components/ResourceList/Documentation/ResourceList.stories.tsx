@@ -270,8 +270,8 @@ resourceListExampleStories.add(
                 value={text('Search term', '')}
               />
             ) : (
-                undefined
-              )
+              undefined
+            )
           }
         >
           <ResourceList.Sorter

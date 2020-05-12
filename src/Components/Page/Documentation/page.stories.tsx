@@ -100,7 +100,7 @@ pageStories.add(
           fullWidth={boolean('fullWidth', false)}
           gutters={
             ComponentSize[
-            select('gutters', mapEnumKeys(ComponentSize), 'Small')
+              select('gutters', mapEnumKeys(ComponentSize), 'Small')
             ]
           }
         >
@@ -152,7 +152,7 @@ pageStories.add(
           scrollable={boolean('scrollable', false)}
           gutters={
             ComponentSize[
-            select('gutters', mapEnumKeys(ComponentSize), 'Small')
+              select('gutters', mapEnumKeys(ComponentSize), 'Small')
             ]
           }
         >
@@ -229,7 +229,7 @@ pageExampleStories.add(
             fullWidth={boolean('fullWidth', false)}
             gutters={
               ComponentSize[
-              select('gutters', mapEnumKeys(ComponentSize), 'Small')
+                select('gutters', mapEnumKeys(ComponentSize), 'Small')
               ]
             }
           >
@@ -240,7 +240,7 @@ pageExampleStories.add(
             fullWidth={boolean('fullWidth', false)}
             gutters={
               ComponentSize[
-              select('gutters', mapEnumKeys(ComponentSize), 'Small')
+                select('gutters', mapEnumKeys(ComponentSize), 'Small')
               ]
             }
           >
@@ -297,7 +297,7 @@ pageExampleStories.add(
             autoHideScrollbar={boolean('autoHideScrollbar', false)}
             gutters={
               ComponentSize[
-              select('gutters', mapEnumKeys(ComponentSize), 'Small')
+                select('gutters', mapEnumKeys(ComponentSize), 'Small')
               ]
             }
           >

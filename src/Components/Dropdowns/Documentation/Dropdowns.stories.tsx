@@ -133,12 +133,12 @@ dropdownFamilyStories.add(
             }}
             status={
               ComponentStatus[
-              select('status', mapEnumKeys(ComponentStatus), 'Default')
+                select('status', mapEnumKeys(ComponentStatus), 'Default')
               ]
             }
             color={
               ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Primary')
+                select('color', mapEnumKeys(ComponentColor), 'Primary')
               ]
             }
             size={
@@ -147,11 +147,11 @@ dropdownFamilyStories.add(
             active={boolean('active', false)}
             icon={
               IconFont[
-              select(
-                'icon',
-                {None: 'none', ...mapEnumKeys(IconFont)},
-                'BarChart'
-              )
+                select(
+                  'icon',
+                  {None: 'none', ...mapEnumKeys(IconFont)},
+                  'BarChart'
+                )
               ]
             }
             title={text('title', 'Hover Title Text')}
@@ -222,7 +222,7 @@ dropdownFamilyStories.add(
           }}
           type={
             DropdownItemType[
-            select('type', mapEnumKeys(DropdownItemType), 'None')
+              select('type', mapEnumKeys(DropdownItemType), 'None')
             ]
           }
           disabled={boolean('disabled', false)}
@@ -293,7 +293,7 @@ dropdownFamilyStories.add(
           wrapText={boolean('wrapText', false)}
           type={
             DropdownItemType[
-            select('type', mapEnumKeys(DropdownItemType), 'None')
+              select('type', mapEnumKeys(DropdownItemType), 'None')
             ]
           }
           disabled={boolean('disabled', false)}
@@ -420,7 +420,7 @@ dropdownFamilyStories.add(
           contentsRef={dropdownMenuContentsRef}
           theme={
             DropdownMenuTheme[
-            select('theme', mapEnumKeys(DropdownMenuTheme), 'Onyx')
+              select('theme', mapEnumKeys(DropdownMenuTheme), 'Onyx')
             ]
           }
           maxHeight={number('maxHeight', 250)}
@@ -442,7 +442,7 @@ dropdownFamilyStories.add(
                 disabled={disabledItems.includes(item.text)}
                 type={
                   DropdownItemType[
-                  select('item type', mapEnumKeys(DropdownItemType), 'None')
+                    select('item type', mapEnumKeys(DropdownItemType), 'None')
                   ]
                 }
               >
@@ -506,7 +506,7 @@ dropdownComposedStories.add(
           dropUp={boolean('dropUp', false)}
           menuTheme={
             DropdownMenuTheme[
-            select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Onyx')
+              select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Onyx')
             ]
           }
           onSelect={option => {
@@ -514,26 +514,26 @@ dropdownComposedStories.add(
           }}
           buttonStatus={
             ComponentStatus[
-            select('buttonStatus', mapEnumKeys(ComponentStatus), 'Default')
+              select('buttonStatus', mapEnumKeys(ComponentStatus), 'Default')
             ]
           }
           buttonColor={
             ComponentColor[
-            select('buttonColor', mapEnumKeys(ComponentColor), 'Primary')
+              select('buttonColor', mapEnumKeys(ComponentColor), 'Primary')
             ]
           }
           buttonSize={
             ComponentSize[
-            select('buttonSize', mapEnumKeys(ComponentSize), 'Small')
+              select('buttonSize', mapEnumKeys(ComponentSize), 'Small')
             ]
           }
           buttonIcon={
             IconFont[
-            select(
-              'buttonIcon',
-              {None: 'none', ...mapEnumKeys(IconFont)},
-              'BarChart'
-            )
+              select(
+                'buttonIcon',
+                {None: 'none', ...mapEnumKeys(IconFont)},
+                'BarChart'
+              )
             ]
           }
           selectedOption={text('selectedOption', selectDropdownSelectedOption)}
@@ -583,7 +583,7 @@ dropdownComposedStories.add(
           dropUp={boolean('dropUp', false)}
           menuTheme={
             DropdownMenuTheme[
-            select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Onyx')
+              select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Onyx')
             ]
           }
           onSelect={option => {
@@ -591,26 +591,26 @@ dropdownComposedStories.add(
           }}
           buttonStatus={
             ComponentStatus[
-            select('buttonStatus', mapEnumKeys(ComponentStatus), 'Default')
+              select('buttonStatus', mapEnumKeys(ComponentStatus), 'Default')
             ]
           }
           buttonColor={
             ComponentColor[
-            select('buttonColor', mapEnumKeys(ComponentColor), 'Primary')
+              select('buttonColor', mapEnumKeys(ComponentColor), 'Primary')
             ]
           }
           buttonSize={
             ComponentSize[
-            select('buttonSize', mapEnumKeys(ComponentSize), 'Small')
+              select('buttonSize', mapEnumKeys(ComponentSize), 'Small')
             ]
           }
           buttonIcon={
             IconFont[
-            select(
-              'buttonIcon',
-              {None: 'none', ...mapEnumKeys(IconFont)},
-              'BarChart'
-            )
+              select(
+                'buttonIcon',
+                {None: 'none', ...mapEnumKeys(IconFont)},
+                'BarChart'
+              )
             ]
           }
           emptyText={text('emptyText', 'None selected')}
