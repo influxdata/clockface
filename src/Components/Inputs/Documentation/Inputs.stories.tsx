@@ -102,20 +102,22 @@ inputsBaseStories.add(
           containerRef={inputContainerRef}
           placeholder={text('placeholder', 'Placeholder Text')}
           value={text('value', 'Value Text')}
-          onChange={() => {}}
+          onChange={() => {
+            // do nothing
+          }}
           name={text('name', 'Name')}
           titleText={text('titleText', 'Title Text')}
           disabledTitleText={text('disabledTitleText', 'Disabled Title Text')}
           maxLength={number('maxLength', 24)}
           icon={
             IconFont[
-              select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
+            select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
             ]
           }
           style={object('style', defaultInputStyle)}
           status={
             ComponentStatus[
-              select('status', mapEnumKeys(ComponentStatus), 'Default')
+            select('status', mapEnumKeys(ComponentStatus), 'Default')
             ]
           }
           size={
@@ -123,11 +125,11 @@ inputsBaseStories.add(
           }
           autocomplete={
             AutoComplete[
-              radios<AutoComplete>(
-                'autocomplete',
-                mapEnumKeys(AutoComplete),
-                AutoComplete.Off
-              )
+            radios<AutoComplete>(
+              'autocomplete',
+              mapEnumKeys(AutoComplete),
+              AutoComplete.Off
+            )
             ]
           }
           type={InputType.Text}
@@ -165,13 +167,13 @@ inputsBaseStories.add(
           maxLength={number('maxLength', 24)}
           icon={
             IconFont[
-              select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
+            select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
             ]
           }
           style={object('style', defaultInputStyle)}
           status={
             ComponentStatus[
-              select('status', mapEnumKeys(ComponentStatus), 'Default')
+            select('status', mapEnumKeys(ComponentStatus), 'Default')
             ]
           }
           size={
@@ -196,20 +198,22 @@ inputsBaseStories.add(
       <Input
         placeholder={text('placeholder', 'Placeholder Text')}
         value={text('value', 'Value Text')}
-        onChange={() => {}}
+        onChange={() => {
+          // do nothing
+        }}
         name={text('name', 'Name')}
         titleText={text('titleText', 'Title Text')}
         disabledTitleText={text('disabledTitleText', 'Disabled Title Text')}
         maxLength={number('maxLength', 24)}
         icon={
           IconFont[
-            select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
+          select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
           ]
         }
         style={object('style', defaultInputStyle)}
         status={
           ComponentStatus[
-            select('status', mapEnumKeys(ComponentStatus), 'Default')
+          select('status', mapEnumKeys(ComponentStatus), 'Default')
           ]
         }
         size={
@@ -217,11 +221,11 @@ inputsBaseStories.add(
         }
         autocomplete={
           AutoComplete[
-            radios<AutoComplete>(
-              'autocomplete',
-              mapEnumKeys(AutoComplete),
-              AutoComplete.Off
-            )
+          radios<AutoComplete>(
+            'autocomplete',
+            mapEnumKeys(AutoComplete),
+            AutoComplete.Off
+          )
           ]
         }
         type={InputType.Password}
@@ -242,20 +246,22 @@ inputsBaseStories.add(
       <Input
         placeholder={text('placeholder', 'Placeholder Text')}
         value={text('value', 'value@text.com')}
-        onChange={() => {}}
+        onChange={() => {
+          // do nothing
+        }}
         name={text('name', 'Name')}
         titleText={text('titleText', 'Title Text')}
         disabledTitleText={text('disabledTitleText', 'Disabled Title Text')}
         maxLength={number('maxLength', 24)}
         icon={
           IconFont[
-            select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
+          select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
           ]
         }
         style={object('style', defaultInputStyle)}
         status={
           ComponentStatus[
-            select('status', mapEnumKeys(ComponentStatus), 'Default')
+          select('status', mapEnumKeys(ComponentStatus), 'Default')
           ]
         }
         size={
@@ -263,11 +269,11 @@ inputsBaseStories.add(
         }
         autocomplete={
           AutoComplete[
-            radios<AutoComplete>(
-              'autocomplete',
-              mapEnumKeys(AutoComplete),
-              AutoComplete.Off
-            )
+          radios<AutoComplete>(
+            'autocomplete',
+            mapEnumKeys(AutoComplete),
+            AutoComplete.Off
+          )
           ]
         }
         type={InputType.Email}
@@ -294,13 +300,15 @@ inputsBaseStories.add(
         >
           <Input
             name={text('name', 'Name')}
-            onChange={() => {}}
+            onChange={() => {
+              // do nothing
+            }}
             size={
               ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
             }
             status={
               ComponentStatus[
-                select('status', mapEnumKeys(ComponentStatus), 'Default')
+              select('status', mapEnumKeys(ComponentStatus), 'Default')
               ]
             }
             type={InputType.Checkbox}
@@ -398,7 +406,7 @@ inputsBaseStories.add(
           tabIndex={number('tabIndex', 1)}
           icon={
             IconFont[
-              select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
+            select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
             ]
           }
           disabled={boolean('disabled', false)}
@@ -407,7 +415,7 @@ inputsBaseStories.add(
           }
           color={
             ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Primary')
+            select('color', mapEnumKeys(ComponentColor), 'Primary')
             ]
           }
           appearance={
@@ -415,7 +423,7 @@ inputsBaseStories.add(
           }
           type={
             InputToggleType[
-              select('type', mapEnumKeys(InputToggleType), 'Checkbox')
+            select('type', mapEnumKeys(InputToggleType), 'Checkbox')
             ]
           }
           onChange={handleToggleChange}
@@ -424,7 +432,7 @@ inputsBaseStories.add(
             <InputLabel
               size={
                 ComponentSize[
-                  select('size', mapEnumKeys(ComponentSize), 'Small')
+                select('size', mapEnumKeys(ComponentSize), 'Small')
                 ]
               }
               active={checked}
@@ -488,15 +496,17 @@ inputsBaseStories.add(
           maxLength={number('maxLength', 50)}
           minLength={number('minLength', 5)}
           placeholder={text('placeholder', 'Placeholder Text')}
-          onChange={() => {}}
+          onChange={() => {
+            // do nothing
+          }}
           monospace={boolean('monospace', false)}
           autocomplete={
             AutoComplete[
-              radios<AutoComplete>(
-                'autocomplete',
-                mapEnumKeys(AutoComplete),
-                AutoComplete.Off
-              )
+            radios<AutoComplete>(
+              'autocomplete',
+              mapEnumKeys(AutoComplete),
+              AutoComplete.Off
+            )
             ]
           }
           size={
@@ -516,15 +526,17 @@ inputsBaseStories.add(
           maxLength={number('maxLength', 50)}
           minLength={number('minLength', 5)}
           placeholder={text('placeholder', 'Placeholder Text')}
-          onChange={() => {}}
+          onChange={() => {
+            // do nothing
+          }}
           monospace={boolean('monospace', false)}
           autocomplete={
             AutoComplete[
-              radios<AutoComplete>(
-                'autocomplete',
-                mapEnumKeys(AutoComplete),
-                AutoComplete.Off
-              )
+            radios<AutoComplete>(
+              'autocomplete',
+              mapEnumKeys(AutoComplete),
+              AutoComplete.Off
+            )
             ]
           }
           size={
@@ -544,15 +556,17 @@ inputsBaseStories.add(
           maxLength={number('maxLength', 50)}
           minLength={number('minLength', 5)}
           placeholder={text('placeholder', 'Placeholder Text')}
-          onChange={() => {}}
+          onChange={() => {
+            // do nothing
+          }}
           monospace={boolean('monospace', false)}
           autocomplete={
             AutoComplete[
-              radios<AutoComplete>(
-                'autocomplete',
-                mapEnumKeys(AutoComplete),
-                AutoComplete.Off
-              )
+            radios<AutoComplete>(
+              'autocomplete',
+              mapEnumKeys(AutoComplete),
+              AutoComplete.Off
+            )
             ]
           }
           size={
@@ -572,15 +586,17 @@ inputsBaseStories.add(
           maxLength={number('maxLength', 50)}
           minLength={number('minLength', 5)}
           placeholder={text('placeholder', 'Placeholder Text')}
-          onChange={() => {}}
+          onChange={() => {
+            // do nothing
+          }}
           monospace={boolean('monospace', false)}
           autocomplete={
             AutoComplete[
-              radios<AutoComplete>(
-                'autocomplete',
-                mapEnumKeys(AutoComplete),
-                AutoComplete.Off
-              )
+            radios<AutoComplete>(
+              'autocomplete',
+              mapEnumKeys(AutoComplete),
+              AutoComplete.Off
+            )
             ]
           }
           size={
@@ -600,15 +616,17 @@ inputsBaseStories.add(
           maxLength={number('maxLength', 50)}
           minLength={number('minLength', 5)}
           placeholder={text('placeholder', 'Placeholder Text')}
-          onChange={() => {}}
+          onChange={() => {
+            // do nothing
+          }}
           monospace={boolean('monospace', false)}
           autocomplete={
             AutoComplete[
-              radios<AutoComplete>(
-                'autocomplete',
-                mapEnumKeys(AutoComplete),
-                AutoComplete.Off
-              )
+            radios<AutoComplete>(
+              'autocomplete',
+              mapEnumKeys(AutoComplete),
+              AutoComplete.Off
+            )
             ]
           }
           size={
@@ -658,13 +676,13 @@ inputsComposedStories.add(
           maxLength={number('maxLength', 24)}
           icon={
             IconFont[
-              select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
+            select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
             ]
           }
           style={object('style', defaultInputStyle)}
           status={
             ComponentStatus[
-              select('status', mapEnumKeys(ComponentStatus), 'Default')
+            select('status', mapEnumKeys(ComponentStatus), 'Default')
             ]
           }
           size={
@@ -672,11 +690,11 @@ inputsComposedStories.add(
           }
           autocomplete={
             AutoComplete[
-              radios<AutoComplete>(
-                'autocomplete',
-                mapEnumKeys(AutoComplete),
-                AutoComplete.Off
-              )
+            radios<AutoComplete>(
+              'autocomplete',
+              mapEnumKeys(AutoComplete),
+              AutoComplete.Off
+            )
             ]
           }
         />
@@ -734,7 +752,7 @@ inputsComposedStories.add(
           }
           color={
             ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Primary')
+            select('color', mapEnumKeys(ComponentColor), 'Primary')
             ]
           }
           onChangeMode={mode => alert(`${mode}`)}
@@ -747,7 +765,7 @@ inputsComposedStories.add(
               )}
               size={
                 ComponentSize[
-                  select('size', mapEnumKeys(ComponentSize), 'Small')
+                select('size', mapEnumKeys(ComponentSize), 'Small')
                 ]
               }
               type={
@@ -804,7 +822,7 @@ inputsComposedStories.add(
           }
           color={
             ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Primary')
+            select('color', mapEnumKeys(ComponentColor), 'Primary')
             ]
           }
           labelPrefix={text('labelPrefix', '')}
@@ -814,7 +832,7 @@ inputsComposedStories.add(
           style={object('style', exampleRangeSliderStyle)}
           status={
             ComponentStatus[
-              select('status', mapEnumKeys(ComponentStatus), 'Default')
+            select('status', mapEnumKeys(ComponentStatus), 'Default')
             ]
           }
         />
@@ -859,12 +877,12 @@ inputsExampleStories.add(
             size={ComponentSize.ExtraSmall}
             color={
               ComponentColor[
-                select('color', mapEnumKeys(ComponentColor), 'Primary')
+              select('color', mapEnumKeys(ComponentColor), 'Primary')
               ]
             }
             appearance={
               Appearance[
-                select('appearance', mapEnumKeys(Appearance), 'Outline')
+              select('appearance', mapEnumKeys(Appearance), 'Outline')
               ]
             }
           >
@@ -883,12 +901,12 @@ inputsExampleStories.add(
             size={ComponentSize.ExtraSmall}
             color={
               ComponentColor[
-                select('color', mapEnumKeys(ComponentColor), 'Primary')
+              select('color', mapEnumKeys(ComponentColor), 'Primary')
               ]
             }
             appearance={
               Appearance[
-                select('appearance', mapEnumKeys(Appearance), 'Outline')
+              select('appearance', mapEnumKeys(Appearance), 'Outline')
               ]
             }
           >
@@ -907,12 +925,12 @@ inputsExampleStories.add(
             size={ComponentSize.ExtraSmall}
             color={
               ComponentColor[
-                select('color', mapEnumKeys(ComponentColor), 'Primary')
+              select('color', mapEnumKeys(ComponentColor), 'Primary')
               ]
             }
             appearance={
               Appearance[
-                select('appearance', mapEnumKeys(Appearance), 'Outline')
+              select('appearance', mapEnumKeys(Appearance), 'Outline')
               ]
             }
           >

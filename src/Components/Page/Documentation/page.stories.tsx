@@ -100,7 +100,7 @@ pageStories.add(
           fullWidth={boolean('fullWidth', false)}
           gutters={
             ComponentSize[
-              select('gutters', mapEnumKeys(ComponentSize), 'Small')
+            select('gutters', mapEnumKeys(ComponentSize), 'Small')
             ]
           }
         >
@@ -152,7 +152,7 @@ pageStories.add(
           scrollable={boolean('scrollable', false)}
           gutters={
             ComponentSize[
-              select('gutters', mapEnumKeys(ComponentSize), 'Small')
+            select('gutters', mapEnumKeys(ComponentSize), 'Small')
             ]
           }
         >
@@ -229,7 +229,7 @@ pageExampleStories.add(
             fullWidth={boolean('fullWidth', false)}
             gutters={
               ComponentSize[
-                select('gutters', mapEnumKeys(ComponentSize), 'Small')
+              select('gutters', mapEnumKeys(ComponentSize), 'Small')
               ]
             }
           >
@@ -240,7 +240,7 @@ pageExampleStories.add(
             fullWidth={boolean('fullWidth', false)}
             gutters={
               ComponentSize[
-                select('gutters', mapEnumKeys(ComponentSize), 'Small')
+              select('gutters', mapEnumKeys(ComponentSize), 'Small')
               ]
             }
           >
@@ -262,7 +262,9 @@ pageExampleStories.add(
                   titleText="Write Mode"
                   active={true}
                   value="write"
-                  onClick={() => {}}
+                  onClick={() => {
+                    // do nothing
+                  }}
                 >
                   Write
                 </SelectGroup.Option>
@@ -271,7 +273,9 @@ pageExampleStories.add(
                   titleText="Preview Mode"
                   active={false}
                   value="preview"
-                  onClick={() => {}}
+                  onClick={() => {
+                    // do nothing
+                  }}
                 >
                   Preview
                 </SelectGroup.Option>
@@ -293,7 +297,7 @@ pageExampleStories.add(
             autoHideScrollbar={boolean('autoHideScrollbar', false)}
             gutters={
               ComponentSize[
-                select('gutters', mapEnumKeys(ComponentSize), 'Small')
+              select('gutters', mapEnumKeys(ComponentSize), 'Small')
               ]
             }
           >

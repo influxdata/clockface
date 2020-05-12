@@ -39,7 +39,9 @@ export const DraggableResizerHandle = forwardRef<
       orientation,
       dragging = false,
       dragIndex = 9999,
-      onStartDrag = () => {},
+      onStartDrag = () => {
+        // do nothing
+      },
     },
     ref
   ) => {

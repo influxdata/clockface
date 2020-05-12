@@ -272,7 +272,9 @@ dataTypeStories.add(
               <Input
                 value="Hello World!"
                 status={ComponentStatus.Default}
-                onChange={() => {}}
+                onChange={() => {
+                  // do nothing
+                }}
               />
             </td>
           </tr>
@@ -284,7 +286,9 @@ dataTypeStories.add(
               <Input
                 value="Hello World!"
                 status={ComponentStatus.Disabled}
-                onChange={() => {}}
+                onChange={() => {
+                  // do nothing
+                }}
               />
             </td>
           </tr>
@@ -296,7 +300,9 @@ dataTypeStories.add(
               <Input
                 value="Hello World!"
                 status={ComponentStatus.Loading}
-                onChange={() => {}}
+                onChange={() => {
+                  // do nothing
+                }}
               />
             </td>
           </tr>
@@ -308,7 +314,9 @@ dataTypeStories.add(
               <Input
                 value="Hello World!"
                 status={ComponentStatus.Valid}
-                onChange={() => {}}
+                onChange={() => {
+                  // do nothing
+                }}
               />
             </td>
           </tr>
@@ -320,7 +328,9 @@ dataTypeStories.add(
               <Input
                 value="Hello World!"
                 status={ComponentStatus.Error}
-                onChange={() => {}}
+                onChange={() => {
+                  // do nothing
+                }}
               />
             </td>
           </tr>

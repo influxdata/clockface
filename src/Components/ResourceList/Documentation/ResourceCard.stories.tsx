@@ -113,7 +113,7 @@ resourceListCardStories.add(
           style={object('style', resourceCardExampleStyle)}
           direction={
             FlexDirection[
-              select('direction', mapEnumKeys(FlexDirection), 'Column')
+            select('direction', mapEnumKeys(FlexDirection), 'Column')
             ]
           }
           alignItems={
@@ -121,11 +121,11 @@ resourceListCardStories.add(
           }
           justifyContent={
             JustifyContent[
-              select(
-                'justifyContent ',
-                mapEnumKeys(JustifyContent),
-                'FlexStart'
-              )
+            select(
+              'justifyContent ',
+              mapEnumKeys(JustifyContent),
+              'FlexStart'
+            )
             ]
           }
           margin={
@@ -350,7 +350,7 @@ resourceListCardStories.add(
           ref={resourceCardMeta}
           direction={
             FlexDirection[
-              select('direction', mapEnumKeys(FlexDirection), 'Row')
+            select('direction', mapEnumKeys(FlexDirection), 'Row')
             ]
           }
           alignItems={
@@ -358,11 +358,11 @@ resourceListCardStories.add(
           }
           justifyContent={
             JustifyContent[
-              select(
-                'justifyContent ',
-                mapEnumKeys(JustifyContent),
-                'FlexStart'
-              )
+            select(
+              'justifyContent ',
+              mapEnumKeys(JustifyContent),
+              'FlexStart'
+            )
             ]
           }
         >
@@ -398,7 +398,9 @@ resourceListExampleStories.add(
           <SlideToggle
             size={ComponentSize.ExtraSmall}
             active={!boolean('disabled', false)}
-            onChange={() => {}}
+            onChange={() => {
+              // do nothing
+            }}
           />
           <ResourceCard.Name
             name={text('name', 'Just another brick in the wall')}

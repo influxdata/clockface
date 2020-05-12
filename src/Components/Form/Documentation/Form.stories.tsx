@@ -368,7 +368,9 @@ formStories.add(
                   'value',
                   'Input Value (delete this to cause error)'
                 )}
-                onChange={() => {}}
+                onChange={() => {
+                  // do nothing
+                }}
               />
             )}
           </Form.ValidationElement>
@@ -455,7 +457,9 @@ formExampleStories.add(
                         placeholder="A user needs a name..."
                         value={text('Username', '')}
                         status={status}
-                        onChange={() => {}}
+                        onChange={() => {
+                          // do nothing
+                        }}
                       />
                     )}
                   </Form.ValidationElement>
@@ -473,7 +477,9 @@ formExampleStories.add(
                         placeholder="example@example.com"
                         value={text('Email', '')}
                         status={status}
-                        onChange={() => {}}
+                        onChange={() => {
+                          // do nothing
+                        }}
                       />
                     )}
                   </Form.ValidationElement>
@@ -484,7 +490,9 @@ formExampleStories.add(
                       size={ComponentSize.Medium}
                       placeholder="What role does this user play?"
                       value={text('Description', '')}
-                      onChange={() => {}}
+                      onChange={() => {
+                        // do nothing
+                      }}
                     />
                   </Form.Element>
                 </Grid.Column>
@@ -499,7 +507,9 @@ formExampleStories.add(
                       >
                         <SlideToggle
                           active={boolean('Team Toggle', true)}
-                          onChange={() => {}}
+                          onChange={() => {
+                            // do nothing
+                          }}
                           size={ComponentSize.ExtraSmall}
                           color={ComponentColor.Primary}
                         />
@@ -540,11 +550,13 @@ formExampleStories.add(
     <div className="story--example">
       <div style={{width: `${number('Parent width (px)', 500)}px`}}>
         <Panel>
-          <DismissButton onClick={() => {}} color={ComponentColor.Danger} />
+          <DismissButton onClick={() => {
+            // do nothing
+          }} color={ComponentColor.Danger} />
           <Panel.Body
             size={
               ComponentSize[
-                select('Panel: size', mapEnumKeys(ComponentSize), 'Small')
+              select('Panel: size', mapEnumKeys(ComponentSize), 'Small')
               ]
             }
           >
@@ -552,7 +564,7 @@ formExampleStories.add(
               direction={FlexDirection.Column}
               margin={
                 ComponentSize[
-                  select('margin', mapEnumKeys(ComponentSize), 'Small')
+                select('margin', mapEnumKeys(ComponentSize), 'Small')
                 ]
               }
             >
@@ -561,18 +573,18 @@ formExampleStories.add(
                 direction={FlexDirection.Row}
                 margin={
                   ComponentSize[
-                    select('margin', mapEnumKeys(ComponentSize), 'Small')
+                  select('margin', mapEnumKeys(ComponentSize), 'Small')
                   ]
                 }
               >
                 <TextBlock
                   size={
                     ComponentSize[
-                      select(
-                        'TextBlock, Input, Dropdown: size',
-                        mapEnumKeys(ComponentSize),
-                        'Small'
-                      )
+                    select(
+                      'TextBlock, Input, Dropdown: size',
+                      mapEnumKeys(ComponentSize),
+                      'Small'
+                    )
                     ]
                   }
                   text="When"
@@ -581,14 +593,16 @@ formExampleStories.add(
                   <SelectDropdown
                     options={['any value', 'all values']}
                     selectedOption="any value"
-                    onSelect={() => {}}
+                    onSelect={() => {
+                      // do nothing
+                    }}
                     buttonSize={
                       ComponentSize[
-                        select(
-                          'TextBlock, Input, Dropdown: size',
-                          mapEnumKeys(ComponentSize),
-                          'Small'
-                        )
+                      select(
+                        'TextBlock, Input, Dropdown: size',
+                        mapEnumKeys(ComponentSize),
+                        'Small'
+                      )
                       ]
                     }
                   />
@@ -602,14 +616,16 @@ formExampleStories.add(
                       'is outside range',
                     ]}
                     selectedOption="is inside range"
-                    onSelect={() => {}}
+                    onSelect={() => {
+                      // do nothing
+                    }}
                     buttonSize={
                       ComponentSize[
-                        select(
-                          'TextBlock, Input, Dropdown: size',
-                          mapEnumKeys(ComponentSize),
-                          'Small'
-                        )
+                      select(
+                        'TextBlock, Input, Dropdown: size',
+                        mapEnumKeys(ComponentSize),
+                        'Small'
+                      )
                       ]
                     }
                   />
@@ -620,7 +636,7 @@ formExampleStories.add(
                 direction={FlexDirection.Row}
                 margin={
                   ComponentSize[
-                    select('margin', mapEnumKeys(ComponentSize), 'Small')
+                  select('margin', mapEnumKeys(ComponentSize), 'Small')
                   ]
                 }
               >
@@ -630,11 +646,11 @@ formExampleStories.add(
                     value="90"
                     size={
                       ComponentSize[
-                        select(
-                          'TextBlock, Input, Dropdown: size',
-                          mapEnumKeys(ComponentSize),
-                          'Small'
-                        )
+                      select(
+                        'TextBlock, Input, Dropdown: size',
+                        mapEnumKeys(ComponentSize),
+                        'Small'
+                      )
                       ]
                     }
                   />
@@ -642,11 +658,11 @@ formExampleStories.add(
                 <TextBlock
                   size={
                     ComponentSize[
-                      select(
-                        'TextBlock, Input, Dropdown: size',
-                        mapEnumKeys(ComponentSize),
-                        'Small'
-                      )
+                    select(
+                      'TextBlock, Input, Dropdown: size',
+                      mapEnumKeys(ComponentSize),
+                      'Small'
+                    )
                     ]
                   }
                   text="to"
@@ -657,11 +673,11 @@ formExampleStories.add(
                     value="100"
                     size={
                       ComponentSize[
-                        select(
-                          'TextBlock, Input, Dropdown: size',
-                          mapEnumKeys(ComponentSize),
-                          'Small'
-                        )
+                      select(
+                        'TextBlock, Input, Dropdown: size',
+                        mapEnumKeys(ComponentSize),
+                        'Small'
+                      )
                       ]
                     }
                   />
@@ -669,11 +685,11 @@ formExampleStories.add(
                 <TextBlock
                   size={
                     ComponentSize[
-                      select(
-                        'TextBlock, Input, Dropdown: size',
-                        mapEnumKeys(ComponentSize),
-                        'Small'
-                      )
+                    select(
+                      'TextBlock, Input, Dropdown: size',
+                      mapEnumKeys(ComponentSize),
+                      'Small'
+                    )
                     ]
                   }
                   text="set status to"
@@ -681,11 +697,11 @@ formExampleStories.add(
                 <TextBlock
                   size={
                     ComponentSize[
-                      select(
-                        'TextBlock, Input, Dropdown: size',
-                        mapEnumKeys(ComponentSize),
-                        'Small'
-                      )
+                    select(
+                      'TextBlock, Input, Dropdown: size',
+                      mapEnumKeys(ComponentSize),
+                      'Small'
+                    )
                     ]
                   }
                   text={text('Status Level: text', 'WARN')}

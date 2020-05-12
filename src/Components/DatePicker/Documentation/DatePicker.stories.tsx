@@ -42,7 +42,9 @@ datePickerComposedStories.add(
           timeRange={{
             lower: '',
           }}
-          onSetTimeRange={() => {}}
+          onSetTimeRange={() => {
+            // do nothing
+          }}
         />
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
@@ -73,7 +75,9 @@ datePickerBaseStories.add(
         <DatePicker
           ref={datePickerRef}
           dateTime={text('Date Time', '')}
-          onSelectDate={() => {}}
+          onSelectDate={() => {
+            // do nothing
+          }}
           label={text('Label', 'Date Picker')}
         />
         <div className="story--test-buttons">
