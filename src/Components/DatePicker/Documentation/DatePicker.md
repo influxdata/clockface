@@ -11,7 +11,9 @@ import {DatePicker} from '@influxdata/clockface'
 ```jsx
 <DatePicker
   dateTime={'1234567890'}
-  onSelectDate={() => {}}
+  onSelectDate={() => {
+    // do the thing
+  }}
   label={'my label'}
 />
 ```

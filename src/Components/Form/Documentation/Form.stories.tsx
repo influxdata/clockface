@@ -368,7 +368,9 @@ formStories.add(
                   'value',
                   'Input Value (delete this to cause error)'
                 )}
-                onChange={() => {}}
+                onChange={() => {
+                  // do nothing
+                }}
               />
             )}
           </Form.ValidationElement>
@@ -455,7 +457,9 @@ formExampleStories.add(
                         placeholder="A user needs a name..."
                         value={text('Username', '')}
                         status={status}
-                        onChange={() => {}}
+                        onChange={() => {
+                          // do nothing
+                        }}
                       />
                     )}
                   </Form.ValidationElement>
@@ -473,7 +477,9 @@ formExampleStories.add(
                         placeholder="example@example.com"
                         value={text('Email', '')}
                         status={status}
-                        onChange={() => {}}
+                        onChange={() => {
+                          // do nothing
+                        }}
                       />
                     )}
                   </Form.ValidationElement>
@@ -484,7 +490,9 @@ formExampleStories.add(
                       size={ComponentSize.Medium}
                       placeholder="What role does this user play?"
                       value={text('Description', '')}
-                      onChange={() => {}}
+                      onChange={() => {
+                        // do nothing
+                      }}
                     />
                   </Form.Element>
                 </Grid.Column>
@@ -499,7 +507,9 @@ formExampleStories.add(
                       >
                         <SlideToggle
                           active={boolean('Team Toggle', true)}
-                          onChange={() => {}}
+                          onChange={() => {
+                            // do nothing
+                          }}
                           size={ComponentSize.ExtraSmall}
                           color={ComponentColor.Primary}
                         />
@@ -540,7 +550,12 @@ formExampleStories.add(
     <div className="story--example">
       <div style={{width: `${number('Parent width (px)', 500)}px`}}>
         <Panel>
-          <DismissButton onClick={() => {}} color={ComponentColor.Danger} />
+          <DismissButton
+            onClick={() => {
+              // do nothing
+            }}
+            color={ComponentColor.Danger}
+          />
           <Panel.Body
             size={
               ComponentSize[
@@ -581,7 +596,9 @@ formExampleStories.add(
                   <SelectDropdown
                     options={['any value', 'all values']}
                     selectedOption="any value"
-                    onSelect={() => {}}
+                    onSelect={() => {
+                      // do nothing
+                    }}
                     buttonSize={
                       ComponentSize[
                         select(
@@ -602,7 +619,9 @@ formExampleStories.add(
                       'is outside range',
                     ]}
                     selectedOption="is inside range"
-                    onSelect={() => {}}
+                    onSelect={() => {
+                      // do nothing
+                    }}
                     buttonSize={
                       ComponentSize[
                         select(

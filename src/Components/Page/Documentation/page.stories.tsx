@@ -262,7 +262,9 @@ pageExampleStories.add(
                   titleText="Write Mode"
                   active={true}
                   value="write"
-                  onClick={() => {}}
+                  onClick={() => {
+                    // do nothing
+                  }}
                 >
                   Write
                 </SelectGroup.Option>
@@ -271,7 +273,9 @@ pageExampleStories.add(
                   titleText="Preview Mode"
                   active={false}
                   value="preview"
-                  onClick={() => {}}
+                  onClick={() => {
+                    // do nothing
+                  }}
                 >
                   Preview
                 </SelectGroup.Option>

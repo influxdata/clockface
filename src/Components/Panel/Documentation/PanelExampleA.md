@@ -8,7 +8,9 @@ import {Panel} from '@influxdata/clockface'
 ```
 ```tsx
 <Panel>
-  <Panel.Header onDismiss={() => {}}>
+  <Panel.Header onDismiss={() => {
+    // do the thing
+  }}>
   <Panel.Body>
     // Contents
   </Panel.Body>

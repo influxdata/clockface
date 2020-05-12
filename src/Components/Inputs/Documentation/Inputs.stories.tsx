@@ -102,7 +102,9 @@ inputsBaseStories.add(
           containerRef={inputContainerRef}
           placeholder={text('placeholder', 'Placeholder Text')}
           value={text('value', 'Value Text')}
-          onChange={() => {}}
+          onChange={() => {
+            // do nothing
+          }}
           name={text('name', 'Name')}
           titleText={text('titleText', 'Title Text')}
           disabledTitleText={text('disabledTitleText', 'Disabled Title Text')}
@@ -196,7 +198,9 @@ inputsBaseStories.add(
       <Input
         placeholder={text('placeholder', 'Placeholder Text')}
         value={text('value', 'Value Text')}
-        onChange={() => {}}
+        onChange={() => {
+          // do nothing
+        }}
         name={text('name', 'Name')}
         titleText={text('titleText', 'Title Text')}
         disabledTitleText={text('disabledTitleText', 'Disabled Title Text')}
@@ -242,7 +246,9 @@ inputsBaseStories.add(
       <Input
         placeholder={text('placeholder', 'Placeholder Text')}
         value={text('value', 'value@text.com')}
-        onChange={() => {}}
+        onChange={() => {
+          // do nothing
+        }}
         name={text('name', 'Name')}
         titleText={text('titleText', 'Title Text')}
         disabledTitleText={text('disabledTitleText', 'Disabled Title Text')}
@@ -294,7 +300,9 @@ inputsBaseStories.add(
         >
           <Input
             name={text('name', 'Name')}
-            onChange={() => {}}
+            onChange={() => {
+              // do nothing
+            }}
             size={
               ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
             }
@@ -488,7 +496,9 @@ inputsBaseStories.add(
           maxLength={number('maxLength', 50)}
           minLength={number('minLength', 5)}
           placeholder={text('placeholder', 'Placeholder Text')}
-          onChange={() => {}}
+          onChange={() => {
+            // do nothing
+          }}
           monospace={boolean('monospace', false)}
           autocomplete={
             AutoComplete[
@@ -516,7 +526,9 @@ inputsBaseStories.add(
           maxLength={number('maxLength', 50)}
           minLength={number('minLength', 5)}
           placeholder={text('placeholder', 'Placeholder Text')}
-          onChange={() => {}}
+          onChange={() => {
+            // do nothing
+          }}
           monospace={boolean('monospace', false)}
           autocomplete={
             AutoComplete[
@@ -544,7 +556,9 @@ inputsBaseStories.add(
           maxLength={number('maxLength', 50)}
           minLength={number('minLength', 5)}
           placeholder={text('placeholder', 'Placeholder Text')}
-          onChange={() => {}}
+          onChange={() => {
+            // do nothing
+          }}
           monospace={boolean('monospace', false)}
           autocomplete={
             AutoComplete[
@@ -572,7 +586,9 @@ inputsBaseStories.add(
           maxLength={number('maxLength', 50)}
           minLength={number('minLength', 5)}
           placeholder={text('placeholder', 'Placeholder Text')}
-          onChange={() => {}}
+          onChange={() => {
+            // do nothing
+          }}
           monospace={boolean('monospace', false)}
           autocomplete={
             AutoComplete[
@@ -600,7 +616,9 @@ inputsBaseStories.add(
           maxLength={number('maxLength', 50)}
           minLength={number('minLength', 5)}
           placeholder={text('placeholder', 'Placeholder Text')}
-          onChange={() => {}}
+          onChange={() => {
+            // do nothing
+          }}
           monospace={boolean('monospace', false)}
           autocomplete={
             AutoComplete[

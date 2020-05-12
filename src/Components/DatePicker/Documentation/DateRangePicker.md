@@ -17,7 +17,9 @@ import {DateRangePicker} from '@influxdata/clockface'
     format: 'YYYY-MM-DD HH:mm:ss.SSS',
     label: 'my label',
   }}
-  onSetTimeRange={() => {}}
+  onSetTimeRange={() => {
+    // do the thing
+  }}
 />
 ```
 
