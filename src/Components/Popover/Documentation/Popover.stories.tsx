@@ -237,19 +237,17 @@ popoverStories.add(
           visible={boolean('visible', true)}
           enableDefaultStyles={boolean('enableDefaultStyles', true)}
           contents={() => (
-            <>
-              <div style={{marginTop: '30px'}}>
-                My state can be controlled externally
-                <br />
-                via the <strong>visible</strong> prop
-                <br />
-                <br />
-                Look in the <strong>Knobs</strong> panel
-              </div>
-              <div className="story--test-buttons">
+            <div>
+              My state can be controlled externally
+              <br />
+              via the <strong>visible</strong> prop
+              <br />
+              <br />
+              Look in the <strong>Knobs</strong> panel
+              <div className="story--test-buttons relative">
                 <button onClick={log4Ref}>Log Ref</button>
               </div>
-            </>
+            </div>
           )}
           showEvent={PopoverInteraction.None}
           hideEvent={PopoverInteraction.None}

@@ -794,8 +794,8 @@ $color-grid-card-width: 154px;
 
   &.relative {
     position: relative;
+    top: initial;
     right: initial;
-    margin: 12px;
   }
 }
 
