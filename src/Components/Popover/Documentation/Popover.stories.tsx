@@ -68,12 +68,10 @@ popoverStories.add(
     const triggerRefB = useRef<HTMLDivElement>(null)
     const triggerRefC = useRef<HTMLButtonElement>(null)
     const triggerRefD = useRef<HTMLDivElement>(null)
-    const triggerRefE = useRef<HTMLDivElement>(null)
     const popover1Ref = useRef<PopoverRef>(null)
     const popover2Ref = useRef<PopoverRef>(null)
     const popover3Ref = useRef<PopoverRef>(null)
     const popover4Ref = useRef<PopoverRef>(null)
-    const popover5Ref = useRef<PopoverRef>(null)
 
     const log1Ref = (): void => {
       /* eslint-disable */
@@ -96,12 +94,6 @@ popoverStories.add(
     const log4Ref = (): void => {
       /* eslint-disable */
       console.log(popover4Ref.current)
-      /* eslint-enable */
-    }
-
-    const log5Ref = (): void => {
-      /* eslint-disable */
-      console.log(popover5Ref.current)
       /* eslint-enable */
     }
 
@@ -149,27 +141,23 @@ popoverStories.add(
                 </div>
               </td>
             </tr>
-            <tr>
-              <td>
-                <code>enableEscapeKey</code> is <code>false</code>
-              </td>
-              <td>
-                <div className="mockComponent mockButton" ref={triggerRefE}>
-                  Click Me
-                </div>
-              </td>
-            </tr>
           </tbody>
         </table>
         <Popover.Popover
           ref={popover1Ref}
           triggerRef={triggerRefA}
           enableDefaultStyles={boolean('enableDefaultStyles', true)}
-          enableEscapeKey={boolean('enableEscapeKey', true)}
           contents={(onHide: any) => (
             <>
-              PopoverContents
-              <Popover.DismissButton onClick={onHide} />
+              This Popover uses the style prop
+              <Popover.DismissButton
+                onClick={onHide}
+                color={
+                  ComponentColor[
+                    select('color', mapEnumKeys(ComponentColor), 'Primary')
+                  ]
+                }
+              />
               <div className="story--test-buttons">
                 <button onClick={log1Ref}>Log Ref</button>
               </div>
@@ -199,7 +187,6 @@ popoverStories.add(
           ref={popover2Ref}
           triggerRef={triggerRefB}
           enableDefaultStyles={boolean('enableDefaultStyles', true)}
-          enableEscapeKey={boolean('enableEscapeKey', true)}
           contents={() => (
             <>
               <div style={{marginTop: '30px'}}>
@@ -224,7 +211,6 @@ popoverStories.add(
           ref={popover3Ref}
           triggerRef={triggerRefC}
           enableDefaultStyles={boolean('enableDefaultStyles', true)}
-          enableEscapeKey={boolean('enableEscapeKey', true)}
           contents={() => (
             <>
               <div style={{marginTop: '30px'}}>
@@ -250,13 +236,15 @@ popoverStories.add(
           triggerRef={triggerRefD}
           visible={boolean('visible', true)}
           enableDefaultStyles={boolean('enableDefaultStyles', true)}
-          enableEscapeKey={boolean('enableEscapeKey', true)}
           contents={() => (
             <>
               <div style={{marginTop: '30px'}}>
                 My state can be controlled externally
                 <br />
                 via the <strong>visible</strong> prop
+                <br />
+                <br />
+                Look in the <strong>Knobs</strong> panel
               </div>
               <div className="story--test-buttons">
                 <button onClick={log4Ref}>Log Ref</button>
@@ -267,29 +255,6 @@ popoverStories.add(
           hideEvent={PopoverInteraction.None}
           position={PopoverPosition.Below}
           color={ComponentColor.Success}
-          appearance={Appearance.Solid}
-        />
-        <Popover.Popover
-          ref={popover5Ref}
-          triggerRef={triggerRefE}
-          enableDefaultStyles={boolean('enableDefaultStyles', true)}
-          enableEscapeKey={false}
-          contents={() => (
-            <>
-              <div style={{marginTop: '30px'}}>
-                I can never be hidden by the
-                <br />
-                <strong>Escape</strong> key
-              </div>
-              <div className="story--test-buttons">
-                <button onClick={log5Ref}>Log Ref</button>
-              </div>
-            </>
-          )}
-          showEvent={PopoverInteraction.Click}
-          hideEvent={PopoverInteraction.Click}
-          position={PopoverPosition.Below}
-          color={ComponentColor.Primary}
           appearance={Appearance.Solid}
         />
       </div>

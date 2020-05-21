@@ -52,9 +52,7 @@ By default `Popover` will apply reasonable default styles to the dialog to save 
 
 ### Gotchas
 
-There is a hierarchy of importance for handling combinations of props in `Popover`. If a `Popover` has its `visible` prop set to `true` then it will be visible so long as that value is unchanged. The dialog will ignore `enableEscapeKey` and defer to the value of `visible`. This decision assumes the intent of `visible` does not want to be disrupted by the escape key interaction.
-
-In addition, if  the Escape key is pressed any and all `Popovers` that can be closed via the Escape key will be closed.
+By default all `Popover` instances will be in focus when they appear so that pressing the `Escape` key dismisses them. If a `Popover` has its state controlled externally via the `visible` prop then the `Escape` key listener is disabled in deference.
 
 <!-- STORY HIDE START -->
 
