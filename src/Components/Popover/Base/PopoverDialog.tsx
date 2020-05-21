@@ -3,6 +3,7 @@ import React, {
   useRef,
   RefObject,
   MouseEvent,
+  useEffect,
   useLayoutEffect,
   forwardRef,
 } from 'react'
@@ -146,6 +147,12 @@ export const PopoverDialog = forwardRef<PopoverDialogRef, PopoverDialogProps>(
       handleUpdateStyles()
     })
 
+    useEffect(() => {
+      if (dialogRef.current) {
+        dialogRef.current.focus()
+      }
+    }, [])
+
     return (
       <ClickOutside onClickOutside={onClickOutside}>
         <div
@@ -154,6 +161,7 @@ export const PopoverDialog = forwardRef<PopoverDialogRef, PopoverDialogProps>(
           className={popoverDialogClassName}
           data-testid={`${testID}--dialog`}
           onMouseLeave={onMouseLeave}
+          tabIndex={-1}
         >
           <div
             ref={ref}

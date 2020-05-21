@@ -12,6 +12,10 @@
 .cf-popover {
   position: fixed;
   z-index: 9999;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .cf-popover--contents {
