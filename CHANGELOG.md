@@ -1,7 +1,13 @@
 # Changelog
 
-#### 2.1.2 (Unreleased)
+#### 2.2.1 (Unreleased)
 
+
+
+#### 2.2.0 [2020-05-12]
+
+- [#505](https://github.com/influxdata/clockface/pull/505): Fix dependency issues and address new lint rules
+- [#503](https://github.com/influxdata/clockface/pull/503): Expose `onScroll` and `onUpdate` props in `DapperScrollbars`
 - [#499](https://github.com/influxdata/clockface/pull/499): Fix export for `CTALinkButton`
 - [#492](https://github.com/influxdata/clockface/pull/492): Introduce `RBAC` component that conditionally renders content based on permissions
 

@@ -7,7 +7,7 @@ import {useState} from '@storybook/addons'
 import {withKnobs, boolean, color, object, number} from '@storybook/addon-knobs'
 
 // Components
-import {DapperScrollbars} from '../DapperScrollbars'
+import {DapperScrollbars, FusionScrollHandler} from '../DapperScrollbars'
 import {Form} from '../../Form'
 import {Dropdown} from '../../Dropdowns'
 
@@ -28,6 +28,7 @@ const exampleTextDefault = `Try modifying this text to see how scrolling is affe
 Blue bottle four loko kogi woke activated charcoal forage tote bag sartorial. Hammock normcore lo-fi tbh trust fund man bun post-ironic locavore DIY plaid wolf tumeric. Poutine cred microdosing, typewriter jianbing marfa vegan. Kombucha four dollar toast organic bespoke af cred freegan meditation biodiesel tilde chia. Tofu microdosing retro lo-fi, DIY raclette kitsch. 
 Art party ramps vice master cleanse ethical scenester. Knausgaard kombucha williamsburg chambray asymmetrical, wolf seitan vaporware swag selfies. Single-origin coffee cloud bread vaporware, authentic sartorial food truck echo park ugh letterpress. IPhone pickled banh mi, lomo fingerstache crucifix letterpress offal lo-fi whatever pok pok chartreuse kitsch banjo.
 Keytar celiac copper mug chia typewriter. Umami crucifix tumblr mixtape taxidermy succulents hammock cardigan narwhal. Vegan four loko disrupt gastropub, pop-up drinking vinegar pinterest semiotics photo booth unicorn ugh pork belly before they sold out scenester. Waistcoat disrupt hashtag vice, raclette flannel farm-to-table butcher iPhone biodiesel. Locavore godard brunch hammock bicycle rights flannel letterpress pabst distillery mixtape jean shorts af chartreuse shoreditch small batch. Banh mi slow-carb brooklyn thundercats, helvetica shoreditch locavore.`
+
 scrollbarStories.add('Scrollbar Example', () => {
   const [selection, setSelection] = useState<string>('Foo')
   const handleSelectionChange = (value: string) => {
@@ -130,3 +131,49 @@ scrollbarStories.add('AutoSize Example', () => (
     </div>
   </div>
 ))
+
+scrollbarStories.add('Synchronized Scrolling', () => {
+  const [scrollbarState, setScrollbarState] = useState<number>(0)
+
+  const scrollBarStyle = {
+    backgroundColor: '#333',
+    width: '200px',
+    height: '300px',
+    margin: '16px',
+  }
+
+  const handleUpdate: FusionScrollHandler = (scrollValues): void => {
+    const {scrollTop} = scrollValues
+
+    setScrollbarState(scrollTop)
+  }
+
+  return (
+    <div className="story--example">
+      <DapperScrollbars
+        style={scrollBarStyle}
+        onScroll={handleUpdate}
+        noScrollX={true}
+        autoHide={false}
+        autoSize={false}
+        thumbStartColor={color('thumbStartColor', '#00C9FF')}
+        thumbStopColor={color('thumbStopColor', '#9394FF')}
+        scrollTop={scrollbarState}
+      >
+        <p>{exampleTextDefault}</p>
+      </DapperScrollbars>
+      <DapperScrollbars
+        style={scrollBarStyle}
+        onScroll={handleUpdate}
+        noScrollX={true}
+        autoHide={false}
+        autoSize={false}
+        thumbStartColor={color('thumbStartColor', '#00C9FF')}
+        thumbStopColor={color('thumbStopColor', '#9394FF')}
+        scrollTop={scrollbarState}
+      >
+        <p>{exampleTextDefault}</p>
+      </DapperScrollbars>
+    </div>
+  )
+})

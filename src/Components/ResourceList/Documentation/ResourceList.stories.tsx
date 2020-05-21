@@ -136,7 +136,9 @@ resourceListStories.add(
               sortKey={header.key}
               name={header.name}
               sort={Sort.None}
-              onClick={() => {}}
+              onClick={() => {
+                // do nothing
+              }}
             />
           ))}
         </ResourceListHeader>

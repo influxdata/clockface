@@ -16,8 +16,12 @@ private triggerRef: createRef<HTMLDivElement>(null)
   triggerRef={triggerRef}
   menu={() => <div />}
 >
-  <RightClick.MenuItem onClick={() => {}}>Copy></RightClick.MenuItem>
-  <RightClick.MenuItem onClick={() =>{}}>Delete></RightClick.MenuItem>
+  <RightClick.MenuItem onClick={() => {
+    // do the thing
+  }}>Copy></RightClick.MenuItem>
+  <RightClick.MenuItem onClick={() =>{
+    // do the thing
+  }}>Delete></RightClick.MenuItem>
 </RightClick>
 ```
 

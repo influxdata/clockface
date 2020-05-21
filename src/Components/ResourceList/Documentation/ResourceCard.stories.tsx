@@ -398,7 +398,9 @@ resourceListExampleStories.add(
           <SlideToggle
             size={ComponentSize.ExtraSmall}
             active={!boolean('disabled', false)}
-            onChange={() => {}}
+            onChange={() => {
+              // do nothing
+            }}
           />
           <ResourceCard.Name
             name={text('name', 'Just another brick in the wall')}

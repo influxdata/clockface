@@ -128,7 +128,9 @@ dropdownFamilyStories.add(
         <div style={{width: '200px'}}>
           <Dropdown.Button
             ref={dropdownButtonRef}
-            onClick={() => {}}
+            onClick={() => {
+              // do nothing
+            }}
             status={
               ComponentStatus[
                 select('status', mapEnumKeys(ComponentStatus), 'Default')

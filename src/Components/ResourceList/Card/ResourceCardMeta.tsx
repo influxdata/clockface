@@ -43,7 +43,7 @@ export const ResourceCardMeta = forwardRef<
     let wrappedChildren
 
     if (React.Children.count(children) > 0) {
-      const childArray: JSX.Element[] = React.Children.map(children, child => (
+      const childArray = React.Children.map(children, child => (
         <div className="cf-resource-meta--item">{child}</div>
       ))
 

@@ -1,14 +1,32 @@
 // Libraries
-import React, {FunctionComponent, useRef, useState, useEffect} from 'react'
+import React, {
+  FunctionComponent,
+  useRef,
+  useState,
+  useEffect,
+  UIEvent,
+} from 'react'
 import _ from 'lodash'
 import classnames from 'classnames'
 import Scrollbar from 'react-scrollbars-custom'
+import {ScrollState} from 'react-scrollbars-custom/dist/types/types'
 
 // Styles
 import './DapperScrollbars.scss'
 
 // Types
 import {StandardFunctionProps, InfluxColors} from '../../Types'
+
+// react-scrollbars-custom uses a highly unusual type
+// to presumably handle touch and mouse events simultaneously
+export type FusionScrollEvent = UIEvent<HTMLDivElement> & ScrollState
+// Using this custom type makes typescript happy
+// and exposes enough typing to properly interface
+// with the onScroll and onUpdate props
+export type FusionScrollHandler = (
+  scrollValues: FusionScrollEvent,
+  prevScrollValues?: ScrollState
+) => void
 
 interface DapperScrollbarsProps extends StandardFunctionProps {
   /** Toggle display of tracks when no scrolling is necessary */
@@ -39,6 +57,10 @@ interface DapperScrollbarsProps extends StandardFunctionProps {
   scrollTop?: number
   /** Horizontal scroll position in pixels */
   scrollLeft?: number
+  /** Function to be called when called scroll event fires */
+  onScroll?: FusionScrollHandler
+  /** Function called after component updated */
+  onUpdate?: FusionScrollHandler
 }
 
 export const DapperScrollbars: FunctionComponent<DapperScrollbarsProps> = ({
@@ -46,6 +68,8 @@ export const DapperScrollbars: FunctionComponent<DapperScrollbarsProps> = ({
   style,
   children,
   className,
+  onScroll,
+  onUpdate,
   scrollTop = 0,
   scrollLeft = 0,
   autoHide = false,
@@ -63,6 +87,8 @@ export const DapperScrollbars: FunctionComponent<DapperScrollbarsProps> = ({
   removeTrackXWhenNotUsed = true,
 }) => {
   const scrollEl = useRef<any>(null)
+  // State is used here to ensure that the scroll position does not jump when
+  // a component using DapperScrollbars re-renders
   const [scrollTopPos, setScrollTopPos] = useState<number>(Number(scrollTop))
   const [scrollLeftPos, setScrollLeftPos] = useState<number>(Number(scrollLeft))
 
@@ -84,15 +110,33 @@ export const DapperScrollbars: FunctionComponent<DapperScrollbarsProps> = ({
     background: `linear-gradient(to bottom,  ${thumbStartColor} 0%,${thumbStopColor} 100%)`,
   }
 
-  const handleOnScroll = () => {
-    setScrollTopPos(scrollEl.current.scrollTop)
-    setScrollLeftPos(scrollEl.current.scrollLeft)
+  const handleOnScroll: FusionScrollHandler = (
+    scrollValues,
+    prevScrollValues
+  ) => {
+    if (onScroll) {
+      onScroll(scrollValues, prevScrollValues)
+    }
+
+    const {scrollTop, scrollLeft} = scrollValues
+    setScrollTopPos(scrollTop)
+    setScrollLeftPos(scrollLeft)
+  }
+
+  const handleUpdate: FusionScrollHandler = (
+    scrollValues,
+    prevScrollValues
+  ) => {
+    if (onUpdate) {
+      onUpdate(scrollValues, prevScrollValues)
+    }
   }
 
   return (
     <Scrollbar
       ref={scrollEl}
       onScroll={handleOnScroll}
+      onUpdate={handleUpdate}
       data-testid={testID}
       translateContentSizesToHolder={autoSize}
       translateContentSizeYToHolder={autoSizeHeight}
