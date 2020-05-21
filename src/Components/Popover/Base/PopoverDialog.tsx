@@ -147,6 +147,14 @@ export const PopoverDialog = forwardRef<PopoverDialogRef, PopoverDialogProps>(
       handleUpdateStyles()
     })
 
+    // Ensure styles are updated when the
+    // enableDefaultStyles prop changes
+    useEffect(() => {
+      handleUpdateStyles()
+    }, [enableDefaultStyles])
+
+    // Ensure dialog element is in focus on mount
+    // in order to enable escape key behavior
     useEffect(() => {
       if (dialogRef.current) {
         dialogRef.current.focus()
