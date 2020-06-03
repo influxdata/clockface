@@ -2,7 +2,7 @@
 
 #### 2.2.1 (Unreleased)
 
-
+- [#508](https://github.com/influxdata/clockface/pull/508): Add `testID` to thumb elements in `DapperScrollbars`
 
 #### 2.2.0 [2020-05-12]
 
