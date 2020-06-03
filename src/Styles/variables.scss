@@ -27,24 +27,24 @@ $g19-ghost: #fafafc;
 $g20-white: #ffffff;
 
 // Reds
-$c-basalt: #2F1F29;
-$c-ruby: #BF3D5E;
-$c-fire: #DC4E58;
-$c-curacao: #F95F53;
-$c-dreamsicle: #FF8564;
-$c-tungsten: #FFB6A0;
-$c-marmelade: #FFDCCF;
-$c-flan: #FFF7F4;
+$c-basalt: #2f1f29;
+$c-ruby: #bf3d5e;
+$c-fire: #dc4e58;
+$c-curacao: #f95f53;
+$c-dreamsicle: #ff8564;
+$c-tungsten: #ffb6a0;
+$c-marmelade: #ffdccf;
+$c-flan: #fff7f4;
 
 // Blues
 $c-abyss: #120653;
 $c-sapphire: #0b3a8d;
 $c-ocean: #066fc5;
 $c-pool: #00a3ff;
-$c-laser: #00C9FF;
-$c-hydrogen: #6BDFFF;
-$c-neutrino: #BEF0FF;
-$c-yeti: #F0FCFF;
+$c-laser: #00c9ff;
+$c-hydrogen: #6bdfff;
+$c-neutrino: #bef0ff;
+$c-yeti: #f0fcff;
 
 // Purples
 $c-shadow: #2b007e;
@@ -67,19 +67,19 @@ $c-wasabi: #c6f98e;
 $c-mint: #f3ffd6;
 
 // Yellows
-$c-oak: #3F241F;
-$c-topaz: #E85B1C;
-$c-tiger: #F48D38;
-$c-pineapple: #FFB94A;
-$c-thunder: #FFD255;
-$c-sulfur: #FFE480;
-$c-daisy: #FFF6B8;
-$c-banana: #FFFDDE;
+$c-oak: #3f241f;
+$c-topaz: #e85b1c;
+$c-tiger: #f48d38;
+$c-pineapple: #ffb94a;
+$c-thunder: #ffd255;
+$c-sulfur: #ffe480;
+$c-daisy: #fff6b8;
+$c-banana: #fffdde;
 
 // Marketing Brand Colors
-$c-chartreuse: #D6F622;
-$c-magenta: #BF2FE5;
-$c-deeppurple: #13002D;
+$c-chartreuse: #d6f622;
+$c-magenta: #bf2fe5;
+$c-deeppurple: #13002d;
 
 /*
    Z Variables
@@ -138,9 +138,17 @@ $cf-text-base: 1em;
 $cf-text-scale: 1.19;
 $cf-text-base-1: ($cf-text-base * $cf-text-scale);
 $cf-text-base-2: ($cf-text-base * $cf-text-scale * $cf-text-scale);
-$cf-text-base-3: ($cf-text-base * $cf-text-scale * $cf-text-scale * $cf-text-scale);
-$cf-text-base-4: ($cf-text-base * $cf-text-scale * $cf-text-scale * $cf-text-scale * $cf-text-scale);
-$cf-text-base-5: ($cf-text-base * $cf-text-scale * $cf-text-scale * $cf-text-scale * $cf-text-scale * $cf-text-scale);
+$cf-text-base-3: (
+  $cf-text-base * $cf-text-scale * $cf-text-scale * $cf-text-scale
+);
+$cf-text-base-4: (
+  $cf-text-base * $cf-text-scale * $cf-text-scale * $cf-text-scale *
+    $cf-text-scale
+);
+$cf-text-base-5: (
+  $cf-text-base * $cf-text-scale * $cf-text-scale * $cf-text-scale *
+    $cf-text-scale * $cf-text-scale
+);
 
 $cf-text-default: $g13-mist;
 $cf-text-header: $g17-whisper;
@@ -155,11 +163,10 @@ $cf-link-warning-hover: $c-thunder;
 $cf-link-secondary: $c-comet;
 $cf-link-secondary-hover: $c-potassium;
 $cf-link-danger: $c-curacao;
-$cf-link-danger-hover:  $c-dreamsicle;
+$cf-link-danger-hover: $c-dreamsicle;
 
 $cf-text-selection-bg: $c-pool;
 $cf-text-selection-color: $g20-white;
-
 
 /*
    Page Layout Variables
@@ -241,8 +248,7 @@ $cf-empty-state-highlight: $g13-mist;
 */
 
 $cf-input--transition: background-color 0.25s ease, border-color 0.25s ease,
-    color 0.25s ease,
-    box-shadow 0.25s ease, color 0.25s ease;
+  color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
 
 $cf-input-background--default: $g2-kevlar;
 $cf-input-background--focused: $g2-kevlar;
@@ -256,7 +262,11 @@ $cf-input-text--disabled: $cf-empty-state-text;
 
 $cf-input-border--default: $g5-pepper;
 $cf-input-border--focused: $c-pool;
-$cf-input-border--hover: mix($cf-input-border--default, $cf-input-border--focused, 50%);
+$cf-input-border--hover: mix(
+  $cf-input-border--default,
+  $cf-input-border--focused,
+  50%
+);
 $cf-input-border--disabled: $g4-onyx;
 
 $cf-input-border--error: mix($cf-input-border--default, $c-dreamsicle, 70%);
@@ -369,37 +379,63 @@ $cf-tree-nav__toggle-icon-hover: $g13-mist;
 
 @mixin gradient-v($startColor, $endColor) {
   background: $startColor;
-  background: -moz-linear-gradient(top,  $startColor 0%, $endColor 100%);
-  background: -webkit-linear-gradient(top,  $startColor 0%,$endColor 100%);
-  background: linear-gradient(to bottom,  $startColor 0%,$endColor 100%);
+  background: -moz-linear-gradient(top, $startColor 0%, $endColor 100%);
+  background: -webkit-linear-gradient(top, $startColor 0%, $endColor 100%);
+  background: linear-gradient(to bottom, $startColor 0%, $endColor 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$startColor', endColorstr='$endColor',GradientType=0 );
 }
 @mixin gradient-h($startColor, $endColor) {
   background: $startColor;
-  background: -moz-linear-gradient(left,  $startColor 0%, $endColor 100%);
-  background: -webkit-linear-gradient(left,  $startColor 0%,$endColor 100%);
-  background: linear-gradient(to right,  $startColor 0%,$endColor 100%);
+  background: -moz-linear-gradient(left, $startColor 0%, $endColor 100%);
+  background: -webkit-linear-gradient(left, $startColor 0%, $endColor 100%);
+  background: linear-gradient(to right, $startColor 0%, $endColor 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$startColor', endColorstr='$endColor',GradientType=1 );
 }
 @mixin gradient-diag-up($startColor, $endColor) {
   background: $startColor;
-  background: -moz-linear-gradient(45deg,  $startColor 0%, $endColor 100%);
-  background: -webkit-linear-gradient(45deg,  $startColor 0%,$endColor 100%);
-  background: linear-gradient(45deg,  $startColor 0%,$endColor 100%);
+  background: -moz-linear-gradient(45deg, $startColor 0%, $endColor 100%);
+  background: -webkit-linear-gradient(45deg, $startColor 0%, $endColor 100%);
+  background: linear-gradient(45deg, $startColor 0%, $endColor 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$startColor', endColorstr='$endColor',GradientType=1 );
 }
 @mixin gradient-diag-down($startColor, $endColor) {
   background: $startColor;
-  background: -moz-linear-gradient(135deg,  $startColor 0%, $endColor 100%) !important;
-  background: -webkit-linear-gradient(135deg,  $startColor 0%,$endColor 100%) !important;
-  background: linear-gradient(135deg,  $startColor 0%,$endColor 100%) !important;
+  background: -moz-linear-gradient(
+    135deg,
+    $startColor 0%,
+    $endColor 100%
+  ) !important;
+  background: -webkit-linear-gradient(
+    135deg,
+    $startColor 0%,
+    $endColor 100%
+  ) !important;
+  background: linear-gradient(
+    135deg,
+    $startColor 0%,
+    $endColor 100%
+  ) !important;
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$startColor', endColorstr='$endColor',GradientType=1 ) !important;
 }
 @mixin gradient-r($startColor, $endColor) {
   background: $startColor;
-  background: -moz-radial-gradient(center, ellipse cover,  $startColor 0%, $endColor 100%);
-  background: -webkit-radial-gradient(center, ellipse cover,  $startColor 0%,$endColor 100%);
-  background: radial-gradient(ellipse at center,  $startColor 0%,$endColor 100%);
+  background: -moz-radial-gradient(
+    center,
+    ellipse cover,
+    $startColor 0%,
+    $endColor 100%
+  );
+  background: -webkit-radial-gradient(
+    center,
+    ellipse cover,
+    $startColor 0%,
+    $endColor 100%
+  );
+  background: radial-gradient(
+    ellipse at center,
+    $startColor 0%,
+    $endColor 100%
+  );
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$startColor', endColorstr='$endColor',GradientType=1 );
 }
 
@@ -472,7 +508,6 @@ $cf-scrollbar-offset: 3px;
   }
 }
 
-
 // Block user select
 @mixin no-user-select() {
   user-select: none !important;
@@ -480,7 +515,8 @@ $cf-scrollbar-offset: 3px;
   -webkit-user-select: none !important;
   -ms-user-select: none !important;
   -o-user-select: none !important;
-  &, &:hover {
+  &,
+  &:hover {
     cursor: default;
   }
 }
@@ -490,7 +526,8 @@ $cf-scrollbar-offset: 3px;
   -webkit-user-select: none !important;
   -ms-user-select: none !important;
   -o-user-select: none !important;
-  &, &:hover {
+  &,
+  &:hover {
     cursor: default;
   }
 }
