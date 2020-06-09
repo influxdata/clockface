@@ -14,12 +14,14 @@ import './Dropdown.scss'
 
 export interface DropdownProps extends StandardFunctionProps {
   /** Component to render as the button (use Dropdown.Button) */
-  button: (
+  button?: (
     active: boolean,
     onClick: (e: MouseEvent<HTMLElement>) => void
   ) => JSX.Element
   /** Component to render as the menu (use Dropdown.Menu) */
   menu: (onCollapse?: () => void) => JSX.Element
+  /** Alternative to button */
+  input?: (onFocus: () => void) => JSX.Element
   /** Renders the menu element above the button instead of below */
   dropUp?: boolean
 }
@@ -31,6 +33,7 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
     {
       id,
       menu,
+      input,
       style = {width: '100%'},
       testID = 'dropdown',
       button,
@@ -43,7 +46,15 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
 
     const handleToggleMenu = (e: MouseEvent<HTMLElement>): void => {
       e.preventDefault()
-      setExpandedState(!expanded)
+      if (expanded) {
+        setExpandedState(false)
+      } else {
+        setExpandedState(true)
+      }
+    }
+
+    const handleExpandMenu = (): void => {
+      setExpandedState(true)
     }
 
     const handleCollapseMenu = (): void => {
@@ -56,6 +67,14 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
       'cf-dropdown__down': !dropUp,
     })
 
+    let toggleElement = <div>button & input props are both undefined</div>
+
+    if (input) {
+      toggleElement = input(handleExpandMenu)
+    } else if (button) {
+      toggleElement = button(expanded, handleToggleMenu)
+    }
+
     return (
       <ClickOutside onClickOutside={handleCollapseMenu}>
         <div
@@ -65,7 +84,7 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
           className={dropdownClass}
           data-testid={testID}
         >
-          {button(expanded, handleToggleMenu)}
+          {toggleElement}
           <div className="cf-dropdown--menu-container">
             {expanded && menu(handleCollapseMenu)}
           </div>
