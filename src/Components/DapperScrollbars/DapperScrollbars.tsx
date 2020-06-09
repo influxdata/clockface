@@ -154,13 +154,35 @@ export const DapperScrollbars: FunctionComponent<DapperScrollbarsProps> = ({
       contentProps={{className: 'cf-dapper-scrollbars--content'}}
       trackXProps={{className: 'cf-dapper-scrollbars--track-x'}}
       thumbXProps={{
-        style: thumbXStyle,
-        className: 'cf-dapper-scrollbars--thumb-x',
+        renderer: props => {
+          const {elementRef, style, ...restProps} = props
+          const thumbStyle = {...style, ...thumbXStyle}
+          return (
+            <div
+              className="cf-dapper-scrollbars--thumb-x"
+              ref={elementRef}
+              style={thumbStyle}
+              {...restProps}
+              data-testid={`${testID}-thumb-x`}
+            />
+          )
+        },
       }}
       trackYProps={{className: 'cf-dapper-scrollbars--track-y'}}
       thumbYProps={{
-        style: thumbYStyle,
-        className: 'cf-dapper-scrollbars--thumb-y',
+        renderer: props => {
+          const {elementRef, style, ...restProps} = props
+          const thumbStyle = {...style, ...thumbYStyle}
+          return (
+            <div
+              className="cf-dapper-scrollbars--thumb-y"
+              ref={elementRef}
+              style={thumbStyle}
+              {...restProps}
+              data-testid={`${testID}-thumb-y`}
+            />
+          )
+        },
       }}
       scrollTop={scrollTopPos}
       scrollLeft={scrollLeftPos}
