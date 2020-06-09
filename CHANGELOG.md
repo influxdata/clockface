@@ -2,6 +2,7 @@
 
 #### 2.2.1 (Unreleased)
 
+- [#508](https://github.com/influxdata/clockface/pull/508): Add `testID` to thumb elements in `DapperScrollbars`
 - [#502](https://github.com/influxdata/clockface/pull/502): Enable `Popover` to be closed by the escape key
 
 #### 2.2.0 [2020-05-12]
