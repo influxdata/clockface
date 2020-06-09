@@ -13,7 +13,10 @@ import classnames from 'classnames'
 import {ClickOutside} from '../../ClickOutside/ClickOutside'
 
 // Utilities
-import {convertCSSPropertiesToString} from '../../../Utils/index'
+import {
+  convertCSSPropertiesToString,
+  checkForElementsAlreadyInFocus,
+} from '../../../Utils/index'
 import {calculatePopoverStyles} from '../../../Utils/popovers'
 
 // Types
@@ -156,7 +159,8 @@ export const PopoverDialog = forwardRef<PopoverDialogRef, PopoverDialogProps>(
     // Ensure dialog element is in focus on mount
     // in order to enable escape key behavior
     useEffect(() => {
-      if (dialogRef.current) {
+      const okayToPullFocus = !checkForElementsAlreadyInFocus()
+      if (dialogRef.current && okayToPullFocus) {
         dialogRef.current.focus()
       }
     }, [])
