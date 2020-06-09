@@ -1,5 +1,5 @@
 // Libraries
-import React, {useRef} from 'react'
+import React, {useRef, ChangeEvent} from 'react'
 import marked from 'marked'
 
 // Storybook
@@ -13,6 +13,7 @@ import {
   object,
 } from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
+import {useState} from '@storybook/addons'
 
 // Components
 import {Popover, PopoverRef} from '../'
@@ -23,6 +24,7 @@ import {
 } from '../Composed/QuestionMarkTooltip'
 import {SquareButton} from '../../Button/Composed/SquareButton'
 import {DapperScrollbars} from '../../DapperScrollbars/DapperScrollbars'
+import {Input} from '../../Inputs'
 
 // Types
 import {
@@ -428,6 +430,46 @@ testPopoverStories.add('Popover Trigger within a DapperScrollbars', () => {
           </p>
         </div>
       </DapperScrollbars>
+    </div>
+  )
+})
+
+testPopoverStories.add('Popover + Autofocus Child', () => {
+  const triggerRef = useRef<HTMLDivElement>(null)
+  const [inputValue, updateInputValue] = useState<string>('')
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    updateInputValue(e.target.value)
+  }
+
+  return (
+    <div className="story--example">
+      <Popover.Popover
+        triggerRef={triggerRef}
+        contents={() => (
+          <>
+            <span>
+              This story tests how focus is handled
+              <br />
+              when an autofocus Input exists as a child of Popover
+            </span>
+            <Input
+              autoFocus={true}
+              placeholder="I'm autofocus true"
+              value={inputValue}
+              onChange={handleInputChange}
+            />
+          </>
+        )}
+        showEvent={PopoverInteraction.Click}
+        hideEvent={PopoverInteraction.Click}
+        position={PopoverPosition.Above}
+        color={ComponentColor.Primary}
+        appearance={Appearance.Outline}
+      />
+      <div className="mockComponent mockButton" ref={triggerRef}>
+        Click Me
+      </div>
     </div>
   )
 })
