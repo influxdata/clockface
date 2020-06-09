@@ -24,6 +24,10 @@ export interface DropdownProps extends StandardFunctionProps {
   input?: (onFocus: () => void) => JSX.Element
   /** Renders the menu element above the button instead of below */
   dropUp?: boolean
+  /** Callback for when dropdown menu is toggled to expanded state */
+  onExpand?: () => void
+  /** Callback for when dropdown menu is toggled to collapsed state */
+  onCollapse?: () => void
 }
 
 export type DropdownRef = HTMLDivElement
@@ -39,6 +43,8 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
       button,
       dropUp = false,
       className,
+      onExpand,
+      onCollapse,
     },
     ref
   ) => {
@@ -48,17 +54,21 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
       e.preventDefault()
       if (expanded) {
         setExpandedState(false)
+        onCollapse && onCollapse()
       } else {
         setExpandedState(true)
+        onExpand && onExpand()
       }
     }
 
     const handleExpandMenu = (): void => {
       setExpandedState(true)
+      onExpand && onExpand()
     }
 
     const handleCollapseMenu = (): void => {
       setExpandedState(false)
+      onCollapse && onCollapse()
     }
 
     const dropdownClass = classnames('cf-dropdown', {
