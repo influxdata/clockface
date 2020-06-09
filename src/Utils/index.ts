@@ -298,3 +298,25 @@ export const getRandomGradient = (): Gradients => {
 
   return Gradients[randomGradientKey]
 }
+
+export const checkForElementsAlreadyInFocus = (): boolean => {
+  const activeElement = document.activeElement
+
+  if (!activeElement) {
+    return false
+  }
+
+  const activeElementTag = activeElement.tagName.toLowerCase()
+
+  // Compiling this list based on https://stackoverflow.com/questions/1599660/which-html-elements-can-receive-focus
+  const focusableElements = [
+    'input',
+    'textarea',
+    'button',
+    'select',
+    'anchor',
+    'area',
+  ]
+
+  return focusableElements.includes(activeElementTag)
+}
