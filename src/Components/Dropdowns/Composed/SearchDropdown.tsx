@@ -6,6 +6,7 @@ import React, {
   MouseEvent,
   KeyboardEvent,
   useRef,
+  CSSProperties,
 } from 'react'
 
 // Components
@@ -76,6 +77,8 @@ export interface SearchDropdownProps extends InheritedProps {
   filterFunction?: (inputValue: string, options: string[]) => string[]
   /** Text to show when filterFunction returns no matches */
   noMatchesText?: (inputValue?: string) => string
+  /** Style object passed into dropdown menu container */
+  menuStyle?: CSSProperties
 }
 
 export type SearchDropdownRef = DropdownRef
@@ -97,6 +100,7 @@ export const SearchDropdown = forwardRef<
       tabIndex,
       wrapText = false,
       onKeyDown,
+      menuStyle,
       maxLength,
       autoFocus,
       className,
@@ -248,6 +252,7 @@ export const SearchDropdown = forwardRef<
         maxHeight={menuMaxHeight}
         scrollToSelected={false}
         scrollTop={scrollTop}
+        style={menuStyle}
       >
         {menuItems}
       </Dropdown.Menu>
