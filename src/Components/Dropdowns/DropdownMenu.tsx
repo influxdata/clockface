@@ -1,13 +1,13 @@
 // Libraries
-import React, {forwardRef, RefObject, CSSProperties, ReactNode} from 'react'
+import React, {forwardRef, RefObject, CSSProperties} from 'react'
 import classnames from 'classnames'
-import _ from 'lodash'
 
 // Components
 import {DapperScrollbars} from '../DapperScrollbars/DapperScrollbars'
 
 // Utils
 import {getScrollbarColorsFromTheme} from '../../Utils'
+import {calculateSelectedPosition} from '../../Utils/dropdowns'
 
 // Types
 import {DropdownMenuTheme, StandardFunctionProps} from '../../Types'
@@ -31,6 +31,8 @@ export interface DropdownMenuProps extends StandardFunctionProps {
   contentsStyle?: CSSProperties
   /** Controls autoHide behavior of scrollbars within the menu */
   autoHideScrollbars?: boolean
+  /** Control scroll position externally */
+  scrollTop?: number
 }
 
 export type DropdownMenuRef = HTMLDivElement
@@ -47,6 +49,7 @@ export const DropdownMenu = forwardRef<DropdownMenuRef, DropdownMenuProps>(
       maxHeight = 250,
       noScrollX = true,
       noScrollY = false,
+      scrollTop,
       className,
       onCollapse,
       contentsRef,
@@ -63,7 +66,13 @@ export const DropdownMenu = forwardRef<DropdownMenuRef, DropdownMenuProps>(
 
     const {thumbStartColor, thumbStopColor} = getScrollbarColorsFromTheme(theme)
 
-    const scrollTop = calculateSelectedPosition(scrollToSelected, children)
+    let scrollPosition = scrollToSelected
+      ? calculateSelectedPosition(children)
+      : undefined
+
+    if (scrollTop) {
+      scrollPosition = scrollTop
+    }
 
     const scrollbarsStyle = {
       width: '100%',
@@ -88,7 +97,7 @@ export const DropdownMenu = forwardRef<DropdownMenuRef, DropdownMenuProps>(
           thumbStopColor={thumbStopColor}
           noScrollX={noScrollX}
           noScrollY={noScrollY}
-          scrollTop={scrollTop}
+          scrollTop={scrollPosition}
         >
           <div
             ref={contentsRef}
@@ -106,25 +115,3 @@ export const DropdownMenu = forwardRef<DropdownMenuRef, DropdownMenuProps>(
 )
 
 DropdownMenu.displayName = 'DropdownMenu'
-
-const calculateSelectedPosition = (
-  scrollToSelected: boolean,
-  children: ReactNode
-): number => {
-  if (!children || !scrollToSelected) {
-    return 0
-  }
-
-  const itemHeight = 24
-  const items = React.Children.map(children, child =>
-    _.get(child, 'props.selected', false)
-  )
-
-  if (!items) {
-    return 0
-  }
-
-  const itemIndex = items.findIndex(item => item === true)
-
-  return itemHeight * itemIndex
-}
