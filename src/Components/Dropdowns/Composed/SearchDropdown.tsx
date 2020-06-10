@@ -9,7 +9,7 @@ import React, {
 } from 'react'
 
 // Components
-import {Dropdown, DropdownRef, DropdownItemRef} from '../'
+import {Dropdown, DropdownRef, DropdownItemRef, DropdownItemProps} from '../'
 import {Input, InputProps, InputRef} from '../../Inputs'
 
 // Utilities
@@ -33,22 +33,23 @@ import {
 // Styles
 import './SearchDropdown.scss'
 
-export interface SearchDropdownProps
-  extends Pick<
-    InputProps,
-    | 'maxLength'
-    | 'tabIndex'
-    | 'placeholder'
-    | 'autoFocus'
-    | 'spellCheck'
-    | 'style'
-    | 'className'
-    | 'testID'
-    | 'onKeyPress'
-    | 'onKeyDown'
-    | 'onKeyUp'
-    | 'id'
-  > {
+type InheritedProps = Pick<
+  InputProps,
+  | 'maxLength'
+  | 'tabIndex'
+  | 'placeholder'
+  | 'autoFocus'
+  | 'spellCheck'
+  | 'style'
+  | 'className'
+  | 'testID'
+  | 'onKeyPress'
+  | 'onKeyDown'
+  | 'onKeyUp'
+  | 'id'
+> &
+  Pick<DropdownItemProps, 'wrapText'>
+export interface SearchDropdownProps extends InheritedProps {
   /** Value of input */
   inputValue: string
   /** Fires when input value changes or a suggestion is clicked */
@@ -94,6 +95,7 @@ export const SearchDropdown = forwardRef<
       onKeyUp,
       onSelect,
       tabIndex,
+      wrapText = false,
       onKeyDown,
       maxLength,
       autoFocus,
@@ -233,6 +235,7 @@ export const SearchDropdown = forwardRef<
           title={o}
           onClick={handleMenuItemClick}
           onMouseEnter={handleMenuItemMouseEnter}
+          wrapText={wrapText}
         >
           {o}
         </Dropdown.Item>
