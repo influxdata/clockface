@@ -19,15 +19,19 @@ export interface DropdownProps extends StandardFunctionProps {
     onClick: (e: MouseEvent<HTMLElement>) => void
   ) => JSX.Element
   /** Component to render as the menu (use Dropdown.Menu) */
-  menu: (onCollapse?: () => void) => JSX.Element
+  menu: (onClickInside?: () => void) => JSX.Element
   /** Alternative to button */
-  input?: (onFocus: () => void) => JSX.Element
+  input?: () => JSX.Element
   /** Renders the menu element above the button instead of below */
   dropUp?: boolean
   /** Callback for when dropdown menu is toggled to expanded state */
   onExpand?: () => void
-  /** Callback for when dropdown menu is toggled to collapsed state */
-  onCollapse?: () => void
+  /** Callback for when dropdown menu is collapsed by a click outside */
+  onClickOutside?: () => void
+  /** Callback for when dropdown menu is collapsed by a click inside */
+  onClickInside?: () => void
+  /** Enables external control of dropdown state */
+  expanded?: boolean
 }
 
 export type DropdownRef = HTMLDivElement
@@ -42,33 +46,36 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
       testID = 'dropdown',
       button,
       dropUp = false,
-      className,
+      expanded,
       onExpand,
-      onCollapse,
+      className,
+      onClickInside,
+      onClickOutside,
     },
     ref
   ) => {
-    const [expanded, setExpandedState] = useState(false)
+    const [internalExpanded, setInternalExpandedState] = useState(false)
+    const controlledExternally = expanded !== undefined
 
     const handleToggleMenu = (e: MouseEvent<HTMLElement>): void => {
       e.preventDefault()
-      if (expanded) {
-        setExpandedState(false)
-        onCollapse && onCollapse()
+      if (internalExpanded) {
+        setInternalExpandedState(false)
+        onClickOutside && onClickOutside()
       } else {
-        setExpandedState(true)
+        setInternalExpandedState(true)
         onExpand && onExpand()
       }
     }
 
-    const handleExpandMenu = (): void => {
-      setExpandedState(true)
-      onExpand && onExpand()
+    const handleClickOutside = (): void => {
+      !controlledExternally && setInternalExpandedState(false)
+      onClickOutside && onClickOutside()
     }
 
-    const handleCollapseMenu = (): void => {
-      setExpandedState(false)
-      onCollapse && onCollapse()
+    const handleClickInside = (): void => {
+      !controlledExternally && setInternalExpandedState(false)
+      onClickInside && onClickInside()
     }
 
     const dropdownClass = classnames('cf-dropdown', {
@@ -80,13 +87,17 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
     let toggleElement = <div>button & input props are both undefined</div>
 
     if (input) {
-      toggleElement = input(handleExpandMenu)
+      toggleElement = input()
     } else if (button) {
-      toggleElement = button(expanded, handleToggleMenu)
+      toggleElement = button(internalExpanded, handleToggleMenu)
     }
 
+    const displayMenuElement = controlledExternally
+      ? expanded
+      : internalExpanded
+
     return (
-      <ClickOutside onClickOutside={handleCollapseMenu}>
+      <ClickOutside onClickOutside={handleClickOutside}>
         <div
           style={style}
           id={id}
@@ -96,7 +107,7 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
         >
           {toggleElement}
           <div className="cf-dropdown--menu-container">
-            {expanded && menu(handleCollapseMenu)}
+            {displayMenuElement && menu(handleClickInside)}
           </div>
         </div>
       </ClickOutside>
