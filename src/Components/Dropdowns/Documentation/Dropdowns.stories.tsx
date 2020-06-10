@@ -710,6 +710,8 @@ dropdownComposedStories.add(
       /* eslint-enable */
     }
 
+    const defaultMenuStyle = {width: '100%'}
+
     return (
       <div className="story--example">
         <SearchDropdown
@@ -717,10 +719,12 @@ dropdownComposedStories.add(
           style={object('style', defaultDropdownStyle)}
           menuMaxHeight={number('menuMaxHeight', 250)}
           dropUp={boolean('dropUp', false)}
+          wrapText={boolean('wrapText', false)}
           inputValue={inputValue}
           selectedOption={selectedOption}
           onSelect={updateSelectedOption}
           onInputChange={updateInputValue}
+          menuStyle={object('menuStyle', defaultMenuStyle)}
           menuTheme={
             DropdownMenuTheme[
               select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Onyx')
