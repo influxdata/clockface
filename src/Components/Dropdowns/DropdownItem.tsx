@@ -8,6 +8,8 @@ import {DropdownItemType, StandardFunctionProps} from '../../Types'
 // Components
 import {DropdownItemSelectionIndicator} from './DropdownItemSelectionIndicator'
 
+export type DropdownItemRef = HTMLDivElement
+
 export interface DropdownItemProps extends StandardFunctionProps {
   /** Value to be returned via the onClick function */
   value?: any
@@ -17,6 +19,10 @@ export interface DropdownItemProps extends StandardFunctionProps {
   type?: DropdownItemType
   /** When a dropdown item is clicked, its `value` prop is returned via `onChange` */
   onClick?: (value?: any) => void
+  /** Callback for when mouse enters the dropdown item */
+  onMouseEnter?: (e?: MouseEvent<DropdownItemRef>, value?: any) => void
+  /** Callback for when mouse leaves the dropdown item */
+  onMouseLeave?: (e?: MouseEvent<DropdownItemRef>, value?: any) => void
   /** Controls whether the text contents of this item wrap or not */
   wrapText?: boolean
   /** Title attribute */
@@ -24,8 +30,6 @@ export interface DropdownItemProps extends StandardFunctionProps {
   /** Prevents any interaction with this element, including the onClick function */
   disabled?: boolean
 }
-
-export type DropdownItemRef = HTMLDivElement
 
 export const DropdownItem = forwardRef<DropdownItemRef, DropdownItemProps>(
   (
@@ -42,6 +46,8 @@ export const DropdownItem = forwardRef<DropdownItemRef, DropdownItemProps>(
       children,
       disabled,
       className,
+      onMouseEnter,
+      onMouseLeave,
     },
     ref
   ) => {
@@ -63,6 +69,14 @@ export const DropdownItem = forwardRef<DropdownItemRef, DropdownItemProps>(
       }
     }
 
+    const handleMouseEnter = (e: MouseEvent<DropdownItemRef>): void => {
+      onMouseEnter && onMouseEnter(e, value)
+    }
+
+    const handleMouseLeave = (e: MouseEvent<DropdownItemRef>): void => {
+      onMouseLeave && onMouseLeave(e, value)
+    }
+
     return (
       <div
         id={id}
@@ -72,6 +86,8 @@ export const DropdownItem = forwardRef<DropdownItemRef, DropdownItemProps>(
         onClick={handleClick}
         className={dropdownItemClass}
         data-testid={testID}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         <DropdownItemSelectionIndicator type={type} />
         <div className="cf-dropdown-item--children">{children}</div>
