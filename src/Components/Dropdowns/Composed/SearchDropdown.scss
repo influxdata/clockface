@@ -1,0 +1,36 @@
+@import '../../../Styles/variables';
+
+/*
+Dropdown Input
+------------------------------------------------------------------------------
+*/
+
+.cf-dropdown__down {
+  .search-dropdown--input.cf-input-xs + .cf-dropdown--menu-container {
+    top: $cf-form-xs-height;
+  }
+  .search-dropdown--input.cf-input-sm + .cf-dropdown--menu-container {
+    top: $cf-form-sm-height;
+  }
+  .search-dropdown--input.cf-input-md + .cf-dropdown--menu-container {
+    top: $cf-form-md-height;
+  }
+  .search-dropdown--input.cf-input-lg + .cf-dropdown--menu-container {
+    top: $cf-form-lg-height;
+  }
+}
+
+.cf-dropdown__up {
+  .search-dropdown--input.cf-input-xs + .cf-dropdown--menu-container {
+    bottom: $cf-form-xs-height;
+  }
+  .search-dropdown--input.cf-input-sm + .cf-dropdown--menu-container {
+    bottom: $cf-form-sm-height;
+  }
+  .search-dropdown--input.cf-input-md + .cf-dropdown--menu-container {
+    bottom: $cf-form-md-height;
+  }
+  .search-dropdown--input.cf-input-lg + .cf-dropdown--menu-container {
+    bottom: $cf-form-lg-height;
+  }
+}
