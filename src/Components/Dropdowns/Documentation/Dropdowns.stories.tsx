@@ -14,6 +14,7 @@ import {
   object,
 } from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
+import {useState} from '@storybook/addons'
 
 // Components
 import {
@@ -28,6 +29,7 @@ import {
   DropdownMenuContentsRef,
 } from '../'
 import {SelectDropdown, SelectDropdownRef} from '../Composed/SelectDropdown'
+import {SearchDropdown} from '../Composed/SearchDropdown'
 import {
   MultiSelectDropdown,
   MultiSelectDropdownRef,
@@ -53,6 +55,7 @@ import DropdownLinkItemReadme from './DropdownLinkItem.md'
 import DropdownMenuReadme from './DropdownMenu.md'
 import SelectDropdownReadme from './SelectDropdown.md'
 import MultiSelectDropdownReadme from './MultiSelectDropdown.md'
+import SearchDropdownReadme from './SearchDropdown.md'
 
 const dropdownFamilyStories = storiesOf(
   'Components|Dropdowns/Family',
@@ -64,7 +67,7 @@ const dropdownComposedStories = storiesOf(
   module
 ).addDecorator(withKnobs)
 
-const defaultDropdownStyle = {width: '250px'}
+const defaultDropdownStyle = {width: '300px'}
 
 dropdownFamilyStories.add(
   'Dropdown',
@@ -629,6 +632,131 @@ dropdownComposedStories.add(
   {
     readme: {
       content: marked(MultiSelectDropdownReadme),
+    },
+  }
+)
+
+dropdownComposedStories.add(
+  'SearchDropdown',
+  () => {
+    const selectDropdownOptions = [
+      'Apple',
+      'Arugula',
+      'Banana',
+      'Black Pepper',
+      'Bok Choy',
+      'Broccoli',
+      'Canteloupe',
+      'Capsicum',
+      'Carrot',
+      'Celery',
+      'Chives',
+      'Cilantro',
+      'Cinnamon',
+      'Clove',
+      'Corn',
+      'Curry Powder',
+      'Dill',
+      'Fennel Fronds',
+      'Galangal',
+      'Garlic',
+      'Ginger',
+      'Grape',
+      'Green Bean',
+      'Honeydew',
+      'Kale',
+      'Kiwi',
+      'Leeks',
+      'Lemon',
+      'Mango',
+      'Marjoram',
+      'Mustard Greens',
+      'Mustard Powder',
+      'Mustard Seed',
+      'Okra',
+      'Onion',
+      'Orange',
+      'Paprika',
+      'Parsley',
+      'Peach',
+      'Pear',
+      'Pineapple',
+      'Potato',
+      'Rosemary',
+      'Sage',
+      'Savory',
+      'Scallions',
+      'Shishito Pepper',
+      'Spinach',
+      'Star Anise',
+      'Strawberry',
+      'Sumac',
+      'Thyme',
+      'Tomato',
+      'Watermelon',
+      'Yam',
+      'Yuzu',
+    ]
+
+    const [inputValue, updateInputValue] = useState<string>('')
+    const [selectedOption, updateSelectedOption] = useState<string>(
+      selectDropdownOptions[0]
+    )
+    const selectDropdownRef: RefObject<SelectDropdownRef> = createRef()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(selectDropdownRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <SearchDropdown
+          ref={selectDropdownRef}
+          style={object('style', defaultDropdownStyle)}
+          menuMaxHeight={number('menuMaxHeight', 250)}
+          dropUp={boolean('dropUp', false)}
+          inputValue={inputValue}
+          selectedOption={selectedOption}
+          onSelect={updateSelectedOption}
+          onInputChange={updateInputValue}
+          menuTheme={
+            DropdownMenuTheme[
+              select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Onyx')
+            ]
+          }
+          inputStatus={
+            ComponentStatus[
+              select('inputStatus', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
+          inputSize={
+            ComponentSize[
+              select('inputSize', mapEnumKeys(ComponentSize), 'Small')
+            ]
+          }
+          placeholder={text('placeholder', 'Search ingredients...')}
+          inputIcon={
+            IconFont[
+              select(
+                'inputIcon',
+                {None: 'none', ...mapEnumKeys(IconFont)},
+                'Search'
+              )
+            ]
+          }
+          options={array('options', selectDropdownOptions)}
+        />
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(SearchDropdownReadme),
     },
   }
 )
