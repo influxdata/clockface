@@ -1,18 +1,20 @@
 # Changelog
 
-#### 2.2.1 (Unreleased)
+#### 2.2.2 (Unreleased)
+
+#### 2.2.1 (2020-06-11)
 
 - [#508](https://github.com/influxdata/clockface/pull/508): Add `testID` to thumb elements in `DapperScrollbars`
 - [#502](https://github.com/influxdata/clockface/pull/502): Enable `Popover` to be closed by the escape key
 
-#### 2.2.0 [2020-05-12]
+#### 2.2.0 (2020-05-12)
 
 - [#505](https://github.com/influxdata/clockface/pull/505): Fix dependency issues and address new lint rules
 - [#503](https://github.com/influxdata/clockface/pull/503): Expose `onScroll` and `onUpdate` props in `DapperScrollbars`
 - [#499](https://github.com/influxdata/clockface/pull/499): Fix export for `CTALinkButton`
 - [#492](https://github.com/influxdata/clockface/pull/492): Introduce `RBAC` component that conditionally renders content based on permissions
 
-#### 2.1.1 [2020-04-30]
+#### 2.1.1 (2020-04-30)
 
 - [#497](https://github.com/influxdata/clockface/pull/497): Introduce `CTALinkButton` component as composed variant of `LinkButton`
 - [#496](https://github.com/influxdata/clockface/pull/496): Add optional `htmlFor` prop to `FormElement` and `FormValidationElement` that, if true, will render the components with `<label />` instead of `<div />`
