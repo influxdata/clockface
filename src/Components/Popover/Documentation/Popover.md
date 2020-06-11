@@ -43,12 +43,16 @@ Make sure to use the available `onHide` argument and pass it into your dismiss b
 ### Example
 <!-- STORY -->
 
-### Trying to Make a Custom Popover?
+### Want more control over style within a Popover?
 
 By default `Popover` will apply reasonable default styles to the dialog to save you time. However you may be building a more specialized design and want more control. Rather than fight the default styles you can simply turn them off:
 ```tsx
 <Popover enableDefaultStyles={false} />
 ```
+
+### Gotchas
+
+By default all `Popover` instances will be in focus when they appear so that pressing the `Escape` key dismisses them. If a `Popover` has its state controlled externally via the `visible` prop then the `Escape` key listener is disabled in deference.
 
 <!-- STORY HIDE START -->
 

@@ -3,6 +3,7 @@ import React, {
   useRef,
   RefObject,
   MouseEvent,
+  useEffect,
   useLayoutEffect,
   forwardRef,
 } from 'react'
@@ -146,6 +147,21 @@ export const PopoverDialog = forwardRef<PopoverDialogRef, PopoverDialogProps>(
       handleUpdateStyles()
     })
 
+    // Ensure styles are updated when the
+    // enableDefaultStyles prop changes
+    useEffect(() => {
+      handleUpdateStyles()
+    }, [enableDefaultStyles])
+
+    // Ensure dialog element is in focus on mount
+    // in order to enable escape key behavior
+    useEffect(() => {
+      const okayToPullFocus = !document.activeElement
+      if (dialogRef.current && okayToPullFocus) {
+        dialogRef.current.focus()
+      }
+    }, [])
+
     return (
       <ClickOutside onClickOutside={onClickOutside}>
         <div
@@ -154,6 +170,7 @@ export const PopoverDialog = forwardRef<PopoverDialogRef, PopoverDialogProps>(
           className={popoverDialogClassName}
           data-testid={`${testID}--dialog`}
           onMouseLeave={onMouseLeave}
+          tabIndex={-1}
         >
           <div
             ref={ref}

@@ -143,8 +143,8 @@ export const calculatePopoverStyles = (
         // Center the dialog horizontally above the trigger by default
         dialogStyles = {
           ...dialogStyles,
-          bottom: `${window.innerHeight - triggerRect.top}px`,
-          left: `${triggerRect.left + triggerRect.width / 2}px`,
+          bottom: `${Math.floor(window.innerHeight - triggerRect.top)}px`,
+          left: `${Math.floor(triggerRect.left + triggerRect.width / 2)}px`,
           transform: 'translateX(-50%)',
           paddingBottom: `${distanceFromTrigger}px`,
         }
@@ -162,7 +162,7 @@ export const calculatePopoverStyles = (
           // Align left edge of dialog to left edge of trigger
           dialogStyles = {
             ...dialogStyles,
-            left: `${triggerRect.left}px`,
+            left: `${Math.floor(triggerRect.left)}px`,
             transform: 'translateX(0)',
           }
           caretStyles = {
@@ -173,7 +173,7 @@ export const calculatePopoverStyles = (
           // Align right edge of dialog to right edge of trigger
           dialogStyles = {
             ...dialogStyles,
-            left: `${triggerRect.left + triggerRect.width}px`,
+            left: `${Math.floor(triggerRect.left + triggerRect.width)}px`,
             transform: 'translateX(-100%)',
           }
           caretStyles = {
@@ -194,8 +194,8 @@ export const calculatePopoverStyles = (
         // Center the dialog horizontally below the trigger by default
         dialogStyles = {
           ...dialogStyles,
-          top: `${triggerRect.top + triggerRect.height}px`,
-          left: `${triggerRect.left + triggerRect.width / 2}px`,
+          top: `${Math.floor(triggerRect.top + triggerRect.height)}px`,
+          left: `${Math.floor(triggerRect.left + triggerRect.width / 2)}px`,
           transform: 'translateX(-50%)',
           paddingTop: `${distanceFromTrigger}px`,
         }
@@ -213,7 +213,7 @@ export const calculatePopoverStyles = (
           // Align left edge of dialog to left edge of trigger
           dialogStyles = {
             ...dialogStyles,
-            left: `${triggerRect.left}px`,
+            left: `${Math.floor(triggerRect.left)}px`,
             transform: 'translateX(0)',
           }
           caretStyles = {
@@ -224,7 +224,7 @@ export const calculatePopoverStyles = (
           // Align right edge of dialog to right edge of trigger
           dialogStyles = {
             ...dialogStyles,
-            left: `${triggerRect.left + triggerRect.width}px`,
+            left: `${Math.floor(triggerRect.left + triggerRect.width)}px`,
             transform: 'translateX(-100%)',
           }
           caretStyles = {
@@ -245,8 +245,8 @@ export const calculatePopoverStyles = (
         // Center the dialog vertically to the left of the trigger by default
         dialogStyles = {
           ...dialogStyles,
-          left: `${triggerRect.left}px`,
-          top: `${triggerRect.top + triggerRect.height / 2}px`,
+          left: `${Math.floor(triggerRect.left)}px`,
+          top: `${Math.floor(triggerRect.top + triggerRect.height / 2)}px`,
           transform: 'translate(-100%, -50%)',
           paddingRight: `${distanceFromTrigger}px`,
         }
@@ -264,7 +264,7 @@ export const calculatePopoverStyles = (
           // Align left edge of dialog to top edge of trigger
           dialogStyles = {
             ...dialogStyles,
-            top: `${triggerRect.top}px`,
+            top: `${Math.floor(triggerRect.top)}px`,
             transform: 'translate(-100%, 0)',
           }
           caretStyles = {
@@ -275,7 +275,7 @@ export const calculatePopoverStyles = (
           // Align right edge of dialog to bottom edge of trigger
           dialogStyles = {
             ...dialogStyles,
-            top: `${triggerRect.top + triggerRect.height}px`,
+            top: `${Math.floor(triggerRect.top + triggerRect.height)}px`,
             transform: 'translate(-100%, -100%)',
           }
           caretStyles = {
@@ -296,8 +296,8 @@ export const calculatePopoverStyles = (
         // Center the dialog vertically to the right of the trigger by default
         dialogStyles = {
           ...dialogStyles,
-          left: `${triggerRect.left + triggerRect.width}px`,
-          top: `${triggerRect.top + triggerRect.height / 2}px`,
+          left: `${Math.floor(triggerRect.left + triggerRect.width)}px`,
+          top: `${Math.floor(triggerRect.top + triggerRect.height / 2)}px`,
           transform: 'translateY(-50%)',
           paddingLeft: `${distanceFromTrigger}px`,
         }
@@ -315,7 +315,7 @@ export const calculatePopoverStyles = (
           // Align left edge of dialog to top edge of trigger
           dialogStyles = {
             ...dialogStyles,
-            top: `${triggerRect.top}px`,
+            top: `${Math.floor(triggerRect.top)}px`,
             transform: 'translateY(0)',
           }
           caretStyles = {
@@ -326,7 +326,7 @@ export const calculatePopoverStyles = (
           // Align right edge of dialog to bottom edge of trigger
           dialogStyles = {
             ...dialogStyles,
-            top: `${triggerRect.top + triggerRect.height}px`,
+            top: `${Math.floor(triggerRect.top + triggerRect.height)}px`,
             transform: 'translateY(-100%)',
           }
           caretStyles = {

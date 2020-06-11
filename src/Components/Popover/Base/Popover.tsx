@@ -13,7 +13,11 @@ import uuid from 'uuid'
 import {PopoverDialog} from './PopoverDialog'
 
 // Utils
-import {createPortalElement, destroyPortalElement} from '../../../Utils/index'
+import {
+  createPortalElement,
+  destroyPortalElement,
+  updatePortalEventListener,
+} from '../../../Utils/index'
 
 // Styles
 import './Popover.scss'
@@ -49,7 +53,7 @@ export interface PopoverProps extends StandardFunctionProps {
   position?: PopoverPosition
   /** Means of applying color to popover */
   appearance: Appearance
-  /** Overrides internal popover expanded state */
+  /** For external control of the popover state, overrides escape key behavior  */
   visible?: boolean
   /** Disables the popover's show interaction */
   disabled?: boolean
@@ -78,7 +82,7 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
       className,
       triggerRef,
       caretSize = 8,
-      visible = false,
+      visible,
       disabled = false,
       testID = 'popover',
       distanceFromTrigger = 4,
@@ -98,15 +102,23 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
       const newPortalID = `cf-${popoverPortalName}-portal-${uuid.v4()}`
       setPortalID(newPortalID)
 
-      createPortalElement(newPortalID, popoverPortalName)
-      handleAddEventListeners()
+      createPortalElement(
+        newPortalID,
+        popoverPortalName,
+        undefined,
+        handleAddEscapeKeyListener
+      )
+
+      handleAddEventListenersToTrigger()
 
       return (): void => {
+        updatePortalEventListener(portalID, handleRemoveEscapeKeyListener)
         destroyPortalElement(newPortalID)
-        handleRemoveEventListeners()
+        handleRemoveEventListenersFromTrigger()
       }
     }, [])
 
+    // Show or hide dialog in reponse to changes in "visible" prop
     useEffect(() => {
       if (visible) {
         handleShowDialog()
@@ -169,6 +181,14 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
       }
     }
 
+    const handleEscapeKey = (e: KeyboardEvent): void => {
+      // Only hide dialog on escape key press if the
+      // popover is not being controlled externally
+      if (e.key === 'Escape' && visible === undefined) {
+        handleHideDialog()
+      }
+    }
+
     const handleShowDialog = (): void => {
       onShow && onShow()
       setExpanded(true)
@@ -179,7 +199,17 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
       setExpanded(false)
     }
 
-    const handleAddEventListeners = (): void => {
+    const handleAddEscapeKeyListener = (portalElement: HTMLElement): void => {
+      portalElement.addEventListener('keydown', handleEscapeKey)
+    }
+
+    const handleRemoveEscapeKeyListener = (
+      portalElement: HTMLElement
+    ): void => {
+      portalElement.removeEventListener('keydown', handleEscapeKey)
+    }
+
+    const handleAddEventListenersToTrigger = (): void => {
       if (!triggerRef.current) {
         return
       }
@@ -198,7 +228,7 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
       }
     }
 
-    const handleRemoveEventListeners = (): void => {
+    const handleRemoveEventListenersFromTrigger = (): void => {
       if (!triggerRef.current) {
         return
       }

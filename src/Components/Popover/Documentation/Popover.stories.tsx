@@ -1,5 +1,5 @@
 // Libraries
-import React, {useRef} from 'react'
+import React, {useRef, ChangeEvent} from 'react'
 import marked from 'marked'
 
 // Storybook
@@ -13,6 +13,7 @@ import {
   object,
 } from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
+import {useState} from '@storybook/addons'
 
 // Components
 import {Popover, PopoverRef} from '../'
@@ -23,6 +24,7 @@ import {
 } from '../Composed/QuestionMarkTooltip'
 import {SquareButton} from '../../Button/Composed/SquareButton'
 import {DapperScrollbars} from '../../DapperScrollbars/DapperScrollbars'
+import {Input} from '../../Inputs'
 
 // Types
 import {
@@ -67,9 +69,11 @@ popoverStories.add(
     const triggerRefA = useRef<HTMLDivElement>(null)
     const triggerRefB = useRef<HTMLDivElement>(null)
     const triggerRefC = useRef<HTMLButtonElement>(null)
+    const triggerRefD = useRef<HTMLDivElement>(null)
     const popover1Ref = useRef<PopoverRef>(null)
     const popover2Ref = useRef<PopoverRef>(null)
     const popover3Ref = useRef<PopoverRef>(null)
+    const popover4Ref = useRef<PopoverRef>(null)
 
     const log1Ref = (): void => {
       /* eslint-disable */
@@ -89,35 +93,73 @@ popoverStories.add(
       /* eslint-enable */
     }
 
+    const log4Ref = (): void => {
+      /* eslint-disable */
+      console.log(popover4Ref.current)
+      /* eslint-enable */
+    }
+
     return (
       <div className="story--example">
-        <div
-          className="mockComponent mockButton"
-          ref={triggerRefA}
-          style={{marginRight: '60px'}}
-        >
-          Click Me
-        </div>
-        <div
-          className="mockComponent mockButton"
-          ref={triggerRefB}
-          style={{marginRight: '60px'}}
-        >
-          Hover Me
-        </div>
-        <SquareButton
-          icon={IconFont.Zap}
-          ref={triggerRefC}
-          status={ComponentStatus.Disabled}
-        />
+        <table className="story--invisible-table">
+          <tbody>
+            <tr>
+              <td>
+                <code>PopoverInteraction.Click</code>
+              </td>
+              <td>
+                <div className="mockComponent mockButton" ref={triggerRefA}>
+                  Click Me
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <code>PopoverInteraction.Hover</code>
+              </td>
+              <td>
+                <div className="mockComponent mockButton" ref={triggerRefB}>
+                  Hover Me
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Trigger element is disabled</td>
+              <td>
+                <SquareButton
+                  icon={IconFont.Zap}
+                  ref={triggerRefC}
+                  status={ComponentStatus.Disabled}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Controlled by <code>visible</code> prop
+              </td>
+              <td>
+                <div className="mockComponent mockButton" ref={triggerRefD}>
+                  Use Knobs
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
         <Popover.Popover
           ref={popover1Ref}
           triggerRef={triggerRefA}
-          enableDefaultStyles={false}
+          enableDefaultStyles={boolean('enableDefaultStyles', true)}
           contents={(onHide: any) => (
             <>
-              PopoverContents
-              <Popover.DismissButton onClick={onHide} />
+              This Popover uses the style prop
+              <Popover.DismissButton
+                onClick={onHide}
+                color={
+                  ComponentColor[
+                    select('color', mapEnumKeys(ComponentColor), 'Primary')
+                  ]
+                }
+              />
               <div className="story--test-buttons">
                 <button onClick={log1Ref}>Log Ref</button>
               </div>
@@ -170,7 +212,6 @@ popoverStories.add(
         <Popover.Popover
           ref={popover3Ref}
           triggerRef={triggerRefC}
-          visible={true}
           enableDefaultStyles={boolean('enableDefaultStyles', true)}
           contents={() => (
             <>
@@ -191,6 +232,30 @@ popoverStories.add(
           position={PopoverPosition.Below}
           color={ComponentColor.Success}
           appearance={Appearance.Outline}
+        />
+        <Popover.Popover
+          ref={popover4Ref}
+          triggerRef={triggerRefD}
+          visible={boolean('visible', true)}
+          enableDefaultStyles={boolean('enableDefaultStyles', true)}
+          contents={() => (
+            <div>
+              My state can be controlled externally
+              <br />
+              via the <strong>visible</strong> prop
+              <br />
+              <br />
+              Look in the <strong>Knobs</strong> panel
+              <div className="story--test-buttons relative">
+                <button onClick={log4Ref}>Log Ref</button>
+              </div>
+            </div>
+          )}
+          showEvent={PopoverInteraction.None}
+          hideEvent={PopoverInteraction.None}
+          position={PopoverPosition.Below}
+          color={ComponentColor.Success}
+          appearance={Appearance.Solid}
         />
       </div>
     )
@@ -365,6 +430,46 @@ testPopoverStories.add('Popover Trigger within a DapperScrollbars', () => {
           </p>
         </div>
       </DapperScrollbars>
+    </div>
+  )
+})
+
+testPopoverStories.add('Popover + Autofocus Child', () => {
+  const triggerRef = useRef<HTMLDivElement>(null)
+  const [inputValue, updateInputValue] = useState<string>('')
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    updateInputValue(e.target.value)
+  }
+
+  return (
+    <div className="story--example">
+      <Popover.Popover
+        triggerRef={triggerRef}
+        contents={() => (
+          <>
+            <span>
+              This story tests how focus is handled
+              <br />
+              when an autofocus Input exists as a child of Popover
+            </span>
+            <Input
+              autoFocus={true}
+              placeholder="I'm autofocus true"
+              value={inputValue}
+              onChange={handleInputChange}
+            />
+          </>
+        )}
+        showEvent={PopoverInteraction.Click}
+        hideEvent={PopoverInteraction.Click}
+        position={PopoverPosition.Above}
+        color={ComponentColor.Primary}
+        appearance={Appearance.Outline}
+      />
+      <div className="mockComponent mockButton" ref={triggerRef}>
+        Click Me
+      </div>
     </div>
   )
 })
