@@ -1,0 +1,230 @@
+@import '../../Styles/variables';
+
+.cf-list-indicator {
+  position: relative;
+}
+
+.cf-list-indicator--element {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/*
+  Dot
+  ------------------------------------------------------------------------------
+*/
+
+.cf-list-indicator__dot {
+  .cf-list-indicator--element {
+    background-color: $g20-white;
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.25, 0.25);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  &.cf-list-indicator__selected .cf-list-indicator--element {
+    transform: translate(-50%, -50%) scale(1, 1);
+    opacity: 1;
+  }
+}
+
+/*
+  Checkbox
+  ------------------------------------------------------------------------------
+*/
+
+.cf-list-indicator__checkbox {
+  border-radius: $cf-border;
+
+  .cf-list-indicator--element {
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.25, 0.25);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  &.cf-list-indicator__selected .cf-list-indicator--element {
+    transform: translate(-50%, -50%) scale(1, 1);
+    opacity: 1;
+  }
+}
+
+/*
+  Checkbox
+  ------------------------------------------------------------------------------
+*/
+
+.cf-list-indicator__icon {
+  font-size: 1.125em;
+
+  .cf-list-indicator--element {
+    transform: translate(-50%, -52%);
+  }
+}
+
+/*
+  Size Modifiers
+  ------------------------------------------------------------------------------
+*/
+
+@mixin listIndicatorSizeModifier($size) {
+  $dotSize: floor($size * 0.25);
+  $checkboxSize: floor($size * 0.5);
+
+  @if $dotSize % 2 != 0 {
+    $dotSize: $dotSize + 1px;
+  }
+
+  @if $checkboxSize % 2 != 0 {
+    $checkboxSize: $checkboxSize + 1px;
+  }
+
+  &.cf-list-indicator__icon {
+    width: $checkboxSize;
+    height: $checkboxSize;
+  }
+
+  &.cf-list-indicator__dot {
+    width: floor($size * 0.25);
+    height: $size;
+  }
+
+  &.cf-list-indicator__checkbox {
+    width: $checkboxSize;
+    height: $checkboxSize;
+  }
+
+  &.cf-list-indicator__icon,
+  &.cf-list-indicator__dot,
+  &.cf-list-indicator__checkbox {
+    &:first-child {
+      margin-right: floor($size * 0.25);
+    }
+
+    &:last-child {
+      margin-left: floor($size * 0.25);
+    }
+  }
+
+  &.cf-list-indicator__dot .cf-list-indicator--element,
+  &.cf-list-indicator__checkbox .cf-list-indicator--element {
+    width: $dotSize;
+    height: $dotSize;
+  }
+}
+
+.cf-list-indicator__xs {
+  @include listIndicatorSizeModifier($cf-form-xs-height);
+}
+
+.cf-list-indicator__sm {
+  @include listIndicatorSizeModifier($cf-form-sm-height);
+}
+
+.cf-list-indicator__md {
+  @include listIndicatorSizeModifier($cf-form-md-height);
+}
+
+.cf-list-indicator__lg {
+  @include listIndicatorSizeModifier($cf-form-lg-height);
+}
+
+/*
+  Color Modifiers
+  ------------------------------------------------------------------------------
+*/
+
+@mixin listIndicatorColorModifier($color) {
+  &.cf-list-indicator__dot {
+    .cf-list-indicator--element {
+      box-shadow: 0 0 4px 1px $color;
+    }
+  }
+
+  &.cf-list-indicator__checkbox {
+    background-color: rgba($g0-obsidian, 0.5);
+    .cf-list-indicator--element {
+      background-color: $color;
+      box-shadow: 0 0 4px 1px $color;
+    }
+  }
+}
+
+.cf-list-indicator__default {
+  @include listIndicatorColorModifier($g13-mist);
+}
+
+.cf-list-indicator__primary {
+  @include listIndicatorColorModifier($c-pool);
+}
+
+.cf-list-indicator__secondary {
+  @include listIndicatorColorModifier($c-star);
+}
+
+.cf-list-indicator__success {
+  @include listIndicatorColorModifier($c-rainforest);
+}
+
+.cf-list-indicator__warning {
+  @include listIndicatorColorModifier($c-pineapple);
+}
+
+.cf-list-indicator__danger {
+  @include listIndicatorColorModifier($c-curacao);
+}
+
+/*
+  Size Modifiers
+  ------------------------------------------------------------------------------
+*/
+
+@mixin listItemSizeModifier($fontSize, $height, $padding) {
+  &.cf-list-item,
+  &.cf-list-divider {
+    font-weight: $cf-font-weight--medium;
+    font-size: $fontSize;
+    padding: 0 $padding;
+  }
+
+  &.cf-list-item__no-wrap,
+  &.cf-list-divider {
+    height: $height;
+    line-height: $height;
+  }
+}
+
+.cf-list-item__xs {
+  @include listItemSizeModifier(
+    $cf-form-xs-font,
+    $cf-form-xs-height,
+    $cf-form-xs-padding
+  );
+}
+
+.cf-list-item__sm {
+  @include listItemSizeModifier(
+    $cf-form-sm-font,
+    $cf-form-sm-height,
+    $cf-form-sm-padding
+  );
+}
+
+.cf-list-item__md {
+  @include listItemSizeModifier(
+    $cf-form-md-font,
+    $cf-form-md-height,
+    $cf-form-md-padding
+  );
+}
+
+.cf-list-item__lg {
+  @include listItemSizeModifier(
+    $cf-form-lg-font,
+    $cf-form-lg-height,
+    $cf-form-lg-padding
+  );
+}

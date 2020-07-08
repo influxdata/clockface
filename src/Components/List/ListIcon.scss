@@ -1,0 +1,13 @@
+@import '../../Styles/variables';
+
+.cf-list-icon {
+  font-size: 1.125em;
+
+  &:first-child {
+    margin-right: 0.666em;
+  }
+
+  &:last-child {
+    margin-left: 0.666em;
+  }
+}

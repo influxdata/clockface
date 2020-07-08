@@ -1,0 +1,280 @@
+@import '../../Styles/variables';
+
+$list-item--divider-color: rgba($g20-white, 0.03);
+$list-item--divider-text: rgba($g20-white, 0.4);
+
+.cf-list {
+  overflow: hidden;
+  border-radius: $cf-radius;
+}
+
+.cf-list--contents {
+  font-size: 0;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  cursor: pointer;
+}
+
+.cf-list-item,
+.cf-list-divider,
+.cf-list-divider__thin {
+  margin-bottom: $cf-border;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/*
+  List Item
+  ------------------------------------------------------------------------------
+*/
+
+@mixin listItemSharedStyles() {
+  user-select: none;
+  position: relative;
+  border-radius: $cf-radius-sm;
+  display: flex;
+  align-items: center;
+}
+
+.cf-list-item {
+  @include listItemSharedStyles();
+  transition: color 0.25s ease, background-color 0.25s ease;
+
+  &:hover,
+  &.cf-list-item__active {
+    cursor: pointer;
+  }
+}
+
+/*
+  List Item Text
+  ------------------------------------------------------------------------------
+*/
+
+.cf-list-item--text {
+  flex: 1;
+}
+
+.cf-list-item--text__wrap {
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+
+.cf-list-item--text__no-wrap {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/*
+  Divider
+  ------------------------------------------------------------------------------
+*/
+
+.cf-list-divider {
+  border-radius: $cf-radius-sm;
+  border-bottom: $cf-border solid $list-item--divider-color;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cf-list-divider,
+.cf-list-divider__thin {
+  color: $list-item--divider-text;
+  margin-bottom: $cf-border;
+
+  &:hover {
+    cursor: default;
+  }
+}
+
+.cf-list-divider__thin {
+  background-color: $list-item--divider-color;
+  padding: 0;
+  height: $cf-border;
+}
+
+/*
+  Link Item
+  ------------------------------------------------------------------------------
+*/
+
+.cf-list-link-item {
+  @include listItemSharedStyles();
+
+  > a {
+    transition: color 0.25s ease, background-color 0.25s ease;
+    display: inline-block;
+    border-radius: $cf-radius-sm;
+  }
+}
+
+/*
+  Disabled State Item
+  ------------------------------------------------------------------------------
+*/
+
+.cf-list-item__disabled,
+.cf-list-item__disabled:hover,
+.cf-list-link-item.cf-list-item__disabled a,
+.cf-list-link-item.cf-list-item__disabled a:link,
+.cf-list-link-item.cf-list-item__disabled a:visited,
+.cf-list-link-item.cf-list-item__disabled a:active,
+.cf-list-link-item.cf-list-item__disabled a:hover {
+  color: rgba($g20-white, 0.45);
+  font-style: italic;
+  cursor: default;
+}
+
+/*
+  List Empty
+  ------------------------------------------------------------------------------
+*/
+
+.cf-list-empty {
+  color: $g20-white;
+  text-align: center;
+  font-style: italic;
+  opacity: 0.38;
+  user-select: none;
+}
+
+/*
+  Color Modifiers
+  ------------------------------------------------------------------------------
+*/
+
+@mixin listItemColorModifier($color, $colorHover) {
+  &.cf-list-item {
+    color: $color;
+
+    &:hover {
+      color: $colorHover;
+      background-color: rgba($g20-white, 0.05);
+    }
+  }
+
+  &.cf-list-item.cf-list-item__active,
+  &.cf-list-item.cf-list-item__active:hover {
+    color: $g20-white;
+    background-color: rgba($g20-white, 0.05);
+  }
+
+  &.cf-list-link-item > a:link,
+  &.cf-list-link-item > a:visited,
+  &.cf-list-link-item > a:active {
+    color: $color;
+  }
+
+  &.cf-list-link-item > a:hover {
+    color: $colorHover;
+    background-color: rgba($g20-white, 0.05);
+  }
+
+  &.cf-list-link-item__active > a:link,
+  &.cf-list-link-item__active > a:visited,
+  &.cf-list-link-item__active > a:active,
+  &.cf-list-link-item__active > a:hover {
+    color: $g20-white;
+    background-color: rgba($g20-white, 0.05);
+  }
+}
+
+.cf-list__default {
+  @include listItemColorModifier($g13-mist, $g15-platinum);
+}
+
+.cf-list__primary {
+  @include listItemColorModifier($c-pool, $c-hydrogen);
+}
+
+.cf-list__secondary {
+  @include listItemColorModifier($c-star, $c-potassium);
+}
+
+.cf-list__success {
+  @include listItemColorModifier($c-rainforest, $c-krypton);
+}
+
+.cf-list__warning {
+  @include listItemColorModifier($c-pineapple, $c-sulfur);
+}
+
+.cf-list__danger {
+  @include listItemColorModifier($c-curacao, $c-tungsten);
+}
+
+/*
+  Size Modifiers
+  ------------------------------------------------------------------------------
+*/
+
+@mixin listItemSizeModifier($fontSize, $height, $padding) {
+  &.cf-list-item,
+  &.cf-list-divider,
+  &.cf-list-link-item > a {
+    font-weight: $cf-font-weight--medium;
+    font-size: $fontSize;
+    padding: 0 $padding;
+  }
+
+  .cf-list-item--text__no-wrap,
+  &.cf-list-link-item__no-wrap > a,
+  &.cf-list-divider {
+    height: $height;
+    line-height: $height;
+  }
+
+  .cf-list-item--text__wrap,
+  &.cf-list-link-item__wrap > a {
+    padding: ceil($padding * 0.75) 0;
+  }
+
+  &.cf-list-empty {
+    font-weight: $cf-font-weight--medium;
+    font-size: $fontSize;
+
+    .cf-list-item--text__no-wrap,
+    .cf-list-item--text__wrap {
+      padding-left: $padding;
+      padding-right: $padding;
+    }
+  }
+}
+
+.cf-list-item__xs {
+  @include listItemSizeModifier(
+    $cf-form-xs-font,
+    $cf-form-xs-height,
+    $cf-form-xs-padding
+  );
+}
+
+.cf-list-item__sm {
+  @include listItemSizeModifier(
+    $cf-form-sm-font,
+    $cf-form-sm-height,
+    $cf-form-sm-padding
+  );
+}
+
+.cf-list-item__md {
+  @include listItemSizeModifier(
+    $cf-form-md-font,
+    $cf-form-md-height,
+    $cf-form-md-padding
+  );
+}
+
+.cf-list-item__lg {
+  @include listItemSizeModifier(
+    $cf-form-lg-font,
+    $cf-form-lg-height,
+    $cf-form-lg-padding
+  );
+}
