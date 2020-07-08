@@ -108,7 +108,7 @@ $list-item--divider-text: rgba($g20-white, 0.4);
   @include listItemSharedStyles();
 
   > a {
-    transition: color 0.25s ease, background-color 0.25s ease;
+    transition: color 0.25s ease, background-color 0.25s ease !important;
     display: inline-block;
     border-radius: $cf-radius-sm;
   }
