@@ -1,20 +1,43 @@
 // Libraries
-import React, {forwardRef, MouseEvent, createContext} from 'react'
+import React, {forwardRef, MouseEvent, createContext, useContext} from 'react'
 import classnames from 'classnames'
 
-// Types
-import {StandardFunctionProps, ComponentColor, ComponentSize} from '../../Types'
+// Contexts
+import {ListContext} from './List'
 
-export interface ListItemContextProps {
+// Components
+import {ListItemHighlight} from './ListItemHighlight'
+
+// Utils
+import {calculateTextColorFromBackground} from '../../Utils'
+
+// Types
+import {
+  StandardFunctionProps,
+  InfluxColors,
+  ComponentSize,
+  Gradients,
+} from '../../Types'
+
+export interface ListItemSharedProps {
   /** Whether or not the item should have selected styling */
   selected?: boolean
-  /** Colorization of this component */
-  color?: ComponentColor
+  /** Colorizes the background of the list item in hover and selected state */
+  backgroundColor?: InfluxColors | string
+  /** Overrides backgroundColor, fills background with gradient */
+  gradient?: Gradients
   /** Size of this component */
   size?: ComponentSize
 }
 
-type CombinedListItemProps = ListItemContextProps & StandardFunctionProps
+export interface ListItemContextProps
+  extends Pick<ListItemSharedProps, 'selected' | 'size'> {
+  listItemContrastColor?: string
+  listItemBackgroundColor?: InfluxColors | string
+  listItemGradient?: Gradients
+}
+
+type CombinedListItemProps = ListItemSharedProps & StandardFunctionProps
 
 export interface ListItemProps extends CombinedListItemProps {
   /** Value to be returned via the onClick function */
@@ -33,8 +56,10 @@ export type ListItemRef = HTMLDivElement
 
 export const ListItemContext = createContext<ListItemContextProps>({
   selected: false,
-  color: ComponentColor.Primary,
   size: ComponentSize.Small,
+  listItemBackgroundColor: undefined,
+  listItemGradient: undefined,
+  listItemContrastColor: undefined,
 })
 
 export const ListItem = forwardRef<ListItemRef, ListItemProps>(
@@ -44,24 +69,32 @@ export const ListItem = forwardRef<ListItemRef, ListItemProps>(
       size = ComponentSize.Small,
       style,
       value,
-      color = ComponentColor.Primary,
       title,
       testID = 'list-item',
       onClick,
       wrapText = false,
       selected = false,
+      gradient,
       children,
-      disabled,
+      disabled = false,
       className,
+      backgroundColor,
     },
     ref
   ) => {
+    const {listContrastColor} = useContext(ListContext)
+    const contrastColor = calculateTextColorFromBackground(
+      backgroundColor,
+      gradient
+    )
+
     const listItemClass = classnames('cf-list-item', {
       'cf-list-item__active': selected,
-      [`cf-list__${color}`]: color,
       [`cf-list-item__${size}`]: size,
+      [`cf-list-item__${listContrastColor}`]: true,
       [`${className}`]: className,
       'cf-list-item__disabled': disabled,
+      'cf-list-item__clickable': !!onClick,
     })
 
     const listItemTextClass = classnames('cf-list-item--text', {
@@ -85,19 +118,54 @@ export const ListItem = forwardRef<ListItemRef, ListItemProps>(
       return child
     })
 
+    let highlightElement
+
+    if (!!onClick && !disabled) {
+      highlightElement = (
+        <ListItemHighlight
+          gradient={gradient}
+          backgroundColor={backgroundColor}
+          selected={selected}
+        />
+      )
+    }
+
+    let itemStyle = style
+    const itemColor =
+      contrastColor === 'dark' ? InfluxColors.Kevlar : InfluxColors.White
+
+    if (backgroundColor) {
+      itemStyle = selected
+        ? {color: itemColor, ...style}
+        : {color: backgroundColor, ...style}
+    }
+
+    if (gradient) {
+      itemStyle = selected ? {color: itemColor, ...style} : undefined
+    }
+
     return (
       <div
         id={id}
         ref={ref}
-        style={style}
+        style={itemStyle}
         title={title}
         onClick={handleClick}
         className={listItemClass}
         data-testid={testID}
       >
-        <ListItemContext.Provider value={{selected, color, size}}>
+        <ListItemContext.Provider
+          value={{
+            size,
+            selected,
+            listItemBackgroundColor: backgroundColor,
+            listItemContrastColor: contrastColor || 'light',
+            listItemGradient: gradient,
+          }}
+        >
           {formattedChildren}
         </ListItemContext.Provider>
+        {highlightElement}
       </div>
     )
   }

@@ -4,7 +4,14 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, text, select, boolean, object} from '@storybook/addon-knobs'
+import {
+  withKnobs,
+  text,
+  select,
+  boolean,
+  object,
+  color,
+} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
 import {useState} from '@storybook/addons'
 
@@ -15,7 +22,7 @@ import {
   ListDividerRef,
   ListItemRef,
   ListEmptyRef,
-  ListLinkItemRef,
+  // ListLinkItemRef,
 } from '../'
 import {Popover} from '../../Popover'
 
@@ -25,6 +32,8 @@ import {
   ComponentSize,
   IconFont,
   Appearance,
+  InfluxColors,
+  Gradients,
 } from '../../../Types'
 
 // Notes
@@ -32,7 +41,7 @@ import ListReadme from './List.md'
 import ListDividerReadme from './ListDivider.md'
 import ListItemReadme from './ListItem.md'
 import ListEmptyReadme from './ListEmpty.md'
-import ListLinkItemReadme from './ListLinkItem.md'
+// import ListLinkItemReadme from './ListLinkItem.md'
 
 const listFamilyStories = storiesOf(
   'Components|List/Family',
@@ -44,12 +53,18 @@ const listExamplesStories = storiesOf(
   module
 ).addDecorator(withKnobs)
 
-const defaultListStyle = {width: '250px'}
+const defaultListStyle = {width: '250px', height: '600px'}
 
 interface ExampleDropdownItem {
   type: 'item' | 'divider'
   wrap: boolean
   text: string
+  disabled: boolean
+  backgroundColor?: InfluxColors
+  gradient?: Gradients
+  noClick?: boolean
+  icon?: IconFont
+  noIndicator?: boolean
 }
 
 const exampleItems: ExampleDropdownItem[] = [
@@ -57,92 +72,194 @@ const exampleItems: ExampleDropdownItem[] = [
     type: 'divider',
     wrap: false,
     text: 'Domestic Fruits',
+    disabled: false,
   },
   {
     type: 'item',
     wrap: false,
     text: 'Banana',
+    disabled: false,
   },
   {
     type: 'item',
     wrap: false,
     text: 'Kiwi',
+    disabled: false,
   },
   {
     type: 'item',
     wrap: false,
     text: 'Lemon',
+    disabled: false,
+  },
+  {
+    type: 'item',
+    wrap: false,
+    text: 'Lime',
+    disabled: true,
   },
   {
     type: 'item',
     wrap: false,
     text: 'Apple',
+    disabled: false,
   },
   {
     type: 'item',
     wrap: false,
     text: 'Orange',
+    disabled: false,
   },
   {
     type: 'item',
     wrap: false,
     text: 'Grapefruit',
+    disabled: false,
   },
   {
     type: 'item',
     wrap: false,
     text: 'Pear',
+    disabled: false,
   },
   {
     type: 'divider',
     wrap: false,
     text: 'Imported Fruits',
+    disabled: false,
   },
   {
     type: 'item',
     wrap: false,
     text: 'Dragonfruit',
+    disabled: false,
+    backgroundColor: InfluxColors.Amethyst,
   },
   {
     type: 'item',
     wrap: false,
     text: 'Yuzu',
+    disabled: true,
+    backgroundColor: InfluxColors.Thunder,
   },
   {
     type: 'item',
     wrap: false,
     text: 'Mango',
+    disabled: false,
+    backgroundColor: InfluxColors.Tiger,
   },
   {
     type: 'item',
     wrap: false,
     text: 'Lychee',
+    disabled: false,
+    backgroundColor: InfluxColors.Potassium,
   },
   {
     type: 'item',
     wrap: false,
-    text: 'Passionfruit',
+    text: 'Honeydew Melon',
+    disabled: false,
+    backgroundColor: InfluxColors.Honeydew,
+  },
+  {
+    type: 'divider',
+    wrap: false,
+    text: 'Gradients',
+    disabled: false,
   },
   {
     type: 'item',
     wrap: false,
-    text: 'Guava',
+    text: 'PolarExpress',
+    disabled: false,
+    gradient: Gradients.PolarExpress,
+  },
+  {
+    type: 'item',
+    wrap: false,
+    text: 'PastryCafe',
+    disabled: false,
+    gradient: Gradients.PastryCafe,
   },
   {
     type: 'divider',
     wrap: false,
     text: '',
+    disabled: false,
   },
   {
     type: 'item',
     wrap: true,
     text: 'This dropdown item text is much longer to test text wrapping',
+    disabled: false,
   },
   {
     type: 'item',
     wrap: false,
     text:
       'Long text that will be truncated if it exceeds the width of the List',
+    disabled: false,
+  },
+  {
+    type: 'divider',
+    wrap: false,
+    text: 'Edge Casees',
+    disabled: false,
+  },
+  {
+    type: 'item',
+    wrap: false,
+    text: 'Item without click handler',
+    disabled: false,
+    noClick: true,
+  },
+  {
+    type: 'item',
+    wrap: false,
+    text: 'Item with Icon',
+    disabled: false,
+    icon: IconFont.Chat,
+  },
+  {
+    type: 'item',
+    wrap: false,
+    text: 'Item with Icon + BackgroundColor',
+    disabled: false,
+    icon: IconFont.Chat,
+    backgroundColor: InfluxColors.Pool,
+  },
+  {
+    type: 'item',
+    wrap: false,
+    text: 'Item with Icon + Gradient',
+    disabled: false,
+    icon: IconFont.Chat,
+    gradient: Gradients.SavannaHeat,
+  },
+  {
+    type: 'item',
+    wrap: false,
+    text: 'Item without indicator',
+    disabled: false,
+    noIndicator: true,
+  },
+  {
+    type: 'item',
+    wrap: false,
+    text: 'Item without indicator + BackgroundColor',
+    disabled: false,
+    noIndicator: true,
+    backgroundColor: InfluxColors.Star,
+  },
+  {
+    type: 'item',
+    wrap: false,
+    text: 'Item without indicator + Gradient',
+    disabled: false,
+    noIndicator: true,
+    gradient: Gradients.NineteenEightyFour,
   },
 ]
 
@@ -164,17 +281,35 @@ listFamilyStories.add(
 
     return (
       <div className="story--example">
-        <List.List ref={listRef} style={object('style', defaultListStyle)}>
+        <List.List
+          ref={listRef}
+          style={object('style', defaultListStyle)}
+          gradient={
+            Gradients[
+              select(
+                'gradient',
+                {None: 'none', ...mapEnumKeys(Gradients)},
+                'None'
+              )
+            ]
+          }
+          backgroundColor={
+            InfluxColors[
+              select(
+                'backgroundColor',
+                {None: '', ...mapEnumKeys(InfluxColors)},
+                'None'
+              )
+            ]
+          }
+        >
           {exampleItems.map(item => {
             if (item.type === 'item') {
               return (
                 <List.Item
                   key={item.text}
-                  color={
-                    ComponentColor[
-                      select('color', mapEnumKeys(ComponentColor), 'Primary')
-                    ]
-                  }
+                  backgroundColor={item.backgroundColor}
+                  gradient={item.gradient}
                   size={
                     ComponentSize[
                       select('size', mapEnumKeys(ComponentSize), 'Small')
@@ -182,9 +317,20 @@ listFamilyStories.add(
                   }
                   value={item.text}
                   selected={item.text === selectedItem}
-                  onClick={handleItemClick}
+                  onClick={item.noClick ? undefined : handleItemClick}
                   wrapText={item.wrap}
+                  disabled={item.disabled}
                 >
+                  {item.icon && <List.Icon glyph={item.icon} />}
+                  {!item.noIndicator && !item.icon && (
+                    <List.Indicator
+                      type={select(
+                        'indicator type',
+                        ['checkbox', 'dot'],
+                        'checkbox'
+                      )}
+                    />
+                  )}
                   {item.text}
                 </List.Item>
               )
@@ -267,11 +413,7 @@ listFamilyStories.add(
           onClick={value => {
             alert(`onClick returned: ${value}`)
           }}
-          color={
-            ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Primary')
-            ]
-          }
+          backgroundColor={color('color', InfluxColors.Pool)}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
@@ -327,52 +469,48 @@ listFamilyStories.add(
   }
 )
 
-listFamilyStories.add(
-  'ListLinkItem',
-  () => {
-    const dropdownLinkItemRef: RefObject<ListLinkItemRef> = createRef()
+// listFamilyStories.add(
+//   'ListLinkItem',
+//   () => {
+//     const dropdownLinkItemRef: RefObject<ListLinkItemRef> = createRef()
 
-    const logRef = (): void => {
-      /* eslint-disable */
-      console.log(dropdownLinkItemRef.current)
-      /* eslint-enable */
-    }
+//     const logRef = (): void => {
+//       /* eslint-disable */
+//       console.log(dropdownLinkItemRef.current)
+//       /* eslint-enable */
+//     }
 
-    return (
-      <div className="story--example">
-        <List.LinkItem
-          ref={dropdownLinkItemRef}
-          selected={boolean('selected', false)}
-          wrapText={boolean('wrapText', false)}
-          disabled={boolean('disabled', false)}
-          color={
-            ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Primary')
-            ]
-          }
-          size={
-            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-          }
-        >
-          <a
-            href={text('link target', 'http://www.influxdata.com')}
-            target="_blank"
-          >
-            {text('link text', 'Example Link')}
-          </a>
-        </List.LinkItem>
-        <div className="story--test-buttons">
-          <button onClick={logRef}>Log Ref</button>
-        </div>
-      </div>
-    )
-  },
-  {
-    readme: {
-      content: marked(ListLinkItemReadme),
-    },
-  }
-)
+//     return (
+//       <div className="story--example">
+//         <List.LinkItem
+//           ref={dropdownLinkItemRef}
+//           selected={boolean('selected', false)}
+//           wrapText={boolean('wrapText', false)}
+//           disabled={boolean('disabled', false)}
+//           backgroundColor={color('color', InfluxColors.Pool)}
+//           size={
+//             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+//           }
+//         >
+//           <a
+//             href={text('link target', 'http://www.influxdata.com')}
+//             target="_blank"
+//           >
+//             {text('link text', 'Example Link')}
+//           </a>
+//         </List.LinkItem>
+//         <div className="story--test-buttons">
+//           <button onClick={logRef}>Log Ref</button>
+//         </div>
+//       </div>
+//     )
+//   },
+//   {
+//     readme: {
+//       content: marked(ListLinkItemReadme),
+//     },
+//   }
+// )
 
 listExamplesStories.add(
   'Icons & Indicators',
@@ -395,11 +533,7 @@ listExamplesStories.add(
           onClick={value => {
             alert(`onClick returned: ${value}`)
           }}
-          color={
-            ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Primary')
-            ]
-          }
+          backgroundColor={color('color', InfluxColors.Pool)}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
@@ -421,11 +555,7 @@ listExamplesStories.add(
           onClick={value => {
             alert(`onClick returned: ${value}`)
           }}
-          color={
-            ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Primary')
-            ]
-          }
+          backgroundColor={color('color', InfluxColors.Pool)}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
@@ -475,11 +605,12 @@ listExamplesStories.add(
           Pet Turtle
         </div>
         <Popover
+          enableDefaultStyles={false}
           appearance={Appearance.Outline}
-          color={ComponentColor.Default}
+          color={ComponentColor.Primary}
           triggerRef={triggerRef}
           contents={onHide => (
-            <List style={{width: '200px'}}>
+            <List style={{width: '200px'}} backgroundColor={InfluxColors.White}>
               <List.Divider
                 text="Actions"
                 size={
@@ -493,7 +624,7 @@ listExamplesStories.add(
                 selected={false}
                 wrapText={false}
                 onClick={onHide}
-                color={ComponentColor.Primary}
+                backgroundColor={InfluxColors.Pool}
                 size={
                   ComponentSize[
                     select('size', mapEnumKeys(ComponentSize), 'Small')
@@ -508,7 +639,7 @@ listExamplesStories.add(
                 selected={false}
                 wrapText={false}
                 onClick={onHide}
-                color={ComponentColor.Success}
+                backgroundColor={InfluxColors.Rainforest}
                 size={
                   ComponentSize[
                     select('size', mapEnumKeys(ComponentSize), 'Small')
@@ -523,7 +654,7 @@ listExamplesStories.add(
                 selected={false}
                 wrapText={false}
                 onClick={onHide}
-                color={ComponentColor.Warning}
+                backgroundColor={InfluxColors.Pineapple}
                 size={
                   ComponentSize[
                     select('size', mapEnumKeys(ComponentSize), 'Small')
@@ -538,7 +669,7 @@ listExamplesStories.add(
                 selected={false}
                 wrapText={false}
                 onClick={onHide}
-                color={ComponentColor.Secondary}
+                backgroundColor={InfluxColors.Star}
                 size={
                   ComponentSize[
                     select('size', mapEnumKeys(ComponentSize), 'Small')
@@ -561,7 +692,6 @@ listExamplesStories.add(
                 selected={turtleHat === 'Detective Hat'}
                 wrapText={false}
                 onClick={handleToggleHat(onHide || noop)}
-                color={ComponentColor.Default}
                 size={
                   ComponentSize[
                     select('size', mapEnumKeys(ComponentSize), 'Small')
@@ -578,7 +708,6 @@ listExamplesStories.add(
                 selected={turtleHat === 'Party Hat'}
                 wrapText={false}
                 onClick={handleToggleHat(onHide || noop)}
-                color={ComponentColor.Default}
                 size={
                   ComponentSize[
                     select('size', mapEnumKeys(ComponentSize), 'Small')
@@ -595,7 +724,6 @@ listExamplesStories.add(
                 selected={turtleHat === '10 Gallon Hat'}
                 wrapText={false}
                 onClick={handleToggleHat(onHide || noop)}
-                color={ComponentColor.Default}
                 size={
                   ComponentSize[
                     select('size', mapEnumKeys(ComponentSize), 'Small')
@@ -612,7 +740,6 @@ listExamplesStories.add(
                 selected={turtleHat === 'Half Eaten Grape'}
                 wrapText={false}
                 onClick={handleToggleHat(onHide || noop)}
-                color={ComponentColor.Default}
                 size={
                   ComponentSize[
                     select('size', mapEnumKeys(ComponentSize), 'Small')

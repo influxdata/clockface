@@ -1,16 +1,42 @@
 // Libraries
-import React, {forwardRef, RefObject, CSSProperties, ReactNode} from 'react'
+import React, {
+  forwardRef,
+  RefObject,
+  CSSProperties,
+  ReactNode,
+  createContext,
+} from 'react'
 import classnames from 'classnames'
 import _ from 'lodash'
 
 // Components
 import {DapperScrollbars} from '../DapperScrollbars/DapperScrollbars'
 
+// Utils
+import {
+  generateBackgroundStyle,
+  calculateTextColorFromBackground,
+} from '../../Utils'
+
 // Types
-import {StandardFunctionProps, InfluxColors} from '../../Types'
+import {StandardFunctionProps, InfluxColors, Gradients} from '../../Types'
 
 // Styles
 import './List.scss'
+
+export interface ListContextProps {
+  listBackgroundColor?: InfluxColors | string
+  listGradient?: Gradients
+  listContrastColor?: InfluxColors | string
+}
+
+export type ListItemRef = HTMLDivElement
+
+export const ListContext = createContext<ListContextProps>({
+  listBackgroundColor: undefined,
+  listGradient: undefined,
+  listContrastColor: undefined,
+})
 
 export interface ListProps extends StandardFunctionProps {
   /** Disable scrolling horizontally */
@@ -29,6 +55,10 @@ export interface ListProps extends StandardFunctionProps {
   thumbStartColor?: string | InfluxColors
   /** Gradient end color */
   thumbStopColor?: string | InfluxColors
+  /** Colorizes the background of the list */
+  backgroundColor?: InfluxColors | string
+  /** Overrides backgroundColor, fills background with gradient */
+  gradient?: Gradients
 }
 
 export type ListRef = HTMLDivElement
@@ -41,20 +71,29 @@ export const ListRoot = forwardRef<ListRef, ListProps>(
       style = {width: '100%'},
       testID = 'list',
       children,
+      gradient,
       noScrollX = true,
       noScrollY = false,
       className,
       contentsRef,
       contentsStyle,
-      scrollToSelected = false,
-      autoHideScrollbars = false,
       thumbStopColor = InfluxColors.Pool,
       thumbStartColor = InfluxColors.Star,
+      backgroundColor,
+      scrollToSelected = false,
+      autoHideScrollbars = false,
     },
     ref
   ) => {
+    const contrastColor = calculateTextColorFromBackground(
+      backgroundColor,
+      gradient
+    )
+
     const ListClass = classnames('cf-list', {
       [`${className}`]: className,
+      [`cf-list__${contrastColor || 'light'}`]: true,
+      'cf-list__special-light': backgroundColor === InfluxColors.Obsidian,
     })
 
     const scrollTop = calculateSelectedPosition(scrollToSelected, children)
@@ -68,11 +107,19 @@ export const ListRoot = forwardRef<ListRef, ListProps>(
       maxHeight: '100%',
     }
 
+    const listStyle = generateBackgroundStyle(
+      backgroundColor,
+      gradient,
+      false,
+      style,
+      90
+    )
+
     return (
       <div
         id={id}
         ref={ref}
-        style={style}
+        style={listStyle}
         className={ListClass}
         data-testid={testID}
       >
@@ -92,7 +139,15 @@ export const ListRoot = forwardRef<ListRef, ListProps>(
             className="cf-list--contents"
             data-testid={`${testID}--contents`}
           >
-            {children}
+            <ListContext.Provider
+              value={{
+                listBackgroundColor: backgroundColor,
+                listGradient: gradient,
+                listContrastColor: contrastColor || 'light',
+              }}
+            >
+              {children}
+            </ListContext.Provider>
           </div>
         </DapperScrollbars>
       </div>

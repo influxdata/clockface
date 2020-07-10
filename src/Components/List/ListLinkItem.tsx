@@ -2,11 +2,14 @@
 import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
-// Types
-import {StandardFunctionProps, ComponentSize, ComponentColor} from '../../Types'
-import {ListItemContextProps, ListItemContext} from './ListItem'
+// Components
+import {ListItemHighlight} from './ListItemHighlight'
 
-type CombinedListItemProps = ListItemContextProps & StandardFunctionProps
+// Types
+import {StandardFunctionProps, ComponentSize} from '../../Types'
+import {ListItemSharedProps, ListItemContext} from './ListItem'
+
+type CombinedListItemProps = ListItemSharedProps & StandardFunctionProps
 
 export interface ListLinkItemProps extends CombinedListItemProps {
   /** Controls whether the text contents of this item wrap or not */
@@ -23,7 +26,7 @@ export const ListLinkItem = forwardRef<ListLinkItemRef, ListLinkItemProps>(
       id,
       size = ComponentSize.Small,
       style,
-      color = ComponentColor.Primary,
+      backgroundColor,
       testID = 'list-link-item',
       wrapText = false,
       selected = false,
@@ -35,7 +38,6 @@ export const ListLinkItem = forwardRef<ListLinkItemRef, ListLinkItemProps>(
   ) => {
     const listLinkItemClass = classnames('cf-list-link-item', {
       'cf-list-link-item__active': selected,
-      [`cf-list__${color}`]: color,
       [`cf-list-item__${size}`]: size,
       [`${className}`]: className,
       'cf-list-link-item__wrap': wrapText,
@@ -51,9 +53,12 @@ export const ListLinkItem = forwardRef<ListLinkItemRef, ListLinkItemProps>(
         className={listLinkItemClass}
         data-testid={testID}
       >
-        <ListItemContext.Provider value={{selected, color, size}}>
+        <ListItemContext.Provider
+          value={{selected, listItemBackgroundColor: backgroundColor, size}}
+        >
           {children}
         </ListItemContext.Provider>
+        <ListItemHighlight backgroundColor={backgroundColor} />
       </div>
     )
   }

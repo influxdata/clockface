@@ -1,6 +1,9 @@
 // Libraries
-import React, {forwardRef} from 'react'
+import React, {forwardRef, useContext} from 'react'
 import classnames from 'classnames'
+
+// Contexts
+import {ListContext} from './List'
 
 // Types
 import {StandardFunctionProps, ComponentSize} from '../../Types'
@@ -26,10 +29,13 @@ export const ListDivider = forwardRef<ListDividerRef, ListDividerProps>(
     },
     ref
   ) => {
+    const {listContrastColor} = useContext(ListContext)
+
     const listDividerClass = classnames('', {
       'cf-list-divider': text,
       'cf-list-divider__thin': !text,
       [`cf-list-item__${size}`]: size,
+      [`cf-list-divider__${listContrastColor}`]: true,
       [`${className}`]: className,
     })
 

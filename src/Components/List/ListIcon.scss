@@ -7,7 +7,7 @@
     margin-right: 0.666em;
   }
 
-  &:last-child {
-    margin-left: 0.666em;
+  .cf-list-item--text + & {
+    margin-left: 0.5em;
   }
 }
