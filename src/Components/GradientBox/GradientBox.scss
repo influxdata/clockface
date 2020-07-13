@@ -1,0 +1,7 @@
+@import '../../Styles/variables';
+
+.cf-gradient-box {
+  padding: $cf-border;
+  box-sizing: border-box;
+  border-radius: $cf-radius;
+}
