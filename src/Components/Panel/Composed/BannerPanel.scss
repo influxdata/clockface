@@ -1,0 +1,54 @@
+@import '../../../Styles/variables';
+
+.cf-banner-panel {
+ width: 100%;
+}
+
+.cf-banner-panel--has-icon {
+  .cf-banner-panel--body {
+    display: inline-flex;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .cf-banner-panel--icon {
+    margin-right: $cf-marg-c;
+  }
+}
+
+.cf-banner-panel--contents {
+ flex-grow: 1;
+}
+
+/*
+  Size Modifiers
+  ------------------------------------------------------------------------------
+*/
+
+@mixin bannerIconMarginModifier($margin) {
+  margin-right: $margin * 2;
+}
+
+.cf-panel--body__xs {
+  .cf-banner-panel--icon {
+    @include bannerIconMarginModifier($cf-form-xs-padding);
+  }
+}
+
+.cf-panel--body__sm {
+  .cf-banner-panel--icon {
+  @include bannerIconMarginModifier($cf-form-sm-padding);
+  }
+}
+
+.cf-panel--body__md {
+  .cf-banner-panel--icon {
+  @include bannerIconMarginModifier($cf-form-md-padding);
+  }
+}
+
+.cf-panel--body__lg {
+  .cf-banner-panel--icon {
+  @include bannerIconMarginModifier($cf-form-lg-padding);
+  }
+}
