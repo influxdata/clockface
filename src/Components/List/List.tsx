@@ -90,7 +90,7 @@ export const ListRoot = forwardRef<ListRef, ListProps>(
       gradient
     )
 
-    const ListClass = classnames('cf-list', {
+    const listClass = classnames('cf-list', {
       [`${className}`]: className,
       [`cf-list__${contrastColor || 'light'}`]: true,
       'cf-list__special-light': backgroundColor === InfluxColors.Obsidian,
@@ -120,7 +120,7 @@ export const ListRoot = forwardRef<ListRef, ListProps>(
         id={id}
         ref={ref}
         style={listStyle}
-        className={ListClass}
+        className={listClass}
         data-testid={testID}
       >
         <DapperScrollbars
