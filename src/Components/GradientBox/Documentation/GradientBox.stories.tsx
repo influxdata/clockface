@@ -21,7 +21,7 @@ import {
 // Notes
 import GradientBoxReadme from './GradientBox.md'
 
-const gradientBoxStories = storiesOf('Components|GradientBox', module).addDecorator(
+const gradientBoxStories = storiesOf('Atomic|GradientBox', module).addDecorator(
   withKnobs
 )
 
