@@ -8,6 +8,9 @@ import {ListContext} from './List'
 // Types
 import {InfluxColors} from '../../Types'
 
+// Utils
+import {getColorsFromGradient} from '../../Utils/colors'
+
 // Styles
 import './ListIndicator.scss'
 
@@ -21,7 +24,12 @@ export interface ListIndicatorProps {
 export const ListIndicator: FunctionComponent<ListIndicatorProps> = ({
   type,
 }) => {
-  const {size, selected, listItemBackgroundColor} = useContext(ListItemContext)
+  const {
+    size,
+    selected,
+    listItemBackgroundColor,
+    listItemGradient,
+  } = useContext(ListItemContext)
   const {listContrastColor, listBackgroundColor} = useContext(ListContext)
 
   const indicatorClassname = classnames('cf-list-indicator', {
@@ -39,6 +47,15 @@ export const ListIndicator: FunctionComponent<ListIndicatorProps> = ({
     elementStyle = {
       backgroundColor: InfluxColors.White,
       boxShadow: `0 0 5px 1px ${listItemBackgroundColor}`,
+    }
+  }
+
+  if (listItemGradient && type === 'checkbox') {
+    const gradientColors = getColorsFromGradient(listItemGradient)
+
+    elementStyle = {
+      backgroundColor: InfluxColors.White,
+      boxShadow: `0 0 5px 1px ${gradientColors.stop}`,
     }
   }
 
