@@ -59,6 +59,8 @@ export interface ListProps extends StandardFunctionProps {
   backgroundColor?: InfluxColors | string
   /** Overrides backgroundColor, fills background with gradient */
   gradient?: Gradients
+  /** Pixel height after which the list will scroll */
+  maxHeight?: string
 }
 
 export type ListRef = HTMLDivElement
@@ -74,6 +76,7 @@ export const ListRoot = forwardRef<ListRef, ListProps>(
       gradient,
       noScrollX = true,
       noScrollY = false,
+      maxHeight = '100%',
       className,
       contentsRef,
       contentsStyle,
@@ -104,7 +107,7 @@ export const ListRoot = forwardRef<ListRef, ListProps>(
       maxWidth: '100%',
       height: '100%',
       minHeight: '100%',
-      maxHeight: '100%',
+      maxHeight,
     }
 
     const listStyle = generateBackgroundStyle(
