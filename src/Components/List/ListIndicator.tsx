@@ -29,6 +29,7 @@ export const ListIndicator: FunctionComponent<ListIndicatorProps> = ({
     selected,
     listItemBackgroundColor,
     listItemGradient,
+    listItemContrastColor,
   } = useContext(ListItemContext)
   const {listContrastColor, listBackgroundColor} = useContext(ListContext)
 
@@ -56,6 +57,13 @@ export const ListIndicator: FunctionComponent<ListIndicatorProps> = ({
     elementStyle = {
       backgroundColor: InfluxColors.White,
       boxShadow: `0 0 5px 1px ${gradientColors.stop}`,
+    }
+  }
+
+  if (listItemContrastColor === 'dark' && type === 'dot') {
+    elementStyle = {
+      backgroundColor: InfluxColors.Kevlar,
+      boxShadow: `0 0 5px 1px ${InfluxColors.Kevlar}`,
     }
   }
 
