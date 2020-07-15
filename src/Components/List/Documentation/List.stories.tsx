@@ -42,6 +42,7 @@ import ListDividerReadme from './ListDivider.md'
 import ListItemReadme from './ListItem.md'
 import ListEmptyReadme from './ListEmpty.md'
 // import ListLinkItemReadme from './ListLinkItem.md'
+import ListPopoverReadme from './ListPopover.md'
 
 const listFamilyStories = storiesOf(
   'Components|List/Family',
@@ -759,7 +760,7 @@ listExamplesStories.add(
   },
   {
     readme: {
-      content: marked(ListItemReadme),
+      content: marked(ListPopoverReadme),
     },
   }
 )
