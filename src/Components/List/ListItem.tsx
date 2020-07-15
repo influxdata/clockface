@@ -1,5 +1,11 @@
 // Libraries
-import React, {forwardRef, MouseEvent, createContext, useContext} from 'react'
+import React, {
+  forwardRef,
+  MouseEvent,
+  createContext,
+  useContext,
+  cloneElement,
+} from 'react'
 import classnames from 'classnames'
 
 // Contexts
@@ -22,16 +28,11 @@ import {
 export interface ListItemSharedProps {
   /** Whether or not the item should have selected styling */
   selected?: boolean
-  /** Colorizes the background of the list item in hover and selected state */
-  backgroundColor?: InfluxColors | string
-  /** Overrides backgroundColor, fills background with gradient */
-  gradient?: Gradients
   /** Size of this component */
   size?: ComponentSize
 }
 
-export interface ListItemContextProps
-  extends Pick<ListItemSharedProps, 'selected' | 'size'> {
+export interface ListItemContextProps extends ListItemSharedProps {
   listItemContrastColor?: string
   listItemBackgroundColor?: InfluxColors | string
   listItemGradient?: Gradients
@@ -50,6 +51,12 @@ export interface ListItemProps extends CombinedListItemProps {
   title?: string
   /** Prevents any interaction with this element, including the onClick function */
   disabled?: boolean
+  /** Pass in an <a> or <Link> element as an alternative to onClick */
+  linkElement?: JSX.Element
+  /** Colorizes the background of the list item in hover and selected state */
+  backgroundColor?: InfluxColors | string
+  /** Overrides backgroundColor, fills background with gradient */
+  gradient?: Gradients
 }
 
 export type ListItemRef = HTMLDivElement
@@ -78,6 +85,7 @@ export const ListItem = forwardRef<ListItemRef, ListItemProps>(
       children,
       disabled = false,
       className,
+      linkElement,
       backgroundColor,
     },
     ref
@@ -120,7 +128,7 @@ export const ListItem = forwardRef<ListItemRef, ListItemProps>(
 
     let highlightElement
 
-    if (!!onClick && !disabled) {
+    if ((!!onClick || linkElement) && !disabled) {
       highlightElement = (
         <ListItemHighlight
           gradient={gradient}
@@ -144,16 +152,8 @@ export const ListItem = forwardRef<ListItemRef, ListItemProps>(
       itemStyle = selected ? {color: itemColor, ...style} : undefined
     }
 
-    return (
-      <div
-        id={id}
-        ref={ref}
-        style={itemStyle}
-        title={title}
-        onClick={handleClick}
-        className={listItemClass}
-        data-testid={testID}
-      >
+    const listItemChildren = (
+      <>
         <ListItemContext.Provider
           value={{
             size,
@@ -166,6 +166,33 @@ export const ListItem = forwardRef<ListItemRef, ListItemProps>(
           {formattedChildren}
         </ListItemContext.Provider>
         {highlightElement}
+      </>
+    )
+
+    if (linkElement) {
+      return cloneElement(
+        linkElement,
+        {
+          style: itemStyle,
+          title: title,
+          className: listItemClass,
+          'data-testid': testID,
+        },
+        listItemChildren
+      )
+    }
+
+    return (
+      <div
+        id={id}
+        ref={ref}
+        style={itemStyle}
+        title={title}
+        onClick={handleClick}
+        className={listItemClass}
+        data-testid={testID}
+      >
+        {listItemChildren}
       </div>
     )
   }

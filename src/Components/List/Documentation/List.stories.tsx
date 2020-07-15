@@ -41,7 +41,7 @@ import ListReadme from './List.md'
 import ListDividerReadme from './ListDivider.md'
 import ListItemReadme from './ListItem.md'
 import ListEmptyReadme from './ListEmpty.md'
-// import ListLinkItemReadme from './ListLinkItem.md'
+import ListLinkElementReadme from './ListLinkElement.md'
 import ListPopoverReadme from './ListPopover.md'
 
 const listFamilyStories = storiesOf(
@@ -470,48 +470,52 @@ listFamilyStories.add(
   }
 )
 
-// listFamilyStories.add(
-//   'ListLinkItem',
-//   () => {
-//     const dropdownLinkItemRef: RefObject<ListLinkItemRef> = createRef()
+listExamplesStories.add(
+  'Using LinkElement Prop',
+  () => {
+    const linkElementRef: RefObject<HTMLAnchorElement> = createRef()
 
-//     const logRef = (): void => {
-//       /* eslint-disable */
-//       console.log(dropdownLinkItemRef.current)
-//       /* eslint-enable */
-//     }
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(linkElementRef.current)
+      /* eslint-enable */
+    }
 
-//     return (
-//       <div className="story--example">
-//         <List.LinkItem
-//           ref={dropdownLinkItemRef}
-//           selected={boolean('selected', false)}
-//           wrapText={boolean('wrapText', false)}
-//           disabled={boolean('disabled', false)}
-//           backgroundColor={color('color', InfluxColors.Pool)}
-//           size={
-//             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-//           }
-//         >
-//           <a
-//             href={text('link target', 'http://www.influxdata.com')}
-//             target="_blank"
-//           >
-//             {text('link text', 'Example Link')}
-//           </a>
-//         </List.LinkItem>
-//         <div className="story--test-buttons">
-//           <button onClick={logRef}>Log Ref</button>
-//         </div>
-//       </div>
-//     )
-//   },
-//   {
-//     readme: {
-//       content: marked(ListLinkItemReadme),
-//     },
-//   }
-// )
+    return (
+      <div className="story--example">
+        <List.Item
+          selected={boolean('selected', false)}
+          wrapText={boolean('wrapText', false)}
+          disabled={boolean('disabled', false)}
+          backgroundColor={color('color', InfluxColors.Pool)}
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          linkElement={
+            <a
+              href={text('link target', 'http://www.influxdata.com')}
+              target="_blank"
+              ref={linkElementRef}
+            />
+          }
+        >
+          <List.Indicator
+            type={select('type', ['checkbox', 'dot'], 'checkbox')}
+          />
+          {text('text', 'Example Link')}
+        </List.Item>
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(ListLinkElementReadme),
+    },
+  }
+)
 
 listExamplesStories.add(
   'Icons & Indicators',
