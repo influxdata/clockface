@@ -2,6 +2,8 @@
 
 #### 2.2.2 (Unreleased)
 
+- [#516](https://github.com/influxdata/clockface/pull/516): Introduce `List` component family
+
 #### 2.2.1 (2020-06-11)
 
 - [#508](https://github.com/influxdata/clockface/pull/508): Add `testID` to thumb elements in `DapperScrollbars`
