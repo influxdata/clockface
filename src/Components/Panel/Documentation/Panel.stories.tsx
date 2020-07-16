@@ -351,11 +351,7 @@ panelComposedStories.add(
           }
           icon={
             IconFont[
-              select(
-                'icon',
-                {None: 'none', ...mapEnumKeys(IconFont)},
-                'GraphLine'
-              )
+              select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'Cloud')
             ]
           }
           gradient={
