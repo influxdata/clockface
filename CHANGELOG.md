@@ -3,6 +3,10 @@
 #### 2.2.2 (Unreleased)
 
 - [#516](https://github.com/influxdata/clockface/pull/516): Introduce `List` component family
+- [#518](https://github.com/influxdata/clockface/pull/518): Add `ThresholdBar` composed `ProgressBar` component
+- [#518](https://github.com/influxdata/clockface/pull/518): Add `ProgressBar` component
+- [#518](https://github.com/influxdata/clockface/pull/518): Add `BannerPanel` composed `Panel` component
+- [#518](https://github.com/influxdata/clockface/pull/518): Add `GradientBox` component
 
 #### 2.2.1 (2020-06-11)
 

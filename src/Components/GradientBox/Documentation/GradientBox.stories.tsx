@@ -8,15 +8,10 @@ import {withKnobs, select, color} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
-import {
-  GradientBox
-} from '../GradientBox'
+import {GradientBox} from '../GradientBox'
 
 // Types
-import {
-  Gradients,
-  InfluxColors,
-} from '../../../Types'
+import {Gradients, InfluxColors} from '../../../Types'
 
 // Notes
 import GradientBoxReadme from './GradientBox.md'
@@ -33,16 +28,27 @@ gradientBoxStories.add(
         <GradientBox
           borderGradient={
             Gradients[
-            select(
-              'borderGradient',
-              {None: 'none', ...mapEnumKeys(Gradients)},
-              'MiyazakiSky'
-            )
+              select(
+                'borderGradient',
+                {None: 'none', ...mapEnumKeys(Gradients)},
+                'MiyazakiSky'
+              )
             ]
           }
           borderColor={color('borderColor', `${InfluxColors.Twilight}`)}
         >
-          <div style={{width: '100%', height: '100%', borderRadius: '2px', padding: '8px', backgroundColor: `${color('background color', `${InfluxColors.Raven}`)}`}}>
+          <div
+            style={{
+              width: '100%',
+              height: '100%',
+              borderRadius: '2px',
+              padding: '8px',
+              backgroundColor: `${color(
+                'background color',
+                `${InfluxColors.Raven}`
+              )}`,
+            }}
+          >
             some content
           </div>
         </GradientBox>

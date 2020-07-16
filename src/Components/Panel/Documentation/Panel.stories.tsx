@@ -81,11 +81,11 @@ panelStories.add(
           ref={panelRef}
           gradient={
             Gradients[
-            select(
-              'gradient',
-              {None: 'none', ...mapEnumKeys(Gradients)},
-              'None'
-            )
+              select(
+                'gradient',
+                {None: 'none', ...mapEnumKeys(Gradients)},
+                'None'
+              )
             ]
           }
           backgroundColor={color('backgroundColor', `${InfluxColors.Castle}`)}
@@ -125,7 +125,7 @@ panelStories.add(
           }
           direction={
             FlexDirection[
-            select('direction', mapEnumKeys(FlexDirection), 'Row')
+              select('direction', mapEnumKeys(FlexDirection), 'Row')
             ]
           }
           alignItems={
@@ -133,20 +133,20 @@ panelStories.add(
           }
           justifyContent={
             JustifyContent[
-            select(
-              'justifyContent ',
-              mapEnumKeys(JustifyContent),
-              'SpaceBetween'
-            )
+              select(
+                'justifyContent ',
+                mapEnumKeys(JustifyContent),
+                'SpaceBetween'
+              )
             ]
           }
           margin={
             ComponentSize[
-            select(
-              'margin',
-              {None: '', ...mapEnumKeys(ComponentSize)},
-              'None'
-            )
+              select(
+                'margin',
+                {None: '', ...mapEnumKeys(ComponentSize)},
+                'None'
+              )
             ]
           }
         >
@@ -196,7 +196,7 @@ panelStories.add(
           }
           direction={
             FlexDirection[
-            select('direction', mapEnumKeys(FlexDirection), 'Column')
+              select('direction', mapEnumKeys(FlexDirection), 'Column')
             ]
           }
           alignItems={
@@ -204,20 +204,20 @@ panelStories.add(
           }
           justifyContent={
             JustifyContent[
-            select(
-              'justifyContent ',
-              mapEnumKeys(JustifyContent),
-              'FlexStart'
-            )
+              select(
+                'justifyContent ',
+                mapEnumKeys(JustifyContent),
+                'FlexStart'
+              )
             ]
           }
           margin={
             ComponentSize[
-            select(
-              'margin',
-              {None: '', ...mapEnumKeys(ComponentSize)},
-              'None'
-            )
+              select(
+                'margin',
+                {None: '', ...mapEnumKeys(ComponentSize)},
+                'None'
+              )
             ]
           }
         >
@@ -261,7 +261,7 @@ panelStories.add(
           }
           direction={
             FlexDirection[
-            select('direction', mapEnumKeys(FlexDirection), 'Row')
+              select('direction', mapEnumKeys(FlexDirection), 'Row')
             ]
           }
           alignItems={
@@ -269,16 +269,16 @@ panelStories.add(
           }
           justifyContent={
             JustifyContent[
-            select('justifyContent ', mapEnumKeys(JustifyContent), 'Center')
+              select('justifyContent ', mapEnumKeys(JustifyContent), 'Center')
             ]
           }
           margin={
             ComponentSize[
-            select(
-              'margin',
-              {None: '', ...mapEnumKeys(ComponentSize)},
-              'None'
-            )
+              select(
+                'margin',
+                {None: '', ...mapEnumKeys(ComponentSize)},
+                'None'
+              )
             ]
           }
         >
@@ -345,29 +345,41 @@ panelComposedStories.add(
         <BannerPanel
           ref={bannerPanelRef}
           size={
-            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'ExtraSmall')]
+            ComponentSize[
+              select('size', mapEnumKeys(ComponentSize), 'ExtraSmall')
+            ]
           }
           icon={
             IconFont[
-            select(
-              'icon',
-              {None: 'none', ...mapEnumKeys(IconFont)},
-              'GraphLine'
-            )
+              select(
+                'icon',
+                {None: 'none', ...mapEnumKeys(IconFont)},
+                'GraphLine'
+              )
             ]
           }
           gradient={
             Gradients[
-            select(
-              'gradient',
-              {None: 'none', ...mapEnumKeys(Gradients)},
-              'BeijingEclipse'
-            )
+              select(
+                'gradient',
+                {None: 'none', ...mapEnumKeys(Gradients)},
+                'BeijingEclipse'
+              )
             ]
           }
           textColor={color('textColor', `${InfluxColors.Twilight}`)}
-        ><div style={{width: '100%', display: 'inline-flex', alignItems: 'center', justifyContent: 'space-between'}}>
-            <div>Is some text with <a href="#">a link to nowhere</a></div>
+        >
+          <div
+            style={{
+              width: '100%',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}
+          >
+            <div>
+              Is some text with <a href="#">a link to nowhere</a>
+            </div>
             <div className="mockComponent mockButton">This is not a button</div>
           </div>
         </BannerPanel>
@@ -391,11 +403,11 @@ panelExampleStories.add(
       <Panel
         gradient={
           Gradients[
-          select(
-            'gradient',
-            {None: 'none', ...mapEnumKeys(Gradients)},
-            'GundamPilot'
-          )
+            select(
+              'gradient',
+              {None: 'none', ...mapEnumKeys(Gradients)},
+              'GundamPilot'
+            )
           ]
         }
         onDismiss={() => alert('onDismiss clicked!')}
@@ -530,7 +542,7 @@ panelExampleStories.add(
               text={1}
               size={
                 ComponentSize[
-                select('symbol size', mapEnumKeys(ComponentSize), 'Medium')
+                  select('symbol size', mapEnumKeys(ComponentSize), 'Medium')
                 ]
               }
             />
@@ -574,24 +586,23 @@ panelExampleStories.add(
       <GradientBox
         borderGradient={
           Gradients[
-          select(
-            'border gradient',
-            {None: 'none', ...mapEnumKeys(Gradients)},
-            'MiyazakiSky'
-          )
+            select(
+              'border gradient',
+              {None: 'none', ...mapEnumKeys(Gradients)},
+              'MiyazakiSky'
+            )
           ]
         }
-
         borderColor={color('border color', `${InfluxColors.Raven}`)}
       >
         <Panel
           gradient={
             Gradients[
-            select(
-              'background gradient',
-              {None: 'none', ...mapEnumKeys(Gradients)},
-              'None'
-            )
+              select(
+                'background gradient',
+                {None: 'none', ...mapEnumKeys(Gradients)},
+                'None'
+              )
             ]
           }
           style={{width: '500px'}}
@@ -604,15 +615,17 @@ panelExampleStories.add(
           >
             <Heading
               element={
-                HeadingElement[select('header element', mapEnumKeys(HeadingElement), 'H3')]
+                HeadingElement[
+                  select('header element', mapEnumKeys(HeadingElement), 'H3')
+                ]
               }
               appearance={
                 HeadingElement[
-                select(
-                  'header appearance',
-                  {Inherit: '', ...mapEnumKeys(HeadingElement)},
-                  'Inherit'
-                )
+                  select(
+                    'header appearance',
+                    {Inherit: '', ...mapEnumKeys(HeadingElement)},
+                    'Inherit'
+                  )
                 ]
               }
               type={Typeface[select('type', mapEnumKeys(Typeface), 'Rubik')]}
@@ -630,11 +643,13 @@ panelExampleStories.add(
               ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
             }
           >
-            <p>
-              {text('body text', 'Body rock')}
-            </p>
+            <p>{text('body text', 'Body rock')}</p>
           </Panel.Body>
-          {boolean('footer', true) && <Panel.Footer><div className="mockComponent mockButton">Not a button</div></Panel.Footer>}
+          {boolean('footer', true) && (
+            <Panel.Footer>
+              <div className="mockComponent mockButton">Not a button</div>
+            </Panel.Footer>
+          )}
         </Panel>
       </GradientBox>
     </div>

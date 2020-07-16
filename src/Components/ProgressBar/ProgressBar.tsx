@@ -3,7 +3,12 @@ import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {Gradients, InfluxColors, StandardFunctionProps, ComponentSize} from '../../Types'
+import {
+  Gradients,
+  InfluxColors,
+  StandardFunctionProps,
+  ComponentSize,
+} from '../../Types'
 
 // Styles
 import './ProgressBar.scss'
@@ -46,11 +51,8 @@ export const ProgressBar = forwardRef<ProgressBarRef, ProgressBarProps>(
     })
 
     const progressBarStyle = {
-      ...generateBackgroundStyle(
-        color,
-        barGradient,
-      ),
-      width: `${value / max * 100}%`,
+      ...generateBackgroundStyle(color, barGradient),
+      width: `${(value / max) * 100}%`,
       transition: 'all 0.25s ease 0s',
     }
 
@@ -68,7 +70,10 @@ export const ProgressBar = forwardRef<ProgressBarRef, ProgressBarProps>(
         <div className="cf-progress-bar--text">
           <div className="cf-progress-bar--label">{label}</div>
           <div>
-            <span className="cf-progress-bar--value" style={{color: color}}>{value}</span><span className="cf-progress-bar--max">/{max}</span>
+            <span className="cf-progress-bar--value" style={{color: color}}>
+              {value}
+            </span>
+            <span className="cf-progress-bar--max">/{max}</span>
           </div>
         </div>
       </div>

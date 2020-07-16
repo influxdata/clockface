@@ -8,30 +8,25 @@ import {withKnobs, select, color, number, text} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
-import {
-  ProgressBar
-} from '../ProgressBar'
+import {ProgressBar} from '../ProgressBar'
 
 // Types
-import {
-  Gradients,
-  InfluxColors,
-} from '../../../Types'
+import {Gradients, InfluxColors} from '../../../Types'
 
 // Notes
 import ProgressBarReadme from './ProgressBar.md'
 import ThresholdBarReadme from './ThresholdBar.md'
 import {ThresholdBar} from '../Composed/ThresholdBar'
 
-const ProgressBarStories = storiesOf('Atomic|ProgressBar/Family', module).addDecorator(
-  withKnobs
-)
+const ProgressBarStories = storiesOf(
+  'Atomic|ProgressBar/Family',
+  module
+).addDecorator(withKnobs)
 
 const ProgressBarComposedStories = storiesOf(
   'Atomic|ProgressBar/Composed',
   module
 ).addDecorator(withKnobs)
-
 
 ProgressBarStories.add(
   'ProgressBar',
@@ -42,11 +37,11 @@ ProgressBarStories.add(
           style={{width: '300px'}}
           barGradient={
             Gradients[
-            select(
-              'gradient',
-              {None: 'none', ...mapEnumKeys(Gradients)},
-              'MiyazakiSky'
-            )
+              select(
+                'gradient',
+                {None: 'none', ...mapEnumKeys(Gradients)},
+                'MiyazakiSky'
+              )
             ]
           }
           value={number('value', 50)}

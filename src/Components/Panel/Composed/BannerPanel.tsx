@@ -24,17 +24,27 @@ export interface BannerPanelProps extends PanelProps {
 export type BannerPanelRef = HTMLDivElement
 
 export const BannerPanel = forwardRef<BannerPanelRef, BannerPanelProps>(
-  ({id, style, testID = 'banner-panel', children, textColor, className, icon, gradient, size = ComponentSize.ExtraSmall}, ref) => {
+  (
+    {
+      id,
+      style,
+      testID = 'banner-panel',
+      children,
+      textColor,
+      className,
+      icon,
+      gradient,
+      size = ComponentSize.ExtraSmall,
+    },
+    ref
+  ) => {
     const bannerPanelClassName = classnames('cf-banner-panel', {
       'cf-banner-panel--has-icon': icon,
       [`${className}`]: className,
     })
 
     return (
-      <div
-        ref={ref}
-        className={bannerPanelClassName}
-      >
+      <div ref={ref} className={bannerPanelClassName}>
         <Panel
           data-testid={testID}
           gradient={gradient}
@@ -43,8 +53,19 @@ export const BannerPanel = forwardRef<BannerPanelRef, BannerPanelProps>(
           id={id}
         >
           <PanelBody size={size} className="cf-banner-panel--body">
-            {!!icon && <Icon style={{color: textColor}} glyph={icon} className="cf-banner-panel--icon" />}
-            <div style={{color: textColor}} className="cf-banner-panel--contents">{children}</div>
+            {!!icon && (
+              <Icon
+                style={{color: textColor}}
+                glyph={icon}
+                className="cf-banner-panel--icon"
+              />
+            )}
+            <div
+              style={{color: textColor}}
+              className="cf-banner-panel--contents"
+            >
+              {children}
+            </div>
           </PanelBody>
         </Panel>
       </div>

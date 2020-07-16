@@ -36,10 +36,8 @@ export const GradientBox = forwardRef<GradientBoxRef, GradientBoxProps>(
     })
 
     const gradientBoxStyle = {
-      ...generateBackgroundStyle(
-        borderColor,
-        borderGradient,
-      ), ...style
+      ...generateBackgroundStyle(borderColor, borderGradient),
+      ...style,
     }
 
     return (

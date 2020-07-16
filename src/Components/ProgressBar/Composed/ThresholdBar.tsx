@@ -13,11 +13,8 @@ export type threshold = {
   gradient?: Gradients
 }
 
-export interface ThresholdBarProps extends Omit<
-  ProgressBarProps,
-  | 'barGradient'
-  | 'color'
-  > {
+export interface ThresholdBarProps
+  extends Omit<ProgressBarProps, 'barGradient' | 'color'> {
   /** The current amount */
   value?: number
   /** The total amount */
@@ -49,21 +46,22 @@ export const ThresholdBar = forwardRef<ThresholdBarRef, ThresholdBarProps>(
           gradient: Gradients.HotelBreakfast,
         },
         {
-          floor: max * .7,
+          floor: max * 0.7,
           color: InfluxColors.Thunder,
           gradient: Gradients.CaliforniaCampfire,
         },
         {
-          floor: max * .9,
+          floor: max * 0.9,
           color: InfluxColors.Curacao,
           gradient: Gradients.SavannaHeat,
         },
-
       ],
     },
     ref
   ) => {
-    const [sortedThresholds, setSortedThresholds] = useState<threshold[]>(thresholds)
+    const [sortedThresholds, setSortedThresholds] = useState<threshold[]>(
+      thresholds
+    )
 
     useEffect(() => {
       setSortedThresholds(orderBy(thresholds, ['floor'], 'asc'))
