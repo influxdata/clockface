@@ -594,6 +594,7 @@ panelExampleStories.add(
             )
             ]
           }
+          style={{width: '500px'}}
           backgroundColor={color('background color', `${InfluxColors.Raven}`)}
         >
           <Panel.Header
@@ -621,7 +622,7 @@ panelExampleStories.add(
               underline={boolean('underline', false)}
               selectable={boolean('selectable', false)}
             >
-              {text('text', 'A Title')}
+              {text('header text', 'Heads up')}
             </Heading>
           </Panel.Header>
           <Panel.Body
@@ -629,12 +630,11 @@ panelExampleStories.add(
               ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
             }
           >
-            <p>Some body text</p>
-            <div>
-              {boolean('show button', true) && <div className="mockComponent mockButton">Not a button</div>}
-              {' '} Some more text
-            </div>
+            <p>
+              {text('body text', 'Body rock')}
+            </p>
           </Panel.Body>
+          {boolean('footer', true) && <Panel.Footer><div className="mockComponent mockButton">Not a button</div></Panel.Footer>}
         </Panel>
       </GradientBox>
     </div>

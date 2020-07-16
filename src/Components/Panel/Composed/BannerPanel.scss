@@ -13,6 +13,7 @@
 
   .cf-banner-panel--icon {
     margin-right: $cf-marg-c;
+    font-size: $cf-form-lg-font;
   }
 }
 
@@ -29,26 +30,36 @@
   margin-right: $margin * 2;
 }
 
-.cf-panel--body__xs {
-  .cf-banner-panel--icon {
-    @include bannerIconMarginModifier($cf-form-xs-padding);
-  }
-}
+.cf-banner-panel {
+  .cf-panel--body__xs {
+    font-size: $cf-form-md-font;
 
-.cf-panel--body__sm {
-  .cf-banner-panel--icon {
-  @include bannerIconMarginModifier($cf-form-sm-padding);
+    .cf-banner-panel--icon {
+      @include bannerIconMarginModifier($cf-form-xs-padding);
+    }
   }
-}
 
-.cf-panel--body__md {
-  .cf-banner-panel--icon {
-  @include bannerIconMarginModifier($cf-form-md-padding);
+  .cf-panel--body__sm {
+    font-size: $cf-form-lg-font;
+
+    .cf-banner-panel--icon {
+    @include bannerIconMarginModifier($cf-form-sm-padding);
+    }
   }
-}
 
-.cf-panel--body__lg {
-  .cf-banner-panel--icon {
-  @include bannerIconMarginModifier($cf-form-lg-padding);
+  .cf-panel--body__md {
+    font-size: $cf-form-lg-font;
+
+    .cf-banner-panel--icon {
+    @include bannerIconMarginModifier($cf-form-md-padding);
+    }
+  }
+
+  .cf-panel--body__lg {
+    font-size: $cf-form-lg-font;
+
+    .cf-banner-panel--icon {
+    @include bannerIconMarginModifier($cf-form-lg-padding);
+    }
   }
 }
