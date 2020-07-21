@@ -16,14 +16,7 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 import {useState} from '@storybook/addons'
 
 // Components
-import {
-  List,
-  ListRef,
-  ListDividerRef,
-  ListItemRef,
-  ListEmptyRef,
-  // ListLinkItemRef,
-} from '../'
+import {List, ListRef, ListDividerRef, ListItemRef, ListEmptyRef} from '../'
 import {Popover} from '../../Popover'
 
 // Types
