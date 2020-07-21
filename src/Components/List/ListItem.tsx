@@ -173,8 +173,9 @@ export const ListItem = forwardRef<ListItemRef, ListItemProps>(
       return cloneElement(
         linkElement,
         {
+          id,
           style: itemStyle,
-          title: title,
+          title,
           className: listItemClass,
           'data-testid': testID,
         },
