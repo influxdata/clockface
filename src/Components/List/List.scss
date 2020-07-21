@@ -181,21 +181,6 @@ $list-item--background-dark: rgba($g0-obsidian, 0.09);
 }
 
 /*
-  Link Item
-  ------------------------------------------------------------------------------
-*/
-
-.cf-list-link-item {
-  @include listItemSharedStyles();
-
-  > a {
-    transition: color 0.25s ease, background-color 0.25s ease !important;
-    display: inline-block;
-    border-radius: $cf-radius-sm;
-  }
-}
-
-/*
   Disabled State Item
   ------------------------------------------------------------------------------
 */
