@@ -7,6 +7,7 @@
 - [#518](https://github.com/influxdata/clockface/pull/518): Add `ProgressBar` component
 - [#518](https://github.com/influxdata/clockface/pull/518): Add `BannerPanel` composed `Panel` component
 - [#518](https://github.com/influxdata/clockface/pull/518): Add `GradientBox` component
+- [#518](https://github.com/influxdata/clockface/pull/518): Make `PageHeader` responsive
 
 #### 2.2.1 (2020-06-11)
 
