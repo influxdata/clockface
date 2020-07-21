@@ -4,7 +4,7 @@ import React, {Component} from 'react'
 // Components
 import {ListRoot, ListProps} from './List'
 import {ListItem} from './ListItem'
-import {ListEmpty} from './ListEmpty'
+import {ListEmptyState} from './ListEmptyState'
 import {ListDivider} from './ListDivider'
 import {ListIndicator} from './ListIndicator'
 import {ListIcon} from './ListIcon'
@@ -14,7 +14,7 @@ export class List extends Component<ListProps> {
 
   public static List = ListRoot
   public static Item = ListItem
-  public static Empty = ListEmpty
+  public static EmptyState = ListEmptyState
   public static Divider = ListDivider
   public static Indicator = ListIndicator
   public static Icon = ListIcon
@@ -26,7 +26,7 @@ export class List extends Component<ListProps> {
 
 export {ListProps, ListRef} from './List'
 export * from './ListItem'
-export * from './ListEmpty'
+export * from './ListEmptyState'
 export * from './ListDivider'
 export * from './ListIndicator'
 export * from './ListIcon'

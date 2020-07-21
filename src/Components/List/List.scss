@@ -213,7 +213,7 @@ $list-item--background-dark: rgba($g0-obsidian, 0.09);
   ------------------------------------------------------------------------------
 */
 
-.cf-list-empty {
+.cf-list-empty-state {
   color: $g20-white;
   text-align: center;
   font-style: italic;
@@ -247,7 +247,7 @@ $list-item--background-dark: rgba($g0-obsidian, 0.09);
     padding: ceil($padding * 0.75) 0;
   }
 
-  &.cf-list-empty {
+  &.cf-list-empty-state {
     font-weight: $cf-font-weight--medium;
     font-size: $fontSize;
 

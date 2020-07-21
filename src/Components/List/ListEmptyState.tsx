@@ -5,34 +5,37 @@ import classnames from 'classnames'
 // Types
 import {StandardFunctionProps, ComponentSize} from '../../Types'
 
-export interface ListEmptyProps extends StandardFunctionProps {
+export interface ListEmptyStateProps extends StandardFunctionProps {
   /** Controls whether the text contents of this item wrap or not */
   wrapText?: boolean
   /** Size of this component */
   size?: ComponentSize
 }
 
-export type ListEmptyRef = HTMLDivElement
+export type ListEmptyStateRef = HTMLDivElement
 
-export const ListEmpty = forwardRef<ListEmptyRef, ListEmptyProps>(
+export const ListEmptyState = forwardRef<
+  ListEmptyStateRef,
+  ListEmptyStateProps
+>(
   (
     {
       id,
       size = ComponentSize.Small,
       style,
-      testID = 'list-empty',
+      testID = 'list-empty-state',
       wrapText = false,
       children,
       className,
     },
     ref
   ) => {
-    const listEmptyClass = classnames('cf-list-empty', {
+    const listEmptyStateClass = classnames('cf-list-empty-state', {
       [`${className}`]: className,
       [`cf-list-item__${size}`]: size,
     })
 
-    const listEmptyTextClass = classnames('cf-list-empty--text', {
+    const listEmptyStateTextClass = classnames('cf-list-empty-state--text', {
       'cf-list-item--text__wrap': wrapText,
       'cf-list-item--text__no-wrap': !wrapText,
     })
@@ -43,12 +46,12 @@ export const ListEmpty = forwardRef<ListEmptyRef, ListEmptyProps>(
         ref={ref}
         style={style}
         data-testid={testID}
-        className={listEmptyClass}
+        className={listEmptyStateClass}
       >
-        <div className={listEmptyTextClass}>{children}</div>
+        <div className={listEmptyStateTextClass}>{children}</div>
       </div>
     )
   }
 )
 
-ListEmpty.displayName = 'ListEmpty'
+ListEmptyState.displayName = 'ListEmptyState'

@@ -16,7 +16,13 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 import {useState} from '@storybook/addons'
 
 // Components
-import {List, ListRef, ListDividerRef, ListItemRef, ListEmptyRef} from '../'
+import {
+  List,
+  ListRef,
+  ListDividerRef,
+  ListItemRef,
+  ListEmptyStateRef,
+} from '../'
 import {Popover} from '../../Popover'
 
 // Types
@@ -33,7 +39,7 @@ import {
 import ListReadme from './List.md'
 import ListDividerReadme from './ListDivider.md'
 import ListItemReadme from './ListItem.md'
-import ListEmptyReadme from './ListEmpty.md'
+import ListEmptyStateReadme from './ListEmptyState.md'
 import ListLinkElementReadme from './ListLinkElement.md'
 import ListPopoverReadme from './ListPopover.md'
 
@@ -429,27 +435,27 @@ listFamilyStories.add(
 )
 
 listFamilyStories.add(
-  'ListEmpty',
+  'ListEmptyState',
   () => {
-    const listEmptyRef: RefObject<ListEmptyRef> = createRef()
+    const listEmptyStateRef: RefObject<ListEmptyStateRef> = createRef()
 
     const logRef = (): void => {
       /* eslint-disable */
-      console.log(listEmptyRef.current)
+      console.log(listEmptyStateRef.current)
       /* eslint-enable */
     }
 
     return (
       <div className="story--example">
-        <List.Empty
+        <List.EmptyState
           wrapText={boolean('wrapText', false)}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
-          ref={listEmptyRef}
+          ref={listEmptyStateRef}
         >
           {text('children (text)', 'No items to display')}
-        </List.Empty>
+        </List.EmptyState>
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
         </div>
@@ -458,7 +464,7 @@ listFamilyStories.add(
   },
   {
     readme: {
-      content: marked(ListEmptyReadme),
+      content: marked(ListEmptyStateReadme),
     },
   }
 )
