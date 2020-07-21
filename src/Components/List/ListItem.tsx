@@ -99,7 +99,7 @@ export const ListItem = forwardRef<ListItemRef, ListItemProps>(
     const listItemClass = classnames('cf-list-item', {
       'cf-list-item__active': selected,
       [`cf-list-item__${size}`]: size,
-      [`cf-list-item__${listContrastColor}`]: true,
+      [`cf-list-item__${listContrastColor || 'light'}`]: true,
       [`${className}`]: className,
       'cf-list-item__disabled': disabled,
       'cf-list-item__clickable': !!onClick,

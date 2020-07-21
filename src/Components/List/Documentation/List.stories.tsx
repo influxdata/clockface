@@ -486,7 +486,7 @@ listExamplesStories.add(
           selected={boolean('selected', false)}
           wrapText={boolean('wrapText', false)}
           disabled={boolean('disabled', false)}
-          backgroundColor={color('color', InfluxColors.Pool)}
+          backgroundColor={color('color', InfluxColors.Star)}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }

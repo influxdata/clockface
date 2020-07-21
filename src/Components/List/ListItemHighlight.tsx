@@ -28,7 +28,7 @@ export const ListItemHighlight: FC<ListItemHighlightProps> = ({
   const {listContrastColor} = useContext(ListContext)
 
   const itemHighlightClassname = classnames('cf-list-item--highlight', {
-    [`cf-list-item--highlight__${listContrastColor}`]: true,
+    [`cf-list-item--highlight__${listContrastColor || 'light'}`]: true,
   })
 
   const selectedStyle = generateBackgroundStyle(
