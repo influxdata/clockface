@@ -21,49 +21,48 @@
  flex-grow: 1;
 }
 
+.cf-banner-panel__hide-icon {
+  .cf-banner-panel--icon {
+    display: none;
+  }
+}
+
+@media screen and (min-width: $cf-nav-menu--breakpoint) {
+  .cf-banner-panel__hide-icon {
+    .cf-banner-panel--icon {
+      display: inline-block;
+    }
+  }
+}
+
 /*
   Size Modifiers
   ------------------------------------------------------------------------------
 */
 
-@mixin bannerIconMarginModifier($margin) {
-  margin-right: $margin * 2;
+@mixin bannerIconSizeModifier($margin, $fontSize) {
+  font-size: $fontSize;
+
+  .cf-banner-panel--icon {
+    font-size: $fontSize * 2;
+    margin-right: $margin * 2;
+  }
 }
 
 .cf-banner-panel {
   .cf-panel--body__xs {
-    font-size: $cf-form-md-font;
-
-    .cf-banner-panel--icon {
-      font-size: $cf-form-md-font * 2;
-      @include bannerIconMarginModifier($cf-form-xs-padding);
-    }
+    @include bannerIconSizeModifier($cf-form-xs-padding, $cf-form-xs-font);
   }
 
   .cf-panel--body__sm {
-    font-size: $cf-form-lg-font;
-
-    .cf-banner-panel--icon {
-      font-size: $cf-form-lg-font * 2;
-      @include bannerIconMarginModifier($cf-form-sm-padding);
-    }
+    @include bannerIconSizeModifier($cf-form-sm-padding, $cf-form-sm-font);
   }
 
   .cf-panel--body__md {
-    font-size: $cf-form-lg-font;
-
-    .cf-banner-panel--icon {
-      font-size: $cf-form-lg-font * 2;
-      @include bannerIconMarginModifier($cf-form-md-padding);
-    }
+    @include bannerIconSizeModifier($cf-form-md-padding, $cf-form-md-font);
   }
 
   .cf-panel--body__lg {
-    font-size: $cf-form-lg-font;
-
-    .cf-banner-panel--icon {
-      font-size: $cf-form-lg-font * 2;
-      @include bannerIconMarginModifier($cf-form-lg-padding);
-    }
+    @include bannerIconSizeModifier($cf-form-lg-padding, $cf-form-lg-font);
   }
 }

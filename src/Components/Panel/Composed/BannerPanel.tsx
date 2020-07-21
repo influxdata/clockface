@@ -19,6 +19,8 @@ export interface BannerPanelProps extends PanelProps {
   icon?: IconFont
   /** Color of text, leave blank to have the text color computed for optimal contrast from the background */
   textColor?: InfluxColors | string
+  /** Hides the icon at smallest breakpoint */
+  hideMobileIcon?: boolean
 }
 
 export type BannerPanelRef = HTMLDivElement
@@ -32,6 +34,7 @@ export const BannerPanel = forwardRef<BannerPanelRef, BannerPanelProps>(
       children,
       textColor,
       className,
+      hideMobileIcon = false,
       icon,
       gradient,
       size = ComponentSize.ExtraSmall,
@@ -40,6 +43,7 @@ export const BannerPanel = forwardRef<BannerPanelRef, BannerPanelProps>(
   ) => {
     const bannerPanelClassName = classnames('cf-banner-panel', {
       'cf-banner-panel--has-icon': icon,
+      'cf-banner-panel__hide-icon': hideMobileIcon,
       [`${className}`]: className,
     })
 

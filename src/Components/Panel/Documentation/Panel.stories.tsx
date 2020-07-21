@@ -344,6 +344,7 @@ panelComposedStories.add(
       <div className="story--example">
         <BannerPanel
           ref={bannerPanelRef}
+          hideMobileIcon={true}
           size={
             ComponentSize[
               select('size', mapEnumKeys(ComponentSize), 'ExtraSmall')
@@ -376,7 +377,12 @@ panelComposedStories.add(
             <div>
               Is some text with <a href="#">a link to nowhere</a>
             </div>
-            <div className="mockComponent mockButton">This is not a button</div>
+            <div>
+              some more text{' '}
+              <div className="mockComponent mockButton">
+                This is not a button
+              </div>
+            </div>
           </div>
         </BannerPanel>
         <div className="story--test-buttons">
