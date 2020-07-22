@@ -1,0 +1,279 @@
+@import '../../Styles/variables';
+
+$list-item--text-opacity: 0.666;
+
+$list-item--divider-color--light: rgba($g20-white, 0.03);
+$list-item--divider-text--light: rgba($g20-white, 0.4);
+$list-item--background-light: rgba($g20-white, 0.09);
+
+$list-item--divider-color--dark: rgba($g0-obsidian, 0.08);
+$list-item--divider-text--dark: rgba($g0-obsidian, 0.4);
+$list-item--background-dark: rgba($g0-obsidian, 0.09);
+
+.cf-list {
+  overflow: hidden;
+  border-radius: $cf-radius;
+  padding: $cf-border;
+
+  .cf-dapper-scrollbars--track-y {
+    z-index: 2;
+  }
+
+  &.cf-list__special-light .cf-dapper-scrollbars--track-y {
+    background-color: rgba($g3-castle, 0.5) !important;
+  }
+
+  &.cf-list__dark .cf-dapper-scrollbars--track-y {
+    background-color: rgba($g0-obsidian, 0.15) !important;
+  }
+}
+
+.cf-list--contents {
+  font-size: 0;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.cf-list-item,
+.cf-list-divider,
+.cf-list-divider__thin {
+  margin-bottom: $cf-border;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/*
+  List Item
+  ------------------------------------------------------------------------------
+*/
+
+@mixin listItemSharedStyles() {
+  user-select: none;
+  position: relative;
+  border-radius: $cf-radius-sm;
+  display: flex;
+  align-items: center;
+}
+
+.cf-list-item {
+  z-index: 1;
+  @include listItemSharedStyles();
+  transition: color 0.25s ease, background-color 0.25s;
+
+  &.cf-list-item__clickable:hover,
+  &.cf-list-item__clickable.cf-list-item__active {
+    cursor: pointer;
+  }
+}
+
+.cf-list-item--highlight {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  border-radius: $cf-radius-sm;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.25s ease, background-color 0.25s ease;
+}
+
+.cf-list-item--highlight__light {
+  background-color: $list-item--background-light;
+}
+
+.cf-list-item--highlight__dark {
+  background-color: $list-item--background-dark;
+}
+
+.cf-list-item:hover .cf-list-item--highlight,
+.cf-list-item__active .cf-list-item--highlight,
+.cf-list-item__active:hover .cf-list-item--highlight {
+  opacity: 1;
+}
+
+.cf-list-item__light {
+  color: rgba($g20-white, $list-item--text-opacity);
+}
+.cf-list-item__light.cf-list-item__active,
+.cf-list-item__light.cf-list-item__active:hover {
+  color: $g20-white;
+}
+
+.cf-list-item__dark {
+  color: rgba($g2-kevlar, $list-item--text-opacity);
+}
+.cf-list-item__dark.cf-list-item__active,
+.cf-list-item__dark.cf-list-item__active:hover {
+  color: $g2-kevlar;
+}
+
+/*
+  List Item Text
+  ------------------------------------------------------------------------------
+*/
+
+.cf-list-item--text {
+  flex: 1;
+}
+
+.cf-list-item--text__wrap {
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+
+.cf-list-item--text__no-wrap {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/*
+  Divider
+  ------------------------------------------------------------------------------
+*/
+
+.cf-list-divider {
+  border-radius: $cf-radius-sm;
+  border-bottom: $cf-border solid $list-item--divider-color--light;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cf-list-divider,
+.cf-list-divider__thin {
+  margin-bottom: $cf-border;
+
+  &:hover {
+    cursor: default;
+  }
+}
+
+.cf-list-divider__thin {
+  padding: 0;
+  height: $cf-border;
+}
+
+.cf-list-divider__dark {
+  &.cf-list-divider {
+    color: $list-item--divider-text--dark;
+    border-bottom-color: $list-item--divider-color--dark;
+  }
+  &.cf-list-divider__thin {
+    background-color: $list-item--divider-color--dark;
+  }
+}
+
+.cf-list-divider__light {
+  &.cf-list-divider {
+    color: $list-item--divider-text--light;
+    border-bottom-color: $list-item--divider-color--light;
+  }
+  &.cf-list-divider__thin {
+    background-color: $list-item--divider-color--light;
+  }
+}
+
+/*
+  Disabled State Item
+  ------------------------------------------------------------------------------
+*/
+
+.cf-list-item__disabled {
+  opacity: 0.666;
+  font-style: italic;
+
+  &:hover,
+  &.cf-list-item__clickable:hover {
+    cursor: default;
+  }
+}
+
+/*
+  List Empty
+  ------------------------------------------------------------------------------
+*/
+
+.cf-list-empty-state {
+  color: $g20-white;
+  text-align: center;
+  font-style: italic;
+  opacity: 0.38;
+  user-select: none;
+}
+
+/*
+  Size Modifiers
+  ------------------------------------------------------------------------------
+*/
+
+@mixin listItemSizeModifier($fontSize, $height, $padding) {
+  &.cf-list-item,
+  &.cf-list-divider,
+  &.cf-list-link-item > a {
+    font-weight: $cf-font-weight--medium;
+    font-size: $fontSize;
+    padding: 0 $padding;
+  }
+
+  .cf-list-item--text__no-wrap,
+  &.cf-list-link-item__no-wrap > a,
+  &.cf-list-divider {
+    height: $height;
+    line-height: $height;
+  }
+
+  .cf-list-item--text__wrap,
+  &.cf-list-link-item__wrap > a {
+    padding: ceil($padding * 0.75) 0;
+  }
+
+  &.cf-list-empty-state {
+    font-weight: $cf-font-weight--medium;
+    font-size: $fontSize;
+
+    .cf-list-item--text__no-wrap,
+    .cf-list-item--text__wrap {
+      padding-left: $padding;
+      padding-right: $padding;
+    }
+  }
+}
+
+.cf-list-item__xs {
+  @include listItemSizeModifier(
+    $cf-form-xs-font,
+    $cf-form-xs-height,
+    $cf-form-xs-padding
+  );
+}
+
+.cf-list-item__sm {
+  @include listItemSizeModifier(
+    $cf-form-sm-font,
+    $cf-form-sm-height,
+    $cf-form-sm-padding
+  );
+}
+
+.cf-list-item__md {
+  @include listItemSizeModifier(
+    $cf-form-md-font,
+    $cf-form-md-height,
+    $cf-form-md-padding
+  );
+}
+
+.cf-list-item__lg {
+  @include listItemSizeModifier(
+    $cf-form-lg-font,
+    $cf-form-lg-height,
+    $cf-form-lg-padding
+  );
+}

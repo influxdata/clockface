@@ -28,7 +28,7 @@ export const convertCSSPropertiesToString = (styles: CSSProperties): string =>
   }, '')
 
 export const calculateTextColorFromBackground = (
-  backgroundColor: InfluxColors | string,
+  backgroundColor?: InfluxColors | string,
   gradient?: Gradients
 ): string => {
   const mediumGrey = 0.34
@@ -38,26 +38,36 @@ export const calculateTextColorFromBackground = (
     return chroma(start).luminance() >= mediumGrey ? 'dark' : 'light'
   }
 
-  return chroma(backgroundColor).luminance() >= mediumGrey ? 'dark' : 'light'
+  if (backgroundColor) {
+    return chroma(backgroundColor).luminance() >= mediumGrey ? 'dark' : 'light'
+  }
+
+  return ''
 }
 
 export const generateBackgroundStyle = (
-  backgroundColor: InfluxColors | string,
+  backgroundColor?: InfluxColors | string,
   gradient?: Gradients,
   bordered?: boolean,
-  style?: CSSProperties
+  style?: CSSProperties,
+  angle?: number
 ): CSSProperties => {
+  if (!backgroundColor && !gradient) {
+    return style || {}
+  }
+
   let border = `2px solid ${backgroundColor}`
   let panelStyle: CSSProperties = {backgroundColor}
 
   if (gradient) {
     const colors = getColorsFromGradient(gradient)
+    const gradientAngle = angle || 45
 
     border = `2px solid ${colors.stop}`
 
     panelStyle = {
       ...panelStyle,
-      background: `linear-gradient(45deg,  ${colors.start} 0%,${colors.stop} 100%)`,
+      background: `linear-gradient(${gradientAngle}deg,  ${colors.start} 0%,${colors.stop} 100%)`,
     }
   }
 
