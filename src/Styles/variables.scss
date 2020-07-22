@@ -554,7 +554,7 @@ $cf-scrollbar-offset: 3px;
 
 @mixin funnel-page-background() {
   z-index: $funnel-page--graphic-z;
-  // background-image: url('./Images/FunnelPageGraphic.svg');
+  background-image: url('./Images/FunnelPageGraphic.svg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
