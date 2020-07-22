@@ -33,9 +33,9 @@ export interface ListItemSharedProps {
 }
 
 export interface ListItemContextProps extends ListItemSharedProps {
-  listItemContrastColor?: string
-  listItemBackgroundColor?: InfluxColors | string
-  listItemGradient?: Gradients
+  listItemContrastColor?: string | null
+  listItemBackgroundColor?: InfluxColors | string | null
+  listItemGradient?: Gradients | null
 }
 
 type CombinedListItemProps = ListItemSharedProps & StandardFunctionProps
@@ -64,9 +64,9 @@ export type ListItemRef = HTMLDivElement
 export const ListItemContext = createContext<ListItemContextProps>({
   selected: false,
   size: ComponentSize.Small,
-  listItemBackgroundColor: undefined,
-  listItemGradient: undefined,
-  listItemContrastColor: undefined,
+  listItemBackgroundColor: null,
+  listItemGradient: null,
+  listItemContrastColor: null,
 })
 
 export const ListItem = forwardRef<ListItemRef, ListItemProps>(

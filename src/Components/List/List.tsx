@@ -25,17 +25,17 @@ import {StandardFunctionProps, InfluxColors, Gradients} from '../../Types'
 import './List.scss'
 
 export interface ListContextProps {
-  listBackgroundColor?: InfluxColors | string
-  listGradient?: Gradients
-  listContrastColor?: InfluxColors | string
+  listBackgroundColor?: InfluxColors | string | null
+  listGradient?: Gradients | null
+  listContrastColor?: InfluxColors | string | null
 }
 
 export type ListItemRef = HTMLDivElement
 
 export const ListContext = createContext<ListContextProps>({
-  listBackgroundColor: undefined,
-  listGradient: undefined,
-  listContrastColor: undefined,
+  listBackgroundColor: null,
+  listGradient: null,
+  listContrastColor: null,
 })
 
 export interface ListProps extends StandardFunctionProps {
