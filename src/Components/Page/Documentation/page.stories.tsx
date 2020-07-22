@@ -234,7 +234,7 @@ pageExampleStories.add(
             }
           >
             <h1>Title</h1>
-            <span>Bloob</span>
+            <div className="mockComponent mockButton">Bloob</div>
           </Page.Header>
           <Page.ControlBar
             fullWidth={boolean('fullWidth', false)}

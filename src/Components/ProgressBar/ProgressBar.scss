@@ -1,0 +1,31 @@
+@import '../../Styles/variables';
+
+.cf-progress-bar {
+  @include no-user-select();
+}
+
+.cf-progress-bar--container {
+  border-radius: 100px;
+  width: 100%;
+  height: 12px;
+  box-sizing: border-box;
+  padding: $cf-marg-a;
+  background-color: $g0-obsidian;
+  display: inline-flex;
+  position: relative;
+}
+
+.cf-progress-bar--fill {
+  border-radius: 100px;
+  height: 100%;
+  position: relative;
+}
+
+.cf-progress-bar--text {
+  margin-top: $cf-marg-b;
+  width: 100%;
+  color: $g10-wolf;
+  display: inline-flex;
+  justify-content: space-between;
+  font-size: $cf-form-md-font;
+}

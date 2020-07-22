@@ -59,6 +59,7 @@
 .cf-page-header--fluid,
 .cf-page-header--fixed {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -169,6 +170,7 @@
 
   .cf-page-header--fluid,
   .cf-page-header--fixed {
+    flex-direction: row;
     justify-content: space-between;
     text-align: left;
   }

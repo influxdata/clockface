@@ -186,7 +186,7 @@ $cf-nav-menu--breakpoint: 800px;
 
 $cf-page--background: $g1-raven;
 
-$cf-page--header-size-sm: 66px;
+$cf-page--header-size-sm: auto;
 $cf-page--header-size: 88px;
 $cf-page--control-bar-size: 44px;
 $cf-page--title-size-sm: 1.8em;
@@ -554,7 +554,7 @@ $cf-scrollbar-offset: 3px;
 
 @mixin funnel-page-background() {
   z-index: $funnel-page--graphic-z;
-  background-image: url('./Images/FunnelPageGraphic.svg');
+  // background-image: url('./Images/FunnelPageGraphic.svg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;

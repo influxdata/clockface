@@ -16,8 +16,11 @@ import {
   PanelFooterRef,
   PanelSymbolHeaderRef,
 } from '../'
+import {BannerPanel, BannerPanelRef} from '../Composed/BannerPanel'
 import {Grid} from '../../Grid'
 import {Bullet} from '../../Icon'
+import {Heading} from '../../Typography'
+import {GradientBox} from '../../GradientBox/GradientBox'
 
 // Types
 import {
@@ -28,18 +31,24 @@ import {
   JustifyContent,
   FlexDirection,
   AlignItems,
+  IconFont,
+  HeadingElement,
+  Typeface,
+  FontWeight,
 } from '../../../Types'
 
 // Notes
 import PanelReadme from './Panel.md'
 import PanelHeaderReadme from './PanelHeader.md'
 import PanelSymbolHeaderReadme from './PanelSymbolHeader.md'
+import BannerPanelReadme from './BannerPanel.md'
 import PanelBodyReadme from './PanelBody.md'
 import PanelFooterReadme from './PanelFooter.md'
 import ExampleAReadme from './PanelExampleA.md'
 import ExampleBReadme from './PanelExampleB.md'
 import ExampleCReadme from './PanelExampleC.md'
 import ExampleDReadme from './PanelExampleD.md'
+import PanelPlaygroundReadme from './PanelPlayground.md'
 
 const panelStories = storiesOf('Components|Panels/Family', module).addDecorator(
   withKnobs
@@ -320,6 +329,75 @@ panelComposedStories.add(
   }
 )
 
+panelComposedStories.add(
+  'BannerPanel',
+  () => {
+    const bannerPanelRef: RefObject<BannerPanelRef> = createRef()
+
+    const logBannerPanelRef = (): void => {
+      /* eslint-disable */
+      console.log(bannerPanelRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <BannerPanel
+          ref={bannerPanelRef}
+          hideMobileIcon={true}
+          size={
+            ComponentSize[
+              select('size', mapEnumKeys(ComponentSize), 'ExtraSmall')
+            ]
+          }
+          icon={
+            IconFont[
+              select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'Cloud')
+            ]
+          }
+          gradient={
+            Gradients[
+              select(
+                'gradient',
+                {None: 'none', ...mapEnumKeys(Gradients)},
+                'BeijingEclipse'
+              )
+            ]
+          }
+          textColor={color('textColor', `${InfluxColors.Twilight}`)}
+        >
+          <div
+            style={{
+              width: '100%',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}
+          >
+            <div>
+              Is some text with <a href="#">a link to nowhere</a>
+            </div>
+            <div>
+              some more text{' '}
+              <div className="mockComponent mockButton">
+                This is not a button
+              </div>
+            </div>
+          </div>
+        </BannerPanel>
+        <div className="story--test-buttons">
+          <button onClick={logBannerPanelRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(BannerPanelReadme),
+    },
+  }
+)
+
 panelExampleStories.add(
   'Dismissable Panel',
   () => (
@@ -499,6 +577,88 @@ panelExampleStories.add(
   {
     readme: {
       content: marked(ExampleDReadme),
+    },
+  }
+)
+
+panelExampleStories.add(
+  'Panel Playground',
+  () => (
+    <div className="story--example">
+      <GradientBox
+        borderGradient={
+          Gradients[
+            select(
+              'border gradient',
+              {None: 'none', ...mapEnumKeys(Gradients)},
+              'MiyazakiSky'
+            )
+          ]
+        }
+        borderColor={color('border color', `${InfluxColors.Raven}`)}
+      >
+        <Panel
+          gradient={
+            Gradients[
+              select(
+                'background gradient',
+                {None: 'none', ...mapEnumKeys(Gradients)},
+                'None'
+              )
+            ]
+          }
+          style={{width: '500px'}}
+          backgroundColor={color('background color', `${InfluxColors.Raven}`)}
+        >
+          <Panel.Header
+            size={
+              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+            }
+          >
+            <Heading
+              element={
+                HeadingElement[
+                  select('header element', mapEnumKeys(HeadingElement), 'H3')
+                ]
+              }
+              appearance={
+                HeadingElement[
+                  select(
+                    'header appearance',
+                    {Inherit: '', ...mapEnumKeys(HeadingElement)},
+                    'Inherit'
+                  )
+                ]
+              }
+              type={Typeface[select('type', mapEnumKeys(Typeface), 'Rubik')]}
+              weight={
+                FontWeight[select('weight', mapEnumKeys(FontWeight), 'Medium')]
+              }
+              underline={boolean('underline', false)}
+              selectable={boolean('selectable', false)}
+            >
+              {text('header text', 'Heads up')}
+            </Heading>
+          </Panel.Header>
+          <Panel.Body
+            size={
+              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+            }
+          >
+            <p>{text('body text', 'Body rock')}</p>
+          </Panel.Body>
+          {boolean('footer', true) && (
+            <Panel.Footer>
+              <div className="mockComponent mockButton">Not a button</div>
+            </Panel.Footer>
+          )}
+        </Panel>
+      </GradientBox>
+    </div>
+  ),
+  {
+    readme: {
+      content: marked(PanelPlaygroundReadme),
     },
   }
 )
