@@ -1,6 +1,9 @@
 # Changelog
 
-#### 2.3.1 (Unreleased)
+#### 2.3.2 (Unreleased)
+
+
+#### 2.3.1 (2020-06-23)
 
 - [#522](https://github.com/influxdata/clockface/pull/522): Fix `testID` naming convention
 
