@@ -1,13 +1,17 @@
 # Changelog
 
-#### 2.2.2 (Unreleased)
+#### 2.3.1 (Unreleased)
 
-- [#516](https://github.com/influxdata/clockface/pull/516): Introduce `List` component family
+- [#522](https://github.com/influxdata/clockface/pull/522): Fix `testID` naming convention
+
+#### 2.3.0 (2020-06-22)
+
 - [#518](https://github.com/influxdata/clockface/pull/518): Add `ThresholdBar` composed `ProgressBar` component
 - [#518](https://github.com/influxdata/clockface/pull/518): Add `ProgressBar` component
 - [#518](https://github.com/influxdata/clockface/pull/518): Add `BannerPanel` composed `Panel` component
 - [#518](https://github.com/influxdata/clockface/pull/518): Add `GradientBox` component
 - [#518](https://github.com/influxdata/clockface/pull/518): Make `PageHeader` responsive
+- [#516](https://github.com/influxdata/clockface/pull/516): Introduce `List` component family
 
 #### 2.2.1 (2020-06-11)
 

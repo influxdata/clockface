@@ -89,7 +89,7 @@ export const QuestionMarkTooltip = forwardRef<
           onShow={handleActivateCircle}
           onHide={handleDeactivateCircle}
           contents={() => <>{tooltipContents}</>}
-          testID={`${testID}-tooltip`}
+          testID={`${testID}--tooltip`}
           style={tooltipStyle}
           color={color}
           appearance={Appearance.Outline}
