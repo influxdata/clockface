@@ -163,7 +163,7 @@ export const DapperScrollbars: FunctionComponent<DapperScrollbarsProps> = ({
               ref={elementRef}
               style={thumbStyle}
               {...restProps}
-              data-testid={`${testID}-thumb-x`}
+              data-testid={`${testID}--thumb-x`}
             />
           )
         },
@@ -179,7 +179,7 @@ export const DapperScrollbars: FunctionComponent<DapperScrollbarsProps> = ({
               ref={elementRef}
               style={thumbStyle}
               {...restProps}
-              data-testid={`${testID}-thumb-y`}
+              data-testid={`${testID}--thumb-y`}
             />
           )
         },
