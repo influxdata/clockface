@@ -35,14 +35,23 @@ alertStories.add(
     const triggerRefA = useRef<HTMLDivElement>(null)
     const triggerRefB = useRef<HTMLDivElement>(null)
     const triggerRefC = useRef<HTMLDivElement>(null)
-    const [overlayState, setOverlayState] = useState<boolean>(false)
+    const [firstOverlayState, setFirstOverlayState] = useState<boolean>(false)
+    const [secondOverlayState, setSecondOverlayState] = useState<boolean>(false)
 
-    const handleDismissOverlay = (): void => {
-      setOverlayState(false)
+    const handleDismissFirstOverlay = (): void => {
+      setFirstOverlayState(false)
     }
 
-    const handleShowOverlay = (): void => {
-      setOverlayState(true)
+    const handleShowFirstOverlay = (): void => {
+      setFirstOverlayState(true)
+    }
+
+    const handleDismissSecondOverlay = (): void => {
+      setSecondOverlayState(false)
+    }
+
+    const handleShowSecondOverlay = (): void => {
+      setSecondOverlayState(true)
     }
 
     return (
@@ -57,7 +66,7 @@ alertStories.add(
           contents={() => (
             <div
               className="mockComponent mockButton"
-              onClick={handleShowOverlay}
+              onClick={handleShowFirstOverlay}
             >
               Show Overlay
             </div>
@@ -70,11 +79,11 @@ alertStories.add(
         >
           I am notifying you!
         </Notification>
-        <Overlay visible={overlayState}>
+        <Overlay visible={firstOverlayState}>
           <Overlay.Container maxWidth={500}>
             <Overlay.Header
               title="Overlay Example"
-              onDismiss={handleDismissOverlay}
+              onDismiss={handleDismissFirstOverlay}
             />
             <Overlay.Body>
               <p>I should be below the Notification</p>
@@ -91,16 +100,24 @@ alertStories.add(
                 contents={() => <>I'm a nested popover!</>}
               />
               <RightClick triggerRef={triggerRefC}>
-                <RightClick.MenuItem
-                  onClick={() => {
-                    /* eslint-disable */
-                    console.log('boosh!')
-                    /* eslint-enable */
-                  }}
-                >
-                  Boosh!
+                <RightClick.MenuItem onClick={handleShowSecondOverlay}>
+                  Show another overlay
                 </RightClick.MenuItem>
               </RightClick>
+            </Overlay.Body>
+          </Overlay.Container>
+        </Overlay>
+        <Overlay visible={secondOverlayState}>
+          <Overlay.Container maxWidth={300}>
+            <Overlay.Header
+              title="Another Overlay"
+              onDismiss={handleDismissSecondOverlay}
+            />
+            <Overlay.Body>
+              <p>
+                I should be on top of the previous Overlay but still underneath
+                the Notification
+              </p>
             </Overlay.Body>
           </Overlay.Container>
         </Overlay>
