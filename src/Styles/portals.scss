@@ -1,0 +1,13 @@
+@import './variables';
+
+/*
+   Reset
+   -----------------------------------------------------------------------------
+*/
+
+.cf-portal {
+  z-index: $cf-z--portal;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
