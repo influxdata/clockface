@@ -1,14 +1,7 @@
 // Libraries
-import React, {
-  FunctionComponent,
-  CSSProperties,
-  useLayoutEffect,
-  useState,
-} from 'react'
-import {createPortal} from 'react-dom'
+import React, {FunctionComponent, CSSProperties} from 'react'
 import {Transition} from 'react-spring/renderprops'
 import classnames from 'classnames'
-import uuid from 'uuid'
 import * as easings from 'd3-ease'
 
 // Components
@@ -16,7 +9,7 @@ import {OverlayMask} from './OverlayMask'
 import {DapperScrollbars} from '../DapperScrollbars/DapperScrollbars'
 
 // Utils
-import {createPortalElement, destroyPortalElement} from '../../Utils'
+import {usePortal} from '../../Utils/portals'
 
 // Types
 import {StandardFunctionProps, InfluxColors} from '../../Types'
@@ -33,8 +26,6 @@ export interface OverlayProps extends StandardFunctionProps {
   transitionDuration?: number
 }
 
-const overlayPortalName = 'overlay'
-
 export const OverlayRoot: FunctionComponent<OverlayProps> = ({
   id,
   testID = 'overlay',
@@ -44,24 +35,7 @@ export const OverlayRoot: FunctionComponent<OverlayProps> = ({
   transitionDuration = 360,
   renderMaskElement = (style: CSSProperties) => <OverlayMask style={style} />,
 }) => {
-  const [portalID, setPortalID] = useState<string>('')
-
-  useLayoutEffect((): (() => void) => {
-    const newPortalID = `cf-${overlayPortalName}-portal-${uuid.v4()}`
-    !portalID && setPortalID(newPortalID)
-
-    createPortalElement(newPortalID, overlayPortalName)
-
-    return (): void => {
-      destroyPortalElement(newPortalID)
-    }
-  }, [])
-
-  const portalElement = document.getElementById(portalID)
-
-  if (!portalElement) {
-    return null
-  }
+  const {addElementToPortal} = usePortal()
 
   const transitionConfig = {
     duration: transitionDuration,
@@ -116,7 +90,7 @@ export const OverlayRoot: FunctionComponent<OverlayProps> = ({
     </>
   )
 
-  return createPortal(overlay, portalElement)
+  return addElementToPortal(overlay)
 }
 
 OverlayRoot.displayName = 'Overlay'
