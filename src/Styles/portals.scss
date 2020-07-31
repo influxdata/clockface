@@ -10,4 +10,12 @@
   position: fixed;
   top: 0;
   left: 0;
+
+  // NOTE: If for some reason there are more than 50 elements in the portal the
+  // z-index stacking will breakdown
+  @for $i from 1 through 50 {
+    & > *:nth-child(#{$i}):not(.cf-notification-container) {
+      z-index: #{$i * 10};
+    }
+  }
 }

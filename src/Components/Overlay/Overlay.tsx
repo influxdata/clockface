@@ -50,6 +50,15 @@ export const OverlayRoot: FunctionComponent<OverlayProps> = ({
     <>
       <Transition
         items={visible}
+        from={{opacity: 0}}
+        enter={{opacity: 0.7}}
+        leave={{opacity: 0}}
+        config={transitionConfig}
+      >
+        {visible => visible && (props => renderMaskElement(props))}
+      </Transition>
+      <Transition
+        items={visible}
         from={{opacity: 0, transform: 'translateY(44px)'}}
         enter={{opacity: 1, transform: 'translateY(0)'}}
         leave={{opacity: 0, transform: 'translateY(44px)'}}
@@ -77,15 +86,6 @@ export const OverlayRoot: FunctionComponent<OverlayProps> = ({
             </DapperScrollbars>
           ))
         }
-      </Transition>
-      <Transition
-        items={visible}
-        from={{opacity: 0}}
-        enter={{opacity: 0.7}}
-        leave={{opacity: 0}}
-        config={transitionConfig}
-      >
-        {visible => visible && (props => renderMaskElement(props))}
       </Transition>
     </>
   )
