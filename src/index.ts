@@ -61,3 +61,6 @@ export * from './Components/Typography/index'
 export * from './Types/index'
 export * from './Constants/index'
 export * from './Components/RBAC'
+
+// Utilities
+export {usePortal} from './Utils/portals'
