@@ -89,16 +89,12 @@ $c-pulsar: #513cc6;
    Might not actually need any of these yet
 */
 
-$cf-z--portal: 9000;
-$cf-z--notifications: 9999;
-$cf-z--right-click: 9980;
-$cf-z--popovers: 9960;
-$cf-z--draggable-resizer-mask: 9950;
-$cf-z--overlays: 9940;
 $cf-z--nav-toggle: 9999;
+$cf-z--draggable-resizer-mask: 9950;
+$cf-z--notifications: 9900;
 $cf-z--nav-menu: 9900;
 $cf-z--nav-mask: 9890;
-$cf-z--drag-n-drop: 5000;
+$cf-z--portal: 9000;
 $cf-z--tabs-dropdown: 8000;
 
 /*
@@ -544,13 +540,6 @@ $cf-scrollbar-offset: 3px;
 }
 @mixin panel-shadow {
   box-shadow: 0 1px 4px 1px rgba($g0-obsidian, 0.2);
-}
-
-@mixin portal-style($z) {
-  z-index: $z;
-  position: fixed;
-  top: 0;
-  left: 0;
 }
 
 @mixin funnel-page-background() {
