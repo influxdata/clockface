@@ -2,8 +2,8 @@
 
 #### 2.3.2 (Unreleased)
 
-- [#526](https://github.com/influxdata/clockface/pull/526): Optimize portal-based components to share a single portal element
-- [#526](https://github.com/influxdata/clockface/pull/526): Introduce `usePortal` hook to interact with the Clockface portal system
+- [#530](https://github.com/influxdata/clockface/pull/530): Optimize portal-based components to share a single portal element
+- [#530](https://github.com/influxdata/clockface/pull/530): Introduce `usePortal` hook to interact with the Clockface portal system
 
 #### 2.3.1 (2020-06-23)
 
