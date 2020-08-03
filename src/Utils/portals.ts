@@ -73,12 +73,12 @@ export const usePortal = () => {
   }
 
   const addEventListenerToPortal = portal.addEventListener
-  const removeEventListenerToPortal = portal.removeEventListener
+  const removeEventListenerFromPortal = portal.removeEventListener
 
   return {
     addElementToPortal,
     addNotificationToPortal,
     addEventListenerToPortal,
-    removeEventListenerToPortal,
+    removeEventListenerFromPortal,
   }
 }

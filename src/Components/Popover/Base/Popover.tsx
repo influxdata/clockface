@@ -91,7 +91,7 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
     const {
       addElementToPortal,
       addEventListenerToPortal,
-      removeEventListenerToPortal,
+      removeEventListenerFromPortal,
     } = usePortal()
 
     useEffect((): (() => void) => {
@@ -99,7 +99,7 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
       handleAddEventListenersToTrigger()
 
       return (): void => {
-        removeEventListenerToPortal('keydown', handleEscapeKey)
+        removeEventListenerFromPortal('keydown', handleEscapeKey)
         handleRemoveEventListenersFromTrigger()
       }
     }, [])
