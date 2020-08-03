@@ -6,12 +6,18 @@ import React, {
   MouseEvent,
   forwardRef,
 } from 'react'
+import {createPortal} from 'react-dom'
+import uuid from 'uuid'
 
 // Components
 import {PopoverDialog} from './PopoverDialog'
 
 // Utils
-import {usePortal} from '../../../Utils/portals'
+import {
+  createPortalElement,
+  destroyPortalElement,
+  updatePortalEventListener,
+} from '../../../Utils/index'
 
 // Styles
 import './Popover.scss'
@@ -63,6 +69,8 @@ interface CustomMouseEvent extends MouseEvent {
   relatedTarget: Element
 }
 
+const popoverPortalName = 'popover'
+
 export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
   (
     {
@@ -88,18 +96,24 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
     ref
   ) => {
     const [expanded, setExpanded] = useState<boolean>(!!visible)
-    const {
-      addElementToPortal,
-      addEventListenerToPortal,
-      removeEventListenerToPortal,
-    } = usePortal()
+    const [portalID, setPortalID] = useState<string>('')
 
     useEffect((): (() => void) => {
-      addEventListenerToPortal('keydown', handleEscapeKey)
+      const newPortalID = `cf-${popoverPortalName}-portal-${uuid.v4()}`
+      setPortalID(newPortalID)
+
+      createPortalElement(
+        newPortalID,
+        popoverPortalName,
+        undefined,
+        handleAddEscapeKeyListener
+      )
+
       handleAddEventListenersToTrigger()
 
       return (): void => {
-        removeEventListenerToPortal('keydown', handleEscapeKey)
+        updatePortalEventListener(portalID, handleRemoveEscapeKeyListener)
+        destroyPortalElement(newPortalID)
         handleRemoveEventListenersFromTrigger()
       }
     }, [])
@@ -185,6 +199,16 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
       setExpanded(false)
     }
 
+    const handleAddEscapeKeyListener = (portalElement: HTMLElement): void => {
+      portalElement.addEventListener('keydown', handleEscapeKey)
+    }
+
+    const handleRemoveEscapeKeyListener = (
+      portalElement: HTMLElement
+    ): void => {
+      portalElement.removeEventListener('keydown', handleEscapeKey)
+    }
+
     const handleAddEventListenersToTrigger = (): void => {
       if (!triggerRef.current) {
         return
@@ -220,7 +244,9 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
       )
     }
 
-    if (!expanded) {
+    const portalElement = document.getElementById(portalID)
+
+    if (!portalElement || !expanded) {
       return null
     }
 
@@ -246,7 +272,7 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
       />
     )
 
-    return addElementToPortal(popover)
+    return createPortal(popover, portalElement)
   }
 )
 

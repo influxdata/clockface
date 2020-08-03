@@ -219,6 +219,54 @@ export const getScrollbarColorsFromTheme = (
   }
 }
 
+export const createPortalElement = (
+  id: string,
+  portalName: string,
+  classNames?: string,
+  addEventListener?: (element: HTMLElement) => void
+): void => {
+  const portalExists = document.getElementById(id)
+  if (portalExists) {
+    return
+  }
+
+  const additionalClassNames = classNames ? ' ' + classNames : ''
+
+  const portalElement = document.createElement('div')
+  portalElement.setAttribute(
+    'class',
+    `cf-${portalName}-portal${additionalClassNames}`
+  )
+  portalElement.setAttribute('id', id)
+
+  document.body.appendChild(portalElement)
+
+  if (addEventListener) {
+    updatePortalEventListener(id, addEventListener)
+  }
+}
+
+export const destroyPortalElement = (id: string): void => {
+  const portalElement = document.getElementById(id)
+
+  if (portalElement) {
+    portalElement.remove()
+  } else {
+    console.error('cannot portal find element')
+  }
+}
+
+export const updatePortalEventListener = (
+  id: string,
+  changeEventListener: (element: HTMLElement) => void
+): void => {
+  const portalElement = document.getElementById(id)
+
+  if (portalElement) {
+    changeEventListener(portalElement)
+  }
+}
+
 export const getDictionary = (): string[] => {
   const hipsterIpsum =
     "Ennui yr chartreuse poutine, cronut fixie brooklyn twee PBR&B irony authentic biodiesel hammock normcore gochujang. Lo-fi roof party brooklyn 90's keytar pop-up butcher. Polaroid fixie skateboard mixtape, actually church-key listicle meditation four dollar toast tilde snackwave. Tofu asymmetrical YOLO waistcoat narwhal taxidermy lyft flexitarian kitsch tbh vape small batch. Trust fund plaid hot chicken, typewriter aesthetic sriracha thundercats kitsch marfa truffaut.Tbh DIY banjo, health goth franzen aesthetic hashtag cray readymade.Pug everyday carry health goth, keffiyeh migas pop - up vape farm - to - table chicharrones fashion axe banjo echo park austin flannel polaroid.Brunch deep v health goth, crucifix ramps bespoke whatever intelligentsia. 90's brunch bitters artisan green juice chicharrones. Fingerstache ramps photo booth thundercats heirloom brooklyn neutra etsy man bun affogato marfa waistcoat. Beard pinterest franzen umami bitters chicharrones tumeric roof party deep v gastropub.Four dollar toast everyday carry actually, art party prism bushwick tbh celiac wolf.Celiac deep v blue bottle, iPhone kale chips hoodie raclette.Messenger bag sustainable enamel pin tofu brooklyn vice plaid.Enamel pin flexitarian lyft, chicharrones sriracha gluten - free tilde cloud bread bespoke godard.Jianbing ennui paleo etsy migas forage. Fingerstache tumblr food truck quinoa shabby chic schlitz heirloom pour - over.Chillwave tumeric venmo, +1 brooklyn pop - up gastropub kogi 8 - bit.Drinking vinegar letterpress flexitarian tumeric tofu yr vinyl edison bulb fam cliche ennui.Butcher pitchfork knausgaard 90's. Offal sartorial aesthetic, art party adaptogen truffaut literally. Forage pitchfork kickstarter you probably haven't heard of them, scenester retro schlitz salvia ennui kale chips etsy. Pabst gastropub occupy vinyl, shabby chic poke tumeric cred coloring book everyday carry artisan sriracha knausgaard put a bird on it bitters. Tofu yr banjo, artisan marfa cloud bread seitan +1 ugh pork belly chia. Health goth jean shorts brooklyn polaroid pickled bicycle rights salvia af, cliche occupy dreamcatcher unicorn. Seitan meh bitters affogato, kale chips copper mug meggings microdosing godard jianbing brunch direct trade. Banh mi literally schlitz, meggings master cleanse mlkshk bushwick artisan dreamcatcher 90's humblebrag."

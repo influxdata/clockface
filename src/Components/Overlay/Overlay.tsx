@@ -1,7 +1,14 @@
 // Libraries
-import React, {FunctionComponent, CSSProperties} from 'react'
+import React, {
+  FunctionComponent,
+  CSSProperties,
+  useLayoutEffect,
+  useState,
+} from 'react'
+import {createPortal} from 'react-dom'
 import {Transition} from 'react-spring/renderprops'
 import classnames from 'classnames'
+import uuid from 'uuid'
 import * as easings from 'd3-ease'
 
 // Components
@@ -9,7 +16,7 @@ import {OverlayMask} from './OverlayMask'
 import {DapperScrollbars} from '../DapperScrollbars/DapperScrollbars'
 
 // Utils
-import {usePortal} from '../../Utils/portals'
+import {createPortalElement, destroyPortalElement} from '../../Utils'
 
 // Types
 import {StandardFunctionProps, InfluxColors} from '../../Types'
@@ -26,6 +33,8 @@ export interface OverlayProps extends StandardFunctionProps {
   transitionDuration?: number
 }
 
+const overlayPortalName = 'overlay'
+
 export const OverlayRoot: FunctionComponent<OverlayProps> = ({
   id,
   testID = 'overlay',
@@ -35,7 +44,24 @@ export const OverlayRoot: FunctionComponent<OverlayProps> = ({
   transitionDuration = 360,
   renderMaskElement = (style: CSSProperties) => <OverlayMask style={style} />,
 }) => {
-  const {addElementToPortal} = usePortal()
+  const [portalID, setPortalID] = useState<string>('')
+
+  useLayoutEffect((): (() => void) => {
+    const newPortalID = `cf-${overlayPortalName}-portal-${uuid.v4()}`
+    !portalID && setPortalID(newPortalID)
+
+    createPortalElement(newPortalID, overlayPortalName)
+
+    return (): void => {
+      destroyPortalElement(newPortalID)
+    }
+  }, [])
+
+  const portalElement = document.getElementById(portalID)
+
+  if (!portalElement) {
+    return null
+  }
 
   const transitionConfig = {
     duration: transitionDuration,
@@ -48,15 +74,6 @@ export const OverlayRoot: FunctionComponent<OverlayProps> = ({
 
   const overlay = (
     <>
-      <Transition
-        items={visible}
-        from={{opacity: 0}}
-        enter={{opacity: 0.7}}
-        leave={{opacity: 0}}
-        config={transitionConfig}
-      >
-        {visible => visible && (props => renderMaskElement(props))}
-      </Transition>
       <Transition
         items={visible}
         from={{opacity: 0, transform: 'translateY(44px)'}}
@@ -87,10 +104,19 @@ export const OverlayRoot: FunctionComponent<OverlayProps> = ({
           ))
         }
       </Transition>
+      <Transition
+        items={visible}
+        from={{opacity: 0}}
+        enter={{opacity: 0.7}}
+        leave={{opacity: 0}}
+        config={transitionConfig}
+      >
+        {visible => visible && (props => renderMaskElement(props))}
+      </Transition>
     </>
   )
 
-  return addElementToPortal(overlay)
+  return createPortal(overlay, portalElement)
 }
 
 OverlayRoot.displayName = 'Overlay'

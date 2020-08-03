@@ -1,5 +1,6 @@
 // Libraries
 import React, {forwardRef, useEffect} from 'react'
+import {createPortal} from 'react-dom'
 import {Transition} from 'react-spring/renderprops'
 import * as easings from 'd3-ease'
 
@@ -19,7 +20,7 @@ import {
 } from './NotificationDialog'
 
 // Utils
-import {usePortal} from '../../Utils/portals'
+import {createPortalElement, destroyPortalElement} from '../../Utils'
 
 // Styles
 import './Notification.scss'
@@ -38,6 +39,8 @@ export interface NotificationProps extends NotificationDialogProps {
 }
 
 export type NotificationRef = NotificationDialogRef
+
+const notificationsPortalName = `notification`
 
 const defaultNotificationStyle = {maxWidth: '500px'}
 
@@ -62,7 +65,19 @@ export const NotificationRoot = forwardRef<NotificationRef, NotificationProps>(
     },
     ref
   ) => {
-    const {addNotificationToPortal} = usePortal()
+    const notificationsPortalId = `notification-container__${verticalAlignment}-${horizontalAlignment}`
+    const portalClassNames = `cf-notification__${verticalAlignment} cf-notification__${horizontalAlignment}`
+    createPortalElement(
+      notificationsPortalId,
+      notificationsPortalName,
+      portalClassNames
+    )
+
+    useEffect(() => {
+      return (): void => {
+        destroyPortalElement(notificationsPortalId)
+      }
+    }, [])
 
     useEffect(() => {
       if (visible && duration !== Infinity) {
@@ -77,6 +92,12 @@ export const NotificationRoot = forwardRef<NotificationRef, NotificationProps>(
       if (onTimeout) {
         onTimeout(id)
       }
+    }
+
+    const portalElement = document.getElementById(notificationsPortalId)
+
+    if (!portalElement) {
+      return null
     }
 
     const transitionConfig = {
@@ -133,11 +154,7 @@ export const NotificationRoot = forwardRef<NotificationRef, NotificationProps>(
       </Transition>
     )
 
-    return addNotificationToPortal(
-      notificationElement,
-      horizontalAlignment,
-      verticalAlignment
-    )
+    return createPortal(notificationElement, portalElement)
   }
 )
 

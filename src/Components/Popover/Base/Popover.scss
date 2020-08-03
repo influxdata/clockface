@@ -5,6 +5,10 @@
   ------------------------------------------------------------------------------
 */
 
+.cf-popover-portal {
+  @include portal-style($cf-z--popovers);
+}
+
 .cf-popover {
   position: fixed;
   z-index: 9999;
@@ -19,7 +23,7 @@
   background-color: $g2-kevlar;
   border-radius: $cf-radius + $cf-border;
   position: relative;
-
+  
   .cf-popover__solid & {
     box-shadow: 0 2px 5px 0.6px rgba($g0-obsidian, 0.2);
   }
@@ -46,12 +50,7 @@
   ------------------------------------------------------------------------------
 */
 
-@mixin popoverColorModifier(
-  $solidColor,
-  $outlineColor,
-  $glowColor,
-  $textColor
-) {
+@mixin popoverColorModifier($solidColor, $outlineColor, $glowColor, $textColor) {
   // Solid Type
   &.cf-popover__solid .cf-popover--contents {
     background-color: $solidColor;
@@ -71,12 +70,7 @@
 }
 
 .cf-popover__default {
-  @include popoverColorModifier(
-    $g6-smoke,
-    $g11-sidewalk,
-    $g8-storm,
-    $g15-platinum
-  );
+  @include popoverColorModifier($g6-smoke, $g11-sidewalk, $g8-storm, $g15-platinum);
 }
 .cf-popover__primary {
   @include popoverColorModifier($c-pool, $c-pool, $c-ocean, $g20-white);
@@ -85,12 +79,7 @@
   @include popoverColorModifier($c-star, $c-comet, $c-star, $g20-white);
 }
 .cf-popover__success {
-  @include popoverColorModifier(
-    $c-rainforest,
-    $c-honeydew,
-    $c-rainforest,
-    $g20-white
-  );
+  @include popoverColorModifier($c-rainforest, $c-honeydew, $c-rainforest, $g20-white);
 }
 .cf-popover__warning {
   @include popoverColorModifier($c-pineapple, $c-thunder, $c-tiger, $g3-castle);
