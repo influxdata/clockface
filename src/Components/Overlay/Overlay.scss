@@ -5,10 +5,6 @@
    -----------------------------------------------------------------------------
 */
 
-.cf-overlay-portal {
-  @include portal-style($cf-z--overlays);
-}
-
 // Mixins for shared styles
 %overlay-styles {
   position: absolute !important;
@@ -67,13 +63,12 @@
   @include no-user-select();
 }
 
-
 .cf-overlay--title {
   font-family: $cf-overlay--title-font;
   font-size: $cf-overlay--title-size;
   font-weight: $cf-overlay--title-weight;
   color: $cf-overlay--title-color;
-  
+
   .cf-overlay--header__dismissable & {
     width: calc(100% - #{$cf-overlay--header-height - 50px});
   }

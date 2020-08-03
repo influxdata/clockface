@@ -7,14 +7,12 @@ import React, {
   MouseEvent,
   forwardRef,
 } from 'react'
-import {createPortal} from 'react-dom'
-import uuid from 'uuid'
 
 // Components
 import {RightClickMenu, RightClickMenuRef} from './RightClickMenu'
 
 // Utils
-import {createPortalElement, destroyPortalElement} from '../../../Utils/index'
+import {usePortal} from '../../../Utils/portals'
 
 // Styles
 import './RightClick.scss'
@@ -41,8 +39,6 @@ export interface RightClickProps extends StandardFunctionProps {
 
 export type RightClickRef = RightClickMenuRef
 
-const rightClickPortalName = 'right-click'
-
 export const RightClickRoot = forwardRef<RightClickRef, RightClickProps>(
   (
     {
@@ -60,18 +56,13 @@ export const RightClickRoot = forwardRef<RightClickRef, RightClickProps>(
     ref
   ) => {
     const [expanded, setExpanded] = useState<boolean>(false)
-    const [portalID, setPortalID] = useState<string>('')
+    const {addElementToPortal} = usePortal()
     const mouseOffset = useRef<Coordinates>({x: 0, y: 0})
 
     useEffect((): (() => void) => {
-      const newPortalID = `cf-${rightClickPortalName}-portal-${uuid.v4()}`
-      setPortalID(newPortalID)
-
-      createPortalElement(newPortalID, rightClickPortalName)
       handleAddEventListeners()
 
       return (): void => {
-        destroyPortalElement(newPortalID)
         handleRemoveEventListeners()
       }
     }, [])
@@ -124,9 +115,7 @@ export const RightClickRoot = forwardRef<RightClickRef, RightClickProps>(
       triggerRef.current.removeEventListener('contextmenu', handleTriggerClick)
     }
 
-    const portalElement = document.getElementById(portalID)
-
-    if (!portalElement || !expanded) {
+    if (!expanded) {
       return null
     }
 
@@ -146,7 +135,7 @@ export const RightClickRoot = forwardRef<RightClickRef, RightClickProps>(
       </RightClickMenu>
     )
 
-    return createPortal(rightClickMenu, portalElement)
+    return addElementToPortal(rightClickMenu)
   }
 )
 
