@@ -5,10 +5,6 @@
   ------------------------------------------------------------------------------
 */
 
-.cf-right-click-portal {
-  @include portal-style($cf-z--right-click);
-}
-
 .cf-right-click {
   position: fixed;
   z-index: 9999;
