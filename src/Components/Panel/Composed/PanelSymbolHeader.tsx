@@ -39,6 +39,7 @@ export const PanelSymbolHeader = forwardRef<
       size = ComponentSize.Small,
       style,
       title,
+      margin = ComponentSize.Small,
       testID = 'panel--symbol-header',
       symbol,
       children,
@@ -60,10 +61,11 @@ export const PanelSymbolHeader = forwardRef<
         ref={ref}
         size={size}
         style={style}
+        testID={testID}
+        margin={margin}
         className={panelSymbolHeaderClassName}
         direction={direction}
         alignItems={alignItems}
-        testID={testID}
         justifyContent={justifyContent}
       >
         <div className="cf-panel--symbol-header--title">

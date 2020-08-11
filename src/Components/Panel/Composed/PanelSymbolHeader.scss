@@ -17,6 +17,7 @@ $panel-symbol-header-gutter: $cf-marg-d + $cf-marg-b;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    flex: 1 0 0;
   }
 
   & ~ .cf-panel--body,
@@ -82,15 +83,15 @@ $panel-symbol-header-gutter: $cf-marg-d + $cf-marg-b;
   }
 }
 
-.cf-panel--symbol-header__xs {
+.cf-panel--header__xs.cf-panel--symbol-header__xs {
   @include panelSymbolHeaderSizeModifier($cf-form-xs-height);
 }
-.cf-panel--symbol-header__sm {
+.cf-panel--header__sm.cf-panel--symbol-header__sm {
   @include panelSymbolHeaderSizeModifier($cf-form-sm-height);
 }
-.cf-panel--symbol-header__md {
+.cf-panel--header__md.cf-panel--symbol-header__md {
   @include panelSymbolHeaderSizeModifier($cf-form-md-height);
 }
-.cf-panel--symbol-header__lg {
+.cf-panel--header__lg.cf-panel--symbol-header__lg {
   @include panelSymbolHeaderSizeModifier($cf-form-lg-height);
 }

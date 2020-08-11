@@ -13,7 +13,7 @@ import {RBAC} from '../../../'
 import RBACReadme from './RBAC.md'
 import RBACTestReadme from './RBACTest.md'
 
-const logoStories = storiesOf('RBAC', module).addDecorator(withKnobs)
+const logoStories = storiesOf('Utilities|RBAC', module).addDecorator(withKnobs)
 
 logoStories.add(
   'RBAC',

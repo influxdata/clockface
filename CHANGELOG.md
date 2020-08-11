@@ -1,6 +1,11 @@
 # Changelog
 
-#### 2.3.3 (Unreleased)
+#### 2.3.4 (Unreleased)
+
+#### 2.3.3 (2020-08-11)
+
+- [#533](https://github.com/influxdata/clockface/pull/533): Ensure portal-based components are not clipped by `TreeNav`
+- [#533](https://github.com/influxdata/clockface/pull/533): Make `PanelSymbolHeader` styles more specific to ensure proper cascade in built stylesheet
 
 #### 2.3.2 (2020-08-11)
 

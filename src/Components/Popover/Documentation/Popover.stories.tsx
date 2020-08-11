@@ -1,5 +1,5 @@
 // Libraries
-import React, {useRef, ChangeEvent} from 'react'
+import React, {useRef, ChangeEvent, Fragment} from 'react'
 import marked from 'marked'
 
 // Storybook
@@ -23,8 +23,9 @@ import {
   QuestionMarkTooltipRef,
 } from '../Composed/QuestionMarkTooltip'
 import {SquareButton} from '../../Button/Composed/SquareButton'
+import {Button, ButtonRef} from '../../Button/Composed/Button'
 import {DapperScrollbars} from '../../DapperScrollbars/DapperScrollbars'
-import {Input} from '../../Inputs'
+import {Input, InputRef} from '../../Inputs'
 
 // Types
 import {
@@ -35,6 +36,9 @@ import {
   IconFont,
   ComponentStatus,
 } from '../../../Types'
+
+// Utils
+import {getDictionary} from '../../../Utils'
 
 // Notes
 import PopoverReadme from './Popover.md'
@@ -469,6 +473,61 @@ testPopoverStories.add('Popover + Autofocus Child', () => {
       />
       <div className="mockComponent mockButton" ref={triggerRef}>
         Click Me
+      </div>
+    </div>
+  )
+})
+
+testPopoverStories.add('200 Popovers + Filtering', () => {
+  const [searchTerm, updateSearchTerm] = useState<string>('')
+  const popovers = []
+  const dictionary = getDictionary()
+
+  for (let i = 0; i < 200; i++) {
+    popovers.push({
+      triggerRef: useRef<ButtonRef>(null),
+      name: dictionary[i],
+    })
+  }
+
+  const handleInputChange = (e: ChangeEvent<InputRef>): void => {
+    updateSearchTerm(e.target.value)
+  }
+
+  return (
+    <div className="story--example" style={{flexDirection: 'column'}}>
+      <Input
+        placeholder="Filter by name..."
+        value={searchTerm}
+        onChange={handleInputChange}
+      />
+      <div className="popover-example-grid">
+        {popovers
+          .filter(pop => {
+            return pop.name
+              .toLocaleLowerCase()
+              .includes(searchTerm.toLowerCase())
+          })
+          .map(pop => {
+            return (
+              <Fragment key={pop.name}>
+                <Button
+                  ref={pop.triggerRef}
+                  text={pop.name}
+                  icon={IconFont.Cubo}
+                />
+                <Popover.Popover
+                  triggerRef={pop.triggerRef}
+                  contents={() => <p>{pop.name}</p>}
+                  showEvent={PopoverInteraction.Click}
+                  hideEvent={PopoverInteraction.Click}
+                  position={PopoverPosition.Above}
+                  color={ComponentColor.Primary}
+                  appearance={Appearance.Outline}
+                />
+              </Fragment>
+            )
+          })}
       </div>
     </div>
   )

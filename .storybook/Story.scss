@@ -844,4 +844,11 @@ $color-grid-card-width: 154px;
   }
 }
 
-
+.popover-example-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-auto-rows: 30px;
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+}
