@@ -7,7 +7,7 @@
 - [#533](https://github.com/influxdata/clockface/pull/533): Ensure portal-based components are not clipped by `TreeNav`
 - [#533](https://github.com/influxdata/clockface/pull/533): Make `PanelSymbolHeader` styles more specific to ensure proper cascade in built stylesheet
 
-#### 2.3.2 (2020-08-03)
+#### 2.3.2 (2020-08-11)
 
 - [#530](https://github.com/influxdata/clockface/pull/530): Optimize portal-based components to share a single portal element
 - [#530](https://github.com/influxdata/clockface/pull/530): Introduce `usePortal` hook to interact with the Clockface portal system
