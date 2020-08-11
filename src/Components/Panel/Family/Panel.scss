@@ -13,15 +13,15 @@
 
 .cf-panel--body {
   width: 100%;
-  
+
   > *:first-child {
     margin-top: 0;
   }
-  
+
   > *:last-child {
     margin-bottom: 0;
   }
-  
+
   .cf-panel--header + & {
     padding-top: 0;
   }
