@@ -112,7 +112,7 @@ export const ListItem = forwardRef<ListItemRef, ListItemProps>(
 
     const handleClick = (e: MouseEvent<ListItemRef>): void => {
       if (onClick && !disabled) {
-        onClick(e, value)
+        onClick(value, e)
       }
     }
 
