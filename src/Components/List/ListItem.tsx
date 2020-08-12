@@ -44,7 +44,7 @@ export interface ListItemProps extends CombinedListItemProps {
   /** Value to be returned via the onClick function */
   value?: any
   /** When a dropdown item is clicked, its `value` prop is returned via `onChange` */
-  onClick?: (value?: any) => void
+  onClick?: (value?: any, e?: MouseEvent<ListItemRef>) => void
   /** Controls whether the text contents of this item wrap or not */
   wrapText?: boolean
   /** Title attribute */
@@ -110,11 +110,9 @@ export const ListItem = forwardRef<ListItemRef, ListItemProps>(
       'cf-list-item--text__no-wrap': !wrapText,
     })
 
-    const handleClick = (e: MouseEvent<HTMLElement>): void => {
-      e.preventDefault()
-
+    const handleClick = (e: MouseEvent<ListItemRef>): void => {
       if (onClick && !disabled) {
-        onClick(value)
+        onClick(e, value)
       }
     }
 
