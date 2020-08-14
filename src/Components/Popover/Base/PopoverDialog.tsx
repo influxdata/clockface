@@ -158,11 +158,13 @@ export const PopoverDialog = forwardRef<PopoverDialogRef, PopoverDialogProps>(
     // Ensure dialog element is in focus on mount
     // in order to enable escape key behavior
     useEffect(() => {
-      const okayToPullFocus = !document.activeElement
+      const okayToPullFocus =
+        document.activeElement?.tagName !== 'INPUT' &&
+        document.activeElement?.tagName !== 'SELECT'
       if (dialogRef.current && okayToPullFocus) {
         dialogRef.current.focus()
       }
-    }, [])
+    }, [dialogRef])
 
     return (
       <ClickOutside onClickOutside={onClickOutside}>
