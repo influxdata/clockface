@@ -129,7 +129,9 @@ export const PopoverDialog = forwardRef<PopoverDialogRef, PopoverDialogProps>(
 
     useLayoutEffect((): (() => void) => {
       handleUpdateStyles()
-      observer.observe(triggerRef.current)
+      if (triggerRef.current) {
+        observer.observe(triggerRef.current)
+      }
       // The third argument in addEventListener is "false" by default and controls bubbling
       // scroll events do not bubble by default so setting this to "true"
       // allows the listener to pick up scroll events from nested scrollable elements
