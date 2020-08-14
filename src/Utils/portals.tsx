@@ -1,4 +1,4 @@
-import {ReactPortal, ReactNode} from 'react'
+import React, {ReactPortal, ReactNode} from 'react'
 import {createPortal} from 'react-dom'
 import {VerticalAlignment, Alignment} from '../Types'
 
@@ -8,6 +8,7 @@ const createPortalElement = (): HTMLElement => {
   const portalElement = document.createElement('div')
   portalElement.setAttribute('class', portalElementID)
   portalElement.setAttribute('id', portalElementID)
+  portalElement.setAttribute('tabindex', '1')
 
   document.body.appendChild(portalElement)
 
@@ -58,8 +59,17 @@ const getNotificationContainer = (
 export const usePortal = () => {
   const portal = getPortalElement()
 
-  const addElementToPortal = (element: ReactNode): ReactPortal => {
-    return createPortal(element, portal)
+  const addElementToPortal = (
+    element: ReactNode,
+    forceToTop?: boolean
+  ): ReactPortal => {
+    let registeredElement = element
+
+    if (forceToTop) {
+      registeredElement = <div style={{zIndex: 9999}}>{element}</div>
+    }
+
+    return createPortal(registeredElement, portal)
   }
 
   const addNotificationToPortal = (
@@ -72,8 +82,13 @@ export const usePortal = () => {
     return createPortal(element, container)
   }
 
-  const addEventListenerToPortal = portal.addEventListener
-  const removeEventListenerFromPortal = portal.removeEventListener
+  const addEventListenerToPortal = (eventType: string, func: any) => {
+    portal.addEventListener(eventType, func)
+  }
+
+  const removeEventListenerFromPortal = (eventType: string, func: any) => {
+    portal.removeEventListener(eventType, func)
+  }
 
   return {
     addElementToPortal,
