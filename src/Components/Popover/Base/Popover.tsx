@@ -55,6 +55,8 @@ export interface PopoverProps extends StandardFunctionProps {
   triggerRef: RefObject<any>
   /** Adds reasonable styles to popover dialog contents so you do not have to */
   enableDefaultStyles?: boolean
+  /** Ensures the popover appears above all other portal elements */
+  forceToTop?: boolean
 }
 
 export type PopoverRef = PopoverDialogRef
@@ -73,6 +75,7 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
       contents,
       className,
       triggerRef,
+      forceToTop = false,
       caretSize = 8,
       visible,
       disabled = false,
@@ -246,7 +249,7 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
       />
     )
 
-    return addElementToPortal(popover)
+    return addElementToPortal(popover, forceToTop)
   }
 )
 
