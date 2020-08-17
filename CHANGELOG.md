@@ -1,7 +1,10 @@
 # Changelog
 
-#### 2.3.4 (Unreleased)
+#### 2.3.5 (Unreleased)
 
+#### 2.3.4 (2020-08-17)
+
+- [#540](https://github.com/influxdata/clockface/pull/540): Fix critical bugs in `usePortal` hook
 - [#535](https://github.com/influxdata/clockface/pull/535): Pass back optional event object to `ListItem` click handler
 
 #### 2.3.3 (2020-08-11)
