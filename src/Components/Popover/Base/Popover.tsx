@@ -75,7 +75,7 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
       contents,
       className,
       triggerRef,
-      forceToTop,
+      forceToTop = false,
       caretSize = 8,
       visible,
       disabled = false,
