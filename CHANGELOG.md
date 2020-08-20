@@ -2,6 +2,8 @@
 
 #### 2.3.5 (Unreleased)
 
+- [#541](https://github.com/influxdata/clockface/pull/541): Improve `testID` usability in `TreeNav` component
+
 #### 2.3.4 (2020-08-17)
 
 - [#540](https://github.com/influxdata/clockface/pull/540): Fix critical bugs in `usePortal` hook
