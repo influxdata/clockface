@@ -23,6 +23,7 @@ import {ComponentColor, ComponentSize, IconFont} from '../../../Types'
 
 // Notes
 import SelectableCardReadme from './SelectableCard.md'
+import SelectableCardKeyInteractionReadme from './SelectableCardKeyInteraction.md'
 
 const selectableCardStories = storiesOf(
   'Components|Cards/SelectableCard',
@@ -298,7 +299,7 @@ selectableCardStories.add(
   },
   {
     readme: {
-      content: marked(SelectableCardReadme),
+      content: marked(SelectableCardKeyInteractionReadme),
     },
   }
 )
