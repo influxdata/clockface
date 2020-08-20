@@ -40,7 +40,11 @@ export const TreeNavSubItem: FunctionComponent<TreeNavSubItemProps> = ({
   }
 
   let labelElement = (
-    <div className="cf-tree-nav--sub-item-label" onClick={handleClick}>
+    <div
+      className="cf-tree-nav--sub-item-label"
+      onClick={handleClick}
+      data-testid={testID}
+    >
       {label}
     </div>
   )
@@ -54,12 +58,7 @@ export const TreeNavSubItem: FunctionComponent<TreeNavSubItemProps> = ({
   }
 
   return (
-    <div
-      id={id}
-      className={treeNavSubItemClass}
-      style={style}
-      data-testid={testID}
-    >
+    <div id={id} className={treeNavSubItemClass} style={style}>
       {labelElement}
     </div>
   )
