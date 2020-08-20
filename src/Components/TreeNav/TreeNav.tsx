@@ -77,7 +77,11 @@ export const TreeNavRoot = forwardRef<TreeNavRef, TreeNavProps>(
     if (onToggleClick) {
       const toggleIcon = expanded ? IconFont.Minimize : IconFont.Maximize
       toggleElement = (
-        <div className="cf-tree-nav--toggle" onClick={onToggleClick}>
+        <div
+          className="cf-tree-nav--toggle"
+          onClick={onToggleClick}
+          data-testid={`${testID}-toggle`}
+        >
           <Icon glyph={toggleIcon} />
         </div>
       )
@@ -113,6 +117,7 @@ export const TreeNavRoot = forwardRef<TreeNavRef, TreeNavProps>(
         {toggleElement}
         <div
           className="cf-tree-nav--mobile-toggle"
+          data-testid={`${testID}-mobile-toggle`}
           onClick={handleMobileToggleClick}
         >
           <div className="cf-tree-nav--hamburger" />
