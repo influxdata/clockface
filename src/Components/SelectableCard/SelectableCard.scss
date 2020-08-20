@@ -41,6 +41,10 @@ $selectable-card--label-disabled: $g8-storm;
       background-color: $selectable-card--body-hover;
     }
   }
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .cf-selectable-card--body {
@@ -121,6 +125,7 @@ $selectable-card--label-disabled: $g8-storm;
 */
 
 .cf-selectable-card__disabled,
+.cf-selectable-card__disabled:focus,
 .cf-selectable-card__disabled:hover,
 .cf-selectable-card__disabled.cf-selectable-card__selected {
   cursor: default;
@@ -152,7 +157,7 @@ $selectable-card--label-disabled: $g8-storm;
   Color Modifiers
   ------------------------------------------------------------------------------
 */
-@mixin selectableCardColorModifier($color, $text) {
+@mixin selectableCardColorModifier($color, $text, $focusGlow) {
   &.cf-selectable-card__selected,
   &.cf-selectable-card__selected:hover {
     border-color: $color;
@@ -180,25 +185,29 @@ $selectable-card--label-disabled: $g8-storm;
       color: mix($text, $color, 20%);
     }
   }
+
+  &:focus:not(.cf-selectable-card__disabled) {
+    box-shadow: 0 0 6px 2px $focusGlow;
+  }
 }
 
 .cf-selectable-card__default {
-  @include selectableCardColorModifier($g7-graphite, $g18-cloud);
+  @include selectableCardColorModifier($g7-graphite, $g18-cloud, $c-pool);
 }
 .cf-selectable-card__primary {
-  @include selectableCardColorModifier($c-pool, $g20-white);
+  @include selectableCardColorModifier($c-pool, $g20-white, $c-ocean);
 }
 .cf-selectable-card__secondary {
-  @include selectableCardColorModifier($c-comet, $g20-white);
+  @include selectableCardColorModifier($c-comet, $g20-white, $c-star);
 }
 .cf-selectable-card__success {
-  @include selectableCardColorModifier($c-honeydew, $g5-pepper);
+  @include selectableCardColorModifier($c-honeydew, $g5-pepper, $c-rainforest);
 }
 .cf-selectable-card__warning {
-  @include selectableCardColorModifier($c-pineapple, $g5-pepper);
+  @include selectableCardColorModifier($c-thunder, $g5-pepper, $c-pineapple);
 }
 .cf-selectable-card__danger {
-  @include selectableCardColorModifier($c-dreamsicle, $g5-pepper);
+  @include selectableCardColorModifier($c-dreamsicle, $g5-pepper, $c-curacao);
 }
 
 /*

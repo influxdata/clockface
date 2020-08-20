@@ -1,11 +1,19 @@
 // Libraries
-import React, {RefObject, createRef} from 'react'
+import React, {RefObject, createRef, KeyboardEvent} from 'react'
 import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, text, boolean, select, object} from '@storybook/addon-knobs'
+import {
+  withKnobs,
+  text,
+  boolean,
+  select,
+  object,
+  array,
+} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
+import {useState} from '@storybook/addons'
 
 // Components
 import {SelectableCard, SelectableCardRef} from '../'
@@ -200,6 +208,91 @@ selectableCardStories.add(
         >
           <div className="mockComponent stretch">Image</div>
         </SelectableCard>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(SelectableCardReadme),
+    },
+  }
+)
+
+selectableCardStories.add(
+  'Using tabIndex',
+  () => {
+    const [activeCardIDs, updateActiveCardIDs] = useState<string[]>([])
+
+    const cards = [
+      {label: 'Blade Runner', color: ComponentColor.Default},
+      {label: 'Equilibrium', color: ComponentColor.Primary},
+      {label: 'Ghost In The Shell', color: ComponentColor.Secondary},
+      {label: 'Interstellar', color: ComponentColor.Success},
+      {label: 'Akira', color: ComponentColor.Warning},
+      {label: 'Total Recall', color: ComponentColor.Danger},
+    ]
+
+    const disabledCards = array('Disabled Cards', ['Interstellar'])
+
+    const isCardSelected = (card: string): boolean => {
+      return activeCardIDs.includes(card)
+    }
+
+    const isCardDisabled = (card: string): boolean => {
+      return disabledCards.includes(card)
+    }
+
+    const handleCardClick = (card: string): void => {
+      const cardCurrentlyActive = activeCardIDs.includes(card)
+      let updatedActiveCardIDs = activeCardIDs
+
+      if (cardCurrentlyActive) {
+        updatedActiveCardIDs = updatedActiveCardIDs.filter(
+          cardID => cardID !== card
+        )
+      } else {
+        updatedActiveCardIDs = [...updatedActiveCardIDs, card]
+      }
+
+      updateActiveCardIDs(updatedActiveCardIDs)
+    }
+
+    const handleCardKeyDown = (
+      card: string,
+      e: KeyboardEvent<SelectableCardRef>
+    ): void => {
+      const spaceKey = e.keyCode === 32
+      const cardCurrentlyActive = activeCardIDs.includes(card)
+      let updatedActiveCardIDs = activeCardIDs
+
+      if (cardCurrentlyActive) {
+        updatedActiveCardIDs = updatedActiveCardIDs.filter(
+          cardID => cardID !== card
+        )
+      } else {
+        updatedActiveCardIDs = [...updatedActiveCardIDs, card]
+      }
+
+      spaceKey && updateActiveCardIDs(updatedActiveCardIDs)
+    }
+
+    return (
+      <div className="story--example" style={{height: '400px'}}>
+        {cards.map((card, i) => (
+          <SelectableCard
+            formName="scifi movies"
+            style={exampleStyle}
+            tabIndex={i + 1}
+            key={card.label}
+            id={card.label}
+            label={card.label}
+            selected={isCardSelected(card.label)}
+            disabled={isCardDisabled(card.label)}
+            onClick={handleCardClick}
+            onKeyDown={handleCardKeyDown}
+            color={card.color}
+          />
+        ))}
       </div>
     )
   },
