@@ -2,6 +2,8 @@
 
 #### 2.3.5 (Unreleased)
 
+- [#542](https://github.com/influxdata/clockface/pull/542): Add `tabIndex` and `onKeyDown` props to `SelectableCard` to enable keyboard interactivity
+
 #### 2.3.4 (2020-08-17)
 
 - [#540](https://github.com/influxdata/clockface/pull/540): Fix critical bugs in `usePortal` hook
