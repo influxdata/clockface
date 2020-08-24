@@ -62,6 +62,12 @@
   &.brush:before {
     content: '\e93d';
   }
+  &.bucket-outline:before {
+    content: '\e961';
+  }
+  &.bucket-solid:before {
+    content: '\e962';
+  }
   &.calendar:before {
     content: '\e938';
   }
@@ -123,7 +129,7 @@
     content: '\e93c';
   }
   &.cubo:before {
-    content: "\e95e";
+    content: '\e95e';
   }
   &.dash-f:before {
     content: '\e927';
@@ -170,6 +176,15 @@
   &.eye:before {
     content: '\e91f';
   }
+  &.fn:before {
+    content: '\e960';
+  }
+  &.funnel-outline:before {
+    content: '\e963';
+  }
+  &.funnel-solid:before {
+    content: '\e964';
+  }
   &.github:before {
     content: '\e928';
   }
@@ -201,7 +216,7 @@
     content: '\e954';
   }
   &.moon:before {
-    content: "\e95c";
+    content: '\e95c';
   }
   &.nav-chat:before {
     content: '\e941';
@@ -267,7 +282,7 @@
     content: '\e931';
   }
   &.sun:before {
-    content: "\e95d";
+    content: '\e95d';
   }
   &.text-block:before {
     content: '\e911';
@@ -282,7 +297,7 @@
     content: '\e95a';
   }
   &.upgrade:before {
-    content: "\e95f";
+    content: '\e95f';
   }
   &.user-add:before {
     content: '\e907';
