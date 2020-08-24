@@ -2,6 +2,7 @@
 
 #### 2.3.5 (Unreleased)
 
+- [#543](https://github.com/influxdata/clockface/pull/543): Add Funnel, Bucket, and Function icons to icon font
 - [#541](https://github.com/influxdata/clockface/pull/541): Improve `testID` usability in `TreeNav` component
 
 #### 2.3.4 (2020-08-17)
