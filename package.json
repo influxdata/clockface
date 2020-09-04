@@ -50,7 +50,7 @@
     "jest": "^24.9.0",
     "lodash": "^4.3.0",
     "markdown-loader": "^5.0.0",
-    "marked": "^0.6.2",
+    "marked": "^0.7.0",
     "moment": "2.19.3",
     "prettier": "^1.19.1",
     "prop-types": "^15",
