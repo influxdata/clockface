@@ -9,7 +9,7 @@ import './ButtonGroup.scss'
 import {StandardFunctionProps, FlexDirection} from '../../../Types'
 
 export interface ButtonGroupProps extends StandardFunctionProps {
-  /** Sirection to stack buttons */
+  /** Direction to stack buttons */
   direction?: FlexDirection
 }
 
