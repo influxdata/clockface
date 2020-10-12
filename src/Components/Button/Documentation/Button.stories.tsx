@@ -6,6 +6,7 @@ import marked from 'marked'
 import {storiesOf} from '@storybook/react'
 import {withKnobs, text, select, boolean} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
+import {useState} from '@storybook/addons'
 
 // Components
 import {ButtonBase, ButtonBaseRef} from '../Base/ButtonBase'
@@ -17,6 +18,8 @@ import {DismissButton, DismissButtonRef} from '../Composed/DismissButton'
 import {CTAButton, CTAButtonRef} from '../Composed/CTAButton'
 import {CTALinkButton, CTALinkButtonRef} from '../Composed/CTALinkButton'
 import {LinkButton, LinkButtonRef} from '../Composed/LinkButton'
+import {ButtonGroup, ButtonGroupRef} from '../Composed/ButtonGroup'
+import {SelectDropdown} from '../../Dropdowns/Composed/SelectDropdown'
 
 // Types
 import {
@@ -29,6 +32,7 @@ import {
   ButtonType,
   LinkRel,
   LinkTarget,
+  FlexDirection,
 } from '../../../Types'
 
 // Notes
@@ -40,6 +44,7 @@ import DismissButtonReadme from './DismissButton.md'
 import CTAButtonReadme from './CTAButton.md'
 import CTALinkButtonReadme from './CTALinkButton.md'
 import LinkButtonReadme from './LinkButton.md'
+import ButtonGroupReadme from './ButtonGroup.md'
 import ButtonBaseContrastTesterReadme from './ButtonBaseContrastTester.md'
 
 const buttonBaseStories = storiesOf(
@@ -512,6 +517,145 @@ buttonComposedStories.add(
   {
     readme: {
       content: marked(CTALinkButtonReadme),
+    },
+  }
+)
+
+buttonComposedStories.add(
+  'ButtonGroup',
+  () => {
+    const dropdownItems = ['Crawl', 'Walk', 'Run']
+    const [selectedOption, selectOption] = useState<string>(dropdownItems[1])
+    const buttonGroupRef = createRef<ButtonGroupRef>()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(buttonGroupRef.current)
+      /* eslint-enable */
+    }
+
+    const handleSelection = (item: string): void => {
+      selectOption(item)
+    }
+
+    return (
+      <div className="story--example">
+        <ButtonGroup
+          ref={buttonGroupRef}
+          direction={
+            FlexDirection[
+              select('direction', mapEnumKeys(FlexDirection), 'Row')
+            ]
+          }
+        >
+          <SelectDropdown
+            options={dropdownItems}
+            onSelect={handleSelection}
+            selectedOption={selectedOption}
+            style={{width: '100px'}}
+            buttonColor={
+              ComponentColor[
+                select('color', mapEnumKeys(ComponentColor), 'Default')
+              ]
+            }
+            buttonSize={
+              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+            }
+          />
+          <Button
+            text="Pineapple"
+            color={
+              ComponentColor[
+                select('color', mapEnumKeys(ComponentColor), 'Default')
+              ]
+            }
+            size={
+              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+            }
+          />
+          <Button
+            text="Coconut"
+            color={
+              ComponentColor[
+                select('color', mapEnumKeys(ComponentColor), 'Default')
+              ]
+            }
+            size={
+              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+            }
+          />
+          <SquareButton
+            icon={IconFont.CrownSolid}
+            color={
+              ComponentColor[
+                select('color', mapEnumKeys(ComponentColor), 'Default')
+              ]
+            }
+            size={
+              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+            }
+          />
+          <SquareButton
+            icon={IconFont.Erlenmeyer}
+            color={
+              ComponentColor[
+                select('color', mapEnumKeys(ComponentColor), 'Default')
+              ]
+            }
+            size={
+              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+            }
+          />
+          <ConfirmationButton
+            confirmationButtonText={text(
+              'confirmationButtonText',
+              'Yes, Delete it'
+            )}
+            confirmationButtonColor={
+              ComponentColor[
+                select(
+                  'confirmationColor',
+                  mapEnumKeys(ComponentColor),
+                  'Danger'
+                )
+              ]
+            }
+            confirmationLabel={text(
+              'confirmationLabel',
+              'Really delete your soul?'
+            )}
+            popoverColor={
+              ComponentColor[
+                select('popoverColor', mapEnumKeys(ComponentColor), 'Default')
+              ]
+            }
+            popoverAppearance={
+              Appearance[select('appearance', mapEnumKeys(Appearance), 'Solid')]
+            }
+            onConfirm={value => alert(`returnValue: ${value}`)}
+            icon={IconFont.Trash}
+            titleText={text('titleText', 'Title Text')}
+            color={
+              ComponentColor[
+                select('color', mapEnumKeys(ComponentColor), 'Default')
+              ]
+            }
+            size={
+              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+            }
+            text="Delete"
+            returnValue="Piña Colada"
+          />
+        </ButtonGroup>
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(ButtonGroupReadme),
     },
   }
 )
