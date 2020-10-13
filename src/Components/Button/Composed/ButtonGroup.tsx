@@ -6,11 +6,11 @@ import classnames from 'classnames'
 import './ButtonGroup.scss'
 
 // Types
-import {StandardFunctionProps, FlexDirection} from '../../../Types'
+import {StandardFunctionProps, Orientation} from '../../../Types'
 
 export interface ButtonGroupProps extends StandardFunctionProps {
-  /** Direction to stack buttons */
-  direction?: FlexDirection
+  /** Stacking axis of buttons */
+  orientation?: Orientation
 }
 
 export type ButtonGroupRef = HTMLDivElement
@@ -22,13 +22,13 @@ export const ButtonGroup = forwardRef<ButtonGroupRef, ButtonGroupProps>(
       style,
       testID = 'button-group',
       children,
-      direction = FlexDirection.Row,
       className,
+      orientation = Orientation.Horizontal,
     },
     ref
   ) => {
     const buttonGroupClass = classnames(`cf-button-group`, {
-      [`cf-button-group__${direction}`]: direction,
+      [`cf-button-group__${orientation}`]: orientation,
       [`${className}`]: className,
     })
 

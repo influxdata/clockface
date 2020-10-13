@@ -32,7 +32,7 @@ import {
   ButtonType,
   LinkRel,
   LinkTarget,
-  FlexDirection,
+  Orientation,
 } from '../../../Types'
 
 // Notes
@@ -542,9 +542,9 @@ buttonComposedStories.add(
       <div className="story--example">
         <ButtonGroup
           ref={buttonGroupRef}
-          direction={
-            FlexDirection[
-              select('direction', mapEnumKeys(FlexDirection), 'Row')
+          orientation={
+            Orientation[
+              select('orientation', mapEnumKeys(Orientation), 'Horizontal')
             ]
           }
         >

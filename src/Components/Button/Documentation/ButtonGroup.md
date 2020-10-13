@@ -5,11 +5,11 @@ A simple way to visually group a set of same-size buttons. Intended for `Button`
 ### Usage
 
 ```tsx
-import {ButtonGroup} from '@influxdata/clockface'
+import {ButtonGroup, Orientation} from '@influxdata/clockface'
 ```
 
 ```tsx
-<ButtonGroup>
+<ButtonGroup orientation={Orientation.Horizontal}>
   <Button />
   <Button />
   <Button />
@@ -22,7 +22,7 @@ import {ButtonGroup} from '@influxdata/clockface'
 
 ### Best Practices
 
-If you are going to mix `SquareButton` with other buttons we recommend sticking with `direction={FlexDirection.Row}` (like in the example above). Otherwise the buttons will not have consistent width when vertically stacked.
+If you are going to mix `SquareButton` with other buttons we recommend sticking with `orientation={Orientation.Horizontal}` (like in the example above). Otherwise the buttons will not have consistent width when vertically stacked.
 
 <!-- STORY HIDE START -->
 

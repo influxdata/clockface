@@ -15,24 +15,10 @@
   }
 }
 
-.cf-button-group__row {
-  flex-direction: row;
-}
-
-.cf-button-group__row-reverse {
-  flex-direction: row-reverse;
-}
-
-.cf-button-group__column {
-  flex-direction: column;
-}
-
-.cf-button-group__column-reverse {
-  flex-direction: column-reverse;
-}
-
 // Button Rounding (Horizontal)
-.cf-button-group__row {
+.cf-button-group__horizontal {
+  flex-direction: row;
+
   .cf-button:first-child,
   .cf-button:first-child:after {
     border-top-left-radius: $cf-radius;
@@ -43,25 +29,12 @@
   .cf-button:last-child:after {
     border-top-right-radius: $cf-radius;
     border-bottom-right-radius: $cf-radius;
-  }
-}
-
-.cf-button-group__row-reverse {
-  .cf-button:first-child,
-  .cf-button:first-child:after {
-    border-top-right-radius: $cf-radius;
-    border-bottom-right-radius: $cf-radius;
-  }
-
-  .cf-button:last-child,
-  .cf-button:last-child:after {
-    border-top-left-radius: $cf-radius;
-    border-bottom-left-radius: $cf-radius;
   }
 }
 
 // Button Rounding (Vertical)
-.cf-button-group__column {
+.cf-button-group__vertical {
+  flex-direction: column;
   align-items: stretch;
 
   .cf-button:first-child,
@@ -74,21 +47,5 @@
   .cf-button:last-child:after {
     border-bottom-left-radius: $cf-radius;
     border-bottom-right-radius: $cf-radius;
-  }
-}
-
-.cf-button-group__column-reverse {
-  align-items: stretch;
-
-  .cf-button:first-child,
-  .cf-button:first-child:after {
-    border-bottom-left-radius: $cf-radius;
-    border-bottom-right-radius: $cf-radius;
-  }
-
-  .cf-button:last-child,
-  .cf-button:last-child:after {
-    border-top-left-radius: $cf-radius;
-    border-top-right-radius: $cf-radius;
   }
 }
