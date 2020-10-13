@@ -102,6 +102,7 @@ inputsBaseStories.add(
           containerRef={inputContainerRef}
           placeholder={text('placeholder', 'Placeholder Text')}
           value={text('value', 'Value Text')}
+          monospace={boolean('monospace', false)}
           onChange={() => {
             // do nothing
           }}
@@ -158,6 +159,7 @@ inputsBaseStories.add(
           min={number('min', 0)}
           max={number('max', 50)}
           value={value}
+          monospace={boolean('monospace', false)}
           onChange={e =>
             setValue(e.target.value === '' ? NaN : Number(e.target.value))
           }
@@ -198,6 +200,7 @@ inputsBaseStories.add(
       <Input
         placeholder={text('placeholder', 'Placeholder Text')}
         value={text('value', 'Value Text')}
+        monospace={boolean('monospace', false)}
         onChange={() => {
           // do nothing
         }}
@@ -246,6 +249,7 @@ inputsBaseStories.add(
       <Input
         placeholder={text('placeholder', 'Placeholder Text')}
         value={text('value', 'value@text.com')}
+        monospace={boolean('monospace', false)}
         onChange={() => {
           // do nothing
         }}
