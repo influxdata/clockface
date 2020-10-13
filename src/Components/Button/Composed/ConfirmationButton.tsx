@@ -1,5 +1,11 @@
 // Libraries
-import React, {FunctionComponent, useRef, RefObject, CSSProperties} from 'react'
+import React, {
+  FunctionComponent,
+  useRef,
+  RefObject,
+  CSSProperties,
+  useState,
+} from 'react'
 
 // Components
 import {Button, ButtonProps} from './Button'
@@ -79,10 +85,27 @@ export const ConfirmationButton: FunctionComponent<ConfirmationButtonProps> = ({
   popoverColor = ComponentColor.Default,
   confirmationButtonColor = ComponentColor.Danger,
 }) => {
+  const [buttonState, setButtonState] = useState<boolean>(false)
   const triggerRef: RefObject<HTMLButtonElement> = useRef(null)
 
   const isDisabled =
     status === ComponentStatus.Disabled || status === ComponentStatus.Loading
+
+  const handleShow = () => {
+    setButtonState(true)
+
+    if (onShow) {
+      onShow()
+    }
+  }
+
+  const handleHide = () => {
+    setButtonState(false)
+
+    if (onHide) {
+      onHide()
+    }
+  }
 
   return (
     <>
@@ -92,8 +115,8 @@ export const ConfirmationButton: FunctionComponent<ConfirmationButtonProps> = ({
         color={popoverColor}
         appearance={popoverAppearance}
         enableDefaultStyles={false}
-        onShow={onShow}
-        onHide={onHide}
+        onShow={handleShow}
+        onHide={handleHide}
         contents={onHide => (
           <ConfirmationContents
             testID={testID}
@@ -116,6 +139,7 @@ export const ConfirmationButton: FunctionComponent<ConfirmationButtonProps> = ({
         tabIndex={tabIndex}
         testID={`${testID}--button`}
         ref={triggerRef}
+        active={buttonState}
         status={status}
         color={color}
         style={style}
