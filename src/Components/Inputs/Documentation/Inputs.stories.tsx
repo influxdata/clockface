@@ -33,6 +33,8 @@ import {
   TextAreaContainerRef,
   VisibilityInput,
   VisibilityInputRef,
+  TimeInput,
+  TimeInputRef,
 } from '../'
 import {InputLabel, InputLabelRef} from '../InputLabel'
 import {SelectGroupRef, SelectGroupOptionRef} from '../../SelectGroup/index'
@@ -51,6 +53,7 @@ import {
   AutoInputMode,
   InputToggleType,
   Appearance,
+  TimeUnit,
 } from '../../../Types'
 
 // Notes
@@ -61,6 +64,7 @@ import RangeSliderReadme from './RangeSlider.md'
 import TextAreaReadme from './TextArea.md'
 import ToggleReadme from './Toggle.md'
 import InputLabelReadme from './InputLabel.md'
+import TimeInputReadme from './TimeInput.md'
 import MultipleChoiceForm from './MultipleChoiceForm.md'
 
 const inputsBaseStories = storiesOf(
@@ -711,6 +715,60 @@ inputsComposedStories.add(
   {
     readme: {
       content: marked(VisibilityInputReadme),
+    },
+  }
+)
+
+inputsComposedStories.add(
+  'Time Input',
+  () => {
+    const [value, setValue] = useState<string>('')
+    const [unit, setUnit] = useState<TimeUnit>(TimeUnit.Seconds)
+    const timeInputRef: RefObject<TimeInputRef> = createRef()
+
+    const handleLogRefs = (): void => {
+      /* eslint-disable */
+      console.log('ref', timeInputRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <TimeInput
+          ref={timeInputRef}
+          placeholder={text('placeholder', '00000')}
+          value={value}
+          unit={unit}
+          onChangeUnit={setUnit}
+          onChange={setValue}
+          maxLength={number('maxLength', 5)}
+          name={text('name', 'Name')}
+          titleText={text('titleText', 'Title Text')}
+          disabledTitleText={text('disabledTitleText', 'Disabled Title Text')}
+          icon={
+            IconFont[
+              select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
+            ]
+          }
+          style={object('style', defaultInputStyle)}
+          status={
+            ComponentStatus[
+              select('status', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+        />
+        <div className="story--test-buttons">
+          <button onClick={handleLogRefs}>Log Refs</button>
+        </div>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(TimeInputReadme),
     },
   }
 )
