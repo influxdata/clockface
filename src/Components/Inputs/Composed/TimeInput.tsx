@@ -174,15 +174,15 @@ const TimeInputMenu: FC<TimeInputMenuProps> = ({
 }) => {
   return (
     <Dropdown.Menu onCollapse={onCollapse} testID={`${testID}--dropdown-menu`}>
-      {Object.keys(TimeUnit).map(item => (
+      {Object.values(TimeUnit).map(item => (
         <Dropdown.Item
           testID={`${testID}--dropdown-item ${item}`}
           key={item}
           selected={item === selectedItem}
-          value={TimeUnit[item]}
+          value={item}
           onClick={onSelect}
         >
-          {`${TimeUnit[item]}`}
+          {item}
         </Dropdown.Item>
       ))}
     </Dropdown.Menu>
