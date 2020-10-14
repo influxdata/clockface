@@ -548,3 +548,12 @@ export enum Breakpoint {
   Medium = GRID_BREAKPOINT_MD,
   Large = GRID_BREAKPOINT_LG,
 }
+
+export enum TimeUnit {
+  Seconds = 's',
+  Minutes = 'm',
+  Hours = 'h',
+  Days = 'd',
+  Weeks = 'w',
+  Months = 'mo',
+}
