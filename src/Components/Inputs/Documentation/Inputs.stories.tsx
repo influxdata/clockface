@@ -13,6 +13,7 @@ import {
   select,
   boolean,
   object,
+  array,
 } from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
@@ -53,7 +54,6 @@ import {
   AutoInputMode,
   InputToggleType,
   Appearance,
-  TimeUnit,
 } from '../../../Types'
 
 // Notes
@@ -722,8 +722,9 @@ inputsComposedStories.add(
 inputsComposedStories.add(
   'Time Input',
   () => {
+    const DEFAULT_UNITS = ['s', 'm', 'h', 'd', 'w', 'mo']
     const [value, setValue] = useState<string>('')
-    const [unit, setUnit] = useState<TimeUnit>(TimeUnit.Seconds)
+    const [unit, setUnit] = useState<string>(DEFAULT_UNITS[0])
     const timeInputRef: RefObject<TimeInputRef> = createRef()
 
     const handleLogRefs = (): void => {
@@ -738,8 +739,9 @@ inputsComposedStories.add(
           ref={timeInputRef}
           placeholder={text('placeholder', '00000')}
           value={value}
-          unit={unit}
-          onChangeUnit={setUnit}
+          units={array('units', DEFAULT_UNITS)}
+          selectedUnit={unit}
+          onSelectUnit={setUnit}
           onChange={setValue}
           maxLength={number('maxLength', 5)}
           name={text('name', 'Name')}

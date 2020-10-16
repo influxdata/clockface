@@ -13,7 +13,6 @@ import {
   ComponentStatus,
   InputType,
   AutoComplete,
-  TimeUnit,
 } from '../../../Types'
 
 const TIME_INPUT_DROPDOWN_SIZE = {
@@ -22,6 +21,8 @@ const TIME_INPUT_DROPDOWN_SIZE = {
   md: '64px',
   lg: '82px',
 }
+
+const TIME_INPUT_DEFAULT_UNITS = ['s', 'm', 'h', 'd', 'w', 'mo']
 
 export type TimeInputRef = InputRef
 
@@ -41,10 +42,12 @@ export interface TimeInputProps
   > {
   /** Callback for input changes */
   onChange: (value: string, e?: ChangeEvent<TimeInputRef>) => void
-  /** Time unit */
-  unit: TimeUnit
+  /** Currently selected unit */
+  selectedUnit: string
+  /** Available units (in Dropdown) */
+  units?: string[]
   /** Callback for when time unit is changed */
-  onChangeUnit: (unit: TimeUnit) => void
+  onSelectUnit: (unit: string) => void
 }
 
 export const TimeInput = forwardRef<TimeInputRef, TimeInputProps>(
@@ -52,9 +55,9 @@ export const TimeInput = forwardRef<TimeInputRef, TimeInputProps>(
     {
       id,
       icon,
-      unit,
       size = ComponentSize.Small,
       name = '',
+      units = TIME_INPUT_DEFAULT_UNITS,
       style = {width: '100%'},
       value = '',
       status = ComponentStatus.Default,
@@ -73,8 +76,9 @@ export const TimeInput = forwardRef<TimeInputRef, TimeInputProps>(
       onKeyPress,
       inputStyle,
       placeholder = '',
-      onChangeUnit,
+      onSelectUnit,
       containerRef,
+      selectedUnit,
       disabledTitleText = 'This input is disabled',
     },
     ref
@@ -142,15 +146,16 @@ export const TimeInput = forwardRef<TimeInputRef, TimeInputProps>(
               status={dropdownStatus}
               testID={`${testID}--dropdown-button`}
             >
-              {`${unit}`}
+              {`${selectedUnit}`}
             </Dropdown.Button>
           )}
           menu={onCollapse => (
             <TimeInputMenu
               testID={testID}
               onCollapse={onCollapse}
-              selectedItem={unit}
-              onSelect={onChangeUnit}
+              selectedUnit={selectedUnit}
+              onSelect={onSelectUnit}
+              units={units}
             />
           )}
         />
@@ -162,27 +167,29 @@ export const TimeInput = forwardRef<TimeInputRef, TimeInputProps>(
 interface TimeInputMenuProps {
   testID: string
   onCollapse?: () => void
-  selectedItem: TimeUnit
-  onSelect: (unit: TimeUnit) => void
+  selectedUnit: string
+  onSelect: (unit: string) => void
+  units: string[]
 }
 
 const TimeInputMenu: FC<TimeInputMenuProps> = ({
   testID,
   onCollapse,
-  selectedItem,
+  selectedUnit,
   onSelect,
+  units,
 }) => {
   return (
     <Dropdown.Menu onCollapse={onCollapse} testID={`${testID}--dropdown-menu`}>
-      {Object.values(TimeUnit).map(item => (
+      {units.map(unit => (
         <Dropdown.Item
-          testID={`${testID}--dropdown-item ${item}`}
-          key={item}
-          selected={item === selectedItem}
-          value={item}
+          testID={`${testID}--dropdown-item ${unit}`}
+          key={unit}
+          selected={unit === selectedUnit}
+          value={unit}
           onClick={onSelect}
         >
-          {item}
+          {unit}
         </Dropdown.Item>
       ))}
     </Dropdown.Menu>

@@ -14,6 +14,10 @@ Unlike standard inputs the `onChange` prop is typed to pass back just a string. 
 
 <!-- STORY -->
 
+### Customize Units
+
+You could potentially use this component for units other than time. Use the `units` prop to pass in an array of different units as strings. By default it is set to `['s', 'm', 'h', 'd', 'w', 'mo']`s
+
 <!-- STORY HIDE START -->
 
 <!-- STORY HIDE END -->
