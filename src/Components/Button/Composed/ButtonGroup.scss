@@ -1,0 +1,51 @@
+@import '../../../Styles/variables';
+
+/*
+  Button Group
+  ------------------------------------------------------------------------------
+*/
+
+.cf-button-group {
+  display: flex;
+  align-items: center;
+
+  .cf-button,
+  .cf-button:after {
+    border-radius: 0;
+  }
+}
+
+// Button Rounding (Horizontal)
+.cf-button-group__horizontal {
+  flex-direction: row;
+
+  .cf-button:first-child,
+  .cf-button:first-child:after {
+    border-top-left-radius: $cf-radius;
+    border-bottom-left-radius: $cf-radius;
+  }
+
+  .cf-button:last-child,
+  .cf-button:last-child:after {
+    border-top-right-radius: $cf-radius;
+    border-bottom-right-radius: $cf-radius;
+  }
+}
+
+// Button Rounding (Vertical)
+.cf-button-group__vertical {
+  flex-direction: column;
+  align-items: stretch;
+
+  .cf-button:first-child,
+  .cf-button:first-child:after {
+    border-top-left-radius: $cf-radius;
+    border-top-right-radius: $cf-radius;
+  }
+
+  .cf-button:last-child,
+  .cf-button:last-child:after {
+    border-bottom-left-radius: $cf-radius;
+    border-bottom-right-radius: $cf-radius;
+  }
+}
