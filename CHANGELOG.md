@@ -5,6 +5,7 @@
 - [#550](https://github.com/influxdata/clockface/pull/550): Introduce `ButtonGroup` component
 - [#550](https://github.com/influxdata/clockface/pull/550): Make `ConfirmationButton` appear in active state while popover is visible
 - [#543](https://github.com/influxdata/clockface/pull/543): Add Funnel, Bucket, and Function icons to icon font
+- [#542](https://github.com/influxdata/clockface/pull/542): Add `tabIndex` and `onKeyDown` props to `SelectableCard` to enable keyboard interactivity
 - [#541](https://github.com/influxdata/clockface/pull/541): Improve `testID` usability in `TreeNav` component
 
 #### 2.3.4 (2020-08-17)
