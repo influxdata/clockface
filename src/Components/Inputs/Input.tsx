@@ -83,6 +83,8 @@ export interface InputProps extends StandardFunctionProps {
   pattern?: string
   /** Pass through for container ref */
   containerRef?: RefObject<InputContainerRef>
+  /** Render input using monospace font */
+  monospace?: boolean
 }
 
 export type InputRef = HTMLInputElement
@@ -117,6 +119,7 @@ export const Input = forwardRef<InputRef, InputProps>(
       autoFocus = false,
       maxLength,
       onKeyDown,
+      monospace = false,
       spellCheck = false,
       onKeyPress,
       inputStyle,
@@ -139,6 +142,7 @@ export const Input = forwardRef<InputRef, InputProps>(
       'cf-input__error': correctStatus === ComponentStatus.Error,
       'cf-input__loading': correctStatus === ComponentStatus.Loading,
       'cf-input__disabled': correctStatus === ComponentStatus.Disabled,
+      'cf-input-monospace': monospace,
       [`${className}`]: className,
     })
 

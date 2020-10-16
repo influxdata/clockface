@@ -13,6 +13,7 @@ import {
   select,
   boolean,
   object,
+  array,
 } from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
@@ -33,6 +34,8 @@ import {
   TextAreaContainerRef,
   VisibilityInput,
   VisibilityInputRef,
+  TimeInput,
+  TimeInputRef,
 } from '../'
 import {InputLabel, InputLabelRef} from '../InputLabel'
 import {SelectGroupRef, SelectGroupOptionRef} from '../../SelectGroup/index'
@@ -61,6 +64,7 @@ import RangeSliderReadme from './RangeSlider.md'
 import TextAreaReadme from './TextArea.md'
 import ToggleReadme from './Toggle.md'
 import InputLabelReadme from './InputLabel.md'
+import TimeInputReadme from './TimeInput.md'
 import MultipleChoiceForm from './MultipleChoiceForm.md'
 
 const inputsBaseStories = storiesOf(
@@ -102,6 +106,7 @@ inputsBaseStories.add(
           containerRef={inputContainerRef}
           placeholder={text('placeholder', 'Placeholder Text')}
           value={text('value', 'Value Text')}
+          monospace={boolean('monospace', false)}
           onChange={() => {
             // do nothing
           }}
@@ -158,6 +163,7 @@ inputsBaseStories.add(
           min={number('min', 0)}
           max={number('max', 50)}
           value={value}
+          monospace={boolean('monospace', false)}
           onChange={e =>
             setValue(e.target.value === '' ? NaN : Number(e.target.value))
           }
@@ -198,6 +204,7 @@ inputsBaseStories.add(
       <Input
         placeholder={text('placeholder', 'Placeholder Text')}
         value={text('value', 'Value Text')}
+        monospace={boolean('monospace', false)}
         onChange={() => {
           // do nothing
         }}
@@ -246,6 +253,7 @@ inputsBaseStories.add(
       <Input
         placeholder={text('placeholder', 'Placeholder Text')}
         value={text('value', 'value@text.com')}
+        monospace={boolean('monospace', false)}
         onChange={() => {
           // do nothing
         }}
@@ -707,6 +715,62 @@ inputsComposedStories.add(
   {
     readme: {
       content: marked(VisibilityInputReadme),
+    },
+  }
+)
+
+inputsComposedStories.add(
+  'Time Input',
+  () => {
+    const DEFAULT_UNITS = ['s', 'm', 'h', 'd', 'w', 'mo']
+    const [value, setValue] = useState<string>('')
+    const [unit, setUnit] = useState<string>(DEFAULT_UNITS[0])
+    const timeInputRef: RefObject<TimeInputRef> = createRef()
+
+    const handleLogRefs = (): void => {
+      /* eslint-disable */
+      console.log('ref', timeInputRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <TimeInput
+          ref={timeInputRef}
+          placeholder={text('placeholder', '00000')}
+          value={value}
+          units={array('units', DEFAULT_UNITS)}
+          selectedUnit={unit}
+          onSelectUnit={setUnit}
+          onChange={setValue}
+          maxLength={number('maxLength', 5)}
+          name={text('name', 'Name')}
+          titleText={text('titleText', 'Title Text')}
+          disabledTitleText={text('disabledTitleText', 'Disabled Title Text')}
+          icon={
+            IconFont[
+              select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
+            ]
+          }
+          style={object('style', defaultInputStyle)}
+          status={
+            ComponentStatus[
+              select('status', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+        />
+        <div className="story--test-buttons">
+          <button onClick={handleLogRefs}>Log Refs</button>
+        </div>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(TimeInputReadme),
     },
   }
 )

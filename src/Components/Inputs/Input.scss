@@ -58,6 +58,23 @@
   }
 }
 
+.cf-input-monospace > .cf-input-field {
+  font-family: $cf-code-font;
+
+  &::-webkit-input-placeholder {
+    font-family: $cf-code-font;
+  }
+  &::-moz-placeholder {
+    font-family: $cf-code-font;
+  }
+  &:-ms-input-placeholder {
+    font-family: $cf-code-font;
+  }
+  &:-moz-placeholder {
+    font-family: $cf-code-font;
+  }
+}
+
 /*
   Input Icons (Including Status)
   ------------------------------------------------------------------------------
@@ -105,7 +122,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(1.5,1.5);
+    transform: translate(-50%, -50%) scale(1.5, 1.5);
     border-radius: 50%;
     background: $cf-input-border--focused;
     z-index: 2;
@@ -115,7 +132,7 @@
 
   &.checked:after {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1,1);
+    transform: translate(-50%, -50%) scale(1, 1);
   }
 
   &:hover {
@@ -165,16 +182,32 @@
 }
 
 .cf-input-xs {
-  @include inputSizeModifier($cf-form-xs-font, $cf-form-xs-padding, $cf-form-xs-height);
+  @include inputSizeModifier(
+    $cf-form-xs-font,
+    $cf-form-xs-padding,
+    $cf-form-xs-height
+  );
 }
 .cf-input-sm {
-  @include inputSizeModifier($cf-form-sm-font, $cf-form-sm-padding, $cf-form-sm-height);
+  @include inputSizeModifier(
+    $cf-form-sm-font,
+    $cf-form-sm-padding,
+    $cf-form-sm-height
+  );
 }
 .cf-input-md {
-  @include inputSizeModifier($cf-form-md-font, $cf-form-md-padding, $cf-form-md-height);
+  @include inputSizeModifier(
+    $cf-form-md-font,
+    $cf-form-md-padding,
+    $cf-form-md-height
+  );
 }
 .cf-input-lg {
-  @include inputSizeModifier($cf-form-lg-font, $cf-form-lg-padding, $cf-form-lg-height);
+  @include inputSizeModifier(
+    $cf-form-lg-font,
+    $cf-form-lg-padding,
+    $cf-form-lg-height
+  );
 }
 
 /*
