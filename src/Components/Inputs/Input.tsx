@@ -107,7 +107,7 @@ export const Input = forwardRef<InputRef, InputProps>(
       name = '',
       type = InputType.Text,
       style = {width: '100%'},
-      value = '',
+      value,
       status = ComponentStatus.Default,
       onBlur,
       testID = 'input-field',
@@ -170,7 +170,7 @@ export const Input = forwardRef<InputRef, InputProps>(
     const inputCheckboxClass = classnames('cf-input--checkbox', {checked})
 
     const correctType: string = isNaN(value) ? 'text' : type
-    const correctlyTypedValue: string | number = NaNtoText(value)
+    const correctlyTypedValue: string | number | undefined = NaNtoText(value)
     const correctlyTypedMin: string | number | undefined = NaNtoText(min)
     const correctlyTypedMax: string | number | undefined = NaNtoText(max)
 
