@@ -93,7 +93,8 @@ export type InputContainerRef = HTMLDivElement
 const isNaN = (value: number | string | undefined) =>
   typeof value === 'number' && value !== value
 
-const NaNtoText = (value: number | string | undefined) =>  isNaN(value) ? '' : value
+const NaNtoText = (value: number | string | undefined) =>
+  isNaN(value) ? '' : value
 
 export const Input = forwardRef<InputRef, InputProps>(
   (
