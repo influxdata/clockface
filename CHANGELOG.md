@@ -6,6 +6,7 @@
 
 #### 2.3.5 (2020-10-19)
 
+- [#553](https://github.com/influxdata/clockface/pull/553): Allow Inputs to be uncontrolled
 - [#551](https://github.com/influxdata/clockface/pull/551): Introduce `TimeInput` component
 - [#550](https://github.com/influxdata/clockface/pull/550): Introduce `ButtonGroup` component
 - [#550](https://github.com/influxdata/clockface/pull/550): Make `ConfirmationButton` appear in active state while popover is visible
