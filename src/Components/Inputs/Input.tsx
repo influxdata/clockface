@@ -93,6 +93,8 @@ export type InputContainerRef = HTMLDivElement
 const isNaN = (value: number | string | undefined) =>
   typeof value === 'number' && value !== value
 
+const NaNtoText = (value: number | string | undefined) =>  isNaN(value) ? '' : value
+
 export const Input = forwardRef<InputRef, InputProps>(
   (
     {
@@ -167,10 +169,10 @@ export const Input = forwardRef<InputRef, InputProps>(
 
     const inputCheckboxClass = classnames('cf-input--checkbox', {checked})
 
-    const correctlyTypedValue: string | number = isNaN(value) ? '' : value
     const correctType: string = isNaN(value) ? 'text' : type
-    const correctlyTypedMin: string | number | undefined = isNaN(min) ? '' : min
-    const correctlyTypedMax: string | number | undefined = isNaN(max) ? '' : max
+    const correctlyTypedValue: string | number = NaNtoText(value)
+    const correctlyTypedMin: string | number | undefined = NaNtoText(min)
+    const correctlyTypedMax: string | number | undefined = NaNtoText(max)
 
     const iconElement = icon && <Icon glyph={icon} className="cf-input-icon" />
 
