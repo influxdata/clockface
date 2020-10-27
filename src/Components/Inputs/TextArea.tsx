@@ -82,7 +82,7 @@ export const TextArea = forwardRef<TextAreaRef, TextAreaProps>(
       form = '',
       name = '',
       style = {width: '100%'},
-      value = '',
+      value,
       status = ComponentStatus.Default,
       testID = 'textarea',
       onBlur,
