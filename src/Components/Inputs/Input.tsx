@@ -90,6 +90,9 @@ export interface InputProps extends StandardFunctionProps {
 export type InputRef = HTMLInputElement
 export type InputContainerRef = HTMLDivElement
 
+const isNaN = (value: number | string | undefined) =>
+  typeof value === 'number' && value !== value
+
 export const Input = forwardRef<InputRef, InputProps>(
   (
     {
@@ -131,7 +134,7 @@ export const Input = forwardRef<InputRef, InputProps>(
     ref
   ) => {
     const [isFocused, setFocus] = useState<boolean>(autoFocus)
-    const correctStatus = value === value ? status : ComponentStatus.Error
+    const correctStatus = isNaN(value) ? ComponentStatus.Error : status
 
     const inputClass = classnames('cf-input', {
       [`cf-input-${size}`]: size,
@@ -164,12 +167,10 @@ export const Input = forwardRef<InputRef, InputProps>(
 
     const inputCheckboxClass = classnames('cf-input--checkbox', {checked})
 
-    const correctlyTypedValue: string | number = value === value ? value : ''
-    const correctType: string = value === value ? type : 'text'
-    const correctlyTypedMin: string | number | undefined =
-      min === min ? min : ''
-    const correctlyTypedMax: string | number | undefined =
-      max === max ? max : ''
+    const correctlyTypedValue: string | number = isNaN(value) ? '' : value
+    const correctType: string = isNaN(value) ? 'text' : type
+    const correctlyTypedMin: string | number | undefined = isNaN(min) ? '' : min
+    const correctlyTypedMax: string | number | undefined = isNaN(max) ? '' : max
 
     const iconElement = icon && <Icon glyph={icon} className="cf-input-icon" />
 
