@@ -4,8 +4,11 @@ import React, {
   ChangeEvent,
   KeyboardEvent,
   forwardRef,
-  RefObject,
   useState,
+  useRef,
+  RefCallback,
+  RefObject,
+  MutableRefObject,
 } from 'react'
 import classnames from 'classnames'
 
@@ -90,6 +93,21 @@ export interface InputProps extends StandardFunctionProps {
 export type InputRef = HTMLInputElement
 export type InputContainerRef = HTMLDivElement
 
+function wrapRefCb<P>(
+  wrapper: RefCallback<P>,
+  ref: MutableRefObject<P> | RefCallback<P> | null
+): RefCallback<P> {
+  return function wrappedRefCb(el: P): void {
+    wrapper(el)
+
+    if (typeof ref === 'function') {
+      ref(el)
+    } else if (ref) {
+      ref.current = el
+    }
+  }
+}
+
 export const Input = forwardRef<InputRef, InputProps>(
   (
     {
@@ -128,10 +146,11 @@ export const Input = forwardRef<InputRef, InputProps>(
       autocomplete = AutoComplete.Off,
       disabledTitleText = 'This input is disabled',
     },
-    ref
+    forwardedRef
   ) => {
     const [isFocused, setFocus] = useState<boolean>(autoFocus)
     const correctStatus = value === value ? status : ComponentStatus.Error
+    const inputRef = useRef<HTMLInputElement | null>(null)
 
     const inputClass = classnames('cf-input', {
       [`cf-input-${size}`]: size,
@@ -188,7 +207,7 @@ export const Input = forwardRef<InputRef, InputProps>(
         )}
         <input
           id={id}
-          ref={ref}
+          ref={wrapRefCb(el => (inputRef.current = el), forwardedRef)}
           min={correctlyTypedMin}
           max={correctlyTypedMax}
           step={step}
@@ -216,7 +235,12 @@ export const Input = forwardRef<InputRef, InputProps>(
           required={required}
           pattern={pattern}
         />
-        {type === InputType.Checkbox && <div className={inputCheckboxClass} />}
+        {type === InputType.Checkbox && (
+          <div
+            className={inputCheckboxClass}
+            onClick={_ => inputRef.current && inputRef.current.click()}
+          />
+        )}
         {iconElement}
         {children}
       </div>
