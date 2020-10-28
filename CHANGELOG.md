@@ -1,7 +1,7 @@
 # Changelog
 
 #### 2.3.5 (Unreleased)
-
+- [#554](https://github.com/influxdata/clockface/pull/554): Allow click/change handling on checkbox Input
 - [#551](https://github.com/influxdata/clockface/pull/551): Introduce `TimeInput` component
 - [#550](https://github.com/influxdata/clockface/pull/550): Introduce `ButtonGroup` component
 - [#550](https://github.com/influxdata/clockface/pull/550): Make `ConfirmationButton` appear in active state while popover is visible
