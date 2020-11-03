@@ -1,6 +1,8 @@
 # Changelog
 
-#### 2.3.5 (Unreleased)
+#### 2.3.6 (Unreleased)
+
+#### 2.3.5 (2020-10-19)
 
 - [#551](https://github.com/influxdata/clockface/pull/551): Introduce `TimeInput` component
 - [#550](https://github.com/influxdata/clockface/pull/550): Introduce `ButtonGroup` component
