@@ -544,7 +544,9 @@ $cf-scrollbar-offset: 3px;
 
 @mixin funnel-page-background() {
   z-index: $funnel-page--graphic-z;
-  background-image: url('./Images/FunnelPageGraphic.svg');
+  // This image reference breaks the storybook build and is also
+  // not working properly in production
+  // background-image: url('./Images/FunnelPageGraphic.svg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
