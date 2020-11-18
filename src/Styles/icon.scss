@@ -218,13 +218,13 @@
   &.moon:before {
     content: '\e95c';
   }
-  &.nav-books-blank:before {
+  &.book:before {
     content: '\e966';
   }
-  &.nav-books-code:before {
+  &.book-code:before {
     content: '\e967';
   }
-  &.nav-books:before {
+  &.book-pencil:before {
     content: '\e965';
   }
   &.nav-chat:before {
