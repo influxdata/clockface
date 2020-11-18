@@ -218,6 +218,15 @@
   &.moon:before {
     content: '\e95c';
   }
+  &.nav-books-blank:before {
+    content: '\e966';
+  }
+  &.nav-books-code:before {
+    content: '\e967';
+  }
+  &.nav-books:before {
+    content: '\e965';
+  }
   &.nav-chat:before {
     content: '\e941';
   }
