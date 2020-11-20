@@ -1,6 +1,8 @@
 # Changelog
 
-#### 2.3.6 (Unreleased)
+#### 2.3.7 (Unreleased)
+
+#### 2.3.6 (2020-11-20)
 
 - [#557](https://github.com/influxdata/clockface/pull/557): Add `Book`, `BookCode`, and `BookPencil` icons to font
 
