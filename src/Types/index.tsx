@@ -305,7 +305,7 @@ export enum IconFont {
   GraphLine = 'graphline-2',
   Group = 'group',
   Heroku = 'heroku',
-  HerokuSimple = '',
+  HerokuSimple = 'heroku-simple',
   Import = 'import',
   Layers = 'layers',
   Link = 'link',
