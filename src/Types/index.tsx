@@ -329,6 +329,7 @@ export enum IconFont {
   Search = 'search',
   Server = 'server2',
   Share = 'share',
+  ShareSolid = 'share-solid',
   Shield = 'shield',
   Shuffle = 'shuffle',
   Square = 'square',
