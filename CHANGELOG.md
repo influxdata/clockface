@@ -1,6 +1,8 @@
 # Changelog
 
-#### 2.3.7 (Unreleased)
+#### 2.3.8 (Unreleased)
+
+#### 2.3.7 (2020-12-02)
 
 - [#558](https://github.com/influxdata/clockface/pull/558): Update `Book`, `BookCode`, and `BookPencil` icons. Add `CurrencyEUR`, `CurrencyGBP`, `CurrencyUSD`, `Layers`, `Share`, `ShareSolid` and `Shield` icons
 
