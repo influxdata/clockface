@@ -1,18 +1,18 @@
 // Libraries
-import React, {useRef} from 'react'
+import React from 'react'
 import marked from 'marked'
 import {startsWith} from 'lodash'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, boolean} from '@storybook/addon-knobs'
+import {withKnobs, boolean, select} from '@storybook/addon-knobs'
 import {useState} from '@storybook/addons'
+import {mapEnumKeys} from '../Utils/storybook'
 
 // Components
-import {Popover} from '../Components/Popover'
+import {ThemeProvider} from '../Components/ThemeProvider'
 import {Overlay} from '../Components/Overlay'
 import {Notification} from '../Components/Notification'
-import {RightClick} from '../Components/RightClick'
 import {Icon} from '../Components/Icon'
 import {Page} from '../Components/Page'
 import {TreeNav} from '../Components/TreeNav'
@@ -25,7 +25,7 @@ import {
   IconFont,
   ComponentSize,
   Gradients,
-  Appearance,
+  Theme,
 } from '../Types'
 
 // Notes
@@ -40,26 +40,10 @@ lightThemeStories.add(
   () => {
     const [navState, setNavState] = useState<boolean>(true)
     const [navActiveItem, setNavActiveItem] = useState<string>('boards')
-    const triggerRefA = useRef<HTMLDivElement>(null)
-    const triggerRefB = useRef<HTMLDivElement>(null)
-    const triggerRefC = useRef<HTMLDivElement>(null)
-    const [firstOverlayState, setFirstOverlayState] = useState<boolean>(false)
-    const [secondOverlayState, setSecondOverlayState] = useState<boolean>(false)
+    const [overlayState, setOverlayState] = useState<boolean>(false)
 
-    const handleDismissFirstOverlay = (): void => {
-      setFirstOverlayState(false)
-    }
-
-    const handleShowFirstOverlay = (): void => {
-      setFirstOverlayState(true)
-    }
-
-    const handleDismissSecondOverlay = (): void => {
-      setSecondOverlayState(false)
-    }
-
-    const handleShowSecondOverlay = (): void => {
-      setSecondOverlayState(true)
+    const handleDismissOverlay = (): void => {
+      setOverlayState(false)
     }
 
     const handleToggleNavState = (): void => {
@@ -109,276 +93,211 @@ lightThemeStories.add(
       return 'I am a page title!'
     }
 
-    const banner = (
-      <div
-        style={{
-          width: '100%',
-          height: '100px',
-          backgroundColor: '#333',
-          borderRadius: '4px',
-        }}
-      >
-        Banner
-      </div>
-    )
-
     return (
-      <div className="mockPageWrapper">
-        <div className="mockPage">
-          <AppWrapper presentationMode={boolean('presentationMode', false)}>
-            <TreeNav
-              headerElement={
-                <TreeNav.Header
-                  id="home"
-                  icon={<Icon glyph={IconFont.CuboNav} />}
-                  label={
-                    <InfluxDBCloudLogo cloud={boolean('Logo: cloud', true)} />
-                  }
+      <ThemeProvider theme={Theme[select('theme', mapEnumKeys(Theme), 'Dark')]}>
+        <div className="mockPageWrapper">
+          <div className="mockPage">
+            <AppWrapper presentationMode={boolean('presentationMode', false)}>
+              <TreeNav
+                headerElement={
+                  <TreeNav.Header
+                    id="home"
+                    icon={<Icon glyph={IconFont.CuboNav} />}
+                    label={
+                      <InfluxDBCloudLogo cloud={boolean('Logo: cloud', true)} />
+                    }
+                    onClick={handleNavClick}
+                    active={isItemActive('home')}
+                    color={ComponentColor.Primary}
+                  />
+                }
+                expanded={navState}
+                onToggleClick={handleToggleNavState}
+                userElement={
+                  <TreeNav.User
+                    id="user"
+                    username="john.doe123456@supercool.com"
+                    team="USAF 101st Airborne Division"
+                  >
+                    {boolean('show user links', false) ? (
+                      <>
+                        <TreeNav.UserItem id="logout" label="Logout" />
+                        <TreeNav.UserItem id="billing" label="Billing" />
+                        <TreeNav.UserItem
+                          id="usage"
+                          label="Usage"
+                          linkElement={className => (
+                            <a href="#" className={className} />
+                          )}
+                        />
+                      </>
+                    ) : null}
+                  </TreeNav.User>
+                }
+              >
+                <TreeNav.Item
+                  id="data"
+                  label="Data"
+                  icon={<Icon glyph={IconFont.DisksNav} />}
+                  active={isItemActive('data')}
                   onClick={handleNavClick}
-                  active={isItemActive('home')}
-                  color={ComponentColor.Primary}
-                />
-              }
-              bannerElement={banner}
-              hideBannerWhenCollapsed={boolean(
-                'hideBannerWhenCollapsed',
-                false
-              )}
-              expanded={navState}
-              onToggleClick={handleToggleNavState}
-              userElement={
-                <TreeNav.User
-                  id="user"
-                  username="john.doe123456@supercool.com"
-                  team="USAF 101st Airborne Division"
                 >
-                  {boolean('show user links', false) ? (
-                    <>
-                      <TreeNav.UserItem id="logout" label="Logout" />
-                      <TreeNav.UserItem id="billing" label="Billing" />
-                      <TreeNav.UserItem
-                        id="usage"
-                        label="Usage"
-                        linkElement={className => (
-                          <a href="#" className={className} />
-                        )}
-                      />
-                    </>
-                  ) : null}
-                </TreeNav.User>
-              }
-            >
-              <TreeNav.Item
-                id="data"
-                label="Data"
-                icon={<Icon glyph={IconFont.DisksNav} />}
-                active={isItemActive('data')}
-                onClick={handleNavClick}
-              >
-                <TreeNav.SubMenu>
-                  <TreeNav.SubItem
-                    id="data-buckets"
-                    label="Buckets"
-                    active={isItemActive('data-buckets')}
-                    onClick={handleNavClick}
-                  />
-                  <TreeNav.SubItem
-                    id="data-sources"
-                    label="Sources"
-                    active={isItemActive('data-sources')}
-                    onClick={handleNavClick}
-                  />
-                </TreeNav.SubMenu>
-              </TreeNav.Item>
-              <TreeNav.Item
-                id="explore"
-                label="Data Explorer"
-                shortLabel="Explore"
-                icon={<Icon glyph={IconFont.GraphLine} />}
-                active={isItemActive('explore')}
-                onClick={handleNavClick}
-              />
-              <TreeNav.Item
-                id="boards"
-                label="Dashboards"
-                shortLabel="Boards"
-                icon={<Icon glyph={IconFont.Dashboards} />}
-                active={isItemActive('boards')}
-                onClick={handleNavClick}
-              />
-              <TreeNav.Item
-                id="org"
-                label="Organization"
-                shortLabel="Org"
-                icon={<Icon glyph={IconFont.UsersDuo} />}
-                active={isItemActive('org')}
-                onClick={handleNavClick}
-              />
-              <TreeNav.Item
-                id="tasks"
-                label="Tasks"
-                icon={<Icon glyph={IconFont.Calendar} />}
-                active={isItemActive('tasks')}
-                onClick={handleNavClick}
-              />
-              <TreeNav.Item
-                id="alerts"
-                label="Alerts"
-                icon={<Icon glyph={IconFont.Bell} />}
-                active={isItemActive('alerts')}
-                onClick={handleNavClick}
-              />
-              <TreeNav.Item
-                id="settings"
-                label="Settings"
-                icon={<Icon glyph={IconFont.WrenchNav} />}
-                active={isItemActive('settings')}
-                onClick={handleNavClick}
-              >
-                <TreeNav.SubMenu>
-                  <TreeNav.SubItem
-                    id="settings-members"
-                    label="Members"
-                    active={isItemActive('settings-members')}
-                    onClick={handleNavClick}
-                  />
-                  <TreeNav.SubItem
-                    id="settings-variables"
-                    label="Variables"
-                    active={isItemActive('settings-variables')}
-                    onClick={handleNavClick}
-                  />
-                  <TreeNav.SubItem
-                    id="settings-templates"
-                    label="Templates"
-                    active={isItemActive('settings-templates')}
-                    onClick={handleNavClick}
-                  />
-                  <TreeNav.SubItem
-                    id="settings-labels"
-                    label="Labels"
-                    active={isItemActive('settings-labels')}
-                    onClick={handleNavClick}
-                  />
-                  <TreeNav.SubItem
-                    id="settings-profile"
-                    label="Profile"
-                    active={isItemActive('settings-profile')}
-                    onClick={handleNavClick}
-                  />
-                </TreeNav.SubMenu>
-              </TreeNav.Item>
-            </TreeNav>
-            <Page titleTag="bloop">
-              <Page.Header
-                fullWidth={boolean('fullWidth', false)}
-                gutters={ComponentSize.Small}
-              >
-                <Page.Title title={lookupPageTitle()} />
-              </Page.Header>
-              <Page.ControlBar
-                fullWidth={boolean('fullWidth', false)}
-                gutters={ComponentSize.Small}
-              >
-                <Page.ControlBarLeft>
-                  {boolean('Button in PageControlBarLeft', true) ? (
-                    <div className="mockComponent mockButton">Left Button</div>
-                  ) : null}
-                </Page.ControlBarLeft>
-                <Page.ControlBarCenter>
-                  {boolean('Button in PageControlBarCenter', true) ? (
-                    <div className="mockComponent mockButton">
-                      Center Button
-                    </div>
-                  ) : null}
-                </Page.ControlBarCenter>
-                <Page.ControlBarRight>
-                  {boolean('Button in PageControlBarRight', true) ? (
-                    <div className="mockComponent mockButton">Right Button</div>
-                  ) : null}
-                </Page.ControlBarRight>
-              </Page.ControlBar>
-              <Page.Contents
-                fullWidth={boolean('fullWidth', false)}
-                scrollable={boolean('scrollable', true)}
-                gutters={ComponentSize.Small}
-              >
-                <div className="mockComponent mockButton" ref={triggerRefA}>
-                  Click Me
-                </div>
-                <Popover
-                  triggerRef={triggerRefA}
-                  appearance={Appearance.Outline}
-                  color={ComponentColor.Primary}
-                  contents={() => (
-                    <div
-                      className="mockComponent mockButton"
-                      onClick={handleShowFirstOverlay}
-                    >
-                      Show Overlay
-                    </div>
-                  )}
+                  <TreeNav.SubMenu>
+                    <TreeNav.SubItem
+                      id="data-buckets"
+                      label="Buckets"
+                      active={isItemActive('data-buckets')}
+                      onClick={handleNavClick}
+                    />
+                    <TreeNav.SubItem
+                      id="data-sources"
+                      label="Sources"
+                      active={isItemActive('data-sources')}
+                      onClick={handleNavClick}
+                    />
+                  </TreeNav.SubMenu>
+                </TreeNav.Item>
+                <TreeNav.Item
+                  id="explore"
+                  label="Data Explorer"
+                  shortLabel="Explore"
+                  icon={<Icon glyph={IconFont.GraphLine} />}
+                  active={isItemActive('explore')}
+                  onClick={handleNavClick}
                 />
-                <Notification
-                  icon={IconFont.CrownSolid}
-                  size={ComponentSize.Small}
-                  gradient={Gradients.PolarExpress}
+                <TreeNav.Item
+                  id="boards"
+                  label="Dashboards"
+                  shortLabel="Boards"
+                  icon={<Icon glyph={IconFont.Dashboards} />}
+                  active={isItemActive('boards')}
+                  onClick={handleNavClick}
+                />
+                <TreeNav.Item
+                  id="org"
+                  label="Organization"
+                  shortLabel="Org"
+                  icon={<Icon glyph={IconFont.UsersDuo} />}
+                  active={isItemActive('org')}
+                  onClick={handleNavClick}
+                />
+                <TreeNav.Item
+                  id="tasks"
+                  label="Tasks"
+                  icon={<Icon glyph={IconFont.Calendar} />}
+                  active={isItemActive('tasks')}
+                  onClick={handleNavClick}
+                />
+                <TreeNav.Item
+                  id="alerts"
+                  label="Alerts"
+                  icon={<Icon glyph={IconFont.Bell} />}
+                  active={isItemActive('alerts')}
+                  onClick={handleNavClick}
+                />
+                <TreeNav.Item
+                  id="settings"
+                  label="Settings"
+                  icon={<Icon glyph={IconFont.WrenchNav} />}
+                  active={isItemActive('settings')}
+                  onClick={handleNavClick}
                 >
-                  I am notifying you!
-                </Notification>
-                <Overlay visible={firstOverlayState}>
-                  <Overlay.Container maxWidth={500}>
-                    <Overlay.Header
-                      title="Overlay Example"
-                      onDismiss={handleDismissFirstOverlay}
+                  <TreeNav.SubMenu>
+                    <TreeNav.SubItem
+                      id="settings-members"
+                      label="Members"
+                      active={isItemActive('settings-members')}
+                      onClick={handleNavClick}
                     />
-                    <Overlay.Body>
-                      <p>I should be below the Notification</p>
-                      <div
-                        className="mockComponent mockButton"
-                        ref={triggerRefB}
-                      >
-                        Another Popover
+                    <TreeNav.SubItem
+                      id="settings-variables"
+                      label="Variables"
+                      active={isItemActive('settings-variables')}
+                      onClick={handleNavClick}
+                    />
+                    <TreeNav.SubItem
+                      id="settings-templates"
+                      label="Templates"
+                      active={isItemActive('settings-templates')}
+                      onClick={handleNavClick}
+                    />
+                    <TreeNav.SubItem
+                      id="settings-labels"
+                      label="Labels"
+                      active={isItemActive('settings-labels')}
+                      onClick={handleNavClick}
+                    />
+                    <TreeNav.SubItem
+                      id="settings-profile"
+                      label="Profile"
+                      active={isItemActive('settings-profile')}
+                      onClick={handleNavClick}
+                    />
+                  </TreeNav.SubMenu>
+                </TreeNav.Item>
+              </TreeNav>
+              <Page titleTag="bloop">
+                <Page.Header
+                  fullWidth={boolean('fullWidth', false)}
+                  gutters={ComponentSize.Small}
+                >
+                  <Page.Title title={lookupPageTitle()} />
+                </Page.Header>
+                <Page.ControlBar
+                  fullWidth={boolean('fullWidth', false)}
+                  gutters={ComponentSize.Small}
+                >
+                  <Page.ControlBarLeft>
+                    {boolean('Button in PageControlBarLeft', true) ? (
+                      <div className="mockComponent mockButton">
+                        Left Button
                       </div>
-                      <div
-                        className="mockComponent mockButton"
-                        ref={triggerRefC}
-                      >
-                        Right Click Me
+                    ) : null}
+                  </Page.ControlBarLeft>
+                  <Page.ControlBarCenter>
+                    {boolean('Button in PageControlBarCenter', true) ? (
+                      <div className="mockComponent mockButton">
+                        Center Button
                       </div>
-                      <Popover
-                        triggerRef={triggerRefB}
-                        appearance={Appearance.Solid}
-                        color={ComponentColor.Success}
-                        contents={() => <>I'm a nested popover!</>}
+                    ) : null}
+                  </Page.ControlBarCenter>
+                  <Page.ControlBarRight>
+                    {boolean('Button in PageControlBarRight', true) ? (
+                      <div className="mockComponent mockButton">
+                        Right Button
+                      </div>
+                    ) : null}
+                  </Page.ControlBarRight>
+                </Page.ControlBar>
+                <Page.Contents
+                  fullWidth={boolean('fullWidth', false)}
+                  scrollable={boolean('scrollable', true)}
+                  gutters={ComponentSize.Small}
+                >
+                  <Notification
+                    icon={IconFont.CrownSolid}
+                    size={ComponentSize.Small}
+                    gradient={Gradients.PolarExpress}
+                  >
+                    I am notifying you!
+                  </Notification>
+                  <Overlay visible={overlayState}>
+                    <Overlay.Container maxWidth={500}>
+                      <Overlay.Header
+                        title="Overlay Example"
+                        onDismiss={handleDismissOverlay}
                       />
-                      <RightClick triggerRef={triggerRefC}>
-                        <RightClick.MenuItem onClick={handleShowSecondOverlay}>
-                          Show another overlay
-                        </RightClick.MenuItem>
-                      </RightClick>
-                    </Overlay.Body>
-                  </Overlay.Container>
-                </Overlay>
-                <Overlay visible={secondOverlayState}>
-                  <Overlay.Container maxWidth={300}>
-                    <Overlay.Header
-                      title="Another Overlay"
-                      onDismiss={handleDismissSecondOverlay}
-                    />
-                    <Overlay.Body>
-                      <p>
-                        I should be on top of the previous Overlay but still
-                        underneath the Notification
-                      </p>
-                    </Overlay.Body>
-                  </Overlay.Container>
-                </Overlay>
-              </Page.Contents>
-            </Page>
-          </AppWrapper>
+                      <Overlay.Body>
+                        <p>I am text!</p>
+                      </Overlay.Body>
+                    </Overlay.Container>
+                  </Overlay>
+                </Page.Contents>
+              </Page>
+            </AppWrapper>
+          </div>
         </div>
-      </div>
+      </ThemeProvider>
     )
   },
   {
