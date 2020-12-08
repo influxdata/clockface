@@ -4,7 +4,7 @@ import React, {FC, createContext, useEffect} from 'react'
 // Types
 import {Theme} from '../../Types'
 
-export interface ThemeContext {
+export interface ThemeContextType {
   theme: Theme
 }
 
@@ -16,7 +16,7 @@ export const DEFAULT_THEME = {
   theme: Theme.Dark,
 }
 
-export const ThemeContext = createContext<ThemeContext>(DEFAULT_THEME)
+export const ThemeContext = createContext<ThemeContextType>(DEFAULT_THEME)
 
 const GetThemeClassName = (theme: Theme): string => {
   return `cf-body__${theme}`
