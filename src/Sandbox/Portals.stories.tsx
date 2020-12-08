@@ -31,11 +31,11 @@ import {
 // Notes
 import PortalsReadme from './Portals.md'
 
-const alertStories = storiesOf('Sandbox|Portal Elements', module).addDecorator(
+const portalStories = storiesOf('Sandbox|Portal Elements', module).addDecorator(
   withKnobs
 )
 
-alertStories.add(
+portalStories.add(
   'Interplay of all portals',
   () => {
     const [navState, setNavState] = useState<boolean>(true)
