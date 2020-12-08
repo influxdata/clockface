@@ -22,6 +22,11 @@ export interface StandardFunctionProps {
   className?: string
 }
 
+export enum Theme {
+  Dark = 'theme-dark',
+  Light = 'theme-light',
+}
+
 // Standard Validation Function
 export type ValidationFunction = (input: string) => string | null
 
