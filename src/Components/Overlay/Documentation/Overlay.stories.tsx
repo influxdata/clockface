@@ -350,10 +350,6 @@ overlayExampleStories.add(
       setVisibility(true)
     }
 
-    const handleEscape = (): void => {
-      console.log('hi')
-    }
-
     return (
       <div className="story--example">
         <div className="mockComponent mockButton" onClick={handleShow}>
@@ -361,7 +357,7 @@ overlayExampleStories.add(
         </div>
         <Overlay
           visible={visible}
-          onEscape={handleEscape}
+          onEscape={setVisibility}
           renderMaskElement={style => (
             <OverlayMask
               style={style}

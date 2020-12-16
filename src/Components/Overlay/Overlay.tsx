@@ -1,5 +1,5 @@
 // Libraries
-import React, {FunctionComponent, CSSProperties, KeyboardEvent} from 'react'
+import React, {useEffect, FunctionComponent, CSSProperties} from 'react'
 import {Transition} from 'react-spring/renderprops'
 import classnames from 'classnames'
 import * as easings from 'd3-ease'
@@ -16,7 +16,6 @@ import {StandardFunctionProps, InfluxColors} from '../../Types'
 
 // Styles
 import './Overlay.scss'
-import {useEffect} from '@storybook/addons'
 
 export interface OverlayProps extends StandardFunctionProps {
   /** Controls visibility of the overlay */
@@ -25,9 +24,8 @@ export interface OverlayProps extends StandardFunctionProps {
   renderMaskElement?: (style: CSSProperties) => JSX.Element
   /** Controls the transition timing */
   transitionDuration?: number
-
-  /** Controls custom handling functionality */
-  onEscape?: () => void
+  /** Accepts state handler for visible prop to enable escape press functionality */
+  onEscape?: (visible: boolean) => void
 }
 
 export const OverlayRoot: FunctionComponent<OverlayProps> = ({
@@ -42,17 +40,9 @@ export const OverlayRoot: FunctionComponent<OverlayProps> = ({
 }) => {
   const {
     addElementToPortal,
-    addEventListenerToPortal,
-    removeEventListenerFromPortal,
+    //  addEventListenerToPortal,
+    // removeEventListenerFromPortal,
   } = usePortal()
-
-  useEffect((): (() => void) => {
-    addEventListenerToPortal('keydown', handleEscapeKey)
-
-    return (): void => {
-      removeEventListenerFromPortal('keydown', handleEscapeKey)
-    }
-  }, [])
 
   const transitionConfig = {
     duration: transitionDuration,
@@ -63,13 +53,24 @@ export const OverlayRoot: FunctionComponent<OverlayProps> = ({
     [`${className}`]: className,
   })
 
-  const handleEscapeKey = (e: KeyboardEvent<Window>): void => {
-    if (e.keyCode === 27 && visible) {
-      onEscape && onEscape()
+  const handleEscapeKey = (e: KeyboardEvent): void => {
+    if (e.key === 'Escape' && visible && onEscape) {
+      onEscape(false)
     }
   }
 
-  const overlay = () => {
+  if (!visible) {
+    return null
+  }
+
+  const OverlayRender = () => {
+    useEffect((): (() => void) => {
+      window.addEventListener('keydown', handleEscapeKey)
+
+      return (): void => {
+        window.removeEventListener('keydown', handleEscapeKey)
+      }
+    }, [])
     return (
       <>
         <Transition
@@ -114,8 +115,9 @@ export const OverlayRoot: FunctionComponent<OverlayProps> = ({
       </>
     )
   }
+  const Overlay = <OverlayRender />
 
-  return addElementToPortal(overlay)
+  return addElementToPortal(Overlay)
 }
 
 OverlayRoot.displayName = 'Overlay'
