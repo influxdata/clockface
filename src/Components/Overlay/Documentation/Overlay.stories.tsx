@@ -13,6 +13,7 @@ import {
   select,
 } from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
+import {useState} from '@storybook/addons'
 
 // Components
 import {OverlayRoot as Overlay} from '../Overlay'
@@ -329,6 +330,65 @@ overlayExampleStories.add(
       </Overlay>
     </div>
   ),
+  {
+    readme: {
+      content: marked(ConfirmationOverlayReadme),
+    },
+  }
+)
+
+overlayExampleStories.add(
+  'Overlay with Escape Handler',
+  () => {
+    const [visible, setVisibility] = useState<boolean>(false)
+
+    const handleDismiss = (): void => {
+      setVisibility(false)
+    }
+
+    const handleShow = (): void => {
+      setVisibility(true)
+    }
+
+    return (
+      <div className="story--example">
+        <div className="mockComponent mockButton" onClick={handleShow}>
+          Click Me
+        </div>
+        <Overlay
+          visible={visible}
+          onEscape={setVisibility}
+          renderMaskElement={style => (
+            <OverlayMask
+              style={style}
+              gradient={
+                Gradients[
+                  Gradients[
+                    select('gradient', mapEnumKeys(Gradients), 'GundamPilot')
+                  ]
+                ]
+              }
+            />
+          )}
+        >
+          <OverlayContainer maxWidth={number('maxWidth', 400)}>
+            <OverlayHeader title="Are you sure?" onDismiss={handleDismiss} />
+            <OverlayBody>
+              <p>
+                This action could cause a lot of things to break unexpectedly.
+                We're pretty sure you don't want to do this accidentally. What
+                will it be?
+              </p>
+            </OverlayBody>
+            <OverlayFooter>
+              <Button text="Cancel" onClick={handleDismiss} />
+              <Button text="Pull the Lever!" color={ComponentColor.Danger} />
+            </OverlayFooter>
+          </OverlayContainer>
+        </Overlay>
+      </div>
+    )
+  },
   {
     readme: {
       content: marked(ConfirmationOverlayReadme),
