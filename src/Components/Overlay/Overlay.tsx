@@ -59,10 +59,6 @@ export const OverlayRoot: FunctionComponent<OverlayProps> = ({
     }
   }
 
-  if (!visible) {
-    return null
-  }
-
   const OverlayRender = () => {
     useEffect((): (() => void) => {
       window.addEventListener('keydown', handleEscapeKey)
@@ -115,9 +111,8 @@ export const OverlayRoot: FunctionComponent<OverlayProps> = ({
       </>
     )
   }
-  const Overlay = <OverlayRender />
 
-  return addElementToPortal(Overlay)
+  return addElementToPortal(<OverlayRender />)
 }
 
 OverlayRoot.displayName = 'Overlay'
