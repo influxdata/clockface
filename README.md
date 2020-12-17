@@ -12,6 +12,8 @@ A React + Typescript UI Kit for building Chronograf and other Time Series visual
 
 ### [Contributing Guide](https://github.com/influxdata/clockface/blob/master/CONTRIBUTING.md)
 
+### [Icon Font Guide](https://github.com/influxdata/clockface/blob/master/ICONFONT.md)
+
 ### Usage
 
 ```
