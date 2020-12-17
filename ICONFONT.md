@@ -11,16 +11,16 @@ When designing an icon the first consideration is whether it will be used in the
 | Navigation | `26px / 26px` | `2px` |
 | Standard | `40px / 40px` | `3px` |
 
-- Shapes should adhere to the grid as much as possible.
-- Strokes should maintain a consistent and uniform width
-- If the icon does not take up the entire width of the canvas, resize the canvas to match the width (this prevents weird spacing when the font is in use)
-- Icons usually come in a "outline" style but in some cases they also have a "solid" variation
+- Shapes should adhere to the grid as much as possible (especially any straight or 45º lines).
+- Strokes should maintain a consistent and uniform width.
+- If the icon does not take up the entire width of the canvas, resize the canvas to match the width (this prevents weird spacing when the font is in use).
+- Icons usually come in a "outline" style but in some cases they also have a "solid" variation.
 - The majority of icons in the UI are displayed at a `13px` font size, so I recommend testing them at that size for legibility.
 
 ### Updating the Icon Font
 
-1. Generate the font in `icomoon` then download it
-2. Copy the font files to `/src/Styles/Fonts` and over write existing
+1. Generate the font in `icomoon` then download it.
+2. Copy the font files to `/src/Styles/Fonts` and replace existing font files.
 3. Open the included `style.css` file in your editor. You should see an entry like below for each icon:
 
 ```
@@ -29,7 +29,7 @@ When designing an icon the first consideration is whether it will be used in the
 }
 ```
 
-4. Reformat every entry so it looks like so:
+4. Reformat every entry to look like so:
 
 ```
 &.add-cell:before {content: "\e925";}
