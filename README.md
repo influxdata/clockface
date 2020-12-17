@@ -18,16 +18,10 @@ A React + Typescript UI Kit for building Chronograf and other Time Series visual
 
 ```
 npm install @influxdata/clockface
+
+yarn add @influxdata/clockface
 ```
 Import the Clockface stylesheet to your React app's `index.jsx` file
 ```tsx
 import '@influxdata/clockface/dist/index.css'
 ```
-
-### Milestones
-
-- Version 1.0
-  - All components defined in InfluxDB's local Clockface folder have been ported to this repo
-  - InfluxDB no longer uses locally defined Clockface components
-  - InfluxDB's local Clockface folder is deleted
-
