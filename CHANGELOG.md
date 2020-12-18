@@ -2,6 +2,8 @@
 
 #### 2.4.1 (Unreleased)
 
+- [#561](https://github.com/influxdata/clockface/pull/561): Improve behavior of `onEscape` overlay handler
+
 #### 2.4.0 (2020-12-16)
 
 - [#559](https://github.com/influxdata/clockface/pull/560): Add `onEscape` prop that takes in state handler and enables closing of overlays on escape keypress
