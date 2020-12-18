@@ -357,7 +357,7 @@ overlayExampleStories.add(
         </div>
         <Overlay
           visible={visible}
-          onEscape={setVisibility}
+          onEscape={handleDismiss}
           renderMaskElement={style => (
             <OverlayMask
               style={style}

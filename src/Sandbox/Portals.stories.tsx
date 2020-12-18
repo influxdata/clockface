@@ -326,7 +326,10 @@ alertStories.add(
                 >
                   I am notifying you!
                 </Notification>
-                <Overlay visible={firstOverlayState}>
+                <Overlay
+                  visible={firstOverlayState}
+                  onEscape={handleDismissFirstOverlay}
+                >
                   <Overlay.Container maxWidth={500}>
                     <Overlay.Header
                       title="Overlay Example"
@@ -360,7 +363,10 @@ alertStories.add(
                     </Overlay.Body>
                   </Overlay.Container>
                 </Overlay>
-                <Overlay visible={secondOverlayState}>
+                <Overlay
+                  visible={secondOverlayState}
+                  onEscape={handleDismissSecondOverlay}
+                >
                   <Overlay.Container maxWidth={300}>
                     <Overlay.Header
                       title="Another Overlay"

@@ -1,5 +1,5 @@
 // Libraries
-import React, {useEffect, FunctionComponent, CSSProperties} from 'react'
+import React, {FunctionComponent, CSSProperties, useEffect, useRef} from 'react'
 import {Transition} from 'react-spring/renderprops'
 import classnames from 'classnames'
 import * as easings from 'd3-ease'
@@ -33,16 +33,31 @@ export const OverlayRoot: FunctionComponent<OverlayProps> = ({
   testID = 'overlay',
   visible,
   children,
+  onEscape,
   className,
   transitionDuration = 360,
-  onEscape,
   renderMaskElement = (style: CSSProperties) => <OverlayMask style={style} />,
 }) => {
-  const {
-    addElementToPortal,
-    //  addEventListenerToPortal,
-    // removeEventListenerFromPortal,
-  } = usePortal()
+  const oldVisibility = useRef<boolean>(visible)
+
+  useEffect(() => {
+    if (visible && oldVisibility.current === false) {
+      window.addEventListener('keydown', handleEscapeKey)
+    }
+
+    oldVisibility.current = visible
+    return () => {
+      window.removeEventListener('keydown', handleEscapeKey)
+    }
+  }, [visible])
+
+  const handleEscapeKey = (e: KeyboardEvent): void => {
+    if (e.key === 'Escape' && onEscape) {
+      onEscape(false)
+    }
+  }
+
+  const {addElementToPortal} = usePortal()
 
   const transitionConfig = {
     duration: transitionDuration,
@@ -53,66 +68,51 @@ export const OverlayRoot: FunctionComponent<OverlayProps> = ({
     [`${className}`]: className,
   })
 
-  const handleEscapeKey = (e: KeyboardEvent): void => {
-    if (e.key === 'Escape' && visible && onEscape) {
-      onEscape(false)
-    }
-  }
-
-  const OverlayRender = () => {
-    useEffect((): (() => void) => {
-      window.addEventListener('keydown', handleEscapeKey)
-
-      return (): void => {
-        window.removeEventListener('keydown', handleEscapeKey)
-      }
-    }, [])
-    return (
-      <>
-        <Transition
-          items={visible}
-          from={{opacity: 0}}
-          enter={{opacity: 0.7}}
-          leave={{opacity: 0}}
-          config={transitionConfig}
-        >
-          {visible => visible && (props => renderMaskElement(props))}
-        </Transition>
-        <Transition
-          items={visible}
-          from={{opacity: 0, transform: 'translateY(44px)'}}
-          enter={{opacity: 1, transform: 'translateY(0)'}}
-          leave={{opacity: 0, transform: 'translateY(44px)'}}
-          config={transitionConfig}
-        >
-          {visible =>
-            visible &&
-            (props => (
-              <DapperScrollbars
-                className={overlayClass}
-                thumbStartColor={InfluxColors.White}
-                thumbStopColor={InfluxColors.Hydrogen}
-                noScrollX={true}
-                autoHide={false}
-                testID={testID}
-                id={id}
+  const OverlayRender = (
+    <>
+      <Transition
+        items={visible}
+        from={{opacity: 0}}
+        enter={{opacity: 0.7}}
+        leave={{opacity: 0}}
+        config={transitionConfig}
+      >
+        {visible => visible && (props => renderMaskElement(props))}
+      </Transition>
+      <Transition
+        items={visible}
+        from={{opacity: 0, transform: 'translateY(44px)'}}
+        enter={{opacity: 1, transform: 'translateY(0)'}}
+        leave={{opacity: 0, transform: 'translateY(44px)'}}
+        config={transitionConfig}
+      >
+        {visible =>
+          visible &&
+          (props => (
+            <DapperScrollbars
+              className={overlayClass}
+              thumbStartColor={InfluxColors.White}
+              thumbStopColor={InfluxColors.Hydrogen}
+              noScrollX={true}
+              autoHide={false}
+              testID={testID}
+              id={id}
+            >
+              <div
+                className="cf-overlay--children"
+                data-testid={`${testID}--children`}
+                style={props}
               >
-                <div
-                  className="cf-overlay--children"
-                  data-testid={`${testID}--children`}
-                  style={props}
-                >
-                  {children}
-                </div>
-              </DapperScrollbars>
-            ))
-          }
-        </Transition>
-      </>
-    )
-  }
+                {children}
+              </div>
+            </DapperScrollbars>
+          ))
+        }
+      </Transition>
+    </>
+  )
 
-  return addElementToPortal(<OverlayRender />)
+  return addElementToPortal(OverlayRender)
 }
 
 OverlayRoot.displayName = 'Overlay'
