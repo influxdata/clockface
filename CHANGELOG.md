@@ -1,6 +1,8 @@
 # Changelog
 
-#### 2.4.1 (Unreleased)
+#### 2.4.2 (Unreleased)
+
+#### 2.4.1 (2020-12-18)
 
 - [#561](https://github.com/influxdata/clockface/pull/561): Improve behavior of `onEscape` overlay handler
 
