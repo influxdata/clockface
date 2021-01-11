@@ -15,6 +15,11 @@ Then run the publish script in the root of the repo:
 ./publish
 ```
 You can follow `./publish` by either `patch`, `major`, or `minor`. If nothing is specified the default is `patch`
+These terms are from [Semantic Versioning](https://semver.org/)
+
+- `major` version when you make incompatible API changes,
+- `minor` version when you add functionality in a backwards compatible manner, and
+- `patch` version when you make backwards compatible bug fixes.
 
 Then upload the latest Storybook docs to the GitHub pages site by running:
 
@@ -22,7 +27,7 @@ Then upload the latest Storybook docs to the GitHub pages site by running:
 yarn run publishStorybook
 ```
 
-Then update the changelog with a header for the newest version:
+Then update the [Changelog](https://github.com/influxdata/clockface/blob/master/CHANGELOG.md) with a header for the newest version:
 
 ```
 # Changelog
