@@ -1,6 +1,10 @@
 # Changelog
 
-#### 2.4.2 (Unreleased)
+### 2.4.3 (Unreleased)
+
+#### 2.4.2 (2021-01-13)
+
+- [#562](https://github.com/influxdata/clockface/pull/564): Add Heart Solid Icon
 
 #### 2.4.1 (2020-12-18)
 
