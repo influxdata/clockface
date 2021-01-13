@@ -304,6 +304,7 @@ export enum IconFont {
   Google = 'google',
   GraphLine = 'graphline-2',
   Group = 'group',
+  HeartSolid = 'heart-solid',
   Heroku = 'heroku',
   HerokuSimple = 'heroku-simple',
   Import = 'import',
