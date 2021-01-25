@@ -108,6 +108,12 @@ $slider-hover: $g17-whisper;
   }
 }
 
+.cf-range-slider__vertical {
+  width: 275px;
+  height: 50px;
+  transform: rotate(270deg);
+}
+
 .cf-range-slider {
   display: flex;
   align-items: center;
@@ -186,7 +192,7 @@ $slider-hover: $g17-whisper;
 
   input[type='range'] {
     height: $height;
-    
+
     &:focus {
       box-shadow: none;
     }
@@ -229,16 +235,36 @@ $slider-hover: $g17-whisper;
 }
 
 .cf-range-slider__xs {
-  @include rangeSliderSizeModifier($cf-form-xs-font, $cf-marg-a, $cf-form-xs-height, $cf-form-xs-padding);
+  @include rangeSliderSizeModifier(
+    $cf-form-xs-font,
+    $cf-marg-a,
+    $cf-form-xs-height,
+    $cf-form-xs-padding
+  );
 }
 .cf-range-slider__sm {
-  @include rangeSliderSizeModifier($cf-form-sm-font, ($cf-marg-a + 2), $cf-form-sm-height, $cf-form-sm-padding);
+  @include rangeSliderSizeModifier(
+    $cf-form-sm-font,
+    ($cf-marg-a + 2),
+    $cf-form-sm-height,
+    $cf-form-sm-padding
+  );
 }
 .cf-range-slider__md {
-  @include rangeSliderSizeModifier($cf-form-md-font, $cf-marg-b, $cf-form-md-height, $cf-form-md-padding);
+  @include rangeSliderSizeModifier(
+    $cf-form-md-font,
+    $cf-marg-b,
+    $cf-form-md-height,
+    $cf-form-md-padding
+  );
 }
 .cf-range-slider__lg {
-  @include rangeSliderSizeModifier($cf-form-lg-font, ($cf-marg-b + 2), $cf-form-lg-height, $cf-form-lg-padding);
+  @include rangeSliderSizeModifier(
+    $cf-form-lg-font,
+    ($cf-marg-b + 2),
+    $cf-form-lg-height,
+    $cf-form-lg-padding
+  );
 }
 
 /*

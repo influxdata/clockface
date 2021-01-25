@@ -53,6 +53,10 @@ export enum ComponentStatus {
   Disabled = 'disabled',
 }
 
+export enum ComponentDirection {
+  Horizontal = 'horizontal',
+  Vertical = 'vertical',
+}
 export interface Color {
   hex: string
   name: string
