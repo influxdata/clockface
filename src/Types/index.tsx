@@ -53,7 +53,7 @@ export enum ComponentStatus {
   Disabled = 'disabled',
 }
 
-export enum ComponentDirection {
+export enum ComponentOrientation {
   Horizontal = 'horizontal',
   Vertical = 'vertical',
 }

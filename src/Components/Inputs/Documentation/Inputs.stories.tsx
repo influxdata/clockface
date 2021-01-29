@@ -46,7 +46,7 @@ import {
   ComponentStatus,
   ComponentSize,
   ComponentColor,
-  ComponentDirection,
+  ComponentOrientation,
   IconFont,
   AutoComplete,
   FlexDirection,
@@ -900,9 +900,13 @@ inputsComposedStories.add(
               select('status', mapEnumKeys(ComponentStatus), 'Default')
             ]
           }
-          direction={
-            ComponentDirection[
-              select('direction', mapEnumKeys(ComponentDirection), 'Horizontal')
+          orientation={
+            ComponentOrientation[
+              select(
+                'orientation',
+                mapEnumKeys(ComponentOrientation),
+                'Horizontal'
+              )
             ]
           }
         />

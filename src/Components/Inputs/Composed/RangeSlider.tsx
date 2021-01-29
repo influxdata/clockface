@@ -23,7 +23,7 @@ import {
   ComponentSize,
   AutoComplete,
   ComponentStatus,
-  ComponentDirection,
+  ComponentOrientation,
 } from '../../../Types'
 
 export interface RangeSliderProps extends StandardFunctionProps {
@@ -53,8 +53,8 @@ export interface RangeSliderProps extends StandardFunctionProps {
   labelPrefix?: string
   /** Adds a suffix to labels */
   labelSuffix?: string
-  /** Determines direction of range slider */
-  direction?: ComponentDirection
+  /** Determines orientation of range slider */
+  orientation?: ComponentOrientation
 }
 
 export type RangeSliderRef = HTMLInputElement
@@ -79,7 +79,7 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
       labelPrefix,
       labelSuffix,
       autocomplete,
-      direction = ComponentDirection.Horizontal,
+      orientation = ComponentOrientation.Horizontal,
     },
     ref
   ) => {
@@ -127,7 +127,7 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
     const cleanedValue = valueWithBounds(value, min, max)
 
     const rangeSliderClassName =
-      direction === ComponentDirection.Vertical
+      orientation === ComponentOrientation.Vertical
         ? `${rangeSliderClass} cf-range-slider__vertical`
         : rangeSliderClass
 
@@ -138,7 +138,7 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
           prefix={labelPrefix}
           suffix={labelSuffix}
           style={
-            direction === ComponentDirection.Vertical
+            orientation === ComponentOrientation.Vertical
               ? verticalLabelStyle
               : labelStyle
           }
@@ -167,7 +167,7 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
           prefix={labelPrefix}
           suffix={labelSuffix}
           style={
-            direction === ComponentDirection.Vertical
+            orientation === ComponentOrientation.Vertical
               ? verticalLabelMaxStyle
               : labelStyle
           }
