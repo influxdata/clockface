@@ -23,6 +23,7 @@ import {
   ComponentSize,
   AutoComplete,
   ComponentStatus,
+  ComponentOrientation,
 } from '../../../Types'
 
 export interface RangeSliderProps extends StandardFunctionProps {
@@ -52,6 +53,8 @@ export interface RangeSliderProps extends StandardFunctionProps {
   labelPrefix?: string
   /** Adds a suffix to labels */
   labelSuffix?: string
+  /** Determines orientation of range slider */
+  orientation?: ComponentOrientation
 }
 
 export type RangeSliderRef = HTMLInputElement
@@ -76,6 +79,7 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
       labelPrefix,
       labelSuffix,
       autocomplete,
+      orientation = ComponentOrientation.Horizontal,
     },
     ref
   ) => {
@@ -112,15 +116,32 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
       flex: `0 0 ${labelCharLength * 11}px`,
     }
 
+    const verticalLabelStyle = {
+      transform: 'rotate(270deg)',
+    }
+
+    const verticalLabelMaxStyle = {
+      transform: 'rotate(90deg)',
+    }
+
     const cleanedValue = valueWithBounds(value, min, max)
 
+    const rangeSliderClassName =
+      orientation === ComponentOrientation.Vertical
+        ? `${rangeSliderClass} cf-range-slider__vertical`
+        : rangeSliderClass
+
     return (
-      <div className={rangeSliderClass} style={style}>
+      <div className={rangeSliderClassName} style={style}>
         <RangeSliderLabel
           value={min}
           prefix={labelPrefix}
           suffix={labelSuffix}
-          style={labelStyle}
+          style={
+            orientation === ComponentOrientation.Vertical
+              ? verticalLabelStyle
+              : labelStyle
+          }
           hidden={hideLabels}
           testID={`${testID}--min`}
         />
@@ -145,7 +166,11 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
           value={max}
           prefix={labelPrefix}
           suffix={labelSuffix}
-          style={labelStyle}
+          style={
+            orientation === ComponentOrientation.Vertical
+              ? verticalLabelMaxStyle
+              : labelStyle
+          }
           hidden={hideLabels}
           testID={`${testID}--max`}
         />
