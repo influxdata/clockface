@@ -909,6 +909,7 @@ inputsComposedStories.add(
               )
             ]
           }
+          displayValue={boolean('displayValue', false)}
         />
         <div className="story--test-buttons">
           <button onClick={handleLogRef}>Log Ref</button>
