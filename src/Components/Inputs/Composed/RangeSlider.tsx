@@ -115,12 +115,14 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
       labelCharLength += labelSuffix.length
     }
 
-    const labelStyle = {
-      flex: `0 0 ${labelCharLength * 11}px`,
-    }
-
     const verticalLabelStyle = {
       transform: 'rotate(270deg)',
+    }
+
+    const horizontalLabelValMaxStyle = {
+      display: 'grid',
+      gridTemplateColumns: `${labelCharLength * 10}px ${labelCharLength *
+        10}px`,
     }
 
     const cleanedValue = valueWithBounds(value, min, max)
@@ -139,7 +141,7 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
           style={
             orientation === ComponentOrientation.Vertical
               ? verticalLabelStyle
-              : labelStyle
+              : {}
           }
           hidden={hideLabels}
           testID={`${testID}--min`}
@@ -165,7 +167,9 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
         <div
           className="cf-range-slider--label cf-range-slider--max"
           style={
-            orientation === ComponentOrientation.Horizontal ? labelStyle : {}
+            orientation === ComponentOrientation.Horizontal
+              ? horizontalLabelValMaxStyle
+              : {}
           }
         >
           {displayValue && (
