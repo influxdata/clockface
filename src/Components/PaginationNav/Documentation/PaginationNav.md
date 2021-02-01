@@ -1,0 +1,24 @@
+# Pagination
+
+Pagination Nav is used for navigating through data that cannot be encapsulated within a single page.
+
+### Usage
+```tsx
+import {PaginationNav} from '@influxdata/clockface'
+```
+```tsx
+<PaginationNav.PaginationNav
+          ref={paginationRef}
+          totalPages={10}
+          itemsToShow={7}
+          currentPage={1}
+        ></PaginationNav.PaginationNav>
+```
+### Example
+<!-- STORY -->
+
+<!-- STORY HIDE START -->
+
+<!-- STORY HIDE END -->
+
+<!-- PROPS -->

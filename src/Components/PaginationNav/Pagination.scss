@@ -1,0 +1,113 @@
+@import "../../Styles/variables";
+
+/*
+  pagination
+  ------------------------------------------------------------------------------
+*/
+
+$cf-pagination--text: $g9-mountain;
+$cf-pagination--text-hover: $g14-chromium;
+$cf-pagination--text-active: $g20-white;
+$cf-pagination--border-color: $g5-pepper;
+$cf-pagination--item-hover: $g3-castle;
+$cf-pagination--item-border-color: $g5-pepper;
+$cf-pagination--direction-icon: $g18-cloud;
+
+.cf-pagination {
+  border-radius: $cf-radius;
+  padding: $cf-border;
+  font-size: $cf-form-md-font;
+  user-select: none;
+  width: 100%;
+  display: flex;
+}
+
+.cf-pagination--container {
+  width: 100%;
+  display: flex;
+}
+.cf-pagination--contents {
+  width: 100%;
+  border-radius: $cf-radius - 1px;
+  padding: $cf-marg-b;
+  background-color: rgba($g3-castle, 0.85);
+}
+
+.cf-pagination--direction--button {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.cf-pagination--item {
+  flex-shrink: 0;
+  display: block;
+  position: relative;
+  list-style: none;
+  padding: $cf-marg-b;
+  margin-bottom: 0;
+  text-align: center;
+  width: $cf-form-md-height;
+  height: $cf-form-md-height;
+  color: $cf-pagination--text;
+}
+
+.cf-pagination--item_clickable {
+  &:hover {
+    color: $cf-pagination--text-hover;
+    background-color: $cf-pagination--item-hover;
+  }
+}
+
+.cf-pagination--icon {
+  display: inline-block;
+  vertical-align: middle;
+  pointer-events: none;
+  font-size: floor($cf-form-md-font * 1.2);
+  line-height: $cf-form-md-height;
+}
+
+.cf-pagination--truncation-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  font-size: floor($cf-form-md-font * 1.2);
+  line-height: floor($cf-form-md-font * 1.2);
+}
+
+.cf-pagination--icon--direction {
+  color: $cf-pagination--direction-icon;
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  padding: 0;
+  &:hover {
+    background-color: $cf-pagination--item-hover;
+  }
+}
+.cf-pagination--truncation {
+  color: $cf-pagination--text;
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  padding: 0;
+}
+
+// Active State
+
+.cf-pagination--item__active {
+  color: $cf-pagination--text-active;
+  font-weight: $cf-font-weight--bold;
+  &:after {
+    content: "";
+    background-color: $cf-pagination--border-color;
+    width: 100%;
+    position: absolute;
+    height: floor($cf-form-md-height * 0.1);
+    left: 0;
+    bottom: 0;
+  }
+}
