@@ -2,8 +2,6 @@
 import React, {forwardRef, MouseEvent} from 'react'
 import classnames from 'classnames'
 
-// Components
-
 // Styles
 import './Pagination.scss'
 

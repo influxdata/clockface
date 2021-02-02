@@ -1,6 +1,6 @@
 # PaginationItem
 
-The individual pieces (numbers) of the PaginationNav component.
+The individual pages of the PaginationNav component. Clicking on it will navigate you directly to the clicked page.
 
 ### Usage
 ```tsx

@@ -11,8 +11,6 @@ import './Pagination.scss'
 import {StandardFunctionProps} from '../../Types'
 
 export interface PaginationItemProps extends StandardFunctionProps {
-  /** Alert color */
-  /** Icon to be displayed to the left of text */
   page: number
   isActive: boolean
   onClick?: (e?: MouseEvent<HTMLElement>) => void

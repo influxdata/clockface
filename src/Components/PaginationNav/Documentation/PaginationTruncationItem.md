@@ -1,6 +1,6 @@
 # PaginationTruncationItem
 
-The signifier for truncation in the PaginationNav component.
+The signifier for truncation in the PaginationNav component. This means that there were too many pages to be visually represented in the nav.
 
 ### Usage
 ```tsx
