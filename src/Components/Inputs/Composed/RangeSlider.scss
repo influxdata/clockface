@@ -151,6 +151,16 @@ $slider-hover: $g17-whisper;
     display: flex;
     justify-content: flex-end;
   }
+
+  &.cf-range-slider--valmax-label {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  &.cf-range-slider--valmax-label__with-value {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .cf-range-slider--focus {

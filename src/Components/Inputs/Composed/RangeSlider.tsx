@@ -97,6 +97,16 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
       'cf-range-slider__fill': fill,
     })
 
+    const valmaxClassName = classnames(
+      'cf-range-slider--label cf-range-slider--max',
+      {
+        [`cf-range-slider--valmax-label__with-value`]:
+          orientation === ComponentOrientation.Horizontal && displayValue,
+        [`cf-range-slider--valmax-label`]:
+          orientation === ComponentOrientation.Horizontal && !displayValue,
+      }
+    )
+
     const inputStyle = generateRangeSliderTrackFillStyle(
       fill,
       min,
@@ -106,23 +116,8 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
       status
     )
 
-    let labelCharLength = String(max).length
-
-    if (labelPrefix) {
-      labelCharLength += labelPrefix.length
-    }
-    if (labelSuffix) {
-      labelCharLength += labelSuffix.length
-    }
-
     const verticalLabelStyle = {
       transform: 'rotate(270deg)',
-    }
-
-    const horizontalLabelValMaxStyle = {
-      display: 'grid',
-      gridTemplateColumns: `${labelCharLength * 10}px ${labelCharLength *
-        10}px`,
     }
 
     const cleanedValue = valueWithBounds(value, min, max)
@@ -164,14 +159,7 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
           autocomplete={autocomplete}
         />
         <div className="cf-range-slider--focus" />
-        <div
-          className="cf-range-slider--label cf-range-slider--max"
-          style={
-            orientation === ComponentOrientation.Horizontal
-              ? horizontalLabelValMaxStyle
-              : {}
-          }
-        >
+        <div className={valmaxClassName}>
           {displayValue && (
             <RangeSliderLabel
               value={cleanedValue}

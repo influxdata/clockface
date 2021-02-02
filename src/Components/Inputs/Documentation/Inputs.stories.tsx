@@ -871,7 +871,7 @@ inputsComposedStories.add(
       /* eslint-enable */
     }
 
-    const exampleRangeSliderStyle = {width: '275px'}
+    const exampleRangeSliderStyle = {width: '375px'}
 
     return (
       <div className="story--example">
