@@ -54,7 +54,7 @@ export const PaginationDirectionItem = forwardRef<
         ref={ref}
         onClick={onClick}
       >
-        <div className="cf-pagination--icon--direction">
+        <div className="cf-pagination--direction--icon">
           <Icon glyph={directionIcon} className="cf-pagination--icon" />
         </div>
       </li>

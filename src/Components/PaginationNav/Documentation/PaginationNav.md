@@ -10,7 +10,6 @@ import {PaginationNav} from '@influxdata/clockface'
 <PaginationNav.PaginationNav
           ref={paginationRef}
           totalPages={10}
-          itemsToShow={7}
           currentPage={1}
         ></PaginationNav.PaginationNav>
 ```

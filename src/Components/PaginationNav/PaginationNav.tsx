@@ -12,11 +12,11 @@ import './Pagination.scss'
 import {StandardFunctionProps, DirectionType} from '../../Types'
 
 export interface PaginationNavProps extends StandardFunctionProps {
-  /** Alert color */
-  /** Icon to be displayed to the left of text */
+ 
   totalPages: number
   itemsToShow?: number
   currentPage?: number
+  onChange: (page: number) => void
 }
 
 export type PaginationNavRef = HTMLElement
@@ -31,6 +31,7 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
       totalPages,
       itemsToShow = 7,
       currentPage = 1,
+      onChange,
     },
     ref
   ) => {
@@ -39,81 +40,96 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
     })
 
     const [activePage, setActivePage] = useState(currentPage)
-    const [breakpoint, setbreakpoint] = useState(activePage + 1)
-    const [firstTruncation, setfirstTruncation] = useState(
-      activePage > itemsToShow - 2
-    )
-    const [secondTruncation, setSecondTruncation] = useState(
-      totalPages - activePage > itemsToShow - 3
+
+    const computePageSpread = (page: number) => {
+      if (totalPages > itemsToShow) {
+        const firstItem = Math.max(2, page - 1)
+        const lastItem = Math.min(totalPages - 1, page + 1)
+        const isLeftTruncated = firstItem > 2
+
+        const isRightTruncated = totalPages - lastItem > 1
+
+        const overflowOffset = itemsToShow - 4 - (lastItem - firstItem)
+
+        if (isLeftTruncated && isRightTruncated) {
+          //if left and right are both truncated, return as is
+          return {
+            firstBreakpoint: firstItem,
+            secondBreakpoint: lastItem,
+          }
+        }
+
+        if (isLeftTruncated && !isRightTruncated) {
+          //if left is truncated but right isn't, take off the overflow from left
+          return {
+            firstBreakpoint: firstItem - overflowOffset,
+            secondBreakpoint: lastItem,
+          }
+        }
+
+        if (!isLeftTruncated && isRightTruncated) {
+          //if right is truncated but left isn't, add the overflow to right
+          return {
+            firstBreakpoint: firstItem,
+            secondBreakpoint: lastItem + overflowOffset,
+          }
+        }
+        return {
+          //covering case but shouldn't arrive here.
+          firstBreakpoint: firstItem,
+          secondBreakpoint: lastItem,
+        }
+      } else {
+        return {
+          // if we don't need truncation
+          firstBreakpoint: 2,
+          secondBreakpoint: totalPages - 1,
+        }
+      }
+    }
+
+    const [breakpoints, setBreakpoints] = useState(
+      computePageSpread(activePage)
     )
 
     const moveLeft = () => {
-      if (activePage >= 2) {
-        setActivePage(activePage - 1)
+      const targetPage = activePage - 1
+
+      if (targetPage < 1) {
+        // if moving past least avail page, do nothing
+      } else {
+        moveToPage(targetPage)
       }
     }
 
     const moveRight = () => {
-      if (activePage <= totalPages - 1) {
-        setActivePage(activePage + 1)
+      const targetPage = activePage + 1
+      if (targetPage > totalPages) {
+        // if moving past highest avail page, do nothing
+      } else {
+        moveToPage(targetPage)
       }
     }
 
-    const moveTo = (page: number) => {
-      setActivePage(page)
+    const moveToPage = (page: number) => {
+      if (page === activePage) {
+        //if moving to current page, do nothing
+      } else {
+        //if trying to move to page 0, lower than 0, or greater than total pages, don't
+        if (page >= 0 && page <= totalPages) setActivePage(page)
+        onChange(page)
+      }
     }
 
     useEffect(() => {
       setActivePage(activePage)
+      setBreakpoints(computePageSpread(activePage))
     }, [activePage])
-
-    //This method needs to be refactored to be more readable. convoluted logic with incoherent one off conditions.
-    useEffect(() => {
-      const divider = itemsToShow - 3
-
-      //you only need breakpoints if theres more items than can be shown
-      if (
-        totalPages > itemsToShow &&
-        activePage !== totalPages &&
-        activePage !== 1
-      ) {
-        //if the activePage is greater than what can be shown -3
-        if (activePage >= divider + +!!secondTruncation) {
-          if (!firstTruncation) {
-            setfirstTruncation(true)
-            setbreakpoint(activePage)
-          }
-        } else {
-          if (firstTruncation) {
-            setfirstTruncation(false)
-            //this is quite possibly the most hacky one off thing ever. There is something about useEffect call orders in react that I need to study a little more to understand. This is causing the state of secondtruncation to not update before doing this computation so i can't use (+!!secondTrundcation);
-            const pageOffset = totalPages === itemsToShow + 1 ? 1 : 0
-
-            activePage + pageOffset >= divider
-              ? setbreakpoint(activePage - divider + 2 + pageOffset)
-              : setbreakpoint(activePage)
-          }
-        }
-
-        if (totalPages - activePage > divider) {
-          setSecondTruncation(true)
-          if (activePage > divider) {
-            setbreakpoint(activePage)
-          }
-        } else {
-          if (secondTruncation) {
-            setSecondTruncation(false)
-            setbreakpoint(totalPages - divider)
-          }
-        }
-      }
-    console.log('active ' + activePage);
-    console.log('breakpoint ' + breakpoint);
-    })
 
     const checkActive = (page: number) => {
       return activePage === page ? true : false
     }
+
     return (
       <nav
         className={paginationNavClassName}
@@ -131,10 +147,10 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
             <PaginationItem
               page={1}
               isActive={checkActive(1)}
-              onClick={() => moveTo(1)}
+              onClick={() => moveToPage(1)}
             />
           }
-          {firstTruncation && (
+          {breakpoints.firstBreakpoint > 2 && (
             //compute whtehr it should be an ellipse or a number
             <PaginationTruncationItem
               startingPage={totalPages}
@@ -143,22 +159,18 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
           {[...Array(totalPages)]
             .map((_, i) => i)
             .slice(
-              breakpoint,
-              breakpoint +
-                itemsToShow -
-                2 -
-                +!!secondTruncation -
-                +!!firstTruncation
+              breakpoints.firstBreakpoint,
+              breakpoints.secondBreakpoint + 1
             )
             .map(item => (
               <PaginationItem
                 page={item}
                 isActive={checkActive(item)}
-                onClick={() => moveTo(item)}
+                onClick={() => moveToPage(item)}
               />
             ))}
           {//compute whtehr it should be an ellipse or a number
-          secondTruncation && (
+          breakpoints.secondBreakpoint !== totalPages - 1 && (
             <PaginationTruncationItem
               startingPage={totalPages}
             ></PaginationTruncationItem>
@@ -168,7 +180,7 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
             <PaginationItem
               page={totalPages}
               isActive={checkActive(totalPages)}
-              onClick={() => moveTo(totalPages)}
+              onClick={() => moveToPage(totalPages)}
             />
           )}
           <PaginationDirectionItem

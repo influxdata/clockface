@@ -29,7 +29,7 @@ export const PaginationItem = forwardRef<
   ) => {
     const paginationClassName = classnames(
       'cf-pagination--item',
-      'cf-pagination--item_clickable',
+      'cf-pagination--item__clickable',
       {
         'cf-pagination--item__active': isActive,
         [`${className}`]: className,

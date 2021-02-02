@@ -40,8 +40,8 @@ PaginationStories.add(
         <PaginationNav.PaginationNav
           ref={paginationRef}
           totalPages={number('totalPages', 10)}
-          itemsToShow={number('itemsToShow', 7)}
           currentPage={1}
+          onChange={()=>{}}
         ></PaginationNav.PaginationNav>
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
