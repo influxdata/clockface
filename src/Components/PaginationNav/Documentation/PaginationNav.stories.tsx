@@ -41,7 +41,7 @@ PaginationStories.add(
           ref={paginationRef}
           totalPages={number('totalPages', 10)}
           currentPage={1}
-          onChange={()=>{}}
+          onChange={() => {}}
         ></PaginationNav.PaginationNav>
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
@@ -92,8 +92,7 @@ PaginationStories.add(
   'PaginationTruncationItem',
   () => (
     <div className="story--example">
-      <PaginationNav.TruncationItem
-      />
+      <PaginationNav.TruncationItem />
     </div>
   ),
   {

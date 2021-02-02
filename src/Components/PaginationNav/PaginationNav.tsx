@@ -38,26 +38,18 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
     const paginationNavClassName = classnames('cf-pagination', {
       [`${className}`]: className,
     })
-
     const [activePage, setActivePage] = useState(currentPage)
 
     const computePageSpread = (page: number) => {
       if (totalPages > itemsToShow) {
+
         const firstItem = Math.max(2, page - 1)
         const lastItem = Math.min(totalPages - 1, page + 1)
-        const isLeftTruncated = firstItem > 2
 
+        const isLeftTruncated = firstItem > 2
         const isRightTruncated = totalPages - lastItem > 1
 
         const overflowOffset = itemsToShow - 4 - (lastItem - firstItem)
-
-        if (isLeftTruncated && isRightTruncated) {
-          //if left and right are both truncated, return as is
-          return {
-            firstBreakpoint: firstItem,
-            secondBreakpoint: lastItem,
-          }
-        }
 
         if (isLeftTruncated && !isRightTruncated) {
           //if left is truncated but right isn't, take off the overflow from left
@@ -74,8 +66,8 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
             secondBreakpoint: lastItem + overflowOffset,
           }
         }
+
         return {
-          //covering case but shouldn't arrive here.
           firstBreakpoint: firstItem,
           secondBreakpoint: lastItem,
         }
@@ -176,7 +168,7 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
             ></PaginationTruncationItem>
           )}
           {//compute last number
-          totalPages >= itemsToShow && (
+          totalPages !== 1 && (
             <PaginationItem
               page={totalPages}
               isActive={checkActive(totalPages)}
