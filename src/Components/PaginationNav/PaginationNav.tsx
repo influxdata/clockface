@@ -1,10 +1,12 @@
 // Libraries
 import React, {forwardRef, useState, useEffect} from 'react'
 import classnames from 'classnames'
+
 // Components
 import {PaginationItem} from './PaginationItem'
 import {PaginationDirectionItem} from './PaginationDirectionItem'
 import {PaginationTruncationItem} from './paginationTruncationItem'
+
 // Styles
 import './Pagination.scss'
 
@@ -12,11 +14,18 @@ import './Pagination.scss'
 import {StandardFunctionProps, DirectionType} from '../../Types'
 
 export interface PaginationNavProps extends StandardFunctionProps {
- 
+
+  /** Total nuber of pages there exists */
   totalPages: number
-  itemsToShow?: number
+  /** currently active page */
   currentPage?: number
+  /** Function to be called on page change */
   onChange: (page: number) => void
+  /** Determines how many pages are displayed within the nav. 
+   * 1 = 7 {1,...,4,5,6,...20}, 
+   * 2 = 9 {1,...,4,5,6,7,8...20}, 
+   * 3 = 11 {1,...,4,5,6,7,8,9,10...20} and so on */
+  pageRangeOffset: number
 }
 
 export type PaginationNavRef = HTMLElement
@@ -29,9 +38,9 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
       testID = 'Pagination-nav',
       className,
       totalPages,
-      itemsToShow = 7,
       currentPage = 1,
       onChange,
+      pageRangeOffset = 1,
     },
     ref
   ) => {
@@ -40,16 +49,16 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
     })
     const [activePage, setActivePage] = useState(currentPage)
 
-    const computePageSpread = (page: number) => {
-      if (totalPages > itemsToShow) {
-
-        const firstItem = Math.max(2, page - 1)
-        const lastItem = Math.min(totalPages - 1, page + 1)
+    const computePageSpread = (page: number, pageOffset: number) => {
+      const itemsToShow1 = 5 + 2 * (pageOffset >= 1 ? pageOffset : 1)
+      if (totalPages > itemsToShow1) {
+        const firstItem = Math.max(2, page - pageOffset)
+        const lastItem = Math.min(totalPages - 1, page + pageOffset)
 
         const isLeftTruncated = firstItem > 2
         const isRightTruncated = totalPages - lastItem > 1
 
-        const overflowOffset = itemsToShow - 4 - (lastItem - firstItem)
+        const overflowOffset = itemsToShow1 - 4 - (lastItem - firstItem)
 
         if (isLeftTruncated && !isRightTruncated) {
           //if left is truncated but right isn't, take off the overflow from left
@@ -66,7 +75,6 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
             secondBreakpoint: lastItem + overflowOffset,
           }
         }
-
         return {
           firstBreakpoint: firstItem,
           secondBreakpoint: lastItem,
@@ -81,7 +89,7 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
     }
 
     const [breakpoints, setBreakpoints] = useState(
-      computePageSpread(activePage)
+      computePageSpread(activePage, pageRangeOffset)
     )
 
     const moveLeft = () => {
@@ -114,8 +122,16 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
     }
 
     useEffect(() => {
+      setBreakpoints(computePageSpread(activePage, pageRangeOffset))
+    }, [totalPages, pageRangeOffset])
+
+    useEffect(() => {
       setActivePage(activePage)
-      setBreakpoints(computePageSpread(activePage))
+      if (activePage > breakpoints.secondBreakpoint) {
+        setBreakpoints(computePageSpread(activePage, pageRangeOffset))
+      } else if (activePage < breakpoints.firstBreakpoint) {
+        setBreakpoints(computePageSpread(activePage, pageRangeOffset))
+      }
     }, [activePage])
 
     const checkActive = (page: number) => {

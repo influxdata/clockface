@@ -76,6 +76,8 @@ $cf-pagination--direction-icon: $g18-cloud;
   height: $cf-form-md-height;
   line-height: $cf-form-md-height;
   text-align: center;
+  //Added this because even though the icon is "centered", it looked out of alignment with the numbers.
+  transform: translateY(-2%);
   padding: 0;
   &:hover {
     background-color: $cf-pagination--item-hover;

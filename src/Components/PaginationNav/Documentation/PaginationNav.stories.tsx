@@ -41,7 +41,10 @@ PaginationStories.add(
           ref={paginationRef}
           totalPages={number('totalPages', 10)}
           currentPage={1}
-          onChange={() => {}}
+          pageRangeOffset={number('pageRangeOffset',1)}
+          onChange={page => {
+            console.log(`page selected: ${page}`)
+          }}
         ></PaginationNav.PaginationNav>
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
