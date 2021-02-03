@@ -163,8 +163,17 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
 
     const title = disabled ? disabledTitleText : titleText
 
+    // putting onClick handler on the containing div,
+    // so that clicking on the children will toggle as well
+    // (b/c of the explicit onclick handler, the 'for' linking the labels
+    // to the input does not toggle the button at all)
     return (
-      <div className={toggleClass} style={style} ref={containerRef}>
+      <div
+        className={toggleClass}
+        style={style}
+        ref={containerRef}
+        onClick={handleClick}
+      >
         <input
           id={id}
           ref={ref}
@@ -187,7 +196,6 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
           onBlur={handleInputBlur}
           htmlFor={id}
           onFocus={handleInputFocus}
-          onClick={handleClick}
           onKeyUp={handleKeyUp}
           tabIndex={tabIndex}
           className="cf-toggle--visual-input"
