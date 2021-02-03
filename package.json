@@ -53,6 +53,7 @@
     "marked": "^0.7.0",
     "moment": "2.19.3",
     "prettier": "^1.19.1",
+    "pretty-quick": "^3.1.0",
     "prop-types": "^15",
     "raw-loader": "^2.0.0",
     "react": "^16.5.2",
