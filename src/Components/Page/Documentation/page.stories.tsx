@@ -155,6 +155,7 @@ pageStories.add(
               select('gutters', mapEnumKeys(ComponentSize), 'Small')
             ]
           }
+          visibleHeight={`${number('Visible Scrollable Height', 100)}px`}
         >
           <div
             className="mockComponent pageContents"
