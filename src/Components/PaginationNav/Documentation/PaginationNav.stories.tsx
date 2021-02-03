@@ -41,9 +41,11 @@ PaginationStories.add(
           ref={paginationRef}
           totalPages={number('totalPages', 10)}
           currentPage={1}
-          pageRangeOffset={number('pageRangeOffset',1)}
+          pageRangeOffset={number('pageRangeOffset', 1)}
           onChange={page => {
+            /* eslint-disable */
             console.log(`page selected: ${page}`)
+            /* eslint-enable */
           }}
         ></PaginationNav.PaginationNav>
         <div className="story--test-buttons">

@@ -10,15 +10,15 @@ import {StandardFunctionProps} from '../../Types'
 
 export interface PaginationTruncationItemProps extends StandardFunctionProps {
   //Below option will alow you to display a dropdown but there isn't a coded functionality yet. soon to come.
-  startingPage?: number
+  //startingPage?: number
   //Below option will alow you to display a dropdown but there isn't a coded functionality yet. soon to come.
-  truncatedOptions?: number[]
+  //truncatedOptions?: number[]
   onClick?: (e?: MouseEvent<HTMLElement>) => void
 }
 
 export type PaginationTruncationItemRef = HTMLLIElement
 export const PaginationTruncationItem = forwardRef<
-PaginationTruncationItemRef,
+  PaginationTruncationItemRef,
   PaginationTruncationItemProps
 >(
   (
@@ -27,8 +27,8 @@ PaginationTruncationItemRef,
       style,
       testID = 'Pagination-truncation-item',
       className,
-      startingPage,
-      truncatedOptions,
+      //startingPage,
+      //truncatedOptions,
       onClick,
     },
     ref

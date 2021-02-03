@@ -14,16 +14,15 @@ import './Pagination.scss'
 import {StandardFunctionProps, DirectionType} from '../../Types'
 
 export interface PaginationNavProps extends StandardFunctionProps {
-
   /** Total nuber of pages there exists */
   totalPages: number
   /** currently active page */
   currentPage?: number
   /** Function to be called on page change */
   onChange: (page: number) => void
-  /** Determines how many pages are displayed within the nav. 
-   * 1 = 7 {1,...,4,5,6,...20}, 
-   * 2 = 9 {1,...,4,5,6,7,8...20}, 
+  /** Determines how many pages are displayed within the nav.
+   * 1 = 7 {1,...,4,5,6,...20},
+   * 2 = 9 {1,...,4,5,6,7,8...20},
    * 3 = 11 {1,...,4,5,6,7,8,9,10...20} and so on */
   pageRangeOffset: number
 }
@@ -116,7 +115,9 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
         //if moving to current page, do nothing
       } else {
         //if trying to move to page 0, lower than 0, or greater than total pages, don't
-        if (page >= 0 && page <= totalPages) setActivePage(page)
+        if (page >= 0 && page <= totalPages) {
+          setActivePage(page)
+        }
         onChange(page)
       }
     }
@@ -161,7 +162,7 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
           {breakpoints.firstBreakpoint > 2 && (
             //compute whtehr it should be an ellipse or a number
             <PaginationTruncationItem
-              startingPage={totalPages}
+            //startingPage={totalPages}
             ></PaginationTruncationItem>
           )}
           {[...Array(totalPages)]
@@ -175,12 +176,13 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
                 page={item}
                 isActive={checkActive(item)}
                 onClick={() => moveToPage(item)}
+                key={'pagination--item-' + item}
               />
             ))}
           {//compute whtehr it should be an ellipse or a number
           breakpoints.secondBreakpoint !== totalPages - 1 && (
             <PaginationTruncationItem
-              startingPage={totalPages}
+            //startingPage={totalPages}
             ></PaginationTruncationItem>
           )}
           {//compute last number
