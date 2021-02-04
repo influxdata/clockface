@@ -38,7 +38,6 @@ PaginationStories.add(
     return (
       <div className="story--example">
         <PaginationNav.PaginationNav
-          ref={paginationRef}
           totalPages={number('totalPages', 10)}
           currentPage={1}
           pageRangeOffset={number('pageRangeOffset', 1)}
