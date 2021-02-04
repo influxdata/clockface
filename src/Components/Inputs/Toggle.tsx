@@ -123,7 +123,6 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
       if (disabled) {
         return
       }
-
       onChange(value)
     }
 
@@ -131,7 +130,6 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
       if (e.key === ' ') {
         handleClick()
       }
-
       if (onKeyUp) {
         onKeyUp(e)
       }
