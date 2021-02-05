@@ -1,5 +1,5 @@
 // Libraries
-import React, {forwardRef, MouseEvent, useState} from 'react'
+import React, {forwardRef, MouseEvent, useState, useEffect} from 'react'
 import classnames from 'classnames'
 import _ from 'lodash'
 
@@ -22,6 +22,8 @@ export interface DropdownProps extends StandardFunctionProps {
   menu: (onCollapse?: () => void) => JSX.Element
   /** Renders the menu element above the button instead of below */
   dropUp?: boolean
+  onClickAway?: () => void
+  menuOpen?: string
 }
 
 export type DropdownRef = HTMLDivElement
@@ -36,6 +38,8 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
       button,
       dropUp = false,
       className,
+      onClickAway,
+      menuOpen,
     },
     ref
   ) => {
@@ -48,7 +52,20 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
 
     const handleCollapseMenu = (): void => {
       setExpandedState(false)
+      if (onClickAway) {
+        onClickAway()
+      }
     }
+
+    useEffect(() => {
+      console.log('menuOpened changed; it is:', menuOpen)
+      if (menuOpen === 'closed') {
+        setExpandedState(false)
+      }
+      if (menuOpen === 'open') {
+        setExpandedState(true)
+      }
+    }, [menuOpen])
 
     const dropdownClass = classnames('cf-dropdown', {
       [`${className}`]: className,
