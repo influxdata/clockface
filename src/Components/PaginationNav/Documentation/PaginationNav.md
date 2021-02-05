@@ -11,6 +11,10 @@ import {PaginationNav} from '@influxdata/clockface'
           ref={paginationRef}
           totalPages={10}
           currentPage={1}
+          pageRangeOffset={ 1)}
+          onChange={page => {
+            someFunction(page)
+          }}
         ></PaginationNav.PaginationNav>
 ```
 ### Example
