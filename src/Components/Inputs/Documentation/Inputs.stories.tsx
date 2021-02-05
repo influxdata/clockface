@@ -871,7 +871,7 @@ inputsComposedStories.add(
       /* eslint-enable */
     }
 
-    const exampleRangeSliderStyle = {width: '275px'}
+    const exampleRangeSliderStyle = {width: '375px'}
 
     return (
       <div className="story--example">
@@ -909,6 +909,7 @@ inputsComposedStories.add(
               )
             ]
           }
+          displayValue={boolean('displayValue', false)}
         />
         <div className="story--test-buttons">
           <button onClick={handleLogRef}>Log Ref</button>
