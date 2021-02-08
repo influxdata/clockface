@@ -85,6 +85,7 @@ export interface InputProps extends StandardFunctionProps {
   containerRef?: RefObject<InputContainerRef>
   /** Render input using monospace font */
   monospace?: boolean
+  defaultValue?: string | number | undefined
 }
 
 export type InputRef = HTMLInputElement
@@ -127,6 +128,7 @@ export const Input = forwardRef<InputRef, InputProps>(
       containerRef,
       autocomplete = AutoComplete.Off,
       disabledTitleText = 'This input is disabled',
+      defaultValue = '',
     },
     ref
   ) => {
@@ -167,14 +169,45 @@ export const Input = forwardRef<InputRef, InputProps>(
     const correctlyTypedValue: string | number = value === value ? value : ''
     const correctType: string = value === value ? type : 'text'
     const correctlyTypedMin: string | number | undefined =
-      min === min ? min : ''
+      min === min ? min : undefined
     const correctlyTypedMax: string | number | undefined =
-      max === max ? max : ''
+      max === max ? max : undefined
 
     const iconElement = icon && <Icon glyph={icon} className="cf-input-icon" />
 
     const title =
       status === ComponentStatus.Disabled ? disabledTitleText : titleText
+
+    const baseProps: Omit<InputProps, 'size'> = {
+      id,
+      min: correctlyTypedMin,
+      max: correctlyTypedMax,
+      step,
+      checked,
+      name,
+      type: correctType as InputType,
+      placeholder,
+      autoFocus,
+      spellCheck,
+      onBlur: handleInputBlur,
+      onFocus: handleInputFocus,
+      onKeyPress,
+      onKeyUp,
+      onKeyDown,
+      className: 'cf-input-field',
+      maxLength,
+      tabIndex,
+      style: inputStyle,
+      required,
+      pattern,
+    }
+
+    if (defaultValue && !value && !onChange) {
+      baseProps.defaultValue = defaultValue
+    } else {
+      baseProps.onChange = onChange
+      baseProps.value = correctlyTypedValue
+    }
 
     return (
       <div className={inputClass} style={style} ref={containerRef}>
@@ -187,34 +220,13 @@ export const Input = forwardRef<InputRef, InputProps>(
           />
         )}
         <input
-          id={id}
           ref={ref}
-          min={correctlyTypedMin}
-          max={correctlyTypedMax}
-          step={step}
-          checked={checked}
           title={title}
           autoComplete={autocomplete}
-          name={name}
-          type={correctType}
-          value={correctlyTypedValue}
-          placeholder={placeholder}
-          autoFocus={autoFocus}
-          spellCheck={spellCheck}
-          onChange={onChange}
-          onBlur={handleInputBlur}
-          onFocus={handleInputFocus}
-          onKeyPress={onKeyPress}
-          onKeyUp={onKeyUp}
-          onKeyDown={onKeyDown}
           className="cf-input-field"
           disabled={status === ComponentStatus.Disabled}
-          maxLength={maxLength}
-          tabIndex={tabIndex}
           data-testid={testID}
-          style={inputStyle}
-          required={required}
-          pattern={pattern}
+          {...baseProps}
         />
         {type === InputType.Checkbox && <div className={inputCheckboxClass} />}
         {iconElement}

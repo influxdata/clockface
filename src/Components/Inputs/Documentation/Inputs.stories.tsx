@@ -154,6 +154,69 @@ inputsBaseStories.add(
 )
 
 inputsBaseStories.add(
+  'Input (Text) - uncontrolled',
+  () => {
+    const inputRef: RefObject<InputRef> = createRef()
+    const inputContainerRef: RefObject<InputContainerRef> = createRef()
+
+    const handleLogRefs = (): void => {
+      /* eslint-disable */
+      console.log('InputRef', inputRef.current)
+      console.log('InputContainerRef', inputContainerRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <Input
+          ref={inputRef}
+          defaultValue={text('defaultValue', 'You cannot control me')}
+          containerRef={inputContainerRef}
+          placeholder={text('placeholder', 'Placeholder Text')}
+          monospace={boolean('monospace', false)}
+          name={text('name', 'Name')}
+          titleText={text('titleText', 'Title Text')}
+          disabledTitleText={text('disabledTitleText', 'Disabled Title Text')}
+          maxLength={number('maxLength', 24)}
+          icon={
+            IconFont[
+              select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
+            ]
+          }
+          style={object('style', defaultInputStyle)}
+          status={
+            ComponentStatus[
+              select('status', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          autocomplete={
+            AutoComplete[
+              radios<AutoComplete>(
+                'autocomplete',
+                mapEnumKeys(AutoComplete),
+                AutoComplete.Off
+              )
+            ]
+          }
+          type={InputType.Text}
+        />
+        <div className="story--test-buttons">
+          <button onClick={handleLogRefs}>Log Refs</button>
+        </div>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(InputReadme),
+    },
+  }
+)
+
+inputsBaseStories.add(
   'Input (Number)',
   () => {
     const [value, setValue] = useState<number>(25)
@@ -168,6 +231,48 @@ inputsBaseStories.add(
           onChange={e =>
             setValue(e.target.value === '' ? NaN : Number(e.target.value))
           }
+          name={text('name', 'Name')}
+          titleText={text('titleText', 'Title Text')}
+          disabledTitleText={text('disabledTitleText', 'Disabled Title Text')}
+          maxLength={number('maxLength', 24)}
+          icon={
+            IconFont[
+              select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
+            ]
+          }
+          style={object('style', defaultInputStyle)}
+          status={
+            ComponentStatus[
+              select('status', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          type={InputType.Number}
+        />
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(InputReadme),
+    },
+  }
+)
+
+inputsBaseStories.add(
+  'Input (Number)',
+  () => {
+    const numberInputRef: RefObject<HTMLInputElement> = createRef()
+    return (
+      <div className="story--example">
+        <Input
+          min={number('min', 0)}
+          max={number('max', 50)}
+          defaultValue={number('defaultValue', 25)}
+          monospace={boolean('monospace', false)}
+          ref={numberInputRef}
           name={text('name', 'Name')}
           titleText={text('titleText', 'Title Text')}
           disabledTitleText={text('disabledTitleText', 'Disabled Title Text')}
@@ -248,6 +353,55 @@ inputsBaseStories.add(
 )
 
 inputsBaseStories.add(
+  'Input (Password) - uncontrolled',
+  () => {
+    const passwordRef: RefObject<HTMLInputElement> = createRef()
+    return (
+      <div className="story--example">
+        <Input
+          placeholder={text('placeholder', 'Placeholder Text')}
+          monospace={boolean('monospace', false)}
+          ref={passwordRef}
+          name={text('name', 'Name')}
+          titleText={text('titleText', 'Title Text')}
+          disabledTitleText={text('disabledTitleText', 'Disabled Title Text')}
+          maxLength={number('maxLength', 24)}
+          icon={
+            IconFont[
+              select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
+            ]
+          }
+          style={object('style', defaultInputStyle)}
+          status={
+            ComponentStatus[
+              select('status', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          defaultValue={text('defaultValue', 'abc123')}
+          autocomplete={
+            AutoComplete[
+              radios<AutoComplete>(
+                'autocomplete',
+                mapEnumKeys(AutoComplete),
+                AutoComplete.Off
+              )
+            ]
+          }
+          type={InputType.Password}
+        />
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(InputReadme),
+    },
+  }
+)
+inputsBaseStories.add(
   'Input (Email)',
   () => (
     <div className="story--example">
@@ -296,6 +450,56 @@ inputsBaseStories.add(
   }
 )
 
+inputsBaseStories.add(
+  'Input (Email) - uncontrolled',
+  () => {
+    const emailRef: RefObject<HTMLInputElement> = createRef()
+
+    return (
+      <div className="story--example">
+        <Input
+          placeholder={text('placeholder', 'Placeholder Text')}
+          monospace={boolean('monospace', false)}
+          ref={emailRef}
+          defaultValue={text('defaultValue', 'clock.face@ui.com')}
+          name={text('name', 'Name')}
+          titleText={text('titleText', 'Title Text')}
+          disabledTitleText={text('disabledTitleText', 'Disabled Title Text')}
+          maxLength={number('maxLength', 24)}
+          icon={
+            IconFont[
+              select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
+            ]
+          }
+          style={object('style', defaultInputStyle)}
+          status={
+            ComponentStatus[
+              select('status', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          autocomplete={
+            AutoComplete[
+              radios<AutoComplete>(
+                'autocomplete',
+                mapEnumKeys(AutoComplete),
+                AutoComplete.Off
+              )
+            ]
+          }
+          type={InputType.Email}
+        />
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(InputReadme),
+    },
+  }
+)
 inputsBaseStories.add(
   'Input (Checkbox)',
   () => (
