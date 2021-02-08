@@ -22,7 +22,20 @@ export interface DropdownProps extends StandardFunctionProps {
   menu: (onCollapse?: () => void) => JSX.Element
   /** Renders the menu element above the button instead of below */
   dropUp?: boolean
+  /** Optional method that is triggered when the user clicks outside of/away from the dropdown */
   onClickAway?: () => void
+  /**
+   * optional way for the owner of this dropdown to set the menu state:
+   * 'open':  the menu will be open
+   * 'closed': the menu will be closed
+   * any other string will be ignored.
+   *
+   * and the menu state (open/closed) only changes when the string changes.
+   * so the owner is responsible for resetting the string
+   * (if the string is set to 'open', and then the user closes it, and the code sets it to open again,
+   * unless the code sets it to something else in between (like 'ignore' or 'close'),
+   * then nothing will happen- the menu will not open)
+   * */
   menuOpen?: string
 }
 
@@ -58,7 +71,6 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
     }
 
     useEffect(() => {
-      console.log('menuOpened changed; it is:', menuOpen)
       if (menuOpen === 'closed') {
         setExpandedState(false)
       }
