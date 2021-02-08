@@ -21,6 +21,7 @@
 #### 2.3.6 (2020-11-20)
 
 - [#557](https://github.com/influxdata/clockface/pull/557): Add `Book`, `BookCode`, and `BookPencil` icons to font
+- [#553](https://github.com/influxdata/clockface/pull/553): Allow Inputs to be uncontrolled
 
 #### 2.3.5 (2020-10-19)
 

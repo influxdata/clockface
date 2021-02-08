@@ -91,6 +91,12 @@ export interface InputProps extends StandardFunctionProps {
 export type InputRef = HTMLInputElement
 export type InputContainerRef = HTMLDivElement
 
+const isNaN = (value: number | string | undefined) =>
+  typeof value === 'number' && value !== value
+
+const NaNtoText = (value: number | string | undefined) =>
+  isNaN(value) ? '' : value
+
 export const Input = forwardRef<InputRef, InputProps>(
   (
     {
@@ -103,7 +109,7 @@ export const Input = forwardRef<InputRef, InputProps>(
       name = '',
       type = InputType.Text,
       style = {width: '100%'},
-      value = '',
+      value,
       status = ComponentStatus.Default,
       onBlur,
       testID = 'input-field',
@@ -133,7 +139,7 @@ export const Input = forwardRef<InputRef, InputProps>(
     ref
   ) => {
     const [isFocused, setFocus] = useState<boolean>(autoFocus)
-    const correctStatus = value === value ? status : ComponentStatus.Error
+    const correctStatus = isNaN(value) ? ComponentStatus.Error : status
 
     const inputClass = classnames('cf-input', {
       [`cf-input-${size}`]: size,
@@ -166,12 +172,10 @@ export const Input = forwardRef<InputRef, InputProps>(
 
     const inputCheckboxClass = classnames('cf-input--checkbox', {checked})
 
-    const correctlyTypedValue: string | number = value === value ? value : ''
-    const correctType: string = value === value ? type : 'text'
-    const correctlyTypedMin: string | number | undefined =
-      min === min ? min : undefined
-    const correctlyTypedMax: string | number | undefined =
-      max === max ? max : undefined
+    const correctType: string = isNaN(value) ? 'text' : type
+    const correctlyTypedValue: string | number | undefined = NaNtoText(value)
+    const correctlyTypedMin: string | number | undefined = NaNtoText(min)
+    const correctlyTypedMax: string | number | undefined = NaNtoText(max)
 
     const iconElement = icon && <Icon glyph={icon} className="cf-input-icon" />
 
@@ -180,8 +184,8 @@ export const Input = forwardRef<InputRef, InputProps>(
 
     const baseProps: Omit<InputProps, 'size'> = {
       id,
-      min: correctlyTypedMin,
-      max: correctlyTypedMax,
+      min: correctlyTypedMin as any,
+      max: correctlyTypedMax as any,
       step,
       checked,
       name,

@@ -82,7 +82,7 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
       size = ComponentSize.Small,
       name,
       style,
-      value = '',
+      value,
       color = ComponentColor.Primary,
       onBlur,
       testID = 'toggle',
