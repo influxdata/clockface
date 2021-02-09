@@ -30,18 +30,18 @@ export interface DropdownProps extends StandardFunctionProps {
   /** Optional method that is triggered when the user clicks outside of/away from the dropdown */
   onClickAway?: () => void
   /**
-   * optional way for the owner of this dropdown to set the menu status:
+   * optional way for the owner of this dropdown to set the menu to be open or closed:
    * 'open':  the menu will be open
    * 'closed': the menu will be closed
    * any other string will be ignored.
    *
-   * and the menu state (open/closed) only changes when this value changes.
+   * and the menu  (open/closed) only changes programmatically when this value changes.
    * so the owner is responsible for resetting this value
    * (if the string is set to 'open', and then the user closes it, and the code sets it to open again,
    * unless the code sets it to something else in between (like null or 'close'),
    * then nothing will happen- the menu will not open)
    * */
-  setMenuStatus?: MenuStatus
+  menuOpen?: MenuStatus
 }
 
 export type DropdownRef = HTMLDivElement
@@ -57,7 +57,7 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
       dropUp = false,
       className,
       onClickAway,
-      setMenuStatus,
+      menuOpen,
     },
     ref
   ) => {
@@ -76,13 +76,13 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
     }
 
     useEffect(() => {
-      if (setMenuStatus === MenuStatus.Closed) {
+      if (menuOpen === MenuStatus.Closed) {
         setExpandedState(false)
       }
-      if (setMenuStatus === MenuStatus.Open) {
+      if (menuOpen === MenuStatus.Open) {
         setExpandedState(true)
       }
-    }, [setMenuStatus])
+    }, [menuOpen])
 
     const dropdownClass = classnames('cf-dropdown', {
       [`${className}`]: className,
