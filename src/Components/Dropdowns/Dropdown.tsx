@@ -13,8 +13,8 @@ import {StandardFunctionProps} from '../../Types'
 import './Dropdown.scss'
 
 enum MenuStatus {
-    Open = 'open',
-    Closed = 'closed'
+  Open = 'open',
+  Closed = 'closed',
 }
 
 export interface DropdownProps extends StandardFunctionProps {
