@@ -3,7 +3,8 @@
 ### 2.6.2 (Unreleased)
 
 ### 2.6.1 (2021-2-10)
-- [#576](https://github.com/influxdata/clockface/pull/576): Export new `MenuStatus` enum for `DropDown`; very minor change. 
+
+- [#576](https://github.com/influxdata/clockface/pull/576): Export new `MenuStatus` enum for `DropDown`; very minor change.
 
 ### 2.6.0 (2021-02-10)
 
@@ -32,7 +33,7 @@
 - [#558](https://github.com/influxdata/clockface/pull/558): Update `Book`, `BookCode`, and `BookPencil` icons. Add `CurrencyEUR`, `CurrencyGBP`, `CurrencyUSD`, `Layers`, `Share`, `ShareSolid` and `Shield` icons
 
 #### 2.3.6 (2020-11-20)
-  
+
 - [#557](https://github.com/influxdata/clockface/pull/557): Add `Book`, `BookCode`, and `BookPencil` icons to font
 
 #### 2.3.5 (2020-10-19)

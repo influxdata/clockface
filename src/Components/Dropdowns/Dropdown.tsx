@@ -76,7 +76,6 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
     }
 
     useEffect(() => {
-
       if (menuOpen === MenuStatus.Closed) {
         setExpandedState(false)
       }
