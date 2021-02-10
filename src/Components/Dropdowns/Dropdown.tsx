@@ -12,7 +12,7 @@ import {StandardFunctionProps} from '../../Types'
 // Styles
 import './Dropdown.scss'
 
-enum MenuStatus {
+export enum MenuStatus {
   Open = 'open',
   Closed = 'closed',
 }
@@ -76,6 +76,7 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
     }
 
     useEffect(() => {
+
       if (menuOpen === MenuStatus.Closed) {
         setExpandedState(false)
       }

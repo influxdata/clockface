@@ -1,5 +1,10 @@
 # Changelog
 
+### 2.6.2 (Unreleased)
+
+### 2.6.1 (2021-2-10)
+- [#576](https://github.com/influxdata/clockface/pull/576): Export new `MenuStatus` enum for `DropDown`; very minor change. 
+
 ### 2.6.0 (2021-02-10)
 
 - [#574](https://github.com/influxdata/clockface/pull/574): Upgrade Storybook to 6.1.17
