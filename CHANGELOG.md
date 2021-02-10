@@ -1,6 +1,12 @@
 # Changelog
 
-### 2.4.3 (Unreleased)
+### 2.6.2 (Unreleased)
+
+### 2.6.1 (2021-2-10)
+
+- [#576](https://github.com/influxdata/clockface/pull/576): Export new `MenuStatus` enum for `DropDown`; very minor change.
+
+### 2.6.0 (2021-02-10)
 
 - [#574](https://github.com/influxdata/clockface/pull/574): Upgrade Storybook to 6.1.17
 - [#573](https://github.com/influxdata/clockface/pull/573): Enhance `Dropdown` with new, optional parameters for supporting type-ahead dropdowns
@@ -10,7 +16,7 @@
 - [#567](https://github.com/influxdata/clockface/pull/567): Bump nested-object-assign from 1.0.3 to 1.0.4
 - [#565](https://github.com/influxdata/clockface/pull/565): Create ability to set vertical range slider; adds a new property to the existing `RangeSlider` component
 
-#### 2.4.2 (2021-01-13)
+#### 2.5.0 (2021-01-13)
 
 - [#564](https://github.com/influxdata/clockface/pull/564): Add Heart Solid Icon
 
@@ -27,7 +33,7 @@
 - [#558](https://github.com/influxdata/clockface/pull/558): Update `Book`, `BookCode`, and `BookPencil` icons. Add `CurrencyEUR`, `CurrencyGBP`, `CurrencyUSD`, `Layers`, `Share`, `ShareSolid` and `Shield` icons
 
 #### 2.3.6 (2020-11-20)
-  
+
 - [#557](https://github.com/influxdata/clockface/pull/557): Add `Book`, `BookCode`, and `BookPencil` icons to font
 
 #### 2.3.5 (2020-10-19)
