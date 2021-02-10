@@ -1,6 +1,6 @@
 # Changelog
 
-### 2.4.3 (Unreleased)
+### 2.6.0 (2021-02-10)
 
 - [#574](https://github.com/influxdata/clockface/pull/574): Upgrade Storybook to 6.1.17
 - [#573](https://github.com/influxdata/clockface/pull/573): Enhance `Dropdown` with new, optional parameters for supporting type-ahead dropdowns
@@ -10,7 +10,7 @@
 - [#567](https://github.com/influxdata/clockface/pull/567): Bump nested-object-assign from 1.0.3 to 1.0.4
 - [#565](https://github.com/influxdata/clockface/pull/565): Create ability to set vertical range slider; adds a new property to the existing `RangeSlider` component
 
-#### 2.4.2 (2021-01-13)
+#### 2.5.0 (2021-01-13)
 
 - [#564](https://github.com/influxdata/clockface/pull/564): Add Heart Solid Icon
 
