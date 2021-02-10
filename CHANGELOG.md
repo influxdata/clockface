@@ -2,9 +2,11 @@
 
 ### 2.4.3 (Unreleased)
 
+- [#574](https://github.com/influxdata/clockface/pull/574): Upgrade Storybook to 6.1.17
+
 #### 2.4.2 (2021-01-13)
 
-- [#562](https://github.com/influxdata/clockface/pull/564): Add Heart Solid Icon
+- [#564](https://github.com/influxdata/clockface/pull/564): Add Heart Solid Icon
 
 #### 2.4.1 (2020-12-18)
 
