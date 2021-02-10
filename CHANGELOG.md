@@ -3,6 +3,12 @@
 ### 2.4.3 (Unreleased)
 
 - [#574](https://github.com/influxdata/clockface/pull/574): Upgrade Storybook to 6.1.17
+- [#573](https://github.com/influxdata/clockface/pull/573): Enhance `Dropdown` with new, optional parameters for supporting type-ahead dropdowns
+- [#572](https://github.com/influxdata/clockface/pull/572): adding pretty-quick (similar to prettier, but it only runs on changed files so is much quicker to run)
+- [#571](https://github.com/influxdata/clockface/pull/571): `RangeSlider`: adds option to expose the value.
+- [#568](https://github.com/influxdata/clockface/pull/568): Labels on the `ToggleButton` are now clickable
+- [#567](https://github.com/influxdata/clockface/pull/567): Bump nested-object-assign from 1.0.3 to 1.0.4
+- [#565](https://github.com/influxdata/clockface/pull/565): Create ability to set vertical range slider; adds a new property to the existing `RangeSlider` component
 
 #### 2.4.2 (2021-01-13)
 
@@ -14,14 +20,14 @@
 
 #### 2.4.0 (2020-12-16)
 
-- [#559](https://github.com/influxdata/clockface/pull/560): Add `onEscape` prop that takes in state handler and enables closing of overlays on escape keypress
+- [#560](https://github.com/influxdata/clockface/pull/560): Add `onEscape` prop that takes in state handler and enables closing of overlays on escape keypress
 
 #### 2.3.7 (2020-12-02)
 
 - [#558](https://github.com/influxdata/clockface/pull/558): Update `Book`, `BookCode`, and `BookPencil` icons. Add `CurrencyEUR`, `CurrencyGBP`, `CurrencyUSD`, `Layers`, `Share`, `ShareSolid` and `Shield` icons
 
 #### 2.3.6 (2020-11-20)
-
+  
 - [#557](https://github.com/influxdata/clockface/pull/557): Add `Book`, `BookCode`, and `BookPencil` icons to font
 
 #### 2.3.5 (2020-10-19)
