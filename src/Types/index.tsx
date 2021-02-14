@@ -154,7 +154,7 @@ export enum DropdownItemType {
   None = 'none',
 }
 
-export enum DirectionType {
+export enum Direction {
   Left = 'left',
   Right = 'right',
 }

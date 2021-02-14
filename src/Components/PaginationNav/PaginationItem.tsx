@@ -22,12 +22,20 @@ export const PaginationItem = forwardRef<
   PaginationItemProps
 >(
   (
-    {id, style, testID = 'Pagination-item', className, page, isActive, onClick},
+    {id, style, testID = 'pagination-item', className, page, isActive, onClick},
     ref
   ) => {
-    const paginationClassName = classnames(
+    const paginationItemContainerClassName = classnames(
+      'cf-pagination--item--container',
+      {
+        'cf-pagination--item--container__active': isActive,
+        [`${className}`]: className,
+      }
+    )
+
+    const paginationItemClassName = classnames(
+      'cf-pagination--button',
       'cf-pagination--item',
-      'cf-pagination--item__clickable',
       {
         'cf-pagination--item__active': isActive,
         [`${className}`]: className,
@@ -36,14 +44,15 @@ export const PaginationItem = forwardRef<
 
     return (
       <li
-        className={paginationClassName}
+        className={paginationItemContainerClassName}
         data-testid={testID}
         id={id}
         style={style}
         ref={ref}
-        onClick={onClick}
       >
-        {page}
+        <button className={paginationItemClassName} onClick={onClick}>
+          {page}
+        </button>
       </li>
     )
   }

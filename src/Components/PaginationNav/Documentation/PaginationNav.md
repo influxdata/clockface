@@ -15,6 +15,7 @@ import {PaginationNav} from '@influxdata/clockface'
           onChange={page => {
             someFunction(page)
           }}
+          hideDirectionIcon= {false}
         ></PaginationNav.PaginationNav>
 ```
 ### Example

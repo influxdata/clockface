@@ -22,73 +22,66 @@ $cf-pagination--direction-icon: $g18-cloud;
   display: flex;
 }
 
+.cf-pagination--button {
+  border-radius: $cf-radius;
+  background-color: Transparent;
+  border: none;
+  width: $cf-form-md-height;
+  height: $cf-form-md-height;
+  line-height: $cf-form-md-height;
+  width: 100%;
+  height: 100%;
+  outline: inherit;
+  font-size: inherit;
+  font-weight: $cf-font-weight--bold;
+  font: inherit;
+  color: $cf-pagination--text;
+
+
+  &:hover {
+    background-color: $cf-pagination--item-hover;
+  }
+}
+
+//this is just for until the truncation item gets a dropdown option function live.
+.cf-pagination--button__disabled {
+    border-radius: $cf-radius;
+    background-color: Transparent;
+    border: none;
+    width: $cf-form-md-height;
+    height: $cf-form-md-height;
+    line-height: $cf-form-md-height;
+    width: 100%;
+    height: 100%;
+    outline: inherit;
+    font-size: inherit;
+    font-weight: $cf-font-weight--bold;
+    font: inherit;
+    color: $cf-pagination--text;
+
+  &:hover {
+    background-color: transparent;
+  }
+}
+
 .cf-pagination--container {
   width: 100%;
   display: flex;
 }
 
-.cf-pagination--direction--button {
+.cf-pagination--item--container {
   list-style: none;
+  margin-bottom: 0;
   padding: 0;
-  margin-bottom: 0;
-}
-
-.cf-pagination--item {
-  flex-shrink: 0;
-  display: block;
-  position: relative;
-  list-style: none;
-  padding: $cf-marg-b;
-  margin-bottom: 0;
   text-align: center;
   width: $cf-form-md-height;
   height: $cf-form-md-height;
-  color: $cf-pagination--text;
-}
-
-.cf-pagination--item__clickable {
-  &:hover {
-    color: $cf-pagination--text-hover;
-    background-color: $cf-pagination--item-hover;
-  }
-}
-
-.cf-pagination--icon {
-  display: inline-block;
-  vertical-align: middle;
-  pointer-events: none;
-  font-size: floor($cf-form-md-font * 1.2);
   line-height: $cf-form-md-height;
-}
-
-.cf-pagination--truncation--icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  pointer-events: none;
-  font-size: floor($cf-form-md-font * 1.2);
-  line-height: floor($cf-form-md-font * 1.2);
-}
-
-.cf-pagination--direction--icon {
-  color: $cf-pagination--direction-icon;
-  width: $cf-form-md-height;
-  height: $cf-form-md-height;
-  line-height: $cf-form-md-height;
-  text-align: center;
-  //Added this because even though the icon is "centered", it looked out of alignment with the numbers.
-  transform: translateY(-2%);
-  padding: 0;
-  &:hover {
-    background-color: $cf-pagination--item-hover;
-  }
 }
 
 // Active State
-
-.cf-pagination--item__active {
-  color: $cf-pagination--text-active;
-  font-weight: $cf-font-weight--bold;
+.cf-pagination--item--container__active {
+  position: relative;
   &:after {
     content: "";
     background-color: $cf-pagination--border-color;
@@ -98,4 +91,37 @@ $cf-pagination--direction-icon: $g18-cloud;
     left: 0;
     bottom: 0;
   }
+}
+
+// Active State
+.cf-pagination--item {
+  color: $cf-pagination--text;
+  &:hover {
+    color: $cf-pagination--text-hover;
+    background-color: $cf-pagination--item-hover;
+  }
+}
+
+.cf-pagination--item__active {
+  color: $cf-pagination--text-active;
+  font-weight: $cf-font-weight--bold;
+}
+
+.cf-pagination-icon {
+  display: inline-block;
+  vertical-align: middle;
+  pointer-events: none;
+  font-size: floor($cf-form-md-font * 1.2);
+  color: $cf-pagination--direction-icon;
+  transform: translateY(-5%);
+}
+
+.cf-pagination--truncation-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  font-size: floor($cf-form-md-font * 1.2);
+  line-height: floor($cf-form-md-font * 1.2);
+
 }

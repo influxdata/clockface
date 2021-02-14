@@ -9,10 +9,6 @@ import './Pagination.scss'
 import {StandardFunctionProps} from '../../Types'
 
 export interface PaginationTruncationItemProps extends StandardFunctionProps {
-  //Below option will alow you to display a dropdown but there isn't a coded functionality yet. soon to come.
-  //startingPage?: number
-  //Below option will alow you to display a dropdown but there isn't a coded functionality yet. soon to come.
-  //truncatedOptions?: number[]
   onClick?: (e?: MouseEvent<HTMLElement>) => void
 }
 
@@ -22,18 +18,10 @@ export const PaginationTruncationItem = forwardRef<
   PaginationTruncationItemProps
 >(
   (
-    {
-      id,
-      style,
-      testID = 'Pagination-truncation-item',
-      className,
-      //startingPage,
-      //truncatedOptions,
-      onClick,
-    },
+    {id, style, testID = 'pagination-truncation-item', className, onClick},
     ref
   ) => {
-    const paginationClassName = classnames('cf-pagination--item', {
+    const paginationClassName = classnames('cf-pagination--item--container', {
       [`${className}`]: className,
     })
 
@@ -44,9 +32,10 @@ export const PaginationTruncationItem = forwardRef<
         id={id}
         style={style}
         ref={ref}
-        onClick={onClick}
       >
-        <span className="cf-pagination--truncation-icon">&#8230;</span>
+        <button className="cf-pagination--button__disabled" onClick={onClick}>
+          <span className="cf-pagination--truncation-icon">&#8230;</span>
+        </button>
       </li>
     )
   }

@@ -10,12 +10,12 @@ import {Icon} from '../Icon/Base/Icon'
 import './Pagination.scss'
 
 // Types
-import {IconFont, StandardFunctionProps, DirectionType} from '../../Types'
+import {IconFont, StandardFunctionProps, Direction} from '../../Types'
 
 export interface PaginationDirectionItemProps extends StandardFunctionProps {
   /** Caret Left or Caret Right on button */
-  direction: DirectionType
-  onClick?: (e?: MouseEvent<HTMLLIElement>) => void
+  direction: Direction
+  onClick?: (e?: MouseEvent<HTMLButtonElement>) => void
 }
 
 export type PaginationDirectionItemRef = HTMLLIElement
@@ -27,20 +27,16 @@ export const PaginationDirectionItem = forwardRef<
     {
       id,
       style,
-      testID = 'Pagination-direction-item',
+      testID = 'pagination-direction-item',
       className,
       direction,
       onClick,
     },
     ref
   ) => {
-    const paginationClassName = classnames(
-      'cf-pagination--direction--button',
-      '',
-      {
-        [`${className}`]: className,
-      }
-    )
+    const paginationClassName = classnames('cf-pagination--item--container', {
+      [`${className}`]: className,
+    })
 
     const directionIcon =
       direction === 'left' ? IconFont['CaretLeft'] : IconFont['CaretRight']
@@ -52,11 +48,10 @@ export const PaginationDirectionItem = forwardRef<
         id={id}
         style={style}
         ref={ref}
-        onClick={onClick}
       >
-        <div className="cf-pagination--direction--icon">
-          <Icon glyph={directionIcon} className="cf-pagination--icon" />
-        </div>
+        <button className="cf-pagination--button" onClick={onClick}>
+          <Icon glyph={directionIcon} className="cf-pagination-icon" />
+        </button>
       </li>
     )
   }
