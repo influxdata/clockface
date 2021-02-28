@@ -1,21 +1,28 @@
 // Libraries
 import React, {forwardRef, MouseEvent} from 'react'
 import classnames from 'classnames'
+import {Button} from '../Button/Composed/Button'
 
 // Components
-
-import {Icon} from '../Icon/Base/Icon'
 
 // Styles
 import './Pagination.scss'
 
 // Types
-import {IconFont, StandardFunctionProps, Direction} from '../../Types'
+import {
+  StandardFunctionProps,
+  ComponentColor,
+  ComponentSize,
+  ButtonShape,
+  Direction,
+  IconFont,
+} from '../../Types'
 
 export interface PaginationDirectionItemProps extends StandardFunctionProps {
   /** Caret Left or Caret Right on button */
   direction: Direction
   onClick?: (e?: MouseEvent<HTMLButtonElement>) => void
+  size?: ComponentSize
 }
 
 export type PaginationDirectionItemRef = HTMLLIElement
@@ -31,12 +38,17 @@ export const PaginationDirectionItem = forwardRef<
       className,
       direction,
       onClick,
+      size = ComponentSize.Medium,
     },
     ref
   ) => {
-    const paginationClassName = classnames('cf-pagination--item--container', {
-      [`${className}`]: className,
-    })
+    const paginationClassName = classnames(
+      'cf-pagination--item--container',
+      'cf-pagination--direction--item',
+      {
+        [`${className}`]: className,
+      }
+    )
 
     const directionIcon =
       direction === 'left' ? IconFont['CaretLeft'] : IconFont['CaretRight']
@@ -49,9 +61,13 @@ export const PaginationDirectionItem = forwardRef<
         style={style}
         ref={ref}
       >
-        <button className="cf-pagination--button" onClick={onClick}>
-          <Icon glyph={directionIcon} className="cf-pagination-icon" />
-        </button>
+        <Button
+          size={size}
+          color={ComponentColor.Tertiairy}
+          onClick={onClick}
+          shape={ButtonShape.Square}
+          icon={directionIcon}
+        ></Button>
       </li>
     )
   }

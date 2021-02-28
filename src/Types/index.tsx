@@ -33,6 +33,7 @@ export enum ComponentColor {
   Default = 'default',
   Primary = 'primary',
   Secondary = 'secondary',
+  Tertiairy = 'tertiary',
   Success = 'success',
   Warning = 'warning',
   Danger = 'danger',

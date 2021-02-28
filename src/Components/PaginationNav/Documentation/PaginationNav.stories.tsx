@@ -17,7 +17,7 @@ import {
 } from '../'
 
 // Types
-import {Direction} from '../../../Types'
+import {Direction, ComponentSize} from '../../../Types'
 
 // Notes
 import PaginationReadme from './PaginationNav.md'
@@ -54,6 +54,9 @@ PaginationStories.add(
             /* eslint-enable */
           }}
           hideDirectionIcon={boolean('hideDirectionIcon', false)}
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
         ></PaginationNav.PaginationNav>
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
@@ -85,6 +88,9 @@ PaginationStories.add(
           ref={paginationItemRef}
           page={number('value', 10)}
           isActive={boolean('active', false)}
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
         />
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
@@ -117,6 +123,9 @@ PaginationStories.add(
           direction={
             Direction[select('direction', mapEnumKeys(Direction), 'left')]
           }
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
         />
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
@@ -143,7 +152,12 @@ PaginationStories.add(
     }
     return (
       <div className="story--example">
-        <PaginationNav.TruncationItem ref={paginationTruncationItemRef} />
+        <PaginationNav.TruncationItem
+          ref={paginationTruncationItemRef}
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+        />
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
         </div>

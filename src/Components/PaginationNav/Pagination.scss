@@ -5,65 +5,10 @@
   ------------------------------------------------------------------------------
 */
 
-$cf-pagination--text: $g9-mountain;
-$cf-pagination--text-hover: $g14-chromium;
-$cf-pagination--text-active: $g20-white;
 $cf-pagination--border-color: $g5-pepper;
-$cf-pagination--item-hover: $g3-castle;
-$cf-pagination--item-border-color: $g5-pepper;
-$cf-pagination--direction-icon: $g18-cloud;
+$cf-pagination--direction-icon: $g14-chromium;
 
-.cf-pagination {
-  border-radius: $cf-radius;
-  padding: $cf-border;
-  font-size: $cf-form-md-font;
-  user-select: none;
-  width: 100%;
-  display: flex;
-}
-
-.cf-pagination--button {
-  border-radius: $cf-radius;
-  background-color: Transparent;
-  border: none;
-  width: $cf-form-md-height;
-  height: $cf-form-md-height;
-  line-height: $cf-form-md-height;
-  width: 100%;
-  height: 100%;
-  outline: inherit;
-  font-size: inherit;
-  font-weight: $cf-font-weight--bold;
-  font: inherit;
-  color: $cf-pagination--text;
-
-
-  &:hover {
-    background-color: $cf-pagination--item-hover;
-  }
-}
-
-//this is just for until the truncation item gets a dropdown option function live.
-.cf-pagination--button__disabled {
-    border-radius: $cf-radius;
-    background-color: Transparent;
-    border: none;
-    width: $cf-form-md-height;
-    height: $cf-form-md-height;
-    line-height: $cf-form-md-height;
-    width: 100%;
-    height: 100%;
-    outline: inherit;
-    font-size: inherit;
-    font-weight: $cf-font-weight--bold;
-    font: inherit;
-    color: $cf-pagination--text;
-
-  &:hover {
-    background-color: transparent;
-  }
-}
-
+.cf-pagination,
 .cf-pagination--container {
   width: 100%;
   display: flex;
@@ -73,10 +18,12 @@ $cf-pagination--direction-icon: $g18-cloud;
   list-style: none;
   margin-bottom: 0;
   padding: 0;
-  text-align: center;
-  width: $cf-form-md-height;
-  height: $cf-form-md-height;
-  line-height: $cf-form-md-height;
+}
+
+.cf-pagination--direction--item {
+  button {
+  color: $cf-pagination--direction-icon
+  }
 }
 
 // Active State
@@ -85,43 +32,11 @@ $cf-pagination--direction-icon: $g18-cloud;
   &:after {
     content: "";
     background-color: $cf-pagination--border-color;
+    z-index: 1;
     width: 100%;
     position: absolute;
     height: floor($cf-form-md-height * 0.1);
     left: 0;
     bottom: 0;
   }
-}
-
-// Active State
-.cf-pagination--item {
-  color: $cf-pagination--text;
-  &:hover {
-    color: $cf-pagination--text-hover;
-    background-color: $cf-pagination--item-hover;
-  }
-}
-
-.cf-pagination--item__active {
-  color: $cf-pagination--text-active;
-  font-weight: $cf-font-weight--bold;
-}
-
-.cf-pagination-icon {
-  display: inline-block;
-  vertical-align: middle;
-  pointer-events: none;
-  font-size: floor($cf-form-md-font * 1.2);
-  color: $cf-pagination--direction-icon;
-  transform: translateY(-5%);
-}
-
-.cf-pagination--truncation-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  pointer-events: none;
-  font-size: floor($cf-form-md-font * 1.2);
-  line-height: floor($cf-form-md-font * 1.2);
-
 }

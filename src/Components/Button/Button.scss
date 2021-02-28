@@ -128,7 +128,7 @@
   Color Modifiers
   ------------------------------------------------------------------------------
 */
-@mixin buttonColorModifier($bgA, $bgB, $bgHoverA, $bgHoverB, $text, $textHover) {
+@mixin buttonColorModifier($bgA, $bgB, $bgHoverA, $bgHoverB, $text, $textHover, $tertiary: false) {
   color: $text;
   @include gradient-diag-up($bgA, $bgB);
 
@@ -148,15 +148,33 @@
     box-shadow: 0 -1px 4px 1px $c-pool, 0 1px 6px 2px $c-star;
   }
 
-  &:active,
-  &:focus,
-  &:active:hover,
-  &.active,
-  &.active:hover {
-    color: $textHover;
-
-    &:after {
+  @if $tertiary {
+  
+    &:active,
+    &:focus,
+    &:active:hover,
+    &.active,
+    &.active:hover {
+      color: $textHover;
+    }
+    &:focus,
+    &.active:hover {
+      &:after {
       opacity: 1;
+      }
+    }
+
+  } @else {
+    &:active,
+    &:focus,
+    &:active:hover,
+    &.active,
+    &.active:hover {
+      color: $textHover;
+
+      &:after {
+        opacity: 1;
+      }
     }
   }
 
@@ -196,6 +214,9 @@
 }
 .cf-button-secondary {
   @include buttonColorModifier($c-void, $c-amethyst, $c-amethyst, $c-comet, $g20-white, $g20-white);
+}
+.cf-button-tertiary {
+  @include buttonColorModifier(transparent, transparent, $g3-castle, $g3-castle, $g9-mountain, $g20-white, true);
 }
 .cf-button-success {
   @include buttonColorModifier($c-emerald, mix($c-honeydew, $c-pool, 80%), $c-rainforest, mix($c-krypton, $c-laser, 80%), $g20-white, $g20-white);

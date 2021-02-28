@@ -11,7 +11,7 @@ import {PaginationTruncationItem} from './paginationTruncationItem'
 import './Pagination.scss'
 
 // Types
-import {StandardFunctionProps, Direction} from '../../Types'
+import {StandardFunctionProps, Direction, ComponentSize} from '../../Types'
 
 export interface PaginationNavProps extends StandardFunctionProps {
   /** Total nuber of pages there exists */
@@ -27,6 +27,7 @@ export interface PaginationNavProps extends StandardFunctionProps {
    * The compute functions will need to be refactored to provide more flexible range*/
   pageRangeOffset: number
   hideDirectionIcon?: boolean
+  size?: ComponentSize
 }
 
 export type PaginationNavRef = HTMLElement
@@ -43,6 +44,7 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
       onChange,
       pageRangeOffset = 1,
       hideDirectionIcon = false,
+      size = ComponentSize.Medium,
     },
     ref
   ) => {
@@ -139,6 +141,7 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
             <PaginationDirectionItem
               direction={Direction.Left}
               onClick={() => moveToPage(activePage - 1)}
+              size={size}
             />
           )}
           {
@@ -146,11 +149,12 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
               page={1}
               isActive={checkActive(1)}
               onClick={() => moveToPage(1)}
+              size={size}
             />
           }
           {breakpoints.firstBreakpoint > 2 && (
             // compute whether it should be an ellipse or a number
-            <PaginationTruncationItem></PaginationTruncationItem>
+            <PaginationTruncationItem size={size}></PaginationTruncationItem>
           )}
           {[...Array(totalPages)]
             .map((_, i) => i)
@@ -164,11 +168,12 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
                 isActive={checkActive(item)}
                 onClick={() => moveToPage(item)}
                 key={'pagination--item-' + item}
+                size={size}
               />
             ))}
           {// compute whether it should be an ellipse or a number
           breakpoints.secondBreakpoint !== totalPages - 1 && (
-            <PaginationTruncationItem></PaginationTruncationItem>
+            <PaginationTruncationItem size={size}></PaginationTruncationItem>
           )}
           {//compute last number
           totalPages !== 1 && (
@@ -176,12 +181,14 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
               page={totalPages}
               isActive={checkActive(totalPages)}
               onClick={() => moveToPage(totalPages)}
+              size={size}
             />
           )}
           {!hideDirectionIcon && (
             <PaginationDirectionItem
               direction={Direction.Right}
               onClick={() => moveToPage(activePage + 1)}
+              size={size}
             />
           )}
         </ul>

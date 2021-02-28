@@ -1,6 +1,7 @@
 // Libraries
 import React, {forwardRef, MouseEvent} from 'react'
 import classnames from 'classnames'
+import {Button} from '../Button/Composed/Button'
 
 // Components
 
@@ -8,12 +9,18 @@ import classnames from 'classnames'
 import './Pagination.scss'
 
 // Types
-import {StandardFunctionProps} from '../../Types'
+import {
+  StandardFunctionProps,
+  ComponentColor,
+  ComponentSize,
+  ButtonShape,
+} from '../../Types'
 
 export interface PaginationItemProps extends StandardFunctionProps {
   page: number
   isActive: boolean
   onClick?: (e?: MouseEvent<HTMLElement>) => void
+  size?: ComponentSize
 }
 
 export type PaginationItemRef = HTMLLIElement
@@ -22,22 +29,22 @@ export const PaginationItem = forwardRef<
   PaginationItemProps
 >(
   (
-    {id, style, testID = 'pagination-item', className, page, isActive, onClick},
+    {
+      id,
+      style,
+      testID = 'pagination-item',
+      className,
+      page,
+      isActive,
+      onClick,
+      size = ComponentSize.Medium,
+    },
     ref
   ) => {
     const paginationItemContainerClassName = classnames(
       'cf-pagination--item--container',
       {
         'cf-pagination--item--container__active': isActive,
-        [`${className}`]: className,
-      }
-    )
-
-    const paginationItemClassName = classnames(
-      'cf-pagination--button',
-      'cf-pagination--item',
-      {
-        'cf-pagination--item__active': isActive,
         [`${className}`]: className,
       }
     )
@@ -50,9 +57,14 @@ export const PaginationItem = forwardRef<
         style={style}
         ref={ref}
       >
-        <button className={paginationItemClassName} onClick={onClick}>
-          {page}
-        </button>
+        <Button
+          size={size}
+          color={ComponentColor.Tertiairy}
+          onClick={onClick}
+          active={isActive}
+          shape={ButtonShape.Square}
+          text={page.toString()}
+        ></Button>
       </li>
     )
   }

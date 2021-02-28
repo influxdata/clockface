@@ -1,15 +1,22 @@
 // Libraries
 import React, {forwardRef, MouseEvent} from 'react'
 import classnames from 'classnames'
+import {Button} from '../Button/Composed/Button'
 
 // Styles
 import './Pagination.scss'
 
 // Types
-import {StandardFunctionProps} from '../../Types'
+import {
+  StandardFunctionProps,
+  ComponentColor,
+  ComponentSize,
+  ButtonShape,
+} from '../../Types'
 
 export interface PaginationTruncationItemProps extends StandardFunctionProps {
   onClick?: (e?: MouseEvent<HTMLElement>) => void
+  size?: ComponentSize
 }
 
 export type PaginationTruncationItemRef = HTMLLIElement
@@ -18,7 +25,14 @@ export const PaginationTruncationItem = forwardRef<
   PaginationTruncationItemProps
 >(
   (
-    {id, style, testID = 'pagination-truncation-item', className, onClick},
+    {
+      id,
+      style,
+      testID = 'pagination-truncation-item',
+      className,
+      onClick,
+      size = ComponentSize.Medium,
+    },
     ref
   ) => {
     const paginationClassName = classnames('cf-pagination--item--container', {
@@ -33,9 +47,13 @@ export const PaginationTruncationItem = forwardRef<
         style={style}
         ref={ref}
       >
-        <button className="cf-pagination--button__disabled" onClick={onClick}>
-          <span className="cf-pagination--truncation-icon">&#8230;</span>
-        </button>
+        <Button
+          size={size}
+          color={ComponentColor.Tertiairy}
+          onClick={onClick}
+          shape={ButtonShape.Square}
+          text={'...'}
+        ></Button>
       </li>
     )
   }
