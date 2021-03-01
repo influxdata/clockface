@@ -4,7 +4,6 @@ import classnames from 'classnames'
 
 // Components
 import {PaginationItem} from './PaginationItem'
-import {PaginationDirectionItem} from './PaginationDirectionItem'
 import {PaginationTruncationItem} from './paginationTruncationItem'
 
 // Styles
@@ -138,17 +137,20 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
       >
         <ul className="cf-pagination--container">
           {!hideDirectionIcon && (
-            <PaginationDirectionItem
+            <PaginationItem
               direction={Direction.Left}
               onClick={() => moveToPage(activePage - 1)}
+              key={'pagination--item-left'}
               size={size}
+              isActive={activePage > 1}
             />
           )}
           {
             <PaginationItem
-              page={1}
+              page={'1'}
               isActive={checkActive(1)}
               onClick={() => moveToPage(1)}
+              key={'pagination--item-1'}
               size={size}
             />
           }
@@ -164,7 +166,7 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
             )
             .map(item => (
               <PaginationItem
-                page={item}
+                page={item.toString()}
                 isActive={checkActive(item)}
                 onClick={() => moveToPage(item)}
                 key={'pagination--item-' + item}
@@ -178,17 +180,19 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
           {//compute last number
           totalPages !== 1 && (
             <PaginationItem
-              page={totalPages}
+              page={totalPages.toString()}
               isActive={checkActive(totalPages)}
               onClick={() => moveToPage(totalPages)}
               size={size}
             />
           )}
           {!hideDirectionIcon && (
-            <PaginationDirectionItem
+            <PaginationItem
               direction={Direction.Right}
               onClick={() => moveToPage(activePage + 1)}
+              key={'pagination--item-right'}
               size={size}
+              isActive={activePage < totalPages}
             />
           )}
         </ul>

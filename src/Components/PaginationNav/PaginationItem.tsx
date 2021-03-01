@@ -14,13 +14,16 @@ import {
   ComponentColor,
   ComponentSize,
   ButtonShape,
+  Direction,
+  IconFont,
 } from '../../Types'
 
 export interface PaginationItemProps extends StandardFunctionProps {
-  page: number
+  page?: string
   isActive: boolean
   onClick?: (e?: MouseEvent<HTMLElement>) => void
   size?: ComponentSize
+  direction?: Direction
 }
 
 export type PaginationItemRef = HTMLLIElement
@@ -38,13 +41,14 @@ export const PaginationItem = forwardRef<
       isActive,
       onClick,
       size = ComponentSize.Medium,
+      direction = null,
     },
     ref
   ) => {
     const paginationItemContainerClassName = classnames(
       'cf-pagination--item--container',
       {
-        'cf-pagination--item--container__active': isActive,
+        'cf-pagination--item--container__active': isActive && page,
         [`${className}`]: className,
       }
     )
@@ -57,14 +61,25 @@ export const PaginationItem = forwardRef<
         style={style}
         ref={ref}
       >
-        <Button
-          size={size}
-          color={ComponentColor.Tertiairy}
-          onClick={onClick}
-          active={isActive}
-          shape={ButtonShape.Square}
-          text={page.toString()}
-        ></Button>
+        {direction ? (
+          <Button
+            size={size}
+            color={ComponentColor.Tertiairy}
+            onClick={onClick}
+            active={isActive}
+            shape={ButtonShape.Square}
+            icon={IconFont[direction]}
+          ></Button>
+        ) : (
+          <Button
+            size={size}
+            color={ComponentColor.Tertiairy}
+            onClick={onClick}
+            active={isActive}
+            shape={ButtonShape.Square}
+            text={page}
+          ></Button>
+        )}
       </li>
     )
   }

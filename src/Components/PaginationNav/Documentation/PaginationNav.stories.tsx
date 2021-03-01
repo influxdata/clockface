@@ -12,17 +12,15 @@ import {
   PaginationNav,
   PaginationNavRef,
   PaginationItemRef,
-  PaginationDirectionItemRef,
   PaginationTruncationItemRef,
 } from '../'
 
 // Types
-import {Direction, ComponentSize} from '../../../Types'
+import {ComponentSize, Direction} from '../../../Types'
 
 // Notes
 import PaginationReadme from './PaginationNav.md'
 import PaginationItemReadme from './PaginationNavItem.md'
-import PaginationNavDirectionItemReadme from './PaginationNavDirectionItem.md'
 import PaginationTruncationItemReadme from './PaginationTruncationItem.md'
 
 const PaginationStories = storiesOf(
@@ -55,7 +53,7 @@ PaginationStories.add(
           }}
           hideDirectionIcon={boolean('hideDirectionIcon', false)}
           size={
-            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Medium')]
           }
         ></PaginationNav.PaginationNav>
         <div className="story--test-buttons">
@@ -84,12 +82,25 @@ PaginationStories.add(
 
     return (
       <div className="story--example">
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
         <PaginationNav.Item
           ref={paginationItemRef}
-          page={number('value', 10)}
+          direction={
+            Direction[select('directionIcon', mapEnumKeys(Direction), 'Left')]
+          }
           isActive={boolean('active', false)}
           size={
-            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Medium')]
+          }
+        />
+        <PaginationNav.Item
+          ref={paginationItemRef}
+          page={number('value', 10).toString()}
+          isActive={boolean('active', false)}
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Medium')]
           }
         />
         <div className="story--test-buttons">
@@ -101,41 +112,6 @@ PaginationStories.add(
   {
     readme: {
       content: marked(PaginationItemReadme),
-    },
-  }
-)
-
-PaginationStories.add(
-  'PaginationNavDirectionItem',
-  () => {
-    const paginationDirectionItemRef = createRef<PaginationDirectionItemRef>()
-
-    const logRef = (): void => {
-      /* eslint-disable */
-      console.log(paginationDirectionItemRef.current)
-      /* eslint-enable */
-    }
-
-    return (
-      <div className="story--example">
-        <PaginationNav.DirectionItem
-          ref={paginationDirectionItemRef}
-          direction={
-            Direction[select('direction', mapEnumKeys(Direction), 'left')]
-          }
-          size={
-            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-          }
-        />
-        <div className="story--test-buttons">
-          <button onClick={logRef}>Log Ref</button>
-        </div>
-      </div>
-    )
-  },
-  {
-    readme: {
-      content: marked(PaginationNavDirectionItemReadme),
     },
   }
 )

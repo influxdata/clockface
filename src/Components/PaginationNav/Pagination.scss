@@ -15,15 +15,10 @@ $cf-pagination--direction-icon: $g14-chromium;
 }
 
 .cf-pagination--item--container {
-  list-style: none;
   margin-bottom: 0;
   padding: 0;
-}
+  list-style: none;
 
-.cf-pagination--direction--item {
-  button {
-  color: $cf-pagination--direction-icon
-  }
 }
 
 // Active State
