@@ -12,13 +12,13 @@ $cf-pagination--direction-icon: $g14-chromium;
 .cf-pagination--container {
   width: 100%;
   display: flex;
+  padding: 0;
 }
 
 .cf-pagination--item--container {
   margin-bottom: 0;
   padding: 0;
   list-style: none;
-
 }
 
 // Active State

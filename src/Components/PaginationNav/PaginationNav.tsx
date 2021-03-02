@@ -1,5 +1,5 @@
 // Libraries
-import React, {forwardRef, useState, useEffect} from 'react'
+import React, {forwardRef, useState, useEffect, useLayoutEffect} from 'react'
 import classnames from 'classnames'
 
 // Components
@@ -47,6 +47,7 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
     },
     ref
   ) => {
+    const innerRef = React.useRef<HTMLElement>(null)
     const paginationNavClassName = classnames('cf-pagination', {
       [`${className}`]: className,
     })
@@ -91,9 +92,39 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
       }
     }
 
+    const resizeBasedOnParentSize = (size : ComponentSize, pageRangeOffset : number) => {
+      if (!innerRef.current) {
+        return pageRangeOffset
+      }
+      const {width} = innerRef.current.getBoundingClientRect() as DOMRect
+
+      let itemSize = 0
+      if (size == ComponentSize.Medium) {
+        itemSize = 38
+      } else if (size == ComponentSize.ExtraSmall) {
+        itemSize = 22
+      } else if (size == ComponentSize.Small) {
+        itemSize = 30
+      } else if (size == ComponentSize.Large) {
+        itemSize = 46
+      }
+
+      const maxItemCount = Math.floor(width / itemSize)
+      const directionButtonCount = hideDirectionIcon ? 0 : 2
+      const maxRangeOffset = Math.floor(
+        (maxItemCount - 5 - directionButtonCount) / 2
+      )
+      if (pageRangeOffset > maxRangeOffset) {
+        return maxRangeOffset
+      } else {
+        return pageRangeOffset
+      }
+    }
+
     const [breakpoints, setBreakpoints] = useState(
       computePageSpread(activePage, pageRangeOffset)
     )
+    
 
     const moveToPage = (page: number) => {
       if (page !== activePage) {
@@ -105,27 +136,23 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
       }
     }
 
-    useEffect(() => {
-      setBreakpoints(computePageSpread(activePage, pageRangeOffset))
-    }, [totalPages, pageRangeOffset])
+    useLayoutEffect(() => {
+      setBreakpoints(computePageSpread(activePage, resizeBasedOnParentSize(size, pageRangeOffset)))
+    }, [totalPages, pageRangeOffset, size, hideDirectionIcon])
 
     useEffect(() => {
       setActivePage(activePage)
       if (activePage > breakpoints.secondBreakpoint) {
-        setBreakpoints(computePageSpread(activePage, pageRangeOffset))
+        setBreakpoints(computePageSpread(activePage, resizeBasedOnParentSize(size, pageRangeOffset)))
       } else if (activePage < breakpoints.firstBreakpoint) {
-        setBreakpoints(computePageSpread(activePage, pageRangeOffset))
+        setBreakpoints(computePageSpread(activePage, resizeBasedOnParentSize(size, pageRangeOffset)))
       }
     }, [activePage])
 
     const checkActive = (page: number) => {
       return activePage === page ? true : false
     }
-
-    //To-Do : There's a requirement to make the page item counts responsive to the size of the container. I think you can use the width in the below object to do this.
-    /* if (paginationNavRef.current) {
-    console.log(paginationNavRef.current.getBoundingClientRect())
-  } */
+   
 
     return (
       <nav
@@ -133,7 +160,7 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
         data-testid={testID}
         id={id}
         style={style}
-        ref={ref}
+        ref={innerRef}
       >
         <ul className="cf-pagination--container">
           {!hideDirectionIcon && (
