@@ -16,7 +16,7 @@ export const EmptyStateText = forwardRef<
   })
 
   return (
-    <h4
+    <h2
       id={id}
       ref={ref}
       style={style}
@@ -24,7 +24,7 @@ export const EmptyStateText = forwardRef<
       className={emptyStateTextClass}
     >
       {children}
-    </h4>
+    </h2>
   )
 })
 
