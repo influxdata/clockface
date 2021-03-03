@@ -47,7 +47,7 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
     },
     ref
   ) => {
-    const innerRef = React.useRef<HTMLElement>(null)
+    const innerRef = React.useRef<HTMLUListElement>(null)
     const paginationNavClassName = classnames('cf-pagination', {
       [`${className}`]: className,
     })
@@ -92,7 +92,10 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
       }
     }
 
-    const resizeBasedOnParentSize = (size : ComponentSize, pageRangeOffset : number) => {
+    const resizeBasedOnParentSize = (
+      size: ComponentSize,
+      pageRangeOffset: number
+    ) => {
       if (!innerRef.current) {
         return pageRangeOffset
       }
@@ -124,7 +127,6 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
     const [breakpoints, setBreakpoints] = useState(
       computePageSpread(activePage, pageRangeOffset)
     )
-    
 
     const moveToPage = (page: number) => {
       if (page !== activePage) {
@@ -137,22 +139,36 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
     }
 
     useLayoutEffect(() => {
-      setBreakpoints(computePageSpread(activePage, resizeBasedOnParentSize(size, pageRangeOffset)))
+      setBreakpoints(
+        computePageSpread(
+          activePage,
+          resizeBasedOnParentSize(size, pageRangeOffset)
+        )
+      )
     }, [totalPages, pageRangeOffset, size, hideDirectionIcon])
 
     useEffect(() => {
       setActivePage(activePage)
       if (activePage > breakpoints.secondBreakpoint) {
-        setBreakpoints(computePageSpread(activePage, resizeBasedOnParentSize(size, pageRangeOffset)))
+        setBreakpoints(
+          computePageSpread(
+            activePage,
+            resizeBasedOnParentSize(size, pageRangeOffset)
+          )
+        )
       } else if (activePage < breakpoints.firstBreakpoint) {
-        setBreakpoints(computePageSpread(activePage, resizeBasedOnParentSize(size, pageRangeOffset)))
+        setBreakpoints(
+          computePageSpread(
+            activePage,
+            resizeBasedOnParentSize(size, pageRangeOffset)
+          )
+        )
       }
     }, [activePage])
 
     const checkActive = (page: number) => {
       return activePage === page ? true : false
     }
-   
 
     return (
       <nav
@@ -160,9 +176,9 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
         data-testid={testID}
         id={id}
         style={style}
-        ref={innerRef}
+        ref={ref}
       >
-        <ul className="cf-pagination--container">
+        <ul className="cf-pagination--container" ref={innerRef}>
           {!hideDirectionIcon && (
             <PaginationItem
               direction={Direction.Left}

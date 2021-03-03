@@ -73,7 +73,6 @@ PaginationStories.add(
   'PaginationNavItem',
   () => {
     const paginationItemRef = createRef<PaginationItemRef>()
-
     const logRef = (): void => {
       /* eslint-disable */
       console.log(paginationItemRef.current)
