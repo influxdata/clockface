@@ -8,7 +8,6 @@ const createPortalElement = (): HTMLElement => {
   const portalElement = document.createElement('div')
   portalElement.setAttribute('class', portalElementID)
   portalElement.setAttribute('id', portalElementID)
-  portalElement.setAttribute('tabindex', 'null')
 
   document.body.appendChild(portalElement)
 
