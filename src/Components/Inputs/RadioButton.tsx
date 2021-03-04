@@ -9,7 +9,6 @@ import React, {
 import classnames from 'classnames'
 
 // Components
-import {Icon} from '../Icon/Base/Icon'
 
 // Styles
 import './Toggle.scss'
@@ -148,20 +147,13 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
       }
     }
 
-    let indicator = <span className="cf-toggle--indicator cf-toggle--dot" />
-
-    if (icon) {
-      indicator = (
-        <Icon glyph={icon} className="cf-toggle--indicator cf-toggle--icon" />
-      )
-    }
-
     const title = disabled ? disabledTitleText : titleText
 
     return (
       <div className={toggleClass} style={style} ref={containerRef}>
         <input
           id={id}
+          type="radio"
           ref={ref}
           name={name}
           title={title}
@@ -175,20 +167,18 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
           onKeyPress={onKeyPress}
           data-testid={`${testID}--input`}
           checked={checked}
+          onClick={handleClick}
         />
         <label
           title={title}
           onBlur={handleInputBlur}
           htmlFor={id}
           onFocus={handleInputFocus}
-          onClick={handleClick}
           onKeyUp={handleKeyUp}
           tabIndex={tabIndex}
           className="cf-toggle--visual-input"
           data-testid={testID}
-        >
-          {indicator}
-        </label>
+        ></label>
         {children}
       </div>
     )

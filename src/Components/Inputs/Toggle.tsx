@@ -166,15 +166,11 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
     // (b/c of the explicit onclick handler, the 'for' linking the labels
     // to the input does not toggle the button at all)
     return (
-      <div
-        className={toggleClass}
-        style={style}
-        ref={containerRef}
-        onClick={handleClick}
-      >
+      <div className={toggleClass} style={style} ref={containerRef}>
         <input
           id={id}
           ref={ref}
+          onClick={handleClick}
           type={type}
           name={name}
           title={title}
