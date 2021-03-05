@@ -1,6 +1,9 @@
 # Changelog
 
-### 2.6.2 (Unreleased)
+### 2.6.2 (2021-3-5)
+
+- [#584](https://github.com/influxdata/clockface/pull/584): Fix Clickable Labels for Toggles & RadioButtons
+- [#578](https://github.com/influxdata/clockface/pull/578): Improve Lighthouse scores
 
 ### 2.6.1 (2021-2-10)
 

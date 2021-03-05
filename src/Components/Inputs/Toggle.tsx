@@ -25,6 +25,38 @@ import {
   Appearance,
 } from '../../Types'
 
+/**
+ *  To have a clickable label (clicking on the label clicks/unclicks the toggle) add a 'htmlFor'
+ *  property to the label that matches the buttonId.
+ *
+ *  for example:
+ *
+ *    <Toggle
+ *       tabIndex={2}
+ *       value="vertical"
+ *       id="vertical-legend-orientation"
+ *       name="lengendOr"
+ *       checked={legendOrientation === LEGEND_ORIENTATION_THRESHOLD_VERTICAL}
+ *       onChange={() =>
+ *                handleSetOrientation(LEGEND_ORIENTATION_THRESHOLD_VERTICAL)
+ *              }
+ *       type={InputToggleType.Radio}
+ *       size={ComponentSize.ExtraSmall}
+ *       color={ComponentColor.Primary}
+ *       appearance={Appearance.Outline}
+ *       >
+ *       <InputLabel
+ *            active={legendOrientation === LEGEND_ORIENTATION_THRESHOLD_VERTICAL}
+ *            htmlFor="vertical-legend-orientation"
+ *         >
+ *           Vertical
+ *      </InputLabel>
+ *  </Toggle>
+ *
+ * and all radiobuttons in the same group should have the same name, as well.
+ *
+ *
+ * */
 export interface ToggleProps extends Omit<StandardFunctionProps, 'id'> {
   /** Unique identifier for this toggle */
   id: string
@@ -166,15 +198,11 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
     // (b/c of the explicit onclick handler, the 'for' linking the labels
     // to the input does not toggle the button at all)
     return (
-      <div
-        className={toggleClass}
-        style={style}
-        ref={containerRef}
-        onClick={handleClick}
-      >
+      <div className={toggleClass} style={style} ref={containerRef}>
         <input
           id={id}
           ref={ref}
+          onClick={handleClick}
           type={type}
           name={name}
           title={title}
