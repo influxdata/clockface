@@ -1,4 +1,4 @@
-@import '../../Styles/variables';
+@import "../../Styles/variables";
 
 .cf-radio-button {
   input {
@@ -9,29 +9,35 @@
     width: 0;
     height: 0;
 
-    & + .cf-radio-button--label .cf-radio-button--indicator {
-      &::before {
-        position: relative;
-        display: inline-block;
-        width: 100%;
-        height: 100%;
-        background-color: $c-pool;
-        content: '';
-        border-radius: 50%;
-        transform: scale(1);
-        transition: opacity 0.25s ease, transform 0.25s ease, color 0.25s ease,
-          background-color 0.25s ease;
-        opacity: 0;
+    & + .cf-radio-button--label {
+      color: $cf-label--default;
+
+      .cf-radio-button--indicator {
+        &::before {
+          position: relative;
+          display: inline-block;
+          width: 100%;
+          height: 100%;
+          background-color: $c-pool;
+          content: "";
+          border-radius: 50%;
+          transform: scale(1);
+          transition: opacity 0.25s ease, transform 0.25s ease, color 0.25s ease, background-color 0.25s ease;
+          opacity: 0;
+        }
       }
     }
 
-    &:checked + .cf-radio-button--label .cf-radio-button--indicator {
-      &::before {
-        opacity: 1;
-        transform: scale(0.5);
+    &:checked + .cf-radio-button--label {
+      color: $cf-label--active;
+
+      .cf-radio-button--indicator {
+        &::before {
+          opacity: 1;
+          transform: scale(0.5);
+        }
       }
     }
-
     &:focus + .cf-radio-button--label .cf-radio-button--indicator {
       background-color: $cf-input-background--focused;
       border-color: $cf-input-border--focused;
@@ -81,30 +87,14 @@
 }
 
 .cf-radio-button__xs {
-  @include radioButtonSizeModifier(
-    $cf-form-xs-font,
-    $cf-form-xs-height,
-    $cf-form-xs-padding
-  );
+  @include radioButtonSizeModifier($cf-form-xs-font, $cf-form-xs-height, $cf-form-xs-padding);
 }
 .cf-radio-button__sm {
-  @include radioButtonSizeModifier(
-    $cf-form-sm-font,
-    $cf-form-sm-height,
-    $cf-form-sm-padding
-  );
+  @include radioButtonSizeModifier($cf-form-sm-font, $cf-form-sm-height, $cf-form-sm-padding);
 }
 .cf-radio-button__md {
-  @include radioButtonSizeModifier(
-    $cf-form-md-font,
-    $cf-form-md-height,
-    $cf-form-md-padding
-  );
+  @include radioButtonSizeModifier($cf-form-md-font, $cf-form-md-height, $cf-form-md-padding);
 }
 .cf-radio-button__lg {
-  @include radioButtonSizeModifier(
-    $cf-form-lg-font,
-    $cf-form-lg-height,
-    $cf-form-lg-padding
-  );
+  @include radioButtonSizeModifier($cf-form-lg-font, $cf-form-lg-height, $cf-form-lg-padding);
 }
