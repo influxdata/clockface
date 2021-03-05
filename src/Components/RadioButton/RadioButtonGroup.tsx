@@ -38,7 +38,7 @@ export type RadioButtonGroupRef = HTMLDivElement
 export const RadioButtonGroup = forwardRef<
   RadioButtonGroupRef,
   RadioButtonGroupProps
->(({orientation, children, name, onChange, activeValue = 'test-1'}, ref) => {
+>(({orientation, children, name, onChange, activeValue = ''}, ref) => {
   const [selectedValue, setSelectedValue] = useState(activeValue)
   const radioButtonGroupClass = classnames('cf-radio-button-group', {
     [`cf-radio-button-group__${orientation}`]: orientation,
