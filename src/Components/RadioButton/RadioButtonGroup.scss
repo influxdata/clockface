@@ -24,13 +24,13 @@
 .cf-radio-button-group__vertical {
   flex-direction: column;
   & .cf-radio-button__xs:not(:last-of-type) {
-    margin-bottom: $cf-marg-b;
+    margin-bottom: $cf-marg-a;
   }
   & .cf-radio-button__sm:not(:last-of-type) {
-    margin-bottom: $cf-marg-c;
+    margin-bottom: $cf-marg-b;
   }
   & .cf-radio-button__md:not(:last-of-type) {
-    margin-bottom: $cf-marg-d;
+    margin-bottom: $cf-marg-c;
   }
   & .cf-radio-button__lg:not(:last-of-type) {
     margin-bottom: $cf-marg-d;
