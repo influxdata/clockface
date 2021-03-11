@@ -294,7 +294,6 @@ export enum IconFont {
   DisksNav = 'disks-nav',
   Download = 'download',
   DragToExpand = 'drag-to-expand',
-  DragToExpandWhite = 'drag-to-expand-white',
   Duplicate = 'duplicate',
   Erlenmeyer = 'erlenmeyer',
   ExpandA = 'expand-a',
