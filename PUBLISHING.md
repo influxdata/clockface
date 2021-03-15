@@ -1,25 +1,31 @@
 # Publishing a new version of Clockface
 
-Ensure that 
+Prerequisites:
 
-- You have administrator access to this repo on GitHub
-- You have permissions to publish to the [influxdata](https://www.npmjs.com/org/influxdata) organization on npm
-- You are logged into Yarn (`yarn login`)
-- You are on `master` and the working tree is clean
-- The `CHANGELOG.md` is up to date for the latest release
+1. You have an npmjs.com account (recommended to use your personal; not work email for this)
+   - enable 2fa for your account (two factor authentication)
+2. You have Administrator access to this repo on GitHub (you are able to push commits)
+3. You have Permissions to publish to the [influxdata](https://www.npmjs.com/org/influxdata) organization on npm
+   - contact Bucky to be added if needed (if you just created an npm account, you need this)
+4. tags can only be created on the `master` branch, and the working tree must be clean
+   - clean means: all the files in the current directory are being managed by git
+     (or are being intentionally ignored via .gitignore) and the most recent version of the file has been committed
 
-Then run the publish script in the root of the repo:
+Steps
 
-*NOTE:* Do not manually change the version in `package.lock`, the publish script will increment automatically
-```
-./publish
-```
-You can follow `./publish` by either `patch`, `major`, or `minor`. If nothing is specified the default is `patch`
-These terms are from [Semantic Versioning](https://semver.org/)
+1. run the publish script in the root of the repo: `./publish`
+   - When the script asks you for the version; put in the new number ('2.6.4' for example (without the quotes))
+2. push up the new tag: `git push`
+3. update the changelog: [Changelog](https://github.com/influxdata/clockface/blob/master/CHANGELOG.md) file
+4. update the release page on github: https://github.com/influxdata/clockface/releases
 
-- `major` version when you make incompatible API changes,
-- `minor` version when you add functionality in a backwards compatible manner, and
-- `patch` version when you make backwards compatible bug fixes.
+   - ensure it is pointing at the correct release/commit
+
+5. next; test it via e2e tests on the ui project; there should only be one pull request in each new version
+
+   - bump up the version number in package.json in the ui project
+
+6. Optional:
 
 Then upload the latest Storybook docs to the GitHub pages site by running:
 
@@ -27,16 +33,4 @@ Then upload the latest Storybook docs to the GitHub pages site by running:
 yarn run publishStorybook
 ```
 
-Then update the [Changelog](https://github.com/influxdata/clockface/blob/master/CHANGELOG.md) with a header for the newest version:
-
-```
-# Changelog
-
-### 0.0.1 (Unreleaased)
-
-### 0.0.0
-
- - Change
- - Change
- - Change
-```
+_NOTE:_ Do not manually change the version in `package.lock`, the publish script will increment automatically
