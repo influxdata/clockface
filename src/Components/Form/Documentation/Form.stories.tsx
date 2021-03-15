@@ -72,6 +72,10 @@ const mockValidationFunc = (value: string): string | null => {
     return 'Field cannot be empty'
   }
 
+  if (value.length >= 21) {
+    return 'Must be 20 characters or less'
+  }
+
   return null
 }
 
