@@ -360,6 +360,7 @@ formStories.add(
             helpText={text('helpText', 'Help Text')}
             required={boolean('required', true)}
             validationFunc={mockValidationFunc}
+            prevalidate={boolean('prevalidate', false)}
           >
             {status => (
               <Input
