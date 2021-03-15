@@ -7,6 +7,7 @@ Prerequisites:
 2. You have Administrator access to this repo on GitHub (you are able to push commits)
 3. You have Permissions to publish to the [influxdata](https://www.npmjs.com/org/influxdata) organization on npm
    - contact Bucky to be added if needed (if you just created an npm account, you need this)
+   - anybody with an admin permission can add through here: https://www.npmjs.com/settings/influxdata/teams/team/developers/users
 4. tags can only be created on the `master` branch, and the working tree must be clean
    - clean means: all the files in the current directory are being managed by git
      (or are being intentionally ignored via .gitignore) and the most recent version of the file has been committed
