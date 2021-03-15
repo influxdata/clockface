@@ -1,5 +1,9 @@
 # Changelog
 
+### 2.6.3 (2021-3-15)
+
+- [#582](https://github.com/influxdata/clockface/pull/582): Add icons
+
 ### 2.6.2 (2021-3-5)
 
 - [#584](https://github.com/influxdata/clockface/pull/584): Fix Clickable Labels for Toggles & RadioButtons
