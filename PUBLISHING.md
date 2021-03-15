@@ -18,6 +18,8 @@ Steps
    - When the script asks you for the version; put in the new number ('2.6.4' for example (without the quotes))
 2. push up the new tag: `git push`
 3. update the changelog: [Changelog](https://github.com/influxdata/clockface/blob/master/CHANGELOG.md) file
+   - push it up after changing (can do a pr without an issue, if you already know your pr
+     number this change can be included in the actual pr with the actual changes too)
 4. update the release page on github: https://github.com/influxdata/clockface/releases
 
    - ensure it is pointing at the correct release/commit
