@@ -1,5 +1,10 @@
 # Changelog
 
+### 2.6.4 (Unreleased)
+
+- [#592](https://github.com/influxdata/clockface/pull/592): Add prevalidation mode for formValidationElement
+
+
 ### 2.6.3 (2021-3-15)
 
 - [#582](https://github.com/influxdata/clockface/pull/582): Add icons

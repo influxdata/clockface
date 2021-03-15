@@ -33,6 +33,8 @@ export interface FormValidationElementProps extends StandardFunctionProps {
   required?: boolean
   /** Useful for associating a label with an input */
   htmlFor?: string
+  /** Pre-validation mode ( Validation happens ) */
+  prevalidate?: boolean
 }
 
 export type FormValidationElementRef = HTMLLabelElement
@@ -55,11 +57,12 @@ export const FormValidationElement = forwardRef<
       className,
       validationFunc,
       onStatusChange,
+      prevalidate = false,
       testID = 'form--validation-element',
     },
     ref
   ) => {
-    const shouldPerformValidation = useRef<boolean>(false)
+    const shouldPerformValidation = useRef<boolean>(prevalidate)
 
     let errorMessage = null
     let status = ComponentStatus.Default
