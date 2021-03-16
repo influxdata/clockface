@@ -61,7 +61,7 @@ export const FormElement = forwardRef<FormElementRef, FormElementProps>(
         {children}
         {!!errorMessage && (
           <FormElementError
-            errorMessageTestId={errorMessageTestId}
+            testID={errorMessageTestId}
             message={errorMessage}
           />
         )}
