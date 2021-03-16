@@ -56,7 +56,9 @@ export const FormElement = forwardRef<FormElementRef, FormElementProps>(
           </FormLabel>
         )}
         {children}
-        {!!errorMessage && <FormElementError testID={testID} message={errorMessage} />}
+        {!!errorMessage && (
+          <FormElementError testID={testID} message={errorMessage} />
+        )}
         {!!helpText && <FormHelpText text={helpText} />}
       </>
     )
