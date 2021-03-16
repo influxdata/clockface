@@ -8,6 +8,7 @@ import {StandardFunctionProps} from '../../Types'
 export interface FormElementErrorProps extends StandardFunctionProps {
   /** Text to be displayed on error */
   message?: string
+  errorMessageTestId?: string
 }
 
 export type FormElementErrorRef = HTMLSpanElement
@@ -22,7 +23,7 @@ export const FormElementError = forwardRef<
       style,
       className,
       message = '\u00a0\u00a0',
-      testID = 'form--element-error',
+      errorMessageTestId = 'form--element-error',
     },
     ref
   ) => {
@@ -35,7 +36,7 @@ export const FormElementError = forwardRef<
         id={id}
         ref={ref}
         style={style}
-        data-testid={testID}
+        data-testid={errorMessageTestId}
         className={formElementErrorClass}
       >
         {message}
