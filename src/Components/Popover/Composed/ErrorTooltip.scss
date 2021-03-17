@@ -1,0 +1,22 @@
+@import '../../../Styles/variables';
+
+/*
+  Question Mark Tooltip Styles
+  ------------------------------------------------------------------------------
+*/
+
+.cf-error-tooltip {
+  border-radius: 50%;
+  color: $c-dreamsicle;
+  font-weight: $cf-font-weight--black;
+  display: inline-flex;
+  justify-content: center;
+  position: relative;
+  user-select: none;
+  transition: color 0.25s ease;
+
+  &:hover {
+    cursor: help;
+    color: $c-tungsten;
+  }
+}
