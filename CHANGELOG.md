@@ -1,6 +1,12 @@
 # Changelog
 
-### 2.6.4 (Unreleased)
+
+### 2.6.5 (2021-3-19)
+
+- [#594](https://github.com/influxdata/clockface/pull/594): Additional testID for formelement error message (fixes 593)
+- [#593](https://github.com/influxdata/clockface/pull/594): fix: propagate testID to error label 
+
+### 2.6.4 (2021-3-16)
 
 - [#592](https://github.com/influxdata/clockface/pull/592): Add prevalidation mode for formValidationElement
 
