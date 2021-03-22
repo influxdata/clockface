@@ -1,5 +1,9 @@
 # Changelog
 
+### 2.6.6 (2021-3-22)
+
+- [#597](https://github.com/influxdata/clockface/pull/594): Making the resourceCardName component's disabled state opacity generic
+- [#595](https://github.com/influxdata/clockface/pull/595): Adding an errorToolTip component and an Error state to existing resourceCardName component
 
 ### 2.6.5 (2021-3-19)
 
@@ -9,7 +13,6 @@
 ### 2.6.4 (2021-3-16)
 
 - [#592](https://github.com/influxdata/clockface/pull/592): Add prevalidation mode for formValidationElement
-
 
 ### 2.6.3 (2021-3-15)
 
