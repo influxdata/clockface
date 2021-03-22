@@ -45,6 +45,7 @@ import {
   FlexDirection,
   AlignItems,
   JustifyContent,
+  ComponentStatus,
 } from '../../../Types'
 
 // Notes
@@ -265,12 +266,24 @@ resourceListCardStories.add(
             ref={resourceCardNameRef1}
             name={text('name', 'Card Name')}
             onClick={() => alert('onClick fired!')}
+            errorMessage={text('errorMessage', 'Some Error')}
+            status={select(
+              'status',
+              [ComponentStatus.Default, ComponentStatus.Error],
+              ComponentStatus.Default
+            )}
           />
         </div>
         <div style={{margin: '30px'}}>
           <ResourceCardName
             ref={resourceCardNameRef2}
             name={text('name', 'Card Name')}
+            errorMessage={text('errorMessage', 'Some Error')}
+            status={select(
+              'status',
+              [ComponentStatus.Default, ComponentStatus.Error],
+              ComponentStatus.Default
+            )}
           />
         </div>
       </div>

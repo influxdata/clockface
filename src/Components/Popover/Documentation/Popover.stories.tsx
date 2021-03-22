@@ -22,6 +22,7 @@ import {
   QuestionMarkTooltip,
   QuestionMarkTooltipRef,
 } from '../Composed/QuestionMarkTooltip'
+import {ErrorTooltip, ErrorTooltipRef} from '../Composed/ErrorTooltip'
 import {SquareButton} from '../../Button/Composed/SquareButton'
 import {Button, ButtonRef} from '../../Button/Composed/Button'
 import {DapperScrollbars} from '../../DapperScrollbars/DapperScrollbars'
@@ -44,6 +45,7 @@ import {getDictionary} from '../../../Utils'
 import PopoverReadme from './Popover.md'
 import ReflessPopoverReadme from './ReflessPopover.md'
 import QuestionMarkTooltipReadme from './QuestionMarkTooltip.md'
+import ErrorTooltipReadme from './ErrorTooltip.md'
 
 const popoverStories = storiesOf('Atomic|Popover/Base', module).addDecorator(
   withKnobs
@@ -351,6 +353,40 @@ composedPopoverStories.add(
   {
     readme: {
       content: marked(QuestionMarkTooltipReadme),
+    },
+  }
+)
+
+composedPopoverStories.add(
+  'ErrorToolTip',
+  () => {
+    const popoverRef = useRef<ErrorTooltipRef>(null)
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(popoverRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <ErrorTooltip
+          ref={popoverRef}
+          diameter={number('diameter', 17)}
+          tooltipContents={text('tooltipContents', 'Some Error Message')}
+          className={text('className', '')}
+          style={object('style', {})}
+          tooltipStyle={object('tooltipStyle', {})}
+        />
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(ErrorTooltipReadme),
     },
   }
 )
