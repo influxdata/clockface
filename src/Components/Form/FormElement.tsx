@@ -23,6 +23,8 @@ export interface FormElementProps extends StandardFunctionProps {
   required?: boolean
   /** Useful for associating a label with an input */
   htmlFor?: string
+  /** ID for Error Message for Integration Tests */
+  errorMessageTestId?: string
 }
 
 export type FormElementRef = HTMLLabelElement & HTMLDivElement
@@ -41,6 +43,7 @@ export const FormElement = forwardRef<FormElementRef, FormElementProps>(
       labelAddOn,
       errorMessage,
       testID = 'form--element',
+      errorMessageTestId,
     },
     ref
   ) => {
@@ -56,7 +59,12 @@ export const FormElement = forwardRef<FormElementRef, FormElementProps>(
           </FormLabel>
         )}
         {children}
-        {!!errorMessage && <FormElementError message={errorMessage} />}
+        {!!errorMessage && (
+          <FormElementError
+            testID={errorMessageTestId}
+            message={errorMessage}
+          />
+        )}
         {!!helpText && <FormHelpText text={helpText} />}
       </>
     )
