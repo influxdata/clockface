@@ -1,5 +1,9 @@
 # Changelog
 
+### 2.6.7 (2021-3-29)
+
+- [#586](https://github.com/influxdata/clockface/pull/586): chore(deps): bump elliptic from 6.5.3 to 6.5.4
+
 ### 2.6.6 (2021-3-22)
 
 - [#597](https://github.com/influxdata/clockface/pull/594): Making the resourceCardName component's disabled state opacity generic
