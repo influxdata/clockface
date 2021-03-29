@@ -1,6 +1,7 @@
 // Libraries
 import React, {forwardRef, useState, useEffect, useLayoutEffect} from 'react'
 import classnames from 'classnames'
+import {PaginationDirectionItem} from './PaginationDirectionItem'
 
 // Components
 import {PaginationItem} from './PaginationItem'
@@ -129,12 +130,12 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
     )
 
     const moveToPage = (page: number) => {
-      if (page !== activePage) {
-        //if trying to move to page 0, lower than 0,  greater than total pages, or to the current page, don't change
-        if (page >= 1 && page <= totalPages) {
-          setActivePage(page)
-          onChange(page)
-        }
+      //not out of bound
+      const notOutOfBound = page >= 1 && page <= totalPages
+
+      if (page !== activePage && notOutOfBound) {
+        setActivePage(page)
+        onChange(page)
       }
     }
 
@@ -180,7 +181,7 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
       >
         <ul className="cf-pagination--container" ref={innerRef}>
           {!hideDirectionIcon && (
-            <PaginationItem
+            <PaginationDirectionItem
               direction={Direction.Left}
               onClick={() => moveToPage(activePage - 1)}
               key={'pagination--item-left'}
@@ -230,7 +231,7 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
             />
           )}
           {!hideDirectionIcon && (
-            <PaginationItem
+            <PaginationDirectionItem
               direction={Direction.Right}
               onClick={() => moveToPage(activePage + 1)}
               key={'pagination--item-right'}

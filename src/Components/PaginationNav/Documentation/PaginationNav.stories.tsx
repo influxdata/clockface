@@ -13,6 +13,7 @@ import {
   PaginationNavRef,
   PaginationItemRef,
   PaginationTruncationItemRef,
+  PaginationDirectionItemRef,
 } from '../'
 
 // Types
@@ -22,7 +23,7 @@ import {ComponentSize, Direction} from '../../../Types'
 import PaginationReadme from './PaginationNav.md'
 import PaginationItemReadme from './PaginationNavItem.md'
 import PaginationTruncationItemReadme from './PaginationTruncationItem.md'
-
+import PaginationDirectionItemReadme from './PaginationDirectionItem.md'
 const PaginationStories = storiesOf(
   'Components|Pagination/PaginationNav',
   module
@@ -86,16 +87,6 @@ PaginationStories.add(
         </div>
         <PaginationNav.Item
           ref={paginationItemRef}
-          direction={
-            Direction[select('directionIcon', mapEnumKeys(Direction), 'Left')]
-          }
-          isActive={boolean('active', false)}
-          size={
-            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Medium')]
-          }
-        />
-        <PaginationNav.Item
-          ref={paginationItemRef}
           page={number('value', 10).toString()}
           isActive={boolean('active', false)}
           size={
@@ -111,6 +102,42 @@ PaginationStories.add(
   {
     readme: {
       content: marked(PaginationItemReadme),
+    },
+  }
+)
+
+PaginationStories.add(
+  'PaginationDirectionItem',
+  () => {
+    const paginationDirectionItemRef = createRef<PaginationDirectionItemRef>()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(paginationDirectionItemRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <PaginationNav.DirectionItem
+          ref={paginationDirectionItemRef}
+          direction={
+            Direction[select('direction', mapEnumKeys(Direction), 'Left')]
+          }
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          isActive={boolean('active', false)}
+        />
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(PaginationDirectionItemReadme),
     },
   }
 )

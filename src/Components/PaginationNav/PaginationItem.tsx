@@ -14,8 +14,6 @@ import {
   ComponentColor,
   ComponentSize,
   ButtonShape,
-  Direction,
-  IconFont,
 } from '../../Types'
 
 export interface PaginationItemProps extends StandardFunctionProps {
@@ -23,7 +21,6 @@ export interface PaginationItemProps extends StandardFunctionProps {
   isActive: boolean
   onClick?: (e?: MouseEvent<HTMLElement>) => void
   size?: ComponentSize
-  direction?: Direction
 }
 
 export type PaginationItemRef = HTMLLIElement
@@ -41,7 +38,6 @@ export const PaginationItem = forwardRef<
       isActive,
       onClick,
       size = ComponentSize.Medium,
-      direction = null,
     },
     ref
   ) => {
@@ -61,25 +57,14 @@ export const PaginationItem = forwardRef<
         style={style}
         ref={ref}
       >
-        {direction ? (
-          <Button
-            size={size}
-            color={ComponentColor.Tertiairy}
-            onClick={onClick}
-            active={isActive}
-            shape={ButtonShape.Square}
-            icon={IconFont[direction]}
-          ></Button>
-        ) : (
-          <Button
-            size={size}
-            color={ComponentColor.Tertiairy}
-            onClick={onClick}
-            active={isActive}
-            shape={ButtonShape.Square}
-            text={page}
-          ></Button>
-        )}
+        <Button
+          size={size}
+          color={ComponentColor.Tertiairy}
+          onClick={onClick}
+          active={isActive}
+          shape={ButtonShape.Square}
+          text={page}
+        ></Button>
       </li>
     )
   }
