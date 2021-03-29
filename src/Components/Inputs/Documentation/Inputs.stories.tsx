@@ -46,6 +46,7 @@ import {
   ComponentStatus,
   ComponentSize,
   ComponentColor,
+  ComponentOrientation,
   IconFont,
   AutoComplete,
   FlexDirection,
@@ -870,7 +871,7 @@ inputsComposedStories.add(
       /* eslint-enable */
     }
 
-    const exampleRangeSliderStyle = {width: '100%'}
+    const exampleRangeSliderStyle = {width: '375px'}
 
     return (
       <div className="story--example">
@@ -899,6 +900,16 @@ inputsComposedStories.add(
               select('status', mapEnumKeys(ComponentStatus), 'Default')
             ]
           }
+          orientation={
+            ComponentOrientation[
+              select(
+                'orientation',
+                mapEnumKeys(ComponentOrientation),
+                'Horizontal'
+              )
+            ]
+          }
+          displayValue={boolean('displayValue', false)}
         />
         <div className="story--test-buttons">
           <button onClick={handleLogRef}>Log Ref</button>

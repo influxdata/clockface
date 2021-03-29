@@ -1,5 +1,5 @@
 // Libraries
-import React, {forwardRef, MouseEvent, useState} from 'react'
+import React, {forwardRef, MouseEvent, useState, useEffect} from 'react'
 import classnames from 'classnames'
 import _ from 'lodash'
 
@@ -12,6 +12,11 @@ import {StandardFunctionProps} from '../../Types'
 // Styles
 import './Dropdown.scss'
 
+export enum MenuStatus {
+  Open = 'open',
+  Closed = 'closed',
+}
+
 export interface DropdownProps extends StandardFunctionProps {
   /** Component to render as the button (use Dropdown.Button) */
   button: (
@@ -22,6 +27,21 @@ export interface DropdownProps extends StandardFunctionProps {
   menu: (onCollapse?: () => void) => JSX.Element
   /** Renders the menu element above the button instead of below */
   dropUp?: boolean
+  /** Optional method that is triggered when the user clicks outside of/away from the dropdown */
+  onClickAway?: () => void
+  /**
+   * optional way for the owner of this dropdown to set the menu to be open or closed:
+   * 'open':  the menu will be open
+   * 'closed': the menu will be closed
+   * any other string will be ignored.
+   *
+   * and the menu  (open/closed) only changes programmatically when this value changes.
+   * so the owner is responsible for resetting this value
+   * (if the string is set to 'open', and then the user closes it, and the code sets it to open again,
+   * unless the code sets it to something else in between (like null or 'close'),
+   * then nothing will happen- the menu will not open)
+   * */
+  menuOpen?: MenuStatus
 }
 
 export type DropdownRef = HTMLDivElement
@@ -36,6 +56,8 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
       button,
       dropUp = false,
       className,
+      onClickAway,
+      menuOpen,
     },
     ref
   ) => {
@@ -48,7 +70,19 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
 
     const handleCollapseMenu = (): void => {
       setExpandedState(false)
+      if (onClickAway) {
+        onClickAway()
+      }
     }
+
+    useEffect(() => {
+      if (menuOpen === MenuStatus.Closed) {
+        setExpandedState(false)
+      }
+      if (menuOpen === MenuStatus.Open) {
+        setExpandedState(true)
+      }
+    }, [menuOpen])
 
     const dropdownClass = classnames('cf-dropdown', {
       [`${className}`]: className,

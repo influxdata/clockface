@@ -54,6 +54,10 @@ export enum ComponentStatus {
   Disabled = 'disabled',
 }
 
+export enum ComponentOrientation {
+  Horizontal = 'horizontal',
+  Vertical = 'vertical',
+}
 export interface Color {
   hex: string
   name: string
@@ -295,6 +299,7 @@ export enum IconFont {
   Disks = 'disks',
   DisksNav = 'disks-nav',
   Download = 'download',
+  DragToExpand = 'drag-to-expand',
   Duplicate = 'duplicate',
   Erlenmeyer = 'erlenmeyer',
   ExpandA = 'expand-a',
@@ -316,6 +321,7 @@ export enum IconFont {
   Import = 'import',
   Layers = 'layers',
   Link = 'link',
+  Lock = 'lock',
   Maximize = 'maximize',
   Minimize = 'minimize',
   Moon = 'moon',
@@ -338,6 +344,7 @@ export enum IconFont {
   Share = 'share',
   ShareSolid = 'share-solid',
   Shield = 'shield',
+  ShieldSolid = 'shield-solid',
   Shuffle = 'shuffle',
   Square = 'square',
   SquareCheck = 'square-check',

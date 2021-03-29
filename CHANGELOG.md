@@ -1,10 +1,49 @@
 # Changelog
 
-### 2.4.3 (Unreleased)
+### 2.6.7 (2021-3-29)
 
-#### 2.4.2 (2021-01-13)
+- [#586](https://github.com/influxdata/clockface/pull/586): chore(deps): bump elliptic from 6.5.3 to 6.5.4
 
-- [#562](https://github.com/influxdata/clockface/pull/564): Add Heart Solid Icon
+### 2.6.6 (2021-3-22)
+
+- [#597](https://github.com/influxdata/clockface/pull/594): Making the resourceCardName component's disabled state opacity generic
+- [#595](https://github.com/influxdata/clockface/pull/595): Adding an errorToolTip component and an Error state to existing resourceCardName component
+
+### 2.6.5 (2021-3-19)
+
+- [#594](https://github.com/influxdata/clockface/pull/594): Additional testID for formelement error message (fixes 593)
+- [#593](https://github.com/influxdata/clockface/pull/594): fix: propagate testID to error label 
+
+### 2.6.4 (2021-3-16)
+
+- [#592](https://github.com/influxdata/clockface/pull/592): Add prevalidation mode for formValidationElement
+
+### 2.6.3 (2021-3-15)
+
+- [#582](https://github.com/influxdata/clockface/pull/582): Add icons
+
+### 2.6.2 (2021-3-5)
+
+- [#584](https://github.com/influxdata/clockface/pull/584): Fix Clickable Labels for Toggles & RadioButtons
+- [#578](https://github.com/influxdata/clockface/pull/578): Improve Lighthouse scores
+
+### 2.6.1 (2021-2-10)
+
+- [#576](https://github.com/influxdata/clockface/pull/576): Export new `MenuStatus` enum for `DropDown`; very minor change.
+
+### 2.6.0 (2021-02-10)
+
+- [#574](https://github.com/influxdata/clockface/pull/574): Upgrade Storybook to 6.1.17
+- [#573](https://github.com/influxdata/clockface/pull/573): Enhance `Dropdown` with new, optional parameters for supporting type-ahead dropdowns
+- [#572](https://github.com/influxdata/clockface/pull/572): adding pretty-quick (similar to prettier, but it only runs on changed files so is much quicker to run)
+- [#571](https://github.com/influxdata/clockface/pull/571): `RangeSlider`: adds option to expose the value.
+- [#568](https://github.com/influxdata/clockface/pull/568): Labels on the `ToggleButton` are now clickable
+- [#567](https://github.com/influxdata/clockface/pull/567): Bump nested-object-assign from 1.0.3 to 1.0.4
+- [#565](https://github.com/influxdata/clockface/pull/565): Create ability to set vertical range slider; adds a new property to the existing `RangeSlider` component
+
+#### 2.5.0 (2021-01-13)
+
+- [#564](https://github.com/influxdata/clockface/pull/564): Add Heart Solid Icon
 
 #### 2.4.1 (2020-12-18)
 
@@ -12,7 +51,7 @@
 
 #### 2.4.0 (2020-12-16)
 
-- [#559](https://github.com/influxdata/clockface/pull/560): Add `onEscape` prop that takes in state handler and enables closing of overlays on escape keypress
+- [#560](https://github.com/influxdata/clockface/pull/560): Add `onEscape` prop that takes in state handler and enables closing of overlays on escape keypress
 
 #### 2.3.7 (2020-12-02)
 

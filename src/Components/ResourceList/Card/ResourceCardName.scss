@@ -1,4 +1,4 @@
-@import "../../../Styles/variables.scss";
+@import '../../../Styles/variables.scss';
 
 /*
   Editable Name for Resource Cards
@@ -29,11 +29,25 @@
   transition: color 0.25s ease;
 
   .cf-resource-card__disabled & {
-    color: rgba($cf-link-default, 0.5);
+    opacity: 0.5;
   }
 
   &:hover {
     cursor: pointer;
     color: $cf-link-default-hover;
   }
+}
+
+.cf-resource-name--text__error {
+  color: $c-dreamsicle;
+}
+.cf-resource-name--text__error__link {
+  &:hover {
+    cursor: pointer;
+    color: $c-tungsten;
+  }
+}
+
+.cf-resource-name--text-gap {
+  margin-right: $cf-marg-b;
 }

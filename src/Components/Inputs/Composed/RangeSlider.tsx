@@ -23,6 +23,7 @@ import {
   ComponentSize,
   AutoComplete,
   ComponentStatus,
+  ComponentOrientation,
 } from '../../../Types'
 
 export interface RangeSliderProps extends StandardFunctionProps {
@@ -52,6 +53,10 @@ export interface RangeSliderProps extends StandardFunctionProps {
   labelPrefix?: string
   /** Adds a suffix to labels */
   labelSuffix?: string
+  /** Determines orientation of range slider */
+  orientation?: ComponentOrientation
+  /** Determines whether to display value  */
+  displayValue?: boolean
 }
 
 export type RangeSliderRef = HTMLInputElement
@@ -76,6 +81,8 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
       labelPrefix,
       labelSuffix,
       autocomplete,
+      orientation = ComponentOrientation.Horizontal,
+      displayValue = false,
     },
     ref
   ) => {
@@ -90,6 +97,16 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
       'cf-range-slider__fill': fill,
     })
 
+    const valmaxClassName = classnames(
+      'cf-range-slider--label cf-range-slider--max',
+      {
+        [`cf-range-slider--valmax-label__with-value`]:
+          orientation === ComponentOrientation.Horizontal && displayValue,
+        [`cf-range-slider--valmax-label`]:
+          orientation === ComponentOrientation.Horizontal && !displayValue,
+      }
+    )
+
     const inputStyle = generateRangeSliderTrackFillStyle(
       fill,
       min,
@@ -99,30 +116,31 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
       status
     )
 
-    let labelCharLength = String(max).length
-
-    if (labelPrefix) {
-      labelCharLength += labelPrefix.length
-    }
-    if (labelSuffix) {
-      labelCharLength += labelSuffix.length
-    }
-
-    const labelStyle = {
-      flex: `0 0 ${labelCharLength * 11}px`,
+    const verticalLabelStyle = {
+      transform: 'rotate(270deg)',
     }
 
     const cleanedValue = valueWithBounds(value, min, max)
 
+    const rangeSliderClassName =
+      orientation === ComponentOrientation.Vertical
+        ? `${rangeSliderClass} cf-range-slider__vertical`
+        : rangeSliderClass
+
     return (
-      <div className={rangeSliderClass} style={style}>
+      <div className={rangeSliderClassName} style={style}>
         <RangeSliderLabel
           value={min}
           prefix={labelPrefix}
           suffix={labelSuffix}
-          style={labelStyle}
+          style={
+            orientation === ComponentOrientation.Vertical
+              ? verticalLabelStyle
+              : {}
+          }
           hidden={hideLabels}
           testID={`${testID}--min`}
+          className="cf-range-slider--min"
         />
         <Input
           id={id}
@@ -141,14 +159,27 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
           autocomplete={autocomplete}
         />
         <div className="cf-range-slider--focus" />
-        <RangeSliderLabel
-          value={max}
-          prefix={labelPrefix}
-          suffix={labelSuffix}
-          style={labelStyle}
-          hidden={hideLabels}
-          testID={`${testID}--max`}
-        />
+        <div className={valmaxClassName}>
+          {displayValue && (
+            <RangeSliderLabel
+              value={cleanedValue}
+              prefix={labelPrefix}
+              suffix={labelSuffix}
+              hidden={hideLabels}
+              testID={`${testID}--val`}
+            />
+          )}
+          <div>
+            {displayValue && <span>/</span>}
+            <RangeSliderLabel
+              value={max}
+              prefix={labelPrefix}
+              suffix={labelSuffix}
+              hidden={hideLabels}
+              testID={`${testID}--max`}
+            />
+          </div>
+        </div>
       </div>
     )
   }
@@ -178,6 +209,7 @@ interface RangeSliderLabelProps {
   hidden?: boolean
   style?: CSSProperties
   testID: string
+  className?: string
 }
 
 const RangeSliderLabel: FunctionComponent<RangeSliderLabelProps> = ({
@@ -187,13 +219,16 @@ const RangeSliderLabel: FunctionComponent<RangeSliderLabelProps> = ({
   hidden,
   style,
   testID,
+  className = '',
 }) => {
   if (hidden) {
     return null
   }
-
+  const labelClass = classnames('cf-range-slider--label', {
+    [`${className}`]: className,
+  })
   return (
-    <span className="cf-range-slider--label" style={style} data-testid={testID}>
+    <span className={labelClass} style={style} data-testid={testID}>
       {prefix}
       {value}
       {suffix}
