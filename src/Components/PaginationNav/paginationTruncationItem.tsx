@@ -49,7 +49,7 @@ export const PaginationTruncationItem = forwardRef<
       >
         <Button
           size={size}
-          color={ComponentColor.Tertiairy}
+          color={ComponentColor.Tertiary}
           onClick={onClick}
           shape={ButtonShape.Square}
           text={'...'}

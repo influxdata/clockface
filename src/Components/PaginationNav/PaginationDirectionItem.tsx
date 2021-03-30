@@ -58,7 +58,7 @@ export const PaginationDirectionItem = forwardRef<
       >
         <Button
           size={size}
-          color={ComponentColor.Tertiairy}
+          color={ComponentColor.Tertiary}
           onClick={onClick}
           shape={ButtonShape.Square}
           icon={IconFont[direction]}

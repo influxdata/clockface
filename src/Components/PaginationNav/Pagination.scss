@@ -1,4 +1,4 @@
-@import "../../Styles/variables";
+@import '../../Styles/variables';
 
 /*
   pagination
@@ -25,7 +25,7 @@ $cf-pagination--direction-icon: $g14-chromium;
 .cf-pagination--item--container__active {
   position: relative;
   &:after {
-    content: "";
+    content: '';
     background-color: $cf-pagination--border-color;
     z-index: 1;
     width: 100%;

@@ -11,9 +11,7 @@
   border-style: solid;
   border-width: 0;
   text-decoration: none;
-  transition:
-    background-color 0.25s ease,
-    box-shadow 0.25s ease,
+  transition: background-color 0.25s ease, box-shadow 0.25s ease,
     color 0.25s ease;
   outline: none;
   border-radius: $cf-radius;
@@ -83,19 +81,35 @@
 }
 
 .cf-button-xs {
-  @include buttonSizeModifier($cf-form-xs-font, $cf-form-xs-padding, $cf-form-xs-height);
+  @include buttonSizeModifier(
+    $cf-form-xs-font,
+    $cf-form-xs-padding,
+    $cf-form-xs-height
+  );
   .cf-button-icon {
     font-size: $cf-form-xs-font;
   }
 }
 .cf-button-sm {
-  @include buttonSizeModifier($cf-form-sm-font, $cf-form-sm-padding, $cf-form-sm-height);
+  @include buttonSizeModifier(
+    $cf-form-sm-font,
+    $cf-form-sm-padding,
+    $cf-form-sm-height
+  );
 }
 .cf-button-md {
-  @include buttonSizeModifier($cf-form-md-font, $cf-form-md-padding, $cf-form-md-height);
+  @include buttonSizeModifier(
+    $cf-form-md-font,
+    $cf-form-md-padding,
+    $cf-form-md-height
+  );
 }
 .cf-button-lg {
-  @include buttonSizeModifier($cf-form-lg-font, $cf-form-lg-padding, $cf-form-lg-height);
+  @include buttonSizeModifier(
+    $cf-form-lg-font,
+    $cf-form-lg-padding,
+    $cf-form-lg-height
+  );
 }
 
 /*
@@ -128,7 +142,15 @@
   Color Modifiers
   ------------------------------------------------------------------------------
 */
-@mixin buttonColorModifier($bgA, $bgB, $bgHoverA, $bgHoverB, $text, $textHover, $tertiary: false) {
+@mixin buttonColorModifier(
+  $bgA,
+  $bgB,
+  $bgHoverA,
+  $bgHoverB,
+  $text,
+  $textHover,
+  $tertiary: false
+) {
   color: $text;
   @include gradient-diag-up($bgA, $bgB);
 
@@ -149,7 +171,6 @@
   }
 
   @if $tertiary {
-  
     &:active,
     &:focus,
     &:active:hover,
@@ -160,10 +181,9 @@
     &:focus,
     &.active:hover {
       &:after {
-      opacity: 1;
+        opacity: 1;
       }
     }
-
   } @else {
     &:active,
     &:focus,
@@ -192,7 +212,10 @@
   &.cf-button--disabled:focus {
     color: rgba(mix($text, $bgB, 50%), 0.8);
     font-style: italic;
-    @include gradient-diag-up(mix($bgA, $g3-castle, 25%), mix($bgB, $g3-castle, 25%));
+    @include gradient-diag-up(
+      mix($bgA, $g3-castle, 25%),
+      mix($bgB, $g3-castle, 25%)
+    );
     box-shadow: none;
 
     &:after {
@@ -207,25 +230,75 @@
 }
 
 .cf-button-default {
-  @include buttonColorModifier($g5-pepper, $g5-pepper, $g7-graphite, $g7-graphite, $g15-platinum, $g20-white);
+  @include buttonColorModifier(
+    $g5-pepper,
+    $g5-pepper,
+    $g7-graphite,
+    $g7-graphite,
+    $g15-platinum,
+    $g20-white
+  );
 }
 .cf-button-primary {
-  @include buttonColorModifier($c-ocean, $c-pool, $c-pool, $c-hydrogen, $g20-white, $g20-white);
+  @include buttonColorModifier(
+    $c-ocean,
+    $c-pool,
+    $c-pool,
+    $c-hydrogen,
+    $g20-white,
+    $g20-white
+  );
 }
 .cf-button-secondary {
-  @include buttonColorModifier($c-void, $c-amethyst, $c-amethyst, $c-comet, $g20-white, $g20-white);
+  @include buttonColorModifier(
+    $c-void,
+    $c-amethyst,
+    $c-amethyst,
+    $c-comet,
+    $g20-white,
+    $g20-white
+  );
 }
 .cf-button-tertiary {
-  @include buttonColorModifier(transparent, transparent, $g3-castle, $g3-castle, $g9-mountain, $g20-white, true);
+  @include buttonColorModifier(
+    transparent,
+    transparent,
+    $g3-castle,
+    $g3-castle,
+    $g9-mountain,
+    $g20-white,
+    true
+  );
 }
 .cf-button-success {
-  @include buttonColorModifier($c-emerald, mix($c-honeydew, $c-pool, 80%), $c-rainforest, mix($c-krypton, $c-laser, 80%), $g20-white, $g20-white);
+  @include buttonColorModifier(
+    $c-emerald,
+    mix($c-honeydew, $c-pool, 80%),
+    $c-rainforest,
+    mix($c-krypton, $c-laser, 80%),
+    $g20-white,
+    $g20-white
+  );
 }
 .cf-button-warning {
-  @include buttonColorModifier($c-topaz, $c-pineapple, $c-thunder, $c-daisy, $g4-onyx, $g4-onyx);
+  @include buttonColorModifier(
+    $c-topaz,
+    $c-pineapple,
+    $c-thunder,
+    $c-daisy,
+    $g4-onyx,
+    $g4-onyx
+  );
 }
 .cf-button-danger {
-  @include buttonColorModifier($c-ruby, $c-curacao, $c-curacao, $c-tungsten, $g20-white, $g20-white);
+  @include buttonColorModifier(
+    $c-ruby,
+    $c-curacao,
+    $c-curacao,
+    $c-tungsten,
+    $g20-white,
+    $g20-white
+  );
 }
 
 /*
@@ -249,17 +322,17 @@
 
 @keyframes ButtonSpinner {
   0% {
-    transform: translate(-50%,-50%) rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg);
   }
   100% {
-    transform: translate(-50%,-50%) rotate(360deg);
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
 
 .cf-button-spinner {
   pointer-events: none;
   border-style: solid;
-  border-radius: 50%; 
+  border-radius: 50%;
   animation-duration: 0.85s;
   animation-name: ButtonSpinner;
   animation-timing-function: linear;
