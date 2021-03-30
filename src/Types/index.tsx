@@ -33,6 +33,7 @@ export enum ComponentColor {
   Default = 'default',
   Primary = 'primary',
   Secondary = 'secondary',
+  Tertiary = 'tertiary',
   Success = 'success',
   Warning = 'warning',
   Danger = 'danger',
@@ -156,6 +157,11 @@ export enum DropdownItemType {
   Dot = 'dot',
   Checkbox = 'checkbox',
   None = 'none',
+}
+
+export enum Direction {
+  Left = 'CaretLeft',
+  Right = 'CaretRight',
 }
 
 export enum ButtonShape {
