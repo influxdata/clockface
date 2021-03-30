@@ -1,5 +1,8 @@
 # Changelog
 
+### 2.6.8 (Unreleased)
+- [#569](https://github.com/influxdata/clockface/pull/569): Introduce a paginationNav component family
+
 ### 2.6.7 (2021-3-29)
 
 - [#586](https://github.com/influxdata/clockface/pull/586): chore(deps): bump elliptic from 6.5.3 to 6.5.4
