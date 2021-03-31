@@ -4,7 +4,6 @@
 
 - [#607](https://github.com/influxdata/clockface/pull/607): Fix: Adding paginationNav to the index
 
-
 ### 2.6.8 (2021-3-30)
 
 - [#569](https://github.com/influxdata/clockface/pull/569): Introduce a paginationNav component family
