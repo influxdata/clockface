@@ -10,6 +10,7 @@ export interface OverlayContainerProps extends StandardFunctionProps {
   maxWidth?: number
   /** Margins on all sides of overlay */
   margin?: ComponentSize
+  fullScreen?: boolean
 }
 
 export type OverlayContainerRef = HTMLDivElement
@@ -27,16 +28,19 @@ export const OverlayContainer = forwardRef<
       children,
       maxWidth = 800,
       className,
+      fullScreen,
     },
     ref
   ) => {
     const overlayContainerClass = classnames('cf-overlay--container', {
       [`cf-overlay--container__${margin}`]: margin,
+      ['cf-overlay--container__full']: fullScreen,
       [`${className}`]: className,
     })
 
-    const overlayContainerStyle = {maxWidth: `${maxWidth}px`, ...style}
-
+    const overlayContainerStyle = fullScreen
+      ? {...style}
+      : {maxWidth: `${maxWidth}px`, ...style}
     return (
       <div
         id={id}

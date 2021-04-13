@@ -69,6 +69,7 @@ overlayStories.add(
         )}
       >
         <OverlayContainer
+          fullScreen={boolean('fullScreen', false)}
           maxWidth={400}
           margin={
             ComponentSize[
@@ -122,6 +123,7 @@ overlayStories.add(
           <button onClick={logRef}>Log Ref</button>
         </div>
         <OverlayContainer
+          fullScreen={boolean('fullScreen', false)}
           maxWidth={number('maxWidth', 800)}
           ref={overlayContainerRef}
         >
