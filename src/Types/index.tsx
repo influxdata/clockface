@@ -325,6 +325,7 @@ export enum IconFont {
   Maximize = 'maximize',
   Minimize = 'minimize',
   Moon = 'moon',
+  Merge = 'merge',
   NavChat = 'nav-chat',
   OAuth = 'oauth',
   Octagon = 'octagon',
