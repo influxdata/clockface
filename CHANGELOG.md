@@ -1,5 +1,9 @@
 # Changelog
 
+### 2.7.0 (2021-4-14)
+
+- [#611](https://github.com/influxdata/clockface/pull/611): Add 'Merge' Icon 
+
 ### 2.6.9 (2021-3-31)
 
 - [#607](https://github.com/influxdata/clockface/pull/607): Fix: Adding paginationNav to the index
