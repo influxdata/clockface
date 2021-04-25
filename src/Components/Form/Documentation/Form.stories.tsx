@@ -234,6 +234,7 @@ formStories.add(
         <Form.ElementError
           ref={formElementErrorRef}
           message={text('errorMessage', 'Error Message')}
+          withHelper={boolean('withHelper', false)}
         />
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
