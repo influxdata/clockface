@@ -26,7 +26,7 @@ import {
   InputType,
 } from '../../Types'
 
-export interface InputProps extends StandardFunctionProps {
+export interface ClearableInputProps extends StandardFunctionProps {
   /** Minimum value for number & range types */
   min?: number
   /** Maximum value for number & range types */
@@ -53,14 +53,14 @@ export interface InputProps extends StandardFunctionProps {
   maxLength?: number
   /** Keyboard control tab order  */
   tabIndex?: number
-  /** Input type (text, number, password, email, checkbox)  */
-  type?: InputType
   /** Input field name attribute */
   name?: string
   /** Input field value to be updated with 'on X' functions */
   value?: string | number
   /** Placeholder text when no value is present */
   placeholder?: string
+  /** Input type (text, number, password, email, checkbox)  */
+  type?: InputType
   /** Allows or disallows browser autocomplete functionality */
   autocomplete?: AutoComplete
   /** Text to be displayed on hover tooltip */
@@ -79,10 +79,6 @@ export interface InputProps extends StandardFunctionProps {
   inputStyle?: CSSProperties
   /** For use within a form, marks the input as required */
   required?: boolean
-  /** an icon to go to the right / by the end of the textfield,
-   * not the beginning like the current icon*/
-  clearIcon?: IconFont
-
   /** Pass in a RegEx matcher for best results */
   pattern?: string
   /** Pass through for container ref */
@@ -94,7 +90,7 @@ export interface InputProps extends StandardFunctionProps {
 export type InputRef = HTMLInputElement
 export type InputContainerRef = HTMLDivElement
 
-export const Input = forwardRef<InputRef, InputProps>(
+export const ClearableInput = forwardRef<InputRef, ClearableInputProps>(
   (
     {
       id,
@@ -102,7 +98,6 @@ export const Input = forwardRef<InputRef, InputProps>(
       max,
       step,
       icon,
-      clearIcon,
       size = ComponentSize.Small,
       name = '',
       type = InputType.Text,
@@ -141,9 +136,7 @@ export const Input = forwardRef<InputRef, InputProps>(
     const inputClass = classnames('cf-input', {
       [`cf-input-${size}`]: size,
       'cf-input__focused': isFocused,
-      'cf-input__has-checkbox': type === InputType.Checkbox,
       'cf-input__has-icon': icon,
-      'cf-input__has-clear-icon': clearIcon,
       'cf-input__valid': correctStatus === ComponentStatus.Valid,
       'cf-input__error': correctStatus === ComponentStatus.Error,
       'cf-input__loading': correctStatus === ComponentStatus.Loading,
@@ -177,17 +170,7 @@ export const Input = forwardRef<InputRef, InputProps>(
     const correctlyTypedMax: string | number | undefined =
       max === max ? max : ''
 
-    const onClearMouseDown = () => {
-      console.log('just pressed mouse down??? ack! eek!')
-    }
-
     const iconElement = icon && <Icon glyph={icon} className="cf-input-icon" />
-    const clearIconElement = clearIcon && (
-      <button onMouseDown={onClearMouseDown} className="cf-input-clear-icon">
-        {' '}
-        &times;
-      </button>
-    )
 
     const title =
       status === ComponentStatus.Disabled ? disabledTitleText : titleText
@@ -234,7 +217,6 @@ export const Input = forwardRef<InputRef, InputProps>(
         />
         {type === InputType.Checkbox && <div className={inputCheckboxClass} />}
         {iconElement}
-        {clearIconElement}
         {children}
         <button id="clear" style={{color: 'magenta'}}>
           &times;
