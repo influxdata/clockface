@@ -120,15 +120,6 @@ inputsBaseStories.add(
               select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
             ]
           }
-          clearIcon={
-            IconFont[
-              select(
-                'clearIcon',
-                {None: 'none', ...mapEnumKeys(IconFont)},
-                'None'
-              )
-            ]
-          }
           style={object('style', defaultInputStyle)}
           status={
             ComponentStatus[

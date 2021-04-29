@@ -79,10 +79,13 @@ export interface InputProps extends StandardFunctionProps {
   inputStyle?: CSSProperties
   /** For use within a form, marks the input as required */
   required?: boolean
-  /** an icon to go to the right / by the end of the textfield,
-   * not the beginning like the current icon*/
-  clearIcon?: IconFont
-
+  /**
+   * Function to be called when the input field is cleared;
+   * if not included then the 'x' clear button will NOT be added
+   * */
+  onClear?: () => void
+  /** optional extra styling for the clear button */
+  clearBtnStyle?: {}
   /** Pass in a RegEx matcher for best results */
   pattern?: string
   /** Pass through for container ref */
@@ -102,7 +105,6 @@ export const Input = forwardRef<InputRef, InputProps>(
       max,
       step,
       icon,
-      clearIcon,
       size = ComponentSize.Small,
       name = '',
       type = InputType.Text,
@@ -110,6 +112,8 @@ export const Input = forwardRef<InputRef, InputProps>(
       value = '',
       status = ComponentStatus.Default,
       onBlur,
+      onClear,
+      clearBtnStyle,
       testID = 'input-field',
       pattern,
       onFocus,
@@ -143,7 +147,6 @@ export const Input = forwardRef<InputRef, InputProps>(
       'cf-input__focused': isFocused,
       'cf-input__has-checkbox': type === InputType.Checkbox,
       'cf-input__has-icon': icon,
-      'cf-input__has-clear-icon': clearIcon,
       'cf-input__valid': correctStatus === ComponentStatus.Valid,
       'cf-input__error': correctStatus === ComponentStatus.Error,
       'cf-input__loading': correctStatus === ComponentStatus.Loading,
@@ -169,7 +172,6 @@ export const Input = forwardRef<InputRef, InputProps>(
     }
 
     const inputCheckboxClass = classnames('cf-input--checkbox', {checked})
-
     const correctlyTypedValue: string | number = value === value ? value : ''
     const correctType: string = value === value ? type : 'text'
     const correctlyTypedMin: string | number | undefined =
@@ -177,14 +179,14 @@ export const Input = forwardRef<InputRef, InputProps>(
     const correctlyTypedMax: string | number | undefined =
       max === max ? max : ''
 
-    const onClearMouseDown = () => {
-      console.log('just pressed mouse down??? ack! eek!')
-    }
-
     const iconElement = icon && <Icon glyph={icon} className="cf-input-icon" />
-    const clearIconElement = clearIcon && (
-      <button onMouseDown={onClearMouseDown} className="cf-input-clear-icon">
-        {' '}
+
+    const clearElement = correctlyTypedValue && onClear && (
+      <button
+        style={clearBtnStyle}
+        onClick={onClear}
+        className="cf-input-clear-btn"
+      >
         &times;
       </button>
     )
@@ -234,11 +236,8 @@ export const Input = forwardRef<InputRef, InputProps>(
         />
         {type === InputType.Checkbox && <div className={inputCheckboxClass} />}
         {iconElement}
-        {clearIconElement}
+        {clearElement}
         {children}
-        <button id="clear" style={{color: 'magenta'}}>
-          &times;
-        </button>
       </div>
     )
   }

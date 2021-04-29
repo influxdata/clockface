@@ -79,15 +79,18 @@
   Input Icons (Including Status)
   ------------------------------------------------------------------------------
 */
-.cf-input-icon,
-cf-input-clear-icon {
+.cf-input-icon {
   pointer-events: none;
   top: 50%;
+  font-size: 1.1em;
+  transform: translate(-50%, -50%);
+}
+
+.cf-input-icon,
+.cf-input-clear-btn {
   position: absolute;
   z-index: $cf-input--status-z;
   transition: color 0.25s ease;
-  font-size: 1.1em;
-  transform: translate(-50%, -50%);
   color: $cf-input-text--default;
 }
 
@@ -97,6 +100,23 @@ cf-input-clear-icon {
 
 .cf-input-field:focus + .cf-input-icon {
   color: $cf-input-text--focused;
+}
+
+.cf-input-clear-btn {
+  top: 3px;
+  right: 8px;
+  background: inherit;
+  border: none;
+  font-size: 1.9em;
+
+  &:hover {
+    color: $cf-input-text--hover;
+    font-weight: 700;
+  }
+
+  &:focus {
+    color: $cf-input-text--focused;
+  }
 }
 
 /*
@@ -158,27 +178,8 @@ cf-input-clear-icon {
     padding-left: $height;
   }
 
-  &.cf-input__has-clear-icon .cf-input-field {
-    padding-right: $height;
-  }
-
   .cf-input-icon {
     left: ($height / 2) + $cf-border;
-  }
-
-  .cf-input-clear-icon {
-    position: absolute;
-    right: 7px;
-    z-index: 3;
-    margin-top: 8px;
-
-    &:hover {
-      color: red;
-    }
-
-    &.pressed {
-      color: orange;
-    }
   }
 
   .cf-input-pseudo {
