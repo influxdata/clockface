@@ -103,20 +103,19 @@
 }
 
 .cf-input-clear-btn {
-  top: 3px;
   right: 8px;
   background: inherit;
   border: none;
   font-size: 1.9em;
 
-  &:hover {
-    color: $cf-input-text--hover;
-    font-weight: 700;
-  }
-
-  &:focus {
-    color: $cf-input-text--focused;
-  }
+  //&:hover {
+  //  color: $cf-input-text--hover;
+  //  font-weight: 700;
+  //}
+  //
+  //&:focus {
+  //  color: $cf-input-text--focused;
+  //}
 }
 
 /*

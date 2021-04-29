@@ -12,6 +12,7 @@ import classnames from 'classnames'
 // Components
 import {Icon} from '../Icon/Base/Icon'
 import {StatusIndicator} from './StatusIndicator'
+import {Button} from '../Button/Composed/Button'
 
 // Styles
 import './Input.scss'
@@ -85,7 +86,7 @@ export interface InputProps extends StandardFunctionProps {
    * */
   onClear?: () => void
   /** optional extra styling for the clear button */
-  clearBtnStyle?: {}
+  clearBtnStyle?: CSSProperties
   /** Pass in a RegEx matcher for best results */
   pattern?: string
   /** Pass through for container ref */
@@ -182,13 +183,12 @@ export const Input = forwardRef<InputRef, InputProps>(
     const iconElement = icon && <Icon glyph={icon} className="cf-input-icon" />
 
     const clearElement = correctlyTypedValue && onClear && (
-      <button
+      <Button
         style={clearBtnStyle}
         onClick={onClear}
         className="cf-input-clear-btn"
-      >
-        &times;
-      </button>
+        text="&times;"
+      />
     )
 
     const title =
