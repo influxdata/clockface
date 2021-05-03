@@ -118,14 +118,20 @@
     top: 4px;
     right: 4px;
   }
-  //&:hover {
-  //  color: $cf-input-text--hover;
-  //  font-weight: 700;
-  //}
-  //
-  //&:focus {
-  //  color: $cf-input-text--focused;
-  //}
+
+  &.large {
+    width: 32px;
+    height: 32px;
+    right: 9px;
+    top: 6px;
+
+    & .cf-dismiss-button--x {
+      &:before,
+      &:after {
+        width: 20px;
+      }
+    }
+  }
 }
 
 /*

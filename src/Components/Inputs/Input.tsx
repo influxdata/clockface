@@ -1,9 +1,9 @@
 // Libraries
 import React, {
-  CSSProperties,
   ChangeEvent,
-  KeyboardEvent,
+  CSSProperties,
   forwardRef,
+  KeyboardEvent,
   RefObject,
   useState,
 } from 'react'
@@ -19,12 +19,12 @@ import './Input.scss'
 
 // Types
 import {
-  ComponentStatus,
-  ComponentSize,
-  IconFont,
   AutoComplete,
-  StandardFunctionProps,
+  ComponentSize,
+  ComponentStatus,
+  IconFont,
   InputType,
+  StandardFunctionProps,
 } from '../../Types'
 
 export interface InputProps extends StandardFunctionProps {
@@ -182,13 +182,15 @@ export const Input = forwardRef<InputRef, InputProps>(
 
     const iconElement = icon && <Icon glyph={icon} className="cf-input-icon" />
 
-    //const doClearing =
+    const clearClasses = classnames('cf-input-clear-btn', {
+      large: size === ComponentSize.Large,
+    })
 
     const clearElement = correctlyTypedValue && onClear && (
       <DismissButton
         style={clearBtnStyle}
         onClick={onClear}
-        className="cf-input-clear-btn"
+        className={clearClasses}
         titleText="clear this text field"
       />
     )
