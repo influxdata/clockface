@@ -12,8 +12,8 @@ import classnames from 'classnames'
 // Components
 import {Icon} from '../Icon/Base/Icon'
 import {StatusIndicator} from './StatusIndicator'
-import {Button} from '../Button/Composed/Button'
-
+import {DismissButton} from '../Button/Composed/DismissButton'
+//import {Button} from '../Button/Composed/Button'
 // Styles
 import './Input.scss'
 
@@ -182,12 +182,14 @@ export const Input = forwardRef<InputRef, InputProps>(
 
     const iconElement = icon && <Icon glyph={icon} className="cf-input-icon" />
 
+    //const doClearing =
+
     const clearElement = correctlyTypedValue && onClear && (
-      <Button
+      <DismissButton
         style={clearBtnStyle}
         onClick={onClear}
         className="cf-input-clear-btn"
-        text="&times;"
+        titleText="clear this text field"
       />
     )
 
