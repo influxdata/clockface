@@ -33,10 +33,9 @@ export const FormElementError = forwardRef<
     })
 
     //When Helper text exists, we want error message to take up as much height as the helper text. When Helper text does not exist, we want error message to not shift spaces.
-    const withHelperStyle = withHelper ? {height: '20px'} : {}
+    //const withHelperStyle = withHelper ? {height: '20px'} : {}
 
     return (
-      <div className="cf-form--element-error-container" style={withHelperStyle}>
         <span
           id={id}
           ref={ref}
@@ -46,7 +45,6 @@ export const FormElementError = forwardRef<
         >
           {message}
         </span>
-      </div>
     )
   }
 )
