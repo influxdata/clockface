@@ -21,6 +21,7 @@ export interface DraggableResizerHandleProps extends StandardFunctionProps {
   gradient: Gradients
   /** Orientation of handle */
   orientation: Orientation
+  handleBarStyle? : CSSProperties
 }
 
 export type DraggableResizerHandleRef = HTMLDivElement
@@ -42,6 +43,7 @@ export const DraggableResizerHandle = forwardRef<
       onStartDrag = () => {
         // do nothing
       },
+      handleBarStyle,
     },
     ref
   ) => {
@@ -67,12 +69,14 @@ export const DraggableResizerHandle = forwardRef<
       if (orientation == Orientation.Vertical) {
         return {
           background: `linear-gradient(to bottom,  ${colors.start} 0%,${colors.stop} 100%)`,
+          backgroundColor: '#FFFFFF'
         }
       }
 
       if (orientation === Orientation.Horizontal) {
         return {
           background: `linear-gradient(to right,  ${colors.start} 0%,${colors.stop} 100%)`,
+          backgroundColor: '#FFFFFF'
         }
       }
 
@@ -88,9 +92,17 @@ export const DraggableResizerHandle = forwardRef<
         data-testid={testID}
         style={style}
         id={id}
-      >
+      > 
+        <div className='cf-draggable-resizer--handle-pill-1'
+        style={handleBarStyle}></div>
         <div
           className="cf-draggable-resizer--gradient"
+          style={gradientStyle()}
+        />
+        <div className='cf-draggable-resizer--handle-pill-2'
+        style={handleBarStyle}></div>
+        <div
+          className="cf-draggable-resizer--gradient-2"
           style={gradientStyle()}
         />
       </div>

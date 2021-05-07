@@ -4,7 +4,7 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, select, number} from '@storybook/addon-knobs'
+import {withKnobs, select, number, object} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
 import {useState} from '@storybook/addons'
 
@@ -61,6 +61,7 @@ draggableResizerStories.add(
           handlePositions =>
             console.log(`this.setState({handlePositions: ${handlePositions}})`) // eslint-disable-line
         }
+
       >
         <DraggableResizer.Panel>
           <div className="mockCard" />
@@ -117,6 +118,8 @@ draggableResizerExamplesStories.add(
     const [position, updatePosition] = useState<number[]>([0.5])
     const draggableResizerPanelRef1 = createRef<DraggableResizerPanelRef>()
     const draggableResizerPanelRef2 = createRef<DraggableResizerPanelRef>()
+    const defaultBackgroundStyle = {backgroundColor: 'transparent'}
+    const defaultBarStyle = {backgroundColor: '#ffffff'}
 
     const logRef = (): void => {
       /* eslint-disable */
@@ -140,6 +143,8 @@ draggableResizerExamplesStories.add(
               ]
             ]
           }
+          handleBackgroundStyle={object('handleBackgroundStyle', defaultBackgroundStyle)}
+          handleBarStyle={object('handleBarStyle', defaultBarStyle)}
           handlePositions={position}
           onChangePositions={handlePositions => updatePosition(handlePositions)}
         >
