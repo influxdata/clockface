@@ -30,10 +30,9 @@ export interface DraggableResizerProps extends StandardFunctionProps {
   /** Returns the updated array of numbers between 0 - 1, used to manage state */
   onChangePositions: (positions: number[]) => void
   /** Gradient theme for handle */
-  handleGradient?: Gradients,
+  handleGradient?: Gradients
   handleBackgroundStyle?: CSSProperties
   handleBarStyle?: CSSProperties
-
 }
 
 export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
@@ -166,7 +165,7 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
 
         const isLastPanel = i === panelsCount - 1
         const dragging = i === dragIndex
-        
+
         return (
           <>
             {cloneElement(child, {sizePercent: calculatePanelSize(i)})}

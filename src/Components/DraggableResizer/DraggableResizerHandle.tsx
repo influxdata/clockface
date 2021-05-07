@@ -60,30 +60,30 @@ export const DraggableResizerHandle = forwardRef<
     )
 
     const DraggableResizerHandlePillOneClass = classnames(
-      'cf-draggable-resizer--handle-pill-1',
+      'cf-draggable-resizer--handle-pill1',
       {
-        [`cf-draggable-resizer--handle-pill-1__${orientation}`]: orientation,
+        [`cf-draggable-resizer--handle-pill1--${orientation}`]: orientation,
       }
     )
 
     const DraggableResizerHandlePillTwoClass = classnames(
-      'cf-draggable-resizer--handle-pill-2',
+      'cf-draggable-resizer--handle-pill2',
       {
-        [`cf-draggable-resizer--handle-pill-2__${orientation}`]: orientation,
+        [`cf-draggable-resizer--handle-pill2--${orientation}`]: orientation,
       }
     )
 
     const DraggableResizerGradientPillOneClass = classnames(
-      'cf-draggable-resizer--gradient',
+      'cf-draggable-resizer--gradient1',
       {
-        [`cf-draggable-resizer--gradient-1__${orientation}`]: orientation,
+        [`cf-draggable-resizer--gradient1--${orientation}`]: orientation,
       }
     )
 
     const DraggableResizerGradientPillTwoClass = classnames(
-      'cf-draggable-resizer--gradient-2',
+      'cf-draggable-resizer--gradient2',
       {
-        [`cf-draggable-resizer--gradient-2__${orientation}`]: orientation,
+        [`cf-draggable-resizer--gradient2--${orientation}`]: orientation,
       }
     )
 

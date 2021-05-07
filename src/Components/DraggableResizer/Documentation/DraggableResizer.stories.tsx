@@ -61,7 +61,6 @@ draggableResizerStories.add(
           handlePositions =>
             console.log(`this.setState({handlePositions: ${handlePositions}})`) // eslint-disable-line
         }
-
       >
         <DraggableResizer.Panel>
           <div className="mockCard" />
@@ -143,7 +142,10 @@ draggableResizerExamplesStories.add(
               ]
             ]
           }
-          handleBackgroundStyle={object('handleBackgroundStyle', defaultBackgroundStyle)}
+          handleBackgroundStyle={object(
+            'handleBackgroundStyle',
+            defaultBackgroundStyle
+          )}
           handleBarStyle={object('handleBarStyle', defaultBarStyle)}
           handlePositions={position}
           onChangePositions={handlePositions => updatePosition(handlePositions)}
