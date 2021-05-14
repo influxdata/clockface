@@ -177,6 +177,7 @@
 .cf-draggable-resizer--horizontal
   .cf-draggable-resizer--handle-dragging
   > .cf-draggable-resizer--gradient2 {
+  min-width: 32px;
   width: calc(25% - 60px);
 }
 
@@ -186,5 +187,6 @@
 .cf-draggable-resizer--vertical
   .cf-draggable-resizer--handle-dragging
   > .cf-draggable-resizer--gradient2 {
+  min-height: 32px;
   height: calc(25% - 60px);
 }
