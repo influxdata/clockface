@@ -5,6 +5,7 @@ import React, {
   useRef,
   useEffect,
   cloneElement,
+  CSSProperties,
 } from 'react'
 import classnames from 'classnames'
 
@@ -30,6 +31,8 @@ export interface DraggableResizerProps extends StandardFunctionProps {
   onChangePositions: (positions: number[]) => void
   /** Gradient theme for handle */
   handleGradient?: Gradients
+  handleBackgroundStyle?: CSSProperties
+  handleBarStyle?: CSSProperties
 }
 
 export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
@@ -42,6 +45,8 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
   onChangePositions,
   testID = 'draggable-resizer',
   handleGradient = Gradients.PastelGothic,
+  handleBackgroundStyle,
+  handleBarStyle,
 }) => {
   const [dragIndex, setDragIndex] = useState<number>(NULL_DRAG)
 
@@ -172,6 +177,8 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
                 dragging={dragging}
                 gradient={handleGradient}
                 orientation={handleOrientation}
+                style={handleBackgroundStyle}
+                handleBarStyle={handleBarStyle}
                 testID={`${testID}--handle`}
               />
             )}

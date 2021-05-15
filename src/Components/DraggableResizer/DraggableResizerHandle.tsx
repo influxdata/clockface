@@ -21,6 +21,7 @@ export interface DraggableResizerHandleProps extends StandardFunctionProps {
   gradient: Gradients
   /** Orientation of handle */
   orientation: Orientation
+  handleBarStyle?: CSSProperties
 }
 
 export type DraggableResizerHandleRef = HTMLDivElement
@@ -42,6 +43,7 @@ export const DraggableResizerHandle = forwardRef<
       onStartDrag = () => {
         // do nothing
       },
+      handleBarStyle,
     },
     ref
   ) => {
@@ -57,6 +59,34 @@ export const DraggableResizerHandle = forwardRef<
       }
     )
 
+    const DraggableResizerHandlePillOneClass = classnames(
+      'cf-draggable-resizer--handle-pill1',
+      {
+        [`cf-draggable-resizer--handle-pill1--${orientation}`]: orientation,
+      }
+    )
+
+    const DraggableResizerHandlePillTwoClass = classnames(
+      'cf-draggable-resizer--handle-pill2',
+      {
+        [`cf-draggable-resizer--handle-pill2--${orientation}`]: orientation,
+      }
+    )
+
+    const DraggableResizerGradientPillOneClass = classnames(
+      'cf-draggable-resizer--gradient1',
+      {
+        [`cf-draggable-resizer--gradient1--${orientation}`]: orientation,
+      }
+    )
+
+    const DraggableResizerGradientPillTwoClass = classnames(
+      'cf-draggable-resizer--gradient2',
+      {
+        [`cf-draggable-resizer--gradient2--${orientation}`]: orientation,
+      }
+    )
+
     const gradientStyle = (): CSSProperties | undefined => {
       if (!orientation || !gradient) {
         return
@@ -67,12 +97,14 @@ export const DraggableResizerHandle = forwardRef<
       if (orientation == Orientation.Vertical) {
         return {
           background: `linear-gradient(to bottom,  ${colors.start} 0%,${colors.stop} 100%)`,
+          backgroundColor: '#FFFFFF',
         }
       }
 
       if (orientation === Orientation.Horizontal) {
         return {
           background: `linear-gradient(to right,  ${colors.start} 0%,${colors.stop} 100%)`,
+          backgroundColor: '#FFFFFF',
         }
       }
 
@@ -90,7 +122,19 @@ export const DraggableResizerHandle = forwardRef<
         id={id}
       >
         <div
-          className="cf-draggable-resizer--gradient"
+          className={DraggableResizerHandlePillOneClass}
+          style={handleBarStyle}
+        ></div>
+        <div
+          className={DraggableResizerGradientPillOneClass}
+          style={gradientStyle()}
+        />
+        <div
+          className={DraggableResizerHandlePillTwoClass}
+          style={handleBarStyle}
+        ></div>
+        <div
+          className={DraggableResizerGradientPillTwoClass}
           style={gradientStyle()}
         />
       </div>

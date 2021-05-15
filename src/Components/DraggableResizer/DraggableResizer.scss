@@ -57,37 +57,70 @@
 }
 
 .cf-draggable-resizer--handle {
-  flex: 0 0 8px;
+  flex: 0 0 16px;
   background-color: transparent;
   position: relative;
-
-  &:before,
-  > .cf-draggable-resizer--gradient {
+  padding: 4px;
+  > .cf-draggable-resizer--handle-pill1,
+  > .cf-draggable-resizer--gradient1 {
     content: '';
     background-color: $g5-pepper;
     position: absolute;
-    top: 50%;
-    left: 50%;
+
     transform: translate(-50%, -50%);
     border-radius: 2px;
   }
-  
-  &:before {
+  > .cf-draggable-resizer--handle-pill2,
+  > .cf-draggable-resizer--gradient2 {
+    content: '';
+    background-color: $g5-pepper;
+    position: absolute;
+
+    transform: translate(-50%, -50%);
+    border-radius: 2px;
+  }
+
+  > .cf-draggable-resizer--handle-pill1,
+  > .cf-draggable-resizer--handle-pill2 {
     z-index: 1;
   }
 
-  > .cf-draggable-resizer--gradient {
+  > .cf-draggable-resizer--handle-pill1--vertical,
+  > .cf-draggable-resizer--gradient1--vertical {
+    top: 50%;
+    left: 6px;
+  }
+  > .cf-draggable-resizer--handle-pill1--horizontal,
+  > .cf-draggable-resizer--gradient1--horizontal {
+    top: 6px;
+    left: 50%;
+  }
+  > .cf-draggable-resizer--handle-pill2--vertical,
+  > .cf-draggable-resizer--gradient2--vertical {
+    top: 50%;
+    right: 4px;
+  }
+  > .cf-draggable-resizer--handle-pill2--horizontal,
+  > .cf-draggable-resizer--gradient2--horizontal {
+    bottom: 4px;
+    left: 50%;
+  }
+
+  > .cf-draggable-resizer--gradient1,
+  > .cf-draggable-resizer--gradient2 {
     opacity: 0;
     z-index: 2;
     transition: opacity 0.25s ease, height 0.2s ease, width 0.2s ease;
   }
 
-  &:hover > .cf-draggable-resizer--gradient {
+  &:hover > .cf-draggable-resizer--gradient1,
+  &:hover > .cf-draggable-resizer--gradient2 {
     opacity: 1;
   }
 
   // Prevents adjacent handles from lighting up when one is being dragged
-  .cf-draggable-resizer--dragging &:not(.cf-draggable-resizer--handle-dragging):hover:after {
+  .cf-draggable-resizer--dragging
+    &:not(.cf-draggable-resizer--handle-dragging):hover:after {
     opacity: 0;
   }
 }
@@ -98,10 +131,12 @@
     cursor: row-resize;
   }
 
-  &:before,
-  > .cf-draggable-resizer--gradient {
-    width: 60px;
-    height: 4px;
+  > .cf-draggable-resizer--handle-pill1,
+  > .cf-draggable-resizer--handle-pill2,
+  > .cf-draggable-resizer--gradient1,
+  > .cf-draggable-resizer--gradient2 {
+    width: 32px;
+    height: 2px;
   }
 }
 
@@ -111,23 +146,47 @@
     cursor: col-resize;
   }
 
-  &:before,
-  > .cf-draggable-resizer--gradient {
-    width: 4px;
-    height: 60px;
+  > .cf-draggable-resizer--handle-pill1,
+  > .cf-draggable-resizer--handle-pill2,
+  > .cf-draggable-resizer--gradient1,
+  > .cf-draggable-resizer--gradient2 {
+    width: 2px;
+    height: 32px;
   }
 }
 
 // Handle Dragging State
-.cf-draggable-resizer--horizontal .cf-draggable-resizer--handle-dragging > .cf-draggable-resizer--gradient,
-.cf-draggable-resizer--vertical .cf-draggable-resizer--handle-dragging > .cf-draggable-resizer--gradient {
+.cf-draggable-resizer--horizontal
+  .cf-draggable-resizer--handle-dragging
+  > .cf-draggable-resizer--gradient1,
+.cf-draggable-resizer--vertical
+  .cf-draggable-resizer--handle-dragging
+  > .cf-draggable-resizer--gradient1,
+.cf-draggable-resizer--horizontal
+  .cf-draggable-resizer--handle-dragging
+  > .cf-draggable-resizer--gradient2,
+.cf-draggable-resizer--vertical
+  .cf-draggable-resizer--handle-dragging
+  > .cf-draggable-resizer--gradient2 {
   opacity: 1;
 }
 
-.cf-draggable-resizer--horizontal .cf-draggable-resizer--handle-dragging > .cf-draggable-resizer--gradient {
-  width: calc(100% - 60px);
+.cf-draggable-resizer--horizontal
+  .cf-draggable-resizer--handle-dragging
+  > .cf-draggable-resizer--gradient1,
+.cf-draggable-resizer--horizontal
+  .cf-draggable-resizer--handle-dragging
+  > .cf-draggable-resizer--gradient2 {
+  min-width: 32px;
+  width: calc(25% - 60px);
 }
 
-.cf-draggable-resizer--vertical .cf-draggable-resizer--handle-dragging > .cf-draggable-resizer--gradient {
-  height: calc(100% - 60px);
+.cf-draggable-resizer--vertical
+  .cf-draggable-resizer--handle-dragging
+  > .cf-draggable-resizer--gradient1,
+.cf-draggable-resizer--vertical
+  .cf-draggable-resizer--handle-dragging
+  > .cf-draggable-resizer--gradient2 {
+  min-height: 32px;
+  height: calc(25% - 60px);
 }
