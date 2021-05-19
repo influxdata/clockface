@@ -24,7 +24,6 @@ export const FormElementError = forwardRef<
       className,
       message = '\u00a0\u00a0',
       testID = 'form--element-error',
-      withHelper = false,
     },
     ref
   ) => {
@@ -36,15 +35,15 @@ export const FormElementError = forwardRef<
     //const withHelperStyle = withHelper ? {height: '20px'} : {}
 
     return (
-        <span
-          id={id}
-          ref={ref}
-          style={style}
-          data-testid={testID}
-          className={formElementErrorClass}
-        >
-          {message}
-        </span>
+      <span
+        id={id}
+        ref={ref}
+        style={style}
+        data-testid={testID}
+        className={formElementErrorClass}
+      >
+        {message}
+      </span>
     )
   }
 )

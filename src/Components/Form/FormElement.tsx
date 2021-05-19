@@ -80,6 +80,7 @@ export const FormElement = forwardRef<FormElementRef, FormElementProps>(
           className={formElementClass}
         >
           {formElementElements}
+          <div className="cf-form--element-error-container" />
         </label>
       )
     }
@@ -93,6 +94,7 @@ export const FormElement = forwardRef<FormElementRef, FormElementProps>(
         className={formElementClass}
       >
         {formElementElements}
+        <div className="cf-form--element-error-container" />
       </div>
     )
   }
