@@ -8,7 +8,6 @@ import {StandardFunctionProps} from '../../Types'
 export interface FormElementErrorProps extends StandardFunctionProps {
   /** Text to be displayed on error */
   message?: string
-  withHelper?: boolean
 }
 
 export type FormElementErrorRef = HTMLSpanElement
@@ -30,9 +29,6 @@ export const FormElementError = forwardRef<
     const formElementErrorClass = classnames('cf-form--element-error', {
       [`${className}`]: className,
     })
-
-    //When Helper text exists, we want error message to take up as much height as the helper text. When Helper text does not exist, we want error message to not shift spaces.
-    //const withHelperStyle = withHelper ? {height: '20px'} : {}
 
     return (
       <span
