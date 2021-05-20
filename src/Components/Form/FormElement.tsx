@@ -66,7 +66,7 @@ export const FormElement = forwardRef<FormElementRef, FormElementProps>(
               message={errorMessage}
             />
           )}
-          {!!helpText && <FormHelpText text={helpText} />}
+          {!!helpText && !errorMessage && <FormHelpText text={helpText} />}
         </div>
       </>
     )
