@@ -1,5 +1,14 @@
 # Changelog
 
+### 2.8.0 (2021-5-20)
+- [#625](https://github.com/influxdata/clockface/pull/625): bump y18n from 4.0.0 to 4.0.3
+- [#619](https://github.com/influxdata/clockface/pull/619): bump ua-parser-js from 0.7.21 to 0.7.28
+- [#621](https://github.com/influxdata/clockface/pull/621): bump lodash from 4.17.19 to 4.17.21
+- [#622](https://github.com/influxdata/clockface/pull/622): bump hosted-git-info from 2.8.8 to 2.8.9
+- [#620](https://github.com/influxdata/clockface/pull/620): bump handlebars from 4.7.6 to 4.7.7
+- [#618](https://github.com/influxdata/clockface/pull/618): Change draggable resizer look and feel
+- [#610](https://github.com/influxdata/clockface/pull/610): Add full-screen overylay option
+
 ### 2.7.0 (2021-4-14)
 
 - [#611](https://github.com/influxdata/clockface/pull/611): Add 'Merge' Icon 
