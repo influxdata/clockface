@@ -65,10 +65,10 @@ read -r -p "Are you sure you want to publish the build to npm? [y/N] " response
 case "$response" in
     [yY][eE][sS]|[yY])
         echo "Tagging and publishing $VERSION_NUMBER release"
-        #yarn -s publish --$VERSION_NUMBER --access=public
+        yarn -s publish --$VERSION_NUMBER --access=public
 
         echo "Pushing git commit and tag"
-        #git push --follow-tags
+        git push --follow-tags
 
         echo "Publish successful!"
         ;;
@@ -77,12 +77,3 @@ case "$response" in
         exit 1
         ;;
 esac
-
-
-# echo "Tagging and publishing $RELEASE_TYPE release"
-# yarn -s publish --$RELEASE_TYPE --access=public
-
-# echo "Pushing git commit and tag"
-# git push --follow-tags
-
-# echo "Publish successful!"
