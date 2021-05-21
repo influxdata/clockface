@@ -70,7 +70,7 @@ case "$response" in
         echo "Pushing git commit and tag"
         git push --follow-tags
 
-        echo "Publishing new Clockface build to Github Pages"
+        echo "Publishing new Clockface Storybook to Github Pages"
         yarn run publishStorybook
 
         echo "Publish successful!"
