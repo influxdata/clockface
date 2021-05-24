@@ -80,6 +80,7 @@ buttonComposedStories.add(
             ]
           }
           titleText={text('titleText', 'Title Text')}
+          disabledTitleText={text('disabledTitleText', 'Disabled Text')}
           color={
             ComponentColor[
               select('color', mapEnumKeys(ComponentColor), 'Default')
@@ -147,6 +148,7 @@ buttonComposedStories.add(
           onClick={() => alert('clicked')}
           icon={IconFont[select('icon', mapEnumKeys(IconFont), 'Zap')]}
           titleText={text('titleText', 'Title Text')}
+          disabledTitleText={text('disabledTitleText', 'Disabled Text')}
           color={
             ComponentColor[
               select('color', mapEnumKeys(ComponentColor), 'Default')
@@ -220,6 +222,7 @@ buttonComposedStories.add(
           onConfirm={value => alert(`returnValue: ${value}`)}
           returnValue={text('returnValue', '')}
           icon={IconFont[select('icon', mapEnumKeys(IconFont), 'Trash')]}
+          disabledTitleText={text('disabledTitleText', 'Disabled Text')}
           titleText={text('titleText', 'Title Text')}
           color={
             ComponentColor[
@@ -273,6 +276,7 @@ buttonComposedStories.add(
           <DismissButton
             ref={buttonRef}
             onClick={() => alert('Clicked!')}
+            disabledTitleText={text('disabledTitleText', 'Disabled Text')}
             color={
               ComponentColor[
                 select('color', mapEnumKeys(ComponentColor), 'Danger')
@@ -322,6 +326,7 @@ buttonComposedStories.add(
         <CTAButton
           ref={buttonRef}
           onClick={() => alert('Clicked!')}
+          disabledTitleText={text('disabledTitleText', 'Disabled Text')}
           color={
             ComponentColor[
               select('color', mapEnumKeys(ComponentColor), 'Secondary')
@@ -370,6 +375,7 @@ buttonBaseStories.add(
           ref={buttonRef}
           onClick={() => alert('clicked')}
           titleText={text('titleText', 'Title Text')}
+          disabledTitleText={text('disabledTitleText', 'Disabled Text')}
           color={
             ComponentColor[
               select('color', mapEnumKeys(ComponentColor), 'Default')
@@ -431,6 +437,7 @@ buttonComposedStories.add(
           icon={IconFont[select('icon', mapEnumKeys(IconFont), 'Zap')]}
           text={text('text', 'Yeehaw')}
           titleText={text('titleText', 'Title Text')}
+          disabledTitleText={text('disabledTitleText', 'Disabled Text')}
           color={
             ComponentColor[
               select('color', mapEnumKeys(ComponentColor), 'Default')
@@ -493,6 +500,7 @@ buttonComposedStories.add(
           }
           text={text('text', 'Yeehaw')}
           titleText={text('titleText', 'Title Text')}
+          disabledTitleText={text('disabledTitleText', 'Disabled Text')}
           color={
             ComponentColor[
               select('color', mapEnumKeys(ComponentColor), 'Primary')
@@ -635,6 +643,7 @@ buttonComposedStories.add(
             onConfirm={value => alert(`returnValue: ${value}`)}
             icon={IconFont.Trash}
             titleText={text('titleText', 'Title Text')}
+            disabledTitleText={text('disabledTitleText', 'Disabled Text')}
             color={
               ComponentColor[
                 select('color', mapEnumKeys(ComponentColor), 'Default')

@@ -28,6 +28,8 @@ export interface ButtonBaseProps extends StandardFunctionProps {
   onMouseLeave?: (e?: MouseEvent<HTMLButtonElement>) => void
   /** Text to be displayed on hover tooltip */
   titleText?: string
+  /** Text to be displayed on hover tooltip when the button is disabled */
+  disabledTitleText?: string
   /** Keyboard control tab order  */
   tabIndex?: number
   /** Button color */
@@ -55,6 +57,7 @@ export const ButtonBase = forwardRef<ButtonBaseRef, ButtonBaseProps>(
       children,
       tabIndex,
       titleText,
+      disabledTitleText,
       className,
       onMouseOut,
       onMouseOver,
@@ -85,6 +88,9 @@ export const ButtonBase = forwardRef<ButtonBaseRef, ButtonBaseProps>(
       }
     )
 
+    const titleTextToBeUsed =
+      status == ComponentStatus.Disabled ? disabledTitleText : titleText
+
     return (
       <button
         className={buttonBaseClass}
@@ -94,7 +100,7 @@ export const ButtonBase = forwardRef<ButtonBaseRef, ButtonBaseProps>(
         onMouseOver={onMouseOver}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
-        title={titleText}
+        title={titleTextToBeUsed}
         tabIndex={!!tabIndex ? tabIndex : 0}
         type={type}
         data-testid={testID}
