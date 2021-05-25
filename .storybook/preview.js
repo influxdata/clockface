@@ -6,11 +6,11 @@ import './Story.scss'
 addDecorator(addReadme)
 
 addParameters({
-    options: {
-      theme: clockfaceTheme,
-      panelPosition: 'right',
-    },
-    readme: {
-      codeTheme: 'Dracula',
-    },
-  });
+  options: {
+    theme: clockfaceTheme,
+    panelPosition: 'right',
+  },
+  readme: {
+    codeTheme: 'Dracula',
+  },
+})
