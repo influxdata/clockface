@@ -89,7 +89,9 @@ export const ButtonBase = forwardRef<ButtonBaseRef, ButtonBaseProps>(
     )
 
     const titleTextToBeUsed =
-      status == ComponentStatus.Disabled ? disabledTitleText : titleText
+      status == ComponentStatus.Disabled && disabledTitleText
+        ? disabledTitleText
+        : titleText
 
     return (
       <button
