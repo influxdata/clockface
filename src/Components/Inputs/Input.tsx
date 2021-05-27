@@ -85,10 +85,17 @@ export interface InputProps extends StandardFunctionProps {
   containerRef?: RefObject<InputContainerRef>
   /** Render input using monospace font */
   monospace?: boolean
+  defaultValue?: string | number | undefined
 }
 
 export type InputRef = HTMLInputElement
 export type InputContainerRef = HTMLDivElement
+
+const isNaN = (value: number | string | undefined) =>
+  typeof value === 'number' && value !== value
+
+const NaNtoText = (value: number | string | undefined) =>
+  isNaN(value) ? '' : value
 
 export const Input = forwardRef<InputRef, InputProps>(
   (
@@ -102,7 +109,7 @@ export const Input = forwardRef<InputRef, InputProps>(
       name = '',
       type = InputType.Text,
       style = {width: '100%'},
-      value = '',
+      value,
       status = ComponentStatus.Default,
       onBlur,
       testID = 'input-field',
@@ -127,11 +134,12 @@ export const Input = forwardRef<InputRef, InputProps>(
       containerRef,
       autocomplete = AutoComplete.Off,
       disabledTitleText = 'This input is disabled',
+      defaultValue = '',
     },
     ref
   ) => {
     const [isFocused, setFocus] = useState<boolean>(autoFocus)
-    const correctStatus = value === value ? status : ComponentStatus.Error
+    const correctStatus = isNaN(value) ? ComponentStatus.Error : status
 
     const inputClass = classnames('cf-input', {
       [`cf-input-${size}`]: size,
@@ -164,17 +172,46 @@ export const Input = forwardRef<InputRef, InputProps>(
 
     const inputCheckboxClass = classnames('cf-input--checkbox', {checked})
 
-    const correctlyTypedValue: string | number = value === value ? value : ''
-    const correctType: string = value === value ? type : 'text'
-    const correctlyTypedMin: string | number | undefined =
-      min === min ? min : ''
-    const correctlyTypedMax: string | number | undefined =
-      max === max ? max : ''
+    const correctType: string = isNaN(value) ? 'text' : type
+    const correctlyTypedValue: string | number | undefined = NaNtoText(value)
+    const correctlyTypedMin: string | number | undefined = NaNtoText(min)
+    const correctlyTypedMax: string | number | undefined = NaNtoText(max)
 
     const iconElement = icon && <Icon glyph={icon} className="cf-input-icon" />
 
     const title =
       status === ComponentStatus.Disabled ? disabledTitleText : titleText
+
+    const baseProps: Omit<InputProps, 'size'> = {
+      id,
+      min: correctlyTypedMin as any,
+      max: correctlyTypedMax as any,
+      step,
+      checked,
+      name,
+      type: correctType as InputType,
+      placeholder,
+      autoFocus,
+      spellCheck,
+      onBlur: handleInputBlur,
+      onFocus: handleInputFocus,
+      onKeyPress,
+      onKeyUp,
+      onKeyDown,
+      className: 'cf-input-field',
+      maxLength,
+      tabIndex,
+      style: inputStyle,
+      required,
+      pattern,
+    }
+
+    if (defaultValue && !value && !onChange) {
+      baseProps.defaultValue = defaultValue
+    } else {
+      baseProps.onChange = onChange
+      baseProps.value = correctlyTypedValue
+    }
 
     return (
       <div className={inputClass} style={style} ref={containerRef}>
@@ -187,34 +224,13 @@ export const Input = forwardRef<InputRef, InputProps>(
           />
         )}
         <input
-          id={id}
           ref={ref}
-          min={correctlyTypedMin}
-          max={correctlyTypedMax}
-          step={step}
-          checked={checked}
           title={title}
           autoComplete={autocomplete}
-          name={name}
-          type={correctType}
-          value={correctlyTypedValue}
-          placeholder={placeholder}
-          autoFocus={autoFocus}
-          spellCheck={spellCheck}
-          onChange={onChange}
-          onBlur={handleInputBlur}
-          onFocus={handleInputFocus}
-          onKeyPress={onKeyPress}
-          onKeyUp={onKeyUp}
-          onKeyDown={onKeyDown}
           className="cf-input-field"
           disabled={status === ComponentStatus.Disabled}
-          maxLength={maxLength}
-          tabIndex={tabIndex}
           data-testid={testID}
-          style={inputStyle}
-          required={required}
-          pattern={pattern}
+          {...baseProps}
         />
         {type === InputType.Checkbox && <div className={inputCheckboxClass} />}
         {iconElement}
