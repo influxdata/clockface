@@ -27,7 +27,10 @@
   right: $cf-border;
   bottom: $cf-border;
   border-radius: 0 $cf-radius-sm $cf-radius-sm 0;
-  @include gradient-h(rgba($cf-input-background--default, 0), $cf-input-background--default);
+  @include gradient-h(
+    rgba($cf-input-background--default, 0),
+    $cf-input-background--default
+  );
   transition: opacity 0.25s ease;
   border-right-color: $cf-input-background--default;
   border-right-style: solid;
@@ -73,8 +76,8 @@
   font-size: $fontSize;
 
   .cf-status-indicator--shadow {
-    width: ($dimensions - $cf-border) + $dimensions * 0.6;
-    border-right-width: $dimensions * 0.6;
+    width: ($dimensions - $cf-border) + $dimensions * 0.3;
+    border-right-width: $dimensions * 0.3;
   }
 }
 

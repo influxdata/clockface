@@ -210,6 +210,22 @@
   );
 }
 
+.cf-input__indicator-xs {
+  padding-right: $cf-form-xs-height !important;
+}
+
+.cf-input__indicator-sm {
+  padding-right: $cf-form-sm-height !important;
+}
+
+.cf-input__indicator-md {
+  padding-right: $cf-form-md-height !important;
+}
+
+.cf-input__indicator-lg {
+  padding-right: $cf-form-lg-height !important;
+}
+
 /*
   Error State
   ------------------------------------------------------------------------------
