@@ -147,8 +147,7 @@ export const Input = forwardRef<InputRef, InputProps>(
     })
 
     const inputFieldClass = classnames('cf-input-field', {
-      [`cf-input__indicator-${size}`]:
-        status === ComponentStatus.Default ? '' : size,
+      [`cf-input__indicator`]: status !== ComponentStatus.Default,
     })
 
     const handleInputFocus = (e: ChangeEvent<HTMLInputElement>): void => {

@@ -156,6 +156,10 @@
     height: $height;
   }
 
+  .cf-input__indicator {
+    padding-right: $height;
+  }
+
   &.cf-input__has-icon .cf-input-field {
     padding-left: $height;
   }
@@ -208,22 +212,6 @@
     $cf-form-lg-padding,
     $cf-form-lg-height
   );
-}
-
-.cf-input__indicator-xs {
-  padding-right: $cf-form-xs-height !important;
-}
-
-.cf-input__indicator-sm {
-  padding-right: $cf-form-sm-height !important;
-}
-
-.cf-input__indicator-md {
-  padding-right: $cf-form-md-height !important;
-}
-
-.cf-input__indicator-lg {
-  padding-right: $cf-form-lg-height !important;
 }
 
 /*
