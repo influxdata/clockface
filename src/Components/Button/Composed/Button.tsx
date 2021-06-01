@@ -39,6 +39,7 @@ export const Button = forwardRef<ButtonRef, ButtonProps>(
       onClick,
       tabIndex,
       titleText,
+      disabledTitleText,
       className,
       onMouseOut,
       onMouseOver,
@@ -79,6 +80,7 @@ export const Button = forwardRef<ButtonRef, ButtonProps>(
         onMouseLeave={onMouseLeave}
         className={className}
         titleText={titleText || text}
+        disabledTitleText={disabledTitleText}
         tabIndex={!!tabIndex ? tabIndex : 0}
       >
         <IconAndText

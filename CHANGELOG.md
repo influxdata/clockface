@@ -1,5 +1,9 @@
 # Changelog
 
+### 2.9.0 (2021-6-01)
+- [#632](https://github.com/influxdata/clockface/pull/632): Add disabledText field to Button-based components
+
+
 ### 2.8.0 (2021-5-20)
 - [#625](https://github.com/influxdata/clockface/pull/625): bump y18n from 4.0.0 to 4.0.3
 - [#619](https://github.com/influxdata/clockface/pull/619): bump ua-parser-js from 0.7.21 to 0.7.28
