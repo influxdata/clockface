@@ -78,7 +78,7 @@ export const LinkButton = forwardRef<LinkButtonRef, LinkButtonProps>(
     )
 
     const titleTextToBeUsed =
-      status == ComponentStatus.Disabled && disabledTitleText
+      status === ComponentStatus.Disabled && disabledTitleText
         ? disabledTitleText
         : titleText
 
