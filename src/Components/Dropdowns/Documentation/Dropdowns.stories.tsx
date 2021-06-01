@@ -155,6 +155,7 @@ dropdownFamilyStories.add(
               ]
             }
             title={text('title', 'Hover Title Text')}
+            disabledTitleText={text('disabledTitleText', 'Disabled Text')}
           >
             {text('children (text)', 'I am a button!')}
           </Dropdown.Button>

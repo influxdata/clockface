@@ -41,6 +41,7 @@ export const CTAButton = forwardRef<CTAButtonRef, CTAButtonProps>(
       onClick,
       tabIndex,
       titleText,
+      disabledTitleText,
       className,
       onMouseOut,
       onMouseOver,
@@ -64,6 +65,7 @@ export const CTAButton = forwardRef<CTAButtonRef, CTAButtonProps>(
       <ButtonBase
         className={CTAButtonClass}
         titleText={titleText}
+        disabledTitleText={disabledTitleText}
         tabIndex={tabIndex}
         onClick={onClick}
         onMouseOut={onMouseOut}

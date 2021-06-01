@@ -29,6 +29,7 @@ export const SquareButton = forwardRef<SquareButtonRef, SquareButtonProps>(
     {
       className,
       titleText,
+      disabledTitleText,
       tabIndex,
       onClick,
       style,
@@ -51,6 +52,7 @@ export const SquareButton = forwardRef<SquareButtonRef, SquareButtonProps>(
       <ButtonBase
         className={className}
         titleText={titleText}
+        disabledTitleText={disabledTitleText}
         ref={ref}
         tabIndex={!!tabIndex ? tabIndex : 0}
         onClick={onClick}

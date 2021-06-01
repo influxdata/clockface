@@ -35,6 +35,7 @@ export interface DropdownButtonProps extends StandardFunctionProps {
   icon?: IconFont
   /** Text to be displayed on hover tooltip */
   title?: string
+  disabledTitleText?: string
 }
 
 export type DropdownButtonRef = ButtonBaseRef
@@ -51,6 +52,7 @@ export const DropdownButton = forwardRef<
       style,
       color = ComponentColor.Default,
       title,
+      disabledTitleText,
       active = false,
       testID = 'dropdown--button',
       status = ComponentStatus.Default,
@@ -88,6 +90,7 @@ export const DropdownButton = forwardRef<
         onClick={onClick}
         className={dropdownButtonClass}
         titleText={title}
+        disabledTitleText={disabledTitleText}
       >
         {!!icon && <Icon glyph={icon} className="cf-dropdown--icon" />}
         <span className="cf-dropdown--selected">{children}</span>

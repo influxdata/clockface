@@ -36,6 +36,7 @@ export interface LinkButtonProps
   target?: LinkTarget | string
   /** Describes the relationship between this document and the linked document */
   rel?: LinkRel
+  disabledTitleText?: string
 }
 
 export type LinkButtonRef = HTMLAnchorElement
@@ -60,6 +61,7 @@ export const LinkButton = forwardRef<LinkButtonRef, LinkButtonProps>(
       color = ComponentColor.Default,
       status = ComponentStatus.Default,
       placeIconAfterText,
+      disabledTitleText,
     },
     ref
   ) => {
@@ -75,6 +77,11 @@ export const LinkButton = forwardRef<LinkButtonRef, LinkButtonProps>(
       }
     )
 
+    const titleTextToBeUsed =
+      status === ComponentStatus.Disabled && disabledTitleText
+        ? disabledTitleText
+        : titleText
+
     return (
       <a
         id={id}
@@ -82,7 +89,7 @@ export const LinkButton = forwardRef<LinkButtonRef, LinkButtonProps>(
         rel={rel}
         href={href}
         style={style}
-        title={titleText}
+        title={titleTextToBeUsed}
         color={color}
         target={target}
         tabIndex={tabIndex}

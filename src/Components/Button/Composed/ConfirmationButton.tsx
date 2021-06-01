@@ -69,6 +69,7 @@ export const ConfirmationButton: FunctionComponent<ConfirmationButtonProps> = ({
   tabIndex,
   className,
   titleText,
+  disabledTitleText,
   onConfirm,
   returnValue,
   popoverStyle,
@@ -136,6 +137,7 @@ export const ConfirmationButton: FunctionComponent<ConfirmationButtonProps> = ({
         className={className}
         placeIconAfterText={placeIconAfterText}
         titleText={titleText || text}
+        disabledTitleText={disabledTitleText}
         tabIndex={tabIndex}
         testID={`${testID}--button`}
         ref={triggerRef}

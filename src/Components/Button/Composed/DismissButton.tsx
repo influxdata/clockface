@@ -30,6 +30,7 @@ export const DismissButton = forwardRef<DismissButtonRef, DismissButtonProps>(
       onClick,
       tabIndex,
       titleText,
+      disabledTitleText,
       className,
       onMouseOut,
       onMouseOver,
@@ -52,6 +53,7 @@ export const DismissButton = forwardRef<DismissButtonRef, DismissButtonProps>(
       <ButtonBase
         tabIndex={tabIndex}
         titleText={titleText}
+        disabledTitleText={disabledTitleText}
         shape={ButtonShape.Square}
         color={color}
         className={SquareButtonClass}
