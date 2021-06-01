@@ -156,6 +156,10 @@
     height: $height;
   }
 
+  .cf-input__indicator {
+    padding-right: $height;
+  }
+
   &.cf-input__has-icon .cf-input-field {
     padding-left: $height;
   }

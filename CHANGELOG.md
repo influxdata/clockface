@@ -2,6 +2,7 @@
 
 ### 2.9.0 (2021-6-01)
 - [#632](https://github.com/influxdata/clockface/pull/632): Add disabledText field to Button-based components
+- [#633](https://github.com/influxdata/clockface/pull/633): Add spacng to input so no characters are hidden
 
 
 ### 2.8.0 (2021-5-20)

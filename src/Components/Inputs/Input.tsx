@@ -146,6 +146,10 @@ export const Input = forwardRef<InputRef, InputProps>(
       [`${className}`]: className,
     })
 
+    const inputFieldClass = classnames('cf-input-field', {
+      [`cf-input__indicator`]: status !== ComponentStatus.Default,
+    })
+
     const handleInputFocus = (e: ChangeEvent<HTMLInputElement>): void => {
       setFocus(true)
 
@@ -207,7 +211,7 @@ export const Input = forwardRef<InputRef, InputProps>(
           onKeyPress={onKeyPress}
           onKeyUp={onKeyUp}
           onKeyDown={onKeyDown}
-          className="cf-input-field"
+          className={inputFieldClass}
           disabled={status === ComponentStatus.Disabled}
           maxLength={maxLength}
           tabIndex={tabIndex}
