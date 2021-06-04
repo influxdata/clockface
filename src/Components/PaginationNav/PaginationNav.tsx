@@ -149,23 +149,23 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
     }, [totalPages, pageRangeOffset, size, hideDirectionIcon])
 
     useEffect(() => {
-      setActivePage(activePage)
-      if (activePage > breakpoints.secondBreakpoint) {
+      setActivePage(currentPage)
+      if (currentPage > breakpoints.secondBreakpoint) {
         setBreakpoints(
           computePageSpread(
-            activePage,
+            currentPage,
             resizeBasedOnParentSize(size, pageRangeOffset)
           )
         )
-      } else if (activePage < breakpoints.firstBreakpoint) {
+      } else if (currentPage < breakpoints.firstBreakpoint) {
         setBreakpoints(
           computePageSpread(
-            activePage,
+            currentPage,
             resizeBasedOnParentSize(size, pageRangeOffset)
           )
         )
       }
-    }, [activePage])
+    }, [currentPage])
 
     const checkActive = (page: number) => {
       return activePage === page ? true : false
