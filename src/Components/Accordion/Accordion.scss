@@ -1,0 +1,39 @@
+@import '../../Styles/variables';
+
+
+.cf-accordion{
+    width: 100%;
+}
+
+.cf-accordion--icon {
+position:absolute;    
+right:16px;
+position: absolute;
+top: 50%;
+transition: all 0.25s ease;
+
+}
+
+.cf-accordion--icon-caret-down {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  
+  .cf-accordion--icon-caret-up {
+    transform: translateY(-50%) rotate(-180deg);
+  }
+
+
+.cf-accordion--header {
+    position:relative;
+    display:flex;
+    align-items: center;
+    background-color: $g5-pepper;
+    padding:10px;
+    border-radius: 4px;
+
+}
+.cf-accordion--childrens{
+    background-color: $g6-smoke;
+
+    color: #ffffff
+}
