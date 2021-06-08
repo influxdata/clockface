@@ -149,6 +149,10 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
     }, [totalPages, pageRangeOffset, size, hideDirectionIcon])
 
     useEffect(() => {
+      setActivePage(currentPage)
+    }, [currentPage])
+
+    useEffect(() => {
       setActivePage(activePage)
       if (activePage > breakpoints.secondBreakpoint) {
         setBreakpoints(

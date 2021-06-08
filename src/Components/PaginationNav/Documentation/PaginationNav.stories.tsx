@@ -45,7 +45,7 @@ PaginationStories.add(
         <PaginationNav.PaginationNav
           ref={paginationRef}
           totalPages={number('totalPages', 10)}
-          currentPage={1}
+          currentPage={number('currentPage', 1)}
           pageRangeOffset={number('pageRangeOffset', 1)}
           onChange={page => {
             /* eslint-disable */
