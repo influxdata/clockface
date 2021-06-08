@@ -1,4 +1,6 @@
 # Changelog
+### 2.10.0 (2021-6-08)
+- [#635](https://github.com/influxdata/clockface/pull/635): Allow the pagination nav to listen to currentPage changes
 
 ### 2.9.0 (2021-6-01)
 - [#632](https://github.com/influxdata/clockface/pull/632): Add disabledText field to Button-based components
