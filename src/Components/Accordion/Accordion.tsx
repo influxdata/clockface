@@ -11,10 +11,15 @@ import {Icon} from '../Icon/Base/Icon'
 export interface AccordionProps extends StandardFunctionProps {
   /** Alert color */
   /** Icon to be displayed to the left of text */
-  title?: string
+/*   title?: string
+ */  backgroundColor?: InfluxColors
+     expanded?: boolean
+/*   toggle?: React.ReactNode
+ */  
+     accordionHeader?: React.ReactNode; 
 }
 
-export type AccordionRef = HTMLDivElement
+export type AccordionRef = HTMLUListElement
 
 export const AccordionRoot = forwardRef<AccordionRef, AccordionProps>(
   (
@@ -24,47 +29,66 @@ export const AccordionRoot = forwardRef<AccordionRef, AccordionProps>(
       testID = 'alert',
       children,
       className,
-      title = 'damn',
+      expanded = false,
+      accordionHeader
     },
     ref
   ) => {
-    const accordionClassName = classnames('cf-accordion', {
+    const accordionClassName = classnames('cf-accordion', { 
       [`${className}`]: className,
     })
-    const [expanded, setExpanded] = useState<boolean>(false)
-    const caretIcon = expanded ? IconFont.CaretUp : IconFont.CaretDown
+
+    const [isExpanded, setExpanded] = useState<boolean>(expanded)
+    const caretIcon = isExpanded ? IconFont.CaretUp : IconFont.CaretDown
     const accordionCaretClassName = classnames('cf-accordion--icon', {
       [`cf-accordion--icon-${caretIcon}`]: caretIcon,
     })
+    
+    const accordionHeaderClassName = classnames('cf-accordion--header', {
+      [`cf-accordion--header--active`]: isExpanded,
+    })
 
-    const [summary, ...childrens] = React.Children.toArray(children)
-    console.log(summary)
-    console.log(childrens)
+    const accordionBodyContainerClassName = classnames('cf-accordion--body-container', {
+      [`cf-accordion--body-container--expanded`]: isExpanded,
+      [`cf-accordion--body-container--collapsed`]: !isExpanded,
+
+    })
+
+    //const [header, ...childrens]
+
+    const childArray = React.Children.map(children, child => (
+      <div className="cf-accordion--body">{child}</div>
+    ))
+
+
+
     return (
-      <div
+      <ul
         ref={ref}
         className={accordionClassName}
         data-testid={testID}
         id={id}
         style={style}
       >
-        <div
-          className={'cf-accordion--header'}
-          onClick={() => {
-            setExpanded(!expanded)
-          }}
+        <li
+          className={accordionHeaderClassName} 
         >
-          {summary}
-          <span> {title}</span>
+          {accordionHeader}
+          <div onClick={() => {
+            setExpanded(!isExpanded)
+          }}>
           <Icon
             glyph={IconFont.CaretDown}
             className={accordionCaretClassName}
           />
-        </div>
-        {expanded && (
-          <div className={'cf-accordion--childrens'}> {childrens}</div>
-        )}
-      </div>
+          </div>
+        </li>
+        <ul className={accordionBodyContainerClassName}>
+        {
+         childArray
+        }
+        </ul>
+      </ul>
     )
   }
 )
