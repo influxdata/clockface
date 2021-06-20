@@ -99,8 +99,10 @@ export const FormValidationElement = forwardRef<
           </FormLabel>
         )}
         {children(status)}
-        {!!errorMessage && <FormElementError message={errorMessage} />}
-        {!!helpText && <FormHelpText text={helpText} />}
+        <div className="cf-form--element-error-container">
+          {!!errorMessage && <FormElementError message={errorMessage} />}
+          {!!helpText && !errorMessage && <FormHelpText text={helpText} />}
+        </div>
       </label>
     )
   }

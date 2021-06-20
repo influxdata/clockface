@@ -59,13 +59,15 @@ export const FormElement = forwardRef<FormElementRef, FormElementProps>(
           </FormLabel>
         )}
         {children}
-        {!!errorMessage && (
-          <FormElementError
-            testID={errorMessageTestId}
-            message={errorMessage}
-          />
-        )}
-        {!!helpText && <FormHelpText text={helpText} />}
+        <div className="cf-form--element-error-container">
+          {!!errorMessage && (
+            <FormElementError
+              testID={errorMessageTestId}
+              message={errorMessage}
+            />
+          )}
+          {!!helpText && !errorMessage && <FormHelpText text={helpText} />}
+        </div>
       </>
     )
 
