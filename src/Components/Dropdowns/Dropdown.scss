@@ -44,7 +44,6 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   box-shadow: 0 2px 5px 0.6px rgba($g0-obsidian, 0.2);
 }
 
-
 .cf-dropdown-menu--contents {
   font-size: 0;
   user-select: none;
@@ -62,7 +61,7 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
 @mixin dropdownItemStyles() {
   padding: $dropdown-item--padding-v $dropdown-item--padding-h;
   font-size: $cf-form-sm-font;
-  line-height: $cf-form-sm-font;
+  line-height: $cf-form-sm-line-height;
   font-weight: $cf-font-weight--medium;
   text-align: left;
 }
@@ -95,8 +94,9 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   }
 
   &.cf-dropdown-item__checkbox,
-  &.cf-dropdown-item__checkbox.cf-dropdown-link-item > a  {
-    padding-left: $dropdown-item--padding-h + $dropdown-item--checkbox-size + $dropdown-item--padding-v;
+  &.cf-dropdown-item__checkbox.cf-dropdown-link-item > a {
+    padding-left: $dropdown-item--padding-h + $dropdown-item--checkbox-size +
+      $dropdown-item--padding-v;
   }
 
   &:hover,
@@ -255,7 +255,7 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   $dividerA,
   $dividerB,
   $dividerText,
-  $checkbox,
+  $checkbox
 ) {
   @include gradient-h($backgroundA, $backgroundB);
 
