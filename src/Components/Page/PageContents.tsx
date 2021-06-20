@@ -3,7 +3,10 @@ import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {DapperScrollbars} from '../DapperScrollbars/DapperScrollbars'
+import {
+  DapperScrollbars,
+  FusionScrollHandler,
+} from '../DapperScrollbars/DapperScrollbars'
 
 // Types
 import {StandardFunctionProps, ComponentSize} from '../../Types'
@@ -17,6 +20,10 @@ export interface PageContentsProps extends StandardFunctionProps {
   autoHideScrollbar?: boolean
   /** Controls the gutters (left and right margins) */
   gutters?: ComponentSize
+  /** Exposes custom onScroll handler */
+  onScroll?: FusionScrollHandler
+  /** Allows user to customize visible height of container */
+  visibleHeight?: string
 }
 
 export type PageContentsRef = HTMLDivElement
@@ -33,6 +40,8 @@ export const PageContents = forwardRef<PageContentsRef, PageContentsProps>(
       testID = 'page-contents',
       autoHideScrollbar = false,
       gutters = ComponentSize.Medium,
+      onScroll,
+      visibleHeight = '100px',
     },
     ref
   ) => {
@@ -56,10 +65,11 @@ export const PageContents = forwardRef<PageContentsRef, PageContentsProps>(
       return (
         <DapperScrollbars
           id={id}
-          style={style}
+          style={{...style, minHeight: visibleHeight}}
           testID={testID}
           autoHide={autoHideScrollbar}
           className={pageContentsClass}
+          onScroll={onScroll}
         >
           {kids}
         </DapperScrollbars>
