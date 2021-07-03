@@ -64,15 +64,12 @@ accordionStories.add(
     const [allAccess, setAllAccess] = useState(false)
     const [readAccss, setReadAccess] = useState(false)
     const [writeAccess, setWriteAccess] = useState(false)
-    const [indeterminateState, setIndeterminate] = useState(false)
     const [allAccess2, setAllAccess2] = useState(false)
     const [readAccss2, setReadAccess2] = useState(false)
     const [writeAccess2, setWriteAccess2] = useState(false)
-    const [indeterminateState2, setIndeterminate2] = useState(false)
     const [allAccess3, setAllAccess3] = useState(false)
     const [readAccss3, setReadAccess3] = useState(false)
     const [writeAccess3, setWriteAccess3] = useState(false)
-    const [indeterminateState3, setIndeterminate3] = useState(false)
     const [individualReads, setIndividualAccessStates] = useState(
       individualTelegrafs
     )
@@ -168,16 +165,13 @@ accordionStories.add(
 
     useEffect(() => {
       if (readAccss || writeAccess) {
-        setIndeterminate(true)
       }
 
       if (readAccss && writeAccess) {
         setAllAccess(true)
-        setIndeterminate(false)
       }
 
       if (!readAccss && !writeAccess) {
-        setIndeterminate(false)
         setAllAccess(false)
       }
 
@@ -189,32 +183,26 @@ accordionStories.add(
 
     useEffect(() => {
       if (readAccss2 || writeAccess2) {
-        setIndeterminate2(true)
       }
 
       if (readAccss2 && writeAccess2) {
         setAllAccess2(true)
-        setIndeterminate2(false)
       }
 
       if (!readAccss2 && !writeAccess2) {
-        setIndeterminate2(false)
         setAllAccess2(false)
       }
     }, [readAccss2, writeAccess2])
 
     useEffect(() => {
       if (readAccss3 || writeAccess3) {
-        setIndeterminate3(true)
       }
 
       if (readAccss3 && writeAccess3) {
         setAllAccess3(true)
-        setIndeterminate3(false)
       }
 
       if (!readAccss3 && !writeAccess3) {
-        setIndeterminate3(false)
         setAllAccess3(false)
       }
     }, [readAccss3, writeAccess3])
@@ -317,7 +305,6 @@ accordionStories.add(
       title: string,
       state: boolean,
       setter: Function,
-      indeterminateState: boolean
     ) => (
       <FlexBox
         margin={ComponentSize.Small}
@@ -335,7 +322,6 @@ accordionStories.add(
             onChange={() => handleToggleChange(state, setter)}
             size={ComponentSize.ExtraSmall}
             checked={state}
-            indeterminate={indeterminateState}
             style={margin}
           ></Toggle>
         </FlexBox.Child>
@@ -346,7 +332,6 @@ accordionStories.add(
             onChange={() => handleToggleChange(state, setter)}
             size={ComponentSize.ExtraSmall}
             checked={state}
-            indeterminate={indeterminateState}
             style={margin}
           ></Toggle>
         </FlexBox.Child>
@@ -449,7 +434,6 @@ accordionStories.add(
                 'Telegraf',
                 allAccess,
                 setAllAccess,
-                indeterminateState
               )}
             </Accordion.AccordionHeader>
             <AccordionBodyItem>
@@ -458,7 +442,6 @@ accordionStories.add(
                 'Telegraf1',
                 readAccss3,
                 setReadAccess3,
-                indeterminateState3
               )}{' '}
             </AccordionBodyItem>
             <AccordionBodyItem>
@@ -467,7 +450,6 @@ accordionStories.add(
                 'Telegraf2',
                 writeAccess3,
                 setWriteAccess3,
-                indeterminateState3
               )}{' '}
             </AccordionBodyItem>
 
@@ -482,7 +464,6 @@ accordionStories.add(
                 'Checks',
                 allAccess2,
                 setAllAccess2,
-                indeterminateState2
               )}
             </Accordion.AccordionHeader>
             <AccordionBodyItem>
@@ -499,7 +480,6 @@ accordionStories.add(
                 'Dashboards',
                 allAccess3,
                 setAllAccess3,
-                indeterminateState3
               )}
             </Accordion.AccordionHeader>
             <AccordionBodyItem>
