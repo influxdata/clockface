@@ -159,6 +159,11 @@ export enum DropdownItemType {
   None = 'none',
 }
 
+export enum IconPlacement {
+  Left = 'Left',
+  Right = 'Right',
+}
+
 export enum Direction {
   Left = 'CaretLeft',
   Right = 'CaretRight',

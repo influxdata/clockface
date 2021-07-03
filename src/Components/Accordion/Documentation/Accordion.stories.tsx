@@ -19,11 +19,14 @@ import {
   ComponentSize,
   FlexDirection,
   InputToggleType,
+  JustifyContent,
 } from '../../../Types'
 import {IndexList} from '../../IndexList'
 import {useEffect, useState} from '@storybook/client-api'
 import {FlexBox} from '../../FlexBox'
-
+import {AccordionBodyItem} from '../AccordionBodyItem'
+/* import {AccordionNestedItem} from '../AccordionNestedItem'
+ */
 const accordionStories = storiesOf('Atomic|Accordion', module).addDecorator(
   withKnobs
 )
@@ -39,7 +42,7 @@ accordionStories.add(
       /* eslint-enable */
     }
 
-    const margin = {marginLeft: '24px'}
+    const margin = {marginRight: '10px'}
 
     const individualTelegrafs = {
       telegraf1: {
@@ -62,19 +65,25 @@ accordionStories.add(
     const [readAccss, setReadAccess] = useState(false)
     const [writeAccess, setWriteAccess] = useState(false)
     const [indeterminateState, setIndeterminate] = useState(false)
+    const [allAccess2, setAllAccess2] = useState(false)
+    const [readAccss2, setReadAccess2] = useState(false)
+    const [writeAccess2, setWriteAccess2] = useState(false)
+    const [indeterminateState2, setIndeterminate2] = useState(false)
+    const [allAccess3, setAllAccess3] = useState(false)
+    const [readAccss3, setReadAccess3] = useState(false)
+    const [writeAccess3, setWriteAccess3] = useState(false)
+    const [indeterminateState3, setIndeterminate3] = useState(false)
     const [individualReads, setIndividualAccessStates] = useState(
       individualTelegrafs
     )
 
-    console.log('this', {individualTelegrafs , ...individualReads})
-    
+    console.log('this', {individualTelegrafs, ...individualReads})
+
     const readToggle1 = (
       <Toggle
         id={'Read1'}
         type={InputToggleType.Checkbox}
-        onChange={() =>
-          handleArrayToggleChange( 'telegraf1', 'read')
-        }
+        onChange={() => handleArrayToggleChange('telegraf1', 'read')}
         size={ComponentSize.ExtraSmall}
         checked={individualReads.telegraf1.read}
       />
@@ -83,62 +92,57 @@ accordionStories.add(
       <Toggle
         id={'Read2'}
         type={InputToggleType.Checkbox}
-        onChange={() =>
-            handleArrayToggleChange( 'telegraf2', 'read')
-          }
+        onChange={() => handleArrayToggleChange('telegraf2', 'read')}
         size={ComponentSize.ExtraSmall}
         checked={individualReads.telegraf2.read}
       />
     )
 
     const writeToggle1 = (
-        <Toggle
-          id={'Write1'}
-          type={InputToggleType.Checkbox}
-          onChange={() =>
-            handleArrayToggleChange( 'telegraf1', 'write')
-          }
-          size={ComponentSize.ExtraSmall}
-          checked={individualReads.telegraf1.write}
-        />
-      )
+      <Toggle
+        id={'Write1'}
+        type={InputToggleType.Checkbox}
+        onChange={() => handleArrayToggleChange('telegraf1', 'write')}
+        size={ComponentSize.ExtraSmall}
+        checked={individualReads.telegraf1.write}
+      />
+    )
 
+    const writeToggle2 = (
+      <Toggle
+        id={'Write2'}
+        type={InputToggleType.Checkbox}
+        onChange={() => handleArrayToggleChange('telegraf2', 'write')}
+        size={ComponentSize.ExtraSmall}
+        checked={individualReads.telegraf2.write}
+      />
+    )
 
-      const writeToggle2 = (
-        <Toggle
-          id={'Write2'}
-          type={InputToggleType.Checkbox}
-          onChange={() =>
-            handleArrayToggleChange( 'telegraf2', 'write')
-          }
-          size={ComponentSize.ExtraSmall}
-          checked={individualReads.telegraf2.write}
-        />
-      )
+    const allToggle1 = (
+      <Toggle
+        id={'All1'}
+        type={InputToggleType.Checkbox}
+        onChange={() => handleArrayToggleChange('telegraf1', 'all')}
+        size={ComponentSize.ExtraSmall}
+        checked={
+          individualReads.telegraf1.write === true &&
+          individualReads.telegraf1.read === true
+        }
+      />
+    )
 
-      const allToggle1 = (
-        <Toggle
-          id={'All1'}
-          type={InputToggleType.Checkbox}
-          onChange={() =>
-            handleArrayToggleChange( 'telegraf1', 'all')
-          }
-          size={ComponentSize.ExtraSmall}
-          checked={(individualReads.telegraf1.write === true && individualReads.telegraf1.read === true )}
-        />
-      )
-
-      const allToggle2 = (
-        <Toggle
-          id={'All2'}
-          type={InputToggleType.Checkbox}
-          onChange={() =>
-            handleArrayToggleChange( 'telegraf2', 'all')
-          }
-          size={ComponentSize.ExtraSmall}
-          checked={(individualReads.telegraf2.write === true && individualReads.telegraf2.read === true )}
-        />
-      )
+    const allToggle2 = (
+      <Toggle
+        id={'All2'}
+        type={InputToggleType.Checkbox}
+        onChange={() => handleArrayToggleChange('telegraf2', 'all')}
+        size={ComponentSize.ExtraSmall}
+        checked={
+          individualReads.telegraf2.write === true &&
+          individualReads.telegraf2.read === true
+        }
+      />
+    )
 
     const readToggles = [readToggle1, readToggle2]
     const writeToggles = [writeToggle1, writeToggle2]
@@ -147,10 +151,20 @@ accordionStories.add(
     useEffect(() => {
       setReadAccess(allAccess)
       setWriteAccess(allAccess)
-      const object = individualReads;
-      toggleAllIndividualAccessStates(object,['read','write'], allAccess);
+      const object = individualReads
+      toggleAllIndividualAccessStates(object, ['read', 'write'], allAccess)
       setIndividualAccessStates(object)
     }, [allAccess])
+
+    useEffect(() => {
+      setReadAccess2(allAccess2)
+      setWriteAccess2(allAccess2)
+    }, [allAccess2])
+
+    useEffect(() => {
+      setReadAccess(allAccess3)
+      setWriteAccess(allAccess3)
+    }, [allAccess3])
 
     useEffect(() => {
       if (readAccss || writeAccess) {
@@ -167,24 +181,60 @@ accordionStories.add(
         setAllAccess(false)
       }
 
-      const object = individualReads;
-      toggleAllIndividualAccessStates(object,['read'], readAccss); 
-      toggleAllIndividualAccessStates(object,['write'],writeAccess)
+      const object = individualReads
+      toggleAllIndividualAccessStates(object, ['read'], readAccss)
+      toggleAllIndividualAccessStates(object, ['write'], writeAccess)
       setIndividualAccessStates(object)
     }, [readAccss, writeAccess])
 
-    const toggleAllIndividualAccessStates = (object: any, actionType: string[], state: boolean) => {
-        if(actionType.length === 1 ){
-            console.log('hello')
-        object.telegraf1[`${actionType[0]}`] = state;
-        object.telegraf2[`${actionType[0]}`] = state;
-        } else {
-        object.telegraf1[`${actionType[0]}`] = state;
-        object.telegraf2[`${actionType[0]}`] = state;
-        object.telegraf1[`${actionType[1]}`] = state;
-        object.telegraf2[`${actionType[1]}`] = state;
-        }
-        return object;
+    useEffect(() => {
+      if (readAccss2 || writeAccess2) {
+        setIndeterminate2(true)
+      }
+
+      if (readAccss2 && writeAccess2) {
+        setAllAccess2(true)
+        setIndeterminate2(false)
+      }
+
+      if (!readAccss2 && !writeAccess2) {
+        setIndeterminate2(false)
+        setAllAccess2(false)
+      }
+    }, [readAccss2, writeAccess2])
+
+    useEffect(() => {
+      if (readAccss3 || writeAccess3) {
+        setIndeterminate3(true)
+      }
+
+      if (readAccss3 && writeAccess3) {
+        setAllAccess3(true)
+        setIndeterminate3(false)
+      }
+
+      if (!readAccss3 && !writeAccess3) {
+        setIndeterminate3(false)
+        setAllAccess3(false)
+      }
+    }, [readAccss3, writeAccess3])
+
+    const toggleAllIndividualAccessStates = (
+      object: any,
+      actionType: string[],
+      state: boolean
+    ) => {
+      if (actionType.length === 1) {
+        console.log('hello')
+        object.telegraf1[`${actionType[0]}`] = state
+        object.telegraf2[`${actionType[0]}`] = state
+      } else {
+        object.telegraf1[`${actionType[0]}`] = state
+        object.telegraf2[`${actionType[0]}`] = state
+        object.telegraf1[`${actionType[1]}`] = state
+        object.telegraf2[`${actionType[1]}`] = state
+      }
+      return object
     }
     const handleToggleChange = (
       checked: boolean,
@@ -196,27 +246,26 @@ accordionStories.add(
       setChecked(!checked)
     }
 
-    const handleArrayToggleChange = (name: string, actionType: string ): void => {
+    const handleArrayToggleChange = (
+      name: string,
+      actionType: string
+    ): void => {
       /* eslint-disable */
       /* eslint-enable */
 
-      const object = individualReads;
-      if (actionType === 'all'){
-        object[name].read = !object.telegraf1.read;
-        object[name].write = !object.telegraf1.write;
-
-
-    } else {
-      object[name][`${actionType}`] = !object[name][`${actionType}`];
-    }
+      const object = individualReads
+      if (actionType === 'all') {
+        object[name].read = !object.telegraf1.read
+        object[name].write = !object.telegraf1.write
+      } else {
+        object[name][`${actionType}`] = !object[name][`${actionType}`]
+      }
       console.log('object: ', object)
-      setIndividualAccessStates(object);
+      setIndividualAccessStates(object)
 
       //setChecked(object)
     }
-
-
-
+    const paddingLeft = {paddingLeft: '40px'}
     const simpleTable = (
       <IndexList>
         <IndexList.Header>
@@ -227,6 +276,7 @@ accordionStories.add(
                 columnName={col}
                 width={columnWidths[i]}
                 alignment={Alignment.Left}
+                style={paddingLeft}
               />
             ) : (
               <IndexList.HeaderCell
@@ -244,7 +294,7 @@ accordionStories.add(
         >
           {exampleNames.map((row, i) => (
             <IndexList.Row key={`row--${row}${i}`}>
-              <IndexList.Cell alignment={Alignment.Left}>
+              <IndexList.Cell alignment={Alignment.Left} style={paddingLeft}>
                 {exampleNames[i]}
               </IndexList.Cell>
               <IndexList.Cell alignment={Alignment.Center}>
@@ -263,6 +313,46 @@ accordionStories.add(
     )
 
     const accordionHeader = (
+      id: string,
+      title: string,
+      state: boolean,
+      setter: Function,
+      indeterminateState: boolean
+    ) => (
+      <FlexBox
+        margin={ComponentSize.Small}
+        justifyContent={JustifyContent.SpaceBetween}
+        direction={FlexDirection.Row}
+        stretchToFitWidth={true}
+      >
+        <FlexBox.Child basis={40} grow={8}>
+          <InputLabel size={ComponentSize.Medium}>{title}</InputLabel>
+        </FlexBox.Child>
+        <FlexBox.Child grow={1}>
+          <Toggle
+            id={id}
+            type={InputToggleType.Checkbox}
+            onChange={() => handleToggleChange(state, setter)}
+            size={ComponentSize.ExtraSmall}
+            checked={state}
+            indeterminate={indeterminateState}
+            style={margin}
+          ></Toggle>
+        </FlexBox.Child>
+        <FlexBox.Child grow={1}>
+          <Toggle
+            id={id}
+            type={InputToggleType.Checkbox}
+            onChange={() => handleToggleChange(state, setter)}
+            size={ComponentSize.ExtraSmall}
+            checked={state}
+            indeterminate={indeterminateState}
+            style={margin}
+          ></Toggle>
+        </FlexBox.Child>
+      </FlexBox>
+    )
+    /* const accordionHeaderChecks = (
       <FlexBox margin={ComponentSize.Small}>
         <Toggle
           id={'0'}
@@ -271,30 +361,53 @@ accordionStories.add(
           size={ComponentSize.ExtraSmall}
           checked={allAccess}
           indeterminate={indeterminateState}
+          style={margin}
         ></Toggle>
         <InputLabel htmlFor={'0'} size={ComponentSize.Medium}>
-          Telegraf
+          Checks
         </InputLabel>
       </FlexBox>
     )
 
-    const accordionBodyToggle1 = (
+    const accordionHeaderDashboards = (
       <FlexBox margin={ComponentSize.Small}>
         <Toggle
-          id={'1'}
+          id={'0'}
           type={InputToggleType.Checkbox}
-          onChange={() => handleToggleChange(readAccss, setReadAccess)}
+          onChange={() => handleToggleChange(allAccess, setAllAccess)}
           size={ComponentSize.ExtraSmall}
-          checked={readAccss}
+          checked={allAccess}
+          indeterminate={indeterminateState}
+          style={margin}
+        ></Toggle>
+        <InputLabel htmlFor={'0'} size={ComponentSize.Medium}>
+          Dashboards
+        </InputLabel>
+      </FlexBox>
+    ) */
+
+    const accordionBodyToggle = (
+      id: string,
+      title: string,
+      state: boolean,
+      setter: Function
+    ) => (
+      <FlexBox margin={ComponentSize.Small}>
+        <Toggle
+          id={id}
+          type={InputToggleType.Checkbox}
+          onChange={() => handleToggleChange(state, setter)}
+          size={ComponentSize.ExtraSmall}
+          checked={state}
           style={margin}
         ></Toggle>
         <InputLabel htmlFor={'1'} size={ComponentSize.Medium}>
-          Read
+          {title}
         </InputLabel>
       </FlexBox>
     )
 
-    const accordionBodyToggle2 = (
+    /* const accordionBodyToggle2 = (
       <FlexBox margin={ComponentSize.Small}>
         <Toggle
           id={'2'}
@@ -308,33 +421,95 @@ accordionStories.add(
           Write
         </InputLabel>
       </FlexBox>
-    )
+    ) */
 
-    const nestedAccordionHeader = (
-      <InputLabel size={ComponentSize.Medium} style={margin}>
-        {' '}
-        Manage Individual Telegraf Permissions
-      </InputLabel>
-    )
+    /* const nestedAccordionHeader = (
+      <FlexBox margin={ComponentSize.Small}>
+        <InputLabel size={ComponentSize.Medium} style={margin}>
+          {' '}
+          Manage Individual Telegraf Permissions
+        </InputLabel>
+      </FlexBox>
+    ) */
 
-    const nestedAccordion = (
-      <Accordion accordionHeader={nestedAccordionHeader}>
-        {simpleTable}
-      </Accordion>
-    )
+    const nestedAccordion = <Accordion>{simpleTable}</Accordion>
+
+    console.log(nestedAccordion)
+
     return (
       <div
         className="story--example"
         style={{justifyContent: 'none', alignItems: 'start', display: 'block'}}
       >
-        <FlexBox direction={FlexDirection.Column}>
-          <Accordion accordionHeader={accordionHeader}>
-            {accordionBodyToggle1}
-            {accordionBodyToggle2}
-            {nestedAccordion}
+        <div style={{width: '560px'}}>
+          <Accordion /* accordionHeader={accordionHeader} */>
+            <Accordion.AccordionHeader>
+              {accordionHeader(
+                '0',
+                'Telegraf',
+                allAccess,
+                setAllAccess,
+                indeterminateState
+              )}
+            </Accordion.AccordionHeader>
+            <AccordionBodyItem>
+              {accordionHeader(
+                '6',
+                'Telegraf1',
+                readAccss3,
+                setReadAccess3,
+                indeterminateState3
+              )}{' '}
+            </AccordionBodyItem>
+            <AccordionBodyItem>
+              {accordionHeader(
+                '6',
+                'Telegraf2',
+                writeAccess3,
+                setWriteAccess3,
+                indeterminateState3
+              )}{' '}
+            </AccordionBodyItem>
+
+            {
+              //nestedAccordion
+            }
           </Accordion>
-          <Accordion accordionHeader={accordionHeader}></Accordion>
-        </FlexBox>
+          <Accordion /* accordionHeader={accordionHeader} */>
+            <Accordion.AccordionHeader>
+              {accordionHeader(
+                '3',
+                'Checks',
+                allAccess2,
+                setAllAccess2,
+                indeterminateState2
+              )}
+            </Accordion.AccordionHeader>
+            <AccordionBodyItem>
+              {accordionBodyToggle('4', 'Read', readAccss2, setReadAccess2)}
+            </AccordionBodyItem>
+            <AccordionBodyItem>
+              {accordionBodyToggle('5', 'Write', writeAccess2, setWriteAccess2)}
+            </AccordionBodyItem>
+          </Accordion>
+          <Accordion /* accordionHeader={accordionHeader} */>
+            <Accordion.AccordionHeader>
+              {accordionHeader(
+                '6',
+                'Dashboards',
+                allAccess3,
+                setAllAccess3,
+                indeterminateState3
+              )}
+            </Accordion.AccordionHeader>
+            <AccordionBodyItem>
+              {accordionBodyToggle('7', 'Read', readAccss3, setReadAccess3)}
+            </AccordionBodyItem>
+            <AccordionBodyItem>
+              {accordionBodyToggle('8', 'Write', writeAccess3, setWriteAccess3)}
+            </AccordionBodyItem>
+          </Accordion>
+        </div>
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
         </div>

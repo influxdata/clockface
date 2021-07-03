@@ -1,132 +1,142 @@
 @import '../../Styles/variables';
 
+.cf-accordion {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
-.cf-accordion{
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    background-color: $g3-castle;
+.cf-accordion--icon-container {
+  position: relative;
+  width: 16px;
+  margin-right: $cf-form-sm-padding;
 }
 
 .cf-accordion--icon {
-position:absolute;    
-right:16px;
-position: absolute;
-top: 50%;
-transition: all 0.25s ease;
-
+  position: absolute;
+  top: 50%;
+  transition: all 0.25s ease;
 }
 
 .cf-accordion--icon-caret-down {
-    transform: translateY(-50%) rotate(0deg);
-  }
-  
-  .cf-accordion--icon-caret-up {
-    transform: translateY(-50%) rotate(-180deg);
-  }
-
-
-.cf-accordion--header {
-    
-    position:relative;
-    display:flex;
-    align-items: center;
-    background-color: $g5-pepper;
-    padding:10px;
-    border-radius: 4px;
-    margin-bottom: 0px;
-    &:hover {
-        background-color: $g6-smoke;
-    }
-    .cf-accordion--header {
-        padding: 0px;
-        background-color:inherit;
-    }
-
-
+  transform: translateY(-50%) rotate(0deg);
 }
 
+.cf-accordion--icon-caret-up {
+  transform: translateY(-50%) rotate(-180deg);
+}
+
+.cf-accordion--header {
+  display: flex;
+  background-color: $g5-pepper;
+  padding: 10px 10px 10px 10px;
+  border-radius: 4px;
+  margin-bottom: 0px;
+  &:hover {
+    background-color: $g6-smoke;
+  }
+}
 
 .cf-accordion--header--active {
-    background-color: $g6-smoke;
+  background-color: $g6-smoke;
+  border-radius: 4px 4px 0px 0px;
 }
 
 .cf-accordion--body-container {
-    padding-left: 0px;
-    margin: 0px;
-    height: 0;
-    opacity: 0;
-    visibility: hidden;
-    :last-child{
-        .cf-accordion{
-            margin-bottom:0px;
-        }
-        margin-bottom: 2px;
+  border-radius: 0px 0px 4px 4px;
+  margin-bottom: 2px;
+  :last-child {
+    .cf-accordion {
+      margin-bottom: 0px;
     }
-  /*   transition: all 110ms cubic-bezier(0.2, 0, 0.38, 0.9);
-    -webkit-transition: all 110ms cubic-bezier(0.2, 0, 0.38, 0.9); */
-    &--expanded {
-
-        animation: 110ms cubic-bezier(0.2, 0, 0.38, 0.9) expand-accordion forwards;
-
+    .last-child {
+      &:hover {
+        background-color: inherit;
+      }
     }
+  }
 
-    &--collapsed {
-        animation: 110ms cubic-bezier(0.2, 0, 0.38, 0.9) collapse-accordion forwards;
+  &--expanded {
+    animation: 250ms cubic-bezier(0.4, 0, 0.2, 1) expand-accordion forwards;
+  }
 
-    }
+  &--collapsed {
+    animation: 250ms cubic-bezier(0.4, 0, 0.2, 1) collapse-accordion forwards;
+    margin-bottom: 2px;
+  }
 }
 
 .cf-accordion--body {
- @extend .cf-accordion--header;
- margin-top: 2px;
- background-color: inherit;
- &:hover {
-    background-color: $g4-onyx;
+  @extend .cf-accordion--header;
+  border-radius: 0px;
+  padding-left: 36px;
+  background-color: $g4-onyx;
+  &:hover {
+    background-color: $g5-pepper;
+  }
 }
-
+.cf-accordion--nested--item {
+  :last-child {
+  }
 }
+.cf-accordion--nested {
+  @extend .cf-accordion--header;
+  padding-left: 0px;
+  background-color: $g3-castle;
+  &:hover {
+    background-color: $g3-castle;
+  }
+}
+.cf-accordion--header--nested {
+  @extend .cf-accordion--header;
+  border-radius: 0px;
+  border-radius: 0px 0px 4px 4px;
+  padding-left: 40px;
 
+  background-color: $g4-onyx;
+  &:hover {
+    background-color: $g5-pepper;
+  }
+}
 .cf-accordion--header-title {
-    padding-left: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    color: $g20-white
+  padding-left: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: $g20-white;
 }
-.cf-accordion--childrens{
-   // background-color: $g6-smoke;
-    
-    color: #ffffff
-}
+.cf-accordion--childrens {
+  // background-color: $g6-smoke;
 
+  color: #ffffff;
+}
 
 @mixin -content-visible {
-    height: 100%;
-    opacity: 1;
-    visibility: inherit;
-  }
-  
-  @mixin -content-hidden {
-    height: 0;
-    opacity: 0;
-    visibility: hidden;
-  }
+  max-height: 2000px;
+  opacity: 1;
+  visibility: inherit;
+}
+
+@mixin -content-hidden {
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+}
 
 @keyframes collapse-accordion {
-    0% {
-      @include -content-visible;
-    }
-    100% {
-      @include -content-hidden;
-    }
+  0% {
+    @include -content-visible;
   }
+  100% {
+    @include -content-hidden;
+  }
+}
 
-  @keyframes expand-accordion {
-    0% {
-      @include -content-hidden;
-    }
-    100% {
-      @include -content-visible;
-    }
+@keyframes expand-accordion {
+  0% {
+    @include -content-hidden;
   }
+  100% {
+    @include -content-visible;
+  }
+}
