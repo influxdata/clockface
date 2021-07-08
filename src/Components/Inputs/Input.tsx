@@ -85,8 +85,6 @@ export interface InputProps extends StandardFunctionProps {
    * if not included then the 'x' clear button will NOT be added
    * */
   onClear?: () => void
-  /** optional extra styling for the clear button */
-  clearBtnStyle?: CSSProperties
   /** Pass in a RegEx matcher for best results */
   pattern?: string
   /** Pass through for container ref */
@@ -147,7 +145,7 @@ export const Input = forwardRef<InputRef, InputProps>(
       'cf-input__focused': isFocused,
       'cf-input__has-checkbox': type === InputType.Checkbox,
       'cf-input__has-icon': icon,
-      'cf-input__has-clear-btn': onClear,
+      'cf-input__has-clear-btn': onClear && value,
       'cf-input__valid': correctStatus === ComponentStatus.Valid,
       'cf-input__error': correctStatus === ComponentStatus.Error,
       'cf-input__loading': correctStatus === ComponentStatus.Loading,
@@ -188,7 +186,9 @@ export const Input = forwardRef<InputRef, InputProps>(
       xsmall: size === ComponentSize.ExtraSmall,
     })
 
-    const clearElement = onClear && (
+    console.log('hello there')
+
+    const clearElement = onClear && value && (
       <DismissButton
         onClick={onClear}
         className={clearClasses}
