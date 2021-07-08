@@ -13,7 +13,7 @@ import classnames from 'classnames'
 import {Icon} from '../Icon/Base/Icon'
 import {StatusIndicator} from './StatusIndicator'
 import {DismissButton} from '../Button/Composed/DismissButton'
-//import {Button} from '../Button/Composed/Button'
+
 // Styles
 import './Input.scss'
 
@@ -114,7 +114,6 @@ export const Input = forwardRef<InputRef, InputProps>(
       status = ComponentStatus.Default,
       onBlur,
       onClear,
-      clearBtnStyle,
       testID = 'input-field',
       pattern,
       onFocus,
@@ -148,6 +147,7 @@ export const Input = forwardRef<InputRef, InputProps>(
       'cf-input__focused': isFocused,
       'cf-input__has-checkbox': type === InputType.Checkbox,
       'cf-input__has-icon': icon,
+      'cf-input__has-clear-btn': onClear,
       'cf-input__valid': correctStatus === ComponentStatus.Valid,
       'cf-input__error': correctStatus === ComponentStatus.Error,
       'cf-input__loading': correctStatus === ComponentStatus.Loading,
@@ -186,9 +186,8 @@ export const Input = forwardRef<InputRef, InputProps>(
       large: size === ComponentSize.Large,
     })
 
-    const clearElement = correctlyTypedValue && onClear && (
+    const clearElement = onClear && (
       <DismissButton
-        style={clearBtnStyle}
         onClick={onClear}
         className={clearClasses}
         titleText="clear this text field"
@@ -238,9 +237,9 @@ export const Input = forwardRef<InputRef, InputProps>(
           required={required}
           pattern={pattern}
         />
+        {clearElement}
         {type === InputType.Checkbox && <div className={inputCheckboxClass} />}
         {iconElement}
-        {clearElement}
         {children}
       </div>
     )
