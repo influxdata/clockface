@@ -184,6 +184,8 @@ export const Input = forwardRef<InputRef, InputProps>(
 
     const clearClasses = classnames('cf-input-clear-btn', {
       large: size === ComponentSize.Large,
+      medium: size === ComponentSize.Medium,
+      xsmall: size === ComponentSize.ExtraSmall,
     })
 
     const clearElement = onClear && (

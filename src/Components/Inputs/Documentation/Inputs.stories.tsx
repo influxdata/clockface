@@ -155,7 +155,9 @@ inputsBaseStories.add(
 inputsBaseStories.add(
   'Input (Clearable Text)',
   () => {
-    const [value, setValue] = useState<string>('hello world')
+    const [value, setValue] = useState<string>(
+      'hello world how are you it is me working on this input.....'
+    )
 
     return (
       <div className="story--example">
@@ -169,7 +171,7 @@ inputsBaseStories.add(
           name={text('name', 'Name')}
           titleText={text('titleText', 'Title Text')}
           disabledTitleText={text('disabledTitleText', 'Disabled Title Text')}
-          maxLength={number('maxLength', 24)}
+          maxLength={number('maxLength', 125)}
           icon={
             IconFont[
               select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')

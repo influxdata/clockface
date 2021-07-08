@@ -101,7 +101,8 @@
 .cf-input-field:focus + .cf-input-icon {
   color: $cf-input-text--focused;
 }
-
+/** default size is small, there are
+alternate css for the other sizes */
 .cf-input-clear-btn {
   right: 4px;
   top: 4px;
@@ -111,14 +112,42 @@
 
   &.cf-dismiss-button {
     top: 4px;
-    right: 4px;
+    right: -17px;
     transform: none;
+  }
+
+  &.xsmall {
+    width: 16px;
+    height: 16px;
+    right: -12px;
+    top: 3px;
+
+    & .cf-dismiss-button--x {
+      &:before,
+      &:after {
+        width: 9px;
+      }
+    }
+  }
+
+  &.medium {
+    width: 25px;
+    height: 25px;
+    right: -18px;
+    top: 6px;
+
+    & .cf-dismiss-button--x {
+      &:before,
+      &:after {
+        width: 16px;
+      }
+    }
   }
 
   &.large {
     width: 32px;
     height: 32px;
-    right: 9px;
+    right: -25px;
     top: 6px;
 
     & .cf-dismiss-button--x {
@@ -189,8 +218,8 @@
     padding-left: $height;
   }
 
-  &.cf-input__has-clear-btn {
-    padding-right: $height * 1.3;
+  &.cf-input__has-clear-btn input {
+    padding-right: $height * 1.05;
   }
 
   .cf-input-icon {
