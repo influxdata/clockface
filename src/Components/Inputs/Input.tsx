@@ -1,9 +1,9 @@
 // Libraries
 import React, {
-  CSSProperties,
   ChangeEvent,
-  KeyboardEvent,
+  CSSProperties,
   forwardRef,
+  KeyboardEvent,
   RefObject,
   useState,
 } from 'react'
@@ -12,18 +12,19 @@ import classnames from 'classnames'
 // Components
 import {Icon} from '../Icon/Base/Icon'
 import {StatusIndicator} from './StatusIndicator'
+import {DismissButton} from '../Button/Composed/DismissButton'
 
 // Styles
 import './Input.scss'
 
 // Types
 import {
-  ComponentStatus,
-  ComponentSize,
-  IconFont,
   AutoComplete,
-  StandardFunctionProps,
+  ComponentSize,
+  ComponentStatus,
+  IconFont,
   InputType,
+  StandardFunctionProps,
 } from '../../Types'
 
 export interface InputProps extends StandardFunctionProps {
@@ -79,6 +80,11 @@ export interface InputProps extends StandardFunctionProps {
   inputStyle?: CSSProperties
   /** For use within a form, marks the input as required */
   required?: boolean
+  /**
+   * Function to be called when the input field is cleared;
+   * if not included then the 'x' clear button will NOT be added
+   * */
+  onClear?: () => void
   /** Pass in a RegEx matcher for best results */
   pattern?: string
   /** Pass through for container ref */
@@ -105,6 +111,7 @@ export const Input = forwardRef<InputRef, InputProps>(
       value = '',
       status = ComponentStatus.Default,
       onBlur,
+      onClear,
       testID = 'input-field',
       pattern,
       onFocus,
@@ -138,6 +145,7 @@ export const Input = forwardRef<InputRef, InputProps>(
       'cf-input__focused': isFocused,
       'cf-input__has-checkbox': type === InputType.Checkbox,
       'cf-input__has-icon': icon,
+      'cf-input__has-clear-btn': onClear && value,
       'cf-input__valid': correctStatus === ComponentStatus.Valid,
       'cf-input__error': correctStatus === ComponentStatus.Error,
       'cf-input__loading': correctStatus === ComponentStatus.Loading,
@@ -167,7 +175,6 @@ export const Input = forwardRef<InputRef, InputProps>(
     }
 
     const inputCheckboxClass = classnames('cf-input--checkbox', {checked})
-
     const correctlyTypedValue: string | number = value === value ? value : ''
     const correctType: string = value === value ? type : 'text'
     const correctlyTypedMin: string | number | undefined =
@@ -176,6 +183,22 @@ export const Input = forwardRef<InputRef, InputProps>(
       max === max ? max : ''
 
     const iconElement = icon && <Icon glyph={icon} className="cf-input-icon" />
+
+    const clearClasses = classnames('cf-input-clear-btn', {
+      large: size === ComponentSize.Large,
+      medium: size === ComponentSize.Medium,
+      xsmall: size === ComponentSize.ExtraSmall,
+    })
+
+    console.log('hello there')
+
+    const clearElement = onClear && value && (
+      <DismissButton
+        onClick={onClear}
+        className={clearClasses}
+        titleText="clear this text field"
+      />
+    )
 
     const title =
       status === ComponentStatus.Disabled ? disabledTitleText : titleText
@@ -220,6 +243,7 @@ export const Input = forwardRef<InputRef, InputProps>(
           required={required}
           pattern={pattern}
         />
+        {clearElement}
         {type === InputType.Checkbox && <div className={inputCheckboxClass} />}
         {iconElement}
         {children}

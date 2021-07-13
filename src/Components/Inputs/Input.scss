@@ -82,14 +82,15 @@
 .cf-input-icon {
   pointer-events: none;
   top: 50%;
+  font-size: 1.1em;
+  transform: translate(-50%, -50%);
+}
+
+.cf-input-icon,
+.cf-input-clear-btn {
   position: absolute;
   z-index: $cf-input--status-z;
   transition: color 0.25s ease;
-  font-size: 1.1em;
-}
-
-.cf-input-icon {
-  transform: translate(-50%, -50%);
   color: $cf-input-text--default;
 }
 
@@ -99,6 +100,63 @@
 
 .cf-input-field:focus + .cf-input-icon {
   color: $cf-input-text--focused;
+}
+/** default size is small, there are
+alternate css for the other sizes */
+.cf-input-clear-btn {
+  right: 4px;
+  top: 4px;
+  background: inherit;
+  border: none;
+  transform: translateX(-100%) !important;
+
+  &.cf-dismiss-button {
+    top: 4px;
+    right: -17px;
+    transform: none;
+  }
+
+  &.xsmall {
+    width: 16px;
+    height: 16px;
+    right: -12px;
+    top: 3px;
+
+    & .cf-dismiss-button--x {
+      &:before,
+      &:after {
+        width: 9px;
+      }
+    }
+  }
+
+  &.medium {
+    width: 25px;
+    height: 25px;
+    right: -18px;
+    top: 6px;
+
+    & .cf-dismiss-button--x {
+      &:before,
+      &:after {
+        width: 16px;
+      }
+    }
+  }
+
+  &.large {
+    width: 32px;
+    height: 32px;
+    right: -25px;
+    top: 6px;
+
+    & .cf-dismiss-button--x {
+      &:before,
+      &:after {
+        width: 20px;
+      }
+    }
+  }
 }
 
 /*
@@ -162,6 +220,10 @@
 
   &.cf-input__has-icon .cf-input-field {
     padding-left: $height;
+  }
+
+  &.cf-input__has-clear-btn input {
+    padding-right: $height * 1.05;
   }
 
   .cf-input-icon {
