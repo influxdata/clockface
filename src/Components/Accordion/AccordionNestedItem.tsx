@@ -1,7 +1,7 @@
 // Libraries
 import React, {forwardRef} from 'react' // Styles
 /* import classnames from 'classnames'
- */ import './Accordion.scss'
+ */
 
 // Types
 import {/* IconFont */ InfluxColors, StandardFunctionProps} from '../../Types'

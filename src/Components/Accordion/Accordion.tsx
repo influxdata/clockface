@@ -1,8 +1,8 @@
 // Libraries
 import React, {forwardRef, useState} from 'react'
 import classnames from 'classnames'
-// Styles
 import './Accordion.scss'
+// Styles
 
 // Types
 import {/* IconFont */ InfluxColors, StandardFunctionProps} from '../../Types'
@@ -10,13 +10,9 @@ import {/* IconFont */ InfluxColors, StandardFunctionProps} from '../../Types'
 export interface AccordionProps extends StandardFunctionProps {
   /** Alert color */
   /** Icon to be displayed to the left of text */
-  /*   title?: string
-   */ backgroundColor?: InfluxColors
+  backgroundColor?: InfluxColors
   expanded?: boolean
   nested?: boolean
-  /*   toggle?: React.ReactNode
-   */
-  //accordionHeader?: React.ReactNode;
 }
 
 export const AccordionContext = React.createContext({
@@ -35,7 +31,6 @@ export const AccordionRoot = forwardRef<AccordionRef, AccordionProps>(
       children,
       className,
       expanded = false,
-      //accordionHeader
     },
     ref
   ) => {

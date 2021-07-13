@@ -76,10 +76,7 @@
     background-color: $g5-pepper;
   }
 }
-.cf-accordion--nested--item {
-  :last-child {
-  }
-}
+
 .cf-accordion--nested {
   @extend .cf-accordion--header;
   padding-left: 0px;

@@ -2,10 +2,10 @@
 import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 // Styles
-import './Accordion.scss'
 
 // Types
 import {
+  ComponentColor,
   IconFont,
   IconPlacement,
   InfluxColors,
@@ -13,6 +13,7 @@ import {
 } from '../../Types'
 import {Icon} from '../Icon/Base/Icon'
 import {AccordionContext} from './Accordion'
+import { SquareButton } from '../Button/Composed/SquareButton'
 
 export interface AccordionHeaderProps extends StandardFunctionProps {
   /** Alert color */
@@ -62,21 +63,32 @@ export const AccordionHeader = forwardRef<
       [`cf-accordion--header--nested`]: nested,
     })
 
+    //const iconButtonStyle = {}
+
     return (
       <div className={AccordionHeaderClassName}>
         {iconPlacement === IconPlacement.Left && (
-          <div
+         /*  <div
             onClick={() => {
               console.log(nested)
               setExpanded(!isExpanded)
             }}
             className={'cf-accordion--icon-container'}
+            tabIndex={0}
           >
             <Icon
               glyph={IconFont.CaretDown}
               className={AccordionHeaderCaretClassName}
             />
-          </div>
+          </div> */
+          <SquareButton icon={IconFont.CaretDown} color={ComponentColor.Default}
+          onClick={() => {
+            console.log(nested)
+            setExpanded(!isExpanded)
+          }}
+          >
+
+          </SquareButton>
         )}
         {children}
         {iconPlacement === IconPlacement.Right && (
@@ -86,6 +98,8 @@ export const AccordionHeader = forwardRef<
               setExpanded(!isExpanded)
             }}
             className={'cf-accordion--icon-container'}
+            tabIndex={0}
+
           >
             <Icon
               glyph={IconFont.CaretDown}
