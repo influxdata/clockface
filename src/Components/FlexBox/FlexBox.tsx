@@ -1,5 +1,5 @@
 // Libraries
-import React, {forwardRef} from 'react'
+import React, {forwardRef, MouseEvent} from 'react'
 import classnames from 'classnames'
 
 // Types
@@ -27,6 +27,7 @@ export interface FlexBoxProps extends StandardFunctionProps {
   stretchToFitWidth?: boolean
   /** stretches component spacer to fit parent height */
   stretchToFitHeight?: boolean
+  onClick?: (e: MouseEvent<HTMLElement>) => void
 }
 
 export type FlexBoxRef = HTMLDivElement
@@ -45,6 +46,7 @@ export const FlexBoxRoot = forwardRef<FlexBoxRef, FlexBoxProps>(
       justifyContent = JustifyContent.FlexStart,
       stretchToFitWidth = false,
       stretchToFitHeight = false,
+      onClick,
     },
     ref
   ) => {
@@ -65,6 +67,7 @@ export const FlexBoxRoot = forwardRef<FlexBoxRef, FlexBoxProps>(
         style={style}
         data-testid={testID}
         className={flexBoxClass}
+        onClick={onClick}
       >
         {children}
       </div>
