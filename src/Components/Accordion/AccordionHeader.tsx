@@ -1,36 +1,25 @@
 // Libraries
-import React, {forwardRef} from 'react'
+import React, {forwardRef, KeyboardEvent} from 'react'
 import classnames from 'classnames'
 // Styles
 
 // Types
 import {
-  ComponentColor,
   IconFont,
   IconPlacement,
-  InfluxColors,
   StandardFunctionProps,
 } from '../../Types'
 import {Icon} from '../Icon/Base/Icon'
 import {AccordionContext} from './Accordion'
-import { SquareButton } from '../Button/Composed/SquareButton'
 
 export interface AccordionHeaderProps extends StandardFunctionProps {
   /** Alert color */
-  /** Icon to be displayed to the left of text */
-  /*   title?: string
-   */ backgroundColor?: InfluxColors
+  /** Expand Icon to be displa*/
   expanded?: boolean
-  nested?: boolean
-  iconPlacement?: IconPlacement
 
-  /*   toggle?: React.ReactNode
-   */
-
-  AccordionHeader?: React.ReactNode
 }
 
-export type AccordionHeaderRef = HTMLUListElement
+export type AccordionHeaderRef = HTMLDivElement
 
 export const AccordionHeader = forwardRef<
   AccordionHeaderRef,
@@ -40,66 +29,67 @@ export const AccordionHeader = forwardRef<
     {
       id,
       style,
-      testID = 'alert',
+      testID = 'accordion-header',
       children,
       className,
-      nested = false,
-      expanded = false,
-      iconPlacement = IconPlacement.Left,
     },
     ref
   ) => {
-    const {isExpanded, setExpanded} = React.useContext(AccordionContext)
-
+    const {isExpanded, setExpanded, iconPlacementPosition} = React.useContext(AccordionContext)
     const caretIcon = isExpanded ? IconFont.CaretUp : IconFont.CaretDown
     const AccordionHeaderCaretClassName = classnames('cf-accordion--icon', {
       [`cf-accordion--icon-${caretIcon}`]: caretIcon,
     })
 
-    console.log('nested', nested)
-    const AccordionHeaderClassName = classnames({
+    const AccordionHeaderClassName = classnames(`cf-accordion--header`,{
       [`cf-accordion--header--active`]: isExpanded,
-      [`cf-accordion--header`]: !nested,
-      [`cf-accordion--header--nested`]: nested,
+      [`${className}`]: className,
     })
 
-    //const iconButtonStyle = {}
+    const handleKeyUp = (e: KeyboardEvent<HTMLDivElement>): void => {
+      if (e.key === ' ') {
+        setExpanded(!isExpanded)
+      }
+    }
+
+    const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>): void => {
+      if (e.key === ' ') {
+        e.preventDefault()
+      }
+    }
 
     return (
-      <div className={AccordionHeaderClassName}>
-        {iconPlacement === IconPlacement.Left && (
-         /*  <div
-            onClick={() => {
-              console.log(nested)
-              setExpanded(!isExpanded)
-            }}
-            className={'cf-accordion--icon-container'}
-            tabIndex={0}
-          >
+      <div
+      ref={ref}
+        className={AccordionHeaderClassName}
+        onClick={() => {
+          setExpanded(!isExpanded)
+        }}
+        tabIndex={0}
+        onKeyUp={handleKeyUp}
+        onKeyDown={handleKeyDown}
+        id={id}
+        style={style}
+        data-testid={testID}
+
+      >
+        {iconPlacementPosition === IconPlacement.Left && (
+          <div className={'cf-accordion--icon-container-left'}>
             <Icon
               glyph={IconFont.CaretDown}
               className={AccordionHeaderCaretClassName}
             />
-          </div> */
-          <SquareButton icon={IconFont.CaretDown} color={ComponentColor.Default}
-          onClick={() => {
-            console.log(nested)
-            setExpanded(!isExpanded)
-          }}
-          >
-
-          </SquareButton>
+          </div>
         )}
+        <div className={'cf-accordion--header--content'}>
         {children}
-        {iconPlacement === IconPlacement.Right && (
+        </div>
+        {iconPlacementPosition === IconPlacement.Right && (
           <div
             onClick={() => {
-              console.log(nested)
               setExpanded(!isExpanded)
             }}
-            className={'cf-accordion--icon-container'}
-            tabIndex={0}
-
+            className={'cf-accordion--icon-container-right'}
           >
             <Icon
               glyph={IconFont.CaretDown}

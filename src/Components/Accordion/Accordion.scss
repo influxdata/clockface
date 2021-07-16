@@ -4,19 +4,30 @@
   width: 100%;
   margin: 0;
   padding: 0;
-  list-style: none;
+  margin-bottom: 2px;
 }
 
-.cf-accordion--icon-container {
+.cf-accordion--icon-container-left {
   position: relative;
-  width: 16px;
-  margin-right: $cf-form-sm-padding;
+  min-width: $cf-marg-c;
+  margin-right: $cf-marg-b;
+}
+.cf-accordion--icon-container-right {
+  position: relative; 
+  min-width: $cf-marg-c;
+  margin-left: $cf-marg-b;
 }
 
 .cf-accordion--icon {
   position: absolute;
-  top: 50%;
   transition: all 0.25s ease;
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+  display: inline-block;
+  vertical-align: middle;
+  transform: translateY(-5%);
+  color: $g15-platinum;
 }
 
 .cf-accordion--icon-caret-down {
@@ -29,85 +40,64 @@
 
 .cf-accordion--header {
   display: flex;
-  background-color: $g5-pepper;
-  padding: 10px 10px 10px 10px;
-  border-radius: 4px;
-  margin-bottom: 0px;
-  &:hover {
-    background-color: $g6-smoke;
+  width: 100%;
+  min-height: $cf-form-md-height;
+  border-radius: $cf-radius;
+  background-color: $g6-smoke;
+  align-items: center;
+  outline: none;
+  padding: $cf-form-md-padding;
+  &:hover,
+  &:focus {
+    background-color: $g7-graphite;
   }
 }
 
 .cf-accordion--header--active {
   background-color: $g6-smoke;
-  border-radius: 4px 4px 0px 0px;
+  border-radius: $cf-radius $cf-radius 0px 0px;
 }
 
+.cf-accordion--header--content {
+  width: 100%;
+}
 .cf-accordion--body-container {
-  border-radius: 0px 0px 4px 4px;
-  margin-bottom: 2px;
-  :last-child {
-    .cf-accordion {
-      margin-bottom: 0px;
-    }
-    .last-child {
-      &:hover {
-        background-color: inherit;
-      }
-    }
+  &--collapsed {
+    animation: cubic-bezier(0.4, 0, 0.2, 1) collapse-accordion forwards;
+    animation-duration: 250ms;
   }
 
   &--expanded {
-    animation: 250ms cubic-bezier(0.4, 0, 0.2, 1) expand-accordion forwards;
+    animation: cubic-bezier(0.4, 0, 0.2, 1) expand-accordion forwards;
+    animation-duration: 250ms;
   }
 
-  &--collapsed {
-    animation: 250ms cubic-bezier(0.4, 0, 0.2, 1) collapse-accordion forwards;
-    margin-bottom: 2px;
+  .cf-accordion--body:last-child {
+    border-radius: 0px 0px $cf-radius $cf-radius;
   }
+}
+.cf-accordion--body-container--disable-animation {
+  animation-duration: 0ms;
 }
 
 .cf-accordion--body {
   @extend .cf-accordion--header;
-  border-radius: 0px;
-  padding-left: 36px;
+  min-height: $cf-form-md-height;
+  padding: $cf-form-md-padding;
   background-color: $g4-onyx;
-  &:hover {
-    background-color: $g5-pepper;
-  }
-}
-
-.cf-accordion--nested {
-  @extend .cf-accordion--header;
-  padding-left: 0px;
-  background-color: $g3-castle;
-  &:hover {
-    background-color: $g3-castle;
-  }
-}
-.cf-accordion--header--nested {
-  @extend .cf-accordion--header;
   border-radius: 0px;
-  border-radius: 0px 0px 4px 4px;
-  padding-left: 40px;
-
-  background-color: $g4-onyx;
   &:hover {
-    background-color: $g5-pepper;
+    background-color: $g4-onyx;
   }
 }
-.cf-accordion--header-title {
-  padding-left: 8px;
-  font-size: 14px;
-  font-weight: 500;
-  color: $g20-white;
-}
-.cf-accordion--childrens {
-  // background-color: $g6-smoke;
 
-  color: #ffffff;
+.cf-accordion--body-alignment-left {
+  padding-left: $cf-form-md-height;
 }
 
+.cf-accordion--body-alignment-right {
+  padding-right: $cf-form-md-height;
+}
 @mixin -content-visible {
   max-height: 2000px;
   opacity: 1;

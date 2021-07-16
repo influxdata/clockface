@@ -1,20 +1,18 @@
 // Libraries
-import React, {forwardRef} from 'react' // Styles
-/* import classnames from 'classnames'
- */ 
+import React, {forwardRef, useContext} from 'react' // Styles
+import classnames from 'classnames'
+
+// Styles
 import './Accordion.scss'
 
 // Types
-import {/* IconFont */ InfluxColors, StandardFunctionProps} from '../../Types'
-import classnames from 'classnames'
+import { StandardFunctionProps} from '../../Types'
+
+import {AccordionContext} from './Accordion'
+
 
 export interface AccordionBodyItemProps extends StandardFunctionProps {
-  /** Alert color */
-  /** Icon to be displayed to the left of text */
-  /*   title?: string
-   */ backgroundColor?: InfluxColors
-  nested?: boolean
-  //accordionHeader?: React.ReactNode;
+ 
 }
 
 export type AccordionBodyItemRef = HTMLDivElement
@@ -22,19 +20,14 @@ export type AccordionBodyItemRef = HTMLDivElement
 export const AccordionBodyItem = forwardRef<
   AccordionBodyItemRef,
   AccordionBodyItemProps
->(({id, style, testID = 'alert', children, nested}, ref) => {
-  /*   const childArray = React.Children.toArray(children);
-    
-    const lastChild = nested? childArray.pop(): null;
+>(({id, style, testID = 'alert', children,className }, ref) => {
 
-    const childToRender = React.Children.map(childArray, child => (
-      <div className="cf-accordion--body">{child}</div>
-    )) */
-
-  const accordionBodyContainerClassName = classnames({
-    [`cf-accordion--body`]: !nested,
-    [`cf-accordion--nested`]: nested,
+  const {iconPlacementPosition} = useContext(AccordionContext);
+  const accordionBodyContainerClassName = classnames(`cf-accordion--body`,{
+    [`cf-accordion--body-alignment-${iconPlacementPosition}`]: iconPlacementPosition,
+    [`${className}`]: className
   })
+
 
   return (
     <div

@@ -160,8 +160,8 @@ export enum DropdownItemType {
 }
 
 export enum IconPlacement {
-  Left = 'Left',
-  Right = 'Right',
+  Left = 'left',
+  Right = 'right',
 }
 
 export enum Direction {
