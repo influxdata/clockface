@@ -85,7 +85,7 @@ const SortIndicator: FunctionComponent<{sortable: boolean}> = ({sortable}) => {
   if (sortable) {
     return (
       <span className="cf-index-list--sort-arrow">
-        <span className="icon caret-down" />
+        <span className="cf-icon caret-down" />
       </span>
     )
   }
