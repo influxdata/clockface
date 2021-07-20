@@ -1,5 +1,5 @@
 // Libraries
-import React, {forwardRef, useContext} from 'react' // Styles
+import React, {forwardRef} from 'react' // Styles
 import classnames from 'classnames'
 
 // Styles
@@ -8,7 +8,7 @@ import './Accordion.scss'
 // Types
 import { StandardFunctionProps} from '../../Types'
 
-import {AccordionContext} from './Accordion'
+import {useAccordionContext} from './Accordion'
 
 
 export interface AccordionBodyItemProps extends StandardFunctionProps {
@@ -22,9 +22,10 @@ export const AccordionBodyItem = forwardRef<
   AccordionBodyItemProps
 >(({id, style, testID = 'alert', children,className }, ref) => {
 
-  const {iconPlacementPosition} = useContext(AccordionContext);
+  const context = useAccordionContext();
+ 
   const accordionBodyContainerClassName = classnames(`cf-accordion--body`,{
-    [`cf-accordion--body-alignment-${iconPlacementPosition}`]: iconPlacementPosition,
+    [`cf-accordion--body-alignment-${context.iconPlacementPosition}`]: context.iconPlacementPosition,
     [`${className}`]: className
   })
 

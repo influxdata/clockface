@@ -2,7 +2,6 @@
 import React, {
   createRef,
   KeyboardEvent,
-  MouseEvent,
   useEffect,
   useState,
 } from 'react'
@@ -10,7 +9,7 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {select, withKnobs} from '@storybook/addon-knobs'
+import {boolean, object, select, withKnobs} from '@storybook/addon-knobs'
 
 // Components
 import {Accordion, AccordionRef} from '../'
@@ -177,9 +176,9 @@ accordionStories.add(
         direction={FlexDirection.Row}
         stretchToFitWidth={true}
         alignItems={AlignItems.Center}
-        onClick={(e: MouseEvent<HTMLElement>) => {
+        /* onClick={(e: MouseEvent<HTMLElement>) => {
           e.stopPropagation()
-        }}
+        }} */
         style={{textAlign: 'start'}}
       >
         <FlexBox.Child basis={40} grow={8}>
@@ -228,9 +227,9 @@ accordionStories.add(
         direction={FlexDirection.Row}
         stretchToFitWidth={true}
         alignItems={AlignItems.Center}
-        onClick={(e: MouseEvent<HTMLElement>) => {
+        /* onClick={(e: MouseEvent<HTMLElement>) => {
           e.stopPropagation()
-        }}
+        }} */
         style={{textAlign: 'start'}}
       >
         <FlexBox.Child basis={40} grow={8}>
@@ -281,6 +280,7 @@ accordionStories.add(
       </FlexBox>
     )
     console.log(individualAccessStates2['bucket1'])
+    
 
     return (
       <div
@@ -293,6 +293,7 @@ accordionStories.add(
               select('Icon Placement', mapEnumKeys(IconPlacement), 'Left')
             ]
           }
+          expanded={boolean('expanded', true)}
         >
           <Accordion.AccordionHeader>
             {accordionHeader(
@@ -448,7 +449,7 @@ accordionFamilyStories.add(
             ]
           } >
           <Accordion.AccordionHeader>
-            <span style={{fontWeight: 500, color: '#f6f6f8'}}>
+            <span style={{fontWeight: 400, color: '#d4d7dd'}}>
               Cheese Ipsum
             </span>
           </Accordion.AccordionHeader>
@@ -464,6 +465,73 @@ accordionFamilyStories.add(
             </span>
           </Accordion.AccordionBodyItem>
         </Accordion>
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(AccordionReadme),
+    },
+  }
+)
+
+accordionFamilyStories.add(
+  'Accordion Header',
+  () => {
+    const accordionRef = createRef<AccordionRef>()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(accordionRef.current)
+      /* eslint-enable */
+    }
+    return (
+      <div
+        className="story--example"
+        style={{justifyContent: 'none', alignItems: 'start', display: 'block'}}
+      >
+          <Accordion.AccordionHeader           style={object('style', {})}
+>
+            <span style={{fontWeight: 400, color: '#d4d7dd'}}>
+              Very long title. Let's see what the container does when we have a very very very verylong text that spans more than one line. We wouldn't want this to break would we? 
+            </span>
+          </Accordion.AccordionHeader>
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(AccordionReadme),
+    },
+  }
+)
+
+accordionFamilyStories.add(
+  'Accordion Body',
+  () => {
+    const accordionRef = createRef<AccordionRef>()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(accordionRef.current)
+      /* eslint-enable */
+    }
+    return (
+      <div
+        className="story--example"
+        style={{justifyContent: 'none', alignItems: 'start', display: 'block'}}
+      >
+          <Accordion.AccordionBodyItem>
+            <span>
+              Hello
+            </span>
+          </Accordion.AccordionBodyItem>
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
         </div>

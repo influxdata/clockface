@@ -9,35 +9,62 @@ import {IconPlacement, StandardFunctionProps} from '../../Types'
 export interface AccordionProps extends StandardFunctionProps {
   /** Determines whether the expand Icon is at the left or right */
   iconPlacement?: IconPlacement
+  expanded?: boolean
+  disabled?: boolean
 }
 
-export const AccordionContext = React.createContext({
-  isExpanded: false,
-  setExpanded: (param: boolean) => {},
-  iconPlacementPosition: IconPlacement.Left
-})
+export const AccordionContext = React.createContext<
+  | {
+      isExpanded: boolean
+      setExpanded: (param: boolean) => void
+      iconPlacementPosition: IconPlacement
+    }
+  | undefined
+>(undefined)
+
+export const useAccordionContext = () => {
+  const context = React.useContext(AccordionContext)
+  if (context === undefined) {
+    throw new Error('useCount must be used within a CountProvider')
+  }
+  return context
+}
 
 export type AccordionRef = HTMLDivElement
 
 export const AccordionRoot = forwardRef<AccordionRef, AccordionProps>(
-  ({id, style, testID = 'alert', children, iconPlacement= IconPlacement.Left, className}, ref) => {
+  (
+    {
+      id,
+      style,
+      testID = 'alert',
+      children,
+      iconPlacement = IconPlacement.Left,
+      className,
+      expanded = false,
+      disabled = false,
+    },
+    ref
+  ) => {
     const accordionClassName = classnames('cf-accordion', {
       [`${className}`]: className,
     })
 
-    const [isExpanded, setExpanded] = useState(false)
+    const [isExpanded, setExpanded] = useState(expanded)
     const [animation, setAnimation] = useState(false)
-    const [iconPlacementPosition, setIconPlacementPosition] = useState(iconPlacement)
+    const [iconPlacementPosition, setIconPlacementPosition] = useState(
+      iconPlacement
+    )
 
     useEffect(() => {
       if (isExpanded !== false && !animation) {
         setAnimation(true)
       }
     }, [isExpanded])
-
+ 
     useEffect(() => {
       setIconPlacementPosition(iconPlacement)
-    },[iconPlacement])
+    }, [iconPlacement])
 
     const accordionBodyContainerClassName = classnames(
       'cf-accordion--body-container',
@@ -50,11 +77,10 @@ export const AccordionRoot = forwardRef<AccordionRef, AccordionProps>(
 
     const [header, ...body] = React.Children.toArray(children)
 
-    console.log(iconPlacement)
     const initialContextState = {
       isExpanded,
       setExpanded,
-      iconPlacementPosition
+      iconPlacementPosition,
     }
 
     return (
@@ -67,9 +93,8 @@ export const AccordionRoot = forwardRef<AccordionRef, AccordionProps>(
       >
         <AccordionContext.Provider value={initialContextState}>
           {header}
-        <div className={accordionBodyContainerClassName}>{body}</div>
+          <div className={accordionBodyContainerClassName}>{body}</div>
         </AccordionContext.Provider>
-
       </div>
     )
   }
