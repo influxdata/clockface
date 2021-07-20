@@ -1,10 +1,5 @@
 // Libraries
-import React, {
-  createRef,
-  KeyboardEvent,
-  useEffect,
-  useState,
-} from 'react'
+import React, {createRef, KeyboardEvent, useEffect, useState} from 'react'
 import marked from 'marked'
 
 // Storybook
@@ -84,9 +79,6 @@ accordionStories.add(
     const [individualAccessStates2, setIndividualAccessStates2] = useState(
       states2
     )
-    setReadAccess2
-    setWriteAccess2
-    console.log(individualAccessStates.telegraf1)
 
     useEffect(() => {
       toggleAllIndividualAccessStates(
@@ -279,8 +271,6 @@ accordionStories.add(
         </FlexBox.Child>
       </FlexBox>
     )
-    console.log(individualAccessStates2['bucket1'])
-    
 
     return (
       <div
@@ -294,6 +284,7 @@ accordionStories.add(
             ]
           }
           expanded={boolean('expanded', true)}
+          disabled={boolean('disabled', true)}
         >
           <Accordion.AccordionHeader>
             {accordionHeader(
@@ -309,7 +300,6 @@ accordionStories.add(
             </InputLabel>
           </AccordionBodyItem>
           <Accordion.AccordionBodyItem>
-            {console.log('here: ', individualAccessStates)}
             {accordionBody(
               '1',
               'Telegraf Configuration 1',
@@ -334,6 +324,8 @@ accordionStories.add(
               select('Icon Placement', mapEnumKeys(IconPlacement), 'Left')
             ]
           }
+          expanded={boolean('expanded', true)}
+          disabled={boolean('disabled', true)}
         >
           <Accordion.AccordionHeader>
             {accordionHeader(
@@ -349,7 +341,6 @@ accordionStories.add(
             </InputLabel>
           </AccordionBodyItem>
           <Accordion.AccordionBodyItem>
-            {console.log('here: ', individualAccessStates)}
             {accordionBody(
               '6',
               'Bucket 1',
@@ -403,6 +394,8 @@ accordionStories.add(
               select('Icon Placement', mapEnumKeys(IconPlacement), 'Left')
             ]
           }
+          expanded={boolean('expanded', true)}
+          disabled={boolean('disabled', true)}
         >
           <Accordion.AccordionHeader>
             <span>Cheese Ipsum</span>
@@ -443,11 +436,15 @@ accordionFamilyStories.add(
         className="story--example"
         style={{justifyContent: 'none', alignItems: 'start', display: 'block'}}
       >
-        <Accordion iconPlacement={
+        <Accordion
+          iconPlacement={
             IconPlacement[
               select('Icon Placement', mapEnumKeys(IconPlacement), 'Left')
             ]
-          } >
+          }
+          expanded={boolean('expanded', true)}
+          disabled={boolean('disabled', true)}
+        >
           <Accordion.AccordionHeader>
             <span style={{fontWeight: 400, color: '#d4d7dd'}}>
               Cheese Ipsum
@@ -457,11 +454,12 @@ accordionFamilyStories.add(
             <span>
               This is your detailed body. This is your detailed body. This is
               your detailed body. This is your detailed body. This is your
-              detailed body. This is your detailed body.This is your detailed body. This is your detailed body. This is
-              your detailed body. This is your detailed body. This is your
-              detailed body. This is your detailed body.This is your detailed body. This is your detailed body. This is
-              your detailed body. This is your detailed body. This is your
-              detailed body. This is your detailed body.
+              detailed body. This is your detailed body.This is your detailed
+              body. This is your detailed body. This is your detailed body. This
+              is your detailed body. This is your detailed body. This is your
+              detailed body.This is your detailed body. This is your detailed
+              body. This is your detailed body. This is your detailed body. This
+              is your detailed body. This is your detailed body.
             </span>
           </Accordion.AccordionBodyItem>
         </Accordion>
@@ -493,12 +491,13 @@ accordionFamilyStories.add(
         className="story--example"
         style={{justifyContent: 'none', alignItems: 'start', display: 'block'}}
       >
-          <Accordion.AccordionHeader           style={object('style', {})}
->
-            <span style={{fontWeight: 400, color: '#d4d7dd'}}>
-              Very long title. Let's see what the container does when we have a very very very verylong text that spans more than one line. We wouldn't want this to break would we? 
-            </span>
-          </Accordion.AccordionHeader>
+        <Accordion.AccordionHeader style={object('style', {})}>
+          <span style={{fontWeight: 400, color: '#d4d7dd'}}>
+            Very long title. Let's see what the container does when we have a
+            very very very verylong text that spans more than one line. We
+            wouldn't want this to break would we?
+          </span>
+        </Accordion.AccordionHeader>
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
         </div>
@@ -527,11 +526,9 @@ accordionFamilyStories.add(
         className="story--example"
         style={{justifyContent: 'none', alignItems: 'start', display: 'block'}}
       >
-          <Accordion.AccordionBodyItem>
-            <span>
-              Hello
-            </span>
-          </Accordion.AccordionBodyItem>
+        <Accordion.AccordionBodyItem>
+          <span>Hello</span>
+        </Accordion.AccordionBodyItem>
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
         </div>

@@ -6,29 +6,25 @@ import classnames from 'classnames'
 import './Accordion.scss'
 
 // Types
-import { StandardFunctionProps} from '../../Types'
+import {StandardFunctionProps} from '../../Types'
 
 import {useAccordionContext} from './Accordion'
 
-
-export interface AccordionBodyItemProps extends StandardFunctionProps {
- 
-}
+export interface AccordionBodyItemProps extends StandardFunctionProps {}
 
 export type AccordionBodyItemRef = HTMLDivElement
 
 export const AccordionBodyItem = forwardRef<
   AccordionBodyItemRef,
   AccordionBodyItemProps
->(({id, style, testID = 'alert', children,className }, ref) => {
+>(({id, style, testID = 'alert', children, className}, ref) => {
+  const context = useAccordionContext()
 
-  const context = useAccordionContext();
- 
-  const accordionBodyContainerClassName = classnames(`cf-accordion--body`,{
+  const accordionBodyContainerClassName = classnames(`cf-accordion--body`, {
     [`cf-accordion--body-alignment-${context.iconPlacementPosition}`]: context.iconPlacementPosition,
-    [`${className}`]: className
+    [`${className}`]: className,
+    [`cf-accordion--body--disabled`]: context.isDisabled,
   })
-
 
   return (
     <div

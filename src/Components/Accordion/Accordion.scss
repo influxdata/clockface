@@ -13,7 +13,7 @@
   margin-right: $cf-marg-b;
 }
 .cf-accordion--icon-container-right {
-  position: relative; 
+  position: relative;
   min-width: $cf-marg-c;
   margin-left: $cf-marg-b;
 }
@@ -38,6 +38,10 @@
   transform: translateY(-50%) rotate(-180deg);
 }
 
+.cf-accordion--icon--disabled {
+  color: $cf-card-text--disabled;
+}
+
 .cf-accordion--header {
   display: flex;
   width: 100%;
@@ -53,6 +57,11 @@
   }
 }
 
+.cf-accordion--header--disabled {
+  background-color: $g6-smoke;
+  border-radius: $cf-radius $cf-radius 0px 0px;
+}
+
 .cf-accordion--header--active {
   background-color: $g6-smoke;
   border-radius: $cf-radius $cf-radius 0px 0px;
@@ -60,6 +69,22 @@
 
 .cf-accordion--header--content {
   width: 100%;
+}
+
+.cf-accordion--header.cf-accordion--header--disabled,
+.cf-accordion--header.cf-accordion--header--disabled:hover {
+  background-color: $cf-card-background--disabled;
+  color: $cf-card-text--disabled;
+  font-style: italic;
+
+  .cf-accordion--header--content {
+    opacity: 0.5;
+  }
+}
+
+.cf-accordion--body--disabled {
+  opacity: 0.5;
+  font-style: italic;
 }
 .cf-accordion--body-container {
   &--collapsed {

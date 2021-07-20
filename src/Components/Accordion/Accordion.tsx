@@ -18,6 +18,7 @@ export const AccordionContext = React.createContext<
       isExpanded: boolean
       setExpanded: (param: boolean) => void
       iconPlacementPosition: IconPlacement
+      isDisabled: boolean
     }
   | undefined
 >(undefined)
@@ -52,16 +53,27 @@ export const AccordionRoot = forwardRef<AccordionRef, AccordionProps>(
 
     const [isExpanded, setExpanded] = useState(expanded)
     const [animation, setAnimation] = useState(false)
+    const [isDisabled, setDisabled] = useState(disabled)
     const [iconPlacementPosition, setIconPlacementPosition] = useState(
       iconPlacement
     )
+
+    console.log('accordion:', expanded)
+
+    useEffect(() => {
+      setExpanded(expanded)
+    }, [expanded])
+
+    useEffect(() => {
+      setDisabled(disabled)
+    }, [disabled])
 
     useEffect(() => {
       if (isExpanded !== false && !animation) {
         setAnimation(true)
       }
     }, [isExpanded])
- 
+
     useEffect(() => {
       setIconPlacementPosition(iconPlacement)
     }, [iconPlacement])
@@ -77,10 +89,11 @@ export const AccordionRoot = forwardRef<AccordionRef, AccordionProps>(
 
     const [header, ...body] = React.Children.toArray(children)
 
-    const initialContextState = {
+    const contextState = {
       isExpanded,
       setExpanded,
       iconPlacementPosition,
+      isDisabled,
     }
 
     return (
@@ -91,7 +104,7 @@ export const AccordionRoot = forwardRef<AccordionRef, AccordionProps>(
         id={id}
         style={style}
       >
-        <AccordionContext.Provider value={initialContextState}>
+        <AccordionContext.Provider value={contextState}>
           {header}
           <div className={accordionBodyContainerClassName}>{body}</div>
         </AccordionContext.Provider>
