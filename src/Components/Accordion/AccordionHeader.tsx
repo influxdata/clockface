@@ -1,18 +1,15 @@
 // Libraries
 import React, {forwardRef, KeyboardEvent} from 'react'
 import classnames from 'classnames'
-// Styles
 
 // Types
 import {IconFont, IconPlacement, StandardFunctionProps} from '../../Types'
 import {Icon} from '../Icon/Base/Icon'
+
+//Context
 import {useAccordionContext} from './Accordion'
 
-export interface AccordionHeaderProps extends StandardFunctionProps {
-  /** Alert color */
-  /** Expand Icon to be displa*/
-  expanded?: boolean
-}
+export interface AccordionHeaderProps extends StandardFunctionProps {}
 
 export type AccordionHeaderRef = HTMLDivElement
 
@@ -43,6 +40,7 @@ export const AccordionHeader = forwardRef<
   const toggleExpand = () => {
     if (!context.isDisabled) {
       context.setExpanded(!context.isExpanded)
+      context.onChange()
     }
   }
 
@@ -52,7 +50,6 @@ export const AccordionHeader = forwardRef<
     }
   }
 
-  console.log('expanded: ', context.isExpanded)
   return (
     <div
       ref={ref}

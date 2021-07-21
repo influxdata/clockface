@@ -80,6 +80,8 @@ accordionStories.add(
       states2
     )
 
+    const disabled = boolean('disabled', false)
+
     useEffect(() => {
       toggleAllIndividualAccessStates(
         'read',
@@ -168,9 +170,6 @@ accordionStories.add(
         direction={FlexDirection.Row}
         stretchToFitWidth={true}
         alignItems={AlignItems.Center}
-        /* onClick={(e: MouseEvent<HTMLElement>) => {
-          e.stopPropagation()
-        }} */
         style={{textAlign: 'start'}}
       >
         <FlexBox.Child basis={40} grow={8}>
@@ -188,6 +187,7 @@ accordionStories.add(
             onKeyUp={(e: KeyboardEvent) => {
               e.stopPropagation()
             }}
+            disabled={disabled}
           ></Toggle>
         </FlexBox.Child>
         <FlexBox.Child grow={1}>
@@ -202,6 +202,7 @@ accordionStories.add(
             checked={states[1]}
             style={margin}
             tabIndex={0}
+            disabled={disabled}
           ></Toggle>
         </FlexBox.Child>
       </FlexBox>
@@ -246,6 +247,7 @@ accordionStories.add(
             onKeyUp={(e: KeyboardEvent) => {
               e.stopPropagation()
             }}
+            disabled={disabled}
           ></Toggle>
         </FlexBox.Child>
         <FlexBox.Child grow={1}>
@@ -267,6 +269,7 @@ accordionStories.add(
             checked={stateObject[name]['write']}
             style={margin}
             tabIndex={0}
+            disabled={disabled}
           ></Toggle>
         </FlexBox.Child>
       </FlexBox>
@@ -283,8 +286,14 @@ accordionStories.add(
               select('Icon Placement', mapEnumKeys(IconPlacement), 'Left')
             ]
           }
-          expanded={boolean('expanded', true)}
-          disabled={boolean('disabled', true)}
+          expanded={boolean('expanded', false)}
+          disabled={disabled}
+          style={object('style', {})}
+          onChange={() => {
+            /* eslint-disable */
+            console.log('hello')
+            /* eslint-disable */
+          }}
         >
           <Accordion.AccordionHeader>
             {accordionHeader(
@@ -324,8 +333,9 @@ accordionStories.add(
               select('Icon Placement', mapEnumKeys(IconPlacement), 'Left')
             ]
           }
-          expanded={boolean('expanded', true)}
-          disabled={boolean('disabled', true)}
+          expanded={boolean('expanded', false)}
+          disabled={disabled}
+          style={object('style', {})}
         >
           <Accordion.AccordionHeader>
             {accordionHeader(
@@ -382,6 +392,8 @@ accordionStories.add(
       console.log(accordionRef.current)
       /* eslint-enable */
     }
+    const disabled = boolean('disabled', false)
+
     return (
       <div
         className="story--example"
@@ -394,8 +406,9 @@ accordionStories.add(
               select('Icon Placement', mapEnumKeys(IconPlacement), 'Left')
             ]
           }
-          expanded={boolean('expanded', true)}
-          disabled={boolean('disabled', true)}
+          expanded={boolean('expanded', false)}
+          disabled={disabled}
+          style={object('style', {})}
         >
           <Accordion.AccordionHeader>
             <span>Cheese Ipsum</span>
@@ -431,6 +444,8 @@ accordionFamilyStories.add(
       console.log(accordionRef.current)
       /* eslint-enable */
     }
+    const disabled = boolean('disabled', false)
+
     return (
       <div
         className="story--example"
@@ -442,8 +457,9 @@ accordionFamilyStories.add(
               select('Icon Placement', mapEnumKeys(IconPlacement), 'Left')
             ]
           }
-          expanded={boolean('expanded', true)}
-          disabled={boolean('disabled', true)}
+          expanded={boolean('expanded', false)}
+          disabled={disabled}
+          style={object('style', {})}
         >
           <Accordion.AccordionHeader>
             <span style={{fontWeight: 400, color: '#d4d7dd'}}>
@@ -463,72 +479,6 @@ accordionFamilyStories.add(
             </span>
           </Accordion.AccordionBodyItem>
         </Accordion>
-        <div className="story--test-buttons">
-          <button onClick={logRef}>Log Ref</button>
-        </div>
-      </div>
-    )
-  },
-  {
-    readme: {
-      content: marked(AccordionReadme),
-    },
-  }
-)
-
-accordionFamilyStories.add(
-  'Accordion Header',
-  () => {
-    const accordionRef = createRef<AccordionRef>()
-
-    const logRef = (): void => {
-      /* eslint-disable */
-      console.log(accordionRef.current)
-      /* eslint-enable */
-    }
-    return (
-      <div
-        className="story--example"
-        style={{justifyContent: 'none', alignItems: 'start', display: 'block'}}
-      >
-        <Accordion.AccordionHeader style={object('style', {})}>
-          <span style={{fontWeight: 400, color: '#d4d7dd'}}>
-            Very long title. Let's see what the container does when we have a
-            very very very verylong text that spans more than one line. We
-            wouldn't want this to break would we?
-          </span>
-        </Accordion.AccordionHeader>
-        <div className="story--test-buttons">
-          <button onClick={logRef}>Log Ref</button>
-        </div>
-      </div>
-    )
-  },
-  {
-    readme: {
-      content: marked(AccordionReadme),
-    },
-  }
-)
-
-accordionFamilyStories.add(
-  'Accordion Body',
-  () => {
-    const accordionRef = createRef<AccordionRef>()
-
-    const logRef = (): void => {
-      /* eslint-disable */
-      console.log(accordionRef.current)
-      /* eslint-enable */
-    }
-    return (
-      <div
-        className="story--example"
-        style={{justifyContent: 'none', alignItems: 'start', display: 'block'}}
-      >
-        <Accordion.AccordionBodyItem>
-          <span>Hello</span>
-        </Accordion.AccordionBodyItem>
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
         </div>

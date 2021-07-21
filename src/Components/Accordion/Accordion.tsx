@@ -9,8 +9,13 @@ import {IconPlacement, StandardFunctionProps} from '../../Types'
 export interface AccordionProps extends StandardFunctionProps {
   /** Determines whether the expand Icon is at the left or right */
   iconPlacement?: IconPlacement
+  /** Determines whether the accordion is expanded by default or not */
   expanded?: boolean
+  /** Prevents any interaction with this element, including the onClick function */
+
   disabled?: boolean
+  /** Function to be called when the accordion is expanded or collapsed */
+  onChange?: () => void
 }
 
 export const AccordionContext = React.createContext<
@@ -19,6 +24,7 @@ export const AccordionContext = React.createContext<
       setExpanded: (param: boolean) => void
       iconPlacementPosition: IconPlacement
       isDisabled: boolean
+      onChange: () => void
     }
   | undefined
 >(undefined)
@@ -38,12 +44,13 @@ export const AccordionRoot = forwardRef<AccordionRef, AccordionProps>(
     {
       id,
       style,
-      testID = 'alert',
+      testID = 'accordion',
       children,
       iconPlacement = IconPlacement.Left,
       className,
       expanded = false,
       disabled = false,
+      onChange,
     },
     ref
   ) => {
@@ -57,8 +64,6 @@ export const AccordionRoot = forwardRef<AccordionRef, AccordionProps>(
     const [iconPlacementPosition, setIconPlacementPosition] = useState(
       iconPlacement
     )
-
-    console.log('accordion:', expanded)
 
     useEffect(() => {
       setExpanded(expanded)
@@ -89,11 +94,21 @@ export const AccordionRoot = forwardRef<AccordionRef, AccordionProps>(
 
     const [header, ...body] = React.Children.toArray(children)
 
+    /* eslint-disable */
+    const onChangeFunction = () => {
+      if (onChange) {
+        onChange()
+      } else {
+        return
+      }
+    }
+
     const contextState = {
       isExpanded,
       setExpanded,
       iconPlacementPosition,
       isDisabled,
+      onChange: onChangeFunction,
     }
 
     return (

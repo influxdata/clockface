@@ -1,11 +1,17 @@
 # Accordion
 
-Accordions are a great way to draw the user's attention to important information. They are best positioned across the top of the page or above other content to ensure they are seen first. Different colors of Accordion can be used to denote severity of the information.
+Accordions allow you to capture a lot of content with the option to take up limited space with the expand/collapse pattern of the component.
+Accordions add friction to discovering detailed content (since users have to click it open), so usecases would be for when users won't need to read through everything.
 
 ### Usage
 
 ```tsx
 import {Accordion} from '@influxdata/clockface'
+;<Accordion>
+  <Accordion.AccordionHeader>{headerItem}</Accordion.AccordionHeader>
+  <Accordion.AccordionBodyItem>{bodyItem1}</Accordion.AccordionBodyItem>
+  <Accordion.AccordionBodyItem>{bodyItem2}</Accordion.AccordionBodyItem>
+</Accordion>
 ```
 
 ##### Ref Type
