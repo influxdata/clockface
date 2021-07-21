@@ -462,9 +462,7 @@ accordionFamilyStories.add(
           style={object('style', {})}
         >
           <Accordion.AccordionHeader>
-            <span style={{fontWeight: 400, color: '#d4d7dd'}}>
-              Cheese Ipsum
-            </span>
+            <span>Cheese Ipsum</span>
           </Accordion.AccordionHeader>
           <Accordion.AccordionBodyItem>
             <span>

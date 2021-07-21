@@ -51,15 +51,11 @@
   align-items: center;
   outline: none;
   padding: $cf-form-md-padding;
+  cursor: pointer;
   &:hover,
   &:focus {
     background-color: $g7-graphite;
   }
-}
-
-.cf-accordion--header--disabled {
-  background-color: $g6-smoke;
-  border-radius: $cf-radius $cf-radius 0px 0px;
 }
 
 .cf-accordion--header--active {
@@ -73,17 +69,18 @@
 
 .cf-accordion--header.cf-accordion--header--disabled,
 .cf-accordion--header.cf-accordion--header--disabled:hover {
+  cursor: default;
   background-color: $cf-card-background--disabled;
   color: $cf-card-text--disabled;
   font-style: italic;
 
   .cf-accordion--header--content {
-    opacity: 0.5;
+    opacity: 0.6;
   }
 }
 
 .cf-accordion--body--disabled {
-  opacity: 0.5;
+  opacity: 0.6;
   font-style: italic;
 }
 .cf-accordion--body-container {
@@ -107,6 +104,7 @@
 
 .cf-accordion--body {
   @extend .cf-accordion--header;
+  cursor: default;
   min-height: $cf-form-md-height;
   padding: $cf-form-md-padding;
   background-color: $g4-onyx;
