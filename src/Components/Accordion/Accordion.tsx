@@ -4,11 +4,11 @@ import classnames from 'classnames'
 // Styles
 import './Accordion.scss'
 // Types
-import {IconPlacement, StandardFunctionProps} from '../../Types'
+import {Direction, StandardFunctionProps} from '../../Types'
 
 export interface AccordionProps extends StandardFunctionProps {
   /** Determines whether the expand Icon is at the left or right */
-  iconPlacement?: IconPlacement
+  iconPlacement?: Direction
   /** Determines whether the accordion is expanded by default or not */
   expanded?: boolean
   /** Prevents any interaction with this element, including the onClick function */
@@ -22,7 +22,7 @@ export const AccordionContext = React.createContext<
   | {
       isExpanded: boolean
       setExpanded: (param: boolean) => void
-      iconPlacementPosition: IconPlacement
+      iconPlacementPosition: Direction
       isDisabled: boolean
       onChange: () => void
     }
@@ -46,7 +46,7 @@ export const AccordionRoot = forwardRef<AccordionRef, AccordionProps>(
       style,
       testID = 'accordion',
       children,
-      iconPlacement = IconPlacement.Left,
+      iconPlacement = Direction.Left,
       className,
       expanded = false,
       disabled = false,

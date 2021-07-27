@@ -18,7 +18,7 @@ import {
   AlignItems,
   ComponentSize,
   FlexDirection,
-  IconPlacement,
+  Direction,
   InputToggleType,
   JustifyContent,
 } from '../../../Types'
@@ -282,9 +282,7 @@ accordionStories.add(
       >
         <Accordion
           iconPlacement={
-            IconPlacement[
-              select('Icon Placement', mapEnumKeys(IconPlacement), 'Left')
-            ]
+            Direction[select('Icon Placement', mapEnumKeys(Direction), 'Left')]
           }
           expanded={boolean('expanded', false)}
           disabled={disabled}
@@ -329,9 +327,7 @@ accordionStories.add(
         </Accordion>
         <Accordion
           iconPlacement={
-            IconPlacement[
-              select('Icon Placement', mapEnumKeys(IconPlacement), 'Left')
-            ]
+            Direction[select('Icon Placement', mapEnumKeys(Direction), 'Left')]
           }
           expanded={boolean('expanded', false)}
           disabled={disabled}
@@ -402,9 +398,7 @@ accordionStories.add(
         {' '}
         <Accordion
           iconPlacement={
-            IconPlacement[
-              select('Icon Placement', mapEnumKeys(IconPlacement), 'Left')
-            ]
+            Direction[select('Icon Placement', mapEnumKeys(Direction), 'Left')]
           }
           expanded={boolean('expanded', false)}
           disabled={disabled}
@@ -453,9 +447,7 @@ accordionFamilyStories.add(
       >
         <Accordion
           iconPlacement={
-            IconPlacement[
-              select('Icon Placement', mapEnumKeys(IconPlacement), 'Left')
-            ]
+            Direction[select('Icon Placement', mapEnumKeys(Direction), 'Left')]
           }
           expanded={boolean('expanded', false)}
           disabled={disabled}

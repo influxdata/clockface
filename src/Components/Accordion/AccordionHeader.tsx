@@ -3,7 +3,7 @@ import React, {forwardRef, KeyboardEvent} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {IconFont, IconPlacement, StandardFunctionProps} from '../../Types'
+import {IconFont, Direction, StandardFunctionProps} from '../../Types'
 import {Icon} from '../Icon/Base/Icon'
 
 //Context
@@ -64,7 +64,7 @@ export const AccordionHeader = forwardRef<
       style={style}
       data-testid={testID}
     >
-      {context.iconPlacementPosition === IconPlacement.Left && (
+      {context.iconPlacementPosition === Direction.Left && (
         <div className={'cf-accordion--icon-container-left'}>
           <Icon
             glyph={IconFont.CaretDown}
@@ -73,7 +73,7 @@ export const AccordionHeader = forwardRef<
         </div>
       )}
       <div className={'cf-accordion--header--content'}>{children}</div>
-      {context.iconPlacementPosition === IconPlacement.Right && (
+      {context.iconPlacementPosition === Direction.Right && (
         <div
           onClick={() => {
             context.setExpanded(!context.isExpanded)
