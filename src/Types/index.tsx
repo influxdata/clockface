@@ -160,8 +160,8 @@ export enum DropdownItemType {
 }
 
 export enum Direction {
-  Left = 'CaretLeft',
-  Right = 'CaretRight',
+  Left = 'left',
+  Right = 'right',
 }
 
 export enum ButtonShape {
