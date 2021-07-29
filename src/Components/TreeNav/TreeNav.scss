@@ -5,7 +5,6 @@
     ----------------------------------------------------------------------------
 */
 
-
 .cf-tree-nav {
   width: 100%;
   user-select: none;
@@ -76,7 +75,7 @@
     height: $cf-border;
     border-radius: $cf-border / 2;
   }
-  
+
   &:before,
   &:after {
     background-color: $g20-white;
@@ -188,27 +187,63 @@ a.cf-tree-nav--header:active {
   }
 
   &.cf-tree-nav--header__default {
-    @include treeNavHeaderColorModifier($g5-pepper, $g7-graphite, $g7-graphite, $g10-wolf, $g20-white);
+    @include treeNavHeaderColorModifier(
+      $g5-pepper,
+      $g7-graphite,
+      $g7-graphite,
+      $g10-wolf,
+      $g20-white
+    );
   }
 
   &.cf-tree-nav--header__primary {
-    @include treeNavHeaderColorModifier($c-sapphire, $c-pool, $c-pool, $c-laser, $g20-white);
+    @include treeNavHeaderColorModifier(
+      $c-sapphire,
+      $c-pool,
+      $c-pool,
+      $c-laser,
+      $g20-white
+    );
   }
 
   &.cf-tree-nav--header__secondary {
-    @include treeNavHeaderColorModifier($c-sapphire, $c-star, $c-pool, $c-comet, $g20-white);
+    @include treeNavHeaderColorModifier(
+      $c-sapphire,
+      $c-star,
+      $c-pool,
+      $c-comet,
+      $g20-white
+    );
   }
 
   &.cf-tree-nav--header__success {
-    @include treeNavHeaderColorModifier($c-rainforest, $c-ocean, $c-honeydew, $c-pool, $g20-white);
+    @include treeNavHeaderColorModifier(
+      $c-rainforest,
+      $c-ocean,
+      $c-honeydew,
+      $c-pool,
+      $g20-white
+    );
   }
 
   &.cf-tree-nav--header__warning {
-    @include treeNavHeaderColorModifier($c-curacao, $c-pineapple, $c-dreamsicle, $c-sulfur, $g6-smoke);
+    @include treeNavHeaderColorModifier(
+      $c-curacao,
+      $c-pineapple,
+      $c-dreamsicle,
+      $c-sulfur,
+      $g6-smoke
+    );
   }
 
   &.cf-tree-nav--header__danger {
-    @include treeNavHeaderColorModifier($c-ruby, $c-amethyst, $c-dreamsicle, $c-comet, $g20-white);
+    @include treeNavHeaderColorModifier(
+      $c-ruby,
+      $c-amethyst,
+      $c-dreamsicle,
+      $c-comet,
+      $g20-white
+    );
   }
 }
 
@@ -222,19 +257,6 @@ a.cf-tree-nav--header:active {
   flex-direction: column;
   align-items: stretch;
   position: relative;
-
-  &:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: $cf-border;
-    height: 100%;
-    @include gradient-v($cf-tree-nav__gradient-a, $cf-tree-nav__gradient-b);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.25s ease;
-  }
 }
 
 .cf-tree-nav--item-block,
@@ -248,28 +270,6 @@ a.cf-tree-nav--item-block:active {
   &:hover {
     color: $cf-tree-nav__text-hover;
     background-color: $cf-tree-nav__bg-hover;
-  }
-
-  &:before,
-  &:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    height: $cf-border;
-    z-index: 2;
-    width: $cf-tree-nav__small-height * 0.25;
-    transition: opacity 0.25s ease;
-    opacity: 0;
-  }
-
-  &:before {
-    top: 0;
-    @include gradient-h($cf-tree-nav__gradient-a, rgba($cf-tree-nav__gradient-a, 0%));
-  }
-
-  &:after {
-    bottom: 0;
-    @include gradient-h($cf-tree-nav__gradient-b, rgba($cf-tree-nav__gradient-b, 0%));
   }
 }
 
@@ -306,9 +306,6 @@ a.cf-tree-nav--item-block:active {
 }
 
 .cf-tree-nav--item__active {
-  &.cf-tree-nav--item:after {
-    opacity: 1;
-  }
   .cf-tree-nav--item-block,
   .cf-tree-nav--item-block:hover,
   a.cf-tree-nav--item-block:link,
@@ -384,9 +381,12 @@ a.cf-tree-nav--sub-item-label:active {
 */
 
 $cf-tree-nav--user-block-gap: $cf-marg-a + $cf-border;
-$cf-tree-nav--user-block: $cf-tree-nav__width - ($cf-tree-nav--user-block-gap * 2);
+$cf-tree-nav--user-block: $cf-tree-nav__width -
+  ($cf-tree-nav--user-block-gap * 2);
 $cf-tree-nav--avatar-radius: $cf-tree-nav__width * 0.5;
-$cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-radius) / 2) - $cf-border;
+$cf-tree-nav--user-padding: (
+    ($cf-tree-nav--user-block - $cf-tree-nav--avatar-radius) / 2
+  ) - $cf-border;
 
 .cf-tree-nav--user {
   padding: $cf-tree-nav--user-block-gap;
@@ -400,7 +400,10 @@ $cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-ra
   width: $cf-tree-nav--avatar-radius;
   height: $cf-tree-nav--avatar-radius;
   margin: $cf-tree-nav--user-padding;
-  @include gradient-diag-up($cf-tree-nav__user-color-b, $cf-tree-nav__user-color-a);
+  @include gradient-diag-up(
+    $cf-tree-nav__user-color-b,
+    $cf-tree-nav__user-color-a
+  );
 
   > .cf-icon {
     color: $cf-tree-nav__user-icon;
@@ -419,7 +422,8 @@ $cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-ra
   position: relative;
   border-radius: $cf-radius;
   display: flex;
-  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  transition: background-color 0.25s ease, color 0.25s ease,
+    border-color 0.25s ease;
 
   .cf-tree-nav--user__expandable &:hover {
     cursor: pointer;
@@ -447,7 +451,7 @@ $cf-tree-nav--user-padding: (($cf-tree-nav--user-block - $cf-tree-nav--avatar-ra
   justify-content: center;
   margin-left: $cf-marg-b;
   margin-right: $cf-marg-b;
-  
+
   .cf-tree-nav--user__expandable & {
     margin-right: $cf-marg-d;
   }
@@ -579,7 +583,7 @@ a.cf-tree-nav--user-item:hover {
       display: flex;
     }
   }
-  
+
   .cf-tree-nav--mobile-toggle {
     display: none;
   }
@@ -634,7 +638,7 @@ a.cf-tree-nav--user-item:hover {
   .cf-tree-nav__collapsed {
     flex: 0 0 $cf-tree-nav__width;
     width: $cf-tree-nav__width;
-    
+
     .cf-tree-nav--label {
       display: none;
     }

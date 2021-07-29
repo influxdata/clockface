@@ -1,7 +1,7 @@
 @import '../../../Styles/variables';
 
 .cf-banner-panel {
- width: 100%;
+  width: 100%;
 }
 
 .cf-banner-panel--has-icon {
@@ -13,12 +13,12 @@
 
   .cf-banner-panel--icon {
     margin-right: $cf-marg-c;
-    font-size: $cf-form-md-font * 2;
+    font-size: 2em;
   }
 }
 
 .cf-banner-panel--contents {
- flex-grow: 1;
+  flex-grow: 1;
 }
 
 .cf-banner-panel__hide-icon {
@@ -44,7 +44,7 @@
   font-size: $fontSize;
 
   .cf-banner-panel--icon {
-    font-size: $fontSize * 2;
+    font-size: 2em;
     margin-right: $margin * 2;
   }
 }

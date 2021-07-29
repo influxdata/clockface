@@ -354,14 +354,14 @@ body.sb-show-main {
 
   h1 {
     line-height: 1.25em;
-    font-size: ceil($docs-text-base-5 * $docs-text-scale);
-    font-weight: $cf-font-weight--light;
+    font-size: $docs-text-base-5;
+    font-weight: $cf-font-weight--medium;
     letter-spacing: 0.01em;
   }
   h2 {
     line-height: 1.25em;
     font-size: $docs-text-base-4;
-    font-weight: $cf-font-weight--light;
+    font-weight: $cf-font-weight--medium;
   }
   h3 {
     line-height: 1.25em;

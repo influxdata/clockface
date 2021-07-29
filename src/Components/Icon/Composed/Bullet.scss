@@ -23,7 +23,7 @@
 */
 
 @mixin bulletSizeModifier($fontSize, $diameter) {
-  font-size: $fontSize * 1.2;
+  font-size: $fontSize;
   width: $diameter * 0.75;
   height: $diameter * 0.75;
 

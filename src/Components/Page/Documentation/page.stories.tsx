@@ -255,7 +255,7 @@ pageExampleStories.add(
             <Page.ControlBarCenter>
               <SelectGroup
                 shape={ButtonShape.StretchToFit}
-                style={{width: '200px'}}
+                style={{width: '240px'}}
               >
                 <SelectGroup.Option
                   id="mode--write"

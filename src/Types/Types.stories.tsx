@@ -10,6 +10,7 @@ import {storiesOf} from '@storybook/react'
 import {Button} from '../Components/Button/Composed/Button'
 import {Input} from '../Components/Inputs/Input'
 import {Icon} from '../Components/Icon/Base/Icon'
+import {Panel} from '../Components/Panel'
 
 // Types
 import {
@@ -637,6 +638,78 @@ dataTypeStories.add(
   {
     readme: {
       content: marked(IconFontReadme),
+    },
+  }
+)
+
+dataTypeStories.add(
+  'Typographic scales',
+  () => {
+    return (
+      <div className="markdown-body">
+        <h3>Typographic scales</h3>
+        <table>
+          <tbody>
+            {[-1, 0, 1, 2, 3, 4, 5, 6].map(step => {
+              return (
+                <tr key={step}>
+                  <td>
+                    <code>.type-step-{step}</code>
+                  </td>
+                  <td>
+                    <div className={`type-step-${step}`}>Step {step}</div>
+                  </td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: '',
+    },
+  }
+)
+
+dataTypeStories.add(
+  'Space scales',
+  () => {
+    return (
+      <div className="markdown-body">
+        <h3>Space scales</h3>
+        <table>
+          <tbody>
+            {['3xs', '2xs', 'xs', 's', 'm', 'l', 'xl', '2xl', '3xl'].map(
+              step => {
+                return (
+                  <tr key={step}>
+                    <td>
+                      <code>{step}</code>
+                    </td>
+                    <td>
+                      <Panel
+                        gradient={Gradients.NineteenEightyFour}
+                        style={{
+                          width: `var(--space-${step})`,
+                          height: `var(--space-${step})`,
+                        }}
+                      />
+                    </td>
+                  </tr>
+                )
+              }
+            )}
+          </tbody>
+        </table>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: '',
     },
   }
 )

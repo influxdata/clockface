@@ -31,3 +31,11 @@ body {
     left: 0;
   }
 }
+
+button {
+  background: transparent;
+  appearance: none;
+  cursor: pointer;
+  border: none;
+  box-shadow: none;
+}

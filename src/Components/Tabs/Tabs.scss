@@ -1,4 +1,4 @@
-@import "../../Styles/variables.scss";
+@import '../../Styles/variables.scss';
 
 /*
   Tabs Component
@@ -28,7 +28,7 @@ $cf-tab-dropdown--item-text-active: $g20-white;
     flex-direction: row;
     border-bottom: $cf-border solid $cf-tab--border-color;
   }
-  
+
   &__vertical {
     height: 100%;
     flex-direction: column;
@@ -139,20 +139,20 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
   .cf-tabs--tab {
     height: floor($tabHeight * 1.35);
     padding: $tabPadding 0;
-  
+
     > .cf-icon {
       margin-right: ceil($tabPadding * 0.66);
-      font-size: ceil($fontSize * 1.25);
+      font-size: 1.25em;
     }
-  
+
     > .cf-tabs--tab-dismiss {
       margin-left: ceil($tabPadding * 0.66);
     }
-  
+
     .cf-tabs--tab-label {
       font-size: $fontSize + 1;
     }
-  
+
     .cf-tabs--tab-dismiss {
       margin-top: $cf-marg-b;
       margin-bottom: $cf-marg-b;
@@ -214,16 +214,32 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
 }
 
 .cf-tabs__xs {
-  @include tabSizeModifier($cf-form-xs-font, $cf-form-xs-padding, $cf-form-xs-height);
+  @include tabSizeModifier(
+    $cf-form-xs-font,
+    $cf-form-xs-padding,
+    $cf-form-xs-height
+  );
 }
 .cf-tabs__sm {
-  @include tabSizeModifier($cf-form-sm-font, $cf-form-sm-padding, $cf-form-sm-height);
+  @include tabSizeModifier(
+    $cf-form-sm-font,
+    $cf-form-sm-padding,
+    $cf-form-sm-height
+  );
 }
 .cf-tabs__md {
-  @include tabSizeModifier($cf-form-md-font, $cf-form-md-padding, $cf-form-md-height);
+  @include tabSizeModifier(
+    $cf-form-md-font,
+    $cf-form-md-padding,
+    $cf-form-md-height
+  );
 }
 .cf-tabs__lg {
-  @include tabSizeModifier($cf-form-lg-font, $cf-form-lg-padding, $cf-form-lg-height);
+  @include tabSizeModifier(
+    $cf-form-lg-font,
+    $cf-form-lg-padding,
+    $cf-form-lg-height
+  );
   .cf-tabs--tab-label {
     font-weight: $cf-font-weight--medium;
   }
@@ -242,7 +258,7 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
   background-color: $c-curacao;
   width: calc(35% + #{$cf-marg-b});
   height: calc(35% + #{$cf-marg-b});
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   transition: opacity 0.25s ease, background-color 0.25s ease;
   opacity: 0;
 }
@@ -268,10 +284,10 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
   }
 
   &:before {
-    transform: translate(-50%,-50%) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg);
   }
   &:after {
-    transform: translate(-50%,-50%) rotate(-45deg);
+    transform: translate(-50%, -50%) rotate(-45deg);
   }
 
   .cf-tabs--tab:hover & {
@@ -288,7 +304,6 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
     }
   }
 
-
   &:active,
   &:active .cf-tabs--tab-dismiss-circle,
   &:active:hover,
@@ -296,7 +311,6 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
     opacity: 1;
   }
 
-  
   &:active:before,
   &:active:after,
   &:hover:active:before,
@@ -308,7 +322,6 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
     background-color: $g20-white;
   }
 }
-
 
 /*
   Tabs Dropdown
@@ -371,7 +384,6 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
   @include gradient-h($cf-tab-dropdown--menu-bg-a, $cf-tab-dropdown--menu-bg-b);
   @include panel-shadow();
   border-radius: $cf-radius;
-
 
   .cf-tabs--dropdown__hidden & {
     display: none;
@@ -443,9 +455,13 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
   }
 }
 .cf-tabs--dropdown__align-left .cf-tabs--tab__active .cf-tabs--tab-dismiss,
-.cf-tabs--dropdown__align-left .cf-tabs--tab__active .cf-tabs--tab-dismiss:hover,
+.cf-tabs--dropdown__align-left
+  .cf-tabs--tab__active
+  .cf-tabs--tab-dismiss:hover,
 .cf-tabs--dropdown__align-center .cf-tabs--tab__active .cf-tabs--tab-dismiss,
-.cf-tabs--dropdown__align-center .cf-tabs--tab__active .cf-tabs--tab-dismiss:hover {
+.cf-tabs--dropdown__align-center
+  .cf-tabs--tab__active
+  .cf-tabs--tab-dismiss:hover {
   &:before,
   &:after {
     background-color: $cf-tab-dropdown--item-bg-b;
@@ -461,7 +477,9 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
 }
 
 .cf-tabs--dropdown__align-right .cf-tabs--tab__active .cf-tabs--tab-dismiss,
-.cf-tabs--dropdown__align-right .cf-tabs--tab__active .cf-tabs--tab-dismiss:hover {
+.cf-tabs--dropdown__align-right
+  .cf-tabs--tab__active
+  .cf-tabs--tab-dismiss:hover {
   &:before,
   &:after {
     background-color: $cf-tab-dropdown--item-bg-a;
@@ -511,7 +529,10 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
   a.cf-tabs--tab__active:visited,
   a.cf-tabs--tab__active:active {
     color: $cf-tab-dropdown--item-text-active;
-    @include gradient-h($cf-tab-dropdown--item-bg-a, $cf-tab-dropdown--item-bg-b);
+    @include gradient-h(
+      $cf-tab-dropdown--item-bg-a,
+      $cf-tab-dropdown--item-bg-b
+    );
   }
 
   .cf-tabs--tab-dismiss {
@@ -532,17 +553,33 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
 }
 
 .cf-tabs--dropdown__xs {
-  @include responsiveTabSizeModifier($cf-form-xs-font, $cf-form-xs-padding, $cf-form-xs-height);
+  @include responsiveTabSizeModifier(
+    $cf-form-xs-font,
+    $cf-form-xs-padding,
+    $cf-form-xs-height
+  );
 }
 
 .cf-tabs--dropdown__sm {
-  @include responsiveTabSizeModifier($cf-form-sm-font, $cf-form-sm-padding, $cf-form-sm-height);
+  @include responsiveTabSizeModifier(
+    $cf-form-sm-font,
+    $cf-form-sm-padding,
+    $cf-form-sm-height
+  );
 }
 
 .cf-tabs--dropdown__md {
-  @include responsiveTabSizeModifier($cf-form-md-font, $cf-form-md-padding, $cf-form-md-height);
+  @include responsiveTabSizeModifier(
+    $cf-form-md-font,
+    $cf-form-md-padding,
+    $cf-form-md-height
+  );
 }
 
 .cf-tabs--dropdown__lg {
-  @include responsiveTabSizeModifier($cf-form-lg-font, $cf-form-lg-padding, $cf-form-lg-height);
+  @include responsiveTabSizeModifier(
+    $cf-form-lg-font,
+    $cf-form-lg-padding,
+    $cf-form-lg-height
+  );
 }

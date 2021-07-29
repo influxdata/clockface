@@ -151,7 +151,6 @@ $cf-marg-b: 8px;
 $cf-marg-c: 16px;
 $cf-marg-d: 32px;
 $cf-marg-e: 64px;
-$cf-marg-f: 128px;
 
 $cf-border: 2px;
 $cf-radius: 4px;

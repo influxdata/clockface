@@ -3,28 +3,41 @@
    -----------------------------------------------------------------------------
 */
 
+// Greys
+$cf-grey-5: #07070e;
+$cf-grey-15: #1a1a2a;
+$cf-grey-25: #333346;
+$cf-grey-35: #4d4d60;
+$cf-grey-45: #68687b;
+$cf-grey-55: #828294;
+$cf-grey-65: #9e9ead;
+$cf-grey-75: #b9b9c5;
+$cf-grey-85: #d5d5dd;
+$cf-grey-95: #f1f1f3;
+$cf-white: #ffffff;
+
 // Neutrals
-$g0-obsidian: #0f0e15;
-$g1-raven: #181820;
-$g2-kevlar: #202028;
-$g3-castle: #292933;
-$g4-onyx: #31313d;
-$g5-pepper: #383846;
-$g6-smoke: #434453;
-$g7-graphite: #545667;
-$g8-storm: #676978;
-$g9-mountain: #757888;
-$g10-wolf: #8e91a1;
-$g11-sidewalk: #999dab;
-$g12-forge: #a4a8b6;
-$g13-mist: #bec2cc;
-$g14-chromium: #c6cad3;
-$g15-platinum: #d4d7dd;
-$g16-pearl: #e7e8eb;
-$g17-whisper: #eeeff2;
-$g18-cloud: #f6f6f8;
-$g19-ghost: #fafafc;
-$g20-white: #ffffff;
+$g0-obsidian: $cf-grey-5;
+$g1-raven: $cf-grey-5;
+$g2-kevlar: $cf-grey-5;
+$g3-castle: $cf-grey-15;
+$g4-onyx: $cf-grey-15;
+$g5-pepper: $cf-grey-25;
+$g6-smoke: $cf-grey-25;
+$g7-graphite: $cf-grey-35;
+$g8-storm: $cf-grey-45;
+$g9-mountain: $cf-grey-45;
+$g10-wolf: $cf-grey-55;
+$g11-sidewalk: $cf-grey-65;
+$g12-forge: $cf-grey-65;
+$g13-mist: $cf-grey-75;
+$g14-chromium: $cf-grey-75;
+$g15-platinum: $cf-grey-85;
+$g16-pearl: $cf-grey-85;
+$g17-whisper: $cf-grey-95;
+$g18-cloud: $cf-grey-95;
+$g19-ghost: $cf-grey-95;
+$g20-white: $cf-white;
 
 // Reds
 $c-basalt: #2f1f29;
@@ -104,15 +117,24 @@ $cf-z--tabs-dropdown: 8000;
    control over the UI kit proportions
 */
 
-$cf-marg-a: 4px;
-$cf-marg-b: 8px;
-$cf-marg-c: 16px;
-$cf-marg-d: 32px;
-$cf-marg-e: 64px;
-$cf-marg-f: 128px;
+$cf-space-3xs: 4px;
+$cf-space-2xs: 8px;
+$cf-space-xs: 12px;
+$cf-space-s: 16px;
+$cf-space-m: 24px;
+$cf-space-l: 32px;
+$cf-space-xl: 48px;
+$cf-space-2xl: 64px;
+$cf-space-3xl: 96px;
+
+$cf-marg-a: $cf-space-3xs;
+$cf-marg-b: $cf-space-2xs;
+$cf-marg-c: $cf-space-s;
+$cf-marg-d: $cf-space-l;
+$cf-marg-e: $cf-space-2xl;
 
 $cf-border: 2px;
-$cf-radius: 4px;
+$cf-radius: 2px;
 $cf-radius-sm: $cf-radius - 1px;
 
 /*
@@ -131,23 +153,16 @@ $cf-font-weight--medium: 500;
 $cf-font-weight--bold: 700;
 $cf-font-weight--black: 900;
 
-$cf-body-text: 12px;
-$cf-text-tiny: 0.8em;
-$cf-text-base: 1em;
+$cf-body-text: #{var(--step-0)};
+$cf-text-tiny: #{var(--step--1)};
+$cf-text-base: #{var(--step-0)};
 $cf-text-scale: 1.19;
-$cf-text-base-1: ($cf-text-base * $cf-text-scale);
-$cf-text-base-2: ($cf-text-base * $cf-text-scale * $cf-text-scale);
-$cf-text-base-3: (
-  $cf-text-base * $cf-text-scale * $cf-text-scale * $cf-text-scale
-);
-$cf-text-base-4: (
-  $cf-text-base * $cf-text-scale * $cf-text-scale * $cf-text-scale *
-    $cf-text-scale
-);
-$cf-text-base-5: (
-  $cf-text-base * $cf-text-scale * $cf-text-scale * $cf-text-scale *
-    $cf-text-scale * $cf-text-scale
-);
+$cf-text-base-1: #{var(--step-1)};
+$cf-text-base-2: #{var(--step-2)};
+$cf-text-base-3: #{var(--step-3)};
+$cf-text-base-4: #{var(--step-4)};
+$cf-text-base-5: #{var(--step-5)};
+$cf-text-base-6: #{var(--step-6)};
 
 $cf-text-default: $g13-mist;
 $cf-text-header: $g17-whisper;
@@ -185,7 +200,7 @@ $cf-page--background: $g1-raven;
 
 $cf-page--header-size-sm: auto;
 $cf-page--header-size: 88px;
-$cf-page--control-bar-size: 44px;
+$cf-page--control-bar-size: 52px;
 $cf-page--title-size-sm: 1.8em;
 $cf-page--title-size: 2.4em;
 $cf-page--title-weight: 400;
@@ -216,21 +231,21 @@ $cf-grid--breakpoint-lg: 1500px;
    Dropdown, Input, etc.
 */
 
-$cf-form-xs-height: 22px;
-$cf-form-xs-padding: 8px;
-$cf-form-xs-font: 12px;
+$cf-form-xs-height: 37px;
+$cf-form-xs-padding: $cf-space-xs;
+$cf-form-xs-font: #{var(--step--1)};
 
-$cf-form-sm-height: 30px;
-$cf-form-sm-padding: 10px;
-$cf-form-sm-font: 13px;
+$cf-form-sm-height: 39px;
+$cf-form-sm-padding: $cf-space-s;
+$cf-form-sm-font: #{var(--step-0)};
 
-$cf-form-md-height: 38px;
-$cf-form-md-padding: 14px;
-$cf-form-md-font: 14px;
+$cf-form-md-height: 50px;
+$cf-form-md-padding: $cf-space-s;
+$cf-form-md-font: #{var(--step-1)};
 
-$cf-form-lg-height: 46px;
-$cf-form-lg-padding: 18px;
-$cf-form-lg-font: 17px;
+$cf-form-lg-height: 64px;
+$cf-form-lg-padding: $cf-space-m;
+$cf-form-lg-font: #{var(--step-1)};
 
 /*
    Empty State
@@ -342,9 +357,9 @@ $cf-tree-nav__gradient-b: $c-pool;
 $cf-tree-nav__border: $g5-pepper;
 $cf-tree-nav__border-hover: $g8-storm;
 $cf-tree-nav__border-active: $c-pool;
-$cf-tree-nav__bg: $g2-kevlar;
-$cf-tree-nav__bg-hover: $g3-castle;
-$cf-tree-nav__bg-active: $g4-onyx;
+$cf-tree-nav__bg: $cf-grey-15;
+$cf-tree-nav__bg-hover: $cf-grey-25;
+$cf-tree-nav__bg-active: $cf-grey-25;
 $cf-tree-nav__text: $g12-forge;
 $cf-tree-nav__text-hover: $g17-whisper;
 $cf-tree-nav__text-active: $g20-white;
@@ -550,4 +565,9 @@ $cf-scrollbar-offset: 3px;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+// Blur
+%backdrop-blur {
+  backdrop-filter: blur(28px);
 }
