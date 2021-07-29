@@ -177,28 +177,41 @@ export enum ButtonType {
 }
 
 export enum InfluxColors {
-  // Greys
-  Obsidian = '#0f0e15',
-  Raven = '#181820',
-  Kevlar = '#202028',
-  Castle = '#292933',
-  Onyx = '#31313d',
-  Pepper = '#383846',
-  Smoke = '#434453',
-  Graphite = '#545667',
-  Storm = '#676978',
-  Mountain = '#757888',
-  Wolf = '#8e91a1',
-  Sidewalk = '#999dab',
-  Forge = '#a4a8b6',
-  Mist = '#bec2cc',
-  Chromium = '#c6cad3',
-  Platinum = '#d4d7dd',
-  Pearl = '#e7e8eb',
-  Whisper = '#eeeff2',
-  Cloud = '#f6f6f8',
-  Ghost = '#fafafc',
+  // Grey
+  Grey5 = '#07070e',
+  Grey15 = '#1a1a2a',
+  Grey25 = '#333346',
+  Grey35 = '#4d4d60',
+  Grey45 = '#68687b',
+  Grey55 = '#828294',
+  Grey65 = '#9e9ead',
+  Grey75 = '#b9b9c5',
+  Grey85 = '#d5d5dd',
+  Grey95 = '#f1f1f3',
+
+  // Neutrals
+  Obsidian = '#07070e', // Grey5
+  Raven = '#07070e', // Grey5
+  Kevlar = '#07070e', // Grey5
+  Castle = '#1a1a2a', // Grey15
+  Onyx = '#1a1a2a', // Grey15
+  Pepper = '#333346', // Grey25
+  Smoke = '#333346', // Grey25
+  Graphite = '#4d4d60', // Grey35
+  Storm = '#68687b', // Grey45
+  Mountain = '#68687b', // Grey45
+  Wolf = '#828294', // Grey55
+  Sidewalk = '#9e9ead', // Grey65
+  Forge = '#9e9ead', // Grey65
+  Mist = '#b9b9c5', // Grey75
+  Chromium = '#b9b9c5', // Grey75
+  Platinum = '#d5d5dd', // Grey85
+  Pearl = '#d5d5dd', // Grey85
+  Whisper = '#f1f1f3', // Grey95
+  Cloud = '#f1f1f3', // Grey95
+  Ghost = '#f1f1f3', // Grey95
   White = '#ffffff',
+
   // Blues
   Abyss = '#120653',
   Sapphire = '#0b3a8d',
@@ -208,6 +221,7 @@ export enum InfluxColors {
   Hydrogen = '#6BDFFF',
   Neutrino = '#BEF0FF',
   Yeti = '#F0FCFF',
+
   // Purples
   Shadow = '#2b007e',
   Void = '#5c10a0',
@@ -217,6 +231,7 @@ export enum InfluxColors {
   Potassium = '#dd84f1',
   Moonstone = '#ebadf8',
   Twilight = '#fad9ff',
+
   // Greens
   Gypsy = '#003e34',
   Emerald = '#006f49',
@@ -226,6 +241,7 @@ export enum InfluxColors {
   Krypton = '#9bf445',
   Wasabi = '#c6f98e',
   Mint = '#f3ffd6',
+
   // Yellows
   Oak = '#3F241F',
   Topaz = '#E85B1C',
@@ -235,6 +251,7 @@ export enum InfluxColors {
   Sulfur = '#FFE480',
   Daisy = '#FFF6B8',
   Banana = '#FFFDDE',
+
   // Reds
   Basalt = '#2F1F29',
   Ruby = '#BF3D5E',
@@ -244,6 +261,7 @@ export enum InfluxColors {
   Tungsten = '#FFB6A0',
   Marmelade = '#FFDCCF',
   Flan = '#FFF7F4',
+
   // Brand Colors
   Chartreuse = '#D6F622',
   DeepPurple = '#13002D',

@@ -216,13 +216,13 @@ $selectable-card--label-disabled: $g8-storm;
 */
 @mixin selectableCardSizeModifier($fontSize, $padding) {
   .cf-selectable-card--label {
-    font-size: ceil($fontSize * 1.25);
-    line-height: ceil($fontSize * 1.25);
+    font-size: $fontSize;
+    line-height: $fontSize;
     padding: $padding;
   }
 
   .cf-selectable-card--icon {
-    font-size: ceil($fontSize * 1.25);
+    font-size: 1.25em;
     top: $padding * 1.5;
     left: $padding * 1.5;
   }

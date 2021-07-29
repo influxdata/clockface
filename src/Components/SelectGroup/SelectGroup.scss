@@ -1,4 +1,5 @@
-@import "../../Styles/variables.scss";
+@import '../../Styles/variables.scss';
+@import '../../Styles/typography.scss';
 
 /*
   SelectGroup Component
@@ -10,13 +11,13 @@ $select-group--padding: $cf-marg-a;
 .cf-select-group {
   display: inline-flex;
   align-items: stretch;
-  padding: $select-group--padding;
+  padding: 0;
   border-radius: $cf-radius;
   background-color: $g5-pepper;
 
   // Visually obscures underlying input
-  & > input[type="radio"],
-  & > input[type="checkbox"] {
+  & > input[type='radio'],
+  & > input[type='checkbox'] {
     position: fixed;
     top: 0px;
     left: 0px;
@@ -30,9 +31,9 @@ $select-group--padding: $cf-marg-a;
   font-family: $cf-text-font;
   font-weight: $cf-font-weight--medium;
   background-color: transparent;
-  transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+  transition: background-color 0.25s ease, color 0.25s ease,
+    box-shadow 0.25s ease;
   color: $g11-sidewalk;
-  text-transform: capitalize;
   border-radius: $cf-radius-sm;
   outline: none;
   text-align: center;
@@ -40,6 +41,10 @@ $select-group--padding: $cf-marg-a;
   overflow: hidden;
   text-overflow: ellipsis;
   margin-right: $cf-border;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @extend %type-uppercase;
 
   &:last-child {
     margin-right: 0;
@@ -55,7 +60,7 @@ $select-group--padding: $cf-marg-a;
   &:focus {
     box-shadow: $cf-input--box-shadow;
 
-      &:active {
+    &:active {
       box-shadow: none;
     }
   }
@@ -84,8 +89,8 @@ $select-group--padding: $cf-marg-a;
   height: $height;
 
   .cf-select-group--option {
-    height: $height - ($select-group--padding * 2);
-    line-height: $height - ($select-group--padding * 2);
+    // height: $height - ($select-group--padding * 2);
+    // line-height: $height - ($select-group--padding * 2);
     padding: 0 $padding;
     font-size: $fontSize;
   }
@@ -100,18 +105,33 @@ $select-group--padding: $cf-marg-a;
 }
 
 .cf-select-group__xs {
-  @include radioButtonSizeModifier($cf-form-xs-font, $cf-form-xs-padding, $cf-form-xs-height);
+  @include radioButtonSizeModifier(
+    $cf-form-xs-font,
+    $cf-form-xs-padding,
+    $cf-form-xs-height
+  );
 }
 .cf-select-group__sm {
-  @include radioButtonSizeModifier($cf-form-sm-font, $cf-form-sm-padding, $cf-form-sm-height);
+  @include radioButtonSizeModifier(
+    $cf-form-sm-font,
+    $cf-form-sm-padding,
+    $cf-form-sm-height
+  );
 }
 .cf-select-group__md {
-  @include radioButtonSizeModifier($cf-form-md-font, $cf-form-md-padding, $cf-form-md-height);
+  @include radioButtonSizeModifier(
+    $cf-form-md-font,
+    $cf-form-md-padding,
+    $cf-form-md-height
+  );
 }
 .cf-select-group__lg {
-  @include radioButtonSizeModifier($cf-form-lg-font, $cf-form-lg-padding, $cf-form-lg-height);
+  @include radioButtonSizeModifier(
+    $cf-form-lg-font,
+    $cf-form-lg-padding,
+    $cf-form-lg-height
+  );
 }
-
 
 /*
   Color Modifiers

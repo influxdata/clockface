@@ -36,7 +36,7 @@
 
   .cf-empty-state--text,
   .cf-empty-state--sub-text {
-    margin-top: ceil($fontSize * 0.75);
+    margin-top: 0.75em;
   }
 
   .cf-empty-state--text + .cf-button,
@@ -50,11 +50,11 @@
   }
 
   > *:last-child {
-    margin-bottom: ceil($fontSize * 0.75);
+    margin-bottom: 0.75em;
   }
 
   .cf-empty-state--text {
-    font-size: ceil($fontSize * 1.25);
+    font-size: 1.25em;
   }
 
   .cf-empty-state--sub-text {

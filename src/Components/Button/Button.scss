@@ -1,4 +1,5 @@
 @import '../../Styles/variables';
+@import '../../Styles/typography';
 
 /*
   Button Styles
@@ -19,6 +20,7 @@
   position: relative;
   z-index: 1;
   @extend %no-user-select;
+  @extend %type-uppercase;
 
   &:after {
     position: absolute;
@@ -76,7 +78,7 @@
   }
 
   .cf-button-icon {
-    font-size: floor($fontSize * 1.2);
+    font-size: 1.2em;
   }
 }
 
