@@ -27,12 +27,12 @@ import SlideToggleWithLabelsReadme from './SlideToggleWithLabels.md'
 import {useState} from '@storybook/addons'
 
 const slideToggleStories = storiesOf(
-  'Components|Slide Toggles/Family',
+  'Components/Slide Toggles/Family',
   module
 ).addDecorator(withKnobs)
 
 const slideToggleExampleStories = storiesOf(
-  'Components|Slide Toggles/Examples',
+  'Components/Slide Toggles/Examples',
   module
 ).addDecorator(withKnobs)
 

@@ -33,12 +33,12 @@ import IndexListRowCellReadme from './IndexListRowCell.md'
 import IndexListExampleReadme from './IndexListExample.md'
 
 const indexListStories = storiesOf(
-  'Components|IndexList/Family',
+  'Components/IndexList/Family',
   module
 ).addDecorator(withKnobs)
 
 const indexListExampleStories = storiesOf(
-  'Components|IndexList/Examples',
+  'Components/IndexList/Examples',
   module
 ).addDecorator(withKnobs)
 

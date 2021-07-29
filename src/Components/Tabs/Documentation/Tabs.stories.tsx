@@ -24,12 +24,12 @@ import TabsContainerReadme from './TabsContainer.md'
 import TabsExampleReadme from './TabsExample.md'
 
 const tabsStories = storiesOf(
-  'Components|Navigation/Tabs/Family',
+  'Components/Navigation/Tabs/Family',
   module
 ).addDecorator(withKnobs)
 
 const tabsExampleStories = storiesOf(
-  'Components|Navigation/Tabs/Examples',
+  'Components/Navigation/Tabs/Examples',
   module
 ).addDecorator(withKnobs)
 

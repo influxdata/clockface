@@ -32,7 +32,7 @@ import {
 // Notes
 import AppWrapperReadme from './AppWrapper.md'
 
-const layoutStories = storiesOf('Layout|AppWrapper', module).addDecorator(
+const layoutStories = storiesOf('Layout/AppWrapper', module).addDecorator(
   withKnobs
 )
 

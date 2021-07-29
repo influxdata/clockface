@@ -21,7 +21,7 @@ import {IconFont} from '../../../Types'
 import TreeNavReadme from './TreeNav.md'
 
 const navMenuStories = storiesOf(
-  'Components|Navigation/TreeNav',
+  'Components/Navigation/TreeNav',
   module
 ).addDecorator(withKnobs)
 

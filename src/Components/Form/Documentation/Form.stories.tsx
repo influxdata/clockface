@@ -58,12 +58,12 @@ import FormValidationElementReadme from './FormValidationElement.md'
 import NaturalLanguageFormReadme from './NaturalLanguageForm.md'
 import {FormRef} from '../Form'
 
-const formStories = storiesOf('Components|Forms/Standard', module).addDecorator(
+const formStories = storiesOf('Components/Forms/Standard', module).addDecorator(
   withKnobs
 )
 
 const formExampleStories = storiesOf(
-  'Components|Forms/Examples',
+  'Components/Forms/Examples',
   module
 ).addDecorator(withKnobs)
 

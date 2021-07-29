@@ -25,7 +25,7 @@ import PaginationItemReadme from './PaginationNavItem.md'
 import PaginationTruncationItemReadme from './PaginationTruncationItem.md'
 import PaginationDirectionItemReadme from './PaginationDirectionItem.md'
 const PaginationStories = storiesOf(
-  'Components|Pagination/PaginationNav',
+  'Components/Pagination/PaginationNav',
   module
 ).addDecorator(withKnobs)
 

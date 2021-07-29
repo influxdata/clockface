@@ -48,12 +48,12 @@ import ButtonGroupReadme from './ButtonGroup.md'
 import ButtonBaseContrastTesterReadme from './ButtonBaseContrastTester.md'
 
 const buttonBaseStories = storiesOf(
-  'Components|Buttons/Base',
+  'Components/Buttons/Base',
   module
 ).addDecorator(withKnobs)
 
 const buttonComposedStories = storiesOf(
-  'Components|Buttons/Composed',
+  'Components/Buttons/Composed',
   module
 ).addDecorator(withKnobs)
 

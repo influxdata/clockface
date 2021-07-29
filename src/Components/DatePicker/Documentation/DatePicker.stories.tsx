@@ -15,12 +15,12 @@ import DatePickerReadme from './DatePicker.md'
 import DateRangePickerReadme from './DateRangePicker.md'
 
 const datePickerBaseStories = storiesOf(
-  'Components|DatePicker/Base',
+  'Components/DatePicker/Base',
   module
 ).addDecorator(withKnobs)
 
 const datePickerComposedStories = storiesOf(
-  'Components|DatePicker/Composed',
+  'Components/DatePicker/Composed',
   module
 ).addDecorator(withKnobs)
 

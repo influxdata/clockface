@@ -32,12 +32,12 @@ import SelectGroupExampleReadme from './SelectGroupExample.md'
 import {useState} from '@storybook/addons'
 
 const selectGroupStories = storiesOf(
-  'Components|SelectGroup/Family',
+  'Components/SelectGroup/Family',
   module
 ).addDecorator(withKnobs)
 
 const selectGroupExampleStories = storiesOf(
-  'Components|SelectGroup/Examples',
+  'Components/SelectGroup/Examples',
   module
 ).addDecorator(withKnobs)
 

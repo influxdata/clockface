@@ -40,12 +40,12 @@ import FunnelPageFooterReadme from './FunnelPageFooter.md'
 import ExampleFunnelPageReadme from './ExampleFunnelPage.md'
 
 const funnelPageStories = storiesOf(
-  'Layout|FunnelPage/Family',
+  'Layout/FunnelPage/Family',
   module
 ).addDecorator(withKnobs)
 
 const funnelPageExampleStories = storiesOf(
-  'Layout|FunnelPage/Examples',
+  'Layout/FunnelPage/Examples',
   module
 ).addDecorator(withKnobs)
 

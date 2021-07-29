@@ -29,7 +29,7 @@ import TypesReadme from './Types.md'
 import ColorsGradientsReadme from './ColorsGradients.md'
 import IconFontReadme from './IconFont.md'
 
-const dataTypeStories = storiesOf('Data Types|Shared', module)
+const dataTypeStories = storiesOf('Foundations/Shared', module)
 
 dataTypeStories.add(
   'Overview',

@@ -42,7 +42,7 @@ import NotificationReadme from './Notification.md'
 import NotificationDialogReadme from './NotificationDialog.md'
 
 const notificationStories = storiesOf(
-  'Atomic|Notification',
+  'Atomic/Notification',
   module
 ).addDecorator(withKnobs)
 

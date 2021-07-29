@@ -58,12 +58,12 @@ import ResourceCardMetaReadme from './ResourceCardMeta.md'
 import ResourceCardExampleReadme from './ResourceCardExample.md'
 
 const resourceListCardStories = storiesOf(
-  'Components|ResourceList/Card Family',
+  'Components/ResourceList/Card Family',
   module
 ).addDecorator(withKnobs)
 
 const resourceListExampleStories = storiesOf(
-  'Components|ResourceList/Examples',
+  'Components/ResourceList/Examples',
   module
 ).addDecorator(withKnobs)
 

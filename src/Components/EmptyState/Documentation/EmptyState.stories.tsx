@@ -27,12 +27,12 @@ import EmptyStateExampleAReadme from './EmptyStateExampleA.md'
 import EmptyStateExampleBReadme from './EmptyStateExampleB.md'
 
 const emptyStateStories = storiesOf(
-  'Components|Empty States/Family',
+  'Components/Empty States/Family',
   module
 ).addDecorator(withKnobs)
 
 const emptyStateExampleStories = storiesOf(
-  'Components|Empty States/Examples',
+  'Components/Empty States/Examples',
   module
 ).addDecorator(withKnobs)
 

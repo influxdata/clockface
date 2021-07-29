@@ -33,12 +33,12 @@ import ResourceListSorterReadme from './ResourceListSorter.md'
 import ResourceListExampleReadme from './ResourceListExample.md'
 
 const resourceListStories = storiesOf(
-  'Components|ResourceList/List Family',
+  'Components/ResourceList/List Family',
   module
 ).addDecorator(withKnobs)
 
 const resourceListExampleStories = storiesOf(
-  'Components|ResourceList/Examples',
+  'Components/ResourceList/Examples',
   module
 ).addDecorator(withKnobs)
 

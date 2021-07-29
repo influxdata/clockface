@@ -40,12 +40,12 @@ import PageContentsReadme from './PageContents.md'
 import PageTitleReadme from './PageTitle.md'
 import {PageTitleRef} from '../PageTitle'
 
-const pageStories = storiesOf('Layout|Page/Family', module).addDecorator(
+const pageStories = storiesOf('Layout/Page/Family', module).addDecorator(
   withKnobs
 )
 
 const pageExampleStories = storiesOf(
-  'Layout|Page/Examples',
+  'Layout/Page/Examples',
   module
 ).addDecorator(withKnobs)
 

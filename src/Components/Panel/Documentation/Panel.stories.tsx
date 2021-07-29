@@ -50,17 +50,17 @@ import ExampleCReadme from './PanelExampleC.md'
 import ExampleDReadme from './PanelExampleD.md'
 import PanelPlaygroundReadme from './PanelPlayground.md'
 
-const panelStories = storiesOf('Components|Panels/Family', module).addDecorator(
+const panelStories = storiesOf('Components/Panels/Family', module).addDecorator(
   withKnobs
 )
 
 const panelComposedStories = storiesOf(
-  'Components|Panels/Composed',
+  'Components/Panels/Composed',
   module
 ).addDecorator(withKnobs)
 
 const panelExampleStories = storiesOf(
-  'Components|Panels/Examples',
+  'Components/Panels/Examples',
   module
 ).addDecorator(withKnobs)
 

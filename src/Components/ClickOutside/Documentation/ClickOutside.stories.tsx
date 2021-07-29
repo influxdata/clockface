@@ -11,7 +11,7 @@ import {ClickOutside} from '../ClickOutside'
 // Notes
 import ClickOutsideReadme from './ClickOutside.md'
 
-const clickOutsideStories = storiesOf('Utilities|ClickOutside', module)
+const clickOutsideStories = storiesOf('Utilities/ClickOutside', module)
 
 clickOutsideStories.add(
   'Example',

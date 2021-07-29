@@ -18,11 +18,11 @@ import {IconFont, ComponentSize, InfluxColors} from '../../../Types'
 import IconReadme from './Icon.md'
 import BulletReadme from './Bullet.md'
 
-const iconBaseStories = storiesOf('Atomic|Icon/Base', module).addDecorator(
+const iconBaseStories = storiesOf('Atomic/Icon/Base', module).addDecorator(
   withKnobs
 )
 const iconComposedStories = storiesOf(
-  'Atomic|Icon/Composed',
+  'Atomic/Icon/Composed',
   module
 ).addDecorator(withKnobs)
 
