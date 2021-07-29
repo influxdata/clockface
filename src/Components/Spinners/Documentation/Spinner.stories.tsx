@@ -29,17 +29,17 @@ import SparkleSpinnerReadme from './SparkleSpinner.md'
 import WaitingTextReadme from './WaitingText.md'
 
 const spinnerContainerStories = storiesOf(
-  'Components|Spinners/Container',
+  'Components/Spinners/Container',
   module
 ).addDecorator(withKnobs)
 
 const spinnerVisualStories = storiesOf(
-  'Components|Spinners/Visual Spinners',
+  'Components/Spinners/Visual Spinners',
   module
 ).addDecorator(withKnobs)
 
 const spinnerTextStories = storiesOf(
-  'Components|Spinners/Text Spinners',
+  'Components/Spinners/Text Spinners',
   module
 ).addDecorator(withKnobs)
 

@@ -16,7 +16,7 @@ import {ComponentSize, InfluxColors} from '../../../Types'
 // Notes
 import LabelReadme from './Label.md'
 
-const labelStories = storiesOf('Atomic|Label', module).addDecorator(withKnobs)
+const labelStories = storiesOf('Atomic/Label', module).addDecorator(withKnobs)
 
 labelStories.add(
   'Examples',

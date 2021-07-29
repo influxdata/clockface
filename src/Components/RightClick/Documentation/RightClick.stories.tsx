@@ -17,7 +17,7 @@ import {ComponentColor} from '../../../Types'
 import RightClickReadme from './RightClick.md'
 
 const rightClickStories = storiesOf(
-  'Atomic|RightClick/Base',
+  'Atomic/RightClick/Base',
   module
 ).addDecorator(withKnobs)
 

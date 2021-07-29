@@ -22,7 +22,7 @@ import {InfluxColors} from '../../../Types'
 import InfluxDataLogoReadme from './InfluxDataLogo.md'
 import InfluxDBCloudLogoReadme from './InfluxDBCloudLogo.md'
 
-const logoStories = storiesOf('Graphics|Brand/Logos', module).addDecorator(
+const logoStories = storiesOf('Components/Logos', module).addDecorator(
   withKnobs
 )
 

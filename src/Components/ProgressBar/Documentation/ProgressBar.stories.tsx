@@ -19,12 +19,12 @@ import ThresholdBarReadme from './ThresholdBar.md'
 import {ThresholdBar} from '../Composed/ThresholdBar'
 
 const ProgressBarStories = storiesOf(
-  'Atomic|ProgressBar/Family',
+  'Atomic/ProgressBar/Family',
   module
 ).addDecorator(withKnobs)
 
 const ProgressBarComposedStories = storiesOf(
-  'Atomic|ProgressBar/Composed',
+  'Atomic/ProgressBar/Composed',
   module
 ).addDecorator(withKnobs)
 

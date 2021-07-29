@@ -31,7 +31,7 @@ import {
 // Notes
 import PortalsReadme from './Portals.md'
 
-const alertStories = storiesOf('Sandbox|Portal Elements', module).addDecorator(
+const alertStories = storiesOf('Sandbox/Portal Elements', module).addDecorator(
   withKnobs
 )
 

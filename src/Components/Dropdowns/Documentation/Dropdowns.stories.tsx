@@ -55,12 +55,12 @@ import SelectDropdownReadme from './SelectDropdown.md'
 import MultiSelectDropdownReadme from './MultiSelectDropdown.md'
 
 const dropdownFamilyStories = storiesOf(
-  'Components|Dropdowns/Family',
+  'Components/Dropdowns/Family',
   module
 ).addDecorator(withKnobs)
 
 const dropdownComposedStories = storiesOf(
-  'Components|Dropdowns/Composed',
+  'Components/Dropdowns/Composed',
   module
 ).addDecorator(withKnobs)
 

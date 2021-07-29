@@ -17,7 +17,7 @@ import {ComponentSize, Alignment, ComponentColor} from '../../../Types'
 import PopNavReadme from './PopNav.md'
 
 const popNavStories = storiesOf(
-  'Components|Navigation/PopNav',
+  'Components/Navigation/PopNav',
   module
 ).addDecorator(withKnobs)
 

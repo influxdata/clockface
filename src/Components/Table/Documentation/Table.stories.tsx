@@ -30,7 +30,7 @@ import {
 // Notes
 import TableReadme from './Table.md'
 
-const tableStories = storiesOf('Components|Table/Family', module).addDecorator(
+const tableStories = storiesOf('Components/Table/Family', module).addDecorator(
   withKnobs
 )
 

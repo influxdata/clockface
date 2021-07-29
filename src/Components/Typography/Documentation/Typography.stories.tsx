@@ -16,7 +16,7 @@ import {HeadingElement, Typeface, FontWeight} from '../../../Types'
 // Notes
 import HeadingReadme from './Heading.md'
 
-const headingStories = storiesOf('Atomic|Heading', module).addDecorator(
+const headingStories = storiesOf('Atomic/Heading', module).addDecorator(
   withKnobs
 )
 

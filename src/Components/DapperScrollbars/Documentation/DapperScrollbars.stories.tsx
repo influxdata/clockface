@@ -11,7 +11,7 @@ import {DapperScrollbars, FusionScrollHandler} from '../DapperScrollbars'
 import {Form} from '../../Form'
 import {Dropdown} from '../../Dropdowns'
 
-const scrollbarStories = storiesOf('Utilities|Scrollbars', module).addDecorator(
+const scrollbarStories = storiesOf('Utilities/Scrollbars', module).addDecorator(
   withKnobs
 )
 

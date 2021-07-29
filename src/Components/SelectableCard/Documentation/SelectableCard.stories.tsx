@@ -26,7 +26,7 @@ import SelectableCardReadme from './SelectableCard.md'
 import SelectableCardKeyInteractionReadme from './SelectableCardKeyInteraction.md'
 
 const selectableCardStories = storiesOf(
-  'Components|Cards/SelectableCard',
+  'Components/Cards/SelectableCard',
   module
 ).addDecorator(withKnobs)
 

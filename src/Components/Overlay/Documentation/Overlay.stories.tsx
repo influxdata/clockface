@@ -43,7 +43,7 @@ const instructionsElement = (
 )
 
 const overlayStories = storiesOf(
-  'Components|Overlays/Family',
+  'Components/Overlays/Family',
   module
 ).addDecorator(withKnobs)
 
@@ -286,7 +286,7 @@ overlayStories.add(
 )
 
 const overlayExampleStories = storiesOf(
-  'Components|Overlays/Examples',
+  'Components/Overlays/Examples',
   module
 ).addDecorator(withKnobs)
 

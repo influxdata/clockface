@@ -44,12 +44,12 @@ import ListLinkElementReadme from './ListLinkElement.md'
 import ListPopoverReadme from './ListPopover.md'
 
 const listFamilyStories = storiesOf(
-  'Components|List/Family',
+  'Components/List/Family',
   module
 ).addDecorator(withKnobs)
 
 const listExamplesStories = storiesOf(
-  'Components|List/Examples',
+  'Components/List/Examples',
   module
 ).addDecorator(withKnobs)
 

@@ -69,17 +69,17 @@ import TimeInputReadme from './TimeInput.md'
 import MultipleChoiceForm from './MultipleChoiceForm.md'
 
 const inputsBaseStories = storiesOf(
-  'Components|Inputs/Base',
+  'Components/Inputs/Base',
   module
 ).addDecorator(withKnobs)
 
 const inputsComposedStories = storiesOf(
-  'Components|Inputs/Composed',
+  'Components/Inputs/Composed',
   module
 ).addDecorator(withKnobs)
 
 const inputsExampleStories = storiesOf(
-  'Components|Inputs/Examples',
+  'Components/Inputs/Examples',
   module
 ).addDecorator(withKnobs)
 
