@@ -29,6 +29,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  &.more:before {
+    content: '\e974';
+  }
   &.drag-to-expand-white:before {
     content: '\e901';
     color: #fff;
@@ -63,9 +66,6 @@
   &.moon:before {
     content: '\e95c';
   }
-  &.merge:before {
-    content: '\e975';
-  }
   &.share-solid:before {
     content: '\e96e';
   }
@@ -77,6 +77,9 @@
   }
   &.upgrade:before {
     content: '\e95f';
+  }
+  &.merge:before {
+    content: '\e975';
   }
   &.add-cell:before {
     content: '\e925';
