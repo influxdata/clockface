@@ -47,17 +47,18 @@ import ReflessPopoverReadme from './ReflessPopover.md'
 import QuestionMarkTooltipReadme from './QuestionMarkTooltip.md'
 import ErrorTooltipReadme from './ErrorTooltip.md'
 
-const popoverStories = storiesOf('Atomic/Popover/Base', module).addDecorator(
-  withKnobs
-)
+const popoverStories = storiesOf(
+  'Components/Popover/Base',
+  module
+).addDecorator(withKnobs)
 
 const composedPopoverStories = storiesOf(
-  'Atomic/Popover/Composed',
+  'Components/Popover/Composed',
   module
 ).addDecorator(withKnobs)
 
 const testPopoverStories = storiesOf(
-  'Atomic/Popover/Tests',
+  'Components/Popover/Tests',
   module
 ).addDecorator(withKnobs)
 

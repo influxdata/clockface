@@ -153,10 +153,9 @@ $cf-font-weight--medium: 500;
 $cf-font-weight--bold: 700;
 $cf-font-weight--black: 900;
 
-$cf-body-text: #{var(--step-0)};
 $cf-text-tiny: #{var(--step--1)};
+$cf-body-text: #{var(--step-0)};
 $cf-text-base: #{var(--step-0)};
-$cf-text-scale: 1.19;
 $cf-text-base-1: #{var(--step-1)};
 $cf-text-base-2: #{var(--step-2)};
 $cf-text-base-3: #{var(--step-3)};
@@ -164,8 +163,8 @@ $cf-text-base-4: #{var(--step-4)};
 $cf-text-base-5: #{var(--step-5)};
 $cf-text-base-6: #{var(--step-6)};
 
-$cf-text-default: $g13-mist;
-$cf-text-header: $g17-whisper;
+$cf-text-default: $cf-grey-95;
+$cf-text-header: $cf-grey-95;
 
 $cf-link-weight: $cf-font-weight--bold;
 $cf-link-default: $c-pool;
@@ -256,13 +255,25 @@ $cf-empty-state-text: $g10-wolf;
 $cf-empty-state-highlight: $g13-mist;
 
 /*
+   Animations
+   -----------------------------------------------------------------------------
+*/
+
+$cf-ease-snappy: cubic-bezier(0.18, 0.16, 0.2, 1);
+$cf-ease-smooth: cubic-bezier(0.5, 0, 0.5, 1);
+$cf-time-quick: 200ms;
+$cf-time-slow: 400ms;
+$cf-transition-default: $cf-time-quick $cf-ease-snappy;
+
+/*
    Input Variables
    -----------------------------------------------------------------------------
    These ensure consistent appearance across different kinds of inputs
 */
 
-$cf-input--transition: background-color 0.25s ease, border-color 0.25s ease,
-  color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+$cf-input--transition: background-color $cf-transition-default,
+  border-color $cf-transition-default, color $cf-transition-default,
+  box-shadow $cf-transition-default, color $cf-transition-default;
 
 $cf-input-background--default: $g2-kevlar;
 $cf-input-background--focused: $g2-kevlar;

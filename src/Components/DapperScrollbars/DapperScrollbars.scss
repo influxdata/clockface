@@ -25,7 +25,7 @@ $dapper-scrollbars--size: 6px;
   background-color: rgba($g0-obsidian, 0.4) !important;
   user-select: none !important;
   overflow: hidden !important;
-  transition: opacity 0.25s ease !important;
+  transition: opacity $cf-transition-default !important;
 }
 
 .cf-dapper-scrollbars--track-x {

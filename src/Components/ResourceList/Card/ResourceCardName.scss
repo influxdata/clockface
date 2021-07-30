@@ -26,7 +26,7 @@
 
 .cf-resource-name--text__link {
   color: $cf-link-default;
-  transition: color 0.25s ease;
+  transition: color $cf-transition-default;
 
   .cf-resource-card__disabled & {
     opacity: 0.5;

@@ -12,8 +12,8 @@
   border-style: solid;
   border-width: 0;
   text-decoration: none;
-  transition: background-color 0.25s ease, box-shadow 0.25s ease,
-    color 0.25s ease;
+  transition: background-color $cf-transition-default,
+    box-shadow $cf-transition-default, color $cf-transition-default;
   outline: none;
   border-radius: $cf-radius;
   white-space: nowrap;
@@ -31,7 +31,7 @@
     content: '';
     z-index: -1;
     border-radius: $cf-radius;
-    transition: opacity 0.25s ease;
+    transition: opacity $cf-transition-default;
     opacity: 0;
   }
 
@@ -233,30 +233,30 @@
 
 .cf-button-default {
   @include buttonColorModifier(
-    $g5-pepper,
-    $g5-pepper,
-    $g7-graphite,
-    $g7-graphite,
+    $cf-grey-5,
+    $cf-grey-5,
+    $cf-grey-15,
+    $cf-grey-15,
     $g15-platinum,
     $g20-white
   );
 }
 .cf-button-primary {
   @include buttonColorModifier(
-    $c-ocean,
-    $c-pool,
-    $c-pool,
-    $c-hydrogen,
+    #0098f0,
+    #8e1fc3,
+    #0098f0,
+    #8e1fc3,
     $g20-white,
     $g20-white
   );
 }
 .cf-button-secondary {
   @include buttonColorModifier(
-    $c-void,
-    $c-amethyst,
-    $c-amethyst,
-    $c-comet,
+    $cf-grey-45,
+    $cf-grey-45,
+    $cf-grey-35,
+    $cf-grey-35,
     $g20-white,
     $g20-white
   );
@@ -274,10 +274,10 @@
 }
 .cf-button-success {
   @include buttonColorModifier(
-    $c-emerald,
-    mix($c-honeydew, $c-pool, 80%),
-    $c-rainforest,
-    mix($c-krypton, $c-laser, 80%),
+    #02714a,
+    #50cb70,
+    #02714a,
+    #50cb70,
     $g20-white,
     $g20-white
   );
@@ -294,10 +294,10 @@
 }
 .cf-button-danger {
   @include buttonColorModifier(
-    $c-ruby,
-    $c-curacao,
-    $c-curacao,
-    $c-tungsten,
+    #e85b1c,
+    #bf3d5e,
+    #e85b1c,
+    #bf3d5e,
     $g20-white,
     $g20-white
   );

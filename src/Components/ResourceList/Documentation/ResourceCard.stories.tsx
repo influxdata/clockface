@@ -58,12 +58,12 @@ import ResourceCardMetaReadme from './ResourceCardMeta.md'
 import ResourceCardExampleReadme from './ResourceCardExample.md'
 
 const resourceListCardStories = storiesOf(
-  'Components/ResourceList/Card Family',
+  'Components/Cards/ResourceCard/Family',
   module
 ).addDecorator(withKnobs)
 
 const resourceListExampleStories = storiesOf(
-  'Components/ResourceList/Examples',
+  'Components/Cards/ResourceCard/Examples',
   module
 ).addDecorator(withKnobs)
 
@@ -408,13 +408,15 @@ resourceListExampleStories.add(
             />
           }
         >
-          <SlideToggle
-            size={ComponentSize.ExtraSmall}
-            active={!boolean('disabled', false)}
-            onChange={() => {
-              // do nothing
-            }}
-          />
+          <div>
+            <SlideToggle
+              size={ComponentSize.ExtraSmall}
+              active={!boolean('disabled', false)}
+              onChange={() => {
+                // do nothing
+              }}
+            />
+          </div>
           <ResourceCard.Name
             name={text('name', 'Just another brick in the wall')}
           />

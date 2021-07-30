@@ -317,7 +317,7 @@ body.sb-show-main {
   a:active {
     font-weight: $cf-font-weight--black;
     text-decoration: underline;
-    transition: color 0.25s ease, text-shadow 0.25s ease;
+    transition: color $cf-transition-default, text-shadow $cf-transition-default;
   }
 
   a:link,
@@ -811,7 +811,8 @@ $color-grid-card-width: 154px;
   color: $g13-mist;
   border: 0;
   outline: none;
-  transition: color 0.25s ease, background-color 0.25s ease;
+  transition: color $cf-transition-default,
+    background-color $cf-transition-default;
   user-select: none;
 
   &:hover {

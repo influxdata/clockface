@@ -21,7 +21,7 @@
     border-radius: 50%;
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.25, 0.25);
-    transition: transform 0.25s ease, opacity 0.25s ease;
+    transition: transform $cf-transition-default, opacity $cf-transition-default;
   }
 
   &.cf-list-indicator__selected .cf-list-indicator--element {
@@ -54,7 +54,7 @@
     border-radius: 50%;
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.25, 0.25);
-    transition: transform 0.25s ease, opacity 0.25s ease;
+    transition: transform $cf-transition-default, opacity $cf-transition-default;
   }
 
   &.cf-list-indicator__selected .cf-list-indicator--element {

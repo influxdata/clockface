@@ -31,7 +31,7 @@ $color-picker--margin: 0;
   position: relative;
   float: left;
   opacity: 1;
-  transition: opacity 0.25s ease;
+  transition: opacity $cf-transition-default;
 
   > span {
     position: absolute;
@@ -52,7 +52,7 @@ $color-picker--margin: 0;
     border-radius: 50%;
     background-color: $g20-white;
     opacity: 0;
-    transition: opacity 0.25s ease, transform 0.25s ease;
+    transition: opacity $cf-transition-default, transform $cf-transition-default;
     box-shadow: 0 0 4px 1px rgba($g0-obsidian, 0.25);
   }
 
@@ -106,7 +106,8 @@ $color-picker--margin: 0;
   height: 18px;
   border-radius: 50%;
   border: $cf-border solid $g5-pepper;
-  transition: background-color 0.25s ease, border-color 0.25s ease;
+  transition: background-color $cf-transition-default,
+    border-color $cf-transition-default;
 
   .cf-input:hover + & {
     border-color: $g7-graphite;

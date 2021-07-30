@@ -1,4 +1,4 @@
-@import "../../../Styles/variables";
+@import '../../../Styles/variables';
 
 /*
   Resource Card
@@ -17,7 +17,8 @@
 }
 
 .cf-resource-card__highlight {
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition: background-color $cf-transition-default,
+    color $cf-transition-default;
 
   &:hover {
     color: $cf-card-text--hover;
@@ -53,7 +54,7 @@
 .cf-resource-card__context-hover {
   .cf-resource-card--context-menu {
     opacity: 0;
-    transition: opacity 0.25s ease;
+    transition: opacity $cf-transition-default;
   }
 
   &:hover .cf-resource-card--context-menu {

@@ -125,7 +125,7 @@
     @include gradient-h($c-laser, $c-potassium);
     z-index: -1;
     opacity: 0;
-    transition: opacity 0.25s ease;
+    transition: opacity $cf-transition-default;
   }
 
   &:hover,

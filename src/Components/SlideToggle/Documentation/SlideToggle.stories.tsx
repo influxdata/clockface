@@ -168,7 +168,7 @@ slideToggleExampleStories.add(
               <SlideToggle
                 onChange={() => updateOptionB(!optionB)}
                 active={optionB}
-                size={ComponentSize.ExtraSmall}
+                size={ComponentSize.Medium}
                 color={
                   ComponentColor[
                     select('color', mapEnumKeys(ComponentColor), 'Secondary')
@@ -186,7 +186,7 @@ slideToggleExampleStories.add(
               <SlideToggle
                 onChange={() => updateOptionC(!optionC)}
                 active={optionC}
-                size={ComponentSize.ExtraSmall}
+                size={ComponentSize.Large}
                 color={
                   ComponentColor[
                     select('color', mapEnumKeys(ComponentColor), 'Secondary')

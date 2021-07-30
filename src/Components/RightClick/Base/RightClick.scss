@@ -32,7 +32,8 @@
   font-weight: $cf-font-weight--medium;
   user-select: none;
   margin: 0;
-  transition: color 0.25s ease, background-color 0.25s ease;
+  transition: color $cf-transition-default,
+    background-color $cf-transition-default;
 
   &:first-child {
     border-radius: $cf-radius-sm $cf-radius-sm 0 0;

@@ -1,4 +1,4 @@
-@import "../../../Styles/variables.scss";
+@import '../../../Styles/variables.scss';
 
 /*
   Editable Name for Resource Cards
@@ -48,7 +48,8 @@
   padding: $cf-marg-a;
   display: inline-block;
   margin-left: $cf-marg-b;
-  transition: color 0.25s ease, opacity 0.25s ease, width 0.25s ease;
+  transition: color $cf-transition-default, opacity $cf-transition-default,
+    width $cf-transition-default;
   opacity: 0;
   width: 0;
   color: $g11-sidewalk;

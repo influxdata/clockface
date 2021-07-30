@@ -1,4 +1,4 @@
-@import "../../../Styles/variables.scss";
+@import '../../../Styles/variables.scss';
 
 /*
   Resource Editable Description
@@ -32,8 +32,8 @@
   overflow: hidden;
   @include no-user-select();
   color: $g13-mist;
-  transition: color 0.25s ease, background-color 0.25s ease,
-    border-color 0.25s ease;
+  transition: color $cf-transition-default,
+    background-color $cf-transition-default, border-color $cf-transition-default;
   line-height: $cf-form-xs-font + $cf-border;
 
   .cf-icon {
@@ -42,7 +42,7 @@
     display: inline-block;
     margin-left: $cf-marg-b;
     opacity: 0;
-    transition: opacity 0.25s ease;
+    transition: opacity $cf-transition-default;
     color: $g11-sidewalk;
   }
 

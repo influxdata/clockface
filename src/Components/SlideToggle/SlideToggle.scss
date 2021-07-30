@@ -10,7 +10,8 @@ $slide-toggle--gap: $cf-border * 2;
 .cf-slide-toggle {
   position: relative;
   display: inline-block;
-  transition: background-color 0.25s ease, border-color 0.25s ease;
+  transition: background-color $cf-transition-default,
+    border-color $cf-transition-default;
   background-color: $g5-pepper;
 
   &:hover {
@@ -22,13 +23,14 @@ $slide-toggle--gap: $cf-border * 2;
 .cf-slide-toggle--knob {
   position: absolute;
   top: 50%;
-  transition: background-color 0.35s ease,
+  transition: background-color $cf-transition-default,
     transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transform: translate(0, -50%);
+  transform: translate(0, -50%);
   border-radius: 50%;
-  box-shadow: 0 0 $slide-toggle--gap ($slide-toggle--gap / 2) rgba($g0-obsidian, 0.25);
+  box-shadow: 0 0 $slide-toggle--gap ($slide-toggle--gap / 2)
+    rgba($g0-obsidian, 0.25);
   background-color: $g13-mist;
-    
+
   .cf-slide-toggle:hover & {
     background-color: $g20-white;
   }
@@ -62,18 +64,17 @@ $slide-toggle--gap: $cf-border * 2;
   ------------------------------------------------------------------------------
 */
 @mixin slideToggleSizeModifier($size) {
-  height: floor($size * 0.75);
+  height: floor($size * 0.5);
   border-radius: $size / 2;
   padding: 0 $slide-toggle--gap;
-  width: (floor($size * 0.75) * 2) - $slide-toggle--gap;
-  flex: 0 0 (floor($size * 0.75) * 2) - $slide-toggle--gap;
-
+  width: (floor($size * 0.5) * 2) - $slide-toggle--gap;
+  flex: 0 0 (floor($size * 0.5) * 2) - $slide-toggle--gap;
 
   .cf-slide-toggle--knob,
   .cf-slide-toggle--knob:before,
   .cf-slide-toggle--knob:after {
-    width: floor($size * 0.75) - ($slide-toggle--gap * 2);
-    height: floor($size * 0.75) - ($slide-toggle--gap * 2);
+    width: floor($size * 0.5) - ($slide-toggle--gap * 2);
+    height: floor($size * 0.5) - ($slide-toggle--gap * 2);
   }
 }
 
@@ -82,7 +83,7 @@ $slide-toggle--gap: $cf-border * 2;
     @include slideToggleSizeModifier($cf-form-xs-height);
   }
   &.cf-slide-toggle-sm {
-    @include slideToggleSizeModifier($cf-form-sm-height);
+    @include slideToggleSizeModifier($cf-form-xs-height);
   }
   &.cf-slide-toggle-md {
     @include slideToggleSizeModifier($cf-form-md-height);

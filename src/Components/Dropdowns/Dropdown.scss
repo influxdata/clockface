@@ -44,7 +44,6 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   box-shadow: 0 2px 5px 0.6px rgba($g0-obsidian, 0.2);
 }
 
-
 .cf-dropdown-menu--contents {
   font-size: 0;
   user-select: none;
@@ -95,8 +94,9 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   }
 
   &.cf-dropdown-item__checkbox,
-  &.cf-dropdown-item__checkbox.cf-dropdown-link-item > a  {
-    padding-left: $dropdown-item--padding-h + $dropdown-item--checkbox-size + $dropdown-item--padding-v;
+  &.cf-dropdown-item__checkbox.cf-dropdown-link-item > a {
+    padding-left: $dropdown-item--padding-h + $dropdown-item--checkbox-size +
+      $dropdown-item--padding-v;
   }
 
   &:hover,
@@ -135,7 +135,7 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   border-radius: 50%;
   background-color: $g20-white;
   opacity: 0;
-  transition: opacity 0.25s ease;
+  transition: opacity $cf-transition-default;
 }
 
 .cf-dropdown-item--checkbox {
@@ -155,7 +155,7 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
     height: $dropdown-item--dot-radius;
     opacity: 0;
     transform: translate(-50%, -50%) scale(2, 2);
-    transition: opacity 0.25s, transform 0.25s ease;
+    transition: opacity 0.25s, transform $cf-transition-default;
     background-color: $g20-white;
   }
 
@@ -255,7 +255,7 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   $dividerA,
   $dividerB,
   $dividerText,
-  $checkbox,
+  $checkbox
 ) {
   @include gradient-h($backgroundA, $backgroundB);
 

@@ -58,8 +58,8 @@
   left: 50%;
   transform: translate(-50%, -50%) scale(2, 2);
   opacity: 0;
-  transition: opacity 0.25s ease, transform 0.25s ease, color 0.25s ease,
-    background-color 0.25s ease;
+  transition: opacity $cf-transition-default, transform $cf-transition-default,
+    color $cf-transition-default, background-color $cf-transition-default;
 }
 
 .cf-toggle--dot {

@@ -110,7 +110,8 @@
   > .cf-draggable-resizer--gradient2 {
     opacity: 0;
     z-index: 2;
-    transition: opacity 0.25s ease, height 0.2s ease, width 0.2s ease;
+    transition: opacity $cf-transition-default, height $cf-transition-default,
+      width $cf-transition-default;
   }
 
   &:hover > .cf-draggable-resizer--gradient1,
