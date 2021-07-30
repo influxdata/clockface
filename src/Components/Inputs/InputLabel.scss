@@ -10,8 +10,8 @@
   font-weight: $cf-font-weight--medium;
   @include no-user-select();
   color: $cf-label--default;
-  transition: color 0.25s ease;
-  
+  transition: color $cf-transition-default;
+
   &.cf-input-label__active {
     color: $cf-label--active;
   }
@@ -20,7 +20,7 @@
     white-space: normal;
   }
   &.cf-input-label__clickable:hover {
-    cursor: pointer;;
+    cursor: pointer;
   }
 }
 

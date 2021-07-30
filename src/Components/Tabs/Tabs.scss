@@ -54,7 +54,7 @@ a.cf-tabs--tab:visited {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  transition: color 0.25s ease;
+  transition: color $cf-transition-default;
   color: $cf-tab--text;
   position: relative;
 
@@ -72,7 +72,8 @@ a.cf-tabs--tab:visited {
   position: absolute;
   background-color: $cf-tab--border-color;
   opacity: 0;
-  transition: opacity 0.25s ease, height 0.25s ease, width 0.25s ease;
+  transition: opacity $cf-transition-default, height $cf-transition-default,
+    width $cf-transition-default;
 
   .cf-tabs__horizontal & {
     width: 100%;
@@ -259,7 +260,8 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
   width: calc(35% + #{$cf-marg-b});
   height: calc(35% + #{$cf-marg-b});
   transform: translate(-50%, -50%);
-  transition: opacity 0.25s ease, background-color 0.25s ease;
+  transition: opacity $cf-transition-default,
+    background-color $cf-transition-default;
   opacity: 0;
 }
 
@@ -280,7 +282,7 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
     left: 50%;
     z-index: 2;
     background-color: $cf-tab--border-color;
-    transition: background-color 0.25s ease;
+    transition: background-color $cf-transition-default;
   }
 
   &:before {
@@ -346,7 +348,7 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
   flex: 1 0 0;
   font-weight: $cf-font-weight--medium;
   color: $cf-tab-dropdown--label;
-  transition: color 0.25s ease;
+  transition: color $cf-transition-default;
   white-space: nowrap;
   user-select: none;
 }
@@ -356,7 +358,7 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
   top: 50%;
   display: block;
   transform: translate(50%, -50%);
-  transition: transform 0.25s ease;
+  transition: transform $cf-transition-default;
 
   .cf-tabs--dropdown__visible & {
     transform: translate(50%, -50%) rotate(180deg);

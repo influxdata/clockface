@@ -1,4 +1,4 @@
-@import "../../../Styles/variables.scss";
+@import '../../../Styles/variables.scss';
 
 /*
   Resource Meta Items
@@ -15,7 +15,7 @@
   border-style: solid;
   border-color: $cf-card--border;
   border-width: 0;
-  transition: border-color 0.25s ease, color 0.25s ease;
+  transition: border-color $cf-transition-default, color $cf-transition-default;
 
   .cf-resource-card__highlight:hover & {
     color: $g11-sidewalk;

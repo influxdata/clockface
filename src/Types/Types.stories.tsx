@@ -375,7 +375,6 @@ dataTypeStories.add(
     const primaryGradients = gradientsArray.slice(53, 56)
     const secondaryGradients = gradientsArray.slice(56, 59)
     const successGradients = gradientsArray.slice(59, 62)
-    const warningGradients = gradientsArray.slice(62, 65)
     const dangerGradients = gradientsArray.slice(65, 68)
 
     const colorCardClassName = (hexcode: string): string => {
@@ -574,18 +573,6 @@ dataTypeStories.add(
         <p>Success (Green)</p>
         <div className="gradients-grid">
           {successGradients.map(g => (
-            <div
-              className={gradientCardClassName(g)}
-              key={g}
-              style={generateGradientStyle(g)}
-            >
-              <p>{g}</p>
-            </div>
-          ))}
-        </div>
-        <p>Warning (Yellow)</p>
-        <div className="gradients-grid">
-          {warningGradients.map(g => (
             <div
               className={gradientCardClassName(g)}
               key={g}

@@ -62,7 +62,7 @@ $list-item--background-dark: rgba($g0-obsidian, 0.09);
 .cf-list-item {
   z-index: 1;
   @include listItemSharedStyles();
-  transition: color 0.25s ease, background-color 0.25s;
+  transition: color $cf-transition-default, background-color 0.25s;
 
   &.cf-list-item__clickable:hover,
   &.cf-list-item__clickable.cf-list-item__active {
@@ -80,7 +80,8 @@ $list-item--background-dark: rgba($g0-obsidian, 0.09);
   border-radius: $cf-radius-sm;
   z-index: -1;
   opacity: 0;
-  transition: opacity 0.25s ease, background-color 0.25s ease;
+  transition: opacity $cf-transition-default,
+    background-color $cf-transition-default;
 }
 
 .cf-list-item--highlight__light {

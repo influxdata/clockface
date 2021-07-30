@@ -31,7 +31,7 @@
     rgba($cf-input-background--default, 0),
     $cf-input-background--default
   );
-  transition: opacity 0.25s ease;
+  transition: opacity $cf-transition-default;
   border-right-color: $cf-input-background--default;
   border-right-style: solid;
   opacity: 0;

@@ -83,7 +83,7 @@
   pointer-events: none;
   top: 50%;
   z-index: $cf-input--status-z;
-  transition: color 0.25s ease;
+  transition: color $cf-transition-default;
   font-size: 1.1em;
   transform: translate(-50%, -50%);
 }
@@ -176,7 +176,8 @@ alternate css for the other sizes */
   background-color: $cf-input-background--default;
   border-radius: $cf-radius;
   border: $cf-border solid $cf-input-border--default;
-  transition: border-color 0.25s ease, background-color 0.25s ease;
+  transition: border-color $cf-transition-default,
+    background-color $cf-transition-default;
 
   &:after {
     content: '';
@@ -188,7 +189,7 @@ alternate css for the other sizes */
     background: $cf-input-border--focused;
     z-index: 2;
     opacity: 0;
-    transition: opacity 0.25s ease, transform 0.25s ease;
+    transition: opacity $cf-transition-default, transform $cf-transition-default;
   }
 
   &.checked:after {

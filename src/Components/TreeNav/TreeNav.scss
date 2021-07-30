@@ -110,7 +110,8 @@
   height: $cf-tree-nav__small-height;
   display: flex;
   align-items: center;
-  transition: color 0.25s ease, background-color 0.25s ease;
+  transition: color $cf-transition-default,
+    background-color $cf-transition-default;
 
   &:hover {
     cursor: pointer;
@@ -147,7 +148,7 @@ a.cf-tree-nav--header:active {
     height: 100%;
     content: '';
     z-index: 0;
-    transition: opacity 0.25s ease;
+    transition: opacity $cf-transition-default;
     opacity: 0;
   }
 
@@ -160,7 +161,8 @@ a.cf-tree-nav--header:active {
   }
 
   &.cf-tree-nav--header__clickable {
-    transition: background-color 0.25s ease, color 0.25s ease;
+    transition: background-color $cf-transition-default,
+      color $cf-transition-default;
 
     &:hover {
       cursor: pointer;
@@ -353,7 +355,8 @@ a.cf-tree-nav--sub-item-label:active {
   font-size: 1.1em;
   padding: 0.3em 0.75em;
   border-radius: 2em;
-  transition: color 0.25s ease, background-color 0.25s ease;
+  transition: color $cf-transition-default,
+    background-color $cf-transition-default;
   color: $cf-tree-nav__sub-item-text;
   background-color: $cf-tree-nav__sub-item-bg;
 
@@ -422,8 +425,8 @@ $cf-tree-nav--user-padding: (
   position: relative;
   border-radius: $cf-radius;
   display: flex;
-  transition: background-color 0.25s ease, color 0.25s ease,
-    border-color 0.25s ease;
+  transition: background-color $cf-transition-default,
+    color $cf-transition-default, border-color $cf-transition-default;
 
   .cf-tree-nav--user__expandable &:hover {
     cursor: pointer;
@@ -518,7 +521,8 @@ a.cf-tree-nav--user-item:active {
   padding: 0.75em 1em;
   padding-left: $cf-tree-nav--user-block + $cf-border;
   color: $cf-tree-nav__sub-item-text;
-  transition: color 0.25s ease, background-color 0.25s ease;
+  transition: color $cf-transition-default,
+    background-color $cf-transition-default;
   white-space: nowrap;
 }
 
@@ -564,7 +568,7 @@ a.cf-tree-nav--user-item:hover {
     width: $cf-tree-nav__expanded-width;
     background-color: $cf-tree-nav__bg;
     position: relative;
-    transition: flex-basis 0.25s ease;
+    transition: flex-basis $cf-transition-default;
     z-index: $cf-z--nav-menu;
   }
 
@@ -597,7 +601,8 @@ a.cf-tree-nav--user-item:hover {
     border-top: $cf-border solid $cf-tree-nav__border;
     background-color: $cf-tree-nav__bg;
     color: $cf-tree-nav__toggle-icon;
-    transition: color 0.25s ease, background-color 0.25s ease;
+    transition: color $cf-transition-default,
+      background-color $cf-transition-default;
 
     &:hover {
       cursor: pointer;

@@ -10,7 +10,7 @@
   align-items: center;
   align-content: center;
   user-select: none;
-  transition: background-color 0.25s ease;
+  transition: background-color $cf-transition-default;
   flex-wrap: nowrap;
 }
 
@@ -37,9 +37,10 @@
   border: 0;
   outline: none;
   opacity: 0.4;
-  transition: opacity 0.25s ease, width 0.25s ease, transform 0.25s ease;
+  transition: opacity $cf-transition-default, transform $cf-transition-default;
 
   &:hover {
+    --x-spin: 90deg;
     opacity: 1;
     cursor: pointer;
   }
@@ -87,30 +88,42 @@
   }
 
   .cf-label--delete {
-    height: $height - $cf-marg-a;
-    transform: translateX($padding - $cf-border);
-    width: 0;
-  }
-
-  &:hover .cf-label--delete {
-    width: $height - $cf-marg-a - $cf-border;
+    height: $height - $cf-marg-c;
+    transform: translateX($padding - $cf-border) rotate(var(--x-spin, 0deg));
+    width: $height - $cf-marg-c;
   }
 }
 
 .cf-label--xs {
-  @include labelSizeModifier($cf-form-xs-font, $cf-form-xs-padding, $cf-form-xs-height);
+  @include labelSizeModifier(
+    $cf-form-xs-font,
+    $cf-form-xs-padding,
+    $cf-form-xs-height
+  );
 }
 
 .cf-label--sm {
-  @include labelSizeModifier($cf-form-sm-font, $cf-form-sm-padding, $cf-form-sm-height);
+  @include labelSizeModifier(
+    $cf-form-sm-font,
+    $cf-form-sm-padding,
+    $cf-form-sm-height
+  );
 }
 
 .cf-label--md {
-  @include labelSizeModifier($cf-form-md-font, $cf-form-md-padding, $cf-form-md-height);
+  @include labelSizeModifier(
+    $cf-form-md-font,
+    $cf-form-md-padding,
+    $cf-form-md-height
+  );
 }
 
 .cf-label--lg {
-  @include labelSizeModifier($cf-form-lg-font, $cf-form-lg-padding, $cf-form-lg-height);
+  @include labelSizeModifier(
+    $cf-form-lg-font,
+    $cf-form-lg-padding,
+    $cf-form-lg-height
+  );
 }
 
 .cf-label--colorless {

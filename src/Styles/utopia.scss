@@ -91,8 +91,8 @@
   --fc-xs-min: (var(--fc-s-min) * 0.75);
   --fc-xs-max: (var(--fc-s-max) * 0.75);
 
-  --fc-s-min: (var(--f-0-min));
-  --fc-s-max: (var(--f-0-max));
+  --fc-s-min: 16;
+  --fc-s-max: 16;
 
   --fc-m-min: (var(--fc-s-min) * 1.5);
   --fc-m-max: (var(--fc-s-max) * 1.5);

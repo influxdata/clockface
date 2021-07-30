@@ -18,9 +18,9 @@ button.cf-dismiss-button {
 }
 
 .cf-dismiss-button--x {
-  transition: opacity 0.25s ease;
+  transition: opacity $cf-transition-default;
   opacity: 0.8;
-  
+
   &:before,
   &:after {
     content: '';
@@ -33,7 +33,7 @@ button.cf-dismiss-button {
     top: 50%;
     left: 50%;
   }
-  
+
   &:before {
     transform: translate(-50%, -50%) rotate(45deg);
   }

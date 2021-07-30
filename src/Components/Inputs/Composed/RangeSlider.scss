@@ -171,7 +171,8 @@ $slider-hover: $g17-whisper;
   left: 0;
   border: $cf-border solid $slider-track;
   border-radius: $cf-radius;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  transition: border-color $cf-transition-default,
+    box-shadow $cf-transition-default;
   pointer-events: none;
 }
 

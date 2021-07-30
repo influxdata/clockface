@@ -53,7 +53,7 @@ export const ProgressBar = forwardRef<ProgressBarRef, ProgressBarProps>(
     const progressBarStyle = {
       ...generateBackgroundStyle(color, barGradient),
       width: `${(value / max) * 100}%`,
-      transition: 'all 0.25s ease 0s',
+      transition: 'all $cf-transition-default 0s',
     }
 
     return (

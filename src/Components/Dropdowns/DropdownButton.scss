@@ -36,7 +36,7 @@
 .cf-dropdown--caret {
   margin: 0;
   font-size: 0.9em;
-  transition: transform 0.25s ease;
+  transition: transform $cf-transition-default;
 
   .cf-dropdown__up & {
     transform: translateY(-50%) rotate(-180deg);
@@ -62,14 +62,11 @@
     left: $padding;
   }
   .cf-dropdown--selected {
-    // width: calc(100% - #{($padding * 2) + $font});
     width: calc(100% - #{($padding * 2)});
   }
   .cf-dropdown--icon + .cf-dropdown--selected {
-    // left: $padding + ($font * 1.5);
-    // width: calc(100% - #{($padding * 2) + ($font * 2.5)});
-    left: $padding;
-    width: calc(100% - #{($padding * 2) + $font});
+    left: calc(#{$padding} + (#{$font} * 1.5));
+    width: calc(100% - #{$padding * 2} + #{$font});
   }
   .cf-dropdown--caret {
     right: $padding;
