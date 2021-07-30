@@ -1,5 +1,8 @@
 # Changelog
 
+### 2.11.2 (2021-7-30)
+- [#652](https://github.com/influxdata/clockface/pull/652): Fix: Adding paginationNav to the index
+
 ### 2.11.1 (2021-7-30)
 - [#647](https://github.com/influxdata/clockface/pull/647): Add a new 'more' icon
 
