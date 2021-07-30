@@ -130,10 +130,10 @@ $selectable-card--label-disabled: $g8-storm;
 .cf-selectable-card__disabled:focus,
 .cf-selectable-card__disabled:hover,
 .cf-selectable-card__disabled.cf-selectable-card__selected {
-  cursor: default;
   border-color: $selectable-card--bg-disabled;
   background-color: $selectable-card--bg-disabled;
-  font-style: italic;
+  cursor: not-allowed;
+  opacity: 0.5;
 
   .cf-selectable-card--body,
   .cf-selectable-card--body:hover {

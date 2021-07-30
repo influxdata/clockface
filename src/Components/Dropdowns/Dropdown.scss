@@ -223,9 +223,8 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
 .cf-dropdown-link-item.cf-dropdown-item__disabled a:visited,
 .cf-dropdown-link-item.cf-dropdown-item__disabled a:active,
 .cf-dropdown-link-item.cf-dropdown-item__disabled a:hover {
-  color: rgba($g20-white, 0.45);
-  font-style: italic;
-  cursor: default;
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 /*
@@ -236,7 +235,6 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
 .cf-dropdown-item-empty {
   @include dropdownItemStyles();
   text-align: center;
-  font-style: italic;
   padding: $dropdown-item--padding-h;
   opacity: 0.666;
   user-select: none;

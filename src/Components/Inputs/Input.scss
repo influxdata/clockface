@@ -39,22 +39,18 @@
   &::-webkit-input-placeholder {
     color: $cf-input--placeholder-text;
     font-weight: $cf-font-weight--medium !important;
-    font-style: italic;
   }
   &::-moz-placeholder {
     color: $cf-input--placeholder-text;
     font-weight: $cf-font-weight--medium !important;
-    font-style: italic;
   }
   &:-ms-input-placeholder {
     color: $cf-input--placeholder-text;
     font-weight: $cf-font-weight--medium !important;
-    font-style: italic;
   }
   &:-moz-placeholder {
     color: $cf-input--placeholder-text;
     font-weight: $cf-font-weight--medium !important;
-    font-style: italic;
   }
 }
 
@@ -322,9 +318,9 @@ alternate css for the other sizes */
 
 .cf-input-field[disabled],
 .cf-input-field[disabled]:hover {
-  cursor: default;
   border-color: $cf-input-border--disabled;
   background-color: $cf-input-background--disabled;
   color: $cf-input-text--disabled;
-  font-style: italic;
+  cursor: not-allowed;
+  opacity: 0.5;
 }
