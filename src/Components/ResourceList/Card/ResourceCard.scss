@@ -43,7 +43,8 @@
 .cf-resource-card.cf-resource-card__disabled.cf-resource-card__highlight:hover {
   background-color: $cf-card-background--disabled;
   color: $cf-card-text--disabled;
-  font-style: italic;
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 /*

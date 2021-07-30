@@ -51,8 +51,8 @@
 
   &.cf-right-click--menu-item__disabled,
   &.cf-right-click--menu-item__disabled:hover {
-    cursor: default;
-    font-style: italic;
+    cursor: not-allowed;
+    opacity: 0.5;
     color: $g8-storm;
     background-color: transparent;
   }

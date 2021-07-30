@@ -346,15 +346,16 @@ $slider-hover: $g17-whisper;
 
 .cf-range-slider--input.cf-input__disabled {
   border-color: $slider-track-disabled;
+  cursor: not-allowed;
+  opacity: 0.5;
 
-  &:hover {
+  &:hover ~ .cf-range-slider--focus {
     border-color: $slider-track-disabled;
   }
 }
 
 .cf-range-slider__disabled .cf-range-slider--label {
   color: $slider-disabled-text;
-  font-style: italic;
 }
 
 .cf-input__disabled {

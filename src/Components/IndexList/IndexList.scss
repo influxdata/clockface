@@ -127,7 +127,8 @@ $cf-index-list--sort-text: $g11-sidewalk;
   .cf-index-list--cell {
   background-color: $cf-card-background--disabled;
   color: $cf-card-text--disabled;
-  font-style: italic;
+  cursor: not-allowed;
+  opacity: 0.5;
 
   a:link,
   a:visited,

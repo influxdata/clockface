@@ -28,7 +28,8 @@
   .cf-resource-card__disabled.cf-resource-card__highlight:hover & {
     color: $g8-storm;
     border-color: rgba($cf-card--border, 0.5);
-    font-style: italic;
+    cursor: not-allowed;
+    opacity: 0.5;
   }
 }
 

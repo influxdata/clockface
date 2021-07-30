@@ -213,17 +213,8 @@
   &.cf-button--disabled,
   &.cf-button--disabled:hover,
   &.cf-button--disabled:focus {
-    color: rgba(mix($text, $bgB, 50%), 0.8);
-    font-style: italic;
-    @include gradient-diag-up(
-      mix($bgA, $g3-castle, 25%),
-      mix($bgB, $g3-castle, 25%)
-    );
-    box-shadow: none;
-
-    &:after {
-      opacity: 0;
-    }
+    cursor: not-allowed;
+    opacity: 0.5;
   }
 
   .cf-button-spinner {

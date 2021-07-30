@@ -74,9 +74,9 @@ $select-group--padding: $cf-marg-a;
   &.cf-select-group--option__disabled:focus {
     box-shadow: none;
     background-color: transparent;
-    font-style: italic;
     color: $g7-graphite;
-    cursor: default;
+    cursor: not-allowed;
+    opacity: 0.5;
   }
 }
 

@@ -53,10 +53,10 @@
 }
 
 .cf-form--help-text {
-  font-style: italic;
   line-height: 16px;
   color: $cf-label--default;
   margin: $cf-marg-a 0 0 0;
+  font-weight: $cf-font-weight--regular;
 }
 
 .cf-form--element-error {
