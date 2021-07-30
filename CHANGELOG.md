@@ -1,5 +1,8 @@
 # Changelog
 
+### 2.11.1 (2021-7-30)
+- [#647](https://github.com/influxdata/clockface/pull/647): Add a new 'more' icon
+
 ### 2.11.0 (2021-7-28)
 - [#645](https://github.com/influxdata/clockface/pull/645): Add a new accordion component
 - [#646](https://github.com/influxdata/clockface/pull/646): Fix css of the sorting icon on indexlist
