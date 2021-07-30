@@ -21,11 +21,21 @@
 .cf-overlay--mask {
   @extend %overlay-styles;
   z-index: $cf-overlay--mask-z;
+
+  --default-overlay-gradient: linear-gradient(
+    240deg,
+    #{rgba($cf-grey-5, 0.5)} 10%,
+    #{rgba($c-magenta, 0.3)} 50%,
+    #{rgba($cf-grey-5, 0.5)} 90%
+  );
+  --default-overlay-background: #{$cf-grey-15};
 }
 
 .cf-overlay--children {
   display: flex;
   justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
 .cf-overlay {
@@ -35,7 +45,8 @@
 
 .cf-overlay--container {
   @extend %overlay-children;
-  background-color: $g1-raven;
+  @extend %backdrop-blur;
+  @extend %deep-shadow;
   border-radius: $cf-radius;
 
   &__xs {
@@ -123,7 +134,7 @@
     width: 22px;
     height: 2px;
     border-radius: 1px;
-    background-color: $g9-mountain;
+    background-color: $cf-grey-75;
     transition: background-color $cf-transition-default;
   }
   &:before {
@@ -138,7 +149,7 @@
   }
   &:hover:before,
   &:hover:after {
-    background-color: $c-laser;
+    background-color: $cf-grey-95;
   }
 }
 

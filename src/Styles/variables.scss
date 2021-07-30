@@ -564,6 +564,9 @@ $cf-scrollbar-offset: 3px;
 %panel-shadow {
   box-shadow: 0 1px 4px 1px rgba($g0-obsidian, 0.2);
 }
+%deep-shadow {
+  box-shadow: 0 28px 84px rgba($cf-grey-5, 0.3);
+}
 @mixin panel-shadow {
   box-shadow: 0 1px 4px 1px rgba($g0-obsidian, 0.2);
 }
@@ -581,4 +584,5 @@ $cf-scrollbar-offset: 3px;
 // Blur
 %backdrop-blur {
   backdrop-filter: blur(28px);
+  background-color: rgba($cf-grey-5, 0.5);
 }

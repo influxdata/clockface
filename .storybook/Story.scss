@@ -579,6 +579,10 @@ body.sb-show-main {
   tbody td {
     color: $g13-mist;
   }
+
+  .property_meta {
+    white-space: normal;
+  }
 }
 
 .storybook-readme-story div.markdown-body.markdown-props-table {

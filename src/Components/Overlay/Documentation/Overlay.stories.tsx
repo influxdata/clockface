@@ -25,7 +25,7 @@ import {OverlayFooter, OverlayFooterRef} from '../OverlayFooter'
 import {Button} from '../../Button/Composed/Button'
 
 // Types
-import {Gradients, ComponentColor, ComponentSize} from '../../../Types'
+import {ComponentColor, ComponentSize, Gradients} from '../../../Types'
 
 // Notes
 import OverlayReadme from './Overlay.md'
@@ -55,18 +55,6 @@ overlayStories.add(
       <Overlay
         transitionDuration={number('transitionDuration', 360)}
         visible={boolean('visible', false)}
-        renderMaskElement={style => (
-          <OverlayMask
-            style={style}
-            gradient={
-              Gradients[
-                Gradients[
-                  select('gradient', mapEnumKeys(Gradients), 'GundamPilot')
-                ]
-              ]
-            }
-          />
-        )}
       >
         <OverlayContainer
           fullScreen={boolean('fullScreen', false)}
@@ -295,21 +283,7 @@ overlayExampleStories.add(
   () => (
     <div className="story--example">
       {instructionsElement}
-      <Overlay
-        visible={boolean('visible', false)}
-        renderMaskElement={style => (
-          <OverlayMask
-            style={style}
-            gradient={
-              Gradients[
-                Gradients[
-                  select('gradient', mapEnumKeys(Gradients), 'GundamPilot')
-                ]
-              ]
-            }
-          />
-        )}
-      >
+      <Overlay visible={boolean('visible', true)}>
         <OverlayContainer maxWidth={number('maxWidth', 400)}>
           <OverlayHeader
             title="Are you sure?"
@@ -357,22 +331,7 @@ overlayExampleStories.add(
         <div className="mockComponent mockButton" onClick={handleShow}>
           Click Me
         </div>
-        <Overlay
-          visible={visible}
-          onEscape={handleDismiss}
-          renderMaskElement={style => (
-            <OverlayMask
-              style={style}
-              gradient={
-                Gradients[
-                  Gradients[
-                    select('gradient', mapEnumKeys(Gradients), 'GundamPilot')
-                  ]
-                ]
-              }
-            />
-          )}
-        >
+        <Overlay visible={visible} onEscape={handleDismiss}>
           <OverlayContainer maxWidth={number('maxWidth', 400)}>
             <OverlayHeader title="Are you sure?" onDismiss={handleDismiss} />
             <OverlayBody>

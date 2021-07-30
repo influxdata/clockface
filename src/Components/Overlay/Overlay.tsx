@@ -73,7 +73,7 @@ export const OverlayRoot: FunctionComponent<OverlayProps> = ({
       <Transition
         items={visible}
         from={{opacity: 0}}
-        enter={{opacity: 0.7}}
+        enter={{opacity: 0.8}}
         leave={{opacity: 0}}
         config={transitionConfig}
       >
