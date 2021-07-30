@@ -64,13 +64,7 @@ popNavStories.add(
             >
               Signed in as
             </div>
-            <div
-              style={{
-                color: '#BEF0FF',
-              }}
-            >
-              somewhatlongusername@yourdomain.com
-            </div>
+            <div>somewhatlongusername@yourdomain.com</div>
           </div>
           <PopNav.Item
             titleLink={className => (
