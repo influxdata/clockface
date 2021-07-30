@@ -796,6 +796,11 @@ $color-grid-card-width: 154px;
   align-items: flex-end;
   flex-direction: column;
 
+  &--bottom {
+    top: auto;
+    bottom: 12px;
+  }
+
   &.relative {
     position: relative;
     top: initial;

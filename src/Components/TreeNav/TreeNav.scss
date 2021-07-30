@@ -261,6 +261,10 @@ a.cf-tree-nav--header:active {
   position: relative;
 }
 
+.cf-tree-nav--item__has-children .cf-tree-nav--label {
+  transform: translateY(-#{$cf-space-3xs});
+}
+
 .cf-tree-nav--item-block,
 a.cf-tree-nav--item-block:link,
 a.cf-tree-nav--item-block:visited,
@@ -276,12 +280,11 @@ a.cf-tree-nav--item-block:active {
 }
 
 .cf-tree-nav--square {
-  width: $cf-tree-nav__small-height;
-  height: $cf-tree-nav__small-height;
-  flex: 0 0 $cf-tree-nav__small-height;
+  width: $cf-tree-nav__width;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: $cf-space-s;
 }
 
 .cf-tree-nav--item .cf-tree-nav--square > .cf-icon {
@@ -298,7 +301,7 @@ a.cf-tree-nav--item-block:active {
 .cf-tree-nav--label {
   flex: 1 0 0;
   display: flex;
-  font-size: 1.25em;
+  font-size: $cf-text-base-1;
   font-weight: $cf-font-weight--medium;
   text-align: center;
 }
@@ -337,13 +340,58 @@ a.cf-tree-nav--item-block:active {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  padding-left: calc(#{$cf-tree-nav__width} - 1.5em);
-  padding-bottom: $cf-marg-b;
+  padding-left: $cf-tree-nav__width;
+  padding-right: $cf-space-m;
+
+  &[data-sub-nav-labels] {
+    &:before {
+      content: attr(data-sub-nav-labels);
+      font-size: $cf-text-base--1;
+      color: $cf-grey-55;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      position: absolute;
+      left: $cf-tree-nav__width;
+      top: $cf-space-l;
+      width: calc(100% - #{$cf-tree-nav__width} - #{$cf-space-s});
+      pointer-events: none;
+      transition: all $cf-transition-default;
+    }
+
+    .cf-tree-nav--item__active & {
+      padding-bottom: $cf-space-xs;
+
+      &:before {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+  }
+}
+
+@keyframes menuSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-#{$cf-space-xs});
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .cf-tree-nav--sub-item {
   display: flex;
   padding-bottom: $cf-border;
+  animation: $cf-time-slow 100ms $cf-ease-snappy menuSlideIn forwards;
+  opacity: 0;
+  transform: translateX(-#{$cf-space-xs});
+
+  .cf-tree-nav--item:not(.cf-tree-nav--item__active) & {
+    display: none;
+  }
 }
 
 .cf-tree-nav--sub-item-label,
@@ -352,31 +400,20 @@ a.cf-tree-nav--sub-item-label:link,
 a.cf-tree-nav--sub-item-label:visited,
 a.cf-tree-nav--sub-item-label:active {
   font-weight: $cf-font-weight--medium;
-  font-size: 1.1em;
-  padding: 0.3em 0.75em;
-  border-radius: 2em;
-  transition: color $cf-transition-default,
-    background-color $cf-transition-default;
-  color: $cf-tree-nav__sub-item-text;
-  background-color: $cf-tree-nav__sub-item-bg;
-
-  &:hover {
-    cursor: pointer;
-    background-color: $cf-tree-nav__sub-item-bg-hover;
-    color: $cf-tree-nav__sub-item-text-hover;
-  }
+  padding: $cf-space-3xs 0;
+  color: inherit;
 }
 
-.cf-tree-nav--sub-item__active {
-  .cf-tree-nav--sub-item-label,
-  a.cf-tree-nav--sub-item-label:link,
-  a.cf-tree-nav--sub-item-label:visited,
-  a.cf-tree-nav--sub-item-label:active,
-  .cf-tree-nav--sub-item-label:hover {
-    background-color: $cf-tree-nav__sub-item-bg-active;
-    color: $cf-tree-nav__sub-item-text-active;
-  }
-}
+// .cf-tree-nav--sub-item__active {
+//   .cf-tree-nav--sub-item-label,
+//   a.cf-tree-nav--sub-item-label:link,
+//   a.cf-tree-nav--sub-item-label:visited,
+//   a.cf-tree-nav--sub-item-label:active,
+//   .cf-tree-nav--sub-item-label:hover {
+//     background-color: $cf-tree-nav__sub-item-bg-active;
+//     color: $cf-tree-nav__sub-item-text-active;
+//   }
+// }
 
 /*
   User Widget
@@ -392,7 +429,7 @@ $cf-tree-nav--user-padding: (
   ) - $cf-border;
 
 .cf-tree-nav--user {
-  padding: $cf-tree-nav--user-block-gap;
+  // padding: $cf-tree-nav--user-block-gap;
 }
 
 .cf-tree-nav--avatar {
@@ -402,7 +439,8 @@ $cf-tree-nav--user-padding: (
   flex: 0 0 $cf-tree-nav--avatar-radius;
   width: $cf-tree-nav--avatar-radius;
   height: $cf-tree-nav--avatar-radius;
-  margin: $cf-tree-nav--user-padding;
+  margin: $cf-space-xs;
+
   @include gradient-diag-up(
     $cf-tree-nav__user-color-b,
     $cf-tree-nav__user-color-a
@@ -420,8 +458,6 @@ $cf-tree-nav--user-padding: (
 
 .cf-tree-nav--user-block {
   color: $cf-tree-nav__user-text;
-  border: $cf-tree-nav__border $cf-border solid;
-  background-color: $cf-tree-nav__user-bg;
   position: relative;
   border-radius: $cf-radius;
   display: flex;
@@ -469,14 +505,14 @@ $cf-tree-nav--user-padding: (
 }
 
 .cf-tree-nav--username {
-  font-size: 1.125em;
-  line-height: 1.125em;
+  font-size: $cf-text-base-0;
+  line-height: $cf-text-base-0;
   font-weight: $cf-font-weight--medium;
 }
 
 .cf-tree-nav--team {
-  font-size: 1em;
-  line-height: 1em;
+  font-size: $cf-text-base--1;
+  line-height: $cf-text-base--1;
   margin-top: $cf-border;
   opacity: 0.6;
 }
@@ -491,16 +527,15 @@ $cf-tree-nav--user-padding: (
 .cf-tree-nav--user-menu {
   z-index: $cf-z--nav-menu + 5;
   position: absolute;
-  top: $cf-tree-nav--user-block + $cf-tree-nav--user-block-gap - $cf-marg-a;
-  left: $cf-tree-nav--user-block-gap;
-  right: $cf-tree-nav--user-block-gap;
-  background-color: $cf-tree-nav__user-menu-bg;
-  border: $cf-border solid $cf-tree-nav__border-active;
-  border-top-width: 0;
+  bottom: $cf-tree-nav--user-block - $cf-marg-a;
+  left: 0;
+  right: 0;
   border-radius: 0 0 $cf-radius $cf-radius;
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  padding: $cf-space-2xs 0 $cf-space-s;
+  @extend %backdrop-blur-medium;
 
   .cf-tree-nav--username,
   .cf-tree-nav--team {
@@ -517,9 +552,8 @@ a.cf-tree-nav--user-item:link,
 a.cf-tree-nav--user-item:visited,
 a.cf-tree-nav--user-item:active {
   font-weight: $cf-font-weight--medium;
-  font-size: 1.1em;
-  padding: 0.75em 1em;
-  padding-left: $cf-tree-nav--user-block + $cf-border;
+  font-size: $cf-text-base-0;
+  padding: $cf-space-2xs $cf-space-s $cf-space-2xs $cf-tree-nav__width;
   color: $cf-tree-nav__sub-item-text;
   transition: color $cf-transition-default,
     background-color $cf-transition-default;
@@ -626,13 +660,13 @@ a.cf-tree-nav--user-item:hover {
   */
 
   .cf-tree-nav--square {
-    width: $cf-tree-nav__width;
-    height: $cf-tree-nav__width;
-    flex: 0 0 $cf-tree-nav__width;
+    // width: $cf-tree-nav__width;
+    // height: $cf-tree-nav__width;
+    // flex: 0 0 $cf-tree-nav__width;
   }
 
   .cf-tree-nav--sub-menu {
-    padding-left: calc(#{$cf-tree-nav__width} - 0.75em);
+    // padding-left: calc(#{$cf-tree-nav__width} - 0.75em);
   }
 
   /*
@@ -644,19 +678,9 @@ a.cf-tree-nav--user-item:hover {
     flex: 0 0 $cf-tree-nav__width;
     width: $cf-tree-nav__width;
 
-    .cf-tree-nav--label {
-      display: none;
-    }
-
+    .cf-tree-nav--label,
     .cf-tree-nav--short-label {
-      display: block;
-      font-size: 0.9em;
-      font-weight: $cf-font-weight--medium;
-      position: absolute;
-      text-align: center;
-      bottom: 0.5em;
-      left: $cf-marg-a;
-      width: $cf-tree-nav__width - $cf-marg-b;
+      display: none;
     }
 
     .cf-tree-nav--sub-menu,
@@ -671,11 +695,6 @@ a.cf-tree-nav--user-item:hover {
 
     .cf-tree-nav--banner:not(.cf-tree-nav--banner__always-visible) {
       display: none;
-    }
-
-    .cf-tree-nav--item .cf-tree-nav--square > .cf-icon {
-      position: relative;
-      top: -0.3em;
     }
 
     .cf-tree-nav--user-item,

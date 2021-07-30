@@ -34,7 +34,7 @@ export const TreeNavItem = forwardRef<TreeNavItemRef, TreeNavItemProps>(
       active = false,
       testID = 'tree-nav--item',
       onClick,
-      children,
+      children = null,
       className,
       shortLabel,
       linkElement,
@@ -44,6 +44,7 @@ export const TreeNavItem = forwardRef<TreeNavItemRef, TreeNavItemProps>(
     const treeNavItemClass = classnames('cf-tree-nav--item', {
       'cf-tree-nav--item__active': active,
       [`${className}`]: className,
+      'cf-tree-nav--item__has-children': Boolean(children),
     })
 
     const handleClick = (): void => {

@@ -88,7 +88,7 @@ navMenuStories.add(
                   <Icon
                     glyph={
                       IconFont[
-                        select('1 - icon', mapEnumKeys(IconFont), 'Disks')
+                        select('1 - icon', mapEnumKeys(IconFont), 'DisksNav')
                       ]
                     }
                   />
@@ -127,44 +127,45 @@ navMenuStories.add(
               <TreeNav.Item
                 id="item-4"
                 label="Link Item"
-                icon={<Icon glyph={IconFont.Import} />}
+                icon={<Icon glyph={IconFont.DisksNav} />}
+                onClick={handleItemClick}
                 active={activeItem === 'item-4'}
-                linkElement={className => (
-                  <a href="#" className={className}>
-                    Bloop
-                  </a>
-                )}
               />
               <TreeNav.Item
                 id="item-5"
                 label="Link Item + Menu"
-                icon={<Icon glyph={IconFont.Import} />}
-                active={true}
-                linkElement={className => (
-                  <a href="#" className={className}>
-                    Bloop
-                  </a>
-                )}
+                icon={<Icon glyph={IconFont.DisksNav} />}
+                onClick={handleItemClick}
+                active={activeItem === 'item-5'}
               >
                 <TreeNav.SubMenu>
                   <TreeNav.SubItem
                     id="item-5-sub-1"
                     label="Banana"
                     linkElement={className => (
-                      <a href="#" className={className}>
-                        Bloop
-                      </a>
+                      <a href="#" className={className} />
                     )}
                   />
                   <TreeNav.SubItem
                     id="item-5-sub-2"
                     label="Dragonfruit"
                     linkElement={className => (
-                      <a href="#" className={className}>
-                        Bloop
-                      </a>
+                      <a href="#" className={className} />
                     )}
-                    active={true}
+                  />
+                  <TreeNav.SubItem
+                    id="item-5-sub-3"
+                    label="Apple"
+                    linkElement={className => (
+                      <a href="#" className={className} />
+                    )}
+                  />
+                  <TreeNav.SubItem
+                    id="item-5-sub-4"
+                    label="Pineapple"
+                    linkElement={className => (
+                      <a href="#" className={className} />
+                    )}
                   />
                 </TreeNav.SubMenu>
               </TreeNav.Item>
@@ -178,7 +179,7 @@ navMenuStories.add(
               </Page.Contents>
             </Page>
           </AppWrapper>
-          <div className="story--test-buttons">
+          <div className="story--test-buttons story--test-buttons--bottom">
             <button onClick={logRef}>Log Ref</button>
           </div>
         </div>
