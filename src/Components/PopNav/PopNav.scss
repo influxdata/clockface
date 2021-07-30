@@ -51,13 +51,12 @@
 */
 
 .cf-pop-nav--menu {
-  background-color: $c-pool;
-  @include gradient-diag-up($c-pool, $c-star);
+  @extend %backdrop-blur-medium;
   border-radius: $cf-radius;
   position: absolute;
   margin-top: 30px + $cf-marg-b;
   font-size: 13px;
-  font-weight: $cf-font-weight--medium;
+  font-weight: $cf-font-weight--regular;
   visibility: hidden;
   z-index: $cf-z--nav-menu;
 }
@@ -112,7 +111,7 @@
   &:visited,
   &:active {
     font-weight: $cf-font-weight--medium;
-    color: $c-neutrino;
+    color: $cf-grey-95;
   }
 
   &:after {
@@ -122,7 +121,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    @include gradient-h($c-laser, $c-potassium);
+    @include gradient-h($c-pool, $c-magenta);
     z-index: -1;
     opacity: 0;
     transition: opacity $cf-transition-default;
