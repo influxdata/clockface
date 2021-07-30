@@ -15,8 +15,10 @@
 }
 
 .cf-popover--contents {
+  @extend %backdrop-blur;
   font-size: $cf-text-base;
-  background-color: $g2-kevlar;
+  // background-color: $g2-kevlar;
+  // background-color: rbga($g2-kevlar, 0.1);
   border-radius: $cf-radius + $cf-border;
   position: relative;
 
@@ -46,15 +48,11 @@
   ------------------------------------------------------------------------------
 */
 
-@mixin popoverColorModifier(
-  $solidColor,
-  $outlineColor,
-  $glowColor,
-  $textColor
-) {
+@mixin popoverColorModifier($solidColor, $outlineColor, $textColor) {
   // Solid Type
   &.cf-popover__solid .cf-popover--contents {
-    background-color: $solidColor;
+    @extend %backdrop-blur;
+    background-color: rgba($solidColor, 0.1);
     color: $textColor;
   }
   &.cf-popover__solid .cf-popover--caret {
@@ -62,8 +60,10 @@
   }
   // Outline Type
   &.cf-popover__outline .cf-popover--contents {
+    @extend %backdrop-blur;
     border-color: $outlineColor;
-    box-shadow: 0 0 5px 0 $glowColor;
+    background-color: rgba($solidColor, 0.1);
+    color: $textColor;
   }
   &.cf-popover__outline .cf-popover--caret {
     border-bottom-color: $outlineColor;
@@ -71,32 +71,22 @@
 }
 
 .cf-popover__default {
-  @include popoverColorModifier(
-    $g6-smoke,
-    $g11-sidewalk,
-    $g8-storm,
-    $g15-platinum
-  );
+  @include popoverColorModifier($g6-smoke, $cf-grey-45, $g15-platinum);
 }
 .cf-popover__primary {
-  @include popoverColorModifier($c-pool, $c-pool, $c-ocean, $g20-white);
+  @include popoverColorModifier($cf-grey-45, $cf-grey-25, $g20-white);
 }
 .cf-popover__secondary {
-  @include popoverColorModifier($c-star, $c-comet, $c-star, $g20-white);
+  @include popoverColorModifier($c-star, $c-shadow, $g20-white);
 }
 .cf-popover__success {
-  @include popoverColorModifier(
-    $c-rainforest,
-    $c-honeydew,
-    $c-rainforest,
-    $g20-white
-  );
+  @include popoverColorModifier($c-rainforest, $c-gypsy, $g20-white);
 }
 .cf-popover__warning {
-  @include popoverColorModifier($c-pineapple, $c-thunder, $c-tiger, $g3-castle);
+  @include popoverColorModifier($c-pineapple, $c-oak, $g3-castle);
 }
 .cf-popover__danger {
-  @include popoverColorModifier($c-curacao, $c-dreamsicle, $c-fire, $g20-white);
+  @include popoverColorModifier($c-curacao, $c-basalt, $g20-white);
 }
 
 /*

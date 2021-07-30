@@ -34,14 +34,14 @@
 }
 
 .cf-bullet__xs {
-  @include bulletSizeModifier($cf-form-xs-font, $cf-form-xs-height);
+  @include bulletSizeModifier($cf-text-base--1, $cf-space-m);
 }
 .cf-bullet__sm {
-  @include bulletSizeModifier($cf-form-sm-font, $cf-form-sm-height);
+  @include bulletSizeModifier($cf-text-base, $cf-space-l);
 }
 .cf-bullet__md {
-  @include bulletSizeModifier($cf-form-md-font, $cf-form-md-height);
+  @include bulletSizeModifier($cf-text-base-2, $cf-space-xl);
 }
 .cf-bullet__lg {
-  @include bulletSizeModifier($cf-form-lg-font, $cf-form-lg-height);
+  @include bulletSizeModifier($cf-text-base-3, $cf-space-2xl);
 }
