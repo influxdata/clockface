@@ -1,5 +1,6 @@
 import './Styles/shared.scss'
 
+export * from './Components/Accordion'
 export * from './Components/Alert/Alert'
 export * from './Components/AppHeader/index'
 export * from './Components/AppWrapper/AppWrapper'
