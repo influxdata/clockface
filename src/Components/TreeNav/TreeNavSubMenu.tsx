@@ -1,5 +1,5 @@
 // Libraries
-import React, {forwardRef} from 'react'
+import React, {forwardRef, useMemo} from 'react'
 import classnames from 'classnames'
 
 // Types
@@ -17,6 +17,23 @@ export const TreeNavSubMenu = forwardRef<
     [`${className}`]: className,
   })
 
+  const labels = useMemo(() => {
+    if (!children || !Array.isArray(children)) {
+      return ''
+    }
+
+    return children
+      .map(child => {
+        if (!React.isValidElement(child)) {
+          return ''
+        }
+
+        return child.props.label
+      })
+      .filter(Boolean)
+      .join(', ')
+  }, [children])
+
   return (
     <div
       id={id}
@@ -24,6 +41,7 @@ export const TreeNavSubMenu = forwardRef<
       style={style}
       className={navMenuHeaderClass}
       data-testid={testID}
+      data-sub-nav-labels={labels}
     >
       {children}
     </div>
