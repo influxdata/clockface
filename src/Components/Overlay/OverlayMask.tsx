@@ -19,14 +19,7 @@ export type OverlayMaskRef = HTMLDivElement
 
 export const OverlayMask = forwardRef<OverlayMaskRef, OverlayMaskProps>(
   (
-    {
-      id,
-      style,
-      testID = 'overlay--mask',
-      gradient = Gradients.GundamPilot,
-      className,
-      backgroundColor,
-    },
+    {id, style, testID = 'overlay--mask', gradient, className, backgroundColor},
     ref
   ) => {
     const overlayMaskClass = classnames('cf-overlay--mask', {
@@ -38,10 +31,15 @@ export const OverlayMask = forwardRef<OverlayMaskRef, OverlayMaskProps>(
         return {backgroundColor, ...style}
       }
 
-      const colors = getColorsFromGradient(gradient)
+      let cssGradient =
+        'var(--default-overlay-gradient) var(--default-overlay-background)'
+      if (gradient) {
+        const colors = getColorsFromGradient(gradient)
+        cssGradient = `linear-gradient(45deg,  ${colors.start} 0%,${colors.stop} 100%)`
+      }
 
       return {
-        background: `linear-gradient(45deg,  ${colors.start} 0%,${colors.stop} 100%)`,
+        background: cssGradient,
         ...style,
       }
     }
