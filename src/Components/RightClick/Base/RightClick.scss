@@ -8,10 +8,11 @@
 .cf-right-click {
   position: fixed;
   z-index: 9999;
-  background-color: $g2-kevlar;
   border-radius: $cf-radius;
   border-style: solid;
   border-width: $cf-border;
+  @extend %backdrop-blur-medium;
+  @extend %drop-shadow;
 }
 
 .cf-right-click--menu {
@@ -24,7 +25,7 @@
 }
 
 .cf-right-click--menu-item {
-  padding: ($cf-marg-a * 1.5) $cf-marg-b;
+  padding: $cf-space-xs $cf-space-xl $cf-space-xs $cf-space-m;
   font-size: $cf-text-base;
   line-height: $cf-text-base;
   color: $g11-sidewalk;
@@ -46,7 +47,7 @@
   &:hover {
     cursor: pointer;
     color: $g20-white;
-    background-color: $g5-pepper;
+    background-color: $cf-grey-45;
   }
 
   &.cf-right-click--menu-item__disabled,
@@ -61,8 +62,8 @@
 .cf-right-click--divider {
   height: $cf-border;
   width: 100%;
-  background-color: $g5-pepper;
-  margin: $cf-border 0;
+  background-color: $cf-grey-45;
+  margin: 0;
 }
 
 /*
@@ -70,26 +71,25 @@
   ------------------------------------------------------------------------------
 */
 
-@mixin rightClickColorModifier($borderColor, $glowColor) {
+@mixin rightClickColorModifier($borderColor) {
   border-color: $borderColor;
-  box-shadow: 0 0 5px 0 $glowColor;
 }
 
 .cf-right-click__default {
-  @include rightClickColorModifier($g11-sidewalk, $g8-storm);
+  @include rightClickColorModifier($g11-sidewalk);
 }
 .cf-right-click__primary {
-  @include rightClickColorModifier($c-pool, $c-ocean);
+  @include rightClickColorModifier($cf-grey-45);
 }
 .cf-right-click__secondary {
-  @include rightClickColorModifier($c-comet, $c-star);
+  @include rightClickColorModifier($c-comet);
 }
 .cf-right-click__success {
-  @include rightClickColorModifier($c-honeydew, $c-rainforest);
+  @include rightClickColorModifier($c-honeydew);
 }
 .cf-right-click__warning {
-  @include rightClickColorModifier($c-thunder, $c-tiger);
+  @include rightClickColorModifier($c-thunder);
 }
 .cf-right-click__danger {
-  @include rightClickColorModifier($c-dreamsicle, $c-fire);
+  @include rightClickColorModifier($c-dreamsicle);
 }
