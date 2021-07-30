@@ -26,8 +26,8 @@ button.cf-dismiss-button {
     content: '';
     position: absolute;
     display: block;
-    width: $cf-form-xs-height - $cf-marg-b - $cf-border;
-    height: $cf-border * 1.5;
+    width: $cf-space-xs;
+    height: $cf-border;
     background-color: $g20-white;
     border-radius: $cf-border * 1.5 / 2;
     top: 50%;

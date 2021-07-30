@@ -214,7 +214,7 @@ popoverStories.add(
           hideEvent={PopoverInteraction.Hover}
           position={PopoverPosition.ToTheRight}
           color={ComponentColor.Secondary}
-          appearance={Appearance.Solid}
+          appearance={Appearance.Outline}
         />
         <Popover.Popover
           ref={popover3Ref}
@@ -262,7 +262,7 @@ popoverStories.add(
           hideEvent={PopoverInteraction.None}
           position={PopoverPosition.Below}
           color={ComponentColor.Success}
-          appearance={Appearance.Solid}
+          appearance={Appearance.Outline}
         />
       </div>
     )

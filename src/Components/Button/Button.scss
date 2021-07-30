@@ -123,7 +123,8 @@
   text-align: center;
 
   &.cf-button-xs {
-    width: $cf-form-xs-height;
+    width: $cf-space-m;
+    height: $cf-space-m;
   }
   &.cf-button-sm {
     width: $cf-form-sm-height;
@@ -233,10 +234,10 @@
 
 .cf-button-default {
   @include buttonColorModifier(
-    $cf-grey-5,
-    $cf-grey-5,
     $cf-grey-15,
     $cf-grey-15,
+    $cf-grey-5,
+    $cf-grey-5,
     $g15-platinum,
     $g20-white
   );

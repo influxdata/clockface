@@ -156,6 +156,8 @@ $cf-font-weight--black: 900;
 $cf-text-tiny: #{var(--step--1)};
 $cf-body-text: #{var(--step-0)};
 $cf-text-base: #{var(--step-0)};
+$cf-text-base--1: $cf-text-tiny;
+$cf-text-base-0: $cf-text-base;
 $cf-text-base-1: #{var(--step-1)};
 $cf-text-base-2: #{var(--step-2)};
 $cf-text-base-3: #{var(--step-3)};
@@ -584,5 +586,14 @@ $cf-scrollbar-offset: 3px;
 // Blur
 %backdrop-blur {
   backdrop-filter: blur(28px);
+}
+
+%backdrop-blur-dark {
+  @extend %backdrop-blur;
   background-color: rgba($cf-grey-5, 0.5);
+}
+
+%backdrop-blur-medium {
+  @extend %backdrop-blur;
+  background-color: rgba($cf-grey-45, 0.15);
 }

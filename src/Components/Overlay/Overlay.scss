@@ -45,7 +45,7 @@
 
 .cf-overlay--container {
   @extend %overlay-children;
-  @extend %backdrop-blur;
+  @extend %backdrop-blur-dark;
   @extend %deep-shadow;
   border-radius: $cf-radius;
 
