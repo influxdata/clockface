@@ -255,7 +255,8 @@ $dropdown-item--padding-v: $cf-marg-a + $cf-border;
   $dividerText,
   $checkbox
 ) {
-  @include gradient-h($backgroundA, $backgroundB);
+  // @include gradient-h($backgroundA, $backgroundB);
+  @extend %backdrop-blur-dark;
 
   .cf-dropdown-item:not(.cf-dropdown-item__disabled):hover,
   .cf-dropdown-item.active:not(.cf-dropdown-item__disabled) {

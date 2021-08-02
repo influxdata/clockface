@@ -76,7 +76,7 @@ selectGroupStories.add(
       <div className="story--example">
         <SelectGroup.SelectGroup
           ref={selectGroupRef}
-          style={object('style', {width: '260px'})}
+          style={object('style', {width: '360px'})}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }

@@ -57,6 +57,11 @@ const buttonComposedStories = storiesOf(
   module
 ).addDecorator(withKnobs)
 
+const buttonExampleStories = storiesOf(
+  'Components/Buttons/Examples',
+  module
+).addDecorator(withKnobs)
+
 buttonComposedStories.add(
   'StandardButton',
   () => {
@@ -665,6 +670,92 @@ buttonComposedStories.add(
   {
     readme: {
       content: marked(ButtonGroupReadme),
+    },
+  }
+)
+
+buttonExampleStories.add(
+  'Collage',
+  () => {
+    return (
+      <div className="story--example">
+        <table className="two-axis-table two-axis-table--spaced">
+          <tbody>
+            <tr>
+              <td>
+                <code>Size</code>
+              </td>
+              {[
+                {size: ComponentSize.ExtraSmall, text: 'ExtraSmall'},
+                {size: ComponentSize.Small, text: 'Small'},
+                {size: ComponentSize.Medium, text: 'Medium'},
+                {size: ComponentSize.Large, text: 'Large'},
+              ].map((props, i) => (
+                <td key={i}>
+                  <Button {...props} />
+                </td>
+              ))}
+            </tr>
+            <tr>
+              <td>
+                <code>Color</code>
+              </td>
+              {[
+                {color: ComponentColor.Default},
+                {color: ComponentColor.Primary},
+                {color: ComponentColor.Secondary},
+                {color: ComponentColor.Tertiary},
+                {color: ComponentColor.Success},
+                {color: ComponentColor.Warning},
+                {color: ComponentColor.Danger},
+              ].map((props, i) => (
+                <td key={i}>
+                  <Button text={props.color.toString()} {...props} />
+                </td>
+              ))}
+            </tr>
+            <tr>
+              <td>
+                <code>Shape</code>
+              </td>
+              {[
+                {shape: ButtonShape.Default},
+                {shape: ButtonShape.Square, text: ''},
+                {shape: ButtonShape.StretchToFit},
+              ].map((props, i) => (
+                <td key={i}>
+                  <Button
+                    icon={IconFont.Zap}
+                    text={props.shape.toString()}
+                    {...props}
+                  />
+                </td>
+              ))}
+            </tr>
+            <tr>
+              <td>
+                <code>Status</code>
+              </td>
+              {[
+                {status: ComponentStatus.Default},
+                {status: ComponentStatus.Disabled},
+                {status: ComponentStatus.Loading},
+                {status: ComponentStatus.Error},
+                {status: ComponentStatus.Valid},
+              ].map((props, i) => (
+                <td key={i}>
+                  <Button text={props.status.toString()} {...props} />
+                </td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(ButtonReadme),
     },
   }
 )

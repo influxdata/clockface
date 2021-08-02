@@ -619,6 +619,12 @@ body.sb-show-main {
 }
 
 table.two-axis-table {
+  &--spaced {
+    td {
+      padding: $cf-space-2xs;
+    }
+  }
+
   thead tr,
   tbody tr {
     border: 0;
