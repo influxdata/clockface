@@ -62,6 +62,11 @@ const testPopoverStories = storiesOf(
   module
 ).addDecorator(withKnobs)
 
+const examplePopoverStories = storiesOf(
+  'Components/Popover/Examples',
+  module
+).addDecorator(withKnobs)
+
 const exampleStyle = {
   width: '250px',
   height: '200px',
@@ -573,3 +578,54 @@ testPopoverStories.add('200 Popovers + Filtering', () => {
     </div>
   )
 })
+
+examplePopoverStories.add(
+  'Collage',
+  () => {
+    const triggerRefA = useRef<HTMLDivElement>(null)
+    const triggerRefB = useRef<HTMLDivElement>(null)
+    const triggerRefC = useRef<HTMLDivElement>(null)
+    const triggerRefD = useRef<HTMLDivElement>(null)
+    const triggerRefE = useRef<HTMLDivElement>(null)
+    const triggerRefF = useRef<HTMLDivElement>(null)
+    const triggerRefG = useRef<HTMLDivElement>(null)
+
+    return (
+      <div className="story--example">
+        <div>
+          {[
+            {ref: triggerRefA, color: ComponentColor.Default},
+            {ref: triggerRefB, color: ComponentColor.Primary},
+            {ref: triggerRefC, color: ComponentColor.Secondary},
+            {ref: triggerRefD, color: ComponentColor.Tertiary},
+            {ref: triggerRefE, color: ComponentColor.Success},
+            {ref: triggerRefF, color: ComponentColor.Danger},
+            {ref: triggerRefG, color: ComponentColor.Warning},
+          ].map(({ref, color}) => {
+            return (
+              <div key={color.toString()}>
+                <div style={{height: '100px'}} ref={ref}></div>
+                <Popover.Popover
+                  triggerRef={ref}
+                  visible={true}
+                  enableDefaultStyles={true}
+                  contents={() => <div>{color.toString()}</div>}
+                  showEvent={PopoverInteraction.None}
+                  hideEvent={PopoverInteraction.None}
+                  position={PopoverPosition.Above}
+                  color={color}
+                  appearance={Appearance.Outline}
+                />
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(PopoverReadme),
+    },
+  }
+)

@@ -46,6 +46,8 @@ import {
   AlignItems,
   JustifyContent,
   ComponentStatus,
+  Appearance,
+  InfluxColors,
 } from '../../../Types'
 
 // Notes
@@ -56,6 +58,10 @@ import ResourceCardNameReadme from './ResourceCardName.md'
 import ResourceCardEditableNameReadme from './ResourceCardEditableName.md'
 import ResourceCardMetaReadme from './ResourceCardMeta.md'
 import ResourceCardExampleReadme from './ResourceCardExample.md'
+import {InputLabel} from '../../Inputs'
+import {Popover} from '../../Popover'
+import {List} from '../../List'
+import {Icon} from '../../Icon'
 
 const resourceListCardStories = storiesOf(
   'Components/Cards/ResourceCard/Family',
@@ -396,68 +402,120 @@ resourceListCardStories.add(
 
 resourceListExampleStories.add(
   'Toggleable Card',
-  () => (
-    <div className="story--example">
-      <div style={{width: `${number('Width (px)', 500)}px`}}>
-        <ResourceCard
-          contextMenu={
-            <SquareButton
-              size={ComponentSize.ExtraSmall}
-              icon={IconFont.Trash}
-              color={ComponentColor.Danger}
+  () => {
+    const settingsRef: RefObject<HTMLButtonElement> = createRef()
+
+    return (
+      <div className="story--example">
+        <div style={{width: `${number('Width (px)', 900)}px`}}>
+          <ResourceCard
+            contextMenu={
+              <>
+                <SquareButton
+                  size={ComponentSize.ExtraSmall}
+                  icon={IconFont.Duplicate}
+                  color={ComponentColor.Default}
+                />
+                <SquareButton
+                  size={ComponentSize.ExtraSmall}
+                  icon={IconFont.Trash}
+                  color={ComponentColor.Default}
+                />
+                <SquareButton
+                  ref={settingsRef}
+                  size={ComponentSize.ExtraSmall}
+                  icon={IconFont.CogThick}
+                  color={ComponentColor.Default}
+                />
+                <Popover
+                  appearance={Appearance.Outline}
+                  enableDefaultStyles={false}
+                  style={{width: '200px'}}
+                  contents={() => (
+                    <List>
+                      <List.Item
+                        value=""
+                        selected={false}
+                        wrapText={false}
+                        onClick={() => {}}
+                        backgroundColor={InfluxColors.Pool}
+                        size={ComponentSize.Small}
+                      >
+                        <List.Icon glyph={IconFont.Cube} />
+                        {'Put Turtle in Water'}
+                      </List.Item>
+                    </List>
+                  )}
+                  triggerRef={settingsRef}
+                />
+              </>
+            }
+          >
+            <ResourceCard.EditableName
+              name={text('name', 'Rolling temperature notebook')}
+              onUpdate={name => alert(`onUpate name fired: ${name}`)}
             />
-          }
-        >
-          <div>
-            <SlideToggle
-              size={ComponentSize.ExtraSmall}
-              active={!boolean('disabled', false)}
-              onChange={() => {
-                // do nothing
-              }}
+            <ResourceCard.EditableDescription
+              description={text('description', 'No description')}
+              onUpdate={desc => alert(`onUpate description fired: ${desc}`)}
             />
-          </div>
-          <ResourceCard.Name
-            name={text('name', 'Just another brick in the wall')}
-          />
-          <ResourceCard.EditableDescription
-            description={text(
-              'description',
-              'Hey! Teacher! Leave us kids alone'
-            )}
-            onUpdate={desc => alert(`onUpate description fired: ${desc}`)}
-          />
-          <>Last updated 2h ago</>,
-          <>
-            Created by <b>Pink Floyd</b>
-          </>
-          <FlexBox direction={FlexDirection.Row} margin={ComponentSize.Small}>
-            <Label
-              id="CRIT"
-              description="I'm a cool label"
-              name="CRIT"
-              color="#da3434"
-              size={ComponentSize.ExtraSmall}
-            />
-            <Label
-              id="WARN"
-              description="I'm a cool label"
-              name="WARN"
-              color="#f2b218"
-              size={ComponentSize.ExtraSmall}
-            />
-            <Label
-              id="OK"
-              description="I'm a cool label"
-              name="OK"
-              color="#6ac255"
-              size={ComponentSize.ExtraSmall}
-            />
-          </FlexBox>
-        </ResourceCard>
+            <ResourceCard.Meta>
+              <FlexBox
+                direction={FlexDirection.Row}
+                alignItems={AlignItems.Center}
+                margin={ComponentSize.Medium}
+              >
+                <SlideToggle
+                  onChange={() => {
+                    // Do nothing
+                  }}
+                  size={ComponentSize.ExtraSmall}
+                  active={!boolean('disabled', false)}
+                />
+                <InputLabel active={!boolean('disabled', false)}>
+                  Active
+                </InputLabel>
+              </FlexBox>
+              <strong>System bucket</strong>
+              <a href="#">Setup instructions</a>
+              <span>
+                Last completed: 2021-07-21T09:15:00Z{' '}
+                <Icon glyph={IconFont.AlertTriangle} />
+              </span>
+              <span>Scheduled to run every 15m</span>
+              <span>ID: 07dd331e1c9fc00</span>
+            </ResourceCard.Meta>
+            <FlexBox direction={FlexDirection.Row} margin={ComponentSize.Small}>
+              <Label
+                id="CRIT"
+                description="I'm a cool label"
+                name="CRIT"
+                color="#da3434"
+                size={ComponentSize.ExtraSmall}
+                onDelete={() => {}}
+              />
+              <Label
+                id="WARN"
+                description="I'm a cool label"
+                name="WARN"
+                color="#f2b218"
+                size={ComponentSize.ExtraSmall}
+                onDelete={() => {}}
+              />
+              <Label
+                id="OK"
+                description="I'm a cool label"
+                name="OK"
+                color="#6ac255"
+                size={ComponentSize.ExtraSmall}
+                onDelete={() => {}}
+              />
+            </FlexBox>
+          </ResourceCard>
+        </div>
       </div>
-    </div>
-  ),
+    )
+  },
   {
     readme: {
       content: marked(ResourceCardExampleReadme),

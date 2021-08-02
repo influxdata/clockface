@@ -6,7 +6,6 @@
 */
 
 .cf-resource-name {
-  height: $cf-form-xs-height;
   position: relative;
   display: inline-flex;
   flex-wrap: nowrap;
@@ -18,8 +17,6 @@
   font-family: $cf-text-font;
   display: inline-block;
   white-space: nowrap;
-  line-height: $cf-form-xs-height;
-  height: $cf-form-xs-height;
   color: $g17-whisper;
   user-select: none;
 }

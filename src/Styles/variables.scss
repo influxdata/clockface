@@ -326,7 +326,7 @@ $cf-card--border: $g5-pepper;
 $cf-card--border-hover: $g6-smoke;
 $cf-card--border-disabled: $g6-smoke;
 
-$cf-card--name-font-size: 17px;
+$cf-card--name-font-size: $cf-text-base-2;
 $cf-card--name-font-weight: $cf-font-weight--medium;
 
 /*
@@ -590,7 +590,7 @@ $cf-scrollbar-offset: 3px;
 
 %backdrop-blur-dark {
   @extend %backdrop-blur;
-  background-color: rgba($cf-grey-5, 0.5);
+  background-color: rgba($cf-grey-95, 0.1);
 }
 
 %backdrop-blur-medium {

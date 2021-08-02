@@ -5,7 +5,7 @@
   ------------------------------------------------------------------------------
 */
 
-$slide-toggle--gap: $cf-border * 2;
+$slide-toggle--gap: 3px;
 
 .cf-slide-toggle {
   position: relative;
@@ -24,12 +24,13 @@ $slide-toggle--gap: $cf-border * 2;
   position: absolute;
   top: 50%;
   transition: background-color $cf-transition-default,
-    transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform $cf-transition-default;
   transform: translate(0, -50%);
   border-radius: 50%;
   box-shadow: 0 0 $slide-toggle--gap ($slide-toggle--gap / 2)
     rgba($g0-obsidian, 0.25);
   background-color: $g13-mist;
+  left: 10%;
 
   .cf-slide-toggle:hover & {
     background-color: $g20-white;
@@ -41,7 +42,7 @@ $slide-toggle--gap: $cf-border * 2;
   ------------------------------------------------------------------------------
 */
 .cf-slide-toggle.active .cf-slide-toggle--knob {
-  transform: translate(calc(100% + #{$slide-toggle--gap}), -50%);
+  transform: translate(100%, -50%);
   background-color: $g20-white;
 }
 
@@ -64,32 +65,32 @@ $slide-toggle--gap: $cf-border * 2;
   ------------------------------------------------------------------------------
 */
 @mixin slideToggleSizeModifier($size) {
-  height: floor($size * 0.5);
+  height: $size;
   border-radius: $size / 2;
   padding: 0 $slide-toggle--gap;
-  width: (floor($size * 0.5) * 2) - $slide-toggle--gap;
-  flex: 0 0 (floor($size * 0.5) * 2) - $slide-toggle--gap;
+  width: ($size * 1.5);
+  flex: 0 0 ($size * 1.5);
 
   .cf-slide-toggle--knob,
   .cf-slide-toggle--knob:before,
   .cf-slide-toggle--knob:after {
-    width: floor($size * 0.5) - ($slide-toggle--gap * 2);
-    height: floor($size * 0.5) - ($slide-toggle--gap * 2);
+    width: $size * 0.6;
+    height: $size * 0.6;
   }
 }
 
 .cf-slide-toggle {
   &.cf-slide-toggle-xs {
-    @include slideToggleSizeModifier($cf-form-xs-height);
+    @include slideToggleSizeModifier(20px);
   }
   &.cf-slide-toggle-sm {
-    @include slideToggleSizeModifier($cf-form-xs-height);
+    @include slideToggleSizeModifier(20px);
   }
   &.cf-slide-toggle-md {
-    @include slideToggleSizeModifier($cf-form-md-height);
+    @include slideToggleSizeModifier(24px);
   }
   &.cf-slide-toggle-lg {
-    @include slideToggleSizeModifier($cf-form-lg-height);
+    @include slideToggleSizeModifier(32px);
   }
 }
 

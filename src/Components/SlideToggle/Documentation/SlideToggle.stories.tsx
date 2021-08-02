@@ -166,6 +166,24 @@ slideToggleExampleStories.add(
               stretchToFitWidth={true}
             >
               <SlideToggle
+                onChange={() => updateOptionA(!optionA)}
+                active={optionA}
+                size={ComponentSize.Small}
+                color={
+                  ComponentColor[
+                    select('color', mapEnumKeys(ComponentColor), 'Secondary')
+                  ]
+                }
+              />
+              <InputLabel active={optionA}>Send SMS notifications</InputLabel>
+            </FlexBox>
+            <FlexBox
+              direction={FlexDirection.Row}
+              alignItems={AlignItems.Center}
+              margin={ComponentSize.Medium}
+              stretchToFitWidth={true}
+            >
+              <SlideToggle
                 onChange={() => updateOptionB(!optionB)}
                 active={optionB}
                 size={ComponentSize.Medium}

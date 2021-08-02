@@ -9,21 +9,18 @@
 .cf-resource-name--text__link,
 .cf-input.cf-resource-editable-name--input > input {
   font-size: $cf-card--name-font-size;
-  font-weight: $cf-card--name-font-weight;
-  font-family: $cf-text-font;
 }
 
 .cf-resource-editable-name > a {
   display: inline-block;
   white-space: nowrap;
-  line-height: $cf-form-xs-height;
 }
 
 .cf-resource-editable-name {
-  height: $cf-form-xs-height;
   position: relative;
   display: inline-flex;
   flex-wrap: nowrap;
+  align-items: center;
 }
 
 /* Ensure placeholder text matches font weight of title */
@@ -44,7 +41,6 @@
 
 .cf-resource-editable-name--toggle {
   font-size: $cf-card--name-font-weight * 0.75;
-  transform: translateY(-10%);
   padding: $cf-marg-a;
   display: inline-block;
   margin-left: $cf-marg-b;
