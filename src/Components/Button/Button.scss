@@ -20,7 +20,10 @@
   position: relative;
   z-index: 1;
   @extend %no-user-select;
-  @extend %type-uppercase;
+
+  &:not(.cf-dropdown--button) {
+    @extend %type-uppercase;
+  }
 
   &:after {
     position: absolute;

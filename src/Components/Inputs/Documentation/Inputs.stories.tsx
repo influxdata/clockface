@@ -1023,3 +1023,53 @@ inputsExampleStories.add(
     },
   }
 )
+
+inputsExampleStories.add(
+  'Collage',
+  () => {
+    return (
+      <div className="story--example">
+        <table className="two-axis-table two-axis-table--spaced">
+          <tbody>
+            <tr>
+              <td>
+                <code>Size</code>
+              </td>
+              {[
+                {size: ComponentSize.ExtraSmall, placeholder: 'ExtraSmall'},
+                {size: ComponentSize.Small, placeholder: 'Small'},
+                {size: ComponentSize.Medium, placeholder: 'Medium'},
+                {size: ComponentSize.Large, placeholder: 'Large'},
+              ].map((props, i) => (
+                <td key={i}>
+                  <Input {...props} />
+                </td>
+              ))}
+            </tr>
+            <tr>
+              <td>
+                <code>Status</code>
+              </td>
+              {[
+                {status: ComponentStatus.Default},
+                {status: ComponentStatus.Disabled},
+                {status: ComponentStatus.Loading},
+                {status: ComponentStatus.Error},
+                {status: ComponentStatus.Valid},
+              ].map((props, i) => (
+                <td key={i}>
+                  <Input placeholder={props.status.toString()} {...props} />
+                </td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(InputReadme),
+    },
+  }
+)
