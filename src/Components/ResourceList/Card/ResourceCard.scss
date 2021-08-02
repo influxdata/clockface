@@ -6,14 +6,15 @@
 */
 
 .cf-resource-card {
-  display: flex;
+  display: grid;
   width: 100%;
   position: relative;
   color: $cf-card-text--default;
   background-color: $cf-card-background--default;
   border-radius: $cf-radius;
-  padding: $cf-marg-c;
+  padding: $cf-space-m;
   @extend %panel-shadow;
+  // grid-template-columns: 1fr 100px;
 }
 
 .cf-resource-card__highlight {
@@ -28,8 +29,8 @@
 
 .cf-resource-card--context-menu {
   position: absolute;
-  top: $cf-marg-b;
-  right: $cf-marg-b;
+  top: $cf-space-m;
+  right: $cf-space-m;
 }
 
 /*
@@ -45,20 +46,4 @@
   color: $cf-card-text--disabled;
   cursor: not-allowed;
   opacity: 0.5;
-}
-
-/*
-  Context Menu Interactions
-  ------------------------------------------------------------------------------
-*/
-
-.cf-resource-card__context-hover {
-  .cf-resource-card--context-menu {
-    opacity: 0;
-    transition: opacity $cf-transition-default;
-  }
-
-  &:hover .cf-resource-card--context-menu {
-    opacity: 1;
-  }
 }

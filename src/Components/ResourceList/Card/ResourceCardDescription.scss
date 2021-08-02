@@ -5,16 +5,9 @@
   ------------------------------------------------------------------------------
 */
 
-.cf-resource-description {
-  width: 100%;
-  min-height: $cf-form-xs-height;
-}
-
 .cf-resource-description--preview,
 .cf-input.cf-resource-description--input > input {
-  font-size: $cf-form-xs-font;
-  font-weight: $cf-font-weight--medium;
-  font-family: $cf-text-font;
+  font-size: $cf-text-base-0;
 }
 
 .cf-resource-description--preview,
@@ -24,17 +17,15 @@
 }
 
 .cf-resource-description--preview {
-  padding-top: $cf-marg-a;
   width: auto;
   display: inline-block;
   border-radius: $cf-radius;
   position: relative;
   overflow: hidden;
   @include no-user-select();
-  color: $g13-mist;
+  color: $cf-grey-55;
   transition: color $cf-transition-default,
     background-color $cf-transition-default, border-color $cf-transition-default;
-  line-height: $cf-form-xs-font + $cf-border;
 
   .cf-icon {
     position: relative;
@@ -43,7 +34,7 @@
     margin-left: $cf-marg-b;
     opacity: 0;
     transition: opacity $cf-transition-default;
-    color: $g11-sidewalk;
+    color: inherit;
   }
 
   &:hover .cf-icon {
@@ -51,7 +42,7 @@
   }
 
   &.untitled {
-    color: $g9-mountain;
+    color: $cf-grey-55;
     font-style: italic;
   }
 

@@ -71,7 +71,7 @@
 }
 
 .cf-popover__default {
-  @include popoverColorModifier($g6-smoke, $cf-grey-45, $g15-platinum);
+  @include popoverColorModifier($cf-grey-45, $cf-grey-25, $g20-white);
 }
 .cf-popover__primary {
   @include popoverColorModifier($cf-grey-45, $cf-grey-25, $g20-white);
@@ -79,11 +79,14 @@
 .cf-popover__secondary {
   @include popoverColorModifier($c-star, $c-shadow, $g20-white);
 }
+.cf-popover__tertiary {
+  @include popoverColorModifier($cf-grey-45, $cf-grey-25, $g20-white);
+}
 .cf-popover__success {
   @include popoverColorModifier($c-rainforest, $c-gypsy, $g20-white);
 }
 .cf-popover__warning {
-  @include popoverColorModifier($c-pineapple, $c-oak, $g3-castle);
+  @include popoverColorModifier($c-pineapple, $c-oak, $g20-white);
 }
 .cf-popover__danger {
   @include popoverColorModifier($c-curacao, $c-basalt, $g20-white);

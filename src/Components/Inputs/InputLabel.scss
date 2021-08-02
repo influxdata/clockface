@@ -7,7 +7,7 @@
 
 .cf-input-label {
   white-space: nowrap;
-  font-weight: $cf-font-weight--medium;
+  font-weight: $cf-font-weight--regular;
   @include no-user-select();
   color: $cf-label--default;
   transition: color $cf-transition-default;

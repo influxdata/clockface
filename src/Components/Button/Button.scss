@@ -73,7 +73,6 @@
   font-size: $fontSize;
   padding: 0 $padding;
   height: $height;
-  line-height: $height;
 
   .cf-button-spinner {
     width: $height * 0.5;
@@ -173,7 +172,8 @@
   }
 
   &:focus {
-    box-shadow: 0 -1px 4px 1px $c-pool, 0 1px 6px 2px $c-star;
+    // box-shadow: 0 -1px 4px 1px $c-pool, 0 1px 6px 2px $c-star;
+    box-shadow: 0 0 0 2px rgba($cf-white, 0.5);
   }
 
   @if $tertiary {
