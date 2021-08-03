@@ -45,6 +45,11 @@ $select-group--padding: $cf-marg-a;
   justify-content: center;
   align-items: center;
   @extend %type-uppercase;
+  position:relative;
+
+  &:after {
+    @include createOverlayBase();
+  }
 
   &:last-child {
     margin-right: 0;
@@ -55,6 +60,9 @@ $select-group--padding: $cf-marg-a;
     background-color: $g6-smoke;
     color: $g18-cloud;
     cursor: pointer;
+    &:after {
+      opacity: $cf-hover-active-opacity;
+    }
   }
 
   &:focus {

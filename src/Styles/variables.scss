@@ -97,6 +97,13 @@ $c-galaxy: #9394ff;
 $c-pulsar: #513cc6;
 
 /*
+  State change variables
+*/
+
+$cf-hover-active-opacity: 0.08;
+$cf-disabled-opacity: 0.5;
+
+/*
    Z Variables
    -----------------------------------------------------------------------------
    Might not actually need any of these yet
@@ -403,6 +410,20 @@ $cf-tree-nav__toggle-icon-hover: $g13-mist;
    Mixins
    -----------------------------------------------------------------------------
 */
+
+@mixin createOverlayBase() {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+    border-radius: $cf-radius;
+    transition: opacity $cf-transition-default;
+    opacity: 0;
+    background-color: #ffffff;
+}
+
 
 @mixin gradient-v($startColor, $endColor) {
   background: $startColor;

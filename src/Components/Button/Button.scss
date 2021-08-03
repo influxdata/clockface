@@ -26,16 +26,7 @@
   }
 
   &:after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    content: '';
-    z-index: -1;
-    border-radius: $cf-radius;
-    transition: opacity $cf-transition-default;
-    opacity: 0;
+   @include createOverlayBase();
   }
 
   &:hover {
@@ -150,8 +141,6 @@
 @mixin buttonColorModifier(
   $bgA,
   $bgB,
-  $bgHoverA,
-  $bgHoverB,
   $text,
   $textHover,
   $tertiary: false
@@ -159,16 +148,12 @@
   color: $text;
   @include gradient-diag-up($bgA, $bgB);
 
-  &:after {
-    @include gradient-diag-up($bgHoverA, $bgHoverB);
-  }
-
   &:hover {
     color: $textHover;
   }
 
   &:hover:after {
-    opacity: 1;
+    opacity: $cf-hover-active-opacity;
   }
 
   &:focus {
@@ -187,7 +172,7 @@
     &:focus,
     &.active:hover {
       &:after {
-        opacity: 1;
+        opacity: $cf-hover-active-opacity;
       }
     }
   } @else {
@@ -199,7 +184,7 @@
       color: $textHover;
 
       &:after {
-        opacity: 1;
+        opacity: $cf-hover-active-opacity;
       }
     }
   }
@@ -217,7 +202,7 @@
   &.cf-button--disabled:hover,
   &.cf-button--disabled:focus {
     cursor: not-allowed;
-    opacity: 0.5;
+    opacity: $cf-disabled-opacity;
   }
 
   .cf-button-spinner {
@@ -230,8 +215,6 @@
   @include buttonColorModifier(
     $cf-grey-15,
     $cf-grey-15,
-    $cf-grey-5,
-    $cf-grey-5,
     $g15-platinum,
     $g20-white
   );
@@ -240,16 +223,12 @@
   @include buttonColorModifier(
     #0098f0,
     #8e1fc3,
-    #0098f0,
-    #8e1fc3,
     $g20-white,
     $g20-white
   );
 }
 .cf-button-secondary {
   @include buttonColorModifier(
-    $cf-grey-45,
-    $cf-grey-45,
     $cf-grey-35,
     $cf-grey-35,
     $g20-white,
@@ -260,8 +239,6 @@
   @include buttonColorModifier(
     transparent,
     transparent,
-    $g3-castle,
-    $g3-castle,
     $g9-mountain,
     $g20-white,
     true
@@ -271,8 +248,7 @@
   @include buttonColorModifier(
     #02714a,
     #50cb70,
-    #02714a,
-    #50cb70,
+
     $g20-white,
     $g20-white
   );
@@ -281,8 +257,7 @@
   @include buttonColorModifier(
     $c-topaz,
     $c-pineapple,
-    $c-thunder,
-    $c-daisy,
+
     $g4-onyx,
     $g4-onyx
   );
@@ -291,8 +266,7 @@
   @include buttonColorModifier(
     #e85b1c,
     #bf3d5e,
-    #e85b1c,
-    #bf3d5e,
+
     $g20-white,
     $g20-white
   );
