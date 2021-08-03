@@ -40,6 +40,7 @@
     border-radius: $cf-radius;
     transition: opacity $cf-transition-default;
     opacity: 0;
+    background-color: #ffffff;
   }
 
   &:hover {
@@ -152,8 +153,6 @@
 @mixin buttonColorModifier(
   $bgA,
   $bgB,
-  $bgHoverA,
-  $bgHoverB,
   $text,
   $textHover,
   $tertiary: false
@@ -161,16 +160,12 @@
   color: $text;
   @include gradient-diag-up($bgA, $bgB);
 
-  &:after {
-    @include gradient-diag-up($bgHoverA, $bgHoverB);
-  }
-
   &:hover {
     color: $textHover;
   }
 
   &:hover:after {
-    opacity: 1;
+    opacity: $cf-hover-active-opacity;
   }
 
   &:focus {
@@ -189,7 +184,7 @@
     &:focus,
     &.active:hover {
       &:after {
-        opacity: 1;
+        opacity: $cf-hover-active-opacity;
       }
     }
   } @else {
@@ -201,7 +196,7 @@
       color: $textHover;
 
       &:after {
-        opacity: 1;
+        opacity: $cf-hover-active-opacity;
       }
     }
   }
@@ -219,7 +214,7 @@
   &.cf-button--disabled:hover,
   &.cf-button--disabled:focus {
     cursor: not-allowed;
-    opacity: 0.5;
+    opacity: $cf-disabled-opacity;
   }
 
   .cf-button-spinner {
@@ -230,73 +225,61 @@
 
 .cf-button-default {
   @include buttonColorModifier(
-    $cf-grey-35,
-    $cf-grey-35,
-    $cf-grey-45,
-    $cf-grey-45,
+    $cf-grey-15,
+    $cf-grey-15,
     $g15-platinum,
     $cf-white
   );
 }
 .cf-button-primary {
   @include buttonColorModifier(
-    $c-pool,
-    $c-amethyst,
-    $c-laser,
-    $c-star,
-    $cf-white,
-    $cf-white
+    #0098f0,
+    #8e1fc3,
+    $g20-white,
+    $g20-white
   );
 }
 .cf-button-secondary {
   @include buttonColorModifier(
-    $c-pool,
-    $c-rainforest,
-    $c-laser,
-    $c-honeydew,
-    $cf-white,
-    $cf-white
+    $cf-grey-35,
+    $cf-grey-35,
+    $g20-white,
+    $g20-white
   );
 }
 .cf-button-tertiary {
   @include buttonColorModifier(
     transparent,
     transparent,
-    $cf-grey-5,
-    $cf-grey-5,
-    $cf-grey-75,
-    $cf-white,
+    $g9-mountain,
+    $g20-white,
     true
   );
 }
 .cf-button-success {
   @include buttonColorModifier(
-    $c-emerald,
-    $c-rainforest,
-    $c-viridian,
-    $c-honeydew,
-    $cf-white,
-    $cf-white
+    #02714a,
+    #50cb70,
+
+    $g20-white,
+    $g20-white
   );
 }
 .cf-button-warning {
   @include buttonColorModifier(
     $c-topaz,
     $c-pineapple,
-    $c-tiger,
-    $c-thunder,
     $g4-onyx,
     $g4-onyx
   );
 }
 .cf-button-danger {
   @include buttonColorModifier(
-    $c-topaz,
-    $c-ruby,
-    $c-tiger,
-    $c-fire,
-    $cf-white,
-    $cf-white
+    #e85b1c,
+    #bf3d5e,
+
+    $g20-white,
+    $g20-white
   );
 }
 .cf-button-colorless {
