@@ -420,7 +420,7 @@ panelExampleStories.add(
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
         >
-          <h3>Welcome!</h3>
+          <h4>Welcome!</h4>
         </Panel.Header>
         <Panel.Body
           size={
