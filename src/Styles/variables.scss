@@ -372,10 +372,10 @@ $cf-tree-nav__border-hover: $g8-storm;
 $cf-tree-nav__border-active: $c-pool;
 $cf-tree-nav__bg: $cf-grey-15;
 $cf-tree-nav__bg-hover: $cf-grey-25;
-$cf-tree-nav__bg-active: $cf-grey-25;
-$cf-tree-nav__text: $g12-forge;
-$cf-tree-nav__text-hover: $g17-whisper;
-$cf-tree-nav__text-active: $g20-white;
+$cf-tree-nav__bg-active: rgba($cf-white, 0.07);
+$cf-tree-nav__text: $cf-white;
+$cf-tree-nav__text-hover: $cf-white;
+$cf-tree-nav__text-active: $cf-white;
 
 $cf-tree-nav__sub-item-text: $g13-mist;
 $cf-tree-nav__sub-item-text-hover: $g20-white;

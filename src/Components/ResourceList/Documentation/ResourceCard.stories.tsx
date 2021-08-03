@@ -415,14 +415,14 @@ resourceListExampleStories.add(
                   <SquareButton
                     size={ComponentSize.ExtraSmall}
                     icon={IconFont.Duplicate}
-                    color={ComponentColor.Tertiary}
+                    color={ComponentColor.Colorless}
                   />
                 </span>
                 <span>
                   <SquareButton
                     size={ComponentSize.ExtraSmall}
                     icon={IconFont.Trash}
-                    color={ComponentColor.Tertiary}
+                    color={ComponentColor.Colorless}
                   />
                 </span>
                 <span>
@@ -430,7 +430,7 @@ resourceListExampleStories.add(
                     ref={settingsRef}
                     size={ComponentSize.ExtraSmall}
                     icon={IconFont.CogThick}
-                    color={ComponentColor.Tertiary}
+                    color={ComponentColor.Colorless}
                   />
                 </span>
                 <Popover

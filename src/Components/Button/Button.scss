@@ -55,8 +55,6 @@
   margin-right: 0.4em;
   margin-left: -0.1em;
   display: inline-block;
-  vertical-align: middle;
-  transform: translateY(-5%);
   pointer-events: none;
 
   .cf-button--label + & {
@@ -300,6 +298,39 @@
     $cf-white,
     $cf-white
   );
+}
+.cf-button-colorless {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  height: auto;
+  font-weight: $cf-font-weight--regular;
+
+  &.cf-button-xs {
+    font-size: $cf-text-base-0;
+  }
+
+  &.cf-button-square {
+    color: $cf-grey-45;
+
+    &:hover {
+      color: $cf-white;
+    }
+  }
+
+  .cf-button--label {
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  &:focus .cf-button--label,
+  &:hover .cf-button--label {
+    text-decoration: underline;
+  }
+
+  &:after {
+    display: none;
+  }
 }
 
 /*

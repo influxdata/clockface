@@ -31,7 +31,7 @@ export const ResourceCardRoot = forwardRef<ResourceCardRef, ResourceCardProps>(
       id,
       style,
       testID = 'resource-card',
-      margin = ComponentSize.Medium,
+      margin = ComponentSize.Large,
       children,
       disabled,
       direction = FlexDirection.Column,

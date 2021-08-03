@@ -16,12 +16,13 @@ import {ComponentSize, InfluxColors} from '../../../Types'
 // Notes
 import LabelReadme from './Label.md'
 
-const labelStories = storiesOf('Components/Label', module).addDecorator(
-  withKnobs
-)
+const labelStories = storiesOf(
+  'Components/Label/Examples',
+  module
+).addDecorator(withKnobs)
 
 labelStories.add(
-  'Examples',
+  'Variants',
   () => {
     const labelReadOnlyRef: React.RefObject<LabelRef> = React.createRef()
     const labelClickableRef: React.RefObject<LabelRef> = React.createRef()
@@ -116,6 +117,49 @@ labelStories.add(
         <div className="story--test-buttons">
           <button onClick={logLabelRefs}>Log Refs</button>
         </div>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(LabelReadme),
+    },
+  }
+)
+
+labelStories.add(
+  'Collage',
+  () => {
+    return (
+      <div className="story--example">
+        <table className="two-axis-table two-axis-table--spaced">
+          <tbody>
+            <tr>
+              <td>
+                <code>Size</code>
+              </td>
+              {[
+                {size: ComponentSize.ExtraSmall, text: 'ExtraSmall'},
+                {size: ComponentSize.Small, text: 'Small'},
+                {size: ComponentSize.Medium, text: 'Medium'},
+                {size: ComponentSize.Large, text: 'Large'},
+              ].map((props, i) => (
+                <td key={i}>
+                  <Label
+                    id="example-label"
+                    name={props.text}
+                    description="Description"
+                    color={InfluxColors.Star}
+                    size={props.size}
+                    onDelete={id => {
+                      alert(`Label with id: ${id} has been deleted`)
+                    }}
+                  />
+                </td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
       </div>
     )
   },

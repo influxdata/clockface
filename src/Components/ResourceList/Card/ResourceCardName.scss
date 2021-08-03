@@ -7,8 +7,9 @@
 
 .cf-resource-name {
   position: relative;
-  display: inline-flex;
+  display: flex;
   flex-wrap: nowrap;
+  max-width: calc(100% - 100px);
 }
 
 .cf-resource-name--text {
@@ -16,7 +17,6 @@
   font-weight: $cf-card--name-font-weight;
   font-family: $cf-text-font;
   display: inline-block;
-  white-space: nowrap;
   color: $g17-whisper;
   user-select: none;
 }

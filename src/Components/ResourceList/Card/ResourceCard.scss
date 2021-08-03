@@ -17,16 +17,6 @@
   // grid-template-columns: 1fr 100px;
 }
 
-.cf-resource-card__highlight {
-  transition: background-color $cf-transition-default,
-    color $cf-transition-default;
-
-  &:hover {
-    color: $cf-card-text--hover;
-    background-color: $cf-card-background--hover;
-  }
-}
-
 .cf-resource-card--context-menu {
   position: absolute;
   top: $cf-space-m;
@@ -38,12 +28,13 @@
   ------------------------------------------------------------------------------
 */
 
-.cf-resource-card.cf-resource-card__disabled,
-.cf-resource-card.cf-resource-card__disabled:hover,
-.cf-resource-card.cf-resource-card__disabled.cf-resource-card__highlight,
-.cf-resource-card.cf-resource-card__disabled.cf-resource-card__highlight:hover {
-  background-color: $cf-card-background--disabled;
-  color: $cf-card-text--disabled;
-  cursor: not-allowed;
-  opacity: 0.5;
+.cf-resource-card.cf-resource-card__disabled {
+  opacity: 0.6;
+}
+
+.cf-resource-card.cf-resource-card__disabled {
+  .cf-slide-toggle,
+  .cf-slide-toggle ~ .cf-input-label {
+    cursor: pointer;
+  }
 }

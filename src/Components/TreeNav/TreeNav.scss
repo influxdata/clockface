@@ -259,10 +259,11 @@ a.cf-tree-nav--header:active {
   flex-direction: column;
   align-items: stretch;
   position: relative;
-}
+  padding: 0 $cf-space-2xs;
 
-.cf-tree-nav--item__has-children .cf-tree-nav--label {
-  transform: translateY(-#{$cf-space-3xs});
+  & + & {
+    margin-top: $cf-space-xs;
+  }
 }
 
 .cf-tree-nav--item-block,
@@ -342,32 +343,6 @@ a.cf-tree-nav--item-block:active {
   align-items: stretch;
   padding-left: $cf-tree-nav__width;
   padding-right: $cf-space-m;
-
-  &[data-sub-nav-labels] {
-    &:before {
-      content: attr(data-sub-nav-labels);
-      font-size: $cf-text-base--1;
-      color: $cf-grey-55;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      position: absolute;
-      left: $cf-tree-nav__width;
-      top: $cf-space-l;
-      width: calc(100% - #{$cf-tree-nav__width} - #{$cf-space-s});
-      pointer-events: none;
-      transition: all $cf-transition-default;
-    }
-
-    .cf-tree-nav--item__active & {
-      padding-bottom: $cf-space-xs;
-
-      &:before {
-        opacity: 0;
-        visibility: hidden;
-      }
-    }
-  }
 }
 
 @keyframes menuSlideIn {
@@ -589,8 +564,8 @@ a.cf-tree-nav--user-item:hover {
 
 @media screen and (min-width: $cf-nav-menu--breakpoint) {
   %cf-tree-nav--block {
-    flex: 0 0 $cf-tree-nav__width;
-    height: $cf-tree-nav__width;
+    // flex: 0 0 $cf-tree-nav__width;
+    // height: $cf-tree-nav__width;
   }
 
   .cf-tree-nav {
