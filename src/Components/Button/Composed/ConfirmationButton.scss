@@ -8,12 +8,13 @@
 .cf-confirmation-button--container {
   display: flex;
   align-items: center;
+  padding: $cf-space-s;
 }
 
 .cf-confirmation-button--label {
-  margin: 0 $cf-marg-b;
   white-space: nowrap;
   font-weight: $cf-font-weight--medium;
   user-select: none;
   font-size: $cf-form-md-font;
+  padding-right: $cf-space-s;
 }
