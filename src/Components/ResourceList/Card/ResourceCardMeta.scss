@@ -13,14 +13,6 @@
   font-size: $cf-text-base-0;
   transition: color $cf-transition-default;
 
-  .cf-resource-card__disabled &,
-  .cf-resource-card__disabled:hover &,
-  .cf-resource-card__disabled.cf-resource-card__highlight &,
-  .cf-resource-card__disabled.cf-resource-card__highlight:hover & {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
-
   a {
     color: inherit;
     text-decoration: underline;
@@ -34,10 +26,6 @@
 
   .cf-icon {
     margin-left: $cf-space-3xs;
-
-    &.checkmark {
-      color: $c-rainforest;
-    }
 
     &.alert-triangle {
       color: $c-ruby;

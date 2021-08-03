@@ -83,7 +83,7 @@ navMenuStories.add(
             >
               <TreeNav.Item
                 id="item-1"
-                label={text('Item 1', 'First Item')}
+                label={text('Item 1', 'Ingest')}
                 icon={
                   <Icon
                     glyph={
@@ -98,7 +98,7 @@ navMenuStories.add(
               />
               <TreeNav.Item
                 id="item-2"
-                label={text('Item 2', 'Second Item')}
+                label={text('Item 2', 'Build')}
                 icon={
                   <Icon
                     glyph={
@@ -111,7 +111,7 @@ navMenuStories.add(
               />
               <TreeNav.Item
                 id="item-3"
-                label={text('Item 3', 'Third Item')}
+                label="Monitor & Alert"
                 icon={
                   <Icon
                     glyph={
@@ -126,14 +126,14 @@ navMenuStories.add(
               />
               <TreeNav.Item
                 id="item-4"
-                label="Link Item"
+                label="Access"
                 icon={<Icon glyph={IconFont.DisksNav} />}
                 onClick={handleItemClick}
                 active={activeItem === 'item-4'}
               />
               <TreeNav.Item
                 id="item-5"
-                label="Link Item + Menu"
+                label="Settings"
                 icon={<Icon glyph={IconFont.DisksNav} />}
                 onClick={handleItemClick}
                 active={activeItem === 'item-5'}

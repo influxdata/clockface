@@ -13,14 +13,14 @@
 
 .cf-resource-editable-name > a {
   display: inline-block;
-  white-space: nowrap;
 }
 
 .cf-resource-editable-name {
   position: relative;
-  display: inline-flex;
+  display: flex;
   flex-wrap: nowrap;
   align-items: center;
+  max-width: calc(100% - 100px);
 }
 
 /* Ensure placeholder text matches font weight of title */
@@ -40,7 +40,7 @@
 }
 
 .cf-resource-editable-name--toggle {
-  font-size: $cf-card--name-font-weight * 0.75;
+  font-size: $cf-text-base-0;
   padding: $cf-marg-a;
   display: inline-block;
   margin-left: $cf-marg-b;

@@ -37,6 +37,7 @@ export enum ComponentColor {
   Success = 'success',
   Warning = 'warning',
   Danger = 'danger',
+  Colorless = 'colorless',
 }
 
 export enum ComponentSize {
