@@ -29,6 +29,8 @@ cardStories.add('Resource Cards', () => {
         <CardBuckets />
         <CardBucketsFull />
         <CardDisabled />
+        <CardTask />
+        <CardLabel />
         <CardAll />
       </FlexBox>
     </div>
@@ -304,6 +306,94 @@ function CardAll() {
           onDelete={() => {}}
         />
       </FlexBox>
+    </ResourceCard>
+  )
+}
+
+function CardTask() {
+  return (
+    <ResourceCard>
+      <ResourceCard.Name name="Notebook Task for local_54f15257-1b35-4567-becc-fb1c2462e996" />
+      <ResourceCard.Meta>
+        <FlexBox
+          direction={FlexDirection.Row}
+          alignItems={AlignItems.Center}
+          margin={ComponentSize.Medium}
+        >
+          <SlideToggle
+            onChange={() => {
+              // Do nothing
+            }}
+            size={ComponentSize.ExtraSmall}
+            active={true}
+          />
+          <InputLabel active={true}>Active</InputLabel>
+        </FlexBox>
+        <span>Created: 2021-07-20 17:45:43</span>
+        <span>Created by: trys@clearleft.com</span>
+        <span>Last used: 6 minutes ago</span>
+      </ResourceCard.Meta>
+      <FlexBox
+        direction={FlexDirection.Row}
+        justifyContent={JustifyContent.FlexEnd}
+        margin={ComponentSize.Medium}
+      >
+        <Button
+          icon={IconFont.Plus}
+          text="Add data"
+          size={ComponentSize.ExtraSmall}
+          color={ComponentColor.Default}
+        />
+        <Button
+          text="Edit Task"
+          size={ComponentSize.ExtraSmall}
+          color={ComponentColor.Primary}
+        />
+      </FlexBox>
+    </ResourceCard>
+  )
+}
+
+function CardLabel() {
+  return (
+    <ResourceCard
+      contextMenu={
+        <FlexBox margin={ComponentSize.ExtraSmall}>
+          <span>
+            <SquareButton
+              size={ComponentSize.ExtraSmall}
+              icon={IconFont.Duplicate}
+              color={ComponentColor.Colorless}
+            />
+          </span>
+          <span>
+            <SquareButton
+              size={ComponentSize.ExtraSmall}
+              icon={IconFont.Trash}
+              color={ComponentColor.Colorless}
+            />
+          </span>
+          <span>
+            <SquareButton
+              size={ComponentSize.ExtraSmall}
+              icon={IconFont.CogThick}
+              color={ComponentColor.Colorless}
+            />
+          </span>
+        </FlexBox>
+      }
+    >
+      <ResourceCard.Meta>
+        <Label
+          id="Analytics"
+          description="I'm a cool label"
+          name="Analytics"
+          color="#C5F98D"
+          size={ComponentSize.Small}
+          onDelete={() => {}}
+        />
+        <span>No description</span>
+      </ResourceCard.Meta>
     </ResourceCard>
   )
 }
