@@ -26,17 +26,7 @@
   }
 
   &:after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    content: '';
-    z-index: -1;
-    border-radius: $cf-radius;
-    transition: opacity $cf-transition-default;
-    opacity: 0;
-    background-color: #ffffff;
+   @include createOverlayBase();
   }
 
   &:hover {

@@ -48,16 +48,7 @@ $select-group--padding: $cf-marg-a;
   position:relative;
 
   &:after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    content: '';
-    border-radius: $cf-radius;
-    transition: opacity $cf-transition-default;
-    opacity: 0;
-    background-color: #ffffff;
+    @include createOverlayBase();
   }
 
   &:last-child {
