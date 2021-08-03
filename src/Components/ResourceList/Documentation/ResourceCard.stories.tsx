@@ -410,23 +410,29 @@ resourceListExampleStories.add(
         <div style={{width: `${number('Width (px)', 900)}px`}}>
           <ResourceCard
             contextMenu={
-              <>
-                <SquareButton
-                  size={ComponentSize.ExtraSmall}
-                  icon={IconFont.Duplicate}
-                  color={ComponentColor.Default}
-                />
-                <SquareButton
-                  size={ComponentSize.ExtraSmall}
-                  icon={IconFont.Trash}
-                  color={ComponentColor.Default}
-                />
-                <SquareButton
-                  ref={settingsRef}
-                  size={ComponentSize.ExtraSmall}
-                  icon={IconFont.CogThick}
-                  color={ComponentColor.Default}
-                />
+              <FlexBox margin={ComponentSize.ExtraSmall}>
+                <span>
+                  <SquareButton
+                    size={ComponentSize.ExtraSmall}
+                    icon={IconFont.Duplicate}
+                    color={ComponentColor.Tertiary}
+                  />
+                </span>
+                <span>
+                  <SquareButton
+                    size={ComponentSize.ExtraSmall}
+                    icon={IconFont.Trash}
+                    color={ComponentColor.Tertiary}
+                  />
+                </span>
+                <span>
+                  <SquareButton
+                    ref={settingsRef}
+                    size={ComponentSize.ExtraSmall}
+                    icon={IconFont.CogThick}
+                    color={ComponentColor.Tertiary}
+                  />
+                </span>
                 <Popover
                   appearance={Appearance.Outline}
                   enableDefaultStyles={false}
@@ -448,7 +454,7 @@ resourceListExampleStories.add(
                   )}
                   triggerRef={settingsRef}
                 />
-              </>
+              </FlexBox>
             }
           >
             <ResourceCard.EditableName

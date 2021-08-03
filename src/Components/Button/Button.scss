@@ -19,6 +19,10 @@
   white-space: nowrap;
   position: relative;
   z-index: 1;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
   @extend %no-user-select;
 
   &:not(.cf-dropdown--button) {

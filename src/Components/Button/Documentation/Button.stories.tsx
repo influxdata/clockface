@@ -119,7 +119,7 @@ buttonComposedStories.add(
   }
 )
 
-buttonBaseStories.add(
+buttonExampleStories.add(
   'Contrast Tester',
   () => {
     return (

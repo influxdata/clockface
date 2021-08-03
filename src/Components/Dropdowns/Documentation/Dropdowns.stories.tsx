@@ -642,112 +642,151 @@ dropdownComposedStories.add(
 dropdownExampleStories.add(
   'Collage',
   () => {
+    const selectDropdownOptions = [
+      '---Vegetables',
+      'Celery',
+      'Carrot',
+      'Potato',
+      'Corn',
+      'Bok Choy',
+    ]
+
+    const selectDropdownSelectedOption = 'Celery'
+
     return (
       <div className="story--example">
-        <table className="two-axis-table two-axis-table--spaced">
-          <tbody>
-            <tr>
-              <td>
-                <code>Size</code>
-              </td>
-              {[
-                {size: ComponentSize.ExtraSmall, children: 'ExtraSmall'},
-                {size: ComponentSize.Small, children: 'Small'},
-                {size: ComponentSize.Medium, children: 'Medium'},
-                {size: ComponentSize.Large, children: 'Large'},
-              ].map((props, i) => (
-                <td key={i}>
-                  <Dropdown.Dropdown
-                    button={(active, onClick) => (
-                      <Dropdown.Button
-                        active={active}
-                        onClick={onClick}
-                        {...props}
-                      />
-                    )}
-                    menu={onCollapse => (
-                      <Dropdown.Menu onCollapse={onCollapse}>
-                        <div className="mockComponent dropdownContents">
-                          <span>Menu Contents</span>
-                        </div>
-                      </Dropdown.Menu>
-                    )}
-                  />
+        <div>
+          <table className="two-axis-table two-axis-table--spaced">
+            <tbody>
+              <tr>
+                <td>
+                  <code>Size</code>
                 </td>
-              ))}
-            </tr>
-            <tr>
-              <td>
-                <code>Color</code>
-              </td>
-              {[
-                {color: ComponentColor.Default},
-                {color: ComponentColor.Primary},
-                {color: ComponentColor.Secondary},
-                {color: ComponentColor.Tertiary},
-                {color: ComponentColor.Success},
-                {color: ComponentColor.Warning},
-                {color: ComponentColor.Danger},
-              ].map((props, i) => (
-                <td key={i} style={{width: '200px'}}>
-                  <Dropdown.Dropdown
-                    button={(active, onClick) => (
-                      <Dropdown.Button
-                        active={active}
-                        onClick={onClick}
-                        {...props}
-                      >
-                        {props.color.toString()}
-                      </Dropdown.Button>
-                    )}
-                    menu={onCollapse => (
-                      <Dropdown.Menu onCollapse={onCollapse}>
-                        <div className="mockComponent dropdownContents">
-                          <span>Menu Contents</span>
-                        </div>
-                      </Dropdown.Menu>
-                    )}
-                    {...props}
-                  />
+                {[
+                  {size: ComponentSize.ExtraSmall, children: 'ExtraSmall'},
+                  {size: ComponentSize.Small, children: 'Small'},
+                  {size: ComponentSize.Medium, children: 'Medium'},
+                  {size: ComponentSize.Large, children: 'Large'},
+                ].map((props, i) => (
+                  <td key={i}>
+                    <Dropdown.Dropdown
+                      button={(active, onClick) => (
+                        <Dropdown.Button
+                          active={active}
+                          onClick={onClick}
+                          {...props}
+                        />
+                      )}
+                      menu={onCollapse => (
+                        <Dropdown.Menu onCollapse={onCollapse}>
+                          <div className="mockComponent dropdownContents">
+                            <span>Menu Contents</span>
+                          </div>
+                        </Dropdown.Menu>
+                      )}
+                    />
+                  </td>
+                ))}
+              </tr>
+              <tr>
+                <td>
+                  <code>Color</code>
                 </td>
-              ))}
-            </tr>
-            <tr>
-              <td>
-                <code>Status</code>
-              </td>
-              {[
-                {status: ComponentStatus.Default},
-                {status: ComponentStatus.Disabled},
-                {status: ComponentStatus.Loading},
-                {status: ComponentStatus.Error},
-                {status: ComponentStatus.Valid},
-              ].map((props, i) => (
-                <td key={i} style={{width: '200px'}}>
-                  <Dropdown.Dropdown
-                    button={(active, onClick) => (
-                      <Dropdown.Button
-                        active={active}
-                        onClick={onClick}
-                        {...props}
-                      >
-                        {props.status.toString()}
-                      </Dropdown.Button>
-                    )}
-                    menu={onCollapse => (
-                      <Dropdown.Menu onCollapse={onCollapse}>
-                        <div className="mockComponent dropdownContents">
-                          <span>Menu Contents</span>
-                        </div>
-                      </Dropdown.Menu>
-                    )}
-                    {...props}
-                  />
+                {[
+                  {color: ComponentColor.Default},
+                  {color: ComponentColor.Primary},
+                  {color: ComponentColor.Secondary},
+                  {color: ComponentColor.Tertiary},
+                  {color: ComponentColor.Success},
+                  {color: ComponentColor.Warning},
+                  {color: ComponentColor.Danger},
+                ].map((props, i) => (
+                  <td key={i} style={{width: '200px'}}>
+                    <Dropdown.Dropdown
+                      button={(active, onClick) => (
+                        <Dropdown.Button
+                          active={active}
+                          onClick={onClick}
+                          {...props}
+                        >
+                          {props.color.toString()}
+                        </Dropdown.Button>
+                      )}
+                      menu={onCollapse => (
+                        <Dropdown.Menu onCollapse={onCollapse}>
+                          <div className="mockComponent dropdownContents">
+                            <span>Menu Contents</span>
+                          </div>
+                        </Dropdown.Menu>
+                      )}
+                      {...props}
+                    />
+                  </td>
+                ))}
+              </tr>
+              <tr>
+                <td>
+                  <code>Status</code>
                 </td>
-              ))}
-            </tr>
-          </tbody>
-        </table>
+                {[
+                  {status: ComponentStatus.Default},
+                  {status: ComponentStatus.Disabled},
+                  {status: ComponentStatus.Loading},
+                  {status: ComponentStatus.Error},
+                  {status: ComponentStatus.Valid},
+                ].map((props, i) => (
+                  <td key={i} style={{width: '200px'}}>
+                    <Dropdown.Dropdown
+                      button={(active, onClick) => (
+                        <Dropdown.Button
+                          active={active}
+                          onClick={onClick}
+                          {...props}
+                        >
+                          {props.status.toString()}
+                        </Dropdown.Button>
+                      )}
+                      menu={onCollapse => (
+                        <Dropdown.Menu onCollapse={onCollapse}>
+                          <div className="mockComponent dropdownContents">
+                            <span>Menu Contents</span>
+                          </div>
+                        </Dropdown.Menu>
+                      )}
+                      {...props}
+                    />
+                  </td>
+                ))}
+              </tr>
+
+              <tr>
+                <td>
+                  <code>Select theme</code>
+                </td>
+                {[
+                  {menuTheme: DropdownMenuTheme.Onyx},
+                  {menuTheme: DropdownMenuTheme.Amethyst},
+                  {menuTheme: DropdownMenuTheme.Malachite},
+                  {menuTheme: DropdownMenuTheme.Sapphire},
+                ].map((props, i) => (
+                  <td key={i}>
+                    <SelectDropdown
+                      menuTheme={props.menuTheme}
+                      onSelect={option => {
+                        alert(option)
+                      }}
+                      buttonColor={ComponentColor.Primary}
+                      buttonSize={ComponentSize.Small}
+                      buttonIcon={IconFont.BarChart}
+                      selectedOption={selectDropdownSelectedOption}
+                      options={array('options', selectDropdownOptions)}
+                    />
+                  </td>
+                ))}
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     )
   },
