@@ -228,73 +228,73 @@
 
 .cf-button-default {
   @include buttonColorModifier(
-    $cf-grey-15,
-    $cf-grey-15,
-    $cf-grey-5,
-    $cf-grey-5,
+    $cf-grey-35,
+    $cf-grey-35,
+    $cf-grey-45,
+    $cf-grey-45,
     $g15-platinum,
-    $g20-white
+    $cf-white
   );
 }
 .cf-button-primary {
   @include buttonColorModifier(
-    #0098f0,
-    #8e1fc3,
-    #0098f0,
-    #8e1fc3,
-    $g20-white,
-    $g20-white
+    $c-pool,
+    $c-amethyst,
+    $c-laser,
+    $c-star,
+    $cf-white,
+    $cf-white
   );
 }
 .cf-button-secondary {
   @include buttonColorModifier(
-    $cf-grey-45,
-    $cf-grey-45,
-    $cf-grey-35,
-    $cf-grey-35,
-    $g20-white,
-    $g20-white
+    $c-pool,
+    $c-rainforest,
+    $c-laser,
+    $c-honeydew,
+    $cf-white,
+    $cf-white
   );
 }
 .cf-button-tertiary {
   @include buttonColorModifier(
     transparent,
     transparent,
-    $g3-castle,
-    $g3-castle,
-    $g9-mountain,
-    $g20-white,
+    $cf-grey-5,
+    $cf-grey-5,
+    $cf-grey-75,
+    $cf-white,
     true
   );
 }
 .cf-button-success {
   @include buttonColorModifier(
-    #02714a,
-    #50cb70,
-    #02714a,
-    #50cb70,
-    $g20-white,
-    $g20-white
+    $c-emerald,
+    $c-rainforest,
+    $c-viridian,
+    $c-honeydew,
+    $cf-white,
+    $cf-white
   );
 }
 .cf-button-warning {
   @include buttonColorModifier(
     $c-topaz,
     $c-pineapple,
+    $c-tiger,
     $c-thunder,
-    $c-daisy,
     $g4-onyx,
     $g4-onyx
   );
 }
 .cf-button-danger {
   @include buttonColorModifier(
-    #e85b1c,
-    #bf3d5e,
-    #e85b1c,
-    #bf3d5e,
-    $g20-white,
-    $g20-white
+    $c-topaz,
+    $c-ruby,
+    $c-tiger,
+    $c-fire,
+    $cf-white,
+    $cf-white
   );
 }
 
