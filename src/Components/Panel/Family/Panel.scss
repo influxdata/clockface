@@ -9,18 +9,17 @@
   border-radius: $cf-radius;
   position: relative;
   @extend %panel-shadow;
+
+  a:link,
+  a:visited {
+    color: inherit;
+    text-decoration: underline;
+    font-weight: inherit;
+  }
 }
 
 .cf-panel--body {
   width: 100%;
-
-  > *:first-child {
-    margin-top: 0;
-  }
-
-  > *:last-child {
-    margin-bottom: 0;
-  }
 
   .cf-panel--header + & {
     padding-top: 0;
@@ -77,25 +76,46 @@
   Size Modifiers
   ------------------------------------------------------------------------------
 */
-@mixin panelHeaderBodySizeModifier($padding) {
-  padding: $padding * 2;
+@mixin panelHeaderSizeModifier($padding) {
+  padding: ($padding * 2) ($padding * 2) $padding;
 }
 
-.cf-panel--header__xs,
+.cf-panel--header__xs {
+  @include panelHeaderSizeModifier($cf-space-2xs);
+}
+.cf-panel--header__sm {
+  @include panelHeaderSizeModifier($cf-space-xs);
+}
+.cf-panel--header__md {
+  @include panelHeaderSizeModifier($cf-space-s);
+}
+.cf-panel--header__lg {
+  @include panelHeaderSizeModifier($cf-space-s);
+}
+
+@mixin panelBodySizeModifier($padding) {
+  padding: $padding * 2;
+
+  & > * {
+    margin: 0;
+
+    & + * {
+      margin-top: $padding;
+    }
+  }
+}
+
 .cf-panel--body__xs {
-  @include panelHeaderBodySizeModifier($cf-form-xs-padding);
+  @include panelBodySizeModifier($cf-space-2xs);
 }
-.cf-panel--header__sm,
 .cf-panel--body__sm {
-  @include panelHeaderBodySizeModifier($cf-form-sm-padding);
+  @include panelBodySizeModifier($cf-space-xs);
 }
-.cf-panel--header__md,
 .cf-panel--body__md {
-  @include panelHeaderBodySizeModifier($cf-form-md-padding);
+  @include panelBodySizeModifier($cf-space-s);
 }
-.cf-panel--header__lg,
 .cf-panel--body__lg {
-  @include panelHeaderBodySizeModifier($cf-form-lg-padding);
+  @include panelBodySizeModifier($cf-space-s);
 }
 
 @mixin panelFooterSizeModifier($padding, $fontSize) {
@@ -103,16 +123,16 @@
 }
 
 .cf-panel--footer__xs {
-  @include panelFooterSizeModifier($cf-form-xs-padding, $cf-form-xs-font);
+  @include panelFooterSizeModifier($cf-space-2xs, $cf-text-base-0);
 }
 .cf-panel--footer__sm {
-  @include panelFooterSizeModifier($cf-form-sm-padding, $cf-form-sm-font);
+  @include panelFooterSizeModifier($cf-space-xs, $cf-text-base-0);
 }
 .cf-panel--footer__md {
-  @include panelFooterSizeModifier($cf-form-md-padding, $cf-form-md-font);
+  @include panelFooterSizeModifier($cf-space-s, $cf-text-base-1);
 }
 .cf-panel--footer__lg {
-  @include panelFooterSizeModifier($cf-form-lg-padding, $cf-form-lg-font);
+  @include panelFooterSizeModifier($cf-space-s, $cf-text-base-1);
 }
 
 /*
