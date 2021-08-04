@@ -149,18 +149,11 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
     }
 
     > .cf-tabs--tab-dismiss {
-      margin-left: ceil($tabPadding * 0.66);
+      margin-left: $tabPadding;
     }
 
     .cf-tabs--tab-label {
       font-size: $fontSize;
-    }
-
-    .cf-tabs--tab-dismiss {
-      margin-top: $cf-marg-b;
-      margin-bottom: $cf-marg-b;
-      margin-left: -$cf-border;
-      margin-right: -$tabPadding;
     }
   }
   &.cf-tabs__horizontal .cf-tabs--tab__active .cf-tabs--state-indicator {
@@ -234,17 +227,7 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
 */
 
 .cf-tabs--tab-dismiss-circle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  border-radius: 50%;
-  background-color: $c-curacao;
-  width: calc(35% + #{$cf-marg-b});
-  height: calc(35% + #{$cf-marg-b});
-  transform: translate(-50%, -50%);
-  transition: opacity $cf-transition-default,
-    background-color $cf-transition-default;
-  opacity: 0;
+  display: none;
 }
 
 .cf-tabs--tab-dismiss {
@@ -252,18 +235,18 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
   background-color: transparent;
   border: 0;
   outline: none;
+  width: $cf-space-xs;
 
   &:before,
   &:after {
     content: '';
-    width: 30%;
-    min-width: $cf-marg-b;
+    min-width: $cf-space-xs;
     height: $cf-border;
     position: absolute;
     top: 50%;
     left: 50%;
     z-index: 2;
-    background-color: $cf-tab--border-color;
+    background-color: $cf-grey-55;
     transition: background-color $cf-transition-default;
   }
 
@@ -284,15 +267,8 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
 
     &:before,
     &:after {
-      background-color: $cf-tab--text;
+      background-color: $cf-white;
     }
-  }
-
-  &:active,
-  &:active .cf-tabs--tab-dismiss-circle,
-  &:active:hover,
-  &:active:hover .cf-tabs--tab-dismiss-circle {
-    opacity: 1;
   }
 
   &:active:before,
