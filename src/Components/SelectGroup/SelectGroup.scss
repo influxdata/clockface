@@ -6,7 +6,7 @@
   ------------------------------------------------------------------------------
 */
 
-$select-group--padding: $cf-marg-a;
+$select-group--padding: $cf-space-2xs;
 
 .cf-select-group {
   display: inline-flex;
@@ -45,7 +45,7 @@ $select-group--padding: $cf-marg-a;
   justify-content: center;
   align-items: center;
   @extend %type-uppercase;
-  position:relative;
+  position: relative;
 
   &:after {
     @include createOverlayBase();
@@ -93,52 +93,36 @@ $select-group--padding: $cf-marg-a;
   ------------------------------------------------------------------------------
 */
 
-@mixin radioButtonSizeModifier($fontSize, $padding, $height) {
-  height: $height;
-
+@mixin radioButtonSizeModifier($fontSize, $padding) {
   .cf-select-group--option {
-    // height: $height - ($select-group--padding * 2);
-    // line-height: $height - ($select-group--padding * 2);
-    padding: 0 $padding;
+    padding: $padding;
     font-size: $fontSize;
   }
 
   // Square Buttons
   &.cf-select-group__square .cf-select-group--option {
-    padding: 0;
     flex-grow: 0;
     flex-shrink: 0;
-    width: $height - ($select-group--padding * 2);
+    width: calc(1em + #{($padding * 2)});
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: left;
+    display: block;
   }
 }
 
 .cf-select-group__xs {
-  @include radioButtonSizeModifier(
-    $cf-form-xs-font,
-    $cf-form-xs-padding,
-    $cf-form-xs-height
-  );
+  @include radioButtonSizeModifier($cf-text-base-0, $cf-space-3xs);
 }
 .cf-select-group__sm {
-  @include radioButtonSizeModifier(
-    $cf-form-sm-font,
-    $cf-form-sm-padding,
-    $cf-form-sm-height
-  );
+  @include radioButtonSizeModifier($cf-text-base-0, $cf-space-2xs);
 }
 .cf-select-group__md {
-  @include radioButtonSizeModifier(
-    $cf-form-md-font,
-    $cf-form-md-padding,
-    $cf-form-md-height
-  );
+  @include radioButtonSizeModifier($cf-text-base-1, $cf-space-xs);
 }
 .cf-select-group__lg {
-  @include radioButtonSizeModifier(
-    $cf-form-lg-font,
-    $cf-form-lg-padding,
-    $cf-form-lg-height
-  );
+  @include radioButtonSizeModifier($cf-text-base-1, $cf-space-s);
 }
 
 /*
