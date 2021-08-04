@@ -53,21 +53,21 @@
 }
 
 .cf-heading__h2 {
-  font-size: $cf-text-base-4;
+  font-size: $cf-text-base-5;
 }
 
 .cf-heading__h3 {
-  font-size: $cf-text-base-3;
-}
-
-.cf-heading__h4 {
   font-size: $cf-text-base-2;
 }
 
-.cf-heading__h5 {
+.cf-heading__h4 {
   font-size: $cf-text-base-1;
 }
 
+.cf-heading__h5 {
+  font-size: $cf-text-base-0;
+}
+
 .cf-heading__h6 {
-  font-size: $cf-text-base;
+  font-size: $cf-text-base-0;
 }

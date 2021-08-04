@@ -16,10 +16,10 @@ import {
 } from '../../../Types'
 
 const TIME_INPUT_DROPDOWN_SIZE = {
-  xs: '47px',
-  sm: '54px',
-  md: '64px',
-  lg: '82px',
+  xs: '60px',
+  sm: '66px',
+  md: '70px',
+  lg: '90px',
 }
 
 const TIME_INPUT_DEFAULT_UNITS = ['s', 'm', 'h', 'd', 'w', 'mo']
