@@ -21,7 +21,13 @@ import {SquareButton} from '../../Button/Composed/SquareButton'
 import {EmptyState} from '../../EmptyState'
 
 // Types
-import {IconFont, ComponentColor, Alignment, Sort} from '../../../Types'
+import {
+  IconFont,
+  ComponentColor,
+  Alignment,
+  Sort,
+  ComponentSize,
+} from '../../../Types'
 
 // Notes
 import IndexListReadme from './IndexList.md'
@@ -302,6 +308,7 @@ indexListExampleStories.add(
                   <SquareButton
                     icon={IconFont.Trash}
                     color={ComponentColor.Danger}
+                    size={ComponentSize.ExtraSmall}
                   />
                 </IndexList.Cell>
               </IndexList.Row>
