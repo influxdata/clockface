@@ -298,7 +298,7 @@ listFamilyStories.add(
               select(
                 'backgroundColor',
                 {None: '', ...mapEnumKeys(InfluxColors)},
-                'None'
+                'Grey15'
               )
             ]
           }
