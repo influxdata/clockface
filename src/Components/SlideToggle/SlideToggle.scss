@@ -12,11 +12,11 @@ $slide-toggle--gap: 3px;
   display: inline-block;
   transition: background-color $cf-transition-default,
     border-color $cf-transition-default;
-  background-color: $g5-pepper;
+  background-color: $cf-grey-25;
 
   &:hover {
     cursor: pointer;
-    background-color: $g7-graphite;
+    background-color: $cf-grey-35;
   }
 }
 
@@ -28,12 +28,12 @@ $slide-toggle--gap: 3px;
   transform: translate(0, -50%);
   border-radius: 50%;
   box-shadow: 0 0 $slide-toggle--gap ($slide-toggle--gap / 2)
-    rgba($g0-obsidian, 0.25);
-  background-color: $g13-mist;
+    rgba($cf-grey-5, 0.25);
+  background-color: $cf-grey-75;
   left: 10%;
 
   .cf-slide-toggle:hover & {
-    background-color: $g20-white;
+    background-color: $cf-white;
   }
 }
 
@@ -43,7 +43,7 @@ $slide-toggle--gap: 3px;
 */
 .cf-slide-toggle.active .cf-slide-toggle--knob {
   transform: translate(100%, -50%);
-  background-color: $g20-white;
+  background-color: $cf-white;
 }
 
 /*
@@ -52,12 +52,8 @@ $slide-toggle--gap: 3px;
 */
 .cf-slide-toggle.disabled,
 .cf-slide-toggle.disabled:hover {
-  cursor: default;
-  background-color: $g5-pepper;
-
-  .cf-slide-toggle--knob {
-    background-color: $g2-kevlar;
-  }
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 /*
@@ -98,36 +94,33 @@ $slide-toggle--gap: 3px;
   Color Modifiers
   ------------------------------------------------------------------------------
 */
-@mixin slideToggleColorModifier($background, $backgroundHover) {
+@mixin slideToggleColorModifier($activeBackground, $hoverBackground) {
+  background-color: $cf-grey-25;
+
   &.active {
-    background-color: $background;
-  }
-  &.active:hover {
-    background-color: $backgroundHover;
-  }
-  &.active.disabled,
-  &.active.disabled:hover {
-    background-color: mix($background, $g6-smoke, 30%);
+    background-color: $activeBackground;
+
+    &:hover {
+      background-color: $hoverBackground;
+    }
   }
 }
 
 .cf-slide-toggle {
-  &.cf-slide-toggle-default {
-    @include slideToggleColorModifier($g10-wolf, $g12-forge);
-  }
-  &.cf-slide-toggle-primary.active {
+  &.cf-slide-toggle-default,
+  &.cf-slide-toggle-primary {
     @include slideToggleColorModifier($c-pool, $c-laser);
   }
-  &.cf-slide-toggle-secondary.active {
+  &.cf-slide-toggle-secondary {
     @include slideToggleColorModifier($c-star, $c-comet);
   }
-  &.cf-slide-toggle-success.active {
+  &.cf-slide-toggle-success {
     @include slideToggleColorModifier($c-rainforest, $c-honeydew);
   }
-  &.cf-slide-toggle-danger.active {
+  &.cf-slide-toggle-danger {
     @include slideToggleColorModifier($c-curacao, $c-dreamsicle);
   }
-  &.cf-slide-toggle-warning.active {
+  &.cf-slide-toggle-warning {
     @include slideToggleColorModifier($c-pineapple, $c-thunder);
   }
 }
