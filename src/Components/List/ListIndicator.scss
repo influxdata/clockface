@@ -53,14 +53,14 @@
     width: 0.5em;
     height: 0.75em;
     opacity: 0;
-    transform: translate(-50%, -60%) rotate(45deg);
+    transform: translate(-50%, -70%) rotate(45deg);
     transition: opacity $cf-transition-default, transform $cf-transition-default;
     border-bottom: 2px solid $cf-white;
     border-right: 2px solid $cf-white;
   }
 
   &.cf-list-indicator__selected {
-    background-color: $cf-grey-35;
+    background-color: $cf-grey-25;
 
     .cf-list-indicator--element {
       opacity: 1;

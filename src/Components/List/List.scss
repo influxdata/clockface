@@ -4,11 +4,11 @@ $list-item--text-opacity: 0.666;
 
 $list-item--divider-color--light: rgba($g20-white, 0.03);
 $list-item--divider-text--light: rgba($g20-white, 0.4);
-$list-item--background-light: rgba($g20-white, 0.09);
+$list-item--background-light: $c-pool;
 
 $list-item--divider-color--dark: rgba($g0-obsidian, 0.08);
 $list-item--divider-text--dark: rgba($g0-obsidian, 0.4);
-$list-item--background-dark: rgba($g0-obsidian, 0.09);
+$list-item--background-dark: $c-pool;
 
 .cf-list {
   overflow: hidden;
@@ -72,23 +72,24 @@ $list-item--background-dark: rgba($g0-obsidian, 0.09);
   pointer-events: none;
   border-radius: $cf-radius;
   z-index: -1;
-  opacity: 0;
+  opacity: 1;
   transition: opacity $cf-transition-default,
     background-color $cf-transition-default;
+  background-color: transparent;
 }
 
-.cf-list-item--highlight__light {
+.cf-list-item:hover .cf-list-item--highlight {
+  background-color: rgba($cf-grey-95, 0.1);
+}
+
+.cf-list-item__active .cf-list-item--highlight__light,
+.cf-list-item__active:hover .cf-list-item--highlight__light {
   background-color: $list-item--background-light;
 }
 
-.cf-list-item--highlight__dark {
+.cf-list-item__active .cf-list-item--highlight__dark,
+.cf-list-item__active:hover .cf-list-item--highlight__dark {
   background-color: $list-item--background-dark;
-}
-
-.cf-list-item:hover .cf-list-item--highlight,
-.cf-list-item__active .cf-list-item--highlight,
-.cf-list-item__active:hover .cf-list-item--highlight {
-  opacity: 1;
 }
 
 .cf-list-item__light {
@@ -184,11 +185,11 @@ $list-item--background-dark: rgba($g0-obsidian, 0.09);
 
 .cf-list-item__disabled {
   cursor: not-allowed;
-  opacity: 0.5;
+  opacity: 0.3;
 
   &:hover,
   &.cf-list-item__clickable:hover {
-    cursor: default;
+    cursor: not-allowed;
   }
 }
 
