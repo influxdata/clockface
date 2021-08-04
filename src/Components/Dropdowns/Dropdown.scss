@@ -42,6 +42,7 @@ $dropdown-item--padding-v: $cf-space-2xs;
   overflow: hidden;
   border-radius: $cf-radius;
   box-shadow: 0 2px 5px 0.6px rgba($g0-obsidian, 0.2);
+  padding: $cf-space-2xs;
 }
 
 .cf-dropdown-menu--contents {
@@ -61,14 +62,13 @@ $dropdown-item--padding-v: $cf-space-2xs;
 @mixin dropdownItemStyles() {
   padding: $dropdown-item--padding-v $dropdown-item--padding-h;
   font-size: $cf-form-sm-font;
-  line-height: $cf-form-sm-font;
   font-weight: $cf-font-weight--regular;
   text-align: left;
 }
 
 .cf-dropdown-divider {
   @include dropdownItemStyles();
-  background-color: $cf-grey-5;
+  font-weight: $cf-font-weight--medium;
 
   &.line {
     padding: 0;
@@ -84,9 +84,14 @@ $dropdown-item--padding-v: $cf-space-2xs;
   @include dropdownItemStyles();
   color: $g20-white;
   position: relative;
+  border-radius: $cf-radius;
 
   &.cf-dropdown-link-item {
     padding: 0;
+  }
+
+  &.active {
+    font-weight: $cf-font-weight--medium;
   }
 
   &.cf-dropdown-item__dot,
@@ -120,13 +125,42 @@ $dropdown-item--padding-v: $cf-space-2xs;
   transform: translate(-50%, -50%);
 }
 
-.cf-dropdown-item--dot,
 .cf-dropdown-item--checkbox {
-  background-color: $cf-grey-25;
+  background-color: rgba($cf-grey-95, 0.15);
   left: $dropdown-item--padding-h + ($dropdown-item--checkbox-size / 2);
   width: $dropdown-item--checkbox-size;
   height: $dropdown-item--checkbox-size;
-  border-radius: $cf-radius-sm;
+  border-radius: $cf-radius;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3px;
+    height: 8px;
+    opacity: 0;
+    transform: translate(-50%, -60%) rotate(45deg);
+    transition: opacity $cf-transition-default, transform $cf-transition-default;
+    border-bottom: 2px solid $cf-white;
+    border-right: 2px solid $cf-white;
+  }
+
+  .active & {
+    background-color: $cf-grey-25;
+
+    &:after {
+      opacity: 1;
+    }
+  }
+}
+
+.cf-dropdown-item--dot {
+  background-color: rgba($cf-grey-95, 0.15);
+  left: $dropdown-item--padding-h + ($dropdown-item--checkbox-size / 2);
+  width: $dropdown-item--checkbox-size;
+  height: $dropdown-item--checkbox-size;
+  border-radius: 50%;
 
   &:after {
     content: '';
@@ -137,30 +171,18 @@ $dropdown-item--padding-v: $cf-space-2xs;
     height: $dropdown-item--dot-radius;
     opacity: 0;
     transform: translate(-50%, -50%) scale(2, 2);
-    transition: opacity 0.25s, transform $cf-transition-default;
+    transition: opacity $cf-transition-default, transform $cf-transition-default;
     background-color: $g20-white;
-  }
-
-  .active &:after {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1, 1);
-  }
-}
-
-.cf-dropdown-item--dot {
-  &,
-  &:after {
     border-radius: 50%;
   }
-}
 
-.cf-dropdown-item.active {
-  .cf-dropdown-item--checkbox:after {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1, 1);
-  }
-  .cf-dropdown-item--dot {
-    opacity: 1;
+  .active & {
+    background-color: $cf-grey-25;
+
+    &:after {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1, 1);
+    }
   }
 }
 
@@ -225,28 +247,30 @@ $dropdown-item--padding-v: $cf-space-2xs;
   ------------------------------------------------------------------------------
 */
 
-@mixin dropdownMenuColor($backgroundA, $backgroundB, $hoverA, $hoverB) {
-  // @include gradient-h($backgroundA, $backgroundB);
+@mixin dropdownMenuColor($active) {
   @extend %backdrop-blur-dark;
 
-  .cf-dropdown-item:not(.cf-dropdown-item__disabled):hover,
+  .cf-dropdown-item:not(.cf-dropdown-item__disabled):hover {
+    background-color: rgba($cf-grey-95, 0.1);
+  }
+
   .cf-dropdown-item.active:not(.cf-dropdown-item__disabled) {
-    @include gradient-h($hoverA, $hoverB);
+    background-color: $active;
   }
 }
 
 .cf-dropdown__amethyst {
-  @include dropdownMenuColor($c-star, $c-pool, $c-comet, $c-laser);
+  @include dropdownMenuColor($c-comet);
 }
 
 .cf-dropdown__sapphire {
-  @include dropdownMenuColor($c-ocean, $c-pool, $c-pool, $c-laser);
+  @include dropdownMenuColor($c-ocean);
 }
 
 .cf-dropdown__malachite {
-  @include dropdownMenuColor($c-ocean, $c-rainforest, $c-pool, $c-honeydew);
+  @include dropdownMenuColor($c-rainforest);
 }
 
 .cf-dropdown__onyx {
-  @include dropdownMenuColor($g2-kevlar, $g5-pepper, $c-pool, $c-pool);
+  @include dropdownMenuColor($c-pool);
 }

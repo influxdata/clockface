@@ -18,14 +18,6 @@ $list-item--background-dark: rgba($g0-obsidian, 0.09);
   .cf-dapper-scrollbars--track-y {
     z-index: 2;
   }
-
-  &.cf-list__special-light .cf-dapper-scrollbars--track-y {
-    background-color: rgba($g3-castle, 0.5) !important;
-  }
-
-  &.cf-list__dark .cf-dapper-scrollbars--track-y {
-    background-color: rgba($g0-obsidian, 0.15) !important;
-  }
 }
 
 .cf-list--contents {
@@ -34,6 +26,7 @@ $list-item--background-dark: rgba($g0-obsidian, 0.09);
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  padding: $cf-space-2xs;
 }
 
 .cf-list-item,
@@ -54,7 +47,7 @@ $list-item--background-dark: rgba($g0-obsidian, 0.09);
 @mixin listItemSharedStyles() {
   user-select: none;
   position: relative;
-  border-radius: $cf-radius-sm;
+  border-radius: $cf-radius;
   display: flex;
   align-items: center;
 }
@@ -77,7 +70,7 @@ $list-item--background-dark: rgba($g0-obsidian, 0.09);
   bottom: 0;
   left: 0;
   pointer-events: none;
-  border-radius: $cf-radius-sm;
+  border-radius: $cf-radius;
   z-index: -1;
   opacity: 0;
   transition: opacity $cf-transition-default,
@@ -99,7 +92,7 @@ $list-item--background-dark: rgba($g0-obsidian, 0.09);
 }
 
 .cf-list-item__light {
-  color: rgba($g20-white, $list-item--text-opacity);
+  color: $g20-white;
 }
 .cf-list-item__light.cf-list-item__active,
 .cf-list-item__light.cf-list-item__active:hover {
@@ -107,7 +100,7 @@ $list-item--background-dark: rgba($g0-obsidian, 0.09);
 }
 
 .cf-list-item__dark {
-  color: rgba($g2-kevlar, $list-item--text-opacity);
+  color: $g2-kevlar;
 }
 .cf-list-item__dark.cf-list-item__active,
 .cf-list-item__dark.cf-list-item__active:hover {
@@ -121,6 +114,10 @@ $list-item--background-dark: rgba($g0-obsidian, 0.09);
 
 .cf-list-item--text {
   flex: 1;
+
+  .cf-list-item__active & {
+    font-weight: $cf-font-weight--medium;
+  }
 }
 
 .cf-list-item--text__wrap {
@@ -145,6 +142,7 @@ $list-item--background-dark: rgba($g0-obsidian, 0.09);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-weight: $cf-font-weight--medium;
 }
 
 .cf-list-divider,
@@ -163,7 +161,6 @@ $list-item--background-dark: rgba($g0-obsidian, 0.09);
 
 .cf-list-divider__dark {
   &.cf-list-divider {
-    color: $list-item--divider-text--dark;
     border-bottom-color: $list-item--divider-color--dark;
   }
   &.cf-list-divider__thin {
@@ -173,7 +170,6 @@ $list-item--background-dark: rgba($g0-obsidian, 0.09);
 
 .cf-list-divider__light {
   &.cf-list-divider {
-    color: $list-item--divider-text--light;
     border-bottom-color: $list-item--divider-color--light;
   }
   &.cf-list-divider__thin {
@@ -217,16 +213,8 @@ $list-item--background-dark: rgba($g0-obsidian, 0.09);
   &.cf-list-item,
   &.cf-list-divider,
   &.cf-list-link-item > a {
-    font-weight: $cf-font-weight--medium;
     font-size: $fontSize;
-    padding: 0 $padding;
-  }
-
-  .cf-list-item--text__no-wrap,
-  &.cf-list-link-item__no-wrap > a,
-  &.cf-list-divider {
-    height: $height;
-    line-height: $height;
+    padding: $padding;
   }
 
   .cf-list-item--text__wrap,
@@ -250,7 +238,7 @@ $list-item--background-dark: rgba($g0-obsidian, 0.09);
   @include listItemSizeModifier(
     $cf-form-xs-font,
     $cf-form-xs-height,
-    $cf-form-xs-padding
+    $cf-space-3xs
   );
 }
 
@@ -258,7 +246,7 @@ $list-item--background-dark: rgba($g0-obsidian, 0.09);
   @include listItemSizeModifier(
     $cf-form-sm-font,
     $cf-form-sm-height,
-    $cf-form-sm-padding
+    $cf-space-2xs
   );
 }
 
@@ -266,7 +254,7 @@ $list-item--background-dark: rgba($g0-obsidian, 0.09);
   @include listItemSizeModifier(
     $cf-form-md-font,
     $cf-form-md-height,
-    $cf-form-md-padding
+    $cf-space-xs
   );
 }
 
@@ -274,6 +262,6 @@ $list-item--background-dark: rgba($g0-obsidian, 0.09);
   @include listItemSizeModifier(
     $cf-form-lg-font,
     $cf-form-lg-height,
-    $cf-form-lg-padding
+    $cf-space-s
   );
 }
