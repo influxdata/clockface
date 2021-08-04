@@ -284,23 +284,19 @@ $cf-input--transition: background-color $cf-transition-default,
   border-color $cf-transition-default, color $cf-transition-default,
   box-shadow $cf-transition-default, color $cf-transition-default;
 
-$cf-input-background--default: $g2-kevlar;
-$cf-input-background--focused: $g2-kevlar;
-$cf-input-background--hover: $g2-kevlar;
+$cf-input-background--default: $cf-grey-5;
+$cf-input-background--focused: rgba($cf-grey-95, 0.15);
+$cf-input-background--hover: rgba($cf-grey-95, 0.15);
 $cf-input-background--disabled: $g3-castle;
 
-$cf-input-text--default: $g13-mist;
-$cf-input-text--focused: $g20-white;
-$cf-input-text--hover: $g15-platinum;
+$cf-input-text--default: $cf-white;
+$cf-input-text--focused: $cf-white;
+$cf-input-text--hover: $cf-white;
 $cf-input-text--disabled: $cf-empty-state-text;
 
 $cf-input-border--default: $g5-pepper;
-$cf-input-border--focused: $c-pool;
-$cf-input-border--hover: mix(
-  $cf-input-border--default,
-  $cf-input-border--focused,
-  50%
-);
+$cf-input-border--focused: rgba($c-pool, 0.75);
+$cf-input-border--hover: $g5-pepper;
 $cf-input-border--disabled: $g4-onyx;
 
 $cf-input-border--error: mix($cf-input-border--default, $c-dreamsicle, 70%);
@@ -313,7 +309,7 @@ $cf-input--status-z: $cf-input--shadow-z + 1;
 
 $cf-input--placeholder-text: $g9-mountain;
 
-$cf-input--box-shadow: 0 0 6px 0 $cf-input-border--focused;
+$cf-input--box-shadow: none;
 
 /*
    Card Variables
