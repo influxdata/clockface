@@ -8,9 +8,6 @@ import {ListContext} from './List'
 // Types
 import {InfluxColors} from '../../Types'
 
-// Utils
-import {getColorsFromGradient} from '../../Utils/colors'
-
 // Styles
 import './ListIndicator.scss'
 
@@ -24,13 +21,7 @@ export interface ListIndicatorProps {
 export const ListIndicator: FunctionComponent<ListIndicatorProps> = ({
   type,
 }) => {
-  const {
-    size,
-    selected,
-    listItemBackgroundColor,
-    listItemGradient,
-    listItemContrastColor,
-  } = useContext(ListItemContext)
+  const {size, selected} = useContext(ListItemContext)
   const {listContrastColor, listBackgroundColor} = useContext(ListContext)
 
   const indicatorClassname = classnames('cf-list-indicator', {
@@ -42,34 +33,9 @@ export const ListIndicator: FunctionComponent<ListIndicatorProps> = ({
     [`cf-list-indicator__${size}`]: size,
   })
 
-  let elementStyle
-
-  if (listItemBackgroundColor && type === 'checkbox') {
-    elementStyle = {
-      backgroundColor: InfluxColors.White,
-      boxShadow: `0 0 5px 1px ${listItemBackgroundColor}`,
-    }
-  }
-
-  if (listItemGradient && type === 'checkbox') {
-    const gradientColors = getColorsFromGradient(listItemGradient)
-
-    elementStyle = {
-      backgroundColor: InfluxColors.White,
-      boxShadow: `0 0 5px 1px ${gradientColors.stop}`,
-    }
-  }
-
-  if (listItemContrastColor === 'dark' && type === 'dot') {
-    elementStyle = {
-      backgroundColor: InfluxColors.Kevlar,
-      boxShadow: `0 0 5px 1px ${InfluxColors.Kevlar}`,
-    }
-  }
-
   return (
     <div className={indicatorClassname}>
-      <div className="cf-list-indicator--element" style={elementStyle} />
+      <div className="cf-list-indicator--element" />
     </div>
   )
 }

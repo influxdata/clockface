@@ -153,8 +153,7 @@
   }
 
   &:focus {
-    // box-shadow: 0 -1px 4px 1px $c-pool, 0 1px 6px 2px $c-star;
-    box-shadow: 0 0 0 2px rgba($cf-white, 0.5);
+    box-shadow: 0 0 0 2px rgba($c-pool, 0.75);
   }
 
   @if $tertiary {
@@ -188,10 +187,6 @@
   &.cf-button--loading,
   &.cf-button--loading:hover {
     box-shadow: 0 0 0 0;
-
-    &:after {
-      opacity: 1;
-    }
   }
 
   &.cf-button--disabled,
@@ -225,8 +220,8 @@
   @include buttonColorModifier(
     transparent,
     transparent,
-    $cf-grey-5,
-    $cf-grey-5,
+    $cf-grey-65,
+    $cf-grey-65,
     true
   );
 }
