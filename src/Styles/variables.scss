@@ -342,9 +342,9 @@ $cf-card--name-font-weight: $cf-font-weight--medium;
    Used in both Inputs and Forms
 */
 
-$cf-label--default: $g11-sidewalk;
-$cf-label--hover: $g15-platinum;
-$cf-label--active: $g18-cloud;
+$cf-label--default: $cf-white;
+$cf-label--hover: $cf-grey-95;
+$cf-label--active: $cf-white;
 
 /*
    Overlay Variables
@@ -412,18 +412,17 @@ $cf-tree-nav__toggle-icon-hover: $g13-mist;
 */
 
 @mixin createOverlayBase() {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    content: '';
-    border-radius: $cf-radius;
-    transition: opacity $cf-transition-default;
-    opacity: 0;
-    background-color: #ffffff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: '';
+  border-radius: $cf-radius;
+  transition: opacity $cf-transition-default;
+  opacity: 0;
+  background-color: #ffffff;
 }
-
 
 @mixin gradient-v($startColor, $endColor) {
   background: $startColor;

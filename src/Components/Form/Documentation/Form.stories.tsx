@@ -263,7 +263,7 @@ formStories.add(
       <div className="story--example">
         <Form.Footer ref={formFooterRef}>
           <Button text="Cancel" />
-          <Button text="Confirm" color={ComponentColor.Success} />
+          <Button text="Confirm" color={ComponentColor.Primary} />
         </Form.Footer>
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
@@ -458,7 +458,7 @@ formExampleStories.add(
                   >
                     {status => (
                       <Input
-                        size={ComponentSize.Medium}
+                        size={ComponentSize.Small}
                         placeholder="A user needs a name..."
                         value={text('Username', '')}
                         status={status}
@@ -478,7 +478,7 @@ formExampleStories.add(
                   >
                     {status => (
                       <Input
-                        size={ComponentSize.Medium}
+                        size={ComponentSize.Small}
                         placeholder="example@example.com"
                         value={text('Email', '')}
                         status={status}
@@ -492,7 +492,7 @@ formExampleStories.add(
                 <Grid.Column widthXS={Columns.Twelve}>
                   <Form.Element label="Title or Description" required={false}>
                     <Input
-                      size={ComponentSize.Medium}
+                      size={ComponentSize.Small}
                       placeholder="What role does this user play?"
                       value={text('Description', '')}
                       onChange={() => {
@@ -508,7 +508,7 @@ formExampleStories.add(
                         stretchToFitWidth={true}
                         direction={FlexDirection.Row}
                         alignItems={AlignItems.Center}
-                        margin={ComponentSize.Medium}
+                        margin={ComponentSize.Small}
                       >
                         <SlideToggle
                           active={boolean('Team Toggle', true)}
@@ -530,7 +530,7 @@ formExampleStories.add(
                     <Button
                       text="Create User"
                       color={ComponentColor.Primary}
-                      size={ComponentSize.Medium}
+                      size={ComponentSize.Small}
                       status={submitStatus()}
                     />
                   </Form.Footer>

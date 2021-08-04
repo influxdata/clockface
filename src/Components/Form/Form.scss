@@ -18,7 +18,7 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  margin-bottom: $cf-marg-b;
+  margin-bottom: $cf-space-s;
 }
 
 /*
@@ -30,22 +30,21 @@
 .cf-form--element-error {
   text-align: left;
   display: inline-block;
-  font-size: $cf-form-sm-font;
-  font-weight: $cf-font-weight--medium;
-  padding: 0 ($cf-form-sm-padding + $cf-border);
+  font-size: $cf-text-base-0;
+  font-weight: $cf-font-weight--regular;
   @extend %no-user-select;
 }
 
 .cf-form--label {
   width: 100%;
   color: $cf-label--default;
-  margin: 0 0 $cf-marg-a 0;
+  margin: 0 0 $cf-space-2xs 0;
   display: flex;
   align-items: center;
 }
 
 .cf-form--label-text {
-  margin-right: $cf-marg-b;
+  margin-right: $cf-space-2xs;
 
   &:only-child {
     margin-right: 0;
@@ -55,14 +54,14 @@
 .cf-form--help-text {
   line-height: 16px;
   color: $cf-label--default;
-  margin: $cf-marg-a 0 0 0;
+  margin: $cf-space-2xs 0 0 0;
   font-weight: $cf-font-weight--regular;
 }
 
 .cf-form--element-error {
   line-height: 16px;
   color: $c-dreamsicle;
-  margin: $cf-marg-a 0 0 0;
+  margin: $cf-space-2xs 0 0 0;
   word-break: break-all;
   word-wrap: break-word;
 }
@@ -81,7 +80,7 @@
 
   &-line {
     height: $cf-border;
-    background-color: $cf-card--border;
+    background-color: $cf-grey-25;
     margin: (($cf-form-sm-height - $cf-marg-b) / 2) 0;
     border-radius: $cf-border / 2;
   }
@@ -95,11 +94,11 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-top: $cf-form-sm-height - $cf-marg-b;
+  margin-top: $cf-space-m;
   margin-bottom: 0;
 
   > * {
-    margin: 0 $cf-marg-a;
+    margin: 0 $cf-space-2xs;
   }
 }
 
@@ -111,6 +110,6 @@
   width: 100%;
   border-radius: $cf-radius;
   background-color: $cf-card-background--default;
-  padding: $cf-marg-b ($cf-marg-b + $cf-marg-a);
+  padding: $cf-space-xs;
   min-height: $cf-form-sm-height;
 }
