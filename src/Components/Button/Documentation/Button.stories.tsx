@@ -705,10 +705,10 @@ buttonExampleStories.add(
               {[
                 {color: ComponentColor.Default},
                 {color: ComponentColor.Primary},
-                {color: ComponentColor.Success},
                 {color: ComponentColor.Danger},
                 {color: ComponentColor.Tertiary},
                 {color: ComponentColor.Colorless},
+                {color: ComponentColor.Success},
                 {color: ComponentColor.Secondary},
                 {color: ComponentColor.Warning},
               ].map((props, i) => (
