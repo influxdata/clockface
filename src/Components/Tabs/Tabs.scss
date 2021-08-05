@@ -13,10 +13,6 @@ $cf-tab--border-color: $cf-grey-35;
 
 $cf-tab-dropdown--label: $cf-grey-55;
 $cf-tab-dropdown--label-hover: $cf-white;
-$cf-tab-dropdown--menu-bg-a: $c-void;
-$cf-tab-dropdown--menu-bg-b: $c-sapphire;
-$cf-tab-dropdown--item-bg-a: $c-star;
-$cf-tab-dropdown--item-bg-b: $c-pool;
 $cf-tab-dropdown--item-text: $cf-white;
 $cf-tab-dropdown--item-text-active: $cf-white;
 
@@ -226,16 +222,13 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
   ------------------------------------------------------------------------------
 */
 
-.cf-tabs--tab-dismiss-circle {
-  display: none;
-}
-
 .cf-tabs--tab-dismiss {
   position: relative;
   background-color: transparent;
   border: 0;
   outline: none;
   width: $cf-space-xs;
+  height: 100%;
 
   &:before,
   &:after {
@@ -377,73 +370,8 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
 
 // Update styles for dismiss button within dropdown mode
 .cf-tabs--dropdown-menu .cf-tabs--tab .cf-tabs--tab-dismiss {
-  opacity: 1;
   position: absolute;
   top: 50%;
-
-  &:before,
-  &:after {
-    background-color: $cf-tab-dropdown--menu-bg-b;
-  }
-
-  .cf-tabs--tab-dismiss-circle {
-    opacity: 1;
-    background-color: $cf-tab-dropdown--item-text;
-  }
-}
-
-.cf-tabs--dropdown-menu .cf-tabs--tab .cf-tabs--tab-dismiss:hover {
-  .cf-tabs--tab-dismiss-circle {
-    background-color: $cf-tab-dropdown--item-text-active;
-  }
-}
-
-.cf-tabs--dropdown-menu .cf-tabs--tab__active .cf-tabs--tab-dismiss,
-.cf-tabs--dropdown-menu .cf-tabs--tab__active .cf-tabs--tab-dismiss:hover {
-  .cf-tabs--tab-dismiss-circle {
-    background-color: $cf-tab-dropdown--item-text-active;
-  }
-}
-
-.cf-tabs--dropdown__align-left .cf-tabs--tab .cf-tabs--tab-dismiss,
-.cf-tabs--dropdown__align-left .cf-tabs--tab .cf-tabs--tab-dismiss:hover,
-.cf-tabs--dropdown__align-center .cf-tabs--tab .cf-tabs--tab-dismiss,
-.cf-tabs--dropdown__align-center .cf-tabs--tab .cf-tabs--tab-dismiss:hover {
-  &:before,
-  &:after {
-    background-color: $cf-tab-dropdown--menu-bg-b;
-  }
-}
-.cf-tabs--dropdown__align-left .cf-tabs--tab__active .cf-tabs--tab-dismiss,
-.cf-tabs--dropdown__align-left
-  .cf-tabs--tab__active
-  .cf-tabs--tab-dismiss:hover,
-.cf-tabs--dropdown__align-center .cf-tabs--tab__active .cf-tabs--tab-dismiss,
-.cf-tabs--dropdown__align-center
-  .cf-tabs--tab__active
-  .cf-tabs--tab-dismiss:hover {
-  &:before,
-  &:after {
-    background-color: $cf-tab-dropdown--item-bg-b;
-  }
-}
-
-.cf-tabs--dropdown__align-right .cf-tabs--tab .cf-tabs--tab-dismiss,
-.cf-tabs--dropdown__align-right .cf-tabs--tab .cf-tabs--tab-dismiss:hover {
-  &:before,
-  &:after {
-    background-color: $cf-tab-dropdown--menu-bg-a;
-  }
-}
-
-.cf-tabs--dropdown__align-right .cf-tabs--tab__active .cf-tabs--tab-dismiss,
-.cf-tabs--dropdown__align-right
-  .cf-tabs--tab__active
-  .cf-tabs--tab-dismiss:hover {
-  &:before,
-  &:after {
-    background-color: $cf-tab-dropdown--item-bg-a;
-  }
 }
 
 @mixin responsiveTabSizeModifier($fontSize, $tabPadding, $tabHeight) {
