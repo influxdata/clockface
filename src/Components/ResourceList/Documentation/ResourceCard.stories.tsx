@@ -101,7 +101,7 @@ resourceListCardStories.add(
     }
 
     const resourceCardExampleStyle = {
-      width: '500px',
+      width: '700px',
     }
 
     return (
@@ -118,53 +118,50 @@ resourceListCardStories.add(
             'alwaysVisible'
           )}
           style={object('style', resourceCardExampleStyle)}
-          direction={
-            FlexDirection[
-              select('direction', mapEnumKeys(FlexDirection), 'Column')
-            ]
-          }
-          alignItems={
-            AlignItems[select('alignItems', mapEnumKeys(AlignItems), 'Stretch')]
-          }
-          justifyContent={
-            JustifyContent[
-              select(
-                'justifyContent ',
-                mapEnumKeys(JustifyContent),
-                'FlexStart'
-              )
-            ]
-          }
-          margin={
-            ComponentSize[select('margin', mapEnumKeys(ComponentSize), 'Small')]
-          }
           contextMenu={
-            <div
-              className="mockComponent"
-              style={{width: '90px', height: '26px'}}
-            >
-              Menu
-            </div>
+            <FlexBox margin={ComponentSize.ExtraSmall}>
+              <span>
+                <SquareButton
+                  size={ComponentSize.ExtraSmall}
+                  icon={IconFont.Duplicate}
+                  color={ComponentColor.Colorless}
+                />
+              </span>
+              <span>
+                <SquareButton
+                  size={ComponentSize.ExtraSmall}
+                  icon={IconFont.Trash}
+                  color={ComponentColor.Colorless}
+                />
+              </span>
+              <span>
+                <SquareButton
+                  size={ComponentSize.ExtraSmall}
+                  icon={IconFont.CogThick}
+                  color={ComponentColor.Colorless}
+                />
+              </span>
+            </FlexBox>
           }
           highlightOnHover={boolean('highlightOnHover', true)}
         >
-          <ResourceCardEditableName
+          <ResourceCard.EditableName
             ref={resourceCardNameRef}
             name={name}
             onUpdate={setName}
             onClick={() => alert('<ResourceCardEditableName /> onClick fired!')}
           />
-          <ResourceCardEditableDescription
+          <ResourceCard.EditableDescription
             ref={resourceCardEditableDescriptionRef}
             description={description}
             onUpdate={setDescription}
             placeholder={text('description placeholder', 'Enter a description')}
           />
-          <ResourceCardMeta ref={resourceCardMetaRef}>
+          <ResourceCard.Meta ref={resourceCardMetaRef}>
             {array('metaData', resourceCardMeta).map(meta => (
               <span key={meta}>{meta}</span>
             ))}
-          </ResourceCardMeta>
+          </ResourceCard.Meta>
         </ResourceCard.ResourceCard>
       </div>
     )
