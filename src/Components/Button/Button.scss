@@ -208,7 +208,8 @@
   }
 }
 
-.cf-button-default {
+.cf-button-default,
+.cf-button-secondary {
   @include buttonColorModifier(
     $cf-grey-15,
     $cf-grey-15,
@@ -216,22 +217,12 @@
     $cf-white
   );
 }
-.cf-button-primary {
-  @include buttonColorModifier(
-    #0098f0,
-    #8e1fc3,
-    $g20-white,
-    $g20-white
-  );
+
+.cf-button-primary,
+.cf-button-success {
+  @include buttonColorModifier($c-pool, $c-amethyst, $cf-white, $cf-white);
 }
-.cf-button-secondary {
-  @include buttonColorModifier(
-    $cf-grey-35,
-    $cf-grey-35,
-    $g20-white,
-    $g20-white
-  );
-}
+
 .cf-button-tertiary {
   @include buttonColorModifier(
     transparent,
@@ -241,23 +232,8 @@
     true
   );
 }
-.cf-button-success {
-  @include buttonColorModifier(
-    #02714a,
-    #50cb70,
 
-    $g20-white,
-    $g20-white
-  );
-}
-.cf-button-warning {
-  @include buttonColorModifier(
-    $c-topaz,
-    $c-pineapple,
-    $g4-onyx,
-    $g4-onyx
-  );
-}
+.cf-button-warning,
 .cf-button-danger {
   @include buttonColorModifier(
     #e85b1c,
@@ -267,6 +243,7 @@
     $g20-white
   );
 }
+
 .cf-button-colorless {
   background: transparent;
   color: inherit;
