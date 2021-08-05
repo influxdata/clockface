@@ -86,7 +86,7 @@
     &.cf-flex-box__justify-flex-start {
       > * {
         margin-right: $margin;
-  
+
         &:last-child {
           margin-right: 0;
         }
@@ -95,7 +95,7 @@
     &.cf-flex-box__justify-flex-end {
       > * {
         margin-left: $margin;
-  
+
         &:first-child {
           margin-left: 0;
         }
@@ -107,7 +107,7 @@
       > * {
         margin-left: $margin / 2;
         margin-right: $margin / 2;
-  
+
         &:first-child {
           margin-left: 0;
         }
@@ -123,7 +123,7 @@
     &.cf-flex-box__justify-flex-start {
       > * {
         margin-left: $margin;
-  
+
         &:last-child {
           margin-left: 0;
         }
@@ -132,7 +132,7 @@
     &.cf-flex-box__justify-flex-end {
       > * {
         margin-right: $margin;
-  
+
         &:last-child {
           margin-right: 0;
         }
@@ -144,7 +144,7 @@
       > * {
         margin-right: $margin / 2;
         margin-left: $margin / 2;
-  
+
         &:first-child {
           margin-right: 0;
         }
@@ -160,7 +160,7 @@
     &.cf-flex-box__justify-flex-start {
       > * {
         margin-bottom: $margin;
-  
+
         &:last-child {
           margin-bottom: 0;
         }
@@ -169,7 +169,7 @@
     &.cf-flex-box__justify-flex-end {
       > * {
         margin-top: $margin;
-  
+
         &:first-child {
           margin-top: 0;
         }
@@ -181,7 +181,7 @@
       > * {
         margin-top: $margin / 2;
         margin-bottom: $margin / 2;
-  
+
         &:first-child {
           margin-top: 0;
         }
@@ -197,7 +197,7 @@
     &.cf-flex-box__justify-flex-start {
       > * {
         margin-top: $margin;
-  
+
         &:last-child {
           margin-top: 0;
         }
@@ -206,7 +206,7 @@
     &.cf-flex-box__justify-flex-end {
       > * {
         margin-bottom: $margin;
-  
+
         &:last-child {
           margin-bottom: 0;
         }
@@ -218,7 +218,7 @@
       > * {
         margin-bottom: $margin / 2;
         margin-top: $margin / 2;
-  
+
         &:first-child {
           margin-bottom: 0;
         }
@@ -235,11 +235,11 @@
   @include flexBoxMargins($cf-border);
 }
 .cf-flex-box__margin-sm {
-  @include flexBoxMargins($cf-marg-a);
+  @include flexBoxMargins($cf-space-3xs);
 }
 .cf-flex-box__margin-md {
-  @include flexBoxMargins($cf-marg-b);
+  @include flexBoxMargins($cf-space-2xs);
 }
 .cf-flex-box__margin-lg {
-  @include flexBoxMargins($cf-marg-c);
+  @include flexBoxMargins($cf-space-s);
 }
