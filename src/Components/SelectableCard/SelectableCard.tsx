@@ -102,7 +102,7 @@ export const SelectableCard = forwardRef<
         tabIndex={disabled ? undefined : tabIndex}
       >
         <label className="cf-selectable-card--label" htmlFor={id}>
-          {label}
+          <span>{label}</span>
           {icon && (
             <span className="cf-selectable-card--indicator">
               <Icon glyph={icon} className="cf-selectable-card--icon" />
