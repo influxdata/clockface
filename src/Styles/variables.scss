@@ -418,6 +418,7 @@ $cf-tree-nav__toggle-icon-hover: $g13-mist;
   transition: opacity $cf-transition-default;
   opacity: 0;
   background-color: #ffffff;
+  pointer-events: none;
 }
 
 @mixin gradient-v($startColor, $endColor) {
