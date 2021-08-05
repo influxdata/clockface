@@ -65,17 +65,8 @@ selectableCardStories.add(
           ref={selectableCard1Ref}
           style={object('style', exampleStyle)}
           id={text('id', 'Titular Title')}
-          icon={
-            IconFont[
-              select(
-                'icon',
-                {None: 'none', ...mapEnumKeys(IconFont)},
-                'Checkmark'
-              )
-            ]
-          }
           label={text('label', 'Titular Title')}
-          selected={boolean('selected', true)}
+          selected={false}
           disabled={boolean('disabled', false)}
           fontSize={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
@@ -90,21 +81,12 @@ selectableCardStories.add(
           }}
         />
         <SelectableCard
-          ref={selectableCard2Ref}
+          ref={selectableCard1Ref}
           style={object('style', exampleStyle)}
-          id="selected-card"
-          icon={
-            IconFont[
-              select(
-                'icon',
-                {None: 'none', ...mapEnumKeys(IconFont)},
-                'Checkmark'
-              )
-            ]
-          }
-          label="Selected"
+          id={text('id', 'Titular Title')}
+          label={text('label', 'Titular Title')}
           selected={true}
-          disabled={false}
+          disabled={boolean('disabled', false)}
           fontSize={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
@@ -116,39 +98,7 @@ selectableCardStories.add(
           onClick={() => {
             alert('card clicked!')
           }}
-        >
-          <div className="mockComponent stretch">Image</div>
-        </SelectableCard>
-        <SelectableCard
-          ref={selectableCard3Ref}
-          style={object('style', exampleStyle)}
-          id="selected-disabled-card"
-          icon={
-            IconFont[
-              select(
-                'icon',
-                {None: 'none', ...mapEnumKeys(IconFont)},
-                'Checkmark'
-              )
-            ]
-          }
-          label="Selected + Disabled"
-          selected={true}
-          disabled={true}
-          fontSize={
-            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-          }
-          color={
-            ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Success')
-            ]
-          }
-          onClick={() => {
-            alert('card clicked!')
-          }}
-        >
-          <div className="mockComponent stretch">Image</div>
-        </SelectableCard>
+        />
         <SelectableCard
           ref={selectableCard4Ref}
           style={object('style', exampleStyle)}
@@ -180,6 +130,36 @@ selectableCardStories.add(
           <div className="mockComponent stretch">Image</div>
         </SelectableCard>
         <SelectableCard
+          ref={selectableCard2Ref}
+          style={object('style', exampleStyle)}
+          id="selected-card"
+          icon={
+            IconFont[
+              select(
+                'icon',
+                {None: 'none', ...mapEnumKeys(IconFont)},
+                'Checkmark'
+              )
+            ]
+          }
+          label="Selected"
+          selected={true}
+          disabled={false}
+          fontSize={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          color={
+            ComponentColor[
+              select('color', mapEnumKeys(ComponentColor), 'Success')
+            ]
+          }
+          onClick={() => {
+            alert('card clicked!')
+          }}
+        >
+          <div className="mockComponent stretch">Image</div>
+        </SelectableCard>
+        <SelectableCard
           ref={selectableCard5Ref}
           style={object('style', exampleStyle)}
           id="disabled-card"
@@ -194,6 +174,36 @@ selectableCardStories.add(
           }
           label="Disabled"
           selected={false}
+          disabled={true}
+          fontSize={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          color={
+            ComponentColor[
+              select('color', mapEnumKeys(ComponentColor), 'Success')
+            ]
+          }
+          onClick={() => {
+            alert('card clicked!')
+          }}
+        >
+          <div className="mockComponent stretch">Image</div>
+        </SelectableCard>
+        <SelectableCard
+          ref={selectableCard3Ref}
+          style={object('style', exampleStyle)}
+          id="selected-disabled-card"
+          icon={
+            IconFont[
+              select(
+                'icon',
+                {None: 'none', ...mapEnumKeys(IconFont)},
+                'Checkmark'
+              )
+            ]
+          }
+          label="Selected + Disabled"
+          selected={true}
           disabled={true}
           fontSize={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
