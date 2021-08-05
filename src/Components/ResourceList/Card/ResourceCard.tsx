@@ -40,7 +40,7 @@ export const ResourceCardRoot = forwardRef<ResourceCardRef, ResourceCardProps>(
       contextMenu,
       justifyContent,
       highlightOnHover = true,
-      contextMenuInteraction = 'showOnHover',
+      contextMenuInteraction = 'alwaysVisible',
     },
     ref
   ) => {
