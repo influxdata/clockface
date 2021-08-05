@@ -17,19 +17,10 @@
 .cf-popover--contents {
   @extend %backdrop-blur;
   font-size: $cf-text-base;
-  // background-color: $g2-kevlar;
-  // background-color: rbga($g2-kevlar, 0.1);
   border-radius: $cf-radius + $cf-border;
   position: relative;
-
-  .cf-popover__solid & {
-    box-shadow: 0 2px 5px 0.6px rgba($g0-obsidian, 0.2);
-  }
-
-  .cf-popover__outline & {
-    border-style: solid;
-    border-width: $cf-border;
-  }
+  color: $cf-white;
+  box-shadow: 0px 0px 16px rgba($cf-grey-95, 0.3);
 }
 
 .cf-popover__outline button.cf-dismiss-button {
@@ -38,9 +29,11 @@
 }
 
 .cf-popover--caret {
+  @extend %backdrop-blur;
   position: absolute;
-  border-color: transparent;
-  border-style: solid;
+  clip-path: polygon(50% 50%, 0% 100%, 100% 100%);
+  width: 16px;
+  height: 16px;
 }
 
 /*
@@ -48,48 +41,32 @@
   ------------------------------------------------------------------------------
 */
 
-@mixin popoverColorModifier($solidColor, $outlineColor, $textColor) {
-  // Solid Type
-  &.cf-popover__solid .cf-popover--contents {
-    @extend %backdrop-blur;
-    background-color: rgba($solidColor, 0.1);
-    color: $textColor;
+@mixin popoverColorModifier($backgroundColor) {
+  .cf-popover--caret,
+  .cf-popover--contents {
+    background-color: rgba($cf-grey-15, 0.975);
   }
-  &.cf-popover__solid .cf-popover--caret {
-    border-bottom-color: $solidColor;
-  }
-  // Outline Type
-  &.cf-popover__outline .cf-popover--contents {
-    @extend %backdrop-blur;
-    border-color: $outlineColor;
-    background-color: rgba($solidColor, 0.1);
-    color: $textColor;
-  }
-  &.cf-popover__outline .cf-popover--caret {
-    border-bottom-color: $outlineColor;
+
+  @supports (backdrop-filter: blur(1px)) {
+    .cf-popover--caret,
+    .cf-popover--contents {
+      background-color: rgba($backgroundColor, 0.1);
+    }
+
+    .cf-popover--contents {
+      box-shadow: 0px 32px 16px rgba($cf-grey-5, 0.5);
+    }
   }
 }
 
-.cf-popover__default {
-  @include popoverColorModifier($cf-grey-45, $cf-grey-25, $g20-white);
-}
-.cf-popover__primary {
-  @include popoverColorModifier($cf-grey-45, $cf-grey-25, $g20-white);
-}
-.cf-popover__secondary {
-  @include popoverColorModifier($c-star, $c-shadow, $g20-white);
-}
-.cf-popover__tertiary {
-  @include popoverColorModifier($cf-grey-45, $cf-grey-25, $g20-white);
-}
-.cf-popover__success {
-  @include popoverColorModifier($c-rainforest, $c-gypsy, $g20-white);
-}
-.cf-popover__warning {
-  @include popoverColorModifier($c-pineapple, $c-oak, $g20-white);
-}
+.cf-popover__default,
+.cf-popover__primary,
+.cf-popover__secondary,
+.cf-popover__tertiary,
+.cf-popover__success,
+.cf-popover__warning,
 .cf-popover__danger {
-  @include popoverColorModifier($c-curacao, $c-basalt, $g20-white);
+  @include popoverColorModifier($cf-grey-95);
 }
 
 /*
@@ -114,11 +91,10 @@
 */
 
 .cf-popover--contents__default-styles {
-  padding: $cf-marg-c;
+  padding: $cf-space-s;
   font-size: $cf-text-base;
-  line-height: 1.5em;
   font-weight: $cf-font-weight--medium;
-  color: $g13-mist;
+  color: $cf-white;
 
   > *:first-child {
     margin-top: 0;

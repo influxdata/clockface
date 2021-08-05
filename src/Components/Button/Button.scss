@@ -62,9 +62,9 @@
   Size Modifiers
   ------------------------------------------------------------------------------
 */
-@mixin buttonSizeModifier($fontSize, $padding, $height) {
+@mixin buttonSizeModifier($fontSize, $paddingH, $height) {
   font-size: $fontSize;
-  padding: 0 $padding;
+  padding: 0 $paddingH;
   height: $height;
 
   .cf-button-spinner {
@@ -80,7 +80,7 @@
 .cf-button-xs {
   @include buttonSizeModifier(
     $cf-form-xs-font,
-    $cf-form-xs-padding,
+    $cf-space-2xs,
     $cf-form-xs-height
   );
   .cf-button-icon {
@@ -90,21 +90,21 @@
 .cf-button-sm {
   @include buttonSizeModifier(
     $cf-form-sm-font,
-    $cf-form-sm-padding,
+    $cf-space-xs,
     $cf-form-sm-height
   );
 }
 .cf-button-md {
   @include buttonSizeModifier(
     $cf-form-md-font,
-    $cf-form-md-padding,
+    $cf-space-s,
     $cf-form-md-height
   );
 }
 .cf-button-lg {
   @include buttonSizeModifier(
     $cf-form-lg-font,
-    $cf-form-lg-padding,
+    $cf-space-m,
     $cf-form-lg-height
   );
 }
@@ -210,17 +210,15 @@
 
 .cf-button-default,
 .cf-button-secondary {
-  @include buttonColorModifier(
-    $cf-grey-15,
-    $cf-grey-15,
-    $g15-platinum,
-    $cf-white
-  );
+  @include buttonColorModifier($cf-grey-35, $cf-grey-35, $cf-white, $cf-white);
 }
 
-.cf-button-primary,
-.cf-button-success {
+.cf-button-primary {
   @include buttonColorModifier($c-pool, $c-amethyst, $cf-white, $cf-white);
+}
+
+.cf-button-success {
+  @include buttonColorModifier($c-rainforest, $c-pool, $cf-white, $cf-white);
 }
 
 .cf-button-tertiary {

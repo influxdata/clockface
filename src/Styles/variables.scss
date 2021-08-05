@@ -239,19 +239,19 @@ $cf-grid--breakpoint-lg: 1500px;
    Dropdown, Input, etc.
 */
 
-$cf-form-xs-height: 32px;
+$cf-form-xs-height: 33px;
 $cf-form-xs-padding: $cf-space-xs;
-$cf-form-xs-font: #{var(--step--1)};
+$cf-form-xs-font: #{var(--step-0)};
 
-$cf-form-sm-height: 39px;
-$cf-form-sm-padding: $cf-space-s;
+$cf-form-sm-height: 41px;
+$cf-form-sm-padding: $cf-space-xs;
 $cf-form-sm-font: #{var(--step-0)};
 
 $cf-form-md-height: 44px;
 $cf-form-md-padding: $cf-space-s;
 $cf-form-md-font: #{var(--step-1)};
 
-$cf-form-lg-height: 50px;
+$cf-form-lg-height: 52px;
 $cf-form-lg-padding: $cf-space-m;
 $cf-form-lg-font: #{var(--step-1)};
 
@@ -621,12 +621,15 @@ $cf-scrollbar-offset: 3px;
   backdrop-filter: blur(28px);
 }
 
-%backdrop-blur-dark {
-  @extend %backdrop-blur;
+%backdrop-bg {
   background-color: rgba($cf-grey-95, 0.1);
+
+  @supports (backdrop-filter: blur(1px)) {
+    background-color: rgba($cf-grey-15, 0.9);
+  }
 }
 
-%backdrop-blur-medium {
+%backdrop-blur-dark {
   @extend %backdrop-blur;
-  background-color: rgba($cf-grey-45, 0.15);
+  @extend %backdrop-bg;
 }
