@@ -69,9 +69,8 @@ export const Tab = forwardRef<TabRef, TabProps>(
             className="cf-tabs--tab-dismiss"
             onClick={handleDismissClick}
             type="button"
-          >
-            <div className="cf-tabs--tab-dismiss-circle" />
-          </button>
+            aria-label="Dismiss"
+          ></button>
         )}
         <div className="cf-tabs--state-indicator" />
       </>
