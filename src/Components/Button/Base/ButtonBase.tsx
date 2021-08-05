@@ -110,7 +110,7 @@ export const ButtonBase = forwardRef<ButtonBaseRef, ButtonBaseProps>(
         style={style}
         ref={ref}
       >
-        {children}
+        <span>{children}</span>
       </button>
     )
   }

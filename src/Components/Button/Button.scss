@@ -115,7 +115,13 @@
 */
 .cf-button-square {
   padding: 0;
-  text-align: center;
+
+  & > * {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: $cf-space-3xs;
+  }
 
   &.cf-button-xs {
     width: $cf-space-m;
