@@ -22,16 +22,12 @@
 }
 
 .cf-resource-name--text__link {
-  color: $cf-link-default;
-  transition: color $cf-transition-default;
-
   .cf-resource-card__disabled & {
     opacity: 0.5;
   }
 
   &:hover {
     cursor: pointer;
-    color: $cf-link-default-hover;
   }
 }
 
