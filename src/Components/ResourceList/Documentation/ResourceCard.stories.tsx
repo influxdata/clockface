@@ -115,7 +115,7 @@ resourceListCardStories.add(
           contextMenuInteraction={select(
             'contextMenuInteraction',
             ['alwaysVisible', 'showOnHover'],
-            'showOnHover'
+            'alwaysVisible'
           )}
           style={object('style', resourceCardExampleStyle)}
           direction={

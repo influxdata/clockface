@@ -14,13 +14,17 @@
   border-radius: $cf-radius;
   padding: $cf-space-m;
   @extend %panel-shadow;
-  // grid-template-columns: 1fr 100px;
 }
 
 .cf-resource-card--context-menu {
   position: absolute;
   top: $cf-space-m;
   right: $cf-space-m;
+  transition: opacity $cf-transition-default;
+}
+
+.cf-resource-card__context-hover:not(:hover) .cf-resource-card--context-menu {
+  opacity: 0;
 }
 
 /*
@@ -29,7 +33,7 @@
 */
 
 .cf-resource-card.cf-resource-card__disabled {
-  opacity: 0.6;
+  opacity: $cf-disabled-opacity;
 }
 
 .cf-resource-card.cf-resource-card__disabled {
