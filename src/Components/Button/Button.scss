@@ -207,12 +207,9 @@
   @include buttonColorModifier($cf-grey-35, $cf-grey-35, $cf-white, $cf-white);
 }
 
-.cf-button-primary {
-  @include buttonColorModifier($c-pool, $c-amethyst, $cf-white, $cf-white);
-}
-
+.cf-button-primary,
 .cf-button-success {
-  @include buttonColorModifier($c-rainforest, $c-pool, $cf-white, $cf-white);
+  @include buttonColorModifier($c-pool, $c-amethyst, $cf-white, $cf-white);
 }
 
 .cf-button-tertiary {
@@ -227,7 +224,7 @@
 
 .cf-button-warning,
 .cf-button-danger {
-  @include buttonColorModifier($c-topaz, $c-ruby, $cf-white, $cf-white);
+  @include buttonColorModifier($c-ruby, $c-topaz, $cf-white, $cf-white);
 }
 
 .cf-button-colorless {
