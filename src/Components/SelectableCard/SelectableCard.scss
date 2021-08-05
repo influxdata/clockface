@@ -97,17 +97,20 @@ $selectable-card--label: $cf-grey-75;
 .cf-selectable-card--label {
   cursor: inherit;
   display: block;
-  justify-content: center;
-  align-items: center;
   text-align: left;
   width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   color: $selectable-card--label;
   transition: color $cf-transition-default;
   font-weight: $cf-font-weight--medium;
   position: relative;
+
+  & > :first-child {
+    width: calc(100% - #{$cf-space-xs});
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
   &:after {
     @include createOverlayBase();
@@ -183,11 +186,11 @@ $selectable-card--label: $cf-grey-75;
 @mixin selectableCardSizeModifier($fontSize, $padding) {
   .cf-selectable-card--label {
     font-size: $fontSize;
-    padding: $padding $cf-space-s;
+    padding: $padding 0 $padding $cf-space-s;
   }
 
   &.cf-selectable-card__has-icon .cf-selectable-card--label {
-    padding-right: #{($cf-space-s * 2) + $cf-space-xs};
+    padding-right: $cf-space-s * 2;
   }
 
   .cf-selectable-card--children {
