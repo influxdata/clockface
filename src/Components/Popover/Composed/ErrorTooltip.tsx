@@ -69,7 +69,7 @@ export const ErrorTooltip = forwardRef<ErrorTooltipRef, ErrorTooltipProps>(
           <Icon glyph={IconFont.AlertTriangle} />
         </div>
         <Popover
-          distanceFromTrigger={8}
+          distanceFromTrigger={16}
           triggerRef={triggerRef}
           showEvent={PopoverInteraction.Hover}
           hideEvent={PopoverInteraction.Hover}
@@ -80,7 +80,7 @@ export const ErrorTooltip = forwardRef<ErrorTooltipRef, ErrorTooltipProps>(
           appearance={Appearance.Outline}
           id={id}
           position={position}
-          caretSize={6}
+          caretSize={8}
         />
       </span>
     )
