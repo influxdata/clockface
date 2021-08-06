@@ -52,15 +52,17 @@
 }
 
 .cf-form--help-text {
-  line-height: 16px;
-  color: $cf-label--default;
-  margin: $cf-space-2xs 0 0 0;
+  color: $cf-grey-65;
+  margin: $cf-space-2xs 0 0;
   font-weight: $cf-font-weight--regular;
 }
 
+.cf-form--label + .cf-form--help-text {
+  margin: 0 0 $cf-space-s;
+}
+
 .cf-form--element-error {
-  line-height: 16px;
-  color: $c-dreamsicle;
+  color: $c-fire;
   margin: $cf-space-2xs 0 0 0;
   word-break: break-all;
   word-wrap: break-word;
