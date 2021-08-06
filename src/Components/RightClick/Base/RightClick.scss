@@ -53,7 +53,7 @@
   &.cf-right-click--menu-item__disabled,
   &.cf-right-click--menu-item__disabled:hover {
     cursor: not-allowed;
-    opacity: 0.5;
+    opacity: $cf-disabled-opacity;
     color: $g8-storm;
     background-color: transparent;
   }

@@ -226,7 +226,7 @@ $dropdown-item--padding-v: $cf-space-2xs;
 .cf-dropdown-link-item.cf-dropdown-item__disabled a:active,
 .cf-dropdown-link-item.cf-dropdown-item__disabled a:hover {
   cursor: not-allowed;
-  opacity: 0.5;
+  opacity: $cf-disabled-opacity;
 }
 
 /*

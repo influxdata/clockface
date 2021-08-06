@@ -347,7 +347,7 @@ $slider-hover: $g17-whisper;
 .cf-range-slider--input.cf-input__disabled {
   border-color: $slider-track-disabled;
   cursor: not-allowed;
-  opacity: 0.5;
+  opacity: $cf-disabled-opacity;
 
   &:hover ~ .cf-range-slider--focus {
     border-color: $slider-track-disabled;
