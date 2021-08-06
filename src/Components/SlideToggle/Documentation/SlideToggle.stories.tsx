@@ -87,7 +87,7 @@ slideToggleExampleStories.add(
         margin={ComponentSize.Medium}
       >
         <InputLabel
-          wrapText={boolean('Left Label: wrapText', false)}
+          wrapText={boolean('Left Label: wrapText', true)}
           active={!boolean('active', false)}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
@@ -108,7 +108,7 @@ slideToggleExampleStories.add(
           }
         />
         <InputLabel
-          wrapText={boolean('Right Label: wrapText', false)}
+          wrapText={boolean('Right Label: wrapText', true)}
           active={boolean('active', false)}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
