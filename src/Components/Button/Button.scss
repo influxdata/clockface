@@ -37,6 +37,10 @@
     cursor: pointer;
   }
 
+  &:not([disabled]):hover:after {
+    opacity: $cf-hover-active-opacity;
+  }
+
   &[disabled]:hover {
     cursor: default;
   }
@@ -152,10 +156,6 @@
 
   &:hover {
     color: $textHover;
-  }
-
-  &:hover:after {
-    opacity: $cf-hover-active-opacity;
   }
 
   &:focus {
