@@ -153,7 +153,7 @@
   }
 
   &:focus {
-    box-shadow: 0 0 0 2px rgba($c-pool, 0.75);
+    @include focus-shadow();
   }
 
   @if $tertiary {

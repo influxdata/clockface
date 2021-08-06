@@ -70,6 +70,7 @@ export const SelectableCard = forwardRef<
     const selectableCardClass = classnames('cf-selectable-card', {
       'cf-selectable-card__selected': selected,
       'cf-selectable-card__disabled': disabled,
+      'cf-selectable-card__has-icon': icon,
       [`cf-selectable-card__${fontSize}`]: fontSize,
       [`cf-selectable-card__${color}`]: color,
       [`${className}`]: className,
@@ -101,13 +102,17 @@ export const SelectableCard = forwardRef<
         tabIndex={disabled ? undefined : tabIndex}
       >
         <label className="cf-selectable-card--label" htmlFor={id}>
-          {label}
+          <span>{label}</span>
+          {icon && (
+            <span className="cf-selectable-card--indicator">
+              <Icon glyph={icon} className="cf-selectable-card--icon" />
+            </span>
+          )}
         </label>
         <div className="cf-selectable-card--body">
           {childrenExist && (
             <div className="cf-selectable-card--children">{children}</div>
           )}
-          {icon && <Icon glyph={icon} className="cf-selectable-card--icon" />}
           <input
             className="cf-selectable-card--hidden-input"
             id={id}
@@ -117,8 +122,9 @@ export const SelectableCard = forwardRef<
             value={label}
             defaultChecked={selected}
             disabled={disabled}
-            tabIndex={-1}
+            {...(tabIndex ? {tabIndex: -1} : {})}
           />
+          <span className="cf-selectable-card--focus" />
         </div>
       </div>
     )
