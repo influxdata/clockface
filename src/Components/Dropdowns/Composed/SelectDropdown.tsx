@@ -33,6 +33,8 @@ export interface SelectDropdownProps extends StandardFunctionProps {
   buttonSize?: ComponentSize
   /** Optional icon to render in button */
   buttonIcon?: IconFont
+  /** Optional choice of item indicator */
+  indicator?: DropdownItemType
   /** Optional theme of menu */
   menuTheme?: DropdownMenuTheme
   /** Optional maximum pixel height menu */
@@ -59,6 +61,7 @@ export const SelectDropdown = forwardRef<
       menuTheme = DropdownMenuTheme.Onyx,
       buttonSize = ComponentSize.Small,
       buttonIcon,
+      indicator = DropdownItemType.Dot,
       buttonColor = ComponentColor.Default,
       buttonStatus = ComponentStatus.Default,
       menuMaxHeight,
@@ -101,7 +104,7 @@ export const SelectDropdown = forwardRef<
           return (
             <Dropdown.Item
               key={o}
-              type={DropdownItemType.Dot}
+              type={indicator}
               value={o}
               title={o}
               selected={o === selectedOption}

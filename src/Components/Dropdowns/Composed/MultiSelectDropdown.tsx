@@ -35,6 +35,8 @@ export interface MultiSelectDropdownProps extends StandardFunctionProps {
   buttonSize?: ComponentSize
   /** Optional icon to render in button */
   buttonIcon?: IconFont
+  /** Optional choice of item indicator */
+  indicator?: DropdownItemType
   /** Optional theme of menu */
   menuTheme?: DropdownMenuTheme
   /** Optional maximum pixel height menu */
@@ -62,6 +64,7 @@ export const MultiSelectDropdown = forwardRef<
       className,
       buttonSize = ComponentSize.Small,
       buttonIcon,
+      indicator = DropdownItemType.Checkbox,
       buttonColor = ComponentColor.Default,
       buttonStatus = ComponentStatus.Default,
       menuMaxHeight,
@@ -104,7 +107,7 @@ export const MultiSelectDropdown = forwardRef<
           return (
             <Dropdown.Item
               key={o}
-              type={DropdownItemType.Checkbox}
+              type={indicator}
               value={o}
               title={o}
               selected={selectedOptions.includes(o)}
