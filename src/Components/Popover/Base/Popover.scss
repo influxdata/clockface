@@ -28,21 +28,12 @@
   right: -$cf-border;
 }
 
-.cf-popover--caret {
-  @extend %backdrop-blur;
-  position: absolute;
-  clip-path: polygon(50% 50%, 0% 100%, 100% 100%);
-  width: 16px;
-  height: 16px;
-}
-
 /*
   Color Modifiers
   ------------------------------------------------------------------------------
 */
 
 @mixin popoverColorModifier($backgroundColor) {
-  .cf-popover--caret,
   .cf-popover--contents {
     background-color: rgba($cf-grey-15, 0.975);
   }
@@ -50,12 +41,8 @@
   @supports (
     (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
   ) {
-    .cf-popover--caret,
     .cf-popover--contents {
       background-color: rgba($backgroundColor, 0.1);
-    }
-
-    .cf-popover--contents {
       box-shadow: 0px 0 16px rgba($cf-grey-5, 0.3);
     }
   }

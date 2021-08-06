@@ -82,7 +82,7 @@ export const QuestionMarkTooltip = forwardRef<
           ?
         </div>
         <Popover
-          distanceFromTrigger={16}
+          distanceFromTrigger={8}
           triggerRef={triggerRef}
           showEvent={PopoverInteraction.Hover}
           hideEvent={PopoverInteraction.Hover}
