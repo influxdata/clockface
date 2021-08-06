@@ -322,5 +322,5 @@ alternate css for the other sizes */
   background-color: $cf-input-background--disabled;
   color: $cf-input-text--disabled;
   cursor: not-allowed;
-  opacity: 0.5;
+  opacity: $cf-disabled-opacity;
 }

@@ -42,7 +42,7 @@
     background-color: $cf-input-background--disabled;
     color: $cf-input-text--disabled;
     cursor: not-allowed;
-    opacity: 0.5;
+    opacity: $cf-disabled-opacity;
   }
 
   &::-webkit-text-area-placeholder {

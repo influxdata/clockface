@@ -53,7 +53,7 @@ $slide-toggle--gap: 3px;
 .cf-slide-toggle.disabled,
 .cf-slide-toggle.disabled:hover {
   cursor: not-allowed;
-  opacity: 0.5;
+  opacity: $cf-disabled-opacity;
 }
 
 /*
