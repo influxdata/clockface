@@ -76,14 +76,13 @@ export const PopoverDialog = forwardRef<PopoverDialogRef, PopoverDialogProps>(
     ref
   ) => {
     const dialogRef = useRef<HTMLDivElement>(null)
-    const caretRef = useRef<HTMLDivElement>(null)
 
     const handleUpdateStyles = (): void => {
       if (!triggerRef.current || !dialogRef.current) {
         return
       }
 
-      const {dialogStyles, caretStyles} = calculatePopoverStyles(
+      const {dialogStyles} = calculatePopoverStyles(
         position,
         triggerRef,
         dialogRef,
@@ -92,14 +91,9 @@ export const PopoverDialog = forwardRef<PopoverDialogRef, PopoverDialogProps>(
       )
 
       const dialogStyleString = convertCSSPropertiesToString(dialogStyles)
-      const caretStyleString = convertCSSPropertiesToString(caretStyles)
 
       if (dialogRef.current) {
         dialogRef.current.setAttribute('style', dialogStyleString)
-      }
-
-      if (caretRef.current) {
-        caretRef.current.setAttribute('style', caretStyleString)
       }
     }
 
@@ -184,7 +178,6 @@ export const PopoverDialog = forwardRef<PopoverDialogRef, PopoverDialogProps>(
           >
             {contents}
           </div>
-          <div className="cf-popover--caret" ref={caretRef} />
         </div>
       </ClickOutside>
     )

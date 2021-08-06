@@ -197,7 +197,7 @@ body.sb-show-main {
 }
 
 .story--example {
-  background-color: $g1-raven;
+  background-color: $cf-grey-5;
   width: 100%;
   min-height: 300px;
   border-radius: $cf-radius;
@@ -208,6 +208,10 @@ body.sb-show-main {
   padding: 64px;
   position: relative;
   margin-bottom: 24px;
+
+  &__medium {
+    background-color: $cf-grey-15;
+  }
 
   &__column {
     @extend .story--example;

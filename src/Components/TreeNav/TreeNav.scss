@@ -510,7 +510,7 @@ $cf-tree-nav--user-padding: (
   flex-direction: column;
   align-items: stretch;
   padding: $cf-space-2xs 0 $cf-space-s;
-  @extend %backdrop-blur-medium;
+  @extend %backdrop-blur-dark;
 
   .cf-tree-nav--username,
   .cf-tree-nav--team {

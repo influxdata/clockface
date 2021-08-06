@@ -54,16 +54,10 @@ dataTypeStories.add(
               <code>Primary</code>
             </td>
             <td>
-              <code>Secondary</code>
-            </td>
-            <td>
-              <code>Success</code>
-            </td>
-            <td>
-              <code>Warning</code>
-            </td>
-            <td>
               <code>Danger</code>
+            </td>
+            <td>
+              <code>Tertiary</code>
             </td>
           </tr>
           <tr>
@@ -87,28 +81,14 @@ dataTypeStories.add(
             <td>
               <Button
                 size={ComponentSize.ExtraSmall}
-                color={ComponentColor.Secondary}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.ExtraSmall}
-                color={ComponentColor.Success}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.ExtraSmall}
-                color={ComponentColor.Warning}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.ExtraSmall}
                 color={ComponentColor.Danger}
+                text="Button"
+              />
+            </td>
+            <td>
+              <Button
+                size={ComponentSize.ExtraSmall}
+                color={ComponentColor.Tertiary}
                 text="Button"
               />
             </td>
@@ -134,28 +114,14 @@ dataTypeStories.add(
             <td>
               <Button
                 size={ComponentSize.Small}
-                color={ComponentColor.Secondary}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.Small}
-                color={ComponentColor.Success}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.Small}
-                color={ComponentColor.Warning}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.Small}
                 color={ComponentColor.Danger}
+                text="Button"
+              />
+            </td>
+            <td>
+              <Button
+                size={ComponentSize.Small}
+                color={ComponentColor.Tertiary}
                 text="Button"
               />
             </td>
@@ -181,28 +147,14 @@ dataTypeStories.add(
             <td>
               <Button
                 size={ComponentSize.Medium}
-                color={ComponentColor.Secondary}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.Medium}
-                color={ComponentColor.Success}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.Medium}
-                color={ComponentColor.Warning}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.Medium}
                 color={ComponentColor.Danger}
+                text="Button"
+              />
+            </td>
+            <td>
+              <Button
+                size={ComponentSize.Medium}
+                color={ComponentColor.Tertiary}
                 text="Button"
               />
             </td>
@@ -228,28 +180,14 @@ dataTypeStories.add(
             <td>
               <Button
                 size={ComponentSize.Large}
-                color={ComponentColor.Secondary}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.Large}
-                color={ComponentColor.Success}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.Large}
-                color={ComponentColor.Warning}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.Large}
                 color={ComponentColor.Danger}
+                text="Button"
+              />
+            </td>
+            <td>
+              <Button
+                size={ComponentSize.Large}
+                color={ComponentColor.Tertiary}
                 text="Button"
               />
             </td>

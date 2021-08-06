@@ -51,7 +51,7 @@
 */
 
 .cf-pop-nav--menu {
-  @extend %backdrop-blur-medium;
+  @extend %backdrop-blur-dark;
   border-radius: $cf-radius;
   position: absolute;
   margin-top: 30px + $cf-marg-b;

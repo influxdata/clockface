@@ -81,7 +81,7 @@ export const ConfirmationButton: FunctionComponent<ConfirmationButtonProps> = ({
   shape = ButtonShape.Default,
   testID = 'confirmation-button',
   color = ComponentColor.Default,
-  popoverAppearance = Appearance.Solid,
+  popoverAppearance = Appearance.Outline,
   status = ComponentStatus.Default,
   popoverColor = ComponentColor.Default,
   confirmationButtonColor = ComponentColor.Danger,
@@ -174,7 +174,7 @@ const ConfirmationContents: FunctionComponent<{
   testID,
   confirmationButtonText,
   confirmationButtonColor,
-  size,
+  size = ComponentSize.ExtraSmall,
 }) => {
   const handleClick = (): void => {
     onConfirm(returnValue)

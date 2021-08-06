@@ -5,47 +5,19 @@
   ------------------------------------------------------------------------------
 */
 
-$cf-cta-button--height: $cf-marg-e + $cf-marg-a;
-$cf-cta-button--font: 1.375em;
-$cf-cta-button--icon: 1.7em;
-
 .cf-button-lg.cf-cta-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: $cf-cta-button--height;
-  padding: 0 $cf-marg-d;
-  
-  > .cf-button-icon {
-    font-size: $cf-cta-button--icon;
-
-    &:first-child {
-      margin-right: 0.4em;
-    }
-    &:last-child {
-      margin-left: 0.4em;
-    }
-  }
-  
   > .cf-button--label {
-    font-size: $cf-cta-button--font;
-    margin: 0;
     font-weight: $cf-font-weight--medium;
-    letter-spacing: -0.02em;
   }
 }
 
 // Square Shape
 .cf-button-lg.cf-cta-button.cf-button-square {
-  width: $cf-cta-button--height;
-  padding: 0;
-
   > .cf-button--label {
     display: none;
   }
 
   > .cf-button-icon {
-    margin-right: 0;
-    margin-left: 0;
+    margin: auto;
   }
 }

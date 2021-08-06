@@ -80,7 +80,7 @@ export const ErrorTooltip = forwardRef<ErrorTooltipRef, ErrorTooltipProps>(
           appearance={Appearance.Outline}
           id={id}
           position={position}
-          caretSize={6}
+          caretSize={8}
         />
       </span>
     )
