@@ -695,10 +695,7 @@ dropdownExampleStories.add(
                 {[
                   {color: ComponentColor.Default},
                   {color: ComponentColor.Primary},
-                  {color: ComponentColor.Secondary},
                   {color: ComponentColor.Tertiary},
-                  {color: ComponentColor.Success},
-                  {color: ComponentColor.Warning},
                   {color: ComponentColor.Danger},
                 ].map((props, i) => (
                   <td key={i} style={{width: '200px'}}>
