@@ -124,7 +124,7 @@ const LabelDeleteButton: FunctionComponent<DeleteButtonProps> = ({
   testID,
   color,
 }) => {
-  const labelDeleteStyle = {backgroundColor: color}
+  const labelDeleteStyle = {color}
 
   return (
     <button
@@ -133,10 +133,8 @@ const LabelDeleteButton: FunctionComponent<DeleteButtonProps> = ({
       type="button"
       title={`Remove label "${name}"`}
       data-testid={`${testID}--delete ${name}`}
-    >
-      <div className="cf-label--delete-x" style={labelDeleteStyle} />
-      <div className="cf-label--delete-x" style={labelDeleteStyle} />
-    </button>
+      style={labelDeleteStyle}
+    />
   )
 }
 
