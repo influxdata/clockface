@@ -144,6 +144,26 @@ resourceListCardStories.add(
             </FlexBox>
           }
           highlightOnHover={boolean('highlightOnHover', true)}
+          direction={
+            FlexDirection[
+              select('direction', mapEnumKeys(FlexDirection), 'Column')
+            ]
+          }
+          alignItems={
+            AlignItems[select('alignItems', mapEnumKeys(AlignItems), 'Stretch')]
+          }
+          justifyContent={
+            JustifyContent[
+              select(
+                'justifyContent ',
+                mapEnumKeys(JustifyContent),
+                'FlexStart'
+              )
+            ]
+          }
+          margin={
+            ComponentSize[select('margin', mapEnumKeys(ComponentSize), 'Small')]
+          }
         >
           <ResourceCard.EditableName
             ref={resourceCardNameRef}
