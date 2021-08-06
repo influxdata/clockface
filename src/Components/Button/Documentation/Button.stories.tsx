@@ -708,9 +708,6 @@ buttonExampleStories.add(
                 {color: ComponentColor.Danger},
                 {color: ComponentColor.Tertiary},
                 {color: ComponentColor.Colorless},
-                {color: ComponentColor.Success},
-                {color: ComponentColor.Secondary},
-                {color: ComponentColor.Warning},
               ].map((props, i) => (
                 <td key={i}>
                   <Button text={props.color.toString()} {...props} />
