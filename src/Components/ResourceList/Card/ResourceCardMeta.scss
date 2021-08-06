@@ -7,6 +7,61 @@
 
 .cf-resource-meta {
   color: $cf-grey-55;
+
+  &.cf-flex-box__row {
+    flex-wrap: wrap;
+    gap: $cf-space-3xs;
+
+    &.cf-flex-box__justify-flex-start,
+    &.cf-flex-box__justify-center {
+      > .cf-resource-meta--item {
+        padding-right: $cf-space-xs;
+        margin-right: $cf-space-xs;
+
+        &:last-child {
+          padding-right: 0;
+          margin-right: 0;
+        }
+      }
+    }
+    &.cf-flex-box__justify-flex-end {
+      > .cf-resource-meta--item {
+        padding-left: $cf-space-xs;
+        margin-left: $cf-space-xs;
+
+        &:first-child {
+          padding-left: 0;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+
+  &.cf-flex-box__column {
+    &.cf-flex-box__justify-flex-start,
+    &.cf-flex-box__justify-center {
+      > .cf-resource-meta--item {
+        padding-bottom: $cf-space-xs;
+        margin-bottom: $cf-space-xs;
+
+        &:last-child {
+          padding-bottom: 0;
+          margin-bottom: 0;
+        }
+      }
+    }
+    &.cf-flex-box__justify-flex-end {
+      > .cf-resource-meta--item {
+        padding-top: $cf-space-xs;
+        margin-top: $cf-space-xs;
+
+        &:first-child {
+          padding-top: 0;
+          margin-top: 0;
+        }
+      }
+    }
+  }
 }
 
 .cf-resource-meta--item {
@@ -29,61 +84,6 @@
 
     &.alert-triangle {
       color: $c-ruby;
-    }
-  }
-}
-
-.cf-flex-box__row {
-  flex-wrap: wrap;
-  gap: $cf-space-3xs;
-
-  &.cf-flex-box__justify-flex-start,
-  &.cf-flex-box__justify-center {
-    > .cf-resource-meta--item {
-      padding-right: $cf-space-xs;
-      margin-right: $cf-space-xs;
-
-      &:last-child {
-        padding-right: 0;
-        margin-right: 0;
-      }
-    }
-  }
-  &.cf-flex-box__justify-flex-end {
-    > .cf-resource-meta--item {
-      padding-left: $cf-space-xs;
-      margin-left: $cf-space-xs;
-
-      &:first-child {
-        padding-left: 0;
-        margin-left: 0;
-      }
-    }
-  }
-}
-
-.cf-flex-box__column {
-  &.cf-flex-box__justify-flex-start,
-  &.cf-flex-box__justify-center {
-    > .cf-resource-meta--item {
-      padding-bottom: $cf-space-xs;
-      margin-bottom: $cf-space-xs;
-
-      &:last-child {
-        padding-bottom: 0;
-        margin-bottom: 0;
-      }
-    }
-  }
-  &.cf-flex-box__justify-flex-end {
-    > .cf-resource-meta--item {
-      padding-top: $cf-space-xs;
-      margin-top: $cf-space-xs;
-
-      &:first-child {
-        padding-top: 0;
-        margin-top: 0;
-      }
     }
   }
 }
