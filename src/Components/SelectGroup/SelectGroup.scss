@@ -13,7 +13,6 @@ $select-group--padding: $cf-space-2xs;
   align-items: stretch;
   padding: 0;
   border-radius: $cf-radius;
-  background-color: $g5-pepper;
 
   // Visually obscures underlying input
   & > input[type='radio'],
@@ -30,61 +29,48 @@ $select-group--padding: $cf-space-2xs;
   border: 0;
   font-family: $cf-text-font;
   font-weight: $cf-font-weight--medium;
-  background-color: transparent;
+  background-color: $cf-grey-35;
   transition: background-color $cf-transition-default,
     color $cf-transition-default, box-shadow $cf-transition-default;
-  color: $g11-sidewalk;
-  border-radius: $cf-radius-sm;
+  color: $cf-grey-65;
   outline: none;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-right: $cf-border;
   display: flex;
   justify-content: center;
   align-items: center;
   @extend %type-uppercase;
   position: relative;
 
+  &:first-of-type {
+    border-bottom-left-radius: $cf-radius;
+    border-top-left-radius: $cf-radius;
+  }
+
+  &:last-of-type {
+    border-bottom-right-radius: $cf-radius;
+    border-top-right-radius: $cf-radius;
+  }
+
   &:after {
     @include createOverlayBase();
   }
 
-  &:last-child {
-    margin-right: 0;
-  }
-
   &:hover,
   &:focus {
-    background-color: $g6-smoke;
-    color: $g18-cloud;
     cursor: pointer;
-    &:after {
+
+    &:not(.cf-select-group--option__disabled):after {
       opacity: $cf-hover-active-opacity;
     }
   }
 
-  &:focus {
-    box-shadow: $cf-input--box-shadow;
-
-    &:active {
-      box-shadow: none;
-    }
-  }
-
-  &.cf-select-group--option__active {
-    color: $g20-white;
-  }
-
-  &.cf-select-group--option__disabled,
-  &.cf-select-group--option__disabled:hover,
-  &.cf-select-group--option__disabled:focus {
+  &.cf-select-group--option__disabled {
     box-shadow: none;
-    background-color: transparent;
-    color: $g7-graphite;
     cursor: not-allowed;
-    opacity: 0.5;
+    opacity: $cf-disabled-opacity;
   }
 }
 
@@ -142,23 +128,16 @@ $select-group--padding: $cf-space-2xs;
   }
 }
 
-.cf-select-group__default {
-  @include radioButtonColorModifier($g7-graphite, $g20-white);
-}
-.cf-select-group__primary {
+.cf-select-group__default,
+.cf-select-group__primary,
+.cf-select-group__success,
+.cf-select-group__secondary {
   @include radioButtonColorModifier($c-pool, $g20-white);
 }
-.cf-select-group__secondary {
-  @include radioButtonColorModifier($c-star, $g20-white);
-}
-.cf-select-group__success {
-  @include radioButtonColorModifier($c-rainforest, $g20-white);
-}
-.cf-select-group__danger {
-  @include radioButtonColorModifier($c-curacao, $g20-white);
-}
+
+.cf-select-group__danger,
 .cf-select-group__warning {
-  @include radioButtonColorModifier($c-pineapple, $g2-kevlar);
+  @include radioButtonColorModifier($c-curacao, $g20-white);
 }
 
 /*
