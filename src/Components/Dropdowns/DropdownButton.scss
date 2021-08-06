@@ -81,7 +81,7 @@
 
 .cf-dropdown--button.cf-button-disabled {
   cursor: not-allowed;
-  opacity: 0.5;
+  opacity: $cf-disabled-opacity;
 }
 
 .cf-dropdown--button.cf-button-xs {
