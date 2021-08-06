@@ -570,6 +570,7 @@ testPopoverStories.add('200 Popovers + Filtering', () => {
                   position={PopoverPosition.Above}
                   color={ComponentColor.Primary}
                   appearance={Appearance.Outline}
+                  distanceFromTrigger={8}
                 />
               </Fragment>
             )
