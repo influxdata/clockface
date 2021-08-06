@@ -5,6 +5,8 @@
   ------------------------------------------------------------------------------
 */
 
+$label-delete-size: 14px;
+
 .cf-label {
   display: inline-flex;
   align-items: center;
@@ -44,22 +46,24 @@
   }
 
   &:hover {
-    --x-spin: 90deg;
     opacity: 1;
     cursor: pointer;
   }
-}
 
-.cf-label--delete-x {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 60%;
-  height: $cf-border;
-  border-radius: $cf-border / 2;
-  transform: translate(-50%, -50%) rotate(45deg);
+  &:before,
+  &:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: $label-delete-size;
+    height: $cf-border;
+    border-radius: $cf-border / 2;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: currentColor;
+    content: '';
+  }
 
-  &:nth-child(2) {
+  &:after {
     transform: translate(-50%, -50%) rotate(-45deg);
   }
 }
@@ -85,13 +89,12 @@
   }
 
   &.cf-label--deletable .cf-label--name {
-    padding-right: 0;
+    padding-right: $cf-space-3xs;
   }
 
   .cf-label--delete {
-    transform: translateX(15%) rotate(var(--x-spin, 0deg));
-    height: calc(#{$fontSize} * 1.6);
-    width: calc(#{$fontSize} * 1.6);
+    width: $cf-space-3xs + $label-delete-size + $cf-space-3xs;
+    height: $cf-space-3xs + $label-delete-size + $cf-space-3xs;
   }
 }
 
@@ -116,7 +119,7 @@
 
   &,
   &:hover {
-    background-color: $g6-smoke;
-    color: $g13-mist;
+    background-color: $cf-grey-25;
+    color: $cf-grey-75;
   }
 }
