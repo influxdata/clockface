@@ -53,14 +53,14 @@
 }
 
 .cf-button-icon {
-  margin-right: 0.4em;
-  margin-left: -0.1em;
+  margin-right: 0.6em;
+  margin-left: 0;
   display: inline-block;
   pointer-events: none;
 
   .cf-button--label + & {
-    margin-right: -0.1em;
-    margin-left: 0.4em;
+    margin-right: 0;
+    margin-left: 0.6em;
   }
 
   &:only-child {
@@ -81,10 +81,6 @@
     width: $height * 0.5;
     height: $height * 0.5;
   }
-
-  .cf-button-icon {
-    font-size: 1.2em;
-  }
 }
 
 .cf-button-xs {
@@ -93,9 +89,6 @@
     $cf-space-xs,
     $cf-form-xs-height
   );
-  .cf-button-icon {
-    font-size: $cf-form-xs-font;
-  }
 }
 .cf-button-sm {
   @include buttonSizeModifier(
