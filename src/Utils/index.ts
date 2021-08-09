@@ -31,7 +31,7 @@ export const calculateTextColorFromBackground = (
   backgroundColor?: InfluxColors | string,
   gradient?: Gradients
 ): string => {
-  const mediumGrey = 0.34
+  const mediumGrey = 0.37
 
   if (gradient) {
     const { start } = getColorsFromGradient(gradient)

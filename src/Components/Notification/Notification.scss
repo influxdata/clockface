@@ -5,14 +5,14 @@
     ----------------------------------------------------------------------------
 */
 
-$cf-notification-screen-margin: $cf-marg-c;
+$cf-notification-screen-margin: $cf-space-s;
 
 .cf-notification {
-  margin-bottom: $cf-marg-a;
+  margin-bottom: $cf-space-3xs;
   color: $g18-cloud;
   display: inline-flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   border-radius: $cf-radius;
   font-weight: $cf-font-weight--medium;
 
@@ -31,24 +31,22 @@ $cf-notification-screen-margin: $cf-marg-c;
 
   .cf-notification--icon {
     font-size: 1.125em;
-    margin-right: $cf-marg-b;
+    margin-right: $cf-space-s;
     display: inline-flex;
     flex-shrink: 0;
     justify-content: center;
     align-items: center;
-    width: $cf-form-sm-height;
-    height: $cf-form-sm-height;
   }
 
   .cf-notification--dismiss {
     flex-shrink: 0;
-    margin-left: $cf-marg-b;
+    margin-left: $cf-space-xs;
     background-color: transparent;
     background-image: none;
     border: none;
     color: $g18-cloud;
     opacity: 0.6;
-    transition: opacity $cf-transition-default;
+    transition: opacity $cf-transition-default, transform $cf-transition-default;
 
     &:active,
     &:focus,
@@ -119,30 +117,26 @@ $cf-notification-screen-margin: $cf-marg-c;
   Size Modifiers
   ------------------------------------------------------------------------------
 */
-@mixin notificationSizeModifier($padding, $fontSize) {
-  padding: $padding ceil($padding * 2);
+@mixin notificationSizeModifier($paddingV, $paddingH, $fontSize) {
+  padding: $paddingV $paddingH;
   font-size: $fontSize;
-
-  &.cf-notification__dismissable {
-    padding-right: $padding;
-  }
-
-  &.cf-notification__has-icon {
-    padding-left: $padding;
-  }
 }
 
 .cf-notification__xs {
-  @include notificationSizeModifier($cf-marg-a, 13px);
+  @include notificationSizeModifier(
+    $cf-space-2xs,
+    $cf-space-s,
+    $cf-text-base--1
+  );
 }
 .cf-notification__sm {
-  @include notificationSizeModifier($cf-marg-b, 14px);
+  @include notificationSizeModifier($cf-space-xs, $cf-space-s, $cf-text-base-0);
 }
 .cf-notification__md {
-  @include notificationSizeModifier($cf-marg-c, 15px);
+  @include notificationSizeModifier($cf-space-xs, $cf-space-s, $cf-text-base-1);
 }
 .cf-notification__lg {
-  @include notificationSizeModifier($cf-marg-c + $cf-marg-a, 16px);
+  @include notificationSizeModifier($cf-space-s, $cf-space-s, $cf-text-base-1);
 }
 
 /*
