@@ -108,20 +108,20 @@
 
 .cf-page-control-bar--left {
   > * {
-    margin-right: $cf-marg-a;
+    margin-right: $cf-space-3xs;
   }
 }
 
 .cf-page-control-bar--center {
   > * {
-    margin-left: $cf-marg-a / 2;
-    margin-right: $cf-marg-a / 2;
+    margin-left: $cf-space-3xs / 2;
+    margin-right: $cf-space-3xs / 2;
   }
 }
 
 .cf-page-control-bar--right {
   > * {
-    margin-left: $cf-marg-a;
+    margin-left: $cf-space-3xs;
   }
 }
 
@@ -211,10 +211,6 @@
   position: relative;
   flex: 1 0 0;
   overflow: hidden;
-
-  & > .cf-dapper-scrollbars--track-y {
-    // background-color: $g4-onyx !important;
-  }
 }
 
 .cf-page-contents__fluid {
