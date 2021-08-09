@@ -260,8 +260,8 @@ $cf-form-lg-font: #{var(--step-1)};
    -----------------------------------------------------------------------------
 */
 
-$cf-empty-state-text: $g10-wolf;
-$cf-empty-state-highlight: $g13-mist;
+$cf-empty-state-text: $cf-grey-55;
+$cf-empty-state-highlight: $cf-grey-95;
 
 /*
    Animations
@@ -299,9 +299,9 @@ $cf-input-border--focused: rgba($c-pool, 0.75);
 $cf-input-border--hover: $g5-pepper;
 $cf-input-border--disabled: $g4-onyx;
 
-$cf-input-border--error: mix($cf-input-border--default, $c-dreamsicle, 70%);
-$cf-input-border--error-hover: $c-dreamsicle;
-$cf-input-border--error-focused: $c-dreamsicle;
+$cf-input-border--error: $c-fire;
+$cf-input-border--error-hover: $c-fire;
+$cf-input-border--error-focused: $c-fire;
 
 $cf-input--field-z: 1;
 $cf-input--shadow-z: $cf-input--field-z + 1;
