@@ -9,8 +9,6 @@
   position: fixed;
   z-index: 9999;
   border-radius: $cf-radius;
-  border-style: solid;
-  border-width: $cf-border;
   @extend %backdrop-blur-dark;
   @extend %drop-shadow;
 }
@@ -21,20 +19,23 @@
   align-items: stretch;
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: $cf-space-2xs;
 }
 
 .cf-right-click--menu-item {
-  padding: $cf-space-xs $cf-space-xl $cf-space-xs $cf-space-m;
+  padding: $cf-space-2xs $cf-space-xl $cf-space-2xs $cf-space-2xs;
   font-size: $cf-text-base;
-  line-height: $cf-text-base;
-  color: $g11-sidewalk;
+  line-height: $cf-text-line-height;
+  color: $cf-white;
   white-space: nowrap;
-  font-weight: $cf-font-weight--medium;
+  font-weight: $cf-font-weight--regular;
   user-select: none;
   margin: 0;
-  transition: color $cf-transition-default,
-    background-color $cf-transition-default;
+  position: relative;
+
+  &:after {
+    @include createOverlayBase();
+  }
 
   &:first-child {
     border-radius: $cf-radius-sm $cf-radius-sm 0 0;
@@ -46,8 +47,10 @@
 
   &:hover {
     cursor: pointer;
-    color: $g20-white;
-    background-color: $cf-grey-45;
+
+    &:after {
+      opacity: $cf-hover-active-opacity;
+    }
   }
 
   &.cf-right-click--menu-item__disabled,
@@ -56,13 +59,17 @@
     opacity: $cf-disabled-opacity;
     color: $g8-storm;
     background-color: transparent;
+
+    &:after {
+      opacity: 0;
+    }
   }
 }
 
 .cf-right-click--divider {
-  height: $cf-border;
+  height: 1px;
   width: 100%;
-  background-color: $cf-grey-45;
+  background-color: $cf-grey-35;
   margin: 0;
 }
 
