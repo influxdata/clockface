@@ -378,7 +378,6 @@ panelComposedStories.add(
               Is some text with <a href="#">a link to nowhere</a>
             </div>
             <div>
-              some more text{' '}
               <div className="mockComponent mockButton">
                 This is not a button
               </div>
@@ -462,21 +461,21 @@ panelExampleStories.add(
           <Grid>
             <Grid.Row>
               <Grid.Column widthSM={Columns.Four}>
-                <Panel backgroundColor={InfluxColors.Onyx}>
+                <Panel backgroundColor={InfluxColors.Pepper}>
                   <Panel.Body>
                     <p>Configure a Data Collector</p>
                   </Panel.Body>
                 </Panel>
               </Grid.Column>
               <Grid.Column widthSM={Columns.Four}>
-                <Panel backgroundColor={InfluxColors.Onyx}>
+                <Panel backgroundColor={InfluxColors.Pepper}>
                   <Panel.Body>
                     <p>Build a Monitoring Dashboard</p>
                   </Panel.Body>
                 </Panel>
               </Grid.Column>
               <Grid.Column widthSM={Columns.Four}>
-                <Panel backgroundColor={InfluxColors.Onyx}>
+                <Panel backgroundColor={InfluxColors.Pepper}>
                   <Panel.Body>
                     <p>Explore Data with Flux</p>
                   </Panel.Body>
