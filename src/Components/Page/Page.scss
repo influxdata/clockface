@@ -88,7 +88,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: $cf-page--control-bar-size - $cf-form-sm-height;
+  margin-bottom: $cf-space-l;
 }
 
 .cf-page-control-bar--left,
@@ -189,7 +189,7 @@
   font-style: normal;
   cursor: default;
   display: inline-block;
-  color: $cf-text-default;
+  color: $cf-white;
   font-size: $cf-page--title-size-sm;
   line-height: $cf-page--title-size-sm;
 }

@@ -25,6 +25,12 @@
 
   @extend %no-user-select;
 
+  & > span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   &:not(.cf-dropdown--button) {
     @extend %type-uppercase;
   }
@@ -84,7 +90,7 @@
 .cf-button-xs {
   @include buttonSizeModifier(
     $cf-form-xs-font,
-    $cf-space-2xs,
+    $cf-space-xs,
     $cf-form-xs-height
   );
   .cf-button-icon {
@@ -119,6 +125,8 @@
 */
 .cf-button-square {
   padding: 0;
+  letter-spacing: 0;
+  line-height: 1;
 
   & > * {
     overflow: hidden;
