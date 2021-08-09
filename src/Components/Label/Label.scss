@@ -5,6 +5,8 @@
   ------------------------------------------------------------------------------
 */
 
+$label-delete-size: $cf-text-base-0;
+
 .cf-label {
   display: inline-flex;
   align-items: center;
@@ -44,22 +46,25 @@
   }
 
   &:hover {
-    --x-spin: 90deg;
     opacity: 1;
     cursor: pointer;
+    transform: rotate(45deg);
   }
-}
 
-.cf-label--delete-x {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 60%;
-  height: $cf-border;
-  border-radius: $cf-border / 2;
-  transform: translate(-50%, -50%) rotate(45deg);
+  &:before,
+  &:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: $label-delete-size;
+    height: $cf-border;
+    border-radius: $cf-border / 2;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: currentColor;
+    content: '';
+  }
 
-  &:nth-child(2) {
+  &:after {
     transform: translate(-50%, -50%) rotate(-45deg);
   }
 }
@@ -69,7 +74,7 @@
   ------------------------------------------------------------------------------
 */
 
-@mixin labelSizeModifier($fontSize, $padding) {
+@mixin labelSizeModifier($fontSize, $paddingV, $paddingH) {
   &,
   & + .cf-additional-labels {
     border-radius: 2em;
@@ -77,38 +82,37 @@
   }
 
   .cf-label--name {
-    padding: $padding ($padding * 3);
+    padding: $paddingV $paddingH;
   }
 
   &.cf-label--deletable {
-    padding-right: $padding * 1.75;
+    padding-right: $paddingH - $cf-space-3xs;
   }
 
   &.cf-label--deletable .cf-label--name {
-    padding-right: 0;
+    padding-right: $cf-space-3xs;
   }
 
   .cf-label--delete {
-    transform: translateX($padding - $cf-border) rotate(var(--x-spin, 0deg));
-    height: calc(#{$fontSize} * 1.333);
-    width: calc(#{$fontSize} * 1.333);
+    width: calc(#{$cf-space-3xs} + #{$label-delete-size} + #{$cf-space-3xs});
+    height: calc(#{$cf-space-3xs} + #{$label-delete-size} + #{$cf-space-3xs});
   }
 }
 
 .cf-label--xs {
-  @include labelSizeModifier($cf-text-base-0, $cf-space-3xs);
+  @include labelSizeModifier($cf-text-base-0, $cf-space-3xs, $cf-space-xs);
 }
 
 .cf-label--sm {
-  @include labelSizeModifier($cf-text-base-0, $cf-space-2xs);
+  @include labelSizeModifier($cf-text-base-0, $cf-space-2xs, $cf-space-s);
 }
 
 .cf-label--md {
-  @include labelSizeModifier($cf-text-base-1, $cf-space-2xs);
+  @include labelSizeModifier($cf-text-base-1, $cf-space-xs, $cf-space-m);
 }
 
 .cf-label--lg {
-  @include labelSizeModifier($cf-text-base-1, $cf-space-xs);
+  @include labelSizeModifier($cf-text-base-1, $cf-space-xs, $cf-space-m);
 }
 
 .cf-label--colorless {
@@ -116,7 +120,7 @@
 
   &,
   &:hover {
-    background-color: $g6-smoke;
-    color: $g13-mist;
+    background-color: $cf-grey-25;
+    color: $cf-grey-75;
   }
 }
