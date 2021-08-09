@@ -5,7 +5,7 @@
   ------------------------------------------------------------------------------
 */
 
-$label-delete-size: 14px;
+$label-delete-size: $cf-text-base-0;
 
 .cf-label {
   display: inline-flex;
@@ -48,6 +48,7 @@ $label-delete-size: 14px;
   &:hover {
     opacity: 1;
     cursor: pointer;
+    transform: rotate(45deg);
   }
 
   &:before,
@@ -93,8 +94,8 @@ $label-delete-size: 14px;
   }
 
   .cf-label--delete {
-    width: $cf-space-3xs + $label-delete-size + $cf-space-3xs;
-    height: $cf-space-3xs + $label-delete-size + $cf-space-3xs;
+    width: calc(#{$cf-space-3xs} + #{$label-delete-size} + #{$cf-space-3xs});
+    height: calc(#{$cf-space-3xs} + #{$label-delete-size} + #{$cf-space-3xs});
   }
 }
 
