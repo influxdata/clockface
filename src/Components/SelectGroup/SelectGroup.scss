@@ -79,10 +79,11 @@ $select-group--padding: $cf-space-2xs;
   ------------------------------------------------------------------------------
 */
 
-@mixin radioButtonSizeModifier($fontSize, $padding) {
+@mixin radioButtonSizeModifier($fontSize, $padding, $height) {
   .cf-select-group--option {
     padding: $padding;
     font-size: $fontSize;
+    height: $height;
   }
 
   // Square Buttons
@@ -99,16 +100,32 @@ $select-group--padding: $cf-space-2xs;
 }
 
 .cf-select-group__xs {
-  @include radioButtonSizeModifier($cf-text-base-0, $cf-space-3xs);
+  @include radioButtonSizeModifier(
+    $cf-text-base-0,
+    $cf-space-3xs,
+    $cf-form-xs-height
+  );
 }
 .cf-select-group__sm {
-  @include radioButtonSizeModifier($cf-text-base-0, $cf-space-2xs);
+  @include radioButtonSizeModifier(
+    $cf-text-base-0,
+    $cf-space-2xs,
+    $cf-form-sm-height
+  );
 }
 .cf-select-group__md {
-  @include radioButtonSizeModifier($cf-text-base-1, $cf-space-xs);
+  @include radioButtonSizeModifier(
+    $cf-text-base-1,
+    $cf-space-xs,
+    $cf-form-md-height
+  );
 }
 .cf-select-group__lg {
-  @include radioButtonSizeModifier($cf-text-base-1, $cf-space-s);
+  @include radioButtonSizeModifier(
+    $cf-text-base-1,
+    $cf-space-s,
+    $cf-form-lg-height
+  );
 }
 
 /*
