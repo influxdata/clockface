@@ -16,6 +16,21 @@
   > .cf-dropdown > .cf-dropdown--button:after {
     border-radius: 0;
   }
+
+  > .cf-button-xs.cf-button-square {
+    height: $cf-form-xs-height;
+    width: $cf-form-xs-height;
+  }
+
+  > * + *:before {
+    content: '';
+    position: absolute;
+    top: 1px;
+    bottom: 1px;
+    left: 0;
+    width: 1px;
+    background: rgba($cf-grey-95, 0.1);
+  }
 }
 
 // Button Rounding (Horizontal)
