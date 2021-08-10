@@ -506,6 +506,7 @@ dropdownComposedStories.add(
     return (
       <div className="story--example">
         <SelectDropdown
+          ref={selectDropdownRef}
           style={object('style', defaultDropdownStyle)}
           menuMaxHeight={number('menuMaxHeight', 250)}
           dropUp={boolean('dropUp', false)}
