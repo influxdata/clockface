@@ -23,7 +23,7 @@ export interface SlideToggleProps extends StandardFunctionProps {
   tooltipText?: string
 }
 
-export type SlideToggleRef = HTMLDivElement
+export type SlideToggleRef = HTMLButtonElement
 
 export const SlideToggleRoot = forwardRef<SlideToggleRef, SlideToggleProps>(
   (
@@ -58,7 +58,8 @@ export const SlideToggleRoot = forwardRef<SlideToggleRef, SlideToggleProps>(
     }
 
     return (
-      <div
+      <button
+        type="button"
         id={id}
         ref={ref}
         style={style}
@@ -68,7 +69,7 @@ export const SlideToggleRoot = forwardRef<SlideToggleRef, SlideToggleProps>(
         data-testid={testID}
       >
         <div className="cf-slide-toggle--knob" />
-      </div>
+      </button>
     )
   }
 )
