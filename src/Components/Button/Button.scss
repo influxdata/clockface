@@ -86,28 +86,28 @@
 .cf-button-xs {
   @include buttonSizeModifier(
     $cf-form-xs-font,
-    $cf-space-xs,
+    $cf-form-xs-padding,
     $cf-form-xs-height
   );
 }
 .cf-button-sm {
   @include buttonSizeModifier(
     $cf-form-sm-font,
-    $cf-space-xs,
+    $cf-form-sm-padding,
     $cf-form-sm-height
   );
 }
 .cf-button-md {
   @include buttonSizeModifier(
     $cf-form-md-font,
-    $cf-space-s,
+    $cf-form-md-padding,
     $cf-form-md-height
   );
 }
 .cf-button-lg {
   @include buttonSizeModifier(
     $cf-form-lg-font,
-    $cf-space-m,
+    $cf-form-lg-padding,
     $cf-form-lg-height
   );
 }
@@ -120,6 +120,7 @@
   padding: 0;
   letter-spacing: 0;
   line-height: 1;
+  flex-shrink: 0;
 
   & > * {
     overflow: hidden;
@@ -211,7 +212,12 @@
 
 .cf-button-default,
 .cf-button-secondary {
-  @include buttonColorModifier($cf-grey-35, $cf-grey-35, $cf-white, $cf-white);
+  @include buttonColorModifier(
+    $cf-button-default-color,
+    $cf-button-default-color,
+    $cf-white,
+    $cf-white
+  );
 }
 
 .cf-button-primary,

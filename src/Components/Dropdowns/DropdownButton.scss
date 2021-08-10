@@ -59,7 +59,7 @@
 }
 
 /* Button Size Modifiers */
-@mixin buttonSizing($padding, $font, $height) {
+@mixin dropdownSizeModifier($height) {
   .cf-dropdown__down & + .cf-dropdown--menu-container {
     top: $height;
   }
@@ -74,33 +74,17 @@
 }
 
 .cf-dropdown--button.cf-button-xs {
-  @include buttonSizing(
-    $cf-form-xs-padding,
-    $cf-form-xs-font,
-    $cf-form-xs-height
-  );
+  @include dropdownSizeModifier($cf-form-xs-height);
 }
 
 .cf-dropdown--button.cf-button-sm {
-  @include buttonSizing(
-    $cf-form-sm-padding,
-    $cf-form-sm-font,
-    $cf-form-sm-height
-  );
+  @include dropdownSizeModifier($cf-form-sm-height);
 }
 
 .cf-dropdown--button.cf-button-md {
-  @include buttonSizing(
-    $cf-form-md-padding,
-    $cf-form-md-font,
-    $cf-form-md-height
-  );
+  @include dropdownSizeModifier($cf-form-md-height);
 }
 
 .cf-dropdown--button.cf-button-lg {
-  @include buttonSizing(
-    $cf-form-lg-padding,
-    $cf-form-lg-font,
-    $cf-form-lg-height
-  );
+  @include dropdownSizeModifier($cf-form-lg-height);
 }

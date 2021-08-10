@@ -76,7 +76,7 @@ selectGroupStories.add(
       <div className="story--example">
         <SelectGroup.SelectGroup
           ref={selectGroupRef}
-          style={object('style', {width: '360px'})}
+          style={object('style', {width: '400px'})}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
@@ -136,7 +136,6 @@ selectGroupStories.add(
                 ref={selectGroupButtonRefs[btn]}
                 key={btn}
                 id={btn}
-                tabIndex={i + 1}
                 active={active}
                 value={btn}
                 titleText={btn}
@@ -228,6 +227,7 @@ selectGroupExampleStories.add(
               id="mode-compose"
               active={activeItemID === 'mode-compose'}
               value="mode-compose"
+              name="note-editor"
               onClick={activeItemID => updateActiveItemID(activeItemID)}
             >
               Compose
@@ -237,6 +237,7 @@ selectGroupExampleStories.add(
               id="mode-preview"
               active={activeItemID === 'mode-preview'}
               value="mode-preview"
+              name="note-editor"
               onClick={activeItemID => updateActiveItemID(activeItemID)}
             >
               Preview

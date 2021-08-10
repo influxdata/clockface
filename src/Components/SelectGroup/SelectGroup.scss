@@ -20,7 +20,7 @@ $select-group--padding: $cf-space-2xs;
     position: fixed;
     top: 0px;
     left: 0px;
-    visibility: hidden;
+    opacity: 0;
   }
 }
 
@@ -29,7 +29,7 @@ $select-group--padding: $cf-space-2xs;
   border: 0;
   font-family: $cf-text-font;
   font-weight: $cf-font-weight--medium;
-  background-color: $cf-grey-35;
+  background-color: $cf-button-default-color;
   transition: background-color $cf-transition-default,
     color $cf-transition-default, box-shadow $cf-transition-default;
   color: $cf-grey-65;
@@ -59,12 +59,20 @@ $select-group--padding: $cf-space-2xs;
   }
 
   &:hover,
-  &:focus {
+  :focus + & {
     cursor: pointer;
 
-    &:not(.cf-select-group--option__disabled):after {
+    &:after {
       opacity: $cf-hover-active-opacity;
     }
+  }
+
+  :focus + &:not(.cf-select-group--option__disabled) {
+    @include focus-shadow();
+  }
+
+  :checked:focus + &:not(.cf-select-group--option__disabled) {
+    @include focus-shadow($cf-white);
   }
 
   &.cf-select-group--option__disabled {
@@ -101,29 +109,29 @@ $select-group--padding: $cf-space-2xs;
 
 .cf-select-group__xs {
   @include radioButtonSizeModifier(
-    $cf-text-base-0,
-    $cf-space-3xs,
+    $cf-form-xs-font,
+    $cf-form-xs-padding,
     $cf-form-xs-height
   );
 }
 .cf-select-group__sm {
   @include radioButtonSizeModifier(
-    $cf-text-base-0,
-    $cf-space-2xs,
+    $cf-form-sm-font,
+    $cf-form-sm-padding,
     $cf-form-sm-height
   );
 }
 .cf-select-group__md {
   @include radioButtonSizeModifier(
-    $cf-text-base-1,
-    $cf-space-xs,
+    $cf-form-md-font,
+    $cf-form-md-padding,
     $cf-form-md-height
   );
 }
 .cf-select-group__lg {
   @include radioButtonSizeModifier(
-    $cf-text-base-1,
-    $cf-space-s,
+    $cf-form-lg-font,
+    $cf-form-lg-padding,
     $cf-form-lg-height
   );
 }
@@ -154,7 +162,7 @@ $select-group--padding: $cf-space-2xs;
 
 .cf-select-group__danger,
 .cf-select-group__warning {
-  @include radioButtonColorModifier($c-curacao, $g20-white);
+  @include radioButtonColorModifier($c-fire, $g20-white);
 }
 
 /*
