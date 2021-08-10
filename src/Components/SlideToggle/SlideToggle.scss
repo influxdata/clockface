@@ -13,10 +13,20 @@ $slide-toggle--gap: 3px;
   transition: background-color $cf-transition-default,
     border-color $cf-transition-default;
   background-color: $cf-grey-25;
+  overflow: hidden;
+  outline: none;
 
-  &:hover {
+  &:after {
+    @include createOverlayBase();
+  }
+
+  &:focus:not(.disabled),
+  &:hover:not(.disabled) {
     cursor: pointer;
-    background-color: $cf-grey-35;
+
+    &:after {
+      opacity: $cf-hover-active-opacity;
+    }
   }
 }
 
@@ -32,7 +42,7 @@ $slide-toggle--gap: 3px;
   background-color: $cf-grey-75;
   left: 10%;
 
-  .cf-slide-toggle:hover & {
+  .cf-slide-toggle:not(.disabled):hover & {
     background-color: $cf-white;
   }
 }
@@ -94,33 +104,29 @@ $slide-toggle--gap: 3px;
   Color Modifiers
   ------------------------------------------------------------------------------
 */
-@mixin slideToggleColorModifier($activeBackground, $hoverBackground) {
+@mixin slideToggleColorModifier($activeBackground) {
   background-color: $cf-grey-25;
 
   &.active {
     background-color: $activeBackground;
-
-    &:hover {
-      background-color: $hoverBackground;
-    }
   }
 }
 
 .cf-slide-toggle {
   &.cf-slide-toggle-default,
   &.cf-slide-toggle-primary {
-    @include slideToggleColorModifier($c-pool, $c-laser);
+    @include slideToggleColorModifier($c-pool);
   }
   &.cf-slide-toggle-secondary {
-    @include slideToggleColorModifier($c-star, $c-comet);
+    @include slideToggleColorModifier($c-star);
   }
   &.cf-slide-toggle-success {
-    @include slideToggleColorModifier($c-rainforest, $c-honeydew);
+    @include slideToggleColorModifier($c-rainforest);
   }
   &.cf-slide-toggle-danger {
-    @include slideToggleColorModifier($c-curacao, $c-dreamsicle);
+    @include slideToggleColorModifier($c-curacao);
   }
   &.cf-slide-toggle-warning {
-    @include slideToggleColorModifier($c-pineapple, $c-thunder);
+    @include slideToggleColorModifier($c-pineapple);
   }
 }
