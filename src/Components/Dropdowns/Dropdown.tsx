@@ -62,6 +62,7 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
     ref
   ) => {
     const [expanded, setExpandedState] = useState(false)
+    const didMountRef = useRef(false)
 
     const internalRef = ref || useRef<DropdownRef>(null)
 
@@ -98,7 +99,7 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
          * Find the first focusable element from within the dropdown,
          * starting with the first focusable, active item
          */
-        const selector = '.cf-dropdown-item[tabindex]'
+        const selector = 'button.cf-dropdown-item'
         const activeEl = document.querySelector(`${selector}.active`)
         const firstEl = document.querySelector(selector)
         const element = (activeEl || firstEl) as HTMLButtonElement
@@ -119,11 +120,13 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
             'button[tabindex]'
           ) as HTMLButtonElement
 
-          if (triggerEl) {
+          if (didMountRef.current && triggerEl) {
             triggerEl.focus()
           }
         }
       }
+
+      didMountRef.current = true
 
       return () => {
         window.removeEventListener('keydown', handleEscapeKey)
