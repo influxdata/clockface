@@ -10,7 +10,7 @@ Clockface offers a set of common `enum` data types which control the appearance 
 
 | Name | Values |
 |:-------------------|:----------------------------------------------------------------|
-| `ComponentColor` | `Default` `Primary` `Secondary` `Success` `Warning` `Error` |
+| `ComponentColor` | `Default` `Primary` `Danger` `Tertiary` `Colorless` |
 | `ComponentSize` | `ExtraSmall` `Small` `Medium` `Large` |
 | `ComponentStatus` | `Default` `Loading` `Error` `Valid` `Disabled` |
 | `DropdownMenuTheme` | `Amethyst` `Malachite` `Sapphire` `Onyx` |
