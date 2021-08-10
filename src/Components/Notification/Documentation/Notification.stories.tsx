@@ -35,6 +35,7 @@ import {
   Alignment,
   VerticalAlignment,
   ComponentSize,
+  ComponentColor,
 } from '../../../Types'
 
 // Notes
@@ -278,6 +279,15 @@ notificationStories.add(
                 'gradient',
                 {None: 'none', ...mapEnumKeys(Gradients)},
                 'GarageBand'
+              )
+            ]
+          }
+          color={
+            ComponentColor[
+              select(
+                'color',
+                {None: 'none', ...mapEnumKeys(ComponentColor)},
+                'Primary'
               )
             ]
           }
