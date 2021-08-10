@@ -1,5 +1,5 @@
 // Libraries
-import React, {forwardRef, MouseEvent, useState, useEffect} from 'react'
+import React, {forwardRef, MouseEvent, useState, useEffect, useRef} from 'react'
 import classnames from 'classnames'
 import _ from 'lodash'
 
@@ -63,6 +63,8 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
   ) => {
     const [expanded, setExpandedState] = useState(false)
 
+    const internalRef = ref || useRef<DropdownRef>(null)
+
     const handleToggleMenu = (e: MouseEvent<HTMLElement>): void => {
       e.preventDefault()
       setExpandedState(!expanded)
@@ -84,6 +86,50 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
       }
     }, [menuOpen])
 
+    const handleEscapeKey = (e: KeyboardEvent): void => {
+      if (e.key === 'Escape') {
+        setExpandedState(false)
+      }
+    }
+
+    useEffect(() => {
+      if (expanded) {
+        /**
+         * Find the first focusable element from within the dropdown,
+         * starting with the first focusable, active item
+         */
+        const selector = '.cf-dropdown-item[tabindex]'
+        const activeEl = document.querySelector(`${selector}.active`)
+        const firstEl = document.querySelector(selector)
+        const element = (activeEl || firstEl) as HTMLButtonElement
+
+        if (element) {
+          element.focus()
+        }
+
+        window.addEventListener('keydown', handleEscapeKey)
+      } else {
+        window.removeEventListener('keydown', handleEscapeKey)
+
+        /**
+         * When the popover is closed, restore focus to the trigger element
+         */
+        if (typeof internalRef !== 'function' && internalRef.current) {
+          const triggerEl = internalRef.current.querySelector(
+            'button[tabindex]'
+          ) as HTMLButtonElement
+
+          if (triggerEl) {
+            triggerEl.focus()
+          }
+        }
+      }
+
+      return () => {
+        window.removeEventListener('keydown', handleEscapeKey)
+      }
+    }, [expanded])
+
     const dropdownClass = classnames('cf-dropdown', {
       [`${className}`]: className,
       'cf-dropdown__up': dropUp,
@@ -95,7 +141,7 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
         <div
           style={style}
           id={id}
-          ref={ref}
+          ref={internalRef}
           className={dropdownClass}
           data-testid={testID}
         >
