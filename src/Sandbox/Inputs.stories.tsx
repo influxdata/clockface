@@ -11,10 +11,11 @@ import {
   FlexDirection,
   HeadingElement,
   IconFont,
+  InputToggleType,
 } from '../Types'
 
 import {Button} from '../Components/Button/Composed/Button'
-import {Input, RangeSlider} from '../Components/Inputs'
+import {Input, RangeSlider, Toggle} from '../Components/Inputs'
 import {SelectDropdown} from '../Components/Dropdowns/Composed/SelectDropdown'
 import {SelectGroup} from '../Components/SelectGroup'
 import {TextBlock} from '../Components/TextBlock'
@@ -28,7 +29,7 @@ cardStories.add('Collage', () => {
   }
 
   return (
-    <div className="story--example">
+    <div className="story--example" style={{justifyContent: 'flex-start'}}>
       <FlexBox
         direction={FlexDirection.Column}
         margin={ComponentSize.Large}
@@ -41,7 +42,7 @@ cardStories.add('Collage', () => {
           ComponentSize.Large,
         ].map(size => {
           return (
-            <div key={size.toString()}>
+            <div key={size.toString()} style={{width: '1500px'}}>
               <Heading element={HeadingElement.H2}>{size.toString()}</Heading>
               <FlexBox
                 direction={FlexDirection.Row}
@@ -88,6 +89,24 @@ cardStories.add('Collage', () => {
                   shape={ButtonShape.Square}
                   size={size}
                 />
+                <Toggle
+                  type={InputToggleType.Checkbox}
+                  id={`check-${size.toString()}`}
+                  onChange={onChange}
+                  size={size}
+                  checked
+                >
+                  Checkbox
+                </Toggle>
+                <Toggle
+                  type={InputToggleType.Radio}
+                  id={`radio-${size.toString()}`}
+                  onChange={onChange}
+                  size={size}
+                  checked
+                >
+                  Radio
+                </Toggle>
               </FlexBox>
             </div>
           )
