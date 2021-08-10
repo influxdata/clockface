@@ -510,6 +510,11 @@ dropdownComposedStories.add(
           style={object('style', defaultDropdownStyle)}
           menuMaxHeight={number('menuMaxHeight', 250)}
           dropUp={boolean('dropUp', false)}
+          indicator={
+            DropdownItemType[
+              select('indicator', mapEnumKeys(DropdownItemType), 'Dot')
+            ]
+          }
           menuTheme={
             DropdownMenuTheme[
               select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Onyx')
@@ -587,6 +592,11 @@ dropdownComposedStories.add(
           style={object('style', defaultDropdownStyle)}
           menuMaxHeight={number('menuMaxHeight', 250)}
           dropUp={boolean('dropUp', false)}
+          indicator={
+            DropdownItemType[
+              select('indicator', mapEnumKeys(DropdownItemType), 'Checkbox')
+            ]
+          }
           menuTheme={
             DropdownMenuTheme[
               select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Onyx')
@@ -695,10 +705,7 @@ dropdownExampleStories.add(
                 {[
                   {color: ComponentColor.Default},
                   {color: ComponentColor.Primary},
-                  {color: ComponentColor.Secondary},
                   {color: ComponentColor.Tertiary},
-                  {color: ComponentColor.Success},
-                  {color: ComponentColor.Warning},
                   {color: ComponentColor.Danger},
                 ].map((props, i) => (
                   <td key={i} style={{width: '200px'}}>

@@ -25,6 +25,12 @@
 
   @extend %no-user-select;
 
+  & > span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   &:not(.cf-dropdown--button) {
     @extend %type-uppercase;
   }
@@ -37,20 +43,24 @@
     cursor: pointer;
   }
 
+  &:not([disabled]):hover:after {
+    opacity: $cf-hover-active-opacity;
+  }
+
   &[disabled]:hover {
     cursor: default;
   }
 }
 
 .cf-button-icon {
-  margin-right: 0.4em;
-  margin-left: -0.1em;
+  margin-right: 0.6em;
+  margin-left: 0;
   display: inline-block;
   pointer-events: none;
 
   .cf-button--label + & {
-    margin-right: -0.1em;
-    margin-left: 0.4em;
+    margin-right: 0;
+    margin-left: 0.6em;
   }
 
   &:only-child {
@@ -62,49 +72,42 @@
   Size Modifiers
   ------------------------------------------------------------------------------
 */
-@mixin buttonSizeModifier($fontSize, $padding, $height) {
+@mixin buttonSizeModifier($fontSize, $paddingH, $height) {
   font-size: $fontSize;
-  padding: 0 $padding;
+  padding: 0 $paddingH;
   height: $height;
 
   .cf-button-spinner {
     width: $height * 0.5;
     height: $height * 0.5;
   }
-
-  .cf-button-icon {
-    font-size: 1.2em;
-  }
 }
 
 .cf-button-xs {
   @include buttonSizeModifier(
     $cf-form-xs-font,
-    $cf-form-xs-padding,
+    $cf-space-xs,
     $cf-form-xs-height
   );
-  .cf-button-icon {
-    font-size: $cf-form-xs-font;
-  }
 }
 .cf-button-sm {
   @include buttonSizeModifier(
     $cf-form-sm-font,
-    $cf-form-sm-padding,
+    $cf-space-xs,
     $cf-form-sm-height
   );
 }
 .cf-button-md {
   @include buttonSizeModifier(
     $cf-form-md-font,
-    $cf-form-md-padding,
+    $cf-space-s,
     $cf-form-md-height
   );
 }
 .cf-button-lg {
   @include buttonSizeModifier(
     $cf-form-lg-font,
-    $cf-form-lg-padding,
+    $cf-space-m,
     $cf-form-lg-height
   );
 }
@@ -115,7 +118,15 @@
 */
 .cf-button-square {
   padding: 0;
-  text-align: center;
+  letter-spacing: 0;
+  line-height: 1;
+
+  & > * {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: $cf-space-3xs;
+  }
 
   &.cf-button-xs {
     width: $cf-space-m;
@@ -146,10 +157,6 @@
 
   &:hover {
     color: $textHover;
-  }
-
-  &:hover:after {
-    opacity: $cf-hover-active-opacity;
   }
 
   &:focus {
@@ -204,12 +211,7 @@
 
 .cf-button-default,
 .cf-button-secondary {
-  @include buttonColorModifier(
-    $cf-grey-35,
-    $cf-grey-35,
-    $g15-platinum,
-    $cf-white
-  );
+  @include buttonColorModifier($cf-grey-35, $cf-grey-35, $cf-white, $cf-white);
 }
 
 .cf-button-primary,
@@ -229,7 +231,7 @@
 
 .cf-button-warning,
 .cf-button-danger {
-  @include buttonColorModifier($c-topaz, $c-ruby, $cf-white, $cf-white);
+  @include buttonColorModifier($c-ruby, $c-topaz, $cf-white, $cf-white);
 }
 
 .cf-button-colorless {

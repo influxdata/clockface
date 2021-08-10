@@ -11,7 +11,7 @@
   border-radius: $cf-radius;
   border-style: solid;
   border-width: $cf-border;
-  @extend %backdrop-blur-medium;
+  @extend %backdrop-blur-dark;
   @extend %drop-shadow;
 }
 

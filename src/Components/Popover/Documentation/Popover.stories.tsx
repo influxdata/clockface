@@ -180,7 +180,7 @@ popoverStories.add(
           className={text('className', '')}
           style={object('style', exampleStyle)}
           caretSize={number('caretSize', 8)}
-          distanceFromTrigger={number('distanceFromTrigger', 4)}
+          distanceFromTrigger={number('distanceFromTrigger', 16)}
           showEvent={PopoverInteraction.Click}
           hideEvent={PopoverInteraction.Click}
           position={
@@ -296,7 +296,7 @@ composedPopoverStories.add(
         style={object('style', exampleStyle)}
         triggerStyle={object('triggerStyle', {display: 'inline-block'})}
         caretSize={number('caretSize', 8)}
-        distanceFromTrigger={number('distanceFromTrigger', 4)}
+        distanceFromTrigger={number('distanceFromTrigger', 16)}
         showEvent={PopoverInteraction.Click}
         hideEvent={PopoverInteraction.Click}
         position={
@@ -566,6 +566,7 @@ testPopoverStories.add('200 Popovers + Filtering', () => {
                   position={PopoverPosition.Above}
                   color={ComponentColor.Primary}
                   appearance={Appearance.Outline}
+                  distanceFromTrigger={8}
                 />
               </Fragment>
             )

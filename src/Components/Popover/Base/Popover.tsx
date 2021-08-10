@@ -80,7 +80,7 @@ export const PopoverRoot = forwardRef<PopoverRef, PopoverProps>(
       visible,
       disabled = false,
       testID = 'popover',
-      distanceFromTrigger = 4,
+      distanceFromTrigger = 8,
       appearance = Appearance.Outline,
       enableDefaultStyles = true,
       color = ComponentColor.Primary,

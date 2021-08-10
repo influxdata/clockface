@@ -27,7 +27,7 @@ $grid--col-12: 100%;
 
 .cf-grid--row {
   display: inline-block;
-  width: calc(100% + var(--space-s-l) * 2);
+  width: calc(100% + var(--space-s-l));
   margin-left: calc(var(--space-s-l) / -2);
   margin-right: calc(var(--space-s-l) / -2);
 

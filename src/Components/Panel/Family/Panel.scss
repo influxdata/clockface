@@ -69,7 +69,7 @@
 
 .cf-panel--footer {
   border-radius: 0 0 $cf-radius $cf-radius;
-  border-top: $cf-border solid rgba($g20-white, 0.04);
+  border-top: $cf-border solid rgba($cf-grey-95, 0.15);
 }
 
 /*
@@ -144,7 +144,7 @@
   .cf-panel--header,
   .cf-panel--body,
   .cf-panel--footer {
-    color: rgba($g2-kevlar, 0.75);
+    color: $cf-grey-5;
   }
 }
 
@@ -152,7 +152,7 @@
   .cf-panel--header,
   .cf-panel--body,
   .cf-panel--footer {
-    color: rgba($g20-white, 0.75);
+    color: $cf-white;
   }
 }
 

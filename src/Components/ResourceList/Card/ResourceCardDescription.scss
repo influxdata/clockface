@@ -69,6 +69,6 @@
 }
 
 /* Pull description up when it follows a title */
-.cf-resource-editable-name + .cf-resource-description {
+.cf-flex-box__margin-lg .cf-resource-editable-name + .cf-resource-description {
   margin-top: -$cf-space-2xs;
 }

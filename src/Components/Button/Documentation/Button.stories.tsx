@@ -199,7 +199,7 @@ buttonComposedStories.add(
     }
 
     return (
-      <div className="story--example">
+      <div className="story--example story--example__medium">
         <ConfirmationButton
           confirmationButtonText={text(
             'confirmationButtonText',
@@ -222,7 +222,7 @@ buttonComposedStories.add(
             ]
           }
           popoverAppearance={
-            Appearance[select('appearance', mapEnumKeys(Appearance), 'Solid')]
+            Appearance[select('appearance', mapEnumKeys(Appearance), 'Outline')]
           }
           onConfirm={value => alert(`returnValue: ${value}`)}
           returnValue={text('returnValue', '')}
@@ -334,7 +334,7 @@ buttonComposedStories.add(
           disabledTitleText={text('disabledTitleText', 'Disabled Text')}
           color={
             ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Secondary')
+              select('color', mapEnumKeys(ComponentColor), 'Success')
             ]
           }
           status={
@@ -508,7 +508,7 @@ buttonComposedStories.add(
           disabledTitleText={text('disabledTitleText', 'Disabled Text')}
           color={
             ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Primary')
+              select('color', mapEnumKeys(ComponentColor), 'Success')
             ]
           }
           status={
@@ -643,7 +643,9 @@ buttonComposedStories.add(
               ]
             }
             popoverAppearance={
-              Appearance[select('appearance', mapEnumKeys(Appearance), 'Solid')]
+              Appearance[
+                select('appearance', mapEnumKeys(Appearance), 'Outline')
+              ]
             }
             onConfirm={value => alert(`returnValue: ${value}`)}
             icon={IconFont.Trash}
@@ -706,9 +708,6 @@ buttonExampleStories.add(
                 {color: ComponentColor.Danger},
                 {color: ComponentColor.Tertiary},
                 {color: ComponentColor.Colorless},
-                {color: ComponentColor.Secondary},
-                {color: ComponentColor.Success},
-                {color: ComponentColor.Warning},
               ].map((props, i) => (
                 <td key={i}>
                   <Button text={props.color.toString()} {...props} />
