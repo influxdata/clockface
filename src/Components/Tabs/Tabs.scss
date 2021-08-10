@@ -55,9 +55,11 @@ a.cf-tabs--tab:visited {
   color: $cf-tab--text;
   position: relative;
 
+  &:focus,
   &:hover {
     cursor: pointer;
     color: $cf-tab--text-hover;
+    outline: none;
   }
 
   > .cf-icon {
