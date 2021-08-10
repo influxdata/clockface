@@ -190,8 +190,13 @@ $slider-hover: $g17-whisper;
   Size Modifiers
   ------------------------------------------------------------------------------
 */
-@mixin rangeSliderSizeModifier($fontSize, $height, $containerHeight, $padding) {
-  $slider-handle-mod-height: $height + 10px;
+@mixin rangeSliderSizeModifier(
+  $fontSize,
+  $padding,
+  $containerHeight,
+  $trackHeight
+) {
+  $slider-handle-mod-height: $trackHeight + 10px;
   padding: 0 $padding;
 
   &.cf-range-slider--input {
@@ -210,25 +215,25 @@ $slider-hover: $g17-whisper;
   }
 
   input[type='range'] {
-    height: $height;
+    height: $trackHeight;
 
     &:focus {
       box-shadow: none;
     }
 
     &::-webkit-slider-runnable-track {
-      height: $height;
+      height: $trackHeight;
     }
 
     &::-webkit-slider-thumb {
       height: $slider-handle-mod-height;
       width: $slider-handle-mod-height;
       border-radius: 50%;
-      margin-top: -(($slider-handle-mod-height/2) - ($height/2));
+      margin-top: -(($slider-handle-mod-height/2) - ($trackHeight/2));
     }
 
     &::-moz-range-track {
-      height: $height;
+      height: $trackHeight;
     }
 
     &::-moz-range-thumb {
@@ -237,7 +242,7 @@ $slider-hover: $g17-whisper;
     }
 
     &::-ms-track {
-      height: $height;
+      height: $trackHeight;
     }
 
     &::-ms-thumb {
@@ -248,7 +253,7 @@ $slider-hover: $g17-whisper;
 
   &.cf-range-slider__fill {
     ::-moz-range-progress {
-      height: $height;
+      height: $trackHeight;
     }
   }
 }
@@ -256,33 +261,33 @@ $slider-hover: $g17-whisper;
 .cf-range-slider__xs {
   @include rangeSliderSizeModifier(
     $cf-form-xs-font,
-    $cf-marg-a,
+    $cf-form-xs-padding,
     $cf-form-xs-height,
-    $cf-form-xs-padding
+    $cf-space-3xs
   );
 }
 .cf-range-slider__sm {
   @include rangeSliderSizeModifier(
     $cf-form-sm-font,
-    ($cf-marg-a + 2),
+    $cf-form-sm-padding,
     $cf-form-sm-height,
-    $cf-form-sm-padding
+    $cf-space-3xs
   );
 }
 .cf-range-slider__md {
   @include rangeSliderSizeModifier(
     $cf-form-md-font,
-    $cf-marg-b,
+    $cf-form-md-padding,
     $cf-form-md-height,
-    $cf-form-md-padding
+    $cf-space-2xs
   );
 }
 .cf-range-slider__lg {
   @include rangeSliderSizeModifier(
     $cf-form-lg-font,
-    ($cf-marg-b + 2),
+    $cf-form-lg-padding,
     $cf-form-lg-height,
-    $cf-form-lg-padding
+    $cf-space-2xs
   );
 }
 

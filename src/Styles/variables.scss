@@ -257,6 +257,13 @@ $cf-form-lg-padding: $cf-space-m;
 $cf-form-lg-font: #{var(--step-1)};
 
 /*
+   Button colours
+   -----------------------------------------------------------------------------
+*/
+
+$cf-button-default-color: $cf-grey-25;
+
+/*
    Empty State
    -----------------------------------------------------------------------------
 */
@@ -599,9 +606,9 @@ $cf-scrollbar-offset: 3px;
 @mixin panel-shadow {
   box-shadow: 0 1px 4px 1px rgba($g0-obsidian, 0.2);
 }
-@mixin focus-shadow {
-  box-shadow: inset 0 0 0 $cf-border rgba($c-pool, 0.75),
-    0px 0px ($cf-border * 2) $c-pool;
+@mixin focus-shadow($color: $c-pool) {
+  box-shadow: inset 0 0 0 $cf-border rgba($color, 0.75),
+    0px 0px ($cf-border * 2) $color;
 }
 @mixin focus-glow {
   box-shadow: 0px 0px ($cf-border * 2) $c-pool;

@@ -77,19 +77,18 @@ export const SelectGroupOption = forwardRef<
       onClick(value)
     }
 
-    const handleKeyUp = (
-      e: KeyboardEvent<SelectGroupOptionContainerRef>
-    ): void => {
-      if (e.key === ' ') {
-        handleClick()
-      }
+    // const handleKeyUp = (
+    //   e: KeyboardEvent<SelectGroupOptionContainerRef>
+    // ): void => {
+    //   console.log(e.key)
+    //   if (e.key === ' ') {
+    //     handleClick()
+    //   }
 
-      if (onKeyUp) {
-        onKeyUp(e)
-      }
-    }
-
-    const tabDisabled = -1
+    //   if (onKeyUp) {
+    //     onKeyUp(e)
+    //   }
+    // }
 
     return (
       <>
@@ -103,17 +102,15 @@ export const SelectGroupOption = forwardRef<
           readOnly={true}
           defaultChecked={active}
           disabled={disabled}
-          tabIndex={tabDisabled}
+          onChange={handleClick}
           data-testid={`${testID}--input`}
+          {...(tabIndex ? {tabIndex} : {})}
         />
         <label
           ref={containerRef}
           title={title}
           style={style}
           htmlFor={id}
-          onClick={handleClick}
-          onKeyUp={handleKeyUp}
-          tabIndex={disabled ? tabDisabled : tabIndex}
           className={radioButtonClass}
           data-testid={testID}
         >
