@@ -25,7 +25,7 @@ export interface DropdownItemProps extends StandardFunctionProps {
   disabled?: boolean
 }
 
-export type DropdownItemRef = HTMLDivElement
+export type DropdownItemRef = HTMLButtonElement
 
 export const DropdownItem = forwardRef<DropdownItemRef, DropdownItemProps>(
   (
@@ -64,7 +64,8 @@ export const DropdownItem = forwardRef<DropdownItemRef, DropdownItemProps>(
     }
 
     return (
-      <div
+      <button
+        type="button"
         id={id}
         ref={ref}
         style={style}
@@ -75,7 +76,7 @@ export const DropdownItem = forwardRef<DropdownItemRef, DropdownItemProps>(
       >
         <DropdownItemSelectionIndicator type={type} />
         <div className="cf-dropdown-item--children">{children}</div>
-      </div>
+      </button>
     )
   }
 )

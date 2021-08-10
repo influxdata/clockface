@@ -53,6 +53,7 @@ import DropdownLinkItemReadme from './DropdownLinkItem.md'
 import DropdownMenuReadme from './DropdownMenu.md'
 import SelectDropdownReadme from './SelectDropdown.md'
 import MultiSelectDropdownReadme from './MultiSelectDropdown.md'
+import {useState} from '@storybook/addons'
 
 const dropdownFamilyStories = storiesOf(
   'Components/Dropdowns/Family',
@@ -493,9 +494,8 @@ dropdownComposedStories.add(
       'Strawberry',
     ]
 
-    const selectDropdownSelectedOption = 'Celery'
-
     const selectDropdownRef: RefObject<SelectDropdownRef> = createRef()
+    const [selected, changeSelected] = useState('Celery')
 
     const logRef = (): void => {
       /* eslint-disable */
@@ -506,7 +506,6 @@ dropdownComposedStories.add(
     return (
       <div className="story--example">
         <SelectDropdown
-          ref={selectDropdownRef}
           style={object('style', defaultDropdownStyle)}
           menuMaxHeight={number('menuMaxHeight', 250)}
           dropUp={boolean('dropUp', false)}
@@ -520,9 +519,7 @@ dropdownComposedStories.add(
               select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Onyx')
             ]
           }
-          onSelect={option => {
-            alert(option)
-          }}
+          onSelect={changeSelected}
           buttonStatus={
             ComponentStatus[
               select('buttonStatus', mapEnumKeys(ComponentStatus), 'Default')
@@ -547,7 +544,7 @@ dropdownComposedStories.add(
               )
             ]
           }
-          selectedOption={text('selectedOption', selectDropdownSelectedOption)}
+          selectedOption={selected}
           options={array('options', selectDropdownOptions)}
         />
         <div className="story--test-buttons">
@@ -575,7 +572,7 @@ dropdownComposedStories.add(
       'Tomato',
       'Spinach',
     ]
-    const defaultMultiSelectSelectedOptions = ['Celery', 'Onion']
+    const [selectedOptions, setSelectedOptions] = useState(['Celery', 'Onion'])
 
     const multiSelectDropdownRef: RefObject<MultiSelectDropdownRef> = createRef()
 
@@ -603,7 +600,11 @@ dropdownComposedStories.add(
             ]
           }
           onSelect={option => {
-            alert(option)
+            if (selectedOptions.includes(option)) {
+              setSelectedOptions(selectedOptions.filter(x => x !== option))
+            } else {
+              setSelectedOptions([...selectedOptions, option])
+            }
           }}
           buttonStatus={
             ComponentStatus[
@@ -630,10 +631,7 @@ dropdownComposedStories.add(
             ]
           }
           emptyText={text('emptyText', 'None selected')}
-          selectedOptions={array(
-            'selectedOptions',
-            defaultMultiSelectSelectedOptions
-          )}
+          selectedOptions={selectedOptions}
           options={array('options', defaultMultiSelectOptions)}
         />
         <div className="story--test-buttons">
