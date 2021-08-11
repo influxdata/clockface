@@ -219,8 +219,8 @@
 .cf-button-default,
 .cf-button-secondary {
   @include buttonColorModifier(
-    $cf-button-default-color,
-    $cf-button-default-color,
+    $cf-button-default-bg,
+    $cf-button-default-bg,
     $cf-white,
     $cf-white
   );
@@ -228,7 +228,7 @@
 
 .cf-button-primary,
 .cf-button-success {
-  @include buttonColorModifier($c-pool, $c-amethyst, $cf-white, $cf-white);
+  @include buttonColorModifier($c-pool, $c-pulsar, $cf-white, $cf-white);
 }
 
 .cf-button-tertiary {

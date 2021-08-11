@@ -472,9 +472,7 @@ inputsBaseStories.add(
               select('color', mapEnumKeys(ComponentColor), 'Primary')
             ]
           }
-          appearance={
-            Appearance[select('appearance', mapEnumKeys(Appearance), 'Outline')]
-          }
+          fill={Appearance[select('fill', ['None', 'Solid'], 'None')]}
           type={
             InputToggleType[
               select('type', mapEnumKeys(InputToggleType), 'Checkbox')
@@ -1007,11 +1005,7 @@ inputsExampleStories.add(
                 select('color', mapEnumKeys(ComponentColor), 'Primary')
               ]
             }
-            appearance={
-              Appearance[
-                select('appearance', mapEnumKeys(Appearance), 'Outline')
-              ]
-            }
+            fill={Appearance[select('fill', ['None', 'Solid'], 'None')]}
           >
             <InputLabel active={weapon === 'chainsaw'} htmlFor="chainsaw">
               Chainsaw
@@ -1031,11 +1025,7 @@ inputsExampleStories.add(
                 select('color', mapEnumKeys(ComponentColor), 'Primary')
               ]
             }
-            appearance={
-              Appearance[
-                select('appearance', mapEnumKeys(Appearance), 'Outline')
-              ]
-            }
+            fill={Appearance[select('fill', ['None', 'Solid'], 'None')]}
           >
             <InputLabel active={weapon === 'crowbar'} htmlFor="crowbar">
               Crowbar
@@ -1055,11 +1045,7 @@ inputsExampleStories.add(
                 select('color', mapEnumKeys(ComponentColor), 'Primary')
               ]
             }
-            appearance={
-              Appearance[
-                select('appearance', mapEnumKeys(Appearance), 'Outline')
-              ]
-            }
+            fill={Appearance[select('fill', ['None', 'Solid'], 'None')]}
           >
             <InputLabel active={weapon === 'katana'} htmlFor="katana">
               Katana
