@@ -1,4 +1,4 @@
-import { Color, InfluxColors } from '../Types'
+import {Color, InfluxColors} from '../Types'
 
 export const influxColors: Color[] = [
   // Row 1
@@ -486,7 +486,7 @@ export const influxGradients = {
   Info: {
     start: InfluxColors.Pool,
     stop: InfluxColors.Pulsar,
-  }
+  },
 }
 
 export const dropdownScrollColors = {

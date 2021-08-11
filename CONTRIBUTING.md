@@ -50,6 +50,7 @@ We use a variation on [BEM Naming Conventions](http://getbem.com/introduction/) 
 ```css
 .component-name--element__modifier
 ```
+
 ```css
 // example:
 .button--checkbox__active
@@ -101,16 +102,20 @@ We offer larger groups of components that are intended to be used together close
 import {FruitApple} from './FruitApple'
 import {FruitOrange} from './FruitOrange'
 ```
+
 ```tsx
 export class Fruit {
   public static Apple = FruitApple
   public static Orange = FruitOrange
 }
 ```
+
 This enables usage like so:
+
 ```tsx
 import {Fruit} from '@influxdata/clockface'
 ```
+
 ```tsx
 <Fruit.Apple />
 <Fruit.Orange />
@@ -133,6 +138,7 @@ import {Fruit} from '@influxdata/clockface'
       FruitExample.md
   Fruit.stories.tsx
 ```
+
 We strongly encourage including examples of all the components in a family working together
 
 ### 4. The Consistent Customization Pattern
@@ -158,6 +164,6 @@ $cf-radius: 4px;
 
 When creating or modifying components use these size variables. There also other variables located in [variables.scss](https://github.com/influxdata/clockface/blob/master/src/Styles/variables.scss) that are useful for ensuring visual consistency
 
---------------
+---
 
 # More Coming Soon
