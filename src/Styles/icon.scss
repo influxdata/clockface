@@ -29,6 +29,147 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  &.add-cell-new:before {
+    content: '\e976';
+  }
+  &.alert-triangle-new:before {
+    content: '\e977';
+  }
+  &.annotate-new:before {
+    content: '\e978';
+  }
+  &.arrow-down-new:before {
+    content: '\e979';
+  }
+  &.arrow-left-new:before {
+    content: '\e97a';
+  }
+  &.arrow-right-new:before {
+    content: '\e97b';
+  }
+  &.arrow-up-new:before {
+    content: '\e97c';
+  }
+  &.bar-chart-new:before {
+    content: '\e97d';
+  }
+  &.build-outline-new:before {
+    content: '\e97e';
+  }
+  &.caret-down-new:before {
+    content: '\e97f';
+  }
+  &.caret-left-new:before {
+    content: '\e980';
+  }
+  &.caret-right-new:before {
+    content: '\e981';
+  }
+  &.caret-up-new:before {
+    content: '\e982';
+  }
+  &.checkmark-new:before {
+    content: '\e983';
+  }
+  &.clipboard-new:before {
+    content: '\e984';
+  }
+  &.clock-new:before {
+    content: '\e985';
+  }
+  &.cog-outline-new:before {
+    content: '\e986';
+  }
+  &.cog-solid-new:before {
+    content: '\e987';
+  }
+  &.crown-solid-new:before {
+    content: '\e988';
+  }
+  &.dark-mode-new:before {
+    content: '\e989';
+  }
+  &.download-new:before {
+    content: '\e98a';
+  }
+  &.duplicate-new:before {
+    content: '\e98b';
+  }
+  &.expand-new:before {
+    content: '\e98c';
+  }
+  &.export-new:before {
+    content: '\e98d';
+  }
+  &.eye-open-new:before {
+    content: '\e98e';
+  }
+  &.graph-line-new:before {
+    content: '\e98f';
+  }
+  &.handle-new:before {
+    content: '\e990';
+  }
+  &.home-outline-new:before {
+    content: '\e991';
+  }
+  &.info-new:before {
+    content: '\e992';
+  }
+  &.ingest-new:before {
+    content: '\e993';
+  }
+  &.light-mode-new:before {
+    content: '\e994';
+  }
+  &.lock-outline-new:before {
+    content: '\e995';
+  }
+  &.log-out-new:before {
+    content: '\e996';
+  }
+  &.pin-new:before {
+    content: '\e997';
+  }
+  &.plus-new:before {
+    content: '\e998';
+  }
+  &.question-mark-new:before {
+    content: '\e999';
+  }
+  &.refresh-new:before {
+    content: '\e99a';
+  }
+  &.remove-new:before {
+    content: '\e99b';
+  }
+  &.search-new:before {
+    content: '\e99c';
+  }
+  &.sidebar-close-new:before {
+    content: '\e99d';
+  }
+  &.sidebar-open-new:before {
+    content: '\e99e';
+  }
+  &.stop-new:before {
+    content: '\e99f';
+  }
+  &.switch-new:before {
+    content: '\e9a0';
+  }
+  &.text-new:before {
+    content: '\e9a1';
+  }
+  &.trash-new:before {
+    content: '\e9a2';
+  }
+  &.user-outline-new:before {
+    content: '\e9a3';
+  }
+  &.more:before {
+    content: '\e974';
+  }
   &.drag-to-expand-white:before {
     content: '\e901';
     color: #fff;
@@ -63,9 +204,6 @@
   &.moon:before {
     content: '\e95c';
   }
-  &.merge:before {
-    content: '\e975';
-  }
   &.share-solid:before {
     content: '\e96e';
   }
@@ -77,6 +215,9 @@
   }
   &.upgrade:before {
     content: '\e95f';
+  }
+  &.merge:before {
+    content: '\e975';
   }
   &.add-cell:before {
     content: '\e925';
