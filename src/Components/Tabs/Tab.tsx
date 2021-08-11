@@ -22,7 +22,7 @@ export interface TabProps extends StandardFunctionProps {
   linkElement?: RenderLinkElement
 }
 
-export type TabRef = HTMLDivElement
+export type TabRef = HTMLButtonElement
 
 export const Tab = forwardRef<TabRef, TabProps>(
   (
@@ -85,8 +85,9 @@ export const Tab = forwardRef<TabRef, TabProps>(
     }
 
     return (
-      <div
+      <button
         ref={ref}
+        type="button"
         className={tabClass}
         data-testid={testID}
         id={id}
@@ -94,7 +95,7 @@ export const Tab = forwardRef<TabRef, TabProps>(
         onClick={handleClick}
       >
         {tabContents}
-      </div>
+      </button>
     )
   }
 )
