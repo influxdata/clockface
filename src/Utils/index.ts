@@ -1,10 +1,10 @@
 //Libraries
-import { CSSProperties } from 'react'
+import {CSSProperties} from 'react'
 import chroma from 'chroma-js'
-import { uniq, shuffle, capitalize, random } from 'lodash'
+import {uniq, shuffle, capitalize, random} from 'lodash'
 
 // Constants
-import { getColorsFromGradient } from '../Utils/colors'
+import {getColorsFromGradient} from '../Utils/colors'
 
 // Types
 import {
@@ -34,7 +34,7 @@ export const calculateTextColorFromBackground = (
   const mediumGrey = 0.37
 
   if (gradient) {
-    const { start } = getColorsFromGradient(gradient)
+    const {start} = getColorsFromGradient(gradient)
     return chroma(start).luminance() >= mediumGrey ? 'dark' : 'light'
   }
 
@@ -57,7 +57,7 @@ export const generateBackgroundStyle = (
   }
 
   let border = `2px solid ${backgroundColor}`
-  let panelStyle: CSSProperties = { backgroundColor }
+  let panelStyle: CSSProperties = {backgroundColor}
 
   if (gradient) {
     const colors = getColorsFromGradient(gradient)
@@ -72,11 +72,11 @@ export const generateBackgroundStyle = (
   }
 
   if (bordered) {
-    panelStyle = { ...panelStyle, border }
+    panelStyle = {...panelStyle, border}
   }
 
   if (style) {
-    return { ...panelStyle, ...style }
+    return {...panelStyle, ...style}
   }
 
   return panelStyle
@@ -88,7 +88,7 @@ export const generateTextBlockStyle = (
   style?: CSSProperties
 ): CSSProperties | undefined => {
   if (!backgroundColor) {
-    return { color: `${textColor}`, ...style }
+    return {color: `${textColor}`, ...style}
   }
 
   const contrastingTextColor =
@@ -102,7 +102,7 @@ export const generateTextBlockStyle = (
     color = `${textColor}`
   }
 
-  return { backgroundColor, color, ...style }
+  return {backgroundColor, color, ...style}
 }
 
 export const generateLabelStyle = (
@@ -153,7 +153,7 @@ export const generateTechnoSpinnerStyle = (
       borderWidth = 8
   }
 
-  return { width, height, borderWidth, ...style }
+  return {width, height, borderWidth, ...style}
 }
 
 export const generateRangeSliderTrackFillStyle = (
@@ -165,7 +165,7 @@ export const generateRangeSliderTrackFillStyle = (
   status: ComponentStatus
 ): CSSProperties | undefined => {
   if (status === ComponentStatus.Disabled) {
-    return { background: InfluxColors.Castle }
+    return {background: InfluxColors.Castle}
   }
 
   const fillColor = {

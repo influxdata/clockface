@@ -460,7 +460,9 @@ resourceListExampleStories.add(
                         value=""
                         selected={false}
                         wrapText={false}
+                        /* eslint-disable */
                         onClick={() => {}}
+                        /* eslint-enable */
                         backgroundColor={InfluxColors.Pool}
                         size={ComponentSize.Small}
                       >
@@ -515,7 +517,9 @@ resourceListExampleStories.add(
                 name="CRIT"
                 color="#da3434"
                 size={ComponentSize.ExtraSmall}
+                /* eslint-disable */
                 onDelete={() => {}}
+                /* eslint-enable */
               />
               <Label
                 id="WARN"
@@ -523,7 +527,9 @@ resourceListExampleStories.add(
                 name="WARN"
                 color="#f2b218"
                 size={ComponentSize.ExtraSmall}
+                /* eslint-disable */
                 onDelete={() => {}}
+                /* eslint-enable*/
               />
               <Label
                 id="OK"
@@ -531,7 +537,9 @@ resourceListExampleStories.add(
                 name="OK"
                 color="#6ac255"
                 size={ComponentSize.ExtraSmall}
+                /* eslint-disable */
                 onDelete={() => {}}
+                /* eslint-enable */
               />
             </FlexBox>
           </ResourceCard>
