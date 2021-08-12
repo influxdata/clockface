@@ -23,9 +23,7 @@
   box-shadow: 0px 0px 16px rgba($cf-grey-95, 0.3);
 
   .cf-popover__nav.cf-popover & {
-    background: linear-gradient(0deg, rgba($c-pool, 0.1), rgba($c-pool, 0.1)),
-      rgba($cf-grey-95, 0.05);
-    backdrop-filter: blur(48px);
+    @extend %backdrop-blur-blue;
   }
 }
 
