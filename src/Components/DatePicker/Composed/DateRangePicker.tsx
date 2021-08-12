@@ -13,6 +13,7 @@ import {
   ComponentSize,
   StandardFunctionProps,
   FlexDirection,
+  AlignItems,
 } from '../../../Types'
 
 export interface DateRangePickerProps extends StandardFunctionProps {
@@ -46,7 +47,13 @@ export const DateRangePicker = forwardRef<
   }
 
   return (
-    <FlexBox.FlexBox ref={ref} direction={FlexDirection.Column} style={style}>
+    <FlexBox.FlexBox
+      ref={ref}
+      direction={FlexDirection.Column}
+      style={style}
+      margin={ComponentSize.Large}
+      alignItems={AlignItems.FlexEnd}
+    >
       <FlexBox direction={FlexDirection.Row} testID={testID}>
         <DatePicker
           dateTime={lower}
@@ -62,7 +69,7 @@ export const DateRangePicker = forwardRef<
       <Button
         className="range-picker--submit"
         color={ComponentColor.Primary}
-        size={ComponentSize.Small}
+        size={ComponentSize.ExtraSmall}
         onClick={handleSetTimeRange}
         text="Apply Time Range"
       />
