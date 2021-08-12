@@ -4,8 +4,7 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {mapEnumKeys} from '../../../Utils/storybook'
-import {withKnobs, text, select} from '@storybook/addon-knobs'
+import {withKnobs, text} from '@storybook/addon-knobs'
 import {useState} from '@storybook/addons'
 
 // Components
@@ -90,7 +89,7 @@ navMenuStories.add(
               <TreeNav.Item
                 id="item-1"
                 label="Ingest"
-                icon={<Icon glyph={IconFont.DisksNav} />}
+                icon={<Icon glyph={IconFont.Ingest_New} />}
                 active={activeItem === 'item-1'}
                 onClick={handleItemClick}
               >
@@ -113,42 +112,28 @@ navMenuStories.add(
               <TreeNav.Item
                 id="item-2"
                 label={text('Item 2', 'Build')}
-                icon={
-                  <Icon
-                    glyph={
-                      IconFont[select('2 - icon', mapEnumKeys(IconFont), 'Zap')]
-                    }
-                  />
-                }
+                icon={<Icon glyph={IconFont.BuildOutline_New} />}
                 onClick={handleItemClick}
                 active={activeItem === 'item-2'}
               />
               <TreeNav.Item
                 id="item-3"
                 label="Monitor & Alert"
-                icon={
-                  <Icon
-                    glyph={
-                      IconFont[
-                        select('3 - icon', mapEnumKeys(IconFont), 'Group')
-                      ]
-                    }
-                  />
-                }
+                icon={<Icon glyph={IconFont.GraphLine_New} />}
                 onClick={handleItemClick}
                 active={activeItem === 'item-3'}
               />
               <TreeNav.Item
                 id="item-4"
                 label="Access"
-                icon={<Icon glyph={IconFont.DisksNav} />}
+                icon={<Icon glyph={IconFont.LockOutline_New} />}
                 onClick={handleItemClick}
                 active={activeItem === 'item-4'}
               />
               <TreeNav.Item
                 id="item-5"
                 label="Settings"
-                icon={<Icon glyph={IconFont.DisksNav} />}
+                icon={<Icon glyph={IconFont.CogOutline_New} />}
                 onClick={handleItemClick}
                 active={activeItem === 'item-5'}
               >

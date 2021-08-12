@@ -611,7 +611,7 @@ layoutStories.add(
               <TreeNav.Item
                 id="data"
                 label="Ingest"
-                icon={<Icon glyph={IconFont.DisksNav} />}
+                icon={<Icon glyph={IconFont.Ingest_New} />}
                 active={isItemActive('data')}
                 onClick={handleNavClick}
               >
@@ -632,32 +632,30 @@ layoutStories.add(
                 </TreeNav.SubMenu>
               </TreeNav.Item>
               <TreeNav.Item
-                id="explore"
+                id="build"
                 label="Build"
-                icon={<Icon glyph={IconFont.GraphLine} />}
-                active={isItemActive('explore')}
+                icon={<Icon glyph={IconFont.BuildOutline_New} />}
+                active={isItemActive('build')}
                 onClick={handleNavClick}
               />
               <TreeNav.Item
-                id="boards"
+                id="monitor"
                 label="Monitor & Alert"
-                shortLabel="Boards"
-                icon={<Icon glyph={IconFont.Dashboards} />}
+                icon={<Icon glyph={IconFont.GraphLine_New} />}
                 active={isItemActive('boards')}
                 onClick={handleNavClick}
               />
               <TreeNav.Item
-                id="org"
+                id="access"
                 label="Access"
-                shortLabel="Org"
-                icon={<Icon glyph={IconFont.UsersDuo} />}
-                active={isItemActive('org')}
+                icon={<Icon glyph={IconFont.LockOutline_New} />}
+                active={isItemActive('access')}
                 onClick={handleNavClick}
               />
               <TreeNav.Item
                 id="settings"
                 label="Settings"
-                icon={<Icon glyph={IconFont.WrenchNav} />}
+                icon={<Icon glyph={IconFont.CogOutline_New} />}
                 active={isItemActive('settings')}
                 onClick={handleNavClick}
               >
