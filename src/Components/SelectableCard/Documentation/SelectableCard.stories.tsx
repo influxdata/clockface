@@ -108,7 +108,7 @@ selectableCardStories.add(
               select(
                 'icon',
                 {None: 'none', ...mapEnumKeys(IconFont)},
-                'Checkmark'
+                'Checkmark_New'
               )
             ]
           }
@@ -138,7 +138,7 @@ selectableCardStories.add(
               select(
                 'icon',
                 {None: 'none', ...mapEnumKeys(IconFont)},
-                'Checkmark'
+                'Checkmark_New'
               )
             ]
           }
@@ -168,7 +168,7 @@ selectableCardStories.add(
               select(
                 'icon',
                 {None: 'none', ...mapEnumKeys(IconFont)},
-                'Checkmark'
+                'Checkmark_New'
               )
             ]
           }
@@ -198,7 +198,7 @@ selectableCardStories.add(
               select(
                 'icon',
                 {None: 'none', ...mapEnumKeys(IconFont)},
-                'Checkmark'
+                'Checkmark_New'
               )
             ]
           }

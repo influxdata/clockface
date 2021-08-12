@@ -49,7 +49,7 @@ Example with an icon:
 
 ```tsx
 <List.Item>
-  <List.Icon glyph={IconFont.Checkmark}>
+  <List.Icon glyph={IconFont.Checkmark_New}>
   Item text
 </List.Item>
 ```

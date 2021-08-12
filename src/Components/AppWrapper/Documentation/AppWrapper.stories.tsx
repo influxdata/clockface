@@ -195,7 +195,7 @@ layoutStories.add(
                 )}
                 iconLink={(className: string) => (
                   <a className={className} href="#">
-                    <Icon glyph={IconFont.GraphLine} />
+                    <Icon glyph={IconFont.GraphLine_New} />
                   </a>
                 )}
                 active={false}
@@ -634,7 +634,7 @@ layoutStories.add(
               <TreeNav.Item
                 id="explore"
                 label="Build"
-                icon={<Icon glyph={IconFont.GraphLine} />}
+                icon={<Icon glyph={IconFont.GraphLine_New} />}
                 active={isItemActive('explore')}
                 onClick={handleNavClick}
               />

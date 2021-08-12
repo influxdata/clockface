@@ -94,7 +94,7 @@ export const DropdownButton = forwardRef<
       >
         {!!icon && <Icon glyph={icon} className="cf-dropdown--icon" />}
         <span className="cf-dropdown--selected">{children}</span>
-        <Icon glyph={IconFont.CaretDown} className="cf-dropdown--caret" />
+        <Icon glyph={IconFont.CaretDown_New} className="cf-dropdown--caret" />
       </ButtonBase>
     )
   }

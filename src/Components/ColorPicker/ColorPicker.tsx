@@ -150,7 +150,7 @@ export const ColorPicker = forwardRef<ColorPickerSwatchRef, ColorPickerProps>(
           />
           <ColorPreview color={color} />
           <Button
-            icon={IconFont.Refresh}
+            icon={IconFont.Refresh_New}
             shape={ButtonShape.Square}
             onClick={handleRandomizeColor}
             titleText="I'm feeling lucky"

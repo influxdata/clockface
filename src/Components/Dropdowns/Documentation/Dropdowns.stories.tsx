@@ -783,7 +783,7 @@ dropdownExampleStories.add(
                       }}
                       buttonColor={ComponentColor.Primary}
                       buttonSize={ComponentSize.Small}
-                      buttonIcon={IconFont.BarChart}
+                      buttonIcon={IconFont.BarChart_New}
                       selectedOption={selectDropdownSelectedOption}
                       options={array('options', selectDropdownOptions)}
                     />
