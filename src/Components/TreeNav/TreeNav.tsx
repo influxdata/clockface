@@ -75,7 +75,9 @@ export const TreeNavRoot = forwardRef<TreeNavRef, TreeNavProps>(
     }
 
     if (onToggleClick) {
-      const toggleIcon = expanded ? IconFont.Minimize : IconFont.Maximize
+      const toggleIcon = expanded
+        ? IconFont.SidebarClose_New
+        : IconFont.SidebarOpen_New
       toggleElement = (
         <div
           className="cf-tree-nav--toggle"

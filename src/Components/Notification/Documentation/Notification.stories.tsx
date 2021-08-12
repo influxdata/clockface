@@ -269,7 +269,7 @@ notificationStories.add(
               select(
                 'icon',
                 {None: 'none', ...mapEnumKeys(IconFont)},
-                'Checkmark'
+                'Checkmark_New'
               )
             ]
           }

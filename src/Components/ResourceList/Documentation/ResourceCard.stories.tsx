@@ -123,21 +123,21 @@ resourceListCardStories.add(
               <span>
                 <SquareButton
                   size={ComponentSize.ExtraSmall}
-                  icon={IconFont.Duplicate}
+                  icon={IconFont.Duplicate_New}
                   color={ComponentColor.Colorless}
                 />
               </span>
               <span>
                 <SquareButton
                   size={ComponentSize.ExtraSmall}
-                  icon={IconFont.Trash}
+                  icon={IconFont.Trash_New}
                   color={ComponentColor.Colorless}
                 />
               </span>
               <span>
                 <SquareButton
                   size={ComponentSize.ExtraSmall}
-                  icon={IconFont.CogThick}
+                  icon={IconFont.CogSolid_New}
                   color={ComponentColor.Colorless}
                 />
               </span>
@@ -431,14 +431,14 @@ resourceListExampleStories.add(
                 <span>
                   <SquareButton
                     size={ComponentSize.ExtraSmall}
-                    icon={IconFont.Duplicate}
+                    icon={IconFont.Duplicate_New}
                     color={ComponentColor.Colorless}
                   />
                 </span>
                 <span>
                   <SquareButton
                     size={ComponentSize.ExtraSmall}
-                    icon={IconFont.Trash}
+                    icon={IconFont.Trash_New}
                     color={ComponentColor.Colorless}
                   />
                 </span>
@@ -446,7 +446,7 @@ resourceListExampleStories.add(
                   <SquareButton
                     ref={settingsRef}
                     size={ComponentSize.ExtraSmall}
-                    icon={IconFont.CogThick}
+                    icon={IconFont.CogSolid_New}
                     color={ComponentColor.Colorless}
                   />
                 </span>
@@ -503,7 +503,7 @@ resourceListExampleStories.add(
               <a href="#">Setup instructions</a>
               <span>
                 Last completed: 2021-07-21T09:15:00Z{' '}
-                <Icon glyph={IconFont.AlertTriangle} />
+                <Icon glyph={IconFont.AlertTriangle_New} />
               </span>
               <span>Scheduled to run every 15m</span>
               <span>ID: 07dd331e1c9fc00</span>
