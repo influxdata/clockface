@@ -1,0 +1,150 @@
+@import '../../Styles/variables';
+
+.cf-accordion {
+  width: 100%;
+  margin-bottom: $cf-marg-a;
+}
+
+.cf-accordion--icon-container-left {
+  position: relative;
+  min-width: $cf-marg-c;
+  margin-right: $cf-marg-b;
+}
+.cf-accordion--icon-container-right {
+  position: relative;
+  min-width: $cf-marg-c;
+  margin-left: $cf-marg-b;
+}
+
+.cf-accordion--icon {
+  position: absolute;
+  transition: all 0.25s ease;
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+  display: inline-block;
+  vertical-align: middle;
+  transform: translateY(-5%);
+  color: $g15-platinum;
+}
+
+.cf-accordion--icon-caret-down {
+  transform: translateY(-50%) rotate(0deg);
+}
+
+.cf-accordion--icon-caret-up {
+  transform: translateY(-50%) rotate(-180deg);
+}
+
+.cf-accordion--icon--disabled {
+  color: $cf-card-text--disabled;
+}
+
+.cf-accordion--header {
+  display: flex;
+  width: 100%;
+  min-height: $cf-form-md-height;
+  border-radius: $cf-radius;
+  background-color: $g6-smoke;
+  align-items: center;
+  outline: none;
+  padding: $cf-form-md-padding;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    background-color: $g7-graphite;
+  }
+}
+
+.cf-accordion--header--active {
+  background-color: $g6-smoke;
+  border-radius: $cf-radius $cf-radius 0px 0px;
+}
+
+.cf-accordion--header--content {
+  width: 100%;
+}
+
+.cf-accordion--header.cf-accordion--header--disabled,
+.cf-accordion--header.cf-accordion--header--disabled:hover {
+  cursor: default;
+  background-color: $cf-card-background--disabled;
+  color: $cf-card-text--disabled;
+  font-style: italic;
+
+  .cf-accordion--header--content {
+    opacity: 0.6;
+  }
+}
+
+.cf-accordion--body--disabled {
+  opacity: 0.6;
+  font-style: italic;
+}
+.cf-accordion--body-container {
+  &--collapsed {
+    animation: cubic-bezier(0.4, 0, 0.2, 1) collapse-accordion forwards;
+    animation-duration: 250ms;
+  }
+
+  &--expanded {
+    animation: cubic-bezier(0.4, 0, 0.2, 1) expand-accordion forwards;
+    animation-duration: 250ms;
+  }
+
+  .cf-accordion--body:last-child {
+    border-radius: 0px 0px $cf-radius $cf-radius;
+  }
+}
+.cf-accordion--body-container--disable-animation {
+  animation-duration: 0ms;
+}
+
+.cf-accordion--body {
+  @extend .cf-accordion--header;
+  cursor: default;
+  min-height: $cf-form-md-height;
+  padding: $cf-form-md-padding;
+  background-color: $g4-onyx;
+  border-radius: 0px;
+  &:hover {
+    background-color: $g4-onyx;
+  }
+}
+
+.cf-accordion--body-alignment-left {
+  padding-left: $cf-form-md-height;
+}
+
+.cf-accordion--body-alignment-right {
+  padding-right: $cf-form-md-height;
+}
+@mixin -content-visible {
+  max-height: 2000px;
+  opacity: 1;
+  visibility: inherit;
+}
+
+@mixin -content-hidden {
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+@keyframes collapse-accordion {
+  0% {
+    @include -content-visible;
+  }
+  100% {
+    @include -content-hidden;
+  }
+}
+
+@keyframes expand-accordion {
+  0% {
+    @include -content-hidden;
+  }
+  100% {
+    @include -content-visible;
+  }
+}

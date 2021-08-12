@@ -162,8 +162,8 @@ export enum DropdownItemType {
 }
 
 export enum Direction {
-  Left = 'CaretLeft',
-  Right = 'CaretRight',
+  Left = 'left',
+  Right = 'right',
 }
 
 export enum ButtonShape {
@@ -378,6 +378,7 @@ export enum IconFont {
   Maximize = 'maximize',
   Minimize = 'minimize',
   Moon = 'moon',
+  More = 'more',
   Merge = 'merge',
   NavChat = 'nav-chat',
   OAuth = 'oauth',

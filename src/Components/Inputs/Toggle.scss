@@ -21,6 +21,16 @@
 }
 
 .cf-toggle--visual-input {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  .cf-toggle__disabled & {
+    cursor: not-allowed;
+  }
+}
+
+.cf-toggle--box {
   background: rgba($cf-grey-95, 0.15);
   position: relative;
   display: block;
@@ -47,11 +57,10 @@
 
   .cf-toggle__checked & {
     background: $c-pool;
-  }
 
-  .cf-toggle__disabled & {
-    opacity: $cf-disabled-opacity;
-    cursor: not-allowed;
+    .cf-toggle--indicator {
+      opacity: 1;
+    }
   }
 
   .cf-toggle__radio & {
@@ -61,11 +70,11 @@
   .cf-toggle__checkbox & {
     border-radius: $cf-radius;
   }
+}
 
-  input[type='radio']:checked + & .cf-toggle--indicator,
-  input[type='checkbox']:checked + & .cf-toggle--indicator {
-    opacity: 1;
-  }
+.cf-toggle__disabled {
+  opacity: $cf-disabled-opacity;
+  cursor: not-allowed;
 }
 
 .cf-toggle--indicator {
@@ -98,31 +107,103 @@
   font-size: 0.75em;
 }
 
+.cf-toggle__fill-solid {
+  background: $cf-button-default-bg;
+  border-radius: $cf-radius;
+
+  .cf-toggle--box:after {
+    display: none;
+  }
+
+  &:after {
+    @include createOverlayBase();
+  }
+
+  &:hover:not(.cf-toggle__disabled):after {
+    opacity: $cf-hover-active-opacity;
+  }
+
+  &.cf-toggle__checked {
+    background: $c-pool;
+
+    .cf-toggle--box {
+      background: $cf-grey-15;
+    }
+  }
+}
+
 /*
   Size Modifiers
   ------------------------------------------------------------------------------
 */
-@mixin toggleSizeModifier($fontSize, $size, $labelGap) {
+@mixin toggleSizeModifier($fontSize, $size, $height, $padding) {
   height: $size;
 
-  .cf-toggle--visual-input {
+  .cf-toggle--box {
     height: $size;
     width: $size;
     font-size: $fontSize;
   }
 
-  &.cf-toggle__labelled .cf-toggle--visual-input {
-    margin-right: $labelGap;
+  &.cf-toggle__labelled .cf-toggle--box {
+    margin-right: $cf-space-xs;
+  }
+
+  &.cf-toggle__fill-solid {
+    &,
+    .cf-toggle--visual-input {
+      height: $height;
+    }
+
+    .cf-toggle--visual-input {
+      padding: 0 $padding;
+    }
+  }
+
+  label {
+    outline: none;
+  }
+
+  &.cf-toggle__focused,
+  &.cf-toggle__focused:hover {
+    box-shadow: inset 0 0 0 $cf-border rgba($c-pool, 0.75),
+      0px 0px ($cf-border * 2) $c-pool;
+
+    .cf-toggle--box {
+      box-shadow: none;
+    }
   }
 }
 
-.cf-toggle__xs,
+.cf-toggle__xs {
+  @include toggleSizeModifier(
+    $cf-text-base-0,
+    $cf-space-s,
+    $cf-form-xs-height,
+    $cf-space-xs
+  );
+}
 .cf-toggle__sm {
-  @include toggleSizeModifier($cf-text-base-0, $cf-space-s, $cf-space-xs);
+  @include toggleSizeModifier(
+    $cf-text-base-0,
+    $cf-space-s,
+    $cf-form-sm-height,
+    $cf-space-xs
+  );
 }
 .cf-toggle__md {
-  @include toggleSizeModifier($cf-text-base-2, $cf-space-m, $cf-space-xs);
+  @include toggleSizeModifier(
+    $cf-text-base-2,
+    $cf-space-m,
+    $cf-form-md-height,
+    $cf-space-s
+  );
 }
 .cf-toggle__lg {
-  @include toggleSizeModifier($cf-text-base-2, $cf-space-m, $cf-space-xs);
+  @include toggleSizeModifier(
+    $cf-text-base-2,
+    $cf-space-m,
+    $cf-form-lg-height,
+    $cf-space-s
+  );
 }
