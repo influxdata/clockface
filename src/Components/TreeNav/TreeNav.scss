@@ -197,17 +197,13 @@ a.cf-tree-nav--header:active {
     text-align: center;
     align-items: center;
     padding-left: 20px;
+
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
   }
-
-  // .cf-tree-nav:not(.cf-tree-nav__collapsed) & .cf-tree-nav--square {
-  //   display: none;
-  // }
-
-  // .cf-tree-nav--square {
-  //   align-items: center;
-  //   width: $cf-tree-nav__width;
-  //   height: $cf-tree-nav__width;
-  // }
 
   .cf-tree-nav--square {
     display: none;
@@ -301,7 +297,8 @@ a.cf-tree-nav--item-block:active {
   display: flex;
   font-size: $cf-text-base-1;
   font-weight: $cf-font-weight--medium;
-  text-align: center;
+  position: absolute;
+  left: $cf-tree-nav__small-height;
 }
 
 /*
@@ -482,12 +479,10 @@ $cf-tree-nav--user-padding: (
   flex-direction: column;
   align-items: stretch;
   justify-content: center;
-  margin-left: $cf-space-2xs;
-  margin-right: $cf-space-2xs;
-
-  .cf-tree-nav--user__expandable & {
-    margin-right: $cf-marg-d;
-  }
+  position: absolute;
+  left: $cf-tree-nav__small-height + $cf-space-2xs;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .cf-tree-nav--username,
