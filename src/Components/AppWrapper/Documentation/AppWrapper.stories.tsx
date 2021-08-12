@@ -534,19 +534,18 @@ layoutStories.add(
       return 'I am a page title!'
     }
 
-    // const banner = (
-    //   <div
-    //     style={{
-    //       width: '100%',
-    //       height: '100px',
-    //       backgroundColor: '#333',
-    //       borderRadius: '4px',
-    //     }}
-    //   >
-    //     Banner
-    //   </div>
-    // )
-    const banner = <></>
+    const banner = (
+      <div
+        style={{
+          width: '100%',
+          height: '100px',
+          backgroundColor: '#333',
+          borderRadius: '4px',
+        }}
+      >
+        Banner
+      </div>
+    )
 
     return (
       <div className="mockPageWrapper">
