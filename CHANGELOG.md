@@ -1,4 +1,15 @@
 # Changelog
+
+### 2.11.2 (2021-7-30)
+- [#652](https://github.com/influxdata/clockface/pull/652): Fix: Adding paginationNav to the index
+
+### 2.11.1 (2021-7-30)
+- [#647](https://github.com/influxdata/clockface/pull/647): Add a new 'more' icon
+
+### 2.11.0 (2021-7-28)
+- [#645](https://github.com/influxdata/clockface/pull/645): Add a new accordion component
+- [#646](https://github.com/influxdata/clockface/pull/646): Fix css of the sorting icon on indexlist
+
 ### 2.10.0 (2021-6-08)
 - [#635](https://github.com/influxdata/clockface/pull/635): Allow the pagination nav to listen to currentPage changes
 
