@@ -27,9 +27,11 @@ export interface FlexBoxProps extends StandardFunctionProps {
   stretchToFitWidth?: boolean
   /** stretches component spacer to fit parent height */
   stretchToFitHeight?: boolean
+  /** HTML element type, must pass in a valid type  */
+  element?: string
 }
 
-export type FlexBoxRef = HTMLDivElement
+export type FlexBoxRef = HTMLElement
 
 export const FlexBoxRoot = forwardRef<FlexBoxRef, FlexBoxProps>(
   (
@@ -38,6 +40,7 @@ export const FlexBoxRoot = forwardRef<FlexBoxRef, FlexBoxProps>(
       style,
       testID = 'flex-box',
       margin,
+      element = 'div',
       children,
       direction = FlexDirection.Row,
       className,
@@ -58,16 +61,10 @@ export const FlexBoxRoot = forwardRef<FlexBoxRef, FlexBoxProps>(
       [`${className}`]: className,
     })
 
-    return (
-      <div
-        id={id}
-        ref={ref}
-        style={style}
-        data-testid={testID}
-        className={flexBoxClass}
-      >
-        {children}
-      </div>
+    return React.createElement(
+      element,
+      {id: id, ref, style, className: flexBoxClass, 'data-testid': testID},
+      children
     )
   }
 )

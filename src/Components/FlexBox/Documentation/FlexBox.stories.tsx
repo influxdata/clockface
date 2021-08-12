@@ -4,7 +4,7 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {withKnobs, select, boolean, number} from '@storybook/addon-knobs'
+import {withKnobs, select, boolean, number, text} from '@storybook/addon-knobs'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
 // Components
@@ -41,6 +41,7 @@ componentSpacerStories.add(
       <div className="story--example">
         <FlexBox.FlexBox
           ref={flexBoxRef}
+          element={text('element', 'div')}
           direction={
             FlexDirection[
               select('direction', mapEnumKeys(FlexDirection), 'Row')
