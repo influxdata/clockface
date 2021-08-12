@@ -43,7 +43,7 @@ $cf-tree-nav__header-height: 60px;
     rgba($c-pool, 0.15) 100%
   );
   background-color: $cf-grey-5;
-  padding: $cf-space-2xs;
+  padding: $cf-space-xs $cf-space-2xs;
 }
 
 .cf-tree-nav__mobile-collapsed .cf-tree-nav--menu {
@@ -372,7 +372,11 @@ a.cf-tree-nav--item-block:active {
     @include createOverlayBase();
   }
 
-  &.cf-tree-nav--sub-item__active:after,
+  &.cf-tree-nav--sub-item__active {
+    background: rgba($cf-grey-95, $cf-hover-active-opacity);
+    border-radius: $cf-radius;
+  }
+
   &:hover:after,
   &:focus-within:after {
     opacity: $cf-hover-active-opacity;
@@ -383,6 +387,7 @@ a.cf-tree-nav--item-block:active {
     padding: $cf-space-2xs;
     color: inherit;
     cursor: pointer;
+    flex-grow: 1;
   }
 }
 
@@ -507,10 +512,8 @@ $cf-tree-nav--user-padding: (
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  background: linear-gradient(0deg, rgba($c-pool, 0.05), rgba($c-pool, 0.05)),
-    #{rgba($cf-grey-95, 0.05)};
-  backdrop-filter: blur(48px);
   padding: $cf-space-s $cf-space-s $cf-space-s $cf-tree-nav__small-height;
+  @extend %backdrop-blur-blue;
 
   .cf-tree-nav--username,
   .cf-tree-nav--team {

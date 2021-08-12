@@ -99,7 +99,7 @@ navMenuStories.add(
                   <TreeNav.SubItem
                     id="data-buckets"
                     label="Buckets"
-                    active={activeItem === 'data-buckets'}
+                    active={true}
                     onClick={handleItemClick}
                   />
                   <TreeNav.SubItem
