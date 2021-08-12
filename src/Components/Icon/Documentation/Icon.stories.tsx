@@ -75,7 +75,7 @@ iconComposedStories.add(
           <Bullet
             ref={bulletRef}
             glyph={
-              IconFont[select('glyph', mapEnumKeys(IconFont), 'Checkmark')]
+              IconFont[select('glyph', mapEnumKeys(IconFont), 'Checkmark_New')]
             }
             size={
               ComponentSize[

@@ -226,7 +226,7 @@ buttonComposedStories.add(
           }
           onConfirm={value => alert(`returnValue: ${value}`)}
           returnValue={text('returnValue', '')}
-          icon={IconFont[select('icon', mapEnumKeys(IconFont), 'Trash')]}
+          icon={IconFont[select('icon', mapEnumKeys(IconFont), 'Trash_New')]}
           disabledTitleText={text('disabledTitleText', 'Disabled Text')}
           titleText={text('titleText', 'Title Text')}
           color={
@@ -598,7 +598,7 @@ buttonComposedStories.add(
             }
           />
           <SquareButton
-            icon={IconFont.CrownSolid}
+            icon={IconFont.CrownSolid_New}
             color={
               ComponentColor[
                 select('color', mapEnumKeys(ComponentColor), 'Default')
@@ -648,7 +648,7 @@ buttonComposedStories.add(
               ]
             }
             onConfirm={value => alert(`returnValue: ${value}`)}
-            icon={IconFont.Trash}
+            icon={IconFont.Trash_New}
             titleText={text('titleText', 'Title Text')}
             disabledTitleText={text('disabledTitleText', 'Disabled Text')}
             color={

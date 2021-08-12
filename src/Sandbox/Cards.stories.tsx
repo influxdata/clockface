@@ -45,21 +45,21 @@ function CardBuckets() {
           <span>
             <SquareButton
               size={ComponentSize.ExtraSmall}
-              icon={IconFont.Duplicate}
+              icon={IconFont.Duplicate_New}
               color={ComponentColor.Colorless}
             />
           </span>
           <span>
             <SquareButton
               size={ComponentSize.ExtraSmall}
-              icon={IconFont.Trash}
+              icon={IconFont.Trash_New}
               color={ComponentColor.Colorless}
             />
           </span>
           <span>
             <SquareButton
               size={ComponentSize.ExtraSmall}
-              icon={IconFont.CogThick}
+              icon={IconFont.CogSolid_New}
               color={ComponentColor.Colorless}
             />
           </span>
@@ -83,21 +83,21 @@ function CardBucketsFull() {
           <span>
             <SquareButton
               size={ComponentSize.ExtraSmall}
-              icon={IconFont.Duplicate}
+              icon={IconFont.Duplicate_New}
               color={ComponentColor.Colorless}
             />
           </span>
           <span>
             <SquareButton
               size={ComponentSize.ExtraSmall}
-              icon={IconFont.Trash}
+              icon={IconFont.Trash_New}
               color={ComponentColor.Colorless}
             />
           </span>
           <span>
             <SquareButton
               size={ComponentSize.ExtraSmall}
-              icon={IconFont.CogThick}
+              icon={IconFont.CogSolid_New}
               color={ComponentColor.Colorless}
             />
           </span>
@@ -116,7 +116,7 @@ function CardBucketsFull() {
       >
         <FlexBox direction={FlexDirection.Row} margin={ComponentSize.Medium}>
           <Button
-            icon={IconFont.Plus}
+            icon={IconFont.Plus_New}
             text="Add a label"
             size={ComponentSize.ExtraSmall}
             color={ComponentColor.Colorless}
@@ -132,7 +132,7 @@ function CardBucketsFull() {
         </FlexBox>
         <FlexBox direction={FlexDirection.Row} margin={ComponentSize.Medium}>
           <Button
-            icon={IconFont.Plus}
+            icon={IconFont.Plus_New}
             text="Add data"
             size={ComponentSize.ExtraSmall}
             color={ComponentColor.Default}
@@ -152,21 +152,21 @@ function CardDisabled() {
           <span>
             <SquareButton
               size={ComponentSize.ExtraSmall}
-              icon={IconFont.Duplicate}
+              icon={IconFont.Duplicate_New}
               color={ComponentColor.Colorless}
             />
           </span>
           <span>
             <SquareButton
               size={ComponentSize.ExtraSmall}
-              icon={IconFont.Trash}
+              icon={IconFont.Trash_New}
               color={ComponentColor.Colorless}
             />
           </span>
           <span>
             <SquareButton
               size={ComponentSize.ExtraSmall}
-              icon={IconFont.CogThick}
+              icon={IconFont.CogSolid_New}
               color={ComponentColor.Colorless}
             />
           </span>
@@ -200,12 +200,12 @@ function CardDisabled() {
         <a href="#">Setup instructions</a>
         <span>
           Last completed: 2021-07-21T09:15:00Z{' '}
-          <Icon glyph={IconFont.AlertTriangle} />
+          <Icon glyph={IconFont.AlertTriangle_New} />
         </span>
         <span>Scheduled to run every 15m</span>
         <Button
           color={ComponentColor.Colorless}
-          icon={IconFont.Duplicate}
+          icon={IconFont.Clipboard_New}
           text="ID: 07dd331e1c9fc00"
           placeIconAfterText
         />
@@ -222,21 +222,21 @@ function CardAll() {
           <span>
             <SquareButton
               size={ComponentSize.ExtraSmall}
-              icon={IconFont.Duplicate}
+              icon={IconFont.Duplicate_New}
               color={ComponentColor.Colorless}
             />
           </span>
           <span>
             <SquareButton
               size={ComponentSize.ExtraSmall}
-              icon={IconFont.Trash}
+              icon={IconFont.Trash_New}
               color={ComponentColor.Colorless}
             />
           </span>
           <span>
             <SquareButton
               size={ComponentSize.ExtraSmall}
-              icon={IconFont.CogThick}
+              icon={IconFont.CogSolid_New}
               color={ComponentColor.Colorless}
             />
           </span>
@@ -270,12 +270,12 @@ function CardAll() {
         <a href="#">Setup instructions</a>
         <span>
           Last completed: 2021-07-21T09:15:00Z{' '}
-          <Icon glyph={IconFont.AlertTriangle} />
+          <Icon glyph={IconFont.AlertTriangle_New} />
         </span>
         <span>Scheduled to run every 15m</span>
         <Button
           color={ComponentColor.Colorless}
-          icon={IconFont.Duplicate}
+          icon={IconFont.Clipboard_New}
           text="ID: 07dd331e1c9fc00"
           placeIconAfterText
         />
@@ -339,7 +339,7 @@ function CardTask() {
         margin={ComponentSize.Medium}
       >
         <Button
-          icon={IconFont.Plus}
+          icon={IconFont.Plus_New}
           text="Add data"
           size={ComponentSize.ExtraSmall}
           color={ComponentColor.Default}
@@ -362,21 +362,21 @@ function CardLabel() {
           <span>
             <SquareButton
               size={ComponentSize.ExtraSmall}
-              icon={IconFont.Duplicate}
+              icon={IconFont.Duplicate_New}
               color={ComponentColor.Colorless}
             />
           </span>
           <span>
             <SquareButton
               size={ComponentSize.ExtraSmall}
-              icon={IconFont.Trash}
+              icon={IconFont.Trash_New}
               color={ComponentColor.Colorless}
             />
           </span>
           <span>
             <SquareButton
               size={ComponentSize.ExtraSmall}
-              icon={IconFont.CogThick}
+              icon={IconFont.CogSolid_New}
               color={ComponentColor.Colorless}
             />
           </span>

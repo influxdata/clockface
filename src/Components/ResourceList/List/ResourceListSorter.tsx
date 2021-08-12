@@ -68,7 +68,7 @@ export const ResourceListSorter = forwardRef<
 
     const sortIndicator = onClick && (
       <span className="cf-resource-list--sort-arrow">
-        <Icon glyph={IconFont.CaretDown} />
+        <Icon glyph={IconFont.CaretDown_New} />
       </span>
     )
 

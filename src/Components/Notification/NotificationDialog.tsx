@@ -123,7 +123,7 @@ export const NotificationDialog = forwardRef<
         </div>
         {onDismiss && (
           <SquareButton
-            icon={IconFont.Remove}
+            icon={IconFont.Remove_New}
             onClick={handleDismiss}
             className="cf-notification--dismiss"
             testID={`${testID}--dismiss`}

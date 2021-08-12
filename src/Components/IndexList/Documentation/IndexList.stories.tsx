@@ -306,7 +306,7 @@ indexListExampleStories.add(
                   alignment={Alignment.Right}
                 >
                   <SquareButton
-                    icon={IconFont.Trash}
+                    icon={IconFont.Trash_New}
                     color={ComponentColor.Danger}
                     size={ComponentSize.ExtraSmall}
                   />

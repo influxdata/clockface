@@ -264,7 +264,7 @@ resourceListExampleStories.add(
           filterComponent={
             boolean('Include Filter', true) ? (
               <Input
-                icon={IconFont.Search}
+                icon={IconFont.Search_New}
                 placeholder="Filter dashboards..."
                 style={object('input style', {width: '200px'})}
                 value={text('Search term', '')}
