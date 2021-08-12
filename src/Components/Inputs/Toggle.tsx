@@ -98,8 +98,10 @@ export interface ToggleProps extends Omit<StandardFunctionProps, 'id'> {
   containerRef?: RefObject<ToggleContainerRef>
   /** Controls color of toggle */
   color?: ComponentColor
-  /** Renders the toggle as either "Solid" or "Outline" */
+  /** Deprecated */
   appearance?: Appearance
+  /** Renders the toggle as "Solid" */
+  fill?: Appearance
 }
 
 export type ToggleRef = HTMLInputElement
@@ -109,6 +111,7 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
   (
     {
       id,
+      fill,
       icon,
       type,
       size = ComponentSize.Small,
@@ -130,7 +133,6 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
       autoFocus = false,
       onKeyDown,
       onKeyPress,
-      appearance = Appearance.Outline,
       containerRef,
       disabledTitleText = 'This input is disabled',
     },
@@ -141,13 +143,13 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
     const toggleClass = classnames('cf-toggle', {
       [`cf-toggle__${size}`]: size,
       [`cf-toggle__${color}`]: color,
-      [`cf-toggle__${appearance}`]: appearance,
+      [`cf-toggle__fill-${fill}`]: fill,
       'cf-toggle__checked': checked,
       'cf-toggle__focused': isFocused,
       'cf-toggle__checkbox': type === InputToggleType.Checkbox,
       'cf-toggle__radio': type === InputToggleType.Radio,
       'cf-toggle__disabled': disabled,
-      'cf-toggle__labelled': !!React.Children.count(children),
+      'cf-toggle__labelled': children && !!React.Children.count(children),
       [`${className}`]: className,
     })
 
@@ -183,11 +185,17 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
       }
     }
 
-    let indicator = <span className="cf-toggle--indicator cf-toggle--dot" />
+    let indicator = (
+      <span className="cf-toggle--box">
+        <span className="cf-toggle--indicator cf-toggle--dot" />
+      </span>
+    )
 
     if (icon) {
       indicator = (
-        <Icon glyph={icon} className="cf-toggle--indicator cf-toggle--icon" />
+        <span className="cf-toggle--box">
+          <Icon glyph={icon} className="cf-toggle--indicator cf-toggle--icon" />
+        </span>
       )
     }
 
@@ -228,8 +236,8 @@ export const Toggle = forwardRef<ToggleRef, ToggleProps>(
           data-testid={testID}
         >
           {indicator}
+          {children}
         </label>
-        {children}
       </div>
     )
   }

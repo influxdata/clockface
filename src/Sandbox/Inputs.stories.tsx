@@ -6,6 +6,7 @@ import {storiesOf} from '@storybook/react'
 import {FlexBox} from '../Components/FlexBox'
 import {
   AlignItems,
+  Appearance,
   ButtonShape,
   ComponentSize,
   FlexDirection,
@@ -106,6 +107,15 @@ cardStories.add('Collage', () => {
                   checked
                 >
                   Radio
+                </Toggle>
+                <Toggle
+                  fill={Appearance.Solid}
+                  type={InputToggleType.Checkbox}
+                  id={`check-${size.toString()}`}
+                  onChange={onChange}
+                  size={size}
+                >
+                  Checkbox
                 </Toggle>
               </FlexBox>
             </div>
