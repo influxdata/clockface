@@ -24,6 +24,10 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+
+  .cf-toggle__disabled & {
+    cursor: not-allowed;
+  }
 }
 
 .cf-toggle--box {
