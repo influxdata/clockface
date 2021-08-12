@@ -47,17 +47,23 @@ import ReflessPopoverReadme from './ReflessPopover.md'
 import QuestionMarkTooltipReadme from './QuestionMarkTooltip.md'
 import ErrorTooltipReadme from './ErrorTooltip.md'
 
-const popoverStories = storiesOf('Atomic|Popover/Base', module).addDecorator(
-  withKnobs
-)
+const popoverStories = storiesOf(
+  'Components/Popover/Base',
+  module
+).addDecorator(withKnobs)
 
 const composedPopoverStories = storiesOf(
-  'Atomic|Popover/Composed',
+  'Components/Popover/Composed',
   module
 ).addDecorator(withKnobs)
 
 const testPopoverStories = storiesOf(
-  'Atomic|Popover/Tests',
+  'Components/Popover/Tests',
+  module
+).addDecorator(withKnobs)
+
+const examplePopoverStories = storiesOf(
+  'Components/Popover/Examples',
   module
 ).addDecorator(withKnobs)
 
@@ -174,7 +180,7 @@ popoverStories.add(
           className={text('className', '')}
           style={object('style', exampleStyle)}
           caretSize={number('caretSize', 8)}
-          distanceFromTrigger={number('distanceFromTrigger', 4)}
+          distanceFromTrigger={number('distanceFromTrigger', 16)}
           showEvent={PopoverInteraction.Click}
           hideEvent={PopoverInteraction.Click}
           position={
@@ -213,7 +219,7 @@ popoverStories.add(
           hideEvent={PopoverInteraction.Hover}
           position={PopoverPosition.ToTheRight}
           color={ComponentColor.Secondary}
-          appearance={Appearance.Solid}
+          appearance={Appearance.Outline}
         />
         <Popover.Popover
           ref={popover3Ref}
@@ -261,7 +267,7 @@ popoverStories.add(
           hideEvent={PopoverInteraction.None}
           position={PopoverPosition.Below}
           color={ComponentColor.Success}
-          appearance={Appearance.Solid}
+          appearance={Appearance.Outline}
         />
       </div>
     )
@@ -290,7 +296,7 @@ composedPopoverStories.add(
         style={object('style', exampleStyle)}
         triggerStyle={object('triggerStyle', {display: 'inline-block'})}
         caretSize={number('caretSize', 8)}
-        distanceFromTrigger={number('distanceFromTrigger', 4)}
+        distanceFromTrigger={number('distanceFromTrigger', 16)}
         showEvent={PopoverInteraction.Click}
         hideEvent={PopoverInteraction.Click}
         position={
@@ -560,6 +566,7 @@ testPopoverStories.add('200 Popovers + Filtering', () => {
                   position={PopoverPosition.Above}
                   color={ComponentColor.Primary}
                   appearance={Appearance.Outline}
+                  distanceFromTrigger={8}
                 />
               </Fragment>
             )
@@ -568,3 +575,54 @@ testPopoverStories.add('200 Popovers + Filtering', () => {
     </div>
   )
 })
+
+examplePopoverStories.add(
+  'Collage',
+  () => {
+    const triggerRefA = useRef<HTMLDivElement>(null)
+    const triggerRefB = useRef<HTMLDivElement>(null)
+    const triggerRefC = useRef<HTMLDivElement>(null)
+    const triggerRefD = useRef<HTMLDivElement>(null)
+    const triggerRefE = useRef<HTMLDivElement>(null)
+    const triggerRefF = useRef<HTMLDivElement>(null)
+    const triggerRefG = useRef<HTMLDivElement>(null)
+
+    return (
+      <div className="story--example">
+        <div>
+          {[
+            {ref: triggerRefA, color: ComponentColor.Default},
+            {ref: triggerRefB, color: ComponentColor.Primary},
+            {ref: triggerRefC, color: ComponentColor.Secondary},
+            {ref: triggerRefD, color: ComponentColor.Tertiary},
+            {ref: triggerRefE, color: ComponentColor.Success},
+            {ref: triggerRefF, color: ComponentColor.Danger},
+            {ref: triggerRefG, color: ComponentColor.Warning},
+          ].map(({ref, color}) => {
+            return (
+              <div key={color.toString()}>
+                <div style={{height: '100px'}} ref={ref}></div>
+                <Popover.Popover
+                  triggerRef={ref}
+                  visible={true}
+                  enableDefaultStyles={true}
+                  contents={() => <div>{color.toString()}</div>}
+                  showEvent={PopoverInteraction.None}
+                  hideEvent={PopoverInteraction.None}
+                  position={PopoverPosition.Above}
+                  color={color}
+                  appearance={Appearance.Outline}
+                />
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(PopoverReadme),
+    },
+  }
+)

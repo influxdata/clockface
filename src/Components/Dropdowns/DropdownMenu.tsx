@@ -7,7 +7,7 @@ import _ from 'lodash'
 import {DapperScrollbars} from '../DapperScrollbars/DapperScrollbars'
 
 // Utils
-import {getScrollbarColorsFromTheme} from '../../Utils'
+// import {getScrollbarColorsFromTheme} from '../../Utils'
 
 // Types
 import {DropdownMenuTheme, StandardFunctionProps} from '../../Types'
@@ -61,7 +61,7 @@ export const DropdownMenu = forwardRef<DropdownMenuRef, DropdownMenuProps>(
       [`cf-dropdown__${theme}`]: theme,
     })
 
-    const {thumbStartColor, thumbStopColor} = getScrollbarColorsFromTheme(theme)
+    // const {thumbStartColor, thumbStopColor} = getScrollbarColorsFromTheme(theme)
 
     const scrollTop = calculateSelectedPosition(scrollToSelected, children)
 
@@ -84,8 +84,6 @@ export const DropdownMenu = forwardRef<DropdownMenuRef, DropdownMenuProps>(
           style={scrollbarsStyle}
           autoHide={autoHideScrollbars}
           autoSizeHeight={true}
-          thumbStartColor={thumbStartColor}
-          thumbStopColor={thumbStopColor}
           noScrollX={noScrollX}
           noScrollY={noScrollY}
           scrollTop={scrollTop}

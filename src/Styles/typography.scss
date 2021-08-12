@@ -15,7 +15,7 @@ body {
 a:link,
 a:visited {
   color: $cf-link-default;
-  transition: color 0.25s ease;
+  transition: color $cf-transition-default;
   text-decoration: none;
   font-weight: $cf-link-weight;
 
@@ -75,6 +75,10 @@ a:active {
     color: $cf-text-default;
   }
 }
+%type-uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
 
 // Typographic Elements
 // -----------------------------------------------------------------------------
@@ -100,8 +104,8 @@ h1 {
   @extend %type-base-styles;
   @extend %type-small-styles;
   line-height: 1.25em;
-  font-size: $cf-text-base-5;
-  font-weight: $cf-font-weight--light;
+  font-size: $cf-text-base-6;
+  font-weight: $cf-font-weight--medium;
   letter-spacing: -0.01em;
 }
 h2 {
@@ -109,7 +113,7 @@ h2 {
   @extend %type-small-styles;
   line-height: 1.25em;
   font-size: $cf-text-base-4;
-  font-weight: $cf-font-weight--light;
+  font-weight: $cf-font-weight--medium;
   letter-spacing: -0.01em;
 }
 h3 {
@@ -117,9 +121,9 @@ h3 {
   @extend %type-small-styles;
   line-height: 1.25em;
   font-size: $cf-text-base-3;
-  font-weight: $cf-font-weight--regular;
+  font-weight: $cf-font-weight--medium;
   small {
-    font-weight: $cf-font-weight--regular;
+    font-weight: $cf-font-weight--medium;
   }
 }
 h4 {
@@ -127,9 +131,9 @@ h4 {
   @extend %type-small-styles;
   line-height: 1.25em;
   font-size: $cf-text-base-2;
-  font-weight: $cf-font-weight--regular;
+  font-weight: $cf-font-weight--medium;
   small {
-    font-weight: $cf-font-weight--regular;
+    font-weight: $cf-font-weight--medium;
   }
 }
 h5 {
@@ -264,4 +268,39 @@ span.text-color {
 
 .untitled-name {
   font-style: italic;
+}
+
+// Type scale utilities
+// -----------------------------------------------------------------------------
+
+.type-step--1 {
+  font-size: $cf-text-tiny;
+}
+
+.type-step-0 {
+  font-size: $cf-text-base;
+}
+
+.type-step-1 {
+  font-size: $cf-text-base-1;
+}
+
+.type-step-2 {
+  font-size: $cf-text-base-2;
+}
+
+.type-step-3 {
+  font-size: $cf-text-base-3;
+}
+
+.type-step-4 {
+  font-size: $cf-text-base-4;
+}
+
+.type-step-5 {
+  font-size: $cf-text-base-5;
+}
+
+.type-step-6 {
+  font-size: $cf-text-base-6;
 }

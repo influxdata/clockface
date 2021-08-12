@@ -9,21 +9,21 @@
 .cf-dropdown--button {
   position: relative;
 
+  & > * {
+    align-items: center;
+    justify-content: flex-start;
+    display: flex;
+    width: 100%;
+  }
+
   &.active {
     z-index: 510;
   }
 }
 
-.cf-dropdown--selected,
-.cf-dropdown--icon,
-.cf-dropdown--caret {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
 .cf-dropdown--icon {
-  top: 48%;
+  flex-shrink: 0;
+  margin-right: $cf-space-2xs;
 }
 
 .cf-dropdown--selected {
@@ -31,46 +31,35 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  flex-grow: 1;
+  margin-right: auto;
 }
 
 .cf-dropdown--caret {
-  margin: 0;
+  margin: auto 0 auto $cf-space-2xs;
   font-size: 0.9em;
-  transition: transform 0.25s ease;
+  transition: transform $cf-transition-default;
+  flex-shrink: 0;
 
   .cf-dropdown__up & {
-    transform: translateY(-50%) rotate(-180deg);
+    transform: rotate(-180deg);
   }
 
   .cf-dropdown__up .active & {
-    transform: translateY(-50%) rotate(0deg);
+    transform: rotate(0deg);
   }
 
   .cf-dropdown__down & {
-    transform: translateY(-50%) rotate(0deg);
+    transform: rotate(0deg);
   }
 
   .cf-dropdown__down .active & {
-    transform: translateY(-50%) rotate(-180deg);
+    transform: rotate(-180deg);
   }
 }
 
 /* Button Size Modifiers */
-@mixin buttonSizing($padding, $font, $height) {
-  .cf-dropdown--icon,
-  .cf-dropdown--selected {
-    left: $padding;
-  }
-  .cf-dropdown--selected {
-    width: calc(100% - #{($padding * 2) + $font});
-  }
-  .cf-dropdown--icon + .cf-dropdown--selected {
-    left: $padding + ($font * 1.5);
-    width: calc(100% - #{($padding * 2) + ($font * 2.5)});
-  }
-  .cf-dropdown--caret {
-    right: $padding;
-  }
+@mixin dropdownSizeModifier($height) {
   .cf-dropdown__down & + .cf-dropdown--menu-container {
     top: $height;
   }
@@ -80,21 +69,22 @@
 }
 
 .cf-dropdown--button.cf-button-disabled {
-  font-style: italic;
+  cursor: not-allowed;
+  opacity: $cf-disabled-opacity;
 }
 
 .cf-dropdown--button.cf-button-xs {
-  @include buttonSizing($cf-form-xs-padding, $cf-form-xs-font, $cf-form-xs-height);
+  @include dropdownSizeModifier($cf-form-xs-height);
 }
 
 .cf-dropdown--button.cf-button-sm {
-  @include buttonSizing($cf-form-sm-padding, $cf-form-sm-font, $cf-form-sm-height);
+  @include dropdownSizeModifier($cf-form-sm-height);
 }
 
 .cf-dropdown--button.cf-button-md {
-  @include buttonSizing($cf-form-md-padding, $cf-form-md-font, $cf-form-md-height);
+  @include dropdownSizeModifier($cf-form-md-height);
 }
 
 .cf-dropdown--button.cf-button-lg {
-  @include buttonSizing($cf-form-lg-padding, $cf-form-lg-font, $cf-form-lg-height);
+  @include dropdownSizeModifier($cf-form-lg-height);
 }

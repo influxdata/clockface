@@ -80,7 +80,7 @@ export const NotificationRoot = forwardRef<NotificationRef, NotificationProps>(
     }
 
     const transitionConfig = {
-      duration: 250,
+      duration: 300,
       easing: easings.easeExpInOut,
     }
 

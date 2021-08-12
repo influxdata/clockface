@@ -6,10 +6,10 @@
 */
 
 .cf-resource-name {
-  height: $cf-form-xs-height;
   position: relative;
-  display: inline-flex;
+  display: flex;
   flex-wrap: nowrap;
+  max-width: calc(100% - 100px);
 }
 
 .cf-resource-name--text {
@@ -17,24 +17,17 @@
   font-weight: $cf-card--name-font-weight;
   font-family: $cf-text-font;
   display: inline-block;
-  white-space: nowrap;
-  line-height: $cf-form-xs-height;
-  height: $cf-form-xs-height;
   color: $g17-whisper;
   user-select: none;
 }
 
 .cf-resource-name--text__link {
-  color: $cf-link-default;
-  transition: color 0.25s ease;
-
   .cf-resource-card__disabled & {
     opacity: 0.5;
   }
 
   &:hover {
     cursor: pointer;
-    color: $cf-link-default-hover;
   }
 }
 

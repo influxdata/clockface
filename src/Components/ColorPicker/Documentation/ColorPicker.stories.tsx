@@ -24,12 +24,12 @@ import ColorPickerReadme from './ColorPicker.md'
 import ColorPickerCustomReadme from './ColorPickerCustom.md'
 
 const colorPickerStories = storiesOf(
-  'Components|Color Picker/Family',
+  'Components/Color Picker/Family',
   module
 ).addDecorator(withKnobs)
 
 const colorPickerExampleStories = storiesOf(
-  'Components|Color Picker/Examples',
+  'Components/Color Picker/Examples',
   module
 ).addDecorator(withKnobs)
 

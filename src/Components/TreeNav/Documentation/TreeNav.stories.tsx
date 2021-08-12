@@ -21,7 +21,7 @@ import {IconFont} from '../../../Types'
 import TreeNavReadme from './TreeNav.md'
 
 const navMenuStories = storiesOf(
-  'Components|Navigation/TreeNav',
+  'Components/Navigation/TreeNav',
   module
 ).addDecorator(withKnobs)
 
@@ -83,12 +83,12 @@ navMenuStories.add(
             >
               <TreeNav.Item
                 id="item-1"
-                label={text('Item 1', 'First Item')}
+                label={text('Item 1', 'Ingest')}
                 icon={
                   <Icon
                     glyph={
                       IconFont[
-                        select('1 - icon', mapEnumKeys(IconFont), 'Disks')
+                        select('1 - icon', mapEnumKeys(IconFont), 'DisksNav')
                       ]
                     }
                   />
@@ -98,7 +98,7 @@ navMenuStories.add(
               />
               <TreeNav.Item
                 id="item-2"
-                label={text('Item 2', 'Second Item')}
+                label={text('Item 2', 'Build')}
                 icon={
                   <Icon
                     glyph={
@@ -111,7 +111,7 @@ navMenuStories.add(
               />
               <TreeNav.Item
                 id="item-3"
-                label={text('Item 3', 'Third Item')}
+                label="Monitor & Alert"
                 icon={
                   <Icon
                     glyph={
@@ -126,45 +126,46 @@ navMenuStories.add(
               />
               <TreeNav.Item
                 id="item-4"
-                label="Link Item"
-                icon={<Icon glyph={IconFont.Import} />}
+                label="Access"
+                icon={<Icon glyph={IconFont.DisksNav} />}
+                onClick={handleItemClick}
                 active={activeItem === 'item-4'}
-                linkElement={className => (
-                  <a href="#" className={className}>
-                    Bloop
-                  </a>
-                )}
               />
               <TreeNav.Item
                 id="item-5"
-                label="Link Item + Menu"
-                icon={<Icon glyph={IconFont.Import} />}
-                active={true}
-                linkElement={className => (
-                  <a href="#" className={className}>
-                    Bloop
-                  </a>
-                )}
+                label="Settings"
+                icon={<Icon glyph={IconFont.DisksNav} />}
+                onClick={handleItemClick}
+                active={activeItem === 'item-5'}
               >
                 <TreeNav.SubMenu>
                   <TreeNav.SubItem
                     id="item-5-sub-1"
                     label="Banana"
                     linkElement={className => (
-                      <a href="#" className={className}>
-                        Bloop
-                      </a>
+                      <a href="#" className={className} />
                     )}
                   />
                   <TreeNav.SubItem
                     id="item-5-sub-2"
                     label="Dragonfruit"
                     linkElement={className => (
-                      <a href="#" className={className}>
-                        Bloop
-                      </a>
+                      <a href="#" className={className} />
                     )}
-                    active={true}
+                  />
+                  <TreeNav.SubItem
+                    id="item-5-sub-3"
+                    label="Apple"
+                    linkElement={className => (
+                      <a href="#" className={className} />
+                    )}
+                  />
+                  <TreeNav.SubItem
+                    id="item-5-sub-4"
+                    label="Pineapple"
+                    linkElement={className => (
+                      <a href="#" className={className} />
+                    )}
                   />
                 </TreeNav.SubMenu>
               </TreeNav.Item>
@@ -178,7 +179,7 @@ navMenuStories.add(
               </Page.Contents>
             </Page>
           </AppWrapper>
-          <div className="story--test-buttons">
+          <div className="story--test-buttons story--test-buttons--bottom">
             <button onClick={logRef}>Log Ref</button>
           </div>
         </div>

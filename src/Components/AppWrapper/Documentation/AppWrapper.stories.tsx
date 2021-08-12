@@ -32,7 +32,7 @@ import {
 // Notes
 import AppWrapperReadme from './AppWrapper.md'
 
-const layoutStories = storiesOf('Layout|AppWrapper', module).addDecorator(
+const layoutStories = storiesOf('Layout/AppWrapper', module).addDecorator(
   withKnobs
 )
 
@@ -195,7 +195,7 @@ layoutStories.add(
                 )}
                 iconLink={(className: string) => (
                   <a className={className} href="#">
-                    <Icon glyph={IconFont.GraphLine} />
+                    <Icon glyph={IconFont.GraphLine_New} />
                   </a>
                 )}
                 active={false}
@@ -626,7 +626,7 @@ layoutStories.add(
                 id="explore"
                 label="Data Explorer"
                 shortLabel="Explore"
-                icon={<Icon glyph={IconFont.GraphLine} />}
+                icon={<Icon glyph={IconFont.GraphLine_New} />}
                 active={isItemActive('explore')}
                 onClick={handleNavClick}
               />

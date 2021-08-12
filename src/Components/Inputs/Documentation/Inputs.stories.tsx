@@ -69,17 +69,17 @@ import TimeInputReadme from './TimeInput.md'
 import MultipleChoiceForm from './MultipleChoiceForm.md'
 
 const inputsBaseStories = storiesOf(
-  'Components|Inputs/Base',
+  'Components/Inputs/Base',
   module
 ).addDecorator(withKnobs)
 
 const inputsComposedStories = storiesOf(
-  'Components|Inputs/Composed',
+  'Components/Inputs/Composed',
   module
 ).addDecorator(withKnobs)
 
 const inputsExampleStories = storiesOf(
-  'Components|Inputs/Examples',
+  'Components/Inputs/Examples',
   module
 ).addDecorator(withKnobs)
 
@@ -427,9 +427,7 @@ inputsBaseStories.add(
               select('color', mapEnumKeys(ComponentColor), 'Primary')
             ]
           }
-          appearance={
-            Appearance[select('appearance', mapEnumKeys(Appearance), 'Outline')]
-          }
+          fill={Appearance[select('fill', ['None', 'Solid'], 'None')]}
           type={
             InputToggleType[
               select('type', mapEnumKeys(InputToggleType), 'Checkbox')
@@ -488,164 +486,171 @@ inputsBaseStories.add(
       /* eslint-enable */
     }
 
-    const exampleTextAreaStyle = {width: '160px', margin: '0 10px'}
+    const exampleTextAreaStyle = {width: '100%', margin: '0 10px'}
 
     return (
       <div className="story--example">
         <div className="story--test-buttons">
           <button onClick={handleLogRefs}>Log Refs</button>
         </div>
-        <TextArea
-          ref={textAreaRefDefault}
-          containerRef={textAreaContainerRef}
-          value={text(
-            'value',
-            'Example text can be controlled from the Knobs panel on the right'
-          )}
-          maxLength={number('maxLength', 50)}
-          minLength={number('minLength', 5)}
-          placeholder={text('placeholder', 'Placeholder Text')}
-          onChange={() => {
-            // do nothing
-          }}
-          monospace={boolean('monospace', false)}
-          autocomplete={
-            AutoComplete[
-              radios<AutoComplete>(
-                'autocomplete',
-                mapEnumKeys(AutoComplete),
-                AutoComplete.Off
-              )
-            ]
-          }
-          size={
-            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-          }
-          style={object('style', exampleTextAreaStyle)}
-          cols={number('cols', 20)}
-          rows={number('rows', 10)}
-          status={ComponentStatus.Default}
-        />
-        <TextArea
-          ref={textAreaRefDisabled}
-          value={text(
-            'value',
-            'Example text can be controlled from the Knobs panel on the right'
-          )}
-          maxLength={number('maxLength', 50)}
-          minLength={number('minLength', 5)}
-          placeholder={text('placeholder', 'Placeholder Text')}
-          onChange={() => {
-            // do nothing
-          }}
-          monospace={boolean('monospace', false)}
-          autocomplete={
-            AutoComplete[
-              radios<AutoComplete>(
-                'autocomplete',
-                mapEnumKeys(AutoComplete),
-                AutoComplete.Off
-              )
-            ]
-          }
-          size={
-            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-          }
-          style={object('style', exampleTextAreaStyle)}
-          cols={number('cols', 20)}
-          rows={number('rows', 10)}
-          status={ComponentStatus.Disabled}
-        />
-        <TextArea
-          ref={textAreaRefValid}
-          value={text(
-            'value',
-            'Example text can be controlled from the Knobs panel on the right'
-          )}
-          maxLength={number('maxLength', 50)}
-          minLength={number('minLength', 5)}
-          placeholder={text('placeholder', 'Placeholder Text')}
-          onChange={() => {
-            // do nothing
-          }}
-          monospace={boolean('monospace', false)}
-          autocomplete={
-            AutoComplete[
-              radios<AutoComplete>(
-                'autocomplete',
-                mapEnumKeys(AutoComplete),
-                AutoComplete.Off
-              )
-            ]
-          }
-          size={
-            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-          }
-          style={object('style', exampleTextAreaStyle)}
-          cols={number('cols', 20)}
-          rows={number('rows', 10)}
-          status={ComponentStatus.Valid}
-        />
-        <TextArea
-          ref={textAreaRefError}
-          value={text(
-            'value',
-            'Example text can be controlled from the Knobs panel on the right'
-          )}
-          maxLength={number('maxLength', 50)}
-          minLength={number('minLength', 5)}
-          placeholder={text('placeholder', 'Placeholder Text')}
-          onChange={() => {
-            // do nothing
-          }}
-          monospace={boolean('monospace', false)}
-          autocomplete={
-            AutoComplete[
-              radios<AutoComplete>(
-                'autocomplete',
-                mapEnumKeys(AutoComplete),
-                AutoComplete.Off
-              )
-            ]
-          }
-          size={
-            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-          }
-          style={object('style', exampleTextAreaStyle)}
-          cols={number('cols', 20)}
-          rows={number('rows', 10)}
-          status={ComponentStatus.Error}
-        />
-        <TextArea
-          ref={textAreaRefLoading}
-          value={text(
-            'value',
-            'Example text can be controlled from the Knobs panel on the right'
-          )}
-          maxLength={number('maxLength', 50)}
-          minLength={number('minLength', 5)}
-          placeholder={text('placeholder', 'Placeholder Text')}
-          onChange={() => {
-            // do nothing
-          }}
-          monospace={boolean('monospace', false)}
-          autocomplete={
-            AutoComplete[
-              radios<AutoComplete>(
-                'autocomplete',
-                mapEnumKeys(AutoComplete),
-                AutoComplete.Off
-              )
-            ]
-          }
-          size={
-            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
-          }
-          style={object('style', exampleTextAreaStyle)}
-          cols={number('cols', 20)}
-          rows={number('rows', 10)}
-          status={ComponentStatus.Loading}
-        />
+        <FlexBox
+          style={{width: '100%'}}
+          stretchToFitWidth={true}
+          direction={FlexDirection.Column}
+          margin={ComponentSize.Large}
+        >
+          <TextArea
+            ref={textAreaRefDefault}
+            containerRef={textAreaContainerRef}
+            value={text(
+              'value',
+              'Example text can be controlled from the Knobs panel on the right'
+            )}
+            maxLength={number('maxLength', 50)}
+            minLength={number('minLength', 5)}
+            placeholder={text('placeholder', 'Placeholder Text')}
+            onChange={() => {
+              // do nothing
+            }}
+            monospace={boolean('monospace', false)}
+            autocomplete={
+              AutoComplete[
+                radios<AutoComplete>(
+                  'autocomplete',
+                  mapEnumKeys(AutoComplete),
+                  AutoComplete.Off
+                )
+              ]
+            }
+            size={
+              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+            }
+            style={object('style', exampleTextAreaStyle)}
+            cols={number('cols', 20)}
+            rows={number('rows', 10)}
+            status={ComponentStatus.Default}
+          />
+          <TextArea
+            ref={textAreaRefDisabled}
+            value={text(
+              'value',
+              'Example text can be controlled from the Knobs panel on the right'
+            )}
+            maxLength={number('maxLength', 50)}
+            minLength={number('minLength', 5)}
+            placeholder={text('placeholder', 'Placeholder Text')}
+            onChange={() => {
+              // do nothing
+            }}
+            monospace={boolean('monospace', false)}
+            autocomplete={
+              AutoComplete[
+                radios<AutoComplete>(
+                  'autocomplete',
+                  mapEnumKeys(AutoComplete),
+                  AutoComplete.Off
+                )
+              ]
+            }
+            size={
+              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+            }
+            style={object('style', exampleTextAreaStyle)}
+            cols={number('cols', 20)}
+            rows={number('rows', 10)}
+            status={ComponentStatus.Disabled}
+          />
+          <TextArea
+            ref={textAreaRefValid}
+            value={text(
+              'value',
+              'Example text can be controlled from the Knobs panel on the right'
+            )}
+            maxLength={number('maxLength', 50)}
+            minLength={number('minLength', 5)}
+            placeholder={text('placeholder', 'Placeholder Text')}
+            onChange={() => {
+              // do nothing
+            }}
+            monospace={boolean('monospace', false)}
+            autocomplete={
+              AutoComplete[
+                radios<AutoComplete>(
+                  'autocomplete',
+                  mapEnumKeys(AutoComplete),
+                  AutoComplete.Off
+                )
+              ]
+            }
+            size={
+              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+            }
+            style={object('style', exampleTextAreaStyle)}
+            cols={number('cols', 20)}
+            rows={number('rows', 10)}
+            status={ComponentStatus.Valid}
+          />
+          <TextArea
+            ref={textAreaRefError}
+            value={text(
+              'value',
+              'Example text can be controlled from the Knobs panel on the right'
+            )}
+            maxLength={number('maxLength', 50)}
+            minLength={number('minLength', 5)}
+            placeholder={text('placeholder', 'Placeholder Text')}
+            onChange={() => {
+              // do nothing
+            }}
+            monospace={boolean('monospace', false)}
+            autocomplete={
+              AutoComplete[
+                radios<AutoComplete>(
+                  'autocomplete',
+                  mapEnumKeys(AutoComplete),
+                  AutoComplete.Off
+                )
+              ]
+            }
+            size={
+              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+            }
+            style={object('style', exampleTextAreaStyle)}
+            cols={number('cols', 20)}
+            rows={number('rows', 10)}
+            status={ComponentStatus.Error}
+          />
+          <TextArea
+            ref={textAreaRefLoading}
+            value={text(
+              'value',
+              'Example text can be controlled from the Knobs panel on the right'
+            )}
+            maxLength={number('maxLength', 50)}
+            minLength={number('minLength', 5)}
+            placeholder={text('placeholder', 'Placeholder Text')}
+            onChange={() => {
+              // do nothing
+            }}
+            monospace={boolean('monospace', false)}
+            autocomplete={
+              AutoComplete[
+                radios<AutoComplete>(
+                  'autocomplete',
+                  mapEnumKeys(AutoComplete),
+                  AutoComplete.Off
+                )
+              ]
+            }
+            size={
+              ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+            }
+            style={object('style', exampleTextAreaStyle)}
+            cols={number('cols', 20)}
+            rows={number('rows', 10)}
+            status={ComponentStatus.Loading}
+          />
+        </FlexBox>
       </div>
     )
   },
@@ -955,11 +960,7 @@ inputsExampleStories.add(
                 select('color', mapEnumKeys(ComponentColor), 'Primary')
               ]
             }
-            appearance={
-              Appearance[
-                select('appearance', mapEnumKeys(Appearance), 'Outline')
-              ]
-            }
+            fill={Appearance[select('fill', ['None', 'Solid'], 'None')]}
           >
             <InputLabel active={weapon === 'chainsaw'} htmlFor="chainsaw">
               Chainsaw
@@ -979,11 +980,7 @@ inputsExampleStories.add(
                 select('color', mapEnumKeys(ComponentColor), 'Primary')
               ]
             }
-            appearance={
-              Appearance[
-                select('appearance', mapEnumKeys(Appearance), 'Outline')
-              ]
-            }
+            fill={Appearance[select('fill', ['None', 'Solid'], 'None')]}
           >
             <InputLabel active={weapon === 'crowbar'} htmlFor="crowbar">
               Crowbar
@@ -1003,11 +1000,7 @@ inputsExampleStories.add(
                 select('color', mapEnumKeys(ComponentColor), 'Primary')
               ]
             }
-            appearance={
-              Appearance[
-                select('appearance', mapEnumKeys(Appearance), 'Outline')
-              ]
-            }
+            fill={Appearance[select('fill', ['None', 'Solid'], 'None')]}
           >
             <InputLabel active={weapon === 'katana'} htmlFor="katana">
               Katana
@@ -1020,6 +1013,56 @@ inputsExampleStories.add(
   {
     readme: {
       content: marked(MultipleChoiceForm),
+    },
+  }
+)
+
+inputsExampleStories.add(
+  'Collage',
+  () => {
+    return (
+      <div className="story--example">
+        <table className="two-axis-table two-axis-table--spaced">
+          <tbody>
+            <tr>
+              <td>
+                <code>Size</code>
+              </td>
+              {[
+                {size: ComponentSize.ExtraSmall, placeholder: 'ExtraSmall'},
+                {size: ComponentSize.Small, placeholder: 'Small'},
+                {size: ComponentSize.Medium, placeholder: 'Medium'},
+                {size: ComponentSize.Large, placeholder: 'Large'},
+              ].map((props, i) => (
+                <td key={i}>
+                  <Input {...props} />
+                </td>
+              ))}
+            </tr>
+            <tr>
+              <td>
+                <code>Status</code>
+              </td>
+              {[
+                {status: ComponentStatus.Default},
+                {status: ComponentStatus.Disabled},
+                {status: ComponentStatus.Loading},
+                {status: ComponentStatus.Error},
+                {status: ComponentStatus.Valid},
+              ].map((props, i) => (
+                <td key={i}>
+                  <Input placeholder={props.status.toString()} {...props} />
+                </td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(InputReadme),
     },
   }
 )

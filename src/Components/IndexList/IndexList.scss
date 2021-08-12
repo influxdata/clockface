@@ -1,4 +1,5 @@
 @import '../../Styles/variables';
+@import '../../Styles/typography';
 
 /*
   Index List Styles
@@ -6,7 +7,7 @@
 */
 
 $cf-index-list--row-height: 52px;
-$cf-index-list--sort-text: $g11-sidewalk;
+$cf-index-list--sort-text: $cf-grey-65;
 
 .cf-index-list {
   border: 0;
@@ -16,26 +17,28 @@ $cf-index-list--sort-text: $g11-sidewalk;
 
 .cf-index-list--header-cell {
   @include no-user-select();
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
   padding: 0 13px;
-  font-size: $cf-form-md-font;
-  font-weight: $cf-font-weight--medium;
-  color: $g9-mountain;
+  color: $cf-grey-55;
   white-space: nowrap;
-  height: 52px;
+  height: $cf-index-list--row-height;
+  @extend %type-uppercase;
+  font-size: $cf-text-base-0;
 }
 
 .cf-index-list--cell {
   height: calc(100% - #{$cf-border});
-  padding: $cf-marg-a + $cf-marg-b;
+  padding: $cf-space-xs;
   background-color: $cf-card-background--default;
-  font-size: $cf-form-md-font;
+  font-size: $cf-text-base-0;
   font-weight: $cf-font-weight--medium;
   color: $cf-card-text--default;
   display: flex;
   align-items: center;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition: opacity $cf-transition-default, color $cf-transition-default;
+
+  &:after {
+    @include createOverlayBase();
+  }
 }
 
 // Alignment modifiers
@@ -77,17 +80,20 @@ $cf-index-list--sort-text: $g11-sidewalk;
 // Row Style
 .cf-index-list--row {
   @extend %panel-shadow;
+  position: relative;
 }
 
 // Row hover State
 .cf-index-list--row:hover .cf-index-list--cell {
-  background-color: $cf-card-background--hover;
   color: $cf-card-text--hover;
+  &:after {
+    opacity: $cf-hover-active-opacity;
+  }
 }
 
 // Show cell contents on row hover
 .cf-index-list--show-hover .cf-index-list--cell > * {
-  transition: opacity 0.25s ease;
+  transition: opacity $cf-transition-default;
   opacity: 0;
 }
 .cf-index-list--row:hover .cf-index-list--show-hover .cf-index-list--cell > * {
@@ -126,13 +132,18 @@ $cf-index-list--sort-text: $g11-sidewalk;
   .cf-index-list--cell {
   background-color: $cf-card-background--disabled;
   color: $cf-card-text--disabled;
-  font-style: italic;
+  cursor: not-allowed;
+  opacity: $cf-disabled-opacity;
+
+  &:after {
+    opacity: 0;
+  }
 
   a:link,
   a:visited,
   a:hover,
   a:active {
-    transition: color 0.25s ease, opacity 0.25s ease;
+    transition: color $cf-transition-default, opacity $cf-transition-default;
     opacity: 0.7;
   }
 }
@@ -172,11 +183,11 @@ $cf-index-list--sort-text: $g11-sidewalk;
   vertical-align: middle;
   width: 20px;
   height: 20px;
-  margin-left: $cf-marg-a;
+  margin-left: $cf-space-3xs;
   opacity: 0;
   position: relative;
   top: -1px;
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transition: opacity $cf-transition-default, transform $cf-transition-default;
 
   > span.cf-icon {
     position: absolute;
@@ -187,7 +198,7 @@ $cf-index-list--sort-text: $g11-sidewalk;
 }
 
 .cf-index-list--header-cell.cf-index-list--sortable {
-  transition: color 0.25s ease;
+  transition: color $cf-transition-default;
 
   &:hover {
     cursor: pointer;
@@ -216,7 +227,7 @@ $cf-index-list--sort-text: $g11-sidewalk;
 */
 
 .cf-index-list--labels {
-  margin-left: $cf-marg-b;
+  margin-left: $cf-space-2xs;
 }
 
 .cf-index-list--row-cell .cf-index-list--cell a {

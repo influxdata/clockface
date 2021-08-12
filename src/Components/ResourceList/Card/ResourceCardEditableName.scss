@@ -1,4 +1,4 @@
-@import "../../../Styles/variables.scss";
+@import '../../../Styles/variables.scss';
 
 /*
   Editable Name for Resource Cards
@@ -9,21 +9,18 @@
 .cf-resource-name--text__link,
 .cf-input.cf-resource-editable-name--input > input {
   font-size: $cf-card--name-font-size;
-  font-weight: $cf-card--name-font-weight;
-  font-family: $cf-text-font;
 }
 
 .cf-resource-editable-name > a {
   display: inline-block;
-  white-space: nowrap;
-  line-height: $cf-form-xs-height;
 }
 
 .cf-resource-editable-name {
-  height: $cf-form-xs-height;
   position: relative;
-  display: inline-flex;
+  display: flex;
   flex-wrap: nowrap;
+  align-items: center;
+  max-width: calc(100% - 100px);
 }
 
 /* Ensure placeholder text matches font weight of title */
@@ -43,12 +40,12 @@
 }
 
 .cf-resource-editable-name--toggle {
-  font-size: $cf-card--name-font-weight * 0.75;
-  transform: translateY(-10%);
+  font-size: $cf-text-base-0;
   padding: $cf-marg-a;
   display: inline-block;
   margin-left: $cf-marg-b;
-  transition: color 0.25s ease, opacity 0.25s ease, width 0.25s ease;
+  transition: color $cf-transition-default, opacity $cf-transition-default,
+    width $cf-transition-default;
   opacity: 0;
   width: 0;
   color: $g11-sidewalk;

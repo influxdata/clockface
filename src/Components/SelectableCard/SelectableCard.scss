@@ -5,42 +5,25 @@
   ------------------------------------------------------------------------------
 */
 
-$selectable-card--bg: $g5-pepper;
-$selectable-card--body: $g2-kevlar;
-$selectable-card--label: $g13-mist;
-
-$selectable-card--bg-hover: $g7-graphite;
-$selectable-card--body-hover: $g3-castle;
-$selectable-card--label-hover: $g20-white;
-
-$selectable-card--bg-disabled: $g4-onyx;
-$selectable-card--body-disabled: $g3-castle;
-$selectable-card--label-disabled: $g8-storm;
+$selectable-card--bg: $cf-grey-25;
+$selectable-card--body: $cf-grey-15;
+$selectable-card--label: $cf-grey-75;
 
 .cf-selectable-card {
   width: 100%;
   height: 100%;
   background-color: $selectable-card--bg;
   border-radius: $cf-radius;
-  border: $cf-border solid $selectable-card--bg;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
-  overflow: hidden;
+  transition: border-color $cf-transition-default,
+    background-color $cf-transition-default;
   user-select: none;
   display: inline-flex;
   flex-direction: column;
   justify-content: stretch;
   align-items: center;
   cursor: pointer;
+  position: relative;
   @extend %panel-shadow;
-
-  &:hover {
-    border-color: $selectable-card--bg-hover;
-    background-color: $selectable-card--bg-hover;
-
-    .cf-selectable-card--body {
-      background-color: $selectable-card--body-hover;
-    }
-  }
 
   &:focus {
     outline: none;
@@ -50,13 +33,13 @@ $selectable-card--label-disabled: $g8-storm;
 .cf-selectable-card--body {
   width: 100%;
   height: 100%;
-  position: relative;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   background-color: $selectable-card--body;
   border-radius: $cf-radius - 1px;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  transition: border-color $cf-transition-default,
+    background-color $cf-transition-default;
 }
 
 .cf-selectable-card--hidden-input {
@@ -66,42 +49,78 @@ $selectable-card--label-disabled: $g8-storm;
   opacity: 0;
 }
 
+.cf-selectable-card--focus {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  transition: box-shadow $cf-transition-default;
+}
+
+.cf-selectable-card:focus .cf-selectable-card--focus,
+.cf-selectable-card--hidden-input:focus + .cf-selectable-card--focus {
+  @include focus-shadow();
+}
+
 .cf-selectable-card--icon {
   position: absolute;
   opacity: 0;
-  transition: opacity 0.25s ease;
+  transition: opacity $cf-transition-default;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: $cf-white;
+  font-size: $cf-text-base--1;
 
   .cf-selectable-card__selected & {
     opacity: 1;
   }
 }
 
-.cf-selectable-card--label {
-  cursor: inherit;
-  display: inline-block;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: $selectable-card--label;
-  transition: color 0.25s ease;
-  font-weight: $cf-font-weight--medium;
-  position: relative;
-}
+.cf-selectable-card--indicator {
+  width: $cf-space-s;
+  height: $cf-space-s;
+  position: absolute;
+  right: $cf-space-s;
+  top: 50%;
+  transform: translateY(-50%);
+  @include checkbox-indicator();
 
-.cf-selectable-card:hover {
-  .cf-selectable-card--label {
-    color: $selectable-card--label-hover;
+  .cf-selectable-card__selected & {
+    @include checkbox-indicator-active();
   }
 }
 
-.cf-selectable-card__selected,
-.cf-selectable-card__selected.cf-selectable-card:hover {
+.cf-selectable-card--label {
+  cursor: inherit;
+  display: block;
+  text-align: left;
+  width: 100%;
+  color: $selectable-card--label;
+  transition: color $cf-transition-default;
+  font-weight: $cf-font-weight--medium;
+  position: relative;
+
+  & > :first-child {
+    width: calc(100% - #{$cf-space-xs});
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &:after {
+    @include createOverlayBase();
+  }
+}
+
+.cf-selectable-card:not(.cf-selectable-card__disabled):hover
   .cf-selectable-card--label {
-    color: $g1-raven;
+  &:after {
+    opacity: $cf-hover-active-opacity;
   }
 }
 
@@ -116,7 +135,7 @@ $selectable-card--label-disabled: $g8-storm;
   justify-content: center;
   align-items: center;
   filter: grayscale(0) opacity(100%);
-  transition: filter 0.2s ease;
+  transition: filter $cf-transition-default;
 }
 
 /*
@@ -128,28 +147,11 @@ $selectable-card--label-disabled: $g8-storm;
 .cf-selectable-card__disabled:focus,
 .cf-selectable-card__disabled:hover,
 .cf-selectable-card__disabled.cf-selectable-card__selected {
-  cursor: default;
-  border-color: $selectable-card--bg-disabled;
-  background-color: $selectable-card--bg-disabled;
-  font-style: italic;
-
-  .cf-selectable-card--body,
-  .cf-selectable-card--body:hover {
-    background-color: $selectable-card--body-disabled;
-  }
+  cursor: not-allowed;
+  opacity: $cf-disabled-opacity;
 
   .cf-selectable-card--children {
     filter: grayscale(0.5) opacity(30%);
-  }
-
-  .cf-selectable-card--label {
-    color: $selectable-card--label-disabled;
-  }
-
-  &.cf-selectable-card__selected {
-    .cf-selectable-card--label {
-      color: $g1-raven;
-    }
   }
 }
 
@@ -157,10 +159,9 @@ $selectable-card--label-disabled: $g8-storm;
   Color Modifiers
   ------------------------------------------------------------------------------
 */
-@mixin selectableCardColorModifier($color, $text, $focusGlow) {
+@mixin selectableCardColorModifier($color, $text) {
   &.cf-selectable-card__selected,
   &.cf-selectable-card__selected:hover {
-    border-color: $color;
     background-color: $color;
 
     .cf-selectable-card--label {
@@ -168,46 +169,14 @@ $selectable-card--label-disabled: $g8-storm;
     }
   }
 
-  .cf-selectable-card--icon {
-    color: $color;
-  }
-
   &.cf-selectable-card__selected.cf-selectable-card__disabled,
   &.cf-selectable-card__selected.cf-selectable-card__disabled:hover {
-    border-color: mix($color, $selectable-card--body, 30%);
     background-color: mix($color, $selectable-card--body, 30%);
-
-    .cf-selectable-card--icon {
-      color: mix($color, $selectable-card--body, 30%);
-    }
-
-    .cf-selectable-card--label {
-      color: mix($text, $color, 20%);
-    }
-  }
-
-  &:focus:not(.cf-selectable-card__disabled) {
-    box-shadow: 0 0 6px 2px $focusGlow;
   }
 }
 
-.cf-selectable-card__default {
-  @include selectableCardColorModifier($g7-graphite, $g18-cloud, $c-pool);
-}
-.cf-selectable-card__primary {
-  @include selectableCardColorModifier($c-pool, $g20-white, $c-ocean);
-}
-.cf-selectable-card__secondary {
-  @include selectableCardColorModifier($c-comet, $g20-white, $c-star);
-}
-.cf-selectable-card__success {
-  @include selectableCardColorModifier($c-honeydew, $g5-pepper, $c-rainforest);
-}
-.cf-selectable-card__warning {
-  @include selectableCardColorModifier($c-thunder, $g5-pepper, $c-pineapple);
-}
-.cf-selectable-card__danger {
-  @include selectableCardColorModifier($c-dreamsicle, $g5-pepper, $c-curacao);
+.cf-selectable-card {
+  @include selectableCardColorModifier($c-pool, $g20-white);
 }
 
 /*
@@ -216,16 +185,14 @@ $selectable-card--label-disabled: $g8-storm;
 */
 @mixin selectableCardSizeModifier($fontSize, $padding) {
   .cf-selectable-card--label {
-    font-size: ceil($fontSize * 1.25);
-    line-height: ceil($fontSize * 1.25);
-    padding: $padding;
+    font-size: $fontSize;
+    padding: $padding 0 $padding $cf-space-s;
   }
 
-  .cf-selectable-card--icon {
-    font-size: ceil($fontSize * 1.25);
-    top: $padding * 1.5;
-    left: $padding * 1.5;
+  &.cf-selectable-card__has-icon .cf-selectable-card--label {
+    padding-right: $cf-space-s * 2;
   }
+
   .cf-selectable-card--children {
     width: calc(100% - #{$padding * 8});
     height: calc(100% - #{$padding * 8});
@@ -233,14 +200,14 @@ $selectable-card--label-disabled: $g8-storm;
 }
 
 .cf-selectable-card__xs {
-  @include selectableCardSizeModifier($cf-form-xs-font, $cf-form-xs-padding);
+  @include selectableCardSizeModifier($cf-text-base-0, $cf-space-2xs);
 }
 .cf-selectable-card__sm {
-  @include selectableCardSizeModifier($cf-form-sm-font, $cf-form-sm-padding);
+  @include selectableCardSizeModifier($cf-text-base-0, $cf-space-xs);
 }
 .cf-selectable-card__md {
-  @include selectableCardSizeModifier($cf-form-md-font, $cf-form-md-padding);
+  @include selectableCardSizeModifier($cf-text-base-1, $cf-space-s);
 }
 .cf-selectable-card__lg {
-  @include selectableCardSizeModifier($cf-form-lg-font, $cf-form-lg-padding);
+  @include selectableCardSizeModifier($cf-text-base-1, $cf-space-m);
 }

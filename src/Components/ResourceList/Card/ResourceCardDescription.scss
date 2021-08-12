@@ -1,20 +1,13 @@
-@import "../../../Styles/variables.scss";
+@import '../../../Styles/variables.scss';
 
 /*
   Resource Editable Description
   ------------------------------------------------------------------------------
 */
 
-.cf-resource-description {
-  width: 100%;
-  min-height: $cf-form-xs-height;
-}
-
 .cf-resource-description--preview,
 .cf-input.cf-resource-description--input > input {
-  font-size: $cf-form-xs-font;
-  font-weight: $cf-font-weight--medium;
-  font-family: $cf-text-font;
+  font-size: $cf-text-base-0;
 }
 
 .cf-resource-description--preview,
@@ -24,17 +17,15 @@
 }
 
 .cf-resource-description--preview {
-  padding-top: $cf-marg-a;
   width: auto;
   display: inline-block;
   border-radius: $cf-radius;
   position: relative;
   overflow: hidden;
   @include no-user-select();
-  color: $g13-mist;
-  transition: color 0.25s ease, background-color 0.25s ease,
-    border-color 0.25s ease;
-  line-height: $cf-form-xs-font + $cf-border;
+  color: $cf-grey-55;
+  transition: color $cf-transition-default,
+    background-color $cf-transition-default, border-color $cf-transition-default;
 
   .cf-icon {
     position: relative;
@@ -42,8 +33,8 @@
     display: inline-block;
     margin-left: $cf-marg-b;
     opacity: 0;
-    transition: opacity 0.25s ease;
-    color: $g11-sidewalk;
+    transition: opacity $cf-transition-default;
+    color: inherit;
   }
 
   &:hover .cf-icon {
@@ -51,7 +42,7 @@
   }
 
   &.untitled {
-    color: $g9-mountain;
+    color: $cf-grey-55;
     font-style: italic;
   }
 
@@ -75,4 +66,9 @@
   &:-moz-placeholder {
     font-weight: $cf-font-weight--medium !important;
   }
+}
+
+/* Pull description up when it follows a title */
+.cf-flex-box__margin-lg .cf-resource-editable-name + .cf-resource-description {
+  margin-top: -$cf-space-2xs;
 }

@@ -17,26 +17,26 @@
 */
 
 .cf-list-indicator__dot {
+  border-radius: 50%;
+  background-color: rgba($cf-grey-95, 0.1);
+
   .cf-list-indicator--element {
     border-radius: 50%;
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.25, 0.25);
-    transition: transform 0.25s ease, opacity 0.25s ease;
-  }
-
-  &.cf-list-indicator__selected .cf-list-indicator--element {
-    transform: translate(-50%, -50%) scale(1, 1);
-    opacity: 1;
-  }
-
-  &.cf-list-indicator__light .cf-list-indicator--element {
+    transition: transform $cf-transition-default, opacity $cf-transition-default;
     background-color: $g20-white;
-    box-shadow: 0 0 5px 1px $g20-white;
+    width: 0.5em;
+    height: 0.5em;
   }
 
-  &.cf-list-indicator__dark .cf-list-indicator--element {
-    background-color: $g2-kevlar;
-    box-shadow: 0 0 5px 1px $g2-kevlar;
+  &.cf-list-indicator__selected {
+    background-color: $cf-grey-35;
+
+    .cf-list-indicator--element {
+      transform: translate(-50%, -50%) scale(1, 1);
+      opacity: 1;
+    }
   }
 }
 
@@ -47,48 +47,24 @@
 
 .cf-list-indicator__checkbox {
   border-radius: $cf-border;
+  background-color: rgba($cf-grey-95, 0.1);
 
   .cf-list-indicator--element {
-    background-color: $c-pool;
-    box-shadow: 0 0 5px 1px $c-pool;
-    border-radius: 50%;
+    width: 0.5em;
+    height: 0.75em;
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.25, 0.25);
-    transition: transform 0.25s ease, opacity 0.25s ease;
+    transform: translate(-50%, -70%) rotate(45deg);
+    transition: opacity $cf-transition-default, transform $cf-transition-default;
+    border-bottom: 2px solid $cf-white;
+    border-right: 2px solid $cf-white;
   }
 
-  &.cf-list-indicator__selected .cf-list-indicator--element {
-    transform: translate(-50%, -50%) scale(1, 1);
-    opacity: 1;
-  }
+  &.cf-list-indicator__selected {
+    background-color: $cf-grey-25;
 
-  &.cf-list-indicator__light {
-    background-color: rgba($g0-obsidian, 0.5);
-  }
-
-  &.cf-list-indicator__light.cf-list-indicator__special-contrast {
-    background-color: rgba($g2-kevlar, 0.666);
-  }
-
-  &.cf-list-indicator__selected.cf-list-indicator__light.cf-list-indicator__special-contrast {
-    background-color: rgba($g0-obsidian, 0.5);
-  }
-
-  &.cf-list-indicator__dark {
-    background-color: rgba($g0-obsidian, 0.15);
-  }
-}
-
-/*
-  Checkbox
-  ------------------------------------------------------------------------------
-*/
-
-.cf-list-indicator__icon {
-  font-size: 1.125em;
-
-  .cf-list-indicator--element {
-    transform: translate(-50%, -52%);
+    .cf-list-indicator--element {
+      opacity: 1;
+    }
   }
 }
 
@@ -115,8 +91,8 @@
   }
 
   &.cf-list-indicator__dot {
-    width: floor($size * 0.15);
-    height: $size;
+    width: $checkboxSize;
+    height: $checkboxSize;
   }
 
   &.cf-list-indicator__checkbox {
@@ -133,12 +109,6 @@
     .cf-list-item--text + & {
       margin-left: floor($size * 0.25);
     }
-  }
-
-  &.cf-list-indicator__dot .cf-list-indicator--element,
-  &.cf-list-indicator__checkbox .cf-list-indicator--element {
-    width: $dotSize;
-    height: $dotSize;
   }
 }
 

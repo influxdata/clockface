@@ -21,12 +21,12 @@ import DraggableResizerExampleAReadme from './DraggableResizerExampleA.md'
 import DraggableResizerExampleBReadme from './DraggableResizerExampleB.md'
 
 const draggableResizerExamplesStories = storiesOf(
-  'Layout|Draggable Resizer/Examples',
+  'Layout/Draggable Resizer/Examples',
   module
 ).addDecorator(withKnobs)
 
 const draggableResizerStories = storiesOf(
-  'Layout|Draggable Resizer/Family',
+  'Layout/Draggable Resizer/Family',
   module
 ).addDecorator(withKnobs)
 

@@ -1,8 +1,9 @@
 @import '../../Styles/variables';
+@import '../../Styles/typography';
 
-$table-border--primary: $g6-smoke;
-$table-border--secondary: $g4-onyx;
-$table-row-background: $g3-castle;
+$table-border--primary: $cf-grey-25;
+$table-border--secondary: $cf-grey-15;
+$table-row-background: $cf-grey-15;
 
 /*
   Table
@@ -14,18 +15,20 @@ $table-row-background: $g3-castle;
 }
 
 .cf-table--cell {
-  color: $g11-sidewalk;
-  transition: background-color 0.25s ease, color 0.25s ease;
-  font-weight: $cf-font-weight--medium;  
+  color: $cf-grey-75;
+  transition: background-color $cf-transition-default,
+    color $cf-transition-default;
+  font-weight: $cf-font-weight--medium;
 }
 
 .cf-table--header-cell {
-  color: $g15-platinum;
-  font-weight: $cf-font-weight--bold;  
+  color: $cf-grey-55;
+  font-weight: $cf-font-weight--bold;
+  @extend %type-uppercase;
 }
 
 .cf-table--row {
-  transition: background-color 0.25s ease;
+  transition: background-color $cf-transition-default;
 }
 
 /*
@@ -54,7 +57,9 @@ $table-row-background: $g3-castle;
     border-bottom: $cf-border solid $table-border--secondary;
   }
 
-  .cf-table--header:first-child .cf-table--row:first-child .cf-table--header-cell {
+  .cf-table--header:first-child
+    .cf-table--row:first-child
+    .cf-table--header-cell {
     border-top: 0;
   }
 
@@ -96,7 +101,9 @@ $table-row-background: $g3-castle;
     border: $cf-border solid $table-border--secondary;
   }
 
-  .cf-table--header:first-child .cf-table--row:first-child .cf-table--header-cell {
+  .cf-table--header:first-child
+    .cf-table--row:first-child
+    .cf-table--header-cell {
     border-top: 0;
   }
 
@@ -142,16 +149,16 @@ $table-row-background: $g3-castle;
 }
 
 .cf-table__padding-xs {
-  @include tablePaddingModifier($cf-form-xs-padding);
+  @include tablePaddingModifier($cf-space-2xs);
 }
 .cf-table__padding-sm {
-  @include tablePaddingModifier($cf-form-sm-padding);
+  @include tablePaddingModifier($cf-space-xs);
 }
 .cf-table__padding-md {
-  @include tablePaddingModifier($cf-form-md-padding);
+  @include tablePaddingModifier($cf-space-s);
 }
 .cf-table__padding-lg {
-  @include tablePaddingModifier($cf-form-lg-padding);
+  @include tablePaddingModifier($cf-space-m);
 }
 
 /*
@@ -167,16 +174,16 @@ $table-row-background: $g3-castle;
 }
 
 .cf-table__font-xs {
-  @include tableFontModifier($cf-form-xs-font);
+  @include tableFontModifier($cf-text-base--1);
 }
 .cf-table__font-sm {
-  @include tableFontModifier($cf-form-sm-font);
+  @include tableFontModifier($cf-text-base-0);
 }
 .cf-table__font-md {
-  @include tableFontModifier($cf-form-md-font);
+  @include tableFontModifier($cf-text-base-1);
 }
 .cf-table__font-lg {
-  @include tableFontModifier($cf-form-lg-font);
+  @include tableFontModifier($cf-text-base-2);
 }
 
 /*
@@ -206,7 +213,13 @@ $table-row-background: $g3-castle;
   ------------------------------------------------------------------------------
 */
 
-@mixin tableColorModifier($background, $backgroundAlt, $backgroundHover, $border, $text) {
+@mixin tableColorModifier(
+  $background,
+  $backgroundAlt,
+  $backgroundHover,
+  $border,
+  $text
+) {
   .cf-table .cf-table--body & .cf-table--cell,
   .cf-table .cf-table--body & .cf-table--header-cell,
   .cf-table .cf-table--header & .cf-table--cell,
@@ -231,17 +244,47 @@ $table-row-background: $g3-castle;
 }
 
 .cf-table--row__primary {
-  @include tableColorModifier($c-sapphire, mix($c-ocean, $c-sapphire, 50%), $c-ocean, $c-pool, $g20-white);
+  @include tableColorModifier(
+    $c-sapphire,
+    mix($c-ocean, $c-sapphire, 50%),
+    $c-ocean,
+    $c-pool,
+    $g20-white
+  );
 }
 .cf-table--row__secondary {
-  @include tableColorModifier($c-void, mix($c-amethyst, $c-void, 50%), $c-amethyst, $c-star, $g20-white);
+  @include tableColorModifier(
+    $c-void,
+    mix($c-amethyst, $c-void, 50%),
+    $c-amethyst,
+    $c-star,
+    $g20-white
+  );
 }
 .cf-table--row__success {
-  @include tableColorModifier($c-emerald, mix($c-viridian, $c-emerald, 50%), $c-viridian, $c-rainforest, $g20-white);
+  @include tableColorModifier(
+    $c-emerald,
+    mix($c-viridian, $c-emerald, 50%),
+    $c-viridian,
+    $c-rainforest,
+    $g20-white
+  );
 }
 .cf-table--row__warning {
-  @include tableColorModifier($c-tiger, mix($c-pineapple, $c-tiger, 50%), $c-pineapple, $c-thunder, $g3-castle);
+  @include tableColorModifier(
+    $c-tiger,
+    mix($c-pineapple, $c-tiger, 50%),
+    $c-pineapple,
+    $c-thunder,
+    $g3-castle
+  );
 }
 .cf-table--row__danger {
-  @include tableColorModifier($c-ruby, mix($c-fire, $c-ruby, 50%), $c-fire, $c-dreamsicle, $g20-white);
+  @include tableColorModifier(
+    $c-ruby,
+    mix($c-fire, $c-ruby, 50%),
+    $c-fire,
+    $c-dreamsicle,
+    $g20-white
+  );
 }

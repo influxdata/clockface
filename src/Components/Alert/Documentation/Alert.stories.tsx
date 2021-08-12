@@ -16,7 +16,9 @@ import {ComponentColor, IconFont} from '../../../Types'
 // Notes
 import AlertReadme from './Alert.md'
 
-const alertStories = storiesOf('Atomic|Alert', module).addDecorator(withKnobs)
+const alertStories = storiesOf('Components/Alert', module).addDecorator(
+  withKnobs
+)
 
 alertStories.add(
   'Example',

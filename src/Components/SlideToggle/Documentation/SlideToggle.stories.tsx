@@ -27,12 +27,12 @@ import SlideToggleWithLabelsReadme from './SlideToggleWithLabels.md'
 import {useState} from '@storybook/addons'
 
 const slideToggleStories = storiesOf(
-  'Components|Slide Toggles/Family',
+  'Components/Slide Toggles/Family',
   module
 ).addDecorator(withKnobs)
 
 const slideToggleExampleStories = storiesOf(
-  'Components|Slide Toggles/Examples',
+  'Components/Slide Toggles/Examples',
   module
 ).addDecorator(withKnobs)
 
@@ -87,7 +87,7 @@ slideToggleExampleStories.add(
         margin={ComponentSize.Medium}
       >
         <InputLabel
-          wrapText={boolean('Left Label: wrapText', false)}
+          wrapText={boolean('Left Label: wrapText', true)}
           active={!boolean('active', false)}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
@@ -108,7 +108,7 @@ slideToggleExampleStories.add(
           }
         />
         <InputLabel
-          wrapText={boolean('Right Label: wrapText', false)}
+          wrapText={boolean('Right Label: wrapText', true)}
           active={boolean('active', false)}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
@@ -166,9 +166,27 @@ slideToggleExampleStories.add(
               stretchToFitWidth={true}
             >
               <SlideToggle
+                onChange={() => updateOptionA(!optionA)}
+                active={optionA}
+                size={ComponentSize.Small}
+                color={
+                  ComponentColor[
+                    select('color', mapEnumKeys(ComponentColor), 'Secondary')
+                  ]
+                }
+              />
+              <InputLabel active={optionA}>Send SMS notifications</InputLabel>
+            </FlexBox>
+            <FlexBox
+              direction={FlexDirection.Row}
+              alignItems={AlignItems.Center}
+              margin={ComponentSize.Medium}
+              stretchToFitWidth={true}
+            >
+              <SlideToggle
                 onChange={() => updateOptionB(!optionB)}
                 active={optionB}
-                size={ComponentSize.ExtraSmall}
+                size={ComponentSize.Medium}
                 color={
                   ComponentColor[
                     select('color', mapEnumKeys(ComponentColor), 'Secondary')
@@ -186,7 +204,7 @@ slideToggleExampleStories.add(
               <SlideToggle
                 onChange={() => updateOptionC(!optionC)}
                 active={optionC}
-                size={ComponentSize.ExtraSmall}
+                size={ComponentSize.Large}
                 color={
                   ComponentColor[
                     select('color', mapEnumKeys(ComponentColor), 'Secondary')

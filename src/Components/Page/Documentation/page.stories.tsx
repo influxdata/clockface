@@ -40,12 +40,12 @@ import PageContentsReadme from './PageContents.md'
 import PageTitleReadme from './PageTitle.md'
 import {PageTitleRef} from '../PageTitle'
 
-const pageStories = storiesOf('Layout|Page/Family', module).addDecorator(
+const pageStories = storiesOf('Layout/Page/Family', module).addDecorator(
   withKnobs
 )
 
 const pageExampleStories = storiesOf(
-  'Layout|Page/Examples',
+  'Layout/Page/Examples',
   module
 ).addDecorator(withKnobs)
 
@@ -255,7 +255,7 @@ pageExampleStories.add(
             <Page.ControlBarCenter>
               <SelectGroup
                 shape={ButtonShape.StretchToFit}
-                style={{width: '200px'}}
+                style={{width: '240px'}}
               >
                 <SelectGroup.Option
                   id="mode--write"
@@ -283,10 +283,10 @@ pageExampleStories.add(
             </Page.ControlBarCenter>
             <Page.ControlBarRight>
               <QuestionMarkTooltip tooltipContents="Yeehaw I'm a tooltip" />
-              <Button text="Export Data" icon={IconFont.Export} />
-              <SquareButton icon={IconFont.Remove} />
+              <Button text="Export Data" icon={IconFont.Export_New} />
+              <SquareButton icon={IconFont.Remove_New} />
               <SquareButton
-                icon={IconFont.Checkmark}
+                icon={IconFont.Checkmark_New}
                 color={ComponentColor.Success}
               />
             </Page.ControlBarRight>

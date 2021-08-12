@@ -9,7 +9,7 @@
   width: 100%;
   height: 12px;
   box-sizing: border-box;
-  padding: $cf-marg-a;
+  padding: $cf-space-3xs 0;
   background-color: $g0-obsidian;
   display: inline-flex;
   position: relative;
@@ -22,10 +22,10 @@
 }
 
 .cf-progress-bar--text {
-  margin-top: $cf-marg-b;
+  margin-top: $cf-space-2xs;
   width: 100%;
-  color: $g10-wolf;
+  color: $cf-grey-55;
   display: inline-flex;
   justify-content: space-between;
-  font-size: $cf-form-md-font;
+  font-size: $cf-text-base-0;
 }

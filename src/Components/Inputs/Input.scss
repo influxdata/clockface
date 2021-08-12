@@ -13,7 +13,7 @@
   position: relative;
   z-index: $cf-input--field-z;
   width: 100%;
-  font-weight: $cf-font-weight--medium;
+  font-weight: $cf-font-weight--regular;
   font-family: $cf-text-font;
   transition: $cf-input--transition;
   outline: none;
@@ -33,28 +33,24 @@
     background-color: $cf-input-background--focused;
     border-color: $cf-input-border--focused;
     color: $cf-input-text--focused;
-    box-shadow: $cf-input--box-shadow;
+    @include focus-glow();
   }
 
   &::-webkit-input-placeholder {
     color: $cf-input--placeholder-text;
     font-weight: $cf-font-weight--medium !important;
-    font-style: italic;
   }
   &::-moz-placeholder {
     color: $cf-input--placeholder-text;
     font-weight: $cf-font-weight--medium !important;
-    font-style: italic;
   }
   &:-ms-input-placeholder {
     color: $cf-input--placeholder-text;
     font-weight: $cf-font-weight--medium !important;
-    font-style: italic;
   }
   &:-moz-placeholder {
     color: $cf-input--placeholder-text;
     font-weight: $cf-font-weight--medium !important;
-    font-style: italic;
   }
 }
 
@@ -84,7 +80,7 @@
   top: 50%;
   position: absolute;
   z-index: $cf-input--status-z;
-  transition: color 0.25s ease;
+  transition: color $cf-transition-default;
   font-size: 1.1em;
 }
 
@@ -115,7 +111,8 @@
   background-color: $cf-input-background--default;
   border-radius: $cf-radius;
   border: $cf-border solid $cf-input-border--default;
-  transition: border-color 0.25s ease, background-color 0.25s ease;
+  transition: border-color $cf-transition-default,
+    background-color $cf-transition-default;
 
   &:after {
     content: '';
@@ -127,7 +124,7 @@
     background: $cf-input-border--focused;
     z-index: 2;
     opacity: 0;
-    transition: opacity 0.25s ease, transform 0.25s ease;
+    transition: opacity $cf-transition-default, transform $cf-transition-default;
   }
 
   &.checked:after {
@@ -256,9 +253,9 @@
 
 .cf-input-field[disabled],
 .cf-input-field[disabled]:hover {
-  cursor: default;
   border-color: $cf-input-border--disabled;
   background-color: $cf-input-background--disabled;
   color: $cf-input-text--disabled;
-  font-style: italic;
+  cursor: not-allowed;
+  opacity: $cf-disabled-opacity;
 }

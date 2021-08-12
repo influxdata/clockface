@@ -20,7 +20,7 @@ import NavMenuItemReadme from './NavMenuItem.md'
 import NavMenuSubItemReadme from './NavMenuSubItem.md'
 
 const navMenuStories = storiesOf(
-  'Components|Navigation/NavMenu',
+  'Components/Navigation/NavMenu',
   module
 ).addDecorator(withKnobs)
 

@@ -50,17 +50,17 @@ import ExampleCReadme from './PanelExampleC.md'
 import ExampleDReadme from './PanelExampleD.md'
 import PanelPlaygroundReadme from './PanelPlayground.md'
 
-const panelStories = storiesOf('Components|Panels/Family', module).addDecorator(
+const panelStories = storiesOf('Components/Panels/Family', module).addDecorator(
   withKnobs
 )
 
 const panelComposedStories = storiesOf(
-  'Components|Panels/Composed',
+  'Components/Panels/Composed',
   module
 ).addDecorator(withKnobs)
 
 const panelExampleStories = storiesOf(
-  'Components|Panels/Examples',
+  'Components/Panels/Examples',
   module
 ).addDecorator(withKnobs)
 
@@ -378,7 +378,6 @@ panelComposedStories.add(
               Is some text with <a href="#">a link to nowhere</a>
             </div>
             <div>
-              some more text{' '}
               <div className="mockComponent mockButton">
                 This is not a button
               </div>
@@ -420,7 +419,7 @@ panelExampleStories.add(
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
         >
-          <h3>Welcome!</h3>
+          <h4>Welcome!</h4>
         </Panel.Header>
         <Panel.Body
           size={
@@ -462,21 +461,21 @@ panelExampleStories.add(
           <Grid>
             <Grid.Row>
               <Grid.Column widthSM={Columns.Four}>
-                <Panel backgroundColor={InfluxColors.Onyx}>
+                <Panel backgroundColor={InfluxColors.Pepper}>
                   <Panel.Body>
                     <p>Configure a Data Collector</p>
                   </Panel.Body>
                 </Panel>
               </Grid.Column>
               <Grid.Column widthSM={Columns.Four}>
-                <Panel backgroundColor={InfluxColors.Onyx}>
+                <Panel backgroundColor={InfluxColors.Pepper}>
                   <Panel.Body>
                     <p>Build a Monitoring Dashboard</p>
                   </Panel.Body>
                 </Panel>
               </Grid.Column>
               <Grid.Column widthSM={Columns.Four}>
-                <Panel backgroundColor={InfluxColors.Onyx}>
+                <Panel backgroundColor={InfluxColors.Pepper}>
                   <Panel.Body>
                     <p>Explore Data with Flux</p>
                   </Panel.Body>

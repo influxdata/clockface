@@ -18,22 +18,21 @@ button.cf-dismiss-button {
 }
 
 .cf-dismiss-button--x {
-  transition: opacity 0.25s ease;
-  opacity: 0.8;
-  
+  transition: opacity $cf-transition-default;
+
   &:before,
   &:after {
     content: '';
     position: absolute;
     display: block;
-    width: $cf-form-xs-height - $cf-marg-b - $cf-border;
-    height: $cf-border * 1.5;
+    width: $cf-space-xs;
+    height: $cf-border;
     background-color: $g20-white;
     border-radius: $cf-border * 1.5 / 2;
     top: 50%;
     left: 50%;
   }
-  
+
   &:before {
     transform: translate(-50%, -50%) rotate(45deg);
   }

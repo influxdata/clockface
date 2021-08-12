@@ -17,7 +17,7 @@ import {ComponentSize, Alignment, ComponentColor} from '../../../Types'
 import PopNavReadme from './PopNav.md'
 
 const popNavStories = storiesOf(
-  'Components|Navigation/PopNav',
+  'Components/Navigation/PopNav',
   module
 ).addDecorator(withKnobs)
 
@@ -64,13 +64,7 @@ popNavStories.add(
             >
               Signed in as
             </div>
-            <div
-              style={{
-                color: '#BEF0FF',
-              }}
-            >
-              somewhatlongusername@yourdomain.com
-            </div>
+            <div>somewhatlongusername@yourdomain.com</div>
           </div>
           <PopNav.Item
             titleLink={className => (

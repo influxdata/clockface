@@ -35,6 +35,7 @@ import {
   Alignment,
   VerticalAlignment,
   ComponentSize,
+  ComponentColor,
 } from '../../../Types'
 
 // Notes
@@ -42,7 +43,7 @@ import NotificationReadme from './Notification.md'
 import NotificationDialogReadme from './NotificationDialog.md'
 
 const notificationStories = storiesOf(
-  'Atomic|Notification',
+  'Components/Notification',
   module
 ).addDecorator(withKnobs)
 
@@ -268,7 +269,7 @@ notificationStories.add(
               select(
                 'icon',
                 {None: 'none', ...mapEnumKeys(IconFont)},
-                'Checkmark'
+                'Checkmark_New'
               )
             ]
           }
@@ -278,6 +279,15 @@ notificationStories.add(
                 'gradient',
                 {None: 'none', ...mapEnumKeys(Gradients)},
                 'GarageBand'
+              )
+            ]
+          }
+          color={
+            ComponentColor[
+              select(
+                'color',
+                {None: 'none', ...mapEnumKeys(ComponentColor)},
+                'Primary'
               )
             ]
           }

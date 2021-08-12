@@ -31,7 +31,7 @@ export const ResourceCardRoot = forwardRef<ResourceCardRef, ResourceCardProps>(
       id,
       style,
       testID = 'resource-card',
-      margin = ComponentSize.Small,
+      margin = ComponentSize.Large,
       children,
       disabled,
       direction = FlexDirection.Column,
@@ -40,7 +40,7 @@ export const ResourceCardRoot = forwardRef<ResourceCardRef, ResourceCardProps>(
       contextMenu,
       justifyContent,
       highlightOnHover = true,
-      contextMenuInteraction = 'showOnHover',
+      contextMenuInteraction = 'alwaysVisible',
     },
     ref
   ) => {

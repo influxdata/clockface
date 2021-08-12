@@ -34,7 +34,7 @@ export const TreeNavItem = forwardRef<TreeNavItemRef, TreeNavItemProps>(
       active = false,
       testID = 'tree-nav--item',
       onClick,
-      children,
+      children = null,
       className,
       shortLabel,
       linkElement,

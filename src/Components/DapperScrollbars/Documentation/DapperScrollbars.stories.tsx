@@ -4,14 +4,14 @@ import * as React from 'react'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {useState} from '@storybook/addons'
-import {withKnobs, boolean, color, object, number} from '@storybook/addon-knobs'
+import {withKnobs, boolean, object, number} from '@storybook/addon-knobs'
 
 // Components
 import {DapperScrollbars, FusionScrollHandler} from '../DapperScrollbars'
 import {Form} from '../../Form'
 import {Dropdown} from '../../Dropdowns'
 
-const scrollbarStories = storiesOf('Utilities|Scrollbars', module).addDecorator(
+const scrollbarStories = storiesOf('Utilities/Scrollbars', module).addDecorator(
   withKnobs
 )
 
@@ -48,8 +48,6 @@ scrollbarStories.add('Scrollbar Example', () => {
           noScroll={boolean('noScroll', false)}
           autoHide={boolean('autoHide', true)}
           autoSize={false}
-          thumbStartColor={color('thumbStartColor', '#00C9FF')}
-          thumbStopColor={color('thumbStopColor', '#9394FF')}
           scrollTop={number('scrollTop', 0)}
           scrollLeft={number('scrollLeft', 0)}
         >
@@ -123,8 +121,6 @@ scrollbarStories.add('AutoSize Example', () => (
         noScroll={boolean('noScroll', false)}
         autoHide={boolean('autoHide', true)}
         autoSize={true}
-        thumbStartColor={color('thumbStartColor', '#00C9FF')}
-        thumbStopColor={color('thumbStopColor', '#9394FF')}
       >
         <p>{exampleTextDefault}</p>
       </DapperScrollbars>
@@ -156,8 +152,6 @@ scrollbarStories.add('Synchronized Scrolling', () => {
         noScrollX={true}
         autoHide={false}
         autoSize={false}
-        thumbStartColor={color('thumbStartColor', '#00C9FF')}
-        thumbStopColor={color('thumbStopColor', '#9394FF')}
         scrollTop={scrollbarState}
       >
         <p>{exampleTextDefault}</p>
@@ -168,8 +162,6 @@ scrollbarStories.add('Synchronized Scrolling', () => {
         noScrollX={true}
         autoHide={false}
         autoSize={false}
-        thumbStartColor={color('thumbStartColor', '#00C9FF')}
-        thumbStopColor={color('thumbStopColor', '#9394FF')}
         scrollTop={scrollbarState}
       >
         <p>{exampleTextDefault}</p>

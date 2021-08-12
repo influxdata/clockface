@@ -10,6 +10,7 @@ import {storiesOf} from '@storybook/react'
 import {Button} from '../Components/Button/Composed/Button'
 import {Input} from '../Components/Inputs/Input'
 import {Icon} from '../Components/Icon/Base/Icon'
+import {Panel} from '../Components/Panel'
 
 // Types
 import {
@@ -29,7 +30,7 @@ import TypesReadme from './Types.md'
 import ColorsGradientsReadme from './ColorsGradients.md'
 import IconFontReadme from './IconFont.md'
 
-const dataTypeStories = storiesOf('Data Types|Shared', module)
+const dataTypeStories = storiesOf('Foundations/Shared', module)
 
 dataTypeStories.add(
   'Overview',
@@ -53,16 +54,10 @@ dataTypeStories.add(
               <code>Primary</code>
             </td>
             <td>
-              <code>Secondary</code>
-            </td>
-            <td>
-              <code>Success</code>
-            </td>
-            <td>
-              <code>Warning</code>
-            </td>
-            <td>
               <code>Danger</code>
+            </td>
+            <td>
+              <code>Tertiary</code>
             </td>
           </tr>
           <tr>
@@ -86,28 +81,14 @@ dataTypeStories.add(
             <td>
               <Button
                 size={ComponentSize.ExtraSmall}
-                color={ComponentColor.Secondary}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.ExtraSmall}
-                color={ComponentColor.Success}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.ExtraSmall}
-                color={ComponentColor.Warning}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.ExtraSmall}
                 color={ComponentColor.Danger}
+                text="Button"
+              />
+            </td>
+            <td>
+              <Button
+                size={ComponentSize.ExtraSmall}
+                color={ComponentColor.Tertiary}
                 text="Button"
               />
             </td>
@@ -133,28 +114,14 @@ dataTypeStories.add(
             <td>
               <Button
                 size={ComponentSize.Small}
-                color={ComponentColor.Secondary}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.Small}
-                color={ComponentColor.Success}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.Small}
-                color={ComponentColor.Warning}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.Small}
                 color={ComponentColor.Danger}
+                text="Button"
+              />
+            </td>
+            <td>
+              <Button
+                size={ComponentSize.Small}
+                color={ComponentColor.Tertiary}
                 text="Button"
               />
             </td>
@@ -180,28 +147,14 @@ dataTypeStories.add(
             <td>
               <Button
                 size={ComponentSize.Medium}
-                color={ComponentColor.Secondary}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.Medium}
-                color={ComponentColor.Success}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.Medium}
-                color={ComponentColor.Warning}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.Medium}
                 color={ComponentColor.Danger}
+                text="Button"
+              />
+            </td>
+            <td>
+              <Button
+                size={ComponentSize.Medium}
+                color={ComponentColor.Tertiary}
                 text="Button"
               />
             </td>
@@ -227,28 +180,14 @@ dataTypeStories.add(
             <td>
               <Button
                 size={ComponentSize.Large}
-                color={ComponentColor.Secondary}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.Large}
-                color={ComponentColor.Success}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.Large}
-                color={ComponentColor.Warning}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.Large}
                 color={ComponentColor.Danger}
+                text="Button"
+              />
+            </td>
+            <td>
+              <Button
+                size={ComponentSize.Large}
+                color={ComponentColor.Tertiary}
                 text="Button"
               />
             </td>
@@ -360,13 +299,13 @@ dataTypeStories.add(
     const colorsArray = convertEnumToObjArray(InfluxColors)
     const gradientsArray = Object.keys(Gradients)
 
-    const nuetrals = colorsArray.slice(0, 21)
-    const blues = colorsArray.slice(21, 29)
-    const purples = colorsArray.slice(29, 37)
-    const greens = colorsArray.slice(37, 45)
-    const yellows = colorsArray.slice(45, 53)
-    const reds = colorsArray.slice(53, 61)
-    const brandColors = colorsArray.slice(61, 66)
+    const nuetrals = colorsArray.slice(0, 31)
+    const blues = colorsArray.slice(31, 39)
+    const purples = colorsArray.slice(39, 47)
+    const greens = colorsArray.slice(47, 55)
+    const yellows = colorsArray.slice(55, 63)
+    const reds = colorsArray.slice(63, 71)
+    const brandColors = colorsArray.slice(71, 76)
 
     const clockfaceGradients = gradientsArray.slice(0, 40)
     const brandGradients = gradientsArray.slice(40, 50)
@@ -374,7 +313,6 @@ dataTypeStories.add(
     const primaryGradients = gradientsArray.slice(53, 56)
     const secondaryGradients = gradientsArray.slice(56, 59)
     const successGradients = gradientsArray.slice(59, 62)
-    const warningGradients = gradientsArray.slice(62, 65)
     const dangerGradients = gradientsArray.slice(65, 68)
 
     const colorCardClassName = (hexcode: string): string => {
@@ -582,18 +520,6 @@ dataTypeStories.add(
             </div>
           ))}
         </div>
-        <p>Warning (Yellow)</p>
-        <div className="gradients-grid">
-          {warningGradients.map(g => (
-            <div
-              className={gradientCardClassName(g)}
-              key={g}
-              style={generateGradientStyle(g)}
-            >
-              <p>{g}</p>
-            </div>
-          ))}
-        </div>
         <p>Danger (Red)</p>
         <div className="gradients-grid">
           {dangerGradients.map(g => (
@@ -637,6 +563,78 @@ dataTypeStories.add(
   {
     readme: {
       content: marked(IconFontReadme),
+    },
+  }
+)
+
+dataTypeStories.add(
+  'Typographic scales',
+  () => {
+    return (
+      <div className="markdown-body">
+        <h3>Typographic scales</h3>
+        <table>
+          <tbody>
+            {[-1, 0, 1, 2, 3, 4, 5, 6].map(step => {
+              return (
+                <tr key={step}>
+                  <td>
+                    <code>.type-step-{step}</code>
+                  </td>
+                  <td>
+                    <div className={`type-step-${step}`}>Step {step}</div>
+                  </td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: '',
+    },
+  }
+)
+
+dataTypeStories.add(
+  'Space scales',
+  () => {
+    return (
+      <div className="markdown-body">
+        <h3>Space scales</h3>
+        <table>
+          <tbody>
+            {['3xs', '2xs', 'xs', 's', 'm', 'l', 'xl', '2xl', '3xl'].map(
+              step => {
+                return (
+                  <tr key={step}>
+                    <td>
+                      <code>{step}</code>
+                    </td>
+                    <td>
+                      <Panel
+                        gradient={Gradients.NineteenEightyFour}
+                        style={{
+                          width: `var(--space-${step})`,
+                          height: `var(--space-${step})`,
+                        }}
+                      />
+                    </td>
+                  </tr>
+                )
+              }
+            )}
+          </tbody>
+        </table>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: '',
     },
   }
 )

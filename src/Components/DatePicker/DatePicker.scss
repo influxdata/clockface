@@ -419,7 +419,8 @@
   .react-datepicker__time-box
   ul.react-datepicker__time-list
   li.react-datepicker__time-list-item {
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition: background-color $cf-transition-default,
+    color $cf-transition-default;
   padding: $cf-marg-a $cf-marg-b;
   height: initial;
   margin: 0;

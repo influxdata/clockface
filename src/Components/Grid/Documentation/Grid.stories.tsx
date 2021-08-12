@@ -16,7 +16,7 @@ import {Columns} from '../../../Types'
 // Notes
 import GridReadme from './Grid.md'
 
-const gridStories = storiesOf('Layout|12 Column Grid', module).addDecorator(
+const gridStories = storiesOf('Layout/12 Column Grid', module).addDecorator(
   withKnobs
 )
 

@@ -1,4 +1,4 @@
-@import "./variables";
+@import './variables';
 
 /*
    Reset
@@ -11,7 +11,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   background-color: $cf-page--background;
 }
 
@@ -30,4 +31,13 @@ body {
     top: 0;
     left: 0;
   }
+}
+
+button {
+  background: transparent;
+  appearance: none;
+  cursor: pointer;
+  border: none;
+  box-shadow: none;
+  font-family: inherit;
 }

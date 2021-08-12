@@ -3,28 +3,41 @@
    -----------------------------------------------------------------------------
 */
 
+// Greys
+$cf-grey-5: #07070e;
+$cf-grey-15: #1a1a2a;
+$cf-grey-25: #333346;
+$cf-grey-35: #4d4d60;
+$cf-grey-45: #68687b;
+$cf-grey-55: #828294;
+$cf-grey-65: #9e9ead;
+$cf-grey-75: #b9b9c5;
+$cf-grey-85: #d5d5dd;
+$cf-grey-95: #f1f1f3;
+$cf-white: #ffffff;
+
 // Neutrals
-$g0-obsidian: #0f0e15;
-$g1-raven: #181820;
-$g2-kevlar: #202028;
-$g3-castle: #292933;
-$g4-onyx: #31313d;
-$g5-pepper: #383846;
-$g6-smoke: #434453;
-$g7-graphite: #545667;
-$g8-storm: #676978;
-$g9-mountain: #757888;
-$g10-wolf: #8e91a1;
-$g11-sidewalk: #999dab;
-$g12-forge: #a4a8b6;
-$g13-mist: #bec2cc;
-$g14-chromium: #c6cad3;
-$g15-platinum: #d4d7dd;
-$g16-pearl: #e7e8eb;
-$g17-whisper: #eeeff2;
-$g18-cloud: #f6f6f8;
-$g19-ghost: #fafafc;
-$g20-white: #ffffff;
+$g0-obsidian: $cf-grey-5;
+$g1-raven: $cf-grey-5;
+$g2-kevlar: $cf-grey-5;
+$g3-castle: $cf-grey-15;
+$g4-onyx: $cf-grey-15;
+$g5-pepper: $cf-grey-25;
+$g6-smoke: $cf-grey-25;
+$g7-graphite: $cf-grey-35;
+$g8-storm: $cf-grey-45;
+$g9-mountain: $cf-grey-45;
+$g10-wolf: $cf-grey-55;
+$g11-sidewalk: $cf-grey-65;
+$g12-forge: $cf-grey-65;
+$g13-mist: $cf-grey-75;
+$g14-chromium: $cf-grey-75;
+$g15-platinum: $cf-grey-85;
+$g16-pearl: $cf-grey-85;
+$g17-whisper: $cf-grey-95;
+$g18-cloud: $cf-grey-95;
+$g19-ghost: $cf-grey-95;
+$g20-white: $cf-white;
 
 // Reds
 $c-basalt: #2f1f29;
@@ -84,6 +97,13 @@ $c-galaxy: #9394ff;
 $c-pulsar: #513cc6;
 
 /*
+  State change variables
+*/
+
+$cf-hover-active-opacity: 0.08;
+$cf-disabled-opacity: 0.5;
+
+/*
    Z Variables
    -----------------------------------------------------------------------------
    Might not actually need any of these yet
@@ -104,15 +124,24 @@ $cf-z--tabs-dropdown: 8000;
    control over the UI kit proportions
 */
 
-$cf-marg-a: 4px;
-$cf-marg-b: 8px;
-$cf-marg-c: 16px;
-$cf-marg-d: 32px;
-$cf-marg-e: 64px;
-$cf-marg-f: 128px;
+$cf-space-3xs: 4px;
+$cf-space-2xs: 8px;
+$cf-space-xs: 12px;
+$cf-space-s: 16px;
+$cf-space-m: 24px;
+$cf-space-l: 32px;
+$cf-space-xl: 48px;
+$cf-space-2xl: 64px;
+$cf-space-3xl: 96px;
+
+$cf-marg-a: $cf-space-3xs;
+$cf-marg-b: $cf-space-2xs;
+$cf-marg-c: $cf-space-s;
+$cf-marg-d: $cf-space-l;
+$cf-marg-e: $cf-space-2xl;
 
 $cf-border: 2px;
-$cf-radius: 4px;
+$cf-radius: 2px;
 $cf-radius-sm: $cf-radius - 1px;
 
 /*
@@ -131,28 +160,23 @@ $cf-font-weight--medium: 500;
 $cf-font-weight--bold: 700;
 $cf-font-weight--black: 900;
 
-$cf-body-text: 12px;
-$cf-text-tiny: 0.8em;
-$cf-text-base: 1em;
-$cf-text-scale: 1.19;
-$cf-text-base-1: ($cf-text-base * $cf-text-scale);
-$cf-text-base-2: ($cf-text-base * $cf-text-scale * $cf-text-scale);
-$cf-text-base-3: (
-  $cf-text-base * $cf-text-scale * $cf-text-scale * $cf-text-scale
-);
-$cf-text-base-4: (
-  $cf-text-base * $cf-text-scale * $cf-text-scale * $cf-text-scale *
-    $cf-text-scale
-);
-$cf-text-base-5: (
-  $cf-text-base * $cf-text-scale * $cf-text-scale * $cf-text-scale *
-    $cf-text-scale * $cf-text-scale
-);
+$cf-text-tiny: #{var(--step--1)};
+$cf-body-text: #{var(--step-0)};
+$cf-text-base: #{var(--step-0)};
+$cf-text-base--1: $cf-text-tiny;
+$cf-text-base-0: $cf-text-base;
+$cf-text-base-1: #{var(--step-1)};
+$cf-text-base-2: #{var(--step-2)};
+$cf-text-base-3: #{var(--step-3)};
+$cf-text-base-4: #{var(--step-4)};
+$cf-text-base-5: #{var(--step-5)};
+$cf-text-base-6: #{var(--step-6)};
 
-$cf-text-default: $g13-mist;
-$cf-text-header: $g17-whisper;
+$cf-text-default: $cf-grey-95;
+$cf-text-header: $cf-grey-95;
+$cf-text-line-height: 1.2;
 
-$cf-link-weight: $cf-font-weight--bold;
+$cf-link-weight: $cf-font-weight--medium;
 $cf-link-default: $c-pool;
 $cf-link-default-hover: $c-laser;
 $cf-link-success: $c-rainforest;
@@ -185,10 +209,12 @@ $cf-page--background: $g1-raven;
 
 $cf-page--header-size-sm: auto;
 $cf-page--header-size: 88px;
-$cf-page--control-bar-size: 44px;
-$cf-page--title-size-sm: 1.8em;
-$cf-page--title-size: 2.4em;
-$cf-page--title-weight: 400;
+$cf-page--control-bar-size: 52px;
+
+$cf-page--title-size-sm: $cf-text-base-4;
+$cf-page--title-size: $cf-text-base-6;
+
+$cf-page--title-weight: 500;
 $cf-page--title-font: $cf-header-font;
 $cf-page--title-color: $cf-text-header;
 
@@ -216,29 +242,47 @@ $cf-grid--breakpoint-lg: 1500px;
    Dropdown, Input, etc.
 */
 
-$cf-form-xs-height: 22px;
-$cf-form-xs-padding: 8px;
-$cf-form-xs-font: 12px;
+$cf-form-xs-height: 33px;
+$cf-form-xs-padding: $cf-space-xs;
+$cf-form-xs-font: #{var(--step-0)};
 
-$cf-form-sm-height: 30px;
-$cf-form-sm-padding: 10px;
-$cf-form-sm-font: 13px;
+$cf-form-sm-height: 40px;
+$cf-form-sm-padding: $cf-space-xs;
+$cf-form-sm-font: #{var(--step-0)};
 
-$cf-form-md-height: 38px;
-$cf-form-md-padding: 14px;
-$cf-form-md-font: 14px;
+$cf-form-md-height: 44px;
+$cf-form-md-padding: $cf-space-s;
+$cf-form-md-font: #{var(--step-1)};
 
-$cf-form-lg-height: 46px;
-$cf-form-lg-padding: 18px;
-$cf-form-lg-font: 17px;
+$cf-form-lg-height: 52px;
+$cf-form-lg-padding: $cf-space-m;
+$cf-form-lg-font: #{var(--step-1)};
+
+/*
+   Button colours
+   -----------------------------------------------------------------------------
+*/
+
+$cf-button-default-bg: $cf-grey-25;
 
 /*
    Empty State
    -----------------------------------------------------------------------------
 */
 
-$cf-empty-state-text: $g10-wolf;
-$cf-empty-state-highlight: $g13-mist;
+$cf-empty-state-text: $cf-grey-55;
+$cf-empty-state-highlight: $cf-grey-95;
+
+/*
+   Animations
+   -----------------------------------------------------------------------------
+*/
+
+$cf-ease-snappy: cubic-bezier(0.18, 0.16, 0.2, 1);
+$cf-ease-smooth: cubic-bezier(0.5, 0, 0.5, 1);
+$cf-time-quick: 200ms;
+$cf-time-slow: 400ms;
+$cf-transition-default: $cf-time-quick $cf-ease-snappy;
 
 /*
    Input Variables
@@ -246,31 +290,28 @@ $cf-empty-state-highlight: $g13-mist;
    These ensure consistent appearance across different kinds of inputs
 */
 
-$cf-input--transition: background-color 0.25s ease, border-color 0.25s ease,
-  color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+$cf-input--transition: background-color $cf-transition-default,
+  border-color $cf-transition-default, color $cf-transition-default,
+  box-shadow $cf-transition-default, color $cf-transition-default;
 
-$cf-input-background--default: $g2-kevlar;
-$cf-input-background--focused: $g2-kevlar;
-$cf-input-background--hover: $g2-kevlar;
+$cf-input-background--default: $cf-grey-5;
+$cf-input-background--focused: rgba($cf-grey-95, 0.15);
+$cf-input-background--hover: rgba($cf-grey-95, 0.15);
 $cf-input-background--disabled: $g3-castle;
 
-$cf-input-text--default: $g13-mist;
-$cf-input-text--focused: $g20-white;
-$cf-input-text--hover: $g15-platinum;
+$cf-input-text--default: $cf-white;
+$cf-input-text--focused: $cf-white;
+$cf-input-text--hover: $cf-white;
 $cf-input-text--disabled: $cf-empty-state-text;
 
 $cf-input-border--default: $g5-pepper;
-$cf-input-border--focused: $c-pool;
-$cf-input-border--hover: mix(
-  $cf-input-border--default,
-  $cf-input-border--focused,
-  50%
-);
+$cf-input-border--focused: rgba($c-pool, 0.75);
+$cf-input-border--hover: $g5-pepper;
 $cf-input-border--disabled: $g4-onyx;
 
-$cf-input-border--error: mix($cf-input-border--default, $c-dreamsicle, 70%);
-$cf-input-border--error-hover: $c-dreamsicle;
-$cf-input-border--error-focused: $c-dreamsicle;
+$cf-input-border--error: $c-fire;
+$cf-input-border--error-hover: $c-fire;
+$cf-input-border--error-focused: $c-fire;
 
 $cf-input--field-z: 1;
 $cf-input--shadow-z: $cf-input--field-z + 1;
@@ -278,7 +319,7 @@ $cf-input--status-z: $cf-input--shadow-z + 1;
 
 $cf-input--placeholder-text: $g9-mountain;
 
-$cf-input--box-shadow: 0 0 6px 0 $cf-input-border--focused;
+$cf-input--box-shadow: none;
 
 /*
    Card Variables
@@ -298,7 +339,7 @@ $cf-card--border: $g5-pepper;
 $cf-card--border-hover: $g6-smoke;
 $cf-card--border-disabled: $g6-smoke;
 
-$cf-card--name-font-size: 17px;
+$cf-card--name-font-size: $cf-text-base-2;
 $cf-card--name-font-weight: $cf-font-weight--medium;
 
 /*
@@ -307,9 +348,9 @@ $cf-card--name-font-weight: $cf-font-weight--medium;
    Used in both Inputs and Forms
 */
 
-$cf-label--default: $g11-sidewalk;
-$cf-label--hover: $g15-platinum;
-$cf-label--active: $g18-cloud;
+$cf-label--default: $cf-white;
+$cf-label--hover: $cf-grey-95;
+$cf-label--active: $cf-white;
 
 /*
    Overlay Variables
@@ -317,10 +358,10 @@ $cf-label--active: $g18-cloud;
    Used in both Inputs and Forms
 */
 
-$cf-overlay--gutter: $cf-marg-c + $cf-marg-b;
+$cf-overlay--gutter: $cf-space-m;
 $cf-overlay--header-height: $cf-page--header-size;
 $cf-overlay--title-font: $cf-page--title-font;
-$cf-overlay--title-size: $cf-page--title-size * 0.666;
+$cf-overlay--title-size: $cf-text-base-3;
 $cf-overlay--title-weight: $cf-page--title-weight;
 $cf-overlay--title-color: $cf-page--title-color;
 $cf-overlay--container-padding: $cf-marg-c + $cf-marg-d;
@@ -332,7 +373,7 @@ $cf-overlay--mask-z: 10;
    -----------------------------------------------------------------------------
 */
 
-$cf-tree-nav__width: 56px;
+$cf-tree-nav__width: 55px;
 $cf-tree-nav__expanded-width: 250px;
 $cf-tree-nav__small-height: 48px;
 
@@ -342,12 +383,12 @@ $cf-tree-nav__gradient-b: $c-pool;
 $cf-tree-nav__border: $g5-pepper;
 $cf-tree-nav__border-hover: $g8-storm;
 $cf-tree-nav__border-active: $c-pool;
-$cf-tree-nav__bg: $g2-kevlar;
-$cf-tree-nav__bg-hover: $g3-castle;
-$cf-tree-nav__bg-active: $g4-onyx;
-$cf-tree-nav__text: $g12-forge;
-$cf-tree-nav__text-hover: $g17-whisper;
-$cf-tree-nav__text-active: $g20-white;
+$cf-tree-nav__bg: $cf-grey-15;
+$cf-tree-nav__bg-hover: $cf-grey-25;
+$cf-tree-nav__bg-active: rgba($cf-white, 0.07);
+$cf-tree-nav__text: $cf-white;
+$cf-tree-nav__text-hover: $cf-white;
+$cf-tree-nav__text-active: $cf-white;
 
 $cf-tree-nav__sub-item-text: $g13-mist;
 $cf-tree-nav__sub-item-text-hover: $g20-white;
@@ -375,6 +416,20 @@ $cf-tree-nav__toggle-icon-hover: $g13-mist;
    Mixins
    -----------------------------------------------------------------------------
 */
+
+@mixin createOverlayBase() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: '';
+  border-radius: $cf-radius;
+  transition: opacity $cf-transition-default;
+  opacity: 0;
+  background-color: #ffffff;
+  pointer-events: none;
+}
 
 @mixin gradient-v($startColor, $endColor) {
   background: $startColor;
@@ -531,6 +586,15 @@ $cf-scrollbar-offset: 3px;
   }
 }
 
+@mixin checkbox-indicator() {
+  background-color: rgba($cf-grey-95, 0.1);
+  border-radius: $cf-radius;
+}
+
+@mixin checkbox-indicator-active() {
+  background-color: $cf-grey-25;
+}
+
 // Shadows
 %drop-shadow {
   box-shadow: 0 0 10px 2px $g2-kevlar;
@@ -538,8 +602,18 @@ $cf-scrollbar-offset: 3px;
 %panel-shadow {
   box-shadow: 0 1px 4px 1px rgba($g0-obsidian, 0.2);
 }
+%deep-shadow {
+  box-shadow: 0 28px 84px rgba($cf-grey-5, 0.3);
+}
 @mixin panel-shadow {
   box-shadow: 0 1px 4px 1px rgba($g0-obsidian, 0.2);
+}
+@mixin focus-shadow($color: $c-pool) {
+  box-shadow: inset 0 0 0 $cf-border rgba($color, 0.75),
+    0px 0px ($cf-border * 2) $color;
+}
+@mixin focus-glow {
+  box-shadow: 0px 0px ($cf-border * 2) $c-pool;
 }
 
 @mixin funnel-page-background() {
@@ -550,4 +624,25 @@ $cf-scrollbar-offset: 3px;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+// Blur
+%backdrop-blur {
+  -webkit-backdrop-filter: blur(28px);
+  backdrop-filter: blur(28px);
+}
+
+%backdrop-bg {
+  background-color: rgba($cf-grey-15, 0.9);
+
+  @supports (
+    (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+  ) {
+    background-color: rgba($cf-grey-95, 0.1);
+  }
+}
+
+%backdrop-blur-dark {
+  @extend %backdrop-blur;
+  @extend %backdrop-bg;
 }
