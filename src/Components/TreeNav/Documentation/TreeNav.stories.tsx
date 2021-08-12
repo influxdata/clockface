@@ -19,6 +19,7 @@ import {IconFont} from '../../../Types'
 
 // Notes
 import TreeNavReadme from './TreeNav.md'
+import {InfluxDataLogo} from '../../Logo'
 
 const navMenuStories = storiesOf(
   'Components/Navigation/TreeNav',
@@ -54,48 +55,61 @@ navMenuStories.add(
               ref={navMenuRef}
               expanded={expanded}
               onToggleClick={handleToggleExpanded}
+              headerElement={
+                <TreeNav.Header
+                  id="home"
+                  label={<InfluxDataLogo simplified />}
+                  onClick={() => {}}
+                  icon={<Icon glyph={IconFont.Cubo} />}
+                />
+              }
               userElement={
                 <TreeNav.User
                   username="Captain Milkshake"
                   team="Dairy Desperados"
                 >
+                  <TreeNav.SubHeading label="Company" />
+                  <TreeNav.UserItem id="billing" label="Billing" />
                   <TreeNav.UserItem
-                    id="logout"
-                    label="Logout"
-                    onClick={id => alert(id)}
-                  />
-                  <TreeNav.UserItem
-                    id="billing"
-                    label="Billing"
+                    id="members"
+                    label="Members"
                     linkElement={className => (
                       <a href="#" className={className} />
                     )}
                   />
-                  <TreeNav.UserItem
-                    id="usage"
-                    label="Usage"
-                    linkElement={className => (
-                      <a href="#" className={className} />
-                    )}
-                  />
+                  <TreeNav.UserItem id="about" label="About" />
+                  <TreeNav.SubHeading label="Team" />
+                  <TreeNav.UserItem id="members" label="Members" />
+                  <TreeNav.UserItem id="about" label="About" />
+                  <TreeNav.SubHeading label="Dkim@Influxdata.com" lowercase />
+                  <TreeNav.UserItem id="switch" label="Switch workspace" />
+                  <TreeNav.UserItem id="logout" label="Logout" />
                 </TreeNav.User>
               }
             >
               <TreeNav.Item
                 id="item-1"
-                label={text('Item 1', 'Ingest')}
-                icon={
-                  <Icon
-                    glyph={
-                      IconFont[
-                        select('1 - icon', mapEnumKeys(IconFont), 'DisksNav')
-                      ]
-                    }
-                  />
-                }
-                onClick={handleItemClick}
+                label="Ingest"
+                icon={<Icon glyph={IconFont.DisksNav} />}
                 active={activeItem === 'item-1'}
-              />
+                onClick={handleItemClick}
+              >
+                <TreeNav.SubMenu>
+                  <TreeNav.SubHeading label="Ingest" />
+                  <TreeNav.SubItem
+                    id="data-buckets"
+                    label="Buckets"
+                    active={activeItem === 'data-buckets'}
+                    onClick={handleItemClick}
+                  />
+                  <TreeNav.SubItem
+                    id="data-sources"
+                    label="Sources"
+                    active={activeItem === 'data-sources'}
+                    onClick={handleItemClick}
+                  />
+                </TreeNav.SubMenu>
+              </TreeNav.Item>
               <TreeNav.Item
                 id="item-2"
                 label={text('Item 2', 'Build')}

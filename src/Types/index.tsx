@@ -509,6 +509,7 @@ export enum PopoverPosition {
   Below = 'below',
   ToTheLeft = 'to-left',
   ToTheRight = 'to-right',
+  ToTheRightTop = 'to-right-top',
 }
 
 export enum Appearance {

@@ -373,9 +373,9 @@ $cf-overlay--mask-z: 10;
    -----------------------------------------------------------------------------
 */
 
-$cf-tree-nav__width: 55px;
-$cf-tree-nav__expanded-width: 250px;
-$cf-tree-nav__small-height: 48px;
+$cf-tree-nav__width: 60px;
+$cf-tree-nav__expanded-width: 260px;
+$cf-tree-nav__small-height: 44px;
 
 $cf-tree-nav__gradient-a: $c-star;
 $cf-tree-nav__gradient-b: $c-pool;
@@ -404,13 +404,12 @@ $cf-tree-nav__user-text: $g15-platinum;
 $cf-tree-nav__user-text-hover: $g20-white;
 $cf-tree-nav__user-text-active: $g20-white;
 $cf-tree-nav__user-icon: $g20-white;
-$cf-tree-nav__user-color-a: $c-honeydew;
 $cf-tree-nav__user-color-b: $c-pool;
+$cf-tree-nav__user-color-a: $c-magenta;
 $cf-tree-nav__user-menu-bg: $g3-castle;
 $cf-tree-nav__user-menu-item-hover: $g5-pepper;
 
-$cf-tree-nav__toggle-icon: $g7-graphite;
-$cf-tree-nav__toggle-icon-hover: $g13-mist;
+$cf-tree-nav__toggle-icon: $cf-white;
 
 /*
    Mixins
