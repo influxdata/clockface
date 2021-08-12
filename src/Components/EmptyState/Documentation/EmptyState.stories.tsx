@@ -56,7 +56,7 @@ emptyStateExampleStories.add(
           </EmptyState.Text>
           <Button
             text="Create Dashboard"
-            icon={IconFont.Plus}
+            icon={IconFont.Plus_New}
             color={ComponentColor.Primary}
           />
         </EmptyState.EmptyState>

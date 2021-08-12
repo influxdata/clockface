@@ -283,10 +283,10 @@ pageExampleStories.add(
             </Page.ControlBarCenter>
             <Page.ControlBarRight>
               <QuestionMarkTooltip tooltipContents="Yeehaw I'm a tooltip" />
-              <Button text="Export Data" icon={IconFont.Export} />
-              <SquareButton icon={IconFont.Remove} />
+              <Button text="Export Data" icon={IconFont.Export_New} />
+              <SquareButton icon={IconFont.Remove_New} />
               <SquareButton
-                icon={IconFont.Checkmark}
+                icon={IconFont.Checkmark_New}
                 color={ComponentColor.Success}
               />
             </Page.ControlBarRight>
