@@ -35,6 +35,7 @@ export const TreeNavSubMenu = forwardRef<
           triggerRef={triggerRef}
           position={PopoverPosition.ToTheRightTop}
           className="cf-popover__nav"
+          distanceFromTrigger={4}
         />
       )}
       <div

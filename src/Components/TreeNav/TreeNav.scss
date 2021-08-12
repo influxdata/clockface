@@ -8,7 +8,13 @@
 .cf-tree-nav {
   width: 100%;
   user-select: none;
-  background-color: $cf-grey-15;
+  background-image: linear-gradient(
+    13.54deg,
+    rgba($c-pool, 0.1) 36.27%,
+    rgba($c-pool, 0.25) 78.76%,
+    rgba($c-pool, 0.15) 100%
+  );
+  background-color: $cf-grey-5;
 
   a,
   a:link,
@@ -31,12 +37,12 @@ $cf-tree-nav__header-height: 60px;
   flex-direction: column;
   align-items: stretch;
   background-image: linear-gradient(
-    240deg,
-    #{rgba($cf-grey-5, 0.1)} 10%,
-    #{rgba($c-pool, 0.05)} 20%,
-    #{rgba($cf-grey-5, 0.8)} 90%
+    13.54deg,
+    rgba($c-pool, 0.1) 36.27%,
+    rgba($c-pool, 0.25) 78.76%,
+    rgba($c-pool, 0.15) 100%
   );
-  background-color: $cf-grey-15;
+  background-color: $cf-grey-5;
   padding: $cf-space-2xs;
 }
 
@@ -252,12 +258,8 @@ a.cf-tree-nav--header:active {
 
   &:after {
     @include createOverlayBase();
-    background: linear-gradient(
-        0deg,
-        rgba(0, 152, 240, 0.05),
-        rgba(0, 152, 240, 0.05)
-      ),
-      rgba(241, 241, 243, 0.05);
+    background: linear-gradient(0deg, rgba($c-pool, 0.05), rgba($c-pool, 0.05)),
+      rgba($cf-grey-95, 0.05);
   }
 
   .cf-tree-nav:not(.cf-tree-nav__collapsed) &.cf-tree-nav--item__active:after,
@@ -368,18 +370,12 @@ a.cf-tree-nav--item-block:active {
 
   &:after {
     @include createOverlayBase();
-    background: linear-gradient(
-        0deg,
-        rgba(0, 152, 240, 0.05),
-        rgba(0, 152, 240, 0.05)
-      ),
-      rgba(241, 241, 243, 0.05);
   }
 
   &.cf-tree-nav--sub-item__active:after,
   &:hover:after,
   &:focus-within:after {
-    opacity: 1;
+    opacity: $cf-hover-active-opacity;
   }
 
   & > * {
@@ -425,12 +421,8 @@ $cf-tree-nav--user-padding: (
 
 .cf-tree-nav--user {
   margin: 0 0 $cf-space-s;
-  background: linear-gradient(
-      0deg,
-      rgba(0, 152, 240, 0.05),
-      rgba(0, 152, 240, 0.05)
-    ),
-    rgba(241, 241, 243, 0.05);
+  background: linear-gradient(0deg, rgba($c-pool, 0.05), rgba($c-pool, 0.05)),
+    rgba($cf-grey-95, 0.05);
   border-radius: $cf-radius;
   position: relative;
 }
@@ -515,12 +507,8 @@ $cf-tree-nav--user-padding: (
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  background: linear-gradient(
-      0deg,
-      rgba(0, 152, 240, 0.05),
-      rgba(0, 152, 240, 0.05)
-    ),
-    rgba(241, 241, 243, 0.05);
+  background: linear-gradient(0deg, rgba($c-pool, 0.05), rgba($c-pool, 0.05)),
+    #{rgba($cf-grey-95, 0.05)};
   backdrop-filter: blur(48px);
   padding: $cf-space-s $cf-space-s $cf-space-s $cf-tree-nav__small-height;
 
@@ -559,12 +547,7 @@ a.cf-tree-nav--user-item:active {
 .cf-tree-nav--user-item:hover,
 a.cf-tree-nav--user-item:hover {
   cursor: pointer;
-  background: linear-gradient(
-      0deg,
-      rgba(0, 152, 240, 0.05),
-      rgba(0, 152, 240, 0.05)
-    ),
-    rgba(241, 241, 243, 0.05);
+  background: rgba($cf-grey-95, $cf-hover-active-opacity);
 }
 
 /*
@@ -599,18 +582,18 @@ a.cf-tree-nav--user-item:hover {
     transition: flex-basis $cf-transition-default;
     z-index: $cf-z--nav-menu;
     background-image: linear-gradient(
-      240deg,
-      #{rgba($cf-grey-5, 0.1)} 10%,
-      #{rgba($c-pool, 0.05)} 20%,
-      #{rgba($cf-grey-5, 0.8)} 90%
+      13.54deg,
+      rgba($c-pool, 0.1) 36.27%,
+      rgba($c-pool, 0.25) 78.76%,
+      rgba($c-pool, 0.15) 100%
     );
-    background-color: $cf-grey-15;
+    background-color: $cf-grey-5;
   }
 
   .cf-tree-nav--menu,
   .cf-tree-nav__mobile-collapsed .cf-tree-nav--menu {
     display: flex;
-    background-color: transparent;
+    background: none;
     position: relative !important;
     height: auto !important;
     top: 0;
@@ -633,7 +616,7 @@ a.cf-tree-nav--user-item:hover {
     height: 64px;
     flex-shrink: 0;
     position: relative;
-    background: $cf-grey-15;
+    background: rgba($cf-grey-95, 0.05);
     color: $cf-tree-nav__toggle-icon;
     transition: color $cf-transition-default,
       background-color $cf-transition-default;
