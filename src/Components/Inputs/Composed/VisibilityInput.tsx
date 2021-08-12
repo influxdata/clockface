@@ -198,7 +198,6 @@ const VisibilityIcon: FunctionComponent<VisibilityIconProps> = ({
       size={size}
       icon={visible ? IconFont.EyeOpen : IconFont.EyeClosed}
       onClick={onClick}
-      id={'visibilityIcon'}
     />
   )
 }
