@@ -48,6 +48,8 @@ export const PaginationDirectionItem = forwardRef<
       [`${className}`]: className,
     })
 
+    const iconFont = direction === Direction.Left ? 'CaretLeft' : 'CaretRight'
+
     return (
       <li
         className={paginationClassName}
@@ -61,7 +63,7 @@ export const PaginationDirectionItem = forwardRef<
           color={ComponentColor.Tertiary}
           onClick={onClick}
           shape={ButtonShape.Square}
-          icon={IconFont[direction]}
+          icon={IconFont[iconFont]}
           active={isActive}
         ></Button>
       </li>
