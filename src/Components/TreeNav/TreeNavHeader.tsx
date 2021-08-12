@@ -14,7 +14,7 @@ export interface TreeNavHeaderProps extends Omit<StandardFunctionProps, 'id'> {
   /** Unique identifier for nav item */
   id: string
   /** Icon or Image to appear in the square */
-  icon: JSX.Element
+  icon?: JSX.Element
   /** Label to appear to the right of the icon, only visible when expanded */
   label: JSX.Element
   /** Coloration of the Header */
@@ -83,7 +83,7 @@ export const TreeNavHeader = forwardRef<TreeNavHeaderRef, TreeNavHeaderProps>(
         className={navMenuHeaderClass}
         data-testid={testID}
       >
-        <div className="cf-tree-nav--square">{icon}</div>
+        {icon && <div className="cf-tree-nav--square">{icon}</div>}
         <div className="cf-tree-nav--label">{label}</div>
       </div>
     )

@@ -23,10 +23,11 @@
   z-index: $cf-overlay--mask-z;
 
   --default-overlay-gradient: linear-gradient(
-    240deg,
-    #{rgba($cf-grey-5, 0.5)} 10%,
-    #{rgba($c-magenta, 0.15)} 50%,
-    #{rgba($cf-grey-5, 0.5)} 90%
+    256.11deg,
+    #{rgba($c-amethyst, 0.1)} 0%,
+    #{rgba($c-amethyst, 0.3)} 33.85%,
+    #{rgba($c-amethyst, 0.1)} 67.19%,
+    #{rgba($c-amethyst, 0)}100%
   );
   --default-overlay-background: #{$cf-grey-15};
 }

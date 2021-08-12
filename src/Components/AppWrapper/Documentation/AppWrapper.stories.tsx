@@ -19,7 +19,7 @@ import {PopNav} from '../../PopNav'
 import {Page} from '../../Page/index'
 import {Icon} from '../../Icon/Base/Icon'
 import {TreeNav} from '../../TreeNav'
-import {InfluxDBCloudLogo} from '../../Logo'
+import {InfluxDataLogo} from '../../Logo'
 
 // Types
 import {
@@ -478,7 +478,7 @@ layoutStories.add(
   'AppWrapper + TreeNav',
   () => {
     const [navState, setNavState] = useState<boolean>(true)
-    const [navActiveItem, setNavActiveItem] = useState<string>('boards')
+    const [navActiveItem, setNavActiveItem] = useState<string>('data')
     const appWrapperRef = createRef<AppWrapperRef>()
 
     const logRef = (): void => {
@@ -534,18 +534,19 @@ layoutStories.add(
       return 'I am a page title!'
     }
 
-    const banner = (
-      <div
-        style={{
-          width: '100%',
-          height: '100px',
-          backgroundColor: '#333',
-          borderRadius: '4px',
-        }}
-      >
-        Banner
-      </div>
-    )
+    // const banner = (
+    //   <div
+    //     style={{
+    //       width: '100%',
+    //       height: '100px',
+    //       backgroundColor: '#333',
+    //       borderRadius: '4px',
+    //     }}
+    //   >
+    //     Banner
+    //   </div>
+    // )
+    const banner = <></>
 
     return (
       <div className="mockPageWrapper">
@@ -558,12 +559,10 @@ layoutStories.add(
               headerElement={
                 <TreeNav.Header
                   id="home"
-                  icon={<Icon glyph={IconFont.CuboNav} />}
-                  label={
-                    <InfluxDBCloudLogo cloud={boolean('Logo: cloud', true)} />
-                  }
+                  label={<InfluxDataLogo simplified />}
                   onClick={handleNavClick}
                   active={isItemActive('home')}
+                  icon={<Icon glyph={IconFont.Cubo} />}
                   color={
                     ComponentColor[
                       select('color', mapEnumKeys(ComponentColor), 'Primary')
@@ -581,20 +580,30 @@ layoutStories.add(
               userElement={
                 <TreeNav.User
                   id="user"
-                  username="john.doe123456@supercool.com"
-                  team="USAF 101st Airborne Division"
+                  username="Company Name"
+                  team="Team Name"
                 >
-                  {boolean('show user links', false) ? (
+                  {boolean('show user links', true) ? (
                     <>
-                      <TreeNav.UserItem id="logout" label="Logout" />
+                      <TreeNav.SubHeading label="Company" />
                       <TreeNav.UserItem id="billing" label="Billing" />
                       <TreeNav.UserItem
-                        id="usage"
-                        label="Usage"
+                        id="members"
+                        label="Members"
                         linkElement={className => (
                           <a href="#" className={className} />
                         )}
                       />
+                      <TreeNav.UserItem id="about" label="About" />
+                      <TreeNav.SubHeading label="Team" />
+                      <TreeNav.UserItem id="members" label="Members" />
+                      <TreeNav.UserItem id="about" label="About" />
+                      <TreeNav.SubHeading
+                        label="Dkim@Influxdata.com"
+                        lowercase
+                      />
+                      <TreeNav.UserItem id="switch" label="Switch workspace" />
+                      <TreeNav.UserItem id="logout" label="Logout" />
                     </>
                   ) : null}
                 </TreeNav.User>
@@ -602,12 +611,13 @@ layoutStories.add(
             >
               <TreeNav.Item
                 id="data"
-                label="Data"
+                label="Ingest"
                 icon={<Icon glyph={IconFont.DisksNav} />}
                 active={isItemActive('data')}
                 onClick={handleNavClick}
               >
                 <TreeNav.SubMenu>
+                  <TreeNav.SubHeading label="Ingest" />
                   <TreeNav.SubItem
                     id="data-buckets"
                     label="Buckets"
@@ -624,15 +634,14 @@ layoutStories.add(
               </TreeNav.Item>
               <TreeNav.Item
                 id="explore"
-                label="Data Explorer"
-                shortLabel="Explore"
-                icon={<Icon glyph={IconFont.GraphLine_New} />}
+                label="Build"
+                icon={<Icon glyph={IconFont.GraphLine} />}
                 active={isItemActive('explore')}
                 onClick={handleNavClick}
               />
               <TreeNav.Item
                 id="boards"
-                label="Dashboards"
+                label="Monitor & Alert"
                 shortLabel="Boards"
                 icon={<Icon glyph={IconFont.Dashboards} />}
                 active={isItemActive('boards')}
@@ -640,24 +649,10 @@ layoutStories.add(
               />
               <TreeNav.Item
                 id="org"
-                label="Organization"
+                label="Access"
                 shortLabel="Org"
                 icon={<Icon glyph={IconFont.UsersDuo} />}
                 active={isItemActive('org')}
-                onClick={handleNavClick}
-              />
-              <TreeNav.Item
-                id="tasks"
-                label="Tasks"
-                icon={<Icon glyph={IconFont.Calendar} />}
-                active={isItemActive('tasks')}
-                onClick={handleNavClick}
-              />
-              <TreeNav.Item
-                id="alerts"
-                label="Alerts"
-                icon={<Icon glyph={IconFont.Bell} />}
-                active={isItemActive('alerts')}
                 onClick={handleNavClick}
               />
               <TreeNav.Item
@@ -668,6 +663,7 @@ layoutStories.add(
                 onClick={handleNavClick}
               >
                 <TreeNav.SubMenu>
+                  <TreeNav.SubHeading label="Settings" />
                   <TreeNav.SubItem
                     id="settings-members"
                     label="Members"
