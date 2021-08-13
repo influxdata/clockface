@@ -44,6 +44,7 @@
   padding: $cf-space-s;
   position: relative;
   color: $cf-white;
+  font: inherit;
 
   &:after {
     @include createOverlayBase();
