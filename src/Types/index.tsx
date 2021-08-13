@@ -190,6 +190,7 @@ export enum InfluxColors {
   Grey75 = '#b9b9c5',
   Grey85 = '#d5d5dd',
   Grey95 = '#f1f1f3',
+  White = '#ffffff',
 
   // Neutrals
   Obsidian = '#07070e', // Grey5
@@ -212,7 +213,6 @@ export enum InfluxColors {
   Whisper = '#f1f1f3', // Grey95
   Cloud = '#f1f1f3', // Grey95
   Ghost = '#f1f1f3', // Grey95
-  White = '#ffffff',
 
   // Blues
   Abyss = '#120653',
