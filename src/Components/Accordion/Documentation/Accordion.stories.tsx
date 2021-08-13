@@ -29,12 +29,12 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 import {Heading} from '../../Typography'
 
 const accordionStories = storiesOf(
-  'Components|Accordion/Examples',
+  'Components / Accordion / Examples',
   module
 ).addDecorator(withKnobs)
 
 const accordionFamilyStories = storiesOf(
-  'Components|Accordion/Family',
+  'Components / Accordion / Family',
   module
 ).addDecorator(withKnobs)
 
