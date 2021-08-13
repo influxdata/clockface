@@ -254,6 +254,7 @@
   &.cf-button-square {
     color: $cf-grey-45;
 
+    &:focus,
     &:hover {
       color: $cf-white;
     }
