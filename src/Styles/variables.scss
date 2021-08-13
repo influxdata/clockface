@@ -493,7 +493,7 @@ $cf-tree-nav__toggle-icon: $cf-white;
 }
 
 // Custom Scrollbars (Chrome Only)
-$cf-scrollbar-width: 16px;
+$cf-scrollbar-width: 4px;
 $cf-scrollbar-offset: 3px;
 @mixin custom-scrollbar($trackColor, $handleColor) {
   &::-webkit-scrollbar {
@@ -544,12 +544,9 @@ $cf-scrollbar-offset: 3px;
     }
     &-track-piece {
       background-color: $trackColor;
-      border: $cf-scrollbar-offset solid $trackColor;
-      border-radius: ($cf-scrollbar-width / 2);
     }
     &-thumb {
       background-color: $handleColor;
-      border: $cf-scrollbar-offset solid $trackColor;
       border-radius: ($cf-scrollbar-width / 2);
     }
     &-corner {
