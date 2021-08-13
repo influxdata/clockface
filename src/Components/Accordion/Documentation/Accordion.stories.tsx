@@ -27,12 +27,12 @@ import {AccordionBodyItem} from '../AccordionBodyItem'
 import {mapEnumKeys} from '../../../Utils/storybook'
 
 const accordionStories = storiesOf(
-  'Components|Accordion/Examples',
+  'Components / Accordion / Examples',
   module
 ).addDecorator(withKnobs)
 
 const accordionFamilyStories = storiesOf(
-  'Components|Accordion/Family',
+  'Components / Accordion / Family',
   module
 ).addDecorator(withKnobs)
 

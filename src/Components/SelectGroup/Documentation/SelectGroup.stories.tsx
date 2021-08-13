@@ -91,7 +91,7 @@ selectGroupStories.add(
             ]
           }
         >
-          {mirepoix.map((btn, i) => {
+          {mirepoix.map(btn => {
             const isSelectGroup =
               select('type', mapEnumKeys(InputToggleType), 'SelectGroup') ===
               'SelectGroup'

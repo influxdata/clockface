@@ -3,11 +3,10 @@ import React, {forwardRef, useState} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {Icon} from '../Icon'
 import {ClickOutside} from '../ClickOutside/ClickOutside'
 
 // Types
-import {StandardFunctionProps, IconFont} from '../../Types'
+import {StandardFunctionProps} from '../../Types'
 
 export interface TreeNavUserProps extends StandardFunctionProps {
   /** Username, only visible when expanded */
@@ -16,7 +15,7 @@ export interface TreeNavUserProps extends StandardFunctionProps {
   team?: string
 }
 
-export type TreeNavUserRef = HTMLDivElement
+export type TreeNavUserRef = HTMLButtonElement
 
 export const TreeNavUser = forwardRef<TreeNavUserRef, TreeNavUserProps>(
   (
@@ -32,27 +31,10 @@ export const TreeNavUser = forwardRef<TreeNavUserRef, TreeNavUserProps>(
       [`${className}`]: className,
     })
 
-    let caret = <></>
     let childWrapper = <></>
 
-    if (hasChildren) {
-      caret = (
-        <Icon glyph={IconFont.CaretDown} className="cf-tree-nav--user-caret" />
-      )
-    }
-
     if (hasChildren && expandedState) {
-      childWrapper = (
-        <div className="cf-tree-nav--user-menu">
-          <div className="cf-tree-nav--username" title={username}>
-            {username}
-          </div>
-          <div className="cf-tree-nav--team" title={team}>
-            {team}
-          </div>
-          {children}
-        </div>
-      )
+      childWrapper = <div className="cf-tree-nav--user-menu">{children}</div>
     }
 
     const handleToggleMenu = (): void => {
@@ -69,7 +51,8 @@ export const TreeNavUser = forwardRef<TreeNavUserRef, TreeNavUserProps>(
 
     return (
       <ClickOutside onClickOutside={handleCollapseMenu}>
-        <div
+        <button
+          type="button"
           id={id}
           ref={ref}
           style={style}
@@ -78,9 +61,7 @@ export const TreeNavUser = forwardRef<TreeNavUserRef, TreeNavUserProps>(
           data-testid={testID}
         >
           <div className="cf-tree-nav--user-block">
-            <div className="cf-tree-nav--avatar">
-              <Icon glyph={IconFont.User} />
-            </div>
+            <div className="cf-tree-nav--avatar">{team}</div>
             <div className="cf-tree-nav--avatar-label">
               <div className="cf-tree-nav--username" title={username}>
                 {username}
@@ -88,11 +69,10 @@ export const TreeNavUser = forwardRef<TreeNavUserRef, TreeNavUserProps>(
               <div className="cf-tree-nav--team" title={team}>
                 {team}
               </div>
-              {caret}
             </div>
           </div>
           {childWrapper}
-        </div>
+        </button>
       </ClickOutside>
     )
   }
