@@ -27,7 +27,7 @@ export interface TreeNavHeaderProps extends Omit<StandardFunctionProps, 'id'> {
   linkElement?: RenderLinkElement
 }
 
-export type TreeNavHeaderRef = HTMLDivElement
+export type TreeNavHeaderRef = HTMLButtonElement
 
 export const TreeNavHeader = forwardRef<TreeNavHeaderRef, TreeNavHeaderProps>(
   (
@@ -75,7 +75,8 @@ export const TreeNavHeader = forwardRef<TreeNavHeaderRef, TreeNavHeaderProps>(
     }
 
     return (
-      <div
+      <button
+        type="button"
         id={id}
         ref={ref}
         style={style}
@@ -85,7 +86,7 @@ export const TreeNavHeader = forwardRef<TreeNavHeaderRef, TreeNavHeaderProps>(
       >
         {icon && <div className="cf-tree-nav--square">{icon}</div>}
         <div className="cf-tree-nav--label">{label}</div>
-      </div>
+      </button>
     )
   }
 )

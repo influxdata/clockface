@@ -15,7 +15,7 @@ export interface TreeNavUserProps extends StandardFunctionProps {
   team?: string
 }
 
-export type TreeNavUserRef = HTMLDivElement
+export type TreeNavUserRef = HTMLButtonElement
 
 export const TreeNavUser = forwardRef<TreeNavUserRef, TreeNavUserProps>(
   (
@@ -51,7 +51,8 @@ export const TreeNavUser = forwardRef<TreeNavUserRef, TreeNavUserProps>(
 
     return (
       <ClickOutside onClickOutside={handleCollapseMenu}>
-        <div
+        <button
+          type="button"
           id={id}
           ref={ref}
           style={style}
@@ -71,7 +72,7 @@ export const TreeNavUser = forwardRef<TreeNavUserRef, TreeNavUserProps>(
             </div>
           </div>
           {childWrapper}
-        </div>
+        </button>
       </ClickOutside>
     )
   }
