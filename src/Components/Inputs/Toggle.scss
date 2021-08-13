@@ -49,10 +49,12 @@
     }
   }
 
-  .cf-toggle__focused &,
-  .cf-toggle__focused:hover & {
-    box-shadow: inset 0 0 0 $cf-border rgba($c-pool, 0.75),
-      0px 0px ($cf-border * 2) $c-pool;
+  .cf-toggle__focused & {
+    @include focus-shadow();
+  }
+
+  .cf-toggle__focused.cf-toggle__checked & {
+    @include focus-glow($cf-white);
   }
 
   .cf-toggle__checked & {
@@ -123,6 +125,22 @@
     opacity: $cf-hover-active-opacity;
   }
 
+  &.cf-toggle__focused {
+    @include focus-shadow();
+
+    .cf-toggle--box {
+      box-shadow: none;
+    }
+  }
+
+  &.cf-toggle__focused.cf-toggle__checked {
+    @include focus-shadow($cf-white);
+
+    .cf-toggle--box {
+      box-shadow: none;
+    }
+  }
+
   &.cf-toggle__checked {
     background: $c-pool;
 
@@ -162,16 +180,6 @@
 
   label {
     outline: none;
-  }
-
-  &.cf-toggle__focused,
-  &.cf-toggle__focused:hover {
-    box-shadow: inset 0 0 0 $cf-border rgba($c-pool, 0.75),
-      0px 0px ($cf-border * 2) $c-pool;
-
-    .cf-toggle--box {
-      box-shadow: none;
-    }
   }
 }
 
