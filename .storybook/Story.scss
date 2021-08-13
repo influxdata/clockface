@@ -319,7 +319,7 @@ body.sb-show-main {
   a:link,
   a:visited,
   a:active {
-    font-weight: $cf-font-weight--black;
+    font-weight: $cf-font-weight--medium;
     text-decoration: underline;
     transition: color $cf-transition-default, text-shadow $cf-transition-default;
   }
@@ -338,6 +338,10 @@ body.sb-show-main {
     text-shadow: 0 0 3px $c-ocean, 0 0 7px $c-amethyst;
   }
 
+  img {
+    background: transparent;
+  }
+
   h1,
   h2,
   h3,
@@ -347,7 +351,7 @@ body.sb-show-main {
   p,
   ol,
   ul {
-    color: $g13-mist;
+    color: $cf-grey-95;
     margin: 0.25em 0 0.75em 0;
   }
 
@@ -361,6 +365,7 @@ body.sb-show-main {
     font-size: $docs-text-base-5;
     font-weight: $cf-font-weight--medium;
     letter-spacing: 0.01em;
+    margin-bottom: 0.25em;
   }
   h2 {
     line-height: 1.25em;

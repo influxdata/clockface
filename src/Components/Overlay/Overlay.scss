@@ -134,7 +134,7 @@
     left: 50%;
     width: 22px;
     height: 3px;
-    border-radius: 1px;
+    border-radius: $cf-radius;
     background-color: $cf-white;
     transition: background-color $cf-transition-default;
   }
@@ -149,8 +149,10 @@
     cursor: pointer;
   }
   &:hover:before,
-  &:hover:after {
-    background-color: $cf-grey-95;
+  &:hover:after,
+  &:focus:before,
+  &:focus:after {
+    background-color: $cf-grey-85;
   }
 }
 

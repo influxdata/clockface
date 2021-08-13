@@ -28,6 +28,14 @@ $slide-toggle--gap: 3px;
       opacity: $cf-hover-active-opacity;
     }
   }
+
+  &:focus:not(.disabled):not(.active) {
+    @include focus-shadow();
+  }
+
+  &:focus:not(.disabled) {
+    @include focus-shadow($cf-white);
+  }
 }
 
 .cf-slide-toggle--knob {

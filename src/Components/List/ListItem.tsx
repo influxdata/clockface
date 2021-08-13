@@ -59,7 +59,7 @@ export interface ListItemProps extends CombinedListItemProps {
   gradient?: Gradients
 }
 
-export type ListItemRef = HTMLDivElement
+export type ListItemRef = HTMLButtonElement
 
 export const ListItemContext = createContext<ListItemContextProps>({
   selected: false,
@@ -182,7 +182,8 @@ export const ListItem = forwardRef<ListItemRef, ListItemProps>(
     }
 
     return (
-      <div
+      <button
+        type="button"
         id={id}
         ref={ref}
         style={itemStyle}
@@ -192,7 +193,7 @@ export const ListItem = forwardRef<ListItemRef, ListItemProps>(
         data-testid={testID}
       >
         {listItemChildren}
-      </div>
+      </button>
     )
   }
 )

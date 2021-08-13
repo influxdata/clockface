@@ -78,7 +78,12 @@ $list-item--background-dark: $c-pool;
   background-color: transparent;
 }
 
-.cf-list-item:hover .cf-list-item--highlight {
+.cf-list-item:focus {
+  outline: none;
+}
+
+.cf-list-item:hover .cf-list-item--highlight,
+.cf-list-item:focus .cf-list-item--highlight {
   background-color: rgba($cf-grey-95, 0.1);
 }
 
