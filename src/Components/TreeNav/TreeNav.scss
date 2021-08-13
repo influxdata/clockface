@@ -22,6 +22,14 @@
   a:active {
     color: inherit;
   }
+
+  button {
+    text-align: left;
+
+    &:focus {
+      outline: none;
+    }
+  }
 }
 
 $cf-tree-nav__header-height: 60px;
@@ -152,35 +160,6 @@ a.cf-tree-nav--header:active {
   align-items: stretch;
   height: $cf-tree-nav__header-height;
 
-  &:after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    content: '';
-    z-index: 0;
-    transition: opacity $cf-transition-default;
-    opacity: 0;
-  }
-
-  &:hover {
-    cursor: default;
-  }
-
-  &.cf-tree-nav--header__clickable {
-    transition: background-color $cf-transition-default,
-      color $cf-transition-default;
-
-    &:hover {
-      cursor: pointer;
-
-      &:after {
-        opacity: 0.5;
-      }
-    }
-  }
-
   .cf-tree-nav--label,
   .cf-tree-nav--square {
     z-index: 1;
@@ -226,6 +205,15 @@ a.cf-tree-nav--header:active {
 .cf-tree-nav--header {
   color: $cf-white;
   background: rgba($cf-grey-95, 0.05);
+
+  &:after {
+    @include createOverlayBase();
+  }
+
+  &:focus:after,
+  &:hover:after {
+    opacity: $cf-hover-active-opacity;
+  }
 }
 
 /*
@@ -259,7 +247,8 @@ a.cf-tree-nav--header:active {
   }
 
   .cf-tree-nav:not(.cf-tree-nav__collapsed) &.cf-tree-nav--item__active:after,
-  &:hover:after {
+  &:hover:after,
+  &:focus-within:after {
     opacity: 1;
   }
 }
@@ -271,7 +260,8 @@ a.cf-tree-nav--item-block:active {
   @extend %cf-tree-nav--block;
   color: $cf-tree-nav__text;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: $cf-tree-nav__text-hover;
   }
 }
@@ -374,7 +364,8 @@ a.cf-tree-nav--item-block:active {
     border-radius: $cf-radius;
   }
 
-  &:hover:after,
+  &:hover,
+  &:focus:after,
   &:focus-within:after {
     opacity: $cf-hover-active-opacity;
   }
@@ -427,6 +418,15 @@ $cf-tree-nav--user-padding: (
     rgba($cf-grey-95, 0.05);
   border-radius: $cf-radius;
   position: relative;
+
+  &:after {
+    @include createOverlayBase();
+  }
+
+  &:hover:after,
+  &:focus:after {
+    opacity: $cf-hover-active-opacity;
+  }
 }
 
 .cf-tree-nav--avatar {
@@ -461,12 +461,14 @@ $cf-tree-nav--user-padding: (
   transition: background-color $cf-transition-default,
     color $cf-transition-default, border-color $cf-transition-default;
 
-  .cf-tree-nav--user__expandable &:hover {
+  .cf-tree-nav--user__expandable &:hover,
+  &:focus {
     cursor: pointer;
   }
 
   .cf-tree-nav--user__expanded &,
-  .cf-tree-nav--user__expanded &:hover {
+  .cf-tree-nav--user__expanded &:hover,
+  &:focus {
     position: relative;
     z-index: $cf-z--nav-menu;
   }
@@ -623,7 +625,8 @@ a.cf-tree-nav--user-item:hover {
       @include createOverlayBase();
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
       cursor: pointer;
 
       &:after {
