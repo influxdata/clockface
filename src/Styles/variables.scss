@@ -53,7 +53,7 @@ $c-flan: #fff7f4;
 $c-abyss: #120653;
 $c-sapphire: #0b3a8d;
 $c-ocean: #066fc5;
-$c-pool: #00a3ff;
+$c-pool: #0098f0;
 $c-laser: #00c9ff;
 $c-hydrogen: #6bdfff;
 $c-neutrino: #bef0ff;
@@ -73,7 +73,7 @@ $c-twilight: #fad9ff;
 $c-gypsy: #003e34;
 $c-emerald: #006f49;
 $c-viridian: #009f5f;
-$c-rainforest: #34bb55;
+$c-rainforest: #2fa74d;
 $c-honeydew: #67d74e;
 $c-krypton: #9bf445;
 $c-wasabi: #c6f98e;
@@ -373,9 +373,9 @@ $cf-overlay--mask-z: 10;
    -----------------------------------------------------------------------------
 */
 
-$cf-tree-nav__width: 55px;
-$cf-tree-nav__expanded-width: 250px;
-$cf-tree-nav__small-height: 48px;
+$cf-tree-nav__width: 60px;
+$cf-tree-nav__expanded-width: 260px;
+$cf-tree-nav__small-height: 44px;
 
 $cf-tree-nav__gradient-a: $c-star;
 $cf-tree-nav__gradient-b: $c-pool;
@@ -404,13 +404,12 @@ $cf-tree-nav__user-text: $g15-platinum;
 $cf-tree-nav__user-text-hover: $g20-white;
 $cf-tree-nav__user-text-active: $g20-white;
 $cf-tree-nav__user-icon: $g20-white;
-$cf-tree-nav__user-color-a: $c-honeydew;
 $cf-tree-nav__user-color-b: $c-pool;
+$cf-tree-nav__user-color-a: $c-magenta;
 $cf-tree-nav__user-menu-bg: $g3-castle;
 $cf-tree-nav__user-menu-item-hover: $g5-pepper;
 
-$cf-tree-nav__toggle-icon: $g7-graphite;
-$cf-tree-nav__toggle-icon-hover: $g13-mist;
+$cf-tree-nav__toggle-icon: $cf-white;
 
 /*
    Mixins
@@ -642,7 +641,23 @@ $cf-scrollbar-offset: 3px;
   }
 }
 
+%backdrop-blue {
+  background-color: rgba($cf-grey-15, 0.9);
+
+  @supports (
+    (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+  ) {
+    background: linear-gradient(0deg, rgba($c-pool, 0.05), rgba($c-pool, 0.05)),
+      #{rgba($cf-grey-95, 0.05)};
+  }
+}
+
 %backdrop-blur-dark {
   @extend %backdrop-blur;
   @extend %backdrop-bg;
+}
+
+%backdrop-blur-blue {
+  @extend %backdrop-blur;
+  @extend %backdrop-blue;
 }

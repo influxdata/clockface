@@ -21,6 +21,10 @@
   position: relative;
   color: $cf-white;
   box-shadow: 0px 0px 16px rgba($cf-grey-95, 0.3);
+
+  .cf-popover__nav.cf-popover & {
+    @extend %backdrop-blur-blue;
+  }
 }
 
 .cf-popover__outline button.cf-dismiss-button {

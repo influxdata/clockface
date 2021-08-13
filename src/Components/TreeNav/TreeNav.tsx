@@ -107,14 +107,15 @@ export const TreeNavRoot = forwardRef<TreeNavRef, TreeNavProps>(
       >
         {headerElement}
         <div className="cf-tree-nav--menu">
+          {userElement}
           <DapperScrollbars
             className="cf-tree-nav--scroll-area"
             noScrollX={true}
+            autoHide={true}
           >
             {children}
             {banner}
           </DapperScrollbars>
-          {userElement}
         </div>
         {toggleElement}
         <button

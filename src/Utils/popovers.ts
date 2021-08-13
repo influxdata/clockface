@@ -1,5 +1,5 @@
-import {RefObject, CSSProperties} from 'react'
-import {PopoverPosition} from '../Types'
+import { RefObject, CSSProperties } from 'react'
+import { PopoverPosition } from '../Types'
 
 interface PopoverFlush {
   first: boolean
@@ -48,7 +48,10 @@ const calculateDialogPosition = (
     acceptablePopoverPositions.push(PopoverPosition.ToTheLeft)
   }
   if (popoverFitsToTheRight) {
-    acceptablePopoverPositions.push(PopoverPosition.ToTheRight)
+    acceptablePopoverPositions.push(
+      PopoverPosition.ToTheRight,
+      PopoverPosition.ToTheRightTop
+    )
   }
 
   // Check to see if the specified position is within the acceptable positions
@@ -100,6 +103,10 @@ const isDialogFlush = (
       last =
         window.innerHeight - triggerRect.top - triggerRect.height <
         overflowY / 2
+      break
+    case PopoverPosition.ToTheRightTop:
+      first = true
+      last = false
       break
     default:
       break
@@ -286,6 +293,57 @@ export const calculatePopoverStyles = (
           }
         }
         break
+      case PopoverPosition.ToTheRightTop:
+        dialogFlush = isDialogFlush(
+          PopoverPosition.ToTheRightTop,
+          triggerRef,
+          dialogRef
+        )
+
+        // Center the dialog vertically to the right of the trigger by default
+        dialogStyles = {
+          ...dialogStyles,
+          left: `${Math.floor(triggerRect.left + triggerRect.width)}px`,
+          top: `${Math.floor(triggerRect.top + triggerRect.height / 2)}px`,
+          transform: 'translateY(-50%)',
+          paddingLeft: `${distanceFromTrigger}px`,
+        }
+        caretStyles = {
+          borderWidth: `${caretSize}px`,
+          left: `${distanceFromTrigger - caretSize * 2}px`,
+          top: `${dialogRect.height / 2}px`,
+          transform: `translateY(-50%) rotate(-90deg)`,
+        }
+
+        // Reposition dialog if it goes off the viewport
+        // If the dialog goes off the viewport on both top and bottom edges
+        // Then the bottom edge will take precedent
+        if (dialogFlush.first) {
+          // Align left edge of dialog to top edge of trigger
+          dialogStyles = {
+            ...dialogStyles,
+            top: `${Math.floor(triggerRect.top)}px`,
+            transform: 'translateY(0)',
+          }
+          caretStyles = {
+            ...caretStyles,
+            top: `${triggerRect.height / 2}px`,
+          }
+        } else if (dialogFlush.last) {
+          // Align right edge of dialog to bottom edge of trigger
+          dialogStyles = {
+            ...dialogStyles,
+            top: `${Math.floor(triggerRect.top + triggerRect.height)}px`,
+            transform: 'translateY(-100%)',
+          }
+          caretStyles = {
+            borderWidth: `${caretSize}px`,
+            left: `${distanceFromTrigger - caretSize * 2}px`,
+            bottom: `${triggerRect.height / 2}px`,
+            transform: `translateY(50%) rotate(-90deg)`,
+          }
+        }
+        break
       case PopoverPosition.ToTheRight:
         dialogFlush = isDialogFlush(
           PopoverPosition.ToTheRight,
@@ -342,5 +400,5 @@ export const calculatePopoverStyles = (
     }
   }
 
-  return {dialogStyles, caretStyles}
+  return { dialogStyles, caretStyles }
 }
