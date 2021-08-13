@@ -10,7 +10,14 @@ addParameters({
     theme: clockfaceTheme,
     panelPosition: 'right',
     storySort: {
-      order: ['Foundations', 'Components', 'Layout', 'Utilities', 'Sandbox'],
+      order: [
+        'Home',
+        'Foundations',
+        'Components',
+        'Layout',
+        'Utilities',
+        'Sandbox',
+      ],
     },
   },
   readme: {
