@@ -1,5 +1,5 @@
 // Libraries
-import React, {forwardRef, KeyboardEvent} from 'react'
+import React, {forwardRef} from 'react'
 import classnames from 'classnames'
 
 // Types
@@ -11,7 +11,7 @@ import {useAccordionContext} from './Accordion'
 
 export interface AccordionHeaderProps extends StandardFunctionProps {}
 
-export type AccordionHeaderRef = HTMLDivElement
+export type AccordionHeaderRef = HTMLButtonElement
 
 export const AccordionHeader = forwardRef<
   AccordionHeaderRef,
@@ -31,12 +31,6 @@ export const AccordionHeader = forwardRef<
     [`cf-accordion--header--disabled`]: context.isDisabled,
   })
 
-  const handleKeyUp = (e: KeyboardEvent<HTMLDivElement>): void => {
-    if (e.key === ' ') {
-      toggleExpand()
-    }
-  }
-
   const toggleExpand = () => {
     if (!context.isDisabled) {
       context.setExpanded(!context.isExpanded)
@@ -44,28 +38,24 @@ export const AccordionHeader = forwardRef<
     }
   }
 
-  const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>): void => {
-    if (e.key === ' ') {
-      e.preventDefault()
-    }
-  }
-
   return (
-    <div
+    <button
+      type="button"
       ref={ref}
       className={AccordionHeaderClassName}
       onClick={() => {
         toggleExpand()
       }}
-      tabIndex={0}
-      onKeyUp={handleKeyUp}
-      onKeyDown={handleKeyDown}
       id={id}
       style={style}
       data-testid={testID}
     >
       {context.iconPlacementPosition === Direction.Left && (
-        <div className={'cf-accordion--icon-container-left'}>
+        <div
+          className={
+            'cf-accordion--icon-container cf-accordion--icon-container-left'
+          }
+        >
           <Icon
             glyph={IconFont.CaretDown}
             className={AccordionHeaderCaretClassName}
@@ -78,7 +68,9 @@ export const AccordionHeader = forwardRef<
           onClick={() => {
             context.setExpanded(!context.isExpanded)
           }}
-          className={'cf-accordion--icon-container-right'}
+          className={
+            'cf-accordion--icon-container cf-accordion--icon-container-right'
+          }
         >
           <Icon
             glyph={IconFont.CaretDown}
@@ -86,7 +78,7 @@ export const AccordionHeader = forwardRef<
           />
         </div>
       )}
-    </div>
+    </button>
   )
 })
 

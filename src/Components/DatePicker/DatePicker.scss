@@ -105,8 +105,9 @@
 
 .react-datepicker {
   font-family: $cf-text-font;
+  font-weight: $cf-font-weight--medium;
   font-size: $cf-text-base-1;
-  color: $g7-graphite;
+  color: $cf-white;
   display: inline-flex;
   position: relative;
 }
@@ -173,10 +174,16 @@
 
 .react-datepicker__header--time {
   background-color: $g4-onyx;
+  color: $cf-grey-55;
   display: inline-flex;
   flex: 0 0 $cf-marg-d;
   justify-content: center;
   align-items: center;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 0;
+  font-weight: $cf-font-weight--medium;
+  font-size: $cf-text-base--1;
 }
 
 .react-datepicker__year-dropdown-container--select,
@@ -190,12 +197,11 @@
 }
 
 .react-datepicker__current-month,
-.react-datepicker-time__header,
 .react-datepicker-year-header {
   margin-top: 0;
   color: $g18-cloud;
   font-weight: $cf-font-weight--medium;
-  font-size: 0.8em;
+  font-size: $cf-text-base--1;
 }
 
 .react-datepicker__current-month {
@@ -389,7 +395,7 @@
 .react-datepicker__time-container
   .react-datepicker__time
   .react-datepicker__time-box {
-  color: $g14-chromium;
+  color: $cf-white;
   background-color: $g3-castle;
   border-radius: 0 0 $cf-radius $cf-radius;
   height: 100%;
@@ -403,7 +409,10 @@
   .react-datepicker__time
   .react-datepicker__time-box
   ul.react-datepicker__time-list {
-  @include custom-scrollbar-round($g3-castle, $c-pool);
+  @include custom-scrollbar-round(
+    rgba($cf-grey-95, 0.1),
+    rgba($cf-grey-95, 0.2)
+  );
   list-style: none;
   margin: 0;
   height: calc(195px + (1.7rem / 2));
@@ -424,7 +433,7 @@
   padding: $cf-marg-a $cf-marg-b;
   height: initial;
   margin: 0;
-  font-size: 0.8em;
+  font-size: $cf-text-base--1;
 }
 
 .react-datepicker__time-container
@@ -503,11 +512,11 @@
   line-height: 1.7rem;
   text-align: center;
   margin: 0.166rem;
-  font-size: 0.8em;
+  font-size: $cf-text-base--1;
 }
 
 .react-datepicker__day-name {
-  color: $c-rainforest;
+  color: $cf-grey-55;
   font-weight: $cf-font-weight--medium;
 }
 
@@ -793,7 +802,7 @@
   height: 16px;
   width: 16px;
   padding: 2px;
-  font-size: 12px;
+  font-size: $cf-text-base--1;
   line-height: 1;
   text-align: center;
   content: '\00d7';
@@ -840,7 +849,7 @@
 
 .react-datepicker__portal .react-datepicker__current-month,
 .react-datepicker__portal .react-datepicker-time__header {
-  font-size: 1.44rem;
+  font-size: $cf-text-base-0;
 }
 
 .react-datepicker__portal .react-datepicker__navigation {
@@ -894,17 +903,21 @@
     color: $g7-graphite;
 
     &:hover {
-      background-color: $c-laser;
-      color: $g20-white;
+      background-color: rgba($cf-grey-95, $cf-hover-active-opacity);
+      color: $g7-graphite;
     }
   }
 
   .cf-date-picker--day-in-month {
-    color: $g14-chromium;
+    color: $cf-white;
 
     &:hover {
-      background-color: $c-laser;
+      background-color: rgba($cf-grey-95, $cf-hover-active-opacity);
       color: $g20-white;
+
+      &.react-datepicker__day--selected {
+        background: $c-pool;
+      }
     }
   }
 }

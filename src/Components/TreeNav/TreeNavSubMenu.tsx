@@ -1,9 +1,10 @@
 // Libraries
-import React, {forwardRef} from 'react'
+import React, {forwardRef, useRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {StandardFunctionProps} from '../../Types'
+import {PopoverPosition, StandardFunctionProps} from '../../Types'
+import {Popover} from '../Popover'
 
 export type TreeNavSubMenuProps = StandardFunctionProps
 
@@ -17,16 +18,36 @@ export const TreeNavSubMenu = forwardRef<
     [`${className}`]: className,
   })
 
+  const triggerRef = useRef<HTMLButtonElement>(null)
+
   return (
-    <div
-      id={id}
-      ref={ref}
-      style={style}
-      className={navMenuHeaderClass}
-      data-testid={testID}
-    >
-      {children}
-    </div>
+    <>
+      <button
+        type="button"
+        className="cf-tree-nav--sub-menu-trigger"
+        ref={triggerRef}
+        aria-label="Show sub menu"
+      />
+      {triggerRef && (
+        <Popover
+          enableDefaultStyles={true}
+          contents={() => <div>{children}</div>}
+          triggerRef={triggerRef}
+          position={PopoverPosition.ToTheRightTop}
+          className="cf-popover__nav"
+          distanceFromTrigger={4}
+        />
+      )}
+      <div
+        id={id}
+        ref={ref}
+        style={style}
+        className={navMenuHeaderClass}
+        data-testid={testID}
+      >
+        {children}
+      </div>
+    </>
   )
 })
 

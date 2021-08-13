@@ -4,8 +4,7 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {mapEnumKeys} from '../../../Utils/storybook'
-import {withKnobs, text, select} from '@storybook/addon-knobs'
+import {withKnobs, text} from '@storybook/addon-knobs'
 import {useState} from '@storybook/addons'
 
 // Components
@@ -19,6 +18,7 @@ import {IconFont} from '../../../Types'
 
 // Notes
 import TreeNavReadme from './TreeNav.md'
+import {InfluxDataLogo} from '../../Logo'
 
 const navMenuStories = storiesOf(
   'Components/Navigation/TreeNav',
@@ -54,87 +54,86 @@ navMenuStories.add(
               ref={navMenuRef}
               expanded={expanded}
               onToggleClick={handleToggleExpanded}
+              headerElement={
+                <TreeNav.Header
+                  id="home"
+                  label={<InfluxDataLogo simplified />}
+                  onClick={() => {}}
+                  icon={<Icon glyph={IconFont.Cubo} />}
+                />
+              }
               userElement={
                 <TreeNav.User
                   username="Captain Milkshake"
                   team="Dairy Desperados"
                 >
+                  <TreeNav.SubHeading label="Company" />
+                  <TreeNav.UserItem id="billing" label="Billing" />
                   <TreeNav.UserItem
-                    id="logout"
-                    label="Logout"
-                    onClick={id => alert(id)}
-                  />
-                  <TreeNav.UserItem
-                    id="billing"
-                    label="Billing"
+                    id="members"
+                    label="Members"
                     linkElement={className => (
                       <a href="#" className={className} />
                     )}
                   />
-                  <TreeNav.UserItem
-                    id="usage"
-                    label="Usage"
-                    linkElement={className => (
-                      <a href="#" className={className} />
-                    )}
-                  />
+                  <TreeNav.UserItem id="about" label="About" />
+                  <TreeNav.SubHeading label="Team" />
+                  <TreeNav.UserItem id="members" label="Members" />
+                  <TreeNav.UserItem id="about" label="About" />
+                  <TreeNav.SubHeading label="Dkim@Influxdata.com" lowercase />
+                  <TreeNav.UserItem id="switch" label="Switch workspace" />
+                  <TreeNav.UserItem id="logout" label="Logout" />
                 </TreeNav.User>
               }
             >
               <TreeNav.Item
                 id="item-1"
-                label={text('Item 1', 'Ingest')}
-                icon={
-                  <Icon
-                    glyph={
-                      IconFont[
-                        select('1 - icon', mapEnumKeys(IconFont), 'DisksNav')
-                      ]
-                    }
-                  />
-                }
-                onClick={handleItemClick}
+                label="Ingest"
+                icon={<Icon glyph={IconFont.Ingest_New} />}
                 active={activeItem === 'item-1'}
-              />
+                onClick={handleItemClick}
+              >
+                <TreeNav.SubMenu>
+                  <TreeNav.SubHeading label="Ingest" />
+                  <TreeNav.SubItem
+                    id="data-buckets"
+                    label="Buckets"
+                    active={true}
+                    onClick={handleItemClick}
+                  />
+                  <TreeNav.SubItem
+                    id="data-sources"
+                    label="Sources"
+                    active={activeItem === 'data-sources'}
+                    onClick={handleItemClick}
+                  />
+                </TreeNav.SubMenu>
+              </TreeNav.Item>
               <TreeNav.Item
                 id="item-2"
                 label={text('Item 2', 'Build')}
-                icon={
-                  <Icon
-                    glyph={
-                      IconFont[select('2 - icon', mapEnumKeys(IconFont), 'Zap')]
-                    }
-                  />
-                }
+                icon={<Icon glyph={IconFont.BuildOutline_New} />}
                 onClick={handleItemClick}
                 active={activeItem === 'item-2'}
               />
               <TreeNav.Item
                 id="item-3"
                 label="Monitor & Alert"
-                icon={
-                  <Icon
-                    glyph={
-                      IconFont[
-                        select('3 - icon', mapEnumKeys(IconFont), 'Group')
-                      ]
-                    }
-                  />
-                }
+                icon={<Icon glyph={IconFont.GraphLine_New} />}
                 onClick={handleItemClick}
                 active={activeItem === 'item-3'}
               />
               <TreeNav.Item
                 id="item-4"
                 label="Access"
-                icon={<Icon glyph={IconFont.DisksNav} />}
+                icon={<Icon glyph={IconFont.LockOutline_New} />}
                 onClick={handleItemClick}
                 active={activeItem === 'item-4'}
               />
               <TreeNav.Item
                 id="item-5"
                 label="Settings"
-                icon={<Icon glyph={IconFont.DisksNav} />}
+                icon={<Icon glyph={IconFont.CogOutline_New} />}
                 onClick={handleItemClick}
                 active={activeItem === 'item-5'}
               >

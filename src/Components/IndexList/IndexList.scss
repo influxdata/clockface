@@ -96,7 +96,11 @@ $cf-index-list--sort-text: $cf-grey-65;
   transition: opacity $cf-transition-default;
   opacity: 0;
 }
-.cf-index-list--row:hover .cf-index-list--show-hover .cf-index-list--cell > * {
+.cf-index-list--row:hover .cf-index-list--show-hover .cf-index-list--cell > *,
+.cf-index-list--row:focus-within
+  .cf-index-list--show-hover
+  .cf-index-list--cell
+  > * {
   opacity: 1;
 }
 

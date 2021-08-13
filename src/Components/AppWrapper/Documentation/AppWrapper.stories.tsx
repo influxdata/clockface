@@ -19,7 +19,7 @@ import {PopNav} from '../../PopNav'
 import {Page} from '../../Page/index'
 import {Icon} from '../../Icon/Base/Icon'
 import {TreeNav} from '../../TreeNav'
-import {InfluxDBCloudLogo} from '../../Logo'
+import {InfluxDataLogo} from '../../Logo'
 
 // Types
 import {
@@ -478,7 +478,7 @@ layoutStories.add(
   'AppWrapper + TreeNav',
   () => {
     const [navState, setNavState] = useState<boolean>(true)
-    const [navActiveItem, setNavActiveItem] = useState<string>('boards')
+    const [navActiveItem, setNavActiveItem] = useState<string>('data')
     const appWrapperRef = createRef<AppWrapperRef>()
 
     const logRef = (): void => {
@@ -558,12 +558,10 @@ layoutStories.add(
               headerElement={
                 <TreeNav.Header
                   id="home"
-                  icon={<Icon glyph={IconFont.CuboNav} />}
-                  label={
-                    <InfluxDBCloudLogo cloud={boolean('Logo: cloud', true)} />
-                  }
+                  label={<InfluxDataLogo simplified />}
                   onClick={handleNavClick}
                   active={isItemActive('home')}
+                  icon={<Icon glyph={IconFont.Cubo} />}
                   color={
                     ComponentColor[
                       select('color', mapEnumKeys(ComponentColor), 'Primary')
@@ -581,20 +579,30 @@ layoutStories.add(
               userElement={
                 <TreeNav.User
                   id="user"
-                  username="john.doe123456@supercool.com"
-                  team="USAF 101st Airborne Division"
+                  username="Company Name"
+                  team="Team Name"
                 >
-                  {boolean('show user links', false) ? (
+                  {boolean('show user links', true) ? (
                     <>
-                      <TreeNav.UserItem id="logout" label="Logout" />
+                      <TreeNav.SubHeading label="Company" />
                       <TreeNav.UserItem id="billing" label="Billing" />
                       <TreeNav.UserItem
-                        id="usage"
-                        label="Usage"
+                        id="members"
+                        label="Members"
                         linkElement={className => (
                           <a href="#" className={className} />
                         )}
                       />
+                      <TreeNav.UserItem id="about" label="About" />
+                      <TreeNav.SubHeading label="Team" />
+                      <TreeNav.UserItem id="members" label="Members" />
+                      <TreeNav.UserItem id="about" label="About" />
+                      <TreeNav.SubHeading
+                        label="Dkim@Influxdata.com"
+                        lowercase
+                      />
+                      <TreeNav.UserItem id="switch" label="Switch workspace" />
+                      <TreeNav.UserItem id="logout" label="Logout" />
                     </>
                   ) : null}
                 </TreeNav.User>
@@ -602,12 +610,13 @@ layoutStories.add(
             >
               <TreeNav.Item
                 id="data"
-                label="Data"
-                icon={<Icon glyph={IconFont.DisksNav} />}
+                label="Ingest"
+                icon={<Icon glyph={IconFont.Ingest_New} />}
                 active={isItemActive('data')}
                 onClick={handleNavClick}
               >
                 <TreeNav.SubMenu>
+                  <TreeNav.SubHeading label="Ingest" />
                   <TreeNav.SubItem
                     id="data-buckets"
                     label="Buckets"
@@ -623,51 +632,35 @@ layoutStories.add(
                 </TreeNav.SubMenu>
               </TreeNav.Item>
               <TreeNav.Item
-                id="explore"
-                label="Data Explorer"
-                shortLabel="Explore"
-                icon={<Icon glyph={IconFont.GraphLine_New} />}
-                active={isItemActive('explore')}
+                id="build"
+                label="Build"
+                icon={<Icon glyph={IconFont.BuildOutline_New} />}
+                active={isItemActive('build')}
                 onClick={handleNavClick}
               />
               <TreeNav.Item
-                id="boards"
-                label="Dashboards"
-                shortLabel="Boards"
-                icon={<Icon glyph={IconFont.Dashboards} />}
+                id="monitor"
+                label="Monitor & Alert"
+                icon={<Icon glyph={IconFont.GraphLine_New} />}
                 active={isItemActive('boards')}
                 onClick={handleNavClick}
               />
               <TreeNav.Item
-                id="org"
-                label="Organization"
-                shortLabel="Org"
-                icon={<Icon glyph={IconFont.UsersDuo} />}
-                active={isItemActive('org')}
-                onClick={handleNavClick}
-              />
-              <TreeNav.Item
-                id="tasks"
-                label="Tasks"
-                icon={<Icon glyph={IconFont.Calendar} />}
-                active={isItemActive('tasks')}
-                onClick={handleNavClick}
-              />
-              <TreeNav.Item
-                id="alerts"
-                label="Alerts"
-                icon={<Icon glyph={IconFont.Bell} />}
-                active={isItemActive('alerts')}
+                id="access"
+                label="Access"
+                icon={<Icon glyph={IconFont.LockOutline_New} />}
+                active={isItemActive('access')}
                 onClick={handleNavClick}
               />
               <TreeNav.Item
                 id="settings"
                 label="Settings"
-                icon={<Icon glyph={IconFont.WrenchNav} />}
+                icon={<Icon glyph={IconFont.CogOutline_New} />}
                 active={isItemActive('settings')}
                 onClick={handleNavClick}
               >
                 <TreeNav.SubMenu>
+                  <TreeNav.SubHeading label="Settings" />
                   <TreeNav.SubItem
                     id="settings-members"
                     label="Members"

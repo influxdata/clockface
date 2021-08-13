@@ -50,7 +50,9 @@ export const SelectGroupOption = forwardRef<
       testID = 'select-group--option',
       active,
       onClick,
+      /* eslint-disable */
       onKeyUp,
+      /* eslint-enable */
       tabIndex,
       disabled = false,
       children,

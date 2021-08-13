@@ -9,6 +9,7 @@ import {TreeNavUserItem} from './TreeNavUserItem'
 import {TreeNavItem} from './TreeNavItem'
 import {TreeNavSubMenu} from './TreeNavSubMenu'
 import {TreeNavSubItem} from './TreeNavSubItem'
+import {TreeNavSubHeading} from './TreeNavSubHeading'
 
 export class TreeNav extends Component<TreeNavProps> {
   public static readonly displayName = 'TreeNav'
@@ -20,6 +21,7 @@ export class TreeNav extends Component<TreeNavProps> {
   public static Item = TreeNavItem
   public static SubMenu = TreeNavSubMenu
   public static SubItem = TreeNavSubItem
+  public static SubHeading = TreeNavSubHeading
 
   render() {
     return <TreeNavRoot {...this.props} />
@@ -33,3 +35,4 @@ export * from './TreeNavUserItem'
 export * from './TreeNavItem'
 export * from './TreeNavSubMenu'
 export * from './TreeNavSubItem'
+export * from './TreeNavSubHeading'

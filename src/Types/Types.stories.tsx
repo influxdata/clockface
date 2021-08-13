@@ -27,8 +27,10 @@ import {getColorsFromGradient} from '../Utils/colors'
 
 // Notes
 import TypesReadme from './Types.md'
+import TypographyReadme from './Typography.md'
 import ColorsGradientsReadme from './ColorsGradients.md'
 import IconFontReadme from './IconFont.md'
+import SpaceReadme from './Space.md'
 
 const dataTypeStories = storiesOf('Foundations/Shared', module)
 
@@ -299,7 +301,7 @@ dataTypeStories.add(
     const colorsArray = convertEnumToObjArray(InfluxColors)
     const gradientsArray = Object.keys(Gradients)
 
-    const nuetrals = colorsArray.slice(0, 31)
+    const nuetrals = colorsArray.slice(0, 11)
     const blues = colorsArray.slice(31, 39)
     const purples = colorsArray.slice(39, 47)
     const greens = colorsArray.slice(47, 55)
@@ -359,7 +361,7 @@ dataTypeStories.add(
               key={color.key}
               style={{backgroundColor: color.value}}
             >
-              <p>{`G${i} ${color.key}`}</p>
+              <p>{`${color.key}`}</p>
               <p className="colors-grid--hex">{color.value}</p>
             </div>
           ))}
@@ -572,14 +574,13 @@ dataTypeStories.add(
   () => {
     return (
       <div className="markdown-body">
-        <h3>Typographic scales</h3>
         <table>
           <tbody>
             {[-1, 0, 1, 2, 3, 4, 5, 6].map(step => {
               return (
                 <tr key={step}>
                   <td>
-                    <code>.type-step-{step}</code>
+                    <code>$cf-text-base-{step}</code>
                   </td>
                   <td>
                     <div className={`type-step-${step}`}>Step {step}</div>
@@ -594,7 +595,7 @@ dataTypeStories.add(
   },
   {
     readme: {
-      content: '',
+      content: TypographyReadme,
     },
   }
 )
@@ -604,29 +605,50 @@ dataTypeStories.add(
   () => {
     return (
       <div className="markdown-body">
-        <h3>Space scales</h3>
         <table>
+          <thead>
+            <tr>
+              <th>Step</th>
+              <th>Example</th>
+              <th>Size</th>
+              <th>SCSS</th>
+            </tr>
+          </thead>
           <tbody>
-            {['3xs', '2xs', 'xs', 's', 'm', 'l', 'xl', '2xl', '3xl'].map(
-              step => {
-                return (
-                  <tr key={step}>
-                    <td>
-                      <code>{step}</code>
-                    </td>
-                    <td>
-                      <Panel
-                        gradient={Gradients.NineteenEightyFour}
-                        style={{
-                          width: `var(--space-${step})`,
-                          height: `var(--space-${step})`,
-                        }}
-                      />
-                    </td>
-                  </tr>
-                )
-              }
-            )}
+            {[
+              {step: '3xs', size: 4},
+              {step: '2xs', size: 8},
+              {step: 'xs', size: 12},
+              {step: 's', size: 16},
+              {step: 'm', size: 24},
+              {step: 'l', size: 32},
+              {step: 'xl', size: 48},
+              {step: '2xl', size: 64},
+              {step: '3xl', size: 128},
+            ].map(({step, size}) => {
+              return (
+                <tr key={step}>
+                  <td>
+                    <code>{step}</code>
+                  </td>
+                  <td>
+                    <Panel
+                      gradient={Gradients.NineteenEightyFour}
+                      style={{
+                        width: `var(--space-${step})`,
+                        height: `var(--space-${step})`,
+                      }}
+                    />
+                  </td>
+                  <td>
+                    <strong>{size}px</strong>
+                  </td>
+                  <td>
+                    <code>$cf-space-{step}</code>
+                  </td>
+                </tr>
+              )
+            })}
           </tbody>
         </table>
       </div>
@@ -634,7 +656,7 @@ dataTypeStories.add(
   },
   {
     readme: {
-      content: '',
+      content: SpaceReadme,
     },
   }
 )
