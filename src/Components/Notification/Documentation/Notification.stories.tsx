@@ -14,7 +14,7 @@ import {
   number,
   object,
 } from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../../Utils/storybook'
+import {mapEnumKeys, removeUnusedEnumKeyValue} from '../../../Utils/storybook'
 import {useState} from '@storybook/addons'
 
 // Utils
@@ -56,6 +56,18 @@ interface TestNotification {
   horizontalAlign: Alignment
   verticalAlign: VerticalAlignment
 }
+
+const unusedNotificationEnum = [
+  'Colorless',
+  'Tertiary',
+  'Secondary',
+  'Default',
+  'Warning',
+]
+const reducedNotificationEnum = removeUnusedEnumKeyValue(
+  ComponentColor,
+  unusedNotificationEnum
+)
 
 notificationStories.add(
   'Notification',
@@ -286,7 +298,7 @@ notificationStories.add(
             ComponentColor[
               select(
                 'color',
-                {None: 'none', ...mapEnumKeys(ComponentColor)},
+                {None: 'none', ...mapEnumKeys(reducedNotificationEnum)},
                 'Primary'
               )
             ]

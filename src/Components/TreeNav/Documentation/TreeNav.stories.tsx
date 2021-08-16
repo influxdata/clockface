@@ -58,7 +58,11 @@ navMenuStories.add(
                 <TreeNav.Header
                   id="home"
                   label={<InfluxDataLogo simplified />}
-                  onClick={() => {}}
+                  onClick={
+                    /* eslint-disable */
+                    () => {}
+                    /* eslint-enable */
+                  }
                   icon={<Icon glyph={IconFont.Cubo} />}
                 />
               }

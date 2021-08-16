@@ -10,3 +10,15 @@ export const mapEnumKeys = (elEnum: object, trim?: number): any => {
     return acc
   }, {})
 }
+
+export const removeUnusedEnumKeyValue = (
+  elEnum: object,
+  unusedEnumKeys: string[]
+): any[] => {
+  const newObj: string[] = []
+  const keys = Object.keys(elEnum).filter(key => {
+    return !unusedEnumKeys.includes(key)
+  })
+  keys.forEach(key => (newObj[key] = elEnum[key]))
+  return newObj
+}

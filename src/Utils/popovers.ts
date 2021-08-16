@@ -1,5 +1,5 @@
-import { RefObject, CSSProperties } from 'react'
-import { PopoverPosition } from '../Types'
+import {RefObject, CSSProperties} from 'react'
+import {PopoverPosition} from '../Types'
 
 interface PopoverFlush {
   first: boolean
@@ -400,5 +400,5 @@ export const calculatePopoverStyles = (
     }
   }
 
-  return { dialogStyles, caretStyles }
+  return {dialogStyles, caretStyles}
 }
