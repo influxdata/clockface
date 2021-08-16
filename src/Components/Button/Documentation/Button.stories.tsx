@@ -5,7 +5,7 @@ import marked from 'marked'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, text, select, boolean} from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../../Utils/storybook'
+import {mapEnumKeys, removeUnusedEnumKeyValue} from '../../../Utils/storybook'
 import {useState} from '@storybook/addons'
 
 // Components
@@ -62,6 +62,12 @@ const buttonExampleStories = storiesOf(
   module
 ).addDecorator(withKnobs)
 
+const unusedButtonColorEnium = ['Colorless', 'Warning']
+const reducedButtonColorEnum = removeUnusedEnumKeyValue(
+  ComponentColor,
+  unusedButtonColorEnium
+)
+
 buttonComposedStories.add(
   'StandardButton',
   () => {
@@ -88,7 +94,7 @@ buttonComposedStories.add(
           disabledTitleText={text('disabledTitleText', 'Disabled Text')}
           color={
             ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Default')
+              select('color', mapEnumKeys(reducedButtonColorEnum), 'Default')
             ]
           }
           size={
@@ -156,7 +162,7 @@ buttonComposedStories.add(
           disabledTitleText={text('disabledTitleText', 'Disabled Text')}
           color={
             ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Default')
+              select('color', mapEnumKeys(reducedButtonColorEnum), 'Default')
             ]
           }
           size={
@@ -209,7 +215,11 @@ buttonComposedStories.add(
           onHide={onHide}
           confirmationButtonColor={
             ComponentColor[
-              select('confirmationColor', mapEnumKeys(ComponentColor), 'Danger')
+              select(
+                'confirmationColor',
+                mapEnumKeys(reducedButtonColorEnum),
+                'Danger'
+              )
             ]
           }
           confirmationLabel={text(
@@ -218,7 +228,11 @@ buttonComposedStories.add(
           )}
           popoverColor={
             ComponentColor[
-              select('popoverColor', mapEnumKeys(ComponentColor), 'Default')
+              select(
+                'popoverColor',
+                mapEnumKeys(reducedButtonColorEnum),
+                'Default'
+              )
             ]
           }
           popoverAppearance={
@@ -231,7 +245,7 @@ buttonComposedStories.add(
           titleText={text('titleText', 'Title Text')}
           color={
             ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Danger')
+              select('color', mapEnumKeys(reducedButtonColorEnum), 'Danger')
             ]
           }
           size={
@@ -284,7 +298,7 @@ buttonComposedStories.add(
             disabledTitleText={text('disabledTitleText', 'Disabled Text')}
             color={
               ComponentColor[
-                select('color', mapEnumKeys(ComponentColor), 'Danger')
+                select('color', mapEnumKeys(reducedButtonColorEnum), 'Danger')
               ]
             }
             size={
@@ -334,7 +348,7 @@ buttonComposedStories.add(
           disabledTitleText={text('disabledTitleText', 'Disabled Text')}
           color={
             ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Success')
+              select('color', mapEnumKeys(reducedButtonColorEnum), 'Success')
             ]
           }
           status={
@@ -383,7 +397,7 @@ buttonBaseStories.add(
           disabledTitleText={text('disabledTitleText', 'Disabled Text')}
           color={
             ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Default')
+              select('color', mapEnumKeys(reducedButtonColorEnum), 'Default')
             ]
           }
           size={
@@ -445,7 +459,7 @@ buttonComposedStories.add(
           disabledTitleText={text('disabledTitleText', 'Disabled Text')}
           color={
             ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Default')
+              select('color', mapEnumKeys(reducedButtonColorEnum), 'Default')
             ]
           }
           size={
@@ -508,7 +522,7 @@ buttonComposedStories.add(
           disabledTitleText={text('disabledTitleText', 'Disabled Text')}
           color={
             ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Success')
+              select('color', mapEnumKeys(reducedButtonColorEnum), 'Success')
             ]
           }
           status={
@@ -568,7 +582,7 @@ buttonComposedStories.add(
             style={{width: '100px'}}
             buttonColor={
               ComponentColor[
-                select('color', mapEnumKeys(ComponentColor), 'Default')
+                select('color', mapEnumKeys(reducedButtonColorEnum), 'Default')
               ]
             }
             buttonSize={
@@ -601,7 +615,7 @@ buttonComposedStories.add(
             icon={IconFont.CrownSolid_New}
             color={
               ComponentColor[
-                select('color', mapEnumKeys(ComponentColor), 'Default')
+                select('color', mapEnumKeys(reducedButtonColorEnum), 'Default')
               ]
             }
             size={
@@ -612,7 +626,7 @@ buttonComposedStories.add(
             icon={IconFont.Erlenmeyer}
             color={
               ComponentColor[
-                select('color', mapEnumKeys(ComponentColor), 'Default')
+                select('color', mapEnumKeys(reducedButtonColorEnum), 'Default')
               ]
             }
             size={
@@ -628,7 +642,7 @@ buttonComposedStories.add(
               ComponentColor[
                 select(
                   'confirmationColor',
-                  mapEnumKeys(ComponentColor),
+                  mapEnumKeys(reducedButtonColorEnum),
                   'Danger'
                 )
               ]
@@ -639,7 +653,11 @@ buttonComposedStories.add(
             )}
             popoverColor={
               ComponentColor[
-                select('popoverColor', mapEnumKeys(ComponentColor), 'Default')
+                select(
+                  'popoverColor',
+                  mapEnumKeys(reducedButtonColorEnum),
+                  'Default'
+                )
               ]
             }
             popoverAppearance={
@@ -653,7 +671,7 @@ buttonComposedStories.add(
             disabledTitleText={text('disabledTitleText', 'Disabled Text')}
             color={
               ComponentColor[
-                select('color', mapEnumKeys(ComponentColor), 'Default')
+                select('color', mapEnumKeys(reducedButtonColorEnum), 'Default')
               ]
             }
             size={

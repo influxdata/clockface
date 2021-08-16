@@ -50,7 +50,7 @@ dataTypeStories.add(
           <tr>
             <td />
             <td>
-              <code>Default</code>
+              <code>Default/Secondary</code>
             </td>
             <td>
               <code>Primary</code>
@@ -355,7 +355,7 @@ dataTypeStories.add(
         </pre>
         <h5>Nuetrals</h5>
         <div className="colors-grid">
-          {nuetrals.map((color, i) => (
+          {nuetrals.map(color => (
             <div
               className={colorCardClassName(color.value)}
               key={color.key}
