@@ -1,5 +1,12 @@
 # Changelog
 
+### 2.11.4 (2021-8-17)
+
+- [#657](https://github.com/influxdata/clockface/pull/657):chore: raising z-index of overlays so they are on top of everything.
+
+     raises up the z-index of the portal div so that overlays (dialogs) and notifications are on top of everything; especially hover legend tooltips
+     and annotation tooltips.  Notifications are *still* on top of overlays.  
+
 ### 2.11.3 (2021-8-12)
 
 - [#640](https://github.com/influxdata/clockface/pull/640): Fix: visibility input css specificity issue
