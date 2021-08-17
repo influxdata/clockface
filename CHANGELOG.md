@@ -1,5 +1,9 @@
 # Changelog
 
+### 2.11.5 (2021-8-17)
+
+- [#641](https://github.com/influxdata/clockface/pull/641): adding onClick prop to flexbox
+
 ### 2.11.4 (2021-8-17)
 
 - [#657](https://github.com/influxdata/clockface/pull/657):chore: raising z-index of overlays so they are on top of everything.
