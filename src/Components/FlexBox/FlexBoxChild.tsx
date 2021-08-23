@@ -1,5 +1,5 @@
 // Libraries
-import React, {forwardRef} from 'react'
+import React, {forwardRef, MouseEvent} from 'react'
 import classnames from 'classnames'
 
 // Types
@@ -12,6 +12,7 @@ export interface FlexBoxChildProps extends StandardFunctionProps {
   grow?: number
   /** Minimum proportional width to shrink until */
   shrink?: number
+  onClick?: (e: MouseEvent<HTMLElement>) => void
 }
 
 export type FlexBoxChildRef = HTMLDivElement
@@ -27,6 +28,7 @@ export const FlexBoxChild = forwardRef<FlexBoxChildRef, FlexBoxChildProps>(
       testID = 'flex-box--child',
       children,
       className,
+      onClick
     },
     ref
   ) => {
@@ -48,6 +50,7 @@ export const FlexBoxChild = forwardRef<FlexBoxChildRef, FlexBoxChildProps>(
         style={flexBoxChildStyle}
         data-testid={testID}
         className={flexBoxChildClass}
+        onClick={onClick}
       >
         {children}
       </div>
