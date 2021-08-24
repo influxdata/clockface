@@ -28,7 +28,7 @@ export const FlexBoxChild = forwardRef<FlexBoxChildRef, FlexBoxChildProps>(
       testID = 'flex-box--child',
       children,
       className,
-      onClick
+      onClick,
     },
     ref
   ) => {
