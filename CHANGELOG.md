@@ -1,5 +1,9 @@
 # Changelog
 
+### 2.11.6 (2021-8-24)
+
+- [#662](https://github.com/influxdata/clockface/pull/662): adding onClick prop to flexbox child
+
 ### 2.11.5 (2021-8-17)
 
 - [#641](https://github.com/influxdata/clockface/pull/641): adding onClick prop to flexbox
