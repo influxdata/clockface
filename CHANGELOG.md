@@ -1,5 +1,9 @@
 # Changelog
 
+### 2.11.6 (2021-8-26)
+
+- [#6xx](https://github.com/influxdata/clockface/pull/641): reverting z-index raising of portal div
+
 ### 2.11.6 (2021-8-24)
 
 - [#662](https://github.com/influxdata/clockface/pull/662): adding onClick prop to flexbox child
@@ -12,8 +16,8 @@
 
 - [#657](https://github.com/influxdata/clockface/pull/657):chore: raising z-index of overlays so they are on top of everything.
 
-     raises up the z-index of the portal div so that overlays (dialogs) and notifications are on top of everything; especially hover legend tooltips
-     and annotation tooltips.  Notifications are *still* on top of overlays.  
+  raises up the z-index of the portal div so that overlays (dialogs) and notifications are on top of everything; especially hover legend tooltips
+  and annotation tooltips. Notifications are _still_ on top of overlays.
 
 ### 2.11.3 (2021-8-12)
 
