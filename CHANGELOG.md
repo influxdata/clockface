@@ -1,8 +1,8 @@
 # Changelog
 
-### 2.11.6 (2021-8-26)
+### 2.11.7 (2021-8-26)
 
-- [#6xx](https://github.com/influxdata/clockface/pull/641): reverting z-index raising of portal div
+- [#663](https://github.com/influxdata/clockface/pull/663): reverting z-index raising of portal div
 
 ### 2.11.6 (2021-8-24)
 
