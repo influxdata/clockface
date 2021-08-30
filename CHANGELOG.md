@@ -1,24 +1,52 @@
 # Changelog
 
+### 2.11.7 (2021-8-26)
+
+- [#663](https://github.com/influxdata/clockface/pull/663): reverting z-index raising of portal div
+
+### 2.11.6 (2021-8-24)
+
+- [#662](https://github.com/influxdata/clockface/pull/662): adding onClick prop to flexbox child
+
+### 2.11.5 (2021-8-17)
+
+- [#641](https://github.com/influxdata/clockface/pull/641): adding onClick prop to flexbox
+
+### 2.11.4 (2021-8-17)
+
+- [#657](https://github.com/influxdata/clockface/pull/657):chore: raising z-index of overlays so they are on top of everything.
+
+  raises up the z-index of the portal div so that overlays (dialogs) and notifications are on top of everything; especially hover legend tooltips
+  and annotation tooltips. Notifications are _still_ on top of overlays.
+
+### 2.11.3 (2021-8-12)
+
+- [#640](https://github.com/influxdata/clockface/pull/640): Fix: visibility input css specificity issue
+
 ### 2.11.2 (2021-7-30)
+
 - [#652](https://github.com/influxdata/clockface/pull/652): Fix: Adding paginationNav to the index
 
 ### 2.11.1 (2021-7-30)
+
 - [#647](https://github.com/influxdata/clockface/pull/647): Add a new 'more' icon
 
 ### 2.11.0 (2021-7-28)
+
 - [#645](https://github.com/influxdata/clockface/pull/645): Add a new accordion component
 - [#646](https://github.com/influxdata/clockface/pull/646): Fix css of the sorting icon on indexlist
 
 ### 2.10.0 (2021-6-08)
+
 - [#635](https://github.com/influxdata/clockface/pull/635): Allow the pagination nav to listen to currentPage changes
 
 ### 2.9.0 (2021-6-01)
+
 - [#632](https://github.com/influxdata/clockface/pull/632): Add disabledText field to Button-based components
 - [#633](https://github.com/influxdata/clockface/pull/633): Add spacng to input so no characters are hidden
 
-
 ### 2.8.0 (2021-5-20)
+
 - [#625](https://github.com/influxdata/clockface/pull/625): bump y18n from 4.0.0 to 4.0.3
 - [#619](https://github.com/influxdata/clockface/pull/619): bump ua-parser-js from 0.7.21 to 0.7.28
 - [#621](https://github.com/influxdata/clockface/pull/621): bump lodash from 4.17.19 to 4.17.21
@@ -29,7 +57,7 @@
 
 ### 2.7.0 (2021-4-14)
 
-- [#611](https://github.com/influxdata/clockface/pull/611): Add 'Merge' Icon 
+- [#611](https://github.com/influxdata/clockface/pull/611): Add 'Merge' Icon
 
 ### 2.6.9 (2021-3-31)
 
