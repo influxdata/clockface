@@ -104,17 +104,17 @@ export const SelectGroupOption = forwardRef<
           readOnly={true}
           defaultChecked={active}
           disabled={disabled}
-          onChange={handleClick}
           data-testid={`${testID}--input`}
-          {...(tabIndex ? {tabIndex} : {})}
         />
         <label
           ref={containerRef}
           title={title}
           style={style}
           htmlFor={id}
+          onClick={handleClick}
           className={radioButtonClass}
           data-testid={testID}
+          tabIndex={disabled ? -1 : tabIndex}
         >
           {children}
         </label>
