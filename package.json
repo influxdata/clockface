@@ -1,10 +1,6 @@
 {
   "name": "@influxdata/clockface",
-<<<<<<< HEAD
-  "version": "3.0.0-beta.2",
-=======
-  "version": "2.11.7",
->>>>>>> master
+  "version": "3.0.0-beta.3",
   "license": "MIT",
   "main": "dist/index.js",
   "style": "dist/index.css",
