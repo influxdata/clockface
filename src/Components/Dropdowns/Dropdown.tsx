@@ -27,6 +27,8 @@ export interface DropdownProps extends StandardFunctionProps {
   menu: (onCollapse?: () => void) => JSX.Element
   /** Renders the menu element above the button instead of below */
   dropUp?: boolean
+  /** Disable Drodpwon's out of the box focus behavior if you have a custom behavior */
+  customFocus?: boolean
   /** Optional method that is triggered when the user clicks outside of/away from the dropdown */
   onClickAway?: () => void
   /**
@@ -58,6 +60,7 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
       className,
       onClickAway,
       menuOpen,
+      customFocus = false,
     },
     ref
   ) => {
@@ -94,43 +97,46 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
     }
 
     useEffect(() => {
-      if (expanded) {
-        /**
-         * Find the first focusable element from within the dropdown,
-         * starting with the first focusable, active item
-         */
-        const selector = 'button.cf-dropdown-item'
-        const activeEl = document.querySelector(`${selector}.active`)
-        const firstEl = document.querySelector(selector)
-        const element = (activeEl || firstEl) as HTMLButtonElement
+      if (!customFocus) {
+        if (expanded) {
+          /**
+           * Find the first focusable element from within the dropdown,
+           * starting with the first focusable, active item
+           */
+          const selector = 'button.cf-dropdown-item'
+          const activeEl = document.querySelector(`${selector}.active`)
+          const firstEl = document.querySelector(selector)
+          const element = (activeEl || firstEl) as HTMLButtonElement
 
-        if (element) {
-          element.focus()
-        }
+          if (element) {
+            element.focus()
+          }
 
-        window.addEventListener('keydown', handleEscapeKey)
-      } else {
-        window.removeEventListener('keydown', handleEscapeKey)
+          window.addEventListener('keydown', handleEscapeKey)
+        } else {
+          window.removeEventListener('keydown', handleEscapeKey)
 
-        /**
-         * When the popover is closed, restore focus to the trigger element
-         */
-        if (typeof internalRef !== 'function' && internalRef.current) {
-          const triggerEl = internalRef.current.querySelector(
-            'button[tabindex]'
-          ) as HTMLButtonElement
+          /**
+           * When the popover is closed, restore focus to the trigger element
+           */
+          if (typeof internalRef !== 'function' && internalRef.current) {
+            const triggerEl = internalRef.current.querySelector(
+              'button[tabindex]'
+            ) as HTMLButtonElement
 
-          if (didMountRef.current && triggerEl) {
-            triggerEl.focus()
+            if (didMountRef.current && triggerEl) {
+              triggerEl.focus()
+            }
           }
         }
-      }
 
-      didMountRef.current = true
+        didMountRef.current = true
 
-      return () => {
-        window.removeEventListener('keydown', handleEscapeKey)
+        return () => {
+          window.removeEventListener('keydown', handleEscapeKey)
+        }
       }
+      return
     }, [expanded])
 
     const dropdownClass = classnames('cf-dropdown', {
