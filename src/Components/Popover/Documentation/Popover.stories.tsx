@@ -516,15 +516,19 @@ testPopoverStories.add('Popover + Autofocus Child', () => {
 
 testPopoverStories.add('200 Popovers + Filtering', () => {
   const [searchTerm, updateSearchTerm] = useState<string>('')
-  const popovers = []
+  const words = []
   const dictionary = getDictionary()
 
   for (let i = 0; i < 200; i++) {
-    popovers.push({
-      triggerRef: useRef<ButtonRef>(null),
+    words.push({
       name: dictionary[i],
     })
   }
+
+  const popovers = words.map(word => ({
+    name: word.name,
+    triggerRef: useRef<ButtonRef>(null),
+  }))
 
   const handleInputChange = (e: ChangeEvent<InputRef>): void => {
     updateSearchTerm(e.target.value)
