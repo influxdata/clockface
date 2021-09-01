@@ -14,11 +14,12 @@
   },
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
-    "prettier/react",
-    "prettier/@typescript-eslint"
+    "plugin:react-hooks/recommended",
+    "plugin:react/recommended",
+    "prettier/@typescript-eslint",
+    "prettier/react"
   ],
   "settings": {
     "react": {
@@ -26,36 +27,36 @@
     }
   },
   "rules": {
-    "curly": ["error", "all"],
-    "no-console": ["error", {"allow": ["warn", "error"]}],
-    "no-empty": "off",
-    "getter-return": "off",
-    "no-extra-boolean-cast": "off",
-    "no-case-declarations": "off",
-    "no-useless-escape": "off",
-    "no-undef": "off",
-    "no-fallthrough": "off",
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/no-namespace": "off",
-    "@typescript-eslint/no-empty-interface": "off",
-    "@typescript-eslint/explicit-member-accessibility": "off",
-    "@typescript-eslint/no-use-before-define": "off",
-    "@typescript-eslint/no-object-literal-type-assertion": "off",
     "@typescript-eslint/array-type": "off",
-    "@typescript-eslint/no-inferrable-types": "off",
-    "@typescript-eslint/no-var-requires": "off",
-    "@typescript-eslint/prefer-interface": "off",
     "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-member-accessibility": "off",
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/no-object-literal-type-assertion": "off",
     "@typescript-eslint/no-unused-vars": [
       "error",
       {"varsIgnorePattern": "^_", "argsIgnorePattern": "^_"}
     ],
-    "react/jsx-no-target-blank": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/prefer-interface": "off",
+    "curly": ["error", "all"],
+    "getter-return": "off",
+    "no-case-declarations": "off",
+    "no-console": ["error", {"allow": ["warn", "error"]}],
+    "no-empty": "off",
+    "no-extra-boolean-cast": "off",
+    "no-fallthrough": "off",
+    "no-undef": "off",
+    "no-useless-escape": "off",
     "react/display-name": "off",
-    "react/no-unescaped-entities": "off",
-    "react/prop-types": "off",
+    "react/jsx-no-target-blank": "off",
+    "react/jsx-uses-react": "error",
     "react/no-find-dom-node": "off",
-    "react/jsx-uses-react": "error"
+    "react/no-unescaped-entities": "off",
+    "react/prop-types": "off"
   }
 }
