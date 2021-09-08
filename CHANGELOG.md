@@ -1,5 +1,7 @@
 # Changelog
+### 2.11.8 (2021-9-08)
 
+- [#668](https://github.com/influxdata/clockface/pull/668): regenerate icon fonts
 ### 2.11.7 (2021-8-26)
 
 - [#663](https://github.com/influxdata/clockface/pull/663): reverting z-index raising of portal div
