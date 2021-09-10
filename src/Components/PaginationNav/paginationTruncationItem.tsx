@@ -8,10 +8,11 @@ import './Pagination.scss'
 
 // Types
 import {
-  StandardFunctionProps,
+  ButtonShape,
   ComponentColor,
   ComponentSize,
-  ButtonShape,
+  ComponentStatus,
+  StandardFunctionProps,
 } from '../../Types'
 
 export interface PaginationTruncationItemProps extends StandardFunctionProps {
@@ -53,6 +54,7 @@ export const PaginationTruncationItem = forwardRef<
           onClick={onClick}
           shape={ButtonShape.Square}
           text={'...'}
+          status={ComponentStatus.Disabled}
         ></Button>
       </li>
     )
