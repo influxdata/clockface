@@ -55,7 +55,8 @@ export const PaginationTruncationItem = forwardRef<
           shape={ButtonShape.Square}
           text={'...'}
           status={ComponentStatus.Disabled}
-        ></Button>
+          style={{background: 'transparent'}}
+        />
       </li>
     )
   }
