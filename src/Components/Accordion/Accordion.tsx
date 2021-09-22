@@ -7,12 +7,11 @@ import './Accordion.scss'
 import {Direction, StandardFunctionProps} from '../../Types'
 
 export interface AccordionProps extends StandardFunctionProps {
-  /** Determines whether the expand Icon is at the left or right */
+  /** Determines whether the expand Icon is at the left, right or doesn't exist. If there is no accordionBody, no icons are shown*/
   iconPlacement?: Direction
   /** Determines whether the accordion is expanded by default or not */
   expanded?: boolean
   /** Prevents any interaction with this element, including the onClick function */
-
   disabled?: boolean
   /** Function to be called when the accordion is expanded or collapsed */
   onChange?: () => void
@@ -25,6 +24,7 @@ export const AccordionContext = React.createContext<
       iconPlacementPosition: Direction
       isDisabled: boolean
       onChange: () => void
+      hasBody: boolean
     }
   | undefined
 >(undefined)
@@ -93,6 +93,7 @@ export const AccordionRoot = forwardRef<AccordionRef, AccordionProps>(
     )
 
     const [header, ...body] = React.Children.toArray(children)
+    const hasBody = body.length ? true : false
 
     /* eslint-disable */
     const onChangeFunction = () => {
@@ -102,13 +103,13 @@ export const AccordionRoot = forwardRef<AccordionRef, AccordionProps>(
         return
       }
     }
-
     const contextState = {
       isExpanded,
       setExpanded,
-      iconPlacementPosition,
+      iconPlacementPosition: hasBody ? iconPlacementPosition : Direction.None,
       isDisabled,
       onChange: onChangeFunction,
+      hasBody: hasBody,
     }
 
     return (

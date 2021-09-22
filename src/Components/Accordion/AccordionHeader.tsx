@@ -29,6 +29,7 @@ export const AccordionHeader = forwardRef<
     [`cf-accordion--header--active`]: context.isExpanded,
     [`${className}`]: className,
     [`cf-accordion--header--disabled`]: context.isDisabled,
+    [`cf-accordion--header--clickable`]: context.hasBody && !context.isDisabled,
   })
 
   const handleKeyUp = (e: KeyboardEvent<HTMLDivElement>): void => {

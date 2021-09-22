@@ -21,10 +21,12 @@ import {
   Direction,
   InputToggleType,
   JustifyContent,
+  HeadingElement,
 } from '../../../Types'
 import {FlexBox} from '../../FlexBox'
 import {AccordionBodyItem} from '../AccordionBodyItem'
 import {mapEnumKeys} from '../../../Utils/storybook'
+import {Heading} from '../../Typography'
 
 const accordionStories = storiesOf(
   'Components|Accordion/Examples',
@@ -454,7 +456,12 @@ accordionFamilyStories.add(
           style={object('style', {})}
         >
           <Accordion.AccordionHeader>
-            <span>Cheese Ipsum</span>
+            <Heading
+              element={HeadingElement.H6}
+              appearance={HeadingElement.Div}
+            >
+              Cheese Ipsum
+            </Heading>
           </Accordion.AccordionHeader>
           <Accordion.AccordionBodyItem>
             <span>
@@ -469,6 +476,17 @@ accordionFamilyStories.add(
             </span>
           </Accordion.AccordionBodyItem>
         </Accordion>
+        <Accordion disabled={disabled}>
+          <Accordion.AccordionHeader>
+            <Heading
+              element={HeadingElement.H6}
+              appearance={HeadingElement.Div}
+            >
+              Accordion with No Body Item
+            </Heading>
+          </Accordion.AccordionHeader>
+        </Accordion>
+
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
         </div>
