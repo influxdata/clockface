@@ -9,13 +9,6 @@
   border-radius: $cf-radius;
   position: relative;
   @extend %panel-shadow;
-
-  a:link,
-  a:visited {
-    color: inherit;
-    text-decoration: underline;
-    font-weight: inherit;
-  }
 }
 
 .cf-panel--body {
