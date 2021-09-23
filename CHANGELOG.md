@@ -1,4 +1,9 @@
 # Changelog
+
+### 2.11.9 (2021-09-23)
+
+- [#672](https://github.com/influxdata/clockface/pull/672): accordion can have no icon, when there is no body, there is no icon and no interactive styling
+
 ### 2.11.8 (2021-9-08)
 
 - [#668](https://github.com/influxdata/clockface/pull/668): regenerate icon fonts
