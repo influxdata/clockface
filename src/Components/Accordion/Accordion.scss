@@ -49,6 +49,9 @@
   align-items: center;
   outline: none;
   padding: $cf-form-md-padding;
+}
+
+.cf-accordion--header--clickable {
   cursor: pointer;
   &:hover,
   &:focus {

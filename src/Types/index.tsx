@@ -162,6 +162,7 @@ export enum DropdownItemType {
 export enum Direction {
   Left = 'left',
   Right = 'right',
+  None = 'none',
 }
 
 export enum ButtonShape {
