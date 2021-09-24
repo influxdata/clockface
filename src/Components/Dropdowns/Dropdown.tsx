@@ -28,7 +28,7 @@ export interface DropdownProps extends StandardFunctionProps {
   /** Renders the menu element above the button instead of below */
   dropUp?: boolean
   /** Disable Drodpwon's out of the box focus behavior if you have a custom behavior */
-  customFocus?: boolean
+  disableAutoFocus?: boolean
   /** Optional method that is triggered when the user clicks outside of/away from the dropdown */
   onClickAway?: () => void
   /**
@@ -60,7 +60,7 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
       className,
       onClickAway,
       menuOpen,
-      customFocus = false,
+      disableAutoFocus = false,
     },
     ref
   ) => {
@@ -97,7 +97,7 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
     }
 
     useEffect(() => {
-      if (!customFocus) {
+      if (!disableAutoFocus) {
         if (expanded) {
           /**
            * Find the first focusable element from within the dropdown,
