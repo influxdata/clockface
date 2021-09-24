@@ -36,7 +36,7 @@
   }
 
   &:after {
-   @include createOverlayBase();
+    @include createOverlayBase();
   }
 
   &:hover {
@@ -152,13 +152,7 @@
   Color Modifiers
   ------------------------------------------------------------------------------
 */
-@mixin buttonColorModifier(
-  $bgA,
-  $bgB,
-  $text,
-  $textHover,
-  $tertiary: false
-) {
+@mixin buttonColorModifier($bgA, $bgB, $text, $textHover, $tertiary: false) {
   color: $text;
   @include gradient-diag-up($bgA, $bgB);
 

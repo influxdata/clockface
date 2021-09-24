@@ -45,6 +45,7 @@
   position: relative;
   color: $cf-white;
   font: inherit;
+  cursor: default;
 }
 
 .cf-accordion--header--clickable {
@@ -52,6 +53,7 @@
     @include createOverlayBase();
   }
 
+  &,
   label,
   label:hover {
     cursor: pointer;
