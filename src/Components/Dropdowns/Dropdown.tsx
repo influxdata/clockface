@@ -66,8 +66,8 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
   ) => {
     const [expanded, setExpandedState] = useState(false)
     const didMountRef = useRef(false)
-
-    const internalRef = ref || useRef<DropdownRef>(null)
+    const defaultRef = useRef<DropdownRef>(null)
+    const internalRef = ref || defaultRef
 
     const handleToggleMenu = (e: MouseEvent<HTMLElement>): void => {
       e.preventDefault()
