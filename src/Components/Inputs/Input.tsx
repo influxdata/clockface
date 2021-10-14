@@ -20,6 +20,7 @@ import './Input.scss'
 // Types
 import {
   AutoComplete,
+  ComponentColor,
   ComponentSize,
   ComponentStatus,
   IconFont,
@@ -186,13 +187,13 @@ export const Input = forwardRef<InputRef, InputProps>(
       xsmall: size === ComponentSize.ExtraSmall,
     })
 
-    console.log('hello there')
-
     const clearElement = onClear && value && (
       <DismissButton
         onClick={onClear}
         className={clearClasses}
         titleText="clear this text field"
+        color={ComponentColor.Tertiary}
+        size={size}
       />
     )
 
