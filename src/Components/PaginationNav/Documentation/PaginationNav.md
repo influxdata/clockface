@@ -19,6 +19,7 @@ import {PaginationNav} from '@influxdata/clockface'
   }}
   hideDirectionIcon={false}
   size={'Medium'}
+  enableArrowPaginate={false}
 ></PaginationNav.PaginationNav>
 ```
 

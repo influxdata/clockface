@@ -56,6 +56,7 @@ PaginationStories.add(
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Medium')]
           }
+          enableArrowPaginate={true}
         ></PaginationNav.PaginationNav>
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
