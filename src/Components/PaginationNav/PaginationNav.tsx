@@ -28,6 +28,7 @@ export interface PaginationNavProps extends StandardFunctionProps {
   pageRangeOffset: number
   hideDirectionIcon?: boolean
   size?: ComponentSize
+  enableArrowPaginate?: boolean
 }
 
 export type PaginationNavRef = HTMLElement
@@ -45,6 +46,7 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
       pageRangeOffset = 1,
       hideDirectionIcon = false,
       size = ComponentSize.Medium,
+      enableArrowPaginate = false,
     },
     ref
   ) => {
@@ -138,6 +140,28 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
         onChange(page)
       }
     }
+
+    const paginateArrow = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowLeft') {
+        moveToPage(activePage - 1)
+      }
+
+      if (event.key === 'ArrowRight') {
+        moveToPage(activePage + 1)
+      }
+    }
+
+    useEffect(() => {
+      if (enableArrowPaginate) {
+        document.addEventListener('keydown', paginateArrow)
+      }
+
+      return () => {
+        if (enableArrowPaginate) {
+          document.removeEventListener('keydown', paginateArrow)
+        }
+      }
+    }, [activePage])
 
     useLayoutEffect(() => {
       setBreakpoints(
