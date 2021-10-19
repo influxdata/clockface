@@ -152,6 +152,51 @@ inputsBaseStories.add(
     },
   }
 )
+inputsBaseStories.add(
+  'Input (Clearable Text)',
+  () => {
+    const [value, setValue] = useState<string>(
+      'hello world how are you it is me working on this input.....'
+    )
+
+    return (
+      <div className="story--example">
+        <Input
+          min={number('min', 0)}
+          max={number('max', 50)}
+          value={value}
+          monospace={boolean('monospace', false)}
+          onChange={e => setValue(e.target.value)}
+          onClear={() => setValue('')}
+          name={text('name', 'Name')}
+          titleText={text('titleText', 'Title Text')}
+          disabledTitleText={text('disabledTitleText', 'Disabled Title Text')}
+          maxLength={number('maxLength', 125)}
+          icon={
+            IconFont[
+              select('icon', {None: 'none', ...mapEnumKeys(IconFont)}, 'None')
+            ]
+          }
+          style={object('style', defaultInputStyle)}
+          status={
+            ComponentStatus[
+              select('status', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+          type={InputType.Text}
+        />
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(InputReadme),
+    },
+  }
+)
 
 inputsBaseStories.add(
   'Input (Number)',

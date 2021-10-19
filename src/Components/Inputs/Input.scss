@@ -82,14 +82,17 @@
 .cf-input-icon {
   pointer-events: none;
   top: 50%;
-  position: absolute;
   z-index: $cf-input--status-z;
   transition: color 0.25s ease;
   font-size: 1.1em;
+  transform: translate(-50%, -50%);
 }
 
-.cf-input-icon {
-  transform: translate(-50%, -50%);
+.cf-input-icon,
+.cf-input-clear-btn {
+  position: absolute;
+  z-index: $cf-input--status-z;
+  transition: color 0.25s ease;
   color: $cf-input-text--default;
 }
 
@@ -99,6 +102,64 @@
 
 .cf-input-field:focus + .cf-input-icon {
   color: $cf-input-text--focused;
+}
+/** default size is small, there are
+alternate css for the other sizes */
+.cf-input-clear-btn {
+  &.cf-dismiss-button {
+    background: inherit;
+    border: none;
+    transform: none;
+    opacity: 0.7;
+
+    &:after {
+      content: none;
+    }
+
+    &:hover,
+    &:focus,
+    &:active,
+    &:active:hover,
+    &:visited,
+    &:disabled,
+    &:disabled:hover {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+    }
+  }
+
+  &.xsmall {
+    & .cf-dismiss-button--x {
+      &:before,
+      &:after {
+        width: floor($cf-form-xs-font);
+      }
+    }
+  }
+
+  &.medium {
+    & .cf-dismiss-button--x {
+      &:before,
+      &:after {
+        width: floor($cf-form-md-font * 1.2);
+      }
+    }
+  }
+
+  &.large {
+    & .cf-dismiss-button--x {
+      &:before,
+      &:after {
+        width: floor($cf-form-lg-font * 1.2);
+      }
+    }
+  }
 }
 
 /*
@@ -162,6 +223,10 @@
 
   &.cf-input__has-icon .cf-input-field {
     padding-left: $height;
+  }
+
+  &.cf-input__has-clear-btn input {
+    padding-right: $height * 1.05;
   }
 
   .cf-input-icon {

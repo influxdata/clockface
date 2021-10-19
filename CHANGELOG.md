@@ -1,5 +1,9 @@
 # Changelog
 
+### 2.12.0 (2021-10-19)
+
+- [#617](https://github.com/influxdata/clockface/pull/617): Add Optional Clearing via an "x" Button to Input Textfields
+
 ### 2.11.9 (2021-09-23)
 
 - [#672](https://github.com/influxdata/clockface/pull/672): accordion can have no icon, when there is no body, there is no icon and no interactive styling
