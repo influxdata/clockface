@@ -118,8 +118,8 @@
 }
 
 .cf-overlay--dismiss {
-  width: ($cf-overlay--header-height - 50px);
-  height: ($cf-overlay--header-height - 32px);
+  width: ($cf-overlay--header-height - $cf-space-2xl);
+  height: ($cf-overlay--header-height - $cf-space-2xl);
   position: relative;
   background-color: transparent;
   border: 0;

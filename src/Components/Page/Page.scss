@@ -88,7 +88,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: $cf-space-l;
+  margin-bottom: $cf-space-s;
 }
 
 .cf-page-control-bar--left,
@@ -168,6 +168,7 @@
   .cf-page-header {
     height: $cf-page--header-size;
     flex: 0 0 $cf-page--header-size;
+    margin-bottom: $cf-space-l;
   }
 
   .cf-page-header--fluid,

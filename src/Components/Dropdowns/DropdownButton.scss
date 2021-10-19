@@ -36,8 +36,8 @@
 }
 
 .cf-dropdown--caret {
+  font-size: $cf-text-base-1;
   margin: auto 0 auto $cf-space-2xs;
-  font-size: 0.9em;
   transition: transform $cf-transition-default;
   flex-shrink: 0;
 
