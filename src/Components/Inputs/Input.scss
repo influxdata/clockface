@@ -128,13 +128,23 @@ alternate css for the other sizes */
     &:focus {
       opacity: 1;
     }
-  }
 
-  &.xsmall {
     & .cf-dismiss-button--x {
       &:before,
       &:after {
-        width: floor($cf-form-xs-font);
+        width: $cf-form-sm-font;
+      }
+    }
+  }
+
+  &.xsmall {
+    height: $cf-form-xs-height;
+    width: $cf-form-xs-height;
+
+    & .cf-dismiss-button--x {
+      &:before,
+      &:after {
+        width: $cf-form-xs-font;
       }
     }
   }
@@ -143,7 +153,7 @@ alternate css for the other sizes */
     & .cf-dismiss-button--x {
       &:before,
       &:after {
-        width: floor($cf-form-md-font * 1.2);
+        width: $cf-form-md-font;
       }
     }
   }
@@ -152,7 +162,7 @@ alternate css for the other sizes */
     & .cf-dismiss-button--x {
       &:before,
       &:after {
-        width: floor($cf-form-lg-font * 1.2);
+        width: $cf-form-lg-font;
       }
     }
   }
