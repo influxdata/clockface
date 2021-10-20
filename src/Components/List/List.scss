@@ -88,12 +88,14 @@ $list-item--background-dark: $c-pool;
 }
 
 .cf-list-item__active .cf-list-item--highlight__light,
-.cf-list-item__active:hover .cf-list-item--highlight__light {
+.cf-list-item__active:hover .cf-list-item--highlight__light,
+.cf-list-item__active:focus .cf-list-item--highlight__light {
   background-color: $list-item--background-light;
 }
 
 .cf-list-item__active .cf-list-item--highlight__dark,
-.cf-list-item__active:hover .cf-list-item--highlight__dark {
+.cf-list-item__active:hover .cf-list-item--highlight__dark,
+.cf-list-item__active:focus .cf-list-item--highlight__dark {
   background-color: $list-item--background-dark;
 }
 
