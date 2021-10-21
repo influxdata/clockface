@@ -18,7 +18,7 @@ import {IconFont} from '../../../Types'
 
 // Notes
 import TreeNavReadme from './TreeNav.md'
-import {InfluxDataLogo} from '../../Logo'
+import {InfluxDBCloudLogo} from '../../Logo'
 
 const navMenuStories = storiesOf(
   'Components/Navigation/TreeNav',
@@ -57,7 +57,7 @@ navMenuStories.add(
               headerElement={
                 <TreeNav.Header
                   id="home"
-                  label={<InfluxDataLogo simplified />}
+                  label={<InfluxDBCloudLogo cloud={true} />}
                   onClick={
                     /* eslint-disable */
                     () => {}

@@ -155,6 +155,7 @@ $cf-tree-nav__header-height: 60px;
 a.cf-tree-nav--header:link,
 a.cf-tree-nav--header:visited,
 a.cf-tree-nav--header:active {
+  display: flex;
   position: relative;
   @extend %cf-tree-nav--block;
   align-items: stretch;
@@ -175,9 +176,6 @@ a.cf-tree-nav--header:active {
     font-weight: $cf-font-weight--medium;
     text-align: center;
     align-items: center;
-    padding-left: 20px;
-
-    position: absolute;
     height: 100%;
     width: 100%;
     left: 0;
@@ -185,19 +183,20 @@ a.cf-tree-nav--header:active {
   }
 
   .cf-tree-nav--square {
-    display: none;
+    height: $cf-tree-nav__header-height;
+    width: $cf-tree-nav__header-height;
   }
 
   img,
   svg {
-    height: 24px;
-    width: 126px;
+    height: 22px;
+    width: auto;
     position: absolute;
     clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
     transition: $cf-transition-default clip-path;
 
     .cf-tree-nav.cf-tree-nav__collapsed & {
-      clip-path: polygon(0% 0%, 0% 100%, 24px 100%, 24px 0%);
+      clip-path: polygon(0% 0%, 0% 100%, 0px 100%, 0px 0%);
     }
   }
 }
