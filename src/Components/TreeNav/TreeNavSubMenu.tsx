@@ -31,7 +31,7 @@ export const TreeNavSubMenu = forwardRef<
       {triggerRef && (
         <Popover
           enableDefaultStyles={true}
-          contents={() => <div>{children}</div>}
+          contents={onHide => <div onClick={onHide}>{children}</div>}
           triggerRef={triggerRef}
           position={PopoverPosition.ToTheRightTop}
           className="cf-popover__nav"
