@@ -33,6 +33,8 @@ import {
   MultiSelectDropdownRef,
 } from '../Composed/MultiSelectDropdown'
 
+import {TypeAheadDropDown, SelectableItem} from '../Composed/TypeAheadDropDown'
+
 // Types
 import {
   ComponentColor,
@@ -551,6 +553,49 @@ dropdownComposedStories.add(
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
         </div>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(SelectDropdownReadme),
+    },
+  }
+)
+
+dropdownComposedStories.add(
+  'TypeAheadDropdown',
+  () => {
+    const selectDropdownOptions = [
+      {name: 'Apple', id: '0'},
+      {name: 'Peach', id: '5'},
+      {name: 'Tomato', id: '10'},
+      {name: 'Grape', id: '20'},
+      {name: 'Orange', id: '40'},
+      {name: 'Lemon', id: '30'},
+      {name: 'Watermelon', id: '70'},
+      {name: 'Kiwi', id: '8'},
+      {name: 'Banana', id: '9'},
+      {name: 'Strawberry', id: '10'},
+    ]
+
+    selectDropdownOptions.sort((a, b) => {
+      const name = a?.name || ''
+      return name.localeCompare(b?.name)
+    })
+
+    //const [selected, changeSelected] = useState({name:'Peach', id:5})
+    const onSelect = (item: SelectableItem) => {
+      console.log('selected item: ', item)
+    }
+
+    return (
+      <div className="story--example">
+        <TypeAheadDropDown
+          onSelect={onSelect}
+          name={'fooTest'}
+          items={selectDropdownOptions}
+        />
       </div>
     )
   },

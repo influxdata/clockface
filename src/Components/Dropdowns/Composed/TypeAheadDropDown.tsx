@@ -3,9 +3,7 @@ import React, {ChangeEvent, FC, useState} from 'react'
 import classnames from 'classnames'
 
 // Components
-
 // Constants
-
 // Types
 import {MenuStatus} from '../Dropdown'
 import {
@@ -15,7 +13,7 @@ import {
   Input,
 } from '../../../../dist'
 
-interface SelectableItem {
+export interface SelectableItem {
   id: string
   name?: string
 }
@@ -48,8 +46,8 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   const [selectIndex, setSelectIndex] = useState(-1)
   const [shownValues, setShownValues] = useState(items)
   //const [selectHappened, setSelectHappened] = useState(false)
-  const [menuOpen, setMenuOpen] = useState<MenuStatus>(null)
-  const [selectedItem, setSelectedItem] = useState<SelectableItem>(null)
+  const [menuOpen, setMenuOpen] = useState<MenuStatus>(MenuStatus.Closed)
+  const [selectedItem, setSelectedItem] = useState<SelectableItem>()
 
   const filterVals = (event: ChangeEvent<HTMLInputElement>) => {
     const needle = event?.target?.value
@@ -85,7 +83,9 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     name = 'header'
   }
 
-  const maybeSelectNextItem = event => {
+  const maybeSelectNextItem = (
+    event: React.KeyboardEvent<HTMLInputElement>
+  ) => {
     console.log('hit key down....', event)
   }
 
@@ -164,7 +164,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
                 id={value.id}
                 value={value.id}
                 onClick={doSelection}
-                selected={value.id === selectedItem.id}
+                selected={value.id === selectedItem?.id}
                 testID="dropdown--item"
                 className={classN}
               >
