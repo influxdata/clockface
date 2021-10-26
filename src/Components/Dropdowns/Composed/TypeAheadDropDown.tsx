@@ -42,7 +42,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   placeholderText,
   name,
 }) => {
-  const [typedValue, setTypedValue] = useState('')
+  const [typedValue, setTypedValue] = useState<string>('')
   const [selectIndex, setSelectIndex] = useState(-1)
   const [shownValues, setShownValues] = useState(items)
   //const [selectHappened, setSelectHappened] = useState(false)
@@ -64,9 +64,6 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
         const name = val?.name || ''
         return name.toLowerCase().includes(needle.toLowerCase())
       })
-
-      console.log('did filtering; ', items)
-      console.log('filtering result:', result)
 
       // always reset the selectIndex when doing filtering;  because
       // if it had a value, and then they type, the shownValues changes
@@ -108,7 +105,9 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   // }
 
   const doSelection = (item: SelectableItem) => {
+    console.log('arghh! 1; in doSelection:', item)
     setSelectedItem(item)
+    setTypedValue(item.name || '')
     onSelect(item)
   }
   //const widthStyle = this.getWidth(placeHolderText)
@@ -131,7 +130,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
       testID={`dropdown-input-typeAhead--${name}`}
     />
   )
-  console.log('rerendering with:', shownValues)
+
   return (
     <Dropdown
       style={{width: '192px'}}
@@ -165,7 +164,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
               <Dropdown.Item
                 key={value.id}
                 id={value.id}
-                value={value.id}
+                value={value}
                 onClick={doSelection}
                 selected={value.id === selectedItem?.id}
                 testID="dropdown--item"
