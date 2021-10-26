@@ -576,7 +576,7 @@ dropdownComposedStories.add(
       {name: 'Watermelon', id: '70'},
       {name: 'Kiwi', id: '8'},
       {name: 'Banana', id: '9'},
-      {name: 'Strawberry', id: '10'},
+      {name: 'Strawberry', id: '1099'},
     ]
 
     selectDropdownOptions.sort((a, b) => {

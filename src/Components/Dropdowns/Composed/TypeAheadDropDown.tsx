@@ -65,6 +65,9 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
         return name.toLowerCase().includes(needle.toLowerCase())
       })
 
+      console.log('did filtering; ', items)
+      console.log('filtering result:', result)
+
       // always reset the selectIndex when doing filtering;  because
       // if it had a value, and then they type, the shownValues changes
       // so need to reset
@@ -128,7 +131,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
       testID={`dropdown-input-typeAhead--${name}`}
     />
   )
-
+  console.log('rerendering with:', shownValues)
   return (
     <Dropdown
       style={{width: '192px'}}
