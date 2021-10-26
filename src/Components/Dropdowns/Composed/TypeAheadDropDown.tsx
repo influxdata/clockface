@@ -1,9 +1,8 @@
 // Libraries
-import React, {FC, useState} from 'react'
+import React, {ChangeEvent, FC, useState} from 'react'
 import classnames from 'classnames'
 
 // Components
-import {MenuStatus} from '../'
 
 // Constants
 
@@ -46,14 +45,15 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   name,
 }) => {
   const [typedValue, setTypedValue] = useState('')
-  const [actualVal, setActualVal] = useState('')
   const [selectIndex, setSelectIndex] = useState(-1)
   const [shownValues, setShownValues] = useState(items)
-  const [selectHappened, setSelectHappened] = useState(false)
+  //const [selectHappened, setSelectHappened] = useState(false)
   const [menuOpen, setMenuOpen] = useState<MenuStatus>(null)
   const [selectedItem, setSelectedItem] = useState<SelectableItem>(null)
 
-  const filterVals = needle => {
+  const filterVals = (event: ChangeEvent<HTMLInputElement>) => {
+    const needle = event?.target?.value
+
     // if there is no value, set the shownValues to everything
     // and set the typedValue to nothing (zero it out)
     // reset the selectIndex too
@@ -89,20 +89,20 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     console.log('hit key down....', event)
   }
 
-  // TODO:  DRY (typeaheadvariable dropdown....)
-  const getWidth = placeHolderText => {
-    const names = items.map(item => item.name)
-    const allVals = [placeHolderText, ...names]
-    const longestItemWidth = Math.floor(
-      allVals.reduce(function(a, b) {
-        return a.length > b.length ? a : b
-      }, '').length * 10
-    )
-
-    const widthLength = Math.max(192, longestItemWidth)
-    const widthStyle = {width: `${widthLength}px`}
-    return widthStyle
-  }
+  // // TODO:  DRY (typeaheadvariable dropdown....)
+  // const getWidth = placeHolderText => {
+  //   const names = items.map(item => item.name)
+  //   const allVals = [placeHolderText, ...names]
+  //   const longestItemWidth = Math.floor(
+  //     allVals.reduce(function(a, b) {
+  //       return a.length > b.length ? a : b
+  //     }, '').length * 10
+  //   )
+  //
+  //   const widthLength = Math.max(192, longestItemWidth)
+  //   const widthStyle = {width: `${widthLength}px`}
+  //   return widthStyle
+  // }
 
   const doSelection = (item: SelectableItem) => {
     setSelectedItem(item)
