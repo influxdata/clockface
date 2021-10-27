@@ -596,6 +596,9 @@ dropdownComposedStories.add(
           onSelect={onSelect}
           name={'fooTest'}
           items={selectDropdownOptions}
+          buttonTestId={text('buttonTestID', '')}
+          menuTestID={text('menu test id', 'menuTest')}
+          itemTestIdPrefix={text('item test id prefix', 'my-prefix')}
           menuTheme={
             DropdownMenuTheme[
               select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Onyx')
