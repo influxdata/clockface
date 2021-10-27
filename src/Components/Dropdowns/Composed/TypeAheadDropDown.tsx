@@ -24,6 +24,7 @@ interface OwnProps {
   testID?: string
   placeholderText?: string
   name?: string
+  selectedOption?: SelectableItem | null
 }
 
 // interface MyState {
@@ -41,13 +42,19 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   testID,
   placeholderText,
   name,
+  selectedOption,
 }) => {
   const [typedValue, setTypedValue] = useState<string>('')
   const [selectIndex, setSelectIndex] = useState(-1)
   const [shownValues, setShownValues] = useState(items)
   //const [selectHappened, setSelectHappened] = useState(false)
   const [menuOpen, setMenuOpen] = useState<MenuStatus>(MenuStatus.Closed)
-  const [selectedItem, setSelectedItem] = useState<SelectableItem>()
+  if (!selectedOption) {
+    selectedOption = null
+  }
+  const [selectedItem, setSelectedItem] = useState<SelectableItem | null>(
+    selectedOption
+  )
 
   const itemNames = items.map(item => item.name)
 
@@ -83,6 +90,14 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
 
   if (!name) {
     name = 'header'
+  }
+
+  const setTypedValueToSelectedName = () => {
+    let selectedName = selectedItem?.name
+    if (!selectedName) {
+      selectedName = ''
+    }
+    setTypedValue(selectedName)
   }
 
   const maybeSelectNextItem = (
@@ -131,13 +146,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
           // is a real legal value
           doSelection(items[foundIndex], true)
         } else {
-          // const newState = {
-          //   menuOpen: MenuStatus.Closed,
-          //   selectIndex: -1,
-          //   ...this.getRealValue(),
-          // }
-          // this.setState(newState)
-          console.log('would set value back here......')
+          setTypedValueToSelectedName()
           setMenuOpen(MenuStatus.Closed)
           setSelectIndex(-1)
         }
@@ -176,6 +185,8 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     //  reset:
     //this.setState(this.getRealValue())
     console.log('just clicked away...')
+    setTypedValueToSelectedName()
+
   }
 
   const dropdownStatus =
