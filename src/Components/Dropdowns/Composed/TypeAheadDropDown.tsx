@@ -49,6 +49,8 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   const [menuOpen, setMenuOpen] = useState<MenuStatus>(MenuStatus.Closed)
   const [selectedItem, setSelectedItem] = useState<SelectableItem>()
 
+  const itemNames = items.map(item => item.name)
+
   const filterVals = (event: ChangeEvent<HTMLInputElement>) => {
     const needle = event?.target?.value
 
@@ -87,6 +89,60 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     event: React.KeyboardEvent<HTMLInputElement>
   ) => {
     console.log('hit key down....', event)
+
+    //const {shownValues, selectIndex, typedValue} = this.state
+    //const {values} = this.props
+
+    let newIndex = -1
+
+    if (event.keyCode === 40) {
+      // down arrow
+      newIndex = selectIndex + 1
+    } else if (event.keyCode === 38) {
+      // up arrow
+      newIndex = selectIndex - 1
+    }
+
+    const numItems = shownValues.length
+    const newValueWasHighlighted =
+      numItems && newIndex >= 0 && newIndex < numItems
+    if (newValueWasHighlighted) {
+      setSelectIndex(newIndex)
+      return
+    }
+
+    if (event.keyCode === 13) {
+      // return/enter key
+      // lose focus, reset the selectIndex to -1, & close the menu:
+      //event.target.blur()
+
+      if (numItems && selectIndex >= 0 && selectIndex < numItems) {
+        // they used the arrows; just pressed return
+        doSelection(shownValues[selectIndex], true)
+      } else {
+        // the person could have been typing and pressed return, need to
+        // make sure the value in the input field is real/legal:
+
+        // but:  if the value they typed is LEGAL (in the list/dropdown values), set it;
+        // else: reset to the previous real/legal value:
+        const foundIndex = itemNames.indexOf(typedValue)
+
+        if (foundIndex >= 0) {
+          // is a real legal value
+          doSelection(items[foundIndex], true)
+        } else {
+          // const newState = {
+          //   menuOpen: MenuStatus.Closed,
+          //   selectIndex: -1,
+          //   ...this.getRealValue(),
+          // }
+          // this.setState(newState)
+          console.log('would set value back here......')
+          setMenuOpen(MenuStatus.Closed)
+          setSelectIndex(-1)
+        }
+      }
+    }
   }
 
   // // TODO:  DRY (typeaheadvariable dropdown....)
@@ -104,10 +160,14 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   //   return widthStyle
   // }
 
-  const doSelection = (item: SelectableItem) => {
+  const doSelection = (item: SelectableItem, closeMenuNow?: boolean) => {
     console.log('arghh! 1; in doSelection:', item)
     setSelectedItem(item)
     setTypedValue(item.name || '')
+
+    if (closeMenuNow) {
+      setMenuOpen(MenuStatus.Closed)
+    }
     onSelect(item)
   }
   //const widthStyle = this.getWidth(placeHolderText)
