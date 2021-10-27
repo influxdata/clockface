@@ -56,7 +56,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     selectedOption
   )
 
-  const itemNames = items.map(item => item.name)
+  const itemNames = items.map(item => item.name?.toLowerCase())
 
   const filterVals = (event: ChangeEvent<HTMLInputElement>) => {
     const needle = event?.target?.value
@@ -140,7 +140,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
 
         // but:  if the value they typed is LEGAL (in the list/dropdown values), set it;
         // else: reset to the previous real/legal value:
-        const foundIndex = itemNames.indexOf(typedValue)
+        const foundIndex = itemNames.indexOf(typedValue.toLowerCase())
 
         if (foundIndex >= 0) {
           // is a real legal value
