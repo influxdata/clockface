@@ -25,6 +25,10 @@ interface OwnProps extends StandardFunctionProps {
   name?: string
   selectedOption?: SelectableItem | null
   menuTheme?: DropdownMenuTheme
+  disableAutoFocus?: boolean
+  buttonTestId?: string
+  menuTestID?: string
+  itemTestIdPrefix?: string
 }
 
 export const TypeAheadDropDown: FC<OwnProps> = ({
@@ -38,6 +42,10 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   selectedOption,
   className,
   menuTheme,
+  disableAutoFocus,
+  buttonTestId,
+  menuTestID,
+  itemTestIdPrefix,
 }) => {
   const [typedValue, setTypedValue] = useState<string>('')
   const [selectIndex, setSelectIndex] = useState(-1)
@@ -100,7 +108,6 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     if (!selectedName) {
       selectedName = ''
     }
-    console.log('arghh thank the lord.....', selectedName)
     setTypedValue(selectedName)
   }
 
@@ -193,7 +200,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   return (
     <Dropdown
       {...props}
-      className="variable-dropdown--dropdown"
+      className={className}
       testID={testID || `typeAhead-dropdown--${name}`}
       onClickAway={onClickAwayHere}
       menuOpen={menuOpen}
