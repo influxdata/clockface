@@ -586,15 +586,21 @@ dropdownComposedStories.add(
 
     //const [selected, changeSelected] = useState({name:'Peach', id:5})
     const onSelect = (item: SelectableItem) => {
-      console.log('selected item: ', item)
+      console.log('ooh! selected item: ', item)
     }
 
     return (
       <div className="story--example">
         <TypeAheadDropDown
+          style={object('style', defaultDropdownStyle)}
           onSelect={onSelect}
           name={'fooTest'}
           items={selectDropdownOptions}
+          menuTheme={
+            DropdownMenuTheme[
+              select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Onyx')
+            ]
+          }
         />
       </div>
     )

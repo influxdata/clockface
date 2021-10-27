@@ -1,48 +1,43 @@
 // Libraries
-import React, {ChangeEvent, FC, useState} from 'react'
+import React, {ChangeEvent, FC, useRef, useState} from 'react'
 import classnames from 'classnames'
 
-// Components
-// Constants
-// Types
+import {Dropdown} from '../.'
 import {MenuStatus} from '../Dropdown'
+
 import {
   ComponentStatus,
-  Dropdown,
   DropdownMenuTheme,
-  Input,
-} from '../../../../dist'
+  StandardFunctionProps,
+} from '../../../Types'
+
+import {Input} from '../../Inputs/Input'
 
 export interface SelectableItem {
   id: string
   name?: string
 }
 
-interface OwnProps {
+interface OwnProps extends StandardFunctionProps {
   items: SelectableItem[]
   onSelect: (item: SelectableItem) => void
-  testID?: string
   placeholderText?: string
   name?: string
   selectedOption?: SelectableItem | null
+  menuTheme?: DropdownMenuTheme
 }
 
-// interface MyState {
-//     typedValue: string
-//     actualVal: string
-//     selectIndex: number
-//     shownValues: string[]
-//     selectHappened: boolean
-//     menuOpen: MenuStatus
-// }
-
 export const TypeAheadDropDown: FC<OwnProps> = ({
+  id,
+  style,
   items,
   onSelect,
   testID,
   placeholderText,
   name,
   selectedOption,
+  className,
+  menuTheme,
 }) => {
   const [typedValue, setTypedValue] = useState<string>('')
   const [selectIndex, setSelectIndex] = useState(-1)
@@ -55,20 +50,28 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   const [selectedItem, setSelectedItem] = useState<SelectableItem | null>(
     selectedOption
   )
+  //let backupValue: React.MutableRefObject<{ name: string }>
+  let backupValue = useRef<string>('')
+
+  if (!menuTheme) {
+    menuTheme = DropdownMenuTheme.Onyx
+  }
 
   const itemNames = items.map(item => item.name?.toLowerCase())
 
   const filterVals = (event: ChangeEvent<HTMLInputElement>) => {
     const needle = event?.target?.value
-
+    console.log('in filtervals....')
     // if there is no value, set the shownValues to everything
     // and set the typedValue to nothing (zero it out)
     // reset the selectIndex too
     if (!needle) {
+      console.log('no needle :(')
       setShownValues(items)
       setTypedValue('')
       setSelectIndex(-1)
     } else {
+      console.log('stuff to filter!')
       const result = items.filter(val => {
         const name = val?.name || ''
         return name.toLowerCase().includes(needle.toLowerCase())
@@ -92,11 +95,12 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     name = 'header'
   }
 
-  const setTypedValueToSelectedName = () => {
-    let selectedName = selectedItem?.name
+  const setTypedValueToSelectedName = (backupName?: string) => {
+    let selectedName = backupName ?? selectedItem?.name
     if (!selectedName) {
       selectedName = ''
     }
+    console.log('arghh thank the lord.....', selectedName)
     setTypedValue(selectedName)
   }
 
@@ -149,24 +153,14 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     }
   }
 
-  // // TODO:  DRY (typeaheadvariable dropdown....)
-  // const getWidth = placeHolderText => {
-  //   const names = items.map(item => item.name)
-  //   const allVals = [placeHolderText, ...names]
-  //   const longestItemWidth = Math.floor(
-  //     allVals.reduce(function(a, b) {
-  //       return a.length > b.length ? a : b
-  //     }, '').length * 10
-  //   )
-  //
-  //   const widthLength = Math.max(192, longestItemWidth)
-  //   const widthStyle = {width: `${widthLength}px`}
-  //   return widthStyle
-  // }
-
   const doSelection = (item: SelectableItem, closeMenuNow?: boolean) => {
+    console.log('just triggered doSelection; with item:', item)
     setSelectedItem(item)
-    setTypedValue(item.name || '')
+    const actualName = item.name || ''
+    console.log('fubar2 actual name in doselection???', actualName)
+    setTypedValue(actualName)
+    backupValue.current = actualName
+    setSelectIndex(-1)
 
     if (closeMenuNow) {
       setMenuOpen(MenuStatus.Closed)
@@ -176,11 +170,13 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
 
   const onClickAwayHere = () => {
     //  reset:
-    setTypedValueToSelectedName()
+    console.log('clicking away')
+    setTypedValueToSelectedName(backupValue.current)
   }
 
   const dropdownStatus =
     items.length === 0 ? ComponentStatus.Disabled : ComponentStatus.Default
+
   // do rendering:
   const inputComponent = (
     <Input
@@ -192,9 +188,11 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     />
   )
 
+  const props: any = {id, style}
+
   return (
     <Dropdown
-      style={{width: '192px'}}
+      {...props}
       className="variable-dropdown--dropdown"
       testID={testID || `typeAhead-dropdown--${name}`}
       onClickAway={onClickAwayHere}
@@ -211,13 +209,10 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
         </Dropdown.Button>
       )}
       menu={onCollapse => (
-        <Dropdown.Menu
-          onCollapse={onCollapse}
-          theme={DropdownMenuTheme.Amethyst}
-        >
+        <Dropdown.Menu onCollapse={onCollapse} theme={menuTheme}>
           {shownValues.map((value, index) => {
             // add the 'active' class to highlight when arrowing; like a hover
-            const classN = classnames('variable-dropdown--item', {
+            const classN = classnames({
               active: index === selectIndex,
             })
 
