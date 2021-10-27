@@ -28,6 +28,21 @@ interface OwnProps extends StandardFunctionProps {
   buttonTestId?: string
   menuTestID?: string
   itemTestIdPrefix?: string
+  defaultNameText?: string
+  sortNames?: boolean
+}
+const isBlank = (pString: string | undefined) =>
+  // Checks for falsiness or a non-white space character
+  !pString || !/[^\s]+/.test(pString)
+
+const getValueWithBackup = (
+  val: string | undefined,
+  backup: string
+): string => {
+  if (isBlank(val)) {
+    return backup
+  }
+  return val as string
 }
 
 export const TypeAheadDropDown: FC<OwnProps> = ({
@@ -45,18 +60,44 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   buttonTestId,
   menuTestID,
   itemTestIdPrefix,
+  sortNames,
+  defaultNameText,
 }) => {
-  const [typedValue, setTypedValue] = useState<string>('')
+  if (sortNames) {
+    items.sort((a, b) => {
+      const aname = a?.name || ''
+      const bname = b?.name || ''
+      return aname.localeCompare(bname)
+    })
+  }
+
   const [selectIndex, setSelectIndex] = useState(-1)
   const [shownValues, setShownValues] = useState(items)
-  //const [selectHappened, setSelectHappened] = useState(false)
   const [menuOpen, setMenuOpen] = useState<MenuStatus>(MenuStatus.Closed)
-  if (!selectedOption) {
+
+  const defaultDisplayName = getValueWithBackup(defaultNameText, '')
+
+  let initialTypedValue = ''
+  if (selectedOption) {
+    initialTypedValue = getValueWithBackup(
+      selectedOption.name,
+      defaultDisplayName
+    )
+  } else {
     selectedOption = null
   }
   const [selectedItem, setSelectedItem] = useState<SelectableItem | null>(
     selectedOption
   )
+  const [typedValue, setTypedValue] = useState<string>(initialTypedValue)
+
+  buttonTestId = getValueWithBackup(buttonTestId, 'type-ahead-dropdown--button')
+  menuTestID = getValueWithBackup(menuTestID, 'type-ahead-dropdown--menu')
+  itemTestIdPrefix = getValueWithBackup(
+    itemTestIdPrefix,
+    'type-ahead-dropdown--item'
+  )
+
   /**
    *  using a ref to hold an instance variable:  what was last typed,
    * because without this 'click to select' doesn't work.
@@ -65,7 +106,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
    * but here it uses the stale state of what was previously selected.
    * this way, what was selected is saved in the ref.
    */
-  let backupValue = useRef<string>('')
+  let backupValue = useRef<string>(initialTypedValue)
 
   if (!menuTheme) {
     menuTheme = DropdownMenuTheme.Onyx
@@ -166,9 +207,16 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     }
   }
 
+  const getDisplayName = (item: SelectableItem): string => {
+    if (item && item.id) {
+      return getValueWithBackup(item.name, defaultDisplayName)
+    }
+    return ''
+  }
+
   const doSelection = (item: SelectableItem, closeMenuNow?: boolean) => {
     setSelectedItem(item)
-    const actualName = item.name || ''
+    const actualName = getDisplayName(item)
     setTypedValue(actualName)
     backupValue.current = actualName
     setSelectIndex(-1)
@@ -187,24 +235,6 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
 
   const dropdownStatus =
     items.length === 0 ? ComponentStatus.Disabled : ComponentStatus.Default
-
-  const isBlank = (pString: string | undefined) =>
-    // Checks for falsiness or a non-white space character
-    !pString || !/[^\s]+/.test(pString)
-
-  const getValueWithBackup = (val: string | undefined, backup: string) => {
-    if (isBlank(val)) {
-      return backup
-    }
-    return val
-  }
-
-  buttonTestId = getValueWithBackup(buttonTestId, 'type-ahead-dropdown--button')
-  menuTestID = getValueWithBackup(menuTestID, 'type-ahead-dropdown--menu')
-  itemTestIdPrefix = getValueWithBackup(
-    itemTestIdPrefix,
-    'type-ahead-dropdown--item'
-  )
 
   // do rendering:
   const inputComponent = (
@@ -259,7 +289,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
                 testID={`${itemTestIdPrefix}-${value.id}`}
                 className={classN}
               >
-                {value.name}
+                {value.name || defaultDisplayName}
               </Dropdown.Item>
             )
           })}

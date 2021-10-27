@@ -577,18 +577,18 @@ dropdownComposedStories.add(
       {name: 'Kiwi', id: '8'},
       {name: 'Banana', id: '9'},
       {name: 'Strawberry', id: '1099'},
+      {id: '1234.3.33'},
     ]
-
-    selectDropdownOptions.sort((a, b) => {
-      const name = a?.name || ''
-      return name.localeCompare(b?.name)
-    })
 
     //const [selected, changeSelected] = useState({name:'Peach', id:5})
     const onSelect = (item: SelectableItem) => {
       console.log('ooh! selected item: ', item)
     }
+    // selectedOption={{name:"Lemon", id:'30'}}
 
+    // putting sortNames as a boolean doesn't work because it is a prop,
+    // not a state, so it doesn't make the items sort (or unsort)
+    // because it happens once at instantiation
     return (
       <div className="story--example">
         <TypeAheadDropDown
@@ -599,11 +599,17 @@ dropdownComposedStories.add(
           buttonTestId={text('buttonTestID', '')}
           menuTestID={text('menu test id', 'menuTest')}
           itemTestIdPrefix={text('item test id prefix', 'my-prefix')}
+          defaultNameText={text(
+            'default empty text',
+            'default empty name here'
+          )}
           menuTheme={
             DropdownMenuTheme[
               select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Onyx')
             ]
           }
+          selectedOption={{name: 'Lemon', id: '30'}}
+          sortNames={true}
         />
       </div>
     )
