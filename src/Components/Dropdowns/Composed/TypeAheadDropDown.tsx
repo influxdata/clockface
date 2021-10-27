@@ -103,11 +103,6 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   const maybeSelectNextItem = (
     event: React.KeyboardEvent<HTMLInputElement>
   ) => {
-    console.log('hit key down....', event)
-
-    //const {shownValues, selectIndex, typedValue} = this.state
-    //const {values} = this.props
-
     let newIndex = -1
 
     if (event.keyCode === 40) {
@@ -170,7 +165,6 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   // }
 
   const doSelection = (item: SelectableItem, closeMenuNow?: boolean) => {
-    console.log('arghh! 1; in doSelection:', item)
     setSelectedItem(item)
     setTypedValue(item.name || '')
 
@@ -179,14 +173,10 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     }
     onSelect(item)
   }
-  //const widthStyle = this.getWidth(placeHolderText)
 
   const onClickAwayHere = () => {
     //  reset:
-    //this.setState(this.getRealValue())
-    console.log('just clicked away...')
     setTypedValueToSelectedName()
-
   }
 
   const dropdownStatus =
