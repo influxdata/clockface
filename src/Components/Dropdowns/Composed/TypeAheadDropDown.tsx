@@ -24,7 +24,6 @@ interface OwnProps extends StandardFunctionProps {
   name?: string
   selectedOption?: SelectableItem | null
   menuTheme?: DropdownMenuTheme
-  disableAutoFocus?: boolean
   buttonTestId?: string
   menuTestID?: string
   itemTestIdPrefix?: string
@@ -56,7 +55,6 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   selectedOption,
   className,
   menuTheme,
-  disableAutoFocus,
   buttonTestId,
   menuTestID,
   itemTestIdPrefix,
@@ -111,13 +109,13 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   if (!menuTheme) {
     menuTheme = DropdownMenuTheme.Onyx
   }
-  if (!disableAutoFocus) {
-    disableAutoFocus = false
-  }
 
   const itemNames = items.map(item => item.name?.toLowerCase())
 
   const doFilter = (needle: string) => {
+    // if there is no value, set the shownValues to everything
+    // and set the typedValue to nothing (zero it out)
+    // reset the selectIndex too
     if (!needle) {
       setShownValues(items)
       setTypedValue('')
@@ -145,9 +143,6 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
 
   const filterVals = (event: ChangeEvent<HTMLInputElement>) => {
     const needle = event?.target?.value
-    // if there is no value, set the shownValues to everything
-    // and set the typedValue to nothing (zero it out)
-    // reset the selectIndex too
     doFilter(needle)
   }
 
