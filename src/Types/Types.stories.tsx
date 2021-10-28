@@ -56,10 +56,10 @@ dataTypeStories.add(
               <code>Secondary</code>
             </td>
             <td>
-              <code>Danger</code>
+              <code>Tertiary</code>
             </td>
             <td>
-              <code>Tertiary</code>
+              <code>Danger</code>
             </td>
           </tr>
           <tr>
