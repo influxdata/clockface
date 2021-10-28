@@ -54,6 +54,7 @@ import DropdownItemEmptyReadme from './DropdownItemEmpty.md'
 import DropdownLinkItemReadme from './DropdownLinkItem.md'
 import DropdownMenuReadme from './DropdownMenu.md'
 import SelectDropdownReadme from './SelectDropdown.md'
+import TypeAheadDropdownReadme from './TypeAheadDropdown.md'
 import MultiSelectDropdownReadme from './MultiSelectDropdown.md'
 import {useState} from '@storybook/addons'
 
@@ -580,11 +581,11 @@ dropdownComposedStories.add(
       {id: '1234.3.33'},
     ]
 
-    //const [selected, changeSelected] = useState({name:'Peach', id:5})
     const onSelect = (item: SelectableItem) => {
       console.log('ooh! selected item: ', item)
     }
-    // selectedOption={{name:"Lemon", id:'30'}}
+
+    const selectedOption = {name: 'Lemon', id: '30'}
 
     // putting sortNames as a boolean doesn't work because it is a prop,
     // not a state, so it doesn't make the items sort (or unsort)
@@ -608,7 +609,7 @@ dropdownComposedStories.add(
               select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Onyx')
             ]
           }
-          selectedOption={{name: 'Lemon', id: '30'}}
+          selectedOption={selectedOption}
           sortNames={true}
         />
       </div>
@@ -616,7 +617,7 @@ dropdownComposedStories.add(
   },
   {
     readme: {
-      content: marked(SelectDropdownReadme),
+      content: marked(TypeAheadDropdownReadme),
     },
   }
 )

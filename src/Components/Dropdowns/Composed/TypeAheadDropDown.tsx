@@ -19,7 +19,7 @@ export interface SelectableItem {
 
 interface OwnProps extends StandardFunctionProps {
   items: SelectableItem[]
-  onSelect: (item: SelectableItem) => void
+  onSelect: (item: SelectableItem | null) => void
   placeholderText?: string
   name?: string
   selectedOption?: SelectableItem | null
@@ -117,11 +117,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
 
   const itemNames = items.map(item => item.name?.toLowerCase())
 
-  const filterVals = (event: ChangeEvent<HTMLInputElement>) => {
-    const needle = event?.target?.value
-    // if there is no value, set the shownValues to everything
-    // and set the typedValue to nothing (zero it out)
-    // reset the selectIndex too
+  const doFilter = (needle: string) => {
     if (!needle) {
       setShownValues(items)
       setTypedValue('')
@@ -140,6 +136,19 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
       setMenuOpen(MenuStatus.Open)
       setSelectIndex(-1)
     }
+  }
+
+  const clear = () => {
+    doSelection(null)
+    doFilter('')
+  }
+
+  const filterVals = (event: ChangeEvent<HTMLInputElement>) => {
+    const needle = event?.target?.value
+    // if there is no value, set the shownValues to everything
+    // and set the typedValue to nothing (zero it out)
+    // reset the selectIndex too
+    doFilter(needle)
   }
 
   if (!placeholderText) {
@@ -207,14 +216,14 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     }
   }
 
-  const getDisplayName = (item: SelectableItem): string => {
+  const getDisplayName = (item: SelectableItem | null): string => {
     if (item && item.id) {
       return getValueWithBackup(item.name, defaultDisplayName)
     }
     return ''
   }
 
-  const doSelection = (item: SelectableItem, closeMenuNow?: boolean) => {
+  const doSelection = (item: SelectableItem | null, closeMenuNow?: boolean) => {
     setSelectedItem(item)
     const actualName = getDisplayName(item)
     setTypedValue(actualName)
@@ -244,18 +253,17 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
       value={typedValue}
       onKeyDown={maybeSelectNextItem}
       testID={`dropdown-input-typeAhead--${name}`}
+      onClear={clear}
     />
   )
 
-  const props: any = {id, style}
+  const props: any = {id, style, className, menuOpen}
 
   return (
     <Dropdown
       {...props}
-      className={className}
       testID={testID || `typeAhead-dropdown--${name}`}
       onClickAway={onClickAwayHere}
-      menuOpen={menuOpen}
       disableAutoFocus
       button={(active, onClick) => (
         <Dropdown.Button
