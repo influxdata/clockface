@@ -13,10 +13,10 @@ addParameters({
       order: [
         'Home',
         'Foundations',
+        'Sandbox',
         'Components',
         'Layout',
         'Utilities',
-        'Sandbox',
       ],
     },
   },

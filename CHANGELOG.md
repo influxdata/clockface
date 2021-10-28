@@ -1,5 +1,40 @@
 # Changelog
 
+## 3.0.0 (2021-10-28)
+
+### Generic Updates
+   - Upgrade storybook and addons
+   - Renamed Stories
+ 
+### Design Token changes   
+   - Reduced color scale and New enum names for greyscale (g5 ~g95)
+   - Animation Constants
+   - New spacing scale ($cf-space-{size})
+   - New Animation Constants
+   - New Icon set
+   - Font scale adjusted
+### Component Style changes
+   - Overlay Mask color change , overlay footer aligns end
+   - Popovers style changes (introduce glassmorphism)
+   - navigation style changes
+   - Re-structued resource cards
+   - New color scheme , sizing and font style for buttons
+   - Dropdown style changes (introduce glassmorphism)
+   - Tabs new styling
+   - Panels new styling
+   - New hover and active state styles (opacity mask)
+   - Slide Toggle style change
+   - Table style change
+   - IndexList style change   
+   - Form labels style change   
+   - SelectGroup style change
+   - Input style changes
+   - Selectable card style change
+   - Other than these style changes, all components were indirectly changed due to new font scale and spacing scale.
+ 
+### Breaking Changes
+   - We've changed how we deal with focus on dropdowns. The first item in the dropdown will inherit focus on expansion. This was to guarantee accessibility out of the box. This might break your tests.
+   
 ### 2.12.0 (2021-10-19)
 
 - [#617](https://github.com/influxdata/clockface/pull/617): Add Optional Clearing via an "x" Button to Input Textfields

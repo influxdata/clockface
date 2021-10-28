@@ -50,10 +50,10 @@ dataTypeStories.add(
           <tr>
             <td />
             <td>
-              <code>Default/Secondary</code>
+              <code>Primary</code>
             </td>
             <td>
-              <code>Primary</code>
+              <code>Secondary</code>
             </td>
             <td>
               <code>Danger</code>
@@ -69,13 +69,6 @@ dataTypeStories.add(
             <td>
               <Button
                 size={ComponentSize.ExtraSmall}
-                color={ComponentColor.Default}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.ExtraSmall}
                 color={ComponentColor.Primary}
                 text="Button"
               />
@@ -83,7 +76,7 @@ dataTypeStories.add(
             <td>
               <Button
                 size={ComponentSize.ExtraSmall}
-                color={ComponentColor.Danger}
+                color={ComponentColor.Secondary}
                 text="Button"
               />
             </td>
@@ -91,6 +84,13 @@ dataTypeStories.add(
               <Button
                 size={ComponentSize.ExtraSmall}
                 color={ComponentColor.Tertiary}
+                text="Button"
+              />
+            </td>
+            <td>
+              <Button
+                size={ComponentSize.ExtraSmall}
+                color={ComponentColor.Danger}
                 text="Button"
               />
             </td>
@@ -102,13 +102,6 @@ dataTypeStories.add(
             <td>
               <Button
                 size={ComponentSize.Small}
-                color={ComponentColor.Default}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.Small}
                 color={ComponentColor.Primary}
                 text="Button"
               />
@@ -116,7 +109,7 @@ dataTypeStories.add(
             <td>
               <Button
                 size={ComponentSize.Small}
-                color={ComponentColor.Danger}
+                color={ComponentColor.Secondary}
                 text="Button"
               />
             </td>
@@ -124,6 +117,13 @@ dataTypeStories.add(
               <Button
                 size={ComponentSize.Small}
                 color={ComponentColor.Tertiary}
+                text="Button"
+              />
+            </td>
+            <td>
+              <Button
+                size={ComponentSize.Small}
+                color={ComponentColor.Danger}
                 text="Button"
               />
             </td>
@@ -135,13 +135,6 @@ dataTypeStories.add(
             <td>
               <Button
                 size={ComponentSize.Medium}
-                color={ComponentColor.Default}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.Medium}
                 color={ComponentColor.Primary}
                 text="Button"
               />
@@ -149,7 +142,7 @@ dataTypeStories.add(
             <td>
               <Button
                 size={ComponentSize.Medium}
-                color={ComponentColor.Danger}
+                color={ComponentColor.Secondary}
                 text="Button"
               />
             </td>
@@ -157,6 +150,13 @@ dataTypeStories.add(
               <Button
                 size={ComponentSize.Medium}
                 color={ComponentColor.Tertiary}
+                text="Button"
+              />
+            </td>
+            <td>
+              <Button
+                size={ComponentSize.Medium}
+                color={ComponentColor.Danger}
                 text="Button"
               />
             </td>
@@ -168,13 +168,6 @@ dataTypeStories.add(
             <td>
               <Button
                 size={ComponentSize.Large}
-                color={ComponentColor.Default}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.Large}
                 color={ComponentColor.Primary}
                 text="Button"
               />
@@ -182,7 +175,7 @@ dataTypeStories.add(
             <td>
               <Button
                 size={ComponentSize.Large}
-                color={ComponentColor.Danger}
+                color={ComponentColor.Secondary}
                 text="Button"
               />
             </td>
@@ -190,6 +183,13 @@ dataTypeStories.add(
               <Button
                 size={ComponentSize.Large}
                 color={ComponentColor.Tertiary}
+                text="Button"
+              />
+            </td>
+            <td>
+              <Button
+                size={ComponentSize.Large}
+                color={ComponentColor.Danger}
                 text="Button"
               />
             </td>
@@ -345,6 +345,36 @@ dataTypeStories.add(
       }
     }
 
+    const deprecatingAccentColors = (color: any) => {
+      const nonDeprecatingColors = [
+        InfluxColors.Pool,
+        InfluxColors.Rainforest,
+        InfluxColors.Fire,
+        InfluxColors.Pineapple,
+        InfluxColors.Amethyst,
+      ]
+
+      if (!nonDeprecatingColors.includes(color))
+        return {backgroundColor: color, opacity: '.2'}
+      else {
+        return {backgroundColor: color}
+      }
+    }
+
+    const deprecatingGradientColors = (color: any) => {
+      const nonDeprecatingGradients = [
+        Gradients.Info,
+        Gradients.Success,
+        Gradients.Danger,
+      ]
+
+      if (!nonDeprecatingGradients.includes(color)) {
+        const gradientStyle = generateGradientStyle(color)
+        return {...gradientStyle, opacity: '0.2'}
+      } else {
+        return generateGradientStyle(color)
+      }
+    }
     return (
       <div className="markdown-body">
         <h3>Clockface Colors</h3>
@@ -372,7 +402,7 @@ dataTypeStories.add(
             <div
               className={colorCardClassName(color.value)}
               key={color.key}
-              style={{backgroundColor: color.value}}
+              style={deprecatingAccentColors(color.value)}
             >
               <p>{color.key}</p>
               <p className="colors-grid--hex">{color.value}</p>
@@ -385,7 +415,7 @@ dataTypeStories.add(
             <div
               className={colorCardClassName(color.value)}
               key={color.key}
-              style={{backgroundColor: color.value}}
+              style={deprecatingAccentColors(color.value)}
             >
               <p>{color.key}</p>
               <p className="colors-grid--hex">{color.value}</p>
@@ -398,7 +428,7 @@ dataTypeStories.add(
             <div
               className={colorCardClassName(color.value)}
               key={color.key}
-              style={{backgroundColor: color.value}}
+              style={deprecatingAccentColors(color.value)}
             >
               <p>{color.key}</p>
               <p className="colors-grid--hex">{color.value}</p>
@@ -411,7 +441,7 @@ dataTypeStories.add(
             <div
               className={colorCardClassName(color.value)}
               key={color.key}
-              style={{backgroundColor: color.value}}
+              style={deprecatingAccentColors(color.value)}
             >
               <p>{color.key}</p>
               <p className="colors-grid--hex">{color.value}</p>
@@ -424,7 +454,7 @@ dataTypeStories.add(
             <div
               className={colorCardClassName(color.value)}
               key={color.key}
-              style={{backgroundColor: color.value}}
+              style={deprecatingAccentColors(color.value)}
             >
               <p>{color.key}</p>
               <p className="colors-grid--hex">{color.value}</p>
@@ -437,7 +467,7 @@ dataTypeStories.add(
             <div
               className={colorCardClassName(color.value)}
               key={color.key}
-              style={{backgroundColor: color.value}}
+              style={deprecatingAccentColors(color.value)}
             >
               <p>{color.key}</p>
               <p className="colors-grid--hex">{color.value}</p>
@@ -449,38 +479,14 @@ dataTypeStories.add(
         <pre className="language-js">
           <code>import &#123;Gradients&#125; from '@influxdata/clockface'</code>
         </pre>
-        <h5>Multi-Hue Gradients</h5>
-        <div className="gradients-grid">
-          {clockfaceGradients.map(g => (
-            <div
-              className={gradientCardClassName(g)}
-              key={g}
-              style={generateGradientStyle(g)}
-            >
-              <p>{g}</p>
-            </div>
-          ))}
-        </div>
-        <h5>InfluxData Brand Gradients</h5>
-        <div className="gradients-grid">
-          {brandGradients.map(g => (
-            <div
-              className={gradientCardClassName(g)}
-              key={g}
-              style={generateGradientStyle(g)}
-            >
-              <p>{g}</p>
-            </div>
-          ))}
-        </div>
-        <h5>Single Hue Gradients</h5>
+        <h5>System Gradients</h5>
         <p>Default (Grey)</p>
         <div className="gradients-grid">
           {defaultGradients.map(g => (
             <div
               className={gradientCardClassName(g)}
               key={g}
-              style={generateGradientStyle(g)}
+              style={deprecatingGradientColors(g)}
             >
               <p>{g}</p>
             </div>
@@ -492,7 +498,7 @@ dataTypeStories.add(
             <div
               className={gradientCardClassName(g)}
               key={g}
-              style={generateGradientStyle(g)}
+              style={deprecatingGradientColors(g)}
             >
               <p>{g}</p>
             </div>
@@ -504,7 +510,7 @@ dataTypeStories.add(
             <div
               className={gradientCardClassName(g)}
               key={g}
-              style={generateGradientStyle(g)}
+              style={deprecatingGradientColors(g)}
             >
               <p>{g}</p>
             </div>
@@ -516,7 +522,7 @@ dataTypeStories.add(
             <div
               className={gradientCardClassName(g)}
               key={g}
-              style={generateGradientStyle(g)}
+              style={deprecatingGradientColors(g)}
             >
               <p>{g}</p>
             </div>
@@ -528,7 +534,31 @@ dataTypeStories.add(
             <div
               className={gradientCardClassName(g)}
               key={g}
-              style={generateGradientStyle(g)}
+              style={deprecatingGradientColors(g)}
+            >
+              <p>{g}</p>
+            </div>
+          ))}
+        </div>
+        <h5>Multi-Hue Gradients</h5>
+        <div className="gradients-grid">
+          {clockfaceGradients.map(g => (
+            <div
+              className={gradientCardClassName(g)}
+              key={g}
+              style={deprecatingGradientColors(g)}
+            >
+              <p>{g}</p>
+            </div>
+          ))}
+        </div>
+        <h5>InfluxData Brand Gradients</h5>
+        <div className="gradients-grid">
+          {brandGradients.map(g => (
+            <div
+              className={gradientCardClassName(g)}
+              key={g}
+              style={deprecatingGradientColors(g)}
             >
               <p>{g}</p>
             </div>

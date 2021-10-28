@@ -126,7 +126,7 @@ export enum Gradients {
   Default = 'Default',
   DefaultDark = 'DefaultDark',
   PrimaryLight = 'PrimaryLight',
-  Primary = 'Primary',
+  Info = 'Info',
   PrimaryDark = 'PrimaryDark',
   SecondaryLight = 'SecondaryLight',
   Secondary = 'Secondary',
@@ -140,7 +140,6 @@ export enum Gradients {
   DangerLight = 'DangerLight',
   Danger = 'Danger',
   DangerDark = 'DangerDark',
-  Info = 'Info',
 }
 
 export enum DropdownMenuTheme {
