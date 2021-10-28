@@ -15,18 +15,15 @@
 }
 
 .cf-popover--contents {
+  @extend %backdrop-blur;
   font-size: $cf-text-base;
-  background-color: $g2-kevlar;
   border-radius: $cf-radius + $cf-border;
   position: relative;
+  color: $cf-white;
+  box-shadow: 0px 0px 16px rgba($cf-grey-95, 0.3);
 
-  .cf-popover__solid & {
-    box-shadow: 0 2px 5px 0.6px rgba($g0-obsidian, 0.2);
-  }
-
-  .cf-popover__outline & {
-    border-style: solid;
-    border-width: $cf-border;
+  .cf-popover__nav.cf-popover & {
+    @extend %backdrop-blur-blue;
   }
 }
 
@@ -35,68 +32,34 @@
   right: -$cf-border;
 }
 
-.cf-popover--caret {
-  position: absolute;
-  border-color: transparent;
-  border-style: solid;
-}
-
 /*
   Color Modifiers
   ------------------------------------------------------------------------------
 */
 
-@mixin popoverColorModifier(
-  $solidColor,
-  $outlineColor,
-  $glowColor,
-  $textColor
-) {
-  // Solid Type
-  &.cf-popover__solid .cf-popover--contents {
-    background-color: $solidColor;
-    color: $textColor;
+@mixin popoverColorModifier($backgroundColor) {
+  .cf-popover--contents {
+    background-color: rgba($cf-grey-15, 0.975);
   }
-  &.cf-popover__solid .cf-popover--caret {
-    border-bottom-color: $solidColor;
-  }
-  // Outline Type
-  &.cf-popover__outline .cf-popover--contents {
-    border-color: $outlineColor;
-    box-shadow: 0 0 5px 0 $glowColor;
-  }
-  &.cf-popover__outline .cf-popover--caret {
-    border-bottom-color: $outlineColor;
+
+  @supports (
+    (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+  ) {
+    .cf-popover--contents {
+      background-color: rgba($backgroundColor, 0.1);
+      box-shadow: 0px 0 16px rgba($cf-grey-5, 0.3);
+    }
   }
 }
 
-.cf-popover__default {
-  @include popoverColorModifier(
-    $g6-smoke,
-    $g11-sidewalk,
-    $g8-storm,
-    $g15-platinum
-  );
-}
-.cf-popover__primary {
-  @include popoverColorModifier($c-pool, $c-pool, $c-ocean, $g20-white);
-}
-.cf-popover__secondary {
-  @include popoverColorModifier($c-star, $c-comet, $c-star, $g20-white);
-}
-.cf-popover__success {
-  @include popoverColorModifier(
-    $c-rainforest,
-    $c-honeydew,
-    $c-rainforest,
-    $g20-white
-  );
-}
-.cf-popover__warning {
-  @include popoverColorModifier($c-pineapple, $c-thunder, $c-tiger, $g3-castle);
-}
+.cf-popover__default,
+.cf-popover__primary,
+.cf-popover__secondary,
+.cf-popover__tertiary,
+.cf-popover__success,
+.cf-popover__warning,
 .cf-popover__danger {
-  @include popoverColorModifier($c-curacao, $c-dreamsicle, $c-fire, $g20-white);
+  @include popoverColorModifier($cf-grey-95);
 }
 
 /*
@@ -121,11 +84,10 @@
 */
 
 .cf-popover--contents__default-styles {
-  padding: $cf-marg-c;
+  padding: $cf-space-s;
   font-size: $cf-text-base;
-  line-height: 1.5em;
   font-weight: $cf-font-weight--medium;
-  color: $g13-mist;
+  color: $cf-white;
 
   > *:first-child {
     margin-top: 0;

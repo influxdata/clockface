@@ -197,7 +197,7 @@ body.sb-show-main {
 }
 
 .story--example {
-  background-color: $g1-raven;
+  background-color: $cf-grey-5;
   width: 100%;
   min-height: 300px;
   border-radius: $cf-radius;
@@ -208,6 +208,10 @@ body.sb-show-main {
   padding: 64px;
   position: relative;
   margin-bottom: 24px;
+
+  &__medium {
+    background-color: $cf-grey-15;
+  }
 
   &__column {
     @extend .story--example;
@@ -315,9 +319,9 @@ body.sb-show-main {
   a:link,
   a:visited,
   a:active {
-    font-weight: $cf-font-weight--black;
+    font-weight: $cf-font-weight--medium;
     text-decoration: underline;
-    transition: color 0.25s ease, text-shadow 0.25s ease;
+    transition: color $cf-transition-default, text-shadow $cf-transition-default;
   }
 
   a:link,
@@ -334,6 +338,10 @@ body.sb-show-main {
     text-shadow: 0 0 3px $c-ocean, 0 0 7px $c-amethyst;
   }
 
+  img {
+    background: transparent;
+  }
+
   h1,
   h2,
   h3,
@@ -343,7 +351,7 @@ body.sb-show-main {
   p,
   ol,
   ul {
-    color: $g13-mist;
+    color: $cf-grey-95;
     margin: 0.25em 0 0.75em 0;
   }
 
@@ -354,14 +362,15 @@ body.sb-show-main {
 
   h1 {
     line-height: 1.25em;
-    font-size: ceil($docs-text-base-5 * $docs-text-scale);
-    font-weight: $cf-font-weight--light;
+    font-size: $docs-text-base-5;
+    font-weight: $cf-font-weight--medium;
     letter-spacing: 0.01em;
+    margin-bottom: 0.25em;
   }
   h2 {
     line-height: 1.25em;
     font-size: $docs-text-base-4;
-    font-weight: $cf-font-weight--light;
+    font-weight: $cf-font-weight--medium;
   }
   h3 {
     line-height: 1.25em;
@@ -579,6 +588,10 @@ body.sb-show-main {
   tbody td {
     color: $g13-mist;
   }
+
+  .property_meta {
+    white-space: normal;
+  }
 }
 
 .storybook-readme-story div.markdown-body.markdown-props-table {
@@ -615,6 +628,12 @@ body.sb-show-main {
 }
 
 table.two-axis-table {
+  &--spaced {
+    td {
+      padding: $cf-space-2xs;
+    }
+  }
+
   thead tr,
   tbody tr {
     border: 0;
@@ -792,6 +811,11 @@ $color-grid-card-width: 154px;
   align-items: flex-end;
   flex-direction: column;
 
+  &--bottom {
+    top: auto;
+    bottom: 12px;
+  }
+
   &.relative {
     position: relative;
     top: initial;
@@ -811,7 +835,8 @@ $color-grid-card-width: 154px;
   color: $g13-mist;
   border: 0;
   outline: none;
-  transition: color 0.25s ease, background-color 0.25s ease;
+  transition: color $cf-transition-default,
+    background-color $cf-transition-default;
   user-select: none;
 
   &:hover {

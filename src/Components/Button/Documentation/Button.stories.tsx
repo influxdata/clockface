@@ -5,7 +5,7 @@ import marked from 'marked'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, text, select, boolean} from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../../Utils/storybook'
+import {mapEnumKeys, removeUnusedEnumKeyValue} from '../../../Utils/storybook'
 import {useState} from '@storybook/addons'
 
 // Components
@@ -48,14 +48,25 @@ import ButtonGroupReadme from './ButtonGroup.md'
 import ButtonBaseContrastTesterReadme from './ButtonBaseContrastTester.md'
 
 const buttonBaseStories = storiesOf(
-  'Components|Buttons/Base',
+  'Components/Buttons/Base',
   module
 ).addDecorator(withKnobs)
 
 const buttonComposedStories = storiesOf(
-  'Components|Buttons/Composed',
+  'Components/Buttons/Composed',
   module
 ).addDecorator(withKnobs)
+
+const buttonExampleStories = storiesOf(
+  'Components/Buttons/Examples',
+  module
+).addDecorator(withKnobs)
+
+const unusedButtonColorEnium = ['Colorless', 'Warning']
+const reducedButtonColorEnum = removeUnusedEnumKeyValue(
+  ComponentColor,
+  unusedButtonColorEnium
+)
 
 buttonComposedStories.add(
   'StandardButton',
@@ -83,7 +94,7 @@ buttonComposedStories.add(
           disabledTitleText={text('disabledTitleText', 'Disabled Text')}
           color={
             ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Default')
+              select('color', mapEnumKeys(reducedButtonColorEnum), 'Default')
             ]
           }
           size={
@@ -114,7 +125,7 @@ buttonComposedStories.add(
   }
 )
 
-buttonBaseStories.add(
+buttonExampleStories.add(
   'Contrast Tester',
   () => {
     return (
@@ -151,7 +162,7 @@ buttonComposedStories.add(
           disabledTitleText={text('disabledTitleText', 'Disabled Text')}
           color={
             ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Default')
+              select('color', mapEnumKeys(reducedButtonColorEnum), 'Default')
             ]
           }
           size={
@@ -194,7 +205,7 @@ buttonComposedStories.add(
     }
 
     return (
-      <div className="story--example">
+      <div className="story--example story--example__medium">
         <ConfirmationButton
           confirmationButtonText={text(
             'confirmationButtonText',
@@ -204,7 +215,11 @@ buttonComposedStories.add(
           onHide={onHide}
           confirmationButtonColor={
             ComponentColor[
-              select('confirmationColor', mapEnumKeys(ComponentColor), 'Danger')
+              select(
+                'confirmationColor',
+                mapEnumKeys(reducedButtonColorEnum),
+                'Danger'
+              )
             ]
           }
           confirmationLabel={text(
@@ -213,20 +228,24 @@ buttonComposedStories.add(
           )}
           popoverColor={
             ComponentColor[
-              select('popoverColor', mapEnumKeys(ComponentColor), 'Default')
+              select(
+                'popoverColor',
+                mapEnumKeys(reducedButtonColorEnum),
+                'Default'
+              )
             ]
           }
           popoverAppearance={
-            Appearance[select('appearance', mapEnumKeys(Appearance), 'Solid')]
+            Appearance[select('appearance', mapEnumKeys(Appearance), 'Outline')]
           }
           onConfirm={value => alert(`returnValue: ${value}`)}
           returnValue={text('returnValue', '')}
-          icon={IconFont[select('icon', mapEnumKeys(IconFont), 'Trash')]}
+          icon={IconFont[select('icon', mapEnumKeys(IconFont), 'Trash_New')]}
           disabledTitleText={text('disabledTitleText', 'Disabled Text')}
           titleText={text('titleText', 'Title Text')}
           color={
             ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Danger')
+              select('color', mapEnumKeys(reducedButtonColorEnum), 'Danger')
             ]
           }
           size={
@@ -279,7 +298,7 @@ buttonComposedStories.add(
             disabledTitleText={text('disabledTitleText', 'Disabled Text')}
             color={
               ComponentColor[
-                select('color', mapEnumKeys(ComponentColor), 'Danger')
+                select('color', mapEnumKeys(reducedButtonColorEnum), 'Danger')
               ]
             }
             size={
@@ -329,7 +348,7 @@ buttonComposedStories.add(
           disabledTitleText={text('disabledTitleText', 'Disabled Text')}
           color={
             ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Secondary')
+              select('color', mapEnumKeys(reducedButtonColorEnum), 'Success')
             ]
           }
           status={
@@ -378,7 +397,7 @@ buttonBaseStories.add(
           disabledTitleText={text('disabledTitleText', 'Disabled Text')}
           color={
             ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Default')
+              select('color', mapEnumKeys(reducedButtonColorEnum), 'Default')
             ]
           }
           size={
@@ -440,7 +459,7 @@ buttonComposedStories.add(
           disabledTitleText={text('disabledTitleText', 'Disabled Text')}
           color={
             ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Default')
+              select('color', mapEnumKeys(reducedButtonColorEnum), 'Default')
             ]
           }
           size={
@@ -503,7 +522,7 @@ buttonComposedStories.add(
           disabledTitleText={text('disabledTitleText', 'Disabled Text')}
           color={
             ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Primary')
+              select('color', mapEnumKeys(reducedButtonColorEnum), 'Success')
             ]
           }
           status={
@@ -563,7 +582,7 @@ buttonComposedStories.add(
             style={{width: '100px'}}
             buttonColor={
               ComponentColor[
-                select('color', mapEnumKeys(ComponentColor), 'Default')
+                select('color', mapEnumKeys(reducedButtonColorEnum), 'Default')
               ]
             }
             buttonSize={
@@ -593,10 +612,10 @@ buttonComposedStories.add(
             }
           />
           <SquareButton
-            icon={IconFont.CrownSolid}
+            icon={IconFont.CrownSolid_New}
             color={
               ComponentColor[
-                select('color', mapEnumKeys(ComponentColor), 'Default')
+                select('color', mapEnumKeys(reducedButtonColorEnum), 'Default')
               ]
             }
             size={
@@ -607,7 +626,7 @@ buttonComposedStories.add(
             icon={IconFont.Erlenmeyer}
             color={
               ComponentColor[
-                select('color', mapEnumKeys(ComponentColor), 'Default')
+                select('color', mapEnumKeys(reducedButtonColorEnum), 'Default')
               ]
             }
             size={
@@ -623,7 +642,7 @@ buttonComposedStories.add(
               ComponentColor[
                 select(
                   'confirmationColor',
-                  mapEnumKeys(ComponentColor),
+                  mapEnumKeys(reducedButtonColorEnum),
                   'Danger'
                 )
               ]
@@ -634,19 +653,25 @@ buttonComposedStories.add(
             )}
             popoverColor={
               ComponentColor[
-                select('popoverColor', mapEnumKeys(ComponentColor), 'Default')
+                select(
+                  'popoverColor',
+                  mapEnumKeys(reducedButtonColorEnum),
+                  'Default'
+                )
               ]
             }
             popoverAppearance={
-              Appearance[select('appearance', mapEnumKeys(Appearance), 'Solid')]
+              Appearance[
+                select('appearance', mapEnumKeys(Appearance), 'Outline')
+              ]
             }
             onConfirm={value => alert(`returnValue: ${value}`)}
-            icon={IconFont.Trash}
+            icon={IconFont.Trash_New}
             titleText={text('titleText', 'Title Text')}
             disabledTitleText={text('disabledTitleText', 'Disabled Text')}
             color={
               ComponentColor[
-                select('color', mapEnumKeys(ComponentColor), 'Default')
+                select('color', mapEnumKeys(reducedButtonColorEnum), 'Default')
               ]
             }
             size={
@@ -665,6 +690,90 @@ buttonComposedStories.add(
   {
     readme: {
       content: marked(ButtonGroupReadme),
+    },
+  }
+)
+
+buttonExampleStories.add(
+  'Collage',
+  () => {
+    return (
+      <div className="story--example">
+        <table className="two-axis-table two-axis-table--spaced">
+          <tbody>
+            <tr>
+              <td>
+                <code>Size</code>
+              </td>
+              {[
+                {size: ComponentSize.ExtraSmall, text: 'ExtraSmall'},
+                {size: ComponentSize.Small, text: 'Small'},
+                {size: ComponentSize.Medium, text: 'Medium'},
+                {size: ComponentSize.Large, text: 'Large'},
+              ].map((props, i) => (
+                <td key={i}>
+                  <Button {...props} />
+                </td>
+              ))}
+            </tr>
+            <tr>
+              <td>
+                <code>Color</code>
+              </td>
+              {[
+                {color: ComponentColor.Default},
+                {color: ComponentColor.Primary},
+                {color: ComponentColor.Danger},
+                {color: ComponentColor.Tertiary},
+                {color: ComponentColor.Colorless},
+              ].map((props, i) => (
+                <td key={i}>
+                  <Button text={props.color.toString()} {...props} />
+                </td>
+              ))}
+            </tr>
+            <tr>
+              <td>
+                <code>Shape</code>
+              </td>
+              {[
+                {shape: ButtonShape.Default},
+                {shape: ButtonShape.Square, text: ''},
+                {shape: ButtonShape.StretchToFit},
+              ].map((props, i) => (
+                <td key={i}>
+                  <Button
+                    icon={IconFont.Zap}
+                    text={props.shape.toString()}
+                    {...props}
+                  />
+                </td>
+              ))}
+            </tr>
+            <tr>
+              <td>
+                <code>Status</code>
+              </td>
+              {[
+                {status: ComponentStatus.Default},
+                {status: ComponentStatus.Disabled},
+                {status: ComponentStatus.Loading},
+                {status: ComponentStatus.Error},
+                {status: ComponentStatus.Valid},
+              ].map((props, i) => (
+                <td key={i}>
+                  <Button text={props.status.toString()} {...props} />
+                </td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(ButtonReadme),
     },
   }
 )

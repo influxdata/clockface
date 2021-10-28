@@ -31,7 +31,7 @@ import {
 // Notes
 import PortalsReadme from './Portals.md'
 
-const alertStories = storiesOf('Sandbox|Portal Elements', module).addDecorator(
+const alertStories = storiesOf('Sandbox/Portal Elements', module).addDecorator(
   withKnobs
 )
 
@@ -194,7 +194,7 @@ alertStories.add(
                 id="explore"
                 label="Data Explorer"
                 shortLabel="Explore"
-                icon={<Icon glyph={IconFont.GraphLine} />}
+                icon={<Icon glyph={IconFont.GraphLine_New} />}
                 active={isItemActive('explore')}
                 onClick={handleNavClick}
               />
@@ -320,7 +320,7 @@ alertStories.add(
                   )}
                 />
                 <Notification
-                  icon={IconFont.CrownSolid}
+                  icon={IconFont.CrownSolid_New}
                   size={ComponentSize.Small}
                   gradient={Gradients.PolarExpress}
                 >

@@ -13,7 +13,7 @@
   position: relative;
   z-index: $cf-input--field-z;
   width: 100%;
-  font-weight: $cf-font-weight--medium;
+  font-weight: $cf-font-weight--regular;
   font-family: $cf-text-font;
   transition: $cf-input--transition;
   outline: none;
@@ -33,28 +33,24 @@
     background-color: $cf-input-background--focused;
     border-color: $cf-input-border--focused;
     color: $cf-input-text--focused;
-    box-shadow: $cf-input--box-shadow;
+    @include focus-glow();
   }
 
   &::-webkit-input-placeholder {
     color: $cf-input--placeholder-text;
     font-weight: $cf-font-weight--medium !important;
-    font-style: italic;
   }
   &::-moz-placeholder {
     color: $cf-input--placeholder-text;
     font-weight: $cf-font-weight--medium !important;
-    font-style: italic;
   }
   &:-ms-input-placeholder {
     color: $cf-input--placeholder-text;
     font-weight: $cf-font-weight--medium !important;
-    font-style: italic;
   }
   &:-moz-placeholder {
     color: $cf-input--placeholder-text;
     font-weight: $cf-font-weight--medium !important;
-    font-style: italic;
   }
 }
 
@@ -83,7 +79,7 @@
   pointer-events: none;
   top: 50%;
   z-index: $cf-input--status-z;
-  transition: color 0.25s ease;
+  transition: color $cf-transition-default;
   font-size: 1.1em;
   transform: translate(-50%, -50%);
 }
@@ -132,13 +128,23 @@ alternate css for the other sizes */
     &:focus {
       opacity: 1;
     }
-  }
 
-  &.xsmall {
     & .cf-dismiss-button--x {
       &:before,
       &:after {
-        width: floor($cf-form-xs-font);
+        width: $cf-form-sm-font;
+      }
+    }
+  }
+
+  &.xsmall {
+    height: $cf-form-xs-height;
+    width: $cf-form-xs-height;
+
+    & .cf-dismiss-button--x {
+      &:before,
+      &:after {
+        width: $cf-form-xs-font;
       }
     }
   }
@@ -147,7 +153,7 @@ alternate css for the other sizes */
     & .cf-dismiss-button--x {
       &:before,
       &:after {
-        width: floor($cf-form-md-font * 1.2);
+        width: $cf-form-md-font;
       }
     }
   }
@@ -156,7 +162,7 @@ alternate css for the other sizes */
     & .cf-dismiss-button--x {
       &:before,
       &:after {
-        width: floor($cf-form-lg-font * 1.2);
+        width: $cf-form-lg-font;
       }
     }
   }
@@ -176,7 +182,8 @@ alternate css for the other sizes */
   background-color: $cf-input-background--default;
   border-radius: $cf-radius;
   border: $cf-border solid $cf-input-border--default;
-  transition: border-color 0.25s ease, background-color 0.25s ease;
+  transition: border-color $cf-transition-default,
+    background-color $cf-transition-default;
 
   &:after {
     content: '';
@@ -188,7 +195,7 @@ alternate css for the other sizes */
     background: $cf-input-border--focused;
     z-index: 2;
     opacity: 0;
-    transition: opacity 0.25s ease, transform 0.25s ease;
+    transition: opacity $cf-transition-default, transform $cf-transition-default;
   }
 
   &.checked:after {
@@ -321,9 +328,9 @@ alternate css for the other sizes */
 
 .cf-input-field[disabled],
 .cf-input-field[disabled]:hover {
-  cursor: default;
   border-color: $cf-input-border--disabled;
   background-color: $cf-input-background--disabled;
   color: $cf-input-text--disabled;
-  font-style: italic;
+  cursor: not-allowed;
+  opacity: $cf-disabled-opacity;
 }

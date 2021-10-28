@@ -9,6 +9,16 @@ addParameters({
   options: {
     theme: clockfaceTheme,
     panelPosition: 'right',
+    storySort: {
+      order: [
+        'Home',
+        'Foundations',
+        'Sandbox',
+        'Components',
+        'Layout',
+        'Utilities',
+      ],
+    },
   },
   readme: {
     codeTheme: 'Dracula',

@@ -38,32 +38,28 @@
 
   &[disabled],
   &[disabled]:hover {
-    cursor: default;
     border-color: $cf-input-border--disabled;
     background-color: $cf-input-background--disabled;
     color: $cf-input-text--disabled;
-    font-style: italic;
+    cursor: not-allowed;
+    opacity: $cf-disabled-opacity;
   }
 
   &::-webkit-text-area-placeholder {
     color: $cf-input--placeholder-text;
     font-weight: $cf-font-weight--medium !important;
-    font-style: italic;
   }
   &::-moz-placeholder {
     color: $cf-input--placeholder-text;
     font-weight: $cf-font-weight--medium !important;
-    font-style: italic;
   }
   &:-ms-text-area-placeholder {
     color: $cf-input--placeholder-text;
     font-weight: $cf-font-weight--medium !important;
-    font-style: italic;
   }
   &:-moz-placeholder {
     color: $cf-input--placeholder-text;
     font-weight: $cf-font-weight--medium !important;
-    font-style: italic;
   }
 
   .cf-text-area__regular-font & {

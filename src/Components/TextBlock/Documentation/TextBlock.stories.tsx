@@ -23,7 +23,7 @@ import {ComponentSize} from '../../../Types'
 // Notes
 import TextBlockReadme from './TextBlock.md'
 
-const textBlockStories = storiesOf('Atomic|TextBlock', module).addDecorator(
+const textBlockStories = storiesOf('Components/TextBlock', module).addDecorator(
   withKnobs
 )
 

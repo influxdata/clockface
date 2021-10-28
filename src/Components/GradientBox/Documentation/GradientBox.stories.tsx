@@ -16,9 +16,10 @@ import {Gradients, InfluxColors} from '../../../Types'
 // Notes
 import GradientBoxReadme from './GradientBox.md'
 
-const gradientBoxStories = storiesOf('Atomic|GradientBox', module).addDecorator(
-  withKnobs
-)
+const gradientBoxStories = storiesOf(
+  'Components/GradientBox',
+  module
+).addDecorator(withKnobs)
 
 gradientBoxStories.add(
   'GradientBox',

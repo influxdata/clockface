@@ -1,5 +1,5 @@
 // Libraries
-import React, {forwardRef, MouseEvent, useState, useEffect} from 'react'
+import React, {forwardRef, MouseEvent, useState, useEffect, useRef} from 'react'
 import classnames from 'classnames'
 import _ from 'lodash'
 
@@ -27,6 +27,8 @@ export interface DropdownProps extends StandardFunctionProps {
   menu: (onCollapse?: () => void) => JSX.Element
   /** Renders the menu element above the button instead of below */
   dropUp?: boolean
+  /** Disable Drodpwon's out of the box focus behavior if you have a custom behavior */
+  disableAutoFocus?: boolean
   /** Optional method that is triggered when the user clicks outside of/away from the dropdown */
   onClickAway?: () => void
   /**
@@ -58,10 +60,14 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
       className,
       onClickAway,
       menuOpen,
+      disableAutoFocus = false,
     },
     ref
   ) => {
     const [expanded, setExpandedState] = useState(false)
+    const didMountRef = useRef(false)
+    const defaultRef = useRef<DropdownRef>(null)
+    const internalRef = ref || defaultRef
 
     const handleToggleMenu = (e: MouseEvent<HTMLElement>): void => {
       e.preventDefault()
@@ -84,6 +90,55 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
       }
     }, [menuOpen])
 
+    const handleEscapeKey = (e: KeyboardEvent): void => {
+      if (e.key === 'Escape') {
+        setExpandedState(false)
+      }
+    }
+
+    useEffect(() => {
+      if (!disableAutoFocus) {
+        if (expanded) {
+          /**
+           * Find the first focusable element from within the dropdown,
+           * starting with the first focusable, active item
+           */
+          const selector = 'button.cf-dropdown-item'
+          const activeEl = document.querySelector(`${selector}.active`)
+          const firstEl = document.querySelector(selector)
+          const element = (activeEl || firstEl) as HTMLButtonElement
+
+          if (element) {
+            element.focus()
+          }
+
+          window.addEventListener('keydown', handleEscapeKey)
+        } else {
+          window.removeEventListener('keydown', handleEscapeKey)
+
+          /**
+           * When the popover is closed, restore focus to the trigger element
+           */
+          if (typeof internalRef !== 'function' && internalRef.current) {
+            const triggerEl = internalRef.current.querySelector(
+              'button[tabindex]'
+            ) as HTMLButtonElement
+
+            if (didMountRef.current && triggerEl) {
+              triggerEl.focus()
+            }
+          }
+        }
+
+        didMountRef.current = true
+
+        return () => {
+          window.removeEventListener('keydown', handleEscapeKey)
+        }
+      }
+      return
+    }, [expanded])
+
     const dropdownClass = classnames('cf-dropdown', {
       [`${className}`]: className,
       'cf-dropdown__up': dropUp,
@@ -95,7 +150,7 @@ export const DropdownRoot = forwardRef<DropdownRef, DropdownProps>(
         <div
           style={style}
           id={id}
-          ref={ref}
+          ref={internalRef}
           className={dropdownClass}
           data-testid={testID}
         >

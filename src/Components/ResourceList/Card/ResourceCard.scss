@@ -1,4 +1,4 @@
-@import "../../../Styles/variables";
+@import '../../../Styles/variables';
 
 /*
   Resource Card
@@ -6,29 +6,25 @@
 */
 
 .cf-resource-card {
-  display: flex;
+  display: grid;
   width: 100%;
   position: relative;
   color: $cf-card-text--default;
   background-color: $cf-card-background--default;
   border-radius: $cf-radius;
-  padding: $cf-marg-c;
+  padding: $cf-space-m;
   @extend %panel-shadow;
-}
-
-.cf-resource-card__highlight {
-  transition: background-color 0.25s ease, color 0.25s ease;
-
-  &:hover {
-    color: $cf-card-text--hover;
-    background-color: $cf-card-background--hover;
-  }
 }
 
 .cf-resource-card--context-menu {
   position: absolute;
-  top: $cf-marg-b;
-  right: $cf-marg-b;
+  top: $cf-space-m;
+  right: $cf-space-m;
+  transition: opacity $cf-transition-default;
+}
+
+.cf-resource-card__context-hover:not(:hover) .cf-resource-card--context-menu {
+  opacity: 0;
 }
 
 /*
@@ -36,27 +32,13 @@
   ------------------------------------------------------------------------------
 */
 
-.cf-resource-card.cf-resource-card__disabled,
-.cf-resource-card.cf-resource-card__disabled:hover,
-.cf-resource-card.cf-resource-card__disabled.cf-resource-card__highlight,
-.cf-resource-card.cf-resource-card__disabled.cf-resource-card__highlight:hover {
-  background-color: $cf-card-background--disabled;
-  color: $cf-card-text--disabled;
-  font-style: italic;
+.cf-resource-card.cf-resource-card__disabled {
+  opacity: $cf-disabled-opacity;
 }
 
-/*
-  Context Menu Interactions
-  ------------------------------------------------------------------------------
-*/
-
-.cf-resource-card__context-hover {
-  .cf-resource-card--context-menu {
-    opacity: 0;
-    transition: opacity 0.25s ease;
-  }
-
-  &:hover .cf-resource-card--context-menu {
-    opacity: 1;
+.cf-resource-card.cf-resource-card__disabled {
+  .cf-slide-toggle,
+  .cf-slide-toggle ~ .cf-input-label {
+    cursor: pointer;
   }
 }

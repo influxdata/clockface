@@ -22,7 +22,7 @@ import {
 import FlexBoxReadme from './FlexBox.md'
 import FlexBoxChildReadme from './FlexBoxChild.md'
 
-const componentSpacerStories = storiesOf('Layout|FlexBox', module).addDecorator(
+const componentSpacerStories = storiesOf('Layout/FlexBox', module).addDecorator(
   withKnobs
 )
 

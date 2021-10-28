@@ -75,7 +75,9 @@ export const TreeNavRoot = forwardRef<TreeNavRef, TreeNavProps>(
     }
 
     if (onToggleClick) {
-      const toggleIcon = expanded ? IconFont.Minimize : IconFont.Maximize
+      const toggleIcon = expanded
+        ? IconFont.SidebarClose_New
+        : IconFont.SidebarOpen_New
       toggleElement = (
         <div
           className="cf-tree-nav--toggle"
@@ -109,19 +111,21 @@ export const TreeNavRoot = forwardRef<TreeNavRef, TreeNavProps>(
           <DapperScrollbars
             className="cf-tree-nav--scroll-area"
             noScrollX={true}
+            autoHide={true}
           >
             {children}
             {banner}
           </DapperScrollbars>
         </div>
         {toggleElement}
-        <div
+        <button
+          type="button"
           className="cf-tree-nav--mobile-toggle"
           data-testid={`${testID}-mobile-toggle`}
           onClick={handleMobileToggleClick}
         >
           <div className="cf-tree-nav--hamburger" />
-        </div>
+        </button>
       </nav>
     )
   }

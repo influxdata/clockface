@@ -14,12 +14,24 @@ import {
   StandardFunctionProps,
 } from '../../Types'
 
-export interface OverlayFooterProps extends StandardFunctionProps {}
+export interface OverlayFooterProps extends StandardFunctionProps {
+  justifyContent?: JustifyContent
+}
 
 export type OverlayFooterRef = HTMLDivElement
 
 export const OverlayFooter = forwardRef<OverlayFooterRef, OverlayFooterProps>(
-  ({id, style, testID = 'overlay--footer', children, className}, ref) => {
+  (
+    {
+      id,
+      style,
+      testID = 'overlay--footer',
+      children,
+      className,
+      justifyContent = JustifyContent.FlexEnd,
+    },
+    ref
+  ) => {
     const overlayFooterClass = classnames('cf-overlay--footer', {
       [`${className}`]: className,
     })
@@ -35,7 +47,7 @@ export const OverlayFooter = forwardRef<OverlayFooterRef, OverlayFooterProps>(
         <FlexBox
           margin={ComponentSize.Small}
           direction={FlexDirection.Row}
-          justifyContent={JustifyContent.Center}
+          justifyContent={justifyContent}
           alignItems={AlignItems.Center}
           stretchToFitWidth={true}
         >

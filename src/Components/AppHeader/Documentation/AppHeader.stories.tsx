@@ -26,12 +26,12 @@ import {Button} from '../../Button/Composed/Button'
 import {FlexBox} from '../../FlexBox'
 
 const appHeaderFamilyStories = storiesOf(
-  'Layout|AppHeader/Family',
+  'Layout/AppHeader/Family',
   module
 ).addDecorator(withKnobs)
 
 const appHeaderExampleStories = storiesOf(
-  'Layout|AppHeader/Example',
+  'Layout/AppHeader/Example',
   module
 ).addDecorator(withKnobs)
 

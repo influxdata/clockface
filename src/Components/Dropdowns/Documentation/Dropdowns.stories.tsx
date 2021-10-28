@@ -53,14 +53,20 @@ import DropdownLinkItemReadme from './DropdownLinkItem.md'
 import DropdownMenuReadme from './DropdownMenu.md'
 import SelectDropdownReadme from './SelectDropdown.md'
 import MultiSelectDropdownReadme from './MultiSelectDropdown.md'
+import {useState} from '@storybook/addons'
 
 const dropdownFamilyStories = storiesOf(
-  'Components|Dropdowns/Family',
+  'Components/Dropdowns/Family',
   module
 ).addDecorator(withKnobs)
 
 const dropdownComposedStories = storiesOf(
-  'Components|Dropdowns/Composed',
+  'Components/Dropdowns/Composed',
+  module
+).addDecorator(withKnobs)
+
+const dropdownExampleStories = storiesOf(
+  'Components/Dropdowns/Examples',
   module
 ).addDecorator(withKnobs)
 
@@ -488,9 +494,8 @@ dropdownComposedStories.add(
       'Strawberry',
     ]
 
-    const selectDropdownSelectedOption = 'Celery'
-
     const selectDropdownRef: RefObject<SelectDropdownRef> = createRef()
+    const [selected, changeSelected] = useState('Celery')
 
     const logRef = (): void => {
       /* eslint-disable */
@@ -505,14 +510,17 @@ dropdownComposedStories.add(
           style={object('style', defaultDropdownStyle)}
           menuMaxHeight={number('menuMaxHeight', 250)}
           dropUp={boolean('dropUp', false)}
+          indicator={
+            DropdownItemType[
+              select('indicator', mapEnumKeys(DropdownItemType), 'Dot')
+            ]
+          }
           menuTheme={
             DropdownMenuTheme[
               select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Onyx')
             ]
           }
-          onSelect={option => {
-            alert(option)
-          }}
+          onSelect={changeSelected}
           buttonStatus={
             ComponentStatus[
               select('buttonStatus', mapEnumKeys(ComponentStatus), 'Default')
@@ -537,7 +545,7 @@ dropdownComposedStories.add(
               )
             ]
           }
-          selectedOption={text('selectedOption', selectDropdownSelectedOption)}
+          selectedOption={selected}
           options={array('options', selectDropdownOptions)}
         />
         <div className="story--test-buttons">
@@ -565,7 +573,7 @@ dropdownComposedStories.add(
       'Tomato',
       'Spinach',
     ]
-    const defaultMultiSelectSelectedOptions = ['Celery', 'Onion']
+    const [selectedOptions, setSelectedOptions] = useState(['Celery', 'Onion'])
 
     const multiSelectDropdownRef: RefObject<MultiSelectDropdownRef> = createRef()
 
@@ -582,13 +590,22 @@ dropdownComposedStories.add(
           style={object('style', defaultDropdownStyle)}
           menuMaxHeight={number('menuMaxHeight', 250)}
           dropUp={boolean('dropUp', false)}
+          indicator={
+            DropdownItemType[
+              select('indicator', mapEnumKeys(DropdownItemType), 'Checkbox')
+            ]
+          }
           menuTheme={
             DropdownMenuTheme[
               select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Onyx')
             ]
           }
           onSelect={option => {
-            alert(option)
+            if (selectedOptions.includes(option)) {
+              setSelectedOptions(selectedOptions.filter(x => x !== option))
+            } else {
+              setSelectedOptions([...selectedOptions, option])
+            }
           }}
           buttonStatus={
             ComponentStatus[
@@ -615,10 +632,7 @@ dropdownComposedStories.add(
             ]
           }
           emptyText={text('emptyText', 'None selected')}
-          selectedOptions={array(
-            'selectedOptions',
-            defaultMultiSelectSelectedOptions
-          )}
+          selectedOptions={selectedOptions}
           options={array('options', defaultMultiSelectOptions)}
         />
         <div className="story--test-buttons">
@@ -630,6 +644,161 @@ dropdownComposedStories.add(
   {
     readme: {
       content: marked(MultiSelectDropdownReadme),
+    },
+  }
+)
+
+dropdownExampleStories.add(
+  'Collage',
+  () => {
+    const selectDropdownOptions = [
+      '---Vegetables',
+      'Celery',
+      'Carrot',
+      'Potato',
+      'Corn',
+      'Bok Choy',
+    ]
+
+    const selectDropdownSelectedOption = 'Celery'
+
+    return (
+      <div className="story--example">
+        <div>
+          <table className="two-axis-table two-axis-table--spaced">
+            <tbody>
+              <tr>
+                <td>
+                  <code>Size</code>
+                </td>
+                {[
+                  {size: ComponentSize.ExtraSmall, children: 'ExtraSmall'},
+                  {size: ComponentSize.Small, children: 'Small'},
+                  {size: ComponentSize.Medium, children: 'Medium'},
+                  {size: ComponentSize.Large, children: 'Large'},
+                ].map((props, i) => (
+                  <td key={i}>
+                    <Dropdown.Dropdown
+                      button={(active, onClick) => (
+                        <Dropdown.Button
+                          active={active}
+                          onClick={onClick}
+                          {...props}
+                        />
+                      )}
+                      menu={onCollapse => (
+                        <Dropdown.Menu onCollapse={onCollapse}>
+                          <div className="mockComponent dropdownContents">
+                            <span>Menu Contents</span>
+                          </div>
+                        </Dropdown.Menu>
+                      )}
+                    />
+                  </td>
+                ))}
+              </tr>
+              <tr>
+                <td>
+                  <code>Color</code>
+                </td>
+                {[
+                  {color: ComponentColor.Default},
+                  {color: ComponentColor.Primary},
+                  {color: ComponentColor.Tertiary},
+                  {color: ComponentColor.Danger},
+                ].map((props, i) => (
+                  <td key={i} style={{width: '200px'}}>
+                    <Dropdown.Dropdown
+                      button={(active, onClick) => (
+                        <Dropdown.Button
+                          active={active}
+                          onClick={onClick}
+                          {...props}
+                        >
+                          {props.color.toString()}
+                        </Dropdown.Button>
+                      )}
+                      menu={onCollapse => (
+                        <Dropdown.Menu onCollapse={onCollapse}>
+                          <div className="mockComponent dropdownContents">
+                            <span>Menu Contents</span>
+                          </div>
+                        </Dropdown.Menu>
+                      )}
+                      {...props}
+                    />
+                  </td>
+                ))}
+              </tr>
+              <tr>
+                <td>
+                  <code>Status</code>
+                </td>
+                {[
+                  {status: ComponentStatus.Default},
+                  {status: ComponentStatus.Disabled},
+                  {status: ComponentStatus.Loading},
+                  {status: ComponentStatus.Error},
+                  {status: ComponentStatus.Valid},
+                ].map((props, i) => (
+                  <td key={i} style={{width: '200px'}}>
+                    <Dropdown.Dropdown
+                      button={(active, onClick) => (
+                        <Dropdown.Button
+                          active={active}
+                          onClick={onClick}
+                          {...props}
+                        >
+                          {props.status.toString()}
+                        </Dropdown.Button>
+                      )}
+                      menu={onCollapse => (
+                        <Dropdown.Menu onCollapse={onCollapse}>
+                          <div className="mockComponent dropdownContents">
+                            <span>Menu Contents</span>
+                          </div>
+                        </Dropdown.Menu>
+                      )}
+                      {...props}
+                    />
+                  </td>
+                ))}
+              </tr>
+
+              <tr>
+                <td>
+                  <code>Select theme</code>
+                </td>
+                {[
+                  {menuTheme: DropdownMenuTheme.Onyx},
+                  {menuTheme: DropdownMenuTheme.Amethyst},
+                  {menuTheme: DropdownMenuTheme.Malachite},
+                  {menuTheme: DropdownMenuTheme.Sapphire},
+                ].map((props, i) => (
+                  <td key={i}>
+                    <SelectDropdown
+                      menuTheme={props.menuTheme}
+                      onSelect={option => {
+                        alert(option)
+                      }}
+                      buttonColor={ComponentColor.Primary}
+                      buttonSize={ComponentSize.Small}
+                      buttonIcon={IconFont.BarChart_New}
+                      selectedOption={selectDropdownSelectedOption}
+                      options={array('options', selectDropdownOptions)}
+                    />
+                  </td>
+                ))}
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(DropdownReadme),
     },
   }
 )

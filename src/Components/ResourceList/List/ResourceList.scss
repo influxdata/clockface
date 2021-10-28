@@ -1,4 +1,4 @@
-@import "../../../Styles/variables";
+@import '../../../Styles/variables';
 
 /*
   Resource List
@@ -45,7 +45,7 @@
   font-weight: $cf-font-weight--medium;
   text-transform: uppercase;
   color: $g11-sidewalk;
-  transition: color 0.25s ease;
+  transition: color $cf-transition-default;
   margin-left: $cf-marg-c;
   display: flex;
   align-items: center;
@@ -71,7 +71,7 @@
   height: $cf-marg-c;
   position: relative;
   margin-left: $cf-marg-a;
-  transition: opacity 0.25s ease;
+  transition: opacity $cf-transition-default;
   opacity: 0;
 
   .cf-resource-list--sort-descending &,
@@ -84,7 +84,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    transition: transform 0.25s ease;
+    transition: transform $cf-transition-default;
   }
 
   .cf-resource-list--sort-descending & > span.cf-icon {

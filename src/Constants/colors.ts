@@ -453,7 +453,7 @@ export const influxGradients = {
   },
   Success: {
     start: InfluxColors.Rainforest,
-    stop: InfluxColors.Honeydew,
+    stop: InfluxColors.Pool,
   },
   SuccessLight: {
     start: InfluxColors.Honeydew,
@@ -476,12 +476,16 @@ export const influxGradients = {
     stop: InfluxColors.Fire,
   },
   Danger: {
-    start: InfluxColors.Curacao,
-    stop: InfluxColors.Dreamsicle,
+    start: InfluxColors.Ruby,
+    stop: InfluxColors.Topaz,
   },
   DangerLight: {
     start: InfluxColors.Dreamsicle,
     stop: InfluxColors.Tungsten,
+  },
+  Info: {
+    start: InfluxColors.Pool,
+    stop: InfluxColors.Pulsar,
   },
 }
 

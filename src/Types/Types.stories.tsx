@@ -10,6 +10,7 @@ import {storiesOf} from '@storybook/react'
 import {Button} from '../Components/Button/Composed/Button'
 import {Input} from '../Components/Inputs/Input'
 import {Icon} from '../Components/Icon/Base/Icon'
+import {Panel} from '../Components/Panel'
 
 // Types
 import {
@@ -26,10 +27,12 @@ import {getColorsFromGradient} from '../Utils/colors'
 
 // Notes
 import TypesReadme from './Types.md'
+import TypographyReadme from './Typography.md'
 import ColorsGradientsReadme from './ColorsGradients.md'
 import IconFontReadme from './IconFont.md'
+import SpaceReadme from './Space.md'
 
-const dataTypeStories = storiesOf('Data Types|Shared', module)
+const dataTypeStories = storiesOf('Foundations/Shared', module)
 
 dataTypeStories.add(
   'Overview',
@@ -47,34 +50,21 @@ dataTypeStories.add(
           <tr>
             <td />
             <td>
-              <code>Default</code>
-            </td>
-            <td>
               <code>Primary</code>
             </td>
             <td>
               <code>Secondary</code>
             </td>
             <td>
-              <code>Success</code>
-            </td>
-            <td>
-              <code>Warning</code>
-            </td>
-            <td>
               <code>Danger</code>
+            </td>
+            <td>
+              <code>Tertiary</code>
             </td>
           </tr>
           <tr>
             <td>
               <code>ExtraSmall</code>
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.ExtraSmall}
-                color={ComponentColor.Default}
-                text="Button"
-              />
             </td>
             <td>
               <Button
@@ -93,14 +83,7 @@ dataTypeStories.add(
             <td>
               <Button
                 size={ComponentSize.ExtraSmall}
-                color={ComponentColor.Success}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.ExtraSmall}
-                color={ComponentColor.Warning}
+                color={ComponentColor.Tertiary}
                 text="Button"
               />
             </td>
@@ -119,13 +102,6 @@ dataTypeStories.add(
             <td>
               <Button
                 size={ComponentSize.Small}
-                color={ComponentColor.Default}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.Small}
                 color={ComponentColor.Primary}
                 text="Button"
               />
@@ -140,14 +116,7 @@ dataTypeStories.add(
             <td>
               <Button
                 size={ComponentSize.Small}
-                color={ComponentColor.Success}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.Small}
-                color={ComponentColor.Warning}
+                color={ComponentColor.Tertiary}
                 text="Button"
               />
             </td>
@@ -166,13 +135,6 @@ dataTypeStories.add(
             <td>
               <Button
                 size={ComponentSize.Medium}
-                color={ComponentColor.Default}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.Medium}
                 color={ComponentColor.Primary}
                 text="Button"
               />
@@ -187,14 +149,7 @@ dataTypeStories.add(
             <td>
               <Button
                 size={ComponentSize.Medium}
-                color={ComponentColor.Success}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.Medium}
-                color={ComponentColor.Warning}
+                color={ComponentColor.Tertiary}
                 text="Button"
               />
             </td>
@@ -213,13 +168,6 @@ dataTypeStories.add(
             <td>
               <Button
                 size={ComponentSize.Large}
-                color={ComponentColor.Default}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.Large}
                 color={ComponentColor.Primary}
                 text="Button"
               />
@@ -234,14 +182,7 @@ dataTypeStories.add(
             <td>
               <Button
                 size={ComponentSize.Large}
-                color={ComponentColor.Success}
-                text="Button"
-              />
-            </td>
-            <td>
-              <Button
-                size={ComponentSize.Large}
-                color={ComponentColor.Warning}
+                color={ComponentColor.Tertiary}
                 text="Button"
               />
             </td>
@@ -360,13 +301,13 @@ dataTypeStories.add(
     const colorsArray = convertEnumToObjArray(InfluxColors)
     const gradientsArray = Object.keys(Gradients)
 
-    const nuetrals = colorsArray.slice(0, 21)
-    const blues = colorsArray.slice(21, 29)
-    const purples = colorsArray.slice(29, 37)
-    const greens = colorsArray.slice(37, 45)
-    const yellows = colorsArray.slice(45, 53)
-    const reds = colorsArray.slice(53, 61)
-    const brandColors = colorsArray.slice(61, 66)
+    const nuetrals = colorsArray.slice(0, 11)
+    const blues = colorsArray.slice(31, 39)
+    const purples = colorsArray.slice(39, 47)
+    const greens = colorsArray.slice(47, 55)
+    const yellows = colorsArray.slice(55, 63)
+    const reds = colorsArray.slice(63, 71)
+    const brandColors = colorsArray.slice(71, 76)
 
     const clockfaceGradients = gradientsArray.slice(0, 40)
     const brandGradients = gradientsArray.slice(40, 50)
@@ -374,7 +315,6 @@ dataTypeStories.add(
     const primaryGradients = gradientsArray.slice(53, 56)
     const secondaryGradients = gradientsArray.slice(56, 59)
     const successGradients = gradientsArray.slice(59, 62)
-    const warningGradients = gradientsArray.slice(62, 65)
     const dangerGradients = gradientsArray.slice(65, 68)
 
     const colorCardClassName = (hexcode: string): string => {
@@ -405,6 +345,36 @@ dataTypeStories.add(
       }
     }
 
+    const deprecatingAccentColors = (color: any) => {
+      const nonDeprecatingColors = [
+        InfluxColors.Pool,
+        InfluxColors.Rainforest,
+        InfluxColors.Fire,
+        InfluxColors.Pineapple,
+        InfluxColors.Amethyst,
+      ]
+
+      if (!nonDeprecatingColors.includes(color)) {
+        return {backgroundColor: color, opacity: '.2'}
+      } else {
+        return {backgroundColor: color}
+      }
+    }
+
+    const deprecatingGradientColors = (color: any) => {
+      const nonDeprecatingGradients = [
+        Gradients.Info,
+        Gradients.Success,
+        Gradients.Danger,
+      ]
+
+      if (!nonDeprecatingGradients.includes(color)) {
+        const gradientStyle = generateGradientStyle(color)
+        return {...gradientStyle, opacity: '0.2'}
+      } else {
+        return generateGradientStyle(color)
+      }
+    }
     return (
       <div className="markdown-body">
         <h3>Clockface Colors</h3>
@@ -415,13 +385,13 @@ dataTypeStories.add(
         </pre>
         <h5>Nuetrals</h5>
         <div className="colors-grid">
-          {nuetrals.map((color, i) => (
+          {nuetrals.map(color => (
             <div
               className={colorCardClassName(color.value)}
               key={color.key}
               style={{backgroundColor: color.value}}
             >
-              <p>{`G${i} ${color.key}`}</p>
+              <p>{`${color.key}`}</p>
               <p className="colors-grid--hex">{color.value}</p>
             </div>
           ))}
@@ -432,7 +402,7 @@ dataTypeStories.add(
             <div
               className={colorCardClassName(color.value)}
               key={color.key}
-              style={{backgroundColor: color.value}}
+              style={deprecatingAccentColors(color.value)}
             >
               <p>{color.key}</p>
               <p className="colors-grid--hex">{color.value}</p>
@@ -445,7 +415,7 @@ dataTypeStories.add(
             <div
               className={colorCardClassName(color.value)}
               key={color.key}
-              style={{backgroundColor: color.value}}
+              style={deprecatingAccentColors(color.value)}
             >
               <p>{color.key}</p>
               <p className="colors-grid--hex">{color.value}</p>
@@ -458,7 +428,7 @@ dataTypeStories.add(
             <div
               className={colorCardClassName(color.value)}
               key={color.key}
-              style={{backgroundColor: color.value}}
+              style={deprecatingAccentColors(color.value)}
             >
               <p>{color.key}</p>
               <p className="colors-grid--hex">{color.value}</p>
@@ -471,7 +441,7 @@ dataTypeStories.add(
             <div
               className={colorCardClassName(color.value)}
               key={color.key}
-              style={{backgroundColor: color.value}}
+              style={deprecatingAccentColors(color.value)}
             >
               <p>{color.key}</p>
               <p className="colors-grid--hex">{color.value}</p>
@@ -484,7 +454,7 @@ dataTypeStories.add(
             <div
               className={colorCardClassName(color.value)}
               key={color.key}
-              style={{backgroundColor: color.value}}
+              style={deprecatingAccentColors(color.value)}
             >
               <p>{color.key}</p>
               <p className="colors-grid--hex">{color.value}</p>
@@ -497,7 +467,7 @@ dataTypeStories.add(
             <div
               className={colorCardClassName(color.value)}
               key={color.key}
-              style={{backgroundColor: color.value}}
+              style={deprecatingAccentColors(color.value)}
             >
               <p>{color.key}</p>
               <p className="colors-grid--hex">{color.value}</p>
@@ -509,38 +479,14 @@ dataTypeStories.add(
         <pre className="language-js">
           <code>import &#123;Gradients&#125; from '@influxdata/clockface'</code>
         </pre>
-        <h5>Multi-Hue Gradients</h5>
-        <div className="gradients-grid">
-          {clockfaceGradients.map(g => (
-            <div
-              className={gradientCardClassName(g)}
-              key={g}
-              style={generateGradientStyle(g)}
-            >
-              <p>{g}</p>
-            </div>
-          ))}
-        </div>
-        <h5>InfluxData Brand Gradients</h5>
-        <div className="gradients-grid">
-          {brandGradients.map(g => (
-            <div
-              className={gradientCardClassName(g)}
-              key={g}
-              style={generateGradientStyle(g)}
-            >
-              <p>{g}</p>
-            </div>
-          ))}
-        </div>
-        <h5>Single Hue Gradients</h5>
+        <h5>System Gradients</h5>
         <p>Default (Grey)</p>
         <div className="gradients-grid">
           {defaultGradients.map(g => (
             <div
               className={gradientCardClassName(g)}
               key={g}
-              style={generateGradientStyle(g)}
+              style={deprecatingGradientColors(g)}
             >
               <p>{g}</p>
             </div>
@@ -552,7 +498,7 @@ dataTypeStories.add(
             <div
               className={gradientCardClassName(g)}
               key={g}
-              style={generateGradientStyle(g)}
+              style={deprecatingGradientColors(g)}
             >
               <p>{g}</p>
             </div>
@@ -564,7 +510,7 @@ dataTypeStories.add(
             <div
               className={gradientCardClassName(g)}
               key={g}
-              style={generateGradientStyle(g)}
+              style={deprecatingGradientColors(g)}
             >
               <p>{g}</p>
             </div>
@@ -576,19 +522,7 @@ dataTypeStories.add(
             <div
               className={gradientCardClassName(g)}
               key={g}
-              style={generateGradientStyle(g)}
-            >
-              <p>{g}</p>
-            </div>
-          ))}
-        </div>
-        <p>Warning (Yellow)</p>
-        <div className="gradients-grid">
-          {warningGradients.map(g => (
-            <div
-              className={gradientCardClassName(g)}
-              key={g}
-              style={generateGradientStyle(g)}
+              style={deprecatingGradientColors(g)}
             >
               <p>{g}</p>
             </div>
@@ -600,7 +534,31 @@ dataTypeStories.add(
             <div
               className={gradientCardClassName(g)}
               key={g}
-              style={generateGradientStyle(g)}
+              style={deprecatingGradientColors(g)}
+            >
+              <p>{g}</p>
+            </div>
+          ))}
+        </div>
+        <h5>Multi-Hue Gradients</h5>
+        <div className="gradients-grid">
+          {clockfaceGradients.map(g => (
+            <div
+              className={gradientCardClassName(g)}
+              key={g}
+              style={deprecatingGradientColors(g)}
+            >
+              <p>{g}</p>
+            </div>
+          ))}
+        </div>
+        <h5>InfluxData Brand Gradients</h5>
+        <div className="gradients-grid">
+          {brandGradients.map(g => (
+            <div
+              className={gradientCardClassName(g)}
+              key={g}
+              style={deprecatingGradientColors(g)}
             >
               <p>{g}</p>
             </div>
@@ -637,6 +595,98 @@ dataTypeStories.add(
   {
     readme: {
       content: marked(IconFontReadme),
+    },
+  }
+)
+
+dataTypeStories.add(
+  'Typographic scales',
+  () => {
+    return (
+      <div className="markdown-body">
+        <table>
+          <tbody>
+            {[-1, 0, 1, 2, 3, 4, 5, 6].map(step => {
+              return (
+                <tr key={step}>
+                  <td>
+                    <code>$cf-text-base-{step}</code>
+                  </td>
+                  <td>
+                    <div className={`type-step-${step}`}>Step {step}</div>
+                  </td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: TypographyReadme,
+    },
+  }
+)
+
+dataTypeStories.add(
+  'Space scales',
+  () => {
+    return (
+      <div className="markdown-body">
+        <table>
+          <thead>
+            <tr>
+              <th>Step</th>
+              <th>Example</th>
+              <th>Size</th>
+              <th>SCSS</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              {step: '3xs', size: 4},
+              {step: '2xs', size: 8},
+              {step: 'xs', size: 12},
+              {step: 's', size: 16},
+              {step: 'm', size: 24},
+              {step: 'l', size: 32},
+              {step: 'xl', size: 48},
+              {step: '2xl', size: 64},
+              {step: '3xl', size: 128},
+            ].map(({step, size}) => {
+              return (
+                <tr key={step}>
+                  <td>
+                    <code>{step}</code>
+                  </td>
+                  <td>
+                    <Panel
+                      gradient={Gradients.NineteenEightyFour}
+                      style={{
+                        width: `var(--space-${step})`,
+                        height: `var(--space-${step})`,
+                      }}
+                    />
+                  </td>
+                  <td>
+                    <strong>{size}px</strong>
+                  </td>
+                  <td>
+                    <code>$cf-space-{step}</code>
+                  </td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: SpaceReadme,
     },
   }
 )

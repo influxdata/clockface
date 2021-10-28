@@ -7,11 +7,11 @@
 
 .cf-input-label {
   white-space: nowrap;
-  font-weight: $cf-font-weight--medium;
+  font-weight: $cf-font-weight--regular;
   @include no-user-select();
   color: $cf-label--default;
-  transition: color 0.25s ease;
-  
+  transition: color $cf-transition-default;
+
   &.cf-input-label__active {
     color: $cf-label--active;
   }
@@ -20,19 +20,19 @@
     white-space: normal;
   }
   &.cf-input-label__clickable:hover {
-    cursor: pointer;;
+    cursor: pointer;
   }
 }
 
 .cf-input-label__xs {
-  font-size: $cf-form-xs-font;
+  font-size: $cf-text-base--1;
 }
 .cf-input-label__sm {
-  font-size: $cf-form-sm-font;
+  font-size: $cf-text-base-0;
 }
 .cf-input-label__md {
-  font-size: $cf-form-md-font;
+  font-size: $cf-text-base-1;
 }
 .cf-input-label__lg {
-  font-size: $cf-form-lg-font;
+  font-size: $cf-text-base-2;
 }

@@ -1,26 +1,26 @@
-@import "../../Styles/variables.scss";
+@import '../../Styles/variables.scss';
+@import '../../Styles/typography.scss';
 
 /*
   SelectGroup Component
   ------------------------------------------------------------------------------
 */
 
-$select-group--padding: $cf-marg-a;
+$select-group--padding: $cf-space-2xs;
 
 .cf-select-group {
   display: inline-flex;
   align-items: stretch;
-  padding: $select-group--padding;
+  padding: 0;
   border-radius: $cf-radius;
-  background-color: $g5-pepper;
 
   // Visually obscures underlying input
-  & > input[type="radio"],
-  & > input[type="checkbox"] {
+  & > input[type='radio'],
+  & > input[type='checkbox'] {
     position: fixed;
     top: 0px;
     left: 0px;
-    visibility: hidden;
+    opacity: 0;
   }
 }
 
@@ -29,49 +29,56 @@ $select-group--padding: $cf-marg-a;
   border: 0;
   font-family: $cf-text-font;
   font-weight: $cf-font-weight--medium;
-  background-color: transparent;
-  transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
-  color: $g11-sidewalk;
-  text-transform: capitalize;
-  border-radius: $cf-radius-sm;
+  background-color: $cf-button-default-bg;
+  transition: background-color $cf-transition-default,
+    color $cf-transition-default, box-shadow $cf-transition-default;
+  color: $cf-grey-65;
   outline: none;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-right: $cf-border;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @extend %type-uppercase;
+  position: relative;
 
-  &:last-child {
-    margin-right: 0;
+  &:first-of-type {
+    border-bottom-left-radius: $cf-radius;
+    border-top-left-radius: $cf-radius;
+  }
+
+  &:last-of-type {
+    border-bottom-right-radius: $cf-radius;
+    border-top-right-radius: $cf-radius;
+  }
+
+  &:after {
+    @include createOverlayBase();
   }
 
   &:hover,
-  &:focus {
-    background-color: $g6-smoke;
-    color: $g18-cloud;
+  :focus + & {
     cursor: pointer;
-  }
 
-  &:focus {
-    box-shadow: $cf-input--box-shadow;
-
-      &:active {
-      box-shadow: none;
+    &:after {
+      opacity: $cf-hover-active-opacity;
     }
   }
 
-  &.cf-select-group--option__active {
-    color: $g20-white;
+  :focus + &:not(.cf-select-group--option__disabled) {
+    @include focus-shadow();
   }
 
-  &.cf-select-group--option__disabled,
-  &.cf-select-group--option__disabled:hover,
-  &.cf-select-group--option__disabled:focus {
+  :checked:focus + &:not(.cf-select-group--option__disabled) {
+    @include focus-shadow($cf-white);
+  }
+
+  &.cf-select-group--option__disabled {
     box-shadow: none;
-    background-color: transparent;
-    font-style: italic;
-    color: $g7-graphite;
-    cursor: default;
+    cursor: not-allowed;
+    opacity: $cf-disabled-opacity;
   }
 }
 
@@ -81,37 +88,53 @@ $select-group--padding: $cf-marg-a;
 */
 
 @mixin radioButtonSizeModifier($fontSize, $padding, $height) {
-  height: $height;
-
   .cf-select-group--option {
-    height: $height - ($select-group--padding * 2);
-    line-height: $height - ($select-group--padding * 2);
-    padding: 0 $padding;
+    padding: $padding;
     font-size: $fontSize;
+    height: $height;
   }
 
   // Square Buttons
   &.cf-select-group__square .cf-select-group--option {
-    padding: 0;
     flex-grow: 0;
     flex-shrink: 0;
-    width: $height - ($select-group--padding * 2);
+    width: calc(1em + #{($padding * 2)});
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: left;
+    display: block;
   }
 }
 
 .cf-select-group__xs {
-  @include radioButtonSizeModifier($cf-form-xs-font, $cf-form-xs-padding, $cf-form-xs-height);
+  @include radioButtonSizeModifier(
+    $cf-form-xs-font,
+    $cf-form-xs-padding,
+    $cf-form-xs-height
+  );
 }
 .cf-select-group__sm {
-  @include radioButtonSizeModifier($cf-form-sm-font, $cf-form-sm-padding, $cf-form-sm-height);
+  @include radioButtonSizeModifier(
+    $cf-form-sm-font,
+    $cf-form-sm-padding,
+    $cf-form-sm-height
+  );
 }
 .cf-select-group__md {
-  @include radioButtonSizeModifier($cf-form-md-font, $cf-form-md-padding, $cf-form-md-height);
+  @include radioButtonSizeModifier(
+    $cf-form-md-font,
+    $cf-form-md-padding,
+    $cf-form-md-height
+  );
 }
 .cf-select-group__lg {
-  @include radioButtonSizeModifier($cf-form-lg-font, $cf-form-lg-padding, $cf-form-lg-height);
+  @include radioButtonSizeModifier(
+    $cf-form-lg-font,
+    $cf-form-lg-padding,
+    $cf-form-lg-height
+  );
 }
-
 
 /*
   Color Modifiers
@@ -130,23 +153,16 @@ $select-group--padding: $cf-marg-a;
   }
 }
 
-.cf-select-group__default {
-  @include radioButtonColorModifier($g7-graphite, $g20-white);
-}
-.cf-select-group__primary {
+.cf-select-group__default,
+.cf-select-group__primary,
+.cf-select-group__success,
+.cf-select-group__secondary {
   @include radioButtonColorModifier($c-pool, $g20-white);
 }
-.cf-select-group__secondary {
-  @include radioButtonColorModifier($c-star, $g20-white);
-}
-.cf-select-group__success {
-  @include radioButtonColorModifier($c-rainforest, $g20-white);
-}
-.cf-select-group__danger {
-  @include radioButtonColorModifier($c-curacao, $g20-white);
-}
+
+.cf-select-group__danger,
 .cf-select-group__warning {
-  @include radioButtonColorModifier($c-pineapple, $g2-kevlar);
+  @include radioButtonColorModifier($c-fire, $g20-white);
 }
 
 /*

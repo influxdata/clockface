@@ -14,7 +14,7 @@ import {
   number,
   object,
 } from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../../Utils/storybook'
+import {mapEnumKeys, removeUnusedEnumKeyValue} from '../../../Utils/storybook'
 import {useState} from '@storybook/addons'
 
 // Utils
@@ -35,6 +35,7 @@ import {
   Alignment,
   VerticalAlignment,
   ComponentSize,
+  ComponentColor,
 } from '../../../Types'
 
 // Notes
@@ -42,7 +43,7 @@ import NotificationReadme from './Notification.md'
 import NotificationDialogReadme from './NotificationDialog.md'
 
 const notificationStories = storiesOf(
-  'Atomic|Notification',
+  'Components/Notification',
   module
 ).addDecorator(withKnobs)
 
@@ -55,6 +56,18 @@ interface TestNotification {
   horizontalAlign: Alignment
   verticalAlign: VerticalAlignment
 }
+
+const unusedNotificationEnum = [
+  'Colorless',
+  'Tertiary',
+  'Secondary',
+  'Default',
+  'Warning',
+]
+const reducedNotificationEnum = removeUnusedEnumKeyValue(
+  ComponentColor,
+  unusedNotificationEnum
+)
 
 notificationStories.add(
   'Notification',
@@ -268,7 +281,7 @@ notificationStories.add(
               select(
                 'icon',
                 {None: 'none', ...mapEnumKeys(IconFont)},
-                'Checkmark'
+                'Checkmark_New'
               )
             ]
           }
@@ -278,6 +291,15 @@ notificationStories.add(
                 'gradient',
                 {None: 'none', ...mapEnumKeys(Gradients)},
                 'GarageBand'
+              )
+            ]
+          }
+          color={
+            ComponentColor[
+              select(
+                'color',
+                {None: 'none', ...mapEnumKeys(reducedNotificationEnum)},
+                'Primary'
               )
             ]
           }

@@ -40,13 +40,14 @@ export const TreeNavSubItem: FunctionComponent<TreeNavSubItemProps> = ({
   }
 
   let labelElement = (
-    <div
+    <button
       className="cf-tree-nav--sub-item-label"
       onClick={handleClick}
       data-testid={testID}
+      type="button"
     >
       {label}
-    </div>
+    </button>
   )
 
   if (linkElement) {

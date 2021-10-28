@@ -10,8 +10,8 @@
   border-radius: $cf-radius;
   white-space: nowrap;
   user-select: none;
-  background-color: $g5-pepper;
-  color: $c-laser;
+  background-color: $cf-button-default-bg;
+  color: $c-pool;
   flex-basis: 0;
   flex-grow: 0;
 }
@@ -25,7 +25,7 @@
   ------------------------------------------------------------------------------
 */
 
-@mixin textBlockSizeModifier($fontSize, $height, $padding) {
+@mixin textBlockSizeModifier($fontSize, $padding, $height) {
   font-size: $fontSize;
   line-height: $height;
   padding: 0 $padding;
@@ -33,14 +33,30 @@
 }
 
 .cf-text-block__xs {
-  @include textBlockSizeModifier($cf-form-xs-font, $cf-form-xs-height, $cf-form-xs-padding);
+  @include textBlockSizeModifier(
+    $cf-form-xs-font,
+    $cf-form-xs-padding,
+    $cf-form-xs-height
+  );
 }
 .cf-text-block__sm {
-  @include textBlockSizeModifier($cf-form-sm-font, $cf-form-sm-height, $cf-form-sm-padding);
+  @include textBlockSizeModifier(
+    $cf-form-sm-font,
+    $cf-form-sm-padding,
+    $cf-form-sm-height
+  );
 }
 .cf-text-block__md {
-  @include textBlockSizeModifier($cf-form-md-font, $cf-form-md-height, $cf-form-md-padding);
+  @include textBlockSizeModifier(
+    $cf-form-md-font,
+    $cf-form-md-padding,
+    $cf-form-md-height
+  );
 }
 .cf-text-block__lg {
-  @include textBlockSizeModifier($cf-form-lg-font, $cf-form-lg-height, $cf-form-lg-padding);
+  @include textBlockSizeModifier(
+    $cf-form-lg-font,
+    $cf-form-lg-padding,
+    $cf-form-lg-height
+  );
 }

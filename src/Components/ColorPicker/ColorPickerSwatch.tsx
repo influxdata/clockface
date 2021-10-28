@@ -62,10 +62,12 @@ export const ColorPickerSwatch = forwardRef<
       onClick(hex)
     }
 
+    const title = name ? name : hex
+
     return (
       <div
         className={colorPickerSwatchClass}
-        title={name}
+        title={title}
         onClick={handleClick}
         data-testid={`${testID}--swatch`}
         style={colorPickerSwatchStyle}

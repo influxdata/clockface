@@ -5,7 +5,7 @@ import marked from 'marked'
 // Storybook
 import {storiesOf} from '@storybook/react'
 import {withKnobs, text, select} from '@storybook/addon-knobs'
-import {mapEnumKeys} from '../../../Utils/storybook'
+import {mapEnumKeys, removeUnusedEnumKeyValue} from '../../../Utils/storybook'
 
 // Components
 import {Alert, AlertRef} from '../Alert'
@@ -16,7 +16,15 @@ import {ComponentColor, IconFont} from '../../../Types'
 // Notes
 import AlertReadme from './Alert.md'
 
-const alertStories = storiesOf('Atomic|Alert', module).addDecorator(withKnobs)
+const alertStories = storiesOf('Components/Alert', module).addDecorator(
+  withKnobs
+)
+
+const unusedAlertColorEnium = ['Colorless', 'Tertiary', 'Secondary', 'Default']
+const reducedAlertColorEnum = removeUnusedEnumKeyValue(
+  ComponentColor,
+  unusedAlertColorEnium
+)
 
 alertStories.add(
   'Example',
@@ -35,7 +43,7 @@ alertStories.add(
           ref={alertRef}
           color={
             ComponentColor[
-              select('color', mapEnumKeys(ComponentColor), 'Primary')
+              select('color', mapEnumKeys(reducedAlertColorEnum), 'Primary')
             ]
           }
           icon={

@@ -28,18 +28,18 @@
   ------------------------------------------------------------------------------
 */
 @mixin squareGridSizeModifier($gutter) {
-   grid-gap: $gutter;
+  grid-gap: $gutter;
 }
 
 .cf-square-grid__gutter-xs {
   @include squareGridSizeModifier($cf-border);
 }
 .cf-square-grid__gutter-sm {
-  @include squareGridSizeModifier($cf-marg-a);
+  @include squareGridSizeModifier($cf-space-3xs);
 }
 .cf-square-grid__gutter-md {
-  @include squareGridSizeModifier($cf-marg-b);
+  @include squareGridSizeModifier($cf-space-2xs);
 }
 .cf-square-grid__gutter-lg {
-  @include squareGridSizeModifier($cf-marg-c);
+  @include squareGridSizeModifier($cf-space-s);
 }

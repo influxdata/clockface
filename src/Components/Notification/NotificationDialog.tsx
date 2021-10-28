@@ -12,6 +12,7 @@ import {
   InfluxColors,
   ComponentSize,
   StandardFunctionProps,
+  ComponentColor,
 } from '../../Types'
 
 // Utils
@@ -37,6 +38,8 @@ export interface NotificationDialogProps extends StandardFunctionProps {
   onDismiss?: (id?: string) => void
   /** Controls padding and font size of the notification */
   size: ComponentSize
+  /** Notification theme */
+  color?: ComponentColor
 }
 
 export type NotificationDialogRef = HTMLDivElement
@@ -51,6 +54,7 @@ export const NotificationDialog = forwardRef<
       size,
       icon,
       style,
+      color = '',
       testID = 'notification',
       children,
       gradient,
@@ -60,22 +64,36 @@ export const NotificationDialog = forwardRef<
     },
     ref
   ) => {
+    let internalGradient = gradient
+    if (color) {
+      const notificationThemes = {
+        [ComponentColor.Primary]: Gradients.Info,
+        [ComponentColor.Success]: Gradients.Success,
+        [ComponentColor.Danger]: Gradients.Danger,
+      }
+
+      internalGradient = notificationThemes[color] || Gradients.Info
+    }
+
     const textColor = calculateTextColorFromBackground(
       backgroundColor,
-      gradient
+      internalGradient
     )
 
-    const notificationDialogClassName = classnames('cf-notification', {
-      'cf-notification__has-icon': icon,
-      [`cf-notification__${size}`]: size,
-      [`cf-notification__${textColor}-text`]: textColor,
-      'cf-notification__dismissable': onDismiss,
-      [`${className}`]: className,
-    })
+    const notificationDialogClassName = classnames(
+      `cf-notification cf-notification__${color || 'default'}`,
+      {
+        'cf-notification__has-icon': icon,
+        [`cf-notification__${size}`]: size,
+        [`cf-notification__${textColor}-text`]: textColor,
+        'cf-notification__dismissable': onDismiss,
+        [`${className}`]: className,
+      }
+    )
 
     const notificationDialogStyle = generateBackgroundStyle(
       backgroundColor,
-      gradient,
+      internalGradient,
       false,
       style
     )
@@ -105,10 +123,11 @@ export const NotificationDialog = forwardRef<
         </div>
         {onDismiss && (
           <SquareButton
-            icon={IconFont.Remove}
+            icon={IconFont.Remove_New}
             onClick={handleDismiss}
             className="cf-notification--dismiss"
             testID={`${testID}--dismiss`}
+            size={ComponentSize.ExtraSmall}
           />
         )}
       </div>
