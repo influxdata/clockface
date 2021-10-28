@@ -1,5 +1,5 @@
 // Libraries
-import React, {ChangeEvent, FC, useRef, useState} from 'react'
+import React, {ChangeEvent, FC, useRef, useEffect,useState} from 'react'
 import classnames from 'classnames'
 import {Dropdown} from '../.'
 import {MenuStatus} from '../Dropdown'
@@ -95,6 +95,10 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     itemTestIdPrefix,
     'type-ahead-dropdown--item'
   )
+
+  useEffect(() => {
+    setShownValues(items)
+  }, [items])
 
   /**
    *  using a ref to hold an instance variable:  what was last typed,
