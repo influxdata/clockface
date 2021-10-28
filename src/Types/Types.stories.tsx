@@ -354,9 +354,9 @@ dataTypeStories.add(
         InfluxColors.Amethyst,
       ]
 
-      if (!nonDeprecatingColors.includes(color))
+      if (!nonDeprecatingColors.includes(color)) {
         return {backgroundColor: color, opacity: '.2'}
-      else {
+      } else {
         return {backgroundColor: color}
       }
     }
