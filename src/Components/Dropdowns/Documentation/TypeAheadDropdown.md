@@ -15,65 +15,72 @@ import {TypeAheadDropdown} from '@influxdata/clockface'
 ```
 
 ARGHH REWRITE
-This composed dropdown has two key props: `selectedOption` and `options`
-which deal with only strings for quicker and simpler usage. The component is relatively dumb in that it won't throw errors if the string passed into `selectedOption` isn't found in `options`, or if `options` contains duplicate items. This flexibility allows for a couple different UX approaches:
+This composed dropdown has two key props: `items` and `onSelect`
+All the 'items' to be selected must conform to the SelectableOption interface; it must have an id, and it should have a name
+for display
 
-- No option selected by default, dropdown shows suggestive text such as "Choose an Option"
-- A option is selected by default and the component always has a selected option
+if there is no name to display, then the optional `defaultNameText` shows instead. 
+If there is no value for `defaultNameText`,
+then the empty string is shown instead.
+
+`onSelect` : a method called when an item is selected.
+when the text field is cleared, then the selection is cleared as well.
+
+
+- No option selected by default, dropdown shows either the `placeholderText`, if present,
+  or the default 'Select a Value'
 
 ### Example
 
 <!-- STORY -->
 
-##### Managing state
+##### Sample Values
 
-REDO
-Here's an example of how to manage Select Dropdown state:
 
 ```tsx
-const options = [
-  'A',
-  'B',
-  'C',
+const items = [
+    {name: 'Apple', id: '0'},
+    {name: 'Peach', id: '5'},
+    {name: 'Tomato', id: '10'},
+    {name: 'Grape', id: '20'},
+    {name: 'Orange', id: '40'},
+    {name: 'Lemon', id: '30'},
+    {name: 'Watermelon', id: '70'},
+    {name: 'Kiwi', id: '8'},
+    {name: 'Banana', id: '9'},
+    {name: 'Strawberry', id: '1099'},
+    {id: '1234.3.33'},
 ]
 
-this.state = {
-  selectedOption: 'A',
+const onSelect = (item: SelectableItem) => {
+    console.log('ooh! selected item: ', item)
 }
 
-private handleSelect = (selectedOption: string): void => {
-  this.setState({selectedOption})
-}
+const selectedOption = {name: 'Lemon', id: '30'}
+
 ```
 
 And here's rendering the component:
 
 ```tsx
-const {selectedOption} = this.state
-
-<SelectDropdown
-  selectedOption={selectedOption}
-  options={options}
-  onSelect={this.handleSelect}
+<TypeAheadDropDown
+    style={{width: '250px', marginRight: '45px'}}
+    onSelect={onSelect}
+    items={items}
+    buttonTestId='buttonTestID'
+    menuTestID='menuTest'
+    itemTestIdPrefix= 'my-prefix'
+    defaultNameText='default empty name here'
+    selectedOption={selectedOption}
+    sortNames={true}
+    menuTheme={DropdownMenuTheme.Amethyst}
+    testIDRoot='example'
 />
+</div>
 ```
 
 ---
 
-##### Customizing the options list
-
-Dropdowns can feature dividers with or without titles mixed into the options list. This component provides a few shortcuts to achieve this:
-
-```tsx
-options = [
-  'Apple',
-  // This produces the standard Dropdown Iten
-  '---',
-  // This produces a Divider with no text
-  '---Fruits',
-  // This produces a Divider with text
-]
-```
 
 <!-- STORY HIDE START -->
 

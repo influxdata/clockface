@@ -34,7 +34,7 @@ import {
 } from '../Composed/MultiSelectDropdown'
 
 import {TypeAheadDropDown, SelectableItem} from '../Composed/TypeAheadDropDown'
-import {TypeAheadDropDownOrig} from '../Composed/TypeAheadDropDownOrig'
+
 // Types
 import {
   ComponentColor,
@@ -595,7 +595,7 @@ dropdownComposedStories.add(
         <TypeAheadDropDown
           style={object('style', defaultDropdownStyle)}
           onSelect={onSelect}
-          name={'fooTest'}
+          testIdRoot={  'fooTest'}
           items={selectDropdownOptions}
           buttonTestId={text('buttonTestID', '')}
           menuTestID={text('menu test id', 'menuTest')}
@@ -607,27 +607,6 @@ dropdownComposedStories.add(
           menuTheme={
             DropdownMenuTheme[
               select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Onyx')
-            ]
-          }
-          selectedOption={selectedOption}
-          sortNames={true}
-        />
-
-        <TypeAheadDropDownOrig
-          style={object('style2', defaultDropdownStyle)}
-          onSelect={onSelect}
-          name={'fooTest'}
-          items={selectDropdownOptions}
-          buttonTestId={text('buttonTestID2', '')}
-          menuTestID={text('menu test id2', 'menuTest')}
-          itemTestIdPrefix={text('item test id prefix2', 'my-prefix')}
-          defaultNameText={text(
-            'default empty text2',
-            'default empty name here'
-          )}
-          menuTheme={
-            DropdownMenuTheme[
-              select('menuTheme2', mapEnumKeys(DropdownMenuTheme), 'Onyx')
             ]
           }
           selectedOption={selectedOption}

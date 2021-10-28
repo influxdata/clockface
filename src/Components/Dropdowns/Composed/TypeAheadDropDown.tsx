@@ -22,8 +22,10 @@ interface OwnProps extends StandardFunctionProps {
   items: SelectableItem[]
   onSelect: (item: SelectableItem | null) => void
   placeholderText?: string
-  name?: string
+  /** used for generating test ids */
+  testIdRoot?: string
   selectedOption?: SelectableItem | null
+  /** which theme to apply */
   menuTheme?: DropdownMenuTheme
   buttonTestId?: string
   menuTestID?: string
@@ -52,10 +54,10 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   onSelect,
   testID,
   placeholderText,
-  name,
+  testIdRoot= 'header',
   selectedOption,
   className,
-  menuTheme,
+  menuTheme= DropdownMenuTheme.Onyx,
   buttonTestId,
   menuTestID,
   itemTestIdPrefix,
@@ -111,10 +113,6 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
    */
   let backupValue = useRef<string>(initialTypedValue)
 
-  if (!menuTheme) {
-    menuTheme = DropdownMenuTheme.Onyx
-  }
-
   const itemNames = items.map(item => item.name?.toLowerCase())
 
   const doFilter = (needle: string) => {
@@ -153,10 +151,6 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
 
   if (!placeholderText) {
     placeholderText = 'Select a Value'
-  }
-
-  if (!name) {
-    name = 'header'
   }
 
   const setTypedValueToSelectedName = (backupName?: string) => {
@@ -252,7 +246,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
       onChange={filterVals}
       value={typedValue}
       onKeyDown={maybeSelectNextItem}
-      testID={`dropdown-input-typeAhead--${name}`}
+      testID={`dropdown-input-typeAhead--${testIdRoot}`}
       onClear={clear}
     />
   )
@@ -262,7 +256,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   return (
     <Dropdown
       {...props}
-      testID={testID || `typeAhead-dropdown--${name}`}
+      testID={testID || `typeAhead-dropdown--${testIdRoot}`}
       onClickAway={onClickAwayHere}
       disableAutoFocus
       button={(active, onClick) => (
