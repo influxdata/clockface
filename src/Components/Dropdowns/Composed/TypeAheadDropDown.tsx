@@ -1,5 +1,5 @@
 // Libraries
-import React, {ChangeEvent, FC, useRef, useEffect,useState} from 'react'
+import React, {ChangeEvent, FC, useRef, useEffect, useState} from 'react'
 import classnames from 'classnames'
 import {Dropdown} from '../.'
 import {MenuStatus} from '../Dropdown'
@@ -11,6 +11,7 @@ import {
 } from '../../../Types'
 
 import {Input} from '../../Inputs/Input'
+import {DropdownHeader} from '../DropdownHeader'
 
 export interface SelectableItem {
   id: string
@@ -265,14 +266,14 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
       onClickAway={onClickAwayHere}
       disableAutoFocus
       button={(active, onClick) => (
-        <Dropdown.Button
+        <DropdownHeader
           active={active}
           onClick={onClick}
           testID={buttonTestId}
           status={dropdownStatus}
         >
           {inputComponent}
-        </Dropdown.Button>
+        </DropdownHeader>
       )}
       menu={onCollapse => (
         <Dropdown.Menu
