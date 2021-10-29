@@ -76,9 +76,10 @@ export const DropdownHeader: FC<DropdownHeaderProps> = ({
     width: 35,
     paddingLeft: 3,
     justifyContent: 'center',
+    fontSize: 30,
   }
   const buttonBaseClass = classnames(
-    `cf-button cf-button-${size} cf-button-${color}`,
+    `cf-button cf-button-${size} cf-button-${color} dropdown-caret`,
     {
       'cf-button-square': buttonShape === ButtonShape.Square,
       'cf-button-stretch': buttonShape === ButtonShape.StretchToFit,
@@ -89,13 +90,15 @@ export const DropdownHeader: FC<DropdownHeaderProps> = ({
     }
   )
 
+  console.log('got test id....', testID)
+
   return (
     <div
       {...divProps}
-      data-testid={testID}
       className={dropdownButtonClass}
       title={titleTextToBeUsed}
       style={containerStyle}
+      data-testid={`${testID}-parent`}
     >
       <span className="cf-dropdown--selected">{children}</span>
       <button
@@ -103,6 +106,7 @@ export const DropdownHeader: FC<DropdownHeaderProps> = ({
         style={buttonStyle}
         disabled={disabled}
         onClick={onClick}
+        data-testid={testID}
       >
         {!!icon && <Icon glyph={icon} className="cf-dropdown--icon" />}
         <Icon glyph={IconFont.CaretDown_New} className="cf-dropdown--caret" />

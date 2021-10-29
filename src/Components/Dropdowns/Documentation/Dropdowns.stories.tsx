@@ -595,9 +595,8 @@ dropdownComposedStories.add(
         <TypeAheadDropDown
           style={object('style', defaultDropdownStyle)}
           onSelect={onSelect}
-          testIdRoot={  'fooTest'}
+          testIdSuffix="fooTest"
           items={selectDropdownOptions}
-          buttonTestId={text('buttonTestID', '')}
           menuTestID={text('menu test id', 'menuTest')}
           itemTestIdPrefix={text('item test id prefix', 'my-prefix')}
           defaultNameText={text(

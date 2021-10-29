@@ -21,6 +21,12 @@
   }
 }
 
+.dropdown-caret {
+  .cf-dropdown--caret {
+    font-size: 30px;
+  }
+}
+
 .cf-dropdown--icon {
   flex-shrink: 0;
   margin-right: $cf-space-2xs;

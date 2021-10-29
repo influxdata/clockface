@@ -23,7 +23,7 @@ interface OwnProps extends StandardFunctionProps {
   onSelect: (item: SelectableItem | null) => void
   placeholderText?: string
   /** used for generating test ids */
-  testIdRoot?: string
+  testIdSuffix?: string
   selectedOption?: SelectableItem | null
   /** which theme to apply */
   menuTheme?: DropdownMenuTheme
@@ -54,15 +54,15 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   onSelect,
   testID,
   placeholderText,
-  testIdRoot= 'header',
+  testIdSuffix = 'header',
   selectedOption,
   className,
-  menuTheme= DropdownMenuTheme.Onyx,
-  buttonTestId,
-  menuTestID,
-  itemTestIdPrefix,
-  sortNames,
-  defaultNameText,
+  menuTheme = DropdownMenuTheme.Onyx,
+  buttonTestId = 'type-ahead-dropdown--button',
+  menuTestID = 'type-ahead-dropdown--menu',
+  itemTestIdPrefix = 'type-ahead-dropdown--item',
+  sortNames = true,
+  defaultNameText = '',
 }) => {
   if (sortNames) {
     items.sort((a, b) => {
@@ -76,14 +76,9 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   const [shownValues, setShownValues] = useState(items)
   const [menuOpen, setMenuOpen] = useState<MenuStatus>(MenuStatus.Closed)
 
-  const defaultDisplayName = getValueWithBackup(defaultNameText, '')
-
   let initialTypedValue = ''
   if (selectedOption) {
-    initialTypedValue = getValueWithBackup(
-      selectedOption.name,
-      defaultDisplayName
-    )
+    initialTypedValue = getValueWithBackup(selectedOption.name, defaultNameText)
   } else {
     selectedOption = null
   }
@@ -91,13 +86,6 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     selectedOption
   )
   const [typedValue, setTypedValue] = useState<string>(initialTypedValue)
-
-  buttonTestId = getValueWithBackup(buttonTestId, 'type-ahead-dropdown--button')
-  menuTestID = getValueWithBackup(menuTestID, 'type-ahead-dropdown--menu')
-  itemTestIdPrefix = getValueWithBackup(
-    itemTestIdPrefix,
-    'type-ahead-dropdown--item'
-  )
 
   useEffect(() => {
     setShownValues(items)
@@ -210,9 +198,13 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     }
   }
 
+  /**
+   *  if there is a value, get its name, else show the empty string.
+   * only want to show the default name text when there is an item selected.
+   * */
   const getDisplayName = (item: SelectableItem | null): string => {
     if (item && item.id) {
-      return getValueWithBackup(item.name, defaultDisplayName)
+      return getValueWithBackup(item.name, defaultNameText)
     }
     return ''
   }
@@ -246,7 +238,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
       onChange={filterVals}
       value={typedValue}
       onKeyDown={maybeSelectNextItem}
-      testID={`dropdown-input-typeAhead--${testIdRoot}`}
+      testID={`dropdown-input-typeAhead--${testIdSuffix}`}
       onClear={clear}
     />
   )
@@ -256,7 +248,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   return (
     <Dropdown
       {...props}
-      testID={testID || `typeAhead-dropdown--${testIdRoot}`}
+      testID={testID || `typeAhead-dropdown--${testIdSuffix}`}
       onClickAway={onClickAwayHere}
       disableAutoFocus
       button={(active, onClick) => (
@@ -291,7 +283,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
                 testID={`${itemTestIdPrefix}-${value.id}`}
                 className={classN}
               >
-                {value.name || defaultDisplayName}
+                {value.name || defaultNameText}
               </Dropdown.Item>
             )
           })}
