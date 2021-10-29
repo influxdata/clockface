@@ -1,4 +1,5 @@
 # Changelog
+
 ### 3.1.0 (2021-10-29)
 
 - [#687](https://github.com/influxdata/clockface/pull/687): adding generic typeahead dropdown, with supporting files

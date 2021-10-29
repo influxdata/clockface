@@ -101,7 +101,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
    * but here it uses the stale state of what was previously selected.
    * this way, what was selected is saved in the ref.)
    */
-  let backupValue = useRef<string>(initialTypedValue)
+  const backupValue = useRef<string>(initialTypedValue)
 
   const itemNames = items.map(item => item.name?.toLowerCase())
 

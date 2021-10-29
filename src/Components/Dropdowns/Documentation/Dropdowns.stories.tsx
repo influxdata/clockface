@@ -582,7 +582,9 @@ dropdownComposedStories.add(
     ]
 
     const onSelect = (item: SelectableItem) => {
+      /* eslint-disable */
       console.log('ooh! selected item: ', item)
+      /* eslint-enable */
     }
 
     const selectedOption = {name: 'Lemon', id: '30'}
