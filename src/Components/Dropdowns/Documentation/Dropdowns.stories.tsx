@@ -592,6 +592,7 @@ dropdownComposedStories.add(
     // because it happens once at instantiation
     return (
       <div className="story--example">
+        <span> with a pre-selected item:</span>
         <TypeAheadDropDown
           style={object('style', defaultDropdownStyle)}
           onSelect={onSelect}
@@ -609,6 +610,26 @@ dropdownComposedStories.add(
             ]
           }
           selectedOption={selectedOption}
+          sortNames={true}
+        />
+
+        <span> without a pre-selected item:</span>
+        <TypeAheadDropDown
+          style={object('style 2', defaultDropdownStyle)}
+          onSelect={onSelect}
+          testIdSuffix="fooTest"
+          items={selectDropdownOptions}
+          menuTestID={text('menu test id 2', 'menuTest')}
+          itemTestIdPrefix={text('item test id prefix 2', 'my-prefix')}
+          defaultNameText={text(
+            'default empty text 2',
+            'default empty name here'
+          )}
+          menuTheme={
+            DropdownMenuTheme[
+              select('menuTheme 2', mapEnumKeys(DropdownMenuTheme), 'Onyx')
+            ]
+          }
           sortNames={true}
         />
       </div>

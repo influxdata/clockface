@@ -21,9 +21,11 @@ export interface SelectableItem {
 interface OwnProps extends StandardFunctionProps {
   items: SelectableItem[]
   onSelect: (item: SelectableItem | null) => void
+  /** what shows in the input when nothing is selected */
   placeholderText?: string
   /** used for generating test ids */
   testIdSuffix?: string
+  /**optional pre-selected option, must match exactly (name and id) an item in the items array */
   selectedOption?: SelectableItem | null
   /** which theme to apply */
   menuTheme?: DropdownMenuTheme
@@ -54,7 +56,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   onSelect,
   testID,
   placeholderText,
-  testIdSuffix = 'header',
+  testIdSuffix = 'typeAhead',
   selectedOption,
   className,
   menuTheme = DropdownMenuTheme.Onyx,
@@ -93,11 +95,11 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
 
   /**
    *  using a ref to hold an instance variable:  what was last typed,
-   * because without this 'click to select' doesn't work.
+   *  because without this 'click to select' doesn't work.
    *  (you click to select, which clicks out of the dropdown, so then the dropdown sets
    * the text to what was last selected.  this works fine for a class component,
    * but here it uses the stale state of what was previously selected.
-   * this way, what was selected is saved in the ref.
+   * this way, what was selected is saved in the ref.)
    */
   let backupValue = useRef<string>(initialTypedValue)
 

@@ -28,10 +28,17 @@ export interface DropdownHeaderProps extends StandardFunctionProps {
   icon?: IconFont
   /** Text to be displayed on hover tooltip */
   title?: string
+  /** Text to be displayed on hover tooltip when disabled */
   disabledTitleText?: string
   buttonShape?: ButtonShape
 }
-
+/**
+ * a header for our dropdown that is NOT a button, that is designed to take a text input as the child for the
+ * type-ahead dropdown.
+ *
+ * This was built because the other header is a button, and the input has a button inside it (the 'x') which makes it clearable,
+ * and React DOM does not allow a button to be nested inside another button.
+ */
 export const DropdownHeader: FC<DropdownHeaderProps> = ({
   id,
   style,
@@ -89,8 +96,6 @@ export const DropdownHeader: FC<DropdownHeaderProps> = ({
       [`${className}`]: className,
     }
   )
-
-  console.log('got test id....', testID)
 
   return (
     <div

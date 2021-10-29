@@ -8,13 +8,15 @@ It keeps its own state, and can take styling and testIDs from the parent/caller.
 All the 'items' to be selected must conform to the SelectableOption interface; it must have an id, and it should have a name
 for display. The control takes a default name to show when there is no name.
 
+The type-ahead text input is clearable with an 'x' button in the right that shows up when there is content.
+pressing on the 'x' will clear the text input _AND_ set the selection of this control to null.
+
 ### Usage
 
 ```tsx
 import {TypeAheadDropdown} from '@influxdata/clockface'
 ```
 
-ARGHH REWRITE
 This composed dropdown has two key props: `items` and `onSelect`
 All the 'items' to be selected must conform to the SelectableOption interface; it must have an id, and it should have a name
 for display
