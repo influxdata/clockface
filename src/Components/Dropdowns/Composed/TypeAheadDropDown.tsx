@@ -289,6 +289,15 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
               </Dropdown.Item>
             )
           })}
+          {!shownValues || shownValues.length === 0 ? (
+            <Dropdown.Item
+              key="nada-no-values-in-filter"
+              testID="nothing-in-filter-typeAhead"
+              disabled={true}
+            >
+              {`no matches for ${typedValue}`}
+            </Dropdown.Item>
+          ) : null}
         </Dropdown.Menu>
       )}
     />
