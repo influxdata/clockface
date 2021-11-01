@@ -297,6 +297,7 @@ a.cf-tree-nav--item-block:active {
 
 .cf-tree-nav--sub-heading {
   color: $cf-grey-65;
+  cursor: default;
 
   &:not(:first-child) {
     margin-top: $cf-space-2xs;
@@ -353,27 +354,26 @@ a.cf-tree-nav--item-block:active {
   opacity: 0;
   transform: translateX(-#{$cf-space-xs});
   position: relative;
+  transition: color $cf-transition-default,
+    background-color $cf-transition-default;
 
   &:after {
     @include createOverlayBase();
   }
 
-  &.cf-tree-nav--sub-item__active {
-    background: rgba($cf-grey-95, $cf-hover-active-opacity);
-    border-radius: $cf-radius;
-  }
-
-  &:hover,
+  &.cf-tree-nav--sub-item__active,
+  &:not(.cf-tree-nav--sub-heading):hover,
   &:focus:after,
   &:focus-within:after {
-    opacity: $cf-hover-active-opacity;
+    background: rgba($cf-grey-95, $cf-hover-active-opacity);
+    border-radius: $cf-radius;
+    cursor: pointer;
   }
 
   & > * {
     font-weight: $cf-font-weight--medium;
     padding: $cf-space-2xs;
     color: inherit;
-    cursor: pointer;
     flex-grow: 1;
   }
 }

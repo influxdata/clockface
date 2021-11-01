@@ -29,6 +29,7 @@ navMenuStories.add(
   'TreeNav',
   () => {
     const [activeItem, setActiveItem] = useState<string>('item-1')
+    const [activeSubItem, setActiveSubItem] = useState<string>('data-buckets')
     const [expanded, setExpanded] = useState<boolean>(true)
     const navMenuRef = createRef<TreeNavRef>()
 
@@ -40,6 +41,10 @@ navMenuStories.add(
 
     const handleItemClick = (id: string): void => {
       setActiveItem(id)
+    }
+
+    const handleSubItemClick = (id: string): void => {
+      setActiveSubItem(id)
     }
 
     const handleToggleExpanded = (): void => {
@@ -102,14 +107,26 @@ navMenuStories.add(
                   <TreeNav.SubItem
                     id="data-buckets"
                     label="Buckets"
-                    active={true}
-                    onClick={handleItemClick}
+                    active={activeSubItem === 'data-buckets'}
+                    onClick={handleSubItemClick}
                   />
                   <TreeNav.SubItem
                     id="data-sources"
                     label="Sources"
-                    active={activeItem === 'data-sources'}
-                    onClick={handleItemClick}
+                    active={activeSubItem === 'data-sources'}
+                    onClick={handleSubItemClick}
+                  />
+                  <TreeNav.SubItem
+                    id="data-telegraf"
+                    label="Telegraf"
+                    active={activeSubItem === 'data-telegraf'}
+                    onClick={handleSubItemClick}
+                  />
+                  <TreeNav.SubItem
+                    id="data-tokens"
+                    label="API Tokens"
+                    active={activeSubItem === 'data-tokens'}
+                    onClick={handleSubItemClick}
                   />
                 </TreeNav.SubMenu>
               </TreeNav.Item>
@@ -142,6 +159,7 @@ navMenuStories.add(
                 active={activeItem === 'item-5'}
               >
                 <TreeNav.SubMenu>
+                  <TreeNav.SubHeading label="Settings" />
                   <TreeNav.SubItem
                     id="item-5-sub-1"
                     label="Banana"
