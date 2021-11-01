@@ -35,17 +35,23 @@
   margin-right: auto;
 
   &.header-container input {
+    /** removing radius so it blends better with the button to the right of it */
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
 }
 
+/** small size is the default */
 .header-container--button {
-  width: 33px;
-  padding-left: 3px;
+  width: $cf-form-sm-width;
   justify-content: center;
+  /** removing radius so it blends better with the input to the left of it */
   border-bottom-left-radius: 0px;
   border-top-left-radius: 0px;
+
+  & .cf-dropdown--caret {
+    margin: auto 0 auto 0;
+  }
 }
 
 .cf-dropdown--caret {
