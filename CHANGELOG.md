@@ -4,6 +4,11 @@
 
 - [#687](https://github.com/influxdata/clockface/pull/687): adding generic typeahead dropdown, with supporting files
 
+## 3.0.1 (2021-10-28)
+
+-[#691] Sub-menu items receive proper visual state on focus
+-[#690] Sub-menu items in the navigation register hover and focus states visually
+
 ## 3.0.0 (2021-10-28)
 
 ### Generic Updates
