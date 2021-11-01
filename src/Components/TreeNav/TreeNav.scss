@@ -362,12 +362,15 @@ a.cf-tree-nav--item-block:active {
   }
 
   &.cf-tree-nav--sub-item__active,
-  &:not(.cf-tree-nav--sub-heading):hover,
-  &:focus:after,
-  &:focus-within:after {
+  &:not(.cf-tree-nav--sub-heading):hover {
     background: rgba($cf-grey-95, $cf-hover-active-opacity);
     border-radius: $cf-radius;
     cursor: pointer;
+  }
+
+  &:focus:after,
+  &:focus-within:after {
+    opacity: $cf-hover-active-opacity;
   }
 
   & > * {
