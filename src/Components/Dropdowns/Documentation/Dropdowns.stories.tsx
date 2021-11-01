@@ -578,6 +578,7 @@ dropdownComposedStories.add(
       {name: 'Kiwi', id: '8'},
       {name: 'Banana', id: '9'},
       {name: 'Strawberry', id: '1099'},
+      {name: 'blueberry', id: 'blueberry113'},
       {id: '1234.3.33'},
     ]
 

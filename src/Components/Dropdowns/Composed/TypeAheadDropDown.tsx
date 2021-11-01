@@ -32,6 +32,7 @@ interface OwnProps extends StandardFunctionProps {
   buttonTestId?: string
   menuTestID?: string
   itemTestIdPrefix?: string
+  /** the name/label to show in the dropdown where there is an item with an id but without a name; defaults to the empty string */
   defaultNameText?: string
   sortNames?: boolean
   /** status state: default, loading, or disabled */
@@ -50,6 +51,7 @@ const getValueWithBackup = (
   }
   return val as string
 }
+const enCollator = new Intl.Collator('en-us')
 
 export const TypeAheadDropDown: FC<OwnProps> = ({
   id,
@@ -73,7 +75,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     items.sort((a, b) => {
       const aname = a?.name || ''
       const bname = b?.name || ''
-      return aname.localeCompare(bname)
+      return enCollator.compare(aname, bname)
     })
   }
 
@@ -238,6 +240,12 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   const placeText =
     status === ComponentStatus.Loading ? 'Loading...' : placeholderText
 
+  const selectAllTextInInput = (event?: ChangeEvent<HTMLInputElement>) => {
+    if (event) {
+      event.target.select()
+    }
+  }
+
   // do rendering:
   const inputComponent = (
     <Input
@@ -248,6 +256,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
       testID={`dropdown-input-typeAhead--${testIdSuffix}`}
       onClear={clear}
       status={status}
+      onFocus={selectAllTextInInput}
     />
   )
 
