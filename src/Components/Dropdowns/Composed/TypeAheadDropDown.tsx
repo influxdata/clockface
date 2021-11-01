@@ -1,5 +1,5 @@
 // Libraries
-import React, {ChangeEvent, FC, useRef, useEffect, useState} from 'react'
+import React, {ChangeEvent, FC, useEffect, useRef, useState} from 'react'
 import classnames from 'classnames'
 import {Dropdown} from '../.'
 import {MenuStatus} from '../Dropdown'
@@ -34,6 +34,8 @@ interface OwnProps extends StandardFunctionProps {
   itemTestIdPrefix?: string
   defaultNameText?: string
   sortNames?: boolean
+  /** status state: default, loading, or disabled */
+  status?: ComponentStatus
 }
 const isBlank = (pString: string | undefined) =>
   // Checks for falsiness or a non-white space character
@@ -65,6 +67,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   itemTestIdPrefix = 'type-ahead-dropdown--item',
   sortNames = true,
   defaultNameText = '',
+  status = ComponentStatus.Default,
 }) => {
   if (sortNames) {
     items.sort((a, b) => {
@@ -230,18 +233,21 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     setTypedValueToSelectedName(backupValue.current)
   }
 
-  const dropdownStatus =
-    items.length === 0 ? ComponentStatus.Disabled : ComponentStatus.Default
+  const dropdownStatus = items.length === 0 ? ComponentStatus.Disabled : status
+
+  const placeText =
+    status === ComponentStatus.Loading ? 'Loading...' : placeholderText
 
   // do rendering:
   const inputComponent = (
     <Input
-      placeholder={placeholderText}
+      placeholder={placeText}
       onChange={filterVals}
       value={typedValue}
       onKeyDown={maybeSelectNextItem}
       testID={`dropdown-input-typeAhead--${testIdSuffix}`}
       onClear={clear}
+      status={status}
     />
   )
 

@@ -601,6 +601,11 @@ dropdownComposedStories.add(
           testIdSuffix="fooTest"
           items={selectDropdownOptions}
           menuTestID={text('menu test id', 'menuTest')}
+          status={
+            ComponentStatus[
+              select('status', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
           itemTestIdPrefix={text('item test id prefix', 'my-prefix')}
           defaultNameText={text(
             'default empty text',
@@ -627,6 +632,11 @@ dropdownComposedStories.add(
             'default empty text 2',
             'default empty name here'
           )}
+          status={
+            ComponentStatus[
+              select('status2', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
           menuTheme={
             DropdownMenuTheme[
               select('menuTheme 2', mapEnumKeys(DropdownMenuTheme), 'Onyx')

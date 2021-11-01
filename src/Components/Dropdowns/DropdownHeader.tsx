@@ -91,7 +91,6 @@ export const DropdownHeader: FC<DropdownHeaderProps> = ({
       [`${className}`]: className,
     }
   )
-  console.log('arghh this is stressful')
 
   return (
     <div
