@@ -40,6 +40,19 @@
   text-overflow: ellipsis;
   flex-grow: 1;
   margin-right: auto;
+
+  &.header-container input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+.header-container--button {
+  width: 35px;
+  padding-left: 3px;
+  justify-content: center;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
 }
 
 .cf-dropdown--caret {

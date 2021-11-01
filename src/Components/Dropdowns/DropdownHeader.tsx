@@ -79,14 +79,9 @@ export const DropdownHeader: FC<DropdownHeaderProps> = ({
 
   const containerStyle = {display: 'flex', flexDirection: 'row'}
 
-  const buttonStyle = {
-    width: 35,
-    paddingLeft: 3,
-    justifyContent: 'center',
-    fontSize: 30,
-  }
   const buttonBaseClass = classnames(
     `cf-button cf-button-${size} cf-button-${color} dropdown-caret`,
+    'header-container--button',
     {
       'cf-button-square': buttonShape === ButtonShape.Square,
       'cf-button-stretch': buttonShape === ButtonShape.StretchToFit,
@@ -96,6 +91,7 @@ export const DropdownHeader: FC<DropdownHeaderProps> = ({
       [`${className}`]: className,
     }
   )
+  console.log('arghh this is stressful')
 
   return (
     <div
@@ -105,10 +101,9 @@ export const DropdownHeader: FC<DropdownHeaderProps> = ({
       style={containerStyle}
       data-testid={`${testID}-parent`}
     >
-      <span className="cf-dropdown--selected">{children}</span>
+      <span className="cf-dropdown--selected header-container">{children}</span>
       <button
         className={buttonBaseClass}
-        style={buttonStyle}
         disabled={disabled}
         onClick={onClick}
         data-testid={testID}
