@@ -80,14 +80,13 @@ export const DropdownHeader: FC<DropdownHeaderProps> = ({
   const containerStyle = {display: 'flex', flexDirection: 'row'}
 
   const buttonBaseClass = classnames(
-    `cf-button cf-button-${size} cf-button-${color} dropdown-caret`,
+    `cf-button cf-button-${size} cf-button-${color}`,
     'header-container--button',
     {
       'cf-button-square': buttonShape === ButtonShape.Square,
       'cf-button-stretch': buttonShape === ButtonShape.StretchToFit,
       'cf-button--loading': status === ComponentStatus.Loading,
       'cf-button--disabled': status === ComponentStatus.Disabled,
-      active,
       [`${className}`]: className,
     }
   )
@@ -108,7 +107,12 @@ export const DropdownHeader: FC<DropdownHeaderProps> = ({
         data-testid={testID}
       >
         {!!icon && <Icon glyph={icon} className="cf-dropdown--icon" />}
-        <Icon glyph={IconFont.CaretDown_New} className="cf-dropdown--caret" />
+        {!active && (
+          <Icon glyph={IconFont.CaretDown_New} className="cf-dropdown--caret" />
+        )}
+        {active && (
+          <Icon glyph={IconFont.CaretUp_New} className="cf-dropdown--caret" />
+        )}
       </button>
     </div>
   )
