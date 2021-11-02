@@ -1,12 +1,13 @@
 @import '../../Styles/variables';
+@import '../../Styles/typography.scss';
 
 $list-item--text-opacity: 0.666;
 
-$list-item--divider-color--light: rgba($g20-white, 0.03);
+$list-item--divider-color--light: $cf-grey-25;
 $list-item--divider-text--light: rgba($g20-white, 0.4);
 $list-item--background-light: $c-pool;
 
-$list-item--divider-color--dark: rgba($g0-obsidian, 0.08);
+$list-item--divider-color--dark: $cf-grey-55;
 $list-item--divider-text--dark: rgba($g0-obsidian, 0.4);
 $list-item--background-dark: $c-pool;
 
@@ -145,12 +146,14 @@ $list-item--background-dark: $c-pool;
 */
 
 .cf-list-divider {
+  color: $cf-grey-35;
   border-radius: $cf-radius-sm;
   border-bottom: $cf-border solid $list-item--divider-color--light;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: $cf-font-weight--medium;
+  @extend %type-uppercase;
 }
 
 .cf-list-divider,
@@ -177,6 +180,7 @@ $list-item--background-dark: $c-pool;
 }
 
 .cf-list-divider__light {
+  color: $cf-grey-55;
   &.cf-list-divider {
     border-bottom-color: $list-item--divider-color--light;
   }
