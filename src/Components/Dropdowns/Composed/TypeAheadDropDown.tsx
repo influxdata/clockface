@@ -1,5 +1,12 @@
 // Libraries
-import React, {ChangeEvent, FC, useEffect, useRef, useState} from 'react'
+import React, {
+  ChangeEvent,
+  FC,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import classnames from 'classnames'
 import {Dropdown} from '../.'
 import {MenuStatus} from '../Dropdown'
@@ -107,8 +114,14 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
    */
   const backupValue = useRef<string>(initialTypedValue)
 
-  const itemNames = items.map(item => item.name?.toLowerCase())
+  const itemNames = useMemo(() => items.map(item => item.name?.toLowerCase()), [
+    items.length,
+  ])
 
+  /**
+   *  filter the selections/options based on the search string: needle
+   * if the needle is empty; then there is nothing to filter; so return everything
+   */
   const doFilter = (needle: string) => {
     // if there is no value, set the shownValues to everything
     // and set the typedValue to nothing (zero it out)
