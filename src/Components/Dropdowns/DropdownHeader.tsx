@@ -67,14 +67,14 @@ export const DropdownHeader: FC<DropdownHeaderProps> = ({
   const titleTextToBeUsed =
     disabled && disabledTitleText ? disabledTitleText : title
 
-  const divProps: any = {
+  const containerProps: any = {
     id,
     style,
     color,
   }
 
   if (!disabled) {
-    divProps.onClick = onClick
+    containerProps.onClick = onClick
   }
 
   const containerStyle = {display: 'flex', flexDirection: 'row'}
@@ -87,13 +87,14 @@ export const DropdownHeader: FC<DropdownHeaderProps> = ({
       'cf-button-stretch': buttonShape === ButtonShape.StretchToFit,
       'cf-button--loading': status === ComponentStatus.Loading,
       'cf-button--disabled': status === ComponentStatus.Disabled,
+      active,
       [`${className}`]: className,
     }
   )
 
   return (
     <div
-      {...divProps}
+      {...containerProps}
       className={dropdownButtonClass}
       title={titleTextToBeUsed}
       style={containerStyle}
@@ -107,12 +108,7 @@ export const DropdownHeader: FC<DropdownHeaderProps> = ({
         data-testid={testID}
       >
         {!!icon && <Icon glyph={icon} className="cf-dropdown--icon" />}
-        {!active && (
-          <Icon glyph={IconFont.CaretDown_New} className="cf-dropdown--caret" />
-        )}
-        {active && (
-          <Icon glyph={IconFont.CaretUp_New} className="cf-dropdown--caret" />
-        )}
+        <Icon glyph={IconFont.CaretDown_New} className="cf-dropdown--caret" />
       </button>
     </div>
   )

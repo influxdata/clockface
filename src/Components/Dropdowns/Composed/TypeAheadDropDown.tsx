@@ -38,7 +38,7 @@ interface OwnProps extends StandardFunctionProps {
   /** status state: default, loading, or disabled */
   status?: ComponentStatus
 }
-const isBlank = (pString: string | undefined) =>
+const isBlank = (pString: string | undefined): boolean =>
   // Checks for falsiness or a non-white space character
   !pString || !/[^\s]+/.test(pString)
 
@@ -61,7 +61,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   testID,
   placeholderText,
   testIdSuffix = 'typeAhead',
-  selectedOption,
+  selectedOption = null,
   className,
   menuTheme = DropdownMenuTheme.Onyx,
   buttonTestId = 'type-ahead-dropdown--button',
@@ -86,9 +86,8 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   let initialTypedValue = ''
   if (selectedOption) {
     initialTypedValue = getValueWithBackup(selectedOption.name, defaultNameText)
-  } else {
-    selectedOption = null
   }
+
   const [selectedItem, setSelectedItem] = useState<SelectableItem | null>(
     selectedOption
   )
@@ -179,8 +178,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
 
     if (event.keyCode === 13) {
       // return/enter key
-      // lose focus??, reset the selectIndex to -1, & close the menu:
-      //event.target.blur()
+      // reset the selectIndex to -1, & close the menu:
 
       if (numItems && selectIndex >= 0 && selectIndex < numItems) {
         // they used the arrows; just pressed return
