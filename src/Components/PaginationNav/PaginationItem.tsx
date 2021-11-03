@@ -13,7 +13,6 @@ import {
   StandardFunctionProps,
   ComponentColor,
   ComponentSize,
-  ButtonShape,
 } from '../../Types'
 
 export interface PaginationItemProps extends StandardFunctionProps {
@@ -37,7 +36,7 @@ export const PaginationItem = forwardRef<
       page,
       isActive,
       onClick,
-      size = ComponentSize.Medium,
+      size = ComponentSize.Small,
     },
     ref
   ) => {
@@ -62,9 +61,8 @@ export const PaginationItem = forwardRef<
           color={ComponentColor.Tertiary}
           onClick={onClick}
           active={isActive}
-          shape={ButtonShape.Square}
           text={page}
-        ></Button>
+        />
       </li>
     )
   }
