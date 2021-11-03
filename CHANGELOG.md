@@ -1,5 +1,11 @@
 # Changelog
 
+### 3.1.1 (2021-11-03)
+
+- [#694](https://github.com/influxdata/clockface/pull/694): changed list divider color and added more spacing for clearer hierarchy.
+- [#689](https://github.com/influxdata/clockface/pull/689): navbar items when collapsed activate onhover instead of onclick.  
+
+
 ### 3.1.0 (2021-11-03)
 
 - [#687](https://github.com/influxdata/clockface/pull/687): adding generic typeahead dropdown, with supporting files
