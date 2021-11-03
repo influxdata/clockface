@@ -15,7 +15,7 @@ import {ScrollState} from 'react-scrollbars-custom/dist/types/types'
 import './DapperScrollbars.scss'
 
 // Types
-import {StandardFunctionProps, InfluxColors} from '../../Types'
+import {StandardFunctionProps, InfluxColors, ComponentSize} from '../../Types'
 
 // react-scrollbars-custom uses a highly unusual type
 // to presumably handle touch and mouse events simultaneously
@@ -61,6 +61,8 @@ interface DapperScrollbarsProps extends StandardFunctionProps {
   onScroll?: FusionScrollHandler
   /** Function called after component updated */
   onUpdate?: FusionScrollHandler
+  /** Component Size **/
+  size?: ComponentSize
 }
 
 export const DapperScrollbars: FunctionComponent<DapperScrollbarsProps> = ({
@@ -85,6 +87,7 @@ export const DapperScrollbars: FunctionComponent<DapperScrollbarsProps> = ({
   removeTracksWhenNotUsed = true,
   removeTrackYWhenNotUsed = true,
   removeTrackXWhenNotUsed = true,
+  size = ComponentSize.Small,
 }) => {
   const scrollEl = useRef<any>(null)
   // State is used here to ensure that the scroll position does not jump when
@@ -99,6 +102,7 @@ export const DapperScrollbars: FunctionComponent<DapperScrollbarsProps> = ({
 
   const dapperScrollbarsClass = classnames('cf-dapper-scrollbars', {
     'cf-dapper-scrollbars--autohide': autoHide,
+    [`cf-dapper-scrollbars--${size}`]: size,
     [`${className}`]: className,
   })
 
