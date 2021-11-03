@@ -1,12 +1,13 @@
 @import '../../Styles/variables';
+@import '../../Styles/typography.scss';
 
 $list-item--text-opacity: 0.666;
 
-$list-item--divider-color--light: rgba($g20-white, 0.03);
+$list-item--divider-color--light: $cf-grey-25;
 $list-item--divider-text--light: rgba($g20-white, 0.4);
 $list-item--background-light: $c-pool;
 
-$list-item--divider-color--dark: rgba($g0-obsidian, 0.08);
+$list-item--divider-color--dark: $cf-grey-55;
 $list-item--divider-text--dark: rgba($g0-obsidian, 0.4);
 $list-item--background-dark: $c-pool;
 
@@ -145,18 +146,18 @@ $list-item--background-dark: $c-pool;
 */
 
 .cf-list-divider {
+  color: $cf-grey-35;
   border-radius: $cf-radius-sm;
   border-bottom: $cf-border solid $list-item--divider-color--light;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: $cf-font-weight--medium;
+  @extend %type-uppercase;
 }
 
 .cf-list-divider,
 .cf-list-divider__thin {
-  margin-bottom: $cf-border;
-
   &:hover {
     cursor: default;
   }
@@ -177,6 +178,7 @@ $list-item--background-dark: $c-pool;
 }
 
 .cf-list-divider__light {
+  color: $cf-grey-55;
   &.cf-list-divider {
     border-bottom-color: $list-item--divider-color--light;
   }
@@ -217,7 +219,7 @@ $list-item--background-dark: $c-pool;
   ------------------------------------------------------------------------------
 */
 
-@mixin listItemSizeModifier($fontSize, $padding) {
+@mixin listItemSizeModifier($fontSize, $padding, $dividingMargin) {
   &.cf-list-item,
   &.cf-list-divider,
   &.cf-list-link-item > a {
@@ -240,20 +242,32 @@ $list-item--background-dark: $c-pool;
       padding-right: $padding;
     }
   }
+
+  &.cf-list-divider:not(:first-child),
+  &.cf-list-divider__thin:not(:first-child) {
+    margin-top: $dividingMargin + $cf-border;
+  }
+  &.cf-list-divider,
+  &.cf-list-divider__thin {
+    margin-bottom: $dividingMargin + $cf-border;
+    &:hover {
+      cursor: default;
+    }
+  }
 }
 
 .cf-list-item__xs {
-  @include listItemSizeModifier($cf-form-xs-font, $cf-space-3xs);
+  @include listItemSizeModifier($cf-form-xs-font, $cf-space-3xs, $cf-space-2xs);
 }
 
 .cf-list-item__sm {
-  @include listItemSizeModifier($cf-form-sm-font, $cf-space-2xs);
+  @include listItemSizeModifier($cf-form-sm-font, $cf-space-2xs, $cf-space-2xs);
 }
 
 .cf-list-item__md {
-  @include listItemSizeModifier($cf-form-md-font, $cf-space-xs);
+  @include listItemSizeModifier($cf-form-md-font, $cf-space-xs, $cf-space-xs);
 }
 
 .cf-list-item__lg {
-  @include listItemSizeModifier($cf-form-lg-font, $cf-space-s);
+  @include listItemSizeModifier($cf-form-lg-font, $cf-space-s, $cf-space-s);
 }
