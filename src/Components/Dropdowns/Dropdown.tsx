@@ -27,7 +27,7 @@ export interface DropdownProps extends StandardFunctionProps {
   menu: (onCollapse?: () => void) => JSX.Element
   /** Renders the menu element above the button instead of below */
   dropUp?: boolean
-  /** Disable Drodpwon's out of the box focus behavior if you have a custom behavior */
+  /** Disable Dropdown's out of the box focus behavior if you have a custom behavior */
   disableAutoFocus?: boolean
   /** Optional method that is triggered when the user clicks outside of/away from the dropdown */
   onClickAway?: () => void

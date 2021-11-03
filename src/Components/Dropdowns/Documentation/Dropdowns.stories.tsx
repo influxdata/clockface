@@ -33,6 +33,8 @@ import {
   MultiSelectDropdownRef,
 } from '../Composed/MultiSelectDropdown'
 
+import {TypeAheadDropDown, SelectableItem} from '../Composed/TypeAheadDropDown'
+
 // Types
 import {
   ComponentColor,
@@ -52,6 +54,7 @@ import DropdownItemEmptyReadme from './DropdownItemEmpty.md'
 import DropdownLinkItemReadme from './DropdownLinkItem.md'
 import DropdownMenuReadme from './DropdownMenu.md'
 import SelectDropdownReadme from './SelectDropdown.md'
+import TypeAheadDropdownReadme from './TypeAheadDropdown.md'
 import MultiSelectDropdownReadme from './MultiSelectDropdown.md'
 import {useState} from '@storybook/addons'
 
@@ -70,7 +73,7 @@ const dropdownExampleStories = storiesOf(
   module
 ).addDecorator(withKnobs)
 
-const defaultDropdownStyle = {width: '250px'}
+const defaultDropdownStyle = {width: '250px', marginRight: '45px'}
 
 dropdownFamilyStories.add(
   'Dropdown',
@@ -557,6 +560,97 @@ dropdownComposedStories.add(
   {
     readme: {
       content: marked(SelectDropdownReadme),
+    },
+  }
+)
+
+dropdownComposedStories.add(
+  'TypeAheadDropdown',
+  () => {
+    const selectDropdownOptions = [
+      {name: 'Apple', id: '0'},
+      {name: 'Peach', id: '5'},
+      {name: 'Tomato', id: '10'},
+      {name: 'Grape', id: '20'},
+      {name: 'Orange', id: '40'},
+      {name: 'Lemon', id: '30'},
+      {name: 'Watermelon', id: '70'},
+      {name: 'Kiwi', id: '8'},
+      {name: 'Banana', id: '9'},
+      {name: 'Strawberry', id: '1099'},
+      {name: 'blueberry', id: 'blueberry113'},
+      {id: '1234.3.33'},
+    ]
+
+    const onSelect = (item: SelectableItem) => {
+      /* eslint-disable */
+      console.log('ooh! selected item: ', item)
+      /* eslint-enable */
+    }
+
+    const selectedOption = {name: 'Lemon', id: '30'}
+
+    // putting sortNames as a boolean doesn't work because it is a prop,
+    // not a state, so it doesn't make the items sort (or unsort)
+    // because it happens once at instantiation
+    return (
+      <div className="story--example">
+        <span> with a pre-selected item:</span>
+        <TypeAheadDropDown
+          style={object('style', defaultDropdownStyle)}
+          onSelect={onSelect}
+          testIdSuffix="fooTest"
+          items={selectDropdownOptions}
+          menuTestID={text('menu test id', 'menuTest')}
+          status={
+            ComponentStatus[
+              select('status', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
+          itemTestIdPrefix={text('item test id prefix', 'my-prefix')}
+          defaultNameText={text(
+            'default empty text',
+            'default empty name here'
+          )}
+          menuTheme={
+            DropdownMenuTheme[
+              select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Onyx')
+            ]
+          }
+          selectedOption={selectedOption}
+          sortNames={true}
+        />
+
+        <span> without a pre-selected item:</span>
+        <TypeAheadDropDown
+          style={object('style 2', defaultDropdownStyle)}
+          onSelect={onSelect}
+          testIdSuffix="fooTest"
+          items={selectDropdownOptions}
+          menuTestID={text('menu test id 2', 'menuTest')}
+          itemTestIdPrefix={text('item test id prefix 2', 'my-prefix')}
+          defaultNameText={text(
+            'default empty text 2',
+            'default empty name here'
+          )}
+          status={
+            ComponentStatus[
+              select('status2', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
+          menuTheme={
+            DropdownMenuTheme[
+              select('menuTheme 2', mapEnumKeys(DropdownMenuTheme), 'Onyx')
+            ]
+          }
+          sortNames={true}
+        />
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(TypeAheadDropdownReadme),
     },
   }
 )

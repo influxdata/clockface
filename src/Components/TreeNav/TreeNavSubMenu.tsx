@@ -3,7 +3,11 @@ import React, {forwardRef, useRef} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {PopoverPosition, StandardFunctionProps} from '../../Types'
+import {
+  PopoverInteraction,
+  PopoverPosition,
+  StandardFunctionProps,
+} from '../../Types'
 import {Popover} from '../Popover'
 
 export type TreeNavSubMenuProps = StandardFunctionProps
@@ -32,6 +36,8 @@ export const TreeNavSubMenu = forwardRef<
         <Popover
           enableDefaultStyles={true}
           contents={onHide => <div onClick={onHide}>{children}</div>}
+          hideEvent={PopoverInteraction.Hover}
+          showEvent={PopoverInteraction.Hover}
           triggerRef={triggerRef}
           position={PopoverPosition.ToTheRightTop}
           className="cf-popover__nav"
