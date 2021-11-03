@@ -158,8 +158,6 @@ $list-item--background-dark: $c-pool;
 
 .cf-list-divider,
 .cf-list-divider__thin {
-  margin-bottom: $cf-border;
-
   &:hover {
     cursor: default;
   }
@@ -221,7 +219,7 @@ $list-item--background-dark: $c-pool;
   ------------------------------------------------------------------------------
 */
 
-@mixin listItemSizeModifier($fontSize, $padding) {
+@mixin listItemSizeModifier($fontSize, $padding, $dividingMargin) {
   &.cf-list-item,
   &.cf-list-divider,
   &.cf-list-link-item > a {
@@ -244,20 +242,32 @@ $list-item--background-dark: $c-pool;
       padding-right: $padding;
     }
   }
+
+  &.cf-list-divider:not(:first-child),
+  &.cf-list-divider__thin:not(:first-child) {
+    margin-top: $dividingMargin + $cf-border;
+  }
+  &.cf-list-divider,
+  &.cf-list-divider__thin {
+    margin-bottom: $dividingMargin + $cf-border;
+    &:hover {
+      cursor: default;
+    }
+  }
 }
 
 .cf-list-item__xs {
-  @include listItemSizeModifier($cf-form-xs-font, $cf-space-3xs);
+  @include listItemSizeModifier($cf-form-xs-font, $cf-space-3xs, $cf-space-2xs);
 }
 
 .cf-list-item__sm {
-  @include listItemSizeModifier($cf-form-sm-font, $cf-space-2xs);
+  @include listItemSizeModifier($cf-form-sm-font, $cf-space-2xs, $cf-space-2xs);
 }
 
 .cf-list-item__md {
-  @include listItemSizeModifier($cf-form-md-font, $cf-space-xs);
+  @include listItemSizeModifier($cf-form-md-font, $cf-space-xs, $cf-space-xs);
 }
 
 .cf-list-item__lg {
-  @include listItemSizeModifier($cf-form-lg-font, $cf-space-s);
+  @include listItemSizeModifier($cf-form-lg-font, $cf-space-s, $cf-space-s);
 }
