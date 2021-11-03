@@ -13,6 +13,8 @@ export interface PageContentsProps extends StandardFunctionProps {
   fullWidth?: boolean
   /** Allows contents to scroll on overflow */
   scrollable?: boolean
+  /** Scrollbar size */
+  scrollbarSize?: ComponentSize
   /** If scrollable is true, this toggles whether the scrollbar is always visible */
   autoHideScrollbar?: boolean
   /** Controls the gutters (left and right margins) */
@@ -33,6 +35,7 @@ export const PageContents = forwardRef<PageContentsRef, PageContentsProps>(
       testID = 'page-contents',
       autoHideScrollbar = false,
       gutters = ComponentSize.Medium,
+      scrollbarSize = ComponentSize.Small,
     },
     ref
   ) => {
@@ -60,6 +63,7 @@ export const PageContents = forwardRef<PageContentsRef, PageContentsProps>(
           testID={testID}
           autoHide={autoHideScrollbar}
           className={pageContentsClass}
+          size={scrollbarSize}
         >
           {kids}
         </DapperScrollbars>
