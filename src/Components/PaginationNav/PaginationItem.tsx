@@ -9,11 +9,7 @@ import {Button} from '../Button/Composed/Button'
 import './Pagination.scss'
 
 // Types
-import {
-  StandardFunctionProps,
-  ComponentColor,
-  ComponentSize,
-} from '../../Types'
+import {StandardFunctionProps, ComponentColor, ComponentSize} from '../../Types'
 
 export interface PaginationItemProps extends StandardFunctionProps {
   page?: string
