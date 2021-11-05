@@ -27,12 +27,10 @@ export interface ProgressBarProps extends StandardFunctionProps {
   size?: ComponentSize
   /** Descriptive text for what is being valueed */
   label?: string
-  /** Displays remaining value instead of specified value */
-  displayRemaining?: boolean
-  /** Prefix text for the values passed to be displayed */
-  valuesLabelPrefix?: string
-  /** Suffix text for the values passed to be displayed */
-  valuesLabelSuffix?: string
+  /** Optional Text for value */
+  valueText?: string
+  /** Optional Text for max */
+  maxText?: string
 }
 
 export type ProgressBarRef = HTMLDivElement
@@ -49,9 +47,8 @@ export const ProgressBar = forwardRef<ProgressBarRef, ProgressBarProps>(
       className,
       color = InfluxColors.White,
       barGradient,
-      displayRemaining,
-      valuesLabelPrefix,
-      valuesLabelSuffix,
+      valueText,
+      maxText,
     },
     ref
   ) => {
@@ -79,18 +76,10 @@ export const ProgressBar = forwardRef<ProgressBarRef, ProgressBarProps>(
         <div className="cf-progress-bar--text">
           <div className="cf-progress-bar--label">{label}</div>
           <div>
-            {!!valuesLabelPrefix && (
-              <span style={{color: color}}>{valuesLabelPrefix}</span>
-            )}
             <span className="cf-progress-bar--value" style={{color: color}}>
-              {displayRemaining ? max - value : value}
+              {valueText ?? value}
             </span>
-            <span className="cf-progress-bar--max">/{max}</span>
-            {!!valuesLabelSuffix && (
-              <span className="cf-progress-bar-values--label">
-                &nbsp;{valuesLabelSuffix}
-              </span>
-            )}
+            <span className="cf-progress-bar--max">/{maxText ?? max}</span>
           </div>
         </div>
       </div>

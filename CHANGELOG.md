@@ -2,7 +2,7 @@
 
 ### 3.1.2 (2021-11-05)
 
-- [700](https://github.com/influxdata/clockface/pull/700): Added displayRemaining boolean flag which allows you to view remaining value instead of used value.
+- [700](https://github.com/influxdata/clockface/pull/700): Added optional texts for `value` and `max` fields.
 
 ### 3.1.1 (2021-11-03)
 
