@@ -1,5 +1,10 @@
 # Changelog
 
+### 3.1.2 (2021-11-05)
+
+- [700](https://github.com/influxdata/clockface/pull/700): Added displayRemaining boolean flag which allows you to view remaining value instead of used value.
+
+
 ### 3.1.1 (2021-11-03)
 
 - [#694](https://github.com/influxdata/clockface/pull/694): changed list divider color and added more spacing for clearer hierarchy.
