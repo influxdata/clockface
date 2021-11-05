@@ -25,8 +25,6 @@ export interface ProgressBarProps extends StandardFunctionProps {
   max?: number
   /** Controls the size of the bar & text */
   size?: ComponentSize
-  /** Controls the size of the value text */
-  valueSize?: ComponentSize
   /** Descriptive text for what is being valueed */
   label?: string
   /** Displays remaining value instead of specified value */
