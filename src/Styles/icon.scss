@@ -29,6 +29,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  &.upload-new:before {
+    content: '\e9a4';
+  }
   &.add-cell-new:before {
     content: '\e976';
   }
