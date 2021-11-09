@@ -423,7 +423,7 @@ export enum IconFont {
   Triangle = 'triangle',
   Undo = 'undo',
   Upgrade = 'upgrade',
-  Upload_New= 'upload-new',
+  Upload_New = 'upload-new',
   User = 'user',
   UserAdd = 'user-add',
   UserOutline = 'user-outline',
