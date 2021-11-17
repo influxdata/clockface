@@ -64,7 +64,7 @@
     "react": "^17.0.2",
     "react-datepicker": "^2.8.0",
     "react-docgen-typescript-loader": "^3.3.0",
-    "react-dom": "17.0.2",
+    "react-dom": "^17.0.2",
     "react-scrollbars-custom": "^4.0.20",
     "react-spring": "^8.0.27",
     "release-it": "^10.3.1",
