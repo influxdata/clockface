@@ -1,5 +1,5 @@
-import resolve from 'rollup-plugin-node-resolve'
-import commonjs from 'rollup-plugin-commonjs'
+import {nodeResolve} from '@rollup/plugin-node-resolve'
+import commonjs from '@rollup/plugin-commonjs'
 import sourceMaps from 'rollup-plugin-sourcemaps'
 import {terser} from 'rollup-plugin-terser'
 import gzip from 'rollup-plugin-gzip'
@@ -11,12 +11,8 @@ const pkg = require('./package.json')
 const isProductionBuild = process.env.NODE_ENV === 'production'
 
 let plugins = [
-  resolve(),
-  commonjs({
-    namedExports: {
-      'react-draggable': ['DraggableCore'],
-    },
-  }),
+  nodeResolve(),
+  commonjs(),
   ts(),
   sass({
     output: 'dist/index.css',
@@ -28,7 +24,7 @@ let plugins = [
     targets: [
       {src: 'src/Styles/Fonts', dest: 'dist'},
       {src: 'src/Styles/variables.scss', dest: 'dist'},
-      {src: 'src/**/Images/*', dest: 'dist/Images'}
+      {src: 'src/**/Images/*', dest: 'dist/Images'},
     ],
   }),
   sourceMaps(),
