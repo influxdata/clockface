@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.1.7 (2021-11-17)
+
+- [705](https://github.com/influxdata/clockface/pull/705): Upgraded to react 17.0.2.
+
 ### 3.1.2 (2021-11-05)
 
 - [700](https://github.com/influxdata/clockface/pull/700): Added optional texts for `value` and `max` fields.
