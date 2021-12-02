@@ -45,7 +45,7 @@ $slide-toggle--gap: 3px;
     transform $cf-transition-default;
   transform: translate(0, -50%);
   border-radius: 50%;
-  box-shadow: 0 0 $slide-toggle--gap ($slide-toggle--gap / 2)
+  box-shadow: 0 0 $slide-toggle--gap ($slide-toggle--gap * 0.5)
     rgba($cf-grey-5, 0.25);
   background-color: $cf-grey-75;
   left: 10%;
@@ -80,7 +80,7 @@ $slide-toggle--gap: 3px;
 */
 @mixin slideToggleSizeModifier($size) {
   height: $size;
-  border-radius: $size / 2;
+  border-radius: $size * 0.5;
   padding: 0 $slide-toggle--gap;
   width: ($size * 1.5);
   flex: 0 0 ($size * 1.5);

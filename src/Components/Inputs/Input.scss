@@ -237,7 +237,7 @@ alternate css for the other sizes */
   }
 
   .cf-input-icon {
-    left: ($height / 2) + $cf-border;
+    left: ($height * 0.5) + $cf-border;
   }
 
   .cf-input-pseudo {

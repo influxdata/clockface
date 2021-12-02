@@ -127,7 +127,7 @@ $dropdown-item--padding-v: $cf-space-2xs;
 
 .cf-dropdown-item--checkbox {
   background-color: rgba($cf-grey-95, 0.15);
-  left: $dropdown-item--padding-h + ($dropdown-item--checkbox-size / 2);
+  left: $dropdown-item--padding-h + ($dropdown-item--checkbox-size * 0.5);
   width: $dropdown-item--checkbox-size;
   height: $dropdown-item--checkbox-size;
   border-radius: $cf-radius;
@@ -157,7 +157,7 @@ $dropdown-item--padding-v: $cf-space-2xs;
 
 .cf-dropdown-item--dot {
   background-color: rgba($cf-grey-95, 0.15);
-  left: $dropdown-item--padding-h + ($dropdown-item--checkbox-size / 2);
+  left: $dropdown-item--padding-h + ($dropdown-item--checkbox-size * 0.5);
   width: $dropdown-item--checkbox-size;
   height: $dropdown-item--checkbox-size;
   border-radius: 50%;

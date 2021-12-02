@@ -83,8 +83,8 @@
   &-line {
     height: $cf-border;
     background-color: $cf-grey-25;
-    margin: (($cf-form-sm-height - $cf-marg-b) / 2) 0;
-    border-radius: $cf-border / 2;
+    margin: (($cf-form-sm-height - $cf-marg-b) * 0.5) 0;
+    border-radius: $cf-border * 0.5;
   }
 }
 

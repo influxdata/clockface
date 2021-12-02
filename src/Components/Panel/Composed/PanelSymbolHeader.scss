@@ -28,7 +28,7 @@ $panel-symbol-header-gutter: $cf-marg-d + $cf-marg-b;
 
   .cf-panel--symbol-header--symbol {
     position: absolute;
-    left: ($panel-symbol-header-gutter-small / 2);
+    left: ($panel-symbol-header-gutter-small * 0.5);
     transform: translate(-50%, 0);
   }
 
@@ -43,7 +43,7 @@ $panel-symbol-header-gutter: $cf-marg-d + $cf-marg-b;
     }
 
     .cf-panel--symbol-header--symbol {
-      left: ($panel-symbol-header-gutter / 2);
+      left: ($panel-symbol-header-gutter * 0.5);
     }
   }
 }
@@ -64,7 +64,7 @@ $panel-symbol-header-gutter: $cf-marg-d + $cf-marg-b;
   }
 
   .cf-panel--symbol-header--symbol {
-    left: (($panel-symbol-header-gutter-small + $size) / 2);
+    left: (($panel-symbol-header-gutter-small + $size) * 0.5);
   }
 
   @media screen and (min-width: 1080px) {
@@ -78,7 +78,7 @@ $panel-symbol-header-gutter: $cf-marg-d + $cf-marg-b;
     }
 
     .cf-panel--symbol-header--symbol {
-      left: (($panel-symbol-header-gutter + $size) / 2);
+      left: (($panel-symbol-header-gutter + $size) * 0.5);
     }
   }
 }

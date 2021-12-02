@@ -58,7 +58,7 @@ $label-delete-size: $cf-text-base-0;
     left: 50%;
     width: $label-delete-size;
     height: $cf-border;
-    border-radius: $cf-border / 2;
+    border-radius: $cf-border * 0.5;
     transform: translate(-50%, -50%) rotate(45deg);
     background: currentColor;
     content: '';

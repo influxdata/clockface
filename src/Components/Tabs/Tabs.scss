@@ -397,7 +397,7 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
 
   .cf-tabs--dropdown-icon {
     font-size: $fontSize;
-    right: floor($tabHeight * 1.35) / 2;
+    right: floor($tabHeight * 1.35) * 0.5;
   }
 
   .cf-tabs--tab:first-child {
@@ -435,12 +435,12 @@ a.cf-tabs--tab.cf-tabs--tab__active:hover,
 
   &.cf-tabs--dropdown__align-left .cf-tabs--tab-dismiss,
   &.cf-tabs--dropdown__align-center .cf-tabs--tab-dismiss {
-    right: $tabHeight / 2;
+    right: $tabHeight * 0.5;
     transform: translate(50%, -50%);
   }
 
   &.cf-tabs--dropdown__align-right .cf-tabs--tab-dismiss {
-    left: $tabHeight / 2;
+    left: $tabHeight * 0.5;
     transform: translate(-50%, -50%);
   }
 }
