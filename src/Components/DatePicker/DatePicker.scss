@@ -415,7 +415,7 @@
   );
   list-style: none;
   margin: 0;
-  height: calc(195px + (1.7rem / 2));
+  height: calc(195px + (1.7rem * 0.5));
   overflow-y: scroll;
   padding-right: 0px;
   padding-left: 0px;

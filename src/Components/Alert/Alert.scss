@@ -58,7 +58,7 @@ $alert--icon-padding: $cf-marg-d + $cf-marg-a;
 .cf-alert--icon {
   position: absolute;
   top: 50%;
-  left: $alert--icon-padding / 2;
+  left: $alert--icon-padding * 0.5;
   transform: translate(-50%, -50%);
   font-size: 1.5em;
   color: rgba($g3-castle, 0.85);

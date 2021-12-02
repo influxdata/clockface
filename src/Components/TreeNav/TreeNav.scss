@@ -104,7 +104,7 @@ $cf-tree-nav__header-height: 60px;
   &:after {
     width: floor($cf-tree-nav__width * 0.3);
     height: $cf-border;
-    border-radius: $cf-border / 2;
+    border-radius: $cf-border * 0.5;
   }
 
   &:before,
@@ -411,7 +411,7 @@ $cf-tree-nav--user-block: $cf-tree-nav__width -
   ($cf-tree-nav--user-block-gap * 2);
 $cf-tree-nav--avatar-radius: $cf-tree-nav__width * 0.5;
 $cf-tree-nav--user-padding: (
-    ($cf-tree-nav--user-block - $cf-tree-nav--avatar-radius) / 2
+    ($cf-tree-nav--user-block - $cf-tree-nav--avatar-radius) * 0.5
   ) - $cf-border;
 
 .cf-tree-nav--user {

@@ -105,8 +105,8 @@
     &.cf-flex-box__justify-space-between,
     &.cf-flex-box__justify-space-around {
       > * {
-        margin-left: $margin / 2;
-        margin-right: $margin / 2;
+        margin-left: $margin * 0.5;
+        margin-right: $margin * 0.5;
 
         &:first-child {
           margin-left: 0;
@@ -142,8 +142,8 @@
     &.cf-flex-box__justify-space-between,
     &.cf-flex-box__justify-space-around {
       > * {
-        margin-right: $margin / 2;
-        margin-left: $margin / 2;
+        margin-right: $margin * 0.5;
+        margin-left: $margin * 0.5;
 
         &:first-child {
           margin-right: 0;
@@ -179,8 +179,8 @@
     &.cf-flex-box__justify-space-between,
     &.cf-flex-box__justify-space-around {
       > * {
-        margin-top: $margin / 2;
-        margin-bottom: $margin / 2;
+        margin-top: $margin * 0.5;
+        margin-bottom: $margin * 0.5;
 
         &:first-child {
           margin-top: 0;
@@ -216,8 +216,8 @@
     &.cf-flex-box__justify-space-between,
     &.cf-flex-box__justify-space-around {
       > * {
-        margin-bottom: $margin / 2;
-        margin-top: $margin / 2;
+        margin-bottom: $margin * 0.5;
+        margin-top: $margin * 0.5;
 
         &:first-child {
           margin-bottom: 0;

@@ -50,7 +50,7 @@ $slider-hover: $g17-whisper;
     width: $slider-handle-height;
     border-radius: $cf-radius;
     background: $slider-handle;
-    margin-top: -(($slider-handle-height/2) - ($slider-track-height/2));
+    margin-top: -(($slider-handle-height*0.5) - ($slider-track-height*0.5));
 
     &:hover,
     &:focus {
@@ -229,7 +229,7 @@ $slider-hover: $g17-whisper;
       height: $slider-handle-mod-height;
       width: $slider-handle-mod-height;
       border-radius: 50%;
-      margin-top: -(($slider-handle-mod-height/2) - ($trackHeight/2));
+      margin-top: -(($slider-handle-mod-height*0.5) - ($trackHeight*0.5));
     }
 
     &::-moz-range-track {

@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @import '../../Styles/variables';
 
 /*
@@ -28,8 +30,8 @@ $grid--col-12: 100%;
 .cf-grid--row {
   display: inline-block;
   width: calc(100% + var(--space-s-l));
-  margin-left: calc(var(--space-s-l) / -2);
-  margin-right: calc(var(--space-s-l) / -2);
+  margin-left: calc(var(--space-s-l) * -0.5);
+  margin-right: calc(var(--space-s-l) * -0.5);
 
   &:before,
   &:after {
@@ -42,8 +44,8 @@ $grid--col-12: 100%;
   position: relative;
   float: left;
   min-height: 1px;
-  padding-left: calc(var(--space-s-l) / 2);
-  padding-right: calc(var(--space-s-l) / 2);
+  padding-left: calc(var(--space-s-l) * 0.5);
+  padding-right: calc(var(--space-s-l) * 0.5);
 }
 
 //  Extra Small Screen Grid
