@@ -1,5 +1,8 @@
 # Changelog
 
+### 3.1.8 (2021-12-02)
+- [707](https://github.com/influxdata/clockface/pull/707): Fixed sass / dart warning about division
+
 ### 3.1.7 (2021-11-17)
 
 - [705](https://github.com/influxdata/clockface/pull/705): Upgraded to react 17.0.2.
