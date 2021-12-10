@@ -1,6 +1,6 @@
 # Changelog
 
-### 3.1.9 (2021-12-08)
+### 3.1.10 (2021-12-08)
 - [709](https://github.com/influxdata/clockface/pull/709): Dependency upgrades
 
 ### 3.1.9 (2021-12-08)
