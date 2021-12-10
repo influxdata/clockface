@@ -1,6 +1,9 @@
 # Changelog
 
 ### 3.1.9 (2021-12-08)
+- [709](https://github.com/influxdata/clockface/pull/709): Dependency upgrades
+
+### 3.1.9 (2021-12-08)
 - [708](https://github.com/influxdata/clockface/pull/708): Force version 9.0.6+ of immer
 
 ### 3.1.8 (2021-12-02)
