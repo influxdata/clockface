@@ -158,7 +158,7 @@ export const ResourceCardEditableName = forwardRef<
             onClick={handleClick}
             data-testid={testID}
           >
-            <span>{name || noNameString}</span>
+            {name || noNameString}
           </span>
         </SpinnerContainer>
         <div
