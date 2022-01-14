@@ -160,19 +160,24 @@ export const ListRoot = forwardRef<ListRef, ListProps>(
 
 ListRoot.displayName = 'List'
 
+const EXTRASMALL_LIST_ITEM_HEIGHT = 28
+const SMALL_LIST_ITEM_HEIGHT = 36
+const MEDIUM_LIST_ITEM_HEIGHT = 48
+const LARGE_LIST_ITEM_HEIGHT = 56
+
+const LIST_ITEM_HEIGHTS_MAP = {
+  xs: EXTRASMALL_LIST_ITEM_HEIGHT,
+  sm: SMALL_LIST_ITEM_HEIGHT,
+  md: MEDIUM_LIST_ITEM_HEIGHT,
+  lg: LARGE_LIST_ITEM_HEIGHT,
+}
+
 const calculateSelectedPosition = (
   scrollToSelected: boolean,
   children: ReactNode
 ): number => {
   if (!children || !scrollToSelected) {
     return 0
-  }
-
-  const heights = {
-    xs: 28,
-    sm: 36,
-    md: 48,
-    lg: 56,
   }
 
   const items = React.Children.map(children, child =>
@@ -188,10 +193,12 @@ const calculateSelectedPosition = (
   }
 
   const itemIndex = items.findIndex(item => item === true)
-
   const DEFAULT_ITEM_HEIGHT = 28
+
   const itemHeight =
-    itemIndex >= 0 ? heights[sizes[itemIndex]] : DEFAULT_ITEM_HEIGHT
+    itemIndex >= 0
+      ? LIST_ITEM_HEIGHTS_MAP[sizes[itemIndex]]
+      : DEFAULT_ITEM_HEIGHT
 
   return itemHeight * itemIndex
 }
