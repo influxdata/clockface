@@ -168,16 +168,30 @@ const calculateSelectedPosition = (
     return 0
   }
 
-  const itemHeight = 24
+  const heights = {
+    xs: 28,
+    sm: 36,
+    md: 48,
+    lg: 56,
+  }
+
   const items = React.Children.map(children, child =>
     _.get(child, 'props.selected', false)
   )
+
+  const sizes = React.Children.map(children, child =>
+    _.get(child, 'props.size', 'xs')
+  ) as string[]
 
   if (!items) {
     return 0
   }
 
   const itemIndex = items.findIndex(item => item === true)
+
+  const DEFAULT_ITEM_HEIGHT = 28
+  const itemHeight =
+    itemIndex >= 0 ? heights[sizes[itemIndex]] : DEFAULT_ITEM_HEIGHT
 
   return itemHeight * itemIndex
 }
