@@ -96,9 +96,14 @@ export const DapperScrollbars: FunctionComponent<DapperScrollbarsProps> = ({
   const [scrollLeftPos, setScrollLeftPos] = useState<number>(Number(scrollLeft))
 
   useEffect(() => {
-    setScrollTopPos(Number(scrollTop))
+    if (scrollTop >= 0) {
+      setScrollTopPos(Number(scrollTop))
+    }
+  }, [scrollTop])
+
+  useEffect(() => {
     setScrollLeftPos(Number(scrollLeft))
-  }, [scrollTop, scrollLeft])
+  }, [scrollLeft])
 
   const dapperScrollbarsClass = classnames('cf-dapper-scrollbars', {
     'cf-dapper-scrollbars--autohide': autoHide,
