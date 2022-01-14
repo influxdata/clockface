@@ -1,12 +1,23 @@
 # Changelog
 
+### 3.1.12 (2021-01-14)
+
+- [717](https://github.com/influxdata/clockface/pull/717): Fix scrollTo positioning issue in List
+
+### 3.1.11 (2022-01-14)
+
+- [716](https://github.com/influxdata/clockface/pull/716): Fix list uncheck flickering issue
+
 ### 3.1.10 (2021-12-08)
+
 - [709](https://github.com/influxdata/clockface/pull/709): Dependency upgrades
 
 ### 3.1.9 (2021-12-08)
+
 - [708](https://github.com/influxdata/clockface/pull/708): Force version 9.0.6+ of immer
 
 ### 3.1.8 (2021-12-02)
+
 - [707](https://github.com/influxdata/clockface/pull/707): Fixed sass / dart warning about division
 
 ### 3.1.7 (2021-11-17)
