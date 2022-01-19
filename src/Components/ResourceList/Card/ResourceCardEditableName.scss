@@ -19,8 +19,8 @@
   position: relative;
   display: flex;
   flex-wrap: nowrap;
-  align-items: center;
-  max-width: calc(100% - 100px);
+  justify-content: flex-start;
+  max-width: calc(100% - 130px);
 }
 
 /* Ensure placeholder text matches font weight of title */

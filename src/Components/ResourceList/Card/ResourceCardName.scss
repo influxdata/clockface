@@ -13,10 +13,12 @@
 }
 
 .cf-resource-name--text {
+  display: flex;
+  align-items: center;
+
   font-size: $cf-card--name-font-size;
   font-weight: $cf-card--name-font-weight;
   font-family: $cf-text-font;
-  display: inline-block;
   color: $g17-whisper;
   user-select: none;
 }
