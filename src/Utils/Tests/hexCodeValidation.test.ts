@@ -4,7 +4,7 @@ describe('the validateHexCode function', () => {
   it('returns null when valid', () => {
     expect(validateHexCode('#DEAD0D')).toBeNull()
     expect(validateHexCode('#1337AD')).toBeNull()
-    expect(validateHexCode('#BG62CF')).toBeNull()
+    expect(validateHexCode('#BA62CF')).toBeNull()
   })
 
   it('does not allow empty strings', () => {

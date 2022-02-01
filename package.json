@@ -1,6 +1,6 @@
 {
   "name": "@influxdata/clockface",
-  "version": "3.1.13",
+  "version": "3.1.15",
   "license": "MIT",
   "main": "dist/index.js",
   "style": "dist/index.css",
@@ -55,7 +55,7 @@
     "jest": "^24.9.0",
     "lodash": "^4.17.21",
     "markdown-loader": "^5.0.0",
-    "marked": "^4.0.10",
+    "marked": "^0.7.0",
     "moment": "2.19.3",
     "prettier": "^1.19.1",
     "pretty-quick": "^3.1.0",
