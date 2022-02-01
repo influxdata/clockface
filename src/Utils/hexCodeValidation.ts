@@ -5,6 +5,8 @@ export const VALID_HEX_LENGTH = 7
 export const validateHexCode: ValidationFunction = (
   color: string
 ): string | null => {
+  console.log('color')
+
   // Cannot be blank
   if (!color || !color.length) {
     return 'Please enter a hexcode'
@@ -28,13 +30,19 @@ export const validateHexCode: ValidationFunction = (
   }
 
   // Cannot contain invalid characters
-  const invalidChars = color.replace(/[abcdefgABCDEFG#0123456789]/g, '')
+  const invalidChars = color.replace(/[abcdefABCDEF#0123456789]/g, '')
   if (invalidChars.length) {
     return 'Invalid hexcode'
+  }
+
+  // Can not have more than one # symbol
+  const numberOfHashes = (color.match(/#/g) || []).length
+  if (numberOfHashes > 1) {
+    return 'Can not contain more than one #'
   }
 
   // Valid hexcode exists
   return null
 }
 
-export const invalidHexCharacters = /[^abcdefgABCDEFG#0123456789]/g
+export const invalidHexCharacters = /[^abcdefABCDEF#0123456789]/g
