@@ -5,7 +5,6 @@ export const VALID_HEX_LENGTH = 7
 export const validateHexCode: ValidationFunction = (
   color: string
 ): string | null => {
-
   // Cannot be blank
   if (!color || !color.length) {
     return 'Please enter a hexcode'
