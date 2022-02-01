@@ -1,6 +1,6 @@
 # Changelog
 
-### 3.1.15 (TBD)
+### 3.1.15 (2021-02-01)
 - [722](https://github.com/influxdata/clockface/pull/722): Revert update to marked dependency that broke storybooks
 
 ### 3.1.14 (2021-02-01)
