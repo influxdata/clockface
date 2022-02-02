@@ -35,6 +35,11 @@ import {
 
 import {TypeAheadDropDown, SelectableItem} from '../Composed/TypeAheadDropDown'
 
+import {
+  CreatableTypeAheadDropdown,
+  CreatableTypeAheadDropdownReadmeRef,
+} from '../Composed/CreatableTypeAheadDropdown'
+
 // Types
 import {
   ComponentColor,
@@ -55,6 +60,7 @@ import DropdownLinkItemReadme from './DropdownLinkItem.md'
 import DropdownMenuReadme from './DropdownMenu.md'
 import SelectDropdownReadme from './SelectDropdown.md'
 import TypeAheadDropdownReadme from './TypeAheadDropdown.md'
+import CreatableTypeAheadDropdownReadme from './CreatableTypeAheadDropdown.md'
 import MultiSelectDropdownReadme from './MultiSelectDropdown.md'
 import {useState} from '@storybook/addons'
 
@@ -651,6 +657,31 @@ dropdownComposedStories.add(
   {
     readme: {
       content: marked(TypeAheadDropdownReadme),
+    },
+  }
+)
+
+dropdownComposedStories.add(
+  'CreatableTypeAheadDropdown',
+  () => {
+    const creatableTypeAheadDropdownReadmeRef: RefObject<CreatableTypeAheadDropdownReadmeRef> = createRef()
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(creatableTypeAheadDropdownReadmeRef.current)
+      /* eslint-enable */
+    }
+    return (
+      <div className="story--example">
+        <CreatableTypeAheadDropdown />
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(CreatableTypeAheadDropdownReadme),
     },
   }
 )
