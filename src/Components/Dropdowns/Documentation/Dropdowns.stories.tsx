@@ -664,6 +664,14 @@ dropdownComposedStories.add(
 dropdownComposedStories.add(
   'CreatableTypeAheadDropdown',
   () => {
+    const defaultOptions = [
+      'Celery',
+      'Carrot',
+      'Potato',
+      'Onion',
+      'Tomato',
+      'Spinach',
+    ]
     const creatableTypeAheadDropdownReadmeRef: RefObject<CreatableTypeAheadDropdownReadmeRef> = createRef()
     const logRef = (): void => {
       /* eslint-disable */
@@ -672,7 +680,12 @@ dropdownComposedStories.add(
     }
     return (
       <div className="story--example">
-        <CreatableTypeAheadDropdown />
+        <CreatableTypeAheadDropdown
+          options={defaultOptions}
+          selectedOption="Celery"
+          onSelect={opt => console.log(opt)}
+          type="color"
+        />
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
         </div>
