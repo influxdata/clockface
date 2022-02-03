@@ -683,6 +683,8 @@ dropdownComposedStories.add(
     return (
       <div className="story--example">
         <CreatableTypeAheadDropdown
+          ref={creatableTypeAheadDropdownReadmeRef}
+          style={object('style', defaultDropdownStyle)}
           options={array('options', defaultDropdownOptions)}
           selectedOption={selected}
           onSelect={changeSelected}
@@ -706,6 +708,12 @@ dropdownComposedStories.add(
               )
             ]
           }
+          menuTheme={
+            DropdownMenuTheme[
+              select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Onyx')
+            ]
+          }
+          menuMaxHeight={number('menuMaxHeight', 250)}
         />
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>

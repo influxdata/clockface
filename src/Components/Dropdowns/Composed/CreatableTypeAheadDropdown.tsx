@@ -32,6 +32,8 @@ export interface CreatableTypeAheadDropdownProps extends StandardFunctionProps {
   inputIcon?: IconFont
   /** Optional theme of menu */
   menuTheme?: DropdownMenuTheme
+  /** Optional maximum pixel height menu */
+  menuMaxHeight?: number
   /** TODO: input type and dropdown type */
   /** enum
 "text" | "color" */
@@ -46,6 +48,10 @@ export const CreatableTypeAheadDropdown = forwardRef<
 >(
   (
     {
+      id,
+      style = {width: '100%'},
+      testID = 'creatable-type-ahead-dropdown',
+      className,
       selectedOption,
       options,
       onSelect,
@@ -54,6 +60,7 @@ export const CreatableTypeAheadDropdown = forwardRef<
       inputIcon,
       placeholder = 'Select...',
       menuTheme = DropdownMenuTheme.Onyx,
+      menuMaxHeight,
     },
     ref
   ) => {
@@ -108,7 +115,11 @@ export const CreatableTypeAheadDropdown = forwardRef<
     )
 
     const menu = (onCollapse: () => void) => (
-      <Dropdown.Menu onCollapse={onCollapse} theme={menuTheme}>
+      <Dropdown.Menu
+        onCollapse={onCollapse}
+        theme={menuTheme}
+        maxHeight={menuMaxHeight}
+      >
         {options.map(option => (
           <Dropdown.Item
             key={option}
@@ -123,7 +134,17 @@ export const CreatableTypeAheadDropdown = forwardRef<
       </Dropdown.Menu>
     )
 
-    return <Dropdown.Dropdown ref={ref} button={button} menu={menu} />
+    return (
+      <Dropdown.Dropdown
+        id={id}
+        ref={ref}
+        style={style}
+        testID={testID}
+        className={className}
+        button={button}
+        menu={menu}
+      />
+    )
   }
 )
 CreatableTypeAheadDropdown.displayName = 'CreatableTypeAheadDropdown'
