@@ -1,5 +1,5 @@
 // Libraries
-import React, {forwardRef} from 'react'
+import React, {ChangeEvent, forwardRef, MouseEvent, useState} from 'react'
 
 // Components
 import {Dropdown, DropdownRef} from '../'
@@ -7,7 +7,7 @@ import {DropdownHeader} from '../DropdownHeader'
 import {Input} from '../../Inputs/Input'
 
 // Types
-import {StandardFunctionProps} from '../../../Types'
+import {DropdownMenuTheme, StandardFunctionProps} from '../../../Types'
 
 export interface CreatableTypeAheadDropdownProps extends StandardFunctionProps {
   /** Text to render in button as currently selected option */
@@ -16,6 +16,10 @@ export interface CreatableTypeAheadDropdownProps extends StandardFunctionProps {
   options: string[]
   /** Fires when an option is clicked, used to update state */
   onSelect: (option: string) => void
+  /** Placeholder text when no value is present */
+  placeholder?: string
+  /** Optional theme of menu */
+  menuTheme?: DropdownMenuTheme
   /** TODO: input type and dropdown type */
   /** enum
 "text" | "color" */
@@ -27,26 +31,62 @@ export type CreatableTypeAheadDropdownReadmeRef = DropdownRef
 export const CreatableTypeAheadDropdown = forwardRef<
   CreatableTypeAheadDropdownReadmeRef,
   CreatableTypeAheadDropdownProps
->(({options, children}, ref) => {
-  const inputComponent = <Input />
+>(
+  (
+    {
+      selectedOption,
+      options,
+      onSelect,
+      placeholder = 'Select...',
+      menuTheme = DropdownMenuTheme.Onyx,
+    },
+    ref
+  ) => {
+    const [typedValue, setTypedValue] = useState<string>('')
 
-  return (
-    <Dropdown
-      button={(active, onClick) => (
-        <DropdownHeader active={active} onClick={onClick} testID="test TODO">
-          {inputComponent}
-        </DropdownHeader>
-      )}
-      menu={onCollapse => (
-        <Dropdown.Menu onCollapse={onCollapse}>
-          {options.map(option => (
-            <Dropdown.Item key={option}>
-              {!!children ? children : option}
-            </Dropdown.Item>
-          ))}
-        </Dropdown.Menu>
-      )}
-    />
-  )
-})
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+      const value = event?.target?.value
+      setTypedValue(value)
+    }
+
+    const handleClear = () => {
+      setTypedValue('')
+    }
+
+    const handleFocus = (event?: ChangeEvent<HTMLInputElement>) => {
+      if (event) {
+        event.target.select()
+      }
+    }
+
+    const inputComponent = (
+      <Input
+        placeholder={placeholder}
+        onChange={handleChange}
+        value={typedValue}
+        onClear={handleClear}
+        onFocus={handleFocus}
+      />
+    )
+
+    const button = (
+      active: boolean,
+      onClick: (e: MouseEvent<HTMLElement>) => void
+    ) => (
+      <DropdownHeader active={active} onClick={onClick} testID="test TODO">
+        {inputComponent}
+      </DropdownHeader>
+    )
+
+    const menu = (onCollapse: () => void) => (
+      <Dropdown.Menu onCollapse={onCollapse} theme={menuTheme}>
+        {options.map(option => (
+          <Dropdown.Item key={option}>{option}</Dropdown.Item>
+        ))}
+      </Dropdown.Menu>
+    )
+
+    return <Dropdown button={button} menu={menu} />
+  }
+)
 CreatableTypeAheadDropdown.displayName = 'CreatableTypeAheadDropdown'
