@@ -23,7 +23,7 @@ export interface CreatableTypeAheadDropdownProps extends StandardFunctionProps {
   /** TODO: input type and dropdown type */
   /** enum
 "text" | "color" */
-  type: string
+  type?: string
 }
 
 export type CreatableTypeAheadDropdownReadmeRef = DropdownRef
