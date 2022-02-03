@@ -42,7 +42,7 @@ export const CreatableTypeAheadDropdown = forwardRef<
     },
     ref
   ) => {
-    const [typedValue, setTypedValue] = useState<string>('')
+    const [typedValue, setTypedValue] = useState<string>(selectedOption)
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
       const value = event?.target?.value
@@ -51,12 +51,18 @@ export const CreatableTypeAheadDropdown = forwardRef<
 
     const handleClear = () => {
       setTypedValue('')
+      onSelect('')
     }
 
     const handleFocus = (event?: ChangeEvent<HTMLInputElement>) => {
       if (event) {
         event.target.select()
       }
+    }
+
+    const handleClick = (option: string) => {
+      onSelect(option)
+      setTypedValue(option)
     }
 
     const inputComponent = (
@@ -81,12 +87,20 @@ export const CreatableTypeAheadDropdown = forwardRef<
     const menu = (onCollapse: () => void) => (
       <Dropdown.Menu onCollapse={onCollapse} theme={menuTheme}>
         {options.map(option => (
-          <Dropdown.Item key={option}>{option}</Dropdown.Item>
+          <Dropdown.Item
+            key={option}
+            value={option}
+            title={option}
+            selected={option === selectedOption}
+            onClick={handleClick}
+          >
+            {option}
+          </Dropdown.Item>
         ))}
       </Dropdown.Menu>
     )
 
-    return <Dropdown button={button} menu={menu} />
+    return <Dropdown.Dropdown ref={ref} button={button} menu={menu} />
   }
 )
 CreatableTypeAheadDropdown.displayName = 'CreatableTypeAheadDropdown'
