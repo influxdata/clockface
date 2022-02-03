@@ -686,6 +686,7 @@ dropdownComposedStories.add(
           options={array('options', defaultDropdownOptions)}
           selectedOption={selected}
           onSelect={changeSelected}
+          placeholder={text('placeholder', 'Placeholder Text')}
           inputStatus={
             ComponentStatus[
               select('inputStatus', mapEnumKeys(ComponentStatus), 'Default')

@@ -22,14 +22,14 @@ export interface CreatableTypeAheadDropdownProps extends StandardFunctionProps {
   options: string[]
   /** Fires when an option is clicked, used to update state */
   onSelect: (option: string) => void
+  /** Optional placeholder text when no option is selected */
+  placeholder?: string
   /** Optional status of input */
   inputStatus?: ComponentStatus
   /** Optional size of input */
   inputSize?: ComponentSize
   /** Optional icon to render in input */
   inputIcon?: IconFont
-  /** Placeholder text when no value is present */
-  placeholder?: string
   /** Optional theme of menu */
   menuTheme?: DropdownMenuTheme
   /** TODO: input type and dropdown type */
