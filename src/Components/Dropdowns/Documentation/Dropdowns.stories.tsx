@@ -664,7 +664,7 @@ dropdownComposedStories.add(
 dropdownComposedStories.add(
   'CreatableTypeAheadDropdown',
   () => {
-    const defaultOptions = [
+    const defaultDropdownOptions = [
       'Celery',
       'Carrot',
       'Potato',
@@ -683,9 +683,28 @@ dropdownComposedStories.add(
     return (
       <div className="story--example">
         <CreatableTypeAheadDropdown
-          options={array('options', defaultOptions)}
+          options={array('options', defaultDropdownOptions)}
           selectedOption={selected}
           onSelect={changeSelected}
+          inputStatus={
+            ComponentStatus[
+              select('inputStatus', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
+          inputSize={
+            ComponentSize[
+              select('inputSize', mapEnumKeys(ComponentSize), 'Small')
+            ]
+          }
+          inputIcon={
+            IconFont[
+              select(
+                'inputIcon',
+                {None: 'none', ...mapEnumKeys(IconFont)},
+                'None'
+              )
+            ]
+          }
         />
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>

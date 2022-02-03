@@ -7,7 +7,13 @@ import {DropdownHeader} from '../DropdownHeader'
 import {Input} from '../../Inputs/Input'
 
 // Types
-import {DropdownMenuTheme, StandardFunctionProps} from '../../../Types'
+import {
+  ComponentSize,
+  ComponentStatus,
+  DropdownMenuTheme,
+  IconFont,
+  StandardFunctionProps,
+} from '../../../Types'
 
 export interface CreatableTypeAheadDropdownProps extends StandardFunctionProps {
   /** Text to render in button as currently selected option */
@@ -16,6 +22,12 @@ export interface CreatableTypeAheadDropdownProps extends StandardFunctionProps {
   options: string[]
   /** Fires when an option is clicked, used to update state */
   onSelect: (option: string) => void
+  /** Optional status of input */
+  inputStatus?: ComponentStatus
+  /** Optional size of input */
+  inputSize?: ComponentSize
+  /** Optional icon to render in input */
+  inputIcon?: IconFont
   /** Placeholder text when no value is present */
   placeholder?: string
   /** Optional theme of menu */
@@ -37,6 +49,9 @@ export const CreatableTypeAheadDropdown = forwardRef<
       selectedOption,
       options,
       onSelect,
+      inputStatus = ComponentStatus.Default,
+      inputSize = ComponentSize.Small,
+      inputIcon,
       placeholder = 'Select...',
       menuTheme = DropdownMenuTheme.Onyx,
     },
@@ -72,6 +87,9 @@ export const CreatableTypeAheadDropdown = forwardRef<
         value={typedValue}
         onClear={handleClear}
         onFocus={handleFocus}
+        status={inputStatus}
+        size={inputSize}
+        icon={inputIcon}
       />
     )
 
@@ -79,7 +97,12 @@ export const CreatableTypeAheadDropdown = forwardRef<
       active: boolean,
       onClick: (e: MouseEvent<HTMLElement>) => void
     ) => (
-      <DropdownHeader active={active} onClick={onClick} testID="test TODO">
+      <DropdownHeader
+        active={active}
+        onClick={onClick}
+        testID="test TODO"
+        size={inputSize}
+      >
         {inputComponent}
       </DropdownHeader>
     )
