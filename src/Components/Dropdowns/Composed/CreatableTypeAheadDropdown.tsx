@@ -34,9 +34,10 @@ export interface CreatableTypeAheadDropdownProps extends StandardFunctionProps {
   menuTheme?: DropdownMenuTheme
   /** Optional maximum pixel height menu */
   menuMaxHeight?: number
+  /** Optional customized dropdown item */
+  customizedDropdownItem?: (displayText: string) => JSX.Element
   /** TODO: input type and dropdown type */
-  /** enum
-"text" | "color" */
+  /** enum "text" | "color" */
   type?: string
 }
 
@@ -61,6 +62,7 @@ export const CreatableTypeAheadDropdown = forwardRef<
       placeholder = 'Select...',
       menuTheme = DropdownMenuTheme.Onyx,
       menuMaxHeight,
+      customizedDropdownItem,
     },
     ref
   ) => {
@@ -128,7 +130,7 @@ export const CreatableTypeAheadDropdown = forwardRef<
             selected={option === selectedOption}
             onClick={handleClick}
           >
-            {option}
+            {!!customizedDropdownItem ? customizedDropdownItem(option) : option}
           </Dropdown.Item>
         ))}
       </Dropdown.Menu>
