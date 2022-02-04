@@ -165,7 +165,7 @@ export const ColorPicker = forwardRef<ColorPickerSwatchRef, ColorPickerProps>(
 
 ColorPicker.displayName = 'ColorPicker'
 
-const ColorPreview: FunctionComponent<{color: string}> = ({color}) => {
+export const ColorPreview: FunctionComponent<{color: string}> = ({color}) => {
   return (
     <div
       className="cf-color-picker--selected"
