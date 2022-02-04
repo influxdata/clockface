@@ -78,9 +78,8 @@ export const CreatableTypeAheadDropdown = forwardRef<
     const [menuOpen, setMenuOpen] = useState<MenuStatus>(MenuStatus.Closed)
 
     useEffect(() => {
-      setTypedValue(selectedOption)
       setShownOptions(options)
-    }, [selectedOption, options])
+    }, [options])
 
     /**
      *  Filter the options array based on the styped string
@@ -128,7 +127,15 @@ export const CreatableTypeAheadDropdown = forwardRef<
 
     const handleFocus = (event?: ChangeEvent<HTMLInputElement>) => {
       if (event) {
+        // Select the string in the input field
         event.target.select()
+      }
+    }
+
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === 'Enter') {
+        onSelect(typedValue)
+        setMenuOpen(MenuStatus.Closed)
       }
     }
 
@@ -139,6 +146,7 @@ export const CreatableTypeAheadDropdown = forwardRef<
         value={typedValue}
         onClear={handleClear}
         onFocus={handleFocus}
+        onKeyDown={handleKeyDown}
         status={inputStatus}
         size={inputSize}
         icon={inputIcon}
@@ -159,6 +167,11 @@ export const CreatableTypeAheadDropdown = forwardRef<
       </DropdownHeader>
     )
 
+    const handleSelect = (option: string) => {
+      setTypedValue(option)
+      onSelect(option)
+    }
+
     const menu = (onCollapse: () => void) => (
       <Dropdown.Menu
         onCollapse={onCollapse}
@@ -171,7 +184,7 @@ export const CreatableTypeAheadDropdown = forwardRef<
             value={option}
             title={option}
             selected={option === typedValue}
-            onClick={onSelect}
+            onClick={handleSelect}
           >
             {!!customizedDropdownItem ? customizedDropdownItem(option) : option}
           </Dropdown.Item>
