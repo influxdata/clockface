@@ -32,6 +32,7 @@ import {
   MultiSelectDropdown,
   MultiSelectDropdownRef,
 } from '../Composed/MultiSelectDropdown'
+import {ColorPreview} from '../../ColorPicker/ColorPicker'
 
 import {TypeAheadDropDown, SelectableItem} from '../Composed/TypeAheadDropDown'
 
@@ -63,6 +64,7 @@ import TypeAheadDropdownReadme from './TypeAheadDropdown.md'
 import CreatableTypeAheadDropdownReadme from './CreatableTypeAheadDropdown.md'
 import MultiSelectDropdownReadme from './MultiSelectDropdown.md'
 import {useState} from '@storybook/addons'
+import {FlexBox} from '../../FlexBox'
 
 const dropdownFamilyStories = storiesOf(
   'Components/Dropdowns/Family',
@@ -714,6 +716,12 @@ dropdownComposedStories.add(
             ]
           }
           menuMaxHeight={number('menuMaxHeight', 250)}
+          customizedDropdownItem={displayText => (
+            <FlexBox>
+              <ColorPreview color={displayText} />
+              <div style={{paddingLeft: '26px'}}>{displayText}</div>
+            </FlexBox>
+          )}
         />
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
