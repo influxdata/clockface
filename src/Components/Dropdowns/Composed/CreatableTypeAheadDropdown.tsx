@@ -84,21 +84,27 @@ export const CreatableTypeAheadDropdown = forwardRef<
 
     /**
      *  Filter the options array based on the styped string
-     *  If the typed string is empty, then there is nothing to filter; so return everything
      */
     const doFilter = (typedString: string) => {
+      // If the typed string is empty, then there is nothing to filter;
+      // so return everything and keep the menu open
       if (!typedString) {
         setShownOptions(options)
-      } else {
-        const result = options?.filter(option => {
-          return option
-            .toLocaleLowerCase()
-            .includes(typedString.toLocaleLowerCase())
-        })
-        console.log(result)
-        setShownOptions(result)
+        setMenuOpen(MenuStatus.Open)
+        return
       }
-      setMenuOpen(MenuStatus.Open)
+
+      const result = options?.filter(option => {
+        return option
+          .toLocaleLowerCase()
+          .includes(typedString.toLocaleLowerCase())
+      })
+      setShownOptions(result)
+      if (result.length > 0) {
+        setMenuOpen(MenuStatus.Open)
+      } else {
+        setMenuOpen(MenuStatus.Closed)
+      }
     }
 
     /**
@@ -118,17 +124,12 @@ export const CreatableTypeAheadDropdown = forwardRef<
       onSelect('')
       setShownOptions(options)
       setMenuOpen(MenuStatus.Open)
-      handleFocus()
     }
 
     const handleFocus = (event?: ChangeEvent<HTMLInputElement>) => {
       if (event) {
         event.target.select()
       }
-    }
-
-    const handleClick = (option: string) => {
-      onSelect(option)
     }
 
     const inputComponent = (
@@ -170,7 +171,7 @@ export const CreatableTypeAheadDropdown = forwardRef<
             value={option}
             title={option}
             selected={option === typedValue}
-            onClick={handleClick}
+            onClick={onSelect}
           >
             {!!customizedDropdownItem ? customizedDropdownItem(option) : option}
           </Dropdown.Item>
