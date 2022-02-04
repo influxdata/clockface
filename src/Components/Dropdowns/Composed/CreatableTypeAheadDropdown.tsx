@@ -1,5 +1,11 @@
 // Libraries
-import React, {ChangeEvent, forwardRef, MouseEvent, useState} from 'react'
+import React, {
+  ChangeEvent,
+  forwardRef,
+  MouseEvent,
+  useState,
+  useEffect,
+} from 'react'
 
 // Components
 import {Dropdown, DropdownRef} from '../'
@@ -14,6 +20,7 @@ import {
   IconFont,
   StandardFunctionProps,
 } from '../../../Types'
+import {MenuStatus} from '../Dropdown'
 
 export interface CreatableTypeAheadDropdownProps extends StandardFunctionProps {
   /** Text to render in button as currently selected option */
@@ -67,15 +74,51 @@ export const CreatableTypeAheadDropdown = forwardRef<
     ref
   ) => {
     const [typedValue, setTypedValue] = useState<string>(selectedOption)
+    const [shownOptions, setShownOptions] = useState<string[]>(options)
+    const [menuOpen, setMenuOpen] = useState<MenuStatus>(MenuStatus.Closed)
 
+    useEffect(() => {
+      setTypedValue(selectedOption)
+      setShownOptions(options)
+    }, [selectedOption, options])
+
+    /**
+     *  Filter the options array based on the styped string
+     *  If the typed string is empty, then there is nothing to filter; so return everything
+     */
+    const doFilter = (typedString: string) => {
+      if (!typedString) {
+        setShownOptions(options)
+      } else {
+        const result = options?.filter(option => {
+          return option
+            .toLocaleLowerCase()
+            .includes(typedString.toLocaleLowerCase())
+        })
+        console.log(result)
+        setShownOptions(result)
+      }
+      setMenuOpen(MenuStatus.Open)
+    }
+
+    /**
+     * Handle when there is a change in typed string
+     */
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
       const value = event?.target?.value
       setTypedValue(value)
+      doFilter(value)
     }
 
+    /**
+     * Handle when a 'X' is clicked
+     */
     const handleClear = () => {
       setTypedValue('')
       onSelect('')
+      setShownOptions(options)
+      setMenuOpen(MenuStatus.Open)
+      handleFocus()
     }
 
     const handleFocus = (event?: ChangeEvent<HTMLInputElement>) => {
@@ -86,7 +129,6 @@ export const CreatableTypeAheadDropdown = forwardRef<
 
     const handleClick = (option: string) => {
       onSelect(option)
-      setTypedValue(option)
     }
 
     const inputComponent = (
@@ -122,12 +164,12 @@ export const CreatableTypeAheadDropdown = forwardRef<
         theme={menuTheme}
         maxHeight={menuMaxHeight}
       >
-        {options.map(option => (
+        {shownOptions.map(option => (
           <Dropdown.Item
             key={option}
             value={option}
             title={option}
-            selected={option === selectedOption}
+            selected={option === typedValue}
             onClick={handleClick}
           >
             {!!customizedDropdownItem ? customizedDropdownItem(option) : option}
@@ -143,6 +185,8 @@ export const CreatableTypeAheadDropdown = forwardRef<
         style={style}
         testID={testID}
         className={className}
+        menuOpen={menuOpen}
+        disableAutoFocus={true}
         button={button}
         menu={menu}
       />
