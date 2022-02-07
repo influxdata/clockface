@@ -9,7 +9,6 @@ import {StandardFunctionProps} from '../../Types'
 import './ColorPreview.scss'
 
 interface ColorPreviewProps extends StandardFunctionProps {
-  /** Hex color in #000000 format */
   color: string
 }
 
