@@ -108,6 +108,10 @@ $slider-hover: $g17-whisper;
   }
 }
 
+.cf-range-slider--container {
+  display: flex
+}
+
 .cf-range-slider__vertical {
   height: 50px;
   transform: rotate(270deg);
@@ -174,6 +178,10 @@ $slider-hover: $g17-whisper;
   transition: border-color $cf-transition-default,
     box-shadow $cf-transition-default;
   pointer-events: none;
+}
+
+.cf-range-multi-slider--range {
+  background: $slider-bg;
 }
 
 .cf-input:hover + .cf-range-slider--focus {

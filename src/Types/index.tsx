@@ -154,6 +154,11 @@ export interface DropdownMenuScrollbarColors {
   thumbStopColor: InfluxColors
 }
 
+export enum RangeSliderType {
+  Single = 'single',
+  Multi = 'multi',
+}
+
 export enum DropdownItemType {
   Dot = 'dot',
   Checkbox = 'checkbox',

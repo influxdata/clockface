@@ -55,6 +55,7 @@ import {
   AutoInputMode,
   InputToggleType,
   Appearance,
+  RangeSliderType,
 } from '../../../Types'
 
 // Notes
@@ -909,10 +910,22 @@ inputsComposedStories.add(
   'Range Slider',
   () => {
     const [rangeSliderValue, setRangeSliderValue] = useState<number>(50)
+    const [rangeSliderUpperValue, setRangeSliderUpperValue] = useState<number>(50)
+    const [rangeSliderLowerValue, setRangeSliderLowerValue] = useState<number>(0)
     const rangeSliderRef: RefObject<RangeSliderRef> = createRef()
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
       setRangeSliderValue(parseInt(e.target.value))
+    }
+
+    const handleUpperInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
+      const value = Math.max(parseInt(e.target.value), rangeSliderLowerValue + 1)
+      setRangeSliderUpperValue(value)
+    }
+
+    const handleLowerInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
+      const value = Math.min(parseInt(e.target.value), rangeSliderUpperValue - 1)
+      setRangeSliderLowerValue(value)
     }
 
     const handleLogRef = (): void => {
@@ -930,8 +943,12 @@ inputsComposedStories.add(
           min={number('min', 0)}
           max={number('max', 100)}
           value={rangeSliderValue}
+          upperValue={rangeSliderUpperValue}
+          lowerValue={rangeSliderLowerValue}
           step={number('step', 0)}
           onChange={handleInputChange}
+          onUpperChange={handleUpperInputChange}
+          onLowerChange={handleLowerInputChange}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
@@ -959,7 +976,15 @@ inputsComposedStories.add(
               )
             ]
           }
-          displayValue={boolean('displayValue', false)}
+          sliderType={
+            RangeSliderType[
+              select(
+                'type',
+                mapEnumKeys(RangeSliderType),
+                'continuous'
+              )
+            ]
+          }
         />
         <div className="story--test-buttons">
           <button onClick={handleLogRef}>Log Ref</button>

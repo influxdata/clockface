@@ -61,6 +61,7 @@ export interface InputProps extends StandardFunctionProps {
   name?: string
   /** Input field value to be updated with 'on X' functions */
   value?: string | number
+  list?: string
   /** Placeholder text when no value is present */
   placeholder?: string
   /** Allows or disallows browser autocomplete functionality */
@@ -110,6 +111,7 @@ export const Input = forwardRef<InputRef, InputProps>(
       type = InputType.Text,
       style = {width: '100%'},
       value = '',
+      list,
       status = ComponentStatus.Default,
       onBlur,
       onClear,
@@ -226,6 +228,7 @@ export const Input = forwardRef<InputRef, InputProps>(
           autoComplete={autocomplete}
           name={name}
           type={correctType}
+          list={list}
           value={correctlyTypedValue}
           placeholder={placeholder}
           autoFocus={autoFocus}

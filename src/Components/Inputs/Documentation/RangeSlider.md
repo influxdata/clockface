@@ -10,6 +10,7 @@ import {RangeSlider} from '@influxdata/clockface'
 
 ```tsx
 <RangeSlider value={myStateValue} min={0} max={100} step={10} />
+
 ```
 
 ### Example
