@@ -32,7 +32,7 @@ import {
   MultiSelectDropdown,
   MultiSelectDropdownRef,
 } from '../Composed/MultiSelectDropdown'
-import {ColorPreview} from '../../ColorPicker/ColorPicker'
+import {ColorPreview} from '../../ColorPicker/ColorPreview'
 
 import {TypeAheadDropDown, SelectableItem} from '../Composed/TypeAheadDropDown'
 
@@ -674,7 +674,17 @@ dropdownComposedStories.add(
       'Tomato',
       'Spinach',
     ]
-    const [selected, changeSelected] = useState('Celery')
+    const [selected, changeSelected] = useState(defaultDropdownOptions[1])
+    const defaultColorOptions = [
+      '#DC4E58',
+      '#FFB94A',
+      '#2FA74D',
+      '#0098F0',
+      '#8E1FC3',
+    ]
+    const [selectedColor, changeSelectedColor] = useState(
+      defaultColorOptions[1]
+    )
 
     const creatableTypeAheadDropdownReadmeRef: RefObject<CreatableTypeAheadDropdownReadmeRef> = createRef()
     const logRef = (): void => {
@@ -710,6 +720,41 @@ dropdownComposedStories.add(
               )
             ]
           }
+          menuTheme={
+            DropdownMenuTheme[
+              select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Onyx')
+            ]
+          }
+          menuMaxHeight={number('menuMaxHeight', 250)}
+        />
+        <span>With customized dropdown item: </span>
+        <CreatableTypeAheadDropdown
+          ref={creatableTypeAheadDropdownReadmeRef}
+          style={object('style', defaultDropdownStyle)}
+          options={defaultColorOptions}
+          selectedOption={selectedColor}
+          onSelect={changeSelectedColor}
+          placeholder={text('placeholder', 'Placeholder Text')}
+          inputStatus={
+            ComponentStatus[
+              select('inputStatus', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
+          inputSize={
+            ComponentSize[
+              select('inputSize', mapEnumKeys(ComponentSize), 'Small')
+            ]
+          }
+          inputIcon={
+            IconFont[
+              select(
+                'inputIcon',
+                {None: 'none', ...mapEnumKeys(IconFont)},
+                'None'
+              )
+            ]
+          }
+          inputColorPreviewOn={true}
           menuTheme={
             DropdownMenuTheme[
               select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Onyx')
