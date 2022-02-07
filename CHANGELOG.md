@@ -1,12 +1,19 @@
 # Changelog
 
+### 3.2.0 (2022-02-07)
+
+- [724](https://github.com/influxdata/clockface/pull/724): Add a new component `CreatableTypeAheadDropdown`
+
 ### 3.1.15 (2021-02-01)
+
 - [722](https://github.com/influxdata/clockface/pull/722): Revert update to marked dependency that broke storybooks
 
 ### 3.1.14 (2021-02-01)
+
 - [721](https://github.com/influxdata/clockface/pull/721): Fix color picker's validation to only allow one #
 
 ### 3.1.13 (2021-01-19)
+
 - [715](https://github.com/influxdata/clockface/pull/715): Fix issue with pencil icon on resource cards
 
 ### 3.1.12 (2021-01-14)
