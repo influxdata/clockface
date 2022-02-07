@@ -13,9 +13,9 @@ This composed dropdown has two key props: `selectedOption` and `options` which d
 - No option selected by default, dropdown shows all options
 - An option is selected by default,
   - If `selectedOption` is in `options`, dropdown shows the selected option along with other options
-  - If `selectedOption` is not in `options`, dropdown shows all options
+  - If `selectedOption` is not in `options`, dropdown shows nothing, i.e. no dropdown
 
-The typeahead text input is clearable with an 'x' button in the right that shows up when there is content. Pressing on the 'x' will clear the text input AND set the selection of this control to null.
+The typeahead text input is clearable with an 'x' button in the right that shows up when there is content. Pressing on the 'x' will clear the text input AND set the selection of this control to empty string.
 
 ### Example
 
