@@ -7,6 +7,7 @@ import _ from 'lodash'
 import {Input} from '../Inputs/Input'
 import {Button} from '../Button/Composed/Button'
 import {ColorPickerSwatch, ColorPickerSwatchRef} from './ColorPickerSwatch'
+import {ColorPreview} from './ColorPreview'
 import {FormElementError} from '../Form/FormElementError'
 
 // Constants
@@ -164,17 +165,6 @@ export const ColorPicker = forwardRef<ColorPickerSwatchRef, ColorPickerProps>(
 )
 
 ColorPicker.displayName = 'ColorPicker'
-
-export const ColorPreview: FunctionComponent<{color: string}> = ({color}) => {
-  return (
-    <div
-      className="cf-color-picker--selected"
-      style={{backgroundColor: color}}
-    />
-  )
-}
-
-ColorPreview.displayName = 'ColorPickerPreview'
 
 const ErrorMessage: FunctionComponent<{
   testID: string
