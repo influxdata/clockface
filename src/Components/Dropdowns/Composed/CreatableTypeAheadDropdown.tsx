@@ -159,6 +159,7 @@ export const CreatableTypeAheadDropdown = forwardRef<
               : typedValue
             : ''
         }
+        testID={`${testID}--input`}
       />
     )
 
@@ -169,7 +170,7 @@ export const CreatableTypeAheadDropdown = forwardRef<
       <DropdownHeader
         active={active}
         onClick={onClick}
-        testID="test TODO"
+        testID={`${testID}--dropdown-header`}
         size={inputSize}
       >
         {inputComponent}
@@ -186,6 +187,7 @@ export const CreatableTypeAheadDropdown = forwardRef<
         onCollapse={onCollapse}
         theme={menuTheme}
         maxHeight={menuMaxHeight}
+        testID={`${testID}--menu`}
       >
         {shownOptions.map(option => (
           <Dropdown.Item
@@ -194,6 +196,7 @@ export const CreatableTypeAheadDropdown = forwardRef<
             title={option}
             selected={option === typedValue}
             onClick={handleSelect}
+            testID={`${testID}--item-${option}`}
           >
             {!!customizedDropdownItem ? customizedDropdownItem(option) : option}
           </Dropdown.Item>
