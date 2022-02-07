@@ -112,9 +112,9 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
       if (lowerValueRef.current) {
         const lowerPercent = getPercent(parseInt(lowerValueRef.current.value))
         const upperPercent = getPercent(upperValue)
-        console.log(lowerPercent, upperPercent)
+
         if (rangeRef.current) {
-          rangeRef.current.style.width = `${upperPercent - lowerPercent}`
+          rangeRef.current.style.width = `${upperPercent - lowerPercent}%`
         }
       }
     }, [lowerValue, getPercent])
@@ -123,9 +123,10 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
       if (upperValueRef.current) {
         const lowerPercent = getPercent(lowerValue)
         const upperPercent = getPercent(parseInt(upperValueRef.current.value))
+
         if (rangeRef.current) {
           rangeRef.current.style.left = `${lowerPercent}%`
-          rangeRef.current.style.width = `${upperPercent - lowerPercent}`
+          rangeRef.current.style.width = `${upperPercent - lowerPercent}%`
         }
       }
     }, [upperValue, getPercent])
@@ -264,7 +265,7 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
           }
           <div className="cf-range-slider--focus" />
           { sliderType === RangeSliderType.Multi &&
-            <div ref={rangeRef} className="cf-range-slider--range"/>
+            <div ref={rangeRef} className="cf-range-multi-slider--range" />
           }
         </div>
         <div className={valmaxClassName}>
