@@ -23,17 +23,13 @@ import {
 import {MenuStatus} from '../Dropdown'
 
 export interface CreatableTypeAheadDropdownProps extends StandardFunctionProps {
-  /** Text to render in input as currently selected or typed option */
+  /** Text to render in input field as currently selected or typed option */
   selectedOption: string
-  /** List of options to render in menu */
+  /** List of options to render in dropdown menu */
   options: string[]
-  /** Fires when an option is clicked, used to update state */
   onSelect: (option: string) => void
-  /** Optional placeholder text when no option is selected */
   placeholder?: string
-  /** Optional status of input */
   inputStatus?: ComponentStatus
-  /** Optional size of input */
   inputSize?: ComponentSize
   /** Optional icon to be displayed to the left of text in input  */
   inputIcon?: IconFont
@@ -41,11 +37,9 @@ export interface CreatableTypeAheadDropdownProps extends StandardFunctionProps {
    * The color is determined by the selected or typed option in #000000 format.
    * If both icon and this props are set, icon will take priority */
   inputColorPreviewOn?: boolean
-  /** Optional theme of menu */
   menuTheme?: DropdownMenuTheme
-  /** Optional maximum pixel height menu */
   menuMaxHeight?: number
-  /** Optional customized dropdown item */
+  /** Customize the layout of dropdown items */
   customizedDropdownItem?: (displayText: string) => JSX.Element
 }
 
