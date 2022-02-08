@@ -163,6 +163,8 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
 
     const isSingleSlider = sliderType === RangeSliderType.Single
 
+    const sliderStyle = sliderType === RangeSliderType.Single ? style : {}
+
     // SCSS ClassName Logic
 
     const rangeSliderClass = classnames('cf-range-slider', {
@@ -208,12 +210,13 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
             onChange={onLowerInputChange}
             hidden={hideLabels}
             testID={`${testID}--min`}
-            className="cf-multi-range-slider--min"
             isSingleSlider={isSingleSlider}
             size={size}
             step={step}
+            bound={'Minimum'}
+            min={min}
         />
-        <div className={rangeSliderClassName} style={style}>
+        <div className={rangeSliderClassName} style={sliderStyle}>
           { sliderType === RangeSliderType.Multi ?
             <>
               <Input
@@ -278,6 +281,8 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
           size={size}
           onChange={sliderType === RangeSliderType.Single ? onChange : onUpperInputChange}
           isSingleSlider={false}
+          bound={'Maximum'}
+          max={max}
         />
       </div>
     )
@@ -288,6 +293,9 @@ RangeSlider.displayName = 'RangeSlider'
 
 interface RangeSliderLabelProps {
   value: number
+  min?: number
+  max?: number
+  bound?: string
   size?: ComponentSize 
   step?: number
   isSingleSlider: boolean
@@ -302,6 +310,9 @@ interface RangeSliderLabelProps {
 
 const RangeSliderLabel: FunctionComponent<RangeSliderLabelProps> = ({
   value,
+  bound,
+  min,
+  max,
   prefix,
   suffix,
   hidden,
@@ -335,7 +346,8 @@ const RangeSliderLabel: FunctionComponent<RangeSliderLabelProps> = ({
         step={step}
         size={size}
         onChange={onChange}
-        className={className}
+        className={'cf-range-slider--input-label'}
+        ariaLabel={`${bound} value is ${bound === 'Minimum' ? min : max}`}
       />
       }
     </>

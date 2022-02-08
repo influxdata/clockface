@@ -110,6 +110,7 @@ $slider-hover: $g17-whisper;
 
 .cf-range-slider--container {
   display: flex;
+  justify-content: center;
 }
 
 .cf-range-slider__vertical {
@@ -143,8 +144,11 @@ $slider-hover: $g17-whisper;
 }
 
 .cf-range-slider--label {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: $cf-font-weight--medium;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
   @extend %no-user-select;
 
   &.cf-range-slider--min {
@@ -190,6 +194,10 @@ $slider-hover: $g17-whisper;
 .cf-input__focused:hover + .cf-range-slider--focus {
   box-shadow: 0 0 6px 0 $cf-input-border--focused;
   border-color: $cf-input-border--focused;
+}
+
+.cf-range-slider--input-label {
+  width: 15% !important;
 }
 
 // Multi Range CSS

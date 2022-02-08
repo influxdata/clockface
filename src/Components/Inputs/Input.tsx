@@ -92,7 +92,10 @@ export interface InputProps extends StandardFunctionProps {
   containerRef?: RefObject<InputContainerRef>
   /** Render input using monospace font */
   monospace?: boolean
+  /** Determines if the cf-input ClassName should be used */
   useBaseStyle?: boolean
+  /** Allows for a custom aria-label */
+  ariaLabel?: string
 }
 
 export type InputRef = HTMLInputElement
@@ -136,7 +139,8 @@ export const Input = forwardRef<InputRef, InputProps>(
       containerRef,
       autocomplete = AutoComplete.Off,
       disabledTitleText = 'This input is disabled',
-      useBaseStyle = true
+      useBaseStyle = true,
+      ariaLabel,
     },
     ref
   ) => {
@@ -210,7 +214,7 @@ export const Input = forwardRef<InputRef, InputProps>(
       status === ComponentStatus.Disabled ? disabledTitleText : titleText
 
     return (
-      <div className={inputClass} style={baseStyle} ref={containerRef}>
+      <div className={inputClass} style={baseStyle} ref={containerRef} aria-label={ariaLabel}>
         {type !== InputType.Checkbox && (
           <StatusIndicator
             status={correctStatus}
