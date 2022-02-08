@@ -19,7 +19,8 @@
   transition: background-color $cf-transition-default,
     border-color $cf-transition-default;
 
-  .cf-input:hover + & {
+  .cf-input:hover + &,
+  .cf-input:hover > & {
     border-color: $g7-graphite;
   }
 }
