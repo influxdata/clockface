@@ -190,11 +190,15 @@ export const Input = forwardRef<InputRef, InputProps>(
     const correctlyTypedMax: string | number | undefined =
       max === max ? max : ''
 
-    const iconElement = icon && <Icon glyph={icon} className="cf-input-icon" />
-
-    const colorElement = colorPreview && (
-      <ColorPreview color={colorPreview} className="cf-input-icon" />
-    )
+    /** If both icon and colorPreview are set in props, icon has higher priority */
+    let iconElement = null
+    if (icon) {
+      iconElement = <Icon glyph={icon} className="cf-input-icon" />
+    } else if (colorPreview) {
+      iconElement = (
+        <ColorPreview color={colorPreview} className="cf-input-icon" />
+      )
+    }
 
     const clearClasses = classnames('cf-input-clear-btn', {
       large: size === ComponentSize.Large,
@@ -257,8 +261,7 @@ export const Input = forwardRef<InputRef, InputProps>(
         />
         {clearElement}
         {type === InputType.Checkbox && <div className={inputCheckboxClass} />}
-        {/** If both icon and colorPreview are set in props, icon has higher priority */
-        !!icon ? iconElement : colorElement}
+        {iconElement}
         {children}
       </div>
     )
