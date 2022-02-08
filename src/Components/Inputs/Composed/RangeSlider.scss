@@ -109,7 +109,7 @@ $slider-hover: $g17-whisper;
 }
 
 .cf-range-slider--container {
-  display: flex
+  display: flex;
 }
 
 .cf-range-slider__vertical {
@@ -127,18 +127,19 @@ $slider-hover: $g17-whisper;
 .cf-range-slider {
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 100%;
   border-radius: $cf-radius;
   background: $slider-bg;
   position: relative;
 }
 
-.cf-range-slider--input {
-  flex: 1 0 0;
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.cf-single-range-slider--input {
+    flex: 1 0 0;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .cf-range-slider--label {
@@ -180,9 +181,6 @@ $slider-hover: $g17-whisper;
   pointer-events: none;
 }
 
-.cf-range-multi-slider--range {
-  background: blue;
-}
 
 .cf-input:hover + .cf-range-slider--focus {
   border-color: $cf-input-border--hover;
@@ -192,6 +190,106 @@ $slider-hover: $g17-whisper;
 .cf-input__focused:hover + .cf-range-slider--focus {
   box-shadow: 0 0 6px 0 $cf-input-border--focused;
   border-color: $cf-input-border--focused;
+}
+
+// Multi Range CSS
+
+.cf-multi-range-slider input[type='range'] {
+  pointer-events: none;
+  position: absolute;
+  height: 0;
+  width: 200px;
+  background: transparent;
+  border-width: 0px;
+
+
+  &::-webkit-slider-thumb {
+    border: none;
+    height: $slider-handle-height;
+    width: $slider-handle-height;
+    margin-top: 2px;
+    border-radius: 50%;
+    background: $slider-handle;
+    pointer-events: all;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      background: $slider-handle-focus;
+    }
+  }
+
+  &::-moz-range-thumb {
+    border: none;
+    height: $slider-handle-height;
+    width: $slider-handle-height;
+    margin-top: 2px;
+    border-radius: 50%;
+    background: $slider-handle;
+    pointer-events: all;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      background: $slider-handle-focus;
+    }
+  }
+
+  &::-ms-thumb {
+    border: none;
+    height: $slider-handle-height;
+    width: $slider-handle-height;
+    margin-top: 2px;
+    border-radius: 50%;
+    background: $slider-handle;
+    pointer-events: all;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      background: $slider-handle-focus;
+    }
+  }
+}
+
+.cf-multi-range-slider--container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 8px 12px;
+}
+
+.cf-multi-range-slider--track-container {
+  position: relative;
+  width: 200px;
+}
+
+.cf-multi-range-slider--range,
+.cf-multi-range-slider--bar {
+  height: $slider-track-height;
+  border-radius: 8px;
+}
+
+.cf-multi-range-slider--bar {
+  position: absolute;
+  width: 100%;
+  background: $slider-track;
+  z-index: 1;
+}
+
+.cf-multi-range-slider--range {
+  background-color: $slider-handle;
+  position: absolute;
+  z-index: 2;
+}
+
+.cf-multi-range-slider--zindex-3 input[type='range'] {
+  z-index: 3
+}
+
+.cf-multi-range-slider--zindex-4 input[type='range'] {
+  z-index: 4
 }
 
 /*

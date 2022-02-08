@@ -5,6 +5,7 @@ import React, {
   CSSProperties,
   useRef,
   useEffect,
+  useState,
 } from 'react'
 import classnames from 'classnames'
 
@@ -44,10 +45,6 @@ export interface RangeSliderProps extends StandardFunctionProps {
   lowerValue?: number
   /** Function to be called on field value change */
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
-  /** Function to be called on a multi slider upper field value change */
-  onUpperChange?: (e: ChangeEvent<HTMLInputElement>) => void
-  /** Function to be called on a multi slider lower field value change */
-  onLowerChange?: (e: ChangeEvent<HTMLInputElement>) => void
   /** Allows or disallows browser autocomplete functionality */
   autocomplete?: AutoComplete
   /** Input status state */
@@ -82,15 +79,11 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
       size = ComponentSize.Small,
       step,
       style,
-      lowerValue = 0,
-      upperValue = 50,
       color = ComponentColor.Primary,
       value,
       testID = 'range-slider',
       status = ComponentStatus.Default,
       onChange,
-      onUpperChange,
-      onLowerChange,
       className,
       hideLabels = false,
       labelPrefix,
@@ -101,70 +94,65 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
     },
     ref,
   ) => {
+
+    // Multi Slider variables and methods
+    const [lowerValue, setLowerValue] = useState(min)
+    const [upperValue, setUpperValue] = useState(value)
+
     const lowerValueRef = useRef<HTMLInputElement>(null)
     const upperValueRef = useRef<HTMLInputElement>(null)
+    const rangeRef = useRef<HTMLInputElement>(null)
 
-    const getPercent = (value: number) => {
+    const getRangePercent = (value: number) => {
       return Math.round(((value - min) / (max - min)) *100)
     }
 
     useEffect(() => {
       if (lowerValueRef.current) {
-        const lowerPercent = getPercent(parseInt(lowerValueRef.current.value))
-        const upperPercent = getPercent(upperValue)
+        const lowerPercent = getRangePercent(parseInt(lowerValueRef.current.value))
+        const upperPercent = getRangePercent(upperValue)
 
         if (rangeRef.current) {
           rangeRef.current.style.width = `${upperPercent - lowerPercent}%`
         }
       }
-    }, [lowerValue, getPercent])
+    })
 
     useEffect(() => {
       if (upperValueRef.current) {
-        const lowerPercent = getPercent(lowerValue)
-        const upperPercent = getPercent(parseInt(upperValueRef.current.value))
+        const lowerPercent = getRangePercent(lowerValue)
+        const upperPercent = getRangePercent(parseInt(upperValueRef.current.value))
 
         if (rangeRef.current) {
           rangeRef.current.style.left = `${lowerPercent}%`
           rangeRef.current.style.width = `${upperPercent - lowerPercent}%`
         }
       }
-    }, [upperValue, getPercent])
-
-    const rangeRef = useRef<HTMLInputElement>(null)
-
-    const rangeSliderClass = classnames('cf-range-slider', {
-      [`cf-range-slider__${color}`]: color,
-      [`cf-range-slider__${size}`]: size,
-      'cf-range-slider__disabled': status === ComponentStatus.Disabled,
-      [`${className}`]: className,
     })
 
-    const rangeSliderInputClass = classnames('cf-range-slider--input', {
-      'cf-range-slider__fill': fill,
-    })
+    const onUpperInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
+      setUpperValue(Math.max(parseInt(e.target.value), lowerValue + 1))
+    }
 
-    const valmaxClassName = classnames(
-      'cf-range-slider--label cf-range-slider--max',
-      {
-        [`cf-range-slider--valmax-label__with-value`]:
-          orientation === ComponentOrientation.Horizontal,
-        [`cf-range-slider--valmax-label`]:
-          orientation === ComponentOrientation.Horizontal,
+    const onLowerInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
+      setLowerValue(Math.min(parseInt(e.target.value), upperValue - 1))
+    }
+
+    // Shared Methods and Variables for Single and Multi Sliders
+
+    const valueWithBounds = (value: number, min: number, max: number): number => {
+      const minVal = Math.min(min, max)
+      const maxVal = Math.max(min, max)
+    
+      if (value < minVal) {
+        return minVal
       }
-    )
-
-    const inputStyle = generateRangeSliderTrackFillStyle(
-      fill,
-      min,
-      max,
-      value,
-      color,
-      status
-    )
-
-    const verticalLabelStyle = {
-      transform: 'rotate(270deg)',
+    
+      if (value > maxVal) {
+        return maxVal
+      }
+    
+      return value
     }
 
     const cleanedValue = valueWithBounds(value, min, max)
@@ -173,10 +161,39 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
 
     const cleanedLowerValue = valueWithBounds(lowerValue, min, max)
 
-    const rangeSliderClassName =
+    const isSingleSlider = sliderType === RangeSliderType.Single
+
+    // SCSS ClassName Logic
+
+    const rangeSliderClass = classnames('cf-range-slider', {
+      [`cf-range-slider__${color}`]: color,
+      [`cf-range-slider__${size}`]: size,
+      'cf-range-slider__disabled': status === ComponentStatus.Disabled,
+      [`${className}`]: className,
+    })
+
+    const rangeSliderSingleInputClass = classnames('cf-single-range-slider--input', {
+      'cf-range-slider__fill': fill,
+    })
+
+    const singleInputStyle = generateRangeSliderTrackFillStyle(
+      fill,
+      min,
+      max,
+      value,
+      color,
+      status
+    )
+
+    // const verticalLabelStyle = {
+    //   transform: 'rotate(270deg)',
+    // }
+
+    const rangeSliderClassName = sliderType === RangeSliderType.Single ?
       orientation === ComponentOrientation.Vertical
         ? `${rangeSliderClass} cf-range-slider__vertical`
         : rangeSliderClass
+        : 'cf-multi-range-slider--container'
 
     const rangeSliderContainerName = orientation === ComponentOrientation.Vertical 
         ? ``
@@ -184,33 +201,21 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
 
     return (
       <div className={rangeSliderContainerName} >
-        {sliderType === RangeSliderType.Multi  &&
-          <Input
-            type={InputType.Number}
-            value={cleanedLowerValue}
-            testID={testID}
-            status={status}
-            step={step}
-            size={size}
-            onChange={onLowerChange}
-            className={rangeSliderInputClass}
-          />}
-        <div className={rangeSliderClassName} style={style}>
         <RangeSliderLabel
-            value={min}
+            value={sliderType === RangeSliderType.Single ? min : lowerValue}
             prefix={labelPrefix}
             suffix={labelSuffix}
-            style={
-              orientation === ComponentOrientation.Vertical
-                ? verticalLabelStyle
-                : {}
-            }
+            onChange={onLowerInputChange}
             hidden={hideLabels}
             testID={`${testID}--min`}
-            className="cf-range-slider--min"
-          />
+            className="cf-multi-range-slider--min"
+            isSingleSlider={isSingleSlider}
+            size={size}
+            step={step}
+        />
+        <div className={rangeSliderClassName} style={style}>
           { sliderType === RangeSliderType.Multi ?
-            <div className={rangeSliderContainerName}>
+            <>
               <Input
                 id={id}
                 ref={lowerValueRef}
@@ -222,10 +227,9 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
                 value={cleanedLowerValue}
                 testID={testID}
                 status={status}
-                list={'rangeList'}
-                onChange={onLowerChange}
-                className={rangeSliderInputClass}
-                autocomplete={autocomplete}
+                onChange={onLowerInputChange}
+                className={'cf-multi-range-slider cf-multi-range-slider--zindex-3'}
+                useBaseStyle={false}
               />
               <Input
                 id={id}
@@ -238,12 +242,15 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
                 value={cleanedUpperValue}
                 testID={testID}
                 status={status}
-                list={'rangeList'}
-                onChange={onUpperChange}
-                className={rangeSliderInputClass}
-                autocomplete={autocomplete}
+                onChange={onUpperInputChange}
+                className={'cf-multi-range-slider cf-multi-range-slider--zindex-4'}
+                useBaseStyle={false}
               />
-            </div>
+              <div className="cf-multi-range-slider--track-container">
+                <div className="cf-multi-range-slider--bar"/>
+                <div ref={rangeRef} className="cf-multi-range-slider--range" />
+              </div>
+            </>
             :
             <Input
               id={id}
@@ -256,30 +263,22 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
               value={cleanedValue}
               testID={testID}
               status={status}
-              list={'rangeList'}
               onChange={onChange}
-              className={rangeSliderInputClass}
-              inputStyle={inputStyle}
+              className={rangeSliderSingleInputClass}
+              inputStyle={singleInputStyle}
               autocomplete={autocomplete}
             />
           }
           <div className="cf-range-slider--focus" />
-          { sliderType === RangeSliderType.Multi &&
-            <div ref={rangeRef} className="cf-range-multi-slider--range" />
-          }
         </div>
-        <div className={valmaxClassName}>
-          <Input
-            type={InputType.Number}
-            value={sliderType === RangeSliderType.Single ? cleanedValue : cleanedUpperValue}
-            testID={testID}
-            status={status}
-            step={step}
-            size={size}
-            onChange={sliderType === RangeSliderType.Single ? onChange : onUpperChange}
-            className={rangeSliderInputClass}
-          />
-        </div>
+        <RangeSliderLabel
+          value={sliderType === RangeSliderType.Single ? cleanedValue : cleanedUpperValue}
+          testID={testID}
+          step={step}
+          size={size}
+          onChange={sliderType === RangeSliderType.Single ? onChange : onUpperInputChange}
+          isSingleSlider={false}
+        />
       </div>
     )
   }
@@ -287,29 +286,18 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
 
 RangeSlider.displayName = 'RangeSlider'
 
-const valueWithBounds = (value: number, min: number, max: number): number => {
-  const minVal = Math.min(min, max)
-  const maxVal = Math.max(min, max)
-
-  if (value < minVal) {
-    return minVal
-  }
-
-  if (value > maxVal) {
-    return maxVal
-  }
-
-  return value
-}
-
 interface RangeSliderLabelProps {
   value: number
+  size?: ComponentSize 
+  step?: number
+  isSingleSlider: boolean
   prefix?: string
   suffix?: string
   hidden?: boolean
   style?: CSSProperties
   testID: string
   className?: string
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 const RangeSliderLabel: FunctionComponent<RangeSliderLabelProps> = ({
@@ -318,8 +306,12 @@ const RangeSliderLabel: FunctionComponent<RangeSliderLabelProps> = ({
   suffix,
   hidden,
   style,
+  size,
+  step,
   testID,
+  isSingleSlider,
   className = '',
+  onChange,
 }) => {
   if (hidden) {
     return null
@@ -328,11 +320,25 @@ const RangeSliderLabel: FunctionComponent<RangeSliderLabelProps> = ({
     [`${className}`]: className,
   })
   return (
-    <span className={labelClass} style={style} data-testid={testID}>
-      {prefix}
-      {value}
-      {suffix}
-    </span>
+    <>
+    {isSingleSlider ?
+      <span className={labelClass} style={style} data-testid={testID}>
+        {prefix}
+        {value}
+        {suffix}
+      </span>
+      :
+      <Input
+        type={InputType.Number}
+        value={value}
+        testID={testID}
+        step={step}
+        size={size}
+        onChange={onChange}
+        className={className}
+      />
+      }
+    </>
   )
 }
 

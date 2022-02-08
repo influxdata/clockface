@@ -61,7 +61,6 @@ export interface InputProps extends StandardFunctionProps {
   name?: string
   /** Input field value to be updated with 'on X' functions */
   value?: string | number
-  list?: string
   /** Placeholder text when no value is present */
   placeholder?: string
   /** Allows or disallows browser autocomplete functionality */
@@ -93,6 +92,7 @@ export interface InputProps extends StandardFunctionProps {
   containerRef?: RefObject<InputContainerRef>
   /** Render input using monospace font */
   monospace?: boolean
+  useBaseStyle?: boolean
 }
 
 export type InputRef = HTMLInputElement
@@ -111,7 +111,6 @@ export const Input = forwardRef<InputRef, InputProps>(
       type = InputType.Text,
       style = {width: '100%'},
       value = '',
-      list,
       status = ComponentStatus.Default,
       onBlur,
       onClear,
@@ -137,13 +136,14 @@ export const Input = forwardRef<InputRef, InputProps>(
       containerRef,
       autocomplete = AutoComplete.Off,
       disabledTitleText = 'This input is disabled',
+      useBaseStyle = true
     },
     ref
   ) => {
     const [isFocused, setFocus] = useState<boolean>(autoFocus)
     const correctStatus = value === value ? status : ComponentStatus.Error
 
-    const inputClass = classnames('cf-input', {
+    const inputClass = useBaseStyle ? classnames('cf-input', {
       [`cf-input-${size}`]: size,
       'cf-input__focused': isFocused,
       'cf-input__has-checkbox': type === InputType.Checkbox,
@@ -155,7 +155,9 @@ export const Input = forwardRef<InputRef, InputProps>(
       'cf-input__disabled': correctStatus === ComponentStatus.Disabled,
       'cf-input-monospace': monospace,
       [`${className}`]: className,
-    })
+    }) : `${className}`
+
+    const baseStyle = useBaseStyle ? style : {}
 
     const inputFieldClass = classnames('cf-input-field', {
       [`cf-input__indicator`]: status !== ComponentStatus.Default,
@@ -208,7 +210,7 @@ export const Input = forwardRef<InputRef, InputProps>(
       status === ComponentStatus.Disabled ? disabledTitleText : titleText
 
     return (
-      <div className={inputClass} style={style} ref={containerRef}>
+      <div className={inputClass} style={baseStyle} ref={containerRef}>
         {type !== InputType.Checkbox && (
           <StatusIndicator
             status={correctStatus}
@@ -228,7 +230,6 @@ export const Input = forwardRef<InputRef, InputProps>(
           autoComplete={autocomplete}
           name={name}
           type={correctType}
-          list={list}
           value={correctlyTypedValue}
           placeholder={placeholder}
           autoFocus={autoFocus}
