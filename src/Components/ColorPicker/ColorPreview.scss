@@ -1,0 +1,26 @@
+@import '../../Styles/variables';
+
+/*
+  Color Preview Widget
+  ------------------------------------------------------------------------------
+*/
+
+.cf-color-preview {
+  pointer-events: none;
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: $cf-marg-c;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: $cf-border solid $g5-pepper;
+  transition: background-color $cf-transition-default,
+    border-color $cf-transition-default;
+
+  .cf-input:hover + &,
+  .cf-input:hover > & {
+    border-color: $g7-graphite;
+  }
+}

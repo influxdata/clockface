@@ -32,8 +32,14 @@ import {
   MultiSelectDropdown,
   MultiSelectDropdownRef,
 } from '../Composed/MultiSelectDropdown'
+import {ColorPreview} from '../../ColorPicker/ColorPreview'
 
 import {TypeAheadDropDown, SelectableItem} from '../Composed/TypeAheadDropDown'
+
+import {
+  CreatableTypeAheadDropdown,
+  CreatableTypeAheadDropdownReadmeRef,
+} from '../Composed/CreatableTypeAheadDropdown'
 
 // Types
 import {
@@ -55,8 +61,10 @@ import DropdownLinkItemReadme from './DropdownLinkItem.md'
 import DropdownMenuReadme from './DropdownMenu.md'
 import SelectDropdownReadme from './SelectDropdown.md'
 import TypeAheadDropdownReadme from './TypeAheadDropdown.md'
+import CreatableTypeAheadDropdownReadme from './CreatableTypeAheadDropdown.md'
 import MultiSelectDropdownReadme from './MultiSelectDropdown.md'
 import {useState} from '@storybook/addons'
+import {FlexBox} from '../../FlexBox'
 
 const dropdownFamilyStories = storiesOf(
   'Components/Dropdowns/Family',
@@ -651,6 +659,124 @@ dropdownComposedStories.add(
   {
     readme: {
       content: marked(TypeAheadDropdownReadme),
+    },
+  }
+)
+
+dropdownComposedStories.add(
+  'CreatableTypeAheadDropdown',
+  () => {
+    const defaultDropdownOptions = [
+      'Celery',
+      'Carrot',
+      'Potato',
+      'Onion',
+      'Tomato',
+      'Spinach',
+    ]
+    const [selected, changeSelected] = useState(defaultDropdownOptions[1])
+    const defaultColorOptions = [
+      '#DC4E58',
+      '#FFB94A',
+      '#2FA74D',
+      '#0098F0',
+      '#8E1FC3',
+    ]
+    const [selectedColor, changeSelectedColor] = useState(
+      defaultColorOptions[1]
+    )
+
+    const creatableTypeAheadDropdownReadmeRef: RefObject<CreatableTypeAheadDropdownReadmeRef> = createRef()
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(creatableTypeAheadDropdownReadmeRef.current)
+      /* eslint-enable */
+    }
+    return (
+      <div className="story--example">
+        <CreatableTypeAheadDropdown
+          ref={creatableTypeAheadDropdownReadmeRef}
+          style={object('style', defaultDropdownStyle)}
+          options={array('options', defaultDropdownOptions)}
+          selectedOption={selected}
+          onSelect={changeSelected}
+          placeholder={text('placeholder', 'Placeholder Text')}
+          inputStatus={
+            ComponentStatus[
+              select('inputStatus', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
+          inputSize={
+            ComponentSize[
+              select('inputSize', mapEnumKeys(ComponentSize), 'Small')
+            ]
+          }
+          inputIcon={
+            IconFont[
+              select(
+                'inputIcon',
+                {None: 'none', ...mapEnumKeys(IconFont)},
+                'None'
+              )
+            ]
+          }
+          menuTheme={
+            DropdownMenuTheme[
+              select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Onyx')
+            ]
+          }
+          menuMaxHeight={number('menuMaxHeight', 250)}
+        />
+        <span>With customized dropdown item: </span>
+        <CreatableTypeAheadDropdown
+          ref={creatableTypeAheadDropdownReadmeRef}
+          style={object('style', defaultDropdownStyle)}
+          options={defaultColorOptions}
+          selectedOption={selectedColor}
+          onSelect={changeSelectedColor}
+          placeholder={text('placeholder', 'Placeholder Text')}
+          inputStatus={
+            ComponentStatus[
+              select('inputStatus', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
+          inputSize={
+            ComponentSize[
+              select('inputSize', mapEnumKeys(ComponentSize), 'Small')
+            ]
+          }
+          inputIcon={
+            IconFont[
+              select(
+                'inputIcon',
+                {None: 'none', ...mapEnumKeys(IconFont)},
+                'None'
+              )
+            ]
+          }
+          inputColorPreviewOn={true}
+          menuTheme={
+            DropdownMenuTheme[
+              select('menuTheme', mapEnumKeys(DropdownMenuTheme), 'Onyx')
+            ]
+          }
+          menuMaxHeight={number('menuMaxHeight', 250)}
+          customizedDropdownItem={displayText => (
+            <FlexBox>
+              <ColorPreview color={displayText} />
+              <div style={{paddingLeft: '26px'}}>{displayText}</div>
+            </FlexBox>
+          )}
+        />
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(CreatableTypeAheadDropdownReadme),
     },
   }
 )

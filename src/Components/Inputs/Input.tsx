@@ -27,6 +27,7 @@ import {
   InputType,
   StandardFunctionProps,
 } from '../../Types'
+import {ColorPreview} from '../ColorPicker/ColorPreview'
 
 export interface InputProps extends StandardFunctionProps {
   /** Minimum value for number & range types */
@@ -92,6 +93,10 @@ export interface InputProps extends StandardFunctionProps {
   containerRef?: RefObject<InputContainerRef>
   /** Render input using monospace font */
   monospace?: boolean
+  /** Color preview to be displayed to the left of text.
+   * Value should be in #000000 format.
+   * If both icon and colorPreview props are set, icon will take priority */
+  colorPreview?: string
 }
 
 export type InputRef = HTMLInputElement
@@ -135,6 +140,7 @@ export const Input = forwardRef<InputRef, InputProps>(
       containerRef,
       autocomplete = AutoComplete.Off,
       disabledTitleText = 'This input is disabled',
+      colorPreview,
     },
     ref
   ) => {
@@ -145,7 +151,7 @@ export const Input = forwardRef<InputRef, InputProps>(
       [`cf-input-${size}`]: size,
       'cf-input__focused': isFocused,
       'cf-input__has-checkbox': type === InputType.Checkbox,
-      'cf-input__has-icon': icon,
+      'cf-input__has-icon': icon || colorPreview,
       'cf-input__has-clear-btn': onClear && value,
       'cf-input__valid': correctStatus === ComponentStatus.Valid,
       'cf-input__error': correctStatus === ComponentStatus.Error,
@@ -184,7 +190,15 @@ export const Input = forwardRef<InputRef, InputProps>(
     const correctlyTypedMax: string | number | undefined =
       max === max ? max : ''
 
-    const iconElement = icon && <Icon glyph={icon} className="cf-input-icon" />
+    /** If both icon and colorPreview are set in props, icon has higher priority */
+    let iconElement = null
+    if (icon) {
+      iconElement = <Icon glyph={icon} className="cf-input-icon" />
+    } else if (colorPreview) {
+      iconElement = (
+        <ColorPreview color={colorPreview} className="cf-input-icon" />
+      )
+    }
 
     const clearClasses = classnames('cf-input-clear-btn', {
       large: size === ComponentSize.Large,
