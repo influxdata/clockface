@@ -41,6 +41,13 @@
   }
 }
 
+.cf-dropdown__error,
+.cf-dropdown__error:hover,
+.cf-dropdown__error:focus {
+  border-color: $cf-input-border--error;
+  box-shadow: 0 0 6px 0 $cf-input-border--error-focused;
+}
+
 /** small size is the default */
 .header-container--button {
   width: $cf-form-sm-width;

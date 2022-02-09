@@ -100,7 +100,15 @@ dropdownFamilyStories.add(
           ref={dropdownRef}
           style={object('style', defaultDropdownStyle)}
           button={(active, onClick) => (
-            <Dropdown.Button active={active} onClick={onClick}>
+            <Dropdown.Button
+              active={active}
+              onClick={onClick}
+              status={
+                ComponentStatus[
+                  select('status', mapEnumKeys(ComponentStatus), 'Default')
+                ]
+              }
+            >
               {text('Button Text', 'I am a Dropdown!')}
             </Dropdown.Button>
           )}
