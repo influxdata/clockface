@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.2.1 (2022-02-08)
+
+- [728](https://github.com/influxdata/clockface/pull/728): Export `CreatableTypeAheadDropdown` and `ColorPreview`
+
 ### 3.2.0 (2022-02-07)
 
 - [724](https://github.com/influxdata/clockface/pull/724): Add a new component `CreatableTypeAheadDropdown`

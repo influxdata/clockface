@@ -12,6 +12,7 @@ Prerequisites:
    - clean means: all the files in the current directory are being managed by git
      (or are being intentionally ignored via .gitignore) and the most recent version of the file has been committed
 1. Consider bumping the version in package.json when you create your feature. This way, the release page points to the code being released. To see an example, click the git hash on [this giraffe release (not ideal)](https://github.com/influxdata/giraffe/releases/tag/v2.7.2) and then click the git hash on [this giraffe release (ideal)](https://github.com/influxdata/giraffe/releases/tag/v2.7.5)
+1. If a new component is created, export it by adding the path of this new component in [src/index.ts](https://github.com/influxdata/clockface/blob/master/src/index.ts)
 
 Steps
 
