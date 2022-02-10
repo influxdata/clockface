@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.3.0 (2022-02-08)
+
+- [727](https://github.com/influxdata/clockface/pull/727): Allow dropdown buttons to have error status indicated with a styled border
+
 ### 3.2.1 (2022-02-08)
 
 - [728](https://github.com/influxdata/clockface/pull/728): Export `CreatableTypeAheadDropdown` and `ColorPreview`

@@ -41,6 +41,14 @@
   }
 }
 
+.cf-dropdown--button {
+  &.cf-dropdown__error,
+  &.cf-dropdown__error:hover,
+  &.cf-dropdown__error:focus {
+    border: $cf-border solid $cf-input-border--error;
+  }
+}
+
 /** small size is the default */
 .header-container--button {
   width: $cf-form-sm-width;

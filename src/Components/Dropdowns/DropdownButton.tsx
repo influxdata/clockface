@@ -64,16 +64,8 @@ export const DropdownButton = forwardRef<
   ) => {
     const dropdownButtonClass = classnames('cf-dropdown--button', {
       [`${className}`]: className,
+      'cf-dropdown__error': status === ComponentStatus.Error,
     })
-
-    const dropdownButtonStatus = (): ComponentStatus => {
-      const isDisabled = [
-        ComponentStatus.Disabled,
-        ComponentStatus.Error,
-      ].includes(status)
-
-      return isDisabled ? ComponentStatus.Disabled : ComponentStatus.Default
-    }
 
     return (
       <ButtonBase
@@ -86,7 +78,7 @@ export const DropdownButton = forwardRef<
         shape={ButtonShape.StretchToFit}
         testID={testID}
         active={active}
-        status={dropdownButtonStatus()}
+        status={status}
         onClick={onClick}
         className={dropdownButtonClass}
         titleText={title}
