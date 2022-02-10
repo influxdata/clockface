@@ -41,11 +41,12 @@
   }
 }
 
-.cf-dropdown__error,
-.cf-dropdown__error:hover,
-.cf-dropdown__error:focus {
-  border-color: $cf-input-border--error;
-  box-shadow: 0 0 6px 0 $cf-input-border--error-focused;
+.cf-dropdown--button {
+  &.cf-dropdown__error,
+  &.cf-dropdown__error:hover,
+  &.cf-dropdown__error:focus {
+    border: $cf-border solid $cf-input-border--error;
+  }
 }
 
 /** small size is the default */
