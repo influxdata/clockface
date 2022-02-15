@@ -46,6 +46,7 @@
   &.cf-dropdown__error:hover,
   &.cf-dropdown__error:focus {
     border: $cf-border solid $cf-input-border--error;
+    box-shadow: none;
   }
 }
 
