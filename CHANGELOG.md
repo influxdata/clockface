@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.3.1 (2022-02-15)
+
+- [730](https://github.com/influxdata/clockface/pull/730): Remove conflicting box shadow from dropdown buttons when in error status.
+
 ### 3.3.0 (2022-02-08)
 
 - [727](https://github.com/influxdata/clockface/pull/727): Allow dropdown buttons to have error status indicated with a styled border
