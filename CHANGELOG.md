@@ -2,7 +2,7 @@
 
 ### 3.3.2 (2022-02-18)
 
-- [pending](https://github.com/influxdata/clockface/pull): No changes. An internal test version.
+- [731](https://github.com/influxdata/clockface/pull/731): No changes. An internal test version.
 
 ### 3.3.1 (2022-02-15)
 
