@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.3.2 (2022-02-18)
+
+- [pending](https://github.com/influxdata/clockface/pull): No changes. An internal test version.
+
 ### 3.3.1 (2022-02-15)
 
 - [730](https://github.com/influxdata/clockface/pull/730): Remove conflicting box shadow from dropdown buttons when in error status.
