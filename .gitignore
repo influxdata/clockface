@@ -7,3 +7,4 @@ build
 storybook-static
 docs
 package-lock.json
+.npmrc
