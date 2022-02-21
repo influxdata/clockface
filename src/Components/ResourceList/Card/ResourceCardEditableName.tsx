@@ -153,13 +153,13 @@ export const ResourceCardEditableName = forwardRef<
           loading={loading}
           spinnerComponent={<TechnoSpinner diameterPixels={20} />}
         >
-          <span
+          <a
             className={resourceCardEditableNameLinkClass}
             onClick={handleClick}
             data-testid={testID}
           >
             {name || noNameString}
-          </span>
+          </a>
         </SpinnerContainer>
         <div
           className="cf-resource-editable-name--toggle"

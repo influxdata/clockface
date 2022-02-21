@@ -21,6 +21,10 @@
   font-family: $cf-text-font;
   color: $g17-whisper;
   user-select: none;
+
+  &:hover {
+    color: $g17-whisper;
+  }
 }
 
 .cf-resource-name--text__link {
