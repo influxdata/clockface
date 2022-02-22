@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.3.3 (2022-02-18)
+
+- [733](https://github.com/influxdata/clockface/pull/733): Using the `<a/>` tag instead of `<span>` for `Resource.EditableName`
+
 ### 3.3.2 (2022-02-18)
 
 - [731](https://github.com/influxdata/clockface/pull/731): No changes. An internal test version.
