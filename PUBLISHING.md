@@ -43,7 +43,7 @@ _NOTE:_ Do not manually change the version in `package.lock`, the publish script
 
 To publish, you must have two factor authentication turned on for your npm account. For assistance setting this up, visit [npm's official docs on this topic](https://docs.npmjs.com/configuring-two-factor-authentication).
 
-Additionally, npm recently updated the way they recognize 2FA during publishing. If you have not done so previously for any other libraries, you may need to set up a publishing token by doing the following. After these steps are taken, then you will be able to publish successfully using the steps outlined [above](#publishing-a-new-version)
+Additionally, npm recently updated the way they recognize 2FA during publishing. If you have not done so previously for any other libraries, you may need to set up a publishing token by doing the following. After these steps are taken, then you will be able to publish successfully using the steps outlined [above](#publishing-a-new-version-of-clockface)
 
 1. Log in to npmjs.org
 1. Click on your image avatar in the corner
