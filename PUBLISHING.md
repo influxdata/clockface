@@ -3,7 +3,7 @@
 Prerequisites:
 
 1. You have an npmjs.com account (recommended to use your personal; not work email for this)
-   - enable 2fa for your account (two factor authentication)
+1. You have two factor authentication (2FA) turned on for your npm account. See [additional steps](#2fa-requirement-and-procedures)
 1. You have Administrator access to this repo on GitHub (you are able to push commits)
 1. You have Permissions to publish to the [influxdata](https://www.npmjs.com/org/influxdata) organization on npm
    - contact Bucky to be added if needed (if you just created an npm account, you need this)
@@ -38,3 +38,22 @@ yarn run publishStorybook
 ```
 
 _NOTE:_ Do not manually change the version in `package.lock`, the publish script will increment automatically
+
+# 2FA Requirement and Procedures
+
+To publish, you must have two factor authentication turned on for your npm account. For assistance setting this up, visit [npm's official docs on this topic](https://docs.npmjs.com/configuring-two-factor-authentication).
+
+Additionally, npm recently updated the way they recognize 2FA during publishing. If you have not done so previously for any other libraries, you may need to set up a publishing token by doing the following. After these steps are taken, then you will be able to publish successfully using the steps outlined [above](#publishing-a-new-version)
+
+1. Log in to npmjs.org
+1. Click on your image avatar in the corner
+1. Select **Access Tokens**
+1. Click on the button **Generate New Token**
+1. Name the token and select type: Publish
+1. Click Generate Token when ready
+1. Copy the token string - _**this is your only chance to copy this string**_
+1. Go to your project's local repository
+1. Create a **.npmrc** file (if necessary) at the root of the repository
+1. Append this line in the .npmrc file:  
+   `//registry.npmjs.org/:_authToken=<access_token>`
+1. Replace \<access_token\> with the token string
