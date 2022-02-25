@@ -84,7 +84,7 @@ appHeaderFamilyStories.add(
           ref={appHeaderLogoRef}
           src={text(
             'src',
-            'https://influxdata.github.io/branding/img/downloads/influxdata-logo--full--white-alpha.png'
+            '/static/media/.storybook/influxdata-logo.png'
           )}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]

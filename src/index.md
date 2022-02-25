@@ -1,4 +1,4 @@
-<img src="/static/media/.storybook/clockface-logo.png" style="width: 150px; filter: brightness(0) invert(1);" />
+<img src="/static/media/.storybook/influxdata-logo.png" style="width: 150px;" />
 
 # Clockface
 
