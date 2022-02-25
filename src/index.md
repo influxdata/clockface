@@ -1,4 +1,4 @@
-<img src="/static/media/.storybook/clockface-logo.png" style="width: 150px; transform: translateX(-10%)" />
+<img src="/static/media/.storybook/clockface-logo.png" style="width: 150px; filter: brightness(0) invert(1);" />
 
 # Clockface
 
