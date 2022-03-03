@@ -53,6 +53,7 @@ PaginationStories.add(
             /* eslint-enable */
           }}
           hideDirectionIcon={boolean('hideDirectionIcon', false)}
+          enablePageInput={boolean('enablePageInput', false)}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Medium')]
           }

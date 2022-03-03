@@ -1,11 +1,12 @@
 // Libraries
-import React, {forwardRef, useState, useEffect, useLayoutEffect} from 'react'
+import React, {forwardRef, useState, useEffect, useLayoutEffect, ChangeEvent} from 'react'
 import classnames from 'classnames'
 import {PaginationDirectionItem} from './PaginationDirectionItem'
 
 // Components
 import {PaginationItem} from './PaginationItem'
 import {PaginationTruncationItem} from './paginationTruncationItem'
+import {PaginationInput} from './PaginationInput'
 
 // Styles
 import './Pagination.scss'
@@ -29,6 +30,7 @@ export interface PaginationNavProps extends StandardFunctionProps {
   hideDirectionIcon?: boolean
   size?: ComponentSize
   enableArrowPaginate?: boolean
+  enablePageInput?: boolean
 }
 
 export type PaginationNavRef = HTMLElement
@@ -47,6 +49,7 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
       hideDirectionIcon = false,
       size = ComponentSize.Medium,
       enableArrowPaginate = false,
+      enablePageInput = false,
     },
     ref
   ) => {
@@ -139,6 +142,10 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
         setActivePage(page)
         onChange(page)
       }
+    }
+
+    const onInputchange = (e: ChangeEvent<HTMLInputElement>) => {
+      setActivePage(Number(e.target.value))
     }
 
     const paginateArrow = (event: KeyboardEvent) => {
@@ -265,6 +272,14 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
               key={'pagination--item-right'}
               size={size}
               isActive={activePage < totalPages}
+            />
+          )}
+          {enablePageInput && (
+            <PaginationInput
+              currentPage={activePage}
+              onChange={onInputchange}
+              key={'pagination--item-right'}
+              size={size}
             />
           )}
         </ul>
