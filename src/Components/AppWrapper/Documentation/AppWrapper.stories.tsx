@@ -58,10 +58,7 @@ layoutStories.add(
             }
           >
             <AppHeader.Logo
-              src={text(
-                'src',
-                '/static/media/.storybook/influxdata-logo.png'
-              )}
+              src={text('src', '/static/media/.storybook/influxdata-logo.png')}
               size={
                 ComponentSize[
                   select('header size', mapEnumKeys(ComponentSize), 'Small')

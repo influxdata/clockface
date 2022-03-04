@@ -61,10 +61,7 @@ funnelPageStories.add(
     }
 
     const logo = boolean('show logo', true) ? (
-      <img
-        src="/static/media/.storybook/influxdata-logo.png"
-        width="170"
-      />
+      <img src="/static/media/.storybook/influxdata-logo.png" width="170" />
     ) : (
       undefined
     )
@@ -198,10 +195,7 @@ funnelPageExampleStories.add(
   'Sign Up Page',
   () => {
     const logo = (
-      <img
-        src="/static/media/.storybook/influxdata-logo.png"
-        width="170"
-      />
+      <img src="/static/media/.storybook/influxdata-logo.png" width="170" />
     )
 
     const [notificationState, setNotificationState] = useState<boolean>(false)
