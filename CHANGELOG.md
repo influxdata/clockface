@@ -1,6 +1,6 @@
 # Changelog
 
-### 3.3.4 (Unreleased)
+### 3.4.0 (2022-03-04)
 
 - [736](https://github.com/influxdata/clockface/pull/736): Update logos to new branding standards.
 
