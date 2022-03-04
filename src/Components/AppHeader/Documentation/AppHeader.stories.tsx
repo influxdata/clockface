@@ -117,7 +117,7 @@ appHeaderExampleStories.add(
             <AppHeader.Logo
               src={text(
                 'src',
-                'https://influxdata.github.io/branding/img/downloads/influxdata-logo--full--white-alpha.png'
+                '/static/media/.storybook/influxdata-logo.png'
               )}
               size={
                 ComponentSize[

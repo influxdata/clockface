@@ -41,6 +41,7 @@ logoStories.add(
       <div className="story--example">
         <InfluxDataLogo
           ref={logoRef}
+          simplified={boolean('simplified', false)}
           fill={
             InfluxColors[select('fill', mapEnumKeys(InfluxColors), 'White')]
           }

@@ -60,7 +60,7 @@ layoutStories.add(
             <AppHeader.Logo
               src={text(
                 'src',
-                'https://influxdata.github.io/branding/img/downloads/influxdata-logo--full--white-alpha.png'
+                '/static/media/.storybook/influxdata-logo.png'
               )}
               size={
                 ComponentSize[
@@ -598,7 +598,7 @@ layoutStories.add(
                       <TreeNav.UserItem id="members" label="Members" />
                       <TreeNav.UserItem id="about" label="About" />
                       <TreeNav.SubHeading
-                        label="Dkim@Influxdata.com"
+                        label="somebody@somewhere.com"
                         lowercase
                       />
                       <TreeNav.UserItem id="switch" label="Switch workspace" />

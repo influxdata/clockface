@@ -62,7 +62,7 @@ funnelPageStories.add(
 
     const logo = boolean('show logo', true) ? (
       <img
-        src="https://influxdata.github.io/branding/img/downloads/influxdata-logo--full--white-alpha.png"
+        src="/static/media/.storybook/influxdata-logo.png"
         width="170"
       />
     ) : (
@@ -199,7 +199,7 @@ funnelPageExampleStories.add(
   () => {
     const logo = (
       <img
-        src="https://influxdata.github.io/branding/img/downloads/influxdata-logo--full--white-alpha.png"
+        src="/static/media/.storybook/influxdata-logo.png"
         width="170"
       />
     )
