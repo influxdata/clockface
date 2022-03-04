@@ -1,6 +1,6 @@
 import { create } from '@storybook/theming';
 
-import logo from './clockface-logo.png'
+import logo from './influxdata-logo-blue.png'
 
 export default create({
   base: 'light',

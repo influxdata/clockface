@@ -328,6 +328,7 @@ export enum IconFont {
   Cubo = 'cubo',
   CuboNav = 'cubo-nav',
   Cubouniform = 'cubo-uniform',
+  CuboSolid = 'cubo-solid',
   CurrencyEUR = 'currency-eur',
   CurrencyGBP = 'currency-gbp',
   CurrencyUSD = 'currency-usd',

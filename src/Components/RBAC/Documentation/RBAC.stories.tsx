@@ -13,9 +13,9 @@ import {RBAC} from '../../../'
 import RBACReadme from './RBAC.md'
 import RBACTestReadme from './RBACTest.md'
 
-const logoStories = storiesOf('Utilities/RBAC', module).addDecorator(withKnobs)
+const rbacStories = storiesOf('Utilities/RBAC', module).addDecorator(withKnobs)
 
-logoStories.add(
+rbacStories.add(
   'RBAC',
   () => {
     type Permission = 'read:all' | 'write:all'
@@ -41,7 +41,7 @@ logoStories.add(
 
 const test = (a: number, b: number) => a + b === 4
 
-logoStories.add(
+rbacStories.add(
   'RBAC with custom test',
   () => {
     const a = number('a', 2)
