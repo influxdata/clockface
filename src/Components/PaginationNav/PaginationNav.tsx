@@ -274,15 +274,15 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
               isActive={activePage < totalPages}
             />
           )}
-          {enablePageInput && (
+        </ul>
+        {enablePageInput && (
             <PaginationInput
               currentPage={activePage}
               onChange={onInputchange}
               key={'pagination--item-right'}
               size={size}
             />
-          )}
-        </ul>
+        )}
       </nav>
     )
   }

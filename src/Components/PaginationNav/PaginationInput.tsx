@@ -35,21 +35,20 @@ export const PaginationInput = forwardRef<
 
     return (
       <>
-        <li>
-          To page
-        </li>
-        <li
+        <p>
+          Jump to page
+        </p>
+        <div
           className={size}
           data-testid={testID}
           id={id}
           style={style}
-          ref={ref}
         >
         <Input
           onChange={onChange}
           value={currentPage}
         />
-        </li>
+        </div>
       </>
     )
   }
