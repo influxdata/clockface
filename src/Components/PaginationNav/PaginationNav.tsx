@@ -144,8 +144,19 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
       }
     }
 
+    const cleanPageInput = (input: number) => {
+      if (input < 1) {
+        return 1
+      } else if (input > totalPages) {
+        return totalPages
+      } else {
+        return input
+      }
+    }
+
     const onInputchange = (e: ChangeEvent<HTMLInputElement>) => {
-      setActivePage(Number(e.target.value))
+      const cleanedValue = cleanPageInput(Number(e.target.value))
+      setActivePage(cleanedValue)
     }
 
     const paginateArrow = (event: KeyboardEvent) => {
