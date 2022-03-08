@@ -295,7 +295,7 @@ export enum IconFont {
   BookPencil = 'book-pencil',
   Book = 'book',
   BookOutline = 'book-outline',
-  Bracess = 'braces',
+  Braces = 'braces',
   Brush = 'brush',
   BuildOutline_New = 'build-outline-new',
   BucketOutline = 'bucket-outline',
