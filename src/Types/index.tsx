@@ -290,7 +290,7 @@ export enum IconFont {
   Bell = 'bell',
   BellRinging = 'bell-ringing',
   BellSolid = 'bell-solid',
-  Bill = "bill",
+  Bill = 'bill',
   BookCode = 'book-code',
   BookPencil = 'book-pencil',
   Book = 'book',
