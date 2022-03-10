@@ -82,10 +82,7 @@ appHeaderFamilyStories.add(
       <div className="story--example">
         <AppHeader.Logo
           ref={appHeaderLogoRef}
-          src={text(
-            'src',
-            'https://influxdata.github.io/branding/img/downloads/influxdata-logo--full--white-alpha.png'
-          )}
+          src={text('src', '/static/media/.storybook/influxdata-logo.png')}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
           }
@@ -115,10 +112,7 @@ appHeaderExampleStories.add(
             }
           >
             <AppHeader.Logo
-              src={text(
-                'src',
-                'https://influxdata.github.io/branding/img/downloads/influxdata-logo--full--white-alpha.png'
-              )}
+              src={text('src', '/static/media/.storybook/influxdata-logo.png')}
               size={
                 ComponentSize[
                   select('size', mapEnumKeys(ComponentSize), 'Small')

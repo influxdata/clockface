@@ -68,7 +68,7 @@ navMenuStories.add(
                     () => {}
                     /* eslint-enable */
                   }
-                  icon={<Icon glyph={IconFont.Cubo} />}
+                  icon={<Icon glyph={IconFont.CuboSolid} />}
                 />
               }
               userElement={

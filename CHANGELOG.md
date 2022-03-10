@@ -1,5 +1,13 @@
 # Changelog
 
+### 3.4.1 (2022-03-08)
+
+- [738](https://github.com/influxdata/clockface/pull/738): Add new icons to icon set.
+
+### 3.4.0 (2022-03-04)
+
+- [736](https://github.com/influxdata/clockface/pull/736): Update logos to new branding standards.
+
 ### 3.3.3 (2022-02-18)
 
 - [733](https://github.com/influxdata/clockface/pull/733): Using the `<a/>` tag instead of `<span>` for `Resource.EditableName`

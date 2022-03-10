@@ -195,6 +195,9 @@
   &.chat:before {
     content: '\e933';
   }
+  &.cubo-solid:before {
+    content: '\e9a5';
+  }
   &.currency-eur:before {
     content: '\e968';
   }
@@ -524,5 +527,47 @@
   }
   &.share:before {
     content: '\e96d';
+  }
+  &.upload-outline:before {
+    content: '\e9a6';
+  }
+  &.star-smile:before {
+    content: '\e9a7';
+  }
+  &.subscribe:before {
+    content: '\e9a8';
+  }
+  &.braces:before {
+    content: '\e9a9';
+  }
+  &.bill:before {
+    content: '\e9aa';
+  }
+  &.pie-chart:before {
+    content: '\e9ab';
+  }
+  &.install:before {
+    content: '\e9ac';
+  }
+  &.copper-coin:before {
+    content: '\e9ad';
+  }
+  &.file-settings:before {
+    content: '\e9ae';
+  }
+  &.save:before {
+    content: '\e9b2';
+  }
+  &.stack-solid:before {
+    content: '\e9b3';
+  }
+  &.edit:before {
+    content: '\e9af';
+  }
+  &.play-outline:before {
+    content: '\e9b0';
+  }
+  &.book-outline:before {
+    content: '\e9b1';
   }
 }
