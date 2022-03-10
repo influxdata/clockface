@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.5.0 (2022-03-10)
+
+- [738](https://github.com/influxdata/clockface/pull/740): Added input functionality to the PaginationNav
+
 ### 3.4.1 (2022-03-08)
 
 - [738](https://github.com/influxdata/clockface/pull/738): Add new icons to icon set.

@@ -1,11 +1,19 @@
 // Libraries
-import React, {forwardRef, useState, useEffect, useLayoutEffect} from 'react'
+import React, {
+  forwardRef,
+  useState,
+  useEffect,
+  useLayoutEffect,
+  ChangeEvent,
+} from 'react'
+
 import classnames from 'classnames'
 import {PaginationDirectionItem} from './PaginationDirectionItem'
 
 // Components
 import {PaginationItem} from './PaginationItem'
 import {PaginationTruncationItem} from './paginationTruncationItem'
+import {PaginationInput} from './PaginationInput'
 
 // Styles
 import './Pagination.scss'
@@ -29,6 +37,7 @@ export interface PaginationNavProps extends StandardFunctionProps {
   hideDirectionIcon?: boolean
   size?: ComponentSize
   enableArrowPaginate?: boolean
+  enablePageInput?: boolean
 }
 
 export type PaginationNavRef = HTMLElement
@@ -47,6 +56,7 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
       hideDirectionIcon = false,
       size = ComponentSize.Medium,
       enableArrowPaginate = false,
+      enablePageInput = false,
     },
     ref
   ) => {
@@ -55,6 +65,7 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
       [`${className}`]: className,
     })
     const [activePage, setActivePage] = useState(currentPage)
+    const [inputPage, setInputPage] = useState(currentPage)
 
     const computePageSpread = (page: number, pageOffset: number) => {
       const itemsToShow = 5 + 2 * (pageOffset >= 1 ? pageOffset : 1)
@@ -137,8 +148,24 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
 
       if (page !== activePage && notOutOfBound) {
         setActivePage(page)
+        setInputPage(page)
         onChange(page)
       }
+    }
+
+    const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+      let parsedValue = parseInt(e.target.value, 10)
+
+      if (parsedValue > totalPages) {
+        parsedValue = totalPages
+      } else if (parsedValue === 0) {
+        parsedValue++
+      }
+      setInputPage(parsedValue)
+    }
+
+    const onInputButtonClick = () => {
+      setActivePage(inputPage)
     }
 
     const paginateArrow = (event: KeyboardEvent) => {
@@ -268,6 +295,14 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
             />
           )}
         </ul>
+        {enablePageInput && (
+          <PaginationInput
+            currentPage={inputPage}
+            onChange={onInputChange}
+            onClick={onInputButtonClick}
+            size={size}
+          />
+        )}
       </nav>
     )
   }

@@ -14,6 +14,7 @@ import {
   PaginationItemRef,
   PaginationTruncationItemRef,
   PaginationDirectionItemRef,
+  PaginationInputRef,
 } from '../'
 
 // Types
@@ -24,6 +25,8 @@ import PaginationReadme from './PaginationNav.md'
 import PaginationItemReadme from './PaginationNavItem.md'
 import PaginationTruncationItemReadme from './PaginationTruncationItem.md'
 import PaginationDirectionItemReadme from './PaginationDirectionItem.md'
+import PaginationInputReadme from './PaginationInput.md'
+
 const PaginationStories = storiesOf(
   'Components/Pagination/PaginationNav',
   module
@@ -53,6 +56,7 @@ PaginationStories.add(
             /* eslint-enable */
           }}
           hideDirectionIcon={boolean('hideDirectionIcon', false)}
+          enablePageInput={boolean('enablePageInput', false)}
           size={
             ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Medium')]
           }
@@ -170,6 +174,38 @@ PaginationStories.add(
   {
     readme: {
       content: marked(PaginationTruncationItemReadme),
+    },
+  }
+)
+
+PaginationStories.add(
+  'PaginationInput',
+  () => {
+    const paginationInputRef = createRef<PaginationInputRef>()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(paginationInputRef.current)
+      /* eslint-enable */
+    }
+    return (
+      <div className="story--example">
+        <PaginationNav.Input
+          ref={paginationInputRef}
+          currentPage={1}
+          size={
+            ComponentSize[select('size', mapEnumKeys(ComponentSize), 'Small')]
+          }
+        />
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(PaginationInputReadme),
     },
   }
 )

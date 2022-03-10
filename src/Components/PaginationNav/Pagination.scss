@@ -9,10 +9,12 @@ $cf-pagination--border-color: $g5-pepper;
 $cf-pagination--direction-icon: $g14-chromium;
 
 .cf-pagination,
+.cf-pagination-input--container,
 .cf-pagination--container {
-  width: 100%;
   display: flex;
+  align-items: center;
   padding: 0;
+  flex-wrap: wrap;
 }
 
 .cf-pagination--item--container {
@@ -34,4 +36,10 @@ $cf-pagination--direction-icon: $g14-chromium;
     left: 0;
     bottom: 0;
   }
+}
+
+.cf-pagination-input--item {
+  margin: 0 16px;
+  color: $cf-grey-65;
+  font-weight: $cf-font-weight--medium;
 }
