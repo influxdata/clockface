@@ -1,5 +1,12 @@
 // Libraries
-import React, {forwardRef, useState, useEffect, useLayoutEffect, ChangeEvent} from 'react'
+import React, {
+  forwardRef,
+  useState,
+  useEffect,
+  useLayoutEffect,
+  ChangeEvent,
+} from 'react'
+
 import classnames from 'classnames'
 import {PaginationDirectionItem} from './PaginationDirectionItem'
 
@@ -58,6 +65,7 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
       [`${className}`]: className,
     })
     const [activePage, setActivePage] = useState(currentPage)
+    const [inputPage, setInputPage] = useState(currentPage)
 
     const computePageSpread = (page: number, pageOffset: number) => {
       const itemsToShow = 5 + 2 * (pageOffset >= 1 ? pageOffset : 1)
@@ -140,23 +148,24 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
 
       if (page !== activePage && notOutOfBound) {
         setActivePage(page)
+        setInputPage(page)
         onChange(page)
       }
     }
 
-    const cleanPageInput = (input: number) => {
-      if (input < 1) {
-        return 1
-      } else if (input > totalPages) {
-        return totalPages
-      } else {
-        return input
+    const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+      let parsedValue = parseInt(e.target.value, 10)
+
+      if (parsedValue > totalPages) {
+        parsedValue = totalPages
+      } else if (parsedValue === 0) {
+        parsedValue++
       }
+      setInputPage(parsedValue)
     }
 
-    const onInputchange = (e: ChangeEvent<HTMLInputElement>) => {
-      const cleanedValue = cleanPageInput(Number(e.target.value))
-      setActivePage(cleanedValue)
+    const onInputButtonClick = () => {
+      setActivePage(inputPage)
     }
 
     const paginateArrow = (event: KeyboardEvent) => {
@@ -287,12 +296,12 @@ export const Pagination = forwardRef<PaginationNavRef, PaginationNavProps>(
           )}
         </ul>
         {enablePageInput && (
-            <PaginationInput
-              currentPage={activePage}
-              onChange={onInputchange}
-              key={'pagination--item-right'}
-              size={size}
-            />
+          <PaginationInput
+            currentPage={inputPage}
+            onChange={onInputChange}
+            onClick={onInputButtonClick}
+            size={size}
+          />
         )}
       </nav>
     )
