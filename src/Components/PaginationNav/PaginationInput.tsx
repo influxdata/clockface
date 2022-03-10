@@ -30,7 +30,7 @@ export const PaginationInput = forwardRef<
   PaginationInputProps
 >(({size = ComponentSize.Small, currentPage = 1, onChange, onClick}, ref) => {
   const iconFont = 'CaretRight'
-  const inputStyles = {width: 'auto', minWidth: 0, display: 'table'}
+  const inputStyles = {width: currentPage.toString().length + 6 + 'ch'}
 
   return (
     <div className="cf-pagination-input--container">
@@ -44,6 +44,7 @@ export const PaginationInput = forwardRef<
         size={size}
         style={inputStyles}
         ref={ref}
+        className={'cf-pagination-input__width'}
       />
       <Button
         size={size}
