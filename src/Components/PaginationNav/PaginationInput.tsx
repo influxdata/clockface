@@ -49,7 +49,9 @@ export const PaginationInput = forwardRef<
         size={size}
         color={ComponentColor.Tertiary}
         onClick={onClick}
+        placeIconAfterText={true}
         icon={IconFont[iconFont]}
+        text={'Go'}
       />
     </div>
   )
