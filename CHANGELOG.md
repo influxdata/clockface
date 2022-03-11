@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.5.1 (2022-03-11)
+
+- [744](https://github.com/influxdata/clockface/pull/744): FormValidationElement bug fix
+
 ### 3.5.0 (2022-03-10)
 
 - [738](https://github.com/influxdata/clockface/pull/740): Added input functionality to the PaginationNav
