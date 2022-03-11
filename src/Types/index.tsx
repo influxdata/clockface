@@ -372,6 +372,7 @@ export enum IconFont {
   HeartSolid = 'heart-solid',
   Heroku = 'heroku',
   HerokuSimple = 'heroku-simple',
+  History = 'history',
   HomeOutline_New = 'home-outline-new',
   Import = 'import',
   Info_New = 'info-new',
