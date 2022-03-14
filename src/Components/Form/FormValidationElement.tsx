@@ -63,12 +63,15 @@ export const FormValidationElement = forwardRef<
     ref
   ) => {
     const shouldPerformValidation = useRef<boolean>(prevalidate)
+    const originalValue = useRef(value)
 
     let errorMessage = null
     let status = ComponentStatus.Default
 
     useEffect(() => {
-      shouldPerformValidation.current = true
+      if (originalValue.current !== value) {
+        shouldPerformValidation.current = true
+      }
     }, [value])
 
     if (shouldPerformValidation.current) {

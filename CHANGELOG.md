@@ -1,9 +1,12 @@
 # Changelog
 
-### 3.5.1 (2022-03-08)
+### 3.5.2 (2022-03-14)
 
 - [742](https://github.com/influxdata/clockface/pull/742): Added a new icon to the icon set.
 
+### 3.5.1 (2022-03-11)
+
+- [744](https://github.com/influxdata/clockface/pull/744): FormValidationElement bug fix
 ### 3.5.0 (2022-03-10)
 
 - [740](https://github.com/influxdata/clockface/pull/740): Added input functionality to the PaginationNav
