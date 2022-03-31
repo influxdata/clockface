@@ -1,6 +1,6 @@
 # Changelog
 
-### 3.6.1 (2022-03-31)
+### 3.7.0 (2022-03-31)
 
 - [751](https://github.com/influxdata/clockface/pull/751): Added four new icons to the icon set
 
