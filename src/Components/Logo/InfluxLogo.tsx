@@ -65,7 +65,7 @@ export const InfluxLogo = forwardRef<InfluxLogoRef, InfluxLogoProps>(
         case 'KuboOld':
           return <KuboOld />
         default:
-          return <div />
+          return null
       }
     }
 
@@ -78,7 +78,7 @@ export const InfluxLogo = forwardRef<InfluxLogoRef, InfluxLogoProps>(
         case 'Telegraf':
           return <Telegraf />
         default:
-          return <div />
+          return null
       }
     }
 
@@ -91,7 +91,7 @@ export const InfluxLogo = forwardRef<InfluxLogoRef, InfluxLogoProps>(
         case 'OpenSource':
           return <OpenSource />
         default:
-          return <div />
+          return null
       }
     }
 
@@ -102,7 +102,7 @@ export const InfluxLogo = forwardRef<InfluxLogoRef, InfluxLogoProps>(
         case 'Registered':
           return <Registered />
         default:
-          return <div />
+          return null
       }
     }
 
