@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.8.0 (2022-03-31)
+
+- [752](https://github.com/influxdata/clockface/pull/752): Added Icon for Bulk Action Deselection 
+
 ### 3.7.0 (2022-03-31)
 
 - [751](https://github.com/influxdata/clockface/pull/751): Added four new icons to the icon set
