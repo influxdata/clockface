@@ -432,6 +432,7 @@ export enum IconFont {
   Stop_New = 'stop-new',
   Switch_New = 'switch-new',
   Subscribe = 'subscribe',
+  Subtract = 'subtract',
   Sun = 'sun',
   Table = 'table',
   Terminal = 'terminal',

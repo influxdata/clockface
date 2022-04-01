@@ -585,4 +585,7 @@
   &.terminal:before {
     content: "\e9b8";
   }
+  &.subtract:before {
+    content: "\e9b9";
+  }
 }
