@@ -573,4 +573,16 @@
   &.history:before {
     content: '\e9b4';
   }
+  &.calendar-small:before {
+    content: "\e9b5";
+  }
+  &.table:before {
+    content: "\e9b6";
+  }
+  &.organization:before {
+    content: "\e9b7";
+  }
+  &.terminal:before {
+    content: "\e9b8";
+  }
 }

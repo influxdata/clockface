@@ -1,5 +1,13 @@
 # Changelog
 
+### 3.7.0 (2022-03-31)
+
+- [751](https://github.com/influxdata/clockface/pull/751): Added four new icons to the icon set
+
+### 3.6.0 (2022-03-30)
+
+- [750](https://github.com/influxdata/clockface/pull/750): Added the SubwayNav component to Clockface.
+
 ### 3.5.2 (2022-03-14)
 
 - [742](https://github.com/influxdata/clockface/pull/742): Added a new icon to the icon set.
