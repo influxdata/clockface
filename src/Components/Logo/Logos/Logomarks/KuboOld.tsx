@@ -33,8 +33,8 @@ export const KuboOld = ({
       style={logoStyle}
       x="0px"
       y="0px"
-      viewBox="0 0 407 108"
-      width="270"
+      viewBox="0 0 188 190"
+      width="44"
       height="45"
     >
       <path

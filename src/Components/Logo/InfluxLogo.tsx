@@ -28,7 +28,7 @@ import {
 } from '../../Types'
 
 // Styles
-import './InfluxDataLogo.scss'
+import './InfluxLogo.scss'
 
 export interface InfluxLogoProps extends StandardFunctionProps {
   /** Coloration of the SVG image */
@@ -54,7 +54,7 @@ export const InfluxLogo = forwardRef<InfluxLogoRef, InfluxLogoProps>(
     },
     ref
   ) => {
-    const logoClass = classnames('cf-logo--influxdata', {
+    const logoClass = classnames('cf-logo--influx', {
       [`${className}`]: className,
     })
 
@@ -109,7 +109,7 @@ export const InfluxLogo = forwardRef<InfluxLogoRef, InfluxLogoProps>(
     return (
       <div className={logoClass}>
         {getLogoMark()}
-        <div>
+        <div className={logoClass}>
           {getBaseText()}
           {getAuxiliaryText()}
           {getSymbol()}

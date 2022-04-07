@@ -34,7 +34,7 @@ export const Telegraf = ({
       x="0px"
       y="0px"
       viewBox="0 0 407 108"
-      width="270"
+      width="170"
       height="45"
     >
       <path

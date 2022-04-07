@@ -3,9 +3,10 @@
     ----------------------------------------------------------------------------
 */
 
-.cf-logo--influxdata {
-    enable-background:new 0 0 270 45;
-    fill-rule: evenodd;
-    clip-rule: evenodd;
-  }
+.cf-logo--influx {
+    display: flex;
+    align-items: center;
+    align-content: flex-start;
+    max-height: 45px;
+}
   

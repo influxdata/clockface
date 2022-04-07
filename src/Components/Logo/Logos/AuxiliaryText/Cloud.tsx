@@ -34,7 +34,7 @@ export const Cloud = ({
       x="0px"
       y="0px"
       viewBox="0 0 258 84"
-      width="270"
+      width="138"
       height="45"
     >
       <path
