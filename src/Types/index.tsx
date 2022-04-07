@@ -269,6 +269,9 @@ export enum InfluxColors {
   Magenta = '#BF2FE5',
   Galaxy = '#9394FF',
   Pulsar = '#513CC6',
+  CetaceanBlue = '#020A47',
+  DogwoodRose = '#D30971',
+  PurpleX = '#9B2AFF',
 }
 
 export enum IconFont {
