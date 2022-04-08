@@ -9,7 +9,7 @@ import {Heading, Typeface, HeadingElement, FontWeight} from '@influxdata/clockfa
 ```tsx
 <Heading
   element={HeadingElement.H1}
-  type={Typeface.Rubik}
+  type={Typeface.ProximaNova}
   weight={FontWeight.Bold}
   underline={false}
   selectable={true}
