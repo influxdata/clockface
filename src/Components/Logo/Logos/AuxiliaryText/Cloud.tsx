@@ -35,7 +35,7 @@ export const Cloud = ({
       y="0px"
       viewBox="0 0 258 84"
       width="138"
-      height="45"
+      height="36"
     >
       <path
         className={logoClass}

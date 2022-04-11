@@ -23,7 +23,7 @@ export const OpenSource = ({
     [`${className}`]: className,
   })
 
-  const logoStyle = {fill, 'margin-top': '28px'}
+  const logoStyle = {fill, 'margin-top': '23px'}
 
   return (
     <svg
@@ -35,7 +35,7 @@ export const OpenSource = ({
       y="0px"
       viewBox="0 0 588 77"
       width="344"
-      height="45"
+      height="35"
     >
       <path
         className={logoClass}

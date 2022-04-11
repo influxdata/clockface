@@ -35,7 +35,7 @@ export const InfluxDb = ({
       y="0px"
       viewBox="0 0 417 84"
       width="218"
-      height="40"
+      height="35"
     >
       <path
         className={logoClass}

@@ -23,7 +23,7 @@ export const Enterprise = ({
     [`${className}`]: className,
   })
 
-  const logoStyle = {fill, 'margin-top': '20px'}
+  const logoStyle = {fill, 'margin-top': '11.5px'}
 
   return (
     <svg
@@ -35,7 +35,7 @@ export const Enterprise = ({
       y="0px"
       viewBox="0 0 496 102"
       width="221"
-      height="45"
+      height="42"
     >
       <path
         className={logoClass}
