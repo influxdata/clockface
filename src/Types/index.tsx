@@ -633,8 +633,8 @@ export enum LinkRel {
 }
 
 export enum Typeface {
-  RobotoMono = 'RobotoMono',
-  ProximaNova = 'ProximaNova',
+  RobotoMono = 'Roboto Mono',
+  ProximaNova = 'Proxima Nova',
 }
 
 export enum HeadingElement {

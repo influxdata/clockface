@@ -57,7 +57,6 @@ module.exports = ({config}) => {
     '.ttf',
     '.svg',
     '.otf',
-    '.ttf'
   )
 
   return config
