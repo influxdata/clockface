@@ -82,18 +82,22 @@ funnelPageStories.add(
                   select(
                     'backgroundColor',
                     mapEnumKeys(InfluxColors),
-                    'DeepPurple'
+                    'CetaceanBlue'
                   )
                 ]
               }
               accentColorA={
                 InfluxColors[
-                  select('accentColorA', mapEnumKeys(InfluxColors), 'Sapphire')
+                  select('accentColorA', mapEnumKeys(InfluxColors), 'PurpleX')
                 ]
               }
               accentColorB={
                 InfluxColors[
-                  select('accentColorB', mapEnumKeys(InfluxColors), 'Amethyst')
+                  select(
+                    'accentColorB',
+                    mapEnumKeys(InfluxColors),
+                    'DogwoodRose'
+                  )
                 ]
               }
             >
