@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.9.0 (2022-03-31)
+
+- [754](https://github.com/influxdata/clockface/pull/754): Updated Funnel Page with new Brand Colors
+
 ### 3.8.0 (2022-03-31)
 
 - [752](https://github.com/influxdata/clockface/pull/752): Added Icon for Bulk Action Deselection 
