@@ -462,6 +462,31 @@ export enum IconFont {
   Zap = 'zap',
 }
 
+export enum LogoAuxiliaryText {
+  None = 'None',
+  Cloud = 'Cloud',
+  Enterprise = 'Enterprise',
+  OpenSource = 'OpenSource',
+}
+
+export enum LogoBaseText {
+  None = 'None',
+  InfluxData = 'InfluxData',
+  InfluxDb = 'InfluxDb',
+  Telegraf = 'Telegraf',
+}
+
+export enum LogoMarks {
+  Kubo = 'Kubo',
+  KuboOld = 'KuboOld',
+}
+
+export enum LogoSymbols {
+  None = 'None',
+  Trademark = 'Trademark',
+  Registered = 'Registered',
+}
+
 export enum Columns {
   One = 1,
   Two = 2,
