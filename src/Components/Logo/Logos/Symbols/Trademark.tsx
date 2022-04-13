@@ -42,6 +42,7 @@ export const Trademark = forwardRef<TrademarkRef, TrademarkProps>(
         viewBox="0 0 56 28"
         width="38"
         height="14"
+        ref={ref}
       >
         <path
           className={logoClass}
