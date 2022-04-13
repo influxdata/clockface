@@ -20,7 +20,7 @@ interface OwnProps {
   settingUpText: string
   setupTime?: string
   settingUpHeader?: string
-  hideCheckmark?: boolean
+  showCheckmark?: boolean
 }
 
 export class SubwayNav extends PureComponent<OwnProps> {
@@ -57,7 +57,7 @@ export class SubwayNav extends PureComponent<OwnProps> {
               stepIsActive={index === this.props.currentStep - 1}
               stepIsComplete={index < this.props.currentStep - 1}
               text={value.name}
-              hideCheckmark={this.props.hideCheckmark ?? false}
+              showCheckmark={this.props.showCheckmark !== false}
             />
           ))}
         </div>

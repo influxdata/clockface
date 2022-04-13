@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.11.0 (2022-04-13)
+
+- [759](https://github.com/influxdata/clockface/pull/759): Added new props to Subway Nav
+
 ### 3.10.0 (2022-03-31)
 
 - [757](https://github.com/influxdata/clockface/pull/757): Created a new Logo Component to match Marketing Logo requirements

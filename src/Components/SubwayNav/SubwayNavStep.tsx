@@ -10,7 +10,7 @@ type OwnProps = {
   stepIsActive: boolean
   stepIsComplete: boolean
   text: string
-  hideCheckmark: boolean
+  showCheckmark: boolean
 }
 
 export const SubwayNavStep = (props: OwnProps) => {
@@ -20,7 +20,7 @@ export const SubwayNavStep = (props: OwnProps) => {
     stepIsActive,
     stepIsComplete,
     text,
-    hideCheckmark,
+    showCheckmark,
   } = props
   const iconAndTextColor =
     stepIsActive || stepIsComplete ? InfluxColors.Pool : InfluxColors.Grey95
@@ -45,10 +45,10 @@ export const SubwayNavStep = (props: OwnProps) => {
           style={{
             color: iconAndTextColor,
             background:
-              stepIsComplete && !hideCheckmark ? InfluxColors.Pool : '',
+              stepIsComplete && showCheckmark ? InfluxColors.Pool : '',
           }}
         >
-          {stepIsComplete && !hideCheckmark ? (
+          {stepIsComplete && showCheckmark ? (
             <Icon glyph={IconFont.Checkmark_New} style={completedStepStyle} />
           ) : (
             <Icon glyph={glyph} style={glyphFontStyle} />
