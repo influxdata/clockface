@@ -29,7 +29,7 @@ export const Trademark = forwardRef<TrademarkRef, TrademarkProps>(
       [`${className}`]: className,
     })
 
-    const logoStyle = {fill, 'margin-bottom': '20px'}
+    const logoStyle = {fill, marginBottom: '20px'}
 
     return (
       <svg

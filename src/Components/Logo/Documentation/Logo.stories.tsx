@@ -52,24 +52,32 @@ logoStories.add(
           ref={logoRef}
           auxiliaryText={
             LogoAuxiliaryText[
-              select('auxiliary', mapEnumKeys(LogoAuxiliaryText), 'None')
+              select(
+                'auxiliary',
+                mapEnumKeys(LogoAuxiliaryText),
+                LogoAuxiliaryText.None
+              )
             ]
           }
           baseText={
             LogoBaseText[
-              select('base', mapEnumKeys(LogoBaseText), 'InfluxData')
+              select('base', mapEnumKeys(LogoBaseText), LogoBaseText.InfluxData)
             ]
           }
           logoMark={
-            LogoMarks[select('logomark', mapEnumKeys(LogoMarks), 'Kubo')]
+            LogoMarks[
+              select('logomark', mapEnumKeys(LogoMarks), LogoMarks.Kubo)
+            ]
           }
           symbol={
             LogoSymbols[
-              select('symbol', mapEnumKeys(LogoSymbols), 'Registered')
+              select('symbol', mapEnumKeys(LogoSymbols), LogoSymbols.Registered)
             ]
           }
           fill={
-            InfluxColors[select('fill', mapEnumKeys(InfluxColors), 'White')]
+            InfluxColors[
+              select('fill', mapEnumKeys(InfluxColors), InfluxColors.White)
+            ]
           }
           centeredLogo={boolean('Center Logo', false)}
         />

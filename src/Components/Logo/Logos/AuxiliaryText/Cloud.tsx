@@ -16,17 +16,20 @@ export interface CloudProps extends StandardFunctionProps {
 export type CloudRef = SVGSVGElement
 
 export const Cloud = forwardRef<CloudRef, CloudProps>(
-  ({
-    className = '',
-    id = 'svg--influxdata',
-    fill = InfluxColors.White,
-    testID = 'svg--influxdata',
-  }) => {
+  (
+    {
+      className = '',
+      id = 'svg--influxdata',
+      fill = InfluxColors.White,
+      testID = 'svg--influxdata',
+    },
+    ref
+  ) => {
     const logoClass = classnames('cf-logo', {
       [`${className}`]: className,
     })
 
-    const logoStyle = {fill, 'margin-top': '1px'}
+    const logoStyle = {fill, marginTop: '1px'}
 
     return (
       <svg
@@ -39,6 +42,7 @@ export const Cloud = forwardRef<CloudRef, CloudProps>(
         viewBox="0 0 258 84"
         width="112"
         height="33"
+        ref={ref}
       >
         <path
           className={logoClass}

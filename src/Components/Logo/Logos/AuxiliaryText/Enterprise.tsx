@@ -29,7 +29,7 @@ export const Enterprise = forwardRef<EnterpriseRef, EnterpriseProps>(
       [`${className}`]: className,
     })
 
-    const logoStyle = {fill, 'margin-top': '12px'}
+    const logoStyle = {fill, marginTop: '12px'}
 
     return (
       <svg

@@ -29,7 +29,7 @@ export const OpenSource = forwardRef<OpenSourceRef, OpenSourceProps>(
       [`${className}`]: className,
     })
 
-    const logoStyle = {fill, 'margin-top': '22px'}
+    const logoStyle = {fill, marginTop: '22px'}
 
     return (
       <svg
