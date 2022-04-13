@@ -37,19 +37,20 @@ export interface InfluxLogoProps extends StandardFunctionProps {
   baseText?: LogoBaseText | string
   auxiliaryText?: LogoAuxiliaryText | string
   symbol?: LogoSymbols | string
+  centeredLogo: boolean
 }
 
-export type InfluxLogoRef = SVGSVGElement
+export type InfluxLogoRef = HTMLDivElement
 
 export const InfluxLogo = forwardRef<InfluxLogoRef, InfluxLogoProps>(
   (
     {
-      style,
       fill = InfluxColors.White,
       baseText = LogoBaseText.InfluxData,
       auxiliaryText = LogoAuxiliaryText.None,
       logoMark = LogoMarks.Kubo,
       symbol = LogoSymbols.Registered,
+      centeredLogo = false,
       className,
     },
     ref
@@ -61,9 +62,9 @@ export const InfluxLogo = forwardRef<InfluxLogoRef, InfluxLogoProps>(
     const getLogoMark = () => {
       switch (logoMark) {
         case 'Kubo':
-          return <Kubo />
+          return <Kubo fill={fill} centered={centeredLogo} />
         case 'KuboOld':
-          return <KuboOld />
+          return <KuboOld fill={fill} centered={centeredLogo} />
         default:
           return null
       }
@@ -72,11 +73,11 @@ export const InfluxLogo = forwardRef<InfluxLogoRef, InfluxLogoProps>(
     const getBaseText = () => {
       switch (baseText) {
         case 'InfluxData':
-          return <InfluxData />
+          return <InfluxData fill={fill} />
         case 'InfluxDb':
-          return <InfluxDb />
+          return <InfluxDb fill={fill} />
         case 'Telegraf':
-          return <Telegraf />
+          return <Telegraf fill={fill} />
         default:
           return null
       }
@@ -85,11 +86,11 @@ export const InfluxLogo = forwardRef<InfluxLogoRef, InfluxLogoProps>(
     const getAuxiliaryText = () => {
       switch (auxiliaryText) {
         case 'Cloud':
-          return <Cloud />
+          return <Cloud fill={fill} />
         case 'Enterprise':
-          return <Enterprise />
+          return <Enterprise fill={fill} />
         case 'OpenSource':
-          return <OpenSource />
+          return <OpenSource fill={fill} />
         default:
           return null
       }
@@ -98,17 +99,18 @@ export const InfluxLogo = forwardRef<InfluxLogoRef, InfluxLogoProps>(
     const getSymbol = () => {
       switch (symbol) {
         case 'Trademark':
-          return <Trademark />
+          return <Trademark fill={fill} />
         case 'Registered':
-          return <Registered />
+          return <Registered fill={fill} />
         default:
           return null
       }
     }
 
     return (
-      <div className={logoClass}>
+      <div className={logoClass} ref={ref}>
         {getLogoMark()}
+        {centeredLogo && <div className={'cf-flex-break'} />}
         <div className={logoClass}>
           {getBaseText()}
           {getAuxiliaryText()}

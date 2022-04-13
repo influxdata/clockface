@@ -70,6 +70,7 @@ logoStories.add(
           fill={
             InfluxColors[select('fill', mapEnumKeys(InfluxColors), 'White')]
           }
+          centeredLogo={boolean('Center Logo', false)}
         />
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
