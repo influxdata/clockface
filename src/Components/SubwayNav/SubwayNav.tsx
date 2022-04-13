@@ -19,6 +19,8 @@ interface OwnProps {
   settingUpIcon: JSX.Element
   settingUpText: string
   setupTime?: string
+  settingUpHeader?: string
+  hideCheckmark?: boolean
 }
 
 export class SubwayNav extends PureComponent<OwnProps> {
@@ -35,7 +37,7 @@ export class SubwayNav extends PureComponent<OwnProps> {
               {this.props.settingUpIcon}
             </span>
             <div className="subway-navigation-title-text">
-              <h3>Setting Up</h3>
+              <h3>{this.props.settingUpHeader ?? 'Setting Up'}</h3>
               <h6>{this.props.settingUpText}</h6>
             </div>
           </div>
@@ -55,6 +57,7 @@ export class SubwayNav extends PureComponent<OwnProps> {
               stepIsActive={index === this.props.currentStep - 1}
               stepIsComplete={index < this.props.currentStep - 1}
               text={value.name}
+              hideCheckmark={this.props.hideCheckmark ?? false}
             />
           ))}
         </div>
