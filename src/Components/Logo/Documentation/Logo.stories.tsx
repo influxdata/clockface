@@ -29,6 +29,7 @@ import {
 // Notes
 import InfluxDataLogoReadme from './InfluxDataLogo.md'
 import InfluxDBCloudLogoReadme from './InfluxDBCloudLogo.md'
+import InfluxLogoReadme from './InfluxLogo.md'
 
 const logoStories = storiesOf('Components/Logos', module).addDecorator(
   withKnobs
@@ -80,7 +81,7 @@ logoStories.add(
   },
   {
     readme: {
-      content: marked(InfluxDataLogoReadme),
+      content: marked(InfluxLogoReadme),
     },
   }
 )
