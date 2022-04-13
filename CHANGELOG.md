@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.10.0 (2022-03-31)
+
+- [757](https://github.com/influxdata/clockface/pull/757): Created a new Logo Component to match Marketing Logo requirements
+
 ### 3.9.0 (2022-03-31)
 
 - [754](https://github.com/influxdata/clockface/pull/754): Updated Funnel Page with new Brand Colors
