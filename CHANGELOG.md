@@ -1,6 +1,10 @@
 # Changelog
 
-### 3.11.0 (2022-04-13)
+### 3.12.0 (2022-04-19)
+
+- [760](https://github.com/influxdata/clockface/pull/760): Add optional href property to ResourceCardEditableName
+
+### 3.11.0 (2022-04-18)
 
 - [759](https://github.com/influxdata/clockface/pull/759): Added new props to Subway Nav
 
