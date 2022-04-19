@@ -95,7 +95,7 @@ export const ResourceCardEditableName = forwardRef<
     )
 
     const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
-      // this behavior is overriden by the on
+      // this behavior is overriden by the onClick handler
       if (href) {
         e.preventDefault()
       }
