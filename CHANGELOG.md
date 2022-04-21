@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.12.1 (2022-04-19)
+
+- [762](https://github.com/influxdata/clockface/pull/762): Fixed Logo Vertical Alignment and Logo Sizings
+
 ### 3.12.0 (2022-04-19)
 
 - [760](https://github.com/influxdata/clockface/pull/760): Add optional href property to ResourceCardEditableName
