@@ -28,7 +28,7 @@ export const InfluxDb = forwardRef<InfluxDbRef, InfluxDbProps>(
       [`${className}`]: className,
     })
 
-    const logoStyle = {fill}
+    const logoStyle = {fill, marginTop: '4.5px'}
 
     return (
       <svg
@@ -39,8 +39,8 @@ export const InfluxDb = forwardRef<InfluxDbRef, InfluxDbProps>(
         x="0px"
         y="0px"
         viewBox="0 0 417 84"
-        width="190"
-        height="35"
+        width="154"
+        height="31"
         ref={ref}
       >
         <path

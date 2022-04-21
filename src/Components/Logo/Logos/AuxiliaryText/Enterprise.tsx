@@ -25,11 +25,11 @@ export const Enterprise = forwardRef<EnterpriseRef, EnterpriseProps>(
     },
     ref
   ) => {
-    const logoClass = classnames('cf-logo', {
+    const logoClass = classnames('cf-logo cf-logo-auxiliary', {
       [`${className}`]: className,
     })
 
-    const logoStyle = {fill, marginTop: '12px'}
+    const logoStyle = {fill, marginTop: '6.5px', marginLeft: '14px'}
 
     return (
       <svg
@@ -40,8 +40,8 @@ export const Enterprise = forwardRef<EnterpriseRef, EnterpriseProps>(
         x="0px"
         y="0px"
         viewBox="0 0 496 102"
-        width="210"
-        height="42"
+        width="183"
+        height="37.5"
         ref={ref}
       >
         <path

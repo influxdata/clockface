@@ -40,7 +40,7 @@ export const Trademark = forwardRef<TrademarkRef, TrademarkProps>(
         x="0px"
         y="0px"
         viewBox="0 0 56 28"
-        width="38"
+        width="40"
         height="14"
         ref={ref}
       >

@@ -29,7 +29,7 @@ export const InfluxData = forwardRef<InfluxDataRef, InfluxDataProps>(
       [`${className}`]: className,
     })
 
-    const logoStyle = {fill}
+    const logoStyle = {fill, marginTop: '4.5px'}
 
     return (
       <svg
@@ -40,8 +40,8 @@ export const InfluxData = forwardRef<InfluxDataRef, InfluxDataProps>(
         x="0px"
         y="0px"
         viewBox="0 0 505 82"
-        width="240"
-        height="35"
+        width="191"
+        height="31"
         ref={ref}
       >
         <path
