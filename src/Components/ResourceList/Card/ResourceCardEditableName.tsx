@@ -44,6 +44,8 @@ export interface ResourceCardEditableNameProps extends StandardFunctionProps {
   inputTestID?: string
   /** Pass through to assign a ref to the Input present in edit mode */
   inputRef?: RefObject<InputRef>
+  /** For the anchor tag in the resource card - needed for browsers to show the proper context menu */
+  href?: string
 }
 
 export type ResourceCardEditableNameRef = HTMLDivElement
@@ -55,6 +57,7 @@ export const ResourceCardEditableName = forwardRef<
   (
     {
       id,
+      href,
       name,
       style,
       testID = 'resource-editable-name',
@@ -92,6 +95,10 @@ export const ResourceCardEditableName = forwardRef<
     )
 
     const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
+      // this behavior is overriden by the onClick handler
+      if (href) {
+        e.preventDefault()
+      }
       if (onClick) {
         onClick(e)
       }
@@ -157,6 +164,7 @@ export const ResourceCardEditableName = forwardRef<
             className={resourceCardEditableNameLinkClass}
             onClick={handleClick}
             data-testid={testID}
+            href={href}
           >
             {name || noNameString}
           </a>

@@ -1,5 +1,25 @@
 # Changelog
 
+### 3.12.1 (2022-04-19)
+
+- [762](https://github.com/influxdata/clockface/pull/762): Fixed Logo Vertical Alignment and Logo Sizings
+
+### 3.12.0 (2022-04-19)
+
+- [760](https://github.com/influxdata/clockface/pull/760): Add optional href property to ResourceCardEditableName
+
+### 3.11.0 (2022-04-18)
+
+- [759](https://github.com/influxdata/clockface/pull/759): Added new props to Subway Nav
+
+### 3.10.0 (2022-03-31)
+
+- [757](https://github.com/influxdata/clockface/pull/757): Created a new Logo Component to match Marketing Logo requirements
+
+### 3.9.0 (2022-03-31)
+
+- [754](https://github.com/influxdata/clockface/pull/754): Updated Funnel Page with new Brand Colors
+
 ### 3.8.0 (2022-03-31)
 
 - [752](https://github.com/influxdata/clockface/pull/752): Added Icon for Bulk Action Deselection 

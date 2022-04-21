@@ -13,17 +13,85 @@ import {
   InfluxDataLogoRef,
   InfluxDBCloudLogo,
   InfluxDBCloudLogoRef,
+  InfluxLogo,
+  InfluxLogoRef,
 } from '../'
 
 // Types
-import {InfluxColors} from '../../../Types'
+import {
+  InfluxColors,
+  LogoAuxiliaryText,
+  LogoBaseText,
+  LogoMarks,
+  LogoSymbols,
+} from '../../../Types'
 
 // Notes
 import InfluxDataLogoReadme from './InfluxDataLogo.md'
 import InfluxDBCloudLogoReadme from './InfluxDBCloudLogo.md'
+import InfluxLogoReadme from './InfluxLogo.md'
 
 const logoStories = storiesOf('Components/Logos', module).addDecorator(
   withKnobs
+)
+
+logoStories.add(
+  'InfluxLogo',
+  () => {
+    const logoRef = createRef<InfluxLogoRef>()
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(logoRef.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="story--example">
+        <InfluxLogo
+          ref={logoRef}
+          auxiliaryText={
+            LogoAuxiliaryText[
+              select(
+                'auxiliary',
+                mapEnumKeys(LogoAuxiliaryText),
+                LogoAuxiliaryText.None
+              )
+            ]
+          }
+          baseText={
+            LogoBaseText[
+              select('base', mapEnumKeys(LogoBaseText), LogoBaseText.InfluxData)
+            ]
+          }
+          logoMark={
+            LogoMarks[
+              select('logomark', mapEnumKeys(LogoMarks), LogoMarks.Kubo)
+            ]
+          }
+          symbol={
+            LogoSymbols[
+              select('symbol', mapEnumKeys(LogoSymbols), LogoSymbols.Registered)
+            ]
+          }
+          fill={
+            InfluxColors[
+              select('fill', mapEnumKeys(InfluxColors), InfluxColors.White)
+            ]
+          }
+          centeredLogo={boolean('Center Logo', false)}
+        />
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(InfluxLogoReadme),
+    },
+  }
 )
 
 logoStories.add(

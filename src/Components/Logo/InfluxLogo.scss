@@ -1,0 +1,35 @@
+/*
+    Influx Logo
+    ----------------------------------------------------------------------------
+*/
+
+.cf-centered-logomark {
+    margin-left: calc(50% - 54px);
+    transform: translateX(-50%);
+}
+
+.cf-flex-break {
+    width: 100%;
+    max-width: 530px;
+    margin-top: 4px;
+}
+
+.cf-logo {
+    enable-background:new 0 0 270 45;
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+}
+
+.cf-logo--influx {
+    display: inline-flex;
+    align-items: flex-start;
+    align-content: flex-start;
+    max-height: 45px;
+    flex-wrap: wrap;
+}
+
+.cf-logo-size {
+    max-height: 45px;
+}
+
+  
