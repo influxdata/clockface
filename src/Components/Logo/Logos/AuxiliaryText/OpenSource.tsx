@@ -29,7 +29,7 @@ export const OpenSource = forwardRef<OpenSourceRef, OpenSourceProps>(
       [`${className}`]: className,
     })
 
-    const logoStyle = {fill, marginTop: '22px'}
+    const logoStyle = {fill, marginTop: '15.5px', marginLeft: '14px'}
 
     return (
       <svg
@@ -40,8 +40,8 @@ export const OpenSource = forwardRef<OpenSourceRef, OpenSourceProps>(
         x="0px"
         y="0px"
         viewBox="0 0 588 77"
-        width="250"
-        height="32"
+        width="222"
+        height="29"
         ref={ref}
       >
         <path

@@ -29,7 +29,7 @@ export const Registered = forwardRef<RegisteredRef, RegisteredProps>(
       [`${className}`]: className,
     })
 
-    const logoStyle = {fill, marginBottom: '13px'}
+    const logoStyle = {fill}
 
     return (
       <svg
@@ -40,7 +40,7 @@ export const Registered = forwardRef<RegisteredRef, RegisteredProps>(
         x="0px"
         y="0px"
         viewBox="0 0 42 42"
-        width="31"
+        width="32"
         height="21"
         ref={ref}
       >

@@ -60,7 +60,7 @@ export const InfluxLogo = forwardRef<InfluxLogoRef, InfluxLogoProps>(
     },
     ref
   ) => {
-    const logoClass = classnames('cf-logo--influx', {
+    const logoClass = classnames('cf-logo--influx cf-logo-size', {
       [`${className}`]: className,
     })
 

@@ -29,7 +29,7 @@ export const Telegraf = forwardRef<TelegrafRef, TelegrafProps>(
       [`${className}`]: className,
     })
 
-    const logoStyle = {fill, marginTop: '11px'}
+    const logoStyle = {fill, marginTop: '2px'}
 
     return (
       <svg
@@ -40,7 +40,7 @@ export const Telegraf = forwardRef<TelegrafRef, TelegrafProps>(
         x="0px"
         y="0px"
         viewBox="0 0 407 108"
-        width="182"
+        width="162"
         height="43"
         ref={ref}
       >

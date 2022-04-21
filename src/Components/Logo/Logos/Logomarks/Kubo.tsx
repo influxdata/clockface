@@ -45,7 +45,7 @@ export const Kubo = forwardRef<KuboRef, KuboProps>(
         y="0px"
         className={centeredClassName}
         viewBox="0 0 154 156"
-        width="60"
+        width="80"
         height="45"
         ref={ref}
       >

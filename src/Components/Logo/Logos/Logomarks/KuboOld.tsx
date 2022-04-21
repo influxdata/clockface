@@ -45,7 +45,7 @@ export const KuboOld = forwardRef<KuboOldRef, KuboOldProps>(
         x="0px"
         y="0px"
         viewBox="0 0 188 190"
-        width="55"
+        width="75"
         height="45"
         ref={ref}
       >

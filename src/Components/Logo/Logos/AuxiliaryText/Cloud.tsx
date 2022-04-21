@@ -25,11 +25,11 @@ export const Cloud = forwardRef<CloudRef, CloudProps>(
     },
     ref
   ) => {
-    const logoClass = classnames('cf-logo', {
+    const logoClass = classnames('cf-logo cf-logo-auxiliary', {
       [`${className}`]: className,
     })
 
-    const logoStyle = {fill, marginTop: '1px'}
+    const logoStyle = {fill, marginTop: '4.5px', marginLeft: '14px'}
 
     return (
       <svg
@@ -40,8 +40,8 @@ export const Cloud = forwardRef<CloudRef, CloudProps>(
         x="0px"
         y="0px"
         viewBox="0 0 258 84"
-        width="112"
-        height="33"
+        width="96"
+        height="31"
         ref={ref}
       >
         <path
