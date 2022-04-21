@@ -1,6 +1,10 @@
 # Changelog
 
-### 3.12.1 (2022-04-19)
+### 4.0.0 (2022-04-21)
+
+- [755](https://github.com/influxdata/clockface/pull/755): Updated Clockface Fonts
+
+### 3.12.1 (2022-04-21)
 
 - [762](https://github.com/influxdata/clockface/pull/762): Fixed Logo Vertical Alignment and Logo Sizings
 

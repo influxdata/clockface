@@ -15,8 +15,8 @@ export default create({
   appBorderRadius: 4,
 
   // Typography
-  fontBase: '"Roboto", sans-serif',
-  fontCode: '"RobotoMono", monospace',
+  fontBase: '"Proxima Nova", sans-serif',
+  fontCode: '"Roboto Mono", monospace',
 
   // Text colors
   textColor: '#545667',

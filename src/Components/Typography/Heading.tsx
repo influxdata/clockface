@@ -39,7 +39,7 @@ export const Heading = forwardRef<HeadingRef, HeadingProps>(
       id,
       alt,
       weight = FontWeight.Medium,
-      type = Typeface.Rubik,
+      type = Typeface.ProximaNova,
       style,
       underline,
       testID = 'heading',
@@ -55,8 +55,8 @@ export const Heading = forwardRef<HeadingRef, HeadingProps>(
     const visualElement = appearance || element
 
     const headingClass = classnames('cf-heading', {
-      'cf-heading__standard': type === Typeface.Rubik,
-      'cf-heading__monospace': type === Typeface.IBMPlexMono,
+      'cf-heading__standard': type === Typeface.ProximaNova,
+      'cf-heading__monospace': type === Typeface.RobotoMono,
       [`cf-heading__${weight}`]: weight,
       'cf-heading__underline': underline,
       'cf-heading__selectable': selectable,

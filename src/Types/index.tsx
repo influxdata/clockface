@@ -661,8 +661,8 @@ export enum LinkRel {
 }
 
 export enum Typeface {
-  IBMPlexMono = 'ibm-plex-mono',
-  Rubik = 'rubik',
+  RobotoMono = 'Roboto Mono',
+  ProximaNova = 'Proxima Nova',
 }
 
 export enum HeadingElement {

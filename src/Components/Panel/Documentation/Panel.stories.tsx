@@ -629,7 +629,9 @@ panelExampleStories.add(
                   )
                 ]
               }
-              type={Typeface[select('type', mapEnumKeys(Typeface), 'Rubik')]}
+              type={
+                Typeface[select('type', mapEnumKeys(Typeface), 'ProximaNova')]
+              }
               weight={
                 FontWeight[select('weight', mapEnumKeys(FontWeight), 'Medium')]
               }
