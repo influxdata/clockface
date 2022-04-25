@@ -37,7 +37,21 @@ const navigationSteps: SubwayNavModel[] = [{
 
   settingUpText="Python"
 
+  settingUpHeader={settingUpHeader}
+
   setupTime="5 minutes"
+
+  showCheckmark={true}
 
 />
 ```
+
+### Example
+<!-- STORY -->
+
+
+<!-- STORY HIDE START -->
+
+<!-- STORY HIDE END -->
+
+<!-- PROPS -->

@@ -20,6 +20,7 @@ import {
 
 // Notes
 import SubwayNavReadme from './SubwayNav.md'
+import {boolean, text} from '@storybook/addon-knobs'
 
 const subwayNavStories = storiesOf('Components/SubwayNav', module)
 
@@ -62,8 +63,10 @@ subwayNavStories.add(
           onStepClick={handleNavClick}
           navigationSteps={navigationSteps}
           settingUpIcon={PythonIcon}
-          settingUpText="Python"
-          setupTime="5 minutes"
+          settingUpText={text('settingUpText', 'Python')}
+          settingUpHeader={text('settingUpHeader', 'Setting Up')}
+          setupTime={text('setupTime', '5 minutes')}
+          showCheckmark={boolean('showCheckmark', true)}
         />
 
         <div
