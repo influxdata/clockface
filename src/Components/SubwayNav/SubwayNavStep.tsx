@@ -25,7 +25,9 @@ export const SubwayNavStep = (props: OwnProps) => {
   const iconAndTextColor =
     stepIsActive || stepIsComplete ? InfluxColors.Pool : InfluxColors.Grey95
 
-  const glyphFontStyle = {fontSize: '19px'}
+  const glyphFontStyle = {
+    fontSize: '20px',
+  }
   const completedStepStyle = {color: InfluxColors.Grey95, fontSize: '25px'}
 
   return (
