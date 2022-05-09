@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.0.1 (2022-04-21)
+
+- [765](https://github.com/influxdata/clockface/pull/765): Fixed Subway Nav Icon Alignment
+
 ### 4.0.0 (2022-04-21)
 
 - [755](https://github.com/influxdata/clockface/pull/755): Updated Clockface Fonts
