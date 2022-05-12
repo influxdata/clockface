@@ -106,7 +106,7 @@ $dropdown-item--padding-v: $cf-space-2xs;
 .cf-dropdown-item__wrap .cf-dropdown-item--children,
 .cf-dropdown-item__wrap.cf-dropdown-link-item a,
 .cf-dropdown-item__wrap.cf-dropdown-item-empty {
-  word-break: break-all;
+  word-break: keep-all;
   white-space: pre-wrap;
 }
 

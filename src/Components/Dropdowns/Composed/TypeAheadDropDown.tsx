@@ -100,6 +100,8 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   )
   const [typedValue, setTypedValue] = useState<string>(initialTypedValue)
 
+  const itemNumberValidation = items.length > 5 && typedValue.length < 2
+
   useEffect(() => {
     setShownValues(items)
   }, [items])
@@ -295,26 +297,38 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
           onCollapse={onCollapse}
           theme={menuTheme}
         >
-          {shownValues.map((value, index) => {
-            // add the 'active' class to highlight when arrowing; like a hover
-            const classN = classnames({
-              active: index === selectIndex,
-            })
+          {itemNumberValidation ? (
+            <Dropdown.Item
+              key="nada-no-values-in-filter"
+              testID="nothing-in-filter-typeAhead"
+              disabled={true}
+              wrapText={true}
+            >
+              {`Please input at least 2 characters to see results`}
+            </Dropdown.Item>
+          ) : (
+            shownValues.map((value, index) => {
+              // add the 'active' class to highlight when arrowing; like a hover
+              const classN = classnames({
+                active: index === selectIndex,
+              })
 
-            return (
-              <Dropdown.Item
-                key={value.id}
-                id={value.id}
-                value={value}
-                onClick={doSelection}
-                selected={value.id === selectedItem?.id}
-                testID={`${itemTestIdPrefix}-${value.id}`}
-                className={classN}
-              >
-                {value.name || defaultNameText}
-              </Dropdown.Item>
-            )
-          })}
+              return (
+                <Dropdown.Item
+                  key={value.id}
+                  id={value.id}
+                  value={value}
+                  onClick={doSelection}
+                  selected={value.id === selectedItem?.id}
+                  testID={`${itemTestIdPrefix}-${value.id}`}
+                  className={classN}
+                >
+                  {value.name || defaultNameText}
+                </Dropdown.Item>
+              )
+            })
+          )}
+          }
           {!shownValues || shownValues.length === 0 ? (
             <Dropdown.Item
               key="nada-no-values-in-filter"
