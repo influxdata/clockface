@@ -34,6 +34,10 @@ interface OwnProps extends StandardFunctionProps {
   testIdSuffix?: string
   /**optional pre-selected option, must match exactly (name and id) an item in the items array */
   selectedOption?: SelectableItem | null
+  /**enables forced searching once dropdown list exceeds largeListSearch value */
+  largeListSearch?: boolean
+  /**the number of total items in the dropdown list before search is forced */
+  largeListMin?: number
   /** which theme to apply */
   menuTheme?: DropdownMenuTheme
   buttonTestId?: string
@@ -70,6 +74,8 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   testIdSuffix = 'typeAhead',
   selectedOption = null,
   className,
+  largeListSearch = false,
+  largeListMin = 5,
   menuTheme = DropdownMenuTheme.Onyx,
   buttonTestId = 'type-ahead-dropdown--button',
   menuTestID = 'type-ahead-dropdown--menu',
@@ -90,20 +96,40 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   const [shownValues, setShownValues] = useState(items)
   const [menuOpen, setMenuOpen] = useState<MenuStatus>(MenuStatus.Closed)
 
+  const [selectedItem, setSelectedItem] = useState<SelectableItem | null>(
+    selectedOption
+  )
+
+  const [initialSelection, setInitialSelection] = useState(
+    selectedOption !== null
+  )
+
   let initialTypedValue = ''
+
   if (selectedOption) {
     initialTypedValue = getValueWithBackup(selectedOption.name, defaultNameText)
   }
 
-  const [selectedItem, setSelectedItem] = useState<SelectableItem | null>(
-    selectedOption
-  )
   const [typedValue, setTypedValue] = useState<string>(initialTypedValue)
 
-  const itemNumberValidation = items.length > 5 && typedValue.length < 2
+  const largeListValidation =
+    largeListSearch && items.length > largeListMin && typedValue.length < 2
+
+  const setInitialSelectedItems = () => {
+    const result = items.filter(val => {
+      const name = val?.name || ''
+      return name.toLowerCase().includes(initialTypedValue.toLowerCase())
+    })
+
+    // always reset the selectIndex when doing filtering;  because
+    // if it had a value, and then they type, the shownValues changes
+    // so need to reset
+    setShownValues(result)
+    setInitialSelection(false)
+  }
 
   useEffect(() => {
-    setShownValues(items)
+    initialSelection ? setInitialSelectedItems() : setShownValues(items)
   }, [items])
 
   /**
@@ -297,7 +323,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
           onCollapse={onCollapse}
           theme={menuTheme}
         >
-          {itemNumberValidation ? (
+          {largeListValidation ? (
             <Dropdown.Item
               key="nada-no-values-in-filter"
               testID="nothing-in-filter-typeAhead"
@@ -328,7 +354,6 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
               )
             })
           )}
-          }
           {!shownValues || shownValues.length === 0 ? (
             <Dropdown.Item
               key="nada-no-values-in-filter"

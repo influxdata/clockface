@@ -616,6 +616,8 @@ dropdownComposedStories.add(
           style={object('style', defaultDropdownStyle)}
           onSelect={onSelect}
           testIdSuffix="fooTest"
+          largeListSearch={boolean('largeListSearch', false)}
+          largeListMin={number('minSearchItems', 0)}
           items={selectDropdownOptions}
           menuTestID={text('menu test id', 'menuTest')}
           status={
@@ -643,6 +645,8 @@ dropdownComposedStories.add(
           onSelect={onSelect}
           testIdSuffix="fooTest"
           items={selectDropdownOptions}
+          largeListSearch={boolean('largeListSearch', false)}
+          largeListMin={number('minSearchItems', 5)}
           menuTestID={text('menu test id 2', 'menuTest')}
           itemTestIdPrefix={text('item test id prefix 2', 'my-prefix')}
           defaultNameText={text(

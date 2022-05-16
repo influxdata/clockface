@@ -68,6 +68,7 @@ And here's rendering the component:
     items={items}
     buttonTestId='buttonTestID'
     menuTestID='menuTest'
+    minSearchItems={15}
     itemTestIdPrefix= 'my-prefix'
     defaultNameText='default empty name here'
     selectedOption={selectedOption}
