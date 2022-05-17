@@ -21,9 +21,6 @@ import {Input} from '../../Inputs/Input'
 import {DropdownHeader} from '../DropdownHeader'
 import {SelectableItem} from '../../../Utils/trie'
 import {DropdownItemEmpty} from '../DropdownItemEmpty'
-//import {TrieSearch} from 'trie-search'
-
-// Need to make it possible for name to not be defined?
 
 interface OwnProps extends StandardFunctionProps {
   items: SelectableItem[]
@@ -89,6 +86,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
 
   const [selectIndex, setSelectIndex] = useState(-1)
   const [shownValues, setShownValues] = useState(items.slice(0, 20))
+  const [totalResultCount, setTotalResultCount] = useState(items.length)
   const [menuOpen, setMenuOpen] = useState<MenuStatus>(MenuStatus.Closed)
 
   let initialTypedValue = ''
@@ -101,30 +99,10 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   )
   const [typedValue, setTypedValue] = useState<string>(initialTypedValue)
 
-  // consider deciding whether or not to use a trie based on number of items
   useEffect(() => {
-    //   const trie = new Trie()
-    //   items.forEach(item => {
-    //     trie.insert(item.name, item.id)
-    //   })
-    //   console.log(trie)
-    //   console.log('this is the result of searching for ab using the trie')
-    //   console.log(trie.searchPrefix('ab'))
-
-    //   console.log('this is the result of searching for ab using filter')
-    //   console.log(
-    //     items.filter(val => {
-    //       const name = val?.name || ''
-    //       return name.toLowerCase().includes('ab'.toLowerCase())
-    //     })
-    //   )
-
-    // const result = items.filter(val => {
-    //   const name = val?.name || ''
-    //   return name.toLowerCase().includes(needle.toLowerCase())
-    // })
-
+    // Do we need this useEffect hook?
     setShownValues(items.slice(0, 20))
+    setTotalResultCount(items.length)
   }, [items])
 
   /**
@@ -141,25 +119,6 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     items.length,
   ])
 
-  // const itemTrie = useMemo(() => {
-  //   const myTrie = new Trie()
-  //   items.forEach(item => {
-  //     myTrie.insert(item)
-  //   })
-  //   return myTrie
-  // }, [items.length])
-
-  // TRIE FUNCTION APPEARS TO BE WORKING, BUT YOU SHOULD STORE THE SELECTABLE ITEM
-  // AS PART OF THE OBJECT AT EACH LOCATION
-
-  // const trie = useMemo(() => {
-  //   const myTrie = new Trie()
-  //   items.forEach(item => {
-  //     myTrie.insert(item.name, item.id)
-  //   })
-  //   return myTrie
-  // }, [items])
-
   /**
    *  filter the selections/options based on the search string: needle
    * if the needle is empty; then there is nothing to filter; so return everything
@@ -170,41 +129,20 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     // reset the selectIndex too
     if (!needle) {
       setShownValues(items.slice(0, 20))
+      setTotalResultCount(items.length)
       setTypedValue('')
       setSelectIndex(-1)
     } else {
-      // const result = itemTrie.searchPrefix(needle)
-      // console.log(result)
       const result = items.filter(val => {
         const name = val?.name || ''
         return name.toLowerCase().includes(needle.toLowerCase())
       })
-      console.log(result)
-
-      // This fix will exit the filter early once we exceed ten results.
-      // const result: SelectableItem[] = []
-      // for (
-      //   let el = 0, totalResults = 0;
-      //   el < items.length && totalResults < 20;
-      //   el++
-      // ) {
-      //   const currName = items[el].name || ''
-      //   if (currName.includes(needle.toLowerCase())) {
-      //     result.push(items[el])
-      //     totalResults++
-      //   }
-      // }
-
-      //   items.forEach(item => {
-      //     trie.insert(item.name, item.id)
-      //   })
-      //   console.log(trie)
 
       // always reset the selectIndex when doing filtering;  because
       // if it had a value, and then they type, the shownValues changes
       // so need to reset
       setShownValues(result.slice(0, 20))
-
+      setTotalResultCount(result.length)
       setTypedValue(needle)
       setMenuOpen(MenuStatus.Open)
       setSelectIndex(-1)
@@ -360,8 +298,8 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
           onCollapse={onCollapse}
           theme={menuTheme}
         >
-          {items.length > shownValues.slice(0, 20).length ? (
-            <DropdownItemEmpty>Search to View More</DropdownItemEmpty>
+          {totalResultCount > shownValues.slice(0, 20).length ? (
+            <DropdownItemEmpty>Search to view more results.</DropdownItemEmpty>
           ) : null}
           {shownValues.map((value, index) => {
             // add the 'active' class to highlight when arrowing; like a hover
