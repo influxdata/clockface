@@ -19,7 +19,7 @@ import {
 
 import {Input} from '../../Inputs/Input'
 import {DropdownHeader} from '../DropdownHeader'
-import {SelectableItem} from '../../../Utils/trie'
+import {SelectableItem} from '@influxdata/clockface'
 import {DropdownItemEmpty} from '../DropdownItemEmpty'
 
 interface OwnProps extends StandardFunctionProps {
