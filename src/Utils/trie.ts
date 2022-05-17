@@ -2,56 +2,59 @@
 // Review implements functionality
 //const ALPHABET_SIZE = 26
 
+export interface SelectableItem {
+  id: string
+  name: string
+}
+
 interface TrieNodeInterface {
   children: {}
   endOfWord: boolean
-  content: string
-  id: string
+  content: SelectableItem
 }
 
 export class TrieNode implements TrieNodeInterface {
   children: {}
   endOfWord: boolean
-  content: string
-  id: string
-  constructor(content: string, id: string) {
+  content: SelectableItem
+  constructor(item: SelectableItem) {
     this.children = {}
     this.endOfWord = false
-    this.content = content
-    this.id = id
+    this.content = item
   }
 }
 
+// Deal with issue of same name
+
 interface TrieInterface {
   root: TrieNode
-  insert(word: string, id: string): void
-  searchPrefix(prefix: string): string[] | boolean
+  insert(item: SelectableItem): void
+  searchPrefix(prefix: string): SelectableItem[]
   searchSpecificWord(specificWord: string): boolean
 }
 
 export class Trie implements TrieInterface {
   root: TrieNode
   constructor() {
-    this.root = new TrieNode('', '')
+    this.root = new TrieNode({name: '', id: ''})
   }
 
   // This part works
-  insert(word: string, id: string): void {
+  insert(item: SelectableItem): void {
     // console.log('word', word)
     let cur = this.root
+    const word = item.name
     // console.log('cur', cur)
     for (const char of word) {
       // console.log('char', char)
       if (!cur.children[char]) {
-        cur.children[char] = new TrieNode(char, id)
+        cur.children[char] = new TrieNode(item)
       }
       cur = cur.children[char]
     }
+    // Need to add code here to prevent overwriting for same name
     // Does this need to be redone?
     cur.endOfWord = true
-    cur.content = word
-    // This id shoudl really be an array so it's not overwriting
-    cur.id = id
   }
 
   // This part works
@@ -66,43 +69,39 @@ export class Trie implements TrieInterface {
     return cur.endOfWord
   }
 
-  searchPrefix(prefix: string): string[] {
-    const successArr: string[] = []
+  searchPrefix(prefix: string): SelectableItem[] {
+    // Need to fix this line
+    const successArr: any[] = []
     let cur = this.root
     for (const char of prefix) {
       if (!cur.children[char]) {
-        return ['']
+        return [{id: '', name: ''}]
       }
       cur = cur.children[char]
     }
-    // otherwise, this means we have to traverse and output everything below this
-    // check if need for first
-    // if (cur.endOfWord === true) {
-    //   successArr.push(curString)
-    // }
     if (cur.children) {
       const stack = [cur]
-      console.log('cur is ')
-      console.log(cur)
+      // console.log('cur is ')
+      // console.log(cur)
       while (stack.length > 0) {
-        console.log('at the beginning of the while loop')
-        let currentNode = stack.pop()
-        console.log('current node is')
-        console.log(currentNode)
+        // console.log('at the beginning of the while loop')
+        const currentNode = stack.pop()
+        // console.log('current node is')
+        // console.log(currentNode)
         if (currentNode?.endOfWord === true) {
           //successArr.push(currentNode)
-          console.log('found')
+          // console.log('found')
           successArr.push(currentNode.content)
         }
         if (currentNode) {
           for (const child in currentNode.children) {
-            console.log('looking through one child in children')
-            console.log('current child is ')
-            console.log(child)
+            // console.log('looking through one child in children')
+            // console.log('current child is ')
+            // console.log(child)
             stack.push(currentNode.children[child])
           }
-          console.log('this is what stack looks like')
-          console.log(stack)
+          // console.log('this is what stack looks like')
+          // console.log(stack)
         }
       }
     }

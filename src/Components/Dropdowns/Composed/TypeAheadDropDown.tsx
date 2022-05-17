@@ -19,14 +19,11 @@ import {
 
 import {Input} from '../../Inputs/Input'
 import {DropdownHeader} from '../DropdownHeader'
-// import {Trie} from '../../../Utils/trie'
+import {SelectableItem} from '../../../Utils/trie'
+import {DropdownItemEmpty} from '../DropdownItemEmpty'
 //import {TrieSearch} from 'trie-search'
 
 // Need to make it possible for name to not be defined?
-export interface SelectableItem {
-  id: string
-  name: string
-}
 
 interface OwnProps extends StandardFunctionProps {
   items: SelectableItem[]
@@ -91,7 +88,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   }
 
   const [selectIndex, setSelectIndex] = useState(-1)
-  const [shownValues, setShownValues] = useState(items)
+  const [shownValues, setShownValues] = useState(items.slice(0, 20))
   const [menuOpen, setMenuOpen] = useState<MenuStatus>(MenuStatus.Closed)
 
   let initialTypedValue = ''
@@ -127,7 +124,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     //   return name.toLowerCase().includes(needle.toLowerCase())
     // })
 
-    setShownValues(items)
+    setShownValues(items.slice(0, 20))
   }, [items])
 
   /**
@@ -143,6 +140,14 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   const itemNames = useMemo(() => items.map(item => item.name?.toLowerCase()), [
     items.length,
   ])
+
+  // const itemTrie = useMemo(() => {
+  //   const myTrie = new Trie()
+  //   items.forEach(item => {
+  //     myTrie.insert(item)
+  //   })
+  //   return myTrie
+  // }, [items.length])
 
   // TRIE FUNCTION APPEARS TO BE WORKING, BUT YOU SHOULD STORE THE SELECTABLE ITEM
   // AS PART OF THE OBJECT AT EACH LOCATION
@@ -164,12 +169,12 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     // and set the typedValue to nothing (zero it out)
     // reset the selectIndex too
     if (!needle) {
-      setShownValues(items)
+      setShownValues(items.slice(0, 20))
       setTypedValue('')
       setSelectIndex(-1)
     } else {
-      // const result = trie.searchPrefix(needle)
-
+      // const result = itemTrie.searchPrefix(needle)
+      // console.log(result)
       const result = items.filter(val => {
         const name = val?.name || ''
         return name.toLowerCase().includes(needle.toLowerCase())
@@ -198,7 +203,8 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
       // always reset the selectIndex when doing filtering;  because
       // if it had a value, and then they type, the shownValues changes
       // so need to reset
-      setShownValues(result)
+      setShownValues(result.slice(0, 20))
+
       setTypedValue(needle)
       setMenuOpen(MenuStatus.Open)
       setSelectIndex(-1)
@@ -354,6 +360,9 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
           onCollapse={onCollapse}
           theme={menuTheme}
         >
+          {items.length > shownValues.slice(0, 20).length ? (
+            <DropdownItemEmpty>Search to View More</DropdownItemEmpty>
+          ) : null}
           {shownValues.map((value, index) => {
             // add the 'active' class to highlight when arrowing; like a hover
             const classN = classnames({
