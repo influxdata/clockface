@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.0.2 (2022-04-21)
+
+- [767](https://github.com/influxdata/clockface/pull/767): Fixed Form Element text size (14px too small for Proxima Nova)
+
 ### 4.0.1 (2022-04-21)
 
 - [765](https://github.com/influxdata/clockface/pull/765): Fixed Subway Nav Icon Alignment
