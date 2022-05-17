@@ -19,10 +19,13 @@ import {
 
 import {Input} from '../../Inputs/Input'
 import {DropdownHeader} from '../DropdownHeader'
+// import {Trie} from '../../../Utils/trie'
+//import {TrieSearch} from 'trie-search'
 
+// Need to make it possible for name to not be defined?
 export interface SelectableItem {
   id: string
-  name?: string
+  name: string
 }
 
 interface OwnProps extends StandardFunctionProps {
@@ -78,6 +81,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   defaultNameText = '',
   status = ComponentStatus.Default,
 }) => {
+  // sortNames is important to ensure query matches at word boundary.
   if (sortNames) {
     items.sort((a, b) => {
       const aname = a?.name || ''
@@ -100,7 +104,29 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   )
   const [typedValue, setTypedValue] = useState<string>(initialTypedValue)
 
+  // consider deciding whether or not to use a trie based on number of items
   useEffect(() => {
+    //   const trie = new Trie()
+    //   items.forEach(item => {
+    //     trie.insert(item.name, item.id)
+    //   })
+    //   console.log(trie)
+    //   console.log('this is the result of searching for ab using the trie')
+    //   console.log(trie.searchPrefix('ab'))
+
+    //   console.log('this is the result of searching for ab using filter')
+    //   console.log(
+    //     items.filter(val => {
+    //       const name = val?.name || ''
+    //       return name.toLowerCase().includes('ab'.toLowerCase())
+    //     })
+    //   )
+
+    // const result = items.filter(val => {
+    //   const name = val?.name || ''
+    //   return name.toLowerCase().includes(needle.toLowerCase())
+    // })
+
     setShownValues(items)
   }, [items])
 
@@ -118,6 +144,14 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     items.length,
   ])
 
+  // const trie = useMemo(() => {
+  //   const myTrie = new Trie()
+  //   items.forEach(item => {
+  //     myTrie.insert(item.name, item.id)
+  //   })
+  //   return myTrie
+  // }, [items])
+
   /**
    *  filter the selections/options based on the search string: needle
    * if the needle is empty; then there is nothing to filter; so return everything
@@ -131,10 +165,32 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
       setTypedValue('')
       setSelectIndex(-1)
     } else {
+      // const result = trie.searchPrefix(needle)
+
       const result = items.filter(val => {
         const name = val?.name || ''
         return name.toLowerCase().includes(needle.toLowerCase())
       })
+      console.log(result)
+
+      // This fix will exit the filter early once we exceed ten results.
+      // const result: SelectableItem[] = []
+      // for (
+      //   let el = 0, totalResults = 0;
+      //   el < items.length && totalResults < 20;
+      //   el++
+      // ) {
+      //   const currName = items[el].name || ''
+      //   if (currName.includes(needle.toLowerCase())) {
+      //     result.push(items[el])
+      //     totalResults++
+      //   }
+      // }
+
+      //   items.forEach(item => {
+      //     trie.insert(item.name, item.id)
+      //   })
+      //   console.log(trie)
 
       // always reset the selectIndex when doing filtering;  because
       // if it had a value, and then they type, the shownValues changes
