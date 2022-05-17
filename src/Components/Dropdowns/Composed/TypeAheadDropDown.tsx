@@ -144,6 +144,9 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     items.length,
   ])
 
+  // TRIE FUNCTION APPEARS TO BE WORKING, BUT YOU SHOULD STORE THE SELECTABLE ITEM
+  // AS PART OF THE OBJECT AT EACH LOCATION
+
   // const trie = useMemo(() => {
   //   const myTrie = new Trie()
   //   items.forEach(item => {
