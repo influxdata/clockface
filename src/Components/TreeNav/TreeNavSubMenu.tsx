@@ -10,18 +10,25 @@ import {
 } from '../../Types'
 import {Popover} from '../Popover'
 
-export type TreeNavSubMenuProps = StandardFunctionProps
+export interface HelpBarProp {
+  helpBar?: boolean
+}
+
+export type TreeNavSubMenuProps = StandardFunctionProps & HelpBarProp
 
 export type TreeNavSubMenuRef = HTMLDivElement
 
 export const TreeNavSubMenu = forwardRef<
   TreeNavSubMenuRef,
   TreeNavSubMenuProps
->(({id, style, testID = 'tree-nav--sub-menu', className, children}, ref) => {
+>(({id, style, testID = 'tree-nav--sub-menu', className, children, helpBar}, ref) => {
   const navMenuHeaderClass = classnames('cf-tree-nav--sub-menu', {
     [`${className}`]: className,
   })
-
+  let popoverPosition = PopoverPosition.ToTheRightTop
+  if (helpBar) {
+    popoverPosition = PopoverPosition.ToTheRight
+  }
   const triggerRef = useRef<HTMLButtonElement>(null)
 
   return (
@@ -39,7 +46,7 @@ export const TreeNavSubMenu = forwardRef<
           hideEvent={PopoverInteraction.Hover}
           showEvent={PopoverInteraction.Hover}
           triggerRef={triggerRef}
-          position={PopoverPosition.ToTheRightTop}
+          position={popoverPosition}
           className="cf-popover__nav"
           distanceFromTrigger={4}
         />
