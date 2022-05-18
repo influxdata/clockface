@@ -1,8 +1,12 @@
 # Changelog
 
-### 4.0.2 (2022-04-21)
+### 4.0.3 (2022-04-21)
 
 - [769](https://github.com/influxdata/clockface/pull/769): Selectable resource card for Bulk Actions
+
+### 4.0.2 (2022-04-21)
+
+- [767](https://github.com/influxdata/clockface/pull/767): Fixed Form Element text size (14px too small for Proxima Nova)
 
 ### 4.0.1 (2022-04-21)
 
