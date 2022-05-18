@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.0.2 (2022-04-21)
+
+- [769](https://github.com/influxdata/clockface/pull/769): Selectable resource card for Bulk Actions
+
 ### 4.0.1 (2022-04-21)
 
 - [765](https://github.com/influxdata/clockface/pull/765): Fixed Subway Nav Icon Alignment
