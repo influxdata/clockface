@@ -3,6 +3,7 @@
 ### 4.2.0 (2022-05-19)
 
 - [768](https://github.com/influxdata/clockface/pull/768): Added optional property to TreeNavSubMenu
+
 ### 4.1.0 (2022-05-19)
 
 - [769](https://github.com/influxdata/clockface/pull/769): Selectable resource card for Bulk Actions
