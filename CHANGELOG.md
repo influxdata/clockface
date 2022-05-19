@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.2.0 (2022-05-19)
+
+- [768](https://github.com/influxdata/clockface/pull/768): Added optional property to TreeNavSubMenu
+
 ### 4.0.2 (2022-04-21)
 
 - [767](https://github.com/influxdata/clockface/pull/767): Fixed Form Element text size (14px too small for Proxima Nova)
@@ -34,7 +38,7 @@
 
 ### 3.8.0 (2022-03-31)
 
-- [752](https://github.com/influxdata/clockface/pull/752): Added Icon for Bulk Action Deselection 
+- [752](https://github.com/influxdata/clockface/pull/752): Added Icon for Bulk Action Deselection
 
 ### 3.7.0 (2022-03-31)
 
@@ -51,6 +55,7 @@
 ### 3.5.1 (2022-03-11)
 
 - [744](https://github.com/influxdata/clockface/pull/744): FormValidationElement bug fix
+
 ### 3.5.0 (2022-03-10)
 
 - [740](https://github.com/influxdata/clockface/pull/740): Added input functionality to the PaginationNav
