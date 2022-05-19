@@ -69,6 +69,7 @@ export const ResourceCardRoot = forwardRef<ResourceCardRef, ResourceCardProps>(
     const contextMenuElement = contextMenu && (
       <div className="cf-resource-card--context-menu">{contextMenu}</div>
     )
+    const selectableCardCheckboxStyle = {marginRight: '24px'}
 
     return (
       <div
@@ -93,7 +94,7 @@ export const ResourceCardRoot = forwardRef<ResourceCardRef, ResourceCardProps>(
               size={ComponentSize.Small}
               checked={cardSelected}
               id={`${id}-checkbox`}
-              style={{marginRight: '24px'}}
+              style={selectableCardCheckboxStyle}
               className="batch-select-card-checkbox"
             />
           )}
