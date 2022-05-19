@@ -6,10 +6,17 @@ import classnames from 'classnames'
 import {FlexBox, FlexBoxProps} from '../../FlexBox'
 
 // Types
-import {Omit, FlexDirection, ComponentSize, AlignItems} from '../../../Types'
+import {
+  AlignItems,
+  ComponentSize,
+  FlexDirection,
+  InputToggleType,
+  Omit,
+} from '../../../Types'
 
 // Styles
 import './ResourceCard.scss'
+import {Toggle} from '../../Inputs'
 
 export interface ResourceCardProps
   extends Omit<FlexBoxProps, 'stretchToFitWidth' | 'stretchToFitHeight'> {
@@ -21,6 +28,10 @@ export interface ResourceCardProps
   contextMenuInteraction?: 'alwaysVisible' | 'showOnHover'
   /** If true the card will highlight on mouse over */
   highlightOnHover?: boolean
+  /** Tracks when card is selected **/
+  cardSelected?: boolean
+  cardSelectable?: boolean
+  handleCardSelection?: (resourceId: string) => void
 }
 
 export type ResourceCardRef = HTMLDivElement
@@ -41,6 +52,9 @@ export const ResourceCardRoot = forwardRef<ResourceCardRef, ResourceCardProps>(
       justifyContent,
       highlightOnHover = true,
       contextMenuInteraction = 'alwaysVisible',
+      cardSelected = false,
+      cardSelectable = false,
+      handleCardSelection = () => null,
     },
     ref
   ) => {
@@ -55,6 +69,7 @@ export const ResourceCardRoot = forwardRef<ResourceCardRef, ResourceCardProps>(
     const contextMenuElement = contextMenu && (
       <div className="cf-resource-card--context-menu">{contextMenu}</div>
     )
+    const selectableCardCheckboxStyle = {marginRight: '24px'}
 
     return (
       <div
@@ -72,6 +87,17 @@ export const ResourceCardRoot = forwardRef<ResourceCardRef, ResourceCardProps>(
           stretchToFitHeight={true}
           stretchToFitWidth={true}
         >
+          {cardSelectable && (
+            <Toggle
+              type={InputToggleType.Checkbox}
+              onChange={handleCardSelection}
+              size={ComponentSize.Small}
+              checked={cardSelected}
+              id={`${id}-checkbox`}
+              style={selectableCardCheckboxStyle}
+              className="batch-select-card-checkbox"
+            />
+          )}
           {children}
         </FlexBox.FlexBox>
         {contextMenuElement}
