@@ -1,6 +1,6 @@
 # Changelog
 
-### 4.2.0 (2022-05-19)
+### 4.2.0 (2022-05-20)
 
 - [768](https://github.com/influxdata/clockface/pull/768): Added optional property to TreeNavSubMenu
 
