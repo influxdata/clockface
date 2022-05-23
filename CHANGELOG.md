@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.2.1 (2022-05-23)
+
+- [772](https://github.com/influxdata/clockface/pull/772): chore: update Roboto Mono and Proxima Nova files to woff2
+
 ### 4.2.0 (2022-05-20)
 
 - [768](https://github.com/influxdata/clockface/pull/768): Added optional property to TreeNavSubMenu
