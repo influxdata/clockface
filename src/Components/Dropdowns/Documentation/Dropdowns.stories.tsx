@@ -594,6 +594,11 @@ dropdownComposedStories.add(
       {name: 'Kiwi', id: '8'},
       {name: 'Banana', id: '9'},
       {name: 'Strawberry', id: '1099'},
+      {name: 'Strawberry1', id: '123412'},
+      {name: 'Strawberry2', id: '2'},
+      {name: 'Strawberry3', id: '109'},
+      {name: 'Strawberry4', id: '19'},
+      {name: 'Strawberry5', id: '1'},
       {name: 'blueberry', id: 'blueberry113'},
       {id: '1234.3.33'},
     ]
@@ -617,7 +622,7 @@ dropdownComposedStories.add(
           onSelect={onSelect}
           testIdSuffix="fooTest"
           largeListSearch={boolean('largeListSearch', false)}
-          largeListMin={number('minSearchItems', 0)}
+          largeListCeiling={number('largeListCeiling', 0)}
           items={selectDropdownOptions}
           menuTestID={text('menu test id', 'menuTest')}
           status={
@@ -646,7 +651,7 @@ dropdownComposedStories.add(
           testIdSuffix="fooTest"
           items={selectDropdownOptions}
           largeListSearch={boolean('largeListSearch', false)}
-          largeListMin={number('minSearchItems', 5)}
+          largeListCeiling={number('largeListCeiling', 0)}
           menuTestID={text('menu test id 2', 'menuTest')}
           itemTestIdPrefix={text('item test id prefix 2', 'my-prefix')}
           defaultNameText={text(

@@ -49,6 +49,12 @@ const items = [
   {name: 'Kiwi', id: '8'},
   {name: 'Banana', id: '9'},
   {name: 'Strawberry', id: '1099'},
+  {name: 'Strawberry', id: '1099'},
+  {name: 'Strawberry1', id: '123412'},
+  {name: 'Strawberry2', id: '2'},
+  {name: 'Strawberry3', id: '109'},
+  {name: 'Strawberry4', id: '19'},
+  {name: 'Strawberry5', id: '1'},
   {id: '1234.3.33'},
 ]
 

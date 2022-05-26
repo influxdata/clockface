@@ -37,7 +37,7 @@ interface OwnProps extends StandardFunctionProps {
   /**enables forced searching once dropdown list exceeds largeListSearch value */
   largeListSearch?: boolean
   /**the number of total items in the dropdown list before search is forced */
-  largeListMin?: number
+  largeListCeiling?: number
   /** which theme to apply */
   menuTheme?: DropdownMenuTheme
   buttonTestId?: string
@@ -75,7 +75,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   selectedOption = null,
   className,
   largeListSearch = false,
-  largeListMin = 5,
+  largeListCeiling = 0,
   menuTheme = DropdownMenuTheme.Onyx,
   buttonTestId = 'type-ahead-dropdown--button',
   menuTestID = 'type-ahead-dropdown--menu',
@@ -100,9 +100,9 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     selectedOption
   )
 
-  const [initialSelection, setInitialSelection] = useState(
-    selectedOption !== null
-  )
+  // const [initialSelection, setInitialSelection] = useState(
+  //   selectedOption !== null
+  // )
 
   let initialTypedValue = ''
 
@@ -113,24 +113,24 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   const [typedValue, setTypedValue] = useState<string>(initialTypedValue)
 
   const largeListValidation =
-    largeListSearch && items.length > largeListMin && typedValue.length < 2
-
-  const setInitialSelectedItems = () => {
-    const result = items.filter(val => {
-      const name = val?.name || ''
-      return name.toLowerCase().includes(initialTypedValue.toLowerCase())
-    })
-
-    // always reset the selectIndex when doing filtering;  because
-    // if it had a value, and then they type, the shownValues changes
-    // so need to reset
-    setShownValues(result)
-    setInitialSelection(false)
-  }
+    largeListSearch && shownValues.length > largeListCeiling
 
   useEffect(() => {
-    initialSelection ? setInitialSelectedItems() : setShownValues(items)
-  }, [items])
+    if (typedValue.length > 0) {
+      const result = items.filter(val => {
+        const name = val?.name || ''
+        return name.toLowerCase().includes(typedValue.toLowerCase())
+      })
+
+      // always reset the selectIndex when doing filtering;  because
+      // if it had a value, and then they type, the shownValues changes
+      // so need to reset
+      setShownValues(result)
+      setSelectIndex(-1)
+    } else {
+      setShownValues(items)
+    }
+  }, [items, typedValue])
 
   /**
    *  using a ref to hold an instance variable:  what was last typed,
@@ -301,6 +301,11 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
 
   const props: any = {id, style, className, menuOpen}
 
+  const largeListValidationText =
+    typedValue.length >= 1
+      ? 'There are still too many results. Please input more characters.'
+      : 'Please input a character to start seeing results.'
+
   return (
     <Dropdown
       {...props}
@@ -330,7 +335,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
               disabled={true}
               wrapText={true}
             >
-              {`Please input at least 2 characters to see results`}
+              {largeListValidationText}
             </Dropdown.Item>
           ) : (
             shownValues.map((value, index) => {
