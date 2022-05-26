@@ -100,10 +100,6 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     selectedOption
   )
 
-  // const [initialSelection, setInitialSelection] = useState(
-  //   selectedOption !== null
-  // )
-
   let initialTypedValue = ''
 
   if (selectedOption) {
