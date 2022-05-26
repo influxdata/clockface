@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.3.1 (2022-05-23)
+
+- [776](https://github.com/influxdata/clockface/pull/776): Updated Typeahead Dropdown to force searching on large list sizes
+
 ### 4.2.1 (2022-05-23)
 
 - [772](https://github.com/influxdata/clockface/pull/772): chore: update Roboto Mono and Proxima Nova files to woff2
