@@ -1,6 +1,6 @@
 # Changelog
 
-### 4.3.1 (2022-05-23)
+### 4.3.0 (2022-05-27)
 
 - [776](https://github.com/influxdata/clockface/pull/776): Updated Typeahead Dropdown to force searching on large list sizes
 

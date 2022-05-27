@@ -93,7 +93,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   }
 
   const [selectIndex, setSelectIndex] = useState(-1)
-  const [shownValues, setShownValues] = useState(items)
+  const [queryResults, setQueryResults] = useState(items)
   const [menuOpen, setMenuOpen] = useState<MenuStatus>(MenuStatus.Closed)
 
   const [selectedItem, setSelectedItem] = useState<SelectableItem | null>(
@@ -109,7 +109,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   const [typedValue, setTypedValue] = useState<string>(initialTypedValue)
 
   const largeListValidation =
-    largeListSearch && shownValues.length > largeListCeiling
+    largeListSearch && queryResults.length > largeListCeiling
 
   useEffect(() => {
     if (typedValue.length > 0) {
@@ -119,12 +119,12 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
       })
 
       // always reset the selectIndex when doing filtering;  because
-      // if it had a value, and then they type, the shownValues changes
+      // if it had a value, and then they type, the queryResults changes
       // so need to reset
-      setShownValues(result)
+      setQueryResults(result)
       setSelectIndex(-1)
     } else {
-      setShownValues(items)
+      setQueryResults(items)
     }
   }, [items, typedValue])
 
@@ -147,11 +147,11 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
    * if the needle is empty; then there is nothing to filter; so return everything
    */
   const doFilter = (needle: string) => {
-    // if there is no value, set the shownValues to everything
+    // if there is no value, set the queryResults to everything
     // and set the typedValue to nothing (zero it out)
     // reset the selectIndex too
     if (!needle) {
-      setShownValues(items)
+      setQueryResults(items)
       setTypedValue('')
       setSelectIndex(-1)
     } else {
@@ -161,9 +161,9 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
       })
 
       // always reset the selectIndex when doing filtering;  because
-      // if it had a value, and then they type, the shownValues changes
+      // if it had a value, and then they type, the queryResults changes
       // so need to reset
-      setShownValues(result)
+      setQueryResults(result)
       setTypedValue(needle)
       setMenuOpen(MenuStatus.Open)
       setSelectIndex(-1)
@@ -205,7 +205,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
       newIndex = selectIndex - 1
     }
 
-    const numItems = shownValues.length
+    const numItems = queryResults.length
     const newValueWasHighlighted =
       numItems && newIndex >= 0 && newIndex < numItems
     if (newValueWasHighlighted) {
@@ -219,7 +219,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
 
       if (numItems && selectIndex >= 0 && selectIndex < numItems) {
         // they used the arrows; just pressed return
-        doSelection(shownValues[selectIndex], true)
+        doSelection(queryResults[selectIndex], true)
       } else {
         // the person could have been typing and pressed return, need to
         // make sure the value in the input field is real/legal:
@@ -334,7 +334,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
               {largeListValidationText}
             </Dropdown.Item>
           ) : (
-            shownValues.map((value, index) => {
+            queryResults.map((value, index) => {
               // add the 'active' class to highlight when arrowing; like a hover
               const classN = classnames({
                 active: index === selectIndex,
@@ -355,7 +355,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
               )
             })
           )}
-          {!shownValues || shownValues.length === 0 ? (
+          {!queryResults || queryResults.length === 0 ? (
             <Dropdown.Item
               key="nada-no-values-in-filter"
               testID="nothing-in-filter-typeAhead"
