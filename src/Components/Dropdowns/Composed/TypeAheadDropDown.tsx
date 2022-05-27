@@ -34,6 +34,10 @@ interface OwnProps extends StandardFunctionProps {
   testIdSuffix?: string
   /**optional pre-selected option, must match exactly (name and id) an item in the items array */
   selectedOption?: SelectableItem | null
+  /**enables forced searching once dropdown list exceeds largeListSearch value */
+  largeListSearch?: boolean
+  /**the number of total items in the dropdown list before search is forced */
+  largeListCeiling?: number
   /** which theme to apply */
   menuTheme?: DropdownMenuTheme
   buttonTestId?: string
@@ -70,6 +74,8 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   testIdSuffix = 'typeAhead',
   selectedOption = null,
   className,
+  largeListSearch = false,
+  largeListCeiling = 0,
   menuTheme = DropdownMenuTheme.Onyx,
   buttonTestId = 'type-ahead-dropdown--button',
   menuTestID = 'type-ahead-dropdown--menu',
@@ -87,22 +93,40 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   }
 
   const [selectIndex, setSelectIndex] = useState(-1)
-  const [shownValues, setShownValues] = useState(items)
+  const [queryResults, setQueryResults] = useState(items)
   const [menuOpen, setMenuOpen] = useState<MenuStatus>(MenuStatus.Closed)
-
-  let initialTypedValue = ''
-  if (selectedOption) {
-    initialTypedValue = getValueWithBackup(selectedOption.name, defaultNameText)
-  }
 
   const [selectedItem, setSelectedItem] = useState<SelectableItem | null>(
     selectedOption
   )
+
+  let initialTypedValue = ''
+
+  if (selectedOption) {
+    initialTypedValue = getValueWithBackup(selectedOption.name, defaultNameText)
+  }
+
   const [typedValue, setTypedValue] = useState<string>(initialTypedValue)
 
+  const largeListValidation =
+    largeListSearch && queryResults.length > largeListCeiling
+
   useEffect(() => {
-    setShownValues(items)
-  }, [items])
+    if (typedValue.length > 0) {
+      const result = items.filter(val => {
+        const name = val?.name || ''
+        return name.toLowerCase().includes(typedValue.toLowerCase())
+      })
+
+      // always reset the selectIndex when doing filtering;  because
+      // if it had a value, and then they type, the queryResults changes
+      // so need to reset
+      setQueryResults(result)
+      setSelectIndex(-1)
+    } else {
+      setQueryResults(items)
+    }
+  }, [items, typedValue])
 
   /**
    *  using a ref to hold an instance variable:  what was last typed,
@@ -123,11 +147,11 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
    * if the needle is empty; then there is nothing to filter; so return everything
    */
   const doFilter = (needle: string) => {
-    // if there is no value, set the shownValues to everything
+    // if there is no value, set the queryResults to everything
     // and set the typedValue to nothing (zero it out)
     // reset the selectIndex too
     if (!needle) {
-      setShownValues(items)
+      setQueryResults(items)
       setTypedValue('')
       setSelectIndex(-1)
     } else {
@@ -137,9 +161,9 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
       })
 
       // always reset the selectIndex when doing filtering;  because
-      // if it had a value, and then they type, the shownValues changes
+      // if it had a value, and then they type, the queryResults changes
       // so need to reset
-      setShownValues(result)
+      setQueryResults(result)
       setTypedValue(needle)
       setMenuOpen(MenuStatus.Open)
       setSelectIndex(-1)
@@ -181,7 +205,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
       newIndex = selectIndex - 1
     }
 
-    const numItems = shownValues.length
+    const numItems = queryResults.length
     const newValueWasHighlighted =
       numItems && newIndex >= 0 && newIndex < numItems
     if (newValueWasHighlighted) {
@@ -195,7 +219,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
 
       if (numItems && selectIndex >= 0 && selectIndex < numItems) {
         // they used the arrows; just pressed return
-        doSelection(shownValues[selectIndex], true)
+        doSelection(queryResults[selectIndex], true)
       } else {
         // the person could have been typing and pressed return, need to
         // make sure the value in the input field is real/legal:
@@ -273,6 +297,11 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
 
   const props: any = {id, style, className, menuOpen}
 
+  const largeListValidationText =
+    typedValue.length >= 1
+      ? 'There are still too many results. Please input more characters.'
+      : 'Please input a character to start seeing results.'
+
   return (
     <Dropdown
       {...props}
@@ -295,27 +324,38 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
           onCollapse={onCollapse}
           theme={menuTheme}
         >
-          {shownValues.map((value, index) => {
-            // add the 'active' class to highlight when arrowing; like a hover
-            const classN = classnames({
-              active: index === selectIndex,
-            })
+          {largeListValidation ? (
+            <Dropdown.Item
+              key="nada-no-values-in-filter"
+              testID="nothing-in-filter-typeAhead"
+              disabled={true}
+              wrapText={true}
+            >
+              {largeListValidationText}
+            </Dropdown.Item>
+          ) : (
+            queryResults.map((value, index) => {
+              // add the 'active' class to highlight when arrowing; like a hover
+              const classN = classnames({
+                active: index === selectIndex,
+              })
 
-            return (
-              <Dropdown.Item
-                key={value.id}
-                id={value.id}
-                value={value}
-                onClick={doSelection}
-                selected={value.id === selectedItem?.id}
-                testID={`${itemTestIdPrefix}-${value.id}`}
-                className={classN}
-              >
-                {value.name || defaultNameText}
-              </Dropdown.Item>
-            )
-          })}
-          {!shownValues || shownValues.length === 0 ? (
+              return (
+                <Dropdown.Item
+                  key={value.id}
+                  id={value.id}
+                  value={value}
+                  onClick={doSelection}
+                  selected={value.id === selectedItem?.id}
+                  testID={`${itemTestIdPrefix}-${value.id}`}
+                  className={classN}
+                >
+                  {value.name || defaultNameText}
+                </Dropdown.Item>
+              )
+            })
+          )}
+          {!queryResults || queryResults.length === 0 ? (
             <Dropdown.Item
               key="nada-no-values-in-filter"
               testID="nothing-in-filter-typeAhead"
