@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.4.0 (2022-05-31)
+
+- [779](https://github.com/influxdata/clockface/pull/779): Added Question Mark Outline Icon
+
 ### 4.3.0 (2022-05-27)
 
 - [776](https://github.com/influxdata/clockface/pull/776): Updated Typeahead Dropdown to force searching on large list sizes
