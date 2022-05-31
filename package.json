@@ -110,6 +110,7 @@
   "resolutions": {
     "immer": "^9.0.6",
     "jest/**/ansi-regex": "^3.0.1",
+    "eslint/**/ansi-regex": "^4.1.1",
     "@wessberg/**/browserslist": "^4.16.5"
   }
 }
