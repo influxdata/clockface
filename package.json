@@ -108,6 +108,8 @@
     "publishStorybook": "storybook-to-ghpages --out=.out"
   },
   "resolutions": {
-    "immer": "^9.0.6"
+    "immer": "^9.0.6",
+    "jest/**/ansi-regex": "^3.0.1",
+    "@wessberg/**/browserslist": "^4.16.5"
   }
 }
