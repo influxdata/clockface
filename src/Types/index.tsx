@@ -410,6 +410,7 @@ export enum IconFont {
   Polaroid = 'polaroid',
   Pulse = 'pulse-c',
   QuestionMark_New = 'question-mark-new',
+  QuestionMark_Outline = 'question-mark-outline',
   Redo = 'redo',
   Refresh = 'refresh',
   Refresh_New = 'refresh-new',
