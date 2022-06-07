@@ -1,6 +1,6 @@
 {
   "name": "@influxdata/clockface",
-  "version": "4.0.1",
+  "version": "4.4.0",
   "license": "MIT",
   "main": "dist/index.js",
   "style": "dist/index.css",
@@ -108,6 +108,9 @@
     "publishStorybook": "storybook-to-ghpages --out=.out"
   },
   "resolutions": {
-    "immer": "^9.0.6"
+    "immer": "^9.0.6",
+    "jest/**/ansi-regex": "^3.0.1",
+    "eslint/**/ansi-regex": "^4.1.1",
+    "@wessberg/**/browserslist": "^4.16.5"
   }
 }
