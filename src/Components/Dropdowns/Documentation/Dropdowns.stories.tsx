@@ -32,6 +32,7 @@ import {
   MultiSelectDropdown,
   MultiSelectDropdownRef,
 } from '../Composed/MultiSelectDropdown'
+import {MenuDropdown} from '../Composed/MenuDropdown'
 import {ColorPreview} from '../../ColorPicker/ColorPreview'
 
 import {TypeAheadDropDown, SelectableItem} from '../Composed/TypeAheadDropDown'
@@ -82,6 +83,10 @@ const dropdownExampleStories = storiesOf(
 ).addDecorator(withKnobs)
 
 const defaultDropdownStyle = {width: '250px', marginRight: '45px'}
+
+const menuDropdownStyle = {width: '250px'}
+
+const menuDropdownMenuStyle = {width: '100%'}
 
 dropdownFamilyStories.add(
   'Dropdown',
@@ -881,6 +886,66 @@ dropdownComposedStories.add(
   {
     readme: {
       content: marked(MultiSelectDropdownReadme),
+    },
+  }
+)
+
+dropdownComposedStories.add(
+  'MenuDropdown',
+  () => {
+    const defaultMenuOptions = [
+      {
+        name: 'Settings',
+        iconFont: IconFont.CogOutline,
+        href: '/settings',
+      },
+      {
+        name: 'Members',
+        iconFont: IconFont.UserOutline_New,
+        href: '/members',
+      },
+      {
+        name: 'Billing',
+        iconFont: IconFont.Bill,
+        href: '/billing',
+      },
+    ]
+
+    const typeAheadMenu = [
+      {
+        name: 'EdgeDelta',
+        id: '1',
+      },
+      {
+        name: 'Account',
+        id: '2',
+      },
+      {
+        name: 'Something',
+        id: '3',
+      },
+      {
+        name: 'Who knows',
+        id: '4',
+      },
+    ]
+
+    return (
+      <div className="story--example">
+        <MenuDropdown
+          style={object('style', menuDropdownStyle)}
+          menuStyle={object('style', menuDropdownMenuStyle)}
+          options={defaultMenuOptions}
+          subMenuOptions={typeAheadMenu}
+          menuHeaderIcon={IconFont.Switch_New}
+          menuHeaderText={'Switch Account'}
+        />
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(MultiSelectDropdownReadme), //Ned to be changed to Menu
     },
   }
 )
