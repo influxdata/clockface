@@ -64,6 +64,7 @@ import SelectDropdownReadme from './SelectDropdown.md'
 import TypeAheadDropdownReadme from './TypeAheadDropdown.md'
 import CreatableTypeAheadDropdownReadme from './CreatableTypeAheadDropdown.md'
 import MultiSelectDropdownReadme from './MultiSelectDropdown.md'
+import MenuDropdownReadme from './MenuDropdown.md'
 import {useState} from '@storybook/addons'
 import {FlexBox} from '../../FlexBox'
 
@@ -83,10 +84,6 @@ const dropdownExampleStories = storiesOf(
 ).addDecorator(withKnobs)
 
 const defaultDropdownStyle = {width: '250px', marginRight: '45px'}
-
-const menuDropdownStyle = {width: '250px'}
-
-const menuDropdownMenuStyle = {width: '100%'}
 
 dropdownFamilyStories.add(
   'Dropdown',
@@ -893,7 +890,7 @@ dropdownComposedStories.add(
 dropdownComposedStories.add(
   'MenuDropdown',
   () => {
-    const defaultMenuOptions = [
+    const defaultHrefOptions = [
       {
         name: 'Settings',
         iconFont: IconFont.CogOutline,
@@ -911,7 +908,7 @@ dropdownComposedStories.add(
       },
     ]
 
-    const typeAheadMenu = [
+    const typeAheadOptions = [
       {
         name: 'EdgeDelta',
         id: '1',
@@ -930,13 +927,25 @@ dropdownComposedStories.add(
       },
     ]
 
+    const selectedOption = {
+      name: 'EdgeDelta',
+      id: '1',
+    }
+
+    const menuDropdownStyle = {width: '150px'}
+
+    const menuDropdownMenuStyle = {width: '250px'}
+
     return (
       <div className="story--example">
         <MenuDropdown
+          selectedOption={selectedOption}
           style={object('style', menuDropdownStyle)}
-          menuStyle={object('style', menuDropdownMenuStyle)}
-          options={defaultMenuOptions}
-          subMenuOptions={typeAheadMenu}
+          menuStyle={object('menuStyle', menuDropdownMenuStyle)}
+          largeListSearch={boolean('largeListSearch', false)}
+          largeListCeiling={number('largeListCeiling', 0)}
+          options={defaultHrefOptions}
+          subMenuOptions={typeAheadOptions}
           menuHeaderIcon={IconFont.Switch_New}
           menuHeaderText={'Switch Account'}
         />
@@ -945,7 +954,7 @@ dropdownComposedStories.add(
   },
   {
     readme: {
-      content: marked(MultiSelectDropdownReadme), //Ned to be changed to Menu
+      content: marked(MenuDropdownReadme),
     },
   }
 )

@@ -17,12 +17,9 @@ import {Input} from '../../Inputs/Input'
 
 // Types
 import {
-  ComponentColor,
   ComponentSize,
   IconFont,
   DropdownMenuTheme,
-  DropdownItemType,
-  ComponentStatus,
   StandardFunctionProps,
 } from '../../../Types'
 
@@ -38,47 +35,35 @@ export interface SubMenuItem {
 }
 
 export interface MenuDropdownProps extends StandardFunctionProps {
-  /** Text to render in button as currently selected option */
-  selectedOptions?: string[]
-  /** List of options to render in menu */
+  /** A default pre-selected Option */
+  selectedOption?: SubMenuItem
+  /** List of href options to render in the main menu */
   options: MenuItem[]
-  /** List of options to render in the sub menu */
+  /** List of options to render in the sub type-ahead menu */
   subMenuOptions: SubMenuItem[]
   /** used for generating custom test ids */
   testIdSuffix?: string
-  /** Text to display when no options are selected */
+  /** Text to render in button if nothing is pre-selected */
   defaultText?: string
-  /** Text to display when no options are selected */
+  /** Icon to display in the main menu header */
   menuHeaderIcon?: IconFont
-  /** Text to display when no options are selected */
+  /** Text to display in the main menu header */
   menuHeaderText?: string
   /**enables forced searching once dropdown list exceeds largeListSearch value */
   largeListSearch?: boolean
   /**the number of total items in the dropdown list before search is forced */
   largeListCeiling?: number
-  /** Text to display when no options are selected */
+  /** Text to display by default in the type ahead input */
   searchText?: string
-  /** Optional status of button */
-  buttonStatus?: ComponentStatus
-  /** Optional color of button */
-  buttonColor?: ComponentColor
   /** Optional size of button */
   buttonSize?: ComponentSize
   /** Optional icon to render in button */
   buttonIcon?: IconFont
-  /** Optional choice of item indicator */
-  indicator?: DropdownItemType
   /** Optional theme of menu */
   menuTheme?: DropdownMenuTheme
-  /** Optional maximum pixel height menu */
-  menuMaxHeight?: number
   menuTestID?: string
-  /** Renders the menu element above the button instead of below */
-  dropUp?: boolean
   /** the name/label to show in the dropdown where there is an item with an id but without a name; defaults to the empty string */
-  defaultNameText?: string
-  /** the name/label to show in the dropdown where there is an item with an id but without a name; defaults to the empty string */
-  menuStyle: React.CSSProperties
+  menuStyle?: React.CSSProperties
 }
 const isBlank = (pString: string | undefined): boolean =>
   // Checks for falsiness or a non-white space character
@@ -102,6 +87,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
   testIdSuffix = 'menu',
   options,
   subMenuOptions,
+  selectedOption = null,
   defaultText = 'No Account Selected',
   menuHeaderIcon = IconFont.Switch_New,
   menuHeaderText = 'Switch Account',
@@ -121,7 +107,9 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
   const [selectIndex, setSelectIndex] = useState(-1)
   const [queryResults, setQueryResults] = useState(subMenuOptions)
   const [menuOpen, setMenuOpen] = useState<MenuStatus>(MenuStatus.Closed)
-  const [selectedItem, setSelectedItem] = useState<SubMenuItem | null>()
+  const [selectedItem, setSelectedItem] = useState<SubMenuItem | null>(
+    selectedOption
+  )
 
   const initialTypedValue = ''
   const [typedValue, setTypedValue] = useState<string>(initialTypedValue)
@@ -259,6 +247,12 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
     <Icon glyph={menuHeaderIconFont} className="cf-button-icon" />
   )
   const menuHeaderTextEl = <span>{menuHeaderText}</span>
+  const menuHeaderCaretEl = (
+    <Icon
+      glyph={IconFont.CaretRight_New}
+      className="cf-dropdown-menu--caret-icon"
+    />
+  )
 
   const menu = () => (
     <Dropdown.Menu testID={menuTestID} theme={menuTheme} style={menuStyle}>
@@ -267,8 +261,13 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
           className="cf-dropdown-item cf-dropdown-item__no-wrap"
           onClick={() => flipTypeAheadStatus(true)}
         >
-          {menuHeaderIconEl}
-          {menuHeaderTextEl}
+          <div className="cf-dropdown-menu-header">
+            <div>
+              {menuHeaderIconEl}
+              {menuHeaderTextEl}
+            </div>
+            {menuHeaderCaretEl}
+          </div>
         </div>
         <hr className="cf-dropdown-menu__line-break"></hr>
         {options.map(value => {
@@ -298,7 +297,12 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
     }
     const iconFont = IconFont.CaretLeft_New
     const textEl = <span>Switch Account</span>
-    const iconEl = <Icon glyph={iconFont} className="cf-button-icon" />
+    const iconEl = (
+      <Icon
+        glyph={iconFont}
+        className="cf-dropdown-menu--caret-icon cf-button-icon"
+      />
+    )
     const largeListValidationText =
       typedValue.length >= 1
         ? 'There are still too many results. Please input more characters.'
