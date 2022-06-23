@@ -52,6 +52,10 @@ export interface MenuDropdownProps extends StandardFunctionProps {
   menuHeaderIcon?: IconFont
   /** Text to display when no options are selected */
   menuHeaderText?: string
+  /**enables forced searching once dropdown list exceeds largeListSearch value */
+  largeListSearch?: boolean
+  /**the number of total items in the dropdown list before search is forced */
+  largeListCeiling?: number
   /** Text to display when no options are selected */
   searchText?: string
   /** Optional status of button */
@@ -101,6 +105,8 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
   defaultText = 'No Account Selected',
   menuHeaderIcon = IconFont.Switch_New,
   menuHeaderText = 'Switch Account',
+  largeListCeiling = 0,
+  largeListSearch = false,
   searchText = 'Search Accounts',
   menuTheme = DropdownMenuTheme.Onyx,
   className,
@@ -122,9 +128,25 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
 
   const backupValue = useRef<string>(initialTypedValue)
 
+  const largeListValidation =
+    largeListSearch && queryResults.length > largeListCeiling
+
   useEffect(() => {
-    setQueryResults(subMenuOptions)
-  }, [subMenuOptions])
+    if (typedValue.length > 0) {
+      const result = subMenuOptions.filter(val => {
+        const name = val?.name || ''
+        return name.toLowerCase().includes(typedValue.toLowerCase())
+      })
+
+      // always reset the selectIndex when doing filtering;  because
+      // if it had a value, and then they type, the queryResults changes
+      // so need to reset
+      setQueryResults(result)
+      setSelectIndex(-1)
+    } else {
+      setQueryResults(subMenuOptions)
+    }
+  }, [subMenuOptions, typedValue])
 
   const button = (
     active: boolean,
@@ -264,7 +286,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
     </Dropdown.Menu>
   )
 
-  const typeAheadMenu = (onCollapse: () => void) => {
+  const typeAheadMenu = () => {
     const itemWidth = {width: '100%'}
     const inputStyle = {
       width: 'calc(100% - 8px)',
@@ -272,10 +294,15 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
       marginBottom: '8px',
       marginLeft: 'auto',
       marginRight: 'auto',
+      zIndex: '0',
     }
     const iconFont = IconFont.CaretLeft_New
     const textEl = <span>Switch Account</span>
     const iconEl = <Icon glyph={iconFont} className="cf-button-icon" />
+    const largeListValidationText =
+      typedValue.length >= 1
+        ? 'There are still too many results. Please input more characters.'
+        : 'Please input a character to start seeing results.'
     const inputComponent = (
       <Input
         placeholder={searchText}
@@ -289,11 +316,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
     )
 
     return (
-      <Dropdown.Menu
-        testID={menuTestID}
-        theme={menuTheme}
-        style={menuStyle}
-      >
+      <Dropdown.Menu testID={menuTestID} theme={menuTheme} style={menuStyle}>
         <div>
           <div
             className="cf-dropdown-item cf-dropdown-item__no-wrap"
@@ -303,28 +326,39 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
             {textEl}
           </div>
           {inputComponent}
-          {queryResults?.map((value, index) => {
-            // add the 'active' class to highlight when arrowing; like a hover
-            const classN = classnames({
-              active: index === selectIndex,
-            })
+          {largeListValidation ? (
+            <Dropdown.Item
+              key="nada-no-values-in-filter"
+              testID="nothing-in-filter-typeAhead"
+              disabled={true}
+              wrapText={true}
+            >
+              {largeListValidationText}
+            </Dropdown.Item>
+          ) : (
+            queryResults?.map((value, index) => {
+              // add the 'active' class to highlight when arrowing; like a hover
+              const classN = classnames({
+                active: index === selectIndex,
+              })
 
-            return (
-              <div key={value.id}>
-                <Dropdown.Item
-                  id={value.id}
-                  value={value}
-                  onClick={() => doSelection(value, true)}
-                  style={itemWidth}
-                  selected={value.id === selectedItem?.id}
-                  className={classN}
-                >
-                  {value.name}
-                </Dropdown.Item>
-                <hr className="cf-dropdown-menu__line-break"></hr>
-              </div>
-            )
-          })}
+              return (
+                <div key={value.id}>
+                  <Dropdown.Item
+                    id={value.id}
+                    value={value}
+                    onClick={() => doSelection(value, true)}
+                    style={itemWidth}
+                    selected={value.id === selectedItem?.id}
+                    className={classN}
+                  >
+                    {value.name}
+                  </Dropdown.Item>
+                  <hr className="cf-dropdown-menu__line-break"></hr>
+                </div>
+              )
+            })
+          )}
           {!queryResults || queryResults.length === 0 ? (
             <Dropdown.Item
               key="nada-no-values-in-filter"
