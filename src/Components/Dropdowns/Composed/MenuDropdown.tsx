@@ -293,7 +293,6 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
         testID={menuTestID}
         theme={menuTheme}
         style={menuStyle}
-        onCollapse={onCollapse}
       >
         <div>
           <div
@@ -315,7 +314,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
                 <Dropdown.Item
                   id={value.id}
                   value={value}
-                  onClick={doSelection}
+                  onClick={() => doSelection(value, true)}
                   style={itemWidth}
                   selected={value.id === selectedItem?.id}
                   className={classN}
