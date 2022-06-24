@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.5.0 (2022-05-31)
+
+- [783](https://github.com/influxdata/clockface/pull/783): MenuDropdown Component
+
 ### 4.4.0 (2022-05-31)
 
 - [779](https://github.com/influxdata/clockface/pull/779): Added Question Mark Outline Icon

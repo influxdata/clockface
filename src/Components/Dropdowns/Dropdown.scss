@@ -243,6 +243,39 @@ $dropdown-item--padding-v: $cf-space-2xs;
 }
 
 /*
+  Menu Dropdown Styles
+  ------------------------------------------------------------------------------
+*/
+
+.cf-dropdown-menu__line-break {
+  margin: 8px; 
+}
+
+.cf-dropdown-menu--button {
+  background: none;
+}
+
+.cf-dropdown-menu--caret-icon {
+  font-size: 16.5px;
+}
+
+.cf-dropdown-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*
+  Dropdown HREF Item
+  ------------------------------------------------------------------------------
+*/
+
+.cf-dropdown-href-text {
+  color: #fff !important;
+  font-weight: 400 !important;
+}
+
+/*
   Menu Themes
   ------------------------------------------------------------------------------
 */
