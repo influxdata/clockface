@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.6.0 (2022-05-31)
+
+- [784](https://github.com/influxdata/clockface/pull/784): Accordion Caret Updates
+
 ### 4.5.0 (2022-05-31)
 
 - [783](https://github.com/influxdata/clockface/pull/783): MenuDropdown Component
