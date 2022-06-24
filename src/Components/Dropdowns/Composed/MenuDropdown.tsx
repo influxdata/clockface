@@ -22,6 +22,7 @@ import {
   DropdownMenuTheme,
   StandardFunctionProps,
 } from '../../../Types'
+import { calculatePopoverStyles } from '../../../Utils/popovers'
 
 export interface MenuItem {
   name: string
@@ -286,7 +287,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
   )
 
   const typeAheadMenu = () => {
-    const itemWidth = {width: '100%'}
+    const itemWidth = {width: 'calc(100% - 8px)'}
     const inputStyle = {
       width: 'calc(100% - 8px)',
       marginTop: '4px',
