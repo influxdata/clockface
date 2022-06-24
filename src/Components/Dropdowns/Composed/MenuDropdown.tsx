@@ -22,7 +22,6 @@ import {
   DropdownMenuTheme,
   StandardFunctionProps,
 } from '../../../Types'
-import { calculatePopoverStyles } from '../../../Utils/popovers'
 
 export interface MenuItem {
   name: string
