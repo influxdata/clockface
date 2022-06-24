@@ -9,6 +9,7 @@ import {DropdownItem} from './DropdownItem'
 import {DropdownItemEmpty} from './DropdownItemEmpty'
 import {DropdownLinkItem} from './DropdownLinkItem'
 import {DropdownDivider} from './DropdownDivider'
+import {DropdownHrefItem} from './DropdownHrefItem'
 
 export class Dropdown extends Component<DropdownProps> {
   public static readonly displayName = 'Dropdown'
@@ -20,6 +21,7 @@ export class Dropdown extends Component<DropdownProps> {
   public static ItemEmpty = DropdownItemEmpty
   public static LinkItem = DropdownLinkItem
   public static Divider = DropdownDivider
+  public static HrefItem = DropdownHrefItem
 
   render() {
     return <DropdownRoot {...this.props} />
@@ -33,3 +35,4 @@ export * from './DropdownItem'
 export * from './DropdownItemEmpty'
 export * from './DropdownLinkItem'
 export * from './DropdownDivider'
+export * from './DropdownHrefItem'
