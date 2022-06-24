@@ -25,12 +25,14 @@
   display: block;
 }
 
-.cf-accordion--icon-caret-down {
-  transform: rotate(0deg);
+.cf-accordion--icon-caret-right-new {
+  transform: translateY(10%) rotate(-90deg);
+  font-size: 18px;
 }
 
-.cf-accordion--icon-caret-up {
-  transform: translateY(-5%) rotate(-180deg);
+.cf-accordion--icon-caret-down-new {
+  transform: translateY(-10%) rotate(0deg);
+  font-size: 18px;
 }
 
 .cf-accordion--header {
