@@ -19,7 +19,9 @@ export const AccordionHeader = forwardRef<
 >(({id, style, testID = 'accordion-header', children, className}, ref) => {
   const context = useAccordionContext()
 
-  const caretIcon = context.isExpanded ? IconFont.CaretUp : IconFont.CaretDown
+  const caretIcon = context.isExpanded
+    ? IconFont.CaretDown_New
+    : IconFont.CaretRight_New
   const AccordionHeaderCaretClassName = classnames('cf-accordion--icon', {
     [`cf-accordion--icon-${caretIcon}`]: caretIcon,
     [`cf-accordion--icon--disabled`]: context.isDisabled,
@@ -58,7 +60,7 @@ export const AccordionHeader = forwardRef<
           }
         >
           <Icon
-            glyph={IconFont.CaretDown}
+            glyph={IconFont.CaretDown_New}
             className={AccordionHeaderCaretClassName}
           />
         </div>
@@ -74,7 +76,7 @@ export const AccordionHeader = forwardRef<
           }
         >
           <Icon
-            glyph={IconFont.CaretDown}
+            glyph={IconFont.CaretDown_New}
             className={AccordionHeaderCaretClassName}
           />
         </div>
