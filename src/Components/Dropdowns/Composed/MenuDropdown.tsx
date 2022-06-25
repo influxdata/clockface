@@ -64,7 +64,11 @@ export interface MenuDropdownProps extends StandardFunctionProps {
   menuTestID?: string
   /** the name/label to show in the dropdown where there is an item with an id but without a name; defaults to the empty string */
   menuStyle?: React.CSSProperties
+
+  // Callback function for when option is selected
+  onSelectOption?: (item: SubMenuItem | null) => void
 }
+
 const isBlank = (pString: string | undefined): boolean =>
   // Checks for falsiness or a non-white space character
   !pString || !/[^\s]+/.test(pString)
@@ -99,6 +103,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
   buttonSize = ComponentSize.Small,
   buttonIcon,
   menuTestID = 'type-ahead-dropdown--menu',
+  onSelectOption,
 }) => {
   // Menu Dropdown State
   const [isTypeAhead, setIsTypeAhead] = useState(false)
@@ -228,6 +233,9 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
       setMenuOpen(MenuStatus.Closed)
     }
     setSelectedItem(item)
+    if (onSelectOption) {
+      onSelectOption(item)
+    }
   }
 
   const clear = () => {

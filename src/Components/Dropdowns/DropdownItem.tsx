@@ -1,13 +1,18 @@
 // Libraries
-import React, { forwardRef, MouseEvent } from "react";
-import classnames from "classnames";
+import React, {forwardRef, MouseEvent} from 'react'
+import classnames from 'classnames'
 
 // Types
-import { DropdownItemType, IconFont, InfluxColors, StandardFunctionProps } from "../../Types";
+import {
+  DropdownItemType,
+  IconFont,
+  InfluxColors,
+  StandardFunctionProps,
+} from '../../Types'
 
 // Components
-import { DropdownItemSelectionIndicator } from "./DropdownItemSelectionIndicator";
-import { Icon } from "../Icon";
+import {DropdownItemSelectionIndicator} from './DropdownItemSelectionIndicator'
+import {Icon} from '../Icon'
 
 export interface DropdownItemProps extends StandardFunctionProps {
   /** Value to be returned via the onClick function */

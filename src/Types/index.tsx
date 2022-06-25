@@ -147,7 +147,7 @@ export enum DropdownMenuTheme {
   Malachite = 'malachite',
   Sapphire = 'sapphire',
   Onyx = 'onyx',
-  None = 'none'
+  None = 'none',
 }
 
 export interface DropdownMenuScrollbarColors {
