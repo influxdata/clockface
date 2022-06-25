@@ -248,7 +248,7 @@ $dropdown-item--padding-v: $cf-space-2xs;
 */
 
 .cf-dropdown-menu__line-break {
-  margin: 8px; 
+  margin: 8px;
 }
 
 .cf-dropdown-menu--button {
@@ -257,6 +257,7 @@ $dropdown-item--padding-v: $cf-space-2xs;
 
 .cf-dropdown-menu--caret-icon {
   font-size: 16.5px;
+  margin-right: 0.35em;
 }
 
 .cf-dropdown-menu-header {

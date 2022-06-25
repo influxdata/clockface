@@ -87,7 +87,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
   testIdSuffix = 'menu',
   options,
   subMenuOptions,
-  selectedOption = {id: '1', name: 'wt'},
+  selectedOption = null,
   defaultText = 'No Account Selected',
   menuHeaderIcon = IconFont.Switch_New,
   menuHeaderText = 'Switch Account',
@@ -231,7 +231,6 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
   }
 
   const clear = () => {
-    doSelection(null)
     doFilter('')
   }
 
@@ -300,7 +299,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
       zIndex: '0',
     }
     const iconFont = IconFont.CaretLeft_New
-    const textEl = <span>Switch Account</span>
+    const textEl = <span>{menuHeaderText}</span>
     const iconEl = (
       <Icon
         glyph={iconFont}
@@ -389,10 +388,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
       testID={testID || `typeAhead-dropdown--${testIdSuffix}`}
       onClickAway={onClickAwayHere}
       disableAutoFocus
-      button={(active, onClick) => {
-        console.log('button render')
-        return button(active, onClick)
-      }}
+      button={button}
       menu={isTypeAhead ? typeAheadMenu : menu}
     />
   )
