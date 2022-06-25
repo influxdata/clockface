@@ -310,3 +310,7 @@ $dropdown-item--padding-v: $cf-space-2xs;
 .cf-dropdown__onyx {
   @include dropdownMenuColor($c-pool);
 }
+
+.cf-dropdown__none {
+  @include dropdownMenuColor('none');
+}

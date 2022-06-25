@@ -1,11 +1,11 @@
 // Libraries
 import React, {
   ChangeEvent,
-  MouseEvent,
   FC,
-  useState,
-  useRef,
+  MouseEvent,
   useEffect,
+  useRef,
+  useState,
 } from 'react'
 import classnames from 'classnames'
 import {MenuStatus} from '../Dropdown'
@@ -18,8 +18,8 @@ import {Input} from '../../Inputs/Input'
 // Types
 import {
   ComponentSize,
-  IconFont,
   DropdownMenuTheme,
+  IconFont,
   StandardFunctionProps,
 } from '../../../Types'
 
@@ -94,7 +94,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
   largeListCeiling = 0,
   largeListSearch = false,
   searchText = 'Search Accounts',
-  menuTheme = DropdownMenuTheme.Onyx,
+  menuTheme = DropdownMenuTheme.None,
   className,
   buttonSize = ComponentSize.Small,
   buttonIcon,
@@ -289,13 +289,12 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
   )
 
   const typeAheadMenu = () => {
-    const itemWidth = {width: 'calc(100% - 8px)'}
+    const itemStyle = {width: '100%', paddingLeft: '14px'}
     const inputStyle = {
-      width: 'calc(100% - 8px)',
       marginTop: '4px',
       marginBottom: '8px',
-      marginLeft: 'auto',
-      marginRight: 'auto',
+      marginLeft: '0',
+      marginRight: '0',
       zIndex: '0',
     }
     const iconFont = IconFont.CaretLeft_New
@@ -355,13 +354,16 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
                     id={value.id}
                     value={value}
                     onClick={() => doSelection(value, true)}
-                    style={itemWidth}
+                    style={itemStyle}
                     selected={value.id === selectedItem?.id}
                     className={classN}
+                    trailingIconOnSelected={true}
                   >
                     {value.name}
                   </Dropdown.Item>
-                  <hr className="cf-dropdown-menu__line-break"></hr>
+                  {index !== queryResults.length - 1 && (
+                    <hr className="cf-dropdown-menu__line-break"></hr>
+                  )}
                 </div>
               )
             })
