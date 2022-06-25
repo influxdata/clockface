@@ -280,7 +280,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
             {menuHeaderCaretEl}
           </div>
         </div>
-        <hr className="cf-dropdown-menu__line-break"></hr>
+        <hr className="cf-dropdown-menu__line-break" />
         {options.map(value => {
           const iconFont = value.iconFont
           const iconEl = <Icon glyph={iconFont} className="cf-button-icon" />
@@ -370,7 +370,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
                     {value.name}
                   </Dropdown.Item>
                   {index !== queryResults.length - 1 && (
-                    <hr className="cf-dropdown-menu__line-break"></hr>
+                    <hr className="cf-dropdown-menu__line-break" />
                   )}
                 </div>
               )
