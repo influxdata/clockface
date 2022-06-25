@@ -64,7 +64,6 @@ export interface MenuDropdownProps extends StandardFunctionProps {
   menuTestID?: string
   /** the name/label to show in the dropdown where there is an item with an id but without a name; defaults to the empty string */
   menuStyle?: React.CSSProperties
-
   // Callback function for when option is selected
   onSelectOption?: (item: SubMenuItem | null) => void
 }
