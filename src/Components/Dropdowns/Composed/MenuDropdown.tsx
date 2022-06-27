@@ -1,11 +1,11 @@
 // Libraries
 import React, {
   ChangeEvent,
-  MouseEvent,
   FC,
-  useState,
-  useRef,
+  MouseEvent,
   useEffect,
+  useRef,
+  useState,
 } from 'react'
 import classnames from 'classnames'
 import {MenuStatus} from '../Dropdown'
@@ -15,11 +15,13 @@ import {Dropdown} from '../.'
 import {Icon} from '../../Icon/Base/Icon'
 import {Input} from '../../Inputs/Input'
 
+import './MenuDropdownStyles.scss'
+
 // Types
 import {
   ComponentSize,
-  IconFont,
   DropdownMenuTheme,
+  IconFont,
   StandardFunctionProps,
 } from '../../../Types'
 
@@ -64,7 +66,10 @@ export interface MenuDropdownProps extends StandardFunctionProps {
   menuTestID?: string
   /** the name/label to show in the dropdown where there is an item with an id but without a name; defaults to the empty string */
   menuStyle?: React.CSSProperties
+  // Callback function for when option is selected
+  onSelectOption?: (item: SubMenuItem | null) => void
 }
+
 const isBlank = (pString: string | undefined): boolean =>
   // Checks for falsiness or a non-white space character
   !pString || !/[^\s]+/.test(pString)
@@ -94,11 +99,12 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
   largeListCeiling = 0,
   largeListSearch = false,
   searchText = 'Search Accounts',
-  menuTheme = DropdownMenuTheme.Onyx,
+  menuTheme = DropdownMenuTheme.None,
   className,
   buttonSize = ComponentSize.Small,
   buttonIcon,
   menuTestID = 'type-ahead-dropdown--menu',
+  onSelectOption,
 }) => {
   // Menu Dropdown State
   const [isTypeAhead, setIsTypeAhead] = useState(false)
@@ -110,6 +116,10 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
   const [selectedItem, setSelectedItem] = useState<SubMenuItem | null>(
     selectedOption
   )
+
+  useEffect(() => {
+    setSelectedItem(selectedOption)
+  }, [selectedOption])
 
   const initialTypedValue = ''
   const [typedValue, setTypedValue] = useState<string>(initialTypedValue)
@@ -224,10 +234,12 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
       setMenuOpen(MenuStatus.Closed)
     }
     setSelectedItem(item)
+    if (onSelectOption) {
+      onSelectOption(item)
+    }
   }
 
   const clear = () => {
-    doSelection(null)
     doFilter('')
   }
 
@@ -269,7 +281,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
             {menuHeaderCaretEl}
           </div>
         </div>
-        <hr className="cf-dropdown-menu__line-break"></hr>
+        <hr className="cf-dropdown-menu__line-break" />
         {options.map(value => {
           const iconFont = value.iconFont
           const iconEl = <Icon glyph={iconFont} className="cf-button-icon" />
@@ -286,17 +298,8 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
   )
 
   const typeAheadMenu = () => {
-    const itemWidth = {width: 'calc(100% - 8px)'}
-    const inputStyle = {
-      width: 'calc(100% - 8px)',
-      marginTop: '4px',
-      marginBottom: '8px',
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      zIndex: '0',
-    }
     const iconFont = IconFont.CaretLeft_New
-    const textEl = <span>Switch Account</span>
+    const textEl = <span>{menuHeaderText}</span>
     const iconEl = (
       <Icon
         glyph={iconFont}
@@ -315,7 +318,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
         testID={`dropdown-input-typeAhead--${testIdSuffix}`}
         onClear={clear}
         onFocus={selectAllTextInInput}
-        style={inputStyle}
+        className="menu-dropdown-typeahead-input"
       />
     )
 
@@ -342,7 +345,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
           ) : (
             queryResults?.map((value, index) => {
               // add the 'active' class to highlight when arrowing; like a hover
-              const classN = classnames({
+              const classN = classnames('menu-dropdown-typeahead-item', {
                 active: index === selectIndex,
               })
 
@@ -352,13 +355,15 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
                     id={value.id}
                     value={value}
                     onClick={() => doSelection(value, true)}
-                    style={itemWidth}
                     selected={value.id === selectedItem?.id}
                     className={classN}
+                    trailingIconOnSelected={true}
                   >
                     {value.name}
                   </Dropdown.Item>
-                  <hr className="cf-dropdown-menu__line-break"></hr>
+                  {index !== queryResults.length - 1 && (
+                    <hr className="cf-dropdown-menu__line-break" />
+                  )}
                 </div>
               )
             })

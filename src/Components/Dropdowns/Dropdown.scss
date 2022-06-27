@@ -248,7 +248,8 @@ $dropdown-item--padding-v: $cf-space-2xs;
 */
 
 .cf-dropdown-menu__line-break {
-  margin: 8px; 
+  margin: 8px;
+  background-color: rgba(241, 241, 243, 0.1);
 }
 
 .cf-dropdown-menu--button {
@@ -257,6 +258,7 @@ $dropdown-item--padding-v: $cf-space-2xs;
 
 .cf-dropdown-menu--caret-icon {
   font-size: 16.5px;
+  margin-right: 0.35em;
 }
 
 .cf-dropdown-menu-header {
@@ -308,4 +310,8 @@ $dropdown-item--padding-v: $cf-space-2xs;
 
 .cf-dropdown__onyx {
   @include dropdownMenuColor($c-pool);
+}
+
+.cf-dropdown__none {
+  @include dropdownMenuColor('none');
 }
