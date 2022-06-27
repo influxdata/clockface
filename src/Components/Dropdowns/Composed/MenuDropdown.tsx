@@ -15,6 +15,8 @@ import {Dropdown} from '../.'
 import {Icon} from '../../Icon/Base/Icon'
 import {Input} from '../../Inputs/Input'
 
+import './MenuDropdownStyles.scss'
+
 // Types
 import {
   ComponentSize,
@@ -296,14 +298,6 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
   )
 
   const typeAheadMenu = () => {
-    const itemStyle = {width: '100%', paddingLeft: '14px'}
-    const inputStyle = {
-      marginTop: '4px',
-      marginBottom: '8px',
-      marginLeft: '0',
-      marginRight: '0',
-      zIndex: '0',
-    }
     const iconFont = IconFont.CaretLeft_New
     const textEl = <span>{menuHeaderText}</span>
     const iconEl = (
@@ -324,7 +318,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
         testID={`dropdown-input-typeAhead--${testIdSuffix}`}
         onClear={clear}
         onFocus={selectAllTextInInput}
-        style={inputStyle}
+        className="menu-dropdown-typeahead-input"
       />
     )
 
@@ -351,7 +345,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
           ) : (
             queryResults?.map((value, index) => {
               // add the 'active' class to highlight when arrowing; like a hover
-              const classN = classnames({
+              const classN = classnames('menu-dropdown-typeahead-item', {
                 active: index === selectIndex,
               })
 
@@ -361,7 +355,6 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
                     id={value.id}
                     value={value}
                     onClick={() => doSelection(value, true)}
-                    style={itemStyle}
                     selected={value.id === selectedItem?.id}
                     className={classN}
                     trailingIconOnSelected={true}
