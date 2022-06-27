@@ -111,6 +111,13 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
   const [selectIndex, setSelectIndex] = useState(-1)
   const [queryResults, setQueryResults] = useState(subMenuOptions)
   const [menuOpen, setMenuOpen] = useState<MenuStatus>(MenuStatus.Closed)
+  const [selectedItem, setSelectedItem] = useState<SubMenuItem | null>(
+    selectedOption
+  )
+
+  useEffect(() => {
+    setSelectedItem(selectedOption)
+  }, [selectedOption])
 
   const initialTypedValue = ''
   const [typedValue, setTypedValue] = useState<string>(initialTypedValue)
@@ -148,7 +155,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
       icon={buttonIcon}
       className={'cf-dropdown-menu--button'}
     >
-      {selectedOption?.name || defaultText}
+      {selectedItem?.name || defaultText}
     </Dropdown.Button>
   )
 
@@ -161,7 +168,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
   }
 
   const setTypedValueToSelectedName = (backupName?: string) => {
-    let selectedName = backupName ?? selectedOption?.name
+    let selectedName = backupName ?? selectedItem?.name
     if (!selectedName) {
       selectedName = ''
     }
@@ -214,6 +221,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
   }
 
   const doSelection = (item: SubMenuItem | null, closeMenuNow?: boolean) => {
+    setSelectedItem(item)
     const actualName = getDisplayName(item)
     setTypedValue(actualName)
     backupValue.current = actualName
@@ -223,6 +231,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
       setIsTypeAhead(false)
       setMenuOpen(MenuStatus.Closed)
     }
+    setSelectedItem(item)
     if (onSelectOption) {
       onSelectOption(item)
     }
@@ -353,7 +362,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
                     value={value}
                     onClick={() => doSelection(value, true)}
                     style={itemStyle}
-                    selected={value.id === selectedOption?.id}
+                    selected={value.id === selectedItem?.id}
                     className={classN}
                     trailingIconOnSelected={true}
                   >
