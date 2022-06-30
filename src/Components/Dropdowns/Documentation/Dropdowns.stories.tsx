@@ -32,7 +32,7 @@ import {
   MultiSelectDropdown,
   MultiSelectDropdownRef,
 } from '../Composed/MultiSelectDropdown'
-import {MenuDropdown} from '../Composed/MenuDropdown'
+import { MenuDropdown, SubMenuItem } from "../Composed/MenuDropdown";
 import {ColorPreview} from '../../ColorPicker/ColorPreview'
 
 import {TypeAheadDropDown, SelectableItem} from '../Composed/TypeAheadDropDown'
@@ -67,6 +67,7 @@ import MultiSelectDropdownReadme from './MultiSelectDropdown.md'
 import MenuDropdownReadme from './MenuDropdown.md'
 import {useState} from '@storybook/addons'
 import {FlexBox} from '../../FlexBox'
+import { range } from "lodash";
 
 const dropdownFamilyStories = storiesOf(
   'Components/Dropdowns/Family',
@@ -908,24 +909,12 @@ dropdownComposedStories.add(
       },
     ]
 
-    const typeAheadOptions = [
-      {
-        name: 'EdgeDelta',
-        id: '1',
-      },
-      {
-        name: 'Account',
-        id: '2',
-      },
-      {
-        name: 'Something',
-        id: '3',
-      },
-      {
-        name: 'Who knows',
-        id: '4',
-      },
-    ]
+    const typeAheadOptions = range(1, 100000).map((value) => {
+      return {
+        name: value.toString(),
+        id: value.toString(),
+      } as SubMenuItem
+    })
 
     const selectedOption = {
       name: 'EdgeDelta',

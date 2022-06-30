@@ -7,8 +7,8 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import classnames from 'classnames'
 import {MenuStatus} from '../Dropdown'
+import {FixedSizeList as List} from 'react-window'
 
 // Components
 import {Dropdown} from '../.'
@@ -24,6 +24,7 @@ import {
   IconFont,
   StandardFunctionProps,
 } from '../../../Types'
+import classnames from 'classnames'
 
 export interface MenuItem {
   name: string
@@ -343,30 +344,40 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
               {largeListValidationText}
             </Dropdown.Item>
           ) : (
-            queryResults?.map((value, index) => {
-              // add the 'active' class to highlight when arrowing; like a hover
-              const classN = classnames('menu-dropdown-typeahead-item', {
-                active: index === selectIndex,
-              })
+            <List
+              className="List"
+              height={100}
+              itemCount={queryResults.length}
+              itemSize={50}
+              width={'300px'}
+              itemData={queryResults}
+            >
+              {({data, index, style}) => {
+                const value = data[index]
+                // add the 'active' class to highlight when arrowing; like a hover
+                const classN = classnames('menu-dropdown-typeahead-item', {
+                  active: index === selectIndex,
+                })
 
-              return (
-                <div key={value.id}>
-                  <Dropdown.Item
-                    id={value.id}
-                    value={value}
-                    onClick={() => doSelection(value, true)}
-                    selected={value.id === selectedItem?.id}
-                    className={classN}
-                    trailingIconOnSelected={true}
-                  >
-                    {value.name}
-                  </Dropdown.Item>
-                  {index !== queryResults.length - 1 && (
-                    <hr className="cf-dropdown-menu__line-break" />
-                  )}
-                </div>
-              )
-            })
+                return (
+                  <div key={value.id} style={style}>
+                    <Dropdown.Item
+                      id={value.id}
+                      value={value}
+                      onClick={() => doSelection(value, true)}
+                      selected={value.id === selectedItem?.id}
+                      className={classN}
+                      trailingIconOnSelected={true}
+                    >
+                      {value.name}
+                    </Dropdown.Item>
+                    {index !== queryResults.length - 1 && (
+                      <hr className="cf-dropdown-menu__line-break" />
+                    )}
+                  </div>
+                )
+              }}
+            </List>
           )}
           {!queryResults || queryResults.length === 0 ? (
             <Dropdown.Item
