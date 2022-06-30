@@ -31,6 +31,7 @@ export const SubwayNavStep = (props: OwnProps) => {
     fontSize: '20px',
   }
   const completedStepStyle = {color: InfluxColors.Grey95, fontSize: '25px'}
+  const isActiveStepStyle = {...completedStepStyle, fontSize: '20px'}
 
   return (
     <span
@@ -49,7 +50,7 @@ export const SubwayNavStep = (props: OwnProps) => {
           style={{
             color: iconAndTextColor,
             background:
-              stepIsReached && stepIsComplete && showCheckmark
+              (stepIsReached && stepIsComplete && showCheckmark) || stepIsActive
                 ? InfluxColors.Pool
                 : '',
           }}
@@ -57,7 +58,10 @@ export const SubwayNavStep = (props: OwnProps) => {
           {stepIsComplete && showCheckmark ? (
             <Icon glyph={IconFont.Checkmark_New} style={completedStepStyle} />
           ) : (
-            <Icon glyph={glyph} style={glyphFontStyle} />
+            <Icon
+              glyph={glyph}
+              style={stepIsActive ? isActiveStepStyle : glyphFontStyle}
+            />
           )}
         </span>
         <span
