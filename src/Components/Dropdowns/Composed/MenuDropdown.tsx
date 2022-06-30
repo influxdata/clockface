@@ -321,7 +321,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
             {textEl}
           </div>
           {inputComponent}
-          {queryResults.length > 0 ? (
+          {queryResults && queryResults.length > 0 ? (
             <List
               className="List"
               height={menuStyle?.height ?? 150}
