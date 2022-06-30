@@ -138,7 +138,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
     }
   }, [subMenuOptions, typedValue])
 
-  const button = (
+  const dropdownButton = (
     active: boolean,
     onClick: (e: MouseEvent<HTMLElement>) => void
   ) => (
@@ -169,7 +169,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
     setTypedValue(selectedName)
   }
 
-  const onClickAwayHere = () => {
+  const onClickAway = () => {
     //  reset to the selected value; if the user typed in
     //  something not allowed it will go back to the last selected value:
     setTypedValueToSelectedName(backupValue.current)
@@ -231,7 +231,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
     }
   }
 
-  const clear = () => {
+  const clearFilter = () => {
     doFilter('')
   }
 
@@ -246,9 +246,8 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
     }
   }
 
-  const menuHeaderIconFont = menuHeaderIcon
   const menuHeaderIconEl = (
-    <Icon glyph={menuHeaderIconFont} className="cf-button-icon" />
+    <Icon glyph={menuHeaderIcon} className="cf-button-icon" />
   )
   const menuHeaderTextEl = <span>{menuHeaderText}</span>
   const menuHeaderCaretEl = (
@@ -304,7 +303,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
         onChange={filterVals}
         value={typedValue}
         testID={`dropdown-input-typeAhead--${testIdSuffix}`}
-        onClear={clear}
+        onClear={clearFilter}
         onFocus={selectAllTextInInput}
         className="menu-dropdown-typeahead-input"
       />
@@ -363,7 +362,9 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
               testID="nothing-in-filter-typeAhead"
               disabled={true}
             >
-              {`no matches for ${typedValue}`}
+              {typedValue.length > 0
+                ? `no matches for ${typedValue}`
+                : 'No results'}
             </Dropdown.Item>
           )}
         </div>
@@ -377,9 +378,9 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
     <Dropdown
       {...props}
       testID={testID || `typeAhead-dropdown--${testIdSuffix}`}
-      onClickAway={onClickAwayHere}
+      onClickAway={onClickAway}
       disableAutoFocus
-      button={button}
+      button={dropdownButton}
       menu={isTypeAhead ? typeAheadMenu : menu}
     />
   )
