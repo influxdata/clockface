@@ -310,11 +310,6 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
       />
     )
 
-    let menuWidth = '300px'
-    if (menuStyle?.width) {
-      menuWidth = menuStyle.width.toString()
-    }
-
     return (
       <Dropdown.Menu testID={menuTestID} theme={menuTheme} style={menuStyle}>
         <div>
@@ -331,7 +326,8 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
             height={150}
             itemCount={queryResults.length}
             itemSize={50}
-            width={menuWidth}
+            width={'100%'}
+            direction="vertical"
             itemData={queryResults}
           >
             {({data, index, style}) => {
