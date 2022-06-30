@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.7.1 (2022-06-30)
+
+- [790](https://github.com/influxdata/clockface/pull/790): styling fix for MenuDropdown component
+
 ### 4.7.0 (2022-06-30)
 
 - [789](https://github.com/influxdata/clockface/pull/789): react-window for long lists in MenuDropdown component
