@@ -321,43 +321,43 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
             {textEl}
           </div>
           {inputComponent}
-          <List
-            className="List"
-            height={150}
-            itemCount={queryResults.length}
-            itemSize={50}
-            width={'100%'}
-            direction="vertical"
-            itemData={queryResults}
-          >
-            {({data, index, style}) => {
-              const value = data[index]
-              // add the 'active' class to highlight when arrowing; like a hover
-              const classN = classnames('menu-dropdown-typeahead-item', {
-                active: index === selectIndex,
-              })
+          {queryResults.length > 0 ? (
+            <List
+              className="List"
+              height={menuStyle?.height ?? 150}
+              itemCount={queryResults.length}
+              itemSize={50}
+              width={'100%'}
+              direction="vertical"
+              itemData={queryResults}
+            >
+              {({data, index, style}) => {
+                const value = data[index]
+                // add the 'active' class to highlight when arrowing; like a hover
+                const classN = classnames('menu-dropdown-typeahead-item', {
+                  active: index === selectIndex,
+                })
 
-              return (
-                <div key={value.id} style={style}>
-                  <Dropdown.Item
-                    id={value.id}
-                    value={value}
-                    onClick={() => doSelection(value, true)}
-                    selected={value.id === selectedItem?.id}
-                    className={classN}
-                    trailingIconOnSelected={true}
-                  >
-                    {value.name}
-                  </Dropdown.Item>
-                  {index !== queryResults.length - 1 && (
-                    <hr className="cf-dropdown-menu__line-break" />
-                  )}
-                </div>
-              )
-            }}
-          </List>
-
-          {!queryResults || queryResults.length === 0 ? (
+                return (
+                  <div key={value.id} style={style}>
+                    <Dropdown.Item
+                      id={value.id}
+                      value={value}
+                      onClick={() => doSelection(value, true)}
+                      selected={value.id === selectedItem?.id}
+                      className={classN}
+                      trailingIconOnSelected={true}
+                    >
+                      {value.name}
+                    </Dropdown.Item>
+                    {index !== queryResults.length - 1 && (
+                      <hr className="cf-dropdown-menu__line-break" />
+                    )}
+                  </div>
+                )
+              }}
+            </List>
+          ) : (
             <Dropdown.Item
               key="nada-no-values-in-filter"
               testID="nothing-in-filter-typeAhead"
@@ -365,7 +365,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
             >
               {`no matches for ${typedValue}`}
             </Dropdown.Item>
-          ) : null}
+          )}
         </div>
       </Dropdown.Menu>
     )
