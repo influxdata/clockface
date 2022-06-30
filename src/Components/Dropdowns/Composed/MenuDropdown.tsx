@@ -7,8 +7,8 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import classnames from 'classnames'
 import {MenuStatus} from '../Dropdown'
+import {FixedSizeList as List} from 'react-window'
 
 // Components
 import {Dropdown} from '../.'
@@ -24,6 +24,7 @@ import {
   IconFont,
   StandardFunctionProps,
 } from '../../../Types'
+import classnames from 'classnames'
 
 export interface MenuItem {
   name: string
@@ -51,10 +52,6 @@ export interface MenuDropdownProps extends StandardFunctionProps {
   menuHeaderIcon?: IconFont
   /** Text to display in the main menu header */
   menuHeaderText?: string
-  /**enables forced searching once dropdown list exceeds largeListSearch value */
-  largeListSearch?: boolean
-  /**the number of total items in the dropdown list before search is forced */
-  largeListCeiling?: number
   /** Text to display by default in the type ahead input */
   searchText?: string
   /** Optional size of button */
@@ -96,8 +93,6 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
   defaultText = 'No Account Selected',
   menuHeaderIcon = IconFont.Switch_New,
   menuHeaderText = 'Switch Account',
-  largeListCeiling = 0,
-  largeListSearch = false,
   searchText = 'Search Accounts',
   menuTheme = DropdownMenuTheme.None,
   className,
@@ -125,9 +120,6 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
   const [typedValue, setTypedValue] = useState<string>(initialTypedValue)
 
   const backupValue = useRef<string>(initialTypedValue)
-
-  const largeListValidation =
-    largeListSearch && queryResults.length > largeListCeiling
 
   useEffect(() => {
     if (typedValue.length > 0) {
@@ -306,10 +298,6 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
         className="cf-dropdown-menu--caret-icon cf-button-icon"
       />
     )
-    const largeListValidationText =
-      typedValue.length >= 1
-        ? 'There are still too many results. Please input more characters.'
-        : 'Please input a character to start seeing results.'
     const inputComponent = (
       <Input
         placeholder={searchText}
@@ -333,24 +321,23 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
             {textEl}
           </div>
           {inputComponent}
-          {largeListValidation ? (
-            <Dropdown.Item
-              key="nada-no-values-in-filter"
-              testID="nothing-in-filter-typeAhead"
-              disabled={true}
-              wrapText={true}
-            >
-              {largeListValidationText}
-            </Dropdown.Item>
-          ) : (
-            queryResults?.map((value, index) => {
+          <List
+            className="List"
+            height={150}
+            itemCount={queryResults.length}
+            itemSize={50}
+            width={'300px'}
+            itemData={queryResults}
+          >
+            {({data, index, style}) => {
+              const value = data[index]
               // add the 'active' class to highlight when arrowing; like a hover
               const classN = classnames('menu-dropdown-typeahead-item', {
                 active: index === selectIndex,
               })
 
               return (
-                <div key={value.id}>
+                <div key={value.id} style={style}>
                   <Dropdown.Item
                     id={value.id}
                     value={value}
@@ -366,8 +353,9 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
                   )}
                 </div>
               )
-            })
-          )}
+            }}
+          </List>
+
           {!queryResults || queryResults.length === 0 ? (
             <Dropdown.Item
               key="nada-no-values-in-filter"
