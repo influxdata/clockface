@@ -32,7 +32,7 @@ import {
   MultiSelectDropdown,
   MultiSelectDropdownRef,
 } from '../Composed/MultiSelectDropdown'
-import { MenuDropdown, SubMenuItem } from "../Composed/MenuDropdown";
+import {MenuDropdown, SubMenuItem} from '../Composed/MenuDropdown'
 import {ColorPreview} from '../../ColorPicker/ColorPreview'
 
 import {TypeAheadDropDown, SelectableItem} from '../Composed/TypeAheadDropDown'
@@ -67,7 +67,7 @@ import MultiSelectDropdownReadme from './MultiSelectDropdown.md'
 import MenuDropdownReadme from './MenuDropdown.md'
 import {useState} from '@storybook/addons'
 import {FlexBox} from '../../FlexBox'
-import { range } from "lodash";
+import {range} from 'lodash'
 
 const dropdownFamilyStories = storiesOf(
   'Components/Dropdowns/Family',
@@ -943,8 +943,6 @@ dropdownComposedStories.add(
           selectedOption={selectedOption}
           style={object('style', menuDropdownStyle)}
           menuStyle={object('menuStyle', menuDropdownMenuStyle)}
-          largeListSearch={boolean('largeListSearch', false)}
-          largeListCeiling={number('largeListCeiling', 0)}
           options={defaultHrefOptions}
           subMenuOptions={typeAheadOptions}
           menuHeaderIcon={IconFont.Switch_New}
@@ -981,7 +979,7 @@ dropdownComposedStories.add(
       },
     ]
 
-    const typeAheadOptions = range(1, 100000).map((value) => {
+    const typeAheadOptions = range(1, 100000).map(value => {
       return {
         name: value.toString(),
         id: value.toString(),
@@ -1003,8 +1001,6 @@ dropdownComposedStories.add(
           selectedOption={selectedOption}
           style={object('style', menuDropdownStyle)}
           menuStyle={object('menuStyle', menuDropdownMenuStyle)}
-          largeListSearch={boolean('largeListSearch', false)}
-          largeListCeiling={number('largeListCeiling', 0)}
           options={defaultHrefOptions}
           subMenuOptions={typeAheadOptions}
           menuHeaderIcon={IconFont.Switch_New}
