@@ -323,7 +323,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
           {inputComponent}
           <List
             className="List"
-            height={100}
+            height={150}
             itemCount={queryResults.length}
             itemSize={50}
             width={'300px'}
