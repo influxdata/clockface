@@ -59,6 +59,7 @@ export class SubwayNav extends PureComponent<OwnProps> {
               stepIsComplete={
                 value?.isComplete ?? index < this.props.currentStep - 1
               }
+              stepIsReached={index <= this.props.currentStep - 1}
               text={value.name}
               showCheckmark={this.props.showCheckmark !== false}
             />
