@@ -10,7 +10,7 @@ import './SubwayNav.scss'
 export interface SubwayNavModel {
   glyph: IconFont
   name: string
-  isCompleted?: boolean
+  isComplete?: boolean
 }
 
 interface OwnProps {
@@ -57,7 +57,7 @@ export class SubwayNav extends PureComponent<OwnProps> {
               }}
               stepIsActive={index === this.props.currentStep - 1}
               stepIsComplete={
-                value?.isCompleted ?? index < this.props.currentStep - 1
+                value?.isComplete ?? index < this.props.currentStep - 1
               }
               text={value.name}
               showCheckmark={this.props.showCheckmark !== false}
