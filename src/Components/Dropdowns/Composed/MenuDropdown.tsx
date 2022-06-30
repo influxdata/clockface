@@ -33,7 +33,7 @@ export interface MenuItem {
 }
 
 export interface SubMenuItem {
-  id: string
+  id: string | number
   name: string
 }
 
@@ -338,7 +338,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
                 return (
                   <div key={value.id} style={style}>
                     <Dropdown.Item
-                      id={value.id}
+                      id={value.id.toString()}
                       value={value}
                       onClick={() => doSelection(value, true)}
                       selected={value.id === selectedItem?.id}
