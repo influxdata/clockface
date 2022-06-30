@@ -326,7 +326,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
               itemCount={queryResults.length}
               itemSize={50}
               width={'100%'}
-              direction="vertical"
+              layout="vertical"
               itemData={queryResults}
             >
               {({data, index, style}) => {
