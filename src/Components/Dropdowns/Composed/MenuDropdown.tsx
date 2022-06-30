@@ -176,28 +176,28 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
   }
 
   /**
-   *  filter the selections/options based on the search string: needle
-   * if the needle is empty; then there is nothing to filter; so return everything
+   *  filter the selections/options based on the search string: filterStr
+   * if the filterStr is empty; then there is nothing to filter; so return everything
    */
-  const doFilter = (needle: string) => {
+  const applyFilter = (filterStr: string) => {
     // if there is no value, set the queryResults to everything
     // and set the typedValue to nothing (zero it out)
     // reset the selectIndex too
-    if (!needle) {
+    if (!filterStr) {
       setQueryResults(subMenuOptions)
       setTypedValue('')
       setSelectIndex(-1)
     } else {
       const result = subMenuOptions.filter(val => {
         const name = val?.name || ''
-        return name.toLowerCase().includes(needle.toLowerCase())
+        return name.toLowerCase().includes(filterStr.toLowerCase())
       })
 
       // always reset the selectIndex when doing filtering;  because
       // if it had a value, and then they type, the queryResults changes
       // so need to reset
       setQueryResults(result)
-      setTypedValue(needle)
+      setTypedValue(filterStr)
       setMenuOpen(MenuStatus.Open)
       setSelectIndex(-1)
     }
@@ -232,12 +232,12 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
   }
 
   const clearFilter = () => {
-    doFilter('')
+    applyFilter('')
   }
 
   const filterVals = (event: ChangeEvent<HTMLInputElement>) => {
     const needle = event?.target?.value
-    doFilter(needle)
+    applyFilter(needle)
   }
 
   const selectAllTextInInput = (event?: ChangeEvent<HTMLInputElement>) => {
@@ -257,7 +257,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
     />
   )
 
-  const menu = () => (
+  const dropdownMenu = () => (
     <Dropdown.Menu testID={menuTestID} theme={menuTheme} style={menuStyle}>
       <div>
         <div
@@ -297,7 +297,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
         className="cf-dropdown-menu--caret-icon cf-button-icon"
       />
     )
-    const inputComponent = (
+    const filterSearchInput = (
       <Input
         placeholder={searchText}
         onChange={filterVals}
@@ -319,10 +319,9 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
             {iconEl}
             {textEl}
           </div>
-          {inputComponent}
+          {filterSearchInput}
           {queryResults && queryResults.length > 0 ? (
             <List
-              className="List"
               height={menuStyle?.height ?? 150}
               itemCount={queryResults.length}
               itemSize={50}
@@ -381,7 +380,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
       onClickAway={onClickAway}
       disableAutoFocus
       button={dropdownButton}
-      menu={isTypeAhead ? typeAheadMenu : menu}
+      menu={isTypeAhead ? typeAheadMenu : dropdownMenu}
     />
   )
 }
