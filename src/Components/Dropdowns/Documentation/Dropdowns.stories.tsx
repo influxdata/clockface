@@ -909,6 +909,78 @@ dropdownComposedStories.add(
       },
     ]
 
+    const typeAheadOptions = [
+      {
+        name: 'EdgeDelta',
+        id: '1',
+      },
+      {
+        name: 'Account',
+        id: '2',
+      },
+      {
+        name: 'Something',
+        id: '3',
+      },
+      {
+        name: 'Who knows',
+        id: '4',
+      },
+    ]
+
+    const selectedOption = {
+      name: 'EdgeDelta',
+      id: '1',
+    }
+
+    const menuDropdownStyle = {width: '150px'}
+
+    const menuDropdownMenuStyle = {width: '250px'}
+
+    return (
+      <div className="story--example">
+        <MenuDropdown
+          selectedOption={selectedOption}
+          style={object('style', menuDropdownStyle)}
+          menuStyle={object('menuStyle', menuDropdownMenuStyle)}
+          largeListSearch={boolean('largeListSearch', false)}
+          largeListCeiling={number('largeListCeiling', 0)}
+          options={defaultHrefOptions}
+          subMenuOptions={typeAheadOptions}
+          menuHeaderIcon={IconFont.Switch_New}
+          menuHeaderText={'Switch Account'}
+        />
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(MenuDropdownReadme),
+    },
+  }
+)
+
+dropdownComposedStories.add(
+  'MenuDropdownStressTest',
+  () => {
+    const defaultHrefOptions = [
+      {
+        name: 'Settings',
+        iconFont: IconFont.CogOutline,
+        href: '/settings',
+      },
+      {
+        name: 'Members',
+        iconFont: IconFont.UserOutline_New,
+        href: '/members',
+      },
+      {
+        name: 'Billing',
+        iconFont: IconFont.Bill,
+        href: '/billing',
+      },
+    ]
+
     const typeAheadOptions = range(1, 100000).map((value) => {
       return {
         name: value.toString(),
