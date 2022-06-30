@@ -289,11 +289,10 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
   )
 
   const typeAheadMenu = () => {
-    const iconFont = IconFont.CaretLeft_New
     const textEl = <span>{menuHeaderText}</span>
     const iconEl = (
       <Icon
-        glyph={iconFont}
+        glyph={IconFont.CaretLeft_New}
         className="cf-dropdown-menu--caret-icon cf-button-icon"
       />
     )
