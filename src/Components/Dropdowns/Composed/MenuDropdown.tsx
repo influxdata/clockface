@@ -33,7 +33,7 @@ export interface MenuItem {
 }
 
 export interface SubMenuItem {
-  id: string
+  id: string | number
   name: string
 }
 
@@ -138,7 +138,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
     }
   }, [subMenuOptions, typedValue])
 
-  const button = (
+  const dropdownButton = (
     active: boolean,
     onClick: (e: MouseEvent<HTMLElement>) => void
   ) => (
@@ -169,35 +169,35 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
     setTypedValue(selectedName)
   }
 
-  const onClickAwayHere = () => {
+  const onClickAway = () => {
     //  reset to the selected value; if the user typed in
     //  something not allowed it will go back to the last selected value:
     setTypedValueToSelectedName(backupValue.current)
   }
 
   /**
-   *  filter the selections/options based on the search string: needle
-   * if the needle is empty; then there is nothing to filter; so return everything
+   *  filter the selections/options based on the search string: filterStr
+   * if the filterStr is empty; then there is nothing to filter; so return everything
    */
-  const doFilter = (needle: string) => {
+  const applyFilter = (filterStr: string) => {
     // if there is no value, set the queryResults to everything
     // and set the typedValue to nothing (zero it out)
     // reset the selectIndex too
-    if (!needle) {
+    if (!filterStr) {
       setQueryResults(subMenuOptions)
       setTypedValue('')
       setSelectIndex(-1)
     } else {
       const result = subMenuOptions.filter(val => {
         const name = val?.name || ''
-        return name.toLowerCase().includes(needle.toLowerCase())
+        return name.toLowerCase().includes(filterStr.toLowerCase())
       })
 
       // always reset the selectIndex when doing filtering;  because
       // if it had a value, and then they type, the queryResults changes
       // so need to reset
       setQueryResults(result)
-      setTypedValue(needle)
+      setTypedValue(filterStr)
       setMenuOpen(MenuStatus.Open)
       setSelectIndex(-1)
     }
@@ -231,13 +231,13 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
     }
   }
 
-  const clear = () => {
-    doFilter('')
+  const clearFilter = () => {
+    applyFilter('')
   }
 
   const filterVals = (event: ChangeEvent<HTMLInputElement>) => {
     const needle = event?.target?.value
-    doFilter(needle)
+    applyFilter(needle)
   }
 
   const selectAllTextInInput = (event?: ChangeEvent<HTMLInputElement>) => {
@@ -246,9 +246,8 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
     }
   }
 
-  const menuHeaderIconFont = menuHeaderIcon
   const menuHeaderIconEl = (
-    <Icon glyph={menuHeaderIconFont} className="cf-button-icon" />
+    <Icon glyph={menuHeaderIcon} className="cf-button-icon" />
   )
   const menuHeaderTextEl = <span>{menuHeaderText}</span>
   const menuHeaderCaretEl = (
@@ -258,7 +257,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
     />
   )
 
-  const menu = () => (
+  const dropdownMenu = () => (
     <Dropdown.Menu testID={menuTestID} theme={menuTheme} style={menuStyle}>
       <div>
         <div
@@ -290,30 +289,24 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
   )
 
   const typeAheadMenu = () => {
-    const iconFont = IconFont.CaretLeft_New
     const textEl = <span>{menuHeaderText}</span>
     const iconEl = (
       <Icon
-        glyph={iconFont}
+        glyph={IconFont.CaretLeft_New}
         className="cf-dropdown-menu--caret-icon cf-button-icon"
       />
     )
-    const inputComponent = (
+    const filterSearchInput = (
       <Input
         placeholder={searchText}
         onChange={filterVals}
         value={typedValue}
         testID={`dropdown-input-typeAhead--${testIdSuffix}`}
-        onClear={clear}
+        onClear={clearFilter}
         onFocus={selectAllTextInInput}
         className="menu-dropdown-typeahead-input"
       />
     )
-
-    let menuWidth = '300px'
-    if (menuStyle?.width) {
-      menuWidth = menuStyle.width.toString()
-    }
 
     return (
       <Dropdown.Menu testID={menuTestID} theme={menuTheme} style={menuStyle}>
@@ -325,51 +318,53 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
             {iconEl}
             {textEl}
           </div>
-          {inputComponent}
-          <List
-            className="List"
-            height={150}
-            itemCount={queryResults.length}
-            itemSize={50}
-            width={menuWidth}
-            itemData={queryResults}
-          >
-            {({data, index, style}) => {
-              const value = data[index]
-              // add the 'active' class to highlight when arrowing; like a hover
-              const classN = classnames('menu-dropdown-typeahead-item', {
-                active: index === selectIndex,
-              })
+          {filterSearchInput}
+          {queryResults && queryResults.length > 0 ? (
+            <List
+              height={menuStyle?.height ?? 150}
+              itemCount={queryResults.length}
+              itemSize={50}
+              width={'100%'}
+              layout="vertical"
+              itemData={queryResults}
+            >
+              {({data, index, style}) => {
+                const value = data[index]
+                // add the 'active' class to highlight when arrowing; like a hover
+                const classN = classnames('menu-dropdown-typeahead-item', {
+                  active: index === selectIndex,
+                })
 
-              return (
-                <div key={value.id} style={style}>
-                  <Dropdown.Item
-                    id={value.id}
-                    value={value}
-                    onClick={() => doSelection(value, true)}
-                    selected={value.id === selectedItem?.id}
-                    className={classN}
-                    trailingIconOnSelected={true}
-                  >
-                    {value.name}
-                  </Dropdown.Item>
-                  {index !== queryResults.length - 1 && (
-                    <hr className="cf-dropdown-menu__line-break" />
-                  )}
-                </div>
-              )
-            }}
-          </List>
-
-          {!queryResults || queryResults.length === 0 ? (
+                return (
+                  <div key={value.id} style={style}>
+                    <Dropdown.Item
+                      id={value.id.toString()}
+                      value={value}
+                      onClick={() => doSelection(value, true)}
+                      selected={value.id === selectedItem?.id}
+                      className={classN}
+                      trailingIconOnSelected={true}
+                    >
+                      {value.name}
+                    </Dropdown.Item>
+                    {index !== queryResults.length - 1 && (
+                      <hr className="cf-dropdown-menu__line-break" />
+                    )}
+                  </div>
+                )
+              }}
+            </List>
+          ) : (
             <Dropdown.Item
               key="nada-no-values-in-filter"
               testID="nothing-in-filter-typeAhead"
               disabled={true}
             >
-              {`no matches for ${typedValue}`}
+              {typedValue.length > 0
+                ? `no matches for ${typedValue}`
+                : 'No results'}
             </Dropdown.Item>
-          ) : null}
+          )}
         </div>
       </Dropdown.Menu>
     )
@@ -381,10 +376,10 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
     <Dropdown
       {...props}
       testID={testID || `typeAhead-dropdown--${testIdSuffix}`}
-      onClickAway={onClickAwayHere}
+      onClickAway={onClickAway}
       disableAutoFocus
-      button={button}
-      menu={isTypeAhead ? typeAheadMenu : menu}
+      button={dropdownButton}
+      menu={isTypeAhead ? typeAheadMenu : dropdownMenu}
     />
   )
 }
