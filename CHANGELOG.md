@@ -1,5 +1,10 @@
 # Changelog
 
+
+### 4.7.2 (2022-06-30)
+
+- [788](https://github.com/influxdata/clockface/pull/788): Ability to show Checkmark on Subway Nav before clicking
+
 ### 4.7.1 (2022-06-30)
 
 - [790](https://github.com/influxdata/clockface/pull/790): styling fix for MenuDropdown component
