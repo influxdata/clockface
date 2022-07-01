@@ -38,10 +38,10 @@ export interface SubMenuItem {
 }
 
 export interface MenuDropdownProps extends StandardFunctionProps {
-  /** A default pre-selected Option */
-  selectedOption?: SubMenuItem
   /** List of href options to render in the main menu */
   options: MenuItem[]
+  /** A default pre-selected Option */
+  selectedOption: SubMenuItem
   /** List of options to render in the sub type-ahead menu */
   subMenuOptions: SubMenuItem[]
   /** used for generating custom test ids */
@@ -89,7 +89,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
   testIdSuffix = 'menu',
   options,
   subMenuOptions,
-  selectedOption = null,
+  selectedOption = subMenuOptions[0],
   defaultText = 'No Account Selected',
   menuHeaderIcon = IconFont.Switch_New,
   menuHeaderText = 'Switch Account',
@@ -125,7 +125,12 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
     if (typedValue.length > 0) {
       const result = subMenuOptions.filter(val => {
         const name = val?.name || ''
-        return name.toLowerCase().includes(typedValue.toLowerCase())
+        const id = val?.id
+        return (
+          name.toLowerCase().includes(typedValue.toLowerCase()) &&
+          /* Multi-org UI tickets #4051 and #4047: display the currently selected item first, not alpha position */
+          id !== selectedOption.id
+        )
       })
 
       // always reset the selectIndex when doing filtering;  because
@@ -136,7 +141,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
     } else {
       setQueryResults(subMenuOptions)
     }
-  }, [subMenuOptions, typedValue])
+  }, [subMenuOptions, typedValue, selectedOption.id])
 
   const button = (
     active: boolean,
@@ -261,19 +266,24 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
   const menu = () => (
     <Dropdown.Menu testID={menuTestID} theme={menuTheme} style={menuStyle}>
       <div>
-        <div
-          className="cf-dropdown-item cf-dropdown-item__no-wrap"
-          onClick={() => flipTypeAheadStatus(true)}
-        >
-          <div className="cf-dropdown-menu-header">
-            <div>
-              {menuHeaderIconEl}
-              {menuHeaderTextEl}
+        {/* Multi-org UI tickets #4051 and #4047, when user only has 1 account or 1 org, switch button is disabled */}
+        {subMenuOptions.length > 1 && (
+          <>
+            <div
+              className="cf-dropdown-item cf-dropdown-item__no-wrap"
+              onClick={() => flipTypeAheadStatus(true)}
+            >
+              <div className="cf-dropdown-menu-header">
+                <div>
+                  {menuHeaderIconEl}
+                  {menuHeaderTextEl}
+                </div>
+                {menuHeaderCaretEl}
+              </div>
             </div>
-            {menuHeaderCaretEl}
-          </div>
-        </div>
-        <hr className="cf-dropdown-menu__line-break" />
+            <hr className="cf-dropdown-menu__line-break" />
+          </>
+        )}
         {options.map(value => {
           const iconFont = value.iconFont
           const iconEl = <Icon glyph={iconFont} className="cf-button-icon" />
@@ -329,10 +339,11 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
           <List
             className="List"
             height={150}
-            itemCount={queryResults.length}
+            itemCount={queryResults.length + 1}
             itemSize={50}
             width={menuWidth}
-            itemData={queryResults}
+            /* Multi-org UI tickets #4051 and #4047: display the currently selected item first. */
+            itemData={[selectedOption, ...queryResults]}
           >
             {({data, index, style}) => {
               const value = data[index]
