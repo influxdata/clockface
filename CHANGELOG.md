@@ -1,5 +1,8 @@
 # Changelog
 
+### 4.7.3 (2022-07-01)
+
+- [794](https://github.com/influxdata/clockface/pull/794): Multi-Org dropdown displays selected item first, and will not offer option to change accounts/orgs if no other accounts or orgs exist
 
 ### 4.7.2 (2022-06-30)
 
