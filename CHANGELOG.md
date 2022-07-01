@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.7.3 (2022-07-01)
+
+- [793](https://github.com/influxdata/clockface/pull/793): refactoring MenuDropdown Component
+
 ### 4.7.1 (2022-06-30)
 
 - [790](https://github.com/influxdata/clockface/pull/790): styling fix for MenuDropdown component
