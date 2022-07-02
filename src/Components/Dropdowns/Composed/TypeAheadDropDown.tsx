@@ -20,7 +20,7 @@ import {
 import {Input} from '../../Inputs/Input'
 import {DropdownHeader} from '../DropdownHeader'
 import {FixedSizeList as List} from 'react-window'
-
+import '../ScrollBarStyles.scss'
 export interface SelectableItem {
   id: string
   name?: string
@@ -321,6 +321,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
               width={'100%'}
               layout="vertical"
               itemData={queryResults}
+              className="menu-dropdown"
             >
               {({data, index, style}) => {
                 const value = data[index]
