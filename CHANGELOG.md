@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.7.4 (2022-07-05)
+
+- [795](https://github.com/influxdata/clockface/pull/795): react-window for typeahead dropdown 
+
 ### 4.7.3 (2022-07-01)
 
 - [793](https://github.com/influxdata/clockface/pull/793): refactoring MenuDropdown Component
