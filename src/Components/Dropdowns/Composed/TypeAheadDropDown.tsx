@@ -19,6 +19,7 @@ import {
 
 import {Input} from '../../Inputs/Input'
 import {DropdownHeader} from '../DropdownHeader'
+import {FixedSizeList as List} from 'react-window'
 
 export interface SelectableItem {
   id: string
@@ -34,10 +35,6 @@ interface OwnProps extends StandardFunctionProps {
   testIdSuffix?: string
   /**optional pre-selected option, must match exactly (name and id) an item in the items array */
   selectedOption?: SelectableItem | null
-  /**enables forced searching once dropdown list exceeds largeListSearch value */
-  largeListSearch?: boolean
-  /**the number of total items in the dropdown list before search is forced */
-  largeListCeiling?: number
   /** which theme to apply */
   menuTheme?: DropdownMenuTheme
   buttonTestId?: string
@@ -74,8 +71,6 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   testIdSuffix = 'typeAhead',
   selectedOption = null,
   className,
-  largeListSearch = false,
-  largeListCeiling = 0,
   menuTheme = DropdownMenuTheme.Onyx,
   buttonTestId = 'type-ahead-dropdown--button',
   menuTestID = 'type-ahead-dropdown--menu',
@@ -107,9 +102,6 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   }
 
   const [typedValue, setTypedValue] = useState<string>(initialTypedValue)
-
-  const largeListValidation =
-    largeListSearch && queryResults.length > largeListCeiling
 
   useEffect(() => {
     if (typedValue.length > 0) {
@@ -297,11 +289,6 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
 
   const props: any = {id, style, className, menuOpen}
 
-  const largeListValidationText =
-    typedValue.length >= 1
-      ? 'There are still too many results. Please input more characters.'
-      : 'Please input a character to start seeing results.'
-
   return (
     <Dropdown
       {...props}
@@ -324,46 +311,51 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
           onCollapse={onCollapse}
           theme={menuTheme}
         >
-          {largeListValidation ? (
-            <Dropdown.Item
-              key="nada-no-values-in-filter"
-              testID="nothing-in-filter-typeAhead"
-              disabled={true}
-              wrapText={true}
+          {queryResults && queryResults.length > 0 ? (
+            <List
+              height={
+                queryResults.length * 33 > 150 ? 150 : queryResults.length * 33
+              }
+              itemCount={queryResults.length}
+              itemSize={33}
+              width={'100%'}
+              layout="vertical"
+              itemData={queryResults}
             >
-              {largeListValidationText}
-            </Dropdown.Item>
-          ) : (
-            queryResults.map((value, index) => {
-              // add the 'active' class to highlight when arrowing; like a hover
-              const classN = classnames({
-                active: index === selectIndex,
-              })
+              {({data, index, style}) => {
+                const value = data[index]
+                // add the 'active' class to highlight when arrowing; like a hover
+                const classN = classnames('menu-dropdown-typeahead-item', {
+                  active: index === selectIndex,
+                })
 
-              return (
-                <Dropdown.Item
-                  key={value.id}
-                  id={value.id}
-                  value={value}
-                  onClick={doSelection}
-                  selected={value.id === selectedItem?.id}
-                  testID={`${itemTestIdPrefix}-${value.id}`}
-                  className={classN}
-                >
-                  {value.name || defaultNameText}
-                </Dropdown.Item>
-              )
-            })
-          )}
-          {!queryResults || queryResults.length === 0 ? (
+                return (
+                  <div key={value.id} style={style}>
+                    <Dropdown.Item
+                      id={value.id.toString()}
+                      value={value}
+                      onClick={() => doSelection(value, true)}
+                      selected={value.id === selectedItem?.id}
+                      testID={`${itemTestIdPrefix}-${value.id}`}
+                      className={classN}
+                    >
+                      {value.name || defaultNameText}
+                    </Dropdown.Item>
+                  </div>
+                )
+              }}
+            </List>
+          ) : (
             <Dropdown.Item
               key="nada-no-values-in-filter"
               testID="nothing-in-filter-typeAhead"
               disabled={true}
             >
-              {`no matches for ${typedValue}`}
+              {typedValue.length > 0
+                ? `no matches for ${typedValue}`
+                : 'No results'}
             </Dropdown.Item>
-          ) : null}
+          )}
         </Dropdown.Menu>
       )}
     />
