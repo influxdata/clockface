@@ -131,7 +131,6 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
       // always reset the selectIndex when doing filtering;  because
       // if it had a value, and then they type, the queryResults changes
       // so need to reset
-
       setQueryResults(result)
       setSelectIndex(-1)
     } else {
