@@ -39,7 +39,7 @@ export interface SubMenuItem {
 
 export interface MenuDropdownProps extends StandardFunctionProps {
   /** A default pre-selected Option */
-  selectedOption: SubMenuItem
+  selectedOption?: SubMenuItem
   /** List of href options to render in the main menu */
   options: MenuItem[]
   /** List of options to render in the sub type-ahead menu */
@@ -132,13 +132,12 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
       // if it had a value, and then they type, the queryResults changes
       // so need to reset
 
-      // Always show an instance of currently selected option at beginning of list.
       setQueryResults(result)
       setSelectIndex(-1)
     } else {
       setQueryResults(subMenuOptions)
     }
-  }, [subMenuOptions, typedValue, selectedOption])
+  }, [subMenuOptions, typedValue])
 
   const dropdownButton = (
     active: boolean,
