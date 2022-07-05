@@ -38,10 +38,10 @@ export interface SubMenuItem {
 }
 
 export interface MenuDropdownProps extends StandardFunctionProps {
-  /** List of href options to render in the main menu */
-  options: MenuItem[]
   /** A default pre-selected Option */
   selectedOption: SubMenuItem
+  /** List of href options to render in the main menu */
+  options: MenuItem[]
   /** List of options to render in the sub type-ahead menu */
   subMenuOptions: SubMenuItem[]
   /** used for generating custom test ids */
@@ -89,7 +89,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
   testIdSuffix = 'menu',
   options,
   subMenuOptions,
-  selectedOption = subMenuOptions[0],
+  selectedOption = null,
   defaultText = 'No Account Selected',
   menuHeaderIcon = IconFont.Switch_New,
   menuHeaderText = 'Switch Account',
@@ -133,10 +133,10 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
       // so need to reset
 
       // Always show an instance of currently selected option at beginning of list.
-      setQueryResults([selectedOption, ...result])
+      setQueryResults(result)
       setSelectIndex(-1)
     } else {
-      setQueryResults([selectedOption, ...subMenuOptions])
+      setQueryResults(subMenuOptions)
     }
   }, [subMenuOptions, typedValue, selectedOption])
 
