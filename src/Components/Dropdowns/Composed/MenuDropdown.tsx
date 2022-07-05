@@ -133,7 +133,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
       // so need to reset
 
       // Always show an instance of currently selected option at beginning of list.
-      setQueryResults(result)
+      setQueryResults([selectedOption, ...result])
       setSelectIndex(-1)
     } else {
       setQueryResults([selectedOption, ...subMenuOptions])
