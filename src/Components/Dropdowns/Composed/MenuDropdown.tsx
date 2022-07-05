@@ -346,7 +346,10 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
                       id={value.id.toString()}
                       value={value}
                       onClick={() => doSelection(value, true)}
-                      selected={value.id === selectedItem?.id}
+                      /* Values need to be compared as string because account items have number ids*/
+                      selected={
+                        value.id.toString() === selectedItem?.id.toString()
+                      }
                       className={classN}
                       trailingIconOnSelected={true}
                     >
