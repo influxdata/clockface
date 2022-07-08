@@ -3,10 +3,16 @@ import React, {forwardRef, MouseEvent} from 'react'
 import classnames from 'classnames'
 
 // Types
-import {DropdownItemType, StandardFunctionProps} from '../../Types'
+import {
+  DropdownItemType,
+  IconFont,
+  InfluxColors,
+  StandardFunctionProps,
+} from '../../Types'
 
 // Components
 import {DropdownItemSelectionIndicator} from './DropdownItemSelectionIndicator'
+import {Icon} from '../Icon'
 
 export interface DropdownItemProps extends StandardFunctionProps {
   /** Value to be returned via the onClick function */
@@ -23,6 +29,8 @@ export interface DropdownItemProps extends StandardFunctionProps {
   title?: string
   /** Prevents any interaction with this element, including the onClick function */
   disabled?: boolean
+
+  trailingIconOnSelected?: boolean
 }
 
 export type DropdownItemRef = HTMLButtonElement
@@ -42,6 +50,7 @@ export const DropdownItem = forwardRef<DropdownItemRef, DropdownItemProps>(
       children,
       disabled,
       className,
+      trailingIconOnSelected = false,
     },
     ref
   ) => {
@@ -75,7 +84,19 @@ export const DropdownItem = forwardRef<DropdownItemRef, DropdownItemProps>(
         data-testid={testID}
       >
         <DropdownItemSelectionIndicator type={type} />
-        <div className="cf-dropdown-item--children">{children}</div>
+        <div className="cf-dropdown-item--children">
+          {children}
+          {trailingIconOnSelected && selected && (
+            <Icon
+              glyph={IconFont.Checkmark_New}
+              style={{
+                float: 'right',
+                color: InfluxColors.Pool,
+                fontSize: '20px',
+              }}
+            />
+          )}
+        </div>
       </button>
     )
   }

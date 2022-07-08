@@ -11,6 +11,7 @@ type OwnProps = {
   stepIsComplete: boolean
   text: string
   showCheckmark: boolean
+  stepIsReached: boolean
 }
 
 export const SubwayNavStep = (props: OwnProps) => {
@@ -21,25 +22,27 @@ export const SubwayNavStep = (props: OwnProps) => {
     stepIsComplete,
     text,
     showCheckmark,
+    stepIsReached,
   } = props
   const iconAndTextColor =
-    stepIsActive || stepIsComplete ? InfluxColors.Pool : InfluxColors.Grey95
+    stepIsActive || stepIsReached ? InfluxColors.Pool : InfluxColors.Grey95
 
   const glyphFontStyle = {
     fontSize: '20px',
   }
   const completedStepStyle = {color: InfluxColors.Grey95, fontSize: '25px'}
+  const isActiveStepStyle = {...completedStepStyle, fontSize: '20px'}
 
   return (
     <span
       className={classnames('subway-navigation-step-flex-wrapper', {
-        stepIsComplete: stepIsComplete,
+        stepIsComplete: stepIsReached,
       })}
       onClick={onClick}
     >
       <div
         className={classnames('subway-navigation-step', {
-          showBorderColor: stepIsActive || stepIsComplete,
+          showBorderColor: stepIsReached,
         })}
       >
         <span
@@ -47,13 +50,18 @@ export const SubwayNavStep = (props: OwnProps) => {
           style={{
             color: iconAndTextColor,
             background:
-              stepIsComplete && showCheckmark ? InfluxColors.Pool : '',
+              (stepIsReached && stepIsComplete && showCheckmark) || stepIsActive
+                ? InfluxColors.Pool
+                : '',
           }}
         >
           {stepIsComplete && showCheckmark ? (
             <Icon glyph={IconFont.CheckMark_New} style={completedStepStyle} />
           ) : (
-            <Icon glyph={glyph} style={glyphFontStyle} />
+            <Icon
+              glyph={glyph}
+              style={stepIsActive ? isActiveStepStyle : glyphFontStyle}
+            />
           )}
         </span>
         <span

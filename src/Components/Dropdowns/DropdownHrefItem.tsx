@@ -63,23 +63,24 @@ export const DropdownHrefItem = forwardRef<
     }
 
     return (
-      <button
-        type="button"
-        id={id}
-        ref={ref}
-        style={styles}
-        title={title}
-        className={dropdownItemClass}
-        data-testid={testID}
+      <a
+        href={href}
+        className="cf-dropdown-item--children cf-dropdown-href-text"
       >
-        <DropdownItemSelectionIndicator type={type} />
-        <a
-          href={href}
-          className="cf-dropdown-item--children cf-dropdown-href-text"
+        <button
+          type="button"
+          id={id}
+          ref={ref}
+          style={styles}
+          title={title}
+          className={dropdownItemClass}
+          data-testid={testID}
         >
+          <DropdownItemSelectionIndicator type={type} />
+
           {children}
-        </a>
-      </button>
+        </button>
+      </a>
     )
   }
 )
