@@ -88,7 +88,7 @@ export const DropdownItem = forwardRef<DropdownItemRef, DropdownItemProps>(
           {children}
           {trailingIconOnSelected && selected && (
             <Icon
-              glyph={IconFont.Checkmark_New}
+              glyph={IconFont.CheckMark_New}
               style={{
                 float: 'right',
                 color: InfluxColors.Pool,
