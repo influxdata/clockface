@@ -286,7 +286,7 @@ pageExampleStories.add(
               <Button text="Export Data" icon={IconFont.Export_New} />
               <SquareButton icon={IconFont.Remove_New} />
               <SquareButton
-                icon={IconFont.Checkmark_New}
+                icon={IconFont.CheckMark_New}
                 color={ComponentColor.Success}
               />
             </Page.ControlBarRight>

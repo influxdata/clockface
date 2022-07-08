@@ -51,7 +51,7 @@ export const SubwayNavStep = (props: OwnProps) => {
           }}
         >
           {stepIsComplete && showCheckmark ? (
-            <Icon glyph={IconFont.Checkmark_New} style={completedStepStyle} />
+            <Icon glyph={IconFont.CheckMark_New} style={completedStepStyle} />
           ) : (
             <Icon glyph={glyph} style={glyphFontStyle} />
           )}

@@ -204,7 +204,7 @@ function CardDisabled() {
         <a href="#">Setup instructions</a>
         <span>
           Last completed: 2021-07-21T09:15:00Z{' '}
-          <Icon glyph={IconFont.AlertTriangle_New} />
+          <Icon glyph={IconFont.AlertTriangle} />
         </span>
         <span>Scheduled to run every 15m</span>
         <Button
@@ -274,7 +274,7 @@ function CardAll() {
         <a href="#">Setup instructions</a>
         <span>
           Last completed: 2021-07-21T09:15:00Z{' '}
-          <Icon glyph={IconFont.AlertTriangle_New} />
+          <Icon glyph={IconFont.AlertTriangle} />
         </span>
         <span>Scheduled to run every 15m</span>
         <Button

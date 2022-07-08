@@ -505,7 +505,7 @@ resourceListExampleStories.add(
               <a href="#">Setup instructions</a>
               <span>
                 Last completed: 2021-07-21T09:15:00Z{' '}
-                <Icon glyph={IconFont.AlertTriangle_New} />
+                <Icon glyph={IconFont.AlertTriangle} />
               </span>
               <span>Scheduled to run every 15m</span>
               <span>ID: 07dd331e1c9fc00</span>
