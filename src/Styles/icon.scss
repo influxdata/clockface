@@ -29,6 +29,33 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  &.Timer:before {
+    content: '\e94f';
+  }
+  &.CaretOutlineRight:before {
+    content: '\e94b';
+  }
+  &.CollapseLeft:before {
+    content: '\e94c';
+  }
+  &.CollapseRight:before {
+    content: '\e94d';
+  }
+  &.ChangeState:before {
+    content: '\e94e';
+  }
+  &.QuestionMark_Outline:before {
+    content: '\e94a';
+  }
+  &.Info_New:before {
+    content: '\e949';
+  }
+  &.SidebarClose:before {
+    content: '\e947';
+  }
+  &.SidebarOpen:before {
+    content: '\e948';
+  }
   &.CaretDown_New:before {
     content: '\e912';
   }
@@ -208,12 +235,6 @@
   }
   &.Shield:before {
     content: '\e93b';
-  }
-  &.SidebarClose:before {
-    content: '\e947';
-  }
-  &.SidebarOpen:before {
-    content: '\e948';
   }
   &.Star:before {
     content: '\e93c';
