@@ -1,6 +1,6 @@
 # Changelog
 
-### 50.0 (2022-07-08)
+### 5.0.0 (2022-07-15)
 
 - [797](https://github.com/influxdata/clockface/pull/797): Refactor Icon set
 
