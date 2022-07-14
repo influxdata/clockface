@@ -5,6 +5,7 @@ import classnames from 'classnames'
 // Components
 import {Icon} from '../Icon'
 import {ButtonBase, ButtonBaseRef} from '../Button/Base/ButtonBase'
+import {TechnoSpinner} from '../Spinners/TechnoSpinner'
 
 // Types
 import {
@@ -86,7 +87,11 @@ export const DropdownButton = forwardRef<
       >
         {!!icon && <Icon glyph={icon} className="cf-dropdown--icon" />}
         <span className="cf-dropdown--selected">{children}</span>
-        <Icon glyph={IconFont.CaretDown_New} className="cf-dropdown--caret" />
+        {status === ComponentStatus.Loading ? (
+          <TechnoSpinner diameterPixels={20} />
+        ) : (
+          <Icon glyph={IconFont.CaretDown_New} className="cf-dropdown--caret" />
+        )}
       </ButtonBase>
     )
   }
