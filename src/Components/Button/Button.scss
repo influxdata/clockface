@@ -285,6 +285,7 @@
 .cf-button--loading:active:hover,
 .cf-button--loading[disabled],
 .cf-button--loading[disabled]:hover {
+  color: transparent;
   position: relative;
 }
 
