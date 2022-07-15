@@ -180,18 +180,42 @@ export enum ButtonType {
 
 export enum InfluxColors {
   // Grey
-  Grey5 = '#07070e',
-  Grey15 = '#1a1a2a',
-  Grey25 = '#333346',
-  Grey35 = '#4d4d60',
-  Grey45 = '#68687b',
-  Grey55 = '#828294',
-  Grey65 = '#9e9ead',
-  Grey75 = '#b9b9c5',
-  Grey85 = '#d5d5dd',
-  Grey95 = '#f1f1f3',
+  Gray1 = '#0E101F',
+  Gray2 = '#1A1C2B',
+  Gray3 = '#232533',
+  Gray4 = '#4B4F62',
+  Gray5 = '#88889B',
+  Gray6 = '#C2C5DB',
   White = '#ffffff',
 
+  // Old Brand Colors
+  DeepPurple = '#13002D',
+  Magenta = '#BF2FE5',
+  Galaxy = '#9394FF',
+  Pulsar = '#513CC6',
+  CetaceanBlue = '#020A47',
+  DogwoodRose = '#D30971',
+  PurpleX = '#9B2AFF',
+
+  // Brand Colors
+  Turquoise = '#5EE4E4',
+  Lavender = '#C77BEA',
+  HotPink = '#F863B0',
+  Chartreuse = '#D6F622',
+
+  // Utility Colors
+  LimeGreen = '#51D91C',
+  Carnation = '#E65B5B',
+
+  // Background Colors
+  Elephant = '#1E3A46',
+  Martinique = '#332548',
+  Voodoo = '#482543',
+  VerdunGreen = '#546120',
+  Seaweed = '#1B381F',
+  Thunder = '#311C29',
+
+  // What are thoooooose???
   // Neutrals
   Obsidian = '#07070e', // Grey5
   Raven = '#07070e', // Grey5
@@ -249,7 +273,7 @@ export enum InfluxColors {
   Topaz = '#E85B1C',
   Tiger = '#F48D38',
   Pineapple = '#FFB94A',
-  Thunder = '#FFD255',
+  //Thunder = '#FFD255',
   Sulfur = '#FFE480',
   Daisy = '#FFF6B8',
   Banana = '#FFFDDE',
@@ -263,16 +287,6 @@ export enum InfluxColors {
   Tungsten = '#FFB6A0',
   Marmelade = '#FFDCCF',
   Flan = '#FFF7F4',
-
-  // Brand Colors
-  Chartreuse = '#D6F622',
-  DeepPurple = '#13002D',
-  Magenta = '#BF2FE5',
-  Galaxy = '#9394FF',
-  Pulsar = '#513CC6',
-  CetaceanBlue = '#020A47',
-  DogwoodRose = '#D30971',
-  PurpleX = '#9B2AFF',
 }
 
 export enum IconFont {

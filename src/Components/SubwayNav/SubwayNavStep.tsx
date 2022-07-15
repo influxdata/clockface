@@ -25,12 +25,12 @@ export const SubwayNavStep = (props: OwnProps) => {
     stepIsReached,
   } = props
   const iconAndTextColor =
-    stepIsActive || stepIsReached ? InfluxColors.Pool : InfluxColors.Grey95
+    stepIsActive || stepIsReached ? InfluxColors.Pool : InfluxColors.Gray6
 
   const glyphFontStyle = {
     fontSize: '20px',
   }
-  const completedStepStyle = {color: InfluxColors.Grey95, fontSize: '25px'}
+  const completedStepStyle = {color: InfluxColors.Gray6, fontSize: '25px'}
   const isActiveStepStyle = {...completedStepStyle, fontSize: '20px'}
 
   return (

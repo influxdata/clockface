@@ -42,10 +42,10 @@ export const FunnelPageRoot = forwardRef<FunnelPageRef, FunnelPageProps>(
       children,
       pageStyle,
       className,
-      accentColorA = InfluxColors.PurpleX,
-      accentColorB = InfluxColors.DogwoodRose,
+      accentColorA = InfluxColors.Lavender,
+      accentColorB = InfluxColors.HotPink,
       enableGraphic = false,
-      backgroundColor = InfluxColors.CetaceanBlue,
+      backgroundColor = InfluxColors.Turquoise,
     },
     ref
   ) => {

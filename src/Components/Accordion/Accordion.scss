@@ -40,7 +40,7 @@
   width: 100%;
   min-height: $cf-form-lg-height;
   border-radius: $cf-radius;
-  background-color: $cf-grey-25;
+  background-color: $cf-gray-3;
   align-items: center;
   outline: none;
   padding: $cf-space-s;
@@ -115,11 +115,11 @@
   @extend .cf-accordion--header;
   min-height: $cf-form-md-height;
   padding: $cf-form-md-padding;
-  background-color: $cf-grey-15;
+  background-color: $cf-gray-2;
   border-radius: 0px;
 
   &:hover {
-    background-color: $cf-grey-15;
+    background-color: $cf-martinique;
   }
 }
 
