@@ -1,6 +1,9 @@
 # Changelog
 
-### 4.8.0 (2022-07-14)
+### 5.0.0 (2022-07-18)
+
+- [797](https://github.com/influxdata/clockface/pull/797): Refactor Icon set
+### 4.8.0 (2022-07-18)
 
 - [801](https://github.com/influxdata/clockface/pull/801): Update Dropdown Loading state to have a spinner
 

@@ -98,7 +98,7 @@ navMenuStories.add(
               <TreeNav.Item
                 id="item-1"
                 label="Ingest"
-                icon={<Icon glyph={IconFont.Ingest_New} />}
+                icon={<Icon glyph={IconFont.Download_New} />}
                 active={activeItem === 'item-1'}
                 onClick={handleItemClick}
               >
@@ -133,7 +133,7 @@ navMenuStories.add(
               <TreeNav.Item
                 id="item-2"
                 label={text('Item 2', 'Build')}
-                icon={<Icon glyph={IconFont.BuildOutline_New} />}
+                icon={<Icon glyph={IconFont.Braces} />}
                 onClick={handleItemClick}
                 active={activeItem === 'item-2'}
               />
@@ -147,7 +147,7 @@ navMenuStories.add(
               <TreeNav.Item
                 id="item-4"
                 label="Access"
-                icon={<Icon glyph={IconFont.LockOutline_New} />}
+                icon={<Icon glyph={IconFont.Lock} />}
                 onClick={handleItemClick}
                 active={activeItem === 'item-4'}
               />

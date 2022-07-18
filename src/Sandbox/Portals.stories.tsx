@@ -130,7 +130,7 @@ alertStories.add(
               headerElement={
                 <TreeNav.Header
                   id="home"
-                  icon={<Icon glyph={IconFont.CuboNav} />}
+                  icon={<Icon glyph={IconFont.CuboUniform} />}
                   label={
                     <InfluxDBCloudLogo cloud={boolean('Logo: cloud', true)} />
                   }
@@ -171,7 +171,7 @@ alertStories.add(
               <TreeNav.Item
                 id="data"
                 label="Data"
-                icon={<Icon glyph={IconFont.DisksNav} />}
+                icon={<Icon glyph={IconFont.Layers} />}
                 active={isItemActive('data')}
                 onClick={handleNavClick}
               >
@@ -202,7 +202,7 @@ alertStories.add(
                 id="boards"
                 label="Dashboards"
                 shortLabel="Boards"
-                icon={<Icon glyph={IconFont.Dashboards} />}
+                icon={<Icon glyph={IconFont.DashH} />}
                 active={isItemActive('boards')}
                 onClick={handleNavClick}
               />
@@ -210,7 +210,7 @@ alertStories.add(
                 id="org"
                 label="Organization"
                 shortLabel="Org"
-                icon={<Icon glyph={IconFont.UsersDuo} />}
+                icon={<Icon glyph={IconFont.User} />}
                 active={isItemActive('org')}
                 onClick={handleNavClick}
               />
@@ -231,7 +231,7 @@ alertStories.add(
               <TreeNav.Item
                 id="settings"
                 label="Settings"
-                icon={<Icon glyph={IconFont.WrenchNav} />}
+                icon={<Icon glyph={IconFont.CogOutline_New} />}
                 active={isItemActive('settings')}
                 onClick={handleNavClick}
               >

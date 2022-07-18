@@ -623,7 +623,7 @@ buttonComposedStories.add(
             }
           />
           <SquareButton
-            icon={IconFont.Erlenmeyer}
+            icon={IconFont.Flask}
             color={
               ComponentColor[
                 select('color', mapEnumKeys(reducedButtonColorEnum), 'Default')

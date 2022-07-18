@@ -14,7 +14,7 @@ import {SelectableCard} from '@influxdata/clockface'
 ```tsx
 <SelectableCard
   id="myCardID"
-  icon={IconFont.Checkmark_New}
+  icon={IconFont.CheckMark_New}
   tabIndex={000}
   onClick={(id, e) => {
     // Toggle selected state

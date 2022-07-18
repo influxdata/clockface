@@ -65,7 +65,7 @@ export const StatusIndicator = forwardRef<
     if (status === ComponentStatus.Error) {
       statusElement = (
         <Icon
-          glyph={IconFont.AlertTriangle_New}
+          glyph={IconFont.AlertTriangle}
           className="cf-status-indicator--child"
         />
       )
@@ -74,7 +74,7 @@ export const StatusIndicator = forwardRef<
     if (status === ComponentStatus.Valid) {
       statusElement = (
         <Icon
-          glyph={IconFont.Checkmark_New}
+          glyph={IconFont.CheckMark_New}
           className="cf-status-indicator--child"
         />
       )
