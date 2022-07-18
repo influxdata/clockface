@@ -66,6 +66,7 @@ export const DropdownButton = forwardRef<
     const dropdownButtonClass = classnames('cf-dropdown--button', {
       [`${className}`]: className,
       'cf-dropdown__error': status === ComponentStatus.Error,
+      'cf-dropdown__loading': status === ComponentStatus.Loading,
     })
 
     return (
