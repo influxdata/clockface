@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.8.0 (2022-07-14)
+
+- [801](https://github.com/influxdata/clockface/pull/801): Update Dropdown Loading state to have a spinner
+
 ### 4.7.4 (2022-07-01)
 
 - [794](https://github.com/influxdata/clockface/pull/794): Multi-Org dropdown displays selected item first, and will not offer option to change accounts/orgs if no other accounts or orgs exist
