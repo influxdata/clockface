@@ -147,6 +147,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
       onClick={onClick}
       size={buttonSize}
       icon={buttonIcon}
+      trailingIcon={IconFont.DoubleCaretVertical}
       className={'cf-dropdown-menu--button'}
     >
       {selectedItem?.name || defaultText}
