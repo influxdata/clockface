@@ -265,6 +265,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
           <>
             <div
               className="cf-dropdown-item cf-dropdown-item__no-wrap"
+              data-testid={`${testID}--switch-button`}
               onClick={() => flipTypeAheadStatus(true)}
             >
               <div className="cf-dropdown-menu-header">
@@ -319,6 +320,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
           <div
             className="cf-dropdown-item cf-dropdown-item__no-wrap"
             onClick={() => flipTypeAheadStatus(true)}
+            data-testid={`${testID}--switch-button`}
           >
             {iconEl}
             {textEl}
@@ -352,6 +354,7 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
                       }
                       className={classN}
                       trailingIconOnSelected={true}
+                      testID={`typeAhead-item--${index}`}
                     >
                       {value.name}
                     </Dropdown.Item>

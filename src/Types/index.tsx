@@ -296,7 +296,7 @@ export enum IconFont {
   CaretUp_New = 'CaretUp_New',
   Chat = 'Chat',
   CheckMark_New = 'Checkmark_New',
-  ChangeState = 'ChangeState',
+  DoubleCaretVertical = 'DoubleCaretVertical',
   CircleThick = 'CircleThick',
   Clipboard_New = 'Clipboard_New',
   Clock_New = 'Clock_New',

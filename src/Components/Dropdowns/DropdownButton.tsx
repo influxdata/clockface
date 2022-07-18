@@ -34,6 +34,8 @@ export interface DropdownButtonProps extends StandardFunctionProps {
   active?: boolean
   /** Icon to be displayed to the left of text or in place of text */
   icon?: IconFont
+  /** Icon to be displayed to the right of text */
+  trailingIcon?: IconFont
   /** Text to be displayed on hover tooltip */
   title?: string
   disabledTitleText?: string
@@ -60,6 +62,7 @@ export const DropdownButton = forwardRef<
       onClick,
       children,
       className,
+      trailingIcon = IconFont.CaretDown_New,
     },
     ref
   ) => {
@@ -91,7 +94,7 @@ export const DropdownButton = forwardRef<
         {status === ComponentStatus.Loading ? (
           <TechnoSpinner diameterPixels={20} />
         ) : (
-          <Icon glyph={IconFont.CaretDown_New} className="cf-dropdown--caret" />
+          <Icon glyph={trailingIcon} className="cf-dropdown--caret" />
         )}
       </ButtonBase>
     )
