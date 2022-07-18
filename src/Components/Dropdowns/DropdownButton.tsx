@@ -9,12 +9,12 @@ import {TechnoSpinner} from '../Spinners/TechnoSpinner'
 
 // Types
 import {
-  IconFont,
-  ButtonType,
-  ComponentSize,
-  ComponentColor,
-  ComponentStatus,
   ButtonShape,
+  ButtonType,
+  ComponentColor,
+  ComponentSize,
+  ComponentStatus,
+  IconFont,
   StandardFunctionProps,
 } from '../../Types'
 
@@ -62,7 +62,7 @@ export const DropdownButton = forwardRef<
       onClick,
       children,
       className,
-      trailingIcon = IconFont.CaretDown_New,
+      trailingIcon,
     },
     ref
   ) => {
@@ -93,8 +93,11 @@ export const DropdownButton = forwardRef<
         <span className="cf-dropdown--selected">{children}</span>
         {status === ComponentStatus.Loading ? (
           <TechnoSpinner diameterPixels={20} />
+        ) : !!trailingIcon ? (
+          // we check for trailingIcon here because we want to disable the animation for trailingIcon, the cf-dropdown--caret is the animated
+          <Icon glyph={trailingIcon} />
         ) : (
-          <Icon glyph={trailingIcon} className="cf-dropdown--caret" />
+          <Icon glyph={IconFont.CaretDown_New} className="cf-dropdown--caret" />
         )}
       </ButtonBase>
     )
