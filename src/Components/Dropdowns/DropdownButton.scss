@@ -90,6 +90,12 @@
   }
 }
 
+.cf-dropdown--trailing-icon{
+  font-size: $cf-text-base-1;
+  margin: auto 0 auto $cf-space-2xs;
+  color: $cf-grey-65;
+}
+
 /* Button Size Modifiers */
 @mixin dropdownSizeModifier($height) {
   .cf-dropdown__down & + .cf-dropdown--menu-container {
