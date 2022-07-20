@@ -6,6 +6,8 @@ import classnames from 'classnames'
 import {StandardFunctionProps} from '../../Types'
 
 export interface DraggableResizerPanelProps extends StandardFunctionProps {
+  isCollapsible?: boolean
+  isCollapsed?: boolean
   /** Panel will not shrink past this size (experimental, not guaranteed to work) */
   minSizePixels?: number
   /** Does not have a value initially, gets passed a value by being a child of DraggableResizer */

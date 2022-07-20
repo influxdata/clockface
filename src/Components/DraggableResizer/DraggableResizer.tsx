@@ -162,7 +162,7 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
         if (child.type !== DraggableResizerPanel) {
           return null
         }
-
+        console.log(child.props.isCollapsible, child.props.position, i)
         const isLastPanel = i === panelsCount - 1
         const dragging = i === dragIndex
 

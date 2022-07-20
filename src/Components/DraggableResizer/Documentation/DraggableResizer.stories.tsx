@@ -150,12 +150,18 @@ draggableResizerExamplesStories.add(
           handlePositions={position}
           onChangePositions={handlePositions => updatePosition(handlePositions)}
         >
-          <DraggableResizer.Panel ref={draggableResizerPanelRef1}>
+          <DraggableResizer.Panel
+            ref={draggableResizerPanelRef1}
+            isCollapsible={true}
+          >
             <div className="mockCard">
               <span>1</span>
             </div>
           </DraggableResizer.Panel>
-          <DraggableResizer.Panel ref={draggableResizerPanelRef2}>
+          <DraggableResizer.Panel
+            ref={draggableResizerPanelRef2}
+            isCollapsible={false}
+          >
             <div className="mockCard">
               <span>2</span>
             </div>
