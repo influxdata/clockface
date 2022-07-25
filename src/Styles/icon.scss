@@ -29,6 +29,18 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  &.Logout:before {
+    content: '\e950';
+  }
+  &.PieChart:before {
+    content: '\e951';
+  }
+  &.CurrencyDollar:before {
+    content: '\e952';
+  }
+  &.Subtract:before {
+    content: '\e953';
+  }
   &.Timer:before {
     content: '\e94f';
   }
