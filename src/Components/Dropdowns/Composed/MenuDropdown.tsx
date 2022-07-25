@@ -261,19 +261,24 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
   const dropdownMenu = () => (
     <Dropdown.Menu testID={menuTestID} theme={menuTheme} style={menuStyle}>
       <div>
-        <div
-          className="cf-dropdown-item cf-dropdown-item__no-wrap"
-          onClick={() => flipTypeAheadStatus(true)}
-        >
-          <div className="cf-dropdown-menu-header">
-            <div>
-              {menuHeaderIconEl}
-              {menuHeaderTextEl}
+        {/* Multi-org UI tickets #4051 and #4047, when user only has 1 account or 1 org, switch button is disabled */}
+        {subMenuOptions.length > 1 && (
+          <>
+            <div
+              className="cf-dropdown-item cf-dropdown-item__no-wrap"
+              onClick={() => flipTypeAheadStatus(true)}
+            >
+              <div className="cf-dropdown-menu-header">
+                <div>
+                  {menuHeaderIconEl}
+                  {menuHeaderTextEl}
+                </div>
+                {menuHeaderCaretEl}
+              </div>
             </div>
-            {menuHeaderCaretEl}
-          </div>
-        </div>
-        <hr className="cf-dropdown-menu__line-break" />
+            <hr className="cf-dropdown-menu__line-break" />
+          </>
+        )}
         {options.map(value => {
           const iconFont = value.iconFont
           const iconEl = <Icon glyph={iconFont} className="cf-button-icon" />
@@ -343,7 +348,10 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
                       id={value.id.toString()}
                       value={value}
                       onClick={() => doSelection(value, true)}
-                      selected={value.id === selectedItem?.id}
+                      /* Values need to be compared as string because account items have number ids*/
+                      selected={
+                        value.id.toString() === selectedItem?.id.toString()
+                      }
                       className={classN}
                       trailingIconOnSelected={true}
                     >

@@ -50,6 +50,10 @@
   }
 }
 
+.cf-dropdown__loading {
+  color: #fff !important;
+}
+
 /** small size is the default */
 .header-container--button {
   width: $cf-form-sm-width;

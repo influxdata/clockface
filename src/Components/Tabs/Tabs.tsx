@@ -115,7 +115,7 @@ export const TabsRoot = forwardRef<TabsRef, TabsProps>(
             <div className="cf-tabs--dropdown-label">
               {dropdownLabel}
               <Icon
-                glyph={IconFont.CaretDown}
+                glyph={IconFont.CaretDown_New}
                 className="cf-tabs--dropdown-icon"
               />
             </div>

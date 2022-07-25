@@ -650,7 +650,7 @@ listExamplesStories.add(
                   ]
                 }
               >
-                <List.Icon glyph={IconFont.Wood} />
+                <List.Icon glyph={IconFont.Pencil} />
                 {'Feed Turtle'}
               </List.Item>
               <List.Item
@@ -665,7 +665,7 @@ listExamplesStories.add(
                   ]
                 }
               >
-                <List.Icon glyph={IconFont.Sun} />
+                <List.Icon glyph={IconFont.StarSmile} />
                 {'Put Turtle Outside'}
               </List.Item>
               <List.Item
@@ -680,7 +680,7 @@ listExamplesStories.add(
                   ]
                 }
               >
-                <List.Icon glyph={IconFont.Wand} />
+                <List.Icon glyph={IconFont.Pencil} />
                 {'Teach Turtle a Trick'}
               </List.Item>
               <List.Divider

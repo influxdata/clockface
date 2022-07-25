@@ -560,7 +560,7 @@ testPopoverStories.add('200 Popovers + Filtering', () => {
                 <Button
                   ref={pop.triggerRef}
                   text={pop.name}
-                  icon={IconFont.Cubo}
+                  icon={IconFont.CuboUniform}
                 />
                 <Popover.Popover
                   triggerRef={pop.triggerRef}

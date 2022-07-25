@@ -11,7 +11,7 @@ import {SelectableCard} from '@influxdata/clockface'
 ```
 
 ```tsx
-<SelectableCard icon={IconFont.Checkmark_New}>Image goes here</SelectableCard>
+<SelectableCard icon={IconFont.CheckMark_New}>Image goes here</SelectableCard>
 ```
 
 ### Example

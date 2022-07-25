@@ -1,8 +1,25 @@
 # Changelog
 
-### 4.7.4 (2022-07-05)
+
+### 5.1.1 (2022-07-25)
 
 - [795](https://github.com/influxdata/clockface/pull/795): react-window for typeahead dropdown 
+
+### 5.1.0 (2022-07-25)
+
+- [806](https://github.com/influxdata/clockface/pull/806): Add Additional Icons to the Icon set
+
+### 5.0.0 (2022-07-18)
+
+- [797](https://github.com/influxdata/clockface/pull/797): Refactor Icon set
+### 4.8.0 (2022-07-18)
+
+- [801](https://github.com/influxdata/clockface/pull/801): Update Dropdown Loading state to have a spinner
+
+### 4.7.4 (2022-07-01)
+
+- [794](https://github.com/influxdata/clockface/pull/794): Multi-Org dropdown displays selected item first, and will not offer option to change accounts/orgs if no other accounts or orgs exist
+
 
 ### 4.7.3 (2022-07-01)
 

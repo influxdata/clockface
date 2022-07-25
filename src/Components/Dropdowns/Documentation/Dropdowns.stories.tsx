@@ -919,17 +919,17 @@ dropdownComposedStories.add(
     const defaultHrefOptions = [
       {
         name: 'Settings',
-        iconFont: IconFont.CogOutline,
+        iconFont: IconFont.CogOutline_New,
         href: '/settings',
       },
       {
         name: 'Members',
-        iconFont: IconFont.UserOutline_New,
+        iconFont: IconFont.User,
         href: '/members',
       },
       {
         name: 'Billing',
-        iconFont: IconFont.Bill,
+        iconFont: IconFont.BookCode,
         href: '/billing',
       },
     ]
@@ -989,17 +989,17 @@ dropdownComposedStories.add(
     const defaultHrefOptions = [
       {
         name: 'Settings',
-        iconFont: IconFont.CogOutline,
+        iconFont: IconFont.CogOutline_New,
         href: '/settings',
       },
       {
         name: 'Members',
-        iconFont: IconFont.UserOutline_New,
+        iconFont: IconFont.User,
         href: '/members',
       },
       {
         name: 'Billing',
-        iconFont: IconFont.Bill,
+        iconFont: IconFont.BookCode,
         href: '/billing',
       },
     ]

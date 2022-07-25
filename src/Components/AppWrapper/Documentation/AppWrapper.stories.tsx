@@ -154,7 +154,7 @@ layoutStories.add(
                 )}
                 iconLink={(className: string) => (
                   <a className={className} href="#">
-                    <Icon glyph={IconFont.CuboNav} />
+                    <Icon glyph={IconFont.CuboUniform} />
                   </a>
                 )}
                 active={false}
@@ -205,7 +205,7 @@ layoutStories.add(
                 )}
                 iconLink={(className: string) => (
                   <a className={className} href="#">
-                    <Icon glyph={IconFont.Dashboards} />
+                    <Icon glyph={IconFont.DashH} />
                   </a>
                 )}
                 active={false}
@@ -253,7 +253,7 @@ layoutStories.add(
                 )}
                 iconLink={(className: string) => (
                   <a className={className} href="#">
-                    <Icon glyph={IconFont.DisksNav} />
+                    <Icon glyph={IconFont.Layers} />
                   </a>
                 )}
                 active={false}
@@ -307,7 +307,7 @@ layoutStories.add(
                 )}
                 iconLink={(className: string) => (
                   <a className={className} href="#">
-                    <Icon glyph={IconFont.WrenchNav} />
+                    <Icon glyph={IconFont.CogOutline_New} />
                   </a>
                 )}
                 active={false}
@@ -391,7 +391,7 @@ layoutStories.add(
                 )}
                 iconLink={(className: string) => (
                   <a className={className} href="#">
-                    <Icon glyph={IconFont.NavChat} />
+                    <Icon glyph={IconFont.Chat} />
                   </a>
                 )}
                 active={false}
@@ -558,7 +558,7 @@ layoutStories.add(
                   label={<InfluxDataLogo simplified />}
                   onClick={handleNavClick}
                   active={isItemActive('home')}
-                  icon={<Icon glyph={IconFont.Cubo} />}
+                  icon={<Icon glyph={IconFont.CuboUniform} />}
                   color={
                     ComponentColor[
                       select('color', mapEnumKeys(ComponentColor), 'Primary')
@@ -608,7 +608,7 @@ layoutStories.add(
               <TreeNav.Item
                 id="data"
                 label="Ingest"
-                icon={<Icon glyph={IconFont.Ingest_New} />}
+                icon={<Icon glyph={IconFont.Download_New} />}
                 active={isItemActive('data')}
                 onClick={handleNavClick}
               >
@@ -631,7 +631,7 @@ layoutStories.add(
               <TreeNav.Item
                 id="build"
                 label="Build"
-                icon={<Icon glyph={IconFont.BuildOutline_New} />}
+                icon={<Icon glyph={IconFont.Braces} />}
                 active={isItemActive('build')}
                 onClick={handleNavClick}
               />
@@ -645,7 +645,7 @@ layoutStories.add(
               <TreeNav.Item
                 id="access"
                 label="Access"
-                icon={<Icon glyph={IconFont.LockOutline_New} />}
+                icon={<Icon glyph={IconFont.Lock} />}
                 active={isItemActive('access')}
                 onClick={handleNavClick}
               />
