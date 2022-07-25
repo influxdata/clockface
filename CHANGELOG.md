@@ -1,5 +1,9 @@
 # Changelog
 
+### 5.1.0 (2022-07-25)
+
+- [806](https://github.com/influxdata/clockface/pull/806): Add Additional Icons to the Icon set
+
 ### 5.0.0 (2022-07-18)
 
 - [797](https://github.com/influxdata/clockface/pull/797): Refactor Icon set
