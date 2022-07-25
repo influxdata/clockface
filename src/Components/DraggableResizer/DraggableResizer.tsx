@@ -54,7 +54,7 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
 
   useEffect(() => {
     if (dragIndex > -1) {
-      window.addEventListener('mousemove', handleDrag)
+      window.addEventListener('mousemove', onHandleDrag)
       window.addEventListener('mouseup', handleStopDrag)
     }
   }, [dragIndex])
@@ -92,11 +92,11 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
 
   const handleStopDrag = (): void => {
     setDragIndex(NULL_DRAG)
-    window.removeEventListener('mousemove', handleDrag)
+    window.removeEventListener('mousemove', onHandleDrag)
     window.removeEventListener('mouseup', handleStopDrag)
   }
 
-  const handleDrag = (e: MouseEvent): void => {
+  const onHandleDrag = (e: MouseEvent): void => {
     if (!containerRef.current) {
       return
     }
@@ -126,6 +126,18 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
     }
 
     const newPos = mouseRelativePos / containerSize
+    createNewPositions(newPos)
+  }
+
+  const onCollapseButtonClick = (pos: number, dragIndex: number) => {
+    console.log(dragIndex, pos)
+    setDragIndex(dragIndex)
+    createNewPositions(pos)
+    setDragIndex(NULL_DRAG)
+  }
+
+  const createNewPositions = (newPos: number) => {
+    // Break it out from here
     const newPositions = [...handlePositions]
 
     // Update the position of the handle being dragged
@@ -162,7 +174,6 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
         if (child.type !== DraggableResizerPanel) {
           return null
         }
-        console.log(child.props.isCollapsible, child.props.position, i)
         const isLastPanel = i === panelsCount - 1
         const dragging = i === dragIndex
 
@@ -171,7 +182,8 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
             {cloneElement(child, {sizePercent: calculatePanelSize(i)})}
             {!isLastPanel && (
               <DraggableResizerHandle
-                position={child.props.position}
+                isCollapsible={true}
+                onCollapseButtonClick={onCollapseButtonClick}
                 dragIndex={i}
                 onStartDrag={handleStartDrag}
                 dragging={dragging}

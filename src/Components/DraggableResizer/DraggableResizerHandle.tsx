@@ -2,15 +2,25 @@
 import React, {forwardRef, CSSProperties} from 'react'
 import classnames from 'classnames'
 
+// Components
+import {SquareButton} from '../Button/Composed/SquareButton'
+
 // Types
-import {Gradients, Orientation, StandardFunctionProps} from '../../Types'
+import {
+  Gradients,
+  IconFont,
+  Orientation,
+  StandardFunctionProps,
+} from '../../Types'
 
 // Constants
 import {getColorsFromGradient} from '../../Utils/colors'
 
 export interface DraggableResizerHandleProps extends StandardFunctionProps {
-  /** Expects a number between 0 - 1 */
-  position: number
+  /** Enables a Collapse Button */
+  isCollapsible?: boolean
+  /** Function that updates panel positions after collapsing */
+  onCollapseButtonClick: (pos: number, dragIndex: number) => void
   /** Gets passed a function by being a child of DraggableResizer */
   onStartDrag?: (dragIndex: number) => void
   /** Gets passed a value by being a child of DraggableResizer */
@@ -38,6 +48,8 @@ export const DraggableResizerHandle = forwardRef<
       gradient,
       className,
       orientation,
+      isCollapsible = false,
+      onCollapseButtonClick,
       dragging = false,
       dragIndex = 9999,
       onStartDrag = () => {
@@ -112,6 +124,13 @@ export const DraggableResizerHandle = forwardRef<
     }
 
     return (
+        <div>
+      {isCollapsible && (
+        <SquareButton
+          icon={IconFont.CollapseLeft}
+          onClick={() => onCollapseButtonClick(0, dragIndex)}
+        />
+      )}
       <div
         ref={ref}
         className={DraggableResizerHandleClass}
@@ -137,6 +156,7 @@ export const DraggableResizerHandle = forwardRef<
           className={DraggableResizerGradientPillTwoClass}
           style={gradientStyle()}
         />
+      </div>
       </div>
     )
   }

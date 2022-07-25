@@ -158,10 +158,7 @@ draggableResizerExamplesStories.add(
               <span>1</span>
             </div>
           </DraggableResizer.Panel>
-          <DraggableResizer.Panel
-            ref={draggableResizerPanelRef2}
-            isCollapsible={false}
-          >
+          <DraggableResizer.Panel ref={draggableResizerPanelRef2}>
             <div className="mockCard">
               <span>2</span>
             </div>
