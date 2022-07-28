@@ -28,7 +28,9 @@
   // Better Font Rendering
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
+  &.Bill:before {
+    content: "\e954";
+  }
   &.Logout:before {
     content: '\e950';
   }

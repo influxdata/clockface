@@ -284,6 +284,7 @@ export enum IconFont {
   ArrowRight_New = 'ArrowRight_New',
   BarChart_New = 'BarChart_New',
   Bell = 'Bell',
+  Bill = 'Bill',
   BookCode = 'BookCode',
   BookOutline = 'BookOutline',
   Braces = 'Braces',
