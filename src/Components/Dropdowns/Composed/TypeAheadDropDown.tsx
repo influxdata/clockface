@@ -90,6 +90,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   const [selectIndex, setSelectIndex] = useState(-1)
   const [queryResults, setQueryResults] = useState(items)
   const [menuOpen, setMenuOpen] = useState<MenuStatus>(MenuStatus.Closed)
+  const [userHasTyped, setUserHasTyped] = useState(false)
 
   const [selectedItem, setSelectedItem] = useState<SelectableItem | null>(
     selectedOption
@@ -104,7 +105,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   const [typedValue, setTypedValue] = useState<string>(initialTypedValue)
 
   useEffect(() => {
-    if (typedValue.length > 0) {
+    if (typedValue.length > 0 && userHasTyped) {
       const result = items.filter(val => {
         const name = val?.name || ''
         return name.toLowerCase().includes(typedValue.toLowerCase())
@@ -138,25 +139,26 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
    *  filter the selections/options based on the search string: needle
    * if the needle is empty; then there is nothing to filter; so return everything
    */
-  const doFilter = (needle: string) => {
+  const doFilter = (filterStr: string) => {
     // if there is no value, set the queryResults to everything
     // and set the typedValue to nothing (zero it out)
     // reset the selectIndex too
-    if (!needle) {
+    if (!filterStr) {
       setQueryResults(items)
       setTypedValue('')
       setSelectIndex(-1)
     } else {
       const result = items.filter(val => {
         const name = val?.name || ''
-        return name.toLowerCase().includes(needle.toLowerCase())
+        return name.toLowerCase().includes(filterStr.toLowerCase())
       })
 
       // always reset the selectIndex when doing filtering;  because
       // if it had a value, and then they type, the queryResults changes
       // so need to reset
       setQueryResults(result)
-      setTypedValue(needle)
+      setUserHasTyped(true)
+      setTypedValue(filterStr)
       setMenuOpen(MenuStatus.Open)
       setSelectIndex(-1)
     }
@@ -167,9 +169,9 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     doFilter('')
   }
 
-  const filterVals = (event: ChangeEvent<HTMLInputElement>) => {
-    const needle = event?.target?.value
-    doFilter(needle)
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const filterStr = event?.target?.value
+    doFilter(filterStr)
   }
 
   if (!placeholderText) {
@@ -260,6 +262,8 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     //  reset to the selected value; if the user typed in
     //  something not allowed it will go back to the last selected value:
     setTypedValueToSelectedName(backupValue.current)
+    setQueryResults(items)
+    setUserHasTyped(false)
   }
 
   const dropdownStatus = items.length === 0 ? ComponentStatus.Disabled : status
@@ -277,7 +281,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   const inputComponent = (
     <Input
       placeholder={placeText}
-      onChange={filterVals}
+      onChange={handleInputChange}
       value={typedValue}
       onKeyDown={maybeSelectNextItem}
       testID={`dropdown-input-typeAhead--${testIdSuffix}`}
