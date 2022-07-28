@@ -1,5 +1,8 @@
 # Changelog
 
+### 5.2.0 (2022-07-28)
+
+- [806](https://github.com/influxdata/clockface/pull/809): Add Bill Icon to the icon set
 ### 5.1.0 (2022-07-25)
 
 - [806](https://github.com/influxdata/clockface/pull/806): Add Additional Icons to the Icon set
