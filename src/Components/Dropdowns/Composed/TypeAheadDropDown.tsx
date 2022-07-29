@@ -281,7 +281,6 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     }
   }
 
-  console.log(backupValue)
   return (
     <Dropdown
       {...props}
