@@ -4,7 +4,6 @@ import React, {
   FC,
   useEffect,
   useMemo,
-  useRef,
   useState,
 } from 'react'
 import classnames from 'classnames'
@@ -120,15 +119,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     }
   }, [items, inputValue])
 
-  /**
-   *  using a ref to hold an instance variable:  what was last typed,
-   *  because without this 'click to select' doesn't work.
-   *  (you click to select, which clicks out of the dropdown, so then the dropdown sets
-   * the text to what was last selected.  this works fine for a class component,
-   * but here it uses the stale state of what was previously selected.
-   * this way, what was selected is saved in the ref.)
-   */
-  const backupValue = useRef<string>(initialInputValue)
+  const [backupValue, setBackupValue] = useState<string>(initialInputValue)
 
   const itemNames = useMemo(() => items.map(item => item.name?.toLowerCase()), [
     items.length,
@@ -228,12 +219,12 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     setSelectedItem(item)
     const actualName = getDisplayName(item)
     setInputValue(actualName)
-    backupValue.current = actualName
     setSelectIndex(-1)
 
     // selectItem is called from onClear, we don't close the menu
     if (item !== null) {
       setMenuStatus(MenuStatus.Closed)
+      setBackupValue(actualName)
     }
     onSelect(item)
   }
@@ -241,7 +232,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   const onClickOutside = () => {
     //  reset to the selected value; if the user typed in
     //  something not allowed it will go back to the last selected value:
-    setTypedValueToSelectedName(backupValue.current)
+    setTypedValueToSelectedName(backupValue)
     setQueryResults(items)
     setMenuStatus(MenuStatus.Closed)
     setUserHasTyped(false)
@@ -290,6 +281,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     }
   }
 
+  console.log(backupValue)
   return (
     <Dropdown
       {...props}
