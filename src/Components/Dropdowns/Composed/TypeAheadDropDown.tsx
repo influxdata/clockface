@@ -67,7 +67,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   items,
   onSelect,
   testID,
-  placeholderText,
+  placeholderText = 'Select a Value',
   testIdSuffix = 'typeAhead',
   selectedOption = null,
   className,
@@ -89,26 +89,25 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
 
   const [selectIndex, setSelectIndex] = useState(-1)
   const [queryResults, setQueryResults] = useState(items)
-  const [menuOpen, setMenuOpen] = useState<MenuStatus>(MenuStatus.Closed)
+  const [menuStatus, setMenuStatus] = useState<MenuStatus>(MenuStatus.Closed)
   const [userHasTyped, setUserHasTyped] = useState(false)
-
   const [selectedItem, setSelectedItem] = useState<SelectableItem | null>(
     selectedOption
   )
 
-  let initialTypedValue = ''
+  let initialInputValue = ''
 
   if (selectedOption) {
-    initialTypedValue = getValueWithBackup(selectedOption.name, defaultNameText)
+    initialInputValue = getValueWithBackup(selectedOption.name, defaultNameText)
   }
 
-  const [typedValue, setTypedValue] = useState<string>(initialTypedValue)
+  const [inputValue, setInputValue] = useState<string>(initialInputValue)
 
   useEffect(() => {
-    if (typedValue.length > 0 && userHasTyped) {
+    if (inputValue.length > 0 && userHasTyped) {
       const result = items.filter(val => {
         const name = val?.name || ''
-        return name.toLowerCase().includes(typedValue.toLowerCase())
+        return name.toLowerCase().includes(inputValue.toLowerCase())
       })
 
       // always reset the selectIndex when doing filtering;  because
@@ -119,7 +118,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     } else {
       setQueryResults(items)
     }
-  }, [items, typedValue])
+  }, [items, inputValue])
 
   /**
    *  using a ref to hold an instance variable:  what was last typed,
@@ -129,23 +128,16 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
    * but here it uses the stale state of what was previously selected.
    * this way, what was selected is saved in the ref.)
    */
-  const backupValue = useRef<string>(initialTypedValue)
+  const backupValue = useRef<string>(initialInputValue)
 
   const itemNames = useMemo(() => items.map(item => item.name?.toLowerCase()), [
     items.length,
   ])
 
-  /**
-   *  filter the selections/options based on the search string: needle
-   * if the needle is empty; then there is nothing to filter; so return everything
-   */
-  const doFilter = (filterStr: string) => {
-    // if there is no value, set the queryResults to everything
-    // and set the typedValue to nothing (zero it out)
-    // reset the selectIndex too
+  const filter = (filterStr: string) => {
     if (!filterStr) {
       setQueryResults(items)
-      setTypedValue('')
+      setInputValue('')
       setSelectIndex(-1)
     } else {
       const result = items.filter(val => {
@@ -153,29 +145,21 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
         return name.toLowerCase().includes(filterStr.toLowerCase())
       })
 
-      // always reset the selectIndex when doing filtering;  because
-      // if it had a value, and then they type, the queryResults changes
-      // so need to reset
       setQueryResults(result)
       setUserHasTyped(true)
-      setTypedValue(filterStr)
-      setMenuOpen(MenuStatus.Open)
+      setInputValue(filterStr)
       setSelectIndex(-1)
     }
   }
 
-  const clear = () => {
-    doSelection(null)
-    doFilter('')
+  const onClear = () => {
+    selectItem(null)
+    filter('')
   }
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const filterStr = event?.target?.value
-    doFilter(filterStr)
-  }
-
-  if (!placeholderText) {
-    placeholderText = 'Select a Value'
+    filter(filterStr)
   }
 
   const setTypedValueToSelectedName = (backupName?: string) => {
@@ -183,19 +167,17 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     if (!selectedName) {
       selectedName = ''
     }
-    setTypedValue(selectedName)
+    setInputValue(selectedName)
   }
 
-  const maybeSelectNextItem = (
+  const handleKeyboardUpDown = (
     event: React.KeyboardEvent<HTMLInputElement>
   ) => {
     let newIndex = -1
 
-    if (event.keyCode === 40) {
-      // down arrow
+    if (event.key === 'ArrowDown') {
       newIndex = selectIndex + 1
-    } else if (event.keyCode === 38) {
-      // up arrow
+    } else if (event.key === 'ArrowUp') {
       newIndex = selectIndex - 1
     }
 
@@ -207,27 +189,24 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
       return
     }
 
-    if (event.keyCode === 13) {
-      // return/enter key
+    if (event.key === 'Enter') {
       // reset the selectIndex to -1, & close the menu:
-
       if (numItems && selectIndex >= 0 && selectIndex < numItems) {
-        // they used the arrows; just pressed return
-        doSelection(queryResults[selectIndex], true)
+        selectItem(queryResults[selectIndex])
       } else {
         // the person could have been typing and pressed return, need to
         // make sure the value in the input field is real/legal:
 
         // but:  if the value they typed is LEGAL (in the list/dropdown values), set it;
         // else: reset to the previous real/legal value:
-        const foundIndex = itemNames.indexOf(typedValue.toLowerCase())
+        const foundIndex = itemNames.indexOf(inputValue.toLowerCase())
 
         if (foundIndex >= 0) {
           // is a real legal value
-          doSelection(items[foundIndex], true)
+          selectItem(items[foundIndex])
         } else {
           setTypedValueToSelectedName()
-          setMenuOpen(MenuStatus.Closed)
+          setMenuStatus(MenuStatus.Closed)
           setSelectIndex(-1)
         }
       }
@@ -245,20 +224,21 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     return ''
   }
 
-  const doSelection = (item: SelectableItem | null, closeMenuNow?: boolean) => {
+  const selectItem = (item: SelectableItem | null) => {
     setSelectedItem(item)
     const actualName = getDisplayName(item)
-    setTypedValue(actualName)
+    setInputValue(actualName)
     backupValue.current = actualName
     setSelectIndex(-1)
 
-    if (closeMenuNow) {
-      setMenuOpen(MenuStatus.Closed)
+    // selectItem is called from onClear, we don't close the menu
+    if (item !== null) {
+      setMenuStatus(MenuStatus.Closed)
     }
     onSelect(item)
   }
 
-  const onClickAwayHere = () => {
+  const onClickOutside = () => {
     //  reset to the selected value; if the user typed in
     //  something not allowed it will go back to the last selected value:
     setTypedValueToSelectedName(backupValue.current)
@@ -282,39 +262,53 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     <Input
       placeholder={placeText}
       onChange={handleInputChange}
-      value={typedValue}
-      onKeyDown={maybeSelectNextItem}
+      value={inputValue}
+      onKeyDown={handleKeyboardUpDown}
       testID={`dropdown-input-typeAhead--${testIdSuffix}`}
-      onClear={clear}
+      onClear={onClear}
       status={status}
       onFocus={selectAllTextInInput}
     />
   )
 
-  const props: any = {id, style, className, menuOpen}
+  const props: any = {id, style, className, menuOpen: menuStatus}
+
+  const toggleMenu = (event: any) => {
+    console.log('toggleMenu')
+    if (
+      (event.target.className === 'cf-input-field' ||
+        event.target.className.includes('cf-dismiss-button')) &&
+      menuStatus === MenuStatus.Open
+    ) {
+      console.log('return')
+      return
+    }
+    // toggle the menu:
+    if (menuStatus === MenuStatus.Closed) {
+      setMenuStatus(MenuStatus.Open)
+    } else {
+      setMenuStatus(MenuStatus.Closed)
+    }
+  }
 
   return (
     <Dropdown
       {...props}
       testID={testID || `typeAhead-dropdown--${testIdSuffix}`}
-      onClickAway={onClickAwayHere}
+      onClickAway={onClickOutside}
       disableAutoFocus
-      button={(active, onClick) => (
+      button={active => (
         <DropdownHeader
           active={active}
-          onClick={onClick}
+          onClick={toggleMenu}
           testID={buttonTestId}
           status={dropdownStatus}
         >
           {inputComponent}
         </DropdownHeader>
       )}
-      menu={onCollapse => (
-        <Dropdown.Menu
-          testID={menuTestID}
-          onCollapse={onCollapse}
-          theme={menuTheme}
-        >
+      menu={() => (
+        <Dropdown.Menu testID={menuTestID} theme={menuTheme}>
           {queryResults && queryResults.length > 0 ? (
             <List
               height={
@@ -339,7 +333,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
                     <Dropdown.Item
                       id={value.id.toString()}
                       value={value}
-                      onClick={() => doSelection(value, true)}
+                      onClick={() => selectItem(value)}
                       selected={value.id === selectedItem?.id}
                       testID={`${itemTestIdPrefix}-${value.id}`}
                       className={classN}
@@ -356,13 +350,14 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
               testID="nothing-in-filter-typeAhead"
               disabled={true}
             >
-              {typedValue.length > 0
-                ? `no matches for ${typedValue}`
+              {inputValue.length > 0
+                ? `no matches for ${inputValue}`
                 : 'No results'}
             </Dropdown.Item>
           )}
         </Dropdown.Menu>
       )}
+      menuOpen={menuStatus}
     />
   )
 }

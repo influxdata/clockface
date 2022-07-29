@@ -6,7 +6,7 @@
 
 ### 5.1.1 (2022-07-25)
 
-- [795](https://github.com/influxdata/clockface/pull/795): react-window for typeahead dropdown 
+- [795](https://github.com/influxdata/clockface/pull/795): react-window for typeahead dropdown
 
 ### 5.1.0 (2022-07-25)
 
@@ -15,6 +15,7 @@
 ### 5.0.0 (2022-07-18)
 
 - [797](https://github.com/influxdata/clockface/pull/797): Refactor Icon set
+
 ### 4.8.0 (2022-07-18)
 
 - [801](https://github.com/influxdata/clockface/pull/801): Update Dropdown Loading state to have a spinner
