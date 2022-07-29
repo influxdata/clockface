@@ -274,13 +274,11 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   const props: any = {id, style, className, menuOpen: menuStatus}
 
   const toggleMenu = (event: any) => {
-    console.log('toggleMenu')
     if (
       (event.target.className === 'cf-input-field' ||
         event.target.className.includes('cf-dismiss-button')) &&
       menuStatus === MenuStatus.Open
     ) {
-      console.log('return')
       return
     }
     // toggle the menu:
