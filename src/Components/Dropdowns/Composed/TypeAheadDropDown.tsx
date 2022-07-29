@@ -241,7 +241,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   const onClickOutside = () => {
     //  reset to the selected value; if the user typed in
     //  something not allowed it will go back to the last selected value:
-    // setTypedValueToSelectedName(backupValue.current)
+    setTypedValueToSelectedName(backupValue.current)
     setQueryResults(items)
     setMenuStatus(MenuStatus.Closed)
     setUserHasTyped(false)
