@@ -45,19 +45,7 @@ interface OwnProps extends StandardFunctionProps {
   /** status state: default, loading, or disabled */
   status?: ComponentStatus
 }
-const isBlank = (pString: string | undefined): boolean =>
-  // Checks for falsiness or a non-white space character
-  !pString || !/[^\s]+/.test(pString)
 
-const getValueWithBackup = (
-  val: string | undefined,
-  backup: string
-): string => {
-  if (isBlank(val)) {
-    return backup
-  }
-  return val as string
-}
 const enCollator = new Intl.Collator('en-us')
 
 export const TypeAheadDropDown: FC<OwnProps> = ({
@@ -67,13 +55,9 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   onSelect,
   testID,
   placeholderText = 'Select a Value',
-  testIdSuffix = 'typeAhead',
   selectedOption = null,
   className,
   menuTheme = DropdownMenuTheme.Onyx,
-  buttonTestId = 'type-ahead-dropdown--button',
-  menuTestID = 'type-ahead-dropdown--menu',
-  itemTestIdPrefix = 'type-ahead-dropdown--item',
   sortNames = true,
   defaultNameText = '',
   status = ComponentStatus.Default,
@@ -97,10 +81,23 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   let initialInputValue = ''
 
   if (selectedOption) {
-    initialInputValue = getValueWithBackup(selectedOption.name, defaultNameText)
+    initialInputValue = selectedOption.name || defaultNameText
   }
 
   const [inputValue, setInputValue] = useState<string>(initialInputValue)
+
+  // TODO : Bug, when value typed is not in the list, the input should be ''
+  useEffect(() => {
+    if (
+      selectedOption &&
+      !items.some(item => item.name === selectedOption.name)
+    ) {
+      setInputValue('')
+      return
+    }
+    setInputValue(selectedOption?.name || defaultNameText)
+    setBackupValue(selectedOption?.name || defaultNameText)
+  }, [selectedOption])
 
   useEffect(() => {
     if (inputValue.length > 0 && userHasTyped) {
@@ -210,7 +207,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
    * */
   const getDisplayName = (item: SelectableItem | null): string => {
     if (item && item.id) {
-      return getValueWithBackup(item.name, defaultNameText)
+      return item.name ?? defaultNameText
     }
     return ''
   }
@@ -238,7 +235,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     setUserHasTyped(false)
   }
 
-  const dropdownStatus = items.length === 0 ? ComponentStatus.Disabled : status
+  // const dropdownStatus = items.length === 0 ? ComponentStatus.Disabled : status
 
   const placeText =
     status === ComponentStatus.Loading ? 'Loading...' : placeholderText
@@ -249,14 +246,13 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     }
   }
 
-  // do rendering:
   const inputComponent = (
     <Input
       placeholder={placeText}
       onChange={handleInputChange}
       value={inputValue}
       onKeyDown={handleKeyboardUpDown}
-      testID={`dropdown-input-typeAhead--${testIdSuffix}`}
+      testID={`${testID}--typeAhead-input`}
       onClear={onClear}
       status={status}
       onFocus={selectAllTextInInput}
@@ -284,21 +280,20 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   return (
     <Dropdown
       {...props}
-      testID={testID || `typeAhead-dropdown--${testIdSuffix}`}
+      testID={testID}
       onClickAway={onClickOutside}
       disableAutoFocus
       button={active => (
         <DropdownHeader
           active={active}
           onClick={toggleMenu}
-          testID={buttonTestId}
-          status={dropdownStatus}
+          testID={`typeAhead-dropdown--button`}
         >
           {inputComponent}
         </DropdownHeader>
       )}
       menu={() => (
-        <Dropdown.Menu testID={menuTestID} theme={menuTheme}>
+        <Dropdown.Menu testID={`${testID}-dropdown-menu`} theme={menuTheme}>
           {queryResults && queryResults.length > 0 ? (
             <List
               height={
@@ -325,7 +320,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
                       value={value}
                       onClick={() => selectItem(value)}
                       selected={value.id === selectedItem?.id}
-                      testID={`${itemTestIdPrefix}-${value.id}`}
+                      testID={`typeAhead-dropdown--item`}
                       className={classN}
                     >
                       {value.name || defaultNameText}
