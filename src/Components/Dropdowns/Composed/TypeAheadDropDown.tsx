@@ -228,8 +228,6 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     setUserHasTyped(false)
   }
 
-  // const dropdownStatus = items.length === 0 ? ComponentStatus.Disabled : status
-
   const placeText =
     status === ComponentStatus.Loading ? 'Loading...' : placeholderText
 
