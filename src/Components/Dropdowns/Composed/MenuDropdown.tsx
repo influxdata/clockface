@@ -363,7 +363,11 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
               }}
             </List>
           ) : (
-            <Dropdown.Item key="empty-filter" disabled={true}>
+            <Dropdown.Item
+              key="nada-no-values-in-filter"
+              testID="nothing-in-filter-typeAhead"
+              disabled={true}
+            >
               {typedValue.length > 0
                 ? `no matches for ${typedValue}`
                 : 'No results'}
