@@ -81,6 +81,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   const [inputValue, setInputValue] = useState<string>(initialInputValue)
 
   useEffect(() => {
+    // If selectedOption is invalid (not in the list of items), then we want to clear the input value
     if (
       selectedOption &&
       !items.some(item => item.name === selectedOption.name)
