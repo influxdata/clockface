@@ -1,11 +1,5 @@
 // Libraries
-import React, {
-  ChangeEvent,
-  FC,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react'
+import React, {ChangeEvent, FC, useEffect, useMemo, useState} from 'react'
 import classnames from 'classnames'
 import {Dropdown} from '../.'
 import {MenuStatus} from '../Dropdown'
