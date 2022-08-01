@@ -79,7 +79,9 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   }
 
   const [inputValue, setInputValue] = useState<string>(initialInputValue)
-  const [backupSelectionValue, setBackupSelectionValue] = useState<string>(initialInputValue)
+  const [backupSelectionValue, setBackupSelectionValue] = useState<string>(
+    initialInputValue
+  )
 
   useEffect(() => {
     // If selectedOption is invalid (not in the list of items), then we want to clear the input value
@@ -110,7 +112,6 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
       setQueryResults(items)
     }
   }, [items, inputValue])
-
 
   const itemNames = useMemo(() => items.map(item => item.name?.toLowerCase()), [
     items.length,
