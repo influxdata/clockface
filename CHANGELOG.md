@@ -1,8 +1,9 @@
 # Changelog
 
-### 5.2.0 (2022-07-28)
+### 5.2.1 (2022-08-01)
 
-- [806](https://github.com/influxdata/clockface/pull/809): Add Bill Icon to the icon set
+- [812](https://github.com/influxdata/clockface/pull/812): Remove unused MenuDropdown code
+
 ### 5.1.0 (2022-07-25)
 
 - [806](https://github.com/influxdata/clockface/pull/806): Add Additional Icons to the Icon set
@@ -10,6 +11,7 @@
 ### 5.0.0 (2022-07-18)
 
 - [797](https://github.com/influxdata/clockface/pull/797): Refactor Icon set
+
 ### 4.8.0 (2022-07-18)
 
 - [801](https://github.com/influxdata/clockface/pull/801): Update Dropdown Loading state to have a spinner
