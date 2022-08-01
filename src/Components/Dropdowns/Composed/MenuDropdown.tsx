@@ -25,7 +25,6 @@ import {
   StandardFunctionProps,
 } from '../../../Types'
 import classnames from 'classnames'
-import '../ScrollBarStyles.scss'
 
 export interface MenuItem {
   name: string
@@ -333,7 +332,6 @@ export const MenuDropdown: FC<MenuDropdownProps> = ({
               width={'100%'}
               layout="vertical"
               itemData={queryResults}
-              className="menu-dropdown"
             >
               {({data, index, style}) => {
                 const value = data[index]
