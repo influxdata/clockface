@@ -79,6 +79,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   }
 
   const [inputValue, setInputValue] = useState<string>(initialInputValue)
+  const [backupSelectionValue, setBackupSelectionValue] = useState<string>(initialInputValue)
 
   useEffect(() => {
     // If selectedOption is invalid (not in the list of items), then we want to clear the input value
@@ -90,7 +91,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
       return
     }
     setInputValue(selectedOption?.name || defaultNameText)
-    setBackupValue(selectedOption?.name || defaultNameText)
+    setBackupSelectionValue(selectedOption?.name || defaultNameText)
   }, [selectedOption])
 
   useEffect(() => {
@@ -110,7 +111,6 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     }
   }, [items, inputValue])
 
-  const [backupValue, setBackupValue] = useState<string>(initialInputValue)
 
   const itemNames = useMemo(() => items.map(item => item.name?.toLowerCase()), [
     items.length,
@@ -215,7 +215,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     // selectItem is called from onClear, we don't close the menu
     if (item !== null) {
       setMenuStatus(MenuStatus.Closed)
-      setBackupValue(actualName)
+      setBackupSelectionValue(actualName)
     }
     onSelect(item)
   }
@@ -223,7 +223,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   const onClickOutside = () => {
     //  reset to the selected value; if the user typed in
     //  something not allowed it will go back to the last selected value:
-    setTypedValueToSelectedName(backupValue)
+    setTypedValueToSelectedName(backupSelectionValue)
     setQueryResults(items)
     setMenuStatus(MenuStatus.Closed)
     setUserHasTyped(false)
