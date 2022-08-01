@@ -1,8 +1,12 @@
 # Changelog
 
-### 5.2.1 (2022-08-01)
+### 6.0.1 (2022-08-01)
 
 - [795](https://github.com/influxdata/clockface/pull/795): react-window for typeahead dropdown
+
+### 6.0.0 (2022-08-01)
+
+- [812](https://github.com/influxdata/clockface/pull/812): Remove unused MenuDropdown code
 
 ### 5.2.0 (2022-07-28)
 

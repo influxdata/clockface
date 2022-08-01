@@ -32,7 +32,6 @@ import {
   MultiSelectDropdown,
   MultiSelectDropdownRef,
 } from '../Composed/MultiSelectDropdown'
-import {MenuDropdown, SubMenuItem} from '../Composed/MenuDropdown'
 import {ColorPreview} from '../../ColorPicker/ColorPreview'
 
 import {TypeAheadDropDown, SelectableItem} from '../Composed/TypeAheadDropDown'
@@ -64,10 +63,8 @@ import SelectDropdownReadme from './SelectDropdown.md'
 import TypeAheadDropdownReadme from './TypeAheadDropdown.md'
 import CreatableTypeAheadDropdownReadme from './CreatableTypeAheadDropdown.md'
 import MultiSelectDropdownReadme from './MultiSelectDropdown.md'
-import MenuDropdownReadme from './MenuDropdown.md'
 import {useState} from '@storybook/addons'
 import {FlexBox} from '../../FlexBox'
-import {range} from 'lodash'
 
 const dropdownFamilyStories = storiesOf(
   'Components/Dropdowns/Family',
@@ -909,134 +906,6 @@ dropdownComposedStories.add(
   {
     readme: {
       content: marked(MultiSelectDropdownReadme),
-    },
-  }
-)
-
-dropdownComposedStories.add(
-  'MenuDropdown',
-  () => {
-    const defaultHrefOptions = [
-      {
-        name: 'Settings',
-        iconFont: IconFont.CogOutline_New,
-        href: '/settings',
-      },
-      {
-        name: 'Members',
-        iconFont: IconFont.User,
-        href: '/members',
-      },
-      {
-        name: 'Billing',
-        iconFont: IconFont.BookCode,
-        href: '/billing',
-      },
-    ]
-
-    const typeAheadOptions = [
-      {
-        name: 'EdgeDelta',
-        id: '1',
-      },
-      {
-        name: 'Account',
-        id: '2',
-      },
-      {
-        name: 'Something',
-        id: '3',
-      },
-      {
-        name: 'Who knows',
-        id: '4',
-      },
-    ]
-
-    const selectedOption = {
-      name: 'EdgeDelta',
-      id: '1',
-    }
-
-    const menuDropdownStyle = {width: '150px'}
-
-    const menuDropdownMenuStyle = {width: '250px'}
-
-    return (
-      <div className="story--example">
-        <MenuDropdown
-          selectedOption={selectedOption}
-          style={object('style', menuDropdownStyle)}
-          menuStyle={object('menuStyle', menuDropdownMenuStyle)}
-          options={defaultHrefOptions}
-          subMenuOptions={typeAheadOptions}
-          menuHeaderIcon={IconFont.Switch_New}
-          menuHeaderText={'Switch Account'}
-        />
-      </div>
-    )
-  },
-  {
-    readme: {
-      content: marked(MenuDropdownReadme),
-    },
-  }
-)
-
-dropdownComposedStories.add(
-  'MenuDropdownStressTest',
-  () => {
-    const defaultHrefOptions = [
-      {
-        name: 'Settings',
-        iconFont: IconFont.CogOutline_New,
-        href: '/settings',
-      },
-      {
-        name: 'Members',
-        iconFont: IconFont.User,
-        href: '/members',
-      },
-      {
-        name: 'Billing',
-        iconFont: IconFont.BookCode,
-        href: '/billing',
-      },
-    ]
-
-    const typeAheadOptions = range(1, 100000).map(value => {
-      return {
-        name: value.toString(),
-        id: value.toString(),
-      } as SubMenuItem
-    })
-
-    const selectedOption = {
-      name: 'EdgeDelta',
-      id: '1',
-    }
-
-    const menuDropdownStyle = {width: '150px'}
-
-    const menuDropdownMenuStyle = {width: '250px'}
-
-    return (
-      <div className="story--example">
-        <MenuDropdown
-          selectedOption={selectedOption}
-          style={object('style', menuDropdownStyle)}
-          menuStyle={object('menuStyle', menuDropdownMenuStyle)}
-          options={defaultHrefOptions}
-          subMenuOptions={typeAheadOptions}
-          menuHeaderIcon={IconFont.Switch_New}
-          menuHeaderText={'Switch Account'}
-        />
-      </div>
-    )
-  },
-  {
-    readme: {
-      content: marked(MenuDropdownReadme),
     },
   }
 )
