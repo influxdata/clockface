@@ -97,6 +97,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   }, [selectedOption])
 
   useEffect(() => {
+    // only filter the list to show the results if the user has typed something
     if (inputValue.length > 0 && userHasTyped) {
       const result = items.filter(val => {
         const name = val?.name || ''
