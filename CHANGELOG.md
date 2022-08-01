@@ -1,12 +1,12 @@
 # Changelog
 
+### 5.2.1 (2022-08-01)
+
+- [795](https://github.com/influxdata/clockface/pull/795): react-window for typeahead dropdown
+
 ### 5.2.0 (2022-07-28)
 
 - [806](https://github.com/influxdata/clockface/pull/809): Add Bill Icon to the icon set
-
-### 5.1.1 (2022-07-25)
-
-- [795](https://github.com/influxdata/clockface/pull/795): react-window for typeahead dropdown
 
 ### 5.1.0 (2022-07-25)
 
