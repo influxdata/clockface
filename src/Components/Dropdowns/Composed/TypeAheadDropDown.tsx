@@ -324,7 +324,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
             </List>
           ) : (
             <Dropdown.Item
-              key="nada-no-values-in-filter"
+              key="no-values-in-filter"
               testID="nothing-in-filter-typeAhead"
               disabled={true}
             >
