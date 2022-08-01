@@ -80,7 +80,6 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
 
   const [inputValue, setInputValue] = useState<string>(initialInputValue)
 
-  // TODO : Bug, when value typed is not in the list, the input should be ''
   useEffect(() => {
     if (
       selectedOption &&
