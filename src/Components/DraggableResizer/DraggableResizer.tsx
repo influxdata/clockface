@@ -74,7 +74,7 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
 
   const calculatePanelSize = (panelIndex: number): number => {
     const prevPanelIndex = panelIndex - 1
-
+    console.log(handlePositions)
     if (panelIndex === 0) {
       return handlePositions[panelIndex]
     }
@@ -130,35 +130,31 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
   }
 
   const onCollapseButtonClick = (pos: number, dragIndex: number) => {
-    console.log(dragIndex, pos)
-    setDragIndex(dragIndex)
-    createNewPositions(pos)
-    setDragIndex(NULL_DRAG)
+    createNewPositions(pos, dragIndex)
   }
 
-  const createNewPositions = (newPos: number) => {
+  const createNewPositions = (newPos: number, d?: number) => {
+    const di = d !== undefined ? d : dragIndex
     // Break it out from here
     const newPositions = [...handlePositions]
-
     // Update the position of the handle being dragged
-    newPositions[dragIndex] = newPos
+    newPositions[di] = newPos
 
     // If the new position of the handle being dragged is greater than
     // subsequent handles on the right, set them all to the new position to
     // acheive the collapsing / “accordian” effect
-    for (let i = dragIndex + 1; i < newPositions.length; i++) {
+    for (let i = di + 1; i < newPositions.length; i++) {
       if (newPos > newPositions[i]) {
         newPositions[i] = newPos
       }
     }
 
     // Do something similar for handles on the left
-    for (let i = 0; i < dragIndex; i++) {
+    for (let i = 0; i < di; i++) {
       if (newPos < newPositions[i]) {
         newPositions[i] = newPos
       }
     }
-
     onChangePositions(newPositions)
   }
 
