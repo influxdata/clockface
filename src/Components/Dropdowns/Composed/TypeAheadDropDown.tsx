@@ -12,7 +12,7 @@ import {
 
 import {Input} from '../../Inputs/Input'
 import {DropdownHeader} from '../DropdownHeader'
-import {FixedSizeList as List} from 'react-window'
+import {FixedSizeList} from 'react-window'
 import '../ScrollBarStyles.scss'
 export interface SelectableItem {
   id: string
@@ -289,7 +289,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
       menu={() => (
         <Dropdown.Menu testID={`${testID}-dropdown-menu`} theme={menuTheme}>
           {queryResults && queryResults.length > 0 ? (
-            <List
+            <FixedSizeList
               height={
                 queryResults.length * 33 > 150 ? 150 : queryResults.length * 33
               }
@@ -322,7 +322,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
                   </div>
                 )
               }}
-            </List>
+            </FixedSizeList>
           ) : (
             <Dropdown.Item
               key="no-values-in-filter"
