@@ -65,7 +65,7 @@ import CreatableTypeAheadDropdownReadme from './CreatableTypeAheadDropdown.md'
 import MultiSelectDropdownReadme from './MultiSelectDropdown.md'
 import {useState} from '@storybook/addons'
 import {FlexBox} from '../../FlexBox'
-import { range } from "lodash";
+import {range} from 'lodash'
 
 const dropdownFamilyStories = storiesOf(
   'Components/Dropdowns/Family',
