@@ -28,6 +28,10 @@ export const Alert = forwardRef<AlertRef, Props>(
       [`${className}`]: className,
     })
 
+    const alertContentClassName = classnames('cf-alert--contents', {
+      [`cf-alert-content--${color}`]: color,
+    })
+
     return (
       <div
         className={alertClassName}
@@ -37,7 +41,7 @@ export const Alert = forwardRef<AlertRef, Props>(
         ref={ref}
       >
         {!!icon && <Icon glyph={icon} className="cf-alert--icon" />}
-        <div className="cf-alert--contents">{children}</div>
+        <div className={alertContentClassName}>{children}</div>
       </div>
     )
   }

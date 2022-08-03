@@ -49,6 +49,10 @@ export const DismissButton = forwardRef<DismissButtonRef, DismissButtonProps>(
       [`${className}`]: className,
     })
 
+    const dismissButtonClass = classnames(
+      `cf-dismiss-button--x cf-dismiss-button--${color}`
+    )
+
     return (
       <ButtonBase
         tabIndex={tabIndex}
@@ -71,7 +75,7 @@ export const DismissButton = forwardRef<DismissButtonRef, DismissButtonProps>(
         style={style}
         ref={ref}
       >
-        <div className="cf-dismiss-button--x" />
+        <div className={dismissButtonClass} />
       </ButtonBase>
     )
   }

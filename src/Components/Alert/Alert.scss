@@ -47,7 +47,22 @@ $alert--icon-padding: $cf-marg-d + $cf-marg-a;
   width: 100%;
   border-radius: $cf-radius - 1px;
   padding: $cf-marg-b;
-  background-color: rgba($g3-castle, 0.85);
+}
+
+.cf-alert-content--primary {
+  background-color: $cf-elephant;
+}
+
+.cf-alert-content--success {
+  background-color: $cf-seaweed;
+}
+
+.cf-alert-content--warning {
+  background-color: $cf-verdun-green;
+}
+
+.cf-alert-content--danger {
+  background-color: $cf-thunder;
 }
 
 .cf-alert--has-icon {
@@ -65,46 +80,36 @@ $alert--icon-padding: $cf-marg-d + $cf-marg-a;
 }
 
 /*  Color Modifiers */
-@mixin alertColorModifier($mainColor, $accentColor, $textColor, $boldColor) {
+@mixin alertColorModifier($mainColor, $textColor, $boldColor) {
   color: $textColor;
 
   strong {
     color: $boldColor;
   }
 
-  @include gradient-h($mainColor, $accentColor);
-}
-
-.cf-alert--default {
-  @include alertColorModifier($g7-graphite, $g5-pepper, $g13-mist, $g20-white);
+  background: $mainColor
 }
 
 .cf-alert--primary {
-  @include alertColorModifier($c-ocean, $c-star, $c-hydrogen, $g20-white);
-}
-
-.cf-alert--secondary {
-  @include alertColorModifier($c-comet, $c-star, $c-moonstone, $g20-white);
+  @include alertColorModifier($cf-turquoise,  $cf-turquoise, $cf-white);
 }
 
 .cf-alert--success {
   @include alertColorModifier(
-    $c-rainforest,
-    $c-viridian,
-    $c-wasabi,
+    $cf-lime-green,
+    $cf-lime-green,
     $g20-white
   );
 }
 
 .cf-alert--warning {
-  @include alertColorModifier($c-pineapple, $c-thunder, $c-sulfur, $g20-white);
+  @include alertColorModifier($cf-chartreuse, $cf-chartreuse, $g20-white);
 }
 
 .cf-alert--danger {
   @include alertColorModifier(
-    $c-dreamsicle,
-    $c-curacao,
-    $c-marmelade,
+    $cf-carnation,
+    $cf-carnation,
     $g20-white
   );
 }

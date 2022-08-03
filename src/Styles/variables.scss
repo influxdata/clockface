@@ -3,7 +3,7 @@
    -----------------------------------------------------------------------------
 */
 
-// Grey2
+// New Greys
 $cf-gray-1: #0E101F;
 $cf-gray-2: #1A1C2B;
 $cf-gray-3: #232533;
@@ -11,18 +11,6 @@ $cf-gray-4: #4B4F62;
 $cf-gray-5: #88889B;
 $cf-gray-6: #C2C5DB;
 $cf-white: #ffffff;
-
-//Old Greys
-$cf-grey-5: #07070e;
-$cf-grey-15: #1a1a2a;
-$cf-grey-25: #333346;
-$cf-grey-35: #4d4d60;
-$cf-grey-45: #68687b;
-$cf-grey-55: #828294;
-$cf-grey-65: #9e9ead;
-$cf-grey-75: #b9b9c5;
-$cf-grey-85: #d5d5dd;
-$cf-grey-95: #f1f1f3;
 
 // Brand Colors
 $cf-turquoise: #5EE4E4;
@@ -41,6 +29,18 @@ $cf-voodoo: #482543;
 $cf-verdun-green: #546120;
 $cf-seaweed: #1B381F;
 $cf-thunder: #311C29;
+
+//Old Greys
+$cf-grey-5: #07070e;
+$cf-grey-15: #1a1a2a;
+$cf-grey-25: #333346;
+$cf-grey-35: #4d4d60;
+$cf-grey-45: #68687b;
+$cf-grey-55: #828294;
+$cf-grey-65: #9e9ead;
+$cf-grey-75: #b9b9c5;
+$cf-grey-85: #d5d5dd;
+$cf-grey-95: #f1f1f3;
 
 // Neutrals
 $g0-obsidian: $cf-grey-5;
@@ -126,7 +126,7 @@ $c-pulsar: #513cc6;
   State change variables
 */
 
-$cf-hover-active-opacity: 0.08;
+$cf-hover-active-opacity: 0.15;
 $cf-disabled-opacity: 0.5;
 
 /*

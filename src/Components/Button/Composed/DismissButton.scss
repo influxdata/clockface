@@ -46,3 +46,13 @@ button.cf-dismiss-button {
     opacity: 1;
   }
 }
+
+.cf-dismiss-button--primary, 
+.cf-dismiss-button--success, 
+.cf-dismiss-button--danger,
+.cf-dismiss-button--warning {
+  &:before,
+  &:after {
+    background-color: $cf-gray-1;
+  }
+}
