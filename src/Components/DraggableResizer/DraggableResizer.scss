@@ -61,6 +61,7 @@
   background-color: transparent;
   position: relative;
   padding: 4px;
+  align-self: center;
   > .cf-draggable-resizer--handle-pill1,
   > .cf-draggable-resizer--gradient1 {
     content: '';
@@ -190,4 +191,27 @@
   > .cf-draggable-resizer--gradient2 {
   min-height: 32px;
   height: calc(25% - 60px);
+}
+
+.cf-draggable-resizer-container {
+  display: flex;
+}
+
+.cf-draggable-resizer-container-flex--column {
+  flex-direction: column;
+}
+
+.cf-draggable-resizer-container-flex--row {
+  flex-direction: row;
+}
+
+.cf-draggable-resizer-collapse-button {
+  width: 24px !important;
+  height: 24px;
+  background: transparent !important;
+  color: $g9-mountain;
+}
+
+.cf-draggable-resizer-collapse-icon--horizontal {
+  transform: rotate(90deg);
 }

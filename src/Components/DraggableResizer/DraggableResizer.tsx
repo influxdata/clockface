@@ -48,6 +48,7 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
   handleBackgroundStyle,
   handleBarStyle,
 }) => {
+  const [startPosition] = useState<number[]>(handlePositions)
   const [dragIndex, setDragIndex] = useState<number>(NULL_DRAG)
 
   const containerRef = useRef<HTMLDivElement>(null)
@@ -74,7 +75,7 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
 
   const calculatePanelSize = (panelIndex: number): number => {
     const prevPanelIndex = panelIndex - 1
-    console.log(handlePositions)
+
     if (panelIndex === 0) {
       return handlePositions[panelIndex]
     }
@@ -82,7 +83,6 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
     if (panelIndex === handlePositions.length) {
       return 1 - handlePositions[prevPanelIndex]
     }
-
     return handlePositions[panelIndex] - handlePositions[prevPanelIndex]
   }
 
@@ -129,7 +129,30 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
     createNewPositions(newPos)
   }
 
-  const onCollapseButtonClick = (pos: number, dragIndex: number) => {
+  const calculateCollapsePosition = (direction: number, dragIndex: number) => {
+    const totalDrag = handlePositions.length - 1
+    const directionIndex = direction === 0 ? dragIndex : dragIndex + 2
+    const currentPosition = handlePositions[dragIndex]
+    let collapsedPosition = directionIndex * 0.25
+
+    if (dragIndex > 0 && dragIndex < totalDrag) {
+      const pDragIndex = dragIndex - 1
+      const pCollapsedPosition = directionIndex * 0.25
+      const pCurrentPosition = handlePositions[pDragIndex]
+
+      collapsedPosition =
+        pCurrentPosition === pCollapsedPosition
+          ? pCollapsedPosition
+          : collapsedPosition
+    }
+
+    return currentPosition === collapsedPosition
+      ? startPosition[dragIndex]
+      : collapsedPosition
+  }
+
+  const onCollapseButtonClick = (direction: number, dragIndex: number) => {
+    const pos = calculateCollapsePosition(direction, dragIndex)
     createNewPositions(pos, dragIndex)
   }
 
@@ -173,12 +196,17 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
         const isLastPanel = i === panelsCount - 1
         const dragging = i === dragIndex
 
+        const isCollapsible0 = child.props.isCollapsible
+        const isCollapsible1 =
+          !isLastPanel && children && children[i + 1].props.isCollapsible
+
         return (
           <>
             {cloneElement(child, {sizePercent: calculatePanelSize(i)})}
             {!isLastPanel && (
               <DraggableResizerHandle
-                isCollapsible={true}
+                isCollapsible0={isCollapsible0}
+                isCollapsible1={isCollapsible1}
                 onCollapseButtonClick={onCollapseButtonClick}
                 dragIndex={i}
                 onStartDrag={handleStartDrag}
