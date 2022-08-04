@@ -1,9 +1,13 @@
 # Changelog
 
+### 6.0.1 (2022-08-04)
+
+- [804](https://github.com/influxdata/clockface/pull/804): Add DoubleCaretVertical icon and trailingIcon prop to Dropdown.Button
+
 ### 6.0.0 (2022-08-01)
 
 - [812](https://github.com/influxdata/clockface/pull/812): Remove unused MenuDropdown code
-- 
+
 ### 5.2.0 (2022-07-28)
 
 - [806](https://github.com/influxdata/clockface/pull/809): Add Bill Icon to the icon set
