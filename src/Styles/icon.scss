@@ -29,7 +29,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   &.Bill:before {
-    content: "\e954";
+    content: '\e954';
   }
   &.Logout:before {
     content: '\e950';
@@ -55,7 +55,7 @@
   &.CollapseRight:before {
     content: '\e94d';
   }
-  &.ChangeState:before {
+  &.DoubleCaretVertical:before {
     content: '\e94e';
   }
   &.QuestionMark_Outline:before {

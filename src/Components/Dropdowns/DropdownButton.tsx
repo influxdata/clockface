@@ -9,12 +9,12 @@ import {TechnoSpinner} from '../Spinners/TechnoSpinner'
 
 // Types
 import {
-  IconFont,
-  ButtonType,
-  ComponentSize,
-  ComponentColor,
-  ComponentStatus,
   ButtonShape,
+  ButtonType,
+  ComponentColor,
+  ComponentSize,
+  ComponentStatus,
+  IconFont,
   StandardFunctionProps,
 } from '../../Types'
 
@@ -34,6 +34,8 @@ export interface DropdownButtonProps extends StandardFunctionProps {
   active?: boolean
   /** Icon to be displayed to the left of text or in place of text */
   icon?: IconFont
+  /** Icon to be displayed to the right of text */
+  trailingIcon?: IconFont
   /** Text to be displayed on hover tooltip */
   title?: string
   disabledTitleText?: string
@@ -60,6 +62,7 @@ export const DropdownButton = forwardRef<
       onClick,
       children,
       className,
+      trailingIcon,
     },
     ref
   ) => {
@@ -90,6 +93,9 @@ export const DropdownButton = forwardRef<
         <span className="cf-dropdown--selected">{children}</span>
         {status === ComponentStatus.Loading ? (
           <TechnoSpinner diameterPixels={20} />
+        ) : !!trailingIcon ? (
+          // we check for trailingIcon here because we want to disable the animation for trailingIcon, the cf-dropdown--caret is animated
+          <Icon glyph={trailingIcon} className="cf-dropdown--trailing-icon" />
         ) : (
           <Icon glyph={IconFont.CaretDown_New} className="cf-dropdown--caret" />
         )}

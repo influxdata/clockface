@@ -180,6 +180,15 @@ dropdownFamilyStories.add(
                 )
               ]
             }
+            trailingIcon={
+              IconFont[
+                select(
+                  'trailingIcon',
+                  {None: 'none', ...mapEnumKeys(IconFont)},
+                  'CaretDown_New'
+                )
+              ]
+            }
             title={text('title', 'Hover Title Text')}
             disabledTitleText={text('disabledTitleText', 'Disabled Text')}
           >
