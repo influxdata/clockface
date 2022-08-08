@@ -34,6 +34,7 @@ export interface DraggableResizerHandleProps extends StandardFunctionProps {
   /** Orientation of handle */
   orientation: Orientation
   handleBarStyle?: CSSProperties
+  handleBackgroundStyle?: CSSProperties
 }
 
 export type DraggableResizerHandleRef = HTMLDivElement
