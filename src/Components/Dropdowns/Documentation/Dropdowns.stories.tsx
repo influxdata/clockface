@@ -65,6 +65,7 @@ import CreatableTypeAheadDropdownReadme from './CreatableTypeAheadDropdown.md'
 import MultiSelectDropdownReadme from './MultiSelectDropdown.md'
 import {useState} from '@storybook/addons'
 import {FlexBox} from '../../FlexBox'
+import {range} from 'lodash'
 
 const dropdownFamilyStories = storiesOf(
   'Components/Dropdowns/Family',
@@ -612,6 +613,10 @@ dropdownComposedStories.add(
       {id: '1234.3.33'},
     ]
 
+    const oneHundredThousandItems = range(1, 100000).map(i => {
+      return {name: i.toString(), id: i.toString()}
+    })
+
     const onSelect = (item: SelectableItem) => {
       /* eslint-disable */
       console.log('ooh! selected item: ', item)
@@ -630,8 +635,6 @@ dropdownComposedStories.add(
           style={object('style', defaultDropdownStyle)}
           onSelect={onSelect}
           testIdSuffix="fooTest"
-          largeListSearch={boolean('largeListSearch', false)}
-          largeListCeiling={number('largeListCeiling', 0)}
           items={selectDropdownOptions}
           menuTestID={text('menu test id', 'menuTest')}
           status={
@@ -659,8 +662,31 @@ dropdownComposedStories.add(
           onSelect={onSelect}
           testIdSuffix="fooTest"
           items={selectDropdownOptions}
-          largeListSearch={boolean('largeListSearch', false)}
-          largeListCeiling={number('largeListCeiling', 0)}
+          menuTestID={text('menu test id 2', 'menuTest')}
+          itemTestIdPrefix={text('item test id prefix 2', 'my-prefix')}
+          defaultNameText={text(
+            'default empty text 2',
+            'default empty name here'
+          )}
+          status={
+            ComponentStatus[
+              select('status2', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
+          menuTheme={
+            DropdownMenuTheme[
+              select('menuTheme 2', mapEnumKeys(DropdownMenuTheme), 'Onyx')
+            ]
+          }
+          sortNames={true}
+        />
+
+        <span> Stress test with 100,000 items:</span>
+        <TypeAheadDropDown
+          style={object('style 2', defaultDropdownStyle)}
+          onSelect={onSelect}
+          testIdSuffix="fooTest"
+          items={oneHundredThousandItems}
           menuTestID={text('menu test id 2', 'menuTest')}
           itemTestIdPrefix={text('item test id prefix 2', 'my-prefix')}
           defaultNameText={text(

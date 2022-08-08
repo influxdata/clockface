@@ -1,8 +1,13 @@
 # Changelog
 
+### 6.0.2 (2022-08-01)
+
+- [795](https://github.com/influxdata/clockface/pull/795): react-window for typeahead dropdown + some refactor
+
 ### 6.0.1 (2022-08-04)
 
 - [804](https://github.com/influxdata/clockface/pull/804): Add DoubleCaretVertical icon and trailingIcon prop to Dropdown.Button
+
 
 ### 6.0.0 (2022-08-01)
 
