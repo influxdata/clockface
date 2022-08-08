@@ -129,6 +129,7 @@
 
 // Horizontal Handle Styles
 .cf-draggable-resizer--horizontal .cf-draggable-resizer--handle {
+  left: calc(50% - 8px);
   &:hover {
     cursor: row-resize;
   }
@@ -144,6 +145,7 @@
 
 // Vertical Handle Styles
 .cf-draggable-resizer--vertical .cf-draggable-resizer--handle {
+  top: calc(50% - 8px);
   &:hover {
     cursor: col-resize;
   }
@@ -180,7 +182,7 @@
   .cf-draggable-resizer--handle-dragging
   > .cf-draggable-resizer--gradient2 {
   min-width: 32px;
-  width: calc(25% - 60px);
+  width: 64px;
 }
 
 .cf-draggable-resizer--vertical
@@ -190,18 +192,33 @@
   .cf-draggable-resizer--handle-dragging
   > .cf-draggable-resizer--gradient2 {
   min-height: 32px;
-  height: calc(25% - 60px);
+  height: 64px;
 }
 
-.cf-draggable-resizer-container {
+.cf-draggable-resizer-handle-container {
   display: flex;
 }
 
-.cf-draggable-resizer-container-flex--column {
+.cf-draggable-resizer-handle-container--vertical {
+  min-width: 23px;
+}
+
+.cf-draggable-resizer-handle-container--horizontal {
+  min-height: 23px;
+}
+
+.cf-draggable-resizer-button-container {
+  display: flex;
+  position: absolute;
+}
+
+.cf-draggable-resizer-handle-container--vertical,
+.cf-draggable-resizer-button-container--vertical {
   flex-direction: column;
 }
 
-.cf-draggable-resizer-container-flex--row {
+.cf-draggable-resizer-handle-container--horizontal,
+.cf-draggable-resizer-button-container--horizontal {
   flex-direction: row;
 }
 

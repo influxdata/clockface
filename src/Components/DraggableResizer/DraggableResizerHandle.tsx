@@ -74,6 +74,7 @@ export const DraggableResizerHandle = forwardRef<
     const DraggableResizerHandleClass = classnames(
       'cf-draggable-resizer--handle',
       {
+        [`cf-draggable-resizer-handle--${orientation}`]: orientation,
         'cf-draggable-resizer--handle-dragging': dragging,
         [`${className}`]: className,
       }
@@ -104,6 +105,28 @@ export const DraggableResizerHandle = forwardRef<
       'cf-draggable-resizer--gradient2',
       {
         [`cf-draggable-resizer--gradient2--${orientation}`]: orientation,
+      }
+    )
+
+    const collapsibleButtonClassNames = classnames(
+      'cf-draggable-resizer-collapse-button',
+      {
+        'cf-draggable-resizer-collapse-icon--horizontal':
+          orientation === Orientation.Horizontal,
+      }
+    )
+
+    const collapsibleHandleContainerClassNames = classnames(
+      'cf-draggable-resizer-handle-container',
+      {
+        [`cf-draggable-resizer-handle-container--${orientation}`]: orientation,
+      }
+    )
+
+    const collapsibleButtonContainerClassNames = classnames(
+      'cf-draggable-resizer-button-container',
+      {
+        [`cf-draggable-resizer-button-container--${orientation}`]: orientation,
       }
     )
 
@@ -141,40 +164,28 @@ export const DraggableResizerHandle = forwardRef<
       onCollapseButtonClick(1, dragIndex)
     }
 
-    const collapsibleButtonClassNames = classnames(
-      'cf-draggable-resizer-collapse-button',
-      {
-        'cf-draggable-resizer-collapse-icon--horizontal':
-          orientation === Orientation.Horizontal,
-      }
-    )
-
-    const collapsibleContainerClassNames = classnames(
-      'cf-draggable-resizer-container',
-      {
-        'cf-draggable-resizer-container-flex--row':
-          orientation === Orientation.Horizontal,
-        'cf-draggable-resizer-container-flex--column':
-          orientation === Orientation.Vertical,
-      }
-    )
-
     return (
-      <div className={collapsibleContainerClassNames}>
-        {isCollapsible0 && (
-          <SquareButton
-            icon={collapsible0 ? IconFont.CollapseRight : IconFont.CollapseLeft}
-            onClick={onCollapsible0Click}
-            className={collapsibleButtonClassNames}
-          />
-        )}
-        {isCollapsible1 && (
-          <SquareButton
-            icon={collapsible1 ? IconFont.CollapseLeft : IconFont.CollapseRight}
-            onClick={onCollapsible1Click}
-            className={collapsibleButtonClassNames}
-          />
-        )}
+      <div className={collapsibleHandleContainerClassNames}>
+        <div className={collapsibleButtonContainerClassNames}>
+          {isCollapsible0 && (
+            <SquareButton
+              icon={
+                collapsible0 ? IconFont.CollapseRight : IconFont.CollapseLeft
+              }
+              onClick={onCollapsible0Click}
+              className={collapsibleButtonClassNames}
+            />
+          )}
+          {isCollapsible1 && (
+            <SquareButton
+              icon={
+                collapsible1 ? IconFont.CollapseLeft : IconFont.CollapseRight
+              }
+              onClick={onCollapsible1Click}
+              className={collapsibleButtonClassNames}
+            />
+          )}
+        </div>
         <div
           ref={ref}
           className={DraggableResizerHandleClass}
