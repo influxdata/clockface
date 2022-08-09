@@ -14,6 +14,7 @@ import {Input} from '../../Inputs/Input'
 import {DropdownHeader} from '../DropdownHeader'
 import {FixedSizeList} from 'react-window'
 import '../ScrollBarStyles.scss'
+import './TypeAheadDropDownStyles.scss'
 export interface SelectableItem {
   id: string
   name?: string
@@ -41,6 +42,8 @@ interface OwnProps extends StandardFunctionProps {
 }
 
 const enCollator = new Intl.Collator('en-us')
+
+const LIST_ITEM_HEIGHT = 33
 
 export const TypeAheadDropDown: FC<OwnProps> = ({
   id,
@@ -71,6 +74,8 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
   const [selectedItem, setSelectedItem] = useState<SelectableItem | null>(
     selectedOption
   )
+
+  const listRef = React.createRef<FixedSizeList<SelectableItem[]>>()
 
   let initialInputValue = ''
 
@@ -229,6 +234,7 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     setQueryResults(items)
     setMenuStatus(MenuStatus.Closed)
     setUserHasTyped(false)
+    setSelectIndex(-1)
   }
 
   const placeText =
@@ -271,6 +277,13 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
     }
   }
 
+  const getSelectedItemIndex = (): number => {
+    if (selectedItem) {
+      return items.findIndex(item => item.id === selectedItem.id)
+    }
+    return 0
+  }
+
   return (
     <Dropdown
       {...props}
@@ -291,7 +304,9 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
           {queryResults && queryResults.length > 0 ? (
             <FixedSizeList
               height={
-                queryResults.length * 33 > 150 ? 150 : queryResults.length * 33
+                queryResults.length * LIST_ITEM_HEIGHT > 150
+                  ? 150
+                  : queryResults.length * LIST_ITEM_HEIGHT
               }
               itemCount={queryResults.length}
               itemSize={33}
@@ -299,6 +314,8 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
               layout="vertical"
               itemData={queryResults}
               className="menu-dropdown"
+              ref={listRef}
+              initialScrollOffset={getSelectedItemIndex() * LIST_ITEM_HEIGHT}
             >
               {({data, index, style}) => {
                 const value = data[index]
