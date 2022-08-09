@@ -1,5 +1,9 @@
 # Changelog
 
+### 6.0.3 (2022-08-08)
+
+- [820](https://github.com/influxdata/clockface/pull/820): Typeahead Dropdown scroll to selected item
+
 ### 6.0.2 (2022-08-01)
 
 - [795](https://github.com/influxdata/clockface/pull/795): react-window for typeahead dropdown + some refactor
