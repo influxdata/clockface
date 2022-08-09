@@ -1,6 +1,6 @@
 # Changelog
 
-### 6.0.3 (2022-08-08)
+### 6.1.0 (2022-08-09)
 
 - [820](https://github.com/influxdata/clockface/pull/820): Typeahead Dropdown scroll to selected item
 
