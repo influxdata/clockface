@@ -304,7 +304,9 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
           {queryResults && queryResults.length > 0 ? (
             <FixedSizeList
               height={
-                queryResults.length * LIST_ITEM_HEIGHT > 150 ? 150 : queryResults.length * LIST_ITEM_HEIGHT
+                queryResults.length * LIST_ITEM_HEIGHT > 150
+                  ? 150
+                  : queryResults.length * LIST_ITEM_HEIGHT
               }
               itemCount={queryResults.length}
               itemSize={33}
