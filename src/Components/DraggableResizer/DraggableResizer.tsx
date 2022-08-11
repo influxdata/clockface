@@ -55,7 +55,7 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
 
   useEffect(() => {
     if (dragIndex > -1) {
-      window.addEventListener('mousemove', onHandleDrag)
+      window.addEventListener('mousemove', handleDrag)
       window.addEventListener('mouseup', handleStopDrag)
     }
   }, [dragIndex])
@@ -92,11 +92,11 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
 
   const handleStopDrag = (): void => {
     setDragIndex(NULL_DRAG)
-    window.removeEventListener('mousemove', onHandleDrag)
+    window.removeEventListener('mousemove', handleDrag)
     window.removeEventListener('mouseup', handleStopDrag)
   }
 
-  const onHandleDrag = (e: MouseEvent): void => {
+  const handleDrag = (e: MouseEvent): void => {
     if (!containerRef.current) {
       return
     }
@@ -156,8 +156,8 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
     createNewPositions(pos, dragIndex)
   }
 
-  const createNewPositions = (newPos: number, d?: number) => {
-    const di = d !== undefined ? d : dragIndex
+  const createNewPositions = (newPos: number, nextDragIndex?: number) => {
+    const di = nextDragIndex !== undefined ? nextDragIndex : dragIndex
     // Break it out from here
     const newPositions = [...handlePositions]
     // Update the position of the handle being dragged

@@ -17,9 +17,9 @@ import {
 import {getColorsFromGradient} from '../../Utils/colors'
 
 export interface DraggableResizerHandleProps extends StandardFunctionProps {
-  /** Enables a 0 direction Collapse button */
+  /** Enables a 0.0 direction (Left/Up) Collapse button */
   isCollapsible0?: boolean
-  /** Enables a 1 direction Collapse Button */
+  /** Enables a 1.0 direction (Right/Down) Collapse Button */
   isCollapsible1?: boolean
   /** Function that updates panel positions after collapsing */
   onCollapseButtonClick: (direction: number, dragIndex: number) => void

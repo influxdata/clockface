@@ -1,5 +1,9 @@
 # Changelog
 
+### 6.2.0 (2022-08-09)
+
+- [814](https://github.com/influxdata/clockface/pull/814): Added Collapse functionality to the Draggable Resizer
+
 ### 6.1.0 (2022-08-09)
 
 - [820](https://github.com/influxdata/clockface/pull/820): Typeahead Dropdown scroll to selected item
