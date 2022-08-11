@@ -1,8 +1,34 @@
 # Changelog
 
+### 6.1.0 (2022-08-09)
+
+- [820](https://github.com/influxdata/clockface/pull/820): Typeahead Dropdown scroll to selected item
+
+### 6.0.2 (2022-08-01)
+
+- [795](https://github.com/influxdata/clockface/pull/795): react-window for typeahead dropdown + some refactor
+
+### 6.0.1 (2022-08-04)
+
+- [804](https://github.com/influxdata/clockface/pull/804): Add DoubleCaretVertical icon and trailingIcon prop to Dropdown.Button
+
+
+### 6.0.0 (2022-08-01)
+
+- [812](https://github.com/influxdata/clockface/pull/812): Remove unused MenuDropdown code
+
+### 5.2.0 (2022-07-28)
+
+- [806](https://github.com/influxdata/clockface/pull/809): Add Bill Icon to the icon set
+
+### 5.1.0 (2022-07-25)
+
+- [806](https://github.com/influxdata/clockface/pull/806): Add Additional Icons to the Icon set
+
 ### 5.0.0 (2022-07-18)
 
 - [797](https://github.com/influxdata/clockface/pull/797): Refactor Icon set
+
 ### 4.8.0 (2022-07-18)
 
 - [801](https://github.com/influxdata/clockface/pull/801): Update Dropdown Loading state to have a spinner

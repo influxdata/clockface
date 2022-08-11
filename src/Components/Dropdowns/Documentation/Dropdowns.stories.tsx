@@ -32,7 +32,6 @@ import {
   MultiSelectDropdown,
   MultiSelectDropdownRef,
 } from '../Composed/MultiSelectDropdown'
-import {MenuDropdown, SubMenuItem} from '../Composed/MenuDropdown'
 import {ColorPreview} from '../../ColorPicker/ColorPreview'
 
 import {TypeAheadDropDown, SelectableItem} from '../Composed/TypeAheadDropDown'
@@ -64,7 +63,6 @@ import SelectDropdownReadme from './SelectDropdown.md'
 import TypeAheadDropdownReadme from './TypeAheadDropdown.md'
 import CreatableTypeAheadDropdownReadme from './CreatableTypeAheadDropdown.md'
 import MultiSelectDropdownReadme from './MultiSelectDropdown.md'
-import MenuDropdownReadme from './MenuDropdown.md'
 import {useState} from '@storybook/addons'
 import {FlexBox} from '../../FlexBox'
 import {range} from 'lodash'
@@ -179,6 +177,15 @@ dropdownFamilyStories.add(
                   'icon',
                   {None: 'none', ...mapEnumKeys(IconFont)},
                   'BarChart'
+                )
+              ]
+            }
+            trailingIcon={
+              IconFont[
+                select(
+                  'trailingIcon',
+                  {None: 'none', ...mapEnumKeys(IconFont)},
+                  'CaretDown_New'
                 )
               ]
             }
@@ -606,6 +613,10 @@ dropdownComposedStories.add(
       {id: '1234.3.33'},
     ]
 
+    const oneHundredThousandItems = range(1, 100000).map(i => {
+      return {name: i.toString(), id: i.toString()}
+    })
+
     const onSelect = (item: SelectableItem) => {
       /* eslint-disable */
       console.log('ooh! selected item: ', item)
@@ -624,8 +635,6 @@ dropdownComposedStories.add(
           style={object('style', defaultDropdownStyle)}
           onSelect={onSelect}
           testIdSuffix="fooTest"
-          largeListSearch={boolean('largeListSearch', false)}
-          largeListCeiling={number('largeListCeiling', 0)}
           items={selectDropdownOptions}
           menuTestID={text('menu test id', 'menuTest')}
           status={
@@ -653,8 +662,31 @@ dropdownComposedStories.add(
           onSelect={onSelect}
           testIdSuffix="fooTest"
           items={selectDropdownOptions}
-          largeListSearch={boolean('largeListSearch', false)}
-          largeListCeiling={number('largeListCeiling', 0)}
+          menuTestID={text('menu test id 2', 'menuTest')}
+          itemTestIdPrefix={text('item test id prefix 2', 'my-prefix')}
+          defaultNameText={text(
+            'default empty text 2',
+            'default empty name here'
+          )}
+          status={
+            ComponentStatus[
+              select('status2', mapEnumKeys(ComponentStatus), 'Default')
+            ]
+          }
+          menuTheme={
+            DropdownMenuTheme[
+              select('menuTheme 2', mapEnumKeys(DropdownMenuTheme), 'Onyx')
+            ]
+          }
+          sortNames={true}
+        />
+
+        <span> Stress test with 100,000 items:</span>
+        <TypeAheadDropDown
+          style={object('style 2', defaultDropdownStyle)}
+          onSelect={onSelect}
+          testIdSuffix="fooTest"
+          items={oneHundredThousandItems}
           menuTestID={text('menu test id 2', 'menuTest')}
           itemTestIdPrefix={text('item test id prefix 2', 'my-prefix')}
           defaultNameText={text(
@@ -884,134 +916,6 @@ dropdownComposedStories.add(
   {
     readme: {
       content: marked(MultiSelectDropdownReadme),
-    },
-  }
-)
-
-dropdownComposedStories.add(
-  'MenuDropdown',
-  () => {
-    const defaultHrefOptions = [
-      {
-        name: 'Settings',
-        iconFont: IconFont.CogOutline_New,
-        href: '/settings',
-      },
-      {
-        name: 'Members',
-        iconFont: IconFont.User,
-        href: '/members',
-      },
-      {
-        name: 'Billing',
-        iconFont: IconFont.BookCode,
-        href: '/billing',
-      },
-    ]
-
-    const typeAheadOptions = [
-      {
-        name: 'EdgeDelta',
-        id: '1',
-      },
-      {
-        name: 'Account',
-        id: '2',
-      },
-      {
-        name: 'Something',
-        id: '3',
-      },
-      {
-        name: 'Who knows',
-        id: '4',
-      },
-    ]
-
-    const selectedOption = {
-      name: 'EdgeDelta',
-      id: '1',
-    }
-
-    const menuDropdownStyle = {width: '150px'}
-
-    const menuDropdownMenuStyle = {width: '250px'}
-
-    return (
-      <div className="story--example">
-        <MenuDropdown
-          selectedOption={selectedOption}
-          style={object('style', menuDropdownStyle)}
-          menuStyle={object('menuStyle', menuDropdownMenuStyle)}
-          options={defaultHrefOptions}
-          subMenuOptions={typeAheadOptions}
-          menuHeaderIcon={IconFont.Switch_New}
-          menuHeaderText={'Switch Account'}
-        />
-      </div>
-    )
-  },
-  {
-    readme: {
-      content: marked(MenuDropdownReadme),
-    },
-  }
-)
-
-dropdownComposedStories.add(
-  'MenuDropdownStressTest',
-  () => {
-    const defaultHrefOptions = [
-      {
-        name: 'Settings',
-        iconFont: IconFont.CogOutline_New,
-        href: '/settings',
-      },
-      {
-        name: 'Members',
-        iconFont: IconFont.User,
-        href: '/members',
-      },
-      {
-        name: 'Billing',
-        iconFont: IconFont.BookCode,
-        href: '/billing',
-      },
-    ]
-
-    const typeAheadOptions = range(1, 100000).map(value => {
-      return {
-        name: value.toString(),
-        id: value.toString(),
-      } as SubMenuItem
-    })
-
-    const selectedOption = {
-      name: 'EdgeDelta',
-      id: '1',
-    }
-
-    const menuDropdownStyle = {width: '150px'}
-
-    const menuDropdownMenuStyle = {width: '250px'}
-
-    return (
-      <div className="story--example">
-        <MenuDropdown
-          selectedOption={selectedOption}
-          style={object('style', menuDropdownStyle)}
-          menuStyle={object('menuStyle', menuDropdownMenuStyle)}
-          options={defaultHrefOptions}
-          subMenuOptions={typeAheadOptions}
-          menuHeaderIcon={IconFont.Switch_New}
-          menuHeaderText={'Switch Account'}
-        />
-      </div>
-    )
-  },
-  {
-    readme: {
-      content: marked(MenuDropdownReadme),
     },
   }
 )

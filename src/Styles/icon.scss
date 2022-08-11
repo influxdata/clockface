@@ -28,7 +28,21 @@
   // Better Font Rendering
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
+  &.Bill:before {
+    content: '\e954';
+  }
+  &.Logout:before {
+    content: '\e950';
+  }
+  &.PieChart:before {
+    content: '\e951';
+  }
+  &.CurrencyDollar:before {
+    content: '\e952';
+  }
+  &.Subtract:before {
+    content: '\e953';
+  }
   &.Timer:before {
     content: '\e94f';
   }
@@ -41,7 +55,7 @@
   &.CollapseRight:before {
     content: '\e94d';
   }
-  &.ChangeState:before {
+  &.DoubleCaretVertical:before {
     content: '\e94e';
   }
   &.QuestionMark_Outline:before {
