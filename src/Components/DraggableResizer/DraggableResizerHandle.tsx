@@ -18,9 +18,9 @@ import {getColorsFromGradient} from '../../Utils/colors'
 
 export interface DraggableResizerHandleProps extends StandardFunctionProps {
   /** Enables a 0.0 direction (Left/Up) Collapse button */
-  isCollapsible0?: boolean
+  isCollapsibleToLower?: boolean
   /** Enables a 1.0 direction (Right/Down) Collapse Button */
-  isCollapsible1?: boolean
+  isCollapsibleToUpper?: boolean
   /** Function that updates panel positions after collapsing */
   onCollapseButtonClick: (direction: number, dragIndex: number) => void
   /** Gets passed a function by being a child of DraggableResizer */
@@ -51,8 +51,8 @@ export const DraggableResizerHandle = forwardRef<
       gradient,
       className,
       orientation,
-      isCollapsible0 = false,
-      isCollapsible1 = false,
+      isCollapsibleToLower = false,
+      isCollapsibleToUpper = false,
       onCollapseButtonClick,
       dragging = false,
       dragIndex = 9999,
@@ -63,13 +63,13 @@ export const DraggableResizerHandle = forwardRef<
     },
     ref
   ) => {
-    const [collapsible0, setCollapsible0] = useState<boolean>(false)
-    const [collapsible1, setCollapsible1] = useState<boolean>(false)
+    const [collapsibleLower, setCollapsibleLower] = useState<boolean>(false)
+    const [collapsibleUpper, setCollapsibleUpper] = useState<boolean>(false)
 
     const handleMouseDown = (): void => {
       onStartDrag(dragIndex)
-      setCollapsible0(false)
-      setCollapsible1(false)
+      setCollapsibleUpper(false)
+      setCollapsibleUpper(false)
     }
 
     const DraggableResizerHandleClass = classnames(
@@ -155,34 +155,38 @@ export const DraggableResizerHandle = forwardRef<
       return
     }
 
-    const onCollapsible0Click = () => {
-      setCollapsible0(!collapsible0)
+    const onCollapsibleLowerClick = () => {
+      setCollapsibleLower(!collapsibleLower)
       onCollapseButtonClick(0, dragIndex)
     }
 
-    const onCollapsible1Click = () => {
-      setCollapsible1(!collapsible1)
+    const onCollapsibleUpperClick = () => {
+      setCollapsibleUpper(!collapsibleUpper)
       onCollapseButtonClick(1, dragIndex)
     }
 
     return (
       <div className={collapsibleHandleContainerClassNames}>
         <div className={collapsibleButtonContainerClassNames}>
-          {isCollapsible0 && (
+          {isCollapsibleToLower && (
             <SquareButton
               icon={
-                collapsible0 ? IconFont.CollapseRight : IconFont.CollapseLeft
+                collapsibleLower
+                  ? IconFont.CollapseRight
+                  : IconFont.CollapseLeft
               }
-              onClick={onCollapsible0Click}
+              onClick={onCollapsibleLowerClick}
               className={collapsibleButtonClassNames}
             />
           )}
-          {isCollapsible1 && (
+          {isCollapsibleToUpper && (
             <SquareButton
               icon={
-                collapsible1 ? IconFont.CollapseLeft : IconFont.CollapseRight
+                collapsibleUpper
+                  ? IconFont.CollapseLeft
+                  : IconFont.CollapseRight
               }
-              onClick={onCollapsible1Click}
+              onClick={onCollapsibleUpperClick}
               className={collapsibleButtonClassNames}
             />
           )}

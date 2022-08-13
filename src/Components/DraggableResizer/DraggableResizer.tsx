@@ -196,8 +196,8 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
         const isLastPanel = i === panelsCount - 1
         const dragging = i === dragIndex
 
-        const isCollapsible0 = child.props.isCollapsible
-        const isCollapsible1 =
+        const isCollapsibleToLower = child.props.isCollapsible
+        const isCollapsibleToUpper =
           !isLastPanel && children && children[i + 1].props.isCollapsible
 
         return (
@@ -205,8 +205,8 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
             {cloneElement(child, {sizePercent: calculatePanelSize(i)})}
             {!isLastPanel && (
               <DraggableResizerHandle
-                isCollapsible0={isCollapsible0}
-                isCollapsible1={isCollapsible1}
+                isCollapsibleToUpper={isCollapsibleToLower}
+                isCollapsibleToLower={isCollapsibleToUpper}
                 onCollapseButtonClick={onCollapseButtonClick}
                 dragIndex={i}
                 onStartDrag={handleStartDrag}
