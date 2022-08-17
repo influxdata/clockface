@@ -1,5 +1,9 @@
 # Changelog
 
+### 6.1.1 (2022-08-17)
+
+- [823](https://github.com/influxdata/clockface/pull/823): Typeahead Dropdown select text on focus works on all browsers
+
 ### 6.1.0 (2022-08-09)
 
 - [820](https://github.com/influxdata/clockface/pull/820): Typeahead Dropdown scroll to selected item
