@@ -242,7 +242,8 @@ export const TypeAheadDropDown: FC<OwnProps> = ({
 
   const selectAllTextInInput = (event?: ChangeEvent<HTMLInputElement>) => {
     if (event) {
-      event.target.select()
+      const target = event.target
+      setTimeout(() => target.select(), 0)
     }
   }
 
