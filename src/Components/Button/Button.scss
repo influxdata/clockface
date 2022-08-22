@@ -152,9 +152,9 @@
   Color Modifiers
   ------------------------------------------------------------------------------
 */
-@mixin buttonColorModifier($bgA, $bgB, $text, $textHover, $tertiary: false) {
+@mixin buttonColorModifier($bgColor, $text, $textHover, $tertiary: false) {
   color: $text;
-  @include gradient-diag-up($bgA, $bgB);
+  background-color: $bgColor;
 
   &:hover {
     color: $textHover;
@@ -185,7 +185,6 @@
     &.active,
     &.active:hover {
       color: $textHover;
-
       &:after {
         opacity: $cf-hover-active-opacity;
       }
@@ -213,8 +212,7 @@
 .cf-button-default,
 .cf-button-secondary {
   @include buttonColorModifier(
-    $cf-button-default-bg,
-    $cf-button-default-bg,
+    $cf-gray-3,
     $cf-white,
     $cf-white
   );
@@ -222,22 +220,22 @@
 
 .cf-button-primary,
 .cf-button-success {
-  @include buttonColorModifier($c-pool, $c-pulsar, $cf-white, $cf-white);
+  @include buttonColorModifier($cf-turquoise, $cf-gray-1, $cf-gray-1);
 }
 
 .cf-button-tertiary {
+  border: 1px solid $cf-gray-5;
   @include buttonColorModifier(
     transparent,
-    transparent,
-    $cf-grey-65,
-    $cf-grey-65,
+    $cf-white,
+    $cf-white,
     true
   );
 }
 
 .cf-button-warning,
 .cf-button-danger {
-  @include buttonColorModifier($c-ruby, $c-topaz, $cf-white, $cf-white);
+  @include buttonColorModifier($cf-carnation, $cf-gray-1, $cf-gray-1);
 }
 
 .cf-button-colorless {

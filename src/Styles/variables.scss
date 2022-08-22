@@ -3,7 +3,34 @@
    -----------------------------------------------------------------------------
 */
 
-// Greys
+// New Greys
+$cf-gray-1: #0E101F;
+$cf-gray-2: #1A1C2B;
+$cf-gray-3: #232533;
+$cf-gray-4: #4B4F62;
+$cf-gray-5: #88889B;
+$cf-gray-6: #C2C5DB;
+$cf-white: #ffffff;
+
+// Brand Colors
+$cf-turquoise: #5EE4E4;
+$cf-lavender: #C77BEA;
+$cf-hot-pink: #F863B0;
+$cf-chartreuse: #D6F622;
+
+// Utility Colors
+$cf-lime-green: #51D91C;
+$cf-carnation: #E65B5B;
+
+// Background Colors
+$cf-elephant: #1E3A46;
+$cf-martinique: #332548;
+$cf-voodoo: #482543;
+$cf-verdun-green: #546120;
+$cf-seaweed: #1B381F;
+$cf-thunder: #311C29;
+
+//Old Greys
 $cf-grey-5: #07070e;
 $cf-grey-15: #1a1a2a;
 $cf-grey-25: #333346;
@@ -14,7 +41,6 @@ $cf-grey-65: #9e9ead;
 $cf-grey-75: #b9b9c5;
 $cf-grey-85: #d5d5dd;
 $cf-grey-95: #f1f1f3;
-$cf-white: #ffffff;
 
 // Neutrals
 $g0-obsidian: $cf-grey-5;
@@ -90,9 +116,9 @@ $c-daisy: #fff6b8;
 $c-banana: #fffdde;
 
 // Marketing Brand Colors
-$c-chartreuse: #d6f622;
 $c-magenta: #bf2fe5;
-$c-deeppurple: #13002d;
+$c-
+: #13002d;
 $c-galaxy: #9394ff;
 $c-pulsar: #513cc6;
 
@@ -100,7 +126,7 @@ $c-pulsar: #513cc6;
   State change variables
 */
 
-$cf-hover-active-opacity: 0.08;
+$cf-hover-active-opacity: 0.15;
 $cf-disabled-opacity: 0.5;
 
 /*

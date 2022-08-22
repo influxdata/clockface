@@ -20,6 +20,7 @@ const alertStories = storiesOf('Components/Alert', module).addDecorator(
   withKnobs
 )
 
+// There is no css stylijng for these unused enums
 const unusedAlertColorEnium = ['Colorless', 'Tertiary', 'Secondary', 'Default']
 const reducedAlertColorEnum = removeUnusedEnumKeyValue(
   ComponentColor,
