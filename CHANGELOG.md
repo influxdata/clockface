@@ -1,5 +1,8 @@
 # Changelog
 
+### 6.2.0 (2022-08-24)
+
+- [814](https://github.com/influxdata/clockface/pull/814): Added Collapse functionality to the Draggable Resizer
 ### 6.1.1 (2022-08-17)
 
 - [823](https://github.com/influxdata/clockface/pull/823): Typeahead Dropdown select text on focus works on all browsers

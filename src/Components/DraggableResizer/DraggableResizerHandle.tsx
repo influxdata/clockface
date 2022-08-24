@@ -1,16 +1,28 @@
 // Libraries
-import React, {forwardRef, CSSProperties} from 'react'
+import React, {forwardRef, CSSProperties, useState} from 'react'
 import classnames from 'classnames'
 
+// Components
+import {SquareButton} from '../Button/Composed/SquareButton'
+
 // Types
-import {Gradients, Orientation, StandardFunctionProps} from '../../Types'
+import {
+  Gradients,
+  IconFont,
+  Orientation,
+  StandardFunctionProps,
+} from '../../Types'
 
 // Constants
 import {getColorsFromGradient} from '../../Utils/colors'
 
 export interface DraggableResizerHandleProps extends StandardFunctionProps {
-  /** Expects a number between 0 - 1 */
-  position: number
+  /** Enables a 0.0 direction (Left/Up) Collapse button */
+  isCollapsibleToLower?: boolean
+  /** Enables a 1.0 direction (Right/Down) Collapse Button */
+  isCollapsibleToUpper?: boolean
+  /** Function that updates panel positions after collapsing */
+  onCollapseButtonClick: (direction: number, dragIndex: number) => void
   /** Gets passed a function by being a child of DraggableResizer */
   onStartDrag?: (dragIndex: number) => void
   /** Gets passed a value by being a child of DraggableResizer */
@@ -22,6 +34,7 @@ export interface DraggableResizerHandleProps extends StandardFunctionProps {
   /** Orientation of handle */
   orientation: Orientation
   handleBarStyle?: CSSProperties
+  handleBackgroundStyle?: CSSProperties
 }
 
 export type DraggableResizerHandleRef = HTMLDivElement
@@ -38,6 +51,9 @@ export const DraggableResizerHandle = forwardRef<
       gradient,
       className,
       orientation,
+      isCollapsibleToLower = false,
+      isCollapsibleToUpper = false,
+      onCollapseButtonClick,
       dragging = false,
       dragIndex = 9999,
       onStartDrag = () => {
@@ -47,13 +63,19 @@ export const DraggableResizerHandle = forwardRef<
     },
     ref
   ) => {
+    const [collapsibleLower, setCollapsibleLower] = useState<boolean>(false)
+    const [collapsibleUpper, setCollapsibleUpper] = useState<boolean>(false)
+
     const handleMouseDown = (): void => {
       onStartDrag(dragIndex)
+      setCollapsibleUpper(false)
+      setCollapsibleUpper(false)
     }
 
     const DraggableResizerHandleClass = classnames(
       'cf-draggable-resizer--handle',
       {
+        [`cf-draggable-resizer-handle--${orientation}`]: orientation,
         'cf-draggable-resizer--handle-dragging': dragging,
         [`${className}`]: className,
       }
@@ -87,6 +109,28 @@ export const DraggableResizerHandle = forwardRef<
       }
     )
 
+    const collapsibleButtonClassNames = classnames(
+      'cf-draggable-resizer-collapse-button',
+      {
+        'cf-draggable-resizer-collapse-icon--horizontal':
+          orientation === Orientation.Horizontal,
+      }
+    )
+
+    const collapsibleHandleContainerClassNames = classnames(
+      'cf-draggable-resizer-handle-container',
+      {
+        [`cf-draggable-resizer-handle-container--${orientation}`]: orientation,
+      }
+    )
+
+    const collapsibleButtonContainerClassNames = classnames(
+      'cf-draggable-resizer-button-container',
+      {
+        [`cf-draggable-resizer-button-container--${orientation}`]: orientation,
+      }
+    )
+
     const gradientStyle = (): CSSProperties | undefined => {
       if (!orientation || !gradient) {
         return
@@ -111,32 +155,68 @@ export const DraggableResizerHandle = forwardRef<
       return
     }
 
+    const onCollapsibleLowerClick = () => {
+      setCollapsibleLower(!collapsibleLower)
+      onCollapseButtonClick(0, dragIndex)
+    }
+
+    const onCollapsibleUpperClick = () => {
+      setCollapsibleUpper(!collapsibleUpper)
+      onCollapseButtonClick(1, dragIndex)
+    }
+
     return (
-      <div
-        ref={ref}
-        className={DraggableResizerHandleClass}
-        onMouseDown={handleMouseDown}
-        title="Drag to resize"
-        data-testid={testID}
-        style={style}
-        id={id}
-      >
+      <div className={collapsibleHandleContainerClassNames}>
+        <div className={collapsibleButtonContainerClassNames}>
+          {isCollapsibleToLower && (
+            <SquareButton
+              icon={
+                collapsibleLower
+                  ? IconFont.CollapseRight
+                  : IconFont.CollapseLeft
+              }
+              onClick={onCollapsibleLowerClick}
+              className={collapsibleButtonClassNames}
+            />
+          )}
+          {isCollapsibleToUpper && (
+            <SquareButton
+              icon={
+                collapsibleUpper
+                  ? IconFont.CollapseLeft
+                  : IconFont.CollapseRight
+              }
+              onClick={onCollapsibleUpperClick}
+              className={collapsibleButtonClassNames}
+            />
+          )}
+        </div>
         <div
-          className={DraggableResizerHandlePillOneClass}
-          style={handleBarStyle}
-        ></div>
-        <div
-          className={DraggableResizerGradientPillOneClass}
-          style={gradientStyle()}
-        />
-        <div
-          className={DraggableResizerHandlePillTwoClass}
-          style={handleBarStyle}
-        ></div>
-        <div
-          className={DraggableResizerGradientPillTwoClass}
-          style={gradientStyle()}
-        />
+          ref={ref}
+          className={DraggableResizerHandleClass}
+          onMouseDown={handleMouseDown}
+          title="Drag to resize"
+          data-testid={testID}
+          style={style}
+          id={id}
+        >
+          <div
+            className={DraggableResizerHandlePillOneClass}
+            style={handleBarStyle}
+          ></div>
+          <div
+            className={DraggableResizerGradientPillOneClass}
+            style={gradientStyle()}
+          />
+          <div
+            className={DraggableResizerHandlePillTwoClass}
+            style={handleBarStyle}
+          ></div>
+          <div
+            className={DraggableResizerGradientPillTwoClass}
+            style={gradientStyle()}
+          />
+        </div>
       </div>
     )
   }

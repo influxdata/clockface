@@ -31,7 +31,7 @@ export interface DraggableResizerProps extends StandardFunctionProps {
   onChangePositions: (positions: number[]) => void
   /** Gradient theme for handle */
   handleGradient?: Gradients
-  handleBackgroundStyle?: CSSProperties
+  backgroundStyle?: CSSProperties
   handleBarStyle?: CSSProperties
 }
 
@@ -45,9 +45,10 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
   onChangePositions,
   testID = 'draggable-resizer',
   handleGradient = Gradients.PastelGothic,
-  handleBackgroundStyle,
+  backgroundStyle,
   handleBarStyle,
 }) => {
+  const [startPosition] = useState<number[]>(handlePositions)
   const [dragIndex, setDragIndex] = useState<number>(NULL_DRAG)
 
   const containerRef = useRef<HTMLDivElement>(null)
@@ -82,7 +83,6 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
     if (panelIndex === handlePositions.length) {
       return 1 - handlePositions[prevPanelIndex]
     }
-
     return handlePositions[panelIndex] - handlePositions[prevPanelIndex]
   }
 
@@ -126,27 +126,58 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
     }
 
     const newPos = mouseRelativePos / containerSize
-    const newPositions = [...handlePositions]
+    createNewPositions(newPos)
+  }
 
+  const calculateCollapsePosition = (direction: number, dragIndex: number) => {
+    const totalDrag = handlePositions.length - 1
+    const directionIndex = direction === 0 ? dragIndex : dragIndex + 2
+    const currentPosition = handlePositions[dragIndex]
+    let collapsedPosition = directionIndex * 0.25
+
+    if (dragIndex > 0 && dragIndex < totalDrag) {
+      const pDragIndex = dragIndex - 1
+      const pCollapsedPosition = directionIndex * 0.25
+      const pCurrentPosition = handlePositions[pDragIndex]
+
+      collapsedPosition =
+        pCurrentPosition === pCollapsedPosition
+          ? pCollapsedPosition
+          : collapsedPosition
+    }
+
+    return currentPosition === collapsedPosition
+      ? startPosition[dragIndex]
+      : collapsedPosition
+  }
+
+  const onCollapseButtonClick = (direction: number, dragIndex: number) => {
+    const pos = calculateCollapsePosition(direction, dragIndex)
+    createNewPositions(pos, dragIndex)
+  }
+
+  const createNewPositions = (newPos: number, nextDragIndex?: number) => {
+    const di = nextDragIndex !== undefined ? nextDragIndex : dragIndex
+    // Break it out from here
+    const newPositions = [...handlePositions]
     // Update the position of the handle being dragged
-    newPositions[dragIndex] = newPos
+    newPositions[di] = newPos
 
     // If the new position of the handle being dragged is greater than
     // subsequent handles on the right, set them all to the new position to
     // acheive the collapsing / “accordian” effect
-    for (let i = dragIndex + 1; i < newPositions.length; i++) {
+    for (let i = di + 1; i < newPositions.length; i++) {
       if (newPos > newPositions[i]) {
         newPositions[i] = newPos
       }
     }
 
     // Do something similar for handles on the left
-    for (let i = 0; i < dragIndex; i++) {
+    for (let i = 0; i < di; i++) {
       if (newPos < newPositions[i]) {
         newPositions[i] = newPos
       }
     }
-
     onChangePositions(newPositions)
   }
 
@@ -162,22 +193,27 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
         if (child.type !== DraggableResizerPanel) {
           return null
         }
-
         const isLastPanel = i === panelsCount - 1
         const dragging = i === dragIndex
+
+        const isCollapsibleToLower = child.props.isCollapsible
+        const isCollapsibleToUpper =
+          !isLastPanel && children && children[i + 1].props.isCollapsible
 
         return (
           <>
             {cloneElement(child, {sizePercent: calculatePanelSize(i)})}
             {!isLastPanel && (
               <DraggableResizerHandle
-                position={child.props.position}
+                isCollapsibleToLower={isCollapsibleToLower}
+                isCollapsibleToUpper={isCollapsibleToUpper}
+                onCollapseButtonClick={onCollapseButtonClick}
                 dragIndex={i}
                 onStartDrag={handleStartDrag}
                 dragging={dragging}
                 gradient={handleGradient}
                 orientation={handleOrientation}
-                style={handleBackgroundStyle}
+                style={backgroundStyle}
                 handleBarStyle={handleBarStyle}
                 testID={`${testID}--handle`}
               />
