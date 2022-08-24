@@ -31,7 +31,7 @@ export interface DraggableResizerProps extends StandardFunctionProps {
   onChangePositions: (positions: number[]) => void
   /** Gradient theme for handle */
   handleGradient?: Gradients
-  handleBackgroundStyle?: CSSProperties
+  backgroundStyle?: CSSProperties
   handleBarStyle?: CSSProperties
 }
 
@@ -45,7 +45,7 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
   onChangePositions,
   testID = 'draggable-resizer',
   handleGradient = Gradients.PastelGothic,
-  handleBackgroundStyle,
+  backgroundStyle,
   handleBarStyle,
 }) => {
   const [startPosition] = useState<number[]>(handlePositions)
@@ -205,15 +205,15 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
             {cloneElement(child, {sizePercent: calculatePanelSize(i)})}
             {!isLastPanel && (
               <DraggableResizerHandle
-                isCollapsibleToUpper={isCollapsibleToLower}
-                isCollapsibleToLower={isCollapsibleToUpper}
+                isCollapsibleToLower={isCollapsibleToLower}
+                isCollapsibleToUpper={isCollapsibleToUpper}
                 onCollapseButtonClick={onCollapseButtonClick}
                 dragIndex={i}
                 onStartDrag={handleStartDrag}
                 dragging={dragging}
                 gradient={handleGradient}
                 orientation={handleOrientation}
-                style={handleBackgroundStyle}
+                style={backgroundStyle}
                 handleBarStyle={handleBarStyle}
                 testID={`${testID}--handle`}
               />

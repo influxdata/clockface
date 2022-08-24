@@ -142,10 +142,7 @@ draggableResizerExamplesStories.add(
               ]
             ]
           }
-          handleBackgroundStyle={object(
-            'handleBackgroundStyle',
-            defaultBackgroundStyle
-          )}
+          backgroundStyle={object('backgroundStyle', defaultBackgroundStyle)}
           handleBarStyle={object('handleBarStyle', defaultBarStyle)}
           handlePositions={position}
           onChangePositions={handlePositions => updatePosition(handlePositions)}
