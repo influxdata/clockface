@@ -40,6 +40,9 @@
   &.CurrencyDollar:before {
     content: '\e952';
   }
+  &.Sync:before {
+    content: "\e955";
+  }
   &.Subtract:before {
     content: '\e953';
   }

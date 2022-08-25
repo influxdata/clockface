@@ -1,5 +1,9 @@
 # Changelog
 
+### 6.3.0 (2022-08-24)
+
+- [828](https://github.com/influxdata/clockface/pull/828): Added a Sync Icon to the Icon set
+
 ### 6.2.0 (2022-08-24)
 
 - [814](https://github.com/influxdata/clockface/pull/814): Added Collapse functionality to the Draggable Resizer

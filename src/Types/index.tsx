@@ -353,6 +353,7 @@ export enum IconFont {
   Subscribe = 'Subscribe',
   Subtract = 'Subtract',
   Switch_New = 'Switch_New',
+  Sync = 'Sync',
   Timer = 'Timer',
   Text_New = 'Text_New',
   Trash_New = 'Trash_New',
