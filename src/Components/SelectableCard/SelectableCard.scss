@@ -134,8 +134,6 @@ $selectable-card--label: $cf-grey-75;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  filter: grayscale(0) opacity(100%);
-  transition: filter $cf-transition-default;
 }
 
 /*
@@ -149,10 +147,6 @@ $selectable-card--label: $cf-grey-75;
 .cf-selectable-card__disabled.cf-selectable-card__selected {
   cursor: not-allowed;
   opacity: $cf-disabled-opacity;
-
-  .cf-selectable-card--children {
-    filter: grayscale(0.5) opacity(30%);
-  }
 }
 
 /*
