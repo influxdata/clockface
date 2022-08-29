@@ -1,5 +1,9 @@
 # Changelog
 
+### 6.3.1 (2022-08-24)
+
+- [829](https://github.com/influxdata/clockface/pull/829): Removed CSS filters from Selectable Card
+
 ### 6.3.0 (2022-08-24)
 
 - [828](https://github.com/influxdata/clockface/pull/828): Added a Sync Icon to the Icon set
