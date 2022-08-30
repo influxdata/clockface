@@ -1,5 +1,9 @@
 # Changelog
 
+### 6.3.2 (2022-08-24)
+
+- [830](https://github.com/influxdata/clockface/pull/830): Removed text color change and opacity when inputs are disabled. Accessbility on text readability change.
+
 ### 6.3.1 (2022-08-24)
 
 - [829](https://github.com/influxdata/clockface/pull/829): Removed CSS filters from Selectable Card
