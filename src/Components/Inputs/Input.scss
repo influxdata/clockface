@@ -330,7 +330,5 @@ alternate css for the other sizes */
 .cf-input-field[disabled]:hover {
   border-color: $cf-input-border--disabled;
   background-color: $cf-input-background--disabled;
-  color: $cf-input-text--disabled;
   cursor: not-allowed;
-  opacity: $cf-disabled-opacity;
 }
