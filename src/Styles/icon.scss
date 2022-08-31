@@ -28,6 +28,9 @@
   // Better Font Rendering
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  &.FolderOpen:before {
+    content: "\e956";
+  }
   &.Bill:before {
     content: '\e954';
   }

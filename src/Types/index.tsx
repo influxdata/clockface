@@ -321,6 +321,7 @@ export enum IconFont {
   EyeClosed = 'EyeClosed',
   EyeOpen = 'EyeOpen',
   Flask = 'Flask',
+  FolderOpen = 'FolderOpen',
   FunnelSolid = 'FunnelSolid',
   GraphLine_New = 'GraphLine_New',
   Group = 'Group',
