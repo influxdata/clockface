@@ -1,5 +1,9 @@
 # Changelog
 
+### 6.3.3 (2022-08-24)
+
+- [831](https://github.com/influxdata/clockface/pull/831): Added a FolderOpen Icon
+
 ### 6.3.2 (2022-08-24)
 
 - [830](https://github.com/influxdata/clockface/pull/830): Removed text color change and opacity when inputs are disabled. Accessbility on text readability change.
