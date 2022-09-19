@@ -247,6 +247,9 @@
   &.Save:before {
     content: '\e938';
   }
+  &.SaveOutline:before {
+    content: "\e951";
+  }
   &.Search_New:before {
     content: '\e939';
   }
