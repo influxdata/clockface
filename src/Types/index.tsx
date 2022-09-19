@@ -344,6 +344,7 @@ export enum IconFont {
   Refresh_New = 'Refresh_New',
   Remove_New = 'Remove_New',
   Save = 'Save',
+  SaveOutline = 'SaveOutline',
   Search_New = 'Search_New',
   Share = 'Share',
   Shield = 'Shield',

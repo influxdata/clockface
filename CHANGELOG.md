@@ -1,5 +1,9 @@
 # Changelog
 
+### 6.3.4 (2022-09-19)
+
+- [835](https://github.com/influxdata/clockface/pull/835): Added a SaveOutline Icon
+
 ### 6.3.3 (2022-08-24)
 
 - [831](https://github.com/influxdata/clockface/pull/831): Added a FolderOpen Icon
