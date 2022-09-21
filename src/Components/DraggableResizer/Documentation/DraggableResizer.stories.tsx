@@ -112,11 +112,12 @@ draggableResizerStories.add(
 )
 
 draggableResizerExamplesStories.add(
-  '2 Panels',
+  '3 Panels',
   () => {
-    const [position, updatePosition] = useState<number[]>([0.5])
+    const [position, updatePosition] = useState<number[]>([0.25, 0.5])
     const draggableResizerPanelRef1 = createRef<DraggableResizerPanelRef>()
     const draggableResizerPanelRef2 = createRef<DraggableResizerPanelRef>()
+    const draggableResizerPanelRef3 = createRef<DraggableResizerPanelRef>()
     const defaultBackgroundStyle = {backgroundColor: 'transparent'}
     const defaultBarStyle = {backgroundColor: '#ffffff'}
 
@@ -147,14 +148,28 @@ draggableResizerExamplesStories.add(
           handlePositions={position}
           onChangePositions={handlePositions => updatePosition(handlePositions)}
         >
-          <DraggableResizer.Panel ref={draggableResizerPanelRef1}>
+          <DraggableResizer.Panel
+            ref={draggableResizerPanelRef1}
+            isCollapsible={true}
+          >
             <div className="mockCard">
               <span>1</span>
             </div>
           </DraggableResizer.Panel>
-          <DraggableResizer.Panel ref={draggableResizerPanelRef2}>
+          <DraggableResizer.Panel
+            ref={draggableResizerPanelRef2}
+            isCollapsible={true}
+          >
             <div className="mockCard">
               <span>2</span>
+            </div>
+          </DraggableResizer.Panel>
+          <DraggableResizer.Panel
+            ref={draggableResizerPanelRef3}
+            isCollapsible={true}
+          >
+            <div className="mockCard">
+              <span>3</span>
             </div>
           </DraggableResizer.Panel>
         </DraggableResizer>
@@ -226,7 +241,10 @@ draggableResizerExamplesStories.add(
               <span>2</span>
             </div>
           </DraggableResizer.Panel>
-          <DraggableResizer.Panel ref={draggableResizerPanelRef3}>
+          <DraggableResizer.Panel
+            ref={draggableResizerPanelRef3}
+            isCollapsible={true}
+          >
             <div className="mockCard">
               <span>3</span>
             </div>

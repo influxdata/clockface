@@ -48,6 +48,8 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
   backgroundStyle,
   handleBarStyle,
 }) => {
+  const PANEL_COUNT = React.Children.toArray(children).length
+
   const [startPosition] = useState<number[]>(handlePositions)
   const [dragIndex, setDragIndex] = useState<number>(NULL_DRAG)
 
@@ -131,7 +133,9 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
 
   const calculateCollapsePosition = (direction: number, dragIndex: number) => {
     const totalDrag = handlePositions.length - 1
-    const directionIndex = direction === 0 ? dragIndex : dragIndex + 2
+    const directionOffset = PANEL_COUNT % 2 == 0 ? 2 : 3
+    const directionIndex =
+      direction === 0 ? dragIndex : dragIndex + directionOffset
     const currentPosition = handlePositions[dragIndex]
     let collapsedPosition = directionIndex * 0.25
 
