@@ -182,7 +182,6 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
         newPositions[i] = newPos
       }
     }
-    console.log('output', newPositions)
     onChangePositions(newPositions)
   }
 
