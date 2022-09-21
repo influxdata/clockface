@@ -1,5 +1,9 @@
 # Changelog
 
+### 6.3.5 (2022-09-19)
+
+- [835](https://github.com/influxdata/clockface/pull/840): Fixed a bug with odd numbered collapsible panels. Last panel would not collapse.
+
 ### 6.3.4 (2022-09-19)
 
 - [835](https://github.com/influxdata/clockface/pull/835): Added a SaveOutline Icon
