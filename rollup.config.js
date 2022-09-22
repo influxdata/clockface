@@ -1,3 +1,5 @@
+import {writeFileSync} from 'fs'
+
 import {nodeResolve} from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import sourceMaps from 'rollup-plugin-sourcemaps'
@@ -15,7 +17,9 @@ let plugins = [
   commonjs(),
   ts(),
   sass({
-    output: 'dist/index.css',
+    output: (styles) => {
+      writeFileSync('dist/index.css', `@charset "UTF-8"; ${styles}`)
+    },
     options: {
       outputStyle: isProductionBuild ? 'compressed' : 'expanded',
     },
