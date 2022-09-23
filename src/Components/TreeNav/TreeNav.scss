@@ -32,7 +32,7 @@
   }
 }
 
-$cf-tree-nav__header-height: 60px;
+$cf-tree-nav__header-height: 70px;
 
 .cf-tree-nav--menu {
   position: absolute;
@@ -263,6 +263,9 @@ a.cf-tree-nav--item-block:active {
   &:focus {
     color: $cf-tree-nav__text-hover;
   }
+  margin-left: 5px;
+  //display: flex;
+  //justify-content: center;
 }
 
 .cf-tree-nav--square {
@@ -271,6 +274,7 @@ a.cf-tree-nav--item-block:active {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 
   .cf-icon {
     font-size: 1.5em;
