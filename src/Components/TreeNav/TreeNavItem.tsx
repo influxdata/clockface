@@ -20,7 +20,6 @@ export interface TreeNavItemProps extends Omit<StandardFunctionProps, 'id'> {
   active?: boolean
   /** Optional link element. Will override onClick prop */
   linkElement?: RenderLinkElement
-
   isTreeNavCollapsed?: boolean
 }
 
