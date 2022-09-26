@@ -1,5 +1,9 @@
 # Changelog
 
+### 6.3.7 (2022-09-26)
+
+- [842](https://github.com/influxdata/clockface/pull/842): Labels for Navigation Icons
+
 ### 6.3.6 (2022-09-22)
 
 - [841](https://github.com/influxdata/clockface/pull/841): Inject @charset: UTF-8 into built CSS

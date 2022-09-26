@@ -20,6 +20,7 @@ export interface TreeNavItemProps extends Omit<StandardFunctionProps, 'id'> {
   active?: boolean
   /** Optional link element. Will override onClick prop */
   linkElement?: RenderLinkElement
+  isTreeNavCollapsed?: boolean
 }
 
 export type TreeNavItemRef = HTMLButtonElement
@@ -37,6 +38,8 @@ export const TreeNavItem = forwardRef<TreeNavItemRef, TreeNavItemProps>(
       children = null,
       className,
       linkElement,
+      shortLabel,
+      isTreeNavCollapsed = true,
     },
     ref
   ) => {
@@ -54,7 +57,21 @@ export const TreeNavItem = forwardRef<TreeNavItemRef, TreeNavItemProps>(
     if (linkElement) {
       const linkItems = (
         <>
-          <div className="cf-tree-nav--square">{icon}</div>
+          <div className="cf-tree-nav--square">
+            {icon}
+            {isTreeNavCollapsed && (
+              <span
+                style={{
+                  fontSize: '9px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                }}
+                className={'cf-tree-nav--short-label'}
+              >
+                {shortLabel}
+              </span>
+            )}
+          </div>
           <div className="cf-tree-nav--label">{label}</div>
         </>
       )
