@@ -29,7 +29,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   &.FolderOpen:before {
-    content: "\e956";
+    content: '\e956';
   }
   &.Bill:before {
     content: '\e954';
@@ -38,13 +38,13 @@
     content: '\e950';
   }
   &.PieChart:before {
-    content: '\e951';
+    content: '\e957';
   }
   &.CurrencyDollar:before {
     content: '\e952';
   }
   &.Sync:before {
-    content: "\e955";
+    content: '\e955';
   }
   &.Subtract:before {
     content: '\e953';
@@ -248,7 +248,7 @@
     content: '\e938';
   }
   &.SaveOutline:before {
-    content: "\e951";
+    content: '\e951';
   }
   &.Search_New:before {
     content: '\e939';

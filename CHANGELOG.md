@@ -1,5 +1,8 @@
 # Changelog
 
+### 6.3.7 (2022-09-26)
+
+- [835](https://github.com/influxdata/clockface/pull/840): Some Icons were rendering the wrong font files. This fixes it.
 ### 6.3.6 (2022-09-22)
 
 - [841](https://github.com/influxdata/clockface/pull/841): Inject @charset: UTF-8 into built CSS
