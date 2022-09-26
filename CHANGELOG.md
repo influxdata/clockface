@@ -1,12 +1,15 @@
 # Changelog
 
-### 6.3.6 (2022-09-26)
+### 6.3.7 (2022-09-26)
 
 - [835](https://github.com/influxdata/clockface/pull/840): Some Icons were rendering the wrong font files. This fixes it.
+### 6.3.6 (2022-09-22)
+
+- [841](https://github.com/influxdata/clockface/pull/841): Inject @charset: UTF-8 into built CSS
 
 ### 6.3.5 (2022-09-19)
 
-- [835](https://github.com/influxdata/clockface/pull/840): Fixed a bug with odd numbered collapsible panels. Last panel would not collapse.
+- [840](https://github.com/influxdata/clockface/pull/840): Fixed a bug with odd numbered collapsible panels. Last panel would not collapse.
 
 ### 6.3.4 (2022-09-19)
 
