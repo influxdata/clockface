@@ -29,28 +29,31 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   &.FolderOpen:before {
-    content: "\e956";
+    content: '\e956';
   }
-  &.Bill:before {
-    content: '\e954';
+  &.Timer:before {
+    content: '\e94f';
   }
   &.Logout:before {
     content: '\e950';
   }
-  &.PieChart:before {
+  &.SaveOutline:before {
     content: '\e951';
+  }
+  &.PieChart:before {
+    content: '\e957';
   }
   &.CurrencyDollar:before {
     content: '\e952';
   }
   &.Sync:before {
-    content: "\e955";
+    content: '\e955';
+  }
+  &.Bill:before {
+    content: '\e954';
   }
   &.Subtract:before {
     content: '\e953';
-  }
-  &.Timer:before {
-    content: '\e94f';
   }
   &.CaretOutlineRight:before {
     content: '\e94b';
@@ -61,7 +64,7 @@
   &.CollapseRight:before {
     content: '\e94d';
   }
-  &.DoubleCaretVertical:before {
+  &.ChangeState:before {
     content: '\e94e';
   }
   &.QuestionMark_Outline:before {
@@ -246,9 +249,6 @@
   }
   &.Save:before {
     content: '\e938';
-  }
-  &.SaveOutline:before {
-    content: "\e951";
   }
   &.Search_New:before {
     content: '\e939';
