@@ -31,14 +31,11 @@
   &.FolderOpen:before {
     content: '\e956';
   }
-  &.Timer:before {
-    content: '\e94f';
+  &.Bill:before {
+    content: '\e954';
   }
   &.Logout:before {
     content: '\e950';
-  }
-  &.SaveOutline:before {
-    content: '\e951';
   }
   &.PieChart:before {
     content: '\e957';
@@ -49,11 +46,11 @@
   &.Sync:before {
     content: '\e955';
   }
-  &.Bill:before {
-    content: '\e954';
-  }
   &.Subtract:before {
     content: '\e953';
+  }
+  &.Timer:before {
+    content: '\e94f';
   }
   &.CaretOutlineRight:before {
     content: '\e94b';
@@ -249,6 +246,9 @@
   }
   &.Save:before {
     content: '\e938';
+  }
+  &.SaveOutline:before {
+    content: '\e951';
   }
   &.Search_New:before {
     content: '\e939';
