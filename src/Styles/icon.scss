@@ -29,7 +29,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   &.FolderOpen:before {
-    content: unquote('"\e956"');
+    content: "\e956";
   }
   &.Bill:before {
     content: '\e954';

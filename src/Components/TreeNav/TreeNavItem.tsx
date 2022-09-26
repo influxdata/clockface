@@ -82,7 +82,6 @@ export const TreeNavItem = forwardRef<TreeNavItemRef, TreeNavItemProps>(
         linkItems
       )
 
-      console.log('hererrere')
       return (
         <div className={treeNavItemClass}>
           {link}
@@ -91,7 +90,6 @@ export const TreeNavItem = forwardRef<TreeNavItemRef, TreeNavItemProps>(
       )
     }
 
-    console.log('n ot hrejoiajsodasdas mf')
     return (
       <div className={treeNavItemClass}>
         <button
