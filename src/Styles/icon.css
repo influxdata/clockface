@@ -1,0 +1,298 @@
+/*
+   Icon Font
+   -----------------------------------------------------------------------------
+   Created using a tool called IcoMoon
+   See more at http://icomoon.io
+*/
+
+@font-face {
+  font-family: 'icomoon';
+  src: url('./Fonts/icomoon.eot') format('embedded-opentype');
+  src: url('./Fonts/icomoon.eot') format('embedded-opentype'),
+    url('./Fonts/icomoon.woff2') format('woff2'),
+    url('./Fonts/icomoon.ttf') format('truetype'),
+    url('./Fonts/icomoon.woff') format('woff'),
+    url('./Fonts/icomoon.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="cf-icon-"], [class*="cf-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.cf-icon-FolderOpen:before {
+  content: "\e956";
+}
+.cf-icon-Timer:before {
+  content: "\e94f";
+}
+.cf-icon-Logout:before {
+  content: "\e950";
+}
+.cf-icon-SaveOutline:before {
+  content: "\e951";
+}
+.cf-icon-PieChart:before {
+  content: "\e957";
+}
+.cf-icon-CurrencyDollar:before {
+  content: "\e952";
+}
+.cf-icon-Sync:before {
+  content: "\e955";
+}
+.cf-icon-Bill:before {
+  content: "\e954";
+}
+.cf-icon-Subtract:before {
+  content: "\e953";
+}
+.cf-icon-CaretOutlineRight:before {
+  content: "\e94b";
+}
+.cf-icon-CollapseLeft:before {
+  content: "\e94c";
+}
+.cf-icon-CollapseRight:before {
+  content: "\e94d";
+}
+.cf-icon-DoubleCaretVertical:before {
+  content: "\e94e";
+}
+.cf-icon-QuestionMark_Outline:before {
+  content: "\e94a";
+}
+.cf-icon-Info_New:before {
+  content: "\e949";
+}
+.cf-icon-SidebarClose:before {
+  content: "\e947";
+}
+.cf-icon-SidebarOpen:before {
+  content: "\e948";
+}
+.cf-icon-CaretDown_New:before {
+  content: "\e912";
+}
+.cf-icon-CaretLeft_New:before {
+  content: "\e913";
+}
+.cf-icon-CaretRight_New:before {
+  content: "\e914";
+}
+.cf-icon-CaretUp_New:before {
+  content: "\e915";
+}
+.cf-icon-Play:before {
+  content: "\e900";
+}
+.cf-icon-Pause:before {
+  content: "\e901";
+}
+.cf-icon-EyeOpen:before {
+  content: "\e902";
+}
+.cf-icon-Flask:before {
+  content: "\e903";
+}
+.cf-icon-AddCell_New:before {
+  content: "\e904";
+}
+.cf-icon-QuestionMark:before {
+  content: "\e905";
+}
+.cf-icon-AlertTriangle:before {
+  content: "\e906";
+}
+.cf-icon-Annotate_New:before {
+  content: "\e907";
+}
+.cf-icon-ArrowDown_New:before {
+  content: "\e908";
+}
+.cf-icon-ArrowLeft_New:before {
+  content: "\e909";
+}
+.cf-icon-ArrowRight_New:before {
+  content: "\e90a";
+}
+.cf-icon-BarChart_New:before {
+  content: "\e90b";
+}
+.cf-icon-Bell:before {
+  content: "\e90c";
+}
+.cf-icon-BookCode:before {
+  content: "\e90d";
+}
+.cf-icon-BookOutline:before {
+  content: "\e90e";
+}
+.cf-icon-Braces:before {
+  content: "\e90f";
+}
+.cf-icon-BucketSolid:before {
+  content: "\e910";
+}
+.cf-icon-Calendar:before {
+  content: "\e911";
+}
+.cf-icon-Chat:before {
+  content: "\e916";
+}
+.cf-icon-Checkmark_New:before {
+  content: "\e917";
+}
+.cf-icon-CircleThick:before {
+  content: "\e918";
+}
+.cf-icon-Clipboard_New:before {
+  content: "\e919";
+}
+.cf-icon-Clock_New:before {
+  content: "\e91a";
+}
+.cf-icon-Cloud:before {
+  content: "\e91b";
+}
+.cf-icon-CogOutline_New:before {
+  content: "\e91c";
+}
+.cf-icon-CogSolid_New:before {
+  content: "\e91d";
+}
+.cf-icon-Coppercoin:before {
+  content: "\e91e";
+}
+.cf-icon-CrownSolid_New:before {
+  content: "\e91f";
+}
+.cf-icon-Cube:before {
+  content: "\e920";
+}
+.cf-icon-CuboSolid:before {
+  content: "\e921";
+}
+.cf-icon-Cubouniform:before {
+  content: "\e922";
+}
+.cf-icon-Darkmode_New:before {
+  content: "\e923";
+}
+.cf-icon-DashH:before {
+  content: "\e924";
+}
+.cf-icon-Download_New:before {
+  content: "\e925";
+}
+.cf-icon-ExpandB:before {
+  content: "\e926";
+}
+.cf-icon-Export_New:before {
+  content: "\e927";
+}
+.cf-icon-EyeClosed:before {
+  content: "\e928";
+}
+.cf-icon-FunnelSolid:before {
+  content: "\e929";
+}
+.cf-icon-GraphLine_New:before {
+  content: "\e92a";
+}
+.cf-icon-Group:before {
+  content: "\e92b";
+}
+.cf-icon-History:before {
+  content: "\e92c";
+}
+.cf-icon-Duplicate_New:before {
+  content: "\e92d";
+}
+.cf-icon-Install:before {
+  content: "\e92e";
+}
+.cf-icon-Layers:before {
+  content: "\e92f";
+}
+.cf-icon-Lightmode_New:before {
+  content: "\e930";
+}
+.cf-icon-Link:before {
+  content: "\e931";
+}
+.cf-icon-Lock:before {
+  content: "\e932";
+}
+.cf-icon-More:before {
+  content: "\e933";
+}
+.cf-icon-Pencil:before {
+  content: "\e934";
+}
+.cf-icon-Plus_New:before {
+  content: "\e935";
+}
+.cf-icon-Refresh_New:before {
+  content: "\e936";
+}
+.cf-icon-Remove_New:before {
+  content: "\e937";
+}
+.cf-icon-Save:before {
+  content: "\e938";
+}
+.cf-icon-Search_New:before {
+  content: "\e939";
+}
+.cf-icon-Share:before {
+  content: "\e93a";
+}
+.cf-icon-Shield:before {
+  content: "\e93b";
+}
+.cf-icon-Star:before {
+  content: "\e93c";
+}
+.cf-icon-StarSmile:before {
+  content: "\e93d";
+}
+.cf-icon-Subscribe:before {
+  content: "\e93e";
+}
+.cf-icon-Switch_New:before {
+  content: "\e93f";
+}
+.cf-icon-Text_New:before {
+  content: "\e940";
+}
+.cf-icon-Trash_New:before {
+  content: "\e941";
+}
+.cf-icon-Undo:before {
+  content: "\e942";
+}
+.cf-icon-Upload_New:before {
+  content: "\e943";
+}
+.cf-icon-Upload_Outline:before {
+  content: "\e944";
+}
+.cf-icon-User:before {
+  content: "\e945";
+}
+.cf-icon-Zap:before {
+  content: "\e946";
+}
