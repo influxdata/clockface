@@ -17,7 +17,7 @@ import {
 
 const TIME_INPUT_DROPDOWN_SIZE = {
   xs: '60px',
-  sm: '66px',
+  sm: '75px',
   md: '70px',
   lg: '90px',
 }
