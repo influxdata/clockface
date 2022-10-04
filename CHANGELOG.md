@@ -1,8 +1,13 @@
 # Changelog
 
+### 6.3.8 (2022-10-04)
+
+- [857](https://github.com/influxdata/clockface/pull/857): (TimeInput): Fix the dropdown button width to accomodate for multi-character units
+
 ### 6.3.7 (2022-09-26)
 
-- [835](https://github.com/influxdata/clockface/pull/840): Some Icons were rendering the wrong font files. This fixes it.
+- [844](https://github.com/influxdata/clockface/pull/844): Some Icons were rendering the wrong font files. This fixes it.
+
 ### 6.3.6 (2022-09-22)
 
 - [841](https://github.com/influxdata/clockface/pull/841): Inject @charset: UTF-8 into built CSS
