@@ -4,7 +4,7 @@ import marked from 'marked'
 
 // Storybook
 import {storiesOf} from '@storybook/react'
-import {boolean, object, select, withKnobs} from '@storybook/addon-knobs'
+import {boolean, object, withKnobs} from '@storybook/addon-knobs'
 
 // Components
 import {Accordion, AccordionRef} from '../'
@@ -18,14 +18,12 @@ import {
   AlignItems,
   ComponentSize,
   FlexDirection,
-  Direction,
   InputToggleType,
   JustifyContent,
   HeadingElement,
 } from '../../../Types'
 import {FlexBox} from '../../FlexBox'
 import {AccordionBodyItem} from '../AccordionBodyItem'
-import {mapEnumKeys} from '../../../Utils/storybook'
 import {Heading} from '../../Typography'
 
 const accordionStories = storiesOf(
@@ -283,9 +281,6 @@ accordionStories.add(
         style={{justifyContent: 'none', alignItems: 'start', display: 'block'}}
       >
         <Accordion
-          iconPlacement={
-            Direction[select('Icon Placement', mapEnumKeys(Direction), 'Left')]
-          }
           expanded={boolean('expanded', false)}
           disabled={disabled}
           style={object('style', {})}
@@ -328,9 +323,6 @@ accordionStories.add(
           </Accordion.AccordionBodyItem>
         </Accordion>
         <Accordion
-          iconPlacement={
-            Direction[select('Icon Placement', mapEnumKeys(Direction), 'Left')]
-          }
           expanded={boolean('expanded', false)}
           disabled={disabled}
           style={object('style', {})}
@@ -399,9 +391,6 @@ accordionStories.add(
       >
         {' '}
         <Accordion
-          iconPlacement={
-            Direction[select('Icon Placement', mapEnumKeys(Direction), 'Left')]
-          }
           expanded={boolean('expanded', false)}
           disabled={disabled}
           style={object('style', {})}
@@ -411,9 +400,14 @@ accordionStories.add(
           </Accordion.AccordionHeader>
           <Accordion.AccordionBodyItem>
             <span>
-              This is your detailed body. This is your detailed body. This is
-              your detailed body. This is your detailed body. This is your
-              detailed body. This is your detailed body.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+              pretium neque eget semper tempor. Maecenas ultricies est a finibus
+              tincidunt. Duis rutrum fermentum hendrerit. Aliquam erat volutpat.
+              Nulla hendrerit ante nunc, ut suscipit nunc auctor eu. Integer
+              vehicula arcu et urna consectetur auctor. Integer a purus ac leo
+              molestie facilisis sit amet ac sem. Nam eget sapien ut nisi
+              molestie iaculis at non augue. Cras dignissim condimentum est, nec
+              molestie tortor placerat maximus. Integer et vulputate nibh.
             </span>
           </Accordion.AccordionBodyItem>
         </Accordion>
@@ -448,9 +442,6 @@ accordionFamilyStories.add(
         style={{justifyContent: 'none', alignItems: 'start', display: 'block'}}
       >
         <Accordion
-          iconPlacement={
-            Direction[select('Icon Placement', mapEnumKeys(Direction), 'Left')]
-          }
           expanded={boolean('expanded', false)}
           disabled={disabled}
           style={object('style', {})}
@@ -465,14 +456,14 @@ accordionFamilyStories.add(
           </Accordion.AccordionHeader>
           <Accordion.AccordionBodyItem>
             <span>
-              This is your detailed body. This is your detailed body. This is
-              your detailed body. This is your detailed body. This is your
-              detailed body. This is your detailed body.This is your detailed
-              body. This is your detailed body. This is your detailed body. This
-              is your detailed body. This is your detailed body. This is your
-              detailed body.This is your detailed body. This is your detailed
-              body. This is your detailed body. This is your detailed body. This
-              is your detailed body. This is your detailed body.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+              pretium neque eget semper tempor. Maecenas ultricies est a finibus
+              tincidunt. Duis rutrum fermentum hendrerit. Aliquam erat volutpat.
+              Nulla hendrerit ante nunc, ut suscipit nunc auctor eu. Integer
+              vehicula arcu et urna consectetur auctor. Integer a purus ac leo
+              molestie facilisis sit amet ac sem. Nam eget sapien ut nisi
+              molestie iaculis at non augue. Cras dignissim condimentum est, nec
+              molestie tortor placerat maximus. Integer et vulputate nibh.
             </span>
           </Accordion.AccordionBodyItem>
         </Accordion>
