@@ -34,6 +34,13 @@ export const AccordionHeader = forwardRef<
     [`cf-accordion--header--clickable`]: context.hasBody && !context.isDisabled,
   })
 
+  const AccordionHeaderContentClassName = classnames(
+    'cf-accordion--header--content',
+    {
+      ['cf-accordion--header--content--no-body']: !context.hasBody,
+    }
+  )
+
   const toggleExpand = () => {
     if (!context.isDisabled) {
       context.setExpanded(!context.isExpanded)
@@ -59,28 +66,10 @@ export const AccordionHeader = forwardRef<
             'cf-accordion--icon-container cf-accordion--icon-container-left'
           }
         >
-          <Icon
-            glyph={IconFont.CaretDown_New}
-            className={AccordionHeaderCaretClassName}
-          />
+          <Icon glyph={caretIcon} className={AccordionHeaderCaretClassName} />
         </div>
       )}
-      <div className={'cf-accordion--header--content'}>{children}</div>
-      {context.iconPlacementPosition === Direction.Right && (
-        <div
-          onClick={() => {
-            context.setExpanded(!context.isExpanded)
-          }}
-          className={
-            'cf-accordion--icon-container cf-accordion--icon-container-right'
-          }
-        >
-          <Icon
-            glyph={IconFont.CaretDown_New}
-            className={AccordionHeaderCaretClassName}
-          />
-        </div>
-      )}
+      <div className={AccordionHeaderContentClassName}>{children}</div>
     </button>
   )
 })
