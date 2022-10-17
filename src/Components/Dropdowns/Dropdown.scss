@@ -43,6 +43,7 @@ $dropdown-item--padding-v: $cf-space-2xs;
   border-radius: $cf-radius;
   box-shadow: 0 2px 5px 0.6px rgba($g0-obsidian, 0.2);
   padding: $cf-space-2xs;
+  border: rgba(255, 255, 255, 0.05) solid $cf-border;
 }
 
 .cf-dropdown-menu--contents {
@@ -52,6 +53,8 @@ $dropdown-item--padding-v: $cf-space-2xs;
   flex-direction: column;
   align-items: stretch;
   cursor: pointer;
+  margin-right: 2px;
+  margin-left: 1px;
 }
 
 /*
@@ -69,10 +72,18 @@ $dropdown-item--padding-v: $cf-space-2xs;
 .cf-dropdown-divider {
   @include dropdownItemStyles();
   font-weight: $cf-font-weight--medium;
+  text-transform: uppercase;
+  color: #88889b;
+  padding-bottom: 4px;
+  border-bottom: $cf-grey-4 1px solid;
+  margin-bottom: 4px;
 
   &.line {
     padding: 0;
     height: $cf-border;
+    background: $cf-grey-4;
+    margin: 8px 0;
+    width: 100%;
   }
 
   &:hover {
@@ -85,6 +96,7 @@ $dropdown-item--padding-v: $cf-space-2xs;
   color: $g20-white;
   position: relative;
   border-radius: $cf-radius;
+  margin-top: $cf-space-3xs;
 
   &.cf-dropdown-link-item {
     padding: 0;
@@ -292,7 +304,9 @@ $dropdown-item--padding-v: $cf-space-2xs;
   }
 
   .cf-dropdown-item.active:not(.cf-dropdown-item__disabled) {
-    background-color: $active;
+    background-color: $cf-martinique;
+    border: 1px $cf-lavender solid;
+    border-radius: $cf-border;
   }
 }
 
@@ -309,7 +323,7 @@ $dropdown-item--padding-v: $cf-space-2xs;
 }
 
 .cf-dropdown__onyx {
-  @include dropdownMenuColor($c-pool);
+  @include dropdownMenuColor($cf-lavender);
 }
 
 .cf-dropdown__none {
