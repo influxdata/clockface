@@ -299,7 +299,7 @@ $dropdown-item--padding-v: $cf-space-2xs;
 
   .cf-dropdown-item:not(.cf-dropdown-item__disabled):hover,
   .cf-dropdown-item:not(.cf-dropdown-item__disabled):focus {
-    background-color: rgba($cf-grey-95, 0.1);
+    background-color: rgba($cf-grey-95, 0.09);
     outline: none;
   }
 
