@@ -650,12 +650,12 @@ $cf-scrollbar-offset: 3px;
 
 // Blur
 %backdrop-blur {
-  -webkit-backdrop-filter: blur(28px);
-  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
 }
 
 %backdrop-bg {
-  background-color: rgba($cf-grey-15, 0.9);
+  background-color: rgba(26, 28, 43, 0.7);
 
   @supports (
     (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
