@@ -222,7 +222,12 @@
 
 .cf-button-primary,
 .cf-button-success {
-  @include buttonColorModifier($cf-turquoise, $cf-turquoise, $cf-grey-1, $cf-grey-1);
+  @include buttonColorModifier(
+    $cf-turquoise,
+    $cf-turquoise,
+    $cf-grey-1,
+    $cf-grey-1
+  );
 }
 
 .cf-button-tertiary {
@@ -237,10 +242,15 @@
 
 .cf-button-warning,
 .cf-button-danger {
-  @include buttonColorModifier($cf-carnation, $cf-carnation, $cf-grey-1, $cf-grey-1);
+  @include buttonColorModifier(
+    $cf-carnation,
+    $cf-carnation,
+    $cf-grey-1,
+    $cf-grey-1
+  );
 
-  &:focus{
-    @include focus-shadow($cf-carnation)
+  &:focus {
+    @include focus-shadow($cf-carnation);
   }
 }
 

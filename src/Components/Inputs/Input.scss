@@ -133,6 +133,7 @@ alternate css for the other sizes */
       &:before,
       &:after {
         width: $cf-form-sm-font;
+        background: $cf-input-text--default;
       }
     }
   }
