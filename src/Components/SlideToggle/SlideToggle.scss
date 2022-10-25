@@ -45,8 +45,6 @@ $slide-toggle--gap: 3px;
     transform $cf-transition-default;
   transform: translate(0, -50%);
   border-radius: 50%;
-  box-shadow: 0 0 $slide-toggle--gap ($slide-toggle--gap * 0.5)
-    rgba($cf-grey-5, 0.25);
   background-color: $cf-grey-75;
   left: 10%;
 
@@ -62,6 +60,7 @@ $slide-toggle--gap: 3px;
 .cf-slide-toggle.active .cf-slide-toggle--knob {
   transform: translate(100%, -50%);
   background-color: $cf-white;
+  outline: rgba(0,0,0, 0.2) solid 1px;
 }
 
 /*
@@ -123,7 +122,7 @@ $slide-toggle--gap: 3px;
 .cf-slide-toggle {
   &.cf-slide-toggle-default,
   &.cf-slide-toggle-primary {
-    @include slideToggleColorModifier($c-pool);
+    @include slideToggleColorModifier($cf-lavender);
   }
   &.cf-slide-toggle-secondary {
     @include slideToggleColorModifier($c-star);
@@ -132,7 +131,7 @@ $slide-toggle--gap: 3px;
     @include slideToggleColorModifier($c-rainforest);
   }
   &.cf-slide-toggle-danger {
-    @include slideToggleColorModifier($c-curacao);
+    @include slideToggleColorModifier($cf-carnation);
   }
   &.cf-slide-toggle-warning {
     @include slideToggleColorModifier($c-pineapple);

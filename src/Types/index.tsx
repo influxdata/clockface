@@ -179,6 +179,7 @@ export enum ButtonType {
 }
 
 export enum InfluxColors {
+  Lavender = '#9394FF',
   // Grey
   Grey5 = '#07070e',
   Grey15 = '#1a1a2a',

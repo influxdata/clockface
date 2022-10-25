@@ -170,7 +170,7 @@ export const generateRangeSliderTrackFillStyle = (
 
   const fillColor = {
     default: InfluxColors.Graphite,
-    primary: InfluxColors.Pool,
+    primary: InfluxColors.Lavender,
     secondary: InfluxColors.Star,
     success: InfluxColors.Rainforest,
     warning: InfluxColors.Pineapple,
