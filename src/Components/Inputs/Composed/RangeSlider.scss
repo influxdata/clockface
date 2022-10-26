@@ -329,7 +329,7 @@ $slider-hover: $g17-whisper;
   @include rangeSliderColorModifier($g7-graphite, $g8-storm, $g9-mountain);
 }
 .cf-range-slider__primary {
-  @include rangeSliderColorModifier($c-pool, $c-laser, $c-hydrogen);
+  @include rangeSliderColorModifier($cf-lavender, $cf-lavender, $cf-lavender);
 }
 .cf-range-slider__secondary {
   @include rangeSliderColorModifier($c-star, $c-comet, $c-potassium);

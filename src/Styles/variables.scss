@@ -14,9 +14,11 @@ $cf-white: #ffffff;
 
 // Brand Colors
 $cf-turquoise: #5ee4e4;
-$cf-lavender: #c77bea;
+$cf-lavender: #9394FF;
 $cf-hot-pink: #f863b0;
 $cf-chartreuse: #d6f622;
+
+$cf-green: #53E51A;
 
 // Utility Colors
 $cf-lime-green: #51d91c;
@@ -335,9 +337,9 @@ $cf-input-border--focused: rgba($cf-turquoise, 0.75);
 $cf-input-border--hover: $g5-pepper;
 $cf-input-border--disabled: $g4-onyx;
 
-$cf-input-border--error: $c-fire;
-$cf-input-border--error-hover: $c-fire;
-$cf-input-border--error-focused: $c-fire;
+$cf-input-border--error: $cf-carnation;
+$cf-input-border--error-hover: $cf-carnation;
+$cf-input-border--error-focused: $cf-carnation;
 
 $cf-input--field-z: 1;
 $cf-input--shadow-z: $cf-input--field-z + 1;

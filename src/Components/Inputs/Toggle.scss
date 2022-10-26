@@ -58,7 +58,7 @@
   }
 
   .cf-toggle__checked & {
-    background: $c-pool;
+    background: $cf-lavender;
 
     .cf-toggle--indicator {
       opacity: 1;
@@ -103,6 +103,7 @@
   width: 100%;
   height: 100%;
   transform: translate(-50%, -50%) scale(0.333);
+  outline: rgba(0,0,0, 0.2) solid 1px;
 }
 
 .cf-toggle--icon {
