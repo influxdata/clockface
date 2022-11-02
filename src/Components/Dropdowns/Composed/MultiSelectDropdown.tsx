@@ -1,5 +1,5 @@
 // Libraries
-import React, {MouseEvent, forwardRef} from 'react'
+import React, {MouseEvent, forwardRef, useState} from 'react'
 
 // Components
 import {Dropdown, DropdownRef} from '../'
@@ -17,6 +17,7 @@ import {
   ComponentStatus,
   StandardFunctionProps,
 } from '../../../Types'
+import {Input} from '../../Inputs'
 
 export interface MultiSelectDropdownProps extends StandardFunctionProps {
   /** Text to render in button as currently selected option */
@@ -43,6 +44,9 @@ export interface MultiSelectDropdownProps extends StandardFunctionProps {
   menuMaxHeight?: number
   /** Renders the menu element above the button instead of below */
   dropUp?: boolean
+  /** Enables the search bar in the dropdown menu */
+  isSearchable?: boolean
+  searchbarInputPlaceholder?: string
 }
 
 export type MultiSelectDropdownRef = DropdownRef
@@ -69,12 +73,16 @@ export const MultiSelectDropdown = forwardRef<
       buttonStatus = ComponentStatus.Default,
       menuMaxHeight,
       selectedOptions,
+      isSearchable = false,
+      searchbarInputPlaceholder = 'Search',
     },
     ref
   ) => {
     const buttonText = selectedOptions.length
       ? selectedOptions.join(', ')
       : emptyText
+
+    const [filterString, setFilterString] = useState('')
 
     const button = (
       active: boolean,
@@ -92,32 +100,79 @@ export const MultiSelectDropdown = forwardRef<
       </Dropdown.Button>
     )
 
+    const NoResults = () => (
+      <Dropdown.Item
+        key="no-values-in-filter"
+        testID="nothing-in-filter-typeAhead"
+        disabled={true}
+      >
+        {filterString.length > 0
+          ? `no matches for ${filterString}`
+          : 'No results'}
+      </Dropdown.Item>
+    )
+
+    const handleFiltering = (e: any) => {
+      const filterStr = e.currentTarget.value
+      setFilterString(filterStr)
+    }
+
+    const clearFilter = () => {
+      setFilterString('')
+    }
+
     const menu = () => (
-      <Dropdown.Menu theme={menuTheme} maxHeight={menuMaxHeight}>
-        {options.map(o => {
-          if (o === DROPDOWN_DIVIDER_SHORTCODE) {
-            return <Dropdown.Divider key={o} />
-          }
+      <>
+        {isSearchable && (
+          <Dropdown.Menu theme={menuTheme} style={{paddingBottom: 0}}>
+            <Input
+              placeholder={searchbarInputPlaceholder}
+              value={filterString}
+              onChange={handleFiltering}
+              onClear={clearFilter}
+            />
+          </Dropdown.Menu>
+        )}
+        <Dropdown.Menu theme={menuTheme} maxHeight={menuMaxHeight}>
+          {options.map(o => {
+            // case-insensitive search
+            if (
+              isSearchable &&
+              !o.toUpperCase().includes(filterString.toUpperCase())
+            ) {
+              return
+            }
 
-          if (o.includes(DROPDOWN_DIVIDER_SHORTCODE)) {
-            const dividerText = o.replace(DROPDOWN_DIVIDER_SHORTCODE, '')
-            return <Dropdown.Divider key={o} text={dividerText} />
-          }
+            if (o === DROPDOWN_DIVIDER_SHORTCODE) {
+              return <Dropdown.Divider key={o} />
+            }
 
-          return (
-            <Dropdown.Item
-              key={o}
-              type={indicator}
-              value={o}
-              title={o}
-              selected={selectedOptions.includes(o)}
-              onClick={onSelect}
-            >
-              {o}
-            </Dropdown.Item>
-          )
-        })}
-      </Dropdown.Menu>
+            if (o.includes(DROPDOWN_DIVIDER_SHORTCODE)) {
+              const dividerText = o.replace(DROPDOWN_DIVIDER_SHORTCODE, '')
+              return <Dropdown.Divider key={o} text={dividerText} />
+            }
+
+            return (
+              <Dropdown.Item
+                key={o}
+                type={indicator}
+                value={o}
+                title={o}
+                selected={selectedOptions.includes(o)}
+                onClick={onSelect}
+              >
+                {o}
+              </Dropdown.Item>
+            )
+          })}
+
+          {options.filter(option =>
+            option.toUpperCase().includes(filterString.toUpperCase())
+          ).length === 0 ? (
+            <NoResults />
+          ) : null}
+        </Dropdown.Menu>
+      </>
     )
 
     return (

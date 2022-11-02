@@ -1,5 +1,9 @@
 # Changelog
 
+### 6.3.9 (2022-11-02)
+
+- [885](https://github.com/influxdata/clockface/pull/885): (MultiSelect): make MultiSelectDropdown optionally searchable through `isSearchable` prop
+
 ### 6.3.8 (2022-10-04)
 
 - [857](https://github.com/influxdata/clockface/pull/857): (TimeInput): Fix the dropdown button width to accomodate for multi-character units
@@ -39,6 +43,7 @@
 ### 6.2.0 (2022-08-24)
 
 - [814](https://github.com/influxdata/clockface/pull/814): Added Collapse functionality to the Draggable Resizer
+
 ### 6.1.1 (2022-08-17)
 
 - [823](https://github.com/influxdata/clockface/pull/823): Typeahead Dropdown select text on focus works on all browsers
@@ -54,7 +59,6 @@
 ### 6.0.1 (2022-08-04)
 
 - [804](https://github.com/influxdata/clockface/pull/804): Add DoubleCaretVertical icon and trailingIcon prop to Dropdown.Button
-
 
 ### 6.0.0 (2022-08-01)
 
