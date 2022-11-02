@@ -166,8 +166,9 @@ export const MultiSelectDropdown = forwardRef<
             )
           })}
 
-          {options.filter(option => option.includes(filterString)).length ===
-          0 ? (
+          {options.filter(option =>
+            option.toUpperCase().includes(filterString.toUpperCase())
+          ).length === 0 ? (
             <NoResults />
           ) : null}
         </Dropdown.Menu>
