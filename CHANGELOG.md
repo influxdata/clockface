@@ -1,5 +1,9 @@
 # Changelog
 
+### 6.3.9 (2022-11-02)
+
+- [881](https://github.com/influxdata/clockface/pull/881): (MultiSelect): make MultiSelectDropdown optionally searchable through `isSearchable` prop
+
 ### 6.3.8 (2022-10-04)
 
 - [857](https://github.com/influxdata/clockface/pull/857): (TimeInput): Fix the dropdown button width to accomodate for multi-character units
