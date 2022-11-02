@@ -906,6 +906,11 @@ dropdownComposedStories.add(
           emptyText={text('emptyText', 'None selected')}
           selectedOptions={selectedOptions}
           options={array('options', defaultMultiSelectOptions)}
+          isSearchable={boolean('isSearchable', true)}
+          searchbarInputPlaceholder={text(
+            'searchbarInputPlaceholder',
+            'Search'
+          )}
         />
         <div className="story--test-buttons">
           <button onClick={logRef}>Log Ref</button>
