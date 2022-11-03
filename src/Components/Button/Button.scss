@@ -243,14 +243,14 @@
 .cf-button-warning,
 .cf-button-danger {
   @include buttonColorModifier(
-    $cf-carnation,
-    $cf-carnation,
+                  $cf-red,
+                  $cf-red,
     $cf-grey-1,
     $cf-grey-1
   );
 
   &:focus {
-    @include focus-shadow($cf-carnation);
+    @include focus-shadow($cf-red);
   }
 }
 

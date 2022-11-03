@@ -131,7 +131,7 @@ $slide-toggle--gap: 3px;
     @include slideToggleColorModifier($c-rainforest);
   }
   &.cf-slide-toggle-danger {
-    @include slideToggleColorModifier($cf-carnation);
+    @include slideToggleColorModifier($cf-red);
   }
   &.cf-slide-toggle-warning {
     @include slideToggleColorModifier($c-pineapple);
