@@ -8,13 +8,7 @@
 .cf-tree-nav {
   width: 100%;
   user-select: none;
-  background-image: linear-gradient(
-    13.54deg,
-    rgba($c-pool, 0.1) 36.27%,
-    rgba($c-pool, 0.25) 78.76%,
-    rgba($c-pool, 0.15) 100%
-  );
-  background-color: $cf-grey-5;
+  background-color: $cf-grey-1;
 
   a,
   a:link,
@@ -44,13 +38,7 @@ $cf-tree-nav__header-height: 60px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  background-image: linear-gradient(
-    13.54deg,
-    rgba($c-pool, 0.1) 36.27%,
-    rgba($c-pool, 0.25) 78.76%,
-    rgba($c-pool, 0.15) 100%
-  );
-  background-color: $cf-grey-5;
+  background-color: $cf-grey-1;
   padding: $cf-space-xs $cf-space-2xs;
 }
 
@@ -203,7 +191,7 @@ a.cf-tree-nav--header:active {
 
 .cf-tree-nav--header {
   color: $cf-white;
-  background: rgba($cf-grey-95, 0.05);
+  background: $cf-grey-2;
 
   &:after {
     @include createOverlayBase();
@@ -239,16 +227,19 @@ a.cf-tree-nav--header:active {
     outline: none;
   }
 
-  &:after {
-    @include createOverlayBase();
-    background: linear-gradient(0deg, rgba($c-pool, 0.05), rgba($c-pool, 0.05)),
-      rgba($cf-grey-95, 0.05);
+  &.cf-tree-nav--item__active {
+    background-color: $cf-dark-lavender;
+
+    .cf-tree-nav--label , .cf-tree-nav--square{
+    color: $cf-lavender;
+  }
+    .cf-tree-nav--sub-menu{
+      background-color: $cf-grey-2;
+    }
   }
 
-  .cf-tree-nav:not(.cf-tree-nav__collapsed) &.cf-tree-nav--item__active:after,
-  &:hover:after,
-  &:focus-within:after {
-    opacity: 1;
+  &:hover:not(.cf-tree-nav--item__active){
+    background-color: $cf-grey-3;
   }
 }
 
@@ -363,7 +354,7 @@ a.cf-tree-nav--item-block:active {
 
   &.cf-tree-nav--sub-item__active,
   &:not(.cf-tree-nav--sub-heading):hover {
-    background: rgba($cf-grey-95, $cf-hover-active-opacity);
+    background: rgba($cf-grey-4, 0.5);
     border-radius: $cf-radius;
     cursor: pointer;
   }
@@ -583,13 +574,7 @@ a.cf-tree-nav--user-item:hover {
     position: relative;
     transition: flex-basis $cf-transition-default;
     z-index: $cf-z--nav-menu;
-    background-image: linear-gradient(
-      13.54deg,
-      rgba($c-pool, 0.1) 36.27%,
-      rgba($c-pool, 0.25) 78.76%,
-      rgba($c-pool, 0.15) 100%
-    );
-    background-color: $cf-grey-5;
+    background-color: $cf-grey-1;
   }
 
   .cf-tree-nav--menu,
