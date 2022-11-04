@@ -230,15 +230,16 @@ a.cf-tree-nav--header:active {
   &.cf-tree-nav--item__active {
     background-color: $cf-dark-lavender;
 
-    .cf-tree-nav--label , .cf-tree-nav--square{
-    color: $cf-lavender;
-  }
-    .cf-tree-nav--sub-menu{
+    .cf-tree-nav--label,
+    .cf-tree-nav--square {
+      color: $cf-lavender;
+    }
+    .cf-tree-nav--sub-menu {
       background-color: $cf-grey-2;
     }
   }
 
-  &:hover:not(.cf-tree-nav--item__active){
+  &:hover:not(.cf-tree-nav--item__active) {
     background-color: $cf-grey-3;
   }
 }
