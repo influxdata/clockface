@@ -31,7 +31,6 @@ import {
   ComponentSize,
   Columns,
   HeadingElement,
-  Gradients,
 } from '../../../Types'
 
 // Notes
@@ -224,7 +223,6 @@ funnelPageExampleStories.add(
                 size={ComponentSize.Small}
                 visible={notificationState}
                 icon={IconFont.Zap}
-                gradient={Gradients.KawaiiDesu}
                 onDismiss={handleDismissNotification}
               >
                 Yeehaw I'm a notification

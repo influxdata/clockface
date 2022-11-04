@@ -9,12 +9,11 @@ $cf-notification-screen-margin: $cf-space-s;
 
 .cf-notification {
   margin-bottom: $cf-space-3xs;
-  color: $g18-cloud;
+  color: $cf-white;
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: $cf-radius;
-  font-weight: $cf-font-weight--medium;
+  border-radius: $cf-radius*2;
 
   .cf-notification--contents {
     display: inline-flex;
@@ -30,7 +29,7 @@ $cf-notification-screen-margin: $cf-space-s;
   }
 
   .cf-notification--icon {
-    font-size: 1.125em;
+    font-size: 1.5em;
     margin-right: $cf-space-s;
     display: inline-flex;
     flex-shrink: 0;
@@ -44,8 +43,8 @@ $cf-notification-screen-margin: $cf-space-s;
     background-color: transparent;
     background-image: none;
     border: none;
-    color: $g18-cloud;
-    opacity: 0.6;
+    color: $cf-white;
+    font-size: 1.5em;
     transition: opacity $cf-transition-default, transform $cf-transition-default;
 
     &:active,
@@ -145,17 +144,17 @@ $cf-notification-screen-margin: $cf-space-s;
 */
 
 .cf-notification__dark-text {
-  color: rgba($g2-kevlar, 0.85);
+  color: $cf-grey-1;
 
   .cf-notification--dismiss {
-    color: rgba($g2-kevlar, 0.85);
+    color: $cf-grey-1;
   }
 }
 
 .cf-notification__light-text {
-  color: rgba($g20-white, 0.85);
+  color: $cf-white;
 
   .cf-notification--dismiss {
-    color: rgba($g20-white, 0.85);
+    color: $cf-white;
   }
 }
