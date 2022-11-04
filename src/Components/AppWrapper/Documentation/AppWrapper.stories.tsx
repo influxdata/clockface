@@ -17,11 +17,7 @@ import {TreeNav} from '../../TreeNav'
 import {InfluxDataLogo} from '../../Logo'
 
 // Types
-import {
-  IconFont,
-  ComponentSize,
-  ComponentColor,
-} from '../../../Types'
+import {IconFont, ComponentSize, ComponentColor} from '../../../Types'
 
 // Notes
 import AppWrapperReadme from './AppWrapper.md'
