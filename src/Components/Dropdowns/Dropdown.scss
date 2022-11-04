@@ -305,7 +305,7 @@ $dropdown-item--padding-v: $cf-space-2xs;
 
   .cf-dropdown-item.active:not(.cf-dropdown-item__disabled) {
     background-color: #2a2649;
-    border: 1px $cf-lavender solid;
+    border: $cf-item-selected-border;
     border-radius: $cf-border;
   }
 }
