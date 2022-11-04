@@ -119,7 +119,7 @@ export const generateLabelStyle = (
 
   const color =
     calculateTextColorFromBackground(labelColor) === 'dark'
-      ? InfluxColors.Kevlar
+      ? InfluxColors.Grey1
       : InfluxColors.White
 
   return {
