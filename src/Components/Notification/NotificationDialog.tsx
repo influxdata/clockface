@@ -8,18 +8,14 @@ import {Icon} from '../Icon/Base/Icon'
 // Types
 import {
   IconFont,
-  Gradients,
-  InfluxColors,
   ComponentSize,
   StandardFunctionProps,
   ComponentColor,
+  InfluxColors,
 } from '../../Types'
 
 // Utils
-import {
-  generateBackgroundStyle,
-  calculateTextColorFromBackground,
-} from '../../Utils'
+import {calculateTextColorFromBackground} from '../../Utils'
 
 // Styles
 import './Notification.scss'
@@ -30,10 +26,6 @@ export interface NotificationDialogProps extends StandardFunctionProps {
   icon?: IconFont
   /** Controls if the notification is showing or hidden */
   visible?: boolean
-  /** Optional gradient theme of panel, supercedes backgroundColor prop */
-  gradient?: Gradients
-  /** Notification color */
-  backgroundColor?: InfluxColors | string
   /** If a function is passed in a dismiss button will appear on the notification */
   onDismiss?: (id?: string) => void
   /** Controls padding and font size of the notification */
@@ -54,31 +46,30 @@ export const NotificationDialog = forwardRef<
       size,
       icon,
       style,
-      color = '',
+      color = ComponentColor.Primary,
       testID = 'notification',
       children,
-      gradient,
       onDismiss,
       className,
-      backgroundColor = InfluxColors.Castle,
     },
     ref
   ) => {
-    let internalGradient = gradient
-    if (color) {
-      const notificationThemes = {
-        [ComponentColor.Primary]: Gradients.Info,
-        [ComponentColor.Success]: Gradients.Success,
-        [ComponentColor.Danger]: Gradients.Danger,
-      }
-
-      internalGradient = notificationThemes[color] || Gradients.Info
+    const backgroundColorMap = {
+      [ComponentColor.Primary]: InfluxColors.DarkTurquoise,
+      [ComponentColor.Success]: InfluxColors.DarkGreen,
+      [ComponentColor.Danger]: InfluxColors.DarkRed,
     }
 
-    const textColor = calculateTextColorFromBackground(
-      backgroundColor,
-      internalGradient
-    )
+    const highlightColorMap = {
+      [ComponentColor.Primary]: InfluxColors.Turquoise,
+      [ComponentColor.Success]: InfluxColors.Green,
+      [ComponentColor.Danger]: InfluxColors.Red,
+    }
+    const backgroundColor = backgroundColorMap[color]
+    const borderColor = highlightColorMap[color]
+    const iconColor = highlightColorMap[color]
+
+    const textColor = calculateTextColorFromBackground(backgroundColor)
 
     const notificationDialogClassName = classnames(
       `cf-notification cf-notification__${color || 'default'}`,
@@ -91,12 +82,11 @@ export const NotificationDialog = forwardRef<
       }
     )
 
-    const notificationDialogStyle = generateBackgroundStyle(
+    const notificationDialogStyle = {
       backgroundColor,
-      internalGradient,
-      false,
-      style
-    )
+      border: `solid 1px ${borderColor}`,
+      ...style,
+    }
 
     const handleDismiss = () => {
       if (onDismiss) {
@@ -112,7 +102,13 @@ export const NotificationDialog = forwardRef<
         style={notificationDialogStyle}
         ref={ref}
       >
-        {!!icon && <Icon glyph={icon} className="cf-notification--icon" />}
+        {!!icon && (
+          <Icon
+            glyph={icon}
+            className="cf-notification--icon"
+            style={{color: iconColor}}
+          />
+        )}
         <div className="cf-notification--contents">
           <div
             className="cf-notification--children"
@@ -127,7 +123,7 @@ export const NotificationDialog = forwardRef<
             onClick={handleDismiss}
             className="cf-notification--dismiss"
             testID={`${testID}--dismiss`}
-            size={ComponentSize.ExtraSmall}
+            size={size}
           />
         )}
       </div>

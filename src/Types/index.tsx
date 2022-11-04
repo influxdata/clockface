@@ -179,9 +179,26 @@ export enum ButtonType {
 }
 
 export enum InfluxColors {
+  // Brand Colors
+  Turquoise = '#5ee4e4',
+  Pink = '#f863b0',
+  Chartreuse = '#d6f622',
+
+  DarkTurquoise = '#1e3a46',
+  DarkLavender = '#2a2649',
+  DarkPink = '#482543',
+  DarkChartreuse = '#546120',
+
+  // Utility Colors
+  Green = '#53e51a',
+  Red = '#e65b5b',
+
+  DarkGreen = '#1b381f',
+  DarkRed = '#311c29',
   Lavender = '#9394FF',
-  Grey1 = '#0e101f',
+
   // Grey
+  Grey1 = '#0e101f',
   Grey5 = '#07070e',
   Grey15 = '#1a1a2a',
   Grey25 = '#333346',
@@ -267,7 +284,6 @@ export enum InfluxColors {
   Flan = '#FFF7F4',
 
   // Brand Colors
-  Chartreuse = '#D6F622',
   DeepPurple = '#13002D',
   Magenta = '#BF2FE5',
   Galaxy = '#9394FF',
