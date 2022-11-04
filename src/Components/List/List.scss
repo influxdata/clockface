@@ -5,16 +5,17 @@ $list-item--text-opacity: 0.666;
 
 $list-item--divider-color--light: $cf-grey-25;
 $list-item--divider-text--light: rgba($g20-white, 0.4);
-$list-item--background-light: $c-pool;
+$list-item--background-light: $cf-dark-lavender;
 
 $list-item--divider-color--dark: $cf-grey-55;
 $list-item--divider-text--dark: rgba($g0-obsidian, 0.4);
-$list-item--background-dark: $c-pool;
+$list-item--background-dark: $cf-dark-lavender;
 
 .cf-list {
   overflow: hidden;
   border-radius: $cf-radius;
   padding: $cf-border;
+  background: $cf-grey-2;
 
   .cf-dapper-scrollbars--track-y {
     z-index: 2;
@@ -85,19 +86,21 @@ $list-item--background-dark: $c-pool;
 
 .cf-list-item:hover .cf-list-item--highlight,
 .cf-list-item:focus .cf-list-item--highlight {
-  background-color: rgba($cf-grey-95, 0.1);
+  background-color: $cf-grey-3;
 }
 
 .cf-list-item__active .cf-list-item--highlight__light,
 .cf-list-item__active:hover .cf-list-item--highlight__light,
 .cf-list-item__active:focus .cf-list-item--highlight__light {
   background-color: $list-item--background-light;
+  border: $cf-item-selected-border;
 }
 
 .cf-list-item__active .cf-list-item--highlight__dark,
 .cf-list-item__active:hover .cf-list-item--highlight__dark,
 .cf-list-item__active:focus .cf-list-item--highlight__dark {
   background-color: $list-item--background-dark;
+  border: $cf-item-selected-border;
 }
 
 .cf-list-item__light {
@@ -146,7 +149,7 @@ $list-item--background-dark: $c-pool;
 */
 
 .cf-list-divider {
-  color: $cf-grey-35;
+  color: $cf-grey-5;
   border-radius: $cf-radius-sm;
   border-bottom: $cf-border solid $list-item--divider-color--light;
   white-space: nowrap;
