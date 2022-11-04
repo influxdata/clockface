@@ -102,7 +102,13 @@ export const NotificationDialog = forwardRef<
         style={notificationDialogStyle}
         ref={ref}
       >
-        {!!icon && <Icon glyph={icon} className="cf-notification--icon" style={{color: iconColor}}/>}
+        {!!icon && (
+          <Icon
+            glyph={icon}
+            className="cf-notification--icon"
+            style={{color: iconColor}}
+          />
+        )}
         <div className="cf-notification--contents">
           <div
             className="cf-notification--children"
