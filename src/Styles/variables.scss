@@ -3,7 +3,7 @@
    -----------------------------------------------------------------------------
 */
 
-// New Greys
+// Greys
 $cf-grey-1: #0e101f;
 $cf-grey-2: #1a1c2b;
 $cf-grey-3: #232533;
@@ -14,18 +14,21 @@ $cf-white: #ffffff;
 
 // Brand Colors
 $cf-turquoise: #5ee4e4;
-$cf-lavender: #9394FF;
-$cf-hot-pink: #f863b0;
+$cf-lavender: #9394ff;
+$cf-pink: #f863b0;
 $cf-chartreuse: #d6f622;
 
-$cf-green: #53E51A;
+$cf-dark-turquoise: #1e3a46;
+$cf-dark-lavender: #2a2649;
+$cf-dark-pink: #482543;
+$cf-dark-chartreuse: #546120;
 
 // Utility Colors
-$cf-lime-green: #51d91c;
-$cf-carnation: #e65b5b;
+$cf-green: #53e51a;
+$cf-red: #e65b5b;
 
-// Background Colors
-$cf-martinique: #332548;
+$cf-dark-green: #1b381f;
+$cf-dark-red: #311c29;
 
 // Greys
 $cf-grey-5: #07070e;
@@ -321,9 +324,9 @@ $cf-input-border--focused: rgba($cf-turquoise, 0.75);
 $cf-input-border--hover: $g5-pepper;
 $cf-input-border--disabled: $g4-onyx;
 
-$cf-input-border--error: $cf-carnation;
-$cf-input-border--error-hover: $cf-carnation;
-$cf-input-border--error-focused: $cf-carnation;
+$cf-input-border--error: $cf-red;
+$cf-input-border--error-hover: $cf-red;
+$cf-input-border--error-focused: $cf-red;
 
 $cf-input--field-z: 1;
 $cf-input--shadow-z: $cf-input--field-z + 1;
