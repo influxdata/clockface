@@ -433,7 +433,7 @@ body.sb-show-main {
   hr {
     margin: $cf-marg-d 0;
     height: $cf-border;
-    border-radius: $cf-border / 2;
+    border-radius: $cf-border * 0.5;
     background-color: $g2-kevlar;
   }
 
