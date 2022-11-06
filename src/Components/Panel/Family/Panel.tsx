@@ -49,7 +49,7 @@ export const PanelRoot = forwardRef<PanelRef, PanelProps>(
       children,
       className,
       onDismiss,
-      backgroundColor = InfluxColors.Castle,
+      backgroundColor = InfluxColors.Grey2,
       dismissButtonColor = ComponentColor.Primary,
     },
     ref

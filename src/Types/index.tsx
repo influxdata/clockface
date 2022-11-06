@@ -199,6 +199,10 @@ export enum InfluxColors {
 
   // Grey
   Grey1 = '#0e101f',
+  Grey2 = '#1a1c2b',
+  Grey3 = '#232533',
+  Grey4 = '#4b4f62',
+  Grey6 = '#c2c5db',
   Grey5 = '#07070e',
   Grey15 = '#1a1a2a',
   Grey25 = '#333346',
