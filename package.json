@@ -110,6 +110,7 @@
   },
   "resolutions": {
     "immer": "^9.0.6",
+    "minimatch": "^3.0.5",
     "@wessberg/**/browserslist": "^4.16.5"
   },
   "dependencies": {
