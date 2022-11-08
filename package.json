@@ -111,7 +111,9 @@
   "resolutions": {
     "immer": "^9.0.6",
     "minimatch": "^3.0.5",
-    "@wessberg/**/browserslist": "^4.16.5"
+    "@wessberg/**/browserslist": "^4.16.5",
+    "@storybook/**/react-dev-utils/**/loader-utils": "^2.0.3",
+    "@storybook/**/file-loader/**/loader-utils": "^2.0.3"
   },
   "dependencies": {
     "@types/react-window": "^1.8.5",
