@@ -45,7 +45,7 @@ export const ProgressBar = forwardRef<ProgressBarRef, ProgressBarProps>(
       max = 100,
       label,
       className,
-      color = InfluxColors.White,
+      color = InfluxColors.Lavender,
       barGradient,
       valueText,
       maxText,
@@ -76,7 +76,7 @@ export const ProgressBar = forwardRef<ProgressBarRef, ProgressBarProps>(
         <div className="cf-progress-bar--text">
           <div className="cf-progress-bar--label">{label}</div>
           <div>
-            <span className="cf-progress-bar--value" style={{color: color}}>
+            <span className="cf-progress-bar--value">
               {valueText ?? value}
             </span>
             <span className="cf-progress-bar--max">/{maxText ?? max}</span>

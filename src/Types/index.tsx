@@ -140,6 +140,9 @@ export enum Gradients {
   DangerLight = 'DangerLight',
   Danger = 'Danger',
   DangerDark = 'DangerDark',
+  DarkMode = 'DarkMode',
+  LightMode = 'LightMode',
+  TurquoiseChartreuse = 'TurquoiseChartreuse'
 }
 
 export enum DropdownMenuTheme {

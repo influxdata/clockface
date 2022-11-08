@@ -487,6 +487,22 @@ export const influxGradients = {
     start: InfluxColors.Pool,
     stop: InfluxColors.Pulsar,
   },
+
+  // New gradients
+  LightMode: {
+    start: '#D30971',
+    stop: '#9B2AFF'
+  },
+
+  DarkMode: {
+    start: '#F863B0',
+    stop: '#BC61E6'
+  },
+
+  TurquoiseChartreuse: {
+    start: '#5EE4E4',
+    stop: '#D6F622'
+  }
 }
 
 export const dropdownScrollColors = {
