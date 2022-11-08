@@ -76,7 +76,7 @@ export const ProgressBar = forwardRef<ProgressBarRef, ProgressBarProps>(
         <div className="cf-progress-bar--text">
           <div className="cf-progress-bar--label">{label}</div>
           <div>
-            <span className="cf-progress-bar--value">
+            <span className="cf-progress-bar--value" style={{color: color}}>
               {valueText ?? value}
             </span>
             <span className="cf-progress-bar--max">/{maxText ?? max}</span>
