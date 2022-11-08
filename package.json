@@ -113,7 +113,17 @@
     "minimatch": "^3.0.5",
     "@wessberg/**/browserslist": "^4.16.5",
     "@storybook/**/react-dev-utils/**/loader-utils": "^2.0.3",
-    "@storybook/**/file-loader/**/loader-utils": "^2.0.3"
+    "@storybook/**/file-loader/**/loader-utils": "^2.0.3",
+    "@storybook/**/babel-loader/**/loader-utils": "^1.4.1",
+    "@storybook/**/terser-webpack-plugin/**/loader-utils": "^1.4.1",
+    "@storybook/**/webpack/**/loader-utils": "^1.4.1",
+    "file-loader/**/loader-utils": "^1.4.1",
+    "html-loader/**/loader-utils": "^1.4.1",
+    "raw-loader/**/loader-utils": "^1.4.1",
+    "style-loader/**/loader-utils": "^1.4.1",
+    "sass-loader/**/loader-utils": "^1.4.1",
+    "ts-loader/**/loader-utils": "^1.4.1",
+    "webpack-loader/**/loader-utils": "^1.4.1"
   },
   "dependencies": {
     "@types/react-window": "^1.8.5",
