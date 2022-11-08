@@ -24,24 +24,24 @@
   &.cf-question-mark-tooltip__default {
     background-color: $g13-mist;
   }
-  
+
   &.cf-question-mark-tooltip__primary {
-    background-color: $c-pool;
+    background-color: $cf-turquoise;
   }
-  
+
   &.cf-question-mark-tooltip__secondary {
-    background-color: $c-comet;
+    background-color: $cf-lavender;
   }
-  
+
   &.cf-question-mark-tooltip__success {
-    background-color: $c-rainforest;
+    background-color: $cf-green;
   }
-  
+
   &.cf-question-mark-tooltip__warning {
     background-color: $c-thunder;
   }
-  
+
   &.cf-question-mark-tooltip__danger {
-    background-color: $c-dreamsicle;
+    background-color: $cf-red;
   }
 }

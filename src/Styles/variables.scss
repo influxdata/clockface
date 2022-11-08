@@ -644,8 +644,8 @@ $cf-scrollbar-offset: 3px;
 
 // Blur
 %backdrop-blur {
-  -webkit-backdrop-filter: blur(15px);
-  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
 }
 
 %backdrop-bg {
@@ -658,23 +658,7 @@ $cf-scrollbar-offset: 3px;
   }
 }
 
-%backdrop-blue {
-  background-color: rgba($cf-grey-15, 0.9);
-
-  @supports (
-    (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
-  ) {
-    background: linear-gradient(0deg, rgba($c-pool, 0.05), rgba($c-pool, 0.05)),
-      #{rgba($cf-grey-95, 0.05)};
-  }
-}
-
 %backdrop-blur-dark {
   @extend %backdrop-blur;
   @extend %backdrop-bg;
-}
-
-%backdrop-blur-blue {
-  @extend %backdrop-blur;
-  @extend %backdrop-blue;
 }
