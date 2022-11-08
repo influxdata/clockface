@@ -45,7 +45,7 @@ export const ProgressBar = forwardRef<ProgressBarRef, ProgressBarProps>(
       max = 100,
       label,
       className,
-      color = InfluxColors.White,
+      color = InfluxColors.Lavender,
       barGradient,
       valueText,
       maxText,
