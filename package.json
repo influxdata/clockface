@@ -120,6 +120,7 @@
     "file-loader/**/loader-utils": "^1.4.2",
     "html-loader/**/loader-utils": "^1.4.2",
     "raw-loader/**/loader-utils": "^1.4.2",
+    "resolve-url-loader/**/loader-utils": "^1.4.2",
     "style-loader/**/loader-utils": "^1.4.2",
     "sass-loader/**/loader-utils": "^1.4.2",
     "ts-loader/**/loader-utils": "^1.4.2",
