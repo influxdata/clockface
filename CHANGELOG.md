@@ -1,5 +1,9 @@
 # Changelog
 
+### 6.3.10 (2022-11-22)
+
+- [905](https://github.com/influxdata/clockface/pull/905): Fixed Form Ref export
+
 ### 6.3.9 (2022-11-02)
 
 - [885](https://github.com/influxdata/clockface/pull/885): (MultiSelect): make MultiSelectDropdown optionally searchable through `isSearchable` prop
