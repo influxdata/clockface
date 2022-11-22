@@ -17,6 +17,7 @@ import {mapEnumKeys} from '../../../Utils/storybook'
 // Components
 import {
   Form,
+  FormRef,
   FormBoxRef,
   FormLabelRef,
   FormFooterRef,
@@ -56,7 +57,6 @@ import FormReadme from './Form.md'
 import FormElementReadme from './FormElement.md'
 import FormValidationElementReadme from './FormValidationElement.md'
 import NaturalLanguageFormReadme from './NaturalLanguageForm.md'
-import {FormRef} from '../Form'
 
 const formStories = storiesOf('Components/Forms/Standard', module).addDecorator(
   withKnobs
