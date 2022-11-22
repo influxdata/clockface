@@ -30,7 +30,7 @@ export class Form extends Component<FormProps> {
   }
 }
 
-export {FormProps} from './Form'
+export {FormProps, FormRef} from './Form'
 export * from './FormBox'
 export * from './FormDivider'
 export * from './FormElement'
