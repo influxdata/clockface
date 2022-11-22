@@ -12,4 +12,9 @@ a:active {
   &.cf-button {
     color: $cf-white;
   }
+  &.cf-button-success,
+  &.cf-button-danger,
+  &.cf-button-primary {
+    color: $cf-grey-1;
+  }
 }

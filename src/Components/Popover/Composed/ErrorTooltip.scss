@@ -6,7 +6,7 @@
 */
 
 .cf-error-tooltip {
-  color: $c-fire;
+  color: $cf-red;
   display: inline-flex;
   justify-content: center;
   position: relative;
@@ -15,6 +15,6 @@
 
   &:hover {
     cursor: help;
-    color: $c-curacao;
+    color: rgba($cf-red, 0.85);
   }
 }

@@ -4,6 +4,33 @@
 */
 
 // Greys
+$cf-grey-1: #0e101f;
+$cf-grey-2: #1a1c2b;
+$cf-grey-3: #232533;
+$cf-grey-4: #4b4f62;
+$cf-grey-5: #88889b;
+$cf-grey-6: #c2c5db;
+$cf-white: #ffffff;
+
+// Brand Colors
+$cf-turquoise: #5ee4e4;
+$cf-lavender: #9394ff;
+$cf-pink: #f863b0;
+$cf-chartreuse: #d6f622;
+
+$cf-dark-turquoise: #1e3a46;
+$cf-dark-lavender: #2a2649;
+$cf-dark-pink: #482543;
+$cf-dark-chartreuse: #546120;
+
+// Utility Colors
+$cf-green: #53e51a;
+$cf-red: #e65b5b;
+
+$cf-dark-green: #1b381f;
+$cf-dark-red: #311c29;
+
+// Greys
 $cf-grey-5: #07070e;
 $cf-grey-15: #1a1a2a;
 $cf-grey-25: #333346;
@@ -40,14 +67,12 @@ $g19-ghost: $cf-grey-95;
 $g20-white: $cf-white;
 
 // Reds
-$c-basalt: #2f1f29;
 $c-ruby: #bf3d5e;
 $c-fire: #dc4e58;
 $c-curacao: #f95f53;
 $c-dreamsicle: #ff8564;
 $c-tungsten: #ffb6a0;
 $c-marmelade: #ffdccf;
-$c-flan: #fff7f4;
 
 // Blues
 $c-abyss: #120653;
@@ -67,34 +92,30 @@ $c-star: #be2ee4;
 $c-comet: #ce58eb;
 $c-potassium: #dd84f1;
 $c-moonstone: #ebadf8;
-$c-twilight: #fad9ff;
 
 // Greens
-$c-gypsy: #003e34;
 $c-emerald: #006f49;
 $c-viridian: #009f5f;
 $c-rainforest: #2fa74d;
 $c-honeydew: #67d74e;
 $c-krypton: #9bf445;
 $c-wasabi: #c6f98e;
-$c-mint: #f3ffd6;
 
 // Yellows
-$c-oak: #3f241f;
-$c-topaz: #e85b1c;
 $c-tiger: #f48d38;
 $c-pineapple: #ffb94a;
 $c-thunder: #ffd255;
 $c-sulfur: #ffe480;
 $c-daisy: #fff6b8;
-$c-banana: #fffdde;
 
 // Marketing Brand Colors
-$c-chartreuse: #d6f622;
 $c-magenta: #bf2fe5;
-$c-deeppurple: #13002d;
 $c-galaxy: #9394ff;
-$c-pulsar: #513cc6;
+
+/*
+  List item variables
+*/
+$cf-item-selected-border: 1px $cf-lavender solid;
 
 /*
   State change variables
@@ -262,15 +283,15 @@ $cf-form-lg-font: #{var(--step-1)};
    -----------------------------------------------------------------------------
 */
 
-$cf-button-default-bg: $cf-grey-25;
+$cf-button-default-bg: $cf-grey-3;
 
 /*
    Empty State
    -----------------------------------------------------------------------------
 */
 
-$cf-empty-state-text: $cf-grey-55;
-$cf-empty-state-highlight: $cf-grey-95;
+$cf-empty-state-text: #88889b;
+$cf-empty-state-highlight: $cf-white;
 
 /*
    Animations
@@ -303,14 +324,14 @@ $cf-input-text--focused: $cf-white;
 $cf-input-text--hover: $cf-white;
 $cf-input-text--disabled: $cf-empty-state-text;
 
-$cf-input-border--default: $g5-pepper;
-$cf-input-border--focused: rgba($c-pool, 0.75);
+$cf-input-border--default: $cf-grey-4;
+$cf-input-border--focused: rgba($cf-turquoise, 0.75);
 $cf-input-border--hover: $g5-pepper;
 $cf-input-border--disabled: $g4-onyx;
 
-$cf-input-border--error: $c-fire;
-$cf-input-border--error-hover: $c-fire;
-$cf-input-border--error-focused: $c-fire;
+$cf-input-border--error: $cf-red;
+$cf-input-border--error-hover: $cf-red;
+$cf-input-border--error-focused: $cf-red;
 
 $cf-input--field-z: 1;
 $cf-input--shadow-z: $cf-input--field-z + 1;
@@ -603,11 +624,11 @@ $cf-scrollbar-offset: 3px;
 @mixin panel-shadow {
   box-shadow: 0 1px 4px 1px rgba($g0-obsidian, 0.2);
 }
-@mixin focus-shadow($color: $c-pool) {
+@mixin focus-shadow($color: $cf-turquoise) {
   box-shadow: inset 0 0 0 $cf-border rgba($color, 0.75),
     0px 0px ($cf-border * 2) $color;
 }
-@mixin focus-glow($color: $c-pool) {
+@mixin focus-glow($color: $cf-turquoise) {
   box-shadow: 0px 0px ($cf-border * 2) $color;
 }
 
@@ -623,12 +644,12 @@ $cf-scrollbar-offset: 3px;
 
 // Blur
 %backdrop-blur {
-  -webkit-backdrop-filter: blur(28px);
-  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
 }
 
 %backdrop-bg {
-  background-color: rgba($cf-grey-15, 0.9);
+  background-color: rgba(26, 28, 43, 0.7);
 
   @supports (
     (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
@@ -637,23 +658,7 @@ $cf-scrollbar-offset: 3px;
   }
 }
 
-%backdrop-blue {
-  background-color: rgba($cf-grey-15, 0.9);
-
-  @supports (
-    (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
-  ) {
-    background: linear-gradient(0deg, rgba($c-pool, 0.05), rgba($c-pool, 0.05)),
-      #{rgba($cf-grey-95, 0.05)};
-  }
-}
-
 %backdrop-blur-dark {
   @extend %backdrop-blur;
   @extend %backdrop-bg;
-}
-
-%backdrop-blur-blue {
-  @extend %backdrop-blur;
-  @extend %backdrop-blue;
 }

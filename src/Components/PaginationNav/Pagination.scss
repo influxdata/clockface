@@ -5,8 +5,8 @@
   ------------------------------------------------------------------------------
 */
 
-$cf-pagination--border-color: $g5-pepper;
-$cf-pagination--direction-icon: $g14-chromium;
+$cf-pagination--border-color: $cf-grey-4;
+$cf-pagination--direction-icon: #88889b;
 
 .cf-pagination,
 .cf-pagination-input--container,
@@ -21,6 +21,10 @@ $cf-pagination--direction-icon: $g14-chromium;
   margin-bottom: 0;
   padding: 0;
   list-style: none;
+
+  .cf-icon {
+    font-size: 1.5em;
+  }
 }
 
 // Active State
@@ -40,6 +44,6 @@ $cf-pagination--direction-icon: $g14-chromium;
 
 .cf-pagination-input--item {
   margin: 0 16px;
-  color: $cf-grey-65;
+  color: #88889b;
   font-weight: $cf-font-weight--medium;
 }

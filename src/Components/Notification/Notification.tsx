@@ -7,12 +7,7 @@ import * as easings from 'd3-ease'
 import {NotificationDialog} from './NotificationDialog'
 
 // Types
-import {
-  Alignment,
-  InfluxColors,
-  VerticalAlignment,
-  ComponentSize,
-} from '../../Types'
+import {Alignment, VerticalAlignment, ComponentSize} from '../../Types'
 import {
   NotificationDialogProps,
   NotificationDialogRef,
@@ -52,11 +47,9 @@ export const NotificationRoot = forwardRef<NotificationRef, NotificationProps>(
       visible = true,
       duration = Infinity,
       children,
-      gradient,
       onDismiss,
       className,
       onTimeout,
-      backgroundColor = InfluxColors.Castle,
       verticalAlignment = VerticalAlignment.Top,
       horizontalAlignment = Alignment.Right,
     },
@@ -115,10 +108,8 @@ export const NotificationRoot = forwardRef<NotificationRef, NotificationProps>(
           visible &&
           (props => (
             <NotificationDialog
-              backgroundColor={backgroundColor}
               className={className}
               onDismiss={onDismiss}
-              gradient={gradient}
               testID={testID}
               style={{...style, ...props}}
               size={size}

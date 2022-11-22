@@ -10,7 +10,6 @@ import {
   text,
   select,
   boolean,
-  color,
   number,
   object,
 } from '@storybook/addon-knobs'
@@ -31,7 +30,6 @@ import {Notification, NotificationDialog, NotificationDialogRef} from '../index'
 import {
   IconFont,
   Gradients,
-  InfluxColors,
   Alignment,
   VerticalAlignment,
   ComponentSize,
@@ -231,7 +229,6 @@ notificationStories.add(
             id={notification.id}
             visible={notification.visible}
             icon={notification.icon}
-            gradient={notification.gradient}
             onDismiss={handleDismiss}
             size={ComponentSize.Small}
             horizontalAlignment={notification.horizontalAlign}
@@ -285,15 +282,6 @@ notificationStories.add(
               )
             ]
           }
-          gradient={
-            Gradients[
-              select(
-                'gradient',
-                {None: 'none', ...mapEnumKeys(Gradients)},
-                'GarageBand'
-              )
-            ]
-          }
           color={
             ComponentColor[
               select(
@@ -303,7 +291,6 @@ notificationStories.add(
               )
             ]
           }
-          backgroundColor={color('backgroundColor', `${InfluxColors.Castle}`)}
           onDismiss={boolean('dismissable', true) ? handleClose : undefined}
         >
           <span>{text('text', 'Congrats! The thing has happened!')}</span>

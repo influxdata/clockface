@@ -18,20 +18,20 @@
 
 .cf-list-indicator__dot {
   border-radius: 50%;
-  background-color: rgba($cf-grey-95, 0.1);
+  background-color: $cf-grey-4;
 
   .cf-list-indicator--element {
     border-radius: 50%;
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.25, 0.25);
     transition: transform $cf-transition-default, opacity $cf-transition-default;
-    background-color: $g20-white;
+    background-color: $cf-white;
     width: 0.5em;
     height: 0.5em;
   }
 
   &.cf-list-indicator__selected {
-    background-color: $cf-grey-35;
+    background-color: $cf-lavender;
 
     .cf-list-indicator--element {
       transform: translate(-50%, -50%) scale(1, 1);
@@ -47,7 +47,7 @@
 
 .cf-list-indicator__checkbox {
   border-radius: $cf-border;
-  background-color: rgba($cf-grey-95, 0.1);
+  background-color: $cf-grey-4;
 
   .cf-list-indicator--element {
     width: 0.5em;
@@ -60,7 +60,7 @@
   }
 
   &.cf-list-indicator__selected {
-    background-color: $cf-grey-25;
+    background-color: $cf-lavender;
 
     .cf-list-indicator--element {
       opacity: 1;

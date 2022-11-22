@@ -20,13 +20,7 @@ import {InfluxDBCloudLogo} from '../Components/Logo'
 import {AppWrapper} from '../Components/AppWrapper/AppWrapper'
 
 // Types
-import {
-  ComponentColor,
-  IconFont,
-  ComponentSize,
-  Gradients,
-  Appearance,
-} from '../Types'
+import {ComponentColor, IconFont, ComponentSize, Appearance} from '../Types'
 
 // Notes
 import PortalsReadme from './Portals.md'
@@ -322,7 +316,6 @@ alertStories.add(
                 <Notification
                   icon={IconFont.CrownSolid_New}
                   size={ComponentSize.Small}
-                  gradient={Gradients.PolarExpress}
                 >
                   I am notifying you!
                 </Notification>

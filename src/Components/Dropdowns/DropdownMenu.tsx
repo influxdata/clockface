@@ -61,8 +61,6 @@ export const DropdownMenu = forwardRef<DropdownMenuRef, DropdownMenuProps>(
       [`cf-dropdown__${theme}`]: theme,
     })
 
-    // const {thumbStartColor, thumbStopColor} = getScrollbarColorsFromTheme(theme)
-
     const scrollTop = calculateSelectedPosition(scrollToSelected, children)
 
     const scrollbarsStyle = {

@@ -1,5 +1,5 @@
 // Libraries
-import React, {forwardRef, useState, useEffect} from 'react'
+import React, {forwardRef, useEffect, useState} from 'react'
 import classnames from 'classnames'
 // Styles
 import './Accordion.scss'
@@ -7,8 +7,6 @@ import './Accordion.scss'
 import {Direction, StandardFunctionProps} from '../../Types'
 
 export interface AccordionProps extends StandardFunctionProps {
-  /** Determines whether the expand Icon is at the left, right or doesn't exist. If there is no accordionBody, no icons are shown*/
-  iconPlacement?: Direction
   /** Determines whether the accordion is expanded by default or not */
   expanded?: boolean
   /** Prevents any interaction with this element, including the onClick function */
@@ -46,7 +44,6 @@ export const AccordionRoot = forwardRef<AccordionRef, AccordionProps>(
       style,
       testID = 'accordion',
       children,
-      iconPlacement = Direction.Left,
       className,
       expanded = false,
       disabled = false,
@@ -61,9 +58,6 @@ export const AccordionRoot = forwardRef<AccordionRef, AccordionProps>(
     const [isExpanded, setExpanded] = useState(expanded)
     const [animation, setAnimation] = useState(false)
     const [isDisabled, setDisabled] = useState(disabled)
-    const [iconPlacementPosition, setIconPlacementPosition] = useState(
-      iconPlacement
-    )
 
     useEffect(() => {
       setExpanded(expanded)
@@ -78,10 +72,6 @@ export const AccordionRoot = forwardRef<AccordionRef, AccordionProps>(
         setAnimation(true)
       }
     }, [isExpanded])
-
-    useEffect(() => {
-      setIconPlacementPosition(iconPlacement)
-    }, [iconPlacement])
 
     const accordionBodyContainerClassName = classnames(
       'cf-accordion--body-container',
@@ -106,7 +96,7 @@ export const AccordionRoot = forwardRef<AccordionRef, AccordionProps>(
     const contextState = {
       isExpanded,
       setExpanded,
-      iconPlacementPosition: hasBody ? iconPlacementPosition : Direction.None,
+      iconPlacementPosition: hasBody ? Direction.Left : Direction.None,
       isDisabled,
       onChange: onChangeFunction,
       hasBody: hasBody,

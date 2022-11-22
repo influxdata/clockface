@@ -23,12 +23,6 @@
   color: $cf-input-text--default;
   border: $cf-border solid $cf-input-border--default;
 
-  &:hover {
-    background-color: $cf-input-background--hover;
-    border-color: $cf-input-border--hover;
-    color: $cf-input-text--hover;
-  }
-
   &:focus {
     background-color: $cf-input-background--focused;
     border-color: $cf-input-border--focused;
@@ -133,6 +127,7 @@ alternate css for the other sizes */
       &:before,
       &:after {
         width: $cf-form-sm-font;
+        background: $cf-input-text--default;
       }
     }
   }
@@ -192,7 +187,7 @@ alternate css for the other sizes */
     left: 50%;
     transform: translate(-50%, -50%) scale(1.5, 1.5);
     border-radius: 50%;
-    background: $cf-input-border--focused;
+    background: $cf-lavender;
     z-index: 2;
     opacity: 0;
     transition: opacity $cf-transition-default, transform $cf-transition-default;

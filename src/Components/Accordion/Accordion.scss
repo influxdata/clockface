@@ -7,7 +7,6 @@
 
 .cf-accordion--icon-container {
   position: relative;
-  // min-width: $cf-space-s;
 }
 
 .cf-accordion--icon-container-left {
@@ -40,7 +39,7 @@
   width: 100%;
   min-height: $cf-form-lg-height;
   border-radius: $cf-radius;
-  background-color: $cf-grey-25;
+  background-color: $cf-grey-3;
   align-items: center;
   outline: none;
   padding: $cf-space-s;
@@ -74,6 +73,10 @@
 
 .cf-accordion--header--content {
   width: 100%;
+
+  &--no-body {
+    margin-left: 25px;
+  }
 }
 
 .cf-accordion--body--disabled,
@@ -115,11 +118,11 @@
   @extend .cf-accordion--header;
   min-height: $cf-form-md-height;
   padding: $cf-form-md-padding;
-  background-color: $cf-grey-15;
+  background-color: $cf-grey-2;
   border-radius: 0px;
 
   &:hover {
-    background-color: $cf-grey-15;
+    background-color: $cf-dark-lavender;
   }
 }
 
