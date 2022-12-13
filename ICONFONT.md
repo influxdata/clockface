@@ -34,7 +34,9 @@ When designing an icon the first consideration is whether it will be used in the
 4. Reformat every entry to look like so:
 
 ```
-&.add-cell:before {content: "\e925";}
+&.add-cell:before {
+  content: '\e925';
+}
 ```
 
 5. Copy all entries, then open `src/Styles/icon.scss` and starting from line `32` paste over the existing definitions
