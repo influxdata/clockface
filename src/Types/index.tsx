@@ -334,6 +334,7 @@ export enum IconFont {
   Lock = 'Lock',
   Logout = 'Logout',
   More = 'More',
+  OrganizationChart = 'OrganizationChart',
   Pause = 'Pause',
   Pencil = 'Pencil',
   PieChart = 'PieChart',

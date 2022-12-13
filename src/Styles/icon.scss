@@ -28,6 +28,7 @@
   // Better Font Rendering
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
   &.FolderOpen:before {
     content: '\e956';
   }
@@ -231,6 +232,9 @@
   }
   &.More:before {
     content: '\e933';
+  }
+  &.OrganizationChart:before {
+    content: '\e958';
   }
   &.Pencil:before {
     content: '\e934';

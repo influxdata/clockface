@@ -1,5 +1,9 @@
 # Changelog
 
+### 6.3.11 (2022-12-13)
+
+- [910](https://github.com/influxdata/clockface/pull/910): Add OrganizationChart icon
+
 ### 6.3.10 (2022-11-22)
 
 - [905](https://github.com/influxdata/clockface/pull/905): Fixed Form Ref export
