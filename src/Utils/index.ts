@@ -158,6 +158,7 @@ export const generateTechnoSpinnerStyle = (
 
 export const generateRangeSliderTrackFillStyle = (
   fill: boolean,
+  gradient: boolean,
   min: number,
   max: number,
   value: number,
@@ -182,9 +183,11 @@ export const generateRangeSliderTrackFillStyle = (
 
   const pos = ((value - minVal) / (maxVal - minVal)) * 100
 
+  const fillColorModified = gradient ? chroma(fillColor[color]).darken(2).saturate(2).hex() : fillColor[color]
+
   if (fill) {
     return {
-      background: `linear-gradient(to right, ${fillColor[color]} 0%, ${fillColor[color]} ${pos}%, ${InfluxColors.Pepper} ${pos}%, ${InfluxColors.Pepper} 100%)`,
+      background: `linear-gradient(to right, ${fillColorModified} 0%, ${fillColor[color]} ${pos}%, ${InfluxColors.Pepper} ${pos}%, ${InfluxColors.Pepper} 100%)`,
     }
   }
 

@@ -47,6 +47,8 @@ export interface RangeSliderProps extends StandardFunctionProps {
   color?: ComponentColor
   /** Fill the track before the handle to indicate percentage */
   fill?: boolean
+  /** Add a subtle gradient effect */
+  gradient?: boolean
   /** Displays the min and max values below the slider */
   hideLabels?: boolean
   /** Adds a prefix to labels */
@@ -68,6 +70,7 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
       min = 0,
       max = 100,
       fill = false,
+      gradient= true,
       size = ComponentSize.Small,
       step,
       style,
@@ -109,6 +112,7 @@ export const RangeSlider = forwardRef<RangeSliderRef, RangeSliderProps>(
 
     const inputStyle = generateRangeSliderTrackFillStyle(
       fill,
+      gradient,
       min,
       max,
       value,
