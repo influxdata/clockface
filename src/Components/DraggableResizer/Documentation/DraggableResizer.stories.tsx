@@ -187,7 +187,7 @@ draggableResizerExamplesStories.add(
 )
 
 draggableResizerExamplesStories.add(
-  '4 Panels',
+  '4 Panels, init rightmost collapsed',
   () => {
     const [positions, updatePositions] = useState<number[]>([0.25, 0.5, 0.75])
 
@@ -252,6 +252,7 @@ draggableResizerExamplesStories.add(
           <DraggableResizer.Panel
             ref={draggableResizerPanelRef4}
             isCollapsible={true}
+            collapsed={true}
           >
             <div className="mockCard">
               <span>4</span>
@@ -267,6 +268,86 @@ draggableResizerExamplesStories.add(
   {
     readme: {
       content: marked(DraggableResizerExampleBReadme),
+    },
+  }
+)
+
+draggableResizerExamplesStories.add(
+  '3 Horizontal Panels, init middle collapsed',
+  () => {
+    const [position, updatePosition] = useState<number[]>([0.25, 0.5])
+    const draggableResizerPanelRef1 = createRef<DraggableResizerPanelRef>()
+    const draggableResizerPanelRef2 = createRef<DraggableResizerPanelRef>()
+    const draggableResizerPanelRef3 = createRef<DraggableResizerPanelRef>()
+    const defaultBackgroundStyle = {backgroundColor: 'transparent'}
+    const defaultBarStyle = {backgroundColor: '#ffffff'}
+
+    const logRef = (): void => {
+      /* eslint-disable */
+      console.log(draggableResizerPanelRef1.current)
+      console.log(draggableResizerPanelRef2.current)
+      /* eslint-enable */
+    }
+
+    return (
+      <div className="mockPage padded">
+        <DraggableResizer
+          handleOrientation={
+            Orientation[
+              select(
+                'handleOrientation',
+                mapEnumKeys(Orientation),
+                'Horizontal'
+              )
+            ]
+          }
+          handleGradient={
+            Gradients[
+              Gradients[
+                select('handleGradient', mapEnumKeys(Gradients), 'PastelGothic')
+              ]
+            ]
+          }
+          backgroundStyle={object('backgroundStyle', defaultBackgroundStyle)}
+          handleBarStyle={object('handleBarStyle', defaultBarStyle)}
+          handlePositions={position}
+          onChangePositions={handlePositions => updatePosition(handlePositions)}
+        >
+          <DraggableResizer.Panel
+            ref={draggableResizerPanelRef1}
+            isCollapsible={true}
+          >
+            <div className="mockCard">
+              <span>1</span>
+            </div>
+          </DraggableResizer.Panel>
+          <DraggableResizer.Panel
+            ref={draggableResizerPanelRef2}
+            isCollapsible={true}
+            collapsed={true}
+          >
+            <div className="mockCard">
+              <span>2</span>
+            </div>
+          </DraggableResizer.Panel>
+          <DraggableResizer.Panel
+            ref={draggableResizerPanelRef3}
+            isCollapsible={true}
+          >
+            <div className="mockCard">
+              <span>3</span>
+            </div>
+          </DraggableResizer.Panel>
+        </DraggableResizer>
+        <div className="story--test-buttons">
+          <button onClick={logRef}>Log Ref</button>
+        </div>
+      </div>
+    )
+  },
+  {
+    readme: {
+      content: marked(DraggableResizerExampleAReadme),
     },
   }
 )

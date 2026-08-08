@@ -201,8 +201,11 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
         const dragging = i === dragIndex
 
         const isCollapsibleToLower = child.props.isCollapsible
+        const collapsedLower = child.props.collapsed
         const isCollapsibleToUpper =
           !isLastPanel && children && children[i + 1].props.isCollapsible
+        const collapsedUpper =
+          !isLastPanel && children && children[i + 1].props.collapsed
 
         return (
           <>
@@ -210,7 +213,9 @@ export const DraggableResizerRoot: FunctionComponent<DraggableResizerProps> = ({
             {!isLastPanel && (
               <DraggableResizerHandle
                 isCollapsibleToLower={isCollapsibleToLower}
+                collapsedLower={collapsedLower}
                 isCollapsibleToUpper={isCollapsibleToUpper}
+                collapsedUpper={collapsedUpper}
                 onCollapseButtonClick={onCollapseButtonClick}
                 dragIndex={i}
                 onStartDrag={handleStartDrag}
