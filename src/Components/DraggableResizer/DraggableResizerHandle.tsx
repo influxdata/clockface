@@ -1,5 +1,5 @@
 // Libraries
-import React, {forwardRef, CSSProperties, useState} from 'react'
+import React, {forwardRef, CSSProperties, useState, useEffect} from 'react'
 import classnames from 'classnames'
 
 // Components
@@ -19,8 +19,12 @@ import {getColorsFromGradient} from '../../Utils/colors'
 export interface DraggableResizerHandleProps extends StandardFunctionProps {
   /** Enables a 0.0 direction (Left/Up) Collapse button */
   isCollapsibleToLower?: boolean
+  /** Collapsed state observed from parent */
+  collapsedLower?: boolean
   /** Enables a 1.0 direction (Right/Down) Collapse Button */
   isCollapsibleToUpper?: boolean
+  /** Collapsed state observed from parent */
+  collapsedUpper?: boolean
   /** Function that updates panel positions after collapsing */
   onCollapseButtonClick: (direction: number, dragIndex: number) => void
   /** Gets passed a function by being a child of DraggableResizer */
@@ -52,7 +56,9 @@ export const DraggableResizerHandle = forwardRef<
       className,
       orientation,
       isCollapsibleToLower = false,
+      collapsedLower = false,
       isCollapsibleToUpper = false,
+      collapsedUpper = false,
       onCollapseButtonClick,
       dragging = false,
       dragIndex = 9999,
@@ -63,8 +69,21 @@ export const DraggableResizerHandle = forwardRef<
     },
     ref
   ) => {
-    const [collapsibleLower, setCollapsibleLower] = useState<boolean>(false)
-    const [collapsibleUpper, setCollapsibleUpper] = useState<boolean>(false)
+    const [collapsibleLower, setCollapsibleLower] = useState<boolean>(
+      collapsedLower
+    )
+    const [collapsibleUpper, setCollapsibleUpper] = useState<boolean>(
+      collapsedUpper
+    )
+
+    useEffect(() => {
+      if (isCollapsibleToLower && collapsedLower) {
+        onCollapseButtonClick(0, dragIndex)
+      }
+      if (isCollapsibleToUpper && collapsedUpper) {
+        onCollapseButtonClick(1, dragIndex)
+      }
+    }, [ref, collapsedLower, collapsedUpper])
 
     const handleMouseDown = (): void => {
       onStartDrag(dragIndex)

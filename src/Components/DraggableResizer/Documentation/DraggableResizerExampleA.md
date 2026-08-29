@@ -1,6 +1,6 @@
-# 2 Panel Stateful Example
+# 3 Panel Stateful Example
 
-Here's a stateful example of `DraggableResizer` with 2 panels. Because this example contained in a stateful wrapper the example code in the JSX tab is obscured. Try looking at the State tab to see state changes in real time. 
+Here's a stateful example of `DraggableResizer` with 3 panels. Because this example contained in a stateful wrapper the example code in the JSX tab is obscured. Try looking at the State tab to see state changes in real time. 
 
 ### Usage
 ```tsx

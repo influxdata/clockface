@@ -8,6 +8,8 @@ import {StandardFunctionProps} from '../../Types'
 export interface DraggableResizerPanelProps extends StandardFunctionProps {
   /** Checks if the current panel is collapsible or not */
   isCollapsible?: boolean
+  /** Collapse state, consumed on component mounting and prop change from parent */
+  collapsed?: boolean
   /** Panel will not shrink past this size (experimental, not guaranteed to work) */
   minSizePixels?: number
   /** Does not have a value initially, gets passed a value by being a child of DraggableResizer */
