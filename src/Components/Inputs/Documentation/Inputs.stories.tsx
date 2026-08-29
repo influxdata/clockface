@@ -943,6 +943,7 @@ inputsComposedStories.add(
           labelPrefix={text('labelPrefix', '')}
           labelSuffix={text('labelSuffix', '')}
           fill={boolean('fill', true)}
+          gradient={boolean('gradient', true)}
           hideLabels={boolean('hide labels', false)}
           style={object('style', exampleRangeSliderStyle)}
           status={

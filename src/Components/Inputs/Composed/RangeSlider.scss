@@ -28,9 +28,9 @@ $slider-hover: $g17-whisper;
     background: $slider-hover-border;
   }
 
-  &:focus {
-    outline: none;
-  }
+  // &:focus {
+  //   outline: none;
+  // }
 
   &::-webkit-slider-runnable-track {
     height: $slider-track-height;
@@ -51,10 +51,15 @@ $slider-hover: $g17-whisper;
     border-radius: $cf-radius;
     background: $slider-handle;
     margin-top: -(($slider-handle-height*0.5) - ($slider-track-height*0.5));
-
-    &:hover,
+    cursor:pointer;
+    box-shadow: 0 0 0 0 rgba($g7-graphite,.3);
+    transition: box-shadow .05s ease;
+    &:active{
+      box-shadow: 0 0 0 20px rgba($g7-graphite,.35);
+    }
     &:focus {
       background: $slider-handle-focus;
+      box-shadow: 0 0 0 10px rgba($g7-graphite,.25);
     }
   }
 
@@ -71,10 +76,16 @@ $slider-hover: $g17-whisper;
     width: $slider-handle-height;
     border-radius: $cf-radius;
     background: $slider-handle;
-
+    cursor:pointer;
+    box-shadow: 0 0 0 0 rgba($g7-graphite,.3);
+    transition: box-shadow .05s ease;
+    &:active{
+      box-shadow: 0 0 0 20px rgba($g7-graphite,.35);
+    }
     &:hover,
     &:focus {
       background: $slider-handle-focus;
+      box-shadow: 0 0 0 10px rgba($g7-graphite,.25);
     }
   }
 
@@ -100,10 +111,16 @@ $slider-hover: $g17-whisper;
     width: $slider-handle-height;
     border-radius: $cf-radius;
     background: $slider-handle;
-
+    cursor:pointer;
+    box-shadow: 0 0 0 0 rgba($g7-graphite,.3);
+    transition: box-shadow .05s ease;
+    &:active{
+      box-shadow: 0 0 0 20px rgba($g7-graphite,.35);
+    }
     &:hover,
     &:focus {
       background: $slider-handle-focus;
+      box-shadow: 0 0 0 10px rgba($g7-graphite,.25);
     }
   }
 }

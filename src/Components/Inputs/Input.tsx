@@ -258,6 +258,7 @@ export const Input = forwardRef<InputRef, InputProps>(
           style={inputStyle}
           required={required}
           pattern={pattern}
+          aria-label={testID}
         />
         {clearElement}
         {type === InputType.Checkbox && <div className={inputCheckboxClass} />}
