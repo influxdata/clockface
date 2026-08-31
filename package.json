@@ -104,8 +104,9 @@
     "prettier:fix": "pretty-quick --config .prettierrc.json --write '{src,cypress}/**/*.{ts,tsx}'",
     "typecheck": "tsc --noEmit --pretty",
     "fix": "eslint --fix 'src/**/*.{ts,tsx}'; prettier --config .prettierrc.json --check 'src/**/*.{ts,tsx}'",
-    "storybook": "start-storybook -p 9001 -c .storybook",
-    "publishStorybook": "storybook-to-ghpages --out=.out"
+    "storybook": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 9001 -c .storybook",
+    "build-storybook": "NODE_OPTIONS=--openssl-legacy-provider build-storybook -c .storybook",
+    "publishStorybook": "NODE_OPTIONS=--openssl-legacy-provider storybook-to-ghpages --out=.out"
   },
   "resolutions": {
     "immer": "^9.0.6",
