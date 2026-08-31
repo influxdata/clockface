@@ -1,4 +1,4 @@
-import {writeFileSync} from 'fs'
+import {readFileSync, writeFileSync} from 'fs'
 
 import {nodeResolve} from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
@@ -9,7 +9,7 @@ import ts from '@wessberg/rollup-plugin-ts'
 import sass from 'rollup-plugin-sass'
 import copy from 'rollup-plugin-copy'
 
-const pkg = require('./package.json')
+const pkg = JSON.parse(readFileSync('./package.json', 'utf8'))
 const isProductionBuild = process.env.NODE_ENV === 'production'
 
 let plugins = [
