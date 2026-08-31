@@ -17,3 +17,4 @@ jobs:
           key: v1-dependencies-{{ checksum "yarn.lock" }}
       - run: yarn ci
       - run: yarn build
+      - run: yarn build-storybook
